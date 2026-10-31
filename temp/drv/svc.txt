@@ -1,0 +1,42 @@
+﻿=== services
+
+Name                   Status StartType
+----                   ------ ---------
+GBTECService          Stopped Automatic
+GigabyteUpdateService Running Automatic
+
+
+
+=== sc gdrv3
+
+SERVICE_NAME: gdrv3 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 4  RUNNING 
+                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+=== sc GIOV3
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+
+=== sc MsIo64
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+
+=== files
+
+Name             Length LastWriteTime         
+----             ------ -------------         
+EhStorTcgDrv.sys 173528 9/09/2026 8:51:44 am  
+gdrv3.sys         52440 12/10/2025 10:19:43 pm
+MsIo64.sys        19672 12/10/2025 10:16:21 pm
+
+
+

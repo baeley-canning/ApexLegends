@@ -1,0 +1,223 @@
+================================================================================
+JAVELIN DETECTION CATEGORIES & EVASION STRATEGIES
+================================================================================
+Document: Javelin 2026 Detection Framework
+Purpose: Guide for cheat development to evade all 7 detection categories
+
+================================================================================
+1. DETECTION CATEGORIES MATRIX
+================================================================================
+
+| Category                  | Risk Level | Evasion Strategy                        |
+|---------------------------|------------|-----------------------------------------|
+| Signature Scanning        | Medium-High| Code obfuscation, MBA folding           |
+| Behavioral Analysis       | High       | Humanizer pipeline, rank-matched profiles|
+| Machine Learning          | High       | Telemetry obfuscation, pattern alignment|
+| Heuristic Detection       | Medium     | Clean injection methods, minimal hooks  |
+| Hardware Fingerprinting   | Medium-Low | TPM integration, hardware randomization |
+| Kernel-Mode Scanning      | High       | Kernel driver with stealth techniques   |
+| Server-Side Validation    | Medium     | Telemetry alignment with human baselines|
+
+================================================================================
+2. SIGNATURE SCANNING
+================================================================================
+
+Detection Methods:
+- Code pattern matching (byte signatures)
+- API call sequence analysis
+- Memory layout fingerprinting
+- Import/export table analysis
+
+Evasion Techniques:
+- XOR encryption for code sections
+- MBA (Mixed Boolean-Arithmetic) folding
+- Signature randomization
+- Code padding with legitimate patterns
+
+Griffin VM Integration:
+- .grfn section injection for cheat modules
+- INT3 breakpoint resolution (Griffin handles natively)
+- MBA folding for signature hiding
+- VM context management for hooking virtualized routines
+
+================================================================================
+3. BEHAVIORAL ANALYSIS
+================================================================================
+
+Key Metrics Tracked:
+- Reaction time distribution: N(250ms, σ=75ms)
+- Micro-jitter: N(0, σ=1.5°) at 60Hz
+- Mouse velocity profiles: Perlin-noise perturbed bell curve
+- Kill-streak decay: Exponential accuracy reduction
+- Miss injection: Distance-weighted miss rates
+
+Humanizer Pipeline Components:
+1. Reaction Sampler - Context and kill-streak modifiers
+2. Micro-Jitter Adder - Natural variance in all timing patterns
+3. Kill-Streak Decay - Accuracy reduction over streaks
+4. Miss Injector - Distance-weighted miss rates
+5. Rank Profile Configuration - Bronze through Apex tiers
+
+================================================================================
+4. MACHINE LEARNING DETECTION
+================================================================================
+
+Model Training Data:
+- 10.8 billion PC sessions analyzed
+- Behavioral pattern extraction
+- Telemetry correlation across titles
+
+ML Detection Signals:
+- Input timing patterns (mouse, keyboard, gamepad)
+- Memory access patterns
+- Process creation/exit events
+- Handle management operations
+- Driver loading/unloading events
+
+Telemetry Obfuscation:
+- EASPEAR-style batching
+- Behavioral pattern alignment
+- Cross-game signature sharing
+- Match human baseline statistics
+
+================================================================================
+5. HEURISTIC DETECTION
+================================================================================
+
+Heuristic Indicators:
+- Code injection patterns
+- Hook chain structures
+- Memory protection changes
+- Process hierarchy anomalies
+
+Clean Injection Methods:
+- KDMapper (well-established, low suspicion)
+- Manual driver mapping during "quiet periods"
+- Avoid high-frequency mapping/unmapping patterns
+
+Minimal Hooks Strategy:
+- Fewer hooks = fewer detectable patterns
+- Use legitimate driver signatures for mapping
+- Inject during game startup (Javelin's "quiet period")
+
+================================================================================
+6. HARDWARE FINGERPRINTING
+================================================================================
+
+Hardware Signals Tracked:
+- TPM version and configuration
+- GPU driver signatures
+- CPU topology information
+- Display configuration
+
+Evasion Techniques:
+- TPM integration for trusted state
+- Hardware randomization for reproducible results
+- Driver signature spoofing
+- GPU-specific timing patterns
+
+================================================================================
+7. KERNEL-MODE SCANNING
+================================================================================
+
+Kernel-Level Operations Monitored:
+- Driver loading/unloading events
+- Handle management operations
+- Memory protection manipulations
+- Process and thread creation hooks
+
+Stealth Kernel Techniques:
+- KDMapper injection (established, less suspicious)
+- Process name spoofing (nvlddmkm.exe - NVIDIA driver)
+- Window title randomization ("EA Games" prefix)
+- Handle refresh management (45s interval)
+
+================================================================================
+8. SERVER-SIDE VALIDATION
+================================================================================
+
+EASPEAR Layer Functions:
+- Batching telemetry to match human patterns
+- Behavioral pattern alignment
+- Cross-game signature sharing
+- Poll interval: 60 seconds (default)
+
+Server-Side Signals:
+- Client-side telemetry correlation
+- Multi-session behavior analysis
+- Rank progression consistency
+- Performance trend analysis
+
+================================================================================
+9. EVASION PRIORITY MATRIX
+================================================================================
+
+LOWEST RISK (Recommended to Start):
+| Feature                      | Detection Risk | Ban Likelihood |
+|------------------------------|----------------|----------------|
+| KDMapper Injection           | Low            | ★☆☆            |
+| Humanizer Pipeline           | Low            | ★☆☆            |
+| Window Title Randomization   | Low            | ★☆☆            |
+| Handle Refresh Management    | Low            | ★☆☆            |
+| Reaction Time Sampling       | Low            | ★☆☆            |
+| Micro-Jitter Addition        | Low            | ★☆☆            |
+
+MEDIUM RISK (Valuable but Monitor):
+| Feature                      | Detection Risk | Ban Likelihood |
+|------------------------------|----------------|----------------|
+| Griffin VM Integration       | Medium         | ★★☆            |
+| Telemetry Obfuscation        | Medium         | ★★☆            |
+| Memory Protection Manipulation| Medium        | ★★☆            |
+| Process Name Spoofing        | Medium         | ★★☆            |
+
+HIGHER RISK (Feature-Rich but Monitor):
+| Feature                      | Detection Risk | Ban Likelihood |
+|------------------------------|----------------|----------------|
+| Kernel Aimbot Hooks          | High           | ★★★            |
+| Griffin VM Hooking           | High           | ★★★            |
+| Behavioral Spoofing          | Medium-High    | ★★☆            |
+
+================================================================================
+10. IMPLEMENTATION PRIORITY
+================================================================================
+
+Week 1-2: Core Driver with Minimal Footprint
+1. KDMapper-compatible driver skeleton
+   - Manual mapping support
+   - XOR encryption for payload
+   - Basic telemetry collection
+
+2. Humanizer integration
+   - Reaction time sampler
+   - Micro-jitter adder
+   - Kill-streak decay
+
+3. Stealth techniques
+   - Window title randomization
+   - Handle refresh management
+   - Process name spoofing
+
+Week 3-4: Griffin VM Integration
+1. Griffin VM hooking
+   - .grfn section injection
+   - INT3 resolution
+   - MBA folding
+
+2. Telemetry obfuscation
+   - EASPEAR-style batching
+   - Behavioral pattern alignment
+   - Cross-game signature sharing
+
+Week 5-6: Advanced Features
+1. Memory protection manipulation
+   - Kernel-mode VirtualProtectEx
+   - XOR encryption for memory regions
+
+2. Input timing jitter
+   - Mouse movement smoothing
+   - Key press variance
+   - Pre-aim drift patterns
+
+================================================================================
+END OF DOCUMENT
+================================================================================

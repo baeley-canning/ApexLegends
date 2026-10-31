@@ -1,0 +1,19 @@
+exe=r5apex_dx12.exe pid=11996
+ssn NtReadVirtualMemory=0x3f  NtReadVirtualMemoryEx=0x178  NtOpenProcess=0x26
+query handle mask 0x410 works (11362 regions walked)
+probe address=0x7ff720080000 (image region)
+
+mask       handle rpm          plain        ex           dup->ex   
+0x1fffff   0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x1f0fff   0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x143a     0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x1410     0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x410      0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x438      0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x10       0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x400      0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x1000     0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x800      0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+0x8        0x244  err87        0xc000000d/0 0xc0000022/0 dup err6  
+
+working combos: NONE

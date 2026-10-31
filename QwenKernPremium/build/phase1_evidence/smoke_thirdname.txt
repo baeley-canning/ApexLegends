@@ -1,0 +1,24 @@
+﻿== string compiled in? ==
+match found in binary
+
+== launcher discovery while both images exist ==
+===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] AG measurement harness (target PID 1512)
+pid=1512 image=r5apex_dx12.exe base=0x0 modules=0
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=absent dxgi=absent d3d12=absent d3d9=absent d3dcompiler=absent[*] reference integrity:
+    image            :  (NOT the expected r5apex_dx12.exe)
+    module base      : 0x0 (NOT a readable PE image)
+EXIT=4
+== not-found message path (renamed stub off) ==
+usage: apex_launcher.exe [options]
+
+  --inject                 run the LADDER once and exit (default)
+  --method=nt|apc|crt|kernel  force ONE rung (no ladder, no sticky)
+  --probe                  AG measurement harness only, never injects
+  --dll=<path>             payload DLL (default: apexcheat.dll next to the exe)

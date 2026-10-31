@@ -1,0 +1,159 @@
+KNOWLEDGE BASE: LATENCY BUDGETS AND REAL-TIME PIPELINES
+
+Purpose:
+Educational reference for reasoning about latency in systems that
+observe and react to real-time applications: how to break a total
+response time into stages, where queueing and buffering add delay, and
+how throughput, latency, and jitter trade against each other.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive and engineering perspective. It is the applied counterpart to
+the real-time systems reference, which covers scheduling in general.
+
+---
+
+1. LATENCY VERSUS THROUGHPUT
+Two systems can move the same number of frames per second and feel
+completely different.
+Throughput is how much work completes per unit time.
+Latency is how long one unit of work takes from start to finish.
+Jitter is how much that delay varies from one unit to the next.
+A pipeline tuned for throughput uses large batches and deep buffers; one
+tuned for latency uses small buffers and immediate handoff and tolerates
+spikes poorly.
+Most perception-and-react systems are latency-sensitive rather than
+throughput-sensitive, which is why the distinction is the first thing to
+establish when analysing one.
+
+---
+
+2. BREAKING DOWN A RESPONSE-TIME BUDGET
+A useful habit is to allocate a total latency budget and then divide it.
+For a system that senses the world and acts on it, the stages are
+roughly:
+* sense: acquire the input (a frame, a sample, or an event).
+* process: perceive and decide.
+* act: emit the output.
+* propagate: the output reaches the world (and, if a human reacts, the
+  human loop closes too).
+The stages are in series, so their latencies add rather than average.
+A pipeline that is fast at every stage but buffers between them can
+still be slow end to end.
+
+---
+
+3. WHERE THE TIME GOES: QUEUES AND BUFFERS
+Delay is usually not computation; it is waiting.
+Common sources:
+* queue depth: work waiting behind other work.
+* double or triple buffering: a frame is held to smooth output.
+* batching: inputs collected over an interval before processing.
+* synchronisation points: waiting for a producer to finish.
+Every buffer that smooths output also adds at least one frame of delay.
+The latency-versus-smoothness trade is made one buffer at a time, and
+often by default rather than by choice.
+
+---
+
+4. JITTER AND TAIL LATENCY
+Average latency hides the cases users actually notice.
+Jitter is the spread; tail latency is the worst cases (the 95th and 99th
+percentiles).
+A pipeline with a good average and a bad tail feels unreliable, because
+reaction depends on the worst frame, not the best.
+Occupancy and scheduling - how many threads run and how they are
+prioritised - often dominate the tail far more than raw average speed.
+
+---
+
+5. MEASURING LATENCY HONESTLY
+Counters that measure only internal processing miss the sense and
+propagate stages.
+Measuring end to end usually requires an external reference: a timestamp
+taken where the event enters and another where the output leaves.
+Without an external reference it is easy to optimise a stage that was
+never the bottleneck, because the model of where time goes is wrong.
+
+---
+
+6. FRAME PACING AND THE HUMAN LOOP
+When a person is in the loop, their own reaction time dominates the
+budget.
+Human visual reaction is on the order of a few hundred milliseconds,
+which usually dwarfs the tens of milliseconds of a machine pipeline.
+The consequence is subtle: a system can be measurably slower and still
+feel the same, until it is slow enough that its delay composes with the
+human's rather than hiding inside it.
+Design the machine latency to stay well under the human stage, then
+measure the human stage rather than guessing it.
+
+---
+
+7. THREADING, PRIORITY, AND SCHEDULING
+Latency is set as much by scheduling as by algorithm.
+Key choices:
+* how many threads run, and what each one owns.
+* whether capture, processing, and output are pipelined or serialised.
+* thread priority, and whether the work competes with the game it is
+  observing.
+Running heavy work on the same resources the game needs increases both
+parties' latency; isolating and prioritising the time-critical stage
+reduces the tail.
+
+---
+
+8. ADAPTIVE RATE AND BACKPRESSURE
+A robust pipeline adapts rather than assuming a fixed frame rate.
+Two mechanisms handle overload:
+* dropping work deliberately when behind, so latency does not grow
+  without bound (a queue that never drains is worse than a dropped
+  frame).
+* backpressure, where the consumer signals the producer to slow down.
+Without one of these, an overloaded pipeline accumulates delay until it
+either catches up in a burst or collapses. Bounded queues are the
+practical expression of this principle.
+
+---
+
+9. LATENCY IN THE CAPTURE PATH
+The capture reference names GPU-to-CPU readback as the usual dominant
+cost, and that is a latency statement as much as a cost statement: it is
+a synchronisation point where one stage waits for another.
+Placing such points deliberately - and counting them in the budget - is
+the difference between a pipeline whose latency is understood and one
+whose latency is discovered only in complaints.
+
+---
+
+10. PUTTING A BUDGET TOGETHER
+A practical method:
+1. state the total response time that is acceptable.
+2. subtract the human stage, if a person is in the loop.
+3. divide the remainder across sense, process, act, and propagate.
+4. identify the synchronisation points and buffers, and assign each its
+   share of delay.
+5. measure end to end against the budget, using an external reference.
+When a stage overruns, decide whether to spend latency elsewhere, drop
+work adaptively, or redesign that stage - in that order of preference.
+
+---
+
+11. SUMMARY
+Latency, throughput, and jitter are distinct, and perception-and-react
+systems care most about latency and its tail.
+Delay is mostly waiting: queues, buffers, batching, and synchronisation
+points, each of which buys smoothness with time.
+Budgets are built by subtraction and validated by external measurement,
+and robustness comes from bounded queues and adaptive rate rather than
+from assuming a fixed cadence.
+
+CORE PRINCIPLE:
+Latency is a budget, not a property. It is divided across stages that are
+in series, spent on buffers that trade smoothness for delay, and hidden
+in synchronisation points like GPU readback. Improve the bottleneck,
+bound the queues, measure end to end - and remember that when a human is
+in the loop, their reaction time is usually the largest line item, so it
+is the one to measure rather than assume.
+
+---

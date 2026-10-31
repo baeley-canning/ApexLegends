@@ -1,0 +1,16 @@
+﻿00001090  488bc4                 mov     rax, rsp
+00001093  4881ecf8000000         sub     rsp, 0xf8
+0000109a  488958f8               mov     qword ptr [rax - 8], rbx
+0000109e  488970e8               mov     qword ptr [rax - 0x18], rsi
+00001102  493bd6                 cmp     rdx, r14
+00001105  490f43d6               cmovae  rdx, r14
+00001109  4889942408010000       mov     qword ptr [rsp + 0x108], rdx
+00001111  488d15580a0000         lea     rdx, [rip + 0xa58]
+00001118  ff15f20e0000           call    qword ptr [rip + 0xef2]         ; ntoskrnl!RtlInitUnicodeString
+0000111e  488bac2420010000       mov     rbp, qword ptr [rsp + 0x120]
+00001126  488d8424a8000000       lea     rax, [rsp + 0xa8]
+0000112e  4c892e                 mov     qword ptr [rsi], r13
+00001131  4c8d442478             lea     r8, [rsp + 0x78]
+00001136  ba1f000f00             mov     edx, 0xf001f
+0000113b  488bce                 mov     rcx, rsi
+0000113e  4c896d00               mov     qword ptr [rbp], r13

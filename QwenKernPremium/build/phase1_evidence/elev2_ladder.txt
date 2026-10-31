@@ -1,0 +1,24 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[*] No sticky rung on this machine; ladder starts at the top
+[i] B3 (kernel) will SKIP: driver not staged (apexdrv.sys)
+[*] 4 rung(s), target PID 164, payload apexcheat.dll
+    verdict rule: a rung only counts when apexcheat.dll is in the target's module list
+[!] module list of PID 164 is NOT readable -> verdicts are unreliable
+    relaunch the launcher elevated (Run as administrator) and retry
+[1/4] A3 APC Queue (IMPERSONATE)
+[*] Injection strategy: A3 APC Queue (IMPERSONATE)
+       FAIL : VirtualAllocEx failed: 5
+[2/4] A2 NtCreateThreadEx (HIDE)
+[*] Injection strategy: A2 NtCreateThreadEx (HIDE)
+       FAIL : VirtualAllocEx failed: 5
+[3/4] A1 CreateRemoteThread + LoadLibraryA
+[*] Injection strategy: A1 CreateRemoteThread + LoadLibraryA
+       FAIL : VirtualAllocEx failed: 5
+[4/4] B3 Kernel Driver (KERNEL)
+       SKIP : driver not staged (apexdrv.sys)
+[-] Ladder exhausted: no rung verified the payload
+[-] No rung verified the payload
+LADDER_EXIT=3

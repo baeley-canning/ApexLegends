@@ -1,0 +1,87 @@
+RUNNING LOCAL LLMS
+==================
+Purpose: understand how local language models use hardware and settings, so
+they run fast, fit in memory and give good answers.
+
+1. MODEL SIZE AND MEMORY
+- Parameter count drives memory. Rough weight memory = parameters x bytes per
+  parameter:
+    FP16/BF16: 2 bytes     -> 7B model ~14 GB
+    8-bit (Q8): ~1 byte    -> 7B ~7.5 GB
+    4-bit (Q4_K_M): ~0.6 B -> 7B ~4.5 GB, 35B ~20 GB
+- On top of weights you need memory for the KV cache (grows with context
+  length) and runtime overhead (~0.5-2 GB).
+- Mixture-of-Experts (MoE) models, e.g. "35B-A3B": 35B total parameters but
+  only ~3B active per token. All weights must still be stored (RAM or VRAM),
+  but each token computes like a ~3B model, so they are fast for their size.
+  Keeping experts in system RAM and the rest on GPU is a common trade-off.
+
+2. QUANTISATION
+- Quantisation stores weights with fewer bits. GGUF is the format used by
+  llama.cpp, LM Studio and Ollama.
+- Common GGUF levels, best to smallest: Q8_0, Q6_K, Q5_K_M, Q4_K_M, Q3_K_M,
+  Q2_K. Q4_K_M is the usual sweet spot; below Q4 quality drops noticeably,
+  especially for maths and code.
+- A bigger model at Q4 usually beats a smaller model at Q8 for the same memory.
+- "Uncensored"/"abliterated" fine-tunes change refusal behaviour, not
+  knowledge. They are generally no smarter and can be less reliable.
+
+3. GPU OFFLOAD
+- "GPU layers" / "offload" = how many transformer layers live in VRAM. All
+  layers on GPU is fastest. Layers that don't fit run on CPU, which is much
+  slower (memory bandwidth bound).
+- If VRAM overflows into shared system memory (Windows does this silently),
+  speed collapses. Watch "Dedicated GPU memory" in Task Manager; keep it
+  below the card's capacity.
+- Token generation speed is mostly limited by memory bandwidth; prompt
+  processing is limited by compute.
+
+4. CONTEXT LENGTH
+- Context = how many tokens (prompt + history + documents + answer) the model
+  sees at once. 1 token is ~0.75 English words.
+- KV cache memory grows linearly with context. Doubling context can cost
+  gigabytes. Set context to what you actually need, not the maximum.
+- Quality usually degrades well before the advertised maximum, especially for
+  details buried in the middle of long inputs ("lost in the middle").
+- KV cache quantisation (q8_0) roughly halves cache memory with little loss.
+- Flash attention, if supported, reduces memory and speeds up long contexts.
+
+5. SAMPLING SETTINGS
+- Temperature: randomness. 0-0.3 for code, facts and extraction; 0.6-0.9 for
+  chat and creative writing. Above ~1.2 output gets incoherent.
+- Top-p (nucleus): sample only from the smallest set of tokens whose
+  probability sums to p. 0.9-0.95 is typical.
+- Top-k: sample only from the k most likely tokens (20-50 typical).
+- Min-p: drop tokens below p x (probability of the best token). 0.05-0.1 is a
+  good modern default that adapts to model confidence.
+- Repeat penalty: 1.05-1.15 discourages loops. Too high damages code (which
+  legitimately repeats tokens).
+- Use the model card's recommended settings first. Reasoning models (e.g.
+  Qwen3 thinking mode) are often tuned for temperature ~0.6, top-p 0.95.
+
+6. CHAT TEMPLATES AND SYSTEM PROMPTS
+- Each model family is trained with a specific chat template (special tokens
+  marking system/user/assistant turns). The wrong template causes rambling,
+  role confusion or the model writing the user's lines.
+- GGUF files usually embed the template; LM Studio and Ollama apply it.
+- The system prompt sets persistent behaviour. Keep it short, concrete and
+  free of contradictions. Long rule lists get partially ignored.
+- Qwen3 supports /think and /no_think switches to toggle reasoning output.
+
+7. TROUBLESHOOTING
+- Very slow: layers on CPU, VRAM overflow, or context too large.
+- Out of memory on load: smaller quant, fewer GPU layers, smaller context.
+- Repetition loops: raise repeat penalty slightly, lower temperature, check the
+  chat template, shorten context.
+- Gibberish: wrong template, corrupted download (re-download, check hash), or
+  incompatible runtime version.
+- Confident wrong answers: give it the source material (RAG), ask it to quote
+  sources, lower temperature.
+
+8. WHAT FINE-TUNING VS KNOWLEDGE FILES DO
+- Knowledge files / RAG: the model reads text at question time. Fast to
+  update, no training, facts stay accurate to the source. Best for facts.
+- Fine-tuning (e.g. LoRA): changes weights. Best for style, format and
+  behaviour; poor at reliably adding facts. Needs a good dataset and GPU time.
+- Dropping text files into a chat app does not "teach" the weights. It gives
+  the model reference material to search each time.

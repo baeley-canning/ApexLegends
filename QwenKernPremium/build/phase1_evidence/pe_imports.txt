@@ -1,0 +1,25 @@
+﻿== INDEPENDENT PE IMPORT READ (tools\pe_imports.ps1) ==
+-- our DLL (expect d3d11 / KERNEL32 / USER32 only) --
+---------------- C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll ----------------
+  machine=0x8664  magic=0x020B  sections=7  ptr=8
+  [import] rva=0x00048AE4 size=80
+    d3d11.dll                          imports=1
+    KERNEL32.dll                       imports=96
+    USER32.dll                         imports=12
+    => 3 module(s)
+  [delay-import] rva=0x00000000 size=0
+  [load-string hits]
+    d3d11.dll
+    D3D11CreateDeviceAndSwapChain
+    D3D9
+    d3d9.dll
+    d3dcompiler_47.dll
+    DXGI
+-- our launcher --
+---------------- C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apex_launcher.exe ----------------
+  machine=0x8664  magic=0x020B  sections=7  ptr=8
+  [import] rva=0x0005A5D4 size=60
+    ADVAPI32.dll                       imports=10
+    KERNEL32.dll                       imports=124
+    => 2 module(s)
+  [delay-import] rva=0x00000000 size=0

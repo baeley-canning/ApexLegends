@@ -1,0 +1,28 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] No sticky rung on this machine; ladder starts at the top
+[i] B3 (kernel) will SKIP: driver not staged (apexdrv.sys)
+[*] 4 rung(s), target PID 21704, payload apexcheat.dll
+    verdict rule: a rung only counts when apexcheat.dll is in the target's module list
+[1/4] A3 APC Queue (IMPERSONATE)
+[*] Injection strategy: A3 APC Queue (IMPERSONATE)
+[+] APC Queue injection SUCCESS ΓÇö Thread ID: 16124
+[+] DLL will load when target thread reaches alertable state
+       FAIL : call succeeded but apexcheat.dll never appeared in the target
+[2/4] A2 NtCreateThreadEx (HIDE)
+[*] Injection strategy: A2 NtCreateThreadEx (HIDE)
+[+] NtCreateThreadEx resolved from ntdll.dll
+[+] NtCreateThreadEx injection SUCCESS ΓÇö Thread ID: 2040
+       FAIL : call succeeded but apexcheat.dll never appeared in the target
+[3/4] A1 CreateRemoteThread + LoadLibraryA
+[*] Injection strategy: A1 CreateRemoteThread + LoadLibraryA
+       FAIL : remote LoadLibraryA returned NULL (DllMain or dependency failed)
+[4/4] B3 Kernel Driver (KERNEL)
+       SKIP : driver not staged (apexdrv.sys)
+[-] Ladder exhausted: no rung verified the payload
+[-] No rung verified the payload
+EXIT=3

@@ -1,0 +1,9 @@
+﻿--- PPEB/PEB typedefs ---
+ntddk.h:86: typedef struct _PEB *PPEB;
+ntddk.h:5586: PPEB PebBaseAddress;
+ntifs.h:88: typedef struct _PEB *PPEB;
+--- NTKERNELAPI present ---
+#define NTKERNELAPI
+#define NTKERNELAPI DECLSPEC_IMPORT     // wdm ntndis ntifs
+--- KPROCESSOR_MODE / PSIZE_T ---
+typedef enum _MODE {

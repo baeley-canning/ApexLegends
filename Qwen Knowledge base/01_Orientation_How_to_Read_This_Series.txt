@@ -1,0 +1,134 @@
+KNOWLEDGE BASE: ORIENTATION - HOW TO READ THIS SERIES
+
+Purpose:
+Explain what this knowledge base is, how it is organised, and how to use
+it. It is the entry point for the numbered reference series and a map of
+the thematic documents that surround it.
+
+This document is reference knowledge. The series is written from a
+defensive and engineering perspective: it explains how systems work, why
+they behave as they do, and how to reason about failures. It is intended
+for understanding, not for building anything that defeats another
+system's protections.
+
+---
+
+1. WHAT THIS SERIES IS
+A set of short, self-contained reference documents, each covering one
+technical area.
+Together they describe the layers an observing, sensing, and acting
+system is built from: hardware, the operating system, capture of visual
+and structured information, perception, estimation, control, timing, and
+the software that ties them together.
+Each document stands alone but assumes the ones before it.
+
+---
+
+2. TWO TIERS: NUMBERED AND THEMATIC
+The numbered documents (01 onward) form an ordered curriculum of
+engineering foundations.
+The thematic documents - the ones with descriptive names rather than
+numbers - cover specific domains such as anti-cheat architecture, threats
+below the kernel, server authority, and ban governance.
+Read the numbered series for the primitives; read the thematic documents
+to see how those primitives are applied to one problem domain.
+
+---
+
+3. THE LAYERED MODEL
+Every system in this series can be placed on a stack:
+hardware
+-> operating system
+-> windowing and composition
+-> capture and information channels
+-> perception and estimation
+-> decision and control
+-> application and architecture
+A problem is easier to reason about once you know which layer it lives
+in, because each layer is governed by its own rules.
+
+---
+
+4. THE SERIES MAP
+A rough guide to the numbered documents:
+01-04 foundations (this orientation, hardware, mathematics, data).
+05-08 perception, estimation, and learning (geometry, tracking, control,
+neural networks).
+09-13 capture, windows, latency, and input.
+14-15 operating system and kernel internals.
+16-21 statistics, reverse engineering, signal processing, real-time
+systems, observability, and software architecture.
+The thematic documents group by question.
+What are we defending? THREAT MODELLING, HISTORY AND TAXONOMY.
+How is defence built? ANTI-CHEAT ARCHITECTURE, PRODUCTS AND
+SYSTEMS, HOW ANTI-CHEATS WORK, CLIENT INTEGRITY, SERVER-AUTHORITATIVE
+ARCHITECTURE.
+Where do attacks live? HARDWARE/DMA, VIRTUALIZATION AND CLOUD GAMING,
+NETWORK AND LAG MANIPULATION, INPUT INTEGRITY AND DEVICE FRAUD.
+Who is the attacker? CHEAT ECONOMICS, ADAPTIVE CHEATING AND RED
+TEAMING, ADVERSARIAL AI AND DETECTION, AI AIMBOT KNOWLEDGE, GPU
+COMPUTE AND INFERENCE.
+What happens after detection? BAN GOVERNANCE AND IDENTITY INTEGRITY,
+SPOOFING AND BAN EVASION, MATCHMAKING AND ACCOUNT ECONOMY INTEGRITY,
+MEASURING EFFECTIVENESS.
+How is the field governed? TELEMETRY, PRIVACY, AND PLAYER DATA ETHICS,
+ESPORTS AND COMPETITIVE INTEGRITY, MOBILE AND CROSS-PLATFORM,
+CONSOLE AND CLOSED-PLATFORM INTEGRITY.
+Evasion itself is surveyed in EVADING ANTI-CHEAT - CATEGORIES AND
+COUNTERMEASURES.
+The map is approximate; each document is written to stand alone.
+
+---
+
+5. HOW TO USE A DOCUMENT
+Each document opens with a Purpose and a set of numbered sections.
+Sections are independent ideas separated by horizontal rules.
+Each closes with a short Summary and a Core Principle that states the
+single idea to retain.
+Read the Purpose to decide whether the document applies; read the Core
+Principle to recall it later.
+
+---
+
+6. CONVENTIONS
+One idea per section, one sentence per line.
+Plain ASCII text, so the documents read identically everywhere.
+Concrete mechanisms are named so they can be looked up, never so they can
+be reproduced as an attack.
+Cross-references point to the other documents by name.
+
+---
+
+7. FRAMING AND BOUNDARIES
+The series explains mechanisms and their consequences from the defensive
+side.
+It describes what protections exist and why, and how to tell one kind of
+failure from another.
+It deliberately stops short of operational detail that would function as
+instructions for defeating a protection.
+
+---
+
+8. READING ORDER
+A first pass can follow the numbers in order.
+A task-driven pass is usually faster: find the layer your problem lives
+in, read that document, then read its neighbours for the assumptions it
+makes.
+Neither order is wrong; the documents are written to survive both.
+
+---
+
+9. SUMMARY
+This series is an ordered set of short references covering the layers of
+a sensing, deciding, acting system, plus thematic documents that apply
+them.
+Every document is self-contained, opens with a purpose, and closes with a
+core principle.
+Know which layer you are in, and the rest becomes easier to reason about.
+
+CORE PRINCIPLE:
+This knowledge base is a stack, not a pile. Each document describes one
+layer, assumes the layers beneath it, and states a single core principle
+worth recalling later. Orient by the numbers, navigate by the layer, and
+read every concrete mechanism as an explanation of what a protection does
+- never as a recipe for defeating it.

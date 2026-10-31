@@ -1,0 +1,26 @@
+﻿=== Win32_SystemDriver (filtered)
+  apexdrv          Stopped    Manual   \??\C:\Windows\System32\drivers\apexdrv.sys
+  apexr            Stopped    Manual   C:\WINDOWS\system32\drivers\apexr.sys
+  EhStorTcgDrv     Stopped    Manual   C:\WINDOWS\system32\drivers\EhStorTcgDrv.sys
+  gdrv3            Running    Manual   \??\C:\WINDOWS\System32\drivers\gdrv3.sys
+  genericusbfn     Stopped    Manual   C:\WINDOWS\system32\DriverStore\FileRepository\genericusbfn.inf_amd64_71c810ddc0116541\genericusbfn.sys
+  MSIO             Running    System   \??\C:\WINDOWS\system32\drivers\MsIo64.sys
+
+=== files in System32\drivers matching apex/asio/gdrv/msio
+  apexdrv.sys      8616  2026-10-27  Valid/CN=ApexDrv Dev (QwenKern Premium)
+  apexr.sys        5488  2026-10-27  Valid/CN=ApexR Test
+  gdrv3.sys       52440  2025-10-12  Valid/CN="GIGA-BYTE TECHNOLOGY CO.
+  MsIo64.sys      19672  2025-10-12  Valid/CN=Microsoft Windows Hardware Compatibility Publisher
+
+=== loaded kernel modules (top of \Driver object dir via NtQuerySystemInformation)
+  total modules = 0
+
+=== device namespaces we can open (no admin needed for some)
+  \\.\apexr      openable=False
+  \\.\apexdrv    openable=False
+  \\.\gdrv       openable=False
+  \\.\gdrv3      openable=False
+  \\.\MsIo64     openable=False
+  \\.\MsIo       openable=False
+  \\.\AsIO3      openable=False
+  \\.\AsUpIO     openable=False

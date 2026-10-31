@@ -1,0 +1,94 @@
+================================================================================
+APEX LEGENDS — OFFSET DUMPING METHODOLOGY & KNOWN DATA STRUCTURES
+================================================================================
+Last Updated: 2026-10-25 | Sources: CasualX/apexdream, CheatOffsets, eastarcti.ca
+
+================================================================================
+1. WHY OFFSETS ARE CRITICAL FOR EXTERNAL CHEATS
+================================================================================
+
+External cheats need to read game memory for: Entity list (ESP), View matrix 
+(screen projection), Bone transforms (skeleton), Player health/team, Camera state.
+
+================================================================================
+2. THE CORE PROBLEM: r5apex.exe IS ENCRYPTED ON DISK
+================================================================================
+
+The r5apex.exe binary on disk is encrypted and MUST be dumped from memory first.
+Static analysis of the file alone doesn't work.
+
+PROCESS TO GET OFFSETS:
+1. Run Apex Legends (game loads, decrypts itself in memory)
+2. Dump r5apex.exe from process memory while running
+3. Analyze the dumped binary to extract offsets
+4. Update cheat configuration with new offsets
+
+================================================================================
+3. OFFSET DUMPING METHODOLOGY (from CasualX/apexdream)
+================================================================================
+
+METHOD 1: Using apexbot (automated)
+- Run apexbot, if offsets are incorrect it dumps the game automatically
+- Produces r5apex.bin in current directory
+- Tool: https://github.com/CasualX/apexdream
+
+METHOD 2: Manual dump + web dumper
+Step 1: Dump r5apex.exe from memory (use any process dumper)
+Step 2: Visit https://casualhacks.net/apexdream/apexdumper.html
+Step 3: Drop dumped r5apex.bin on file input, wait for analysis
+Step 4: Get INI or human-readable output
+
+METHOD 3: Command line dumper (Cargo)
+cargo run --release -- "r5apex.bin" ini > stdout.ini    # C++ offsets
+cargo run --release -- "r5apex.exe" human > stdout.md   # Human readable
+
+================================================================================
+4. WEB-BASED OFFSET DUMPERS & LIVE SERVICES
+================================================================================
+
+Tools:
+1. CApexDumpWasm (WebAssembly): https://github.com/ccdescipline/CApexDumpWasm
+2. CasualHacks Apex Dumper: https://casualhacks.net/apexdream/apexdumper.html
+3. eastarcti.ca Apex Offset Dumper: https://eastarcti.ca/apex/dumper/
+4. CheatOffsets (live updates): https://www.cheatoffsets.com/g/apex
+5. Xerozify (live updates): https://xerozify.xyz/offsets
+
+================================================================================
+5. KEY OFFSET CATEGORIES FOR EXTERNAL CHEATS
+================================================================================
+
+ENTITY LIST: Pointer to entity list in r5apex.exe (current known: 0x23F6A90 relative)
+VIEW MATRIX: Camera transformation matrix for screen-space projection
+BONE TRANSFORMS: Per-entity bone position data for skeleton rendering
+PLAYER DATA: Health, armor, team ID, player name, position, velocity
+CAMERA STATE: Local player camera position and view angles
+
+NOTE: Offsets are RELATIVE to r5apex.exe base address (not absolute).
+The IAT is NOT encrypted — trivial to rebuild.
+
+================================================================================
+6. OFFSET VALIDATION STRATEGY
+================================================================================
+
+Our OffsetValidator component validates by reading known game structures at 
+runtime via injected process context, comparing against expected values, and 
+alerting when offsets need updating after a game patch.
+
+VALIDATION CHECKLIST:
+[ ] Entity list pointer resolves to valid memory range
+[ ] View matrix produces reasonable screen projections
+[ ] Bone transforms match expected skeleton structure
+[ ] Player health values are in valid range (0-200)
+[ ] Team IDs are valid (1-3 for normal matches)
+
+================================================================================
+7. PATCH UPDATE DETECTION STRATEGY
+================================================================================
+
+When Apex gets patched → r5apex.exe binary changes → offsets drift.
+Automated pipeline: Game launches → dump from memory → run dumper → 
+compare with config → detect drift → update config → restart DLL.
+
+================================================================================
+END OF APEX OFFSET DUMPING METHODOLOGY
+================================================================================

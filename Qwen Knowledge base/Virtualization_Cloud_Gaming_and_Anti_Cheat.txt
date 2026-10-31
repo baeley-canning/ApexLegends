@@ -1,0 +1,147 @@
+KNOWLEDGE BASE: VIRTUALIZATION, CLOUD GAMING, AND ANTI-CHEAT
+
+Purpose:
+Explain how virtual machines and cloud streaming interact with anti-cheat:
+where virtualization is a defence, where it is an attack surface, and how
+attestation and trust change when the game runs somewhere the player does
+not own. It complements HARDWARE, DMA, AND BELOW-KERNEL THREATS and
+CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION.
+
+This document is reference knowledge. It describes virtualization and its
+security consequences from a defensive and engineering perspective. It
+contains no instructions for evading detection or for building a bypass.
+
+Practices evolve and disclosures are partial, so treat each statement as a
+documented CLAIM. Details are given "as of October 2026".
+
+Related documents: HARDWARE, DMA, AND BELOW-KERNEL THREATS, KERNEL MODE
+AND ANTI-CHEAT DRIVERS, CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION,
+SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES, and the numbered
+technical series.
+
+---
+
+1. WHY VIRTUALIZATION MATTERS TO ANTI-CHEAT
+Virtualization inserts a layer between hardware and the operating system.
+That layer can be used to defend or to attack.
+For anti-cheat, it is both a tool and a threat, depending on who controls
+it.
+Understanding it is essential to reasoning about trust in modern games.
+
+---
+
+2. WHAT A HYPERVISOR IS
+A hypervisor runs virtual machines and controls their access to hardware.
+It sits below the guest operating system, with more authority than the
+guest's kernel.
+This position is exactly what makes it powerful for both sides.
+Whoever controls the hypervisor controls the machine's ground truth.
+
+---
+
+3. THE HYPERVISOR AS A DEFENSIVE LAYER
+Because it sits below the guest, a hypervisor can observe the guest
+without the guest seeing the observation.
+That makes it attractive for integrity monitoring: the checks are harder
+for in-guest code to detect or alter.
+It is the same "observer below the observed" principle taken one level
+further down.
+
+---
+
+4. THE HYPERVISOR AS AN ATTACK LAYER
+The same position is valuable to an attacker.
+A hypervisor can hide memory access from the guest entirely.
+This is why some serious cheating has moved to hypervisor-level
+techniques, below the kernel anti-cheat.
+The tool is identical; only the intent differs.
+
+---
+
+5. HYPERVISOR-BASED ANTI-CHEAT
+Some defences run their own hypervisor or use platform virtualization to
+create an isolated view.
+This can catch tampering that kernel-mode checks miss.
+It also raises complexity, compatibility, and performance costs.
+The trade-off is more visibility against a heavier footprint.
+
+---
+
+6. NESTED VIRTUALIZATION
+A virtual machine can run inside another virtual machine.
+Each layer complicates what the inner layer can prove about the outer.
+For attestation, nesting is a problem because the innermost guest may be
+unable to verify the full stack beneath it.
+This is why strong trust claims get harder the deeper the nesting goes.
+
+---
+
+7. CLOUD GAMING
+In cloud gaming the game runs in a datacenter and streams video to the
+player.
+The player's machine is no longer where the game executes.
+This relocates the anti-cheat problem from the player's PC to the
+provider's infrastructure.
+It also changes what a "client" even means.
+
+---
+
+8. ATTESTATION INSIDE A VIRTUAL MACHINE
+Attestation normally proves the state of a physical machine's boot.
+Inside a virtual machine, the guest attests to a virtual platform it does
+not control.
+The provider must bridge that gap so the guest can trust what it is told.
+Without that bridge, attestation in the cloud is weaker than on owned
+hardware.
+
+---
+
+9. WHY VMS COMPLICATE TRUST
+Hardware-backed trust assumes the root of trust is a chip the attacker
+cannot reprogram.
+In a virtual machine, the root belongs to the provider at least as much
+as to the player.
+So the trust anchor shifts from the player's hardware to the provider's
+promises.
+That is a real change in the security model, not a detail.
+
+---
+
+10. WHEN VIRTUALIZATION HELPS
+Virtualization helps when the operator controls it and can enforce
+isolation and monitoring.
+Cloud providers can standardise the environment, reducing some
+hardware-level attack surface.
+A controlled virtual environment can be more trustworthy than an
+uncontrolled physical one.
+
+---
+
+11. THE HONEST TRADE-OFF
+A virtual environment can be more controlled or less trustworthy than a
+physical one, depending on who runs it.
+Trust moves from the possession of hardware to the governance of a
+provider.
+Neither is universally better; each fits different threat models.
+The key is to know which one you are relying on.
+
+---
+
+12. SUMMARY
+Virtualization adds a layer below the operating system that either side
+can exploit.
+It enables hypervisor-based defence and hypervisor-based attack from the
+same position.
+Cloud gaming relocates the game and the trust question to a provider.
+Attestation is weaker inside a virtual machine unless the provider bridges
+it.
+The central change is that trust shifts from owned hardware to a
+provider's governance.
+
+CORE PRINCIPLE:
+Virtualization moves the root of trust above the player's own machine.
+The hypervisor is the strongest observer - and therefore the strongest
+attacker - so whoever controls it controls ground truth. When a game runs
+in a datacenter, trust stops resting on the hardware a player owns and
+starts resting on the promises of the provider. Decide which model you
+are in before claiming what your anti-cheat can prove.

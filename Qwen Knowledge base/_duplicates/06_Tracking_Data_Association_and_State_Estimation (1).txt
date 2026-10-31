@@ -1,0 +1,81 @@
+KNOWLEDGE BASE: TRACKING, DATA ASSOCIATION, AND STATE ESTIMATION
+
+1. TRACKING IS NOT ONE ALGORITHM
+Multi-object tracking commonly contains detection, prediction, data association, and track management. A Kalman filter addresses only part of this problem.
+
+2. DATA ASSOCIATION
+If a frame contains detections A, B, C and the previous frame contains tracks 1, 2, 3, the system must determine which detection corresponds to which track.
+
+3. NEAREST-NEIGHBOUR ASSOCIATION
+A simple method chooses the nearest detection for each predicted track. It is fast but can fail during crossing trajectories, overlap, disappearance, or rapid motion.
+
+4. GLOBAL ASSOCIATION
+A cost matrix can represent track-to-detection compatibility. Assignment algorithms such as the Hungarian algorithm solve the global matching problem.
+
+5. ASSOCIATION COST
+Costs can incorporate position, velocity, size, appearance, class, confidence, and motion consistency.
+
+6. MAHALANOBIS DISTANCE
+Euclidean distance ignores uncertainty. A Kalman filter provides covariance. Mahalanobis distance can weight measurement differences using that covariance, making association uncertainty-aware.
+
+7. KALMAN FILTER
+The Kalman filter estimates hidden state from noisy observations:
+PREDICT -> MEASURE -> UPDATE -> ESTIMATE
+
+It maintains a state estimate and an uncertainty covariance.
+
+8. STATE TRANSITION
+A constant-velocity model uses:
+position_new = position_old + velocity * delta-t
+This is an approximation that works best over short intervals of approximately constant motion.
+
+9. CONSTANT ACCELERATION
+Adding acceleration allows richer motion modelling for starts, stops, and turns, but introduces additional parameters and uncertainty.
+
+10. PROCESS NOISE
+Process noise represents uncertainty in the assumed motion model. Larger process noise means the model is trusted less strongly.
+
+11. MEASUREMENT NOISE
+Measurement covariance represents uncertainty in observations. Poor-quality observations should ideally be treated as less reliable.
+
+12. ADAPTIVE NOISE
+Noise parameters can be adapted using detection confidence, motion instability, occlusion, image quality, or target scale.
+
+13. EXTENDED KALMAN FILTER
+The standard Kalman filter assumes a linear model. Extended Kalman Filters can locally linearise nonlinear state/observation relationships.
+
+14. UNSCENTED KALMAN FILTER
+The UKF propagates representative sigma points through nonlinear transformations instead of directly linearising the model.
+
+15. PARTICLE FILTERS
+Particle filters represent uncertainty using multiple state hypotheses and can handle nonlinear/non-Gaussian problems at higher computational cost.
+
+16. RE-IDENTIFICATION
+Long occlusions can break geometric tracking. Re-identification uses appearance features or embeddings to determine whether a newly observed object is the same object as one seen earlier.
+
+17. TRACK LIFECYCLE
+Tracks commonly move through tentative, confirmed, missing, lost, and deleted states.
+
+18. ID SWITCH
+An identity switch occurs when a track becomes associated with the wrong object.
+
+19. TRACK QUALITY
+Useful quantities include age, successful updates, time since update, confidence history, association quality, and state covariance.
+
+20. UNCERTAINTY PROPAGATION
+A rigorous pipeline preserves uncertainty from detection through tracking, prediction, and decision-making.
+
+21. GATING
+A tracker can reject implausible associations using distance, motion consistency, Mahalanobis distance, or class compatibility.
+
+22. OCCLUSION
+A tracker can maintain a track during short observation gaps by predicting state, increasing uncertainty, and attempting re-association later.
+
+23. MOTION MODEL SELECTION
+Possible models include constant position, constant velocity, constant acceleration, turning models, and learned motion models. Complexity should match the system dynamics and timescale.
+
+CORE PRINCIPLE:
+Detection asks "What is here?"
+Tracking asks "Which object is this over time?"
+State estimation asks "What is the most likely hidden state?"
+Prediction asks "What is likely next?"

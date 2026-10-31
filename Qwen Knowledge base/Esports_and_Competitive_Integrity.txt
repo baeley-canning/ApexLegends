@@ -1,0 +1,142 @@
+KNOWLEDGE BASE: ESPORTS AND COMPETITIVE INTEGRITY
+
+Purpose:
+Explain how integrity is protected in organised competition, where the
+stakes, the setting, and the threat model differ from ordinary online
+play. It complements BAN GOVERNANCE AND IDENTITY INTEGRITY, MATCHMAKING
+AND ACCOUNT ECONOMY INTEGRITY, and APEX LEGENDS ANTI-CHEAT AND THE
+PROVIDER CHANGE.
+
+This document is reference knowledge. It describes competitive-integrity
+practices from a defensive and organisational perspective, using publicly
+documented practice. It contains no instructions for wrongdoing in any
+competition.
+
+Practices vary by game and change over time, so treat each statement as a
+documented CLAIM. Details are given "as of October 2026".
+
+Related documents: BAN GOVERNANCE AND IDENTITY INTEGRITY, MATCHMAKING
+AND ACCOUNT ECONOMY INTEGRITY, HOW ANTI-CHEATS WORK - VANGUARD,
+BATTLTEYE, EAC, AND JAVELIN, APEX LEGENDS ANTI-CHEAT AND THE PROVIDER
+CHANGE, and the numbered technical series.
+
+---
+
+1. WHY ESPORTS IS A DIFFERENT PROBLEM
+In esports the stakes are reputation, prize money, and careers, not just a
+match.
+That raises the incentive to cheat and the cost of getting it wrong.
+It also changes who can act: organisers control the environment far more
+than in casual play.
+Integrity therefore becomes an organisational discipline, not only a
+technical one.
+
+---
+
+2. ON-SITE VERSUS ONLINE INTEGRITY
+Competition happens either at a controlled venue or over the internet.
+On-site play lets organisers control hardware, network, and observation.
+Online play does not, so it must rely on software and monitoring.
+The two settings have genuinely different threat models.
+
+---
+
+3. THE LAN ADVANTAGE
+At a LAN, the organiser owns the machines and the network.
+This removes entire cheat classes, such as many hardware and
+network-layer attacks.
+It also makes observation possible from outside the player's machine.
+Control of the environment is the strongest integrity tool esports has.
+
+---
+
+4. PROVIDED HARDWARE AND PERIPHERALS
+Events often supply machines, mice, keyboards, and headsets.
+Provided hardware blocks personal devices that could carry hidden
+capability.
+It also standardises performance, making competition fairer.
+The cost is that players lose familiar equipment, which is accepted in
+exchange for trust.
+
+---
+
+5. REFEREES AND OBSERVERS
+Human referees watch matches and review footage.
+Observers see the game state from the organiser's side, as players do.
+People catch things that statistics miss, and vice versa.
+Human and automated integrity work best together.
+
+---
+
+6. THE DELAY AND INFORMATION PROBLEM
+Live competition must balance transparency against information leakage.
+Broadcast delays stop real-time information reaching competitors.
+Rules govern who may see what and when.
+Integrity here is about information control as much as about cheating.
+
+---
+
+7. MATCH FIXING AND BETTING FRAUD
+Where money is wagered, the incentive is not to win but to profit from a
+chosen result.
+This links competition to gambling and occasionally to organised crime.
+It is addressed by monitoring betting markets and investigating anomalies.
+Match-fixing is an integrity problem that no anti-cheat product
+addresses.
+
+---
+
+8. COACHING AND COMMUNICATION RULES
+Rules govern who may communicate with players during a match.
+Unauthorised information can be as decisive as a cheating program.
+Integrity therefore covers the communication channel, not only the game.
+This is another area where policy, not software, does the work.
+
+---
+
+9. INTEGRITY OF THE COMPETITION ITSELF
+Not all threats are from players; some are from organisers, staff, or
+officials.
+Conflicts of interest and access to results are integrity risks.
+Good governance separates roles and adds oversight.
+The competition's own structure must be trustworthy.
+
+---
+
+10. PLAYER CONTRACTS AND RULES
+Contracts and rulebooks define what counts as misconduct and what the
+penalties are.
+They give decisions a basis and an appeal path.
+Without them, enforcement looks arbitrary and invites dispute.
+Rules turn integrity from an opinion into a process.
+
+---
+
+11. WHY ONLINE ESPORTS STRUGGLES
+Online competition cannot control hardware or the network.
+It leans on client anti-cheat, monitoring, and delayed enforcement.
+That leaves a gap relative to LAN play, which organisers try to narrow
+with verification and observation.
+The gap is structural, not a failure of effort.
+
+---
+
+12. SUMMARY
+Esports integrity is organisational and technical at once, because the
+stakes and the setting differ from casual play.
+LAN play removes hardware and network cheat classes by controlling the
+environment.
+Provided hardware, referees, and broadcast delays each address a specific
+risk.
+Match fixing, coaching leaks, and official misconduct are integrity
+problems beyond any anti-cheat.
+Rules, contracts, and appeals turn integrity decisions into a process.
+
+CORE PRINCIPLE:
+Competitive integrity is won by controlling the environment, not just the
+software. At a LAN the organiser owns the network, the hardware, and the
+observation, which removes whole cheat classes at once; online, that
+control is absent and must be approximated with verification and delay.
+Beyond cheating lie match fixing and governance risks that no product
+addresses. Protect the competition's structure as carefully as its
+clients.

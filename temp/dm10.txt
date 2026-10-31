@@ -1,0 +1,1153 @@
+## strings: 2334 field names, 178 DT_ names
+## pdata functions: 78206 (0x140001000..0x142c96176)
+## lea sites: 3733 over 2334 names
+## stores: 66714, with value: 33232
+## DT_ leas: 571 over 140 distinct
+## name slots: 3998 over 3998 distinct dst
+## best base candidate distribution (relative to name store):
+     -0x38 :  2067
+      -0x8 :  1793
+     -0x40 :    47
+     -0x30 :    37
+     -0x20 :    32
+      +0x8 :    15
+     -0x10 :     4
+      +0x0 :     3
+## score histogram: {6: 1611, 1: 1073, 5: 672, 3: 458, 2: 126, 4: 58}
+## strong records (score>=7): 0 ; with class: 0
+## distinct classes seen: 0
+## chains: 0 ; records in chains: 0
+## chains with class: 0 ; with DT_ header record: 0
+
+######################################################################
+### every record for the anchor fields
+
+m_iHealth  (15 sites)
+    cls=DT_AI_BaseNPC                      cand=-0x38 base=0x14e6d1220 hdr=(-1,1) off=0x330 size=4 flags=0 score=5 ndt=1
+    cls=DT_AI_BaseNPC                      cand=-0x8 base=0x14e6d12f0 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=1
+    cls=DT_DynamicBreachableGlass          cand=-0x38 base=0x14e6c6910 hdr=(-1,1) off=0x330 size=4 flags=0 score=6 ndt=1
+    cls=DT_DynamicBreachableGlass          cand=-0x8 base=0x14e6c69e0 hdr=(-1,1) off=0x15e0 size=12 flags=0 score=6 ndt=1
+    cls=DT_Player                          cand=-0x38 base=0x14e6b3888 hdr=(-1,1) off=0x330 size=4 flags=0 score=6 ndt=1
+    cls=DT_ScriptProp                      cand=-0x38 base=0x14e6cae90 hdr=(-1,1) off=0x330 size=4 flags=0 score=5 ndt=1
+    cls=DT_ScriptProp                      cand=-0x8 base=0x14e6caf60 hdr=(-1,1) off=0x1b8 size=4 flags=None score=6 ndt=1
+    cls=DT_ShieldProp                      cand=-0x38 base=0x14e6cc8b8 hdr=(-1,1) off=0x330 size=4 flags=0 score=5 ndt=1
+    cls=DT_VortexSphere                    cand=-0x38 base=0x14e6a5d70 hdr=(-1,1) off=0x330 size=4 flags=0 score=5 ndt=1
+    cls=DT_VortexSphere                    cand=-0x8 base=0x14e6a5e40 hdr=(-1,1) off=- size=None flags=None score=3 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6a6880 hdr=(-1,1) off=0x330 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6d4dc0 hdr=(-1,1) off=0x330 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6d4e90 hdr=(-1,1) off=0x20c4 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6fb658 hdr=(-1,1) off=0x330 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6fb728 hdr=(-1,1) off=0x1b8 size=4 flags=None score=6 ndt=0
+
+m_iMaxHealth  (9 sites)
+    cls=DT_AI_BaseNPC                      cand=-0x38 base=0x14e6d1288 hdr=(-1,1) off=0x470 size=4 flags=0 score=5 ndt=1
+    cls=DT_AI_BaseNPC                      cand=-0x8 base=0x14e6d1358 hdr=(-1,1) off=0x1958 size=None flags=None score=3 ndt=1
+    cls=DT_ScriptProp                      cand=-0x38 base=0x14e6caef8 hdr=(-1,1) off=0x470 size=4 flags=0 score=5 ndt=1
+    cls=DT_ScriptProp                      cand=-0x8 base=0x14e6cafc8 hdr=(-1,1) off=0x1bc size=4 flags=None score=6 ndt=1
+    cls=DT_VortexSphere                    cand=-0x38 base=0x14e6a5dd8 hdr=(-1,1) off=0x470 size=4 flags=0 score=6 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6a68e8 hdr=(-1,1) off=0x470 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6a69b8 hdr=(-1,1) off=0x1958 size=4 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6d4e28 hdr=(-1,1) off=0x470 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6d4ef8 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=0
+
+m_iTeamNum  (10 sites)
+    cls=DT_BaseEntity                      cand=-0x38 base=0x14e6b1218 hdr=(-1,1) off=0x340 size=4 flags=0 score=6 ndt=1
+    cls=DT_CPropDoor                       cand=-0x38 base=0x14e6f78e0 hdr=(-1,1) off=0x340 size=4 flags=0 score=5 ndt=1
+    cls=DT_HardPointEntity                 cand=-0x38 base=0x14e6d5c60 hdr=(-1,1) off=0x340 size=4 flags=0 score=5 ndt=1
+    cls=DT_HardPointEntity                 cand=-0x8 base=0x14e6d5d30 hdr=(-1,1) off=0x948 size=4 flags=None score=6 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6a8438 hdr=(-1,1) off=0x340 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x20 base=0x14e6a84f0 hdr=(0,0) off=0x0 size=1 flags=1124492960 score=3 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c3898 hdr=(-1,1) off=0x340 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c3968 hdr=(-1,1) off=0x1650 size=None flags=None score=3 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6ca030 hdr=(-1,1) off=0x340 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6ca100 hdr=(-1,1) off=0x900 size=8 flags=0 score=6 ndt=0
+
+m_vecOrigin  (6 sites)
+    cls=DT_TEBreakModel                    cand=-0x38 base=0x14e6d3420 hdr=(-1,1) off=0x28 size=12 flags=None score=5 ndt=1
+    cls=DT_TEBreakModel                    cand=-0x8 base=0x14e6d34f0 hdr=(-1,1) off=0x38 size=4 flags=None score=6 ndt=1
+    cls=DT_TEPhysicsProp                   cand=-0x38 base=0x14e6d2c20 hdr=(-1,1) off=0x28 size=12 flags=None score=5 ndt=1
+    cls=DT_TEPhysicsProp                   cand=-0x8 base=0x14e6d2cf0 hdr=(-1,1) off=0x38 size=4 flags=None score=6 ndt=1
+    cls=DT_TEShatterSurface                cand=-0x38 base=0x14e6d6450 hdr=(-1,1) off=0x28 size=12 flags=None score=5 ndt=1
+    cls=DT_TEShatterSurface                cand=-0x8 base=0x14e6d6520 hdr=(-1,1) off=0x40 size=12 flags=None score=6 ndt=1
+
+m_lifeState  (10 sites)
+    cls=DT_AI_BaseNPC                      cand=-0x38 base=0x14e6d12f0 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=1
+    cls=DT_AI_BaseNPC                      cand=-0x8 base=0x14e6d13c0 hdr=(-1,1) off=0x1cb0 size=4 flags=0 score=6 ndt=1
+    cls=DT_DynamicProp                     cand=-0x38 base=0x14e6cb5e0 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=1
+    cls=DT_Player                          cand=-0x38 base=0x14e6b3820 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=1
+    cls=DT_Player                          cand=-0x8 base=0x14e6b38f0 hdr=(-1,1) off=0x470 size=4 flags=0 score=6 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6c3830 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c3900 hdr=(-1,1) off=0x6b8 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c6468 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c6538 hdr=(-1,1) off=0x6b8 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6d4ef8 hdr=(-1,1) off=0x698 size=1 flags=0 score=6 ndt=0
+
+m_hOwnerEntity  (17 sites)
+    cls=DT_BaseEntity                      cand=-0x38 base=0x14e6b15c0 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=6 ndt=1
+    cls=DT_ColorCorrection                 cand=-0x38 base=0x14e6cbaa0 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=1
+    cls=DT_GrappleHook                     cand=-0x38 base=0x14e6a60c0 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=1
+    cls=DT_GrappleHook                     cand=-0x8 base=0x14e6a6190 hdr=(-1,1) off=0x38 size=1 flags=0 score=6 ndt=1
+    cls=DT_InfoTarget                      cand=-0x38 base=0x14e6f81c0 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=1
+    cls=DT_InfoTarget                      cand=-0x8 base=0x14e6f8290 hdr=(-1,1) off=0x380 size=4 flags=None score=6 ndt=1
+    cls=DT_ScriptNetData                   cand=-0x38 base=0x14e7005c8 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=1
+    cls=DT_StatusEffectPlugin              cand=-0x38 base=0x14e703bc8 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6c34f0 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c35c0 hdr=(-1,1) off=0x618 size=None flags=None score=3 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c6058 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c6128 hdr=(-1,1) off=0x618 size=None flags=None score=3 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c9878 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6fc028 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6fc0f8 hdr=(-1,1) off=0x38 size=1 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e701790 hdr=(-1,1) off=0x3a4 size=4 flags=0 score=5 ndt=0
+    cls=None                               cand=-0x8 base=0x14e701860 hdr=(-1,1) off=0x764 size=4 flags=None score=6 ndt=0
+
+m_iName  (3 sites)
+    cls=DT_BaseEntity                      cand=-0x38 base=0x14e6b1968 hdr=(-1,1) off=0x481 size=None flags=None score=3 ndt=1
+    cls=DT_InfoTarget                      cand=-0x38 base=0x14e6f8020 hdr=(-1,1) off=0x481 size=None flags=None score=2 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6c5ff0 hdr=(-1,1) off=0x481 size=None flags=None score=2 ndt=0
+
+m_localOrigin  (30 sites)
+    cls=DT_AI_BaseNPC                      cand=-0x38 base=0x14e6d1700 hdr=(-1,1) off=0x20 size=12 flags=None score=6 ndt=1
+    cls=DT_BaseEntity                      cand=-0x38 base=0x14e6b0e70 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_BaseEntity                      cand=-0x8 base=0x14e6b0f40 hdr=(-1,1) off=0x64 size=4 flags=0 score=6 ndt=1
+    cls=DT_CPropDoor                       cand=-0x38 base=0x14e6f70c0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_ColorCorrection                 cand=-0x38 base=0x14e6cba38 hdr=(-1,1) off=0x940 size=12 flags=None score=5 ndt=1
+    cls=DT_ColorCorrection                 cand=-0x8 base=0x14e6cbb08 hdr=(-1,1) off=0x94c size=4 flags=None score=6 ndt=1
+    cls=DT_DynamicPropLightweight          cand=-0x38 base=0x14e6c15d0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_FuncBrushLightweight            cand=-0x38 base=0x14e6c7930 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_GrappleHook                     cand=-0x38 base=0x14e6a5ff0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_HardPointEntity                 cand=-0x38 base=0x14e6d5bf8 hdr=(-1,1) off=0x20 size=12 flags=None score=5 ndt=1
+    cls=DT_InfoPlacementHelper             cand=-0x38 base=0x14e699828 hdr=(-1,1) off=0x20 size=12 flags=0 score=5 ndt=1
+    cls=DT_InfoTarget                      cand=-0x38 base=0x14e6f7db0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_PortalNonLocalPlayerExclusive   cand=-0x38 base=0x14e6b82d0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=1
+    cls=DT_VehicleNonDriverExclusive       cand=-0x38 base=0x14e6d5110 hdr=(-1,1) off=0x18 size=12 flags=0 score=6 ndt=1
+    cls=None                               cand=-0x38 base=0x14df66c28 hdr=(-1,None) off=- size=None flags=None score=1 ndt=0
+    cls=None                               cand=-0x38 base=0x14df68208 hdr=(-1,None) off=- size=None flags=None score=1 ndt=0
+    cls=None                               cand=-0x8 base=0x14df6eea0 hdr=(33,None) off=- size=None flags=0 score=1 ndt=0
+    cls=None                               cand=-0x8 base=0x14df74c70 hdr=(33,None) off=- size=None flags=0 score=1 ndt=0
+    cls=None                               cand=-0x38 base=0x14df8a258 hdr=(-1,None) off=- size=None flags=None score=1 ndt=0
+    cls=None                               cand=-0x8 base=0x14df93098 hdr=(33,None) off=- size=None flags=None score=1 ndt=0
+    cls=None                               cand=-0x38 base=0x14df93b08 hdr=(-1,None) off=- size=None flags=None score=1 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6a7a10 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c1e30 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c2c00 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c4570 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c57d0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c97a8 hdr=(-1,1) off=0x20 size=12 flags=None score=5 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6d7568 hdr=(-1,1) off=0x20 size=12 flags=None score=5 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6fbef0 hdr=(-1,1) off=0x18 size=12 flags=None score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e7015f0 hdr=(-1,1) off=0x20 size=12 flags=None score=6 ndt=0
+
+m_vecAbsOrigin  (3 sites)
+    cls=DT_Player                          cand=-0x38 base=0x14e6b5700 hdr=(-1,1) off=0x0 size=8 flags=None score=5 ndt=1
+    cls=None                               cand=-0x8 base=0x14df74b60 hdr=(33,None) off=- size=None flags=0 score=1 ndt=0
+    cls=None                               cand=-0x8 base=0x14df92f88 hdr=(33,None) off=- size=None flags=None score=1 ndt=0
+
+m_iSignifierName  (8 sites)
+    cls=DT_InfoTarget                      cand=-0x38 base=0x14e6f8158 hdr=(-1,1) off=0x478 size=None flags=None score=2 ndt=1
+    cls=None                               cand=-0x38 base=0x14e6c2720 hdr=(-1,1) off=0x478 size=None flags=None score=3 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c31b0 hdr=(-1,1) off=0x478 size=None flags=None score=3 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c3280 hdr=(-1,1) off=0x7f8 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c4848 hdr=(-1,1) off=0x478 size=None flags=None score=2 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6c6670 hdr=(-1,1) off=0x478 size=None flags=None score=2 ndt=0
+    cls=None                               cand=-0x8 base=0x14e6c6740 hdr=(-1,1) off=0x360 size=4 flags=0 score=6 ndt=0
+    cls=None                               cand=-0x38 base=0x14e6fc1c8 hdr=(-1,1) off=0x478 size=None flags=None score=2 ndt=0
+
+m_currentFramePlayer  (1 sites)
+    cls=DT_Player                          cand=-0x38 base=0x14e6b5288 hdr=(-1,1) off=0x2120 size=None flags=None score=2 ndt=1
+
+######################################################################
+### arrays (chains) that contain an anchor field
+
+######################################################################
+### raw record bytes for the anchor sites
+
+m_iHealth @ base 0x14e6cc8b8  cls=DT_ShieldProp
+      +00  0x00000001ffffffff
+      +04  0x43d2493000000001
+      +08  0x0000000143d24930
+      +10  0x0000033000000000
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  0x0000000000000000  (=0)
+      +24  0x0000000000000000  (=0)
+      +30  0x0000000000000000  (=0)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6a6880  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305c7f800000001
+      +08  0x000000014305c7f8  'm_settingsIndex'
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6a5d70  cls=DT_VortexSphere
+      +00  0x00000001ffffffff
+      +04  0x41e0b5a000000001
+      +08  0x0000000141e0b5a0
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6b3888  cls=DT_Player
+      +00  0x00000001ffffffff
+      +04  0x4308917000000001
+      +08  0x0000000143089170  'm_petTitan'
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6d1220  cls=DT_AI_BaseNPC
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6cae90  cls=DT_ScriptProp
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6c6910  cls=DT_DynamicBreachableGlass
+      +00  0x00000001ffffffff
+      +04  0x43032c3800000001
+      +08  0x0000000143032c38  'should_never_see_this'
+      +10  0x0000033000000000
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  0x0000000000000000  (=0)
+      +24  0x0000000000000000  (=0)
+      +30  0x0000000000000000  (=0)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6d4dc0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430bbf3800000001
+      +08  0x00000001430bbf38  'm_vecViewOffset.y'
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iHealth @ base 0x14e6fb658  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430892b000000001
+      +08  0x00000001430892b0  'm_classModsActive'
+      +10  (unknown)
+      +14  0x0000000000000330  (=816)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c850  'm_iHealth'
+
+m_iMaxHealth @ base 0x14e6a68e8  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305c7e800000001
+      +08  0x000000014305c7e8  'm_driver'
+      +10  (unknown)
+      +14  0x0000000000000470  (=1136)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c840  'm_iMaxHealth'
+
+m_iMaxHealth @ base 0x14e6a5dd8  cls=DT_VortexSphere
+      +00  0x00000001ffffffff
+      +04  0x4305cbd000000001
+      +08  0x000000014305cbd0  'm_useExactSphereRadiusForHit'
+      +10  (unknown)
+      +14  0x0000000000000470  (=1136)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c840  'm_iMaxHealth'
+
+m_iMaxHealth @ base 0x14e6d1288  cls=DT_AI_BaseNPC
+      +00  0x00000001ffffffff
+      +04  0x43d14ac000000001
+      +08  0x0000000143d14ac0
+      +10  (unknown)
+      +14  0x0000000000000470  (=1136)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c840  'm_iMaxHealth'
+
+m_iMaxHealth @ base 0x14e6caef8  cls=DT_ScriptProp
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x0000000000000470  (=1136)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c840  'm_iMaxHealth'
+
+m_iMaxHealth @ base 0x14e6d4e28  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430bbf2000000001
+      +08  0x00000001430bbf20  'm_vecViewOffset.z'
+      +10  (unknown)
+      +14  0x0000000000000470  (=1136)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305c840  'm_iMaxHealth'
+
+m_iTeamNum @ base 0x14e6a8438  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305adb000000001
+      +08  0x000000014305adb0  'm_vecVelocity'
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  0x0000000000000000  (=0)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_iTeamNum @ base 0x14e6b1218  cls=DT_BaseEntity
+      +00  0x00000001ffffffff
+      +04  0x430842e000000001
+      +08  0x00000001430842e0  'm_clIntensity'
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_iTeamNum @ base 0x14e6ca030  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430bf08000000001
+      +08  0x00000001430bf080  'm_parentAttachType'
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_iTeamNum @ base 0x14e6c3898  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430c0eb000000001
+      +08  0x00000001430c0eb0  'm_bAnimateInStaticShadow'
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_iTeamNum @ base 0x14e6d5c60  cls=DT_HardPointEntity
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_iTeamNum @ base 0x14e6f78e0  cls=DT_CPropDoor
+      +00  0x00000001ffffffff
+      +04  0x41e0b52000000001
+      +08  0x0000000141e0b520
+      +10  (unknown)
+      +14  0x0000000000000340  (=832)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430666a0  'm_iTeamNum'
+
+m_vecOrigin @ base 0x14e6d3420  cls=DT_TEBreakModel
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430c8c78  'm_vecOrigin'
+
+m_vecOrigin @ base 0x14e6d6450  cls=DT_TEShatterSurface
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430c8c78  'm_vecOrigin'
+
+m_vecOrigin @ base 0x14e6d2c20  cls=DT_TEPhysicsProp
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430c8c78  'm_vecOrigin'
+
+m_lifeState @ base 0x14e6b3820  cls=DT_Player
+      +00  0x00000001ffffffff
+      +04  0x4308918000000001
+      +08  0x0000000143089180  'm_titanSoul'
+      +10  (unknown)
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_lifeState @ base 0x14e6d12f0  cls=DT_AI_BaseNPC
+      +00  0x00000001ffffffff
+      +04  0x4305c85000000001
+      +08  0x000000014305c850  'm_iHealth'
+      +10  (unknown)
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_lifeState @ base 0x14e6cb5e0  cls=DT_DynamicProp
+      +00  0x00000001ffffffff
+      +04  0x430c0e6800000001
+      +08  0x00000001430c0e68  'm_bUseHitboxesForRenderBox'
+      +10  0x0000069800000000
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  0x0000000000000000  (=0)
+      +24  0x0000000000000000  (=0)
+      +30  0x0000000000000000  (=0)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_lifeState @ base 0x14e6c3830  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430c0e6800000001
+      +08  0x00000001430c0e68  'm_bUseHitboxesForRenderBox'
+      +10  (unknown)
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_lifeState @ base 0x14e6c6468  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430c0e6800000001
+      +08  0x00000001430c0e68  'm_bUseHitboxesForRenderBox'
+      +10  (unknown)
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_lifeState @ base 0x14e6d4ef8  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305c84000000001
+      +08  0x000000014305c840  'm_iMaxHealth'
+      +10  (unknown)
+      +14  0x0000000000000698  (=1688)
+      +18  0x0000000100000000
+      +1c  0x0000000000000001  (=1)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430891a0  'm_lifeState'
+
+m_hOwnerEntity @ base 0x14e7005c8  cls=DT_ScriptNetData
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x000003a400000000
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  0x0000000000000000  (=0)
+      +24  0x0000000000000000  (=0)
+      +30  0x0000000000000000  (=0)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6a60c0  cls=DT_GrappleHook
+      +00  0x00000001ffffffff
+      +04  0x4220e15000000001
+      +08  0x000000014220e150
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6b15c0  cls=DT_BaseEntity
+      +00  0x00000001ffffffff
+      +04  0x430847b800000001
+      +08  0x00000001430847b8  'm_contents'
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6cbaa0  cls=DT_ColorCorrection
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6c9878  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4220e15000000001
+      +08  0x000000014220e150
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6c34f0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b48800000001
+      +08  0x000000014305b488  'm_realmsBitMask'
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6c6058  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6f81c0  cls=DT_InfoTarget
+      +00  0x00000001ffffffff
+      +04  0x41ffd4d000000001
+      +08  0x0000000141ffd4d0
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e6fc028  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e701790  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_hOwnerEntity @ base 0x14e703bc8  cls=DT_StatusEffectPlugin
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x000003a400000000
+      +14  0x00000000000003a4  (=932)
+      +18  0x0000000400000000
+      +1c  0x0000000000000004  (=4)
+      +20  0x0000000000000000  (=0)
+      +24  0x0000000000000000  (=0)
+      +30  0x0000000000000000  (=0)
+      +38  0x000000014305b108  'm_hOwnerEntity'
+
+m_iName @ base 0x14e6b1968  cls=DT_BaseEntity
+      +00  0x00000001ffffffff
+      +04  0x4308476800000001
+      +08  0x0000000143084768  'm_attachmentLerpStartOrigin'
+      +10  0x0000048100000004
+      +14  0x0000000000000481  (=1153)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846d8  'm_iName'
+
+m_iName @ base 0x14e6c5ff0  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000048100000004
+      +14  0x0000000000000481  (=1153)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846d8  'm_iName'
+
+m_iName @ base 0x14e6f8020  cls=DT_InfoTarget
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000048100000004
+      +14  0x0000000000000481  (=1153)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846d8  'm_iName'
+
+m_localOrigin @ base 0x14e699828  cls=DT_InfoPlacementHelper
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002000000002
+      +14  0x0000000000000020  (=32)
+      +18  0x0000000c00000000
+      +1c  0x000000000000000c  (=12)
+      +20  0x0000001000000000
+      +24  0x0000000000000010  (=16)
+      +30  0x0000000000000000  (=0)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14df68208  cls=None
+      +00  (unknown)
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  0x0000000143354720
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6a5ff0  cls=DT_GrappleHook
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14df66c28  cls=None
+      +00  (unknown)
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  0x00000001433545a0
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6a7a10  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6b0e70  cls=DT_BaseEntity
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6b82d0  cls=DT_PortalNonLocalPlayerExclusive
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000003
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6d1700  cls=DT_AI_BaseNPC
+      +00  0x00000001ffffffff
+      +04  0x430babf000000001
+      +08  0x00000001430babf0  'm_aiNetworkFlags'
+      +10  0x0000002000000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6cba38  cls=DT_ColorCorrection
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000094000000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c7930  cls=DT_FuncBrushLightweight
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c97a8  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002000000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c15d0  cls=DT_DynamicPropLightweight
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c1e30  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c2c00  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c57d0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6c4570  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6d5bf8  cls=DT_HardPointEntity
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002000000002
+      +14  0x0000000000000020  (=32)
+      +18  0x0000000c00000000
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6d7568  cls=None
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x0000002000000003
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6d5110  cls=DT_VehicleNonDriverExclusive
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000003
+      +14  0x0000000000000018  (=24)
+      +18  0x0000000c00000000
+      +1c  0x000000000000000c  (=12)
+      +20  0x0000001000000000
+      +24  0x0000000000000010  (=16)
+      +30  0x0000000000000000  (=0)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14df8a258  cls=None
+      +00  (unknown)
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  0x0000000143355580
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6f7db0  cls=DT_InfoTarget
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14df93b08  cls=None
+      +00  (unknown)
+      +04  (unknown)
+      +08  (unknown)
+      +10  (unknown)
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  0x0000000143358060
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6f70c0  cls=DT_CPropDoor
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e6fbef0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4305b0b000000001
+      +08  0x000000014305b0b0  'm_cellY'
+      +10  0x0000001800000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_localOrigin @ base 0x14e7015f0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x4313c80000000001
+      +08  0x000000014313c800  'm_wiggleMagnitude'
+      +10  0x0000002000000002
+      +14  (unknown)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430485a8  'm_localOrigin'
+
+m_vecAbsOrigin @ base 0x14e6b5700  cls=DT_Player
+      +00  0x00000001ffffffff
+      +04  0x43d05ee000000001
+      +08  0x0000000143d05ee0
+      +10  0x0000000000000002  (=2)
+      +14  0x0000007800000000
+      +18  0x0000000800000078
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430849c8  'm_vecAbsOrigin'
+
+m_iSignifierName @ base 0x14e6c2720  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430666b000000001
+      +08  0x00000001430666b0  'm_modBitfield[0]'
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_iSignifierName @ base 0x14e6c31b0  cls=None
+      +00  0x00000001ffffffff
+      +04  0x430660b000000001
+      +08  0x00000001430660b0  'm_CollisionGroup'
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_iSignifierName @ base 0x14e6c6670  cls=None
+      +00  0x00000001ffffffff
+      +04  0x43eb257000000001
+      +08  0x0000000143eb2570
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_iSignifierName @ base 0x14e6c4848  cls=None
+      +00  0x00000001ffffffff
+      +04  0x41ffd4a000000001
+      +08  0x0000000141ffd4a0
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_iSignifierName @ base 0x14e6f8158  cls=DT_InfoTarget
+      +00  0x00000001ffffffff
+      +04  0x41ffd4a000000001
+      +08  0x0000000141ffd4a0
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_iSignifierName @ base 0x14e6fc1c8  cls=None
+      +00  0x00000001ffffffff
+      +04  0x41e0b51000000001
+      +08  0x0000000141e0b510
+      +10  0x0000047800000004
+      +14  0x0000000000000478  (=1144)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  (unknown)
+      +38  0x00000001430846a0  'm_iSignifierName'
+
+m_currentFramePlayer @ base 0x14e6b5288  cls=DT_Player
+      +00  0x00000001ffffffff
+      +04  (unknown)
+      +08  (unknown)
+      +10  0x000021200000000a
+      +14  0x0000000000002120  (=8480)
+      +18  (unknown)
+      +1c  (unknown)
+      +20  (unknown)
+      +24  (unknown)
+      +30  0x0000000143d07c00
+      +38  0x0000000143089760  'm_currentFramePlayer'
+
+## wrote dm10_fields.tsv: 0 rows

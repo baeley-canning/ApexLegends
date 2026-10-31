@@ -1,0 +1,47 @@
+﻿### DT_NearbyPushers   init=0x141934270 (117 insn)  desc=-  array=0x14e6b6418  n=44
+   sentinel 0x014e6b63b0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089fe8 (null)                         alt=0x49b500000000 ? ~96/104
+   field  0 0x014e6b6418  t=0x0000 off=0x00001 sz=0x000 fl=0x0000 desc=0x143089fc8 (null)                         alt=0x4a0000000002 ? ~96/104
+   field  1 0x014e6b6480  t=0x0000 off=0x0000c sz=0x000 fl=0x0000 desc=0x143089f38 (null)                         alt=0x49f000000001 ? ~96/104
+   field  2 0x014e6b64e8  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089f20 (null)                         alt=0x4a1000000000 ? ~96/104
+   field  3 0x014e6b6550  t=0x0000 off=0x00001 sz=0x000 fl=0x0000 desc=0x143089f68 (null)                         alt=0x4a1100000000 ? ~96/104
+   field  4 0x014e6b65b8  t=0x0000 off=0x00001 sz=0x000 fl=0x0000 desc=0x143089f48 (null)                         alt=0x49e000000001 ? ~96/104
+   field  5 0x014e6b6620  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089ec0 (null)                         alt=0x49e400000001 ? ~96/104
+   field  6 0x014e6b6688  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089ea0 (null)                         alt=0x49e800000001 ? ~96/104
+   field  7 0x014e6b66f0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089f00 (null)                         alt=0x49f800000001 ? ~96/104
+   field  8 0x014e6b6758  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089ee0 (null)                         alt=0x49fc00000001 ? ~96/104
+   field  9 0x014e6b67c0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089e50 (null)                         alt=0x4a1400000002 ? ~96/104
+   field 10 0x014e6b6828  t=0x0000 off=0x0000c sz=0x000 fl=0x0000 desc=0x143088e18 (null)                         alt=0x4a2000000000 ? ~96/104
+   field 11 0x014e6b6890  t=0x0000 off=0x00001 sz=0x000 fl=0x0000 desc=0x143089e38 (null)                         alt=0x4a4000000009 ? ~96/104
+   field 12 0x014e6b68f8  t=0x0000 off=0x00004 sz=0x008 fl=0x0000 desc=0x143089e88 (null)                         alt=0x4a2800000002 ? ~96/104
+   field 13 0x014e6b6960  t=0x0000 off=0x0000c sz=0x000 fl=0x0000 desc=0x143089e70 (null)                         alt=0x4a3000000002 ? ~96/104
+   field 14 0x014e6b69c8  t=0x0000 off=0x0000c sz=0x000 fl=0x0000 desc=0x143089df0 (null)                         alt=0x4a3800000000 ? ~96/104
+   field 15 0x014e6b6a30  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089dd8 (null)                         alt=0x4a3c00000000 ? ~96/104
+   field 16 0x014e6b6a98  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089e20 (null)                         alt=0x4ab000000000 ? ~96/104
+   field 17 0x014e6b6b00  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089e08 (null)                         alt=0x4ab400000001 ? ~96/104
+   field 18 0x014e6b6b68  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089d90 (null)                         alt=0x4ab800000000 ? ~96/104
+   field 19 0x014e6b6bd0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089d80 (null)                         alt=0x305800000001 ? ~96/104
+   field 20 0x014e6b6c38  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143089dc8 (null)                         alt=0x3cd400000009 ? ~96/104
+   field 21 0x014e6b6ca0  t=0x0000 off=0x00004 sz=0x008 fl=0x0000 desc=0x143089db0 (null)                         alt=0xa ? ~96/104
+   field 22 0x014e6b6d08  t=0x0000 off=0x00000 sz=0x000 fl=0x0000 desc=0x14308a358 (null)                         alt=0x4bf800000009 ? ~96/104
+   field 23 0x014e6b6d70  t=0x0000 off=0x00004 sz=0x008 fl=0x0000 desc=0x14308a338 (null)                         alt=(null) ~96/104
+   field 24 0x014e6b6dd8  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143032c38 (null)                         alt=0x2 ? ~96/104
+   field 25 0x014e6b6e40  t=0x0000 off=0x0000c sz=0x000 fl=0x0000 desc=0x14300efe4 (null)                         alt=0xc00000001 ? ~96/104
+   field 26 0x014e6b6ea8  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143058918 (null)                         alt=0x1000000001 ? ~96/104
+   field 27 0x014e6b6f10  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x14304c2b0 (null)                         alt=0x1400000001 ? ~96/104
+   field 28 0x014e6b6f78  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143087128 (null)                         alt=0x1800000001 ? ~96/104
+   field 29 0x014e6b6fe0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143087160 (null)                         alt=0x1c00000001 ? ~96/104
+   field 30 0x014e6b7048  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143087148 (null)                         alt=0x2000000001 ? ~96/104
+   field 31 0x014e6b70b0  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x1430870d8 (null)                         alt=0x2400000001 ? ~96/104
+   field 32 0x014e6b7118  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x1430870b8 (null)                         alt=0x2800000001 ? ~96/104
+   field 33 0x014e6b7180  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x143087108 (null)                         alt=0x2c00000001 ? ~96/104
+   field 34 0x014e6b71e8  t=0x0000 off=0x00004 sz=0x000 fl=0x0000 desc=0x14305cbbc (null)                         alt=(null) ~88/104
+   field 35 0x014e6b7250  t=0x0000 off=0x00000 sz=0x004 fl=0x0000 'should_never_see_this'        alt=(null) ~96/104
+   field 36 0x014e6b72b8  t=0x0009 off=0x0317c sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeDamaged'            alt=(null) ~96/104
+   field 37 0x014e6b7320  t=0x0009 off=0x03180 sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeDamagedByOtherPlayer' alt=(null) ~96/104
+   field 38 0x014e6b7388  t=0x0009 off=0x03184 sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeDamagedByNPC'       alt=(null) ~96/104
+   field 39 0x014e6b73f0  t=0x0009 off=0x03188 sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeDidDamageToOtherPlayer' alt=(null) ~96/104
+   field 40 0x014e6b7458  t=0x0009 off=0x0318c sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeDidDamageToNPC'     alt=(null) ~96/104
+   field 41 0x014e6b74c0  t=0x0000 off=0x025dc sz=0x004 fl=0x0000 'm_healResources_healthTarget' alt=(null) ~96/104
+   field 42 0x014e6b7528  t=0x0009 off=0x03190 sz=0x004 fl=0x0008 sr=0x141e0b1b0 'm_lastTimeUsedAbilityOrWeapon' alt=(null) ~96/104
+   field 43 0x014e6b7590  t=0x0000 off=0x00000 sz=0x004 fl=0x0000 'should_never_see_this'        alt=(null) ~96/104
+

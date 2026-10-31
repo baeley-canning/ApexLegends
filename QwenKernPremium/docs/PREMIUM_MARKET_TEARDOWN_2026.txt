@@ -1,0 +1,140 @@
+================================================================================
+PREMIUM APEX CHEAT MARKET — TEARDOWN & QUALITY BAR (2026)
+================================================================================
+Last Updated: 2026-10-26
+Purpose: Define what "premium finished product" means, in named-product terms,
+         so our roadmap targets a measurable bar instead of a vague one.
+Sources: kernaim.to, ignite.pub, chudvision.net, madchad.net, tateware.com,
+         help.kernaim.to (public product/feature pages), elitepvpers, 2026-10.
+
+--------------------------------------------------------------------------------
+0. METHOD / CAVEAT
+--------------------------------------------------------------------------------
+Vendor pages are marketing. What is trustworthy is the SHAPE of the feature
+taxonomy and the operational promises they make (update cadence, status pages,
+support). A vendor claim of "undetected" is positioning, not proof.
+
+--------------------------------------------------------------------------------
+1. WHAT THE NAMED PRODUCTS ACTUALLY SHIP (from their own docs)
+--------------------------------------------------------------------------------
+
+KERNAIM (kernaim.to) — Apex since Sept 11 2021, external, "closet" positioning.
+  Explicitly labels anti-cheat as "Javelin", OS Win10/11, CPU Intel+AMD.
+  Feature taxonomy (their own help centre):
+    Aimbot: aim key 1/2, bone select, 2D vs 3D aim preference, focus team,
+      focus downed, prediction, check visibility, draw FOV, draw dead zone,
+      dynamic FOV + max dynamic FOV, smoothing X/Y, dead zone size, max dist,
+      recoil compensation.
+    ESP: filled box, box, box type, name, distance, skeleton, visible-only,
+      show team, show downed, line, line type.
+    Glow: glow player, visible only, glow intensity, glow item, rarity limit,
+      glow death box, max distance, health bar, shield bar.
+    Misc: crosshair, watermark, third person, disable third person while ads,
+      spectator count, spectators include team, glow weapon when spectated,
+      disable aimbot when spectated, disable aimbot with grenade.
+    Skins: weapon skin changer, glow weapon (+intensity/border), player skin
+      changer, hide weapon.
+  Ops promises: instant delivery, AUTO-UPDATE (no re-download), fully
+    streamproof, screenshot protection, disableable watermark, custom colours.
+  ABSENT: movement tech, controller support. Price 24.99EUR/wk -> 99.99EUR/3mo.
+  => 2026 premium legit-first market values humanised aim + spectator awareness
+     + streamproof/screenshot safety, not only raw feature count.
+
+IGNITE (ignite.pub) — Apex + Rust + BF + Marvel Rivals. Internal, Win10/11
+  (22H2/25H2), NVIDIA+AMD. Status page, daily updates. 8$/day -> 45$/mo -> 200$
+  lifetime. Extra categories vs Kernaim: per-WEAPON-CATEGORY profiles (pistols,
+  shotguns, SMGs, ARs, snipers, nades, abilities) for aimbot AND triggerbot,
+  projectile prediction on by default, recoil slider, magnetic trigger,
+  out-of-FOV arrows, weapon/ammo bars, WORLD ESP by category and rarity tier,
+  MOVEMENT module (bhop, tap strafe, wall jump), config presets, ESP preview.
+  Reseller listing also advertises "write bypass + built-in spoofer".
+  => Premium envelope = per-category tuning + world/loot ESP + movement on key.
+
+CHUDVISION (chudvision.net) — multi-game brand (EFT, Apex, FiveM, Rust, R6,
+  DayZ): 8 games, 24/7 support, 99.9% uptime claim, own dev/mod/user team with
+  public showcases. elitetvpvpers listing: aimbot, triggerbot, CONTROLLER
+  SUPPORT, legit vs rage presets.
+  => Brand + infrastructure (status, support, catalogue, community) IS premium.
+
+bnuuy (private) — fullscreen + controller support, aimbot/ESP/glow/misc;
+  reviewers who claim to have tested ~all market cheats rate it top-tier for
+  surviving the Javelin transition and for fullscreen support.
+  => PRIVACY (small user base) is itself a marketed anti-detection property.
+
+MADCHAD 2026 market comparison (market-wide feature snapshot): Nemesis
+  (all-in-one, humanised smart aimbot, auto grapple/wall jump/tap strafe,
+  streamproof, lifetime), Ancient (movement-first, big-map radar), MadTech
+  (controller-native), Onyx (ballistic prediction + custom radar), X-Ray
+  (ESP-only native render, zero FPS loss, invisible to OBS/Discord/ShadowPlay,
+  built-in HWID spoofer), Eclipse (full internal, per-weapon aim, WEB RADAR
+  openable in a browser, skynade, auto loot, spoofer).
+  Other 2026 sellers: AEGIS, Jupiter, Polar, ForgeCheats, XDAY, KernelWare,
+  Cheats.land, Division, Hypno.
+  => Differentiated premium SKUs are: aim quality, radar depth, movement
+     automation, spoofer bundling, capture-invisible overlays. Plain box ESP
+     is commoditised.
+
+--------------------------------------------------------------------------------
+2. THE PREMIUM BAR — WHAT WE MUST SHIP TO BE COMPETITIVE
+--------------------------------------------------------------------------------
+Must-have (table stakes — every product above has it):
+  [ ] Humanised aim smoothing, per-weapon(-category) profiles, prediction
+  [ ] Skeleton + health/shield + name + distance, team/downed/visible filters
+  [ ] Glow (player/item/deathbox) with rarity + distance limits
+  [ ] Config presets, toggle menu, hotkeys, custom colours
+  [ ] Streamproof + screenshot-safe rendering, disableable watermark
+  [ ] Spectator awareness (spectator count, glow-when-spectated, aim disable)
+Should-have (separates premium from public/free):
+  [ ] Movement module (BHOP, tap strafe, super glide, wall jump, auto grapple)
+  [ ] World/loot ESP by category + rarity
+  [ ] 2D radar in-overlay, ideally a web/2nd-display radar
+  [ ] Triggerbot with detection threshold + magnetic mode
+  [ ] Cosmetic layer (weapon/player skin changer, glow weapon)
+  [ ] Robust offset updater: patch-day fixes without client re-download
+  [ ] Public status page + fast comms
+Operational (what actually retains users):
+  [ ] Post-patch update latency target < 2h (market punishes 24h vendors)
+  [ ] Loader UX: pre-flight checks, one-click inject, readable error codes
+  [ ] Support channel + response SLA
+  [ ] HWID spoofer story if the user has ever been banned
+
+--------------------------------------------------------------------------------
+3. WHAT THE MARKET TREATS AS "DETECTION SAFETY"
+--------------------------------------------------------------------------------
+Recurring themes in vendor copy and community research:
+  - Load/late-load ordering vs the anti-cheat driver (see JAVELIN KB file)
+  - Closed user base / private builds (fewer samples for analysts)
+  - Rolling code identity: TATEWARE claims weekly polymorphism; a static binary
+    eventually gets fingerprinted
+  - Behavioural humanisation: Respawn's own layer flags otherwise "perfect"
+    recoil (R-301 pattern), impossible reaction time, super-human hit ratios —
+    so aim quality IS an anti-detection control
+  - Streamproof / capture-invisible overlays sold as user-facing safety
+  - HWID spoofing, because Apex hardware bans are aggressive and visible
+  => Our evasion story must not be binary-only. Humanisation and profile
+     discipline are engineering, not cosmetics.
+
+--------------------------------------------------------------------------------
+4. DIFFERENTIATION IDEAS WORTH BEATING THE MARKET ON
+--------------------------------------------------------------------------------
+1. TELL THE TRUTH ABOUT ARCHITECTURE: publish which layer is evadable when and
+   what is proven by testing. No vendor above explains their own evasion.
+2. SELF-DIAGNOSING OFFSETS: turn the existing OffsetValidator into a
+   signature/AOB-driven resolver so a patch degrades gracefully and the loader
+   can report "offsets stale" BEFORE the user queues a match.
+3. SAFETY PRESETS: "Closet / Balanced / Rage" bundles (smoothing + reaction
+   delay + spectator handling + trigger delay) plus a one-key emergency detach.
+4. REAL SPECTATOR-AWARE MODE driven off observer-list reads (Kernaim has the
+   bullet point; nobody convincingly implements it).
+5. WEB RADAR (Eclipse model) reusing the existing memory-read path: cheap to
+   build, large perceived value, usable on a second screen/phone.
+6. LOADER PRE-FLIGHT: game build check, IAT hygiene check, driver load state,
+   ACG/HVCI/Secure Boot detection, denylisted-driver (#119) presence, then a
+   single recommended inject strategy.
+7. UPDATER INTEGRITY: signed manifest + hash-pinned offsets so a user cannot
+   run a stale or half-updated build.
+
+================================================================================
+END OF PREMIUM MARKET TEARDOWN
+================================================================================
+

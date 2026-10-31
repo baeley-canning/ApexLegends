@@ -1,0 +1,320 @@
+﻿
+> 
+temp\dm7.txt:14:### 
+context for 
+m_iHealth @ 
+0x14195eab2
+  temp\dm7.txt:15:
+  
+temp\dm7.txt:16:### 
+disasm from 
+0x14195ea8a
+  temp\dm7.txt:17:  
+0x014195ea8a  fst   
+   st(6)            
+                    
+     
+  temp\dm7.txt:18:  
+0x014195ea8c  or    
+   al, 0x48         
+                    
+     
+  temp\dm7.txt:19:  
+0x014195ea8e  mov   
+   dword ptr [rip + 
+0xcd6ddf4], eax     
+        ; 
+0x14e6cc888
+  temp\dm7.txt:20:  
+0x014195ea94  lea   
+   rax, [rip + 
+0x4aca75]           
+             ; 
+0x141e0b510 '\x0f¶A 
+A\x88'
+  temp\dm7.txt:21:  
+0x014195ea9b  
+movups   xmmword 
+ptr [rip + 
+0xcd6ddfe], xmm0    
+      ; 0x14e6cc8a0
+  temp\dm7.txt:22:  
+0x014195eaa2  mov   
+   qword ptr [rip + 
+0xcd6ddff], rax     
+        ; 
+0x14e6cc8a8
+  temp\dm7.txt:23:  
+0x014195eaa9  xor   
+   eax, eax         
+                    
+     
+  temp\dm7.txt:24:  
+0x014195eaab  mov   
+   qword ptr [rip + 
+0xcd6de76], rax     
+        ; 
+0x14e6cc928
+> temp\dm7.txt:25:  
+0x014195eab2  lea   
+   rax, [rip + 
+0x16fdd97]          
+             ; 
+0x14305c850 
+'m_iHealth'
+  temp\dm7.txt:26:  
+0x014195eab9  
+movups   xmmword 
+ptr [rip + 
+0xcd6dd10], xmm0    
+      ; 0x14e6cc7d0
+  temp\dm7.txt:27:  
+0x014195eac0  mov   
+   qword ptr [rip + 
+0xcd6dd11], rbx     
+        ; 
+0x14e6cc7d8
+  temp\dm7.txt:28:  
+0x014195eac7  
+movups   xmmword 
+ptr [rip + 
+0xcd6dd3a], xmm0    
+      ; 0x14e6cc808
+  temp\dm7.txt:29:  
+0x014195eace  mov   
+   dword ptr [rip + 
+0xcd6dd38], ebx     
+        ; 
+0x14e6cc80c
+  temp\dm7.txt:30:  
+0x014195ead4  
+movups   xmmword 
+ptr [rip + 
+0xcd6de0d], xmm0    
+      ; 0x14e6cc8e8
+  temp\dm7.txt:31:  
+0x014195eadb  mov   
+   qword ptr [rip + 
+0xcd6de0e], rax     
+        ; 
+0x14e6cc8f0
+  temp\dm7.txt:32:  
+0x014195eae2  
+movups   xmmword 
+ptr [rip + 
+0xcd6de1f], xmm0    
+      ; 0x14e6cc908
+  temp\dm7.txt:33:  
+0x014195eae9  mov   
+   dword ptr [rip + 
+0xcd6ddc5], 
+0xffffffff      ; 
+0x14e6cc8b8
+  temp\dm7.txt:34:  
+0x014195eaf3  
+movups   xmmword 
+ptr [rip + 
+0xcd6dcc6], xmm0    
+      ; 0x14e6cc7c0
+  temp\dm7.txt:35:  
+0x014195eafa  mov   
+   qword ptr [rip + 
+0xcd6dd5f], 0x1650  
+        ; 
+0x14e6cc864
+  temp\dm7.txt:36:  
+0x014195eb05  
+movups   xmmword 
+ptr [rip + 
+0xcd6dd1c], xmm0    
+      ; 0x14e6cc828
+  temp\dm7.txt:37:  
+0x014195eb0c  mov   
+   qword ptr [rip + 
+0xcd6dd55], 1       
+        ; 
+0x14e6cc86c
+  temp\dm7.txt:38:  
+0x014195eb17  
+movups   xmmword 
+ptr [rip + 
+0xcd6dd1a], xmm0    
+      ; 0x14e6cc838
+  temp\dm7.txt:39:  
+0x014195eb1e  mov   
+   dword ptr [rip + 
+0xcd6dd3c], ebx     
+        ; 
+0x14e6cc860
+  temp\dm7.txt:40:  
+0x014195eb24  
+movups   xmmword 
+ptr [rip + 
+0xcd6dd65], xmm0    
+      ; 0x14e6cc890
+  temp\dm7.txt:41:  
+0x014195eb2b  mov   
+   dword ptr [rip + 
+0xcd6dd43], ebx     
+        ; 
+0x14e6cc874
+  temp\dm7.txt:42:  
+0x014195eb31  
+movups   xmmword 
+ptr [rip + 
+0xcd6ddc0], xmm0    
+      ; 0x14e6cc8f8
+  temp\dm7.txt:43:  
+0x014195eb38  mov   
+   dword ptr [rip + 
+0xcd6dde2], 1       
+        ; 
+0x14e6cc924
+  temp\dm7.txt:44:  
+0x014195eb42  mov   
+   dword ptr [rip + 
+0xcd6ddd4], 
+0xffffffff      ; 
+0x14e6cc920
+  temp\dm7.txt:45:  
+0x014195eb4c  mov   
+   qword ptr [rip + 
+0xcd6dd75], 0x330   
+        ; 
+0x14e6cc8cc
+  temp\dm7.txt:46:  
+0x014195eb57  mov   
+   qword ptr [rip + 
+0xcd6dd72], 4       
+        ; 
+0x14e6cc8d4
+  temp\dm7.txt:47:
+  
+temp\dm7.txt:48:### 
+context for 
+m_iTeamNum @ 
+0x141f39b41
+  temp\dm7.txt:49:
+  
+temp\dm7.txt:50:### 
+disasm from 
+0x141f39b19
+  temp\dm7.txt:51:  
+0x0141f39b19  or    
+   al, 0x33         
+                    
+     
+  temp\dm7.txt:52:  
+0x0141f39b1b  ror   
+   byte ptr [rax - 
+0x77], 5            
+      
+  temp\dm7.txt:53:  
+0x0141f39b1f  sbb   
+   eax, 0x480c76e9  
+                    
+     
+  temp\dm7.txt:54:  
+0x0141f39b24  lea   
+   eax, [rip + 
+0x112cb5e]          
+             ; 
+0x143066688 
+'m_networkedFlags'
+  temp\dm7.txt:55:  
+0x0141f39b2a  
+movups   xmmword 
+ptr [rip + 
+0xc76e8cf], xmm0    
+      ; 0x14e6a8400
+  temp\dm7.txt:56:  
+0x0141f39b31  mov   
+   qword ptr [rip + 
+0xc76e8d0], rax     
+        ; 
+0x14e6a8408
+  temp\dm7.txt:57:  
+0x0141f39b38  xor   
+   eax, eax         
+                    
+     
+  temp\dm7.txt:58:  
+0x0141f39b3a  mov   
+   qword ptr [rip + 
+0xc76e967], rax     
+        ; 
+0x14e6a84a8
+  temp\dm7.txt:59:  
+0x0141f39b41  lea   
+   rax, [rip + 
+0x112cb58]          
+             ; 
+0x1430666a0 
+'m_iTeamNum'
+  temp\dm7.txt:60:  
+0x0141f39b48  
+movups   xmmword 
+ptr [rip + 
+0xc76e919], xmm0    
+      ; 0x14e6a8468
+  temp\dm7.txt:61:  
+0x0141f39b4f  mov   
+   qword ptr [rip + 
+0xc76e91a], rax     
+        ; 
+0x14e6a8470
+  temp\dm7.txt:62:  
+0x0141f39b56  xor   
+   eax, eax         
+                    
+     
+  temp\dm7.txt:63:  
+0x0141f39b58  
+movups   xmmword 
+ptr [rip + 
+0xc76e7c1], xmm0    
+      ; 0x14e6a8320
+  temp\dm7.txt:64:  
+0x0141f39b5f  mov   
+   dword ptr [rip + 
+0xc76e7bf], esi     
+        ; 
+0x14e6a8324
+  temp\dm7.txt:65:  
+0x0141f39b65  
+movups   xmmword 
+ptr [rip + 
+0xc76e7e4], xmm0    
+      ; 0x14e6a8350
+  temp\dm7.txt:66:  
+0x0141f39b6c  mov   
+   qword ptr [rip + 
+0xc76e7e5], rsi     
+        ; 
+0x14e6a8358
+  temp\dm7.txt:67:  
+0x0141f39b73  
+movups   xmmword 
+ptr [rip + 
+0xc76e80e], xmm0    
+      ; 0x14e6a8388
+  temp\dm7.txt:68:  
+0x0141f39b7a  mov   
+   dword ptr [rip + 
+0xc76e7f8], 0x384   
+        ; 
+0x14e6a837c
+  temp\dm7.txt:69:  
+0x0141f39b84  
+movups   xmmword 
+ptr [rip + 
+0xc76e82d], xmm0    
+      ; 0x14e6a83b8
+  temp\dm7.txt:70:  
+0x0141f39b8b  mov   
+   dword ptr [rip + 
+0xc76e7e3], 2       
+        ; 
+0x14e6a8378
+
+

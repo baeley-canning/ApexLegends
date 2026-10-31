@@ -1,0 +1,245 @@
+KNOWLEDGE BASE: APEX LEGENDS ANTI-CHEAT AND THE PROVIDER CHANGE
+
+Purpose:
+Reference note on the anti-cheat protection used by the game Apex
+Legends, and on the change of provider announced in September 2026 when
+the PC client moved from Easy Anti-Cheat (EAC) to EA Javelin Anticheat.
+It explains what was replaced, what replaced it, the reasons EA and
+Respawn gave, and how to read such a change in general.
+
+This document is reference knowledge. It describes systems from a
+defensive and engineering perspective, using only publicly documented
+facts and the vendors' own public statements. It deliberately contains
+no recipes for defeating, evading, or bypassing any protection, and no
+operational detail beyond what the vendors themselves publish.
+
+Anti-cheat products change frequently and publish only part of their
+design, so treat every statement here as a publicly documented CLAIM,
+not as a verified internal fact. Details are given "as of October 2026".
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ANTI-CHEAT PRODUCTS AND
+SYSTEMS, CHEATING IN GAMES - HISTORY, TAXONOMY, AND DETECTION,
+HARDWARE, DMA, AND BELOW-KERNEL THREATS, SERVER-AUTHORITATIVE
+ARCHITECTURE AND TRUST BOUNDARIES, HOW ANTI-CHEATS WORK - VANGUARD,
+BATTLTEYE, EAC, AND JAVELIN, ESPORTS AND COMPETITIVE INTEGRITY, and
+the numbered technical series.
+
+---
+
+1. WHAT THIS DOCUMENT COVERS
+Apex Legends is one of the largest competitive shooters, and its
+anti-cheat is watched closely because cheating has been a persistent
+problem there.
+In September 2026 its PC anti-cheat provider changed for the first time
+since launch.
+This document records what changed, why, and what the change illustrates
+about how the industry chooses and swaps anti-cheat systems.
+
+---
+
+2. THE GAME AND WHY ITS ANTI-CHEAT MATTERS
+Apex Legends is a free-to-play battle royale hero shooter developed by
+Respawn Entertainment and published by Electronic Arts (EA).
+It launched on February 4, 2019, and hosts a large ranked scene and the
+Apex Legends Global Series (ALGS) esports circuit.
+A free, mass-market, high-skill competitive game is an attractive target
+for cheating, so its anti-cheat is part of its business, not a side
+feature.
+Competitive integrity - the belief that results reflect skill - is the
+asset the anti-cheat exists to protect.
+
+---
+
+3. WHERE APEX STARTED - EASY ANTI-CHEAT
+From launch, the PC client used Easy Anti-Cheat (EAC), a kernel-level
+anti-cheat service made by Epic Games (the product originated with the
+Finnish company Kamu, which Epic acquired in 2018).
+EAC is part of Epic Online Services and is used across a very large
+share of PC multiplayer games.
+EA's own August 2024 statement described it as "a kernel level
+anti-cheat service" and noted that Apex layered additional, partly
+in-house protections on top.
+Apex also opted into EAC's Linux support, which broadened the platform
+reach but, as the community observed, also widened where cheating
+software could run.
+
+---
+
+4. THE CHEATING PRESSURE
+In an August 22, 2024 anti-cheat update, EA and Respawn said more than
+6 million accounts had been banned since launch.
+They said the game averaged more than 100,000 bans per month.
+They expanded the anti-cheat team for 24/7 coverage and added people in
+the Asia-Pacific region, which was described as especially hard hit.
+The tone of that post - the admission that they had not "been as
+successful as we've needed to be" - is itself evidence that the
+incumbent protection was under sustained pressure.
+
+---
+
+5. THE MARCH 2024 ALGS INCIDENT
+During the ALGS North America Pro League Split 1 Finals on March 18,
+2024, cheats were remotely injected into the clients of professional
+players (reported to include TSM's ImperialHal and Genburten) during a
+live broadcast.
+The activity was attributed to a person using the name "Destroyer2009".
+It was widely reported at the time as a remote code execution (RCE)
+exploit, although EAC publicly denied that its anti-cheat was the cause
+and later reporting disputed the RCE framing.
+The finals were postponed.
+Whatever the precise mechanism, the episode put competitive integrity
+and the limits of the existing protection in front of the whole
+audience.
+
+---
+
+6. THE ANNOUNCEMENT - EAC TO EA JAVELIN
+On September 24, 2026, EA and Respawn announced that the Apex Legends
+PC anti-cheat would switch to EA Javelin Anticheat.
+The change took effect on September 29, 2026.
+EA thanked the Easy Anti-Cheat team at Epic Games for what it called "a
+long and fruitful partnership".
+PC players received a game update and were migrated to Javelin
+automatically on the next launch.
+Console anti-cheat was explicitly left unchanged.
+
+---
+
+7. WHAT EA JAVELIN ANTICHEAT IS
+EA Javelin Anticheat is Electronic Arts' own in-house, kernel-mode PC
+anti-cheat, part of what EA calls its "defense-in-depth" strategy.
+It is a first-party product: developed, owned, and operated by EA
+Security rather than licensed from a third party.
+EA states it runs at kernel level because detecting external cheats
+requires it, not for deeper access for its own sake.
+EA states it runs only while a Javelin-protected game is running, and
+that it uninstalls itself from a PC once no Javelin-protected games
+remain installed.
+EA's public claims include a detection accuracy rate above 99% and a
+false-positive rate below 1%.
+
+---
+
+8. TIMELINE OF EA JAVELIN
+September 2022: EA launches its in-house PC anti-cheat under the name
+EA Anti-Cheat (EAAC).
+April 24, 2025: EA reintroduces the same line under a new brand, "EA
+Javelin Anticheat", describing it as the evolution of its flagship
+anti-cheat solution.
+Over those years it protected many EA titles, including EA SPORTS FC,
+Madden NFL, Battlefield, F1, WRC, Plants vs. Zombies, skate., and
+Battlefield 6.
+September 10, 2026: an EA progress report cites 20 protected titles,
+57.1 million players, and 26.7 million cheat attempts prevented over
+the year.
+September 29, 2026: Apex Legends becomes one of the protected titles.
+
+---
+
+9. WHAT CHANGED FOR APEX PLAYERS
+In practice, the PC client's anti-cheat files and kernel driver changed
+from EAC to Javelin after an ordinary game update.
+Unlike some earlier EA titles, Apex did not require Secure Boot at the
+time of the switch; EA stated plainly that players would not need to
+change BIOS settings.
+The migration was automatic: update, launch, and play.
+Console cheating continues to be addressed by data models and
+server-side detection rather than a PC kernel driver.
+
+---
+
+10. THE REASONS EA AND RESPAWN GAVE
+The announcement gives four linked reasons.
+Greater visibility into emerging threats.
+More flexibility to develop and improve detections as cheating evolves.
+Bringing anti-cheat engineering, telemetry, and data capabilities
+together in-house for more speed and visibility.
+Maintaining what they call a high standard of competitive integrity in
+the Apex Games.
+
+---
+
+11. THE STRUCTURAL REASONS BENEATH THE STATED ONES
+When a publisher replaces a third-party anti-cheat with its own, several
+general forces are usually also at work.
+Control: first-party code can be updated on the publisher's own
+schedule rather than a vendor's release cadence.
+Data: the publisher keeps the detection telemetry and can fuse it with
+its own account, matchmaking, and business data.
+Cost and leverage: a large publisher can amortise one in-house system
+across many titles instead of licensing per title.
+Roadmap: features such as anti-DMA protection, Secure Boot, and
+input-manipulation defence can be built once and reused everywhere.
+None of these is stated as a reason in the Apex announcement, but
+together they explain why first-party replacement is a recurring
+industry pattern.
+
+---
+
+12. WHY A FIRST-PARTY SYSTEM IS ATTRACTIVE TO A PUBLISHER
+A first-party anti-cheat can be tuned to the publisher's own games and
+threat model rather than a generic, multi-customer baseline.
+It lets the publisher set the privacy posture, the boot-time
+requirements, and the enforcement policy directly.
+It removes a dependency on a partner's or competitor's product and on
+that product's roadmap.
+It concentrates anti-cheat expertise inside the company that also owns
+the accounts, the storefront, and the esports league.
+This is the same logic behind Riot Vanguard and Valve Anti-Cheat, both
+of which are first-party.
+
+---
+
+13. WHAT DOES NOT CHANGE
+The switch is a change of tool, not a change of architecture.
+The model stays layered: an observing client, a kernel component, a
+server-side authority, behavioural and machine-learning analysis, and
+account/device identity.
+Enforcement stays separate from detection, with ban waves, appeals, and
+delayed action.
+Console protection and server-side detection remain in place regardless
+of which PC provider is used.
+
+---
+
+14. HOW TO READ ANY PROVIDER CHANGE
+Ask what changed: which layer (client, kernel, or server) and which
+vendor.
+Ask what was kept: usually most of the stack is unchanged.
+Ask what drove it: cheating pressure, platform requirements, cost,
+control, or a specific incident.
+Separate the stated reasons from the structural ones; both are real and
+usually both are present.
+Then apply the standard questions from ANTI-CHEAT ARCHITECTURE: where
+does the observer run, when does it load, and what does it ultimately
+trust.
+Those answers, not the brand name, decide what the change means.
+
+---
+
+15. SUMMARY
+Apex Legends used Easy Anti-Cheat from its 2019 launch and moved its PC
+anti-cheat to EA's first-party EA Javelin Anticheat on September 29,
+2026, announced on September 24, 2026.
+The change followed years of cheating pressure, including the March
+2024 ALGS incident, and EA's stated reasons were greater threat
+visibility, faster detection development, and in-house control for
+competitive integrity.
+Javelin is EA's rebranded, in-house, kernel-mode anti-cheat, formerly
+called EA Anti-Cheat and launched in 2022.
+Console anti-cheat, layered defence, and server-side authority are
+unchanged.
+Read the change as a swap of tool inside the same architecture, and as
+the recurring pattern of publishers replacing third-party anti-cheat
+with their own.
+
+CORE PRINCIPLE:
+When a game changes anti-cheat providers, the headline is the brand but
+the substance is the architecture: find which layer and trust anchor
+changed and which stayed the same. Apex Legends moving from Easy
+Anti-Cheat to EA Javelin Anticheat is a publisher trading a third-party
+kernel anti-cheat for a first-party one to gain visibility, control,
+and speed - the same trade Riot and Valve made with Vanguard and VAC.
+The durable lesson is not the name but the pattern: cheating pressure
+plus the publisher's appetite for control moves anti-cheat in-house,
+while the layered, server-authoritative design of the system stays put.

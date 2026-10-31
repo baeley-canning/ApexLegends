@@ -1,0 +1,111 @@
+﻿00003000  8b0d22400000           mov     ecx, dword ptr [rip + 0x4022]
+00003006  488d051b400000         lea     rax, [rip + 0x401b]
+0000300d  483bc8                 cmp     rcx, rax
+00003010  7422                   je      0x3034
+00003012  8b412c                 mov     eax, dword ptr [rcx + 0x2c]
+00003015  a808                   test    al, 8
+00003017  741b                   je      0x3034
+00003019  80792902               cmp     byte ptr [rcx + 0x29], 2
+0000301d  7215                   jb      0x3034
+0000301f  ba46000000             mov     edx, 0x46
+00003024  488b4918               mov     rcx, qword ptr [rcx + 0x18]
+00003028  4c8d0561310000         lea     r8, [rip + 0x3161]
+0000302f  e8d4faffff             call    0x2b08
+00003034  b8290200c0             mov     eax, 0xc0000229
+00003039  e9f7000000             jmp     0x3135
+0000303e  488b4108               mov     rax, qword ptr [rcx + 8]
+00003042  488906                 mov     qword ptr [rsi], rax
+00003045  b8020000c0             mov     eax, 0xc0000002
+0000304a  894110                 mov     dword ptr [rcx + 0x10], eax
+0000304d  8a4338                 mov     al, byte ptr [rbx + 0x38]
+00003050  bab2000000             mov     edx, 0xb2
+00003055  ee                     out     dx, al
+00003056  488bd5                 mov     rdx, rbp
+00003059  ff15d92f0000           call    qword ptr [rip + 0x2fd9]        ; ntoskrnl!MmUnmapIoSpace
+0000305f  e9cf000000             jmp     0x3133
+00003064  488325944f000000       and     qword ptr [rip + 0x4f94], 0
+0000306c  41b8010000c0           mov     r8d, 0xc0000001
+00003072  4883255e4f000000       and     qword ptr [rip + 0x4f5e], 0
+0000307a  4c8905774f0000         mov     qword ptr [rip + 0x4f77], r8
+00003081  48c7057c4f0000d9000000 mov     qword ptr [rip + 0x4f7c], 0xd9
+0000308c  48c705594f0000b2000000 mov     qword ptr [rip + 0x4f59], 0xb2
+00003097  48c705464f000000100000 mov     qword ptr [rip + 0x4f46], 0x1000
+000030a2  48c705334f000001000000 mov     qword ptr [rip + 0x4f33], 1
+000030ad  e88edfffff             call    0x1040
+000030b2  8b05304f0000           mov     eax, dword ptr [rip + 0x4f30]
+000030b8  4533c0                 xor     r8d, r8d
+000030bb  89442430               mov     dword ptr [rsp + 0x30], eax
+000030bf  8b051b4f0000           mov     eax, dword ptr [rip + 0x4f1b]
+000030c5  89442434               mov     dword ptr [rsp + 0x34], eax
+000030c9  488b4c2430             mov     rcx, qword ptr [rsp + 0x30]
+000030ce  418d6820               lea     ebp, [r8 + 0x20]
+000030d2  8bd5                   mov     edx, ebp
+000030d4  ff15562f0000           call    qword ptr [rip + 0x2f56]        ; ntoskrnl!MmMapIoSpace
+000030da  8bd5                   mov     edx, ebp
+000030dc  488bc8                 mov     rcx, rax
+000030df  488b5808               mov     rbx, qword ptr [rax + 8]
+000030e3  ff154f2f0000           call    qword ptr [rip + 0x2f4f]        ; ntoskrnl!MmUnmapIoSpace
+000030e9  4883250f4f000000       and     qword ptr [rip + 0x4f0f], 0
+000030f1  b8020000c0             mov     eax, 0xc0000002
+000030f6  488325ea4e000000       and     qword ptr [rip + 0x4eea], 0
+000030fe  488325da4e000000       and     qword ptr [rip + 0x4eda], 0
+00003106  488325ca4e000000       and     qword ptr [rip + 0x4eca], 0
+0000310e  488905e34e0000         mov     qword ptr [rip + 0x4ee3], rax
+00003115  48c705e84e0000d9000000 mov     qword ptr [rip + 0x4ee8], 0xd9
+00003120  48c705c54e0000b2000000 mov     qword ptr [rip + 0x4ec5], 0xb2
+0000312b  e810dfffff             call    0x1040
+00003130  48891e                 mov     qword ptr [rsi], rbx
+00003133  33c0                   xor     eax, eax
+00003135  488b5c2438             mov     rbx, qword ptr [rsp + 0x38]
+0000313a  488b6c2440             mov     rbp, qword ptr [rsp + 0x40]
+0000313f  4883c420               add     rsp, 0x20
+00003143  5e                     pop     rsi
+00003144  c3                     ret
+00003145  cc                     int3
+00003146  cc                     int3
+00003147  cc                     int3
+00003148  48895c2408             mov     qword ptr [rsp + 8], rbx
+0000314d  48896c2410             mov     qword ptr [rsp + 0x10], rbp
+00003152  4889742418             mov     qword ptr [rsp + 0x18], rsi
+00003157  57                     push    rdi
+00003158  4154                   push    r12
+0000315a  4156                   push    r14
+0000315c  4883ec20               sub     rsp, 0x20
+00003160  4883792800             cmp     qword ptr [rcx + 0x28], 0
+00003165  498bf1                 mov     rsi, r9
+00003168  4d8bf0                 mov     r14, r8
+0000316b  488bfa                 mov     rdi, rdx
+0000316e  488bd9                 mov     rbx, rcx
+00003171  0f84b1010000           je      0x3328
+00003177  488b4928               mov     rcx, qword ptr [rcx + 0x28]
+0000317b  4533c0                 xor     r8d, r8d
+0000317e  458d6050               lea     r12d, [r8 + 0x50]
+00003182  418bd4                 mov     edx, r12d
+00003185  ff15a52e0000           call    qword ptr [rip + 0x2ea5]        ; ntoskrnl!MmMapIoSpace
+0000318b  4c8bc8                 mov     r9, rax
+0000318e  4885c0                 test    rax, rax
+00003191  7536                   jne     0x31c9
+00003193  488b0d8e3e0000         mov     rcx, qword ptr [rip + 0x3e8e]
+0000319a  488d05873e0000         lea     rax, [rip + 0x3e87]
+000031a1  483bc8                 cmp     rcx, rax
+000031a4  0f84f5000000           je      0x329f
+000031aa  8b412c                 mov     eax, dword ptr [rcx + 0x2c]
+000031ad  a808                   test    al, 8
+000031af  0f84ea000000           je      0x329f
+000031b5  80792902               cmp     byte ptr [rcx + 0x29], 2
+000031b9  0f82e0000000           jb      0x329f
+000031bf  418d5424f1             lea     edx, [r12 - 0xf]
+000031c4  e9c6000000             jmp     0x328f
+000031c9  83601c00               and     dword ptr [rax + 0x1c], 0
+000031cd  4c8b442460             mov     r8, qword ptr [rsp + 0x60]
+000031d2  c74010010000c0         mov     dword ptr [rax + 0x10], 0xc0000001
+000031d9  44896018               mov     dword ptr [rax + 0x18], r12d
+000031dd  8a4338                 mov     al, byte ptr [rbx + 0x38]
+000031e0  498b10                 mov     rdx, qword ptr [r8]
+000031e3  ee                     out     dx, al
+000031e4  4183791000             cmp     dword ptr [r9 + 0x10], 0
+000031e9  4d8b11                 mov     r10, qword ptr [r9]
+000031ec  458b5914               mov     r11d, dword ptr [r9 + 0x14]
+000031f0  498b6908               mov     rbp, qword ptr [r9 + 8]
+000031f4  7460                   je      0x3256
+000031f6  41c74110010000c0       mov     dword ptr [r9 + 0x10], 0xc0000001

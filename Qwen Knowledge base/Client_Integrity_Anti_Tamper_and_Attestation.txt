@@ -1,0 +1,168 @@
+KNOWLEDGE BASE: CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION
+
+Purpose:
+Explain how software proves it has not been changed, how that proof is
+made harder to forge, and how hardware roots of trust extend the idea down
+to the firmware. It complements ANTI-CHEAT ARCHITECTURE and HARDWARE, DMA,
+AND BELOW-KERNEL THREATS.
+
+This document is reference knowledge. It describes integrity and trust
+mechanisms from the defensive side, using publicly documented designs. It
+contains no instructions for defeating or bypassing them.
+
+These mechanisms change often and disclose only part of their design, so
+treat each statement as a documented CLAIM. Details are given "as of
+October 2026".
+
+Related documents: ANTI-CHEAT ARCHITECTURE, HARDWARE, DMA, AND
+BELOW-KERNEL THREATS, KERNEL MODE AND ANTI-CHEAT DRIVERS, HOW ANTI-CHEATS
+WORK - VANGUARD, BATTLTEYE, EAC, AND JAVELIN, SPOOFING AND BAN
+EVASION, EVADING ANTI-CHEAT - CATEGORIES AND COUNTERMEASURES, and the
+numbered technical series.
+
+---
+
+1. WHAT "INTEGRITY" MEANS
+Integrity means that code and data are what they are supposed to be.
+For anti-cheat, it means the client, the detection logic, and the game
+have not been altered.
+Without integrity, every signal the client reports is suspect.
+Integrity is therefore the foundation every deeper check rests on.
+
+---
+
+2. THE PROBLEM OF SELF-REPORTING
+A program reporting on itself is inherently weak evidence.
+If an attacker can change the program, the report can be changed too.
+This is why a client can never be its own sole witness.
+Integrity strength grows only when the report can be checked from
+somewhere the attacker does not control.
+
+---
+
+3. CODE SIGNING
+Signed binaries let an operating system verify who produced them and
+whether they changed.
+Signing raises the cost of shipping a tampered build, because a forged
+signature fails to verify.
+It does not stop an attacker from modifying code after it loads, which is
+why signing is a starting point rather than an end.
+It anchors trust in an identity the platform can check.
+
+---
+
+4. PACKING AND OBFUSCATION
+Packing and obfuscation make code harder to read and to modify safely.
+They raise the effort required to understand and change the client.
+They also raise the effort required to analyse it legitimately, including
+for security research.
+Obfuscation is mitigation, not proof: it delays, it does not prevent.
+
+---
+
+5. RUNTIME INTEGRITY CHECKS
+A program can verify its own in-memory code against a known-good copy.
+Checksums and self-hashing detect modification while the program runs.
+The check must itself be hidden from the attacker to be meaningful.
+A known check is a check that can be neutralised.
+
+---
+
+6. ANTI-TAMPER AND SELF-DEFENCE
+Anti-tamper adds protections that make modification actively difficult
+rather than merely detectable.
+Techniques include encrypted regions, delayed decryption, and integrity
+traps.
+Each technique raises cost against some attackers while adding complexity
+and risk of false positives.
+Anti-tamper is an obstacle course, never a wall.
+
+---
+
+7. THE BOOT CHAIN - UEFI AND SECURE BOOT
+Trust can be anchored before the operating system starts.
+Secure Boot verifies each stage of startup against signed images.
+This establishes a measured starting point that is hard to fake after the
+fact.
+Extending anti-cheat trust into the boot chain is the strongest version
+of the idea.
+
+---
+
+8. TPM 2.0 AND MEASURED BOOT
+A TPM is a small chip that can hold keys and record measurements of the
+boot process.
+Its measurements form a record of what loaded, in order.
+A remote party can later ask the chip to attest to those measurements.
+This gives a hardware-backed statement about the machine's starting
+state.
+
+---
+
+9. REMOTE ATTESTATION
+Attestation is the process of proving a machine's state to a remote
+server.
+The server checks that the measurements match an expected, trusted
+configuration.
+If they do, the server can grant trust; if not, it can withhold it.
+This is the mechanism behind boot-time trust requirements in some games.
+
+---
+
+10. WHAT ATTESTATION CAN AND CANNOT PROVE
+Attestation proves what loaded up to a point, not what happens after.
+It cannot guarantee that a machine will stay untampered once the game
+starts.
+It also depends on the hardware telling the truth, which is why it must
+live in a chip, not in software.
+Attestation raises the floor; it does not raise the ceiling.
+
+---
+
+11. THE COST OF HARDWARE REQUIREMENTS
+Requiring a TPM or Secure Boot excludes some legacy or unusual hardware.
+That exclusion is a real cost to real players.
+The justification is that software-only trust is easy to forge under the
+game.
+The trade-off is trust strength against reach.
+
+---
+
+12. WHY TAMPER-RESISTANCE IS NEVER ABSOLUTE
+Any code on a machine the attacker owns can eventually be analysed.
+Time and effort are the only real barriers.
+The goal is therefore to make tampering expensive and detectable, not
+impossible.
+Accepting that limit is what keeps expectations honest.
+
+---
+
+13. KERNEL DRIVER SIGNING AND BLOCKLISTS
+Kernel drivers must be signed, and platforms maintain lists of known-bad
+drivers.
+Blocklists stop well-known vulnerable drivers from loading at the root.
+They are a practical expression of the trust chain for drivers.
+They are reactive by nature: a driver must be known bad before it is
+listed.
+
+---
+
+14. SUMMARY
+Integrity means code and data have not been altered, and it is the
+foundation of every deeper trust claim.
+Self-reporting is weak, so trust is anchored in signing, obfuscation,
+runtime checks, and anti-tamper.
+Hardware roots of trust - Secure Boot, TPM 2.0, and remote attestation -
+extend integrity down to the firmware.
+Attestation proves a machine's starting state, not its later behaviour.
+Tamper-resistance is a matter of cost, never of certainty, and each
+hardware requirement trades reach for strength.
+
+CORE PRINCIPLE:
+Integrity is only as strong as the point from which it is checked. A
+client cannot be its own witness, so serious designs push trust outward
+and downward - into signatures, into the kernel, and finally into the
+firmware chip itself. Secure Boot and TPM attestation can prove where a
+machine started; nothing on that machine can prove it stayed honest.
+Build integrity as layers of cost, and say honestly what each layer does
+and does not guarantee.

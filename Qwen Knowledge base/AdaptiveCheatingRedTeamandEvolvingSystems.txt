@@ -1,0 +1,703 @@
+KNOWLEDGE BASE: ADAPTIVE CHEATING, RED TEAMING, AND EVOLVING ANTI-CHEAT SYSTEMS
+
+Purpose:
+Educational reference for understanding how cheating and anti-cheat
+systems evolve against one another.
+
+This document focuses on threat modelling, simulation, defensive
+red-teaming, adaptive systems, and research methodology.
+
+It does not provide recipes for bypassing specific commercial
+anti-cheat systems.
+
+---
+
+1. "ANTI-ANTI-CHEAT" AS A CONCEPT
+
+---
+
+The phrase "anti-anti-cheat" is commonly used informally to describe
+technology or research intended to avoid, defeat, or interfere with
+anti-cheat detection.
+
+More formal terminology includes:
+
+cheat evasion
+anti-detection
+bypass research
+adversarial cheating
+adaptive cheating
+anti-cheat evasion research
+
+It is best treated as a research category rather than a single
+technology.
+
+---
+
+2. THE EVOLUTIONARY LOOP
+
+---
+
+A useful abstraction is:
+
+CHEAT
+v
+ANTI-CHEAT
+v
+CHEAT ADAPTATION
+v
+ANTI-CHEAT ADAPTATION
+v
+CHEAT ADAPTATION
+v
+...
+
+Each new defensive capability changes the attacker's optimal strategy.
+
+Each new attack changes the detector's assumptions.
+
+---
+
+3. STATIC DETECTION FAILURE
+
+---
+
+A detector based entirely on signatures can become obsolete when the
+attacker changes the artifact.
+
+Therefore defensive systems increasingly need multiple layers:
+
+SIGNATURES
++
+INTEGRITY
++
+BEHAVIOR
++
+SERVER VALIDATION
++
+HARDWARE TRUST
+
+The purpose is to make adaptation harder by removing reliance on a
+single observable.
+
+---
+
+4. ADAPTIVE CHEATER MODEL
+
+---
+
+A cheating agent can be modelled academically as an agent with:
+
+OBSERVATION
++
+ACTION
++
+REWARD
++
+RISK
+
+For example:
+
+OBSERVATION
+-> gameplay state
+
+ACTION
+-> gameplay behavior
+
+REWARD
+-> performance benefit
+
+RISK
+-> probability of detection
+
+This does not require implementing a real-world cheat.
+
+It can be simulated entirely in an offline environment.
+
+---
+
+5. CHEATERS AS REINFORCEMENT-LEARNING AGENTS
+
+---
+
+Research has proposed reinforcement-learning frameworks where
+cheaters and detectors are modelled as adaptive agents.
+
+The cheater attempts to maximize useful gameplay outcomes while
+reducing detection risk.
+
+The detector attempts to distinguish suspicious trajectories from
+legitimate behavior.
+
+This creates a game-theoretic problem.
+
+CHEATER OBJECTIVE
+maximize reward
+minimize detection risk
+
+DETECTOR OBJECTIVE
+maximize detection
+minimize false positives
+
+---
+
+6. CO-ADAPTATION
+
+---
+
+The detector changes after observing the attacker.
+
+The attacker changes after observing the detector.
+
+This is called co-adaptation.
+
+Conceptually:
+
+MODEL A
+v
+response
+v
+MODEL B adapts
+v
+MODEL A adapts
+v
+...
+
+The important research question becomes:
+
+"How stable is a detector when the population actively adapts to it?"
+
+---
+
+7. POPULATION-LEVEL THINKING
+
+---
+
+Instead of evaluating a detector against a single cheat, evaluate it
+against a population of strategies.
+
+Example conceptual population:
+
+normal player
+aggressive player
+high-skill player
+novice player
+noisy automated player
+highly consistent automated player
+adaptive automated player
+
+The purpose is to test whether detection generalises.
+
+---
+
+8. RED TEAMING
+
+---
+
+Defensive red teaming means deliberately attempting to produce
+failures in a defensive system.
+
+For anti-cheat research, safe red-team methods include:
+
+* synthetic automated trajectories
+* simulated visual detections
+* offline replay experiments
+* controlled game environments
+* adversarial datasets
+* sandboxed test clients
+
+The aim is:
+
+FIND FAILURE
+v
+MEASURE FAILURE
+v
+IMPROVE DEFENSE
+v
+RETEST
+
+---
+
+9. THREAT MODEL FIRST
+
+---
+
+Before evaluating a defense, specify:
+
+WHO is the attacker?
+
+WHAT can they observe?
+
+WHAT can they modify?
+
+WHAT can they control?
+
+WHAT can they not control?
+
+WHAT does the defender observe?
+
+WHAT does the server control?
+
+This prevents vague security claims.
+
+---
+
+10. CAPABILITY MATRICES
+
+---
+
+A useful research technique is to create a capability matrix.
+
+Example categories:
+
+```
+             MEMORY
+             PIXELS
+             INPUT
+             NETWORK
+             HARDWARE
+```
+
+For each attacker class, record:
+
+READ
+WRITE
+OBSERVE
+INFLUENCE
+
+The purpose is to identify which security assumptions actually hold.
+
+---
+
+11. DETECTION SURFACES
+
+---
+
+Different architectures expose different defensive surfaces.
+
+MEMORY-BASED
+-> process and integrity signals
+
+INTERNAL
+-> module/runtime integrity signals
+
+VISUAL EXTERNAL
+-> behavioral and input signals
+
+HARDWARE-ASSISTED
+-> device/platform integrity signals
+
+SERVER EXPLOIT
+-> authoritative-state anomalies
+
+Therefore anti-cheat should be threat-model-driven.
+
+---
+
+12. HUMAN-MACHINE DIFFERENTIATION
+
+---
+
+A detector can examine whether behavior is consistent with a human
+population.
+
+Possible dimensions include:
+
+temporal variability
+reaction distributions
+trajectory smoothness
+correlation structure
+target switching
+repetition
+context sensitivity
+
+The goal is not to identify "perfect human behavior."
+
+Human behavior itself is highly variable.
+
+The challenge is modelling the distribution.
+
+---
+
+13. IMPORTANT LIMITATION
+
+---
+
+A sufficiently unusual human may resemble an automated system.
+
+Therefore:
+
+UNUSUAL != CHEATING
+
+This is why multiple independent signals are useful.
+
+---
+
+14. ADVERSARIAL TESTING
+
+---
+
+A defense should be tested against deliberately difficult cases.
+
+Examples:
+
+* noisy automation
+* highly variable automation
+* delayed automation
+* context-dependent automation
+* intermittent automation
+* mixed human/automated behavior
+* previously unseen behavior
+
+The goal is to test whether a detector relies on fragile shortcuts.
+
+---
+
+15. SHADOW MODE
+
+---
+
+A new anti-cheat model can be deployed in "shadow mode".
+
+In shadow mode:
+
+MODEL RUNS
+but
+MODEL DOES NOT ENFORCE
+
+Instead it generates telemetry for evaluation.
+
+This allows measurement of:
+
+false positives
+false negatives
+population effects
+performance
+model drift
+
+before the model affects player outcomes.
+
+---
+
+16. CHALLENGE / RESPONSE DEFENSE
+
+---
+
+A defense can sometimes introduce controlled environmental tests.
+
+The general concept is:
+
+NORMAL USER
+-> sees ordinary environment
+
+AUTOMATION
+-> behaves differently when presented with unusual stimuli
+
+This is related to honeypots and challenge/response ideas.
+
+In visual systems, adversarial textures or synthetic targets can serve
+as examples of this research direction.
+
+---
+
+17. HONEYPOTS
+
+---
+
+A honeypot creates an object or event designed to be attractive to an
+automated system while remaining irrelevant to legitimate users.
+
+The strongest honeypot is one that produces evidence that is difficult
+to explain through normal play.
+
+The important research property is:
+
+high specificity
+
+rather than merely:
+
+high frequency.
+
+---
+
+18. CANARIES
+
+---
+
+A canary is a deliberately placed signal intended to reveal whether a
+system is observing or manipulating something it should not normally
+care about.
+
+Canary concepts exist broadly in defensive security.
+
+The principle is:
+
+EXPECTED LEGITIMATE ACTIVITY
+-> should ignore the canary
+
+UNEXPECTED AUTOMATION
+-> may interact with it
+
+---
+
+19. SERVER-AUTHORITATIVE DEFENSE
+
+---
+
+The strongest defense often moves important logic to the server.
+
+The server can validate:
+
+physics
+movement
+fire rules
+damage
+resource state
+authorisation
+
+This reduces dependence on client integrity.
+
+A client can lie.
+
+A server can enforce the rules it owns.
+
+---
+
+20. EVIDENCE CHAINS
+
+---
+
+A high-quality detection system should preserve the relationship:
+
+EVENT
+v
+TELEMETRY
+v
+FEATURE
+v
+MODEL OUTPUT
+v
+CORROBORATING EVIDENCE
+v
+DECISION
+
+This makes investigation and auditing possible.
+
+---
+
+21. MODEL EVOLUTION
+
+---
+
+Every new production model should be evaluated against:
+
+current data
+historical data
+synthetic data
+adversarial data
+out-of-distribution data
+
+This prevents overfitting to the most recent cheat family.
+
+---
+
+22. DATA POISONING
+
+---
+
+Machine-learning systems depend on training data.
+
+Therefore researchers must consider:
+
+bad labels
+biased samples
+duplicate samples
+distribution contamination
+maliciously constructed samples
+
+Dataset integrity is a security concern.
+
+---
+
+23. MODEL EXTRACTION AND INFORMATION LEAKAGE
+
+---
+
+If an attacker can repeatedly observe model outputs, they may learn
+something about the detector.
+
+This creates another security problem:
+
+THE DEFENDER MUST NOT REVEAL MORE MODEL INFORMATION THAN NECESSARY.
+
+This is one reason exact detection thresholds and internal
+classification logic should not necessarily be exposed publicly.
+
+---
+
+24. FEEDBACK LOOPS
+
+---
+
+An anti-cheat system can accidentally create a feedback loop.
+
+Example:
+
+detector changes player behavior
+-> population changes
+-> training data changes
+-> detector changes again
+
+Therefore model evaluation should consider temporal effects.
+
+---
+
+25. CONCEPT DRIFT
+
+---
+
+The meaning of a signal can change over time.
+
+For example:
+
+a behavior that was rare in 2024
+may become normal in 2026.
+
+Likewise:
+
+a previously normal behavior
+may become associated with automation after game mechanics change.
+
+Models need monitoring for concept drift.
+
+---
+
+26. DETECTOR ENSEMBLES
+
+---
+
+Multiple detectors can sometimes outperform a single detector.
+
+Conceptually:
+
+MODEL A
+MODEL B
+MODEL C
+v
+EVIDENCE AGGREGATION
+v
+RISK ESTIMATE
+
+The models may use different signals.
+
+The benefit is reduced dependence on one model's assumptions.
+
+---
+
+27. INDEPENDENCE OF SIGNALS
+
+---
+
+Independent evidence is more valuable than repeated versions of the
+same evidence.
+
+For example:
+
+three models all measuring the same feature
+
+are not necessarily as useful as:
+
+one client signal
++
+one server signal
++
+one behavioral signal
+
+This is an important statistical and security principle.
+
+---
+
+28. CURRENT RESEARCH DIRECTION
+
+---
+
+Current research increasingly treats the cheating ecosystem as an
+adaptive adversarial environment.
+
+The important questions are:
+
+Can detectors identify previously unseen automation?
+
+Can they distinguish elite human behavior from machine behavior?
+
+Can they remain effective when attackers deliberately adapt?
+
+Can visual detectors be attacked using adversarial inputs?
+
+Can defenses generate strong evidence without increasing false
+positives?
+
+Can the system remain effective as hardware, games, and models change?
+
+---
+
+29. THE IDEAL RESEARCH LOOP
+
+---
+
+SAFE RESEARCH LOOP:
+
+Threat model
+v
+Build synthetic attacker
+v
+Generate controlled data
+v
+Train detector
+v
+Attack detector in sandbox
+v
+Measure failure
+v
+Improve detector
+v
+Repeat
+
+This creates meaningful research without targeting live commercial
+systems.
+
+---
+
+30. FINAL CONCEPT
+
+---
+
+Modern anti-cheat should be thought of as an adaptive security system,
+not a blacklist.
+
+Modern cheating should be thought of as an adaptive adversarial
+system, not a fixed executable.
+
+The interaction is:
+
+ATTACK CAPABILITY
+v
+DETECTOR
+v
+ATTACKER ADAPTATION
+v
+DEFENDER ADAPTATION
+v
+NEW THREAT MODEL
+v
+NEW DEFENSE
+
+The strongest research therefore studies the entire ecosystem rather
+than one specific cheat.
+
+The objective is not to memorize individual bypasses.
+
+The objective is to understand why a defensive assumption exists,
+what information it relies upon, how that assumption can fail, how
+the failure can be measured safely, and how the defense can be made
+more robust.

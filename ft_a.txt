@@ -1,0 +1,55 @@
+﻿96|         featuresEnabled[type] = enable;
+97|     }
+98| }
+99| 
+100| bool CheatFeatures::IsFeatureEnabled(FeatureType type) const {
+101|     if (type >= FEATURE_AIMBOT && type <= FEATURE_RECOIL) {
+102|         return featuresEnabled[type];
+103|     }
+104|     return false;
+105| }
+106| 
+107| void CheatFeatures::UpdateAimbot(MemoryReader* reader) {
+108|     if (!IsFeatureEnabled(FEATURE_AIMBOT) || !reader)
+109|         return;
+110|         
+111|     // TODO: Implement actual aimbot logic
+112|     // This would involve:
+113|     // 1. Reading player positions from memory
+114|     // 2. Calculating angles to target players
+115|     // 3. Applying smoothness/acceleration
+116|     // 4. Writing back to game's input system
+117|     
+118|     // Placeholder implementation
+119| }
+120| 
+121| void CheatFeatures::UpdateESP(MemoryReader* reader) {
+122|     InterlockedExchange(&g_EspBoxCount, 0);
+123| 
+124|     if (!IsFeatureEnabled(FEATURE_ESP) || !reader)
+125|         return;
+126| 
+127|     // r5apex.exe base is resolved once (cheap) and cached: the module never
+128|     // moves within a process lifetime.
+129|     static DWORD64 moduleBase = 0;
+130|     if (moduleBase == 0) {
+131|         moduleBase = reader->GetModuleBase("r5apex.exe");
+132|         if (moduleBase == 0) return;
+133|     }
+134| 
+135|     // ---- view matrix -------------------------------------------------------
+136|     float view[16] = { 0.0f };
+137|     {
+138|         auto raw = reader->ReadArray(
+139|             reinterpret_cast<LPVOID>(moduleBase + ApexOffsets::VIEW_MATRIX), sizeof(view));
+140|         if (raw.size() != sizeof(view)) return;
+141|         std::memcpy(view, raw.data(), sizeof(view));
+142| 
+143|         // Same canary as OffsetValidator: the documented RVA may point at code.
+144|         for (int i = 0; i < 16; ++i) {
+145|             if (!std::isfinite(view[i])) return;
+146|         }
+147|         if (view[15] == 0.0f) return;
+148|     }
+149| 
+150|     // ---- entity list -------------------------------------------------------

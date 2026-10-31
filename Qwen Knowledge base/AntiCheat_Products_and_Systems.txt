@@ -1,0 +1,410 @@
+KNOWLEDGE BASE: ANTI-CHEAT PRODUCTS AND SYSTEMS
+
+Purpose:
+Educational reference describing the major commercial and first-party
+game anti-cheat systems by name: who makes each one, what architectural
+class it belongs to, which trust anchor it leans on, and what its public
+history and trade-offs are.
+
+This document is reference knowledge. It describes systems from a
+defensive and engineering perspective, using only publicly documented
+facts and vendors' own public statements. It deliberately contains no
+recipes for defeating, evading, or bypassing any specific product, and
+no operational detail beyond what the vendors themselves publish.
+
+Because these products change frequently and publish only part of their
+design, treat every statement here as a publicly documented CLAIM, not
+as a verified internal fact. Where something is uncertain it is marked.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, CHEATING IN GAMES - HISTORY,
+TAXONOMY, AND DETECTION, ADVERSARIAL AI AND CHEAT DETECTION, ADAPTIVE
+CHEATING AND EVOLVING SYSTEMS, HOW ANTI-CHEATS WORK - VANGUARD, BATTLTEYE,
+EAC, AND JAVELIN, CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION,
+ANTI-CHEAT THREAT MODELING, and the numbered technical series.
+
+---
+
+1. WHY A PRODUCT SURVEY IS USEFUL
+The concepts in ANTI-CHEAT ARCHITECTURE are realised, in practice, by a
+small number of well-known products.
+Knowing the products helps because:
+* each is a worked example of the same layered design.
+* each makes a different bet about the trust anchor.
+* the bets recur: what one product does, others copy.
+* shared products define the de-facto baseline players must satisfy.
+Reading them together turns an abstract stack into concrete trade-offs.
+
+---
+
+2. A LENS FOR CLASSIFYING ANY ANTI-CHEAT
+Any product, past or present, can be placed on a handful of axes:
+* WHERE IT RUNS - server-side only, user-mode client, kernel-mode
+  driver, or a combination.
+* WHEN IT LOADS - on demand with the game, or at boot and persistently.
+* ITS TRUST ANCHOR - what it ultimately trusts: its own client, the OS
+  kernel, or hardware/boot measurements a cheater cannot easily forge.
+* HOW IT DECIDES - signatures/blacklists, behavioural heuristics,
+  machine learning, server-side validation, or a mix.
+* HOW IT ENFORCES - delayed ban waves, instant kicks, global account or
+  hardware bans, or in-match mitigation.
+Most confusion about "which anti-cheat is strongest" dissolves once the
+products are compared on these axes rather than by reputation.
+
+---
+
+3. RIOT VANGUARD
+Vendor: Riot Games. Used by: VALORANT, and described for other Riot
+titles.
+Publicly documented properties:
+* a user-mode component plus a kernel-mode driver.
+* the driver loads at boot and stays resident, rather than only while
+  the game runs.
+* on Windows 11 (and later enforced more widely) VALORANT requires
+  TPM 2.0 and Secure Boot, and Riot publishes error codes for missing
+  Secure Boot/TPM, Virtualization-Based Security, and exploit
+  protection (for example VAN 9001, 9003, 9005, 9002).
+* it maintains and updates a blocklist of known-vulnerable drivers.
+* Windows-only for the kernel driver.
+Trade-off it illustrates: strong kernel plus boot-time trust buys
+visibility user mode cannot get, at the cost of persistent privilege
+and ongoing controversy over living on every machine at boot.
+
+---
+
+4. BATTLTEYE
+Vendor: BattlEye Innovations (Germany), independent since 2004,
+originally for the Battlefield series.
+Publicly documented properties:
+* proactive kernel-based protection combined with detection.
+* dynamic, on-the-fly scanning whose targets are chosen by the backend,
+  so fixed client files cannot simply be profiled once and ignored.
+* a server component that keeps control of the server and can kick
+  clients, plus admin interfaces.
+* a global ban system tied to account identities (for example
+  SteamID-based), claimed by the vendor to rival or exceed the reach of
+  VAC bans.
+Used by: PUBG, Rainbow Six Siege, the Arma and DayZ lineage, and
+others.
+Trade-off it illustrates: a mostly proactive kernel defender with a
+strong server side and consolidated global bans.
+
+---
+
+5. EASY ANTI-CHEAT (EAC)
+Vendor: Epic Games (via the acquisition of Kamu), now part of Epic
+Online Services.
+Publicly documented properties:
+* a modular, layered system with tiered service levels.
+* a kernel-mode component for higher-risk competitive titles, with the
+  option of lighter configurations.
+* cross-platform support including Windows, macOS, Linux and Steam
+  Deck, and compatibility with console crossplay.
+* tight integration with Epic Online Services (accounts, matchmaking).
+Used by: a very large share of PC multiplayer, including Rust, Apex
+Legends, Fortnite and many others.
+Trade-off it illustrates: standardisation and scale - one vendor,
+integrated with a platform, serving many titles across many operating
+systems.
+
+---
+
+6. VALVE ANTI-CHEAT (VAC)
+Vendor: Valve, first shipped with Counter-Strike in 2002.
+Publicly documented properties:
+* primarily an automated detection and banning system rather than a
+  heavyweight always-on kernel driver.
+* bans are issued in delayed "waves" rather than instantly, so that a
+  single detection can flag many users of the same cheat before its
+  author learns it is detected.
+* detection combines known-cheat signatures with behavioural methods;
+  Valve has described a machine-learning component (VACnet), a
+  community review system (Overwatch in Counter-Strike), and an account
+  trust score (Trust Factor).
+* bans are typically permanent and non-negotiable.
+Used by: Counter-Strike 2, Team Fortress 2, Dota 2 and other
+Valve/Steam titles.
+Trade-off it illustrates: delayed enforcement as a deliberate
+counter-forensics tactic, and community/human review as a complement to
+automation.
+
+---
+
+7. FAIRFIGHT
+Vendor: GameBlocks, widely used by EA and Ubisoft titles in the 2010s.
+Publicly documented properties:
+* server-side and statistical/behavioural: it reasons about gameplay
+  and account data rather than scanning the client.
+* no client component is required for its core function.
+* commonly deployed alongside a client anti-cheat (for example with
+  BattlEye in Rainbow Six Siege, or alongside other scanners in
+  Battlefield titles).
+Trade-off it illustrates: a pure server-side approach has no client
+footprint to tamper with, but sees only what the server can observe and
+is therefore blind to purely local activity.
+
+---
+
+8. BLIZZARD WARDEN
+Vendor: Blizzard Entertainment.
+Publicly documented properties:
+* a client-side scanning system, historically associated with World of
+  Warcraft, Overwatch and other Blizzard titles.
+* it inspects process and module state and looks for known
+  modifications, and has been described as combining client scans with
+  server-side analysis.
+Trade-off it illustrates: a long-lived first-party scanner, and how a
+publisher can run detection in-house rather than buying it.
+
+---
+
+9. PUNKBUSTER (LEGACY)
+Vendor: Even Balance, first released in 2000.
+Publicly documented properties:
+* a client that scans memory for known cheat signatures against a
+  database, plus periodic status reports from client to server.
+* server options to request file hashes of the game installation and to
+  capture player screenshots for review.
+* a "heartbeat" streaming model, where findings could be shared to
+  community ban lists.
+Used by: many 2000s shooters (the early Call of Duty and Battlefield
+games, Return to Castle Wolfenstein, and others).
+Status: largely retired from current titles, but historically
+influential.
+
+---
+
+10. NPROTECT GAMEGUARD (LEGACY)
+Vendor: INCA Internet (South Korea).
+Publicly documented properties:
+* often described as rootkit-like: it hides its own and the game's
+  process, monitors memory, blocks certain API and DirectX calls, and
+  blocks programs the vendor defines as cheats.
+* long used across Korean and Asian online games (the Lineage and
+  MapleStory lineages among many).
+* has had documented security problems, including an old
+  privilege-escalation issue in a driver component.
+Status: classified as legacy/inactive in current references.
+
+---
+
+11. XIGNCODE3
+Vendor: Wellbia (South Korea).
+Publicly documented properties:
+* a client anti-cheat with kernel-level components, deployed widely in
+  Asian and global releases (for example ArcheAge and some music games).
+* like its peers, it runs alongside the game process and reports to a
+  backend.
+Trade-off it illustrates: several regional vendors offer the same
+kernel-plus-backend pattern, which is why the pattern - not any one
+brand - is the thing worth understanding.
+
+---
+
+12. ANTI-CHEAT EXPERT (TENCENT ACE, FORMERLY TP)
+Vendor: Tencent. First appeared around 2005 as an anti-bot, rebranded
+as Anti-Cheat Expert in 2021.
+Publicly documented properties:
+* a kernel-level anti-cheat for PC and mobile, used across Tencent's
+  own large titles and licensed to others (for example Honor of Kings,
+  Delta Force, and many cross-platform releases).
+* has drawn the same kernel-access criticism as other kernel products,
+  and has been reported to block desktop Linux/Proton in some titles
+  while permitting handheld variants.
+Trade-off it illustrates: at platform scale, the same kernel model is
+applied to hundreds of millions of players, magnifying both its reach
+and its privacy/security concerns.
+
+---
+
+13. RICOCHET (CALL OF DUTY)
+Vendor: Activision.
+Publicly documented properties:
+* combines a kernel-level driver on PC with server-side mitigations.
+* beyond banning, it has publicly described in-match measures such as
+  making a detected cheater unable to see or affect legitimate players.
+Trade-off it illustrates: enforcement can be a spectrum - from bans to
+live mitigation that reduces harm before a ban lands - and server-side
+authority is what makes some mitigations possible at all.
+
+---
+
+14. JAVELIN AND EA ANTICHEAT
+Vendor: Electronic Arts.
+Publicly documented properties:
+* EA AntiCheat (EAAC) is EA's in-house kernel-level anti-cheat,
+  introduced with its 2022 titles.
+* Javelin is the anti-cheat EA introduced for Battlefield 6 (2025); EA
+  publicly stated it blocked hundreds of thousands of cheat attempts
+  around launch.
+* EA's earlier PC titles leaned on a mix of client scanners (such as
+  PunkBuster, then EAC) and the server-side FairFight system.
+Trade-off it illustrates: large publishers increasingly build and own
+their anti-cheat, so detection is not outsourced and can be tuned to
+one engine and one title.
+
+---
+
+15. DENUVO ANTI-CHEAT
+Vendor: Denuvo Software Solutions, now owned by Irdeto - the same
+company known for the Denuvo Anti-Tamper DRM.
+Publicly documented properties:
+* a kernel-level anti-cheat offering.
+* because the vendor also sells copy-protection, the anti-cheat and the
+  DRM are often discussed together, and both have attracted strong
+  player criticism.
+Trade-off it illustrates: anti-cheat can be a product line adjacent to
+copy-protection, and reputation from one can colour the other.
+
+---
+
+16. THIRD-PARTY COMPETITIVE CLIENTS (FACEIT, ESEA)
+Not game-wide anti-cheat, but league/competition clients:
+* FACEIT's client publicly documents kernel-level components and
+  hardware/account requirements.
+* the ESEA client is a long-standing example; it was at the centre of a
+  2013 incident in which the installed client was found to be mining
+  cryptocurrency, a cautionary tale about trust in a mandatory client.
+Trade-off they illustrate: competition-grade integrity can be bought
+separately from the game, and a privileged client is itself a security
+liability if its operator misuses it.
+
+---
+
+17. PLATFORM AND FIRST-PARTY SCANNERS
+Some vendors ship their own, less publicly detailed systems:
+* Roblox acquired Byfron (maker of the Hyperion anti-cheat) and uses it
+  on the Windows client.
+* AhnLab's HackShield and other regional products have protected many
+  Asian titles, sometimes replaced over time by EAC or XIGNCODE3.
+* console platforms enforce integrity largely at the platform level
+  rather than through per-game clients.
+The lesson: the kernel-plus-backend pattern is industry-wide, and the
+brand matters far less than the class of system.
+
+---
+
+18. THE KERNEL-MODE DEFAULT
+Across the current leaders - Vanguard, BattlEye, EAC, ACE, Ricochet,
+EAAC/Javelin, Denuvo Anti-Cheat - the shared design decision is a
+kernel-mode component.
+The reason is the trust argument from ANTI-CHEAT ARCHITECTURE: a
+user-mode observer can be hidden from or manipulated by something
+underneath it, so the observer is pushed below the observed.
+This is also why the debate about these products is really a debate
+about kernel privilege, not about any single vendor.
+
+---
+
+19. BOOT-START AND ALWAYS-ON
+Vanguard popularised loading its driver at boot and leaving it
+resident.
+Consequences worth noting:
+* maximum visibility into early-boot and low-level activity.
+* the protection is present even when the game is not running.
+* the cost is constant privilege and constant attention from privacy
+  and security researchers.
+Not every kernel product does this; the boot-start choice is a
+deliberate point on the trade-off curve.
+
+---
+
+20. HARDWARE-BACKED REQUIREMENTS AND ATTESTATION
+The newest layer is requiring the platform itself to be in a known-good
+state before play is allowed.
+Publicly visible examples:
+* TPM 2.0 and Secure Boot requirements (Vanguard).
+* Virtualization-Based Security and exploit-protection checks.
+* vendor blocklists of vulnerable drivers, and IOMMU/DMA protection.
+This moves the anchor of trust toward hardware and boot measurements -
+the part of the machine a cheater running underneath the game cannot
+easily forge.
+
+---
+
+21. SERVER-SIDE-ONLY SYSTEMS
+Not everything is a client.
+FairFight is the clearest example of a system that reasons entirely on
+the server.
+Its strength is that the defender fully controls the measurement; its
+limitation is that purely local advantages it cannot observe remain
+invisible.
+This is why real deployments increasingly combine a server-side
+authority with one or more client-side detectors.
+
+---
+
+22. COMPARISON OVERVIEW
+A compact, approximate map (details change; publicly documented
+classifications only):
+Riot Vanguard    - kernel + user client, boot-start, TPM/Secure Boot
+BattlEye         - kernel + server, proactive, global account bans
+Easy Anti-Cheat  - modular kernel/user, part of Epic Online Services
+Valve Anti-Cheat - automated detection, delayed ban waves, ML + review
+FairFight        - server-side behavioural only
+Warden           - first-party client scanner
+PunkBuster       - legacy client scanner + server
+GameGuard        - legacy client, rootkit-like, Korean market
+XIGNCODE3        - client + kernel, Asian market
+Tencent ACE      - kernel, platform scale, PC and mobile
+Ricochet         - kernel driver + server-side mitigation
+EAAC / Javelin   - in-house kernel, EA titles
+Denuvo Anti-Cheat- kernel, from the DRM vendor
+The columns that matter: where it runs, when it loads, and what it
+ultimately trusts.
+
+---
+
+23. HOW TO EVALUATE A PRODUCT YOU ENCOUNTER
+Ask the five lens questions from section 2, in order:
+* Does it run on the server, the client, or the kernel - or several?
+* Does it load with the game, or at boot and persist?
+* What does it ultimately trust: its own process, the OS kernel, or
+  hardware/boot state?
+* How does it decide: signatures, behaviour, ML, server validation?
+* How does it enforce: ban waves, kicks, hardware bans, live
+  mitigation?
+Then ask the trust question that underlies all of them: what would
+have to be true about the machine for this product's evidence to be
+sound, and who controls that?
+Notice too what the vendor does NOT publish: silence about internals
+is itself the norm, and is a security choice, not an accident.
+
+---
+
+24. COMMON MISREADINGS
+* "Kernel anti-cheat is unbeatable." No - it raises the cost and moves
+  the observation point; it is not absolute.
+* "Server-side means no cheating." Server-side authority removes some
+  classes of advantage but is blind to others.
+* "A kernel driver is automatically malware." It is a trust decision
+  and a privilege level, not a verdict; whether it is acceptable
+  depends on the operator and the guarantees given.
+* "Brand X is the real anti-cheat." Products come and go; the classes,
+  layers and trade-offs persist.
+* "Detected equals banned." All the serious systems separate detection
+  from enforcement, often by a wide margin in time.
+
+---
+
+25. SUMMARY
+The anti-cheat market is a small number of archetypes repeated under
+many names.
+Almost every current product is some combination of: a kernel or
+user-mode client, a server-side authority, a detection engine
+(signature, behavioural, or ML), and an enforcement system (delayed
+bans, hardware/account bans, or live mitigation) - with a growing
+dependence on hardware and boot trust.
+Understanding the archetype lets you reason about a product you have
+never seen, and about the next one before it ships.
+
+CORE PRINCIPLE:
+The name on the anti-cheat is far less important than the class of
+system underneath it. Every serious product answers the same three
+questions - where does the observer run, when does it load, and what
+does it ultimately trust - and the whole field is converging on the
+same answers: push the observer below the observed (kernel mode),
+establish trust before the game starts (boot and hardware attestation),
+and never rely on the client alone (keep a server-side authority). Read
+a product by its archetype and its trust anchor, not by its marketing,
+and remember that detection and enforcement are deliberately separate
+stages.

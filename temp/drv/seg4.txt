@@ -1,0 +1,5 @@
+﻿00004a6d  ff251d160000           jmp     qword ptr [rip + 0x161d]        ; ntoskrnl!RtlUnicodeToMultiByteN
+00004a80  ff2582150000           jmp     qword ptr [rip + 0x1582]        ; WDFLDR!WdfVersionUnbind
+00004a90  ff256a150000           jmp     qword ptr [rip + 0x156a]        ; WDFLDR!WdfVersionBind
+00004aa0  ff2572150000           jmp     qword ptr [rip + 0x1572]        ; WDFLDR!WdfVersionBindClass
+00004ab0  ff255a150000           jmp     qword ptr [rip + 0x155a]        ; WDFLDR!WdfVersionUnbindClass

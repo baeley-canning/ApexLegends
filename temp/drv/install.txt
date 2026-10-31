@@ -1,0 +1,70 @@
+== install start 
+
+USER INFORMATION
+----------------
+
+User Name                SID                                          
+======================== =============================================
+desktop-pphfjbq\new user S-1-5-21-3365457474-3514149710-894840898-1001
+--- cert 
+created D33ED7478345A1F373111F13439DC34D76C96D55
+--- sign 
+The following certificate was selected:
+    Issued to: ApexR Test
+    Issued by: ApexR Test
+    Expires:   Mon Oct 27 22:07:14 2031
+    SHA1 hash: D33ED7478345A1F373111F13439DC34D76C96D55
+
+Done Adding Additional Store
+Successfully signed: apexr.sys
+
+Number of files successfully Signed: 1
+Number of warnings: 0
+Number of errors: 0
+
+Verifying: apexr.sys
+
+Signature Index: 0 (Primary Signature)
+Hash of file (sha256): AD6691E474A94DBECF4FC2609ACD4F44308B3A684D48F08CF83E5CC0E787C51A
+
+Signing Certificate Chain:
+    Issued to: ApexR Test
+    Issued by: ApexR Test
+    Expires:   Mon Oct 27 22:07:14 2031
+    SHA1 hash: D33ED7478345A1F373111F13439DC34D76C96D55
+
+File is not timestamped.
+
+
+Number of files successfully Verified: 0
+Number of warnings: 0
+Number of errors: 1
+SignTool Error: A certificate chain processed, but terminated in a root
+	certificate which is not trusted by the trust provider.
+--- testsigning 
+An error has occurred setting the element data.
+The value is protected by Secure Boot policy and cannot be modified or deleted.
+--- install 
+        1 file(s) copied.
+[SC] OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+[SC] OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+[SC] CreateService SUCCESS
+[SC] StartService FAILED 577:
+
+Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+
+SERVICE_NAME: apexr 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 577  (0x241)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+== done 

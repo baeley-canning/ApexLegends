@@ -1,0 +1,126 @@
+﻿============================================================================================
+## dm32: static datamap reconstruction
+============================================================================================
+  image       : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+  sections    : .text 0x2c951ac, .rdata 0x680b60, .data 0xb40ab8c, .pdata 0xe32bc, _RDATA 0xa24, .fptable 0x100, .rsrc 0x35f8, .reloc 0x571b0, .ooa 0x712
+  strings     : 46957
+  functions   : 77541 (.pdata)
+  DT_ leas    : 179 in 179 functions
+0x141934270-0x1419344f2  117 insn
+0x0141934270  mov      qword ptr [rsp + 8], rbx                  
+0x0141934275  mov      qword ptr [rsp + 0x10], rsi               
+0x014193427a  mov      qword ptr [rsp + 0x18], rdi               
+0x014193427f  push     rbp                                       
+0x0141934280  lea      rbp, [rsp - 0x30]                         
+0x0141934285  sub      rsp, 0x130                                
+0x014193428c  mov      rax, qword ptr gs:[0x58]                  
+0x0141934295  lea      rsi, [rip + 0xcd8335c]                       0x14e6b75f8 .data+0xb39f5f8
+0x014193429c  inc      qword ptr [rip + 0x7f25aed]               
+0x01419342a3  movabs   rdi, 0x414e2071269021ae                   
+0x01419342ad  add      qword ptr [rip + 0x7f25a8c], rdi          
+0x01419342b4  xor      ebx, ebx                                  
+0x01419342b6  mov      ecx, 0x20                                 
+0x01419342bb  mov      rax, qword ptr [rax]                      
+0x01419342be  mov      dword ptr [rip + 0x23cf764], 0x4c10       
+0x01419342c8  mov      eax, dword ptr [rcx + rax]                
+0x01419342cb  cmp      dword ptr [rip + 0xcd8bf0f], eax          
+0x01419342d1  jg       0x141934388                               
+0x01419342d7  add      dword ptr [rip + 0x4132112], 8            
+0x01419342de  mov      rax, qword ptr [rip + 0x4130b6b]          
+0x01419342e5  mov      qword ptr [rip + 0x23cf75c], rbx          
+0x01419342ec  mov      dword ptr [rip + 0x23cf27a], 0xffffffff   
+0x01419342f6  test     rax, rax                                  
+0x01419342f9  jne      0x141934307                               
+0x01419342fb  call     0x141dc6600                                  .text+0x1dc5600
+0x0141934300  mov      qword ptr [rip + 0x4130b49], rax          
+0x0141934307  mov      rcx, qword ptr [rax]                      
+0x014193430a  mov      edx, 8                                    
+0x014193430f  mov      r8, qword ptr [rcx + 8]                   
+0x0141934313  mov      rcx, rax                                  
+0x0141934316  call     r8                                        
+0x0141934319  mov      qword ptr [rip + 0x23cf258], rax          
+0x0141934320  lea      r11, [rsp + 0x130]                        
+0x0141934328  mov      qword ptr [rip + 0x23cf701], rbx          
+0x014193432f  lea      rcx, [rip + 0x1752dba]                       0x1430870f0 ('DT_NearbyPushers')
+0x0141934336  mov      word ptr [rip + 0x23cf703], bx            
+0x014193433d  mov      dword ptr [rip + 0x23cf6e5], ebx          
+0x0141934343  mov      rbx, qword ptr [r11 + 0x10]               
+0x0141934347  mov      qword ptr [rip + 0x23cf6ea], rcx          
+0x014193434e  mov      dword ptr [rip + 0x23cf228], 1            
+0x0141934358  mov      qword ptr [rax], rsi                      
+0x014193435b  mov      eax, dword ptr [rip + 0xcd832ab]          
+0x0141934361  mov      rsi, qword ptr [r11 + 0x18]               
+0x0141934365  not      eax                                       
+0x0141934367  shr      rax, 6                                    
+0x014193436b  and      eax, 1                                    
+0x014193436e  xor      rax, rdi                                  
+0x0141934371  mov      rdi, qword ptr [r11 + 0x20]               
+0x0141934375  add      qword ptr [rip + 0x7f259cc], rax          
+0x014193437c  inc      qword ptr [rip + 0x7f25a15]               
+0x0141934383  mov      rsp, r11                                  
+0x0141934386  pop      rbp                                       
+0x0141934387  ret                                                
+0x0141934388  lea      rcx, [rip + 0xcd8be51]                       0x14e6c01e0 .data+0xb3a81e0
+0x014193438f  call     0x142c0a798                                  .text+0x2c09798
+0x0141934394  cmp      dword ptr [rip + 0xcd8be45], -1           
+0x014193439b  jne      0x1419342d7                               
+0x01419343a1  xorps    xmm0, xmm0                                
+0x01419343a4  lea      r8, [rip + 0x4d7375]                         0x141e0b720 .text+0x1e0a720
+0x01419343ab  xorps    xmm2, xmm2                                
+0x01419343ae  mov      qword ptr [rsp + 0x48], r8                
+0x01419343b3  movups   xmmword ptr [rip + 0xcd831d6], xmm0       
+0x01419343ba  xor      eax, eax                                  
+0x01419343bc  mov      dword ptr [rip + 0xcd831d6], ebx          
+0x01419343c2  movups   xmmword ptr [rip + 0xcd831d7], xmm0       
+0x01419343c9  mov      qword ptr [rip + 0xcd83220], rax          
+0x01419343d0  lea      rax, [rip + 0x16fe861]                       0x143032c38 ('should_never_see_this')
+0x01419343d7  movups   xmmword ptr [rip + 0xcd83202], xmm0       
+0x01419343de  lea      rdx, [rip + 0x1752c9b]                       0x143087080 ('m_nearbyPushers')
+0x01419343e5  mov      r9d, 0x1c                                 
+0x01419343eb  movups   xmmword ptr [rip + 0xcd831be], xmm0       
+0x01419343f2  mov      qword ptr [rip + 0xcd831bf], rax          
+0x01419343f9  xor      eax, eax                                  
+0x01419343fb  movups   xmmword ptr [rip + 0xcd831ce], xmm0       
+0x0141934402  mov      qword ptr [rbp - 0x50], rax               
+0x0141934406  lea      rax, [rip + 0x23cec83]                       0x143d03090 .data+0x9eb090
+0x014193440d  movups   xmmword ptr [rbp - 0x60], xmm2            
+0x0141934411  mov      qword ptr [rbp - 0x60], r8                
+0x0141934415  mov      r8d, 0x4750                               
+0x014193441b  movups   xmmword ptr [rsp + 0x50], xmm2            
+0x0141934420  mov      qword ptr [rsp + 0x54], rbx               
+0x0141934425  mov      rcx, rsi                                  
+0x0141934428  movups   xmmword ptr [rip + 0xcd83191], xmm0       
+0x014193442f  mov      dword ptr [rsp + 0x50], 0xa               
+0x0141934437  movups   xmm0, xmmword ptr [rsp + 0x50]            
+0x014193443c  mov      dword ptr [rbp - 0x54], 1                 
+0x0141934443  movups   xmmword ptr [rsp + 0x70], xmm2            
+0x0141934448  mov      qword ptr [rsp + 0x70], rax               
+0x014193444d  lea      rax, [rbp - 0x40]                         
+0x0141934451  movaps   xmmword ptr [rbp - 0x40], xmm0            
+0x0141934455  movups   xmmword ptr [rsp + 0x60], xmm2            
+0x014193445a  mov      qword ptr [rsp + 0x40], rax               
+0x014193445f  mov      qword ptr [rsp + 0x78], rdx               
+0x0141934464  movups   xmm0, xmmword ptr [rsp + 0x70]            
+0x0141934469  mov      dword ptr [rsp + 0x64], ebx               
+0x014193446d  movups   xmm1, xmmword ptr [rsp + 0x60]            
+0x0141934472  mov      dword ptr [rbp - 0x58], 0xffffffff        
+0x0141934479  movaps   xmmword ptr [rbp - 0x20], xmm0            
+0x014193447d  movups   xmm0, xmmword ptr [rbp - 0x60]            
+0x0141934481  mov      qword ptr [rsp + 0x30], 0xc               
+0x014193448a  movaps   xmmword ptr [rbp - 0x30], xmm1            
+0x014193448e  movsd    xmm1, qword ptr [rbp - 0x50]              
+0x0141934493  movaps   xmmword ptr [rbp + 0x10], xmm0            
+0x0141934497  mov      dword ptr [rip + 0xcd8314b], 1            
+0x01419344a1  mov      dword ptr [rip + 0xcd8313d], 0xffffffff   
+0x01419344ab  mov      qword ptr [rip + 0xcd830e6], 4            
+0x01419344b6  mov      qword ptr [rip + 0xcd830d3], rbx          
+0x01419344bd  mov      dword ptr [rip + 0xcd830e1], ebx          
+0x01419344c3  mov      qword ptr [rip + 0xcd8310e], rbx          
+0x01419344ca  movaps   xmmword ptr [rbp - 0x10], xmm2            
+0x01419344ce  movaps   xmmword ptr [rbp], xmm2                   
+0x01419344d2  movsd    qword ptr [rbp + 0x20], xmm1              
+0x01419344d7  mov      qword ptr [rsp + 0x20], rbx               
+0x01419344dc  call     0x141e0b2b0                                  .text+0x1e0a2b0
+0x01419344e1  lea      rcx, [rip + 0xcd8bcf8]                       0x14e6c01e0 .data+0xb3a81e0
+0x01419344e8  call     0x142c0a72c                                  .text+0x2c0972c
+0x01419344ed  jmp      0x1419342d7                                  .text+0x19332d7

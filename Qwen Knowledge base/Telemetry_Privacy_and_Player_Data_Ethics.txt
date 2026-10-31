@@ -1,0 +1,199 @@
+KNOWLEDGE BASE: TELEMETRY, PRIVACY, AND PLAYER DATA ETHICS
+
+Purpose:
+Explain what a modern anti-cheat collects about a player's machine and
+behaviour, why it collects it, and the privacy, legal, and ethical
+questions that follow. It is the companion to BAN GOVERNANCE AND IDENTITY
+INTEGRITY and ANTI-CHEAT ARCHITECTURE, focused on data rather than on
+enforcement.
+
+This document is reference knowledge. It describes data flows and their
+consequences from a defensive and policy perspective, using publicly
+documented practices. It contains no recipe for evading detection or for
+attacking any product.
+
+Anti-cheat data practices change often and are only partly disclosed, so
+treat each statement as a publicly documented CLAIM, not a verified
+internal fact. Details are given "as of October 2026".
+
+Related documents: BAN GOVERNANCE AND IDENTITY INTEGRITY, ANTI-CHEAT
+ARCHITECTURE, HOW ANTI-CHEATS WORK - VANGUARD, BATTLTEYE, EAC, AND
+JAVELIN, HARDWARE, DMA, AND BELOW-KERNEL THREATS, and the numbered
+technical series.
+
+---
+
+1. WHY ANTI-CHEAT COLLECTS DATA AT ALL
+Detection needs evidence, and evidence needs observation.
+A cheat that leaves no observable trace cannot be detected by any method.
+The more powerful the observation, the stronger the evidence, and the
+more sensitive the data.
+This is the root of the entire privacy tension: effectiveness and
+intrusiveness rise together.
+
+---
+
+2. THE KINDS OF DATA COLLECTED
+Public descriptions typically include several families of data:
+* static machine facts: operating system version, hardware, and installed
+  security features.
+* identifiers: account, device, and hardware identifiers used to link
+  sessions and to enforce bans.
+* behavioural telemetry: input timing, aim patterns, and match statistics.
+* process and memory observations: which programs run and, in kernel-mode
+  systems, what regions of memory are touched.
+Each family carries a different privacy weight and a different value to
+detection.
+
+---
+
+3. DEVICE AND HARDWARE IDENTIFIERS
+To ban a person rather than a single account, a system needs something
+more stable than a login.
+Hardware and device identifiers serve that purpose and are the backbone
+of ban-evasion defence.
+The same property that makes them useful - persistence across accounts -
+is what makes them sensitive.
+See BAN GOVERNANCE AND IDENTITY INTEGRITY for how they are used in
+enforcement.
+
+---
+
+4. BEHAVIOURAL AND TELEMETRY DATA
+Behavioural data is gathered at scale to find statistical anomalies that
+signatures miss.
+It is powerful because it survives recompilation and obfuscation of a
+cheat.
+It is sensitive because it can describe a person's habits, skill, and
+play schedule.
+Aggregated behavioural data is also hard to interpret without context,
+which complicates both detection and privacy review.
+
+---
+
+5. MEMORY AND PROCESS OBSERVATION DATA
+Kernel-mode anti-cheats can observe more of the machine than user-mode
+ones.
+That capability is exactly why they are contentious.
+The observation is usually described as pattern-matching for known cheat
+markers rather than free-form reading of personal files.
+Even so, the technical ability to read process memory is broader than
+what any single detection rule uses, and that gap is the heart of the
+debate.
+
+---
+
+6. WHERE THE DATA GOES AND HOW LONG IT LASTS
+Telemetry generally leaves the machine and is analysed on a backend.
+Retention varies and is often only summarised in privacy policies.
+Short retention limits exposure; long retention improves investigations.
+The trade-off between the two is rarely explained to players in plain
+terms.
+
+---
+
+7. DEVICE HISTOGRAMS AND THE CROSS-GAME QUESTION
+Some vendors build a device-level profile that persists across many
+titles and even across publishers.
+This is efficient - one ban propagates - and it is also the most
+privacy-sensitive construct in the field.
+It raises a question no single game's terms of service cleanly answers:
+who owns the reputation of a machine, and for how long.
+
+---
+
+8. THE PRIVACY TENSION, STATED PLAINLY
+Players accept observation in exchange for fair matches.
+They object when the observation exceeds what the stated threat model
+requires, or when it is not disclosed.
+The tension is not solvable in the abstract; it is managed by
+proportionality, disclosure, and restraint.
+A system that collects the minimum it can justify is both more ethical
+and easier to defend publicly.
+
+---
+
+9. LEGAL FRAMEWORKS - GDPR, CCPA, AND BEYOND
+Data-protection law treats some anti-cheat data as personal data.
+Under regimes such as the GDPR, collection needs a lawful basis, a
+defined purpose, and a retention limit.
+Identifiers and behavioural profiles are the most likely to be regulated.
+Compliance is a moving target because the technology and the law both
+change quickly.
+
+---
+
+10. CONSENT, TERMS OF SERVICE, AND REAL CONSENT
+Anti-cheat data collection is usually covered by a click-through terms of
+service.
+Legal consent is not the same as informed consent; few players read the
+terms they accept.
+A regime built entirely on "you agreed" therefore carries an ethical gap.
+Disclosure in plain language narrows that gap; boilerplate widens it.
+
+---
+
+11. DATA MINIMISATION AND PURPOSE LIMITATION
+Two principles constrain good collection practice.
+Data minimisation: gather only what the detection purpose requires.
+Purpose limitation: do not reuse anti-cheat data for unrelated purposes
+such as marketing or monetisation.
+Both are simple to state and hard to prove from the outside.
+They are also the strongest defence a vendor can offer against overreach
+accusations.
+
+---
+
+12. SECURITY OF THE COLLECTED DATA
+Collected data must itself be protected.
+A store of device identifiers and behavioural profiles is a valuable
+target and a potential privacy breach.
+Encryption, access control, and retention limits apply to anti-cheat data
+exactly as they do to any sensitive dataset.
+A system that observes intrusively but protects poorly has inverted its
+own priorities.
+
+---
+
+13. TRANSPARENCY AND DISCLOSURE
+Some vendors publish transparency reports describing what they collect
+and how often they enforce.
+Transparency does not remove the trade-off, but it makes it reviewable.
+It also builds the trust that makes acceptance of intrusive observation
+possible.
+Opacity, by contrast, feeds the suspicion that the system does more than
+it admits.
+
+---
+
+14. THE ETHICS OF KERNEL-LEVEL OBSERVATION
+Kernel-mode observation is the strongest tool available and the hardest
+to justify when it exceeds the stated need.
+The ethical test is proportionality: does the capability match a real,
+disclosed threat?
+Restraint - collecting less, retaining less, disclosing more - is the
+practical answer.
+The technical justification for kernel access is genuine; the ethical
+burden is to use only the part that is necessary.
+
+---
+
+15. SUMMARY
+Anti-cheat collects data because detection requires evidence, and the
+evidence that catches cheats is often the same data that is sensitive.
+The families are machine facts, identifiers, behavioural telemetry, and
+process and memory observations, each with its own privacy weight.
+Device identifiers drive ban enforcement; behavioural data drives
+statistical detection; memory observation drives kernel-mode detection.
+The privacy tension is real and is managed by proportionality,
+disclosure, and restraint rather than solved outright.
+Law sets a floor; ethics sets the standard the law does not reach.
+
+CORE PRINCIPLE:
+Anti-cheat data gathering sits on a single trade-off: the observation
+powerful enough to catch cheats is the observation sensitive enough to
+alarm players. Every design question - what to collect, how long to keep
+it, whom to share it with - is a point on that trade-off. The defensible
+position is not "collect nothing" or "collect everything", but to collect
+the minimum the disclosed threat model justifies, keep it only as long as
+need requires, and say so plainly.

@@ -1,0 +1,907 @@
+KNOWLEDGE BASE: GPU COMPUTE AND REAL-TIME INFERENCE
+
+Purpose:
+Educational reference for understanding how GPU acceleration works in
+real-time computer-vision pipelines, including CUDA, tensor placement,
+CPU/GPU transfers, inference runtimes, memory, precision, profiling,
+and latency.
+
+---
+
+1. GPU ACCELERATION DOES NOT MEAN THE WHOLE PIPELINE IS ON THE GPU
+
+---
+
+A real-time vision system may contain both CPU and GPU stages.
+
+Conceptually:
+
+CPU:
+capture
+preprocessing
+application logic
+tracking
+decision-making
+
+GPU:
+neural-network inference
+
+Therefore:
+
+"GPU accelerated"
+
+does not mean:
+
+"everything runs on the GPU."
+
+A realistic pipeline can be:
+
+CPU frame capture
+v
+CPU preprocessing
+v
+CPU -> GPU transfer
+v
+GPU inference
+v
+GPU -> CPU result transfer
+v
+CPU postprocessing
+v
+CPU control
+
+---
+
+2. CPU VERSUS GPU
+
+---
+
+CPUs are designed for general-purpose computation and relatively
+complex control flow.
+
+GPUs are designed for highly parallel numerical workloads.
+
+Neural networks contain enormous numbers of operations that can be
+performed in parallel.
+
+This makes GPUs especially useful for:
+
+* matrix multiplication
+* convolution
+* tensor operations
+* neural-network inference
+
+---
+
+3. CUDA
+
+---
+
+CUDA is NVIDIA's general-purpose GPU computing platform.
+
+A CUDA-enabled application can execute numerical workloads on an
+NVIDIA GPU.
+
+Common components include:
+
+CUDA runtime
+CUDA libraries
+cuDNN
+TensorRT
+CUDA-enabled PyTorch
+CUDA-enabled ONNX Runtime
+
+CUDA is not itself a neural network framework.
+
+It is the underlying GPU-computing ecosystem.
+
+---
+
+4. MODEL DEVICE
+
+---
+
+A neural-network model has a device on which its parameters reside.
+
+Conceptually:
+
+CPU:
+
+model parameters
++
+input tensor
+
+or:
+
+GPU:
+
+model parameters
++
+input tensor
+
+For GPU inference, the model and compatible input tensors generally
+need to be placed on the GPU.
+
+A system should therefore expose diagnostics such as:
+
+model device
+input device
+GPU name
+CUDA availability
+CUDA version
+inference backend
+
+---
+
+5. CUDA AVAILABILITY VERSUS CUDA USAGE
+
+---
+
+These are different questions.
+
+Question 1:
+
+"Is CUDA available?"
+
+Question 2:
+
+"Is the model actually executing on CUDA?"
+
+A system can have an NVIDIA GPU and a CUDA installation while still
+executing the model on the CPU.
+
+Therefore diagnostics should verify actual device placement rather
+than assuming GPU use.
+
+---
+
+6. FRAME CAPTURE IS OFTEN CPU-SIDE
+
+---
+
+A screen-capture library can acquire frames into system memory.
+
+Conceptually:
+
+GPU renders game
+v
+capture mechanism
+v
+CPU-accessible image
+v
+GPU transfer
+
+The capture mechanism therefore can become a bottleneck even when
+neural inference is very fast.
+
+---
+
+7. CPU -> GPU TRANSFER
+
+---
+
+Moving an image from system memory to GPU memory costs time.
+
+Conceptually:
+
+RAM
+v
+PCIe / transfer mechanism
+v
+VRAM
+
+The cost depends on:
+
+* image resolution
+* pixel format
+* transfer mechanism
+* batching
+* memory layout
+* hardware
+* whether copies are synchronised
+
+If a pipeline performs unnecessary transfers every frame, the benefit
+of GPU inference may be reduced.
+
+---
+
+8. GPU -> CPU TRANSFER
+
+---
+
+Inference results may also need to move back to CPU memory.
+
+Conceptually:
+
+GPU tensor
+v
+CPU tensor
+v
+postprocessing
+
+Again, unnecessary synchronization can add latency.
+
+---
+
+9. SYNCHRONIZATION
+
+---
+
+GPU execution is often asynchronous from the CPU's perspective.
+
+A CPU can submit work while the GPU continues executing it.
+
+However, operations that require the CPU to know the result can
+introduce synchronization.
+
+Therefore timing GPU workloads requires care.
+
+A naive timer around a GPU operation may measure submission rather than
+actual completion unless the appropriate synchronization is performed.
+
+---
+
+10. END-TO-END FPS VERSUS INFERENCE FPS
+
+---
+
+These are different metrics.
+
+END-TO-END FPS:
+
+capture
++
+preprocessing
++
+inference
++
+postprocessing
++
+tracking
++
+application logic
+
+INFERENCE FPS:
+
+model execution only
+
+A pipeline may achieve:
+
+500 FPS inference
+
+but only:
+
+60 FPS end-to-end
+
+because everything around the model is slower.
+
+Conversely, a very fast capture pipeline may be bottlenecked by model
+inference.
+
+---
+
+11. LATENCY BREAKDOWN
+
+---
+
+A useful profiler should measure:
+
+capture time
+preprocessing time
+CPU->GPU transfer
+inference time
+postprocessing time
+tracking time
+decision time
+output time
+
+Conceptually:
+
+TOTAL LATENCY =
+capture
++
+preprocess
++
+transfer
++
+inference
++
+postprocess
++
+tracking
++
+decision
++
+output
+
+This allows the true bottleneck to be identified.
+
+---
+
+12. GPU UTILISATION
+
+---
+
+GPU utilisation measures how busy the GPU is.
+
+High utilisation does not automatically mean the system is optimal.
+
+A workload can have:
+
+high GPU utilisation
+but excessive latency
+
+or:
+
+low GPU utilisation
+because the GPU is constantly waiting for CPU work or data.
+
+Useful diagnostics therefore combine:
+
+GPU utilisation
+GPU memory usage
+GPU temperature
+inference latency
+CPU utilisation
+frame rate
+
+---
+
+13. GPU MEMORY
+
+---
+
+GPU memory is also called VRAM.
+
+A model consumes VRAM for:
+
+* weights
+* activations
+* input tensors
+* output tensors
+* runtime workspace
+* auxiliary buffers
+
+Larger models and larger input resolutions generally require more
+memory.
+
+---
+
+14. MODEL SIZE VERSUS INPUT SIZE
+
+---
+
+Compute cost is influenced by both:
+
+MODEL COMPLEXITY
+and
+INPUT RESOLUTION
+
+For example:
+
+small model + large image
+
+can sometimes be more expensive than:
+
+larger model + small image
+
+Therefore "YOLOv8n" alone does not determine the total workload.
+
+---
+
+15. BATCHING
+
+---
+
+Batching processes multiple images together.
+
+Conceptually:
+
+image 1
+image 2
+image 3
+v
+one tensor batch
+v
+GPU
+
+Batching can improve hardware utilisation.
+
+However, for highly latency-sensitive real-time systems, batching may
+introduce additional waiting because the system must collect multiple
+frames.
+
+Therefore:
+
+throughput
+and
+latency
+
+are separate optimisation objectives.
+
+---
+
+16. ASYNCHRONOUS PIPELINES
+
+---
+
+A real-time pipeline can overlap work.
+
+Conceptually:
+
+Frame A:
+capture -> inference -> postprocess
+
+while Frame B:
+capture
+
+and Frame C:
+prepares for inference.
+
+This can improve hardware utilisation.
+
+However, asynchronous pipelines introduce:
+
+* buffering
+* synchronization
+* stale data
+* queue management
+* scheduling complexity
+
+---
+
+17. FRAME STALENESS
+
+---
+
+A real-time system can become worse by processing old frames.
+
+Example:
+
+Frame 100 arrives
+v
+queued
+
+Frame 101 arrives
+v
+queued
+
+Frame 102 arrives
+v
+queued
+
+If the system is still processing Frame 100, the output may describe
+an environment that is already several frames old.
+
+Therefore real-time systems sometimes prioritise freshness over
+processing every frame.
+
+---
+
+18. FP32, FP16 AND INT8
+
+---
+
+Neural-network inference can use different numerical precision.
+
+FP32:
+32-bit floating point
+
+FP16:
+16-bit floating point
+
+INT8:
+8-bit integer representation
+
+Lower precision can reduce:
+
+memory usage
+bandwidth
+compute cost
+
+and may increase throughput on compatible hardware.
+
+However, precision reduction can affect accuracy.
+
+---
+
+19. MIXED PRECISION
+
+---
+
+A system can use different numerical precision for different
+operations.
+
+Modern deep-learning runtimes commonly support mixed-precision
+execution.
+
+The important distinction is:
+
+model architecture
+!=
+numerical precision
+!=
+runtime backend
+
+These are independent deployment choices.
+
+---
+
+20. ONNX
+
+---
+
+ONNX is a portable representation for machine-learning models.
+
+A common deployment path is:
+
+PyTorch
+v
+ONNX export
+v
+ONNX Runtime
+v
+CPU / GPU execution provider
+
+This separates training from deployment.
+
+---
+
+21. ONNX RUNTIME EXECUTION PROVIDERS
+
+---
+
+ONNX Runtime supports multiple execution backends.
+
+Conceptually:
+
+MODEL
+v
+ONNX Runtime
+v
+execution provider
+v
+CPU / CUDA / DirectML / other accelerator
+
+Therefore an ONNX model does not automatically mean GPU execution.
+
+The selected execution provider matters.
+
+---
+
+22. TENSORRT
+
+---
+
+TensorRT is NVIDIA's inference optimisation and runtime ecosystem.
+
+A conceptual deployment path is:
+
+trained model
+v
+export
+v
+TensorRT engine
+v
+optimized GPU inference
+
+TensorRT can apply graph and kernel-level optimisations and exploit
+NVIDIA hardware capabilities.
+
+---
+
+23. PYTORCH VERSUS ONNX VERSUS TENSORRT
+
+---
+
+These should be understood as different layers.
+
+PyTorch:
+training and general model execution framework
+
+ONNX:
+portable model representation
+
+ONNX Runtime:
+runtime for executing supported ONNX graphs
+
+TensorRT:
+NVIDIA-oriented optimized inference/runtime system
+
+A model can therefore move through several of these during its
+lifecycle.
+
+---
+
+24. PROFILING
+
+---
+
+A real-time ML system should be profiled instead of guessing about
+performance.
+
+Useful measurements include:
+
+* end-to-end frame time
+* inference time
+* preprocessing time
+* postprocessing time
+* CPU usage
+* GPU usage
+* VRAM usage
+* memory-transfer time
+* queue depth
+* frame age
+
+The purpose of profiling is:
+
+MEASURE
+v
+IDENTIFY BOTTLENECK
+v
+OPTIMIZE
+v
+MEASURE AGAIN
+
+---
+
+25. WHY AVERAGE FPS IS INSUFFICIENT
+
+---
+
+Average FPS hides variation.
+
+Example:
+
+Frame times:
+
+10 ms
+10 ms
+10 ms
+10 ms
+40 ms
+
+may produce a reasonable average while still introducing noticeable
+latency spikes.
+
+Therefore useful metrics include:
+
+mean
+median
+p95 latency
+p99 latency
+maximum latency
+
+Latency variance is often important in real-time systems.
+
+---
+
+26. GPU WARM-UP
+
+---
+
+The first inference calls may be slower because of:
+
+* model initialisation
+* kernel loading
+* memory allocation
+* runtime compilation
+* cache creation
+
+Therefore benchmarks should usually distinguish:
+
+cold-start latency
+
+from:
+
+steady-state latency.
+
+---
+
+27. MEMORY ALLOCATION
+
+---
+
+Repeated allocation and deallocation can introduce overhead.
+
+Real-time systems often benefit from reusing buffers where practical.
+
+The general principle is:
+
+ALLOCATE ONCE
+v
+REUSE
+v
+REDUCE ALLOCATION OVERHEAD
+
+---
+
+28. HARDWARE-SPECIFIC OPTIMISATION
+
+---
+
+The "best" runtime depends on hardware.
+
+Important variables include:
+
+GPU architecture
+VRAM
+memory bandwidth
+CPU
+PCIe configuration
+software runtime
+driver
+precision support
+
+A benchmark on one GPU does not automatically predict performance on
+another.
+
+---
+
+29. BOTTLENECK ANALYSIS
+
+---
+
+A useful diagnostic classification is:
+
+CPU-bound
+GPU-bound
+memory-bandwidth-bound
+transfer-bound
+capture-bound
+synchronization-bound
+I/O-bound
+
+For example:
+
+LOW GPU UTILISATION
++
+HIGH CPU UTILISATION
+
+may indicate CPU-side bottlenecks.
+
+HIGH GPU UTILISATION
++
+LOW CPU UTILISATION
+
+may indicate GPU-bound inference.
+
+LOW BOTH
++
+LOW FPS
+
+may indicate capture, synchronization, scheduling, or other overhead.
+
+---
+
+30. TESTING GPU USAGE
+
+---
+
+A proper benchmark should record:
+
+* whether CUDA is available
+* active model device
+* GPU name
+* inference backend
+* inference latency
+* end-to-end latency
+* FPS
+* GPU utilisation
+* VRAM usage
+
+A smoke test that only prints:
+
+"model loaded"
+
+does not establish GPU usage.
+
+---
+
+31. BENCHMARK DESIGN
+
+---
+
+A useful benchmark should contain at least:
+
+warm-up phase
+steady-state phase
+multiple measurements
+separate stage timings
+
+The benchmark should distinguish:
+
+MODEL PERFORMANCE
+from
+PIPELINE PERFORMANCE.
+
+---
+
+32. IMPORTANT DIAGNOSTIC PRINCIPLE
+
+---
+
+Never infer hardware utilisation from FPS alone.
+
+For example:
+
+15 FPS
+
+does NOT prove:
+
+"CPU inference."
+
+It could instead mean:
+
+fast GPU inference
++
+slow frame capture
++
+slow preprocessing
++
+synchronization
++
+Python overhead
+
+Performance claims should therefore be based on direct measurements.
+
+---
+
+33. THE COMPLETE PERFORMANCE MODEL
+
+---
+
+A useful conceptual model is:
+
+```
+             FRAME
+               v
+           CAPTURE
+               v
+         PREPROCESS
+               v
+         CPU -> GPU
+               v
+           INFER
+               v
+         GPU -> CPU
+               v
+         POSTPROCESS
+               v
+           TRACK
+               v
+          DECIDE
+               v
+           OUTPUT
+```
+
+Every arrow and block has latency.
+
+Optimisation should identify which one dominates.
+
+---
+
+34. FINAL PRINCIPLE
+
+A real-time ML engineer should never ask only:
+
+"How many FPS does the model achieve?"
+
+The stronger questions are:
+
+"Where is the time going?"
+
+"Where is the data?"
+
+"Which device executes each operation?"
+
+"How much synchronization occurs?"
+
+"How old is the frame being processed?"
+
+"What is the p95/p99 latency?"
+
+"Is the bottleneck compute, memory, transfer, capture, or scheduling?"
+
+That is the difference between measuring a neural network and
+engineering a real-time inference system.

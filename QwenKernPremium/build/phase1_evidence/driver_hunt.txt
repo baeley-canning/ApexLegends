@@ -1,0 +1,35 @@
+﻿== loaded drivers NOT from C:\WINDOWS (third-party) ==
+
+Name  State   PathName                                   
+----  -----   --------                                   
+CTIIO Running \??\C:\WINDOWS\system32\drivers\CtiIo64.sys
+gdrv3 Running \??\C:\WINDOWS\System32\drivers\gdrv3.sys  
+MSIO  Running \??\C:\WINDOWS\system32\drivers\MsIo64.sys 
+
+
+
+== any .sys named eaac/javelin/anticheat on disk (FAST dirs) ==
+
+Length LastWriteTime          FullName                              
+------ -------------          --------                              
+108016 9/09/2026 8:51:57 am   C:\Windows\System32\drivers\CEA.sys   
+872448 14/10/2026 12:48:15 pm C:\Windows\System32\drivers\PEAuth.sys
+118784 6/09/2024 4:03:24 pm   C:\Windows\System32\drivers\stream.sys
+
+
+
+
+Length LastWriteTime         FullName                                                                                             
+------ -------------         --------                                                                                             
+ 53248 12/08/2026 9:09:57 am C:\Windows\System32\DriverStore\FileRepository\mchgr.inf_amd64_f84b39bc9ade2555\seaddsmc.sys         
+140592 6/09/2024 4:02:22 pm  C:\Windows\System32\DriverStore\FileRepository\ufxchipidea.inf_amd64_6e8bb2ed82835828\UfxChipidea.sys
+ 70984 6/09/2024 4:02:22 pm  C:\Windows\System32\DriverStore\FileRepository\urschipidea.inf_amd64_37fb14618bce547b\urschipidea.sys
+
+
+
+
+
+
+== EAAntiCheat GameService modules readable? ==
+modules=0
+   0x

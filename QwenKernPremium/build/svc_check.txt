@@ -1,0 +1,29 @@
+﻿--- apexdrv service ---
+
+
+ImagePath    :  \??\C:\Users\New User\OneDrive\Desktop\cheatin
+               g\QwenKernPremium\build\apexdrv.sys
+Type         : 1
+Start        : 3
+ErrorControl : 1
+
+
+
+
+--- ExeDirectory ---
+
+std::string ExeDirectory() {
+char modulePath[MAX_PATH] = { 0 };
+if (GetModuleFileNameA(nullptr, modulePath, MAX_PATH) == 0) return std::string();
+
+std::string path(modulePath);
+const size_t slash = path.find_last_of("\\/");
+return (slash == std::string::npos) ? std::string() : path.substr(0, slash + 1);
+}
+
+bool FileExists(const std::string& path) {
+const DWORD attributes = GetFileAttributesA(path.c_str());
+return attributes != INVALID_FILE_ATTRIBUTES &&
+(attributes & FILE_ATTRIBUTE_DIRECTORY) == 0;
+}
+

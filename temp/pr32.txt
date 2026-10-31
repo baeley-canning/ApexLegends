@@ -1,0 +1,45 @@
+﻿============================================================================================
+## dm32: static datamap reconstruction
+============================================================================================
+  image       : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+  sections    : .text 0x2c951ac, .rdata 0x680b60, .data 0xb40ab8c, .pdata 0xe32bc, _RDATA 0xa24, .fptable 0x100, .rsrc 0x35f8, .reloc 0x571b0, .ooa 0x712
+  strings     : 46957
+  functions   : 77541 (.pdata)
+  DT_ leas    : 179 in 179 functions
+sentinel literal at 0x143032c38
+
+=== DT_NearbyPushers  init=0x141934270-0x1419344f2  117 insn  52 stores
+   lea 0x14193432f name=DT_NearbyPushers  hint=0x143087110
+   call 0x1419342fb  rcx=('imm', 32) rdx=None r8=None r9=None
+   call 0x141934316  rcx=('sym', 5395137275, 0) rdx=('imm', 8) r8=('sym', 5395137275, 8) r9=None
+   call 0x14193438f  rcx=('va', 5610668512) rdx=None r8=None r9=None
+   call 0x1419344dc  rcx=None rdx=('va', 5419593856) r8=('imm', 18256) r9=('imm', 28)
+   call 0x1419344e8  rcx=('va', 5610668512) rdx=None r8=None r9=None
+   1 sentinel slots in this initialiser
+   sentinel 0x14e6b7590  chain:
+      +1 0x14e6b75f8  t=0x0000 off=0x00000 sz=0x00 (null)
+      +2 0x14e6b7660  t=0x0000 off=0x00000 sz=0x00 (null)
+      +3 0x14e6b76c8  t=0x0000 off=0x00000 sz=0x00 (null)
+      +4 0x14e6b7730  t=0x0000 off=0x00000 sz=0x00 (null)
+      +5 0x14e6b7798  t=0x0000 off=0x00000 sz=0x00 (null)
+      +6 0x14e6b7800  t=0x0000 off=0x00000 sz=0x00 (null)
+      +7 0x14e6b7868  t=0x0000 off=0x00000 sz=0x00 (null)
+      +8 0x14e6b78d0  t=0x0000 off=0x00000 sz=0x00 (null)
+
+=== DT_MaterialHarvester  init=0x14195d8d0-0x14195dc06  144 insn  70 stores
+   lea 0x14195d8fa name=DT_MaterialHarvester  hint=0x1430c15c0
+   call 0x14195d967  rcx=('imm', 32) rdx=None r8=None r9=None
+   call 0x14195d982  rcx=('sym', 5395306855, 0) rdx=('imm', 16) r8=('sym', 5395306855, 8) r9=None
+   call 0x14195da19  rcx=('va', 5610670328) rdx=None r8=None r9=None
+   call 0x14195dbf0  rcx=None rdx=('va', 5419832784) r8=('imm', 5712) r9=('imm', 8)
+   call 0x14195dbfc  rcx=('va', 5610670328) rdx=None r8=None r9=None
+   1 sentinel slots in this initialiser
+   sentinel 0x14e6cb680  chain:
+      +1 0x14e6cb6e8  t=0x000a off=0x00000 sz=0x00 (null)
+      +2 0x14e6cb750  t=0x0000 off=0x00000 sz=0x00 (null)
+      +3 0x14e6cb7b8  t=0x0000 off=0x00000 sz=0x00 (null)
+      +4 0x14e6cb820  t=0x0000 off=0x00000 sz=0x00 (null)
+      +5 0x14e6cb888  t=0x0000 off=0x00000 sz=0x00 (null)
+      +6 0x14e6cb8f0  t=0x0000 off=0x00000 sz=0x00 (null)
+      +7 0x14e6cb958  t=0x0000 off=0x00000 sz=0x00 (null)
+      +8 0x14e6cb9c0  t=0x0000 off=0x00000 sz=0x00 (null)

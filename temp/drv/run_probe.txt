@@ -1,0 +1,9 @@
+﻿=== dos devices (filtered)
+  GIOV3                -> \Device\GIOV3
+=== CreateFileW
+  \\.\GIOV3        FAIL err=5 (Access is denied.)
+  \\.\gdrv3        FAIL err=2 (The system cannot find the file specified.)
+  \\.\giov3        FAIL err=5 (Access is denied.)
+  \\.\GIOV3_0      FAIL err=2 (The system cannot find the file specified.)
+  \\.\GBTEC        FAIL err=2 (The system cannot find the file specified.)
+no device opened -- stopping

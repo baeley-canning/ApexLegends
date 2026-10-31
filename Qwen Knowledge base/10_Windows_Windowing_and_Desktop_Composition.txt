@@ -1,0 +1,211 @@
+KNOWLEDGE BASE: WINDOWS WINDOWING AND DESKTOP COMPOSITION
+
+Purpose:
+Educational reference for the Windows windowing and composition model:
+how windows are created, arranged, drawn, and presented on screen, and
+why that layer determines what capture, overlay, input, and anti-cheat
+software can see and do.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive and engineering perspective.
+
+---
+
+1. WHY THIS LAYER MATTERS
+The capture and overlay reference assumes a world of windows that can be
+found, measured, and drawn over.
+That world is produced by the window manager and the compositor.
+Almost every practical question in that domain is answered here, before
+any capture or rendering code runs:
+* How large is the target on screen?
+* Which window receives a keypress?
+* Why did my overlay land behind or ahead of the game?
+* Why do coordinates and pixels disagree?
+This document supplies that foundation, so that later documents can take
+it for granted.
+
+---
+
+2. WINDOWS ARE OBJECTS WITH HANDLES
+To the window manager, a window is a managed object, referenced from
+user mode by a handle (HWND).
+The handle is not the window; it is a token that names it.
+Two programs holding the same value are referring to the same window,
+which is why window handles are how one process reasons about another
+process's on-screen UI.
+Handles can become stale: a window may be destroyed and a new one created
+while a program still holds an old value.
+Reusing a stale handle, or confusing a window handle with a process, is
+a common source of subtle bugs.
+
+---
+
+3. WHAT A WINDOW IS MADE OF
+Three ideas define a window:
+* a window class, which registers behaviour and default handling.
+* a window procedure (the WndProc), which receives messages and decides
+  how the window responds.
+* a message queue, which serialises the messages delivered to the
+  window's thread.
+A window does not draw itself on demand; it responds to messages such as
+"paint yourself", "you were resized", or "a key was pressed".
+This makes later behaviour predictable: a window that stops pumping
+messages stops updating, even if the compositor keeps showing its last
+image.
+
+---
+
+4. THE WINDOW HIERARCHY, PARENT AND OWNER
+Windows form a tree.
+The desktop is the root; top-level windows sit under it; child windows
+sit under their parent and are clipped to it and moved with it.
+Separately from the parent-child relationship, a window may have an
+owner: an owner governs z-order and lifetime grouping but does not clip
+the windows it owns.
+Confusing parent with owner explains many overlay mistakes, because the
+two relationships behave differently when the target moves, minimises,
+or is destroyed.
+
+---
+
+5. STYLES AND EXTENDED STYLES
+A window's behaviour is set by style flags at creation.
+Extended styles that matter repeatedly for overlay work include:
+* WS_EX_LAYERED, which lets a window be drawn with per-pixel alpha and a
+  separate overall opacity - how a see-through overlay is built.
+* WS_EX_TRANSPARENT, which lets mouse input pass through to the window
+  underneath - how an overlay avoids stealing clicks.
+* WS_EX_NOACTIVATE, which prevents the overlay from taking focus.
+These flags are how a non-disruptive overlay is constructed without
+touching the target program at all.
+
+---
+
+6. THE DESKTOP WINDOW MANAGER AND COMPOSITION
+Individually, windows no longer draw straight to the screen.
+Instead each window (or each application's GPU output) renders into its
+own surface, and a compositor - the Desktop Window Manager - combines
+those surfaces, applies effects and transparency, and produces the final
+frame that is scanned out.
+The consequence shapes everything downstream: what appears on screen is
+the compositor's output, not any one window's raw drawing.
+Capture reads the composited result, and protection works by asking the
+compositor to withhold a surface from that result.
+
+---
+
+7. COORDINATE SYSTEMS: WINDOW, CLIENT, AND SCREEN
+A single window exists in at least three coordinate spaces:
+* screen coordinates: position on the virtual desktop.
+* window-rectangle coordinates: the window including its frame.
+* client-area coordinates: the drawable interior, excluding borders and
+  title bar.
+GetWindowRect reports the window rectangle; GetClientRect reports the
+client size.
+Mixing these spaces is the classic cause of an overlay offset by the
+border width or scaled by the wrong factor.
+
+---
+
+8. DPI AWARENESS
+Modern displays vary in pixel density, and the operating system scales UI
+to keep physical size roughly constant.
+A process declares how it wants to relate to that scaling (its DPI
+awareness):
+* DPI-unaware: the system scales the process's output, blurring it.
+* system-aware: one scale for the whole session.
+* per-monitor-aware (for example v2): re-scales as the window moves
+  between monitors of different densities.
+Only a per-monitor-aware process can make window, screen, and captured
+pixel coordinates agree on a mixed-DPI setup; a mismatch here produces an
+overlay of the wrong size even when its logic is correct.
+
+---
+
+9. Z-ORDER, TOPMOST, AND HOW OVERLAYS FLOAT
+Windows are drawn in a stacking order (z-order).
+A topmost window appears above non-topmost ones, which is how an overlay
+stays visible over a fullscreen game window.
+Two points matter:
+* topmost is not absolute; competing topmost windows order among
+  themselves, and exclusive-fullscreen presentations can bypass normal
+  stacking entirely.
+* an overlay can be both topmost and transparent-to-input, so it is
+  visible without intercepting clicks.
+These two properties together are what let an overlay draw on top
+without taking over the session.
+
+---
+
+10. FULLSCREEN: EXCLUSIVE VERSUS BORDERLESS
+Games present fullscreen in one of two broad ways:
+* exclusive fullscreen, where the application takes direct control of the
+  display output.
+* borderless windowed fullscreen, where it is just a borderless window
+  sized to the display and left to the compositor.
+The difference matters for overlays and capture: a compositor-managed
+borderless window behaves like any other window and can be overlaid and
+captured normally, while exclusive fullscreen can bypass the desktop
+stack, which is why overlays sometimes vanish and captures sometimes come
+back black in that mode.
+
+---
+
+11. ENUMERATING AND IDENTIFYING WINDOWS
+To act on another program's window, a process must first find it.
+The platform offers enumeration by walking the window tree and filtering
+by class, title, process, or visibility.
+Identity is then confirmed by the owning process id and other properties,
+because titles can change and several windows can look alike.
+Robust code re-resolves the window after it changes rather than caching a
+handle forever, since windows are created and destroyed during play.
+
+---
+
+12. CHANGE NOTIFICATION: HOOKS VERSUS POLLING
+A program that follows a window has two strategies:
+* polling: query geometry on a timer and react to differences.
+* event hooks: subscribe to move, resize, and show/hide events.
+Polling is simple and robust but can lag the change and wastes work;
+hooks are timely but add complexity and lifetime concerns.
+Many practical systems use hooks for coarse changes and polling as a
+safety net.
+
+---
+
+13. COMMON FAILURE MODES
+Recurring windowing mistakes and their causes:
+* overlay offset or wrong size: client vs window coordinates, or a DPI
+  mismatch.
+* overlay steals clicks or focus: missing transparent or no-activate
+  styles.
+* overlay invisible over the game: a non-topmost overlay, or exclusive
+  fullscreen bypassing the compositor.
+* stale geometry after a move: a cached handle or rectangle.
+Each maps to a specific property of this layer rather than to a bug in
+the overlay's own drawing.
+
+---
+
+14. SUMMARY
+The Windows windowing layer decides what can be found, measured, drawn
+over, and captured.
+Windows are handles to objects; they render through a compositor; they
+live in several coordinate spaces and a DPI scale; and they stack by
+z-order with style flags governing transparency, input pass-through, and
+focus.
+Almost every capture, overlay, and input-routing question in the other
+references is really a question about this layer, which is why it comes
+first in the series.
+
+CORE PRINCIPLE:
+A window is not its pixels. It is a handle to a managed object that
+renders through a compositor, exists in three coordinate spaces at once,
+and takes part in a stacking order and a DPI scale. Nearly every
+"capture" or "overlay" problem is one of those four facts being ignored:
+the wrong space, the wrong scale, the wrong z-order, or a stale handle.
+Reason in the window manager's terms first, and the rendering problems
+downstream become predictable.
+
+---

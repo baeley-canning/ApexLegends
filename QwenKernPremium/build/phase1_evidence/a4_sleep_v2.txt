@@ -1,0 +1,40 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] Target PID 19792, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+[*] Injection strategy: A4 Thread Hijack (HIJACK)
+[A4]       thread 24520 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 21312 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 25940 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 18564 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 28512 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 9208 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 26272 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 22088 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 28448 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 18940 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 23716 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 29304 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 11088 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 28028 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 25584 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 29644 (RIP 0x7FFD48741E74): stub-ran=no module=no
+[A4]       thread 24640 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 16896 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 3388 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 12936 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 19808 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 26648 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 29488 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 28912 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 27984 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 8532 (RIP 0x7FFD45AAAF04): stub-ran=no module=no
+[A4]       thread 24460 (RIP 0x7FFD487423D4): stub-ran=no module=no
+---------------------------------------------------------------
+[-] Injection FAILED via A4 Thread Hijack (HIJACK)
+    reason: hijacked 27 thread(s), stub ran on 0, apexcheat.dll never loaded (marker 0x00000000)
+---------------------------------------------------------------

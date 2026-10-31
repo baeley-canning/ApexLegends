@@ -1,0 +1,53 @@
+﻿python.exe : C:\Users\New 
+User\OneDrive\Desktop\cheating\temp\drv\open_probe.py:1: 
+SyntaxWarning: invalid escape sequence '\D'
+At line:1 char:60
++ ... \temp\drv'; & 'C:\Users\New 
+User\OneDrive\Desktop\cheating\aiaimbot\. ...
++                 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\New U 
+   s...e sequence '\D':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  """open_probe.py -- figure out how gdrv3's \Device\GIOV3 
+can be opened.
+=== identity: elevated=no integrity_rid=0x2000 (0x2000=system 0x3000=medium 0x4000=high)
+=== \\.\GIOV3 access matrix
+  access=0           share=none flags=normal     -> fail (5)
+  access=0           share=none flags=overlapped -> fail (5)
+  access=0           share=all  flags=normal     -> fail (5)
+  access=0           share=all  flags=overlapped -> fail (5)
+  access=0           share=rw   flags=normal     -> fail (5)
+  access=0           share=rw   flags=overlapped -> fail (5)
+  access=SYNCHRONIZE share=none flags=normal     -> fail (5)
+  access=SYNCHRONIZE share=none flags=overlapped -> fail (5)
+  access=SYNCHRONIZE share=all  flags=normal     -> fail (5)
+  access=SYNCHRONIZE share=all  flags=overlapped -> fail (5)
+  access=SYNCHRONIZE share=rw   flags=normal     -> fail (5)
+  access=SYNCHRONIZE share=rw   flags=overlapped -> fail (5)
+  access=READ        share=none flags=normal     -> fail (5)
+  access=READ        share=none flags=overlapped -> fail (5)
+  access=READ        share=all  flags=normal     -> fail (5)
+  access=READ        share=all  flags=overlapped -> fail (5)
+  access=READ        share=rw   flags=normal     -> fail (5)
+  access=READ        share=rw   flags=overlapped -> fail (5)
+  access=WRITE       share=none flags=normal     -> fail (5)
+  access=WRITE       share=none flags=overlapped -> fail (5)
+  access=WRITE       share=all  flags=normal     -> fail (5)
+  access=WRITE       share=all  flags=overlapped -> fail (5)
+  access=WRITE       share=rw   flags=normal     -> fail (5)
+  access=WRITE       share=rw   flags=overlapped -> fail (5)
+  access=READ|WRITE  share=none flags=normal     -> fail (5)
+  access=READ|WRITE  share=none flags=overlapped -> fail (5)
+  access=READ|WRITE  share=all  flags=normal     -> fail (5)
+  access=READ|WRITE  share=all  flags=overlapped -> fail (5)
+  access=READ|WRITE  share=rw   flags=normal     -> fail (5)
+  access=READ|WRITE  share=rw   flags=overlapped -> fail (5)
+  access=R|W|SYNC    share=none flags=normal     -> fail (5)
+  access=R|W|SYNC    share=none flags=overlapped -> fail (5)
+  access=R|W|SYNC    share=all  flags=normal     -> fail (5)
+  access=R|W|SYNC    share=all  flags=overlapped -> fail (5)
+  access=R|W|SYNC    share=rw   flags=normal     -> fail (5)
+  access=R|W|SYNC    share=rw   flags=overlapped -> fail (5)
+=== first working combo: none

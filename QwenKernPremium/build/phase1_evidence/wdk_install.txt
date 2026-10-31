@@ -1,0 +1,15 @@
+﻿== WDK install attempt 2026-10-26 17:20:08 ==
+elevated: True
+Found Windows Driver Kit - Windows 10.0.26100.6584 [Microsoft.WindowsWDK.10.0.26100] Version 10.1.26100.6584
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://download.microsoft.com/download/41fb59c2-1723-45f9-a270-96b73ad58233/KIT_BUNDLE_WDK_MEDIACREATION/wdksetup.exe
+Successfully verified installer hash
+Starting package install...
+Successfully installed
+winget EXIT=0
+True  C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km
+True  C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64
+True  C:\Program Files (x86)\Windows Kits\10\build
+False  C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.Default.props
+10.0.26100.0

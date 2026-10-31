@@ -1,0 +1,189 @@
+================================================================================
+EA JAVELIN ANTI-CHEAT — REVERSE ENGINEERING KNOWLEDGE BASE
+================================================================================
+Last Updated: 2026-10-25
+Sources: unknowncheats.me, drof's labs, GitHub eac-kernel-analysis, EA official
+
+================================================================================
+1. OVERVIEW & ARCHITECTURE
+================================================================================
+
+EA Javelin (internal name: EAAC) is EA's in-house kernel-mode anti-cheat system.
+It first shipped with FIFA 23 on PC in September 2022 as "EAAntiCheat" and was 
+renamed to "EA Javelin Anti-Cheat" in 2025.
+
+Apex Legends transitioned from EAC → Javelin on September 29, 2026.
+
+KEY ARCHITECTURAL DIFFERENCES FROM EAC:
+- Game-scoped (NOT boot-resident): Loads with protected game, uninstalls when 
+  no protected games are running. Smaller attack surface than always-on drivers.
+- Uses Griffin VM virtualization engine for code obfuscation
+- AI-assisted detection pipeline with behavioral analysis
+- Self-uninstalling kernel driver reduces persistent footprint
+
+================================================================================
+2. LOADING CHAIN (CRITICAL FOR INJECTION TIMING)
+================================================================================
+
+The complete loading chain:
+
+[ Installer ] ──> drops preloader_l / preloader_s
+
+[ Launcher exe ] ──> loads preloader_l
+  [ preloader_l ] ──> hits UD2 trap (0xB030) ──> manual maps at 0x2390
+    [ Launcher DLL ] ──> loads cfg payload
+      [ packer30 @ 0x373D1C ] ──> 19 helpers ──> CALL 0x413BBD ──> E111 exit
+        │ fail ──> [rax+0x68] (preloader error handler 0x35B0) shows E111000D
+        │ success ──> game + Service/Driver attestation
+
+[ Driver (eadriver.sys) ] ──> Griffin .grfn + CR3 + hypercall chain
+
+KEY INSIGHT: The driver is the foundation. Everything before it just safely 
+delivers it into memory. Injection timing matters — early startup window has
+less aggressive scanning.
+
+================================================================================
+3. GRIFFIN VM VIRTUALIZATION ENGINE
+================================================================================
+
+Griffin is EA's proprietary virtualization tool that converts native code to 
+virtual machine bytecode. This is Javelin's primary obfuscation mechanism.
+
+KEY FINDINGS:
+- Two stubs obtained (user-mode + kernel-mode) from a 20 MB mapped module
+- "When you dump" is critical — Griffin only decrypts what it needs to run, 
+  then re-encrypts immediately. Wrong timing = garbage data.
+- .grfn20 contains 1,391 variable-length entries in stub.dll (kernel)
+- .grfn20 contains 5,114 function (start, end, meta-pointer) triplets in user-mode
+- Each entry separated by marker: 78 5c cc 00 88 5c cc 00
+- Static entropy of encrypted sections ≈ 8.0 (highly compressed/encrypted)
+- Decrypted section entropy ≈ 3.25 (normal executable)
+
+RETURN SHUTTLE PATTERN (449 occurrences):
+  pop rbp/rdi/rsi/r12..r15; jmp reg
+This restores native registers from VM context, then jumps to caller's return addr.
+
+DECRYPTION INDICATORS:
+| Feature                    | Encrypted | Decrypted |
+|----------------------------|-----------|-----------|
+| r11 shuttle 4c 8b 9c 24   | 0         | 2,503     |
+| pushfq; lea rsp,[rsp-0x210]| 0        | 4         |
+
+================================================================================
+4. STRING ENCRYPTION (SIMPLE BUT EFFECTIVE)
+================================================================================
+
+Not complex — single-byte rolling XOR with one key per string. Solved by 
+brute-forcing ~1,000 keys to recover strings including:
+
+Recovered strings:
+- "Security Violation"
+- "skyfall" (driver PDB path reference)
+- "Pack" / "Javelin"
+- "DiscordOverlay"
+- "Virtual Machine"
+- "root\\cimv2" (WMI namespace check)
+- "\\drivers\\etc\\hosts" (host file modification check)
+- "Wine" / "Proton" (Linux compatibility detection)
+- "Conflicting software"
+
+SERVICE ENDPOINTS DISCOVERED:
+- dev-skyfall.dev.ac.ea.com:443
+- staging-skyfall.dev.ac.ea.com:443
+- eaanticheat.ac.ea.com:443
+
+SERVICES:
+- EAAntiCheatService
+- "Failed retrieving service path."
+- "Game service executable missing."
+
+================================================================================
+5. KERNEL DRIVER DETAILS (eadriver.sys)
+================================================================================
+
+Registration: minifilter at altitude 363250
+PDB Path: C:\dev\gitlab-runner\builds\yWayJBsk\0\anticheat\skyfall\Build\Retail\EAAntiCheat.Driver.pdb
+
+KEY FINDINGS:
+- Uses VMCALL and VMMCALL for hypercall communication with hypervisor
+- CR3 manipulation for physical memory access
+- Has an "unchecked resolver" at RVA 0x4C8F80 (modulus 9299) — potential weakness
+- Resolver at RVA 0x3CFA00 in analyzed build
+
+The driver maintains the core detection chain: Griffin VM execution, CR3-based 
+physical memory reads, and hypercall communication with user-mode components.
+
+================================================================================
+6. E111 ERROR CODE GENERATOR
+================================================================================
+
+E111 is Javelin's error code exit mechanism. The generator uses a branchless 
+MBA (Mixed Boolean-Arithmetic) expression:
+
+Formula: (R9D × 0x4B2B1C8F) mod 2^32 = E111000D
+Example: (0x168F9FA3 × 0x4B2B1C8F) mod 2^32 = 0xE111000D
+
+The full generator is a branchless MBA consuming three stack inputs (A, B, Y) 
+and constants K1–K5. The U/V/W values are expanded into NAND combinations.
+
+================================================================================
+7. ANTI-VIRTUALIZATION / ANTI-DEBUG TECHNIQUES
+================================================================================
+
+From devirtualized code analysis:
+
+1. SEQUENTIAL TIMING CHECK (block 0x111613c):
+   - Opaque predicate guard
+   - rdtscp to read TSC, stores high dword
+   - Detects execution speed anomalies from VMs/debuggers
+
+2. CPUID QUERY (block 0x1183bd1):
+   - Queries hypervisor and CPU feature flags
+   - Deliberately saves/restores RCX and RDX around the call
+   - Detects common hypervisor signatures
+
+3. PRIVILEGED I/O PORT DETECTION (block 0x11ab78d):
+   - out 0x5D, al / in eax, dx
+   - Direct user-mode I/O port access — classic anti-analysis technique
+   - Some VMs don't emulate these ports correctly
+
+================================================================================
+8. ARM64 / CHPEv2 SUPPORT
+================================================================================
+
+Both preloader variants are CHPEv2 mixed binaries:
+- Machine = 0x8664 (CHPE metadata)
+- CHPEMetadataPointer is non-zero (version 2)
+- Code map covers both ISAs simultaneously
+
+ISA RANGES:
+- ARM64: 0x1000–0x184C
+- x64: 0x2000–0x3B76
+
+The entry point bytes at 0xB010/0xB030 decode as UD2 on x64 and UDF on ARM64, 
+so the same byte sequence faults on both CPUs — making exception handling CPU-agnostic.
+
+UNWIND INFO:
+- x64 handler at 0x750C (handler 0x2040)
+- ARM64 handler at 0x82C4 (handler 0x1060)
+
+================================================================================
+9. BUILD SNAPSHOT HASHES (for verification)
+================================================================================
+
+Javelin produces different builds per patch. Author pinned SHA-256 hashes:
+
+| File                              | Size              | SHA-256                                          |
+|-----------------------------------|-------------------|--------------------------------------------------|
+| preloader_l.dll                   | 46,840 bytes      | 0f5ff4ef...172                                    |
+| EAAntiCheat.GameServiceLauncher.dll | —               | 195f4933...218                                     |
+| EAAntiCheat.GameServiceLauncher.exe | —              | 13f0c760...d54                                     |
+| eadriver.sys                      | 46,807,424 bytes  | 4a19a78e...098                                     |
+| dump_eaanticheat.sys (public)     | —                 | f6e1c531...177                                     |
+
+NOTE: Byte-level differences cause RVA drift. Shapes should remain similar across builds.
+
+================================================================================
+END OF JAVELIN REVERSE ENGINEERING KNOWLEDGE BASE
+================================================================================
+

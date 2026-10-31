@@ -1,0 +1,44 @@
+; gdrv3.sys  imagebase=0x140000000  refs -> w 'GIOV3' @ rva 0xb670
+; ---- xref @ 0xa4ba ----
+  0000a486  488d6c24a0       lea     rbp, [rsp - 0x60]
+  0000a48b  4881ec60010000   sub     rsp, 0x160
+  0000a492  488b05b7cbffff   mov     rax, qword ptr [rip - 0x3449]
+  0000a499  4833c4           xor     rax, rsp
+  0000a49c  48894558         mov     qword ptr [rbp + 0x58], rax
+  0000a4a0  8b05d2110000     mov     eax, dword ptr [rip + 0x11d2]
+  0000a4a6  488bf1           mov     rsi, rcx
+  0000a4a9  0f1005b0110000   movups  xmm0, xmmword ptr [rip + 0x11b0]
+  0000a4b0  4533c0           xor     r8d, r8d
+  0000a4b3  488b0dfed8ffff   mov     rcx, qword ptr [rip - 0x2702]
+> 0000a4ba  f20f100dae110000 movsd   xmm1, qword ptr [rip + 0x11ae]
+  0000a4c2  bf22000000       mov     edi, 0x22
+  0000a4c7  8364243800       and     dword ptr [rsp + 0x38], 0
+  0000a4cc  894528           mov     dword ptr [rbp + 0x28], eax
+  0000a4cf  488d4510         lea     rax, [rbp + 0x10]
+  0000a4d3  4889442450       mov     qword ptr [rsp + 0x50], rax
+  0000a4d8  8b05c2110000     mov     eax, dword ptr [rip + 0x11c2]
+  0000a4de  894550           mov     dword ptr [rbp + 0x50], eax
+  0000a4e1  488d4530         lea     rax, [rbp + 0x30]
+  0000a4e5  0f114510         movups  xmmword ptr [rbp + 0x10], xmm0
+  0000a4e9  4889442460       mov     qword ptr [rsp + 0x60], rax
+  0000a4ee  0f10058b110000   movups  xmm0, xmmword ptr [rip + 0x118b]
+  0000a4f5  488b0524ceffff   mov     rax, qword ptr [rip - 0x31dc]
+  0000a4fc  f20f114d20       movsd   qword ptr [rbp + 0x20], xmm1
+  0000a501  0f100d88110000   movups  xmm1, xmmword ptr [rip + 0x1188]
+  0000a508  4889542430       mov     qword ptr [rsp + 0x30], rdx
+  0000a50d  c74424481a001c00 mov     dword ptr [rsp + 0x48], 0x1c001a
+  0000a515  0f114530         movups  xmmword ptr [rbp + 0x30], xmm0
+  0000a519  c744245822002400 mov     dword ptr [rsp + 0x58], 0x240022
+  0000a521  0f114d40         movups  xmmword ptr [rbp + 0x40], xmm1
+  0000a525  ff15bdbbffff     call    qword ptr [rip - 0x4443]
+  0000a52b  488b05e6cdffff   mov     rax, qword ptr [rip - 0x321a]
+  0000a532  448d77e0         lea     r14d, [rdi - 0x20]
+  0000a536  488b542430       mov     rdx, qword ptr [rsp + 0x30]
+  0000a53b  458bc6           mov     r8d, r14d
+  0000a53e  488b0d73d8ffff   mov     rcx, qword ptr [rip - 0x278d]
+  0000a545  ff159dbbffff     call    qword ptr [rip - 0x4463]
+  0000a54b  488b05f6cdffff   mov     rax, qword ptr [rip - 0x320a]
+  0000a552  4c8d442448       lea     r8, [rsp + 0x48]
+  0000a557  488b542430       mov     rdx, qword ptr [rsp + 0x30]
+  0000a55c  488b0d55d8ffff   mov     rcx, qword ptr [rip - 0x27ab]
+

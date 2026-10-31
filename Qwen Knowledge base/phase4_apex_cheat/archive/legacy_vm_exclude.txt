@@ -1,0 +1,26 @@
+# VM Exclude Patterns for Apex Copy
+# These files/directories are excluded when copying Apex to VM
+
+# Installer and setup files (not needed in VM)
+__Installer
+Support
+
+# Log files (can be regenerated)
+*.log
+logs
+
+# Cache directories
+cache
+Cache
+temp
+Temp
+
+# User-specific configs (will be recreated on VM)
+cfg/client/st_data.bin
+
+# EA AntiCheat installer components (VM will have its own setup)
+EAAntiCheat.Installer.exe
+
+# Documentation and READMEs
+*.md
+README*

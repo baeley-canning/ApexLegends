@@ -1,0 +1,1678 @@
+KNOWLEDGE BASE: EXTERNAL AI / COMPUTER-VISION AIMING SYSTEMS
+
+Purpose:
+Educational technical reference for understanding computer vision,
+object detection, tracking, state estimation, prediction, control,
+inference optimisation, and the architecture of external visual
+automation systems.
+
+This document is reference knowledge. It should be treated as
+technical material to reason about, not as unquestionable truth.
+
+## 1. Core Concept
+
+An external computer-vision aiming system is best understood as a **real-time perception, state-estimation, prediction, decision, and control system**.
+
+It should not be reduced to:
+
+> "YOLO + mouse movement."
+
+A more accurate abstraction is:
+
+```text
+Rendered visual observation
+        v
+Frame acquisition
+        v
+Preprocessing
+        v
+Visual perception
+        v
+Object representation
+        v
+Tracking
+        v
+State estimation
+        v
+Prediction
+        v
+Target decision
+        v
+Control
+        v
+Output
+        v
+New observation
+        <-
+```
+
+The system forms a feedback loop.
+
+The neural network is normally only one component of this larger pipeline.
+
+---
+
+# 2. Important Terminology
+
+## External
+
+"External" describes **where the software operates**.
+
+An external system operates outside the target application's process.
+
+External does NOT automatically mean visual.
+
+Possible combinations include:
+
+```text
+external + memory-based
+external + computer-vision-based
+external + hardware-assisted
+```
+
+## Internal
+
+An internal system operates within, or directly alongside, the target application's process.
+
+## Computer Vision
+
+Computer vision is the extraction of useful information from images or video.
+
+## Pixelbot
+
+A pixelbot is a system whose primary information source is rendered pixels or frames rather than direct game-state information.
+
+## AI Aimbot
+
+"AI aimbot" is a broad informal term.
+
+It may refer to any aiming system using machine learning, especially computer-vision models.
+
+It does not necessarily mean a large language model or multimodal LLM.
+
+## Memory-Based
+
+A memory-based system obtains information from application process memory or other internal state.
+
+This is fundamentally different from visual perception.
+
+---
+
+# 3. The Most Important Distinction
+
+Never treat these as synonyms:
+
+```text
+external
+internal
+memory-based
+computer-vision-based
+neural-network-based
+```
+
+They describe different properties.
+
+For example:
+
+```text
+System A:
+external + memory-based
+```
+
+could obtain structured information directly from application state.
+
+Whereas:
+
+```text
+System B:
+external + computer vision + neural network
+```
+
+could obtain information only from rendered imagery.
+
+Both are external, but their information sources are completely different.
+
+---
+
+# 4. Visual Perception
+
+The perception system converts pixels into structured observations.
+
+Conceptually:
+
+```text
+Image
+  v
+Visual detector
+  v
+Detected objects
+```
+
+A detection may conceptually contain:
+
+```text
+class
+confidence
+bounding region
+position
+size
+```
+
+For example:
+
+```text
+Detection {
+    class: "person"
+    confidence: 0.94
+    bounding_box: (...)
+}
+```
+
+The exact representation depends on the model.
+
+---
+
+# 5. Object Detection
+
+An object detector answers:
+
+> "What objects are visible, and where are they?"
+
+Popular real-time detector families include:
+
+* YOLO
+* RT-DETR
+* other CNN-based detectors
+* vision Transformer detectors
+* specialised custom architectures
+
+YOLO means **You Only Look Once**.
+
+YOLO has become widely used for real-time detection because of its speed, mature tooling, export ecosystem, and many model sizes.
+
+RT-DETR means **Real-Time Detection Transformer**.
+
+It uses Transformer-based detection architecture and was designed specifically to make Transformer detection practical for real-time use.
+
+---
+
+# 6. Why a Small Specialist Model Can Beat a Large General Model
+
+A general multimodal model is designed to understand images semantically.
+
+A real-time detector is designed to answer:
+
+```text
+image -> object locations
+```
+
+A multimodal language model might describe:
+
+> "There appears to be a character near the centre-right."
+
+A specialised detector might produce:
+
+```text
+class = player
+confidence = 0.97
+bounding_box = (...)
+```
+
+The second output is much more useful for a high-frequency spatial control system.
+
+The model does not need broad reasoning.
+
+It needs:
+
+* low latency
+* consistent localisation
+* predictable inference
+* stable output
+* high frame rate
+
+Therefore a relatively small specialised detector can be more useful than a much larger general-purpose vision-language model.
+
+---
+
+# 7. Game-Specific Detection
+
+A generic object detector may be trained to recognise:
+
+```text
+person
+car
+chair
+bicycle
+```
+
+A specialised visual model can instead be trained for a specific visual environment.
+
+Potential domain-specific information includes:
+
+* character appearance
+* silhouettes
+* animations
+* skins
+* lighting
+* visual effects
+* camera perspective
+* map environments
+
+This is a form of **domain adaptation / domain specialisation**.
+
+The model is not necessarily "smarter."
+
+It is simply solving a narrower problem.
+
+---
+
+# 8. Bounding Boxes
+
+A bounding box provides coarse spatial information.
+
+Conceptually:
+
+```text
++--------------+
+|              |
+|    object    |
+|              |
++--------------+
+```
+
+A system can derive:
+
+* centre
+* width
+* height
+* corners
+* sub-regions
+
+A bounding box is an intermediate representation, not necessarily the final target representation.
+
+---
+
+# 9. Alternative Visual Representations
+
+A vision system can use more detailed representations.
+
+## Bounding Box
+
+```text
+object -> rectangle
+```
+
+## Segmentation
+
+```text
+object -> pixels belonging to object
+```
+
+## Pose Estimation
+
+```text
+object -> anatomical/keypoint representation
+```
+
+For example, pose estimation may represent:
+
+```text
+head
+shoulders
+elbows
+wrists
+hips
+knees
+ankles
+```
+
+These are very different from simply estimating the centre of a bounding box.
+
+Therefore:
+
+> "head targeting"
+
+and
+
+> "moving to an estimated point near the upper part of a bounding box"
+
+are not technically equivalent.
+
+---
+
+# 10. Object Tracking
+
+Detection considers individual frames.
+
+Tracking introduces temporal identity.
+
+Conceptually:
+
+```text
+Frame 1 -> Target A
+Frame 2 -> Target A
+Frame 3 -> Target A
+Frame 4 -> Target A
+```
+
+The tracker attempts to determine:
+
+> "Is this the same object I saw previously?"
+
+Common tracking approaches include:
+
+* ByteTrack
+* BoT-SORT
+* OC-SORT
+* Kalman-filter-based tracking
+* appearance-assisted tracking
+
+Tracking transforms isolated detections into trajectories.
+
+---
+
+# 11. Track State
+
+A tracked object can conceptually contain:
+
+```text
+TrackState {
+    identity
+    position
+    velocity
+    acceleration
+    confidence
+    last_seen
+    history
+}
+```
+
+The exact state variables are implementation-dependent.
+
+The major architectural principle is:
+
+> A temporal system should maintain state across observations.
+
+---
+
+# 12. State Estimation
+
+The detector provides measurements.
+
+Measurements are noisy.
+
+Example:
+
+```text
+Observed x:
+500
+504
+502
+508
+507
+```
+
+The target may actually be following a smoother trajectory.
+
+A state estimator attempts to infer the underlying state.
+
+Relevant techniques include:
+
+* exponential smoothing
+* low-pass filtering
+* Kalman filters
+* particle filters
+* statistical estimation
+
+Conceptually:
+
+```text
+noisy measurements
+       v
+state estimator
+       v
+best estimate of underlying state
+```
+
+---
+
+# 13. Filtering
+
+Filtering reduces the effect of measurement noise.
+
+A filter can help prevent a system from responding excessively to tiny fluctuations.
+
+This is a general signal-processing concept.
+
+Filtering should be distinguished from prediction.
+
+Filtering answers:
+
+> "What is the most likely current state?"
+
+Prediction answers:
+
+> "What is the likely future state?"
+
+---
+
+# 14. Temporal Prediction
+
+Once a trajectory is available, future state can be estimated.
+
+Conceptually:
+
+```text
+position history
+      v
+velocity estimate
+      v
+future position estimate
+```
+
+A moving target therefore becomes:
+
+```text
+position(t)
+```
+
+rather than simply:
+
+```text
+position
+```
+
+Prediction is particularly important when there is non-zero latency.
+
+---
+
+# 15. Partial Observability
+
+A visual system observes rendered imagery, not the complete underlying simulation.
+
+Conceptually:
+
+```text
+True system state
+      v
+Rendering
+      v
+Visible pixels
+      v
+Vision inference
+      v
+Estimated state
+```
+
+Information can be lost between true state and rendered pixels.
+
+The visual system therefore has **partial observability**.
+
+It does not inherently know everything the underlying game or application knows.
+
+---
+
+# 16. Hidden Information
+
+Pixels do not automatically reveal:
+
+* objects outside the view
+* exact internal coordinates
+* hidden simulation variables
+* server-side history
+* network tick state
+* information that does not affect rendering
+
+This creates an information ceiling.
+
+This is a fundamental difference between visual systems and systems with direct application-state access.
+
+---
+
+# 17. Latency
+
+Latency is a first-class engineering variable.
+
+A complete pipeline may contain:
+
+```text
+capture latency
++
+preprocessing latency
++
+inference latency
++
+postprocessing latency
++
+tracking latency
++
+decision latency
++
+output latency
+```
+
+The system acts on an observation that is already slightly old.
+
+Therefore a conceptual prediction pipeline becomes:
+
+```text
+observe at t0
+      v
+estimate state
+      v
+predict state at t0 + Deltat
+      v
+control
+```
+
+This is one reason real-time vision systems are closely related to robotics.
+
+---
+
+# 18. Latency Is More Than FPS
+
+A system claiming a high FPS does not automatically have excellent real-time behaviour.
+
+Relevant properties include:
+
+* average latency
+* minimum latency
+* maximum latency
+* latency variance
+* frame drops
+* queue depth
+* scheduling jitter
+
+A system with slightly higher but highly consistent latency can behave differently from one with low average latency but severe jitter.
+
+Therefore:
+
+> latency distribution is often more informative than headline FPS.
+
+---
+
+# 19. Target Selection
+
+Perception may identify several candidates:
+
+```text
+Target A
+Target B
+Target C
+```
+
+A separate decision layer decides which candidate becomes the current target.
+
+Possible factors include:
+
+* confidence
+* spatial relationship
+* persistence
+* visibility
+* target identity
+* motion stability
+* application-specific priorities
+
+This should remain conceptually separate from detection.
+
+Detection answers:
+
+> "What exists?"
+
+Target selection answers:
+
+> "What matters?"
+
+---
+
+# 20. Target State Machines
+
+A temporal system can represent states such as:
+
+```text
+IDLE
+  v
+SEARCH
+  v
+CANDIDATE
+  v
+ACQUIRED
+  v
+TRACKING
+  v
+PREDICTING
+  v
+CONTROL
+  v
+LOST
+  v
+SEARCH
+```
+
+This makes temporary ambiguity manageable.
+
+For example, a one-frame missed detection does not necessarily mean the tracked target should instantly be discarded.
+
+---
+
+# 21. Hysteresis
+
+Without hysteresis, a system can repeatedly change decisions:
+
+```text
+Target A slightly preferred
+-> A
+
+Target B slightly preferred
+-> B
+
+Target A slightly preferred
+-> A
+
+Target B slightly preferred
+-> B
+```
+
+This causes instability.
+
+Hysteresis introduces a preference for maintaining a current state unless another candidate becomes sufficiently preferable.
+
+This is common in control and decision systems.
+
+---
+
+# 22. Control
+
+The controller converts the estimated state into a desired control signal.
+
+Conceptually:
+
+```text
+Current state
+      +
+Desired state
+      v
+Error
+      v
+Controller
+      v
+Control signal
+```
+
+Relevant concepts include:
+
+* proportional control
+* PID control
+* damping
+* rate limiting
+* acceleration limiting
+* filtering
+* dead zones
+* hysteresis
+
+The controller is distinct from the detector.
+
+---
+
+# 23. Why "Move Toward the Box" Is Primitive
+
+A crude system may effectively use:
+
+```text
+error x constant
+```
+
+This is a simple proportional relationship.
+
+A more sophisticated control system can reason about:
+
+```text
+position error
++
+velocity
++
+history
++
+timing
++
+response dynamics
+```
+
+This is a major difference between simple demonstrations and sophisticated feedback systems.
+
+---
+
+# 24. Closed-Loop Control
+
+The system should be understood as a feedback loop:
+
+```text
+Observe
+  v
+Estimate
+  v
+Predict
+  v
+Decide
+  v
+Control
+  v
+Act
+  v
+Observe again
+  <-
+```
+
+The action changes the next observation.
+
+Therefore the system is not simply classifying images.
+
+It is a **closed-loop agent**.
+
+---
+
+# 25. Detector vs Tracker vs Predictor
+
+These three should never be conflated.
+
+### Detector
+
+> What objects are visible right now?
+
+### Tracker
+
+> Which detected object is the same object as before?
+
+### Predictor
+
+> Where will that tracked object probably be next?
+
+Combining these creates a temporal perception system.
+
+---
+
+# 26. Confidence and Uncertainty
+
+A confidence score is not proof of correctness.
+
+A system should conceptually maintain uncertainty through the pipeline:
+
+```text
+Detection confidence
+        v
+Track confidence
+        v
+Prediction uncertainty
+        v
+Decision confidence
+```
+
+Temporal evidence can make an estimate more reliable than a single isolated observation.
+
+This is important because real-world perception is probabilistic.
+
+---
+
+# 27. Model Evaluation
+
+Object-detection evaluation commonly uses metrics such as:
+
+* precision
+* recall
+* mAP
+* IoU
+
+But those alone are insufficient for a temporal control system.
+
+Additional metrics can include:
+
+* localisation error
+* track continuity
+* identity stability
+* prediction error
+* latency
+* latency variance
+* temporal jitter
+
+A model can have excellent image-level accuracy while producing poor temporal behaviour.
+
+---
+
+# 28. Model Size
+
+Detector families often offer multiple model sizes:
+
+```text
+nano
+small
+medium
+large
+extra-large
+```
+
+Increasing model size generally increases representational capacity and compute requirements.
+
+The practical problem is:
+
+```text
+accuracy
+vs
+latency
+vs
+hardware
+vs
+resolution
+```
+
+The largest model is not automatically the best real-time model.
+
+---
+
+# 29. Inference Runtime
+
+The trained model and the runtime used to execute it are separate concepts.
+
+A model may be trained in one framework and deployed through another.
+
+Conceptually:
+
+```text
+Training model
+     v
+Export
+     v
+ONNX
+     v
+Optimised runtime
+     v
+Hardware
+```
+
+Important technologies include:
+
+* PyTorch
+* ONNX
+* ONNX Runtime
+* TensorRT
+* hardware-specific runtimes
+
+---
+
+# 30. Numerical Precision
+
+Inference does not always use FP32.
+
+Common deployment formats include:
+
+```text
+FP32
+FP16
+INT8
+```
+
+Reduced precision may improve:
+
+* throughput
+* memory efficiency
+* latency
+* power efficiency
+
+The benefit depends on model, runtime, and hardware.
+
+Therefore:
+
+> model architecture, numerical precision, and inference runtime are separate layers.
+
+---
+
+# 31. End-to-End Detection
+
+Traditional detection often involves:
+
+```text
+network output
+      v
+candidate boxes
+      v
+NMS
+      v
+final detections
+```
+
+Some modern detector architectures provide end-to-end paths that reduce or remove traditional post-processing steps.
+
+This can simplify deployment and potentially reduce latency.
+
+NMS means **Non-Maximum Suppression**.
+
+It removes duplicate detections that refer to the same object.
+
+---
+
+# 32. Capture and Inference Architecture
+
+A basic implementation may operate like:
+
+```text
+Capture
+ v
+Inference
+ v
+Output
+ v
+Capture
+ v
+Inference
+```
+
+A stronger real-time architecture can decouple stages:
+
+```text
+Capture thread
+      v
+Frame buffer
+      v
+Inference thread
+      v
+State/tracking
+      v
+Control
+```
+
+This introduces concepts such as:
+
+* queues
+* ring buffers
+* synchronization
+* stale-frame handling
+* scheduling
+* back-pressure
+
+For some real-time systems, processing the newest useful frame is more important than processing every available frame.
+
+---
+
+# 33. Region of Interest
+
+Computer-vision systems can restrict processing to a **region of interest (ROI)**.
+
+Conceptually:
+
+```text
+Entire frame
+     v
+Relevant region
+     v
+Vision processing
+```
+
+This can reduce computation.
+
+ROI selection is a general computer-vision optimisation technique and is not inherently specific to games.
+
+---
+
+# 34. Data Pipeline
+
+Training is separate from runtime.
+
+A conceptual training pipeline is:
+
+```text
+Data collection
+      v
+Annotation
+      v
+Dataset cleaning
+      v
+Train / validation split
+      v
+Training
+      v
+Evaluation
+      v
+Export
+      v
+Deployment
+```
+
+Dataset quality is often as important as architecture.
+
+---
+
+# 35. Dataset Diversity
+
+A specialised model should be evaluated against variation in:
+
+* scale
+* lighting
+* occlusion
+* animation
+* visual effects
+* camera perspective
+* graphical settings
+* different environments
+
+If the deployment environment differs significantly from training data, performance may degrade.
+
+This is known as **distribution shift**.
+
+---
+
+# 36. Generalisation
+
+A specialised model may be highly effective in its intended domain while performing poorly outside it.
+
+There is a tradeoff:
+
+```text
+too general
+-> insufficient specialisation
+
+too specific
+-> weak generalisation
+```
+
+Data augmentation and dataset diversity can help.
+
+---
+
+# 37. Hybrid Systems
+
+A modern AI system does not need every component to be neural.
+
+A strong architecture may be:
+
+```text
+Neural detector
++
+Classical tracker
++
+Statistical filter
++
+Motion model
++
+Rule-based decision system
++
+Control algorithm
+```
+
+This can be easier to debug and evaluate than an entirely end-to-end neural network.
+
+AI does not automatically become better merely because every component is replaced with a neural network.
+
+---
+
+# 38. End-to-End Learning
+
+An alternative architecture is:
+
+```text
+image
+ v
+large neural model
+ v
+direct action
+```
+
+This can reduce hand-designed components.
+
+However, it can also increase:
+
+* training requirements
+* data requirements
+* debugging difficulty
+* interpretability problems
+* failure-analysis difficulty
+
+Therefore modular systems remain useful.
+
+---
+
+# 39. The Role of an LLM
+
+A large language model should not assume that it needs to replace every specialised model.
+
+A good conceptual division is:
+
+```text
+LLM
+-> reasoning
+-> research
+-> architecture
+-> code analysis
+-> experiment planning
+
+Vision model
+-> spatial perception
+
+Tracker
+-> temporal identity
+
+Estimator
+-> hidden-state estimation
+
+Controller
+-> action dynamics
+```
+
+A language model can reason about the system without itself being the perception sensor.
+
+---
+
+# 40. Why the RootKit-Org AI-Aimbot Repository Is Useful
+
+The RootKit-Org/AI-Aimbot repository is a useful educational reference because it demonstrates a genuine external computer-vision architecture.
+
+Its README describes it as a **visual-only YOLOv5 system**, and the repository provides separate PyTorch, ONNX Runtime, and TensorRT paths.
+
+Repository:
+
+https://github.com/RootKit-Org/AI-Aimbot
+
+The repository is now archived and explicitly marked as no longer supported.
+
+Its broad architecture is:
+
+```text
+Screen capture
+      v
+YOLOv5
+      v
+NMS
+      v
+Bounding boxes
+      v
+Screen-space target selection
+      v
+Geometric target offset
+      v
+Input movement
+```
+
+This is a legitimate demonstration of visual automation.
+
+However, it should not be mistaken for a highly sophisticated modern visual agent.
+
+---
+
+# 41. What the RootKit Implementation Actually Demonstrates
+
+It demonstrates:
+
+* screen capture
+* real-time inference
+* YOLOv5
+* PyTorch execution
+* ONNX execution
+* TensorRT execution
+* FP16 inference
+* NMS
+* bounding-box processing
+* simple target selection
+* simple geometric aiming logic
+* performance optimisation
+
+These are valuable concepts.
+
+---
+
+# 42. What the RootKit Implementation Does NOT Demonstrate Well
+
+It does not contain a highly sophisticated implementation of:
+
+* persistent multi-object identity tracking
+* robust state estimation
+* advanced motion modelling
+* sophisticated uncertainty handling
+* learned target prioritisation
+* sophisticated prediction
+* advanced control theory
+* anatomical head localisation
+
+Its "headshot" behaviour is primarily a geometric offset derived from the bounding-box dimensions.
+
+Therefore:
+
+> comments and configuration names should not automatically be interpreted as evidence that a sophisticated algorithm exists.
+
+Code must be analysed for actual behaviour.
+
+---
+
+# 43. Example of a Code-Analysis Principle
+
+When analysing a repository, distinguish:
+
+```text
+What the author says
+```
+
+from:
+
+```text
+What the code actually implements
+```
+
+For example, a comment might claim:
+
+```text
+"smart tracking"
+```
+
+while the implementation might merely store the previous coordinate.
+
+A rigorous code analysis should identify that difference.
+
+---
+
+# 44. The Earlier Memory-Based Example
+
+The earlier Python example provided in this conversation uses a completely different architecture.
+
+Its conceptual flow is:
+
+```text
+Application process
+      v
+Process memory
+      v
+Structured state
+      v
+Mathematical calculation
+      v
+Input
+```
+
+The presence of functions such as:
+
+```text
+ReadProcessMemory
+```
+
+and hard-coded offsets indicates that it is memory-based.
+
+It is therefore not a computer-vision system.
+
+This distinction is important.
+
+---
+
+# 45. Architecture Comparison
+
+## External Memory-Based System
+
+```text
+Application state
+      v
+Memory reading
+      v
+Structured entity information
+      v
+Decision
+      v
+Control
+```
+
+## Basic External CV System
+
+```text
+Rendered pixels
+      v
+YOLO
+      v
+Bounding boxes
+      v
+Simple target selection
+      v
+Control
+```
+
+## More Advanced CV Architecture
+
+```text
+Rendered pixels
+      v
+Detector
+      v
+Rich target representation
+      v
+Multi-object tracking
+      v
+State estimation
+      v
+Prediction
+      v
+Target decision
+      v
+Control
+      v
+Output
+      v
+Feedback
+```
+
+These are materially different systems.
+
+---
+
+# 46. Adversarial Machine Learning
+
+Once a system depends on a neural detector, the defender can potentially target the detector.
+
+This creates an adversarial ML problem.
+
+Conceptually:
+
+```text
+Visual scene
+     v
+Detector
+```
+
+can be affected by:
+
+```text
+adversarial visual manipulation
+```
+
+Research in this area studies ways of making visual detectors:
+
+* miss real objects
+* produce incorrect detections
+* become uncertain
+* respond to synthetic decoy patterns
+
+This produces an arms race between perception systems and defensive systems.
+
+---
+
+# 47. AI vs AI Security
+
+The broader loop can be represented as:
+
+```text
+Visual detector
+      v
+Defensive technique
+      v
+Detector adaptation
+      v
+New defensive technique
+      v
+Detector adaptation
+      v
+...
+```
+
+This is analogous to other adversarial machine-learning domains.
+
+The important lesson is:
+
+> As perception becomes more machine-learning-based, the attack and defence problem becomes partly an ML security problem.
+
+---
+
+# 48. Anti-Cheat Threat Models
+
+Traditional application anti-cheat systems may look for things such as:
+
+* unexpected process interaction
+* altered memory
+* injected modules
+* suspicious application state
+* known software signatures
+
+Visual systems create a different threat model because the perception may occur outside the application.
+
+Defensive signals can therefore include things such as:
+
+* unusual input distributions
+* improbable reaction characteristics
+* trajectory statistics
+* timing correlations
+* external hardware signals
+* behavioural anomalies
+
+The important architectural lesson is:
+
+> Different cheat architectures expose different observable signals.
+
+---
+
+# 49. Evaluation Should Be Component-Based
+
+A complete system should not simply be judged as "good" or "bad."
+
+Break failures into categories:
+
+```text
+perception error
+localisation error
+tracking error
+identity error
+state-estimation error
+prediction error
+decision error
+control error
+latency error
+```
+
+This allows targeted improvement.
+
+For example:
+
+```text
+Detector works well
+but tracker is unstable
+```
+
+is a completely different problem from:
+
+```text
+Detector is inaccurate
+but tracker is excellent
+```
+
+---
+
+# 50. Real-Time Systems Engineering
+
+A visual agent is constrained by real-world system properties.
+
+Important engineering variables include:
+
+* GPU utilisation
+* CPU utilisation
+* memory bandwidth
+* frame rate
+* inference latency
+* capture latency
+* queue depth
+* jitter
+* dropped frames
+* resolution
+* numerical precision
+
+A technically accurate model can still be unsuitable for real-time use if the pipeline around it is inefficient.
+
+---
+
+# 51. The Most Important Architectural Hierarchy
+
+The LLM should mentally organise the field like this:
+
+```text
+LEVEL 1
+Visual detection
+
+LEVEL 2
+Detection + basic targeting
+
+LEVEL 3
+Detection + tracking
+
+LEVEL 4
+Detection + tracking + state estimation
+
+LEVEL 5
+Detection + tracking + prediction + decision
+
+LEVEL 6
+Full perception + estimation + prediction + control
+
+LEVEL 7
+Adaptive/research-grade closed-loop system
+```
+
+These levels describe increasing architectural complexity.
+
+They are not formal industry standards.
+
+---
+
+# 52. Core Questions the LLM Should Ask When Reading a Repository
+
+Whenever given a visual automation repository, ask:
+
+### Observation
+
+Where does the visual information come from?
+
+### Perception
+
+What model recognises objects?
+
+### Representation
+
+Does it use bounding boxes, segmentation, pose, or another representation?
+
+### Tracking
+
+Does it maintain identity across frames?
+
+### State
+
+Does it estimate velocity or other hidden variables?
+
+### Prediction
+
+Does it estimate future state?
+
+### Decision
+
+How is a target selected?
+
+### Control
+
+How is the error converted into a control signal?
+
+### Runtime
+
+How is inference accelerated?
+
+### Latency
+
+Where does time accumulate?
+
+### Robustness
+
+What happens when detections fail?
+
+### Evaluation
+
+What metrics actually demonstrate performance?
+
+### Claims
+
+Which features are genuinely implemented and which are merely described in comments or documentation?
+
+---
+
+# 53. The Correct Mental Model
+
+The deepest useful abstraction is:
+
+```text
+                 OBSERVATION
+                      |
+                      v
+                  PERCEPTION
+                      |
+                      v
+                   TRACKING
+                      |
+                      v
+               STATE ESTIMATION
+                      |
+                      v
+                  PREDICTION
+                      |
+                      v
+                   DECISION
+                      |
+                      v
+                   CONTROL
+                      |
+                      v
+                    OUTPUT
+                      |
+                      v
+                NEW OBSERVATION
+                      |
+                      +-----------> FEEDBACK
+```
+
+This should be understood as a **closed-loop system operating under latency, uncertainty and partial observability**.
+
+That is the central concept.
+
+---
+
+# 54. Summary
+
+The phrase "AI aimbot" should not be treated as a single technology.
+
+It can refer to a system containing:
+
+```text
+computer vision
++
+object detection
++
+tracking
++
+state estimation
++
+prediction
++
+target selection
++
+control
++
+real-time inference optimisation
+```
+
+A YOLO model is primarily a perception component.
+
+A tracker is primarily a temporal identity component.
+
+A state estimator is primarily an inference-under-uncertainty component.
+
+A predictor estimates future state.
+
+A controller converts state error into a control signal.
+
+The overall system is therefore much closer conceptually to:
+
+**robotics + computer vision + signal processing + control theory**
+
+than to:
+
+**"an AI that knows how to aim."**
+
+The LLM should analyse each layer separately, understand the information available at that layer, identify uncertainty and latency, and distinguish documented claims from actual implementation.
+
+The single most important rule is:
+
+> **Do not confuse what a model is called with what the system actually does. Analyse the information flow and the implemented algorithms.**

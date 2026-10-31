@@ -1,0 +1,15 @@
+﻿42: const char* const kDefaultDriver   = "apexdrv.sys";
+201: if (!CopyFileA(sourcePath.c_str(), stagedPath.c_str(), FALSE)) {
+234: std::string ResolvePayloadPath(const std::string& candidate) {
+845: if (!entered.empty()) options.dllPath = ResolvePayloadPath(entered);
+859: if (!entered.empty()) options.driverPath = ResolvePayloadPath(entered);
+992: const auto takeValue = [&](std::string& out) -> bool {
+1013: if (!takeValue(methodName) || !ParseMethod(methodName, options.method)) {
+1026: if (!takeValue(path)) { printf("[-] --dll needs a path\n"); return ArgResult::ExitError; }
+1027: options.dllPath = ResolvePayloadPath(path);
+1032: if (!takeValue(path)) { printf("[-] --driver needs a path\n"); return ArgResult::ExitError; }
+1033: options.driverPath = ResolvePayloadPath(path);
+1038: if (!takeValue(pidText)) { printf("[-] --pid needs a value\n"); return ArgResult::ExitError; }
+1044: if (!takeValue(secondsText)) { printf("[-] --timeout needs a value\n"); return ArgResult::ExitError; }
+1060: options.dllPath    = ResolvePayloadPath(kDefaultDllName);
+1061: options.driverPath = ResolvePayloadPath(kDefaultDriver);

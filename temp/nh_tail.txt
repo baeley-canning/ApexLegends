@@ -1,0 +1,12 @@
+﻿    write()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+        for w in s.split("\0"):
+            w = w.strip()
+            if 3 <= len(w) <= 40 and all(c.isprintable() for c in w):
+                lines.append("      %s string: %r" % (lbl, w))
+    return lines[:40]

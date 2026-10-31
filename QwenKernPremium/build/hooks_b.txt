@@ -1,0 +1,87 @@
+﻿170: static bool EnsureD3D11Overlay(IDXGISwapChain* swapChain) {
+171:     if (g_d3d11Ready) return true;
+172:     if (!swapChain) return false;
+173: 
+174:     if (FAILED(swapChain->GetDevice(__uuidof(ID3D11Device),
+175:                                     reinterpret_cast<void**>(&g_d3d11Device)))) {
+176:         return false;
+177:     }
+178:     g_d3d11Device->GetImmediateContext(&g_d3d11Context);
+179: 
+180:     const D3DCompileFn compile = ResolveD3DCompile();
+181:     if (!compile) {
+182:         ReleaseD3D11Overlay();
+183:         return false;
+184:     }
+185: 
+186:     ID3DBlob* vsBlob = nullptr;
+187:     ID3DBlob* psBlob = nullptr;
+188:     ID3DBlob* errors = nullptr;
+189: 
+190:     const bool vsOk = SUCCEEDED(compile(kOverlayShaderSource,
+191:                                             sizeof(kOverlayShaderSource) - 1,
+192:                                             "apex_overlay", nullptr, nullptr,
+193:                                             "VSMain", "vs_4_0",
+194:                                             D3DCOMPILE_OPTIMIZATION_LEVEL3, 0,
+195:                                             &vsBlob, &errors));
+196:     const bool psOk = SUCCEEDED(compile(kOverlayShaderSource,
+197:                                             sizeof(kOverlayShaderSource) - 1,
+198:                                             "apex_overlay", nullptr, nullptr,
+199:                                             "PSMain", "ps_4_0",
+200:                                             D3DCOMPILE_OPTIMIZATION_LEVEL3, 0,
+201:                                             &psBlob, &errors));
+202:     if (errors) { errors->Release(); errors = nullptr; }
+203: 
+204:     if (!vsOk || !psOk) {
+205:         if (vsBlob) vsBlob->Release();
+206:         if (psBlob) psBlob->Release();
+207:         ReleaseD3D11Overlay();
+208:         return false;
+209:     }
+210: 
+211:     bool ok = SUCCEEDED(g_d3d11Device->CreateVertexShader(vsBlob->GetBufferPointer(),
+212:                                                           vsBlob->GetBufferSize(),
+213:                                                           nullptr, &g_overlayVS)) &&
+214:               SUCCEEDED(g_d3d11Device->CreatePixelShader(psBlob->GetBufferPointer(),
+215:                                                          psBlob->GetBufferSize(),
+216:                                                          nullptr, &g_overlayPS));
+217: 
+218:     const D3D11_INPUT_ELEMENT_DESC layout[] = {
+219:         { "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT,   0, 0,
+220:           D3D11_INPUT_PER_VERTEX_DATA, 0 },
+221:         { "COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM, 0, 8,
+222:           D3D11_INPUT_PER_VERTEX_DATA, 0 },
+223:         { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,   0, 12,
+224:           D3D11_INPUT_PER_VERTEX_DATA, 0 },
+225:     };
+226: 
+227:     ok = ok && SUCCEEDED(g_d3d11Device->CreateInputLayout(
+228:         layout, ARRAYSIZE(layout), vsBlob->GetBufferPointer(),
+229:         vsBlob->GetBufferSize(), &g_overlayLayout));
+230: 
+231:     vsBlob->Release();
+232:     psBlob->Release();
+233: 
+234:     g_overlayCapacity = 64 * 8;   // 64 boxes x 8 vertices (4 lines per box)
+235: 
+236:     D3D11_BUFFER_DESC bufferDesc{};
+237:     bufferDesc.ByteWidth      = g_overlayCapacity * sizeof(D3D11Vertex);
+238:     bufferDesc.Usage          = D3D11_USAGE_DYNAMIC;
+239:     bufferDesc.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
+240:     bufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+241:     ok = ok && SUCCEEDED(g_d3d11Device->CreateBuffer(&bufferDesc, nullptr,
+242:                                                       &g_overlayBuffer));
+243: 
+244:     D3D11_BLEND_DESC blendDesc{};
+245:     blendDesc.RenderTarget[0].BlendEnable           = TRUE;
+246:     blendDesc.RenderTarget[0].SrcBlend              = D3D11_BLEND_SRC_ALPHA;
+247:     blendDesc.RenderTarget[0].DestBlend             = D3D11_BLEND_INV_SRC_ALPHA;
+248:     blendDesc.RenderTarget[0].BlendOp               = D3D11_BLEND_OP_ADD;
+249:     blendDesc.RenderTarget[0].SrcBlendAlpha         = D3D11_BLEND_ONE;
+250:     blendDesc.RenderTarget[0].DestBlendAlpha        = D3D11_BLEND_ZERO;
+251:     blendDesc.RenderTarget[0].BlendOpAlpha          = D3D11_BLEND_OP_ADD;
+252:     blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+253:     ok = ok && SUCCEEDED(g_d3d11Device->CreateBlendState(&blendDesc, &g_overlayBlend));
+254: 
+255:     D3D11_DEPTH_STENCIL_DESC depthDesc{};
+256:     depthDesc.DepthEnable = FALSE;

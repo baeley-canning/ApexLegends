@@ -1,0 +1,157 @@
+KNOWLEDGE BASE: CONSOLE AND CLOSED-PLATFORM INTEGRITY
+
+Purpose:
+Explain how integrity and anti-cheat work on closed platforms - game
+consoles and other locked-down ecosystems - where the platform holder
+controls the hardware and the software, and contrast that model with the
+open personal computer. It complements MOBILE AND CROSS-PLATFORM
+ANTI-CHEAT and CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION.
+
+This document is reference knowledge. It describes the closed-platform
+security model from a defensive and engineering perspective. It
+deliberately contains no operational steps, tools, or guidance for
+defeating platform protections.
+
+Platform protections change between hardware generations, so treat each
+statement as a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: MOBILE AND CROSS-PLATFORM ANTI-CHEAT, CLIENT
+INTEGRITY, ANTI-TAMPER, AND ATTESTATION, HARDWARE, DMA, AND BELOW-KERNEL
+THREATS, ANTI-CHEAT PRODUCTS AND SYSTEMS, and the numbered technical
+series.
+
+---
+
+1. WHY CLOSED PLATFORMS DIFFER
+On a console the player does not own the software stack.
+The platform holder controls the hardware, the firmware, the operating
+system, and the store.
+That single fact removes most of the attack surface a PC anti-cheat must
+police.
+Integrity work shifts from "what code is running" to "is this the real
+device."
+
+---
+
+2. THE ROOT OF TRUST IS THE DEVICE
+A closed platform anchors trust in hardware the player cannot reprogram.
+Secure boot verifies each stage before the next one runs.
+Keys are held in hardware, not in files a user can edit.
+Trust therefore begins below anything the player controls.
+
+---
+
+3. SIGNED CODE AND NO UNSIGNED EXECUTION
+Software is signed by the platform holder and verified before it runs.
+Unsigned or altered code is refused rather than analysed.
+This is the closed-platform equivalent of a very strong anti-tamper
+control.
+It removes the PC's central problem: an attacker who can run code at the
+same or higher privilege than the defender.
+
+---
+
+4. THE SHRINKING ATTACK SURFACE
+Many PC attack classes simply do not exist on a closed device.
+There is no general ring-0 driver for a third party to load.
+There is no arbitrary kernel module to hide inside.
+There is no user-visible process list to impersonate freely.
+What remains is narrower and better bounded.
+
+---
+
+5. WHAT IS STILL LEFT TO CHEAT
+Closed does not mean safe.
+Attackers still try input manipulation, modified peripherals, network
+abuse, and exploits of the platform itself.
+They also attack the game rather than the console: server-side and
+game-logic flaws.
+So closed-platform defence still needs detection and server authority.
+
+---
+
+6. THE PLATFORM HOLDER AS ENFORCER
+The platform holder can enforce at a level a game studio cannot.
+It can refuse to run code, revoke a certificate, and remove a device from
+the network.
+Enforcement is applied by the party that owns the platform, not only by
+the game.
+This concentrates both power and responsibility in one place.
+
+---
+
+7. ATTESTATION AND REMOTE VERIFICATION
+The device can prove to a server what it is and what it is running.
+The proof relies on secrets held in hardware.
+An untrusted state can be refused service before a match begins.
+Attestation is the practical bridge between a trusted device and a
+server-authoritative design.
+
+---
+
+8. HARDWARE-SIDE MEASUREMENT
+Trust is measured, not assumed.
+Secure boot, measured boot, and hardware-protected keys report what ran.
+Memory protections and IOMMU-style controls limit what add-in hardware
+can reach.
+These are the same primitives PC defences want and rarely fully get.
+
+---
+
+9. THE PERSISTENT CAT-AND-MOUSE
+Closed platforms are not unbroken; they are harder and slower to break.
+Real attacks tend to be exploits of specific firmware or games, so they
+are version-specific.
+Each fix raises the cost and shortens the window of a working method.
+The race continues, but on terrain the defender largely owns.
+
+---
+
+10. CROSS-PLATFORM PLAY AND ITS TENSIONS
+When closed and open platforms play together, the weakest link sets the
+floor.
+A trusted console player can be matched against an untrusted PC.
+Designers must decide whether to separate pools, verify state, or accept
+the asymmetry.
+This is a governance question as much as a technical one.
+
+---
+
+11. WHY PCS REMAIN HARDER
+On a PC the player owns the stack, so they can run code the defender does
+not want.
+Anti-cheat there must move its observer below the attacker and prove
+integrity the platform does not guarantee.
+That is why PC defences carry complexity consoles can avoid.
+The comparison clarifies what PC anti-cheat is really fighting.
+
+---
+
+12. THE ECONOMIC ANGLE
+Because console hardware is fixed and attested, a device ban is much
+harder to evade than on PC.
+There is no easy hardware-identifier change and no free re-entry.
+This makes enforcement stick in a way account bans alone cannot.
+See SPOOFING AND BAN EVASION for the open-platform contrast.
+
+---
+
+13. SUMMARY
+Closed platforms win by controlling the stack: signed code, a hardware
+root of trust, and a single enforcer.
+That removes most PC attack surface but leaves input, peripherals,
+network, and exploits.
+Defence therefore still needs attestation, server authority, and
+detection.
+The core lesson is that trust anchored in hardware and owned by one party
+is stronger than trust negotiated on a machine the player controls.
+
+CORE PRINCIPLE:
+A closed platform is strong not because its anti-cheat is clever but
+because the player does not own the stack: signed code, a hardware root of
+trust, and one enforcer remove most of the surface a PC must police. What
+remains - input, peripherals, network, and exploits of the platform or the
+game - still needs attestation, server authority, and detection. The
+lesson for every platform is the one the PC is still chasing: trust is
+strongest when it is anchored in hardware below the player and enforced by
+someone who owns the ground.

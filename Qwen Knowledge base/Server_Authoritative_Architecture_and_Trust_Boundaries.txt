@@ -1,0 +1,182 @@
+KNOWLEDGE BASE: SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES
+
+Purpose:
+Educational reference for the strongest structural defense against
+cheating: placing authority on the server so that the client proposes
+and the server decides. Explains trust boundaries, what each boundary
+can and cannot validate, and why server authority is architectural
+rather than reactive.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive and engineering perspective.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ANTI-CHEAT PRODUCTS AND
+SYSTEMS, LATENCY BUDGETS AND REAL-TIME PIPELINES, MATCHMAKING AND
+ACCOUNT ECONOMY INTEGRITY, NETWORK AND LAG MANIPULATION, and the
+numbered technical series.
+
+---
+
+1. THE CENTRAL IDEA
+Every other defense in this knowledge base tries to make the client
+trustworthy.
+Server-authoritative design assumes the client is not trustworthy and
+arranges the game so that this does not matter.
+The client becomes an input device and a renderer; the server holds the
+authoritative state and applies the rules.
+This inverts the usual question. Instead of "can we detect tampering on
+the client?", it asks "can a tampered client cause an outcome the server
+would accept?"
+Where the answer is no, the cheat is defeated by design rather than by
+detection.
+
+---
+
+2. AUTHORITATIVE VERSUS CLIENT-AUTHORITATIVE
+Two extremes bracket the design space:
+* client-authoritative: the client decides outcomes and the server
+  mostly relays them.
+* server-authoritative: the server decides outcomes; the client sends
+  intent and receives results.
+Client-authoritative is simpler and can feel more responsive, but it
+hands decisive power to the least trustworthy party.
+Server-authoritative is harder to build - especially for fast action -
+but it removes the client's ability to simply declare that it won.
+
+---
+
+3. THE ROLE OF THE CLIENT AFTER AUTHORITY MOVES
+A game that is server-authoritative does not stop using the client.
+The client still:
+* reads input and sends intent (I pressed fire, I moved in this
+  direction).
+* predicts the likely result locally so the game feels immediate.
+* renders the world from state the server provides.
+The client is a predictor and a renderer, not an authority. Many
+cheating questions reduce to whether the client can make the server
+accept an untrue intent.
+
+---
+
+4. PREDICTION, RECONCILIATION, AND ROLLBACK
+Because the server's answer arrives after a network delay, the client
+often simulates ahead and then corrects itself when the authoritative
+state arrives.
+* prediction: the client guesses the result of its own action.
+* reconciliation: when the server's truth arrives, the client adjusts
+  to match, smoothly or abruptly.
+* rollback: re-simulating history to resolve late information.
+These techniques let a server be authoritative without feeling laggy.
+They are also a place where a client may try to influence what the
+server believes, which is why the server validates the intent rather
+than trusting the prediction.
+
+---
+
+5. WHAT A SERVER CAN AND CANNOT VALIDATE
+The server is strong at anything it can express as rules over
+authoritative state:
+* movement plausibility (speed, acceleration, teleports).
+* combat outcomes (hits, damage, line of sight, ammunition).
+* economy and inventory (currency, trades, item grants).
+* progression and rarity (rates, timing, eligibility).
+It is weaker at what it cannot observe:
+* what a player could see on their own screen.
+* purely local advantages it never learns about.
+This asymmetry is the recurring theme: server authority is decisive
+wherever the server owns the truth, and blind precisely where it does
+not.
+
+---
+
+6. TRUST BOUNDARIES, DEFINED
+A trust boundary is a line across which data is not believed without
+checking.
+In a server-authoritative game the important boundaries are:
+* client -> server: all intent crosses here and is validated.
+* server -> client: state crosses here; the client must not be trusted
+  to keep it secret or to be honest about it.
+* machine -> server: attestation claims cross here and are weighed.
+Design is largely about deciding what each boundary may assert, and
+never letting one boundary's claim substitute for another's check.
+
+---
+
+7. CHEAT CLASSES AND THE BOUNDARY THAT STOPS THEM
+Mapping common advantages to the boundary that neutralises them:
+* movement and teleport cheats: rejected by server movement validation.
+* damage and hit manipulation: rejected by server-side combat
+  resolution.
+* economy and item duplication: rejected by server-owned inventory.
+* information the client should not have (fog-of-war walls, enemy
+  positions): reduced by not sending hidden state to the client at all.
+* purely local advantages the server cannot see: residual, and left to
+  client-side and behavioural detection.
+The last row is the honest limit: server authority shrinks the attack
+surface but does not zero it.
+
+---
+
+8. THE COST OF SERVER AUTHORITY
+Authority is not free:
+* it needs the networking and latency budgets described in the latency
+  reference, because every decision now involves a round trip.
+* it increases server compute and bandwidth, since the server simulates
+  and broadcasts more state.
+* it requires prediction and reconciliation to stay responsive, which is
+  itself complex and a potential source of new bugs.
+This is why the choice is a design trade-off rather than a universal
+rule: the strongest available defense, applied where it pays for itself.
+
+---
+
+9. WHERE SERVER AUTHORITY MEETS CLIENT DEFENSE
+The two are complements, not rivals:
+* the server owns outcomes, so it neutralises anything that must change
+  an outcome to matter.
+* the client still sees the machine, so it catches local advantages the
+  server cannot observe.
+A detector with no server authority can be bypassed by a client that
+lies; a server with no client visibility is blind to what never crosses
+the boundary.
+Real deployments pair them, and neither is asked to cover the other's
+blind spot.
+
+---
+
+10. DESIGN GUIDANCE
+Practical rules that follow:
+* decide, for every value, whether the server or the client owns its
+  truth, and never let the client own a decision that matters.
+* send the client only what it needs, so hidden state cannot leak.
+* validate intent server-side, and treat every client claim as a
+  proposal.
+* keep prediction on the client but authority on the server, and never
+  accept a prediction as fact.
+* measure latency, because the cost of authority is the reason teams
+  avoid it, and that cost is trivially bounded once the latency budget
+  reference is applied.
+
+---
+
+11. SUMMARY
+Server authority is the strongest structural defense because it does not
+try to make the client trustworthy; it removes the client's power to
+decide.
+It is decisive wherever the server owns the truth and blind wherever it
+does not, which is why it is combined with client-side and behaviour-side
+detection rather than used alone.
+Its cost is latency and compute, and its techniques - prediction,
+reconciliation, rollback - are what let it stay responsive anyway.
+
+CORE PRINCIPLE:
+Stop trying to make the client honest; make it powerless. The client
+proposes and the server decides, so tampering on the client only matters
+where the server chose to let it. Draw the trust boundaries explicitly,
+give the server ownership of everything that matters, send the client
+only what it needs, and treat every client claim as intent to be
+validated - then accept that local advantages the server cannot see are
+exactly what the client-side and behavioural layers are still for.
+
+---

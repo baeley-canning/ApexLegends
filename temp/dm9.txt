@@ -1,0 +1,2235 @@
+## 2334 names, 3733 lea sites
+   m_iHealth      9 sites 0x14195eab2 0x141f0788a 0x141f0ab16 0x14203cbf4 0x1420d9120 0x1421323ef 0x142144279 0x14218ae9f 0x14236a78a
+   m_iTeamNum     10 sites 0x141f39b41 0x142008b35 0x14200ae97 0x1421182fc 0x14213688d 0x14213a474 0x142178c89 0x1422e54da 0x1422f2a03 0x142372c10
+   m_vecOrigin    3 sites 0x1421bf63a 0x1421c1c3e 0x1421c57ac
+   m_lifeState    6 sites 0x14203cbd6 0x1420d9254 0x14212cf9a 0x14213686f 0x14213a453 0x14218b0f6
+
+### m_iHealth  lea@0x14195eab2   function 0x14195e7f0..0x14195ecf5  (1285 bytes)
+0x014195e7f0  488b05219c7002           rax, qword ptr [rip + 0x2709c21]        ; -> 0x144068418
+0x014195e7f7  48890502d13a02           qword ptr [rip + 0x23ad102], rax        ; -> 0x143d0b900
+0x014195e7fe  488d05dbd03a02           rax, [rip + 0x23ad0db]        ; -> 0x143d0b8e0
+0x014195e805  4889050c9c7002           qword ptr [rip + 0x2709c0c], rax        ; -> 0x144068418
+0x014195e80c  c3                       
+0x014195e80d  cc                       
+0x014195e80e  cc                       
+0x014195e80f  cc                       
+0x014195e810  48895c2408               qword ptr [rsp + 8], rbx
+0x014195e815  4889742410               qword ptr [rsp + 0x10], rsi
+0x014195e81a  57                       rdi
+0x014195e81b  4883ec20                 rsp, 0x20        ; imm=0x20
+0x014195e81f  65488b042558000000       rax, qword ptr gs:[0x58]
+0x014195e828  488d3521317601           rsi, [rip + 0x1763121]        ; -> 0x1430c1950 'DT_ShieldProp'
+0x014195e82f  48ff055ab5ef07           qword ptr [rip + 0x7efb55a]        ; -> 0x149859d90
+0x014195e836  48bf44216693b26ed86b     rdi, 0x6bd86eb293662144        ; imm=0x6bd86eb293662144
+0x014195e840  48013df9b4ef07           qword ptr [rip + 0x7efb4f9], rdi        ; -> 0x149859d40
+0x014195e847  33db                     ebx, ebx
+0x014195e849  b920000000               ecx, 0x20        ; imm=0x20
+0x014195e84e  488b00                   rax, qword ptr [rax]
+0x014195e851  c705a13e3b0260160000     dword ptr [rip + 0x23b3ea1], 0x1660        ; -> 0x143d126fc  imm=0x1660
+0x014195e85b  8b0401                   eax, dword ptr [rcx + rax]
+0x014195e85e  3905185bd60c             dword ptr [rip + 0xcd65b18], eax        ; -> 0x14e6c437c
+0x014195e864  0f8fea000000             0x14195e954        ; imm=0x14195e954
+0x014195e86a  83057f7b100418           dword ptr [rip + 0x4107b7f], 0x18        ; -> 0x145a663f0  imm=0x18
+0x014195e871  488b05d8651004           rax, qword ptr [rip + 0x41065d8]        ; -> 0x145a64e50
+0x014195e878  48891d993e3b02           qword ptr [rip + 0x23b3e99], rbx        ; -> 0x143d12718
+0x014195e87f  c705b7393b02ffffffff     dword ptr [rip + 0x23b39b7], 0xffffffff        ; -> 0x143d12240  imm=0xffffffff
+0x014195e889  4885c0                   rax, rax
+0x014195e88c  750c                     0x14195e89a        ; imm=0x14195e89a
+0x014195e88e  e86d7d4600               0x141dc6600        ; imm=0x141dc6600
+0x014195e893  488905b6651004           qword ptr [rip + 0x41065b6], rax        ; -> 0x145a64e50
+0x014195e89a  488b08                   rcx, qword ptr [rax]
+0x014195e89d  ba18000000               edx, 0x18        ; imm=0x18
+0x014195e8a2  4c8b4108                 r8, qword ptr [rcx + 8]
+0x014195e8a6  488bc8                   rcx, rax
+0x014195e8a9  41ffd0                   r8
+0x014195e8ac  48890595393b02           qword ptr [rip + 0x23b3995], rax        ; -> 0x143d12248
+0x014195e8b3  488d0d3edfd60c           rcx, [rip + 0xcd6df3e]        ; -> 0x14e6cc7f8
+0x014195e8ba  48891d3f3e3b02           qword ptr [rip + 0x23b3e3f], rbx        ; -> 0x143d12700
+0x014195e8c1  488935403e3b02           qword ptr [rip + 0x23b3e40], rsi        ; -> 0x143d12708
+0x014195e8c8  488b742438               rsi, qword ptr [rsp + 0x38]
+0x014195e8cd  66891d3c3e3b02           word ptr [rip + 0x23b3e3c], bx        ; -> 0x143d12710
+0x014195e8d4  891d1e3e3b02             dword ptr [rip + 0x23b3e1e], ebx        ; -> 0x143d126f8
+0x014195e8da  488b5c2430               rbx, qword ptr [rsp + 0x30]
+0x014195e8df  c70567393b0203000000     dword ptr [rip + 0x23b3967], 3        ; -> 0x143d12250  imm=0x3
+0x014195e8e9  488908                   qword ptr [rax], rcx
+0x014195e8ec  488d0d6ddfd60c           rcx, [rip + 0xcd6df6d]        ; -> 0x14e6cc860
+0x014195e8f3  488b054e393b02           rax, qword ptr [rip + 0x23b394e]        ; -> 0x143d12248
+0x014195e8fa  48894808                 qword ptr [rax + 8], rcx
+0x014195e8fe  488d0dc3dfd60c           rcx, [rip + 0xcd6dfc3]        ; -> 0x14e6cc8c8
+0x014195e905  488b053c393b02           rax, qword ptr [rip + 0x23b393c]        ; -> 0x143d12248
+0x014195e90c  48894810                 qword ptr [rax + 0x10], rcx
+0x014195e910  8b05f6ded60c             eax, dword ptr [rip + 0xcd6def6]        ; -> 0x14e6cc80c
+0x014195e916  f7d0                     eax
+0x014195e918  48c1e806                 rax, 6        ; imm=0x6
+0x014195e91c  83e001                   eax, 1        ; imm=0x1
+0x014195e91f  f6054edfd60c40           byte ptr [rip + 0xcd6df4e], 0x40        ; -> 0x14e6cc874  imm=0x40
+0x014195e926  488d4801                 rcx, [rax + 1]
+0x014195e92a  480f45c8                 rcx, rax
+0x014195e92e  f605a7dfd60c40           byte ptr [rip + 0xcd6dfa7], 0x40        ; -> 0x14e6cc8dc  imm=0x40
+0x014195e935  488d4101                 rax, [rcx + 1]
+0x014195e939  480f45c1                 rax, rcx
+0x014195e93d  4833c7                   rax, rdi
+0x014195e940  48010501b4ef07           qword ptr [rip + 0x7efb401], rax        ; -> 0x149859d48
+0x014195e947  48ff054ab4ef07           qword ptr [rip + 0x7efb44a]        ; -> 0x149859d98
+0x014195e94e  4883c420                 rsp, 0x20        ; imm=0x20
+0x014195e952  5f                       rdi
+0x014195e953  c3                       
+0x014195e954  488d0d215ad60c           rcx, [rip + 0xcd65a21]        ; -> 0x14e6c437c
+0x014195e95b  e838be2a01               0x142c0a798        ; imm=0x142c0a798
+0x014195e960  833d155ad60cff           dword ptr [rip + 0xcd65a15], -1        ; -> 0x14e6c437c  imm=-0x1
+0x014195e967  0f85fdfeffff             0x14195e86a        ; imm=0x14195e86a
+0x014195e96d  0f57c0                   xmm0, xmm0
+0x014195e970  488d0d055ad60c           rcx, [rip + 0xcd65a05]        ; -> 0x14e6c437c
+0x014195e977  33c0                     eax, eax
+0x014195e979  48890570ded60c           qword ptr [rip + 0xcd6de70], rax        ; -> 0x14e6cc7f0
+0x014195e980  488d05b1426d01           rax, [rip + 0x16d42b1]        ; -> 0x143032c38 'should_never_see_this'
+0x014195e987  0f1105baded60c           xmmword ptr [rip + 0xcd6deba], xmm0        ; -> 0x14e6cc848
+0x014195e98e  c705bcded60c01000000     dword ptr [rip + 0xcd6debc], 1        ; -> 0x14e6cc854  imm=0x1
+0x014195e998  0f1105f1ddd60c           xmmword ptr [rip + 0xcd6ddf1], xmm0        ; -> 0x14e6cc790
+0x014195e99f  891df3ddd60c             dword ptr [rip + 0xcd6ddf3], ebx        ; -> 0x14e6cc798
+0x014195e9a5  0f1105b4ded60c           xmmword ptr [rip + 0xcd6deb4], xmm0        ; -> 0x14e6cc860
+0x014195e9ac  48891dddddd60c           qword ptr [rip + 0xcd6dddd], rbx        ; -> 0x14e6cc790
+0x014195e9b3  0f11050edfd60c           xmmword ptr [rip + 0xcd6df0e], xmm0        ; -> 0x14e6cc8c8
+0x014195e9ba  c7058cded60cffffffff     dword ptr [rip + 0xcd6de8c], 0xffffffff        ; -> 0x14e6cc850  imm=0xffffffff
+0x014195e9c4  0f11054dded60c           xmmword ptr [rip + 0xcd6de4d], xmm0        ; -> 0x14e6cc818
+0x014195e9cb  4889354eded60c           qword ptr [rip + 0xcd6de4e], rsi        ; -> 0x14e6cc820
+0x014195e9d2  0f1105c7ddd60c           xmmword ptr [rip + 0xcd6ddc7], xmm0        ; -> 0x14e6cc7a0
+0x014195e9d9  48c705b8ddd60c04000000   qword ptr [rip + 0xcd6ddb8], 4        ; -> 0x14e6cc79c  imm=0x4
+0x014195e9e4  0f1105f5ddd60c           xmmword ptr [rip + 0xcd6ddf5], xmm0        ; -> 0x14e6cc7e0
+0x014195e9eb  c705f7ddd60c01000000     dword ptr [rip + 0xcd6ddf7], 1        ; -> 0x14e6cc7ec  imm=0x1
+0x014195e9f5  0f1105fcddd60c           xmmword ptr [rip + 0xcd6ddfc], xmm0        ; -> 0x14e6cc7f8
+0x014195e9fc  c705e2ddd60cffffffff     dword ptr [rip + 0xcd6dde2], 0xffffffff        ; -> 0x14e6cc7e8  imm=0xffffffff
+0x014195ea06  0f110563ded60c           xmmword ptr [rip + 0xcd6de63], xmm0        ; -> 0x14e6cc870
+0x014195ea0d  891d91ddd60c             dword ptr [rip + 0xcd6dd91], ebx        ; -> 0x14e6cc7a4
+0x014195ea13  0f110596ded60c           xmmword ptr [rip + 0xcd6de96], xmm0        ; -> 0x14e6cc8b0
+0x014195ea1a  48891ddbddd60c           qword ptr [rip + 0xcd6dddb], rbx        ; -> 0x14e6cc7fc
+0x014195ea21  0f1105b0ded60c           xmmword ptr [rip + 0xcd6deb0], xmm0        ; -> 0x14e6cc8d8
+0x014195ea28  c705c6ddd60c0a000000     dword ptr [rip + 0xcd6ddc6], 0xa        ; -> 0x14e6cc7f8  imm=0xa
+0x014195ea32  0f1105dfded60c           xmmword ptr [rip + 0xcd6dedf], xmm0        ; -> 0x14e6cc918
+0x014195ea39  c70579ded60c01000000     dword ptr [rip + 0xcd6de79], 1        ; -> 0x14e6cc8bc  imm=0x1
+0x014195ea43  0f110566ddd60c           xmmword ptr [rip + 0xcd6dd66], xmm0        ; -> 0x14e6cc7b0
+0x014195ea4a  48890567ddd60c           qword ptr [rip + 0xcd6dd67], rax        ; -> 0x14e6cc7b8
+0x014195ea51  33c0                     eax, eax
+0x014195ea53  488905feddd60c           qword ptr [rip + 0xcd6ddfe], rax        ; -> 0x14e6cc858
+0x014195ea5a  488d05bfcc4a00           rax, [rip + 0x4accbf]        ; -> 0x141e0b720
+0x014195ea61  488905e0ddd60c           qword ptr [rip + 0xcd6dde0], rax        ; -> 0x14e6cc848
+0x014195ea68  488d05c15e3c02           rax, [rip + 0x23c5ec1]        ; -> 0x143d24930
+0x014195ea6f  488905a2ddd60c           qword ptr [rip + 0xcd6dda2], rax        ; -> 0x14e6cc818
+0x014195ea76  33c0                     eax, eax
+0x014195ea78  48890541ded60c           qword ptr [rip + 0xcd6de41], rax        ; -> 0x14e6cc8c0
+0x014195ea7f  488d05e2287601           rax, [rip + 0x17628e2]        ; -> 0x1430c1368 'm_impactEffectColorID'
+0x014195ea86  0f1105f3ddd60c           xmmword ptr [rip + 0xcd6ddf3], xmm0        ; -> 0x14e6cc880
+0x014195ea8d  488905f4ddd60c           qword ptr [rip + 0xcd6ddf4], rax        ; -> 0x14e6cc888
+0x014195ea94  488d0575ca4a00           rax, [rip + 0x4aca75]        ; -> 0x141e0b510
+0x014195ea9b  0f1105feddd60c           xmmword ptr [rip + 0xcd6ddfe], xmm0        ; -> 0x14e6cc8a0
+0x014195eaa2  488905ffddd60c           qword ptr [rip + 0xcd6ddff], rax        ; -> 0x14e6cc8a8
+0x014195eaa9  33c0                     eax, eax
+0x014195eaab  48890576ded60c           qword ptr [rip + 0xcd6de76], rax        ; -> 0x14e6cc928
+0x014195eab2  488d0597dd6f01           rax, [rip + 0x16fdd97]        ; -> 0x14305c850 'm_iHealth'
+0x014195eab9  0f110510ddd60c           xmmword ptr [rip + 0xcd6dd10], xmm0        ; -> 0x14e6cc7d0
+0x014195eac0  48891d11ddd60c           qword ptr [rip + 0xcd6dd11], rbx        ; -> 0x14e6cc7d8
+0x014195eac7  0f11053addd60c           xmmword ptr [rip + 0xcd6dd3a], xmm0        ; -> 0x14e6cc808
+0x014195eace  891d38ddd60c             dword ptr [rip + 0xcd6dd38], ebx        ; -> 0x14e6cc80c
+0x014195ead4  0f11050dded60c           xmmword ptr [rip + 0xcd6de0d], xmm0        ; -> 0x14e6cc8e8
+0x014195eadb  4889050eded60c           qword ptr [rip + 0xcd6de0e], rax        ; -> 0x14e6cc8f0
+0x014195eae2  0f11051fded60c           xmmword ptr [rip + 0xcd6de1f], xmm0        ; -> 0x14e6cc908
+0x014195eae9  c705c5ddd60cffffffff     dword ptr [rip + 0xcd6ddc5], 0xffffffff        ; -> 0x14e6cc8b8  imm=0xffffffff
+0x014195eaf3  0f1105c6dcd60c           xmmword ptr [rip + 0xcd6dcc6], xmm0        ; -> 0x14e6cc7c0
+0x014195eafa  48c7055fddd60c50160000   qword ptr [rip + 0xcd6dd5f], 0x1650        ; -> 0x14e6cc864  imm=0x1650
+0x014195eb05  0f11051cddd60c           xmmword ptr [rip + 0xcd6dd1c], xmm0        ; -> 0x14e6cc828
+0x014195eb0c  48c70555ddd60c01000000   qword ptr [rip + 0xcd6dd55], 1        ; -> 0x14e6cc86c  imm=0x1
+0x014195eb17  0f11051addd60c           xmmword ptr [rip + 0xcd6dd1a], xmm0        ; -> 0x14e6cc838
+0x014195eb1e  891d3cddd60c             dword ptr [rip + 0xcd6dd3c], ebx        ; -> 0x14e6cc860
+0x014195eb24  0f110565ddd60c           xmmword ptr [rip + 0xcd6dd65], xmm0        ; -> 0x14e6cc890
+0x014195eb2b  891d43ddd60c             dword ptr [rip + 0xcd6dd43], ebx        ; -> 0x14e6cc874
+0x014195eb31  0f1105c0ddd60c           xmmword ptr [rip + 0xcd6ddc0], xmm0        ; -> 0x14e6cc8f8
+0x014195eb38  c705e2ddd60c01000000     dword ptr [rip + 0xcd6dde2], 1        ; -> 0x14e6cc924  imm=0x1
+0x014195eb42  c705d4ddd60cffffffff     dword ptr [rip + 0xcd6ddd4], 0xffffffff        ; -> 0x14e6cc920  imm=0xffffffff
+0x014195eb4c  48c70575ddd60c30030000   qword ptr [rip + 0xcd6dd75], 0x330        ; -> 0x14e6cc8cc  imm=0x330
+0x014195eb57  48c70572ddd60c04000000   qword ptr [rip + 0xcd6dd72], 4        ; -> 0x14e6cc8d4  imm=0x4
+0x014195eb62  891d60ddd60c             dword ptr [rip + 0xcd6dd60], ebx        ; -> 0x14e6cc8c8
+0x014195eb68  891d6eddd60c             dword ptr [rip + 0xcd6dd6e], ebx        ; -> 0x14e6cc8dc
+0x014195eb6e  48891d9bddd60c           qword ptr [rip + 0xcd6dd9b], rbx        ; -> 0x14e6cc910
+0x014195eb75  e8b2bb2a01               0x142c0a72c        ; imm=0x142c0a72c
+0x014195eb7a  e9ebfcffff               0x14195e86a        ; imm=0x14195e86a
+0x014195eb7f  cc                       
+0x014195eb80  48895c2408               qword ptr [rsp + 8], rbx
+0x014195eb85  4889742410               qword ptr [rsp + 0x10], rsi
+0x014195eb8a  57                       rdi
+0x014195eb8b  4883ec40                 rsp, 0x40        ; imm=0x40
+0x014195eb8f  65488b042558000000       rax, qword ptr gs:[0x58]
+0x014195eb98  33ff                     edi, edi
+0x014195eb9a  be20000000               esi, 0x20        ; imm=0x20
+0x014195eb9f  488b18                   rbx, qword ptr [rax]
+0x014195eba2  8b041e                   eax, dword ptr [rsi + rbx]
+0x014195eba5  39051dced60c             dword ptr [rip + 0xcd6ce1d], eax        ; -> 0x14e6cb9c8
+0x014195ebab  0f8fdc000000             0x14195ec8d        ; imm=0x14195ec8d
+0x014195ebb1  488d0538689f01           rax, [rip + 0x19f6838]        ; -> 0x1433553f0
+0x014195ebb8  48890589649f01           qword ptr [rip + 0x19f6489], rax        ; -> 0x143355048
+0x014195ebbf  8b041e                   eax, dword ptr [rsi + rbx]
+0x014195ebc2  3905804ed60c             dword ptr [rip + 0xcd64e80], eax        ; -> 0x14e6c3a48
+0x014195ebc8  7f28                     0x14195ebf2        ; imm=0x14195ebf2
+0x014195ebca  488b5c2450               rbx, qword ptr [rsp + 0x50]
+0x014195ebcf  488d058a3a620c           rax, [rip + 0xc623a8a]        ; -> 0x14df82660
+0x014195ebd6  488b742458               rsi, qword ptr [rsp + 0x58]
+0x014195ebdb  4889053e649f01           qword ptr [rip + 0x19f643e], rax        ; -> 0x143355020
+0x014195ebe2  c7053c649f0101000000     dword ptr [rip + 0x19f643c], 1        ; -> 0x143355028  imm=0x1
+0x014195ebec  4883c440                 rsp, 0x40        ; imm=0x40
+0x014195ebf0  5f                       rdi
+0x014195ebf1  c3                       
+0x014195ebf2  488d0d4f4ed60c           rcx, [rip + 0xcd64e4f]        ; -> 0x14e6c3a48
+0x014195ebf9  e89abb2a01               0x142c0a798        ; imm=0x142c0a798
+0x014195ebfe  833d434ed60cff           dword ptr [rip + 0xcd64e43], -1        ; -> 0x14e6c3a48  imm=-0x1
+0x014195ec05  75c3                     0x14195ebca        ; imm=0x14195ebca
+0x014195ec07  33c0                     eax, eax
+0x014195ec09  48897c2420               qword ptr [rsp + 0x20], rdi
+0x014195ec0e  48897c2428               qword ptr [rsp + 0x28], rdi
+0x014195ec13  488d0d2e4ed60c           rcx, [rip + 0xcd64e2e]        ; -> 0x14e6c3a48
+0x014195ec1a  0f10442420               xmm0, xmmword ptr [rsp + 0x20]
+0x014195ec1f  c7442430ffffffff         dword ptr [rsp + 0x30], 0xffffffff        ; imm=0xffffffff
+0x014195ec27  f20f104c2430             xmm1, qword ptr [rsp + 0x30]
+0x014195ec2d  0f29055c3a620c           xmmword ptr [rip + 0xc623a5c], xmm0        ; -> 0x14df82690
+0x014195ec34  f20f110d643a620c         qword ptr [rip + 0xc623a64], xmm1        ; -> 0x14df826a0
+0x014195ec3c  48893d653a620c           qword ptr [rip + 0xc623a65], rdi        ; -> 0x14df826a8
+0x014195ec43  893d673a620c             dword ptr [rip + 0xc623a67], edi        ; -> 0x14df826b0
+0x014195ec49  40883d643a620c           byte ptr [rip + 0xc623a64], dil        ; -> 0x14df826b4
+0x014195ec50  c7055e3a620cffffffff     dword ptr [rip + 0xc623a5e], 0xffffffff        ; -> 0x14df826b8  imm=0xffffffff
+0x014195ec5a  48893d5f3a620c           qword ptr [rip + 0xc623a5f], rdi        ; -> 0x14df826c0
+0x014195ec61  48893d603a620c           qword ptr [rip + 0xc623a60], rdi        ; -> 0x14df826c8
+0x014195ec68  48893d613a620c           qword ptr [rip + 0xc623a61], rdi        ; -> 0x14df826d0
+0x014195ec6f  66893d623a620c           word ptr [rip + 0xc623a62], di        ; -> 0x14df826d8
+0x014195ec76  4889055f3a620c           qword ptr [rip + 0xc623a5f], rax        ; -> 0x14df826dc
+0x014195ec7d  8905613a620c             dword ptr [rip + 0xc623a61], eax        ; -> 0x14df826e4
+0x014195ec83  e8a4ba2a01               0x142c0a72c        ; imm=0x142c0a72c
+0x014195ec88  e93dffffff               0x14195ebca        ; imm=0x14195ebca
+0x014195ec8d  488d0d34cdd60c           rcx, [rip + 0xcd6cd34]        ; -> 0x14e6cb9c8
+0x014195ec94  e8ffba2a01               0x142c0a798        ; imm=0x142c0a798
+0x014195ec99  833d28cdd60cff           dword ptr [rip + 0xcd6cd28], -1        ; -> 0x14e6cb9c8  imm=-0x1
+0x014195eca0  0f850bffffff             0x14195ebb1        ; imm=0x14195ebb1
+0x014195eca6  488d05d32c7601           rax, [rip + 0x1762cd3]        ; -> 0x1430c1980 'C_ShieldProp'
+0x014195ecad  48893d74896802           qword ptr [rip + 0x2688974], rdi        ; -> 0x143fe7628
+0x014195ecb4  0f57c0                   xmm0, xmm0
+0x014195ecb7  4889054a896802           qword ptr [rip + 0x268894a], rax        ; -> 0x143fe7608
+0x014195ecbe  488d0d5b063201           rcx, [rip + 0x132065b]        ; -> 0x142c7f320
+0x014195ecc5  893d65896802             dword ptr [rip + 0x2688965], edi        ; -> 0x143fe7630
+0x014195eccb  f30f7f0545896802         xmmword ptr [rip + 0x2688945], xmm0        ; -> 0x143fe7618
+0x014195ecd3  48c705328968020c000000   qword ptr [rip + 0x2688932], 0xc        ; -> 0x143fe7610  imm=0xc
+0x014195ecde  e855bd2a01               0x142c0aa38        ; imm=0x142c0aa38
+0x014195ece3  488d0ddeccd60c           rcx, [rip + 0xcd6ccde]        ; -> 0x14e6cb9c8
+0x014195ecea  e83dba2a01               0x142c0a72c        ; imm=0x142c0a72c
+0x014195ecef  e9bdfeffff               0x14195ebb1        ; imm=0x14195ebb1
+0x014195ecf4  cc                       
+
+### m_iHealth  lea@0x141f0788a   function 0x141f074d0..0x141f07db9  (2281 bytes)
+0x0141f074d0  48897c2410               qword ptr [rsp + 0x10], rdi
+0x0141f074d5  55                       rbp
+0x0141f074d6  488d6c24d0               rbp, [rsp - 0x30]
+0x0141f074db  4881ec30010000           rsp, 0x130        ; imm=0x130
+0x0141f074e2  48ff05a7289507           qword ptr [rip + 0x79528a7]        ; -> 0x149859d90
+0x0141f074e9  488d3d18531501           rdi, [rip + 0x1155318]        ; -> 0x14305c808 'DT_Turret'
+0x0141f074f0  48b8c87aa0813aeecf17     rax, 0x17cfee3a81a07ac8        ; imm=0x17cfee3a81a07ac8
+0x0141f074fa  b920000000               ecx, 0x20        ; imm=0x20
+0x0141f074ff  4829053a289507           qword ptr [rip + 0x795283a], rax        ; -> 0x149859d40
+0x0141f07506  65488b042558000000       rax, qword ptr gs:[0x58]
+0x0141f0750f  c705e31dde01c0190000     dword ptr [rip + 0x1de1de3], 0x19c0        ; -> 0x143ce92fc  imm=0x19c0
+0x0141f07519  488b00                   rax, qword ptr [rax]
+0x0141f0751c  8b0401                   eax, dword ptr [rcx + rax]
+0x0141f0751f  390583ee790c             dword ptr [rip + 0xc79ee83], eax        ; -> 0x14e6a63a8
+0x0141f07525  0f8f01010000             0x141f0762c        ; imm=0x141f0762c
+0x0141f0752b  4c8bcf                   r9, rdi
+0x0141f0752e  488d1523f2790c           rdx, [rip + 0xc79f223]        ; -> 0x14e6a6758
+0x0141f07535  41b80c000000             r8d, 0xc        ; imm=0xc
+0x0141f0753b  488d0dfe18de01           rcx, [rip + 0x1de18fe]        ; -> 0x143ce8e40
+0x0141f07542  e8193af0ff               0x141e0af60        ; imm=0x141e0af60
+0x0141f07547  8b0d1ff2790c             ecx, dword ptr [rip + 0xc79f21f]        ; -> 0x14e6a676c
+0x0141f0754d  488bbc2448010000         rdi, qword ptr [rsp + 0x148]
+0x0141f07555  f7d1                     ecx
+0x0141f07557  48c1e906                 rcx, 6        ; imm=0x6
+0x0141f0755b  83e101                   ecx, 1        ; imm=0x1
+0x0141f0755e  f6056ff2790c40           byte ptr [rip + 0xc79f26f], 0x40        ; -> 0x14e6a67d4  imm=0x40
+0x0141f07565  488d4101                 rax, [rcx + 1]
+0x0141f07569  480f45c1                 rax, rcx
+0x0141f0756d  f605c8f2790c40           byte ptr [rip + 0xc79f2c8], 0x40        ; -> 0x14e6a683c  imm=0x40
+0x0141f07574  488d4801                 rcx, [rax + 1]
+0x0141f07578  480f45c8                 rcx, rax
+0x0141f0757c  f60521f3790c40           byte ptr [rip + 0xc79f321], 0x40        ; -> 0x14e6a68a4  imm=0x40
+0x0141f07583  488d4101                 rax, [rcx + 1]
+0x0141f07587  480f45c1                 rax, rcx
+0x0141f0758b  f6057af3790c40           byte ptr [rip + 0xc79f37a], 0x40        ; -> 0x14e6a690c  imm=0x40
+0x0141f07592  488d4801                 rcx, [rax + 1]
+0x0141f07596  480f45c8                 rcx, rax
+0x0141f0759a  f605d3f3790c40           byte ptr [rip + 0xc79f3d3], 0x40        ; -> 0x14e6a6974  imm=0x40
+0x0141f075a1  488d4101                 rax, [rcx + 1]
+0x0141f075a5  480f45c1                 rax, rcx
+0x0141f075a9  f6052cf4790c40           byte ptr [rip + 0xc79f42c], 0x40        ; -> 0x14e6a69dc  imm=0x40
+0x0141f075b0  488d4801                 rcx, [rax + 1]
+0x0141f075b4  480f45c8                 rcx, rax
+0x0141f075b8  f60585f4790c40           byte ptr [rip + 0xc79f485], 0x40        ; -> 0x14e6a6a44  imm=0x40
+0x0141f075bf  488d4101                 rax, [rcx + 1]
+0x0141f075c3  480f45c1                 rax, rcx
+0x0141f075c7  f605def4790c40           byte ptr [rip + 0xc79f4de], 0x40        ; -> 0x14e6a6aac  imm=0x40
+0x0141f075ce  488d4801                 rcx, [rax + 1]
+0x0141f075d2  480f45c8                 rcx, rax
+0x0141f075d6  f60537f5790c40           byte ptr [rip + 0xc79f537], 0x40        ; -> 0x14e6a6b14  imm=0x40
+0x0141f075dd  b801000000               eax, 1        ; imm=0x1
+0x0141f075e2  488d5101                 rdx, [rcx + 1]
+0x0141f075e6  480f45d1                 rdx, rcx
+0x0141f075ea  f6058bf5790c40           byte ptr [rip + 0xc79f58b], 0x40        ; -> 0x14e6a6b7c  imm=0x40
+0x0141f075f1  4c8d4201                 r8, [rdx + 1]
+0x0141f075f5  4c0f45c2                 r8, rdx
+0x0141f075f9  f605e4f5790c40           byte ptr [rip + 0xc79f5e4], 0x40        ; -> 0x14e6a6be4  imm=0x40
+0x0141f07600  48ba38855f7ec51130e8     rdx, 0xe83011c57e5f8538        ; imm=-0x17cfee3a81a07ac8
+0x0141f0760a  498d4801                 rcx, [r8 + 1]
+0x0141f0760e  490f45c8                 rcx, r8
+0x0141f07612  4833ca                   rcx, rdx
+0x0141f07615  48010d2c279507           qword ptr [rip + 0x795272c], rcx        ; -> 0x149859d48
+0x0141f0761c  48ff0575279507           qword ptr [rip + 0x7952775]        ; -> 0x149859d98
+0x0141f07623  4881c430010000           rsp, 0x130        ; imm=0x130
+0x0141f0762a  5d                       rbp
+0x0141f0762b  c3                       
+0x0141f0762c  488d0d75ed790c           rcx, [rip + 0xc79ed75]        ; -> 0x14e6a63a8
+0x0141f07633  e86031d000               0x142c0a798        ; imm=0x142c0a798
+0x0141f07638  833d69ed790cff           dword ptr [rip + 0xc79ed69], -1        ; -> 0x14e6a63a8  imm=-0x1
+0x0141f0763f  0f85e6feffff             0x141f0752b        ; imm=0x141f0752b
+0x0141f07645  0f57c0                   xmm0, xmm0
+0x0141f07648  48899c2440010000         qword ptr [rsp + 0x140], rbx
+0x0141f07650  33db                     ebx, ebx
+0x0141f07652  488d15c740f0ff           rdx, [rip - 0xfbf39]        ; -> 0x141e0b720
+0x0141f07659  33c0                     eax, eax
+0x0141f0765b  488d0dbe6a3000           rcx, [rip + 0x306abe]        ; -> 0x14220e120
+0x0141f07662  488905e7f0790c           qword ptr [rip + 0xc79f0e7], rax        ; -> 0x14e6a6750
+0x0141f07669  488d05c8b51201           rax, [rip + 0x112b5c8]        ; -> 0x143032c38 'should_never_see_this'
+0x0141f07670  0f110579f0790c           xmmword ptr [rip + 0xc79f079], xmm0        ; -> 0x14e6a66f0
+0x0141f07677  891d7bf0790c             dword ptr [rip + 0xc79f07b], ebx        ; -> 0x14e6a66f8
+0x0141f0767d  0f110524f1790c           xmmword ptr [rip + 0xc79f124], xmm0        ; -> 0x14e6a67a8
+0x0141f07684  48891d65f0790c           qword ptr [rip + 0xc79f065], rbx        ; -> 0x14e6a66f0
+0x0141f0768b  0f11052ef1790c           xmmword ptr [rip + 0xc79f12e], xmm0        ; -> 0x14e6a67c0
+0x0141f07692  c70518f1790c01000000     dword ptr [rip + 0xc79f118], 1        ; -> 0x14e6a67b4  imm=0x1
+0x0141f0769c  0f110585f1790c           xmmword ptr [rip + 0xc79f185], xmm0        ; -> 0x14e6a6828
+0x0141f076a3  c70503f1790cffffffff     dword ptr [rip + 0xc79f103], 0xffffffff        ; -> 0x14e6a67b0  imm=0xffffffff
+0x0141f076ad  0f1105c4f0790c           xmmword ptr [rip + 0xc79f0c4], xmm0        ; -> 0x14e6a6778
+0x0141f076b4  48893dc5f0790c           qword ptr [rip + 0xc79f0c5], rdi        ; -> 0x14e6a6780
+0x0141f076bb  0f11053ef0790c           xmmword ptr [rip + 0xc79f03e], xmm0        ; -> 0x14e6a6700
+0x0141f076c2  48c7052ff0790c04000000   qword ptr [rip + 0xc79f02f], 4        ; -> 0x14e6a66fc  imm=0x4
+0x0141f076cd  0f11056cf0790c           xmmword ptr [rip + 0xc79f06c], xmm0        ; -> 0x14e6a6740
+0x0141f076d4  c7056ef0790c01000000     dword ptr [rip + 0xc79f06e], 1        ; -> 0x14e6a674c  imm=0x1
+0x0141f076de  0f110573f0790c           xmmword ptr [rip + 0xc79f073], xmm0        ; -> 0x14e6a6758
+0x0141f076e5  c70559f0790cffffffff     dword ptr [rip + 0xc79f059], 0xffffffff        ; -> 0x14e6a6748  imm=0xffffffff
+0x0141f076ef  0f1105daf0790c           xmmword ptr [rip + 0xc79f0da], xmm0        ; -> 0x14e6a67d0
+0x0141f076f6  891d08f0790c             dword ptr [rip + 0xc79f008], ebx        ; -> 0x14e6a6704
+0x0141f076fc  0f11050df1790c           xmmword ptr [rip + 0xc79f10d], xmm0        ; -> 0x14e6a6810
+0x0141f07703  48891d52f0790c           qword ptr [rip + 0xc79f052], rbx        ; -> 0x14e6a675c
+0x0141f0770a  0f110527f1790c           xmmword ptr [rip + 0xc79f127], xmm0        ; -> 0x14e6a6838
+0x0141f07711  c7053df0790c0a000000     dword ptr [rip + 0xc79f03d], 0xa        ; -> 0x14e6a6758  imm=0xa
+0x0141f0771b  0f110556f1790c           xmmword ptr [rip + 0xc79f156], xmm0        ; -> 0x14e6a6878
+0x0141f07722  4889157ff0790c           qword ptr [rip + 0xc79f07f], rdx        ; -> 0x14e6a67a8
+0x0141f07729  0f1105e0ef790c           xmmword ptr [rip + 0xc79efe0], xmm0        ; -> 0x14e6a6710
+0x0141f07730  488905e1ef790c           qword ptr [rip + 0xc79efe1], rax        ; -> 0x14e6a6718
+0x0141f07737  33c0                     eax, eax
+0x0141f07739  48890578f0790c           qword ptr [rip + 0xc79f078], rax        ; -> 0x14e6a67b8
+0x0141f07740  488d055959e001           rax, [rip + 0x1e05959]        ; -> 0x143d0d0a0
+0x0141f07747  4889052af0790c           qword ptr [rip + 0xc79f02a], rax        ; -> 0x14e6a6778
+0x0141f0774e  33c0                     eax, eax
+0x0141f07750  488905c9f0790c           qword ptr [rip + 0xc79f0c9], rax        ; -> 0x14e6a6820
+0x0141f07757  488d059a501501           rax, [rip + 0x115509a]        ; -> 0x14305c7f8 'm_settingsIndex'
+0x0141f0775e  0f11057bf0790c           xmmword ptr [rip + 0xc79f07b], xmm0        ; -> 0x14e6a67e0
+0x0141f07765  4889057cf0790c           qword ptr [rip + 0xc79f07c], rax        ; -> 0x14e6a67e8
+0x0141f0776c  33c0                     eax, eax
+0x0141f0776e  48890513f1790c           qword ptr [rip + 0xc79f113], rax        ; -> 0x14e6a6888
+0x0141f07775  488d056c501501           rax, [rip + 0x115506c]        ; -> 0x14305c7e8 'm_driver'
+0x0141f0777c  0f1105c5f0790c           xmmword ptr [rip + 0xc79f0c5], xmm0        ; -> 0x14e6a6848
+0x0141f07783  488905c6f0790c           qword ptr [rip + 0xc79f0c6], rax        ; -> 0x14e6a6850
+0x0141f0778a  33c0                     eax, eax
+0x0141f0778c  0f11059def790c           xmmword ptr [rip + 0xc79ef9d], xmm0        ; -> 0x14e6a6730
+0x0141f07793  48890556f1790c           qword ptr [rip + 0xc79f156], rax        ; -> 0x14e6a68f0
+0x0141f0779a  0f1105c7ef790c           xmmword ptr [rip + 0xc79efc7], xmm0        ; -> 0x14e6a6768
+0x0141f077a1  48891d90ef790c           qword ptr [rip + 0xc79ef90], rbx        ; -> 0x14e6a6738
+0x0141f077a8  0f110551f0790c           xmmword ptr [rip + 0xc79f051], xmm0        ; -> 0x14e6a6800
+0x0141f077af  891db7ef790c             dword ptr [rip + 0xc79efb7], ebx        ; -> 0x14e6a676c
+0x0141f077b5  0f1105acf0790c           xmmword ptr [rip + 0xc79f0ac], xmm0        ; -> 0x14e6a6868
+0x0141f077bc  c70556f0790c01000000     dword ptr [rip + 0xc79f056], 1        ; -> 0x14e6a681c  imm=0x1
+0x0141f077c6  0f110553ef790c           xmmword ptr [rip + 0xc79ef53], xmm0        ; -> 0x14e6a6720
+0x0141f077cd  c70541f0790cffffffff     dword ptr [rip + 0xc79f041], 0xffffffff        ; -> 0x14e6a6818  imm=0xffffffff
+0x0141f077d7  0f1105aaef790c           xmmword ptr [rip + 0xc79efaa], xmm0        ; -> 0x14e6a6788
+0x0141f077de  48c705dbef790c18190000   qword ptr [rip + 0xc79efdb], 0x1918        ; -> 0x14e6a67c4  imm=0x1918
+0x0141f077e9  0f1105a8ef790c           xmmword ptr [rip + 0xc79efa8], xmm0        ; -> 0x14e6a6798
+0x0141f077f0  48c705d1ef790c04000000   qword ptr [rip + 0xc79efd1], 4        ; -> 0x14e6a67cc  imm=0x4
+0x0141f077fb  0f1105eeef790c           xmmword ptr [rip + 0xc79efee], xmm0        ; -> 0x14e6a67f0
+0x0141f07802  891db8ef790c             dword ptr [rip + 0xc79efb8], ebx        ; -> 0x14e6a67c0
+0x0141f07808  891dc6ef790c             dword ptr [rip + 0xc79efc6], ebx        ; -> 0x14e6a67d4
+0x0141f0780e  48891df3ef790c           qword ptr [rip + 0xc79eff3], rbx        ; -> 0x14e6a6808
+0x0141f07815  0f11053cf0790c           xmmword ptr [rip + 0xc79f03c], xmm0        ; -> 0x14e6a6858
+0x0141f0781c  c7055ef0790c01000000     dword ptr [rip + 0xc79f05e], 1        ; -> 0x14e6a6884  imm=0x1
+0x0141f07826  c70550f0790cffffffff     dword ptr [rip + 0xc79f050], 0xffffffff        ; -> 0x14e6a6880  imm=0xffffffff
+0x0141f07830  48c705f1ef790c2c190000   qword ptr [rip + 0xc79eff1], 0x192c        ; -> 0x14e6a682c  imm=0x192c
+0x0141f0783b  48c705eeef790c04000000   qword ptr [rip + 0xc79efee], 4        ; -> 0x14e6a6834  imm=0x4
+0x0141f07846  891ddcef790c             dword ptr [rip + 0xc79efdc], ebx        ; -> 0x14e6a6828
+0x0141f0784c  891deaef790c             dword ptr [rip + 0xc79efea], ebx        ; -> 0x14e6a683c
+0x0141f07852  48890d17f0790c           qword ptr [rip + 0xc79f017], rcx        ; -> 0x14e6a6870
+0x0141f07859  0f110530f0790c           xmmword ptr [rip + 0xc79f030], xmm0        ; -> 0x14e6a6890
+0x0141f07860  0f110539f0790c           xmmword ptr [rip + 0xc79f039], xmm0        ; -> 0x14e6a68a0
+0x0141f07867  0f110542f0790c           xmmword ptr [rip + 0xc79f042], xmm0        ; -> 0x14e6a68b0
+0x0141f0786e  0f11054bf0790c           xmmword ptr [rip + 0xc79f04b], xmm0        ; -> 0x14e6a68c0
+0x0141f07875  0f110554f0790c           xmmword ptr [rip + 0xc79f054], xmm0        ; -> 0x14e6a68d0
+0x0141f0787c  0f11055df0790c           xmmword ptr [rip + 0xc79f05d], xmm0        ; -> 0x14e6a68e0
+0x0141f07883  0f1105d6f0790c           xmmword ptr [rip + 0xc79f0d6], xmm0        ; -> 0x14e6a6960
+0x0141f0788a  488d05bf4f1501           rax, [rip + 0x1154fbf]        ; -> 0x14305c850 'm_iHealth'
+0x0141f07891  c70551f0790c01000000     dword ptr [rip + 0xc79f051], 1        ; -> 0x14e6a68ec  imm=0x1
+0x0141f0789b  48890516f0790c           qword ptr [rip + 0xc79f016], rax        ; -> 0x14e6a68b8
+0x0141f078a2  33c0                     eax, eax
+0x0141f078a4  488905adf0790c           qword ptr [rip + 0xc79f0ad], rax        ; -> 0x14e6a6958
+0x0141f078ab  488d058e4f1501           rax, [rip + 0x1154f8e]        ; -> 0x14305c840 'm_iMaxHealth'
+0x0141f078b2  0f11050ff1790c           xmmword ptr [rip + 0xc79f10f], xmm0        ; -> 0x14e6a69c8
+0x0141f078b9  c70525f0790cffffffff     dword ptr [rip + 0xc79f025], 0xffffffff        ; -> 0x14e6a68e8  imm=0xffffffff
+0x0141f078c3  0f110566f1790c           xmmword ptr [rip + 0xc79f166], xmm0        ; -> 0x14e6a6a30
+0x0141f078ca  48c705bfef790c30030000   qword ptr [rip + 0xc79efbf], 0x330        ; -> 0x14e6a6894  imm=0x330
+0x0141f078d5  0f11051cf0790c           xmmword ptr [rip + 0xc79f01c], xmm0        ; -> 0x14e6a68f8
+0x0141f078dc  48c705b5ef790c04000000   qword ptr [rip + 0xc79efb5], 4        ; -> 0x14e6a689c  imm=0x4
+0x0141f078e7  0f11051af0790c           xmmword ptr [rip + 0xc79f01a], xmm0        ; -> 0x14e6a6908
+0x0141f078ee  891d9cef790c             dword ptr [rip + 0xc79ef9c], ebx        ; -> 0x14e6a6890
+0x0141f078f4  0f11054df0790c           xmmword ptr [rip + 0xc79f04d], xmm0        ; -> 0x14e6a6948
+0x0141f078fb  891da3ef790c             dword ptr [rip + 0xc79efa3], ebx        ; -> 0x14e6a68a4
+0x0141f07901  0f1105a8f0790c           xmmword ptr [rip + 0xc79f0a8], xmm0        ; -> 0x14e6a69b0
+0x0141f07908  48891dc9ef790c           qword ptr [rip + 0xc79efc9], rbx        ; -> 0x14e6a68d8
+0x0141f0790f  0f110502f1790c           xmmword ptr [rip + 0xc79f102], xmm0        ; -> 0x14e6a6a18
+0x0141f07916  c70534f0790c01000000     dword ptr [rip + 0xc79f034], 1        ; -> 0x14e6a6954  imm=0x1
+0x0141f07920  0f110559f1790c           xmmword ptr [rip + 0xc79f159], xmm0        ; -> 0x14e6a6a80
+0x0141f07927  c7051ff0790cffffffff     dword ptr [rip + 0xc79f01f], 0xffffffff        ; -> 0x14e6a6950  imm=0xffffffff
+0x0141f07931  0f1105e0ef790c           xmmword ptr [rip + 0xc79efe0], xmm0        ; -> 0x14e6a6918
+0x0141f07938  488905e1ef790c           qword ptr [rip + 0xc79efe1], rax        ; -> 0x14e6a6920
+0x0141f0793f  33c0                     eax, eax
+0x0141f07941  48890578f0790c           qword ptr [rip + 0xc79f078], rax        ; -> 0x14e6a69c0
+0x0141f07948  488d05e14e1501           rax, [rip + 0x1154ee1]        ; -> 0x14305c830 'm_forceAimPitch'
+0x0141f0794f  0f11052af0790c           xmmword ptr [rip + 0xc79f02a], xmm0        ; -> 0x14e6a6980
+0x0141f07956  4889052bf0790c           qword ptr [rip + 0xc79f02b], rax        ; -> 0x14e6a6988
+0x0141f0795d  33c0                     eax, eax
+0x0141f0795f  488905c2f0790c           qword ptr [rip + 0xc79f0c2], rax        ; -> 0x14e6a6a28
+0x0141f07966  488d05b34e1501           rax, [rip + 0x1154eb3]        ; -> 0x14305c820 'm_forceAimYaw'
+0x0141f0796d  0f110574f0790c           xmmword ptr [rip + 0xc79f074], xmm0        ; -> 0x14e6a69e8
+0x0141f07974  48890575f0790c           qword ptr [rip + 0xc79f075], rax        ; -> 0x14e6a69f0
+0x0141f0797b  33c0                     eax, eax
+0x0141f0797d  4889050cf1790c           qword ptr [rip + 0xc79f10c], rax        ; -> 0x14e6a6a90
+0x0141f07984  488d05054e1501           rax, [rip + 0x1154e05]        ; -> 0x14305c790 'm_driverDetachTime'
+0x0141f0798b  0f1105bef0790c           xmmword ptr [rip + 0xc79f0be], xmm0        ; -> 0x14e6a6a50
+0x0141f07992  488905bff0790c           qword ptr [rip + 0xc79f0bf], rax        ; -> 0x14e6a6a58
+0x0141f07999  33c0                     eax, eax
+0x0141f0799b  0f110596ef790c           xmmword ptr [rip + 0xc79ef96], xmm0        ; -> 0x14e6a6938
+0x0141f079a2  48c7054fef790c70040000   qword ptr [rip + 0xc79ef4f], 0x470        ; -> 0x14e6a68fc  imm=0x470
+0x0141f079ad  0f1105bcef790c           xmmword ptr [rip + 0xc79efbc], xmm0        ; -> 0x14e6a6970
+0x0141f079b4  48c70545ef790c04000000   qword ptr [rip + 0xc79ef45], 4        ; -> 0x14e6a6904  imm=0x4
+0x0141f079bf  0f1105daef790c           xmmword ptr [rip + 0xc79efda], xmm0        ; -> 0x14e6a69a0
+0x0141f079c6  891d2cef790c             dword ptr [rip + 0xc79ef2c], ebx        ; -> 0x14e6a68f8
+0x0141f079cc  0f110505f0790c           xmmword ptr [rip + 0xc79f005], xmm0        ; -> 0x14e6a69d8
+0x0141f079d3  891d33ef790c             dword ptr [rip + 0xc79ef33], ebx        ; -> 0x14e6a690c
+0x0141f079d9  0f110528f0790c           xmmword ptr [rip + 0xc79f028], xmm0        ; -> 0x14e6a6a08
+0x0141f079e0  48891d59ef790c           qword ptr [rip + 0xc79ef59], rbx        ; -> 0x14e6a6940
+0x0141f079e7  0f110552f0790c           xmmword ptr [rip + 0xc79f052], xmm0        ; -> 0x14e6a6a40
+0x0141f079ee  c705c4ef790c01000000     dword ptr [rip + 0xc79efc4], 1        ; -> 0x14e6a69bc  imm=0x1
+0x0141f079f8  0f110571f0790c           xmmword ptr [rip + 0xc79f071], xmm0        ; -> 0x14e6a6a70
+0x0141f079ff  c705afef790cffffffff     dword ptr [rip + 0xc79efaf], 0xffffffff        ; -> 0x14e6a69b8  imm=0xffffffff
+0x0141f07a09  0f110518ef790c           xmmword ptr [rip + 0xc79ef18], xmm0        ; -> 0x14e6a6928
+0x0141f07a10  891d52ef790c             dword ptr [rip + 0xc79ef52], ebx        ; -> 0x14e6a6968
+0x0141f07a16  0f110573ef790c           xmmword ptr [rip + 0xc79ef73], xmm0        ; -> 0x14e6a6990
+0x0141f07a1d  c70545ef790c04000000     dword ptr [rip + 0xc79ef45], 4        ; -> 0x14e6a696c  imm=0x4
+0x0141f07a27  c70533ef790c54190000     dword ptr [rip + 0xc79ef33], 0x1954        ; -> 0x14e6a6964  imm=0x1954
+0x0141f07a31  c70525ef790c01000000     dword ptr [rip + 0xc79ef25], 1        ; -> 0x14e6a6960  imm=0x1
+0x0141f07a3b  891d33ef790c             dword ptr [rip + 0xc79ef33], ebx        ; -> 0x14e6a6974
+0x0141f07a41  48891d60ef790c           qword ptr [rip + 0xc79ef60], rbx        ; -> 0x14e6a69a8
+0x0141f07a48  0f1105a9ef790c           xmmword ptr [rip + 0xc79efa9], xmm0        ; -> 0x14e6a69f8
+0x0141f07a4f  c705cbef790c01000000     dword ptr [rip + 0xc79efcb], 1        ; -> 0x14e6a6a24  imm=0x1
+0x0141f07a59  c705bdef790cffffffff     dword ptr [rip + 0xc79efbd], 0xffffffff        ; -> 0x14e6a6a20  imm=0xffffffff
+0x0141f07a63  891d67ef790c             dword ptr [rip + 0xc79ef67], ebx        ; -> 0x14e6a69d0
+0x0141f07a69  c70561ef790c04000000     dword ptr [rip + 0xc79ef61], 4        ; -> 0x14e6a69d4  imm=0x4
+0x0141f07a73  c7054fef790c58190000     dword ptr [rip + 0xc79ef4f], 0x1958        ; -> 0x14e6a69cc  imm=0x1958
+0x0141f07a7d  c70541ef790c01000000     dword ptr [rip + 0xc79ef41], 1        ; -> 0x14e6a69c8  imm=0x1
+0x0141f07a87  891d4fef790c             dword ptr [rip + 0xc79ef4f], ebx        ; -> 0x14e6a69dc
+0x0141f07a8d  48891d7cef790c           qword ptr [rip + 0xc79ef7c], rbx        ; -> 0x14e6a6a10
+0x0141f07a94  0f1105c5ef790c           xmmword ptr [rip + 0xc79efc5], xmm0        ; -> 0x14e6a6a60
+0x0141f07a9b  c705e7ef790c01000000     dword ptr [rip + 0xc79efe7], 1        ; -> 0x14e6a6a8c  imm=0x1
+0x0141f07aa5  c705d9ef790cffffffff     dword ptr [rip + 0xc79efd9], 0xffffffff        ; -> 0x14e6a6a88  imm=0xffffffff
+0x0141f07aaf  891d83ef790c             dword ptr [rip + 0xc79ef83], ebx        ; -> 0x14e6a6a38
+0x0141f07ab5  c7057def790c04000000     dword ptr [rip + 0xc79ef7d], 4        ; -> 0x14e6a6a3c  imm=0x4
+0x0141f07abf  c7056bef790c5c190000     dword ptr [rip + 0xc79ef6b], 0x195c        ; -> 0x14e6a6a34  imm=0x195c
+0x0141f07ac9  c7055def790c01000000     dword ptr [rip + 0xc79ef5d], 1        ; -> 0x14e6a6a30  imm=0x1
+0x0141f07ad3  891d6bef790c             dword ptr [rip + 0xc79ef6b], ebx        ; -> 0x14e6a6a44
+0x0141f07ad9  48891d98ef790c           qword ptr [rip + 0xc79ef98], rbx        ; -> 0x14e6a6a78
+0x0141f07ae0  48890511f0790c           qword ptr [rip + 0xc79f011], rax        ; -> 0x14e6a6af8
+0x0141f07ae7  448d4b01                 r9d, [rbx + 1]
+0x0141f07aeb  0f1105a6ef790c           xmmword ptr [rip + 0xc79efa6], xmm0        ; -> 0x14e6a6a98
+0x0141f07af2  4889542448               qword ptr [rsp + 0x48], rdx
+0x0141f07af7  488d05824c1501           rax, [rip + 0x1154c82]        ; -> 0x14305c780 'm_driverState'
+0x0141f07afe  0f1105fbef790c           xmmword ptr [rip + 0xc79effb], xmm0        ; -> 0x14e6a6b00
+0x0141f07b05  48c7058cef790c60190000   qword ptr [rip + 0xc79ef8c], 0x1960        ; -> 0x14e6a6a9c  imm=0x1960
+0x0141f07b10  41b8e1160000             r8d, 0x16e1        ; imm=0x16e1
+0x0141f07b16  0f57d2                   xmm2, xmm2
+0x0141f07b19  891d79ef790c             dword ptr [rip + 0xc79ef79], ebx        ; -> 0x14e6a6a98
+0x0141f07b1f  0f110582ef790c           xmmword ptr [rip + 0xc79ef82], xmm0        ; -> 0x14e6a6aa8
+0x0141f07b26  488d15a34c1501           rdx, [rip + 0x1154ca3]        ; -> 0x14305c7d0 'm_overlayEventParity'
+0x0141f07b2d  48c7056cef790c04000000   qword ptr [rip + 0xc79ef6c], 4        ; -> 0x14e6a6aa4  imm=0x4
+0x0141f07b38  0f1105a9ef790c           xmmword ptr [rip + 0xc79efa9], xmm0        ; -> 0x14e6a6ae8
+0x0141f07b3f  c705abef790c01000000     dword ptr [rip + 0xc79efab], 1        ; -> 0x14e6a6af4  imm=0x1
+0x0141f07b49  0f1105c0ef790c           xmmword ptr [rip + 0xc79efc0], xmm0        ; -> 0x14e6a6b10
+0x0141f07b50  c70596ef790cffffffff     dword ptr [rip + 0xc79ef96], 0xffffffff        ; -> 0x14e6a6af0  imm=0xffffffff
+0x0141f07b5a  0f1105efef790c           xmmword ptr [rip + 0xc79efef], xmm0        ; -> 0x14e6a6b50
+0x0141f07b61  891d45ef790c             dword ptr [rip + 0xc79ef45], ebx        ; -> 0x14e6a6aac
+0x0141f07b67  0f11054aef790c           xmmword ptr [rip + 0xc79ef4a], xmm0        ; -> 0x14e6a6ab8
+0x0141f07b6e  4889054bef790c           qword ptr [rip + 0xc79ef4b], rax        ; -> 0x14e6a6ac0
+0x0141f07b75  33c0                     eax, eax
+0x0141f07b77  488905e2ef790c           qword ptr [rip + 0xc79efe2], rax        ; -> 0x14e6a6b60
+0x0141f07b7e  488d05eb4b1501           rax, [rip + 0x1154beb]        ; -> 0x14305c770 'm_turretWeapon'
+0x0141f07b85  0f110594ef790c           xmmword ptr [rip + 0xc79ef94], xmm0        ; -> 0x14e6a6b20
+0x0141f07b8c  48890595ef790c           qword ptr [rip + 0xc79ef95], rax        ; -> 0x14e6a6b28
+0x0141f07b93  33c0                     eax, eax
+0x0141f07b95  0f11053cef790c           xmmword ptr [rip + 0xc79ef3c], xmm0        ; -> 0x14e6a6ad8
+0x0141f07b9c  488945b0                 qword ptr [rbp - 0x50], rax
+0x0141f07ba0  488d05b14b1501           rax, [rip + 0x1154bb1]        ; -> 0x14305c758 'm_overlayEventParity[0]'
+0x0141f07ba7  0f110592ef790c           xmmword ptr [rip + 0xc79ef92], xmm0        ; -> 0x14e6a6b40
+0x0141f07bae  48890d93ef790c           qword ptr [rip + 0xc79ef93], rcx        ; -> 0x14e6a6b48
+0x0141f07bb5  488d0dacef790c           rcx, [rip + 0xc79efac]        ; -> 0x14e6a6b68
+0x0141f07bbc  0f11542450               xmmword ptr [rsp + 0x50], xmm2
+0x0141f07bc1  48c7442454e1160000       qword ptr [rsp + 0x54], 0x16e1        ; imm=0x16e1
+0x0141f07bca  0f1105f7ee790c           xmmword ptr [rip + 0xc79eef7], xmm0        ; -> 0x14e6a6ac8
+0x0141f07bd1  895c2450                 dword ptr [rsp + 0x50], ebx
+0x0141f07bd5  0f110554ef790c           xmmword ptr [rip + 0xc79ef54], xmm0        ; -> 0x14e6a6b30
+0x0141f07bdc  48891dfdee790c           qword ptr [rip + 0xc79eefd], rbx        ; -> 0x14e6a6ae0
+0x0141f07be3  0f11542460               xmmword ptr [rsp + 0x60], xmm2
+0x0141f07be8  48c744245c01000000       qword ptr [rsp + 0x5c], 1        ; imm=0x1
+0x0141f07bf1  0f10442450               xmm0, xmmword ptr [rsp + 0x50]
+0x0141f07bf6  895c2464                 dword ptr [rsp + 0x64], ebx
+0x0141f07bfa  0f104c2460               xmm1, xmmword ptr [rsp + 0x60]
+0x0141f07bff  c70553ef790c01000000     dword ptr [rip + 0xc79ef53], 1        ; -> 0x14e6a6b5c  imm=0x1
+0x0141f07c09  0f2945c0                 xmmword ptr [rbp - 0x40], xmm0
+0x0141f07c0d  0f1155a0                 xmmword ptr [rbp - 0x60], xmm2
+0x0141f07c11  c745ac01000000           dword ptr [rbp - 0x54], 1        ; imm=0x1
+0x0141f07c18  0f11542470               xmmword ptr [rsp + 0x70], xmm2
+0x0141f07c1d  4889442478               qword ptr [rsp + 0x78], rax
+0x0141f07c22  488d05e738f0ff           rax, [rip - 0xfc719]        ; -> 0x141e0b510
+0x0141f07c29  0f10442470               xmm0, xmmword ptr [rsp + 0x70]
+0x0141f07c2e  c745a8ffffffff           dword ptr [rbp - 0x58], 0xffffffff        ; imm=0xffffffff
+0x0141f07c35  0f115590                 xmmword ptr [rbp - 0x70], xmm2
+0x0141f07c39  48894598                 qword ptr [rbp - 0x68], rax
+0x0141f07c3d  488d45c0                 rax, [rbp - 0x40]
+0x0141f07c41  0f2945e0                 xmmword ptr [rbp - 0x20], xmm0
+0x0141f07c45  0f104590                 xmm0, xmmword ptr [rbp - 0x70]
+0x0141f07c49  4889442440               qword ptr [rsp + 0x40], rax
+0x0141f07c4e  0f294dd0                 xmmword ptr [rbp - 0x30], xmm1
+0x0141f07c52  0f104da0                 xmm1, xmmword ptr [rbp - 0x60]
+0x0141f07c56  48c744243009000000       qword ptr [rsp + 0x30], 9        ; imm=0x9
+0x0141f07c5f  0f294500                 xmmword ptr [rbp], xmm0
+0x0141f07c63  f20f1045b0               xmm0, qword ptr [rbp - 0x50]
+0x0141f07c68  f20f114520               qword ptr [rbp + 0x20], xmm0
+0x0141f07c6d  c705e1ee790cffffffff     dword ptr [rip + 0xc79eee1], 0xffffffff        ; -> 0x14e6a6b58  imm=0xffffffff
+0x0141f07c77  48c70582ee790c64190000   qword ptr [rip + 0xc79ee82], 0x1964        ; -> 0x14e6a6b04  imm=0x1964
+0x0141f07c82  48c7057fee790c04000000   qword ptr [rip + 0xc79ee7f], 4        ; -> 0x14e6a6b0c  imm=0x4
+0x0141f07c8d  891d6dee790c             dword ptr [rip + 0xc79ee6d], ebx        ; -> 0x14e6a6b00
+0x0141f07c93  891d7bee790c             dword ptr [rip + 0xc79ee7b], ebx        ; -> 0x14e6a6b14
+0x0141f07c99  0f2955f0                 xmmword ptr [rbp - 0x10], xmm2
+0x0141f07c9d  0f294d10                 xmmword ptr [rbp + 0x10], xmm1
+0x0141f07ca1  48895c2420               qword ptr [rsp + 0x20], rbx
+0x0141f07ca6  e80536f0ff               0x141e0b2b0        ; imm=0x141e0b2b0
+0x0141f07cab  0f57c0                   xmm0, xmm0
+0x0141f07cae  33c0                     eax, eax
+0x0141f07cb0  0f110519ef790c           xmmword ptr [rip + 0xc79ef19], xmm0        ; -> 0x14e6a6bd0
+0x0141f07cb7  0f110522ef790c           xmmword ptr [rip + 0xc79ef22], xmm0        ; -> 0x14e6a6be0
+0x0141f07cbe  0f11052bef790c           xmmword ptr [rip + 0xc79ef2b], xmm0        ; -> 0x14e6a6bf0
+0x0141f07cc5  0f110534ef790c           xmmword ptr [rip + 0xc79ef34], xmm0        ; -> 0x14e6a6c00
+0x0141f07ccc  0f11053def790c           xmmword ptr [rip + 0xc79ef3d], xmm0        ; -> 0x14e6a6c10
+0x0141f07cd3  48890556ef790c           qword ptr [rip + 0xc79ef56], rax        ; -> 0x14e6a6c30
+0x0141f07cda  488d0dc7e6790c           rcx, [rip + 0xc79e6c7]        ; -> 0x14e6a63a8
+0x0141f07ce1  0f110538ef790c           xmmword ptr [rip + 0xc79ef38], xmm0        ; -> 0x14e6a6c20
+0x0141f07ce8  488d05d94a1501           rax, [rip + 0x1154ad9]        ; -> 0x14305c7c8 'm_title'
+0x0141f07cef  c70533ef790c01000000     dword ptr [rip + 0xc79ef33], 1        ; -> 0x14e6a6c2c  imm=0x1
+0x0141f07cf9  488905f8ee790c           qword ptr [rip + 0xc79eef8], rax        ; -> 0x14e6a6bf8
+0x0141f07d00  488d0529f6ffff           rax, [rip - 0x9d7]        ; -> 0x141f07330
+0x0141f07d07  4889050aef790c           qword ptr [rip + 0xc79ef0a], rax        ; -> 0x14e6a6c18
+0x0141f07d0e  c70510ef790cffffffff     dword ptr [rip + 0xc79ef10], 0xffffffff        ; -> 0x14e6a6c28  imm=0xffffffff
+0x0141f07d18  48c705b1ee790c70190000   qword ptr [rip + 0xc79eeb1], 0x1970        ; -> 0x14e6a6bd4  imm=0x1970
+0x0141f07d23  c705a3ee790c04000000     dword ptr [rip + 0xc79eea3], 4        ; -> 0x14e6a6bd0  imm=0x4
+0x0141f07d2d  891db1ee790c             dword ptr [rip + 0xc79eeb1], ebx        ; -> 0x14e6a6be4
+0x0141f07d33  c705abee790c20000000     dword ptr [rip + 0xc79eeab], 0x20        ; -> 0x14e6a6be8  imm=0x20
+0x0141f07d3d  e8ea29d000               0x142c0a72c        ; imm=0x142c0a72c
+0x0141f07d42  488b9c2440010000         rbx, qword ptr [rsp + 0x140]
+0x0141f07d4a  e9dcf7ffff               0x141f0752b        ; imm=0x141f0752b
+0x0141f07d4f  cc                       
+0x0141f07d50  4053                     rbx
+0x0141f07d52  4883ec20                 rsp, 0x20        ; imm=0x20
+0x0141f07d56  488b05f3d0b503           rax, qword ptr [rip + 0x3b5d0f3]        ; -> 0x145a64e50
+0x0141f07d5d  4885c0                   rax, rax
+0x0141f07d60  750c                     0x141f07d6e        ; imm=0x141f07d6e
+0x0141f07d62  e899e8ebff               0x141dc6600        ; imm=0x141dc6600
+0x0141f07d67  488905e2d0b503           qword ptr [rip + 0x3b5d0e2], rax        ; -> 0x145a64e50
+0x0141f07d6e  488b08                   rcx, qword ptr [rax]
+0x0141f07d71  bac0190000               edx, 0x19c0        ; imm=0x19c0
+0x0141f07d76  4c8b4908                 r9, qword ptr [rcx + 8]
+0x0141f07d7a  488bc8                   rcx, rax
+0x0141f07d7d  41ffd1                   r9
+0x0141f07d80  33d2                     edx, edx
+0x0141f07d82  41b8c0190000             r8d, 0x19c0        ; imm=0x19c0
+0x0141f07d88  488bc8                   rcx, rax
+0x0141f07d8b  488bd8                   rbx, rax
+0x0141f07d8e  e8bd85d500               0x142c60350        ; imm=0x142c60350
+0x0141f07d93  4885db                   rbx, rbx
+0x0141f07d96  740d                     0x141f07da5        ; imm=0x141f07da5
+0x0141f07d98  488bcb                   rcx, rbx
+0x0141f07d9b  4883c420                 rsp, 0x20        ; imm=0x20
+0x0141f07d9f  5b                       rbx
+0x0141f07da0  e9fb070000               0x141f085a0        ; imm=0x141f085a0
+0x0141f07da5  33c0                     eax, eax
+0x0141f07da7  4883c420                 rsp, 0x20        ; imm=0x20
+0x0141f07dab  5b                       rbx
+0x0141f07dac  c3                       
+0x0141f07dad  cc                       
+0x0141f07dae  cc                       
+0x0141f07daf  cc                       
+0x0141f07db0  488d0569c84401           rax, [rip + 0x144c869]        ; -> 0x143354620
+0x0141f07db7  c3                       
+0x0141f07db8  cc                       
+
+### m_iTeamNum  lea@0x141f39b41   function 0x141f39772..0x141f39fd9  (2151 bytes)
+0x0141f39772  e9760cc744               0x186baa3ed        ; imm=0x186baa3ed
+0x0141f39777  2454                     al, 0x54        ; imm=0x54
+0x0141f39779  1016                     byte ptr [rsi], dl
+0x0141f3977b  0000                     byte ptr [rax], al
+0x0141f3977d  0f11051cea760c           xmmword ptr [rip + 0xc76ea1c], xmm0        ; -> 0x14e6a81a0
+0x0141f39784  c744245002000000         dword ptr [rsp + 0x50], 2        ; imm=0x2
+0x0141f3978c  0f10442450               xmm0, xmmword ptr [rsp + 0x50]
+0x0141f39791  c705c9e9760c01000000     dword ptr [rip + 0xc76e9c9], 1        ; -> 0x14e6a8164  imm=0x1
+0x0141f3979b  0f1155a0                 xmmword ptr [rbp - 0x60], xmm2
+0x0141f3979f  c745ac01000000           dword ptr [rbp - 0x54], 1        ; imm=0x1
+0x0141f397a6  0f2945c0                 xmmword ptr [rbp - 0x40], xmm0
+0x0141f397aa  0f11542470               xmmword ptr [rsp + 0x70], xmm2
+0x0141f397af  4889442478               qword ptr [rsp + 0x78], rax
+0x0141f397b4  0f10442470               xmm0, xmmword ptr [rsp + 0x70]
+0x0141f397b9  c745a8ffffffff           dword ptr [rbp - 0x58], 0xffffffff        ; imm=0xffffffff
+0x0141f397c0  0f11542460               xmmword ptr [rsp + 0x60], xmm2
+0x0141f397c5  89742464                 dword ptr [rsp + 0x64], esi
+0x0141f397c9  0f104c2460               xmm1, xmmword ptr [rsp + 0x60]
+0x0141f397ce  c70588e9760cffffffff     dword ptr [rip + 0xc76e988], 0xffffffff        ; -> 0x14e6a8160  imm=0xffffffff
+0x0141f397d8  0f115590                 xmmword ptr [rbp - 0x70], xmm2
+0x0141f397dc  48897598                 qword ptr [rbp - 0x68], rsi
+0x0141f397e0  0f2945e0                 xmmword ptr [rbp - 0x20], xmm0
+0x0141f397e4  0f104590                 xmm0, xmmword ptr [rbp - 0x70]
+0x0141f397e8  48c70519e9760c08160000   qword ptr [rip + 0xc76e919], 0x1608        ; -> 0x14e6a810c  imm=0x1608
+0x0141f397f3  0f294dd0                 xmmword ptr [rbp - 0x30], xmm1
+0x0141f397f7  0f104da0                 xmm1, xmmword ptr [rbp - 0x60]
+0x0141f397fb  48c7050ee9760c04000000   qword ptr [rip + 0xc76e90e], 4        ; -> 0x14e6a8114  imm=0x4
+0x0141f39806  0f294500                 xmmword ptr [rbp], xmm0
+0x0141f3980a  f20f1045b0               xmm0, qword ptr [rbp - 0x50]
+0x0141f3980f  f20f114520               qword ptr [rbp + 0x20], xmm0
+0x0141f39814  8935eee8760c             dword ptr [rip + 0xc76e8ee], esi        ; -> 0x14e6a8108
+0x0141f3981a  8935fce8760c             dword ptr [rip + 0xc76e8fc], esi        ; -> 0x14e6a811c
+0x0141f39820  48893d29e9760c           qword ptr [rip + 0xc76e929], rdi        ; -> 0x14e6a8150
+0x0141f39827  c7059be9760c01000000     dword ptr [rip + 0xc76e99b], 1        ; -> 0x14e6a81cc  imm=0x1
+0x0141f39831  c7058de9760cffffffff     dword ptr [rip + 0xc76e98d], 0xffffffff        ; -> 0x14e6a81c8  imm=0xffffffff
+0x0141f3983b  48c7052ee9760c0c160000   qword ptr [rip + 0xc76e92e], 0x160c        ; -> 0x14e6a8174  imm=0x160c
+0x0141f39846  48c7052be9760c04000000   qword ptr [rip + 0xc76e92b], 4        ; -> 0x14e6a817c  imm=0x4
+0x0141f39851  893519e9760c             dword ptr [rip + 0xc76e919], esi        ; -> 0x14e6a8170
+0x0141f39857  893527e9760c             dword ptr [rip + 0xc76e927], esi        ; -> 0x14e6a8184
+0x0141f3985d  48893554e9760c           qword ptr [rip + 0xc76e954], rsi        ; -> 0x14e6a81b8
+0x0141f39864  0f2955f0                 xmmword ptr [rbp - 0x10], xmm2
+0x0141f39868  0f294d10                 xmmword ptr [rbp + 0x10], xmm1
+0x0141f3986c  48895c2448               qword ptr [rsp + 0x48], rbx
+0x0141f39871  488d45c0                 rax, [rbp - 0x40]
+0x0141f39875  41b810160000             r8d, 0x1610        ; imm=0x1610
+0x0141f3987b  4889442440               qword ptr [rsp + 0x40], rax
+0x0141f39880  448d4e0c                 r9d, [rsi + 0xc]
+0x0141f39884  48c744243001000000       qword ptr [rsp + 0x30], 1        ; imm=0x1
+0x0141f3988d  488d153cc61201           rdx, [rip + 0x112c63c]        ; -> 0x143065ed0 'm_passThroughPoints'
+0x0141f39894  488d0d3de9760c           rcx, [rip + 0xc76e93d]        ; -> 0x14e6a81d8
+0x0141f3989b  4889742420               qword ptr [rsp + 0x20], rsi
+0x0141f398a0  e80b1aedff               0x141e0b2b0        ; imm=0x141e0b2b0
+0x0141f398a5  0f57d2                   xmm2, xmm2
+0x0141f398a8  48895c2448               qword ptr [rsp + 0x48], rbx
+0x0141f398ad  0f11542450               xmmword ptr [rsp + 0x50], xmm2
+0x0141f398b2  33c0                     eax, eax
+0x0141f398b4  48c74424541c160000       qword ptr [rsp + 0x54], 0x161c        ; imm=0x161c
+0x0141f398bd  0f11542460               xmmword ptr [rsp + 0x60], xmm2
+0x0141f398c2  488945b0                 qword ptr [rbp - 0x50], rax
+0x0141f398c6  448d4e04                 r9d, [rsi + 4]
+0x0141f398ca  0f1155a0                 xmmword ptr [rbp - 0x60], xmm2
+0x0141f398ce  48c744245c04000000       qword ptr [rsp + 0x5c], 4        ; imm=0x4
+0x0141f398d7  488d051ace1201           rax, [rip + 0x112ce1a]        ; -> 0x1430666f8
+0x0141f398de  0f11542470               xmmword ptr [rsp + 0x70], xmm2
+0x0141f398e3  4889442478               qword ptr [rsp + 0x78], rax
+0x0141f398e8  488d15f9c51201           rdx, [rip + 0x112c5f9]        ; -> 0x143065ee8
+0x0141f398ef  0f115590                 xmmword ptr [rbp - 0x70], xmm2
+0x0141f398f3  488d45c0                 rax, [rbp - 0x40]
+0x0141f398f7  89742450                 dword ptr [rsp + 0x50], esi
+0x0141f398fb  0f10442450               xmm0, xmmword ptr [rsp + 0x50]
+0x0141f39900  4889442440               qword ptr [rsp + 0x40], rax
+0x0141f39905  488d0d34e9760c           rcx, [rip + 0xc76e934]        ; -> 0x14e6a8240
+0x0141f3990c  89742464                 dword ptr [rsp + 0x64], esi
+0x0141f39910  41b81c160000             r8d, 0x161c        ; imm=0x161c
+0x0141f39916  0f104c2460               xmm1, xmmword ptr [rsp + 0x60]
+0x0141f3991b  48897598                 qword ptr [rbp - 0x68], rsi
+0x0141f3991f  0f2945c0                 xmmword ptr [rbp - 0x40], xmm0
+0x0141f39923  0f10442470               xmm0, xmmword ptr [rsp + 0x70]
+0x0141f39928  c745ac01000000           dword ptr [rbp - 0x54], 1        ; imm=0x1
+0x0141f3992f  0f294dd0                 xmmword ptr [rbp - 0x30], xmm1
+0x0141f39933  0f2945e0                 xmmword ptr [rbp - 0x20], xmm0
+0x0141f39937  0f104590                 xmm0, xmmword ptr [rbp - 0x70]
+0x0141f3993b  c745a8ffffffff           dword ptr [rbp - 0x58], 0xffffffff        ; imm=0xffffffff
+0x0141f39942  0f104da0                 xmm1, xmmword ptr [rbp - 0x60]
+0x0141f39946  48c744243001000000       qword ptr [rsp + 0x30], 1        ; imm=0x1
+0x0141f3994f  0f294500                 xmmword ptr [rbp], xmm0
+0x0141f39953  f20f1045b0               xmm0, qword ptr [rbp - 0x50]
+0x0141f39958  f20f114520               qword ptr [rbp + 0x20], xmm0
+0x0141f3995d  0f2955f0                 xmmword ptr [rbp - 0x10], xmm2
+0x0141f39961  0f294d10                 xmmword ptr [rbp + 0x10], xmm1
+0x0141f39965  4889742420               qword ptr [rsp + 0x20], rsi
+0x0141f3996a  e84119edff               0x141e0b2b0        ; imm=0x141e0b2b0
+0x0141f3996f  0f57d2                   xmm2, xmm2
+0x0141f39972  48895c2448               qword ptr [rsp + 0x48], rbx
+0x0141f39977  0f11542450               xmmword ptr [rsp + 0x50], xmm2
+0x0141f3997c  33c0                     eax, eax
+0x0141f3997e  48c744245420160000       qword ptr [rsp + 0x54], 0x1620        ; imm=0x1620
+0x0141f39987  0f11542460               xmmword ptr [rsp + 0x60], xmm2
+0x0141f3998c  488945b0                 qword ptr [rbp - 0x50], rax
+0x0141f39990  488d05c9cc1201           rax, [rip + 0x112ccc9]        ; -> 0x143066660
+0x0141f39997  0f1155a0                 xmmword ptr [rbp - 0x60], xmm2
+0x0141f3999b  48c744245c04000000       qword ptr [rsp + 0x5c], 4        ; imm=0x4
+0x0141f399a4  0f11542470               xmmword ptr [rsp + 0x70], xmm2
+0x0141f399a9  4889442478               qword ptr [rsp + 0x78], rax
+0x0141f399ae  488d45c0                 rax, [rbp - 0x40]
+0x0141f399b2  0f115590                 xmmword ptr [rbp - 0x70], xmm2
+0x0141f399b6  89742450                 dword ptr [rsp + 0x50], esi
+0x0141f399ba  0f10442450               xmm0, xmmword ptr [rsp + 0x50]
+0x0141f399bf  89742464                 dword ptr [rsp + 0x64], esi
+0x0141f399c3  0f104c2460               xmm1, xmmword ptr [rsp + 0x60]
+0x0141f399c8  48897598                 qword ptr [rbp - 0x68], rsi
+0x0141f399cc  0f2945c0                 xmmword ptr [rbp - 0x40], xmm0
+0x0141f399d0  0f10442470               xmm0, xmmword ptr [rsp + 0x70]
+0x0141f399d5  c745ac01000000           dword ptr [rbp - 0x54], 1        ; imm=0x1
+0x0141f399dc  c745a8ffffffff           dword ptr [rbp - 0x58], 0xffffffff        ; imm=0xffffffff
+0x0141f399e3  0f2945e0                 xmmword ptr [rbp - 0x20], xmm0
+0x0141f399e7  0f104590                 xmm0, xmmword ptr [rbp - 0x70]
+0x0141f399eb  0f294dd0                 xmmword ptr [rbp - 0x30], xmm1
+0x0141f399ef  0f104da0                 xmm1, xmmword ptr [rbp - 0x60]
+0x0141f399f3  0f294500                 xmmword ptr [rbp], xmm0
+0x0141f399f7  f20f1045b0               xmm0, qword ptr [rbp - 0x50]
+0x0141f399fc  f20f114520               qword ptr [rbp + 0x20], xmm0
+0x0141f39a01  0f2955f0                 xmmword ptr [rbp - 0x10], xmm2
+0x0141f39a05  0f294d10                 xmmword ptr [rbp + 0x10], xmm1
+0x0141f39a09  4889442440               qword ptr [rsp + 0x40], rax
+0x0141f39a0e  448d4e04                 r9d, [rsi + 4]
+0x0141f39a12  48c744243001000000       qword ptr [rsp + 0x30], 1        ; imm=0x1
+0x0141f39a1b  488d152ec41201           rdx, [rip + 0x112c42e]        ; -> 0x143065e50
+0x0141f39a22  41b820160000             r8d, 0x1620        ; imm=0x1620
+0x0141f39a28  4889742420               qword ptr [rsp + 0x20], rsi
+0x0141f39a2d  488d0d74e8760c           rcx, [rip + 0xc76e874]        ; -> 0x14e6a82a8
+0x0141f39a34  e87718edff               0x141e0b2b0        ; imm=0x141e0b2b0
+0x0141f39a39  0f57c0                   xmm0, xmm0
+0x0141f39a3c  33c0                     eax, eax
+0x0141f39a3e  4889052be9760c           qword ptr [rip + 0xc76e92b], rax        ; -> 0x14e6a8370
+0x0141f39a45  488d0524c41201           rax, [rip + 0x112c424]        ; -> 0x143065e70 'm_launchOrigin'
+0x0141f39a4c  0f1105bde8760c           xmmword ptr [rip + 0xc76e8bd], xmm0        ; -> 0x14e6a8310
+0x0141f39a53  8935bfe8760c             dword ptr [rip + 0xc76e8bf], esi        ; -> 0x14e6a8318
+0x0141f39a59  0f110518e9760c           xmmword ptr [rip + 0xc76e918], xmm0        ; -> 0x14e6a8378
+0x0141f39a60  c705b2e8760c0c000000     dword ptr [rip + 0xc76e8b2], 0xc        ; -> 0x14e6a831c  imm=0xc
+0x0141f39a6a  0f11056fe9760c           xmmword ptr [rip + 0xc76e96f], xmm0        ; -> 0x14e6a83e0
+0x0141f39a71  c70599e8760c24160000     dword ptr [rip + 0xc76e899], 0x1624        ; -> 0x14e6a8314  imm=0x1624
+0x0141f39a7b  0f1105c6e9760c           xmmword ptr [rip + 0xc76e9c6], xmm0        ; -> 0x14e6a8448
+0x0141f39a82  c70584e8760c02000000     dword ptr [rip + 0xc76e884], 2        ; -> 0x14e6a8310  imm=0x2
+0x0141f39a8c  0f1105cde8760c           xmmword ptr [rip + 0xc76e8cd], xmm0        ; -> 0x14e6a8360
+0x0141f39a93  c705cfe8760c01000000     dword ptr [rip + 0xc76e8cf], 1        ; -> 0x14e6a836c  imm=0x1
+0x0141f39a9d  0f110524e9760c           xmmword ptr [rip + 0xc76e924], xmm0        ; -> 0x14e6a83c8
+0x0141f39aa4  c705bae8760cffffffff     dword ptr [rip + 0xc76e8ba], 0xffffffff        ; -> 0x14e6a8368  imm=0xffffffff
+0x0141f39aae  0f11053be9760c           xmmword ptr [rip + 0xc76e93b], xmm0        ; -> 0x14e6a83f0
+0x0141f39ab5  c70515e9760c01000000     dword ptr [rip + 0xc76e915], 1        ; -> 0x14e6a83d4  imm=0x1
+0x0141f39abf  0f11056ae9760c           xmmword ptr [rip + 0xc76e96a], xmm0        ; -> 0x14e6a8430
+0x0141f39ac6  c70500e9760cffffffff     dword ptr [rip + 0xc76e900], 0xffffffff        ; -> 0x14e6a83d0  imm=0xffffffff
+0x0141f39ad0  0f110581e9760c           xmmword ptr [rip + 0xc76e981], xmm0        ; -> 0x14e6a8458
+0x0141f39ad7  8935a3e8760c             dword ptr [rip + 0xc76e8a3], esi        ; -> 0x14e6a8380
+0x0141f39add  0f1105b4e9760c           xmmword ptr [rip + 0xc76e9b4], xmm0        ; -> 0x14e6a8498
+0x0141f39ae4  c70596e8760c0c000000     dword ptr [rip + 0xc76e896], 0xc        ; -> 0x14e6a8384  imm=0xc
+0x0141f39aee  0f11053be8760c           xmmword ptr [rip + 0xc76e83b], xmm0        ; -> 0x14e6a8330
+0x0141f39af5  4889053ce8760c           qword ptr [rip + 0xc76e83c], rax        ; -> 0x14e6a8338
+0x0141f39afc  33c0                     eax, eax
+0x0141f39afe  488905d3e8760c           qword ptr [rip + 0xc76e8d3], rax        ; -> 0x14e6a83d8
+0x0141f39b05  488d05a4121201           rax, [rip + 0x11212a4]        ; -> 0x14305adb0 'm_vecVelocity'
+0x0141f39b0c  0f110585e8760c           xmmword ptr [rip + 0xc76e885], xmm0        ; -> 0x14e6a8398
+0x0141f39b13  48890586e8760c           qword ptr [rip + 0xc76e886], rax        ; -> 0x14e6a83a0
+0x0141f39b1a  33c0                     eax, eax
+0x0141f39b1c  4889051de9760c           qword ptr [rip + 0xc76e91d], rax        ; -> 0x14e6a8440
+0x0141f39b23  488d055ecb1201           rax, [rip + 0x112cb5e]        ; -> 0x143066688 'm_networkedFlags'
+0x0141f39b2a  0f1105cfe8760c           xmmword ptr [rip + 0xc76e8cf], xmm0        ; -> 0x14e6a8400
+0x0141f39b31  488905d0e8760c           qword ptr [rip + 0xc76e8d0], rax        ; -> 0x14e6a8408
+0x0141f39b38  33c0                     eax, eax
+0x0141f39b3a  48890567e9760c           qword ptr [rip + 0xc76e967], rax        ; -> 0x14e6a84a8
+0x0141f39b41  488d0558cb1201           rax, [rip + 0x112cb58]        ; -> 0x1430666a0 'm_iTeamNum'
+0x0141f39b48  0f110519e9760c           xmmword ptr [rip + 0xc76e919], xmm0        ; -> 0x14e6a8468
+0x0141f39b4f  4889051ae9760c           qword ptr [rip + 0xc76e91a], rax        ; -> 0x14e6a8470
+0x0141f39b56  33c0                     eax, eax
+0x0141f39b58  0f1105c1e7760c           xmmword ptr [rip + 0xc76e7c1], xmm0        ; -> 0x14e6a8320
+0x0141f39b5f  8935bfe7760c             dword ptr [rip + 0xc76e7bf], esi        ; -> 0x14e6a8324
+0x0141f39b65  0f1105e4e7760c           xmmword ptr [rip + 0xc76e7e4], xmm0        ; -> 0x14e6a8350
+0x0141f39b6c  488935e5e7760c           qword ptr [rip + 0xc76e7e5], rsi        ; -> 0x14e6a8358
+0x0141f39b73  0f11050ee8760c           xmmword ptr [rip + 0xc76e80e], xmm0        ; -> 0x14e6a8388
+0x0141f39b7a  c705f8e7760c84030000     dword ptr [rip + 0xc76e7f8], 0x384        ; -> 0x14e6a837c  imm=0x384
+0x0141f39b84  0f11052de8760c           xmmword ptr [rip + 0xc76e82d], xmm0        ; -> 0x14e6a83b8
+0x0141f39b8b  c705e3e7760c02000000     dword ptr [rip + 0xc76e7e3], 2        ; -> 0x14e6a8378  imm=0x2
+0x0141f39b95  0f110584e8760c           xmmword ptr [rip + 0xc76e884], xmm0        ; -> 0x14e6a8420
+0x0141f39b9c  8935eae7760c             dword ptr [rip + 0xc76e7ea], esi        ; -> 0x14e6a838c
+0x0141f39ba2  0f1105dfe8760c           xmmword ptr [rip + 0xc76e8df], xmm0        ; -> 0x14e6a8488
+0x0141f39ba9  48893510e8760c           qword ptr [rip + 0xc76e810], rsi        ; -> 0x14e6a83c0
+0x0141f39bb0  0f110589e7760c           xmmword ptr [rip + 0xc76e789], xmm0        ; -> 0x14e6a8340
+0x0141f39bb7  c7057be8760c01000000     dword ptr [rip + 0xc76e87b], 1        ; -> 0x14e6a843c  imm=0x1
+0x0141f39bc1  0f1105e0e7760c           xmmword ptr [rip + 0xc76e7e0], xmm0        ; -> 0x14e6a83a8
+0x0141f39bc8  c70566e8760cffffffff     dword ptr [rip + 0xc76e866], 0xffffffff        ; -> 0x14e6a8438  imm=0xffffffff
+0x0141f39bd2  0f110537e8760c           xmmword ptr [rip + 0xc76e837], xmm0        ; -> 0x14e6a8410
+0x0141f39bd9  48c70500e8760cdc020000   qword ptr [rip + 0xc76e800], 0x2dc        ; -> 0x14e6a83e4  imm=0x2dc
+0x0141f39be4  48c705fde7760c04000000   qword ptr [rip + 0xc76e7fd], 4        ; -> 0x14e6a83ec  imm=0x4
+0x0141f39bef  8935ebe7760c             dword ptr [rip + 0xc76e7eb], esi        ; -> 0x14e6a83e0
+0x0141f39bf5  8935f9e7760c             dword ptr [rip + 0xc76e7f9], esi        ; -> 0x14e6a83f4
+0x0141f39bfb  48893526e8760c           qword ptr [rip + 0xc76e826], rsi        ; -> 0x14e6a8428
+0x0141f39c02  0f11056fe8760c           xmmword ptr [rip + 0xc76e86f], xmm0        ; -> 0x14e6a8478
+0x0141f39c09  c70591e8760c01000000     dword ptr [rip + 0xc76e891], 1        ; -> 0x14e6a84a4  imm=0x1
+0x0141f39c13  c70583e8760cffffffff     dword ptr [rip + 0xc76e883], 0xffffffff        ; -> 0x14e6a84a0  imm=0xffffffff
+0x0141f39c1d  48c70524e8760c40030000   qword ptr [rip + 0xc76e824], 0x340        ; -> 0x14e6a844c  imm=0x340
+0x0141f39c28  48c70521e8760c04000000   qword ptr [rip + 0xc76e821], 4        ; -> 0x14e6a8454  imm=0x4
+0x0141f39c33  89350fe8760c             dword ptr [rip + 0xc76e80f], esi        ; -> 0x14e6a8448
+0x0141f39c39  89351de8760c             dword ptr [rip + 0xc76e81d], esi        ; -> 0x14e6a845c
+0x0141f39c3f  4889354ae8760c           qword ptr [rip + 0xc76e84a], rsi        ; -> 0x14e6a8490
+0x0141f39c46  0f110563e8760c           xmmword ptr [rip + 0xc76e863], xmm0        ; -> 0x14e6a84b0
+0x0141f39c4d  0f11056ce8760c           xmmword ptr [rip + 0xc76e86c], xmm0        ; -> 0x14e6a84c0
+0x0141f39c54  488905b5e8760c           qword ptr [rip + 0xc76e8b5], rax        ; -> 0x14e6a8510
+0x0141f39c5b  488d0526181201           rax, [rip + 0x1121826]        ; -> 0x14305b488 'm_realmsBitMask'
+0x0141f39c62  0f110597e8760c           xmmword ptr [rip + 0xc76e897], xmm0        ; -> 0x14e6a8500
+0x0141f39c69  488d0db0e8760c           rcx, [rip + 0xc76e8b0]        ; -> 0x14e6a8520
+0x0141f39c70  c70592e8760c01000000     dword ptr [rip + 0xc76e892], 1        ; -> 0x14e6a850c  imm=0x1
+0x0141f39c7a  0f11054fe8760c           xmmword ptr [rip + 0xc76e84f], xmm0        ; -> 0x14e6a84d0
+0x0141f39c81  48890550e8760c           qword ptr [rip + 0xc76e850], rax        ; -> 0x14e6a84d8
+0x0141f39c88  0f110561e8760c           xmmword ptr [rip + 0xc76e861], xmm0        ; -> 0x14e6a84f0
+0x0141f39c8f  c7056fe8760cffffffff     dword ptr [rip + 0xc76e86f], 0xffffffff        ; -> 0x14e6a8508  imm=0xffffffff
+0x0141f39c99  0f110540e8760c           xmmword ptr [rip + 0xc76e840], xmm0        ; -> 0x14e6a84e0
+0x0141f39ca0  48c70509e8760c00090000   qword ptr [rip + 0xc76e809], 0x900        ; -> 0x14e6a84b4  imm=0x900
+0x0141f39cab  48c70506e8760c08000000   qword ptr [rip + 0xc76e806], 8        ; -> 0x14e6a84bc  imm=0x8
+0x0141f39cb6  c705f0e7760c07000000     dword ptr [rip + 0xc76e7f0], 7        ; -> 0x14e6a84b0  imm=0x7
+0x0141f39cc0  8935fee7760c             dword ptr [rip + 0xc76e7fe], esi        ; -> 0x14e6a84c4
+0x0141f39cc6  4889352be8760c           qword ptr [rip + 0xc76e82b], rsi        ; -> 0x14e6a84f8
+0x0141f39ccd  e85a0acd00               0x142c0a72c        ; imm=0x142c0a72c
+0x0141f39cd2  488bbc2450010000         rdi, qword ptr [rsp + 0x150]
+0x0141f39cda  488bb42448010000         rsi, qword ptr [rsp + 0x148]
+0x0141f39ce2  488b9c2440010000         rbx, qword ptr [rsp + 0x140]
+0x0141f39cea  e955ecffff               0x141f38944        ; imm=0x141f38944
+0x0141f39cef  cc                       
+0x0141f39cf0  48895c2410               qword ptr [rsp + 0x10], rbx
+0x0141f39cf5  57                       rdi
+0x0141f39cf6  4883ec20                 rsp, 0x20        ; imm=0x20
+0x0141f39cfa  488bd9                   rbx, rcx
+0x0141f39cfd  e8be750a00               0x141fe12c0        ; imm=0x141fe12c0
+0x0141f39d02  33c9                     ecx, ecx
+0x0141f39d04  488d05b5cd1201           rax, [rip + 0x112cdb5]        ; -> 0x143066ac0
+0x0141f39d0b  488903                   qword ptr [rbx], rax
+0x0141f39d0e  488d052be21201           rax, [rip + 0x112e22b]        ; -> 0x143067f40
+0x0141f39d15  c78308160000ffffffff     dword ptr [rbx + 0x1608], 0xffffffff        ; imm=0xffffffff
+0x0141f39d1f  48894310                 qword ptr [rbx + 0x10], rax
+0x0141f39d23  488d0506cc1201           rax, [rip + 0x112cc06]        ; -> 0x143066930
+0x0141f39d2a  48894318                 qword ptr [rbx + 0x18], rax
+0x0141f39d2e  488d0553e11201           rax, [rip + 0x112e153]        ; -> 0x143067e88
+0x0141f39d35  48894320                 qword ptr [rbx + 0x20], rax
+0x0141f39d39  488d05e0e31201           rax, [rip + 0x112e3e0]        ; -> 0x143068120
+0x0141f39d40  48894328                 qword ptr [rbx + 0x28], rax
+0x0141f39d44  488d83f82c0000           rax, [rbx + 0x2cf8]
+0x0141f39d4b  48c783f82b0000ffffffff   qword ptr [rbx + 0x2bf8], 0xffffffffffffffff        ; imm=-0x1
+0x0141f39d56  48c783002c0000ffffffff   qword ptr [rbx + 0x2c00], 0xffffffffffffffff        ; imm=-0x1
+0x0141f39d61  c783082c0000ffffffff     dword ptr [rbx + 0x2c08], 0xffffffff        ; imm=0xffffffff
+0x0141f39d6b  488983d82c0000           qword ptr [rbx + 0x2cd8], rax
+0x0141f39d72  48b80244cb33cb22cb11     rax, 0x11cb22cb33cb4402        ; imm=0x11cb22cb33cb4402
+0x0141f39d7c  48898bf02c0000           qword ptr [rbx + 0x2cf0], rcx
+0x0141f39d83  48898b382d0000           qword ptr [rbx + 0x2d38], rcx
+0x0141f39d8a  488983782d0000           qword ptr [rbx + 0x2d78], rax
+0x0141f39d91  b80000c07f               eax, 0x7fc00000        ; imm=0x7fc00000
+0x0141f39d96  8983d02f0000             dword ptr [rbx + 0x2fd0], eax
+0x0141f39d9c  8983cc2f0000             dword ptr [rbx + 0x2fcc], eax
+0x0141f39da2  8983c82f0000             dword ptr [rbx + 0x2fc8], eax
+0x0141f39da8  488b0541b74101           rax, qword ptr [rip + 0x141b741]        ; -> 0x1433554f0
+0x0141f39daf  48c783e02c000010000000   qword ptr [rbx + 0x2ce0], 0x10        ; imm=0x10
+0x0141f39dba  48c783e82c0000ffffffff   qword ptr [rbx + 0x2ce8], 0xffffffffffffffff        ; imm=-0x1
+0x0141f39dc5  c783040300000b000000     dword ptr [rbx + 0x304], 0xb        ; imm=0xb
+0x0141f39dcf  c7830803000000080000     dword ptr [rbx + 0x308], 0x800        ; imm=0x800
+0x0141f39dd9  c783b42d0000000080bf     dword ptr [rbx + 0x2db4], 0xbf800000        ; imm=0xbf800000
+0x0141f39de3  c783982f0000000080bf     dword ptr [rbx + 0x2f98], 0xbf800000        ; imm=0xbf800000
+0x0141f39ded  c783c42f0000ffffffff     dword ptr [rbx + 0x2fc4], 0xffffffff        ; imm=0xffffffff
+0x0141f39df7  48898bb82f0000           qword ptr [rbx + 0x2fb8], rcx
+0x0141f39dfe  898bc02f0000             dword ptr [rbx + 0x2fc0], ecx
+0x0141f39e04  f30f104010               xmm0, dword ptr [rax + 0x10]
+0x0141f39e09  f30f1183982c0000         dword ptr [rbx + 0x2c98], xmm0
+0x0141f39e11  f30f118304160000         dword ptr [rbx + 0x1604], xmm0
+0x0141f39e19  48898bec150000           qword ptr [rbx + 0x15ec], rcx
+0x0141f39e20  898bf4150000             dword ptr [rbx + 0x15f4], ecx
+0x0141f39e26  488d8bc8030000           rcx, [rbx + 0x3c8]
+0x0141f39e2d  8b4120                   eax, dword ptr [rcx + 0x20]
+0x0141f39e30  8bd0                     edx, eax
+0x0141f39e32  0fbaea0c                 edx, 0xc        ; imm=0xc
+0x0141f39e36  3bd0                     edx, eax
+0x0141f39e38  740e                     0x141f39e48        ; imm=0x141f39e48
+0x0141f39e3a  33c2                     eax, edx
+0x0141f39e3c  895120                   dword ptr [rcx + 0x20], edx
+0x0141f39e3f  84c0                     al, al
+0x0141f39e41  7905                     0x141f39e48        ; imm=0x141f39e48
+0x0141f39e43  e838173b00               0x1422eb580        ; imm=0x1422eb580
+0x0141f39e48  48633d796fdb01           rdi, dword ptr [rip + 0x1db6f79]        ; -> 0x143cf0dc8
+0x0141f39e4f  4c8b05626fdb01           r8, qword ptr [rip + 0x1db6f62]        ; -> 0x143cf0db8
+0x0141f39e56  8d4701                   eax, [rdi + 1]
+0x0141f39e59  4863c8                   rcx, eax
+0x0141f39e5c  488bc1                   rax, rcx
+0x0141f39e5f  492bc0                   rax, r8
+0x0141f39e62  4885c0                   rax, rax
+0x0141f39e65  0f8e12010000             0x141f39f7d        ; imm=0x141f39f7d
+0x0141f39e6b  4c8b0d4e6fdb01           r9, qword ptr [rip + 0x1db6f4e]        ; -> 0x143cf0dc0
+0x0141f39e72  4d85c9                   r9, r9
+0x0141f39e75  0f8802010000             0x141f39f7d        ; imm=0x141f39f7d
+0x0141f39e7b  742b                     0x141f39ea8        ; imm=0x141f39ea8
+0x0141f39e7d  4c8d41ff                 r8, [rcx - 1]
+0x0141f39e81  498bc0                   rax, r8
+0x0141f39e84  4899                     
+0x0141f39e86  49f7f9                   r9
+0x0141f39e89  4c2bc2                   r8, rdx
+0x0141f39e8c  4d03c1                   r8, r9
+0x0141f39e8f  4c3bc1                   r8, rcx
+0x0141f39e92  7d50                     0x141f39ee4        ; imm=0x141f39ee4
+0x0141f39e94  4d85c0                   r8, r8
+0x0141f39e97  7537                     0x141f39ed0        ; imm=0x141f39ed0
+0x0141f39e99  4883f9ff                 rcx, -1        ; imm=-0x1
+0x0141f39e9d  7f31                     0x141f39ed0        ; imm=0x141f39ed0
+0x0141f39e9f  49c7c0ffffffff           r8, 0xffffffffffffffff        ; imm=-0x1
+0x0141f39ea6  eb3c                     0x141f39ee4        ; imm=0x141f39ee4
+0x0141f39ea8  4d85c0                   r8, r8
+0x0141f39eab  b804000000               eax, 4        ; imm=0x4
+0x0141f39eb0  4c0f44c0                 r8, rax
+0x0141f39eb4  4c3bc1                   r8, rcx
+0x0141f39eb7  7d2b                     0x141f39ee4        ; imm=0x141f39ee4
+0x0141f39eb9  0f1f8000000000           dword ptr [rax]
+0x0141f39ec0  4d03c0                   r8, r8
+0x0141f39ec3  4c3bc1                   r8, rcx
+0x0141f39ec6  7cf8                     0x141f39ec0        ; imm=0x141f39ec0
+0x0141f39ec8  eb1a                     0x141f39ee4        ; imm=0x141f39ee4
+0x0141f39eca  660f1f440000             word ptr [rax + rax]
+0x0141f39ed0  498d0408                 rax, [r8 + rcx]
+0x0141f39ed4  4899                     
+0x0141f39ed6  482bc2                   rax, rdx
+0x0141f39ed9  48d1f8                   rax, 1        ; imm=0x1
+0x0141f39edc  4c8bc0                   r8, rax
+0x0141f39edf  483bc1                   rax, rcx
+0x0141f39ee2  7cec                     0x141f39ed0        ; imm=0x141f39ed0
+0x0141f39ee4  488b15c56edb01           rdx, qword ptr [rip + 0x1db6ec5]        ; -> 0x143cf0db0
+0x0141f39eeb  488b055eafb203           rax, qword ptr [rip + 0x3b2af5e]        ; -> 0x145a64e50
+0x0141f39ef2  4c8905bf6edb01           qword ptr [rip + 0x1db6ebf], r8        ; -> 0x143cf0db8
+0x0141f39ef9  4885d2                   rdx, rdx
+0x0141f39efc  7440                     0x141f39f3e        ; imm=0x141f39f3e
+0x0141f39efe  4885c0                   rax, rax
+0x0141f39f01  751a                     0x141f39f1d        ; imm=0x141f39f1d
+0x0141f39f03  e8f8c6e8ff               0x141dc6600        ; imm=0x141dc6600
+0x0141f39f08  4c8b05a96edb01           r8, qword ptr [rip + 0x1db6ea9]        ; -> 0x143cf0db8
+0x0141f39f0f  488b159a6edb01           rdx, qword ptr [rip + 0x1db6e9a]        ; -> 0x143cf0db0
+0x0141f39f16  48890533afb203           qword ptr [rip + 0x3b2af33], rax        ; -> 0x145a64e50
+0x0141f39f1d  488b08                   rcx, qword ptr [rax]
+0x0141f39f20  4e8d04c500000000         r8, [r8*8]
+0x0141f39f28  4c8b4918                 r9, qword ptr [rcx + 0x18]
+0x0141f39f2c  488bc8                   rcx, rax
+0x0141f39f2f  41ffd1                   r9
+0x0141f39f32  488bc8                   rcx, rax
+0x0141f39f35  488905746edb01           qword ptr [rip + 0x1db6e74], rax        ; -> 0x143cf0db0
+0x0141f39f3c  eb46                     0x141f39f84        ; imm=0x141f39f84
+0x0141f39f3e  4889742430               qword ptr [rsp + 0x30], rsi
+0x0141f39f43  4a8d34c500000000         rsi, [r8*8]
+0x0141f39f4b  4885c0                   rax, rax
+0x0141f39f4e  750c                     0x141f39f5c        ; imm=0x141f39f5c
+0x0141f39f50  e8abc6e8ff               0x141dc6600        ; imm=0x141dc6600
+0x0141f39f55  488905f4aeb203           qword ptr [rip + 0x3b2aef4], rax        ; -> 0x145a64e50
+0x0141f39f5c  488b08                   rcx, qword ptr [rax]
+0x0141f39f5f  488bd6                   rdx, rsi
+0x0141f39f62  4c8b4108                 r8, qword ptr [rcx + 8]
+0x0141f39f66  488bc8                   rcx, rax
+0x0141f39f69  41ffd0                   r8
+0x0141f39f6c  488b742430               rsi, qword ptr [rsp + 0x30]
+0x0141f39f71  488bc8                   rcx, rax
+0x0141f39f74  488905356edb01           qword ptr [rip + 0x1db6e35], rax        ; -> 0x143cf0db0
+0x0141f39f7b  eb07                     0x141f39f84        ; imm=0x141f39f84
+0x0141f39f7d  488b0d2c6edb01           rcx, qword ptr [rip + 0x1db6e2c]        ; -> 0x143cf0db0
+0x0141f39f84  ff053e6edb01             dword ptr [rip + 0x1db6e3e]        ; -> 0x143cf0dc8
+0x0141f39f8a  48891cf9                 qword ptr [rcx + rdi*8], rbx
+0x0141f39f8e  488b0d438db703           rcx, qword ptr [rip + 0x3b78d43]        ; -> 0x145ab2cd8
+0x0141f39f95  488b01                   rax, qword ptr [rcx]
+0x0141f39f98  ff5008                   qword ptr [rax + 8]
+0x0141f39f9b  c683d02c000001           byte ptr [rbx + 0x2cd0], 1        ; imm=0x1
+0x0141f39fa2  488d0d9ba38d05           rcx, [rip + 0x58da39b]        ; -> 0x147814344
+0x0141f39fa9  8983b42c0000             dword ptr [rbx + 0x2cb4], eax
+0x0141f39faf  0fb783aa060000           eax, word ptr [rbx + 0x6aa]
+0x0141f39fb6  4803c0                   rax, rax
+0x0141f39fb9  c7836407000000247449     dword ptr [rbx + 0x764], 0x49742400        ; imm=0x49742400
+0x0141f39fc3  c704c100247449           dword ptr [rcx + rax*8], 0x49742400        ; imm=0x49742400
+0x0141f39fca  488bc3                   rax, rbx
+0x0141f39fcd  488b5c2438               rbx, qword ptr [rsp + 0x38]
+0x0141f39fd2  4883c420                 rsp, 0x20        ; imm=0x20
+0x0141f39fd6  5f                       rdi
+0x0141f39fd7  c3                       
+0x0141f39fd8  cc                       
+
+### m_iTeamNum  lea@0x142008b35   function 0x142008535..0x142008b82  (1613 bytes)
+0x0142008535  05fea60201               eax, 0x102a6fe        ; imm=0x102a6fe
+0x014200853a  0f11059f876a0c           xmmword ptr [rip + 0xc6a879f], xmm0        ; -> 0x14e6b0ce0
+0x0142008541  891da1876a0c             dword ptr [rip + 0xc6a87a1], ebx        ; -> 0x14e6b0ce8
+0x0142008547  0f1105fa876a0c           xmmword ptr [rip + 0xc6a87fa], xmm0        ; -> 0x14e6b0d48
+0x014200854e  48891d8b876a0c           qword ptr [rip + 0xc6a878b], rbx        ; -> 0x14e6b0ce0
+0x0142008555  0f110554886a0c           xmmword ptr [rip + 0xc6a8854], xmm0        ; -> 0x14e6b0db0
+0x014200855c  891dee876a0c             dword ptr [rip + 0xc6a87ee], ebx        ; -> 0x14e6b0d50
+0x0142008562  0f1105af886a0c           xmmword ptr [rip + 0xc6a88af], xmm0        ; -> 0x14e6b0e18
+0x0142008569  48891dd8876a0c           qword ptr [rip + 0xc6a87d8], rbx        ; -> 0x14e6b0d48
+0x0142008570  0f110579876a0c           xmmword ptr [rip + 0xc6a8779], xmm0        ; -> 0x14e6b0cf0
+0x0142008577  48c7056a876a0c04000000   qword ptr [rip + 0xc6a876a], 4        ; -> 0x14e6b0cec  imm=0x4
+0x0142008582  0f1105a7876a0c           xmmword ptr [rip + 0xc6a87a7], xmm0        ; -> 0x14e6b0d30
+0x0142008589  c705a9876a0c01000000     dword ptr [rip + 0xc6a87a9], 1        ; -> 0x14e6b0d3c  imm=0x1
+0x0142008593  0f1105be876a0c           xmmword ptr [rip + 0xc6a87be], xmm0        ; -> 0x14e6b0d58
+0x014200859a  c70594876a0cffffffff     dword ptr [rip + 0xc6a8794], 0xffffffff        ; -> 0x14e6b0d38  imm=0xffffffff
+0x01420085a4  0f1105ed876a0c           xmmword ptr [rip + 0xc6a87ed], xmm0        ; -> 0x14e6b0d98
+0x01420085ab  891d43876a0c             dword ptr [rip + 0xc6a8743], ebx        ; -> 0x14e6b0cf4
+0x01420085b1  0f110508886a0c           xmmword ptr [rip + 0xc6a8808], xmm0        ; -> 0x14e6b0dc0
+0x01420085b8  c705e2876a0c01000000     dword ptr [rip + 0xc6a87e2], 1        ; -> 0x14e6b0da4  imm=0x1
+0x01420085c2  0f110537886a0c           xmmword ptr [rip + 0xc6a8837], xmm0        ; -> 0x14e6b0e00
+0x01420085c9  c705cd876a0cffffffff     dword ptr [rip + 0xc6a87cd], 0xffffffff        ; -> 0x14e6b0da0  imm=0xffffffff
+0x01420085d3  0f11054e886a0c           xmmword ptr [rip + 0xc6a884e], xmm0        ; -> 0x14e6b0e28
+0x01420085da  48c7056f876a0c04000000   qword ptr [rip + 0xc6a876f], 4        ; -> 0x14e6b0d54  imm=0x4
+0x01420085e5  0f11057c886a0c           xmmword ptr [rip + 0xc6a887c], xmm0        ; -> 0x14e6b0e68
+0x01420085ec  c70566876a0c10000000     dword ptr [rip + 0xc6a8766], 0x10        ; -> 0x14e6b0d5c  imm=0x10
+0x01420085f6  0f1105d3886a0c           xmmword ptr [rip + 0xc6a88d3], xmm0        ; -> 0x14e6b0ed0
+0x01420085fd  c70505886a0c01000000     dword ptr [rip + 0xc6a8805], 1        ; -> 0x14e6b0e0c  imm=0x1
+0x0142008607  0f1105f2866a0c           xmmword ptr [rip + 0xc6a86f2], xmm0        ; -> 0x14e6b0d00
+0x014200860e  488905f3866a0c           qword ptr [rip + 0xc6a86f3], rax        ; -> 0x14e6b0d08
+0x0142008615  33c0                     eax, eax
+0x0142008617  4889058a876a0c           qword ptr [rip + 0xc6a878a], rax        ; -> 0x14e6b0da8
+0x014200861e  488d05932a0501           rax, [rip + 0x1052a93]        ; -> 0x14305b0b8 'm_cellX'
+0x0142008625  0f11053c876a0c           xmmword ptr [rip + 0xc6a873c], xmm0        ; -> 0x14e6b0d68
+0x014200862c  4889053d876a0c           qword ptr [rip + 0xc6a873d], rax        ; -> 0x14e6b0d70
+0x0142008633  33c0                     eax, eax
+0x0142008635  488905d4876a0c           qword ptr [rip + 0xc6a87d4], rax        ; -> 0x14e6b0e10
+0x014200863c  488d056d2a0501           rax, [rip + 0x1052a6d]        ; -> 0x14305b0b0 'm_cellY'
+0x0142008643  0f110586876a0c           xmmword ptr [rip + 0xc6a8786], xmm0        ; -> 0x14e6b0dd0
+0x014200864a  48890587876a0c           qword ptr [rip + 0xc6a8787], rax        ; -> 0x14e6b0dd8
+0x0142008651  33c0                     eax, eax
+0x0142008653  4889051e886a0c           qword ptr [rip + 0xc6a881e], rax        ; -> 0x14e6b0e78
+0x014200865a  488d05b72a0501           rax, [rip + 0x1052ab7]        ; -> 0x14305b118 'm_cellZ'
+0x0142008661  0f1105d0876a0c           xmmword ptr [rip + 0xc6a87d0], xmm0        ; -> 0x14e6b0e38
+0x0142008668  488905d1876a0c           qword ptr [rip + 0xc6a87d1], rax        ; -> 0x14e6b0e40
+0x014200866f  33c0                     eax, eax
+0x0142008671  0f1105a8866a0c           xmmword ptr [rip + 0xc6a86a8], xmm0        ; -> 0x14e6b0d20
+0x0142008678  48890561886a0c           qword ptr [rip + 0xc6a8861], rax        ; -> 0x14e6b0ee0
+0x014200867f  0f110502876a0c           xmmword ptr [rip + 0xc6a8702], xmm0        ; -> 0x14e6b0d88
+0x0142008686  48891d9b866a0c           qword ptr [rip + 0xc6a869b], rbx        ; -> 0x14e6b0d28
+0x014200868d  0f11055c876a0c           xmmword ptr [rip + 0xc6a875c], xmm0        ; -> 0x14e6b0df0
+0x0142008694  48890df5866a0c           qword ptr [rip + 0xc6a86f5], rcx        ; -> 0x14e6b0d90
+0x014200869b  0f1105b6876a0c           xmmword ptr [rip + 0xc6a87b6], xmm0        ; -> 0x14e6b0e58
+0x01420086a2  c7055c876a0cffffffff     dword ptr [rip + 0xc6a875c], 0xffffffff        ; -> 0x14e6b0e08  imm=0xffffffff
+0x01420086ac  0f1105cd876a0c           xmmword ptr [rip + 0xc6a87cd], xmm0        ; -> 0x14e6b0e80
+0x01420086b3  48c705f6866a0c08000000   qword ptr [rip + 0xc6a86f6], 8        ; -> 0x14e6b0db4  imm=0x8
+0x01420086be  0f11054b866a0c           xmmword ptr [rip + 0xc6a864b], xmm0        ; -> 0x14e6b0d10
+0x01420086c5  48c705ec866a0c04000000   qword ptr [rip + 0xc6a86ec], 4        ; -> 0x14e6b0dbc  imm=0x4
+0x01420086d0  0f1105a1866a0c           xmmword ptr [rip + 0xc6a86a1], xmm0        ; -> 0x14e6b0d78
+0x01420086d7  891dd3866a0c             dword ptr [rip + 0xc6a86d3], ebx        ; -> 0x14e6b0db0
+0x01420086dd  0f1105fc866a0c           xmmword ptr [rip + 0xc6a86fc], xmm0        ; -> 0x14e6b0de0
+0x01420086e4  c705d6866a0c10000000     dword ptr [rip + 0xc6a86d6], 0x10        ; -> 0x14e6b0dc4  imm=0x10
+0x01420086ee  48890d03876a0c           qword ptr [rip + 0xc6a8703], rcx        ; -> 0x14e6b0df8
+0x01420086f5  0f11054c876a0c           xmmword ptr [rip + 0xc6a874c], xmm0        ; -> 0x14e6b0e48
+0x01420086fc  c7056e876a0c01000000     dword ptr [rip + 0xc6a876e], 1        ; -> 0x14e6b0e74  imm=0x1
+0x0142008706  c70560876a0cffffffff     dword ptr [rip + 0xc6a8760], 0xffffffff        ; -> 0x14e6b0e70  imm=0xffffffff
+0x0142008710  48c70501876a0c10000000   qword ptr [rip + 0xc6a8701], 0x10        ; -> 0x14e6b0e1c  imm=0x10
+0x014200871b  48c705fe866a0c04000000   qword ptr [rip + 0xc6a86fe], 4        ; -> 0x14e6b0e24  imm=0x4
+0x0142008726  891dec866a0c             dword ptr [rip + 0xc6a86ec], ebx        ; -> 0x14e6b0e18
+0x014200872c  c705f6866a0c10000000     dword ptr [rip + 0xc6a86f6], 0x10        ; -> 0x14e6b0e2c  imm=0x10
+0x0142008736  48890d23876a0c           qword ptr [rip + 0xc6a8723], rcx        ; -> 0x14e6b0e60
+0x014200873d  0f11054c876a0c           xmmword ptr [rip + 0xc6a874c], xmm0        ; -> 0x14e6b0e90
+0x0142008744  c7058e876a0c01000000     dword ptr [rip + 0xc6a878e], 1        ; -> 0x14e6b0edc  imm=0x1
+0x014200874e  0f11054b876a0c           xmmword ptr [rip + 0xc6a874b], xmm0        ; -> 0x14e6b0ea0
+0x0142008755  c70579876a0cffffffff     dword ptr [rip + 0xc6a8779], 0xffffffff        ; -> 0x14e6b0ed8  imm=0xffffffff
+0x014200875f  0f11054a876a0c           xmmword ptr [rip + 0xc6a874a], xmm0        ; -> 0x14e6b0eb0
+0x0142008766  891d1c876a0c             dword ptr [rip + 0xc6a871c], ebx        ; -> 0x14e6b0e88
+0x014200876c  0f11054d876a0c           xmmword ptr [rip + 0xc6a874d], xmm0        ; -> 0x14e6b0ec0
+0x0142008773  0f11056e876a0c           xmmword ptr [rip + 0xc6a876e], xmm0        ; -> 0x14e6b0ee8
+0x014200877a  488d0527fe0301           rax, [rip + 0x103fe27]        ; -> 0x1430485a8 'm_localOrigin'
+0x0142008781  c70501876a0c0c000000     dword ptr [rip + 0xc6a8701], 0xc        ; -> 0x14e6b0e8c  imm=0xc
+0x014200878b  48890516876a0c           qword ptr [rip + 0xc6a8716], rax        ; -> 0x14e6b0ea8
+0x0142008792  4c8d05b7592000           r8, [rip + 0x2059b7]        ; -> 0x14220e150
+0x0142008799  33c0                     eax, eax
+0x014200879b  c705df866a0c18000000     dword ptr [rip + 0xc6a86df], 0x18        ; -> 0x14e6b0e84  imm=0x18
+0x01420087a5  4889059c876a0c           qword ptr [rip + 0xc6a879c], rax        ; -> 0x14e6b0f48
+0x01420087ac  488d05e5fd0301           rax, [rip + 0x103fde5]        ; -> 0x143048598 'm_localAngles'
+0x01420087b3  0f110596876a0c           xmmword ptr [rip + 0xc6a8796], xmm0        ; -> 0x14e6b0f50
+0x01420087ba  c705bc866a0c02000000     dword ptr [rip + 0xc6a86bc], 2        ; -> 0x14e6b0e80  imm=0x2
+0x01420087c4  0f1105ed876a0c           xmmword ptr [rip + 0xc6a87ed], xmm0        ; -> 0x14e6b0fb8
+0x01420087cb  c705bf866a0c10000000     dword ptr [rip + 0xc6a86bf], 0x10        ; -> 0x14e6b0e94  imm=0x10
+0x01420087d5  0f110544886a0c           xmmword ptr [rip + 0xc6a8844], xmm0        ; -> 0x14e6b1020
+0x01420087dc  4c8905e5866a0c           qword ptr [rip + 0xc6a86e5], r8        ; -> 0x14e6b0ec8
+0x01420087e3  0f11054e876a0c           xmmword ptr [rip + 0xc6a874e], xmm0        ; -> 0x14e6b0f38
+0x01420087ea  c70550876a0c01000000     dword ptr [rip + 0xc6a8750], 1        ; -> 0x14e6b0f44  imm=0x1
+0x01420087f4  0f110565876a0c           xmmword ptr [rip + 0xc6a8765], xmm0        ; -> 0x14e6b0f60
+0x01420087fb  c7053b876a0cffffffff     dword ptr [rip + 0xc6a873b], 0xffffffff        ; -> 0x14e6b0f40  imm=0xffffffff
+0x0142008805  0f110594876a0c           xmmword ptr [rip + 0xc6a8794], xmm0        ; -> 0x14e6b0fa0
+0x014200880c  891dde866a0c             dword ptr [rip + 0xc6a86de], ebx        ; -> 0x14e6b0ef0
+0x0142008812  0f1105af876a0c           xmmword ptr [rip + 0xc6a87af], xmm0        ; -> 0x14e6b0fc8
+0x0142008819  c705d1866a0c0c000000     dword ptr [rip + 0xc6a86d1], 0xc        ; -> 0x14e6b0ef4  imm=0xc
+0x0142008823  0f1105de876a0c           xmmword ptr [rip + 0xc6a87de], xmm0        ; -> 0x14e6b1008
+0x014200882a  c705b8866a0c90030000     dword ptr [rip + 0xc6a86b8], 0x390        ; -> 0x14e6b0eec  imm=0x390
+0x0142008834  0f1105f5876a0c           xmmword ptr [rip + 0xc6a87f5], xmm0        ; -> 0x14e6b1030
+0x014200883b  c705a3866a0c02000000     dword ptr [rip + 0xc6a86a3], 2        ; -> 0x14e6b0ee8  imm=0x2
+0x0142008845  0f110524886a0c           xmmword ptr [rip + 0xc6a8824], xmm0        ; -> 0x14e6b1070
+0x014200884c  c70556876a0c01000000     dword ptr [rip + 0xc6a8756], 1        ; -> 0x14e6b0fac  imm=0x1
+0x0142008856  0f1105ab866a0c           xmmword ptr [rip + 0xc6a86ab], xmm0        ; -> 0x14e6b0f08
+0x014200885d  488905ac866a0c           qword ptr [rip + 0xc6a86ac], rax        ; -> 0x14e6b0f10
+0x0142008864  33c0                     eax, eax
+0x0142008866  48890543876a0c           qword ptr [rip + 0xc6a8743], rax        ; -> 0x14e6b0fb0
+0x014200886d  488d056c280501           rax, [rip + 0x105286c]        ; -> 0x14305b0e0 'm_nModelIndex'
+0x0142008874  0f1105f5866a0c           xmmword ptr [rip + 0xc6a86f5], xmm0        ; -> 0x14e6b0f70
+0x014200887b  488905f6866a0c           qword ptr [rip + 0xc6a86f6], rax        ; -> 0x14e6b0f78
+0x0142008882  33c0                     eax, eax
+0x0142008884  4889058d876a0c           qword ptr [rip + 0xc6a878d], rax        ; -> 0x14e6b1018
+0x014200888b  488d053eba0701           rax, [rip + 0x107ba3e]        ; -> 0x1430842d0 'm_fEffects'
+0x0142008892  0f11053f876a0c           xmmword ptr [rip + 0xc6a873f], xmm0        ; -> 0x14e6b0fd8
+0x0142008899  48890540876a0c           qword ptr [rip + 0xc6a8740], rax        ; -> 0x14e6b0fe0
+0x01420088a0  33c0                     eax, eax
+0x01420088a2  488905d7876a0c           qword ptr [rip + 0xc6a87d7], rax        ; -> 0x14e6b1080
+0x01420088a9  488d05f85c0701           rax, [rip + 0x1075cf8]        ; -> 0x14307e5a8 'm_nRenderMode'
+0x01420088b0  0f110589876a0c           xmmword ptr [rip + 0xc6a8789], xmm0        ; -> 0x14e6b1040
+0x01420088b7  4889058a876a0c           qword ptr [rip + 0xc6a878a], rax        ; -> 0x14e6b1048
+0x01420088be  488d05cb4cffff           rax, [rip - 0xb335]        ; -> 0x141ffd590
+0x01420088c5  0f110594876a0c           xmmword ptr [rip + 0xc6a8794], xmm0        ; -> 0x14e6b1060
+0x01420088cc  48890595876a0c           qword ptr [rip + 0xc6a8795], rax        ; -> 0x14e6b1068
+0x01420088d3  33c0                     eax, eax
+0x01420088d5  0f11051c866a0c           xmmword ptr [rip + 0xc6a861c], xmm0        ; -> 0x14e6b0ef8
+0x01420088dc  c70516866a0c01000000     dword ptr [rip + 0xc6a8616], 1        ; -> 0x14e6b0efc  imm=0x1
+0x01420088e6  0f11053b866a0c           xmmword ptr [rip + 0xc6a863b], xmm0        ; -> 0x14e6b0f28
+0x01420088ed  48891d3c866a0c           qword ptr [rip + 0xc6a863c], rbx        ; -> 0x14e6b0f30
+0x01420088f4  0f110595866a0c           xmmword ptr [rip + 0xc6a8695], xmm0        ; -> 0x14e6b0f90
+0x01420088fb  c705a3866a0cffffffff     dword ptr [rip + 0xc6a86a3], 0xffffffff        ; -> 0x14e6b0fa8  imm=0xffffffff
+0x0142008905  0f1105ec866a0c           xmmword ptr [rip + 0xc6a86ec], xmm0        ; -> 0x14e6b0ff8
+0x014200890c  48c7053d866a0c64000000   qword ptr [rip + 0xc6a863d], 0x64        ; -> 0x14e6b0f54  imm=0x64
+0x0142008917  0f1105fa856a0c           xmmword ptr [rip + 0xc6a85fa], xmm0        ; -> 0x14e6b0f18
+0x014200891e  48c70533866a0c04000000   qword ptr [rip + 0xc6a8633], 4        ; -> 0x14e6b0f5c  imm=0x4
+0x0142008929  0f110550866a0c           xmmword ptr [rip + 0xc6a8650], xmm0        ; -> 0x14e6b0f80
+0x0142008930  891d1a866a0c             dword ptr [rip + 0xc6a861a], ebx        ; -> 0x14e6b0f50
+0x0142008936  c70524866a0c10000000     dword ptr [rip + 0xc6a8624], 0x10        ; -> 0x14e6b0f64  imm=0x10
+0x0142008940  48891d51866a0c           qword ptr [rip + 0xc6a8651], rbx        ; -> 0x14e6b0f98
+0x0142008947  0f11059a866a0c           xmmword ptr [rip + 0xc6a869a], xmm0        ; -> 0x14e6b0fe8
+0x014200894e  c705bc866a0c01000000     dword ptr [rip + 0xc6a86bc], 1        ; -> 0x14e6b1014  imm=0x1
+0x0142008958  c705ae866a0cffffffff     dword ptr [rip + 0xc6a86ae], 0xffffffff        ; -> 0x14e6b1010  imm=0xffffffff
+0x0142008962  48c7054f866a0c58000000   qword ptr [rip + 0xc6a864f], 0x58        ; -> 0x14e6b0fbc  imm=0x58
+0x014200896d  48c7054c866a0c04000000   qword ptr [rip + 0xc6a864c], 4        ; -> 0x14e6b0fc4  imm=0x4
+0x0142008978  891d3a866a0c             dword ptr [rip + 0xc6a863a], ebx        ; -> 0x14e6b0fb8
+0x014200897e  c70544866a0c10000000     dword ptr [rip + 0xc6a8644], 0x10        ; -> 0x14e6b0fcc  imm=0x10
+0x0142008988  48891d71866a0c           qword ptr [rip + 0xc6a8671], rbx        ; -> 0x14e6b1000
+0x014200898f  0f1105ba866a0c           xmmword ptr [rip + 0xc6a86ba], xmm0        ; -> 0x14e6b1050
+0x0142008996  c705dc866a0c01000000     dword ptr [rip + 0xc6a86dc], 1        ; -> 0x14e6b107c  imm=0x1
+0x01420089a0  c705ce866a0cffffffff     dword ptr [rip + 0xc6a86ce], 0xffffffff        ; -> 0x14e6b1078  imm=0xffffffff
+0x01420089aa  48c7056f866a0cb9030000   qword ptr [rip + 0xc6a866f], 0x3b9        ; -> 0x14e6b1024  imm=0x3b9
+0x01420089b5  48c7056c866a0c01000000   qword ptr [rip + 0xc6a866c], 1        ; -> 0x14e6b102c  imm=0x1
+0x01420089c0  891d5a866a0c             dword ptr [rip + 0xc6a865a], ebx        ; -> 0x14e6b1020
+0x01420089c6  891d68866a0c             dword ptr [rip + 0xc6a8668], ebx        ; -> 0x14e6b1034
+0x01420089cc  0f1105b5866a0c           xmmword ptr [rip + 0xc6a86b5], xmm0        ; -> 0x14e6b1088
+0x01420089d3  0f1105be866a0c           xmmword ptr [rip + 0xc6a86be], xmm0        ; -> 0x14e6b1098
+0x01420089da  48890507876a0c           qword ptr [rip + 0xc6a8707], rax        ; -> 0x14e6b10e8
+0x01420089e1  4c8d0d282be0ff           r9, [rip - 0x1fd4d8]        ; -> 0x141e0b510
+0x01420089e8  0f110501876a0c           xmmword ptr [rip + 0xc6a8701], xmm0        ; -> 0x14e6b10f0
+0x01420089ef  488d05a25b0701           rax, [rip + 0x1075ba2]        ; -> 0x14307e598 'm_nRenderFX'
+0x01420089f6  48c7058b866a0ca9030000   qword ptr [rip + 0xc6a868b], 0x3a9        ; -> 0x14e6b108c  imm=0x3a9
+0x0142008a01  0f110550876a0c           xmmword ptr [rip + 0xc6a8750], xmm0        ; -> 0x14e6b1158
+0x0142008a08  48c70581866a0c01000000   qword ptr [rip + 0xc6a8681], 1        ; -> 0x14e6b1094  imm=0x1
+0x0142008a13  0f1105a6876a0c           xmmword ptr [rip + 0xc6a87a6], xmm0        ; -> 0x14e6b11c0
+0x0142008a1a  891d68866a0c             dword ptr [rip + 0xc6a8668], ebx        ; -> 0x14e6b1088
+0x0142008a20  0f1105b1866a0c           xmmword ptr [rip + 0xc6a86b1], xmm0        ; -> 0x14e6b10d8
+0x0142008a27  c705b3866a0c01000000     dword ptr [rip + 0xc6a86b3], 1        ; -> 0x14e6b10e4  imm=0x1
+0x0142008a31  0f1105c8866a0c           xmmword ptr [rip + 0xc6a86c8], xmm0        ; -> 0x14e6b1100
+0x0142008a38  c7059e866a0cffffffff     dword ptr [rip + 0xc6a869e], 0xffffffff        ; -> 0x14e6b10e0  imm=0xffffffff
+0x0142008a42  0f1105f7866a0c           xmmword ptr [rip + 0xc6a86f7], xmm0        ; -> 0x14e6b1140
+0x0142008a49  891d4d866a0c             dword ptr [rip + 0xc6a864d], ebx        ; -> 0x14e6b109c
+0x0142008a4f  0f110512876a0c           xmmword ptr [rip + 0xc6a8712], xmm0        ; -> 0x14e6b1168
+0x0142008a56  c705ec866a0c01000000     dword ptr [rip + 0xc6a86ec], 1        ; -> 0x14e6b114c  imm=0x1
+0x0142008a60  0f110541876a0c           xmmword ptr [rip + 0xc6a8741], xmm0        ; -> 0x14e6b11a8
+0x0142008a67  c705d7866a0cffffffff     dword ptr [rip + 0xc6a86d7], 0xffffffff        ; -> 0x14e6b1148  imm=0xffffffff
+0x0142008a71  0f110558876a0c           xmmword ptr [rip + 0xc6a8758], xmm0        ; -> 0x14e6b11d0
+0x0142008a78  48c70571866a0c80000000   qword ptr [rip + 0xc6a8671], 0x80        ; -> 0x14e6b10f4  imm=0x80
+0x0142008a83  0f110586876a0c           xmmword ptr [rip + 0xc6a8786], xmm0        ; -> 0x14e6b1210
+0x0142008a8a  48c70567866a0c04000000   qword ptr [rip + 0xc6a8667], 4        ; -> 0x14e6b10fc  imm=0x4
+0x0142008a95  0f11058c876a0c           xmmword ptr [rip + 0xc6a878c], xmm0        ; -> 0x14e6b1228
+0x0142008a9c  891d4e866a0c             dword ptr [rip + 0xc6a864e], ebx        ; -> 0x14e6b10f0
+0x0142008aa2  0f1105cf876a0c           xmmword ptr [rip + 0xc6a87cf], xmm0        ; -> 0x14e6b1278
+0x0142008aa9  891d55866a0c             dword ptr [rip + 0xc6a8655], ebx        ; -> 0x14e6b1104
+0x0142008aaf  0f1105f2856a0c           xmmword ptr [rip + 0xc6a85f2], xmm0        ; -> 0x14e6b10a8
+0x0142008ab6  488905f3856a0c           qword ptr [rip + 0xc6a85f3], rax        ; -> 0x14e6b10b0
+0x0142008abd  33c0                     eax, eax
+0x0142008abf  4889058a866a0c           qword ptr [rip + 0xc6a868a], rax        ; -> 0x14e6b1150
+0x0142008ac6  488d05eb5a0701           rax, [rip + 0x1075aeb]        ; -> 0x14307e5b8 'm_clrRender'
+0x0142008acd  0f11053c866a0c           xmmword ptr [rip + 0xc6a863c], xmm0        ; -> 0x14e6b1110
+0x0142008ad4  4889053d866a0c           qword ptr [rip + 0xc6a863d], rax        ; -> 0x14e6b1118
+0x0142008adb  488d054e4affff           rax, [rip - 0xb5b2]        ; -> 0x141ffd530
+0x0142008ae2  0f110547866a0c           xmmword ptr [rip + 0xc6a8647], xmm0        ; -> 0x14e6b1130
+0x0142008ae9  48890548866a0c           qword ptr [rip + 0xc6a8648], rax        ; -> 0x14e6b1138
+0x0142008af0  33c0                     eax, eax
+0x0142008af2  488905bf866a0c           qword ptr [rip + 0xc6a86bf], rax        ; -> 0x14e6b11b8
+0x0142008af9  488d05e0b70701           rax, [rip + 0x107b7e0]        ; -> 0x1430842e0 'm_clIntensity'
+0x0142008b00  0f110571866a0c           xmmword ptr [rip + 0xc6a8671], xmm0        ; -> 0x14e6b1178
+0x0142008b07  48890572866a0c           qword ptr [rip + 0xc6a8672], rax        ; -> 0x14e6b1180
+0x0142008b0e  33c0                     eax, eax
+0x0142008b10  48890509876a0c           qword ptr [rip + 0xc6a8709], rax        ; -> 0x14e6b1220
+0x0142008b17  488d0532b70701           rax, [rip + 0x107b732]        ; -> 0x143084250 'm_bRenderWithViewModels'
+0x0142008b1e  0f1105bb866a0c           xmmword ptr [rip + 0xc6a86bb], xmm0        ; -> 0x14e6b11e0
+0x0142008b25  488905bc866a0c           qword ptr [rip + 0xc6a86bc], rax        ; -> 0x14e6b11e8
+0x0142008b2c  33c0                     eax, eax
+0x0142008b2e  48890553876a0c           qword ptr [rip + 0xc6a8753], rax        ; -> 0x14e6b1288
+0x0142008b35  488d0564db0501           rax, [rip + 0x105db64]        ; -> 0x1430666a0 'm_iTeamNum'
+0x0142008b3c  0f110585856a0c           xmmword ptr [rip + 0xc6a8585], xmm0        ; -> 0x14e6b10c8
+0x0142008b43  4c890d86856a0c           qword ptr [rip + 0xc6a8586], r9        ; -> 0x14e6b10d0
+0x0142008b4a  0f110547866a0c           xmmword ptr [rip + 0xc6a8647], xmm0        ; -> 0x14e6b1198
+0x0142008b51  c70559866a0c01000000     dword ptr [rip + 0xc6a8659], 1        ; -> 0x14e6b11b4  imm=0x1
+0x0142008b5b  0f11059e866a0c           xmmword ptr [rip + 0xc6a869e], xmm0        ; -> 0x14e6b1200
+0x0142008b62  c70544866a0cffffffff     dword ptr [rip + 0xc6a8644], 0xffffffff        ; -> 0x14e6b11b0  imm=0xffffffff
+0x0142008b6c  0f1105c5866a0c           xmmword ptr [rip + 0xc6a86c5], xmm0        ; -> 0x14e6b1238
+0x0142008b73  48c705de856a0c84000000   qword ptr [rip + 0xc6a85de], 0x84        ; -> 0x14e6b115c  imm=0x84
+0x0142008b7e  0f                       .byte
+0x0142008b7f  11                       .byte
+0x0142008b80  05                       .byte
+0x0142008b81  c3                       
+
+### m_vecOrigin  lea@0x1421bf63a   function 0x1421bf3f0..0x1421bfc37  (2119 bytes)
+0x01421bf3f0  48895c2408               qword ptr [rsp + 8], rbx
+0x01421bf3f5  57                       rdi
+0x01421bf3f6  4883ec20                 rsp, 0x20        ; imm=0x20
+0x01421bf3fa  65488b042558000000       rax, qword ptr gs:[0x58]
+0x01421bf403  488d3d7e98f000           rdi, [rip + 0xf0987e]        ; -> 0x1430c8c88 'DT_TEBreakModel'
+0x01421bf40a  48ff057fa96907           qword ptr [rip + 0x769a97f]        ; -> 0x149859d90
+0x01421bf411  48bbcce7d92e7824f940     rbx, 0x40f924782ed9e7cc        ; imm=0x40f924782ed9e7cc
+0x01421bf41b  48011d1ea96907           qword ptr [rip + 0x769a91e], rbx        ; -> 0x149859d40
+0x01421bf422  b920000000               ecx, 0x20        ; imm=0x20
+0x01421bf427  488b00                   rax, qword ptr [rax]
+0x01421bf42a  c705b810b80170000000     dword ptr [rip + 0x1b810b8], 0x70        ; -> 0x143d404ec  imm=0x70
+0x01421bf434  8b0401                   eax, dword ptr [rcx + rax]
+0x01421bf437  3905a379510c             dword ptr [rip + 0xc5179a3], eax        ; -> 0x14e6d6de0
+0x01421bf43d  0f8ff1000000             0x1421bf534        ; imm=0x1421bf534
+0x01421bf443  4c8bcf                   r9, rdi
+0x01421bf446  488d157b3f510c           rdx, [rip + 0xc513f7b]        ; -> 0x14e6d33c8
+0x01421bf44d  41b80c000000             r8d, 0xc        ; imm=0xc
+0x01421bf453  488d0dd60bb801           rcx, [rip + 0x1b80bd6]        ; -> 0x143d40030
+0x01421bf45a  e801bbc4ff               0x141e0af60        ; imm=0x141e0af60
+0x01421bf45f  8b0d773f510c             ecx, dword ptr [rip + 0xc513f77]        ; -> 0x14e6d33dc
+0x01421bf465  f7d1                     ecx
+0x01421bf467  48c1e906                 rcx, 6        ; imm=0x6
+0x01421bf46b  83e101                   ecx, 1        ; imm=0x1
+0x01421bf46e  f605cf3f510c40           byte ptr [rip + 0xc513fcf], 0x40        ; -> 0x14e6d3444  imm=0x40
+0x01421bf475  488d4101                 rax, [rcx + 1]
+0x01421bf479  480f45c1                 rax, rcx
+0x01421bf47d  f6052840510c40           byte ptr [rip + 0xc514028], 0x40        ; -> 0x14e6d34ac  imm=0x40
+0x01421bf484  488d4801                 rcx, [rax + 1]
+0x01421bf488  480f45c8                 rcx, rax
+0x01421bf48c  f6058140510c40           byte ptr [rip + 0xc514081], 0x40        ; -> 0x14e6d3514  imm=0x40
+0x01421bf493  488d4101                 rax, [rcx + 1]
+0x01421bf497  480f45c1                 rax, rcx
+0x01421bf49b  f605da40510c40           byte ptr [rip + 0xc5140da], 0x40        ; -> 0x14e6d357c  imm=0x40
+0x01421bf4a2  488d4801                 rcx, [rax + 1]
+0x01421bf4a6  480f45c8                 rcx, rax
+0x01421bf4aa  f6053341510c40           byte ptr [rip + 0xc514133], 0x40        ; -> 0x14e6d35e4  imm=0x40
+0x01421bf4b1  488d4101                 rax, [rcx + 1]
+0x01421bf4b5  480f45c1                 rax, rcx
+0x01421bf4b9  f6058c41510c40           byte ptr [rip + 0xc51418c], 0x40        ; -> 0x14e6d364c  imm=0x40
+0x01421bf4c0  488d4801                 rcx, [rax + 1]
+0x01421bf4c4  480f45c8                 rcx, rax
+0x01421bf4c8  f605e541510c40           byte ptr [rip + 0xc5141e5], 0x40        ; -> 0x14e6d36b4  imm=0x40
+0x01421bf4cf  488d4101                 rax, [rcx + 1]
+0x01421bf4d3  480f45c1                 rax, rcx
+0x01421bf4d7  f6053e42510c40           byte ptr [rip + 0xc51423e], 0x40        ; -> 0x14e6d371c  imm=0x40
+0x01421bf4de  488d4801                 rcx, [rax + 1]
+0x01421bf4e2  480f45c8                 rcx, rax
+0x01421bf4e6  f6059742510c40           byte ptr [rip + 0xc514297], 0x40        ; -> 0x14e6d3784  imm=0x40
+0x01421bf4ed  b801000000               eax, 1        ; imm=0x1
+0x01421bf4f2  488d5101                 rdx, [rcx + 1]
+0x01421bf4f6  480f45d1                 rdx, rcx
+0x01421bf4fa  f605eb42510c40           byte ptr [rip + 0xc5142eb], 0x40        ; -> 0x14e6d37ec  imm=0x40
+0x01421bf501  4c8d4201                 r8, [rdx + 1]
+0x01421bf505  4c0f45c2                 r8, rdx
+0x01421bf509  f6054443510c40           byte ptr [rip + 0xc514344], 0x40        ; -> 0x14e6d3854  imm=0x40
+0x01421bf510  498d4801                 rcx, [r8 + 1]
+0x01421bf514  490f45c8                 rcx, r8
+0x01421bf518  4833cb                   rcx, rbx
+0x01421bf51b  488b5c2430               rbx, qword ptr [rsp + 0x30]
+0x01421bf520  48010d21a86907           qword ptr [rip + 0x769a821], rcx        ; -> 0x149859d48
+0x01421bf527  48ff056aa86907           qword ptr [rip + 0x769a86a]        ; -> 0x149859d98
+0x01421bf52e  4883c420                 rsp, 0x20        ; imm=0x20
+0x01421bf532  5f                       rdi
+0x01421bf533  c3                       
+0x01421bf534  488d0da578510c           rcx, [rip + 0xc5178a5]        ; -> 0x14e6d6de0
+0x01421bf53b  e858b2a400               0x142c0a798        ; imm=0x142c0a798
+0x01421bf540  833d9978510cff           dword ptr [rip + 0xc517899], -1        ; -> 0x14e6d6de0  imm=-0x1
+0x01421bf547  0f85f6feffff             0x1421bf443        ; imm=0x1421bf443
+0x01421bf54d  0f57c0                   xmm0, xmm0
+0x01421bf550  33d2                     edx, edx
+0x01421bf552  33c0                     eax, eax
+0x01421bf554  488905653e510c           qword ptr [rip + 0xc513e65], rax        ; -> 0x14e6d33c0
+0x01421bf55b  488d05d636e700           rax, [rip + 0xe736d6]        ; -> 0x143032c38 'should_never_see_this'
+0x01421bf562  0f1105c73e510c           xmmword ptr [rip + 0xc513ec7], xmm0        ; -> 0x14e6d3430
+0x01421bf569  8915c93e510c             dword ptr [rip + 0xc513ec9], edx        ; -> 0x14e6d3438
+0x01421bf56f  0f1105223f510c           xmmword ptr [rip + 0xc513f22], xmm0        ; -> 0x14e6d3498
+0x01421bf576  c705bc3e510c0c000000     dword ptr [rip + 0xc513ebc], 0xc        ; -> 0x14e6d343c  imm=0xc
+0x01421bf580  0f1105913e510c           xmmword ptr [rip + 0xc513e91], xmm0        ; -> 0x14e6d3418
+0x01421bf587  c705933e510c01000000     dword ptr [rip + 0xc513e93], 1        ; -> 0x14e6d3424  imm=0x1
+0x01421bf591  0f1105c83d510c           xmmword ptr [rip + 0xc513dc8], xmm0        ; -> 0x14e6d3360
+0x01421bf598  8915ca3d510c             dword ptr [rip + 0xc513dca], edx        ; -> 0x14e6d3368
+0x01421bf59e  0f1105433e510c           xmmword ptr [rip + 0xc513e43], xmm0        ; -> 0x14e6d33e8
+0x01421bf5a5  488915b43d510c           qword ptr [rip + 0xc513db4], rdx        ; -> 0x14e6d3360
+0x01421bf5ac  0f1105bd3d510c           xmmword ptr [rip + 0xc513dbd], xmm0        ; -> 0x14e6d3370
+0x01421bf5b3  48c705ae3d510c04000000   qword ptr [rip + 0xc513dae], 4        ; -> 0x14e6d336c  imm=0x4
+0x01421bf5be  0f1105eb3d510c           xmmword ptr [rip + 0xc513deb], xmm0        ; -> 0x14e6d33b0
+0x01421bf5c5  c705ed3d510c01000000     dword ptr [rip + 0xc513ded], 1        ; -> 0x14e6d33bc  imm=0x1
+0x01421bf5cf  0f1105f23d510c           xmmword ptr [rip + 0xc513df2], xmm0        ; -> 0x14e6d33c8
+0x01421bf5d6  c705d83d510cffffffff     dword ptr [rip + 0xc513dd8], 0xffffffff        ; -> 0x14e6d33b8  imm=0xffffffff
+0x01421bf5e0  0f1105993e510c           xmmword ptr [rip + 0xc513e99], xmm0        ; -> 0x14e6d3480
+0x01421bf5e7  8915873d510c             dword ptr [rip + 0xc513d87], edx        ; -> 0x14e6d3374
+0x01421bf5ed  0f1105f43e510c           xmmword ptr [rip + 0xc513ef4], xmm0        ; -> 0x14e6d34e8
+0x01421bf5f4  c705223e510cffffffff     dword ptr [rip + 0xc513e22], 0xffffffff        ; -> 0x14e6d3420  imm=0xffffffff
+0x01421bf5fe  0f11057b3d510c           xmmword ptr [rip + 0xc513d7b], xmm0        ; -> 0x14e6d3380
+0x01421bf605  4889057c3d510c           qword ptr [rip + 0xc513d7c], rax        ; -> 0x14e6d3388
+0x01421bf60c  33c0                     eax, eax
+0x01421bf60e  488905133e510c           qword ptr [rip + 0xc513e13], rax        ; -> 0x14e6d3428
+0x01421bf615  488d0504c1c4ff           rax, [rip - 0x3b3efc]        ; -> 0x141e0b720
+0x01421bf61c  488905f53d510c           qword ptr [rip + 0xc513df5], rax        ; -> 0x14e6d3418
+0x01421bf623  488d05567bb701           rax, [rip + 0x1b77b56]        ; -> 0x143d37180
+0x01421bf62a  488905b73d510c           qword ptr [rip + 0xc513db7], rax        ; -> 0x14e6d33e8
+0x01421bf631  33c0                     eax, eax
+0x01421bf633  488905563e510c           qword ptr [rip + 0xc513e56], rax        ; -> 0x14e6d3490
+0x01421bf63a  488d053796f000           rax, [rip + 0xf09637]        ; -> 0x1430c8c78 'm_vecOrigin'
+0x01421bf641  0f1105083e510c           xmmword ptr [rip + 0xc513e08], xmm0        ; -> 0x14e6d3450
+0x01421bf648  488905093e510c           qword ptr [rip + 0xc513e09], rax        ; -> 0x14e6d3458
+0x01421bf64f  33c0                     eax, eax
+0x01421bf651  488905a03e510c           qword ptr [rip + 0xc513ea0], rax        ; -> 0x14e6d34f8
+0x01421bf658  488d054996f000           rax, [rip + 0xf09649]        ; -> 0x1430c8ca8 'm_angRotation.x'
+0x01421bf65f  0f1105523e510c           xmmword ptr [rip + 0xc513e52], xmm0        ; -> 0x14e6d34b8
+0x01421bf666  488905533e510c           qword ptr [rip + 0xc513e53], rax        ; -> 0x14e6d34c0
+0x01421bf66d  33c0                     eax, eax
+0x01421bf66f  0f11052a3d510c           xmmword ptr [rip + 0xc513d2a], xmm0        ; -> 0x14e6d33a0
+0x01421bf676  488905e33e510c           qword ptr [rip + 0xc513ee3], rax        ; -> 0x14e6d3560
+0x01421bf67d  0f1105543d510c           xmmword ptr [rip + 0xc513d54], xmm0        ; -> 0x14e6d33d8
+0x01421bf684  4889151d3d510c           qword ptr [rip + 0xc513d1d], rdx        ; -> 0x14e6d33a8
+0x01421bf68b  0f1105ae3d510c           xmmword ptr [rip + 0xc513dae], xmm0        ; -> 0x14e6d3440
+0x01421bf692  488915333d510c           qword ptr [rip + 0xc513d33], rdx        ; -> 0x14e6d33cc
+0x01421bf699  0f1105d03d510c           xmmword ptr [rip + 0xc513dd0], xmm0        ; -> 0x14e6d3470
+0x01421bf6a0  48893d493d510c           qword ptr [rip + 0xc513d49], rdi        ; -> 0x14e6d33f0
+0x01421bf6a7  0f1105fa3d510c           xmmword ptr [rip + 0xc513dfa], xmm0        ; -> 0x14e6d34a8
+0x01421bf6ae  c705103d510c0a000000     dword ptr [rip + 0xc513d10], 0xa        ; -> 0x14e6d33c8  imm=0xa
+0x01421bf6b8  0f1105193e510c           xmmword ptr [rip + 0xc513e19], xmm0        ; -> 0x14e6d34d8
+0x01421bf6bf  8915173d510c             dword ptr [rip + 0xc513d17], edx        ; -> 0x14e6d33dc
+0x01421bf6c5  0f1105c43c510c           xmmword ptr [rip + 0xc513cc4], xmm0        ; -> 0x14e6d3390
+0x01421bf6cc  c705b63d510c01000000     dword ptr [rip + 0xc513db6], 1        ; -> 0x14e6d348c  imm=0x1
+0x01421bf6d6  0f11051b3d510c           xmmword ptr [rip + 0xc513d1b], xmm0        ; -> 0x14e6d33f8
+0x01421bf6dd  c705a13d510cffffffff     dword ptr [rip + 0xc513da1], 0xffffffff        ; -> 0x14e6d3488  imm=0xffffffff
+0x01421bf6e7  0f11051a3d510c           xmmword ptr [rip + 0xc513d1a], xmm0        ; -> 0x14e6d3408
+0x01421bf6ee  c7053c3d510c28000000     dword ptr [rip + 0xc513d3c], 0x28        ; -> 0x14e6d3434  imm=0x28
+0x01421bf6f8  0f1105613d510c           xmmword ptr [rip + 0xc513d61], xmm0        ; -> 0x14e6d3460
+0x01421bf6ff  c705273d510c02000000     dword ptr [rip + 0xc513d27], 2        ; -> 0x14e6d3430  imm=0x2
+0x01421bf709  8915353d510c             dword ptr [rip + 0xc513d35], edx        ; -> 0x14e6d3444
+0x01421bf70f  488915623d510c           qword ptr [rip + 0xc513d62], rdx        ; -> 0x14e6d3478
+0x01421bf716  0f1105ab3d510c           xmmword ptr [rip + 0xc513dab], xmm0        ; -> 0x14e6d34c8
+0x01421bf71d  c705cd3d510c01000000     dword ptr [rip + 0xc513dcd], 1        ; -> 0x14e6d34f4  imm=0x1
+0x01421bf727  c705bf3d510cffffffff     dword ptr [rip + 0xc513dbf], 0xffffffff        ; -> 0x14e6d34f0  imm=0xffffffff
+0x01421bf731  8915693d510c             dword ptr [rip + 0xc513d69], edx        ; -> 0x14e6d34a0
+0x01421bf737  c705633d510c04000000     dword ptr [rip + 0xc513d63], 4        ; -> 0x14e6d34a4  imm=0x4
+0x01421bf741  c705513d510c34000000     dword ptr [rip + 0xc513d51], 0x34        ; -> 0x14e6d349c  imm=0x34
+0x01421bf74b  c705433d510c01000000     dword ptr [rip + 0xc513d43], 1        ; -> 0x14e6d3498  imm=0x1
+0x01421bf755  8915513d510c             dword ptr [rip + 0xc513d51], edx        ; -> 0x14e6d34ac
+0x01421bf75b  4889157e3d510c           qword ptr [rip + 0xc513d7e], rdx        ; -> 0x14e6d34e0
+0x01421bf762  0f1105973d510c           xmmword ptr [rip + 0xc513d97], xmm0        ; -> 0x14e6d3500
+0x01421bf769  0f1105a03d510c           xmmword ptr [rip + 0xc513da0], xmm0        ; -> 0x14e6d3510
+0x01421bf770  0f1105a93d510c           xmmword ptr [rip + 0xc513da9], xmm0        ; -> 0x14e6d3520
+0x01421bf777  0f1105b23d510c           xmmword ptr [rip + 0xc513db2], xmm0        ; -> 0x14e6d3530
+0x01421bf77e  0f1105bb3d510c           xmmword ptr [rip + 0xc513dbb], xmm0        ; -> 0x14e6d3540
+0x01421bf785  0f1105c43d510c           xmmword ptr [rip + 0xc513dc4], xmm0        ; -> 0x14e6d3550
+0x01421bf78c  0f1105d53d510c           xmmword ptr [rip + 0xc513dd5], xmm0        ; -> 0x14e6d3568
+0x01421bf793  488d05fe94f000           rax, [rip + 0xf094fe]        ; -> 0x1430c8c98 'm_angRotation.y'
+0x01421bf79a  c705b83d510c01000000     dword ptr [rip + 0xc513db8], 1        ; -> 0x14e6d355c  imm=0x1
+0x01421bf7a4  4889057d3d510c           qword ptr [rip + 0xc513d7d], rax        ; -> 0x14e6d3528
+0x01421bf7ab  33c0                     eax, eax
+0x01421bf7ad  488905143e510c           qword ptr [rip + 0xc513e14], rax        ; -> 0x14e6d35c8
+0x01421bf7b4  488d058594f000           rax, [rip + 0xf09485]        ; -> 0x1430c8c40 'm_angRotation.z'
+0x01421bf7bb  0f11050e3e510c           xmmword ptr [rip + 0xc513e0e], xmm0        ; -> 0x14e6d35d0
+0x01421bf7c2  c7058c3d510cffffffff     dword ptr [rip + 0xc513d8c], 0xffffffff        ; -> 0x14e6d3558  imm=0xffffffff
+0x01421bf7cc  0f1105653e510c           xmmword ptr [rip + 0xc513e65], xmm0        ; -> 0x14e6d3638
+0x01421bf7d3  89152f3d510c             dword ptr [rip + 0xc513d2f], edx        ; -> 0x14e6d3508
+0x01421bf7d9  0f1105c03e510c           xmmword ptr [rip + 0xc513ec0], xmm0        ; -> 0x14e6d36a0
+0x01421bf7e0  c705223d510c04000000     dword ptr [rip + 0xc513d22], 4        ; -> 0x14e6d350c  imm=0x4
+0x01421bf7ea  0f1105c73d510c           xmmword ptr [rip + 0xc513dc7], xmm0        ; -> 0x14e6d35b8
+0x01421bf7f1  c705093d510c38000000     dword ptr [rip + 0xc513d09], 0x38        ; -> 0x14e6d3504  imm=0x38
+0x01421bf7fb  0f11051e3e510c           xmmword ptr [rip + 0xc513e1e], xmm0        ; -> 0x14e6d3620
+0x01421bf802  c705f43c510c01000000     dword ptr [rip + 0xc513cf4], 1        ; -> 0x14e6d3500  imm=0x1
+0x01421bf80c  0f1105753e510c           xmmword ptr [rip + 0xc513e75], xmm0        ; -> 0x14e6d3688
+0x01421bf813  8915fb3c510c             dword ptr [rip + 0xc513cfb], edx        ; -> 0x14e6d3514
+0x01421bf819  0f1105903e510c           xmmword ptr [rip + 0xc513e90], xmm0        ; -> 0x14e6d36b0
+0x01421bf820  488915213d510c           qword ptr [rip + 0xc513d21], rdx        ; -> 0x14e6d3548
+0x01421bf827  0f1105c23e510c           xmmword ptr [rip + 0xc513ec2], xmm0        ; -> 0x14e6d36f0
+0x01421bf82e  c7058c3d510c01000000     dword ptr [rip + 0xc513d8c], 1        ; -> 0x14e6d35c4  imm=0x1
+0x01421bf838  0f1105493d510c           xmmword ptr [rip + 0xc513d49], xmm0        ; -> 0x14e6d3588
+0x01421bf83f  4889054a3d510c           qword ptr [rip + 0xc513d4a], rax        ; -> 0x14e6d3590
+0x01421bf846  33c0                     eax, eax
+0x01421bf848  488905e13d510c           qword ptr [rip + 0xc513de1], rax        ; -> 0x14e6d3630
+0x01421bf84f  488d05da93f000           rax, [rip + 0xf093da]        ; -> 0x1430c8c30 'm_vecSize'
+0x01421bf856  0f1105933d510c           xmmword ptr [rip + 0xc513d93], xmm0        ; -> 0x14e6d35f0
+0x01421bf85d  488905943d510c           qword ptr [rip + 0xc513d94], rax        ; -> 0x14e6d35f8
+0x01421bf864  33c0                     eax, eax
+0x01421bf866  4889052b3e510c           qword ptr [rip + 0xc513e2b], rax        ; -> 0x14e6d3698
+0x01421bf86d  488d053cb5e900           rax, [rip + 0xe9b53c]        ; -> 0x14305adb0 'm_vecVelocity'
+0x01421bf874  0f1105dd3d510c           xmmword ptr [rip + 0xc513ddd], xmm0        ; -> 0x14e6d3658
+0x01421bf87b  488905de3d510c           qword ptr [rip + 0xc513dde], rax        ; -> 0x14e6d3660
+0x01421bf882  33c0                     eax, eax
+0x01421bf884  488905753e510c           qword ptr [rip + 0xc513e75], rax        ; -> 0x14e6d3700
+0x01421bf88b  488d054eb8e900           rax, [rip + 0xe9b84e]        ; -> 0x14305b0e0 'm_nModelIndex'
+0x01421bf892  0f1105df3c510c           xmmword ptr [rip + 0xc513cdf], xmm0        ; -> 0x14e6d3578
+0x01421bf899  c7051d3d510cffffffff     dword ptr [rip + 0xc513d1d], 0xffffffff        ; -> 0x14e6d35c0  imm=0xffffffff
+0x01421bf8a3  0f1105fe3c510c           xmmword ptr [rip + 0xc513cfe], xmm0        ; -> 0x14e6d35a8
+0x01421bf8aa  8915c03c510c             dword ptr [rip + 0xc513cc0], edx        ; -> 0x14e6d3570
+0x01421bf8b0  0f1105293d510c           xmmword ptr [rip + 0xc513d29], xmm0        ; -> 0x14e6d35e0
+0x01421bf8b7  c705b33c510c04000000     dword ptr [rip + 0xc513cb3], 4        ; -> 0x14e6d3574  imm=0x4
+0x01421bf8c1  0f1105483d510c           xmmword ptr [rip + 0xc513d48], xmm0        ; -> 0x14e6d3610
+0x01421bf8c8  c7059a3c510c3c000000     dword ptr [rip + 0xc513c9a], 0x3c        ; -> 0x14e6d356c  imm=0x3c
+0x01421bf8d2  0f11056f3d510c           xmmword ptr [rip + 0xc513d6f], xmm0        ; -> 0x14e6d3648
+0x01421bf8d9  c705853c510c01000000     dword ptr [rip + 0xc513c85], 1        ; -> 0x14e6d3568  imm=0x1
+0x01421bf8e3  0f11058e3d510c           xmmword ptr [rip + 0xc513d8e], xmm0        ; -> 0x14e6d3678
+0x01421bf8ea  89158c3c510c             dword ptr [rip + 0xc513c8c], edx        ; -> 0x14e6d357c
+0x01421bf8f0  0f1105c93d510c           xmmword ptr [rip + 0xc513dc9], xmm0        ; -> 0x14e6d36c0
+0x01421bf8f7  488905ca3d510c           qword ptr [rip + 0xc513dca], rax        ; -> 0x14e6d36c8
+0x01421bf8fe  0f1105db3d510c           xmmword ptr [rip + 0xc513ddb], xmm0        ; -> 0x14e6d36e0
+0x01421bf905  488915a43c510c           qword ptr [rip + 0xc513ca4], rdx        ; -> 0x14e6d35b0
+0x01421bf90c  0f1105853c510c           xmmword ptr [rip + 0xc513c85], xmm0        ; -> 0x14e6d3598
+0x01421bf913  c7050f3d510c01000000     dword ptr [rip + 0xc513d0f], 1        ; -> 0x14e6d362c  imm=0x1
+0x01421bf91d  0f1105dc3c510c           xmmword ptr [rip + 0xc513cdc], xmm0        ; -> 0x14e6d3600
+0x01421bf924  c705fa3c510cffffffff     dword ptr [rip + 0xc513cfa], 0xffffffff        ; -> 0x14e6d3628  imm=0xffffffff
+0x01421bf92e  8915a43c510c             dword ptr [rip + 0xc513ca4], edx        ; -> 0x14e6d35d8
+0x01421bf934  c7059e3c510c0c000000     dword ptr [rip + 0xc513c9e], 0xc        ; -> 0x14e6d35dc  imm=0xc
+0x01421bf93e  c7058c3c510c40000000     dword ptr [rip + 0xc513c8c], 0x40        ; -> 0x14e6d35d4  imm=0x40
+0x01421bf948  c7057e3c510c02000000     dword ptr [rip + 0xc513c7e], 2        ; -> 0x14e6d35d0  imm=0x2
+0x01421bf952  89158c3c510c             dword ptr [rip + 0xc513c8c], edx        ; -> 0x14e6d35e4
+0x01421bf958  488915b93c510c           qword ptr [rip + 0xc513cb9], rdx        ; -> 0x14e6d3618
+0x01421bf95f  0f1105023d510c           xmmword ptr [rip + 0xc513d02], xmm0        ; -> 0x14e6d3668
+0x01421bf966  c705243d510c01000000     dword ptr [rip + 0xc513d24], 1        ; -> 0x14e6d3694  imm=0x1
+0x01421bf970  c705163d510cffffffff     dword ptr [rip + 0xc513d16], 0xffffffff        ; -> 0x14e6d3690  imm=0xffffffff
+0x01421bf97a  8915c03c510c             dword ptr [rip + 0xc513cc0], edx        ; -> 0x14e6d3640
+0x01421bf980  c705ba3c510c0c000000     dword ptr [rip + 0xc513cba], 0xc        ; -> 0x14e6d3644  imm=0xc
+0x01421bf98a  c705a83c510c4c000000     dword ptr [rip + 0xc513ca8], 0x4c        ; -> 0x14e6d363c  imm=0x4c
+0x01421bf994  c7059a3c510c02000000     dword ptr [rip + 0xc513c9a], 2        ; -> 0x14e6d3638  imm=0x2
+0x01421bf99e  8915a83c510c             dword ptr [rip + 0xc513ca8], edx        ; -> 0x14e6d364c
+0x01421bf9a4  488915d53c510c           qword ptr [rip + 0xc513cd5], rdx        ; -> 0x14e6d3680
+0x01421bf9ab  0f11051e3d510c           xmmword ptr [rip + 0xc513d1e], xmm0        ; -> 0x14e6d36d0
+0x01421bf9b2  c705403d510c01000000     dword ptr [rip + 0xc513d40], 1        ; -> 0x14e6d36fc  imm=0x1
+0x01421bf9bc  c705323d510cffffffff     dword ptr [rip + 0xc513d32], 0xffffffff        ; -> 0x14e6d36f8  imm=0xffffffff
+0x01421bf9c6  48c705d33c510c5c000000   qword ptr [rip + 0xc513cd3], 0x5c        ; -> 0x14e6d36a4  imm=0x5c
+0x01421bf9d1  48c705d03c510c04000000   qword ptr [rip + 0xc513cd0], 4        ; -> 0x14e6d36ac  imm=0x4
+0x01421bf9dc  8915be3c510c             dword ptr [rip + 0xc513cbe], edx        ; -> 0x14e6d36a0
+0x01421bf9e2  8915cc3c510c             dword ptr [rip + 0xc513ccc], edx        ; -> 0x14e6d36b4
+0x01421bf9e8  488915f93c510c           qword ptr [rip + 0xc513cf9], rdx        ; -> 0x14e6d36e8
+0x01421bf9ef  33c0                     eax, eax
+0x01421bf9f1  488d0de873510c           rcx, [rip + 0xc5173e8]        ; -> 0x14e6d6de0
+0x01421bf9f8  488905693d510c           qword ptr [rip + 0xc513d69], rax        ; -> 0x14e6d3768
+0x01421bf9ff  488d055a92f000           rax, [rip + 0xf0925a]        ; -> 0x1430c8c60 'm_nRandomization'
+0x01421bfa06  0f1105cb3d510c           xmmword ptr [rip + 0xc513dcb], xmm0        ; -> 0x14e6d37d8
+0x01421bfa0d  8915cd3d510c             dword ptr [rip + 0xc513dcd], edx        ; -> 0x14e6d37e0
+0x01421bfa13  0f1105ee3c510c           xmmword ptr [rip + 0xc513cee], xmm0        ; -> 0x14e6d3708
+0x01421bfa1a  48c705e73c510c58000000   qword ptr [rip + 0xc513ce7], 0x58        ; -> 0x14e6d370c  imm=0x58
+0x01421bfa25  0f1105443d510c           xmmword ptr [rip + 0xc513d44], xmm0        ; -> 0x14e6d3770
+0x01421bfa2c  8915d63c510c             dword ptr [rip + 0xc513cd6], edx        ; -> 0x14e6d3708
+0x01421bfa32  0f1105073e510c           xmmword ptr [rip + 0xc513e07], xmm0        ; -> 0x14e6d3840
+0x01421bfa39  48c705303d510c60000000   qword ptr [rip + 0xc513d30], 0x60        ; -> 0x14e6d3774  imm=0x60
+0x01421bfa44  0f1105cd3c510c           xmmword ptr [rip + 0xc513ccd], xmm0        ; -> 0x14e6d3718
+0x01421bfa4b  48c705be3c510c04000000   qword ptr [rip + 0xc513cbe], 4        ; -> 0x14e6d3714  imm=0x4
+0x01421bfa56  0f1105fb3c510c           xmmword ptr [rip + 0xc513cfb], xmm0        ; -> 0x14e6d3758
+0x01421bfa5d  c705fd3c510c01000000     dword ptr [rip + 0xc513cfd], 1        ; -> 0x14e6d3764  imm=0x1
+0x01421bfa67  0f1105123d510c           xmmword ptr [rip + 0xc513d12], xmm0        ; -> 0x14e6d3780
+0x01421bfa6e  c705e83c510cffffffff     dword ptr [rip + 0xc513ce8], 0xffffffff        ; -> 0x14e6d3760  imm=0xffffffff
+0x01421bfa78  0f1105413d510c           xmmword ptr [rip + 0xc513d41], xmm0        ; -> 0x14e6d37c0
+0x01421bfa7f  8915973c510c             dword ptr [rip + 0xc513c97], edx        ; -> 0x14e6d371c
+0x01421bfa85  0f11059c3d510c           xmmword ptr [rip + 0xc513d9c], xmm0        ; -> 0x14e6d3828
+0x01421bfa8c  c705363d510c01000000     dword ptr [rip + 0xc513d36], 1        ; -> 0x14e6d37cc  imm=0x1
+0x01421bfa96  0f1105b33d510c           xmmword ptr [rip + 0xc513db3], xmm0        ; -> 0x14e6d3850
+0x01421bfa9d  c705213d510cffffffff     dword ptr [rip + 0xc513d21], 0xffffffff        ; -> 0x14e6d37c8  imm=0xffffffff
+0x01421bfaa7  0f1105e23d510c           xmmword ptr [rip + 0xc513de2], xmm0        ; -> 0x14e6d3890
+0x01421bfaae  48c705c33c510c04000000   qword ptr [rip + 0xc513cc3], 4        ; -> 0x14e6d377c  imm=0x4
+0x01421bfab9  0f1105683c510c           xmmword ptr [rip + 0xc513c68], xmm0        ; -> 0x14e6d3728
+0x01421bfac0  488905693c510c           qword ptr [rip + 0xc513c69], rax        ; -> 0x14e6d3730
+0x01421bfac7  33c0                     eax, eax
+0x01421bfac9  488905003d510c           qword ptr [rip + 0xc513d00], rax        ; -> 0x14e6d37d0
+0x01421bfad0  488d057991f000           rax, [rip + 0xf09179]        ; -> 0x1430c8c50 'm_nCount'
+0x01421bfad7  0f1105b23c510c           xmmword ptr [rip + 0xc513cb2], xmm0        ; -> 0x14e6d3790
+0x01421bfade  488905b33c510c           qword ptr [rip + 0xc513cb3], rax        ; -> 0x14e6d3798
+0x01421bfae5  33c0                     eax, eax
+0x01421bfae7  4889054a3d510c           qword ptr [rip + 0xc513d4a], rax        ; -> 0x14e6d3838
+0x01421bfaee  488d050391f000           rax, [rip + 0xf09103]        ; -> 0x1430c8bf8 'm_fTime'
+0x01421bfaf5  0f1105fc3c510c           xmmword ptr [rip + 0xc513cfc], xmm0        ; -> 0x14e6d37f8
+0x01421bfafc  488905fd3c510c           qword ptr [rip + 0xc513cfd], rax        ; -> 0x14e6d3800
+0x01421bfb03  33c0                     eax, eax
+0x01421bfb05  488905943d510c           qword ptr [rip + 0xc513d94], rax        ; -> 0x14e6d38a0
+0x01421bfb0c  488d05d590f000           rax, [rip + 0xf090d5]        ; -> 0x1430c8be8 'm_nFlags'
+0x01421bfb13  0f11052e3c510c           xmmword ptr [rip + 0xc513c2e], xmm0        ; -> 0x14e6d3748
+0x01421bfb1a  4889152f3c510c           qword ptr [rip + 0xc513c2f], rdx        ; -> 0x14e6d3750
+0x01421bfb21  0f1105883c510c           xmmword ptr [rip + 0xc513c88], xmm0        ; -> 0x14e6d37b0
+0x01421bfb28  8915423c510c             dword ptr [rip + 0xc513c42], edx        ; -> 0x14e6d3770
+0x01421bfb2e  0f1105b33c510c           xmmword ptr [rip + 0xc513cb3], xmm0        ; -> 0x14e6d37e8
+0x01421bfb35  8915493c510c             dword ptr [rip + 0xc513c49], edx        ; -> 0x14e6d3784
+0x01421bfb3b  0f1105d63c510c           xmmword ptr [rip + 0xc513cd6], xmm0        ; -> 0x14e6d3818
+0x01421bfb42  4889156f3c510c           qword ptr [rip + 0xc513c6f], rdx        ; -> 0x14e6d37b8
+0x01421bfb49  0f1105103d510c           xmmword ptr [rip + 0xc513d10], xmm0        ; -> 0x14e6d3860
+0x01421bfb50  488905113d510c           qword ptr [rip + 0xc513d11], rax        ; -> 0x14e6d3868
+0x01421bfb57  0f1105223d510c           xmmword ptr [rip + 0xc513d22], xmm0        ; -> 0x14e6d3880
+0x01421bfb5e  c705cc3c510c01000000     dword ptr [rip + 0xc513ccc], 1        ; -> 0x14e6d3834  imm=0x1
+0x01421bfb68  0f1105c93b510c           xmmword ptr [rip + 0xc513bc9], xmm0        ; -> 0x14e6d3738
+0x01421bfb6f  c705b73c510cffffffff     dword ptr [rip + 0xc513cb7], 0xffffffff        ; -> 0x14e6d3830  imm=0xffffffff
+0x01421bfb79  0f1105203c510c           xmmword ptr [rip + 0xc513c20], xmm0        ; -> 0x14e6d37a0
+0x01421bfb80  c7055a3c510c04000000     dword ptr [rip + 0xc513c5a], 4        ; -> 0x14e6d37e4  imm=0x4
+0x01421bfb8a  0f1105773c510c           xmmword ptr [rip + 0xc513c77], xmm0        ; -> 0x14e6d3808
+0x01421bfb91  c705413c510c64000000     dword ptr [rip + 0xc513c41], 0x64        ; -> 0x14e6d37dc  imm=0x64
+0x01421bfb9b  c705333c510c01000000     dword ptr [rip + 0xc513c33], 1        ; -> 0x14e6d37d8  imm=0x1
+0x01421bfba5  8915413c510c             dword ptr [rip + 0xc513c41], edx        ; -> 0x14e6d37ec
+0x01421bfbab  4889156e3c510c           qword ptr [rip + 0xc513c6e], rdx        ; -> 0x14e6d3820
+0x01421bfbb2  0f1105b73c510c           xmmword ptr [rip + 0xc513cb7], xmm0        ; -> 0x14e6d3870
+0x01421bfbb9  c705d93c510c01000000     dword ptr [rip + 0xc513cd9], 1        ; -> 0x14e6d389c  imm=0x1
+0x01421bfbc3  c705cb3c510cffffffff     dword ptr [rip + 0xc513ccb], 0xffffffff        ; -> 0x14e6d3898  imm=0xffffffff
+0x01421bfbcd  48c7056c3c510c68000000   qword ptr [rip + 0xc513c6c], 0x68        ; -> 0x14e6d3844  imm=0x68
+0x01421bfbd8  48c705693c510c04000000   qword ptr [rip + 0xc513c69], 4        ; -> 0x14e6d384c  imm=0x4
+0x01421bfbe3  8915573c510c             dword ptr [rip + 0xc513c57], edx        ; -> 0x14e6d3840
+0x01421bfbe9  8915653c510c             dword ptr [rip + 0xc513c65], edx        ; -> 0x14e6d3854
+0x01421bfbef  488915923c510c           qword ptr [rip + 0xc513c92], rdx        ; -> 0x14e6d3888
+0x01421bfbf6  e831aba400               0x142c0a72c        ; imm=0x142c0a72c
+0x01421bfbfb  e943f8ffff               0x1421bf443        ; imm=0x1421bf443
+0x01421bfc00  4053                     rbx
+0x01421bfc02  4883ec20                 rsp, 0x20        ; imm=0x20
+0x01421bfc06  488d05bb2bec00           rax, [rip + 0xec2bbb]        ; -> 0x1430827c8
+0x01421bfc0d  488bd9                   rbx, rcx
+0x01421bfc10  48894110                 qword ptr [rcx + 0x10], rax
+0x01421bfc14  488d058d5dec00           rax, [rip + 0xec5d8d]        ; -> 0x1430859a8
+0x01421bfc1b  488901                   qword ptr [rcx], rax
+0x01421bfc1e  f6c201                   dl, 1        ; imm=0x1
+0x01421bfc21  740a                     0x1421bfc2d        ; imm=0x1421bfc2d
+0x01421bfc23  ba70000000               edx, 0x70        ; imm=0x70
+0x01421bfc28  e833568c00               0x142a85260        ; imm=0x142a85260
+0x01421bfc2d  488bc3                   rax, rbx
+0x01421bfc30  4883c420                 rsp, 0x20        ; imm=0x20
+0x01421bfc34  5b                       rbx
+0x01421bfc35  c3                       
+0x01421bfc36  cc                       
+
+### m_vecOrigin  lea@0x1421c1c3e   function 0x1421c1a20..0x1421c208b  (1643 bytes)
+0x01421c1a20  4053                     rbx
+0x01421c1a22  4883ec20                 rsp, 0x20        ; imm=0x20
+0x01421c1a26  48ff0563836907           qword ptr [rip + 0x7698363]        ; -> 0x149859d90
+0x01421c1a2d  488d1dfc74f000           rbx, [rip + 0xf074fc]        ; -> 0x1430c8f30 'DT_TEShatterSurface'
+0x01421c1a34  48b886a818bc832a4351     rax, 0x51432a83bc18a886        ; imm=0x51432a83bc18a886
+0x01421c1a3e  b920000000               ecx, 0x20        ; imm=0x20
+0x01421c1a43  482905f6826907           qword ptr [rip + 0x76982f6], rax        ; -> 0x149859d40
+0x01421c1a4a  65488b042558000000       rax, qword ptr gs:[0x58]
+0x01421c1a53  c705ff2fb80168000000     dword ptr [rip + 0x1b82fff], 0x68        ; -> 0x143d44a5c  imm=0x68
+0x01421c1a5d  488b00                   rax, qword ptr [rax]
+0x01421c1a60  8b0401                   eax, dword ptr [rcx + rax]
+0x01421c1a63  3905e754510c             dword ptr [rip + 0xc5154e7], eax        ; -> 0x14e6d6f50
+0x01421c1a69  0f8fc9000000             0x1421c1b38        ; imm=0x1421c1b38
+0x01421c1a6f  4c8bcb                   r9, rbx
+0x01421c1a72  488d157f49510c           rdx, [rip + 0xc51497f]        ; -> 0x14e6d63f8
+0x01421c1a79  41b809000000             r8d, 9        ; imm=0x9
+0x01421c1a7f  488d0d1a2bb801           rcx, [rip + 0x1b82b1a]        ; -> 0x143d445a0
+0x01421c1a86  e8d594c4ff               0x141e0af60        ; imm=0x141e0af60
+0x01421c1a8b  8b0d7b49510c             ecx, dword ptr [rip + 0xc51497b]        ; -> 0x14e6d640c
+0x01421c1a91  f7d1                     ecx
+0x01421c1a93  48c1e906                 rcx, 6        ; imm=0x6
+0x01421c1a97  83e101                   ecx, 1        ; imm=0x1
+0x01421c1a9a  f605d349510c40           byte ptr [rip + 0xc5149d3], 0x40        ; -> 0x14e6d6474  imm=0x40
+0x01421c1aa1  488d4101                 rax, [rcx + 1]
+0x01421c1aa5  480f45c1                 rax, rcx
+0x01421c1aa9  f6052c4a510c40           byte ptr [rip + 0xc514a2c], 0x40        ; -> 0x14e6d64dc  imm=0x40
+0x01421c1ab0  488d4801                 rcx, [rax + 1]
+0x01421c1ab4  480f45c8                 rcx, rax
+0x01421c1ab8  f605854a510c40           byte ptr [rip + 0xc514a85], 0x40        ; -> 0x14e6d6544  imm=0x40
+0x01421c1abf  488d4101                 rax, [rcx + 1]
+0x01421c1ac3  480f45c1                 rax, rcx
+0x01421c1ac7  f605de4a510c40           byte ptr [rip + 0xc514ade], 0x40        ; -> 0x14e6d65ac  imm=0x40
+0x01421c1ace  488d4801                 rcx, [rax + 1]
+0x01421c1ad2  480f45c8                 rcx, rax
+0x01421c1ad6  f605374b510c40           byte ptr [rip + 0xc514b37], 0x40        ; -> 0x14e6d6614  imm=0x40
+0x01421c1add  488d4101                 rax, [rcx + 1]
+0x01421c1ae1  480f45c1                 rax, rcx
+0x01421c1ae5  f605904b510c40           byte ptr [rip + 0xc514b90], 0x40        ; -> 0x14e6d667c  imm=0x40
+0x01421c1aec  488d4801                 rcx, [rax + 1]
+0x01421c1af0  480f45c8                 rcx, rax
+0x01421c1af4  f605e94b510c40           byte ptr [rip + 0xc514be9], 0x40        ; -> 0x14e6d66e4  imm=0x40
+0x01421c1afb  b801000000               eax, 1        ; imm=0x1
+0x01421c1b00  488d5101                 rdx, [rcx + 1]
+0x01421c1b04  480f45d1                 rdx, rcx
+0x01421c1b08  f6053d4c510c40           byte ptr [rip + 0xc514c3d], 0x40        ; -> 0x14e6d674c  imm=0x40
+0x01421c1b0f  488d4a01                 rcx, [rdx + 1]
+0x01421c1b13  480f45ca                 rcx, rdx
+0x01421c1b17  48ba7a57e7437cd5bcae     rdx, 0xaebcd57c43e7577a        ; imm=-0x51432a83bc18a886
+0x01421c1b21  4833ca                   rcx, rdx
+0x01421c1b24  48010d1d826907           qword ptr [rip + 0x769821d], rcx        ; -> 0x149859d48
+0x01421c1b2b  48ff0566826907           qword ptr [rip + 0x7698266]        ; -> 0x149859d98
+0x01421c1b32  4883c420                 rsp, 0x20        ; imm=0x20
+0x01421c1b36  5b                       rbx
+0x01421c1b37  c3                       
+0x01421c1b38  488d0d1154510c           rcx, [rip + 0xc515411]        ; -> 0x14e6d6f50
+0x01421c1b3f  e8548ca400               0x142c0a798        ; imm=0x142c0a798
+0x01421c1b44  833d0554510cff           dword ptr [rip + 0xc515405], -1        ; -> 0x14e6d6f50  imm=-0x1
+0x01421c1b4b  0f851effffff             0x1421c1a6f        ; imm=0x1421c1a6f
+0x01421c1b51  0f57c0                   xmm0, xmm0
+0x01421c1b54  33d2                     edx, edx
+0x01421c1b56  33c0                     eax, eax
+0x01421c1b58  4889059148510c           qword ptr [rip + 0xc514891], rax        ; -> 0x14e6d63f0
+0x01421c1b5f  488d05d210e700           rax, [rip + 0xe710d2]        ; -> 0x143032c38 'should_never_see_this'
+0x01421c1b66  0f1105f348510c           xmmword ptr [rip + 0xc5148f3], xmm0        ; -> 0x14e6d6460
+0x01421c1b6d  8915f548510c             dword ptr [rip + 0xc5148f5], edx        ; -> 0x14e6d6468
+0x01421c1b73  0f11054e49510c           xmmword ptr [rip + 0xc51494e], xmm0        ; -> 0x14e6d64c8
+0x01421c1b7a  c705e848510c0c000000     dword ptr [rip + 0xc5148e8], 0xc        ; -> 0x14e6d646c  imm=0xc
+0x01421c1b84  0f1105bd48510c           xmmword ptr [rip + 0xc5148bd], xmm0        ; -> 0x14e6d6448
+0x01421c1b8b  c705bf48510c01000000     dword ptr [rip + 0xc5148bf], 1        ; -> 0x14e6d6454  imm=0x1
+0x01421c1b95  0f1105f447510c           xmmword ptr [rip + 0xc5147f4], xmm0        ; -> 0x14e6d6390
+0x01421c1b9c  8915f647510c             dword ptr [rip + 0xc5147f6], edx        ; -> 0x14e6d6398
+0x01421c1ba2  0f11056f48510c           xmmword ptr [rip + 0xc51486f], xmm0        ; -> 0x14e6d6418
+0x01421c1ba9  488915e047510c           qword ptr [rip + 0xc5147e0], rdx        ; -> 0x14e6d6390
+0x01421c1bb0  0f1105e947510c           xmmword ptr [rip + 0xc5147e9], xmm0        ; -> 0x14e6d63a0
+0x01421c1bb7  48c705da47510c04000000   qword ptr [rip + 0xc5147da], 4        ; -> 0x14e6d639c  imm=0x4
+0x01421c1bc2  0f11051748510c           xmmword ptr [rip + 0xc514817], xmm0        ; -> 0x14e6d63e0
+0x01421c1bc9  c7051948510c01000000     dword ptr [rip + 0xc514819], 1        ; -> 0x14e6d63ec  imm=0x1
+0x01421c1bd3  0f11051e48510c           xmmword ptr [rip + 0xc51481e], xmm0        ; -> 0x14e6d63f8
+0x01421c1bda  c7050448510cffffffff     dword ptr [rip + 0xc514804], 0xffffffff        ; -> 0x14e6d63e8  imm=0xffffffff
+0x01421c1be4  0f1105c548510c           xmmword ptr [rip + 0xc5148c5], xmm0        ; -> 0x14e6d64b0
+0x01421c1beb  8915b347510c             dword ptr [rip + 0xc5147b3], edx        ; -> 0x14e6d63a4
+0x01421c1bf1  0f11052049510c           xmmword ptr [rip + 0xc514920], xmm0        ; -> 0x14e6d6518
+0x01421c1bf8  c7054e48510cffffffff     dword ptr [rip + 0xc51484e], 0xffffffff        ; -> 0x14e6d6450  imm=0xffffffff
+0x01421c1c02  0f1105a747510c           xmmword ptr [rip + 0xc5147a7], xmm0        ; -> 0x14e6d63b0
+0x01421c1c09  488905a847510c           qword ptr [rip + 0xc5147a8], rax        ; -> 0x14e6d63b8
+0x01421c1c10  33c0                     eax, eax
+0x01421c1c12  4889053f48510c           qword ptr [rip + 0xc51483f], rax        ; -> 0x14e6d6458
+0x01421c1c19  488d05009bc4ff           rax, [rip - 0x3b6500]        ; -> 0x141e0b720
+0x01421c1c20  4889052148510c           qword ptr [rip + 0xc514821], rax        ; -> 0x14e6d6448
+0x01421c1c27  488d055255b701           rax, [rip + 0x1b75552]        ; -> 0x143d37180
+0x01421c1c2e  488905e347510c           qword ptr [rip + 0xc5147e3], rax        ; -> 0x14e6d6418
+0x01421c1c35  33c0                     eax, eax
+0x01421c1c37  4889058248510c           qword ptr [rip + 0xc514882], rax        ; -> 0x14e6d64c0
+0x01421c1c3e  488d053370f000           rax, [rip + 0xf07033]        ; -> 0x1430c8c78 'm_vecOrigin'
+0x01421c1c45  0f11053448510c           xmmword ptr [rip + 0xc514834], xmm0        ; -> 0x14e6d6480
+0x01421c1c4c  4889053548510c           qword ptr [rip + 0xc514835], rax        ; -> 0x14e6d6488
+0x01421c1c53  33c0                     eax, eax
+0x01421c1c55  488905cc48510c           qword ptr [rip + 0xc5148cc], rax        ; -> 0x14e6d6528
+0x01421c1c5c  488d05bd72f000           rax, [rip + 0xf072bd]        ; -> 0x1430c8f20 'm_vecAngles'
+0x01421c1c63  0f11057e48510c           xmmword ptr [rip + 0xc51487e], xmm0        ; -> 0x14e6d64e8
+0x01421c1c6a  4889057f48510c           qword ptr [rip + 0xc51487f], rax        ; -> 0x14e6d64f0
+0x01421c1c71  33c0                     eax, eax
+0x01421c1c73  0f11055647510c           xmmword ptr [rip + 0xc514756], xmm0        ; -> 0x14e6d63d0
+0x01421c1c7a  4889050f49510c           qword ptr [rip + 0xc51490f], rax        ; -> 0x14e6d6590
+0x01421c1c81  0f11058047510c           xmmword ptr [rip + 0xc514780], xmm0        ; -> 0x14e6d6408
+0x01421c1c88  4889154947510c           qword ptr [rip + 0xc514749], rdx        ; -> 0x14e6d63d8
+0x01421c1c8f  0f1105da47510c           xmmword ptr [rip + 0xc5147da], xmm0        ; -> 0x14e6d6470
+0x01421c1c96  4889155f47510c           qword ptr [rip + 0xc51475f], rdx        ; -> 0x14e6d63fc
+0x01421c1c9d  0f1105fc47510c           xmmword ptr [rip + 0xc5147fc], xmm0        ; -> 0x14e6d64a0
+0x01421c1ca4  48891d7547510c           qword ptr [rip + 0xc514775], rbx        ; -> 0x14e6d6420
+0x01421c1cab  0f11052648510c           xmmword ptr [rip + 0xc514826], xmm0        ; -> 0x14e6d64d8
+0x01421c1cb2  c7053c47510c0a000000     dword ptr [rip + 0xc51473c], 0xa        ; -> 0x14e6d63f8  imm=0xa
+0x01421c1cbc  0f11054548510c           xmmword ptr [rip + 0xc514845], xmm0        ; -> 0x14e6d6508
+0x01421c1cc3  89154347510c             dword ptr [rip + 0xc514743], edx        ; -> 0x14e6d640c
+0x01421c1cc9  0f1105f046510c           xmmword ptr [rip + 0xc5146f0], xmm0        ; -> 0x14e6d63c0
+0x01421c1cd0  c705e247510c01000000     dword ptr [rip + 0xc5147e2], 1        ; -> 0x14e6d64bc  imm=0x1
+0x01421c1cda  0f11054747510c           xmmword ptr [rip + 0xc514747], xmm0        ; -> 0x14e6d6428
+0x01421c1ce1  c705cd47510cffffffff     dword ptr [rip + 0xc5147cd], 0xffffffff        ; -> 0x14e6d64b8  imm=0xffffffff
+0x01421c1ceb  0f11054647510c           xmmword ptr [rip + 0xc514746], xmm0        ; -> 0x14e6d6438
+0x01421c1cf2  c7056847510c28000000     dword ptr [rip + 0xc514768], 0x28        ; -> 0x14e6d6464  imm=0x28
+0x01421c1cfc  0f11058d47510c           xmmword ptr [rip + 0xc51478d], xmm0        ; -> 0x14e6d6490
+0x01421c1d03  c7055347510c02000000     dword ptr [rip + 0xc514753], 2        ; -> 0x14e6d6460  imm=0x2
+0x01421c1d0d  89156147510c             dword ptr [rip + 0xc514761], edx        ; -> 0x14e6d6474
+0x01421c1d13  4889158e47510c           qword ptr [rip + 0xc51478e], rdx        ; -> 0x14e6d64a8
+0x01421c1d1a  0f1105d747510c           xmmword ptr [rip + 0xc5147d7], xmm0        ; -> 0x14e6d64f8
+0x01421c1d21  c705f947510c01000000     dword ptr [rip + 0xc5147f9], 1        ; -> 0x14e6d6524  imm=0x1
+0x01421c1d2b  c705eb47510cffffffff     dword ptr [rip + 0xc5147eb], 0xffffffff        ; -> 0x14e6d6520  imm=0xffffffff
+0x01421c1d35  89159547510c             dword ptr [rip + 0xc514795], edx        ; -> 0x14e6d64d0
+0x01421c1d3b  c7058f47510c0c000000     dword ptr [rip + 0xc51478f], 0xc        ; -> 0x14e6d64d4  imm=0xc
+0x01421c1d45  c7057d47510c34000000     dword ptr [rip + 0xc51477d], 0x34        ; -> 0x14e6d64cc  imm=0x34
+0x01421c1d4f  c7056f47510c02000000     dword ptr [rip + 0xc51476f], 2        ; -> 0x14e6d64c8  imm=0x2
+0x01421c1d59  89157d47510c             dword ptr [rip + 0xc51477d], edx        ; -> 0x14e6d64dc
+0x01421c1d5f  488915aa47510c           qword ptr [rip + 0xc5147aa], rdx        ; -> 0x14e6d6510
+0x01421c1d66  0f1105c347510c           xmmword ptr [rip + 0xc5147c3], xmm0        ; -> 0x14e6d6530
+0x01421c1d6d  0f1105cc47510c           xmmword ptr [rip + 0xc5147cc], xmm0        ; -> 0x14e6d6540
+0x01421c1d74  0f1105d547510c           xmmword ptr [rip + 0xc5147d5], xmm0        ; -> 0x14e6d6550
+0x01421c1d7b  0f1105de47510c           xmmword ptr [rip + 0xc5147de], xmm0        ; -> 0x14e6d6560
+0x01421c1d82  0f1105e747510c           xmmword ptr [rip + 0xc5147e7], xmm0        ; -> 0x14e6d6570
+0x01421c1d89  0f1105f047510c           xmmword ptr [rip + 0xc5147f0], xmm0        ; -> 0x14e6d6580
+0x01421c1d90  0f11050148510c           xmmword ptr [rip + 0xc514801], xmm0        ; -> 0x14e6d6598
+0x01421c1d97  488d0512c7eb00           rax, [rip + 0xebc712]        ; -> 0x14307e4b0 'm_vecForce'
+0x01421c1d9e  c705e447510c01000000     dword ptr [rip + 0xc5147e4], 1        ; -> 0x14e6d658c  imm=0x1
+0x01421c1da8  488905a947510c           qword ptr [rip + 0xc5147a9], rax        ; -> 0x14e6d6558
+0x01421c1daf  33c0                     eax, eax
+0x01421c1db1  4889054048510c           qword ptr [rip + 0xc514840], rax        ; -> 0x14e6d65f8
+0x01421c1db8  488d059971f000           rax, [rip + 0xf07199]        ; -> 0x1430c8f58 'm_vecForcePos'
+0x01421c1dbf  0f11053a48510c           xmmword ptr [rip + 0xc51483a], xmm0        ; -> 0x14e6d6600
+0x01421c1dc6  c705b847510cffffffff     dword ptr [rip + 0xc5147b8], 0xffffffff        ; -> 0x14e6d6588  imm=0xffffffff
+0x01421c1dd0  0f11059148510c           xmmword ptr [rip + 0xc514891], xmm0        ; -> 0x14e6d6668
+0x01421c1dd7  89155b47510c             dword ptr [rip + 0xc51475b], edx        ; -> 0x14e6d6538
+0x01421c1ddd  0f1105ec48510c           xmmword ptr [rip + 0xc5148ec], xmm0        ; -> 0x14e6d66d0
+0x01421c1de4  c7054e47510c0c000000     dword ptr [rip + 0xc51474e], 0xc        ; -> 0x14e6d653c  imm=0xc
+0x01421c1dee  0f1105f347510c           xmmword ptr [rip + 0xc5147f3], xmm0        ; -> 0x14e6d65e8
+0x01421c1df5  c7053547510c40000000     dword ptr [rip + 0xc514735], 0x40        ; -> 0x14e6d6534  imm=0x40
+0x01421c1dff  0f11054a48510c           xmmword ptr [rip + 0xc51484a], xmm0        ; -> 0x14e6d6650
+0x01421c1e06  c7052047510c02000000     dword ptr [rip + 0xc514720], 2        ; -> 0x14e6d6530  imm=0x2
+0x01421c1e10  0f1105a148510c           xmmword ptr [rip + 0xc5148a1], xmm0        ; -> 0x14e6d66b8
+0x01421c1e17  89152747510c             dword ptr [rip + 0xc514727], edx        ; -> 0x14e6d6544
+0x01421c1e1d  0f1105fc48510c           xmmword ptr [rip + 0xc5148fc], xmm0        ; -> 0x14e6d6720
+0x01421c1e24  4889154d47510c           qword ptr [rip + 0xc51474d], rdx        ; -> 0x14e6d6578
+0x01421c1e2b  0f11058647510c           xmmword ptr [rip + 0xc514786], xmm0        ; -> 0x14e6d65b8
+0x01421c1e32  4889058747510c           qword ptr [rip + 0xc514787], rax        ; -> 0x14e6d65c0
+0x01421c1e39  33c0                     eax, eax
+0x01421c1e3b  4889051e48510c           qword ptr [rip + 0xc51481e], rax        ; -> 0x14e6d6660
+0x01421c1e42  488d05ef3bf000           rax, [rip + 0xf03bef]        ; -> 0x1430c5a38 'm_flWidth'
+0x01421c1e49  0f1105d047510c           xmmword ptr [rip + 0xc5147d0], xmm0        ; -> 0x14e6d6620
+0x01421c1e50  488905d147510c           qword ptr [rip + 0xc5147d1], rax        ; -> 0x14e6d6628
+0x01421c1e57  33c0                     eax, eax
+0x01421c1e59  4889056848510c           qword ptr [rip + 0xc514868], rax        ; -> 0x14e6d66c8
+0x01421c1e60  488d05c13bf000           rax, [rip + 0xf03bc1]        ; -> 0x1430c5a28 'm_flHeight'
+0x01421c1e67  0f11051a48510c           xmmword ptr [rip + 0xc51481a], xmm0        ; -> 0x14e6d6688
+0x01421c1e6e  4889051b48510c           qword ptr [rip + 0xc51481b], rax        ; -> 0x14e6d6690
+0x01421c1e75  33c0                     eax, eax
+0x01421c1e77  488905b248510c           qword ptr [rip + 0xc5148b2], rax        ; -> 0x14e6d6730
+0x01421c1e7e  488d05c370f000           rax, [rip + 0xf070c3]        ; -> 0x1430c8f48 'm_flShardSize'
+0x01421c1e85  0f11051c47510c           xmmword ptr [rip + 0xc51471c], xmm0        ; -> 0x14e6d65a8
+0x01421c1e8c  c7055e47510c01000000     dword ptr [rip + 0xc51475e], 1        ; -> 0x14e6d65f4  imm=0x1
+0x01421c1e96  0f11053b47510c           xmmword ptr [rip + 0xc51473b], xmm0        ; -> 0x14e6d65d8
+0x01421c1e9d  c7054947510cffffffff     dword ptr [rip + 0xc514749], 0xffffffff        ; -> 0x14e6d65f0  imm=0xffffffff
+0x01421c1ea7  0f11056247510c           xmmword ptr [rip + 0xc514762], xmm0        ; -> 0x14e6d6610
+0x01421c1eae  8915ec46510c             dword ptr [rip + 0xc5146ec], edx        ; -> 0x14e6d65a0
+0x01421c1eb4  0f11058547510c           xmmword ptr [rip + 0xc514785], xmm0        ; -> 0x14e6d6640
+0x01421c1ebb  c705df46510c0c000000     dword ptr [rip + 0xc5146df], 0xc        ; -> 0x14e6d65a4  imm=0xc
+0x01421c1ec5  0f1105ac47510c           xmmword ptr [rip + 0xc5147ac], xmm0        ; -> 0x14e6d6678
+0x01421c1ecc  c705c646510c4c000000     dword ptr [rip + 0xc5146c6], 0x4c        ; -> 0x14e6d659c  imm=0x4c
+0x01421c1ed6  0f1105cb47510c           xmmword ptr [rip + 0xc5147cb], xmm0        ; -> 0x14e6d66a8
+0x01421c1edd  c705b146510c02000000     dword ptr [rip + 0xc5146b1], 2        ; -> 0x14e6d6598  imm=0x2
+0x01421c1ee7  0f1105f247510c           xmmword ptr [rip + 0xc5147f2], xmm0        ; -> 0x14e6d66e0
+0x01421c1eee  8915b846510c             dword ptr [rip + 0xc5146b8], edx        ; -> 0x14e6d65ac
+0x01421c1ef4  0f1105f547510c           xmmword ptr [rip + 0xc5147f5], xmm0        ; -> 0x14e6d66f0
+0x01421c1efb  488905f647510c           qword ptr [rip + 0xc5147f6], rax        ; -> 0x14e6d66f8
+0x01421c1f02  0f1105bf46510c           xmmword ptr [rip + 0xc5146bf], xmm0        ; -> 0x14e6d65c8
+0x01421c1f09  488915d046510c           qword ptr [rip + 0xc5146d0], rdx        ; -> 0x14e6d65e0
+0x01421c1f10  0f11051947510c           xmmword ptr [rip + 0xc514719], xmm0        ; -> 0x14e6d6630
+0x01421c1f17  c7053b47510c01000000     dword ptr [rip + 0xc51473b], 1        ; -> 0x14e6d665c  imm=0x1
+0x01421c1f21  c7052d47510cffffffff     dword ptr [rip + 0xc51472d], 0xffffffff        ; -> 0x14e6d6658  imm=0xffffffff
+0x01421c1f2b  8915d746510c             dword ptr [rip + 0xc5146d7], edx        ; -> 0x14e6d6608
+0x01421c1f31  c705d146510c04000000     dword ptr [rip + 0xc5146d1], 4        ; -> 0x14e6d660c  imm=0x4
+0x01421c1f3b  c705bf46510c58000000     dword ptr [rip + 0xc5146bf], 0x58        ; -> 0x14e6d6604  imm=0x58
+0x01421c1f45  c705b146510c01000000     dword ptr [rip + 0xc5146b1], 1        ; -> 0x14e6d6600  imm=0x1
+0x01421c1f4f  8915bf46510c             dword ptr [rip + 0xc5146bf], edx        ; -> 0x14e6d6614
+0x01421c1f55  488915ec46510c           qword ptr [rip + 0xc5146ec], rdx        ; -> 0x14e6d6648
+0x01421c1f5c  0f11053547510c           xmmword ptr [rip + 0xc514735], xmm0        ; -> 0x14e6d6698
+0x01421c1f63  c7055747510c01000000     dword ptr [rip + 0xc514757], 1        ; -> 0x14e6d66c4  imm=0x1
+0x01421c1f6d  c7054947510cffffffff     dword ptr [rip + 0xc514749], 0xffffffff        ; -> 0x14e6d66c0  imm=0xffffffff
+0x01421c1f77  8915f346510c             dword ptr [rip + 0xc5146f3], edx        ; -> 0x14e6d6670
+0x01421c1f7d  c705ed46510c04000000     dword ptr [rip + 0xc5146ed], 4        ; -> 0x14e6d6674  imm=0x4
+0x01421c1f87  c705db46510c5c000000     dword ptr [rip + 0xc5146db], 0x5c        ; -> 0x14e6d666c  imm=0x5c
+0x01421c1f91  c705cd46510c01000000     dword ptr [rip + 0xc5146cd], 1        ; -> 0x14e6d6668  imm=0x1
+0x01421c1f9b  8915db46510c             dword ptr [rip + 0xc5146db], edx        ; -> 0x14e6d667c
+0x01421c1fa1  4889150847510c           qword ptr [rip + 0xc514708], rdx        ; -> 0x14e6d66b0
+0x01421c1fa8  0f11055147510c           xmmword ptr [rip + 0xc514751], xmm0        ; -> 0x14e6d6700
+0x01421c1faf  c7057347510c01000000     dword ptr [rip + 0xc514773], 1        ; -> 0x14e6d672c  imm=0x1
+0x01421c1fb9  0f11055047510c           xmmword ptr [rip + 0xc514750], xmm0        ; -> 0x14e6d6710
+0x01421c1fc0  c7055e47510cffffffff     dword ptr [rip + 0xc51475e], 0xffffffff        ; -> 0x14e6d6728  imm=0xffffffff
+0x01421c1fca  89150847510c             dword ptr [rip + 0xc514708], edx        ; -> 0x14e6d66d8
+0x01421c1fd0  c7050247510c04000000     dword ptr [rip + 0xc514702], 4        ; -> 0x14e6d66dc  imm=0x4
+0x01421c1fda  c705f046510c60000000     dword ptr [rip + 0xc5146f0], 0x60        ; -> 0x14e6d66d4  imm=0x60
+0x01421c1fe4  c705e246510c01000000     dword ptr [rip + 0xc5146e2], 1        ; -> 0x14e6d66d0  imm=0x1
+0x01421c1fee  8915f046510c             dword ptr [rip + 0xc5146f0], edx        ; -> 0x14e6d66e4
+0x01421c1ff4  0f11053d47510c           xmmword ptr [rip + 0xc51473d], xmm0        ; -> 0x14e6d6738
+0x01421c1ffb  33c0                     eax, eax
+0x01421c1ffd  4889151447510c           qword ptr [rip + 0xc514714], rdx        ; -> 0x14e6d6718
+0x01421c2004  0f11053d47510c           xmmword ptr [rip + 0xc51473d], xmm0        ; -> 0x14e6d6748
+0x01421c200b  4889058647510c           qword ptr [rip + 0xc514786], rax        ; -> 0x14e6d6798
+0x01421c2012  488d05bfc5ef00           rax, [rip + 0xefc5bf]        ; -> 0x1430be5d8 'm_nSurfaceType'
+0x01421c2019  0f11056847510c           xmmword ptr [rip + 0xc514768], xmm0        ; -> 0x14e6d6788
+0x01421c2020  488d0d294f510c           rcx, [rip + 0xc514f29]        ; -> 0x14e6d6f50
+0x01421c2027  c7056347510c01000000     dword ptr [rip + 0xc514763], 1        ; -> 0x14e6d6794  imm=0x1
+0x01421c2031  0f11052047510c           xmmword ptr [rip + 0xc514720], xmm0        ; -> 0x14e6d6758
+0x01421c2038  4889052147510c           qword ptr [rip + 0xc514721], rax        ; -> 0x14e6d6760
+0x01421c203f  0f11053247510c           xmmword ptr [rip + 0xc514732], xmm0        ; -> 0x14e6d6778
+0x01421c2046  c7054047510cffffffff     dword ptr [rip + 0xc514740], 0xffffffff        ; -> 0x14e6d6790  imm=0xffffffff
+0x01421c2050  0f11051147510c           xmmword ptr [rip + 0xc514711], xmm0        ; -> 0x14e6d6768
+0x01421c2057  48c705da46510c64000000   qword ptr [rip + 0xc5146da], 0x64        ; -> 0x14e6d673c  imm=0x64
+0x01421c2062  48c705d746510c04000000   qword ptr [rip + 0xc5146d7], 4        ; -> 0x14e6d6744  imm=0x4
+0x01421c206d  8915c546510c             dword ptr [rip + 0xc5146c5], edx        ; -> 0x14e6d6738
+0x01421c2073  8915d346510c             dword ptr [rip + 0xc5146d3], edx        ; -> 0x14e6d674c
+0x01421c2079  4889150047510c           qword ptr [rip + 0xc514700], rdx        ; -> 0x14e6d6780
+0x01421c2080  e8a786a400               0x142c0a72c        ; imm=0x142c0a72c
+0x01421c2085  e9e5f9ffff               0x1421c1a6f        ; imm=0x1421c1a6f
+0x01421c208a  cc                       
+
+### m_lifeState  lea@0x14203cbd6   function 0x14203c939..0x14203cbda  (673 bytes)
+0x014203c939  c804010f                 0x104, 0xf        ; imm=0xf
+0x014203c93d  1105056d670c             dword ptr [rip + 0xc676d05], eax        ; -> 0x14e6b3648
+0x014203c943  488905066d670c           qword ptr [rip + 0xc676d06], rax        ; -> 0x14e6b3650
+0x014203c94a  33c0                     eax, eax
+0x014203c94c  4889059d6d670c           qword ptr [rip + 0xc676d9d], rax        ; -> 0x14e6b36f0
+0x014203c953  488d058ec80401           rax, [rip + 0x104c88e]        ; -> 0x1430891e8
+0x014203c95a  0f11054f6d670c           xmmword ptr [rip + 0xc676d4f], xmm0        ; -> 0x14e6b36b0
+0x014203c961  488905506d670c           qword ptr [rip + 0xc676d50], rax        ; -> 0x14e6b36b8
+0x014203c968  33c0                     eax, eax
+0x014203c96a  0f1105276c670c           xmmword ptr [rip + 0xc676c27], xmm0        ; -> 0x14e6b3598
+0x014203c971  48c705e86b670c04000000   qword ptr [rip + 0xc676be8], 4        ; -> 0x14e6b3564  imm=0x4
+0x014203c97c  0f11054d6c670c           xmmword ptr [rip + 0xc676c4d], xmm0        ; -> 0x14e6b35d0
+0x014203c983  891dcf6b670c             dword ptr [rip + 0xc676bcf], ebx        ; -> 0x14e6b3558
+0x014203c989  0f1105706c670c           xmmword ptr [rip + 0xc676c70], xmm0        ; -> 0x14e6b3600
+0x014203c990  891dd66b670c             dword ptr [rip + 0xc676bd6], ebx        ; -> 0x14e6b356c
+0x014203c996  0f11059b6c670c           xmmword ptr [rip + 0xc676c9b], xmm0        ; -> 0x14e6b3638
+0x014203c99d  4c8935fc6b670c           qword ptr [rip + 0xc676bfc], r14        ; -> 0x14e6b35a0
+0x014203c9a4  0f1105bd6c670c           xmmword ptr [rip + 0xc676cbd], xmm0        ; -> 0x14e6b3668
+0x014203c9ab  c705676c670c01000000     dword ptr [rip + 0xc676c67], 1        ; -> 0x14e6b361c  imm=0x1
+0x014203c9b5  0f1105146d670c           xmmword ptr [rip + 0xc676d14], xmm0        ; -> 0x14e6b36d0
+0x014203c9bc  c705526c670cffffffff     dword ptr [rip + 0xc676c52], 0xffffffff        ; -> 0x14e6b3618  imm=0xffffffff
+0x014203c9c6  0f1105bb6b670c           xmmword ptr [rip + 0xc676bbb], xmm0        ; -> 0x14e6b3588
+0x014203c9cd  891df56b670c             dword ptr [rip + 0xc676bf5], ebx        ; -> 0x14e6b35c8
+0x014203c9d3  0f1105166c670c           xmmword ptr [rip + 0xc676c16], xmm0        ; -> 0x14e6b35f0
+0x014203c9da  c705e86b670c04000000     dword ptr [rip + 0xc676be8], 4        ; -> 0x14e6b35cc  imm=0x4
+0x014203c9e4  c705d66b670c80370000     dword ptr [rip + 0xc676bd6], 0x3780        ; -> 0x14e6b35c4  imm=0x3780
+0x014203c9ee  c705c86b670c09000000     dword ptr [rip + 0xc676bc8], 9        ; -> 0x14e6b35c0  imm=0x9
+0x014203c9f8  c705d26b670c08000000     dword ptr [rip + 0xc676bd2], 8        ; -> 0x14e6b35d4  imm=0x8
+0x014203ca02  4c893dff6b670c           qword ptr [rip + 0xc676bff], r15        ; -> 0x14e6b3608
+0x014203ca09  0f1105486c670c           xmmword ptr [rip + 0xc676c48], xmm0        ; -> 0x14e6b3658
+0x014203ca10  c7056a6c670c01000000     dword ptr [rip + 0xc676c6a], 1        ; -> 0x14e6b3684  imm=0x1
+0x014203ca1a  c7055c6c670cffffffff     dword ptr [rip + 0xc676c5c], 0xffffffff        ; -> 0x14e6b3680  imm=0xffffffff
+0x014203ca24  891d066c670c             dword ptr [rip + 0xc676c06], ebx        ; -> 0x14e6b3630
+0x014203ca2a  c705006c670c04000000     dword ptr [rip + 0xc676c00], 4        ; -> 0x14e6b3634  imm=0x4
+0x014203ca34  c705ee6b670c98370000     dword ptr [rip + 0xc676bee], 0x3798        ; -> 0x14e6b362c  imm=0x3798
+0x014203ca3e  c705e06b670c09000000     dword ptr [rip + 0xc676be0], 9        ; -> 0x14e6b3628  imm=0x9
+0x014203ca48  c705ea6b670c08000000     dword ptr [rip + 0xc676bea], 8        ; -> 0x14e6b363c  imm=0x8
+0x014203ca52  4c893d176c670c           qword ptr [rip + 0xc676c17], r15        ; -> 0x14e6b3670
+0x014203ca59  0f1105606c670c           xmmword ptr [rip + 0xc676c60], xmm0        ; -> 0x14e6b36c0
+0x014203ca60  c705826c670c01000000     dword ptr [rip + 0xc676c82], 1        ; -> 0x14e6b36ec  imm=0x1
+0x014203ca6a  c705746c670cffffffff     dword ptr [rip + 0xc676c74], 0xffffffff        ; -> 0x14e6b36e8  imm=0xffffffff
+0x014203ca74  48c705156c670c54370000   qword ptr [rip + 0xc676c15], 0x3754        ; -> 0x14e6b3694  imm=0x3754
+0x014203ca7f  48c705126c670c01000000   qword ptr [rip + 0xc676c12], 1        ; -> 0x14e6b369c  imm=0x1
+0x014203ca8a  891d006c670c             dword ptr [rip + 0xc676c00], ebx        ; -> 0x14e6b3690
+0x014203ca90  891d0e6c670c             dword ptr [rip + 0xc676c0e], ebx        ; -> 0x14e6b36a4
+0x014203ca96  4889353b6c670c           qword ptr [rip + 0xc676c3b], rsi        ; -> 0x14e6b36d8
+0x014203ca9d  0f1105546c670c           xmmword ptr [rip + 0xc676c54], xmm0        ; -> 0x14e6b36f8
+0x014203caa4  488905ad6c670c           qword ptr [rip + 0xc676cad], rax        ; -> 0x14e6b3758
+0x014203caab  488d059e7e0401           rax, [rip + 0x1047e9e]        ; -> 0x143084950 'm_hGroundEntity'
+0x014203cab2  0f1105a76c670c           xmmword ptr [rip + 0xc676ca7], xmm0        ; -> 0x14e6b3760
+0x014203cab9  48c705386c670c2c030000   qword ptr [rip + 0xc676c38], 0x32c        ; -> 0x14e6b36fc  imm=0x32c
+0x014203cac4  0f1105fd6c670c           xmmword ptr [rip + 0xc676cfd], xmm0        ; -> 0x14e6b37c8
+0x014203cacb  891d276c670c             dword ptr [rip + 0xc676c27], ebx        ; -> 0x14e6b36f8
+0x014203cad1  0f1105586d670c           xmmword ptr [rip + 0xc676d58], xmm0        ; -> 0x14e6b3830
+0x014203cad8  48c705816c670c981a0000   qword ptr [rip + 0xc676c81], 0x1a98        ; -> 0x14e6b3764  imm=0x1a98
+0x014203cae3  0f1105ae6d670c           xmmword ptr [rip + 0xc676dae], xmm0        ; -> 0x14e6b3898
+0x014203caea  891d706c670c             dword ptr [rip + 0xc676c70], ebx        ; -> 0x14e6b3760
+0x014203caf0  0f1105116c670c           xmmword ptr [rip + 0xc676c11], xmm0        ; -> 0x14e6b3708
+0x014203caf7  48c705026c670c04000000   qword ptr [rip + 0xc676c02], 4        ; -> 0x14e6b3704  imm=0x4
+0x014203cb02  0f11053f6c670c           xmmword ptr [rip + 0xc676c3f], xmm0        ; -> 0x14e6b3748
+0x014203cb09  c705416c670c01000000     dword ptr [rip + 0xc676c41], 1        ; -> 0x14e6b3754  imm=0x1
+0x014203cb13  0f1105566c670c           xmmword ptr [rip + 0xc676c56], xmm0        ; -> 0x14e6b3770
+0x014203cb1a  c7052c6c670cffffffff     dword ptr [rip + 0xc676c2c], 0xffffffff        ; -> 0x14e6b3750  imm=0xffffffff
+0x014203cb24  0f1105856c670c           xmmword ptr [rip + 0xc676c85], xmm0        ; -> 0x14e6b37b0
+0x014203cb2b  891ddb6b670c             dword ptr [rip + 0xc676bdb], ebx        ; -> 0x14e6b370c
+0x014203cb31  0f1105a06c670c           xmmword ptr [rip + 0xc676ca0], xmm0        ; -> 0x14e6b37d8
+0x014203cb38  c7057a6c670c01000000     dword ptr [rip + 0xc676c7a], 1        ; -> 0x14e6b37bc  imm=0x1
+0x014203cb42  0f1105cf6c670c           xmmword ptr [rip + 0xc676ccf], xmm0        ; -> 0x14e6b3818
+0x014203cb49  c705656c670cffffffff     dword ptr [rip + 0xc676c65], 0xffffffff        ; -> 0x14e6b37b8  imm=0xffffffff
+0x014203cb53  0f1105e66c670c           xmmword ptr [rip + 0xc676ce6], xmm0        ; -> 0x14e6b3840
+0x014203cb5a  48c705076c670c04000000   qword ptr [rip + 0xc676c07], 4        ; -> 0x14e6b376c  imm=0x4
+0x014203cb65  0f1105146d670c           xmmword ptr [rip + 0xc676d14], xmm0        ; -> 0x14e6b3880
+0x014203cb6c  891d026c670c             dword ptr [rip + 0xc676c02], ebx        ; -> 0x14e6b3774
+0x014203cb72  0f11056f6d670c           xmmword ptr [rip + 0xc676d6f], xmm0        ; -> 0x14e6b38e8
+0x014203cb79  c705a16c670c01000000     dword ptr [rip + 0xc676ca1], 1        ; -> 0x14e6b3824  imm=0x1
+0x014203cb83  0f11058e6b670c           xmmword ptr [rip + 0xc676b8e], xmm0        ; -> 0x14e6b3718
+0x014203cb8a  4889058f6b670c           qword ptr [rip + 0xc676b8f], rax        ; -> 0x14e6b3720
+0x014203cb91  33c0                     eax, eax
+0x014203cb93  488905266c670c           qword ptr [rip + 0xc676c26], rax        ; -> 0x14e6b37c0
+0x014203cb9a  488d05dfc50401           rax, [rip + 0x104c5df]        ; -> 0x143089180 'm_titanSoul'
+0x014203cba1  0f1105d86b670c           xmmword ptr [rip + 0xc676bd8], xmm0        ; -> 0x14e6b3780
+0x014203cba8  488905d96b670c           qword ptr [rip + 0xc676bd9], rax        ; -> 0x14e6b3788
+0x014203cbaf  33c0                     eax, eax
+0x014203cbb1  488905706c670c           qword ptr [rip + 0xc676c70], rax        ; -> 0x14e6b3828
+0x014203cbb8  488d05b1c50401           rax, [rip + 0x104c5b1]        ; -> 0x143089170 'm_petTitan'
+0x014203cbbf  0f1105226c670c           xmmword ptr [rip + 0xc676c22], xmm0        ; -> 0x14e6b37e8
+0x014203cbc6  488905236c670c           qword ptr [rip + 0xc676c23], rax        ; -> 0x14e6b37f0
+0x014203cbcd  33c0                     eax, eax
+0x014203cbcf  488905ba6c670c           qword ptr [rip + 0xc676cba], rax        ; -> 0x14e6b3890
+0x014203cbd6  48                       .byte
+0x014203cbd7  8d                       .byte
+0x014203cbd8  05                       .byte
+0x014203cbd9  c3                       
+
+### m_lifeState  lea@0x1420d9254   function 0x1420d8e70..0x1420d98db  (2667 bytes)
+0x01420d8e70  48895c2408               qword ptr [rsp + 8], rbx
+0x01420d8e75  57                       rdi
+0x01420d8e76  4883ec20                 rsp, 0x20        ; imm=0x20
+0x01420d8e7a  65488b042558000000       rax, qword ptr gs:[0x58]
+0x01420d8e83  488d3d8e1dfe00           rdi, [rip + 0xfe1d8e]        ; -> 0x1430bac18 'DT_AI_BaseNPC'
+0x01420d8e8a  48ff05ff0e7807           qword ptr [rip + 0x7780eff]        ; -> 0x149859d90
+0x01420d8e91  48bb0dabef470f8c6f59     rbx, 0x596f8c0f47efab0d        ; imm=0x596f8c0f47efab0d
+0x01420d8e9b  48011d9e0e7807           qword ptr [rip + 0x7780e9e], rbx        ; -> 0x149859d40
+0x01420d8ea2  b920000000               ecx, 0x20        ; imm=0x20
+0x01420d8ea7  488b00                   rax, qword ptr [rax]
+0x01420d8eaa  c70588f0c401801e0000     dword ptr [rip + 0x1c4f088], 0x1e80        ; -> 0x143d27f3c  imm=0x1e80
+0x01420d8eb4  8b0401                   eax, dword ptr [rcx + rax]
+0x01420d8eb7  390523e25e0c             dword ptr [rip + 0xc5ee223], eax        ; -> 0x14e6c70e0
+0x01420d8ebd  0f8f2d010000             0x1420d8ff0        ; imm=0x1420d8ff0
+0x01420d8ec3  4c8bcf                   r9, rdi
+0x01420d8ec6  488d15fb825f0c           rdx, [rip + 0xc5f82fb]        ; -> 0x14e6d11c8
+0x01420d8ecd  41b810000000             r8d, 0x10        ; imm=0x10
+0x01420d8ed3  488d0da6ebc401           rcx, [rip + 0x1c4eba6]        ; -> 0x143d27a80
+0x01420d8eda  e88120d3ff               0x141e0af60        ; imm=0x141e0af60
+0x01420d8edf  8b0df7825f0c             ecx, dword ptr [rip + 0xc5f82f7]        ; -> 0x14e6d11dc
+0x01420d8ee5  f7d1                     ecx
+0x01420d8ee7  48c1e906                 rcx, 6        ; imm=0x6
+0x01420d8eeb  83e101                   ecx, 1        ; imm=0x1
+0x01420d8eee  f6054f835f0c40           byte ptr [rip + 0xc5f834f], 0x40        ; -> 0x14e6d1244  imm=0x40
+0x01420d8ef5  488d4101                 rax, [rcx + 1]
+0x01420d8ef9  480f45c1                 rax, rcx
+0x01420d8efd  f605a8835f0c40           byte ptr [rip + 0xc5f83a8], 0x40        ; -> 0x14e6d12ac  imm=0x40
+0x01420d8f04  488d4801                 rcx, [rax + 1]
+0x01420d8f08  480f45c8                 rcx, rax
+0x01420d8f0c  f60501845f0c40           byte ptr [rip + 0xc5f8401], 0x40        ; -> 0x14e6d1314  imm=0x40
+0x01420d8f13  488d4101                 rax, [rcx + 1]
+0x01420d8f17  480f45c1                 rax, rcx
+0x01420d8f1b  f6055a845f0c40           byte ptr [rip + 0xc5f845a], 0x40        ; -> 0x14e6d137c  imm=0x40
+0x01420d8f22  488d4801                 rcx, [rax + 1]
+0x01420d8f26  480f45c8                 rcx, rax
+0x01420d8f2a  f605b3845f0c40           byte ptr [rip + 0xc5f84b3], 0x40        ; -> 0x14e6d13e4  imm=0x40
+0x01420d8f31  488d4101                 rax, [rcx + 1]
+0x01420d8f35  480f45c1                 rax, rcx
+0x01420d8f39  f6050c855f0c40           byte ptr [rip + 0xc5f850c], 0x40        ; -> 0x14e6d144c  imm=0x40
+0x01420d8f40  488d4801                 rcx, [rax + 1]
+0x01420d8f44  480f45c8                 rcx, rax
+0x01420d8f48  f60565855f0c40           byte ptr [rip + 0xc5f8565], 0x40        ; -> 0x14e6d14b4  imm=0x40
+0x01420d8f4f  488d4101                 rax, [rcx + 1]
+0x01420d8f53  480f45c1                 rax, rcx
+0x01420d8f57  f605be855f0c40           byte ptr [rip + 0xc5f85be], 0x40        ; -> 0x14e6d151c  imm=0x40
+0x01420d8f5e  488d4801                 rcx, [rax + 1]
+0x01420d8f62  480f45c8                 rcx, rax
+0x01420d8f66  f60517865f0c40           byte ptr [rip + 0xc5f8617], 0x40        ; -> 0x14e6d1584  imm=0x40
+0x01420d8f6d  488d4101                 rax, [rcx + 1]
+0x01420d8f71  480f45c1                 rax, rcx
+0x01420d8f75  f60570865f0c40           byte ptr [rip + 0xc5f8670], 0x40        ; -> 0x14e6d15ec  imm=0x40
+0x01420d8f7c  488d4801                 rcx, [rax + 1]
+0x01420d8f80  480f45c8                 rcx, rax
+0x01420d8f84  f605c9865f0c40           byte ptr [rip + 0xc5f86c9], 0x40        ; -> 0x14e6d1654  imm=0x40
+0x01420d8f8b  488d4101                 rax, [rcx + 1]
+0x01420d8f8f  480f45c1                 rax, rcx
+0x01420d8f93  f60522875f0c40           byte ptr [rip + 0xc5f8722], 0x40        ; -> 0x14e6d16bc  imm=0x40
+0x01420d8f9a  488d4801                 rcx, [rax + 1]
+0x01420d8f9e  480f45c8                 rcx, rax
+0x01420d8fa2  f6057b875f0c40           byte ptr [rip + 0xc5f877b], 0x40        ; -> 0x14e6d1724  imm=0x40
+0x01420d8fa9  b801000000               eax, 1        ; imm=0x1
+0x01420d8fae  488d5101                 rdx, [rcx + 1]
+0x01420d8fb2  480f45d1                 rdx, rcx
+0x01420d8fb6  f605cf875f0c40           byte ptr [rip + 0xc5f87cf], 0x40        ; -> 0x14e6d178c  imm=0x40
+0x01420d8fbd  4c8d4201                 r8, [rdx + 1]
+0x01420d8fc1  4c0f45c2                 r8, rdx
+0x01420d8fc5  f60528885f0c40           byte ptr [rip + 0xc5f8828], 0x40        ; -> 0x14e6d17f4  imm=0x40
+0x01420d8fcc  498d4801                 rcx, [r8 + 1]
+0x01420d8fd0  490f45c8                 rcx, r8
+0x01420d8fd4  4833cb                   rcx, rbx
+0x01420d8fd7  488b5c2430               rbx, qword ptr [rsp + 0x30]
+0x01420d8fdc  48010d650d7807           qword ptr [rip + 0x7780d65], rcx        ; -> 0x149859d48
+0x01420d8fe3  48ff05ae0d7807           qword ptr [rip + 0x7780dae]        ; -> 0x149859d98
+0x01420d8fea  4883c420                 rsp, 0x20        ; imm=0x20
+0x01420d8fee  5f                       rdi
+0x01420d8fef  c3                       
+0x01420d8ff0  488d0de9e05e0c           rcx, [rip + 0xc5ee0e9]        ; -> 0x14e6c70e0
+0x01420d8ff7  e89c17b300               0x142c0a798        ; imm=0x142c0a798
+0x01420d8ffc  833ddde05e0cff           dword ptr [rip + 0xc5ee0dd], -1        ; -> 0x14e6c70e0  imm=-0x1
+0x01420d9003  0f85bafeffff             0x1420d8ec3        ; imm=0x1420d8ec3
+0x01420d9009  0f57c0                   xmm0, xmm0
+0x01420d900c  488d0d0d27d3ff           rcx, [rip - 0x2cd8f3]        ; -> 0x141e0b720
+0x01420d9013  4533d2                   r10d, r10d
+0x01420d9016  33c0                     eax, eax
+0x01420d9018  488905a1815f0c           qword ptr [rip + 0xc5f81a1], rax        ; -> 0x14e6d11c0
+0x01420d901f  488d05129cf500           rax, [rip + 0xf59c12]        ; -> 0x143032c38 'should_never_see_this'
+0x01420d9026  0f110533815f0c           xmmword ptr [rip + 0xc5f8133], xmm0        ; -> 0x14e6d1160
+0x01420d902d  44891534815f0c           dword ptr [rip + 0xc5f8134], r10d        ; -> 0x14e6d1168
+0x01420d9034  0f1105dd815f0c           xmmword ptr [rip + 0xc5f81dd], xmm0        ; -> 0x14e6d1218
+0x01420d903b  4c89151e815f0c           qword ptr [rip + 0xc5f811e], r10        ; -> 0x14e6d1160
+0x01420d9042  0f1105e7815f0c           xmmword ptr [rip + 0xc5f81e7], xmm0        ; -> 0x14e6d1230
+0x01420d9049  c705d1815f0c01000000     dword ptr [rip + 0xc5f81d1], 1        ; -> 0x14e6d1224  imm=0x1
+0x01420d9053  0f11053e825f0c           xmmword ptr [rip + 0xc5f823e], xmm0        ; -> 0x14e6d1298
+0x01420d905a  c705bc815f0cffffffff     dword ptr [rip + 0xc5f81bc], 0xffffffff        ; -> 0x14e6d1220  imm=0xffffffff
+0x01420d9064  0f11057d815f0c           xmmword ptr [rip + 0xc5f817d], xmm0        ; -> 0x14e6d11e8
+0x01420d906b  48893d7e815f0c           qword ptr [rip + 0xc5f817e], rdi        ; -> 0x14e6d11f0
+0x01420d9072  0f1105f7805f0c           xmmword ptr [rip + 0xc5f80f7], xmm0        ; -> 0x14e6d1170
+0x01420d9079  48c705e8805f0c04000000   qword ptr [rip + 0xc5f80e8], 4        ; -> 0x14e6d116c  imm=0x4
+0x01420d9084  0f110525815f0c           xmmword ptr [rip + 0xc5f8125], xmm0        ; -> 0x14e6d11b0
+0x01420d908b  c70527815f0c01000000     dword ptr [rip + 0xc5f8127], 1        ; -> 0x14e6d11bc  imm=0x1
+0x01420d9095  0f11052c815f0c           xmmword ptr [rip + 0xc5f812c], xmm0        ; -> 0x14e6d11c8
+0x01420d909c  c70512815f0cffffffff     dword ptr [rip + 0xc5f8112], 0xffffffff        ; -> 0x14e6d11b8  imm=0xffffffff
+0x01420d90a6  0f110593815f0c           xmmword ptr [rip + 0xc5f8193], xmm0        ; -> 0x14e6d1240
+0x01420d90ad  448915c0805f0c           dword ptr [rip + 0xc5f80c0], r10d        ; -> 0x14e6d1174
+0x01420d90b4  0f1105c5815f0c           xmmword ptr [rip + 0xc5f81c5], xmm0        ; -> 0x14e6d1280
+0x01420d90bb  4c89150a815f0c           qword ptr [rip + 0xc5f810a], r10        ; -> 0x14e6d11cc
+0x01420d90c2  0f1105df815f0c           xmmword ptr [rip + 0xc5f81df], xmm0        ; -> 0x14e6d12a8
+0x01420d90c9  c705f5805f0c0a000000     dword ptr [rip + 0xc5f80f5], 0xa        ; -> 0x14e6d11c8  imm=0xa
+0x01420d90d3  0f11050e825f0c           xmmword ptr [rip + 0xc5f820e], xmm0        ; -> 0x14e6d12e8
+0x01420d90da  48890d37815f0c           qword ptr [rip + 0xc5f8137], rcx        ; -> 0x14e6d1218
+0x01420d90e1  0f110568825f0c           xmmword ptr [rip + 0xc5f8268], xmm0        ; -> 0x14e6d1350
+0x01420d90e8  c7059a815f0c01000000     dword ptr [rip + 0xc5f819a], 1        ; -> 0x14e6d128c  imm=0x1
+0x01420d90f2  0f110587805f0c           xmmword ptr [rip + 0xc5f8087], xmm0        ; -> 0x14e6d1180
+0x01420d90f9  48890588805f0c           qword ptr [rip + 0xc5f8088], rax        ; -> 0x14e6d1188
+0x01420d9100  33c0                     eax, eax
+0x01420d9102  4889051f815f0c           qword ptr [rip + 0xc5f811f], rax        ; -> 0x14e6d1228
+0x01420d9109  488d05b0b9c301           rax, [rip + 0x1c3b9b0]        ; -> 0x143d14ac0
+0x01420d9110  488905d1805f0c           qword ptr [rip + 0xc5f80d1], rax        ; -> 0x14e6d11e8
+0x01420d9117  33c0                     eax, eax
+0x01420d9119  48890570815f0c           qword ptr [rip + 0xc5f8170], rax        ; -> 0x14e6d1290
+0x01420d9120  488d052937f800           rax, [rip + 0xf83729]        ; -> 0x14305c850 'm_iHealth'
+0x01420d9127  0f110522815f0c           xmmword ptr [rip + 0xc5f8122], xmm0        ; -> 0x14e6d1250
+0x01420d912e  48890523815f0c           qword ptr [rip + 0xc5f8123], rax        ; -> 0x14e6d1258
+0x01420d9135  33c0                     eax, eax
+0x01420d9137  488905ba815f0c           qword ptr [rip + 0xc5f81ba], rax        ; -> 0x14e6d12f8
+0x01420d913e  488d05fb36f800           rax, [rip + 0xf836fb]        ; -> 0x14305c840 'm_iMaxHealth'
+0x01420d9145  0f11056c815f0c           xmmword ptr [rip + 0xc5f816c], xmm0        ; -> 0x14e6d12b8
+0x01420d914c  4889056d815f0c           qword ptr [rip + 0xc5f816d], rax        ; -> 0x14e6d12c0
+0x01420d9153  33c0                     eax, eax
+0x01420d9155  0f110544805f0c           xmmword ptr [rip + 0xc5f8044], xmm0        ; -> 0x14e6d11a0
+0x01420d915c  488905fd815f0c           qword ptr [rip + 0xc5f81fd], rax        ; -> 0x14e6d1360
+0x01420d9163  0f11056e805f0c           xmmword ptr [rip + 0xc5f806e], xmm0        ; -> 0x14e6d11d8
+0x01420d916a  4c891537805f0c           qword ptr [rip + 0xc5f8037], r10        ; -> 0x14e6d11a8
+0x01420d9171  0f1105f8805f0c           xmmword ptr [rip + 0xc5f80f8], xmm0        ; -> 0x14e6d1270
+0x01420d9178  4489155d805f0c           dword ptr [rip + 0xc5f805d], r10d        ; -> 0x14e6d11dc
+0x01420d917f  0f110552815f0c           xmmword ptr [rip + 0xc5f8152], xmm0        ; -> 0x14e6d12d8
+0x01420d9186  c705f8805f0cffffffff     dword ptr [rip + 0xc5f80f8], 0xffffffff        ; -> 0x14e6d1288  imm=0xffffffff
+0x01420d9190  0f1105f97f5f0c           xmmword ptr [rip + 0xc5f7ff9], xmm0        ; -> 0x14e6d1190
+0x01420d9197  48c70592805f0c30030000   qword ptr [rip + 0xc5f8092], 0x330        ; -> 0x14e6d1234  imm=0x330
+0x01420d91a2  0f11054f805f0c           xmmword ptr [rip + 0xc5f804f], xmm0        ; -> 0x14e6d11f8
+0x01420d91a9  48c70588805f0c04000000   qword ptr [rip + 0xc5f8088], 4        ; -> 0x14e6d123c  imm=0x4
+0x01420d91b4  0f11054d805f0c           xmmword ptr [rip + 0xc5f804d], xmm0        ; -> 0x14e6d1208
+0x01420d91bb  4489156e805f0c           dword ptr [rip + 0xc5f806e], r10d        ; -> 0x14e6d1230
+0x01420d91c2  0f110597805f0c           xmmword ptr [rip + 0xc5f8097], xmm0        ; -> 0x14e6d1260
+0x01420d91c9  44891574805f0c           dword ptr [rip + 0xc5f8074], r10d        ; -> 0x14e6d1244
+0x01420d91d0  4c8915a1805f0c           qword ptr [rip + 0xc5f80a1], r10        ; -> 0x14e6d1278
+0x01420d91d7  0f1105ea805f0c           xmmword ptr [rip + 0xc5f80ea], xmm0        ; -> 0x14e6d12c8
+0x01420d91de  c7050c815f0c01000000     dword ptr [rip + 0xc5f810c], 1        ; -> 0x14e6d12f4  imm=0x1
+0x01420d91e8  c705fe805f0cffffffff     dword ptr [rip + 0xc5f80fe], 0xffffffff        ; -> 0x14e6d12f0  imm=0xffffffff
+0x01420d91f2  48c7059f805f0c70040000   qword ptr [rip + 0xc5f809f], 0x470        ; -> 0x14e6d129c  imm=0x470
+0x01420d91fd  48c7059c805f0c04000000   qword ptr [rip + 0xc5f809c], 4        ; -> 0x14e6d12a4  imm=0x4
+0x01420d9208  44891589805f0c           dword ptr [rip + 0xc5f8089], r10d        ; -> 0x14e6d1298
+0x01420d920f  44891596805f0c           dword ptr [rip + 0xc5f8096], r10d        ; -> 0x14e6d12ac
+0x01420d9216  4c8915c3805f0c           qword ptr [rip + 0xc5f80c3], r10        ; -> 0x14e6d12e0
+0x01420d921d  0f1105dc805f0c           xmmword ptr [rip + 0xc5f80dc], xmm0        ; -> 0x14e6d1300
+0x01420d9224  c7052e815f0c01000000     dword ptr [rip + 0xc5f812e], 1        ; -> 0x14e6d135c  imm=0x1
+0x01420d922e  0f1105db805f0c           xmmword ptr [rip + 0xc5f80db], xmm0        ; -> 0x14e6d1310
+0x01420d9235  c70519815f0cffffffff     dword ptr [rip + 0xc5f8119], 0xffffffff        ; -> 0x14e6d1358  imm=0xffffffff
+0x01420d923f  0f1105da805f0c           xmmword ptr [rip + 0xc5f80da], xmm0        ; -> 0x14e6d1320
+0x01420d9246  0f1105e3805f0c           xmmword ptr [rip + 0xc5f80e3], xmm0        ; -> 0x14e6d1330
+0x01420d924d  0f1105ec805f0c           xmmword ptr [rip + 0xc5f80ec], xmm0        ; -> 0x14e6d1340
+0x01420d9254  488d0545fffa00           rax, [rip + 0xfaff45]        ; -> 0x1430891a0 'm_lifeState'
+0x01420d925b  48c7059e805f0c98060000   qword ptr [rip + 0xc5f809e], 0x698        ; -> 0x14e6d1304  imm=0x698
+0x01420d9266  488905bb805f0c           qword ptr [rip + 0xc5f80bb], rax        ; -> 0x14e6d1328
+0x01420d926d  488d159c22d3ff           rdx, [rip - 0x2cdd64]        ; -> 0x141e0b510
+0x01420d9274  33c0                     eax, eax
+0x01420d9276  48c7058b805f0c01000000   qword ptr [rip + 0xc5f808b], 1        ; -> 0x14e6d130c  imm=0x1
+0x01420d9281  48890540815f0c           qword ptr [rip + 0xc5f8140], rax        ; -> 0x14e6d13c8
+0x01420d9288  488d05f9fbfa00           rax, [rip + 0xfafbf9]        ; -> 0x143088e88 'm_inventory'
+0x01420d928f  0f110522815f0c           xmmword ptr [rip + 0xc5f8122], xmm0        ; -> 0x14e6d13b8
+0x01420d9296  44891563805f0c           dword ptr [rip + 0xc5f8063], r10d        ; -> 0x14e6d1300
+0x01420d929d  0f11052c815f0c           xmmword ptr [rip + 0xc5f812c], xmm0        ; -> 0x14e6d13d0
+0x01420d92a4  44891569805f0c           dword ptr [rip + 0xc5f8069], r10d        ; -> 0x14e6d1314
+0x01420d92ab  0f1105d6815f0c           xmmword ptr [rip + 0xc5f81d6], xmm0        ; -> 0x14e6d1488
+0x01420d92b2  4889158f805f0c           qword ptr [rip + 0xc5f808f], rdx        ; -> 0x14e6d1348
+0x01420d92b9  0f1105c8805f0c           xmmword ptr [rip + 0xc5f80c8], xmm0        ; -> 0x14e6d1388
+0x01420d92c0  488905c9805f0c           qword ptr [rip + 0xc5f80c9], rax        ; -> 0x14e6d1390
+0x01420d92c7  488d05322fc301           rax, [rip + 0x1c32f32]        ; -> 0x143d0c200
+0x01420d92ce  488905b3805f0c           qword ptr [rip + 0xc5f80b3], rax        ; -> 0x14e6d1388
+0x01420d92d5  33c0                     eax, eax
+0x01420d92d7  48890552815f0c           qword ptr [rip + 0xc5f8152], rax        ; -> 0x14e6d1430
+0x01420d92de  488d056b19fe00           rax, [rip + 0xfe196b]        ; -> 0x1430bac50 'm_fireteamSlotIndex'
+0x01420d92e5  0f11056c815f0c           xmmword ptr [rip + 0xc5f816c], xmm0        ; -> 0x14e6d1458
+0x01420d92ec  c705ce805f0c01000000     dword ptr [rip + 0xc5f80ce], 1        ; -> 0x14e6d13c4  imm=0x1
+0x01420d92f6  0f11056b805f0c           xmmword ptr [rip + 0xc5f806b], xmm0        ; -> 0x14e6d1368
+0x01420d92fd  c705b9805f0cffffffff     dword ptr [rip + 0xc5f80b9], 0xffffffff        ; -> 0x14e6d13c0  imm=0xffffffff
+0x01420d9307  0f1105d2805f0c           xmmword ptr [rip + 0xc5f80d2], xmm0        ; -> 0x14e6d13e0
+0x01420d930e  48c70553805f0c58190000   qword ptr [rip + 0xc5f8053], 0x1958        ; -> 0x14e6d136c  imm=0x1958
+0x01420d9319  0f110500815f0c           xmmword ptr [rip + 0xc5f8100], xmm0        ; -> 0x14e6d1420
+0x01420d9320  c7053e805f0c0a000000     dword ptr [rip + 0xc5f803e], 0xa        ; -> 0x14e6d1368  imm=0xa
+0x01420d932a  0f110507815f0c           xmmword ptr [rip + 0xc5f8107], xmm0        ; -> 0x14e6d1438
+0x01420d9331  48890d80805f0c           qword ptr [rip + 0xc5f8080], rcx        ; -> 0x14e6d13b8
+0x01420d9338  0f110561815f0c           xmmword ptr [rip + 0xc5f8161], xmm0        ; -> 0x14e6d14a0
+0x01420d933f  c705e3805f0c01000000     dword ptr [rip + 0xc5f80e3], 1        ; -> 0x14e6d142c  imm=0x1
+0x01420d9349  0f110560815f0c           xmmword ptr [rip + 0xc5f8160], xmm0        ; -> 0x14e6d14b0
+0x01420d9350  c705ce805f0cffffffff     dword ptr [rip + 0xc5f80ce], 0xffffffff        ; -> 0x14e6d1428  imm=0xffffffff
+0x01420d935a  0f11058f815f0c           xmmword ptr [rip + 0xc5f818f], xmm0        ; -> 0x14e6d14f0
+0x01420d9361  48c70568805f0cb01c0000   qword ptr [rip + 0xc5f8068], 0x1cb0        ; -> 0x14e6d13d4  imm=0x1cb0
+0x01420d936c  0f11057d805f0c           xmmword ptr [rip + 0xc5f807d], xmm0        ; -> 0x14e6d13f0
+0x01420d9373  4889057e805f0c           qword ptr [rip + 0xc5f807e], rax        ; -> 0x14e6d13f8
+0x01420d937a  33c0                     eax, eax
+0x01420d937c  48890515815f0c           qword ptr [rip + 0xc5f8115], rax        ; -> 0x14e6d1498
+0x01420d9383  488d05ae18fe00           rax, [rip + 0xfe18ae]        ; -> 0x1430bac38 'statuseffectsdata_npc'
+0x01420d938a  488905cf805f0c           qword ptr [rip + 0xc5f80cf], rax        ; -> 0x14e6d1460
+0x01420d9391  488d059813c401           rax, [rip + 0x1c41398]        ; -> 0x143d1a730
+0x01420d9398  488905b9805f0c           qword ptr [rip + 0xc5f80b9], rax        ; -> 0x14e6d1458
+0x01420d939f  33c0                     eax, eax
+0x01420d93a1  48890558815f0c           qword ptr [rip + 0xc5f8158], rax        ; -> 0x14e6d1500
+0x01420d93a8  488d051934f800           rax, [rip + 0xf83419]        ; -> 0x14305c7c8 'm_title'
+0x01420d93af  0f11050a815f0c           xmmword ptr [rip + 0xc5f810a], xmm0        ; -> 0x14e6d14c0
+0x01420d93b6  4889050b815f0c           qword ptr [rip + 0xc5f810b], rax        ; -> 0x14e6d14c8
+0x01420d93bd  488d05ecf5ffff           rax, [rip - 0xa14]        ; -> 0x1420d89b0
+0x01420d93c4  0f110515815f0c           xmmword ptr [rip + 0xc5f8115], xmm0        ; -> 0x14e6d14e0
+0x01420d93cb  48890516815f0c           qword ptr [rip + 0xc5f8116], rax        ; -> 0x14e6d14e8
+0x01420d93d2  33c0                     eax, eax
+0x01420d93d4  0f11059d7f5f0c           xmmword ptr [rip + 0xc5f7f9d], xmm0        ; -> 0x14e6d1378
+0x01420d93db  4489159a7f5f0c           dword ptr [rip + 0xc5f7f9a], r10d        ; -> 0x14e6d137c
+0x01420d93e2  0f110527805f0c           xmmword ptr [rip + 0xc5f8027], xmm0        ; -> 0x14e6d1410
+0x01420d93e9  48c705e87f5f0c04000000   qword ptr [rip + 0xc5f7fe8], 4        ; -> 0x14e6d13dc  imm=0x4
+0x01420d93f4  0f11054d805f0c           xmmword ptr [rip + 0xc5f804d], xmm0        ; -> 0x14e6d1448
+0x01420d93fb  448915ce7f5f0c           dword ptr [rip + 0xc5f7fce], r10d        ; -> 0x14e6d13d0
+0x01420d9402  0f11058f7f5f0c           xmmword ptr [rip + 0xc5f7f8f], xmm0        ; -> 0x14e6d1398
+0x01420d9409  448915d47f5f0c           dword ptr [rip + 0xc5f7fd4], r10d        ; -> 0x14e6d13e4
+0x01420d9410  0f1105917f5f0c           xmmword ptr [rip + 0xc5f7f91], xmm0        ; -> 0x14e6d13a8
+0x01420d9417  4c8915fa7f5f0c           qword ptr [rip + 0xc5f7ffa], r10        ; -> 0x14e6d1418
+0x01420d941e  0f1105db7f5f0c           xmmword ptr [rip + 0xc5f7fdb], xmm0        ; -> 0x14e6d1400
+0x01420d9425  c70565805f0c01000000     dword ptr [rip + 0xc5f8065], 1        ; -> 0x14e6d1494  imm=0x1
+0x01420d942f  0f110532805f0c           xmmword ptr [rip + 0xc5f8032], xmm0        ; -> 0x14e6d1468
+0x01420d9436  c70550805f0cffffffff     dword ptr [rip + 0xc5f8050], 0xffffffff        ; -> 0x14e6d1490  imm=0xffffffff
+0x01420d9440  0f110531805f0c           xmmword ptr [rip + 0xc5f8031], xmm0        ; -> 0x14e6d1478
+0x01420d9447  4c8915ee7f5f0c           qword ptr [rip + 0xc5f7fee], r10        ; -> 0x14e6d143c
+0x01420d944e  c705e07f5f0c0a000000     dword ptr [rip + 0xc5f7fe0], 0xa        ; -> 0x14e6d1438  imm=0xa
+0x01420d9458  448915ed7f5f0c           dword ptr [rip + 0xc5f7fed], r10d        ; -> 0x14e6d144c
+0x01420d945f  48890d22805f0c           qword ptr [rip + 0xc5f8022], rcx        ; -> 0x14e6d1488
+0x01420d9466  0f110563805f0c           xmmword ptr [rip + 0xc5f8063], xmm0        ; -> 0x14e6d14d0
+0x01420d946d  c70585805f0c01000000     dword ptr [rip + 0xc5f8085], 1        ; -> 0x14e6d14fc  imm=0x1
+0x01420d9477  c70577805f0cffffffff     dword ptr [rip + 0xc5f8077], 0xffffffff        ; -> 0x14e6d14f8  imm=0xffffffff
+0x01420d9481  48c70518805f0c511e0000   qword ptr [rip + 0xc5f8018], 0x1e51        ; -> 0x14e6d14a4  imm=0x1e51
+0x01420d948c  c7050a805f0c04000000     dword ptr [rip + 0xc5f800a], 4        ; -> 0x14e6d14a0  imm=0x4
+0x01420d9496  44891517805f0c           dword ptr [rip + 0xc5f8017], r10d        ; -> 0x14e6d14b4
+0x01420d949d  c70511805f0c20000000     dword ptr [rip + 0xc5f8011], 0x20        ; -> 0x14e6d14b8  imm=0x20
+0x01420d94a7  0f11055a805f0c           xmmword ptr [rip + 0xc5f805a], xmm0        ; -> 0x14e6d1508
+0x01420d94ae  488905b3805f0c           qword ptr [rip + 0xc5f80b3], rax        ; -> 0x14e6d1568
+0x01420d94b5  488d051c17fe00           rax, [rip + 0xfe171c]        ; -> 0x1430babd8 'm_aiSettingsIndex'
+0x01420d94bc  0f1105ad805f0c           xmmword ptr [rip + 0xc5f80ad], xmm0        ; -> 0x14e6d1570
+0x01420d94c3  48c7053e805f0c741e0000   qword ptr [rip + 0xc5f803e], 0x1e74        ; -> 0x14e6d150c  imm=0x1e74
+0x01420d94ce  0f110503815f0c           xmmword ptr [rip + 0xc5f8103], xmm0        ; -> 0x14e6d15d8
+0x01420d94d5  4489152c805f0c           dword ptr [rip + 0xc5f802c], r10d        ; -> 0x14e6d1508
+0x01420d94dc  0f11055d815f0c           xmmword ptr [rip + 0xc5f815d], xmm0        ; -> 0x14e6d1640
+0x01420d94e3  48c70586805f0c781e0000   qword ptr [rip + 0xc5f8086], 0x1e78        ; -> 0x14e6d1574  imm=0x1e78
+0x01420d94ee  0f1105b3815f0c           xmmword ptr [rip + 0xc5f81b3], xmm0        ; -> 0x14e6d16a8
+0x01420d94f5  44891574805f0c           dword ptr [rip + 0xc5f8074], r10d        ; -> 0x14e6d1570
+0x01420d94fc  0f110515805f0c           xmmword ptr [rip + 0xc5f8015], xmm0        ; -> 0x14e6d1518
+0x01420d9503  48c70506805f0c04000000   qword ptr [rip + 0xc5f8006], 4        ; -> 0x14e6d1514  imm=0x4
+0x01420d950e  0f110543805f0c           xmmword ptr [rip + 0xc5f8043], xmm0        ; -> 0x14e6d1558
+0x01420d9515  c70545805f0c01000000     dword ptr [rip + 0xc5f8045], 1        ; -> 0x14e6d1564  imm=0x1
+0x01420d951f  0f11055a805f0c           xmmword ptr [rip + 0xc5f805a], xmm0        ; -> 0x14e6d1580
+0x01420d9526  c70530805f0cffffffff     dword ptr [rip + 0xc5f8030], 0xffffffff        ; -> 0x14e6d1560  imm=0xffffffff
+0x01420d9530  0f110589805f0c           xmmword ptr [rip + 0xc5f8089], xmm0        ; -> 0x14e6d15c0
+0x01420d9537  448915de7f5f0c           dword ptr [rip + 0xc5f7fde], r10d        ; -> 0x14e6d151c
+0x01420d953e  0f1105a3805f0c           xmmword ptr [rip + 0xc5f80a3], xmm0        ; -> 0x14e6d15e8
+0x01420d9545  c7057d805f0c01000000     dword ptr [rip + 0xc5f807d], 1        ; -> 0x14e6d15cc  imm=0x1
+0x01420d954f  0f1105d2805f0c           xmmword ptr [rip + 0xc5f80d2], xmm0        ; -> 0x14e6d1628
+0x01420d9556  c70568805f0cffffffff     dword ptr [rip + 0xc5f8068], 0xffffffff        ; -> 0x14e6d15c8  imm=0xffffffff
+0x01420d9560  0f1105e9805f0c           xmmword ptr [rip + 0xc5f80e9], xmm0        ; -> 0x14e6d1650
+0x01420d9567  48c7050a805f0c04000000   qword ptr [rip + 0xc5f800a], 4        ; -> 0x14e6d157c  imm=0x4
+0x01420d9572  0f110517815f0c           xmmword ptr [rip + 0xc5f8117], xmm0        ; -> 0x14e6d1690
+0x01420d9579  44891504805f0c           dword ptr [rip + 0xc5f8004], r10d        ; -> 0x14e6d1584
+0x01420d9580  0f110571815f0c           xmmword ptr [rip + 0xc5f8171], xmm0        ; -> 0x14e6d16f8
+0x01420d9587  c705a3805f0c01000000     dword ptr [rip + 0xc5f80a3], 1        ; -> 0x14e6d1634  imm=0x1
+0x01420d9591  0f1105907f5f0c           xmmword ptr [rip + 0xc5f7f90], xmm0        ; -> 0x14e6d1528
+0x01420d9598  488905917f5f0c           qword ptr [rip + 0xc5f7f91], rax        ; -> 0x14e6d1530
+0x01420d959f  33c0                     eax, eax
+0x01420d95a1  48890528805f0c           qword ptr [rip + 0xc5f8028], rax        ; -> 0x14e6d15d0
+0x01420d95a8  488d051916fe00           rax, [rip + 0xfe1619]        ; -> 0x1430babc8 'm_subclass'
+0x01420d95af  0f1105da7f5f0c           xmmword ptr [rip + 0xc5f7fda], xmm0        ; -> 0x14e6d1590
+0x01420d95b6  488905db7f5f0c           qword ptr [rip + 0xc5f7fdb], rax        ; -> 0x14e6d1598
+0x01420d95bd  33c0                     eax, eax
+0x01420d95bf  48890572805f0c           qword ptr [rip + 0xc5f8072], rax        ; -> 0x14e6d1638
+0x01420d95c6  488d053b16fe00           rax, [rip + 0xfe163b]        ; -> 0x1430bac08 'm_aiSprinting'
+0x01420d95cd  0f110524805f0c           xmmword ptr [rip + 0xc5f8024], xmm0        ; -> 0x14e6d15f8
+0x01420d95d4  48890525805f0c           qword ptr [rip + 0xc5f8025], rax        ; -> 0x14e6d1600
+0x01420d95db  33c0                     eax, eax
+0x01420d95dd  488905bc805f0c           qword ptr [rip + 0xc5f80bc], rax        ; -> 0x14e6d16a0
+0x01420d95e4  488d050516fe00           rax, [rip + 0xfe1605]        ; -> 0x1430babf0 'm_aiNetworkFlags'
+0x01420d95eb  0f11056e805f0c           xmmword ptr [rip + 0xc5f806e], xmm0        ; -> 0x14e6d1660
+0x01420d95f2  4889056f805f0c           qword ptr [rip + 0xc5f806f], rax        ; -> 0x14e6d1668
+0x01420d95f9  33c0                     eax, eax
+0x01420d95fb  48890506815f0c           qword ptr [rip + 0xc5f8106], rax        ; -> 0x14e6d1708
+0x01420d9602  488d058f15fe00           rax, [rip + 0xfe158f]        ; -> 0x1430bab98 'm_isHologram'
+0x01420d9609  0f1105387f5f0c           xmmword ptr [rip + 0xc5f7f38], xmm0        ; -> 0x14e6d1548
+0x01420d9610  4c8915397f5f0c           qword ptr [rip + 0xc5f7f39], r10        ; -> 0x14e6d1550
+0x01420d9617  0f1105927f5f0c           xmmword ptr [rip + 0xc5f7f92], xmm0        ; -> 0x14e6d15b0
+0x01420d961e  4c8915937f5f0c           qword ptr [rip + 0xc5f7f93], r10        ; -> 0x14e6d15b8
+0x01420d9625  0f1105ec7f5f0c           xmmword ptr [rip + 0xc5f7fec], xmm0        ; -> 0x14e6d1618
+0x01420d962c  c705fa7f5f0cffffffff     dword ptr [rip + 0xc5f7ffa], 0xffffffff        ; -> 0x14e6d1630  imm=0xffffffff
+0x01420d9636  0f110543805f0c           xmmword ptr [rip + 0xc5f8043], xmm0        ; -> 0x14e6d1680
+0x01420d963d  48c705947f5f0c2a1e0000   qword ptr [rip + 0xc5f7f94], 0x1e2a        ; -> 0x14e6d15dc  imm=0x1e2a
+0x01420d9648  0f110569805f0c           xmmword ptr [rip + 0xc5f8069], xmm0        ; -> 0x14e6d16b8
+0x01420d964f  48c7058a7f5f0c01000000   qword ptr [rip + 0xc5f7f8a], 1        ; -> 0x14e6d15e4  imm=0x1
+0x01420d965a  0f110567805f0c           xmmword ptr [rip + 0xc5f8067], xmm0        ; -> 0x14e6d16c8
+0x01420d9661  48890568805f0c           qword ptr [rip + 0xc5f8068], rax        ; -> 0x14e6d16d0
+0x01420d9668  0f1105c97e5f0c           xmmword ptr [rip + 0xc5f7ec9], xmm0        ; -> 0x14e6d1538
+0x01420d966f  448915627f5f0c           dword ptr [rip + 0xc5f7f62], r10d        ; -> 0x14e6d15d8
+0x01420d9676  0f1105237f5f0c           xmmword ptr [rip + 0xc5f7f23], xmm0        ; -> 0x14e6d15a0
+0x01420d967d  448915687f5f0c           dword ptr [rip + 0xc5f7f68], r10d        ; -> 0x14e6d15ec
+0x01420d9684  0f11057d7f5f0c           xmmword ptr [rip + 0xc5f7f7d], xmm0        ; -> 0x14e6d1608
+0x01420d968b  4889158e7f5f0c           qword ptr [rip + 0xc5f7f8e], rdx        ; -> 0x14e6d1620
+0x01420d9692  0f1105d77f5f0c           xmmword ptr [rip + 0xc5f7fd7], xmm0        ; -> 0x14e6d1670
+0x01420d9699  c705f97f5f0c01000000     dword ptr [rip + 0xc5f7ff9], 1        ; -> 0x14e6d169c  imm=0x1
+0x01420d96a3  c705eb7f5f0cffffffff     dword ptr [rip + 0xc5f7feb], 0xffffffff        ; -> 0x14e6d1698  imm=0xffffffff
+0x01420d96ad  48c7058c7f5f0c4c1e0000   qword ptr [rip + 0xc5f7f8c], 0x1e4c        ; -> 0x14e6d1644  imm=0x1e4c
+0x01420d96b8  48c705897f5f0c04000000   qword ptr [rip + 0xc5f7f89], 4        ; -> 0x14e6d164c  imm=0x4
+0x01420d96c3  448915767f5f0c           dword ptr [rip + 0xc5f7f76], r10d        ; -> 0x14e6d1640
+0x01420d96ca  448915837f5f0c           dword ptr [rip + 0xc5f7f83], r10d        ; -> 0x14e6d1654
+0x01420d96d1  4c8915b07f5f0c           qword ptr [rip + 0xc5f7fb0], r10        ; -> 0x14e6d1688
+0x01420d96d8  0f1105f97f5f0c           xmmword ptr [rip + 0xc5f7ff9], xmm0        ; -> 0x14e6d16d8
+0x01420d96df  c7051b805f0c01000000     dword ptr [rip + 0xc5f801b], 1        ; -> 0x14e6d1704  imm=0x1
+0x01420d96e9  0f1105f87f5f0c           xmmword ptr [rip + 0xc5f7ff8], xmm0        ; -> 0x14e6d16e8
+0x01420d96f0  c70506805f0cffffffff     dword ptr [rip + 0xc5f8006], 0xffffffff        ; -> 0x14e6d1700  imm=0xffffffff
+0x01420d96fa  48c705a77f5f0c501e0000   qword ptr [rip + 0xc5f7fa7], 0x1e50        ; -> 0x14e6d16ac  imm=0x1e50
+0x01420d9705  48c705a47f5f0c01000000   qword ptr [rip + 0xc5f7fa4], 1        ; -> 0x14e6d16b4  imm=0x1
+0x01420d9710  448915917f5f0c           dword ptr [rip + 0xc5f7f91], r10d        ; -> 0x14e6d16a8
+0x01420d9717  33c0                     eax, eax
+0x01420d9719  4489159c7f5f0c           dword ptr [rip + 0xc5f7f9c], r10d        ; -> 0x14e6d16bc
+0x01420d9720  48890549805f0c           qword ptr [rip + 0xc5f8049], rax        ; -> 0x14e6d1770
+0x01420d9727  488d0db2d95e0c           rcx, [rip + 0xc5ed9b2]        ; -> 0x14e6c70e0
+0x01420d972e  0f1105db7f5f0c           xmmword ptr [rip + 0xc5f7fdb], xmm0        ; -> 0x14e6d1710
+0x01420d9735  488d056ceef600           rax, [rip + 0xf6ee6c]        ; -> 0x1430485a8 'm_localOrigin'
+0x01420d973c  488915ad7f5f0c           qword ptr [rip + 0xc5f7fad], rdx        ; -> 0x14e6d16f0
+0x01420d9743  0f11052e805f0c           xmmword ptr [rip + 0xc5f802e], xmm0        ; -> 0x14e6d1778
+0x01420d974a  448915c77f5f0c           dword ptr [rip + 0xc5f7fc7], r10d        ; -> 0x14e6d1718
+0x01420d9751  0f110588805f0c           xmmword ptr [rip + 0xc5f8088], xmm0        ; -> 0x14e6d17e0
+0x01420d9758  c705ba7f5f0c0c000000     dword ptr [rip + 0xc5f7fba], 0xc        ; -> 0x14e6d171c  imm=0xc
+0x01420d9762  0f1105f77f5f0c           xmmword ptr [rip + 0xc5f7ff7], xmm0        ; -> 0x14e6d1760
+0x01420d9769  c705f97f5f0c01000000     dword ptr [rip + 0xc5f7ff9], 1        ; -> 0x14e6d176c  imm=0x1
+0x01420d9773  0f11054e805f0c           xmmword ptr [rip + 0xc5f804e], xmm0        ; -> 0x14e6d17c8
+0x01420d977a  c705e47f5f0cffffffff     dword ptr [rip + 0xc5f7fe4], 0xffffffff        ; -> 0x14e6d1768  imm=0xffffffff
+0x01420d9784  0f110565805f0c           xmmword ptr [rip + 0xc5f8065], xmm0        ; -> 0x14e6d17f0
+0x01420d978b  c7057f7f5f0c20000000     dword ptr [rip + 0xc5f7f7f], 0x20        ; -> 0x14e6d1714  imm=0x20
+0x01420d9795  0f110594805f0c           xmmword ptr [rip + 0xc5f8094], xmm0        ; -> 0x14e6d1830
+0x01420d979c  c7056a7f5f0c02000000     dword ptr [rip + 0xc5f7f6a], 2        ; -> 0x14e6d1710  imm=0x2
+0x01420d97a6  0f1105837f5f0c           xmmword ptr [rip + 0xc5f7f83], xmm0        ; -> 0x14e6d1730
+0x01420d97ad  488905847f5f0c           qword ptr [rip + 0xc5f7f84], rax        ; -> 0x14e6d1738
+0x01420d97b4  488d0595491300           rax, [rip + 0x134995]        ; -> 0x14220e150
+0x01420d97bb  0f11058e7f5f0c           xmmword ptr [rip + 0xc5f7f8e], xmm0        ; -> 0x14e6d1750
+0x01420d97c2  4889058f7f5f0c           qword ptr [rip + 0xc5f7f8f], rax        ; -> 0x14e6d1758
+0x01420d97c9  33c0                     eax, eax
+0x01420d97cb  48890506805f0c           qword ptr [rip + 0xc5f8006], rax        ; -> 0x14e6d17d8
+0x01420d97d2  488d05bfedf600           rax, [rip + 0xf6edbf]        ; -> 0x143048598 'm_localAngles'
+0x01420d97d9  0f1105b87f5f0c           xmmword ptr [rip + 0xc5f7fb8], xmm0        ; -> 0x14e6d1798
+0x01420d97e0  488905b97f5f0c           qword ptr [rip + 0xc5f7fb9], rax        ; -> 0x14e6d17a0
+0x01420d97e7  33c0                     eax, eax
+0x01420d97e9  48890550805f0c           qword ptr [rip + 0xc5f8050], rax        ; -> 0x14e6d1840
+0x01420d97f0  488d0559b1fa00           rax, [rip + 0xfab159]        ; -> 0x143084950 'm_hGroundEntity'
+0x01420d97f7  0f110502805f0c           xmmword ptr [rip + 0xc5f8002], xmm0        ; -> 0x14e6d1800
+0x01420d97fe  48890503805f0c           qword ptr [rip + 0xc5f8003], rax        ; -> 0x14e6d1808
+0x01420d9805  488d0514491300           rax, [rip + 0x134914]        ; -> 0x14220e120
+0x01420d980c  0f11050d7f5f0c           xmmword ptr [rip + 0xc5f7f0d], xmm0        ; -> 0x14e6d1720
+0x01420d9813  c705077f5f0c10000000     dword ptr [rip + 0xc5f7f07], 0x10        ; -> 0x14e6d1724  imm=0x10
+0x01420d981d  0f1105647f5f0c           xmmword ptr [rip + 0xc5f7f64], xmm0        ; -> 0x14e6d1788
+0x01420d9824  c705a67f5f0c01000000     dword ptr [rip + 0xc5f7fa6], 1        ; -> 0x14e6d17d4  imm=0x1
+0x01420d982e  0f1105837f5f0c           xmmword ptr [rip + 0xc5f7f83], xmm0        ; -> 0x14e6d17b8
+0x01420d9835  c705917f5f0cffffffff     dword ptr [rip + 0xc5f7f91], 0xffffffff        ; -> 0x14e6d17d0  imm=0xffffffff
+0x01420d983f  0f1105da7f5f0c           xmmword ptr [rip + 0xc5f7fda], xmm0        ; -> 0x14e6d1820
+0x01420d9846  488905db7f5f0c           qword ptr [rip + 0xc5f7fdb], rax        ; -> 0x14e6d1828
+0x01420d984d  0f1105ec7e5f0c           xmmword ptr [rip + 0xc5f7eec], xmm0        ; -> 0x14e6d1740
+0x01420d9854  448915257f5f0c           dword ptr [rip + 0xc5f7f25], r10d        ; -> 0x14e6d1780
+0x01420d985b  0f1105467f5f0c           xmmword ptr [rip + 0xc5f7f46], xmm0        ; -> 0x14e6d17a8
+0x01420d9862  c705187f5f0c0c000000     dword ptr [rip + 0xc5f7f18], 0xc        ; -> 0x14e6d1784  imm=0xc
+0x01420d986c  c705067f5f0c90030000     dword ptr [rip + 0xc5f7f06], 0x390        ; -> 0x14e6d177c  imm=0x390
+0x01420d9876  c705f87e5f0c02000000     dword ptr [rip + 0xc5f7ef8], 2        ; -> 0x14e6d1778  imm=0x2
+0x01420d9880  c705027f5f0c02000000     dword ptr [rip + 0xc5f7f02], 2        ; -> 0x14e6d178c  imm=0x2
+0x01420d988a  4c89152f7f5f0c           qword ptr [rip + 0xc5f7f2f], r10        ; -> 0x14e6d17c0
+0x01420d9891  0f1105787f5f0c           xmmword ptr [rip + 0xc5f7f78], xmm0        ; -> 0x14e6d1810
+0x01420d9898  c7059a7f5f0c01000000     dword ptr [rip + 0xc5f7f9a], 1        ; -> 0x14e6d183c  imm=0x1
+0x01420d98a2  c7058c7f5f0cffffffff     dword ptr [rip + 0xc5f7f8c], 0xffffffff        ; -> 0x14e6d1838  imm=0xffffffff
+0x01420d98ac  48c7052d7f5f0c2c030000   qword ptr [rip + 0xc5f7f2d], 0x32c        ; -> 0x14e6d17e4  imm=0x32c
+0x01420d98b7  48c7052a7f5f0c04000000   qword ptr [rip + 0xc5f7f2a], 4        ; -> 0x14e6d17ec  imm=0x4
+0x01420d98c2  448915177f5f0c           dword ptr [rip + 0xc5f7f17], r10d        ; -> 0x14e6d17e0
+0x01420d98c9  448915247f5f0c           dword ptr [rip + 0xc5f7f24], r10d        ; -> 0x14e6d17f4
+0x01420d98d0  e8570eb300               0x142c0a72c        ; imm=0x142c0a72c
+0x01420d98d5  e9e9f5ffff               0x1420d8ec3        ; imm=0x1420d8ec3
+0x01420d98da  cc                       

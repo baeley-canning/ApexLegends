@@ -1,0 +1,21 @@
+## process
+  exe=r5apex_dx12.exe pid=11996 shell_elevated=None
+  OpenProcess acc=0x1fffff handle=216 err=6
+  ReadVirtualMemory ssn=0x3f disk=4c 8b d1 b8 3f 00 00 00 f6 04 25 08 03 fe 7f 01 75 03 0f 05 c3 cd 2e c3
+  readable regions=10760  total=14171 MB
+
+## primitives
+  --- primitive matrix at 0x10000 ---
+    ReadProcessMemory   ok=0 err=87 got=0
+    ntdll NtRead        status=0xc000000d got=0
+    raw syscall ssn=0x3f  status=0xc000000d got=0 bytes=
+
+## ntdll hook census
+  disk ntdll: stamp=0x5fd39a05 sizeofimage=0x268000 NtRVM rva=0x162520
+  game ntdll: NOT FOUND (mapped copy unreadable?)
+
+## image base: 0x0
+
+## name scan: Coupe, SIRSH4GNASTY
+  scanned 0 MB, 0 hits
+  (nothing found -- wrong name, or the reads are lying)

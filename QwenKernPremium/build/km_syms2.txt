@@ -1,0 +1,33 @@
+﻿--- search PsGetProcessPeb / MmCopyVirtualMemory ---
+--- ntddk.h 100-130 ---
+100: #else
+101: extern NTSYSAPI CCHAR KeNumberProcessors;
+102: #endif
+103: #elif (NTDDI_VERSION >= NTDDI_WINXP)
+104: extern NTSYSAPI CCHAR KeNumberProcessors;
+105: #else
+106: extern PCCHAR KeNumberProcessors;
+107: #endif
+108: 
+109: #if !defined(_NTHALLIB_)
+110: 
+111: extern POBJECT_TYPE *PsProcessType;
+112: extern POBJECT_TYPE *PsThreadType;
+113: extern POBJECT_TYPE *PsJobType;
+114: #if (NTDDI_VERSION >= NTDDI_WIN10_RS1)
+115: extern POBJECT_TYPE *PsSiloContextPagedType;
+116: extern POBJECT_TYPE *PsSiloContextNonPagedType;
+117: #endif
+118: 
+119: #else
+120: 
+121: extern POBJECT_TYPE PsProcessType;
+122: extern POBJECT_TYPE PsThreadType;
+123: extern POBJECT_TYPE PsJobType;
+124: #if (NTDDI_VERSION >= NTDDI_WIN10_RS1)
+125: extern POBJECT_TYPE PsSiloContextPagedType;
+126: extern POBJECT_TYPE PsSiloContextNonPagedType;
+127: #endif
+128: 
+129: #endif
+130: 

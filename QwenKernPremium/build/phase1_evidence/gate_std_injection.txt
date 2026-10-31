@@ -1,0 +1,20 @@
+﻿=== BUILD GATE (PHASE 0) ===
+repo    : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium
+config  : Release|x64
+msbuild : C:\BuildTools\MSBuild\Current\Bin\MSBuild.exe
+
+  [ok] msbuild exit code = 0 (expected 0)
+  [ok] dumpbin : C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\dumpbin.exe
+  [ok] artifact: build\apex_launcher.exe (428544 bytes)
+  [ok] IAT OK  : build\apex_launcher.exe == { ADVAPI32.dll, KERNEL32.dll }
+  [ok] IAT set : build\apex_launcher.exe actual = { ADVAPI32.dll, KERNEL32.dll }
+  [ok] artifact: build\apexcheat.dll (318464 bytes)
+  [ok] IAT OK  : build\apexcheat.dll == { KERNEL32.dll, USER32.dll }
+  [ok] IAT set : build\apexcheat.dll actual = { KERNEL32.dll, USER32.dll }
+  [ok] symbol  : no 'QwenKernPremium' in code (OK)
+  [ok] symbol  : no 'g_pCheat\b' in code (OK)
+  [ok] artifact: build\apexdrv.sys (8616 bytes)
+  [ok] driver: signature = Valid (must be Valid for the loader)
+  [ok] driver: ntoskrnl.exe import present (foreign deps: 0)
+
+GATE 0: PASS   (report: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\gate\gate_report.txt)

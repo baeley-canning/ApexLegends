@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "apex_cheat", "apex_cheat.vcxproj", "{7A8F5B2C-4D3E-4F9A-9C2A-1B3D5E7F9A1C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A0C9BC0-8B4A-11D0-8D11-00A0C91BC942} = {8A0C9BC0-8B4A-11D0-8D11-00A0C91BC942}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(ConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A8F5B2C-4D3E-4F9A-9C2A-1B3D5E7F9A1C}.Debug|x64.ActiveCfg = Debug|x64
+		{7A8F5B2C-4D3E-4F9A-9C2A-1B3D5E7F9A1C}.Debug|x64.Build.0 = Debug|x64
+		{7A8F5B2C-4D3E-4F9A-9C2A-1B3D5E7F9A1C}.Release|x64.ActiveCfg = Release|x64
+		{7A8F5B2C-4D3E-4F9A-9C2A-1B3D5E7F9A1C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F8E7D2A-3C5B-4E9D-8F2A-1B3D5E7F9A1C}
+	EndGlobalSection
+EndGlobal

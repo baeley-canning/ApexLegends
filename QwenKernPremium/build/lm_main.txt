@@ -1,0 +1,79 @@
+﻿1001:     return ArgResult::Continue;
+1002: }
+1003: 
+1004: } // namespace
+1005: 
+1006: int main(int argc, char** argv) {
+1007:     LauncherOptions options;
+1008:     options.dllPath    = ResolvePayloadPath(kDefaultDllName);
+1009:     options.driverPath = ResolvePayloadPath(kDefaultDriver);
+1010: 
+1011:     bool runOnce = false;
+1012:     const ArgResult parsed = ParseArgs(argc, argv, options, runOnce);
+1013:     if (parsed == ArgResult::ExitSuccess) return 0;
+1014:     if (parsed == ArgResult::ExitError)   return 1;
+1015: 
+1016:     PrintBanner();
+1017: 
+1018:     // --forget-sticky applies to every path (probe included) and runs before
+1019:     // anything can read the file back.
+1020:     if (options.forgetSticky) ForgetStickyMethod();
+1021: 
+1022:     if (!IsElevated()) {
+1023:         printf("[!] Launcher is not elevated: opening r5apex.exe and loading a\n"
+1024:                "    kernel driver will likely fail.\n");
+1025:     }
+1026:     if (!FileExists(options.dllPath)) {
+1027:         printf("[!] Payload not found: %s\n", options.dllPath.c_str());
+1028:     }
+1029: 
+1030:     if (runOnce) {
+1031:         // --probe never injects: it resolves the same target, but a missing
+1032:         // game is not an error (the harness falls back to our own PID).
+1033:         if (options.runProbe) {
+1034:             const DWORD probePid = (options.explicitPid != 0)
+1035:                                        ? options.explicitPid
+1036:                                        : FindGameProcessId();
+1037:             return RunProbeCommand(probePid);
+1038:         }
+1039: 
+1040:         DWORD pid = options.explicitPid;
+1041:         if (pid == 0) {
+1042:             pid = options.waitForGame ? WaitForGameProcess(options.waitTimeoutMs)
+1043:                                       : FindGameProcessId();
+1044:         }
+1045:         if (pid == 0) {
+1046:             printf("[-] game image not found (looked for:");
+1047:             for (const char* const name : kKnownProcessNames) printf(" %s", name);
+1048:             printf(")\n");
+1049:             return 2;
+1050:         }
+1051:         if (*g_matchedProcessName != '\0') {
+1052:             printf("[*] target image: %s\n", g_matchedProcessName);
+1053:         }
+1054: 
+1055:         if (options.methodForced) {
+1056:             const InjectionResult result = RunInjection(options, pid);
+1057:             return result.success ? 0 : 3;
+1058:         }
+1059: 
+1060:         LadderOutcome outcome;
+1061:         RunLadder(options, pid, outcome);
+1062:         if (outcome.verified) {
+1063:             printf("[+] Verified rung: %s (%s)\n", InjectionMethodName(outcome.method),
+1064:                    InjectionMethodCode(outcome.method));
+1065:             return 0;
+1066:         }
+1067:         printf("[-] No rung verified the payload\n");
+1068:         return 3;
+1069:     }
+1070: 
+1071:     const bool gameFound = (options.explicitPid != 0) ||
+1072:                            (FindGameProcessId() != 0);
+1073:     printf("[*] %s %s\n",
+1074:            (*g_matchedProcessName != '\0') ? g_matchedProcessName : kGameProcessName,
+1075:            gameFound ? "detected" : "not running yet");
+1076: 
+1077:     InteractiveMenu(options, gameFound);
+1078:     return 0;
+1079: }

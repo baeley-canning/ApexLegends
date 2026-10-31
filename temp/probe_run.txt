@@ -1,0 +1,57 @@
+# r5apex_dx12.exe static offset probe
+file      C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+imagebase 0x140000000  size 0xe866000  sections 9
+  .text     va=0x00001000 vsize=0x02c951ac raw=0x00000600 rawsize=0x02c95200
+  .rdata    va=0x02c97000 vsize=0x00680b60 raw=0x02c95800 rawsize=0x00680c00
+  .data     va=0x03318000 vsize=0x0b40ab8c raw=0x03316400 rawsize=0x00d00000
+  .pdata    va=0x0e723000 vsize=0x000e32bc raw=0x04016400 rawsize=0x000e3400
+  _RDATA    va=0x0e807000 vsize=0x00000a24 raw=0x040f9800 rawsize=0x00000c00
+  .fptable  va=0x0e808000 vsize=0x00000100 raw=0x040fa400 rawsize=0x00000200
+  .rsrc     va=0x0e809000 vsize=0x000035f8 raw=0x040fa600 rawsize=0x00003600
+  .reloc    va=0x0e80d000 vsize=0x000571b0 raw=0x040fdc00 rawsize=0x00057200
+  .ooa      va=0x0e865000 vsize=0x00000712 raw=0x04154e00 rawsize=0x00000800
+
+## signatures (.text, 46748160 bytes)
+  local_entity_handle    code=0x021126ab rva=0x03d218b0
+  local_player           code=0x020b2651 rva=0x03e779d0
+  global_vars            code=0x01c1f787 rva=0x03623ad0
+  view_render            code=0x01b01037 rva=0x04068440
+  view_render            code=0x01d8aa31 rva=0x05a64cb8
+  view_render            code=0x01d8aa56 rva=0x03353680
+  view_render            code=0x01d8ab5b rva=0x05a64c48
+  view_render            code=0x01d8ab68 rva=0x05a64c78
+  view_render            code=0x01d8ab75 rva=0x05a64c40
+                         (+2 more)
+  view_render_alt        MISS
+  name_list              code=0x01eac319 rva=0x09e2fc20
+  name_list              code=0x0206a805 rva=0x09e2fc20
+  name_list              code=0x0206a84e rva=0x09e2fc20
+  name_list              code=0x021eb22a rva=0x09e2fc20
+  studio_hdr             code=0x01fe2e77 imm=0xfd0 rva=0x0307f670
+  camera                 code=0x0207d24a imm=0x1f74
+  last_visible           MISS
+  highlight_settings     code=0x023c059b rva=0x07b23040
+  network_var_table      MISS
+  entitylist_a           MISS
+  entitylist_b           MISS
+  entitylist_c           code=0x01a0e430 rva=0x0335d680
+  entitylist_c           code=0x01c3c0aa rva=0x03013c80
+  entitylist_c           code=0x01cbc036 imm=0x0
+  entitylist_c           code=0x01d0efe7 rva=0x02fca848
+  entitylist_c           code=0x01e7e680 rva=0x09b9a720
+  entitylist_c           code=0x01e7e6bc rva=0x09b9a720
+                         (+15 more)
+  entitylist_d           code=0x01b0a7dc imm=0x0
+  entitylist_d           code=0x01b8c9e0 rva=0x04a13f15
+  entitylist_d           code=0x01bd26a5 imm=0x0
+  entitylist_d           code=0x01c0410b imm=0x0
+  entitylist_d           code=0x01d34399 imm=0x0
+  entitylist_d           code=0x01e0c030 imm=0x0
+                         (+20 more)
+
+## RTTI globals (.rdata/.data/.pdata aligned qwords)
+  classes with vtables: 0   vtable slots seen: 0
+
+  -- all classes whose name matches PLAYER/ENTITY/NPC --
+
+[written] C:\Users\New User\OneDrive\Desktop\cheating\temp\offsets_static.txt

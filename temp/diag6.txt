@@ -1,0 +1,83 @@
+# diag6  admin=True pid=34320  winver=sys.getwindowsversion(major=10, minor=0, build=26200, platform=2, service_pack='')
+SeDebugPrivilege enabled=True err=0
+NtReadVirtualMemoryEx exported: yes
+
+## target pid=11996
+   requested 0x1fffff -> GrantedAccess=0x2a74 (VM_READ|VM_WRITE|DUP_HANDLE)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0x32c000 prio=0xffff pid=8 ppid=11996 ga=0x2a74
+   VM_READ present: True   QUERY_INFORMATION present: False
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff720080000 after 11387 VQ calls
+   NtReadVirtualMemory(0x7ff720080000)=0xc000000d got=0 
+   NtReadVirtualMemoryEx   (0x7ff720080000)=0xc0000022 got=0 
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\EA Games\Apex\r5apex_dx12.exe
+
+## control pid=10684
+   requested 0x1fffff -> GrantedAccess=0x28f8 (VM_READ|VM_OPERATION|DUP_HANDLE)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0x1163000 prio=0xffff pid=8 ppid=10684 ga=0x28f8
+   VM_READ present: True   QUERY_INFORMATION present: False
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x16d0000 after 136 VQ calls
+   NtReadVirtualMemory(0x16d0000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x16d0000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Windows\System32\Windows.UI.Xaml.Resources.Common.dll
+
+## eac helper pid=17656
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0xbfec863000 prio=0xffff pid=10 ppid=17656 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 817 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+
+## eac helper pid=16260
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0xd0cfc03000 prio=0xffff pid=8 ppid=16260 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 294 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+
+## eac helper pid=20676
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0xe2fd548000 prio=0xffff pid=8 ppid=20676 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 561 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+
+## eac helper pid=20212
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0x5cf8f21000 prio=0xffff pid=4 ppid=20212 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 3112 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+
+## eac helper pid=17576
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0x49b9eb4000 prio=0xffff pid=8 ppid=17576 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 1399 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+
+## eac helper pid=25468
+   requested 0x1fffff -> GrantedAccess=0x4f54 (VM_READ|VM_WRITE|QUERY_INFORMATION|DUP_HANDLE|SET_INFORMATION)  [len=64]
+   block: exit=0x40 peb=0x103 aff=0x832fe23000 prio=0xffff pid=4 ppid=25468 ga=0x4f54
+   VM_READ present: True   QUERY_INFORMATION present: True
+   PS_PROTECTION type=0(none) audit=0 signer=0(none) [len=1]
+   first MEM_IMAGE base=0x7ff673580000 after 337 VQ calls
+   NtReadVirtualMemory(0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtReadVirtualMemoryEx   (0x7ff673580000)=0x00000000 got=8 4d 5a 90 00 03 00 00 00
+   NtQueryVirtualMemory(2) status=0x00000000 name=\Device\HarddiskVolume3\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe

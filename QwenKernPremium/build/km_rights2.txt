@@ -1,0 +1,5 @@
+﻿--- PROCESS_TERMINATE / THREAD_TERMINATE / PROCESS_ALL_ACCESS ---
+wdm.h:8952: #define PROCESS_ALL_ACCESS        (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | \
+wdm.h:8955: #define PROCESS_ALL_ACCESS        (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | \
+wdm.h:8966: #define THREAD_TERMINATE                 (0x0001)
+--- write/copy api in ntifs.h ---

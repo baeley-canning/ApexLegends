@@ -1,0 +1,21 @@
+=== read_probe pid=16008 elevation=(-1, 12288)
+handle=0x254
+--- code 0x2400: {u64 phys; u32 size; u32 pad; void *dst}
+  phys=0x400 size=0x100 ok=True  err=0   bytes_ret=0x4 dst_touched=False dst_nonzero=256 ob_nonzero=1
+    out   00000000  00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+    out   00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  phys=0xf0000 size=0x100 ok=True  err=0   bytes_ret=0x4 dst_touched=False dst_nonzero=256 ob_nonzero=1
+    out   00000000  00 00 0f 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+    out   00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+--- code 0x2014: {u64 phys; u32 size; u32 pad; void *dst}
+  phys=0x400 size=0x100 ok=True  err=0   bytes_ret=0x0 dst_touched=True  dst_nonzero=0 ob_nonzero=0
+    dst   00000400  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+    dst   00000410  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+    BDA 0x413 = 0x0 KB
+  phys=0xf0000 size=0x100 ok=True  err=0   bytes_ret=0x0 dst_touched=True  dst_nonzero=256 ob_nonzero=0
+    dst   000f0000  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+    dst   000f0010  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+--- 0x280C translate: in u64 VA -> out u64 PA
+  va=0x1f6c3d70000 ok=False err=1 bytes_ret=0x0 -> pa=0x0
+--- 0x2800 alloc: in u32 size -> out 16 bytes
+  ok=False err=1 bytes_ret=0x0 out=0000000000000000 0000000000000000

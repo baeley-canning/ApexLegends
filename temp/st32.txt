@@ -1,0 +1,33 @@
+﻿fields=3226 (+179 sentinels)
+name missing      : 749
+empty records     : 310 (of 3226 fields)
+worst classes     : DT_LocalPlayerExclusive:29/220, DT_TESoundDispatch:24/32, DT_Player:17/173, DT_BaseViewModel:14/38, DT_FirstPersonProxy:13/15, DT_BaseTrigger:12/32
+fieldType histogram: 0:1772, 1:484, 2:236, 3:4, 4:58, 5:49, 6:6, 7:28, 8:3, 9:187, 10:139, 12:1, 1105244592:2, 1105245456:4, 1105245472:1, 1105245984:2, 1124281400:4, 1124281424:1, 1124452296:1, 1124452416:1, 1124452432:1, 1124635008:1, 1124635040:1, 1124637384:1, 1124842208:1, 1124843400:1, 1124843424:1, 1124843472:1, 1124843496:1, 1124843536:1, 1124843560:1, 1124853512:1, 1124857360:1, 1124857368:1, 1124857384:1, 1124857400:1, 1124857416:1, 1124857456:1, 1124857472:1, 1124857504:1, 1124863592:1, 1124863664:1, 1124864392:1, 1124864424:1, 1124864464:1, 1124864496:1, 1124864528:1, 1124864552:1, 1124873128:2, 1125378468:2, 1125378480:2, 1125378496:2, 1125378512:2, 1125378536:2, 1137560736:1, 1137767104:1, 1139502560:1, 4294967295:200
+embedded w/o desc/with size: 0
+non-embedded size 0: 788
+   DT_FirstPersonProxy          (null)                   type=0x0  off=0x0
+   DT_CrossbowBolt              0x1ffffffff ?            type=0x0  off=0x0
+   DT_ZiplinePhysicsNode        (null)                   type=0x0  off=0x0
+   DT_ZiplinePhysicsNode        (null)                   type=0x0  off=0x0
+   DT_ZiplinePhysicsAttachedEntity (null)                   type=0x0  off=0xc
+   DT_ZiplinePhysicsAttachedEntity (null)                   type=0x0  off=0xc
+   DT_ZiplinePhysicsAttachedEntity (null)                   type=0x0  off=0x0
+   DT_SkyCamera                 (null)                   type=0x0  off=0x0
+classes with a backward offset: 116
+   DT_FirstPersonProxy          (null)                   off=0x0 after 0x1600
+   DT_ZiplinePhysicsNode        (null)                   off=0x0 after 0x14
+   DT_ZiplinePhysicsAttachedEntity should_never_see_this    off=0x0 after 0xc
+   DT_SkyCamera                 m_nModelIndex            off=0x64 after 0x390
+   DT_PushingEntState           should_never_see_this    off=0x0 after 0x10
+   DT_NearbyPushers             (null)                   off=0x4 after 0xc
+   DT_PlayerShared              should_never_see_this    off=0x0 after 0x50
+   DT_PlayerStickerInventory    (null)                   off=0x4 after 0xc
+classes with duplicate field names: 68
+   DT_FirstPersonProxy          (null)
+   DT_ZiplinePhysicsNode        (null)
+   DT_ZiplinePhysicsAttachedEntity (null)
+   DT_SkyCamera                 (null)
+   DT_PushingEntState           (null), 0x400000078 ?
+   DT_NearbyPushers             (null), should_never_see_this
+   DT_PlayerShared              (null)
+   DT_PlayerStickerInventory    (null), 0x3000000000 ?

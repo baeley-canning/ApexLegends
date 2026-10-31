@@ -1,0 +1,56 @@
+=== child identity: elevated=False integrity_rid=0x3000 pid=18752
+=== open matrix
+  \\.\GIOV3    (gdrv3 (YCC)) access=R|W  share=all  -> OK handle=0xd0
+  \\.\MsIo     (MsIo64   ) access=R|W  share=all  -> OK handle=0xec
+  \\.\MSIO     (MsIo64 upper) access=R|W  share=all  -> OK handle=0xdc
+  \\.\gio      (gio?     ) access=R|W  share=all  -> err=2 (The operation completed successfully.)
+  \\.\gio      (gio?     ) access=R|W  share=none -> err=2 (The operation completed successfully.)
+  \\.\gio      (gio?     ) access=0    share=all  -> err=2 (The operation completed successfully.)
+  \\.\gio      (gio?     ) access=0    share=none -> err=2 (The operation completed successfully.)
+=== phys reads via \\.\GIOV3 (handle 0xd0)
+  IVT    phys=0x000000000 size=0x200 ok=True  err=0   nonzero=  0/512
+  00000000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  00000010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  BDA    phys=0x000000400 size=0x100 ok=True  err=0   nonzero=  0/256
+  EBDA   phys=0x00009f000 size=0x100 ok=True  err=0   nonzero=  0/256
+  VGA    phys=0x0000a0000 size=0x100 ok=True  err=0   nonzero=  0/256
+  ROM    phys=0x0000f0000 size=0x100 ok=True  err=0   nonzero=  0/256
+  000f0000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  000f0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  000f0020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+  LAPIC  phys=0x0fee00000 size=0x040 ok=True  err=0   nonzero=  0/ 64
+  low1M  phys=0x000100000 size=0x100 ok=True  err=0   nonzero=  0/256
+  accepted 7/7
+  BDA 0x413 base-mem = 0x0 KB (expect 0x100..0x7800)
+  IVT first 8 segments = 0000 0000 0000 0000 0000 0000 0000 0000
+  ACPI RSDP scan 0xE0000-0xFFFFF: not found
+  repeat read 0x0: ok=True/True identical=True
+  short in_len=8 -> ok=False err=122 (The data area passed to a system call is too small.)
+  VERDICT \\.\GIOV3: 7/7 reads accepted -- PHYS READ LIVE
+=== phys reads via \\.\MsIo (handle 0xec)
+  IVT    phys=0x000000000 size=0x200 ok=False err=87  nonzero=  0/512
+  BDA    phys=0x000000400 size=0x100 ok=False err=87  nonzero=  0/256
+  EBDA   phys=0x00009f000 size=0x100 ok=False err=87  nonzero=  0/256
+  VGA    phys=0x0000a0000 size=0x100 ok=False err=87  nonzero=  0/256
+  ROM    phys=0x0000f0000 size=0x100 ok=False err=87  nonzero=  0/256
+  LAPIC  phys=0x0fee00000 size=0x040 ok=False err=87  nonzero=  0/ 64
+  low1M  phys=0x000100000 size=0x100 ok=False err=87  nonzero=  0/256
+  accepted 0/7
+  ACPI RSDP scan 0xE0000-0xFFFFF: not found
+  repeat read 0x0: ok=False/False identical=False
+  short in_len=8 -> ok=False err=87 (The parameter is incorrect.)
+  VERDICT \\.\MsIo: 0/7 reads accepted
+=== phys reads via \\.\MSIO (handle 0xdc)
+  IVT    phys=0x000000000 size=0x200 ok=False err=87  nonzero=  0/512
+  BDA    phys=0x000000400 size=0x100 ok=False err=87  nonzero=  0/256
+  EBDA   phys=0x00009f000 size=0x100 ok=False err=87  nonzero=  0/256
+  VGA    phys=0x0000a0000 size=0x100 ok=False err=87  nonzero=  0/256
+  ROM    phys=0x0000f0000 size=0x100 ok=False err=87  nonzero=  0/256
+  LAPIC  phys=0x0fee00000 size=0x040 ok=False err=87  nonzero=  0/ 64
+  low1M  phys=0x000100000 size=0x100 ok=False err=87  nonzero=  0/256
+  accepted 0/7
+  ACPI RSDP scan 0xE0000-0xFFFFF: not found
+  repeat read 0x0: ok=False/False identical=False
+  short in_len=8 -> ok=False err=87 (The parameter is incorrect.)
+  VERDICT \\.\MSIO: 0/7 reads accepted

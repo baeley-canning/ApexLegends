@@ -1,0 +1,42 @@
+== MsIo64.sys  va 0x1090 (file 0x490) .. 0x1160
+  0x001090  488bc4               mov      rax, rsp
+  0x001093  4881ecf8000000       sub      rsp, 0xf8
+  0x00109a  488958f8             mov      qword ptr [rax - 8], rbx
+  0x00109e  488970e8             mov      qword ptr [rax - 0x18], rsi
+  0x0010a2  4c8960d8             mov      qword ptr [rax - 0x28], r12
+  0x0010a6  4c8968d0             mov      qword ptr [rax - 0x30], r13
+  0x0010aa  8b05a0200000         mov      eax, dword ptr [rip + 0x20a0]
+  0x0010b0  4533ed               xor      r13d, r13d
+  0x0010b3  85c0                 test     eax, eax
+  0x0010b5  498bf1               mov      rsi, r9
+  0x0010b8  4d8be0               mov      r12, r8
+  0x0010bb  488bd9               mov      rbx, rcx
+  0x0010be  4c896c2458           mov      qword ptr [rsp + 0x58], r13
+  0x0010c3  740d                 je       0x10d2
+  0x0010c5  3bc8                 cmp      ecx, eax
+  0x0010c7  7209                 jb       0x10d2
+  0x0010c9  0500000010           add      eax, 0x10000000
+  0x0010ce  3bc8                 cmp      ecx, eax
+  0x0010d0  760a                 jbe      0x10dc
+  0x0010d2  b8220000c0           mov      eax, 0xc0000022
+  0x0010d7  e974020000           jmp      0x1350
+  0x0010dc  4889ac24e8000000     mov      qword ptr [rsp + 0xe8], rbp
+  0x0010e4  4889bc24d8000000     mov      qword ptr [rsp + 0xd8], rdi
+  0x0010ec  4c89b424c0000000     mov      qword ptr [rsp + 0xc0], r14
+  0x0010f4  41be04000000         mov      r14d, 4
+  0x0010fa  488d8c24a8000000     lea      rcx, [rsp + 0xa8]
+  0x001102  493bd6               cmp      rdx, r14
+  0x001105  490f43d6             cmovae   rdx, r14
+  0x001109  4889942408010000     mov      qword ptr [rsp + 0x108], rdx
+  0x001111  488d15580a0000       lea      rdx, [rip + 0xa58]
+  0x001118  ff15f20e0000         call     qword ptr [rip + 0xef2]
+  0x00111e  488bac2420010000     mov      rbp, qword ptr [rsp + 0x120]
+  0x001126  488d8424a8000000     lea      rax, [rsp + 0xa8]
+  0x00112e  4c892e               mov      qword ptr [rsi], r13
+  0x001131  4c8d442478           lea      r8, [rsp + 0x78]
+  0x001136  ba1f000f00           mov      edx, 0xf001f
+  0x00113b  488bce               mov      rcx, rsi
+  0x00113e  4c896d00             mov      qword ptr [rbp], r13
+  0x001142  c744247830000000     mov      dword ptr [rsp + 0x78], 0x30
+  0x00114a  4c89ac2480000000     mov      qword ptr [rsp + 0x80], r13
+  0x001152  c784249000000000020000 mov      dword ptr [rsp + 0x90], 0x200

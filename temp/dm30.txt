@@ -1,0 +1,209 @@
+============================================================================================
+## cache
+============================================================================================
+  keys      : ['base', 'dt_leas', 'funcs', 'ident', 'img', 'secs', 'slots']
+  img bytes : 401702  (va range 0xcb598ed3 .. 0x1b770fa07)
+  funcs     : 78206   dt_leas: 144   ident: 38550
+
+## cache @ 0x143d18f80  client-class descriptor (C_AI_BaseNPC)  (.data+0xa00f80)
+    +0x000  00000001430babb8  .rdata+0x423bb8  'C_AI_BaseNPC'
+    +0x008  00000001430babb8  .rdata+0x423bb8  'C_AI_BaseNPC'
+    +0x010  00000001430bab90  .rdata+0x423b90  'The AI'
+    +0x018  0000000143d25200  .data+0xa0d200
+    +0x020  <unreadable>
+    +0x028  <unreadable>
+
+## cache @ 0x143d25200  datamap_t? (dm28 +0x18 target)  (.data+0xa0d200)
+    +0x000  00000001430bc450  .rdata+0x425450  'C_BaseCombatCharacter'
+    +0x008  00000001430bc450  .rdata+0x425450  'C_BaseCombatCharacter'
+    +0x010  00000001430bc3e0  .rdata+0x4253e0  'Base Combat Characters (client-side)'
+    +0x018  0000000143cfdff0  .data+0x9e5ff0
+    +0x020  <unreadable>
+    +0x028  <unreadable>
+
+## cache @ 0x14e6d1160  array region  (.data+0xb3b9160)
+    +0x000  <unreadable>
+    +0x008  0000000400000000  ?
+    +0x010  <unreadable>
+    +0x018  0000000000000000  0
+    +0x020  <unreadable>
+    +0x028  <unreadable>
+    +0x030  <unreadable>
+    +0x038  <unreadable>
+    +0x040  <unreadable>
+    +0x048  <unreadable>
+    +0x050  0000000000000000  0
+    +0x058  00000001ffffffff  ?
+    +0x060  <unreadable>
+    +0x068  <unreadable>
+
+## cache @ 0x14e699140  array region  (.data+0xb381140)
+    +0x000  <unreadable>
+    +0x008  0000000400000000  ?
+    +0x010  0000000000000000  0
+    +0x018  0000000000000000  0
+    +0x020  0000000000000000  0
+    +0x028  0000000143032c38  .rdata+0x39bc38  'should_never_see_this'
+    +0x030  0000000000000000  0
+    +0x038  0000000000000000  0
+    +0x040  0000000000000000  0
+    +0x048  <unreadable>
+    +0x050  0000000000000000  0
+    +0x058  00000001ffffffff  ?
+    +0x060  <unreadable>
+    +0x068  <unreadable>
+
+## cache @ 0x14e6d10f8  array region  (.data+0xb3b90f8)
+    +0x000  <unreadable>
+    +0x008  <unreadable>
+    +0x010  <unreadable>
+    +0x018  <unreadable>
+    +0x020  <unreadable>
+    +0x028  <unreadable>
+    +0x030  <unreadable>
+    +0x038  <unreadable>
+    +0x040  <unreadable>
+    +0x048  <unreadable>
+    +0x050  <unreadable>
+    +0x058  <unreadable>
+    +0x060  <unreadable>
+    +0x068  <unreadable>
+
+## cache @ 0x14e6d17e0  array region  (.data+0xb3b97e0)
+    +0x000  <unreadable>
+    +0x008  0000000400000000  ?
+    +0x010  <unreadable>
+    +0x018  <unreadable>
+    +0x020  <unreadable>
+    +0x028  0000000143084950  .rdata+0x3ed950  'm_hGroundEntity'
+    +0x030  <unreadable>
+    +0x038  <unreadable>
+    +0x040  <unreadable>
+    +0x048  000000014220e120  .text+0x220d120
+    +0x050  <unreadable>
+    +0x058  00000001ffffffff  ?
+    +0x060  0000000143048598  .rdata+0x3b1598  'm_localAngles'
+    +0x068  <unreadable>
+
+============================================================================================
+## record walk 0x14e6d1160 (stride 0x68)
+============================================================================================
+  stop at slot 0 (0x14e6d1160)
+  -> 0 records
+
+============================================================================================
+## record walk 0x14e699140 (stride 0x68)
+============================================================================================
+  stop at slot 0 (0x14e699140)
+  -> 0 records
+
+============================================================================================
+## disasm 0x1420d98e0 .. 0x1420d9a90
+============================================================================================
+  0x1420d98e0  lea     rax, [rip + 0x1c3f699]                     -> 0x143d18f80 .data+0xa00f80
+  0x1420d98e7  ret                                             
+  0x1420d98e8  int3                                            
+  0x1420d98e9  int3                                            
+  0x1420d98ea  int3                                            
+  0x1420d98eb  int3                                            
+  0x1420d98ec  int3                                            
+  0x1420d98ed  int3                                            
+  0x1420d98ee  int3                                            
+  0x1420d98ef  int3                                            
+  0x1420d98f0  sub     rsp, 0x28                               
+  0x1420d98f4  cmp     byte ptr [rip + 0xc5f3242], 0              -> 0x14e6ccb3d .data+0xb3b4b3d
+  0x1420d98fb  jne     0x1420db10e                             
+  0x1420d9901  mov     r8, qword ptr [rip + 0x1c3f6a0]            -> 0x143d18fa8 .data+0xa00fa8
+  0x1420d9908  lea     rax, [rip + 0xfe1281]                      -> 0x1430bab90 .rdata+0x423b90 'The AI'
+  0x1420d990f  mov     qword ptr [rip + 0x1c3f67a], rax           -> 0x143d18f90 .data+0xa00f90
+  0x1420d9916  lea     rax, [rip + 0xfe129b]                      -> 0x1430babb8 .rdata+0x423bb8 'C_AI_BaseNPC'
+  0x1420d991d  mov     qword ptr [rsp + 0x30], rbx                -> [rsp+0x30]
+  0x1420d9922  movsxd  rbx, dword ptr [rip + 0x1c3f68f]           -> 0x143d18fb8 .data+0xa00fb8
+  0x1420d9929  mov     qword ptr [rip + 0x1c3f650], rax           -> 0x143d18f80 .data+0xa00f80
+  0x1420d9930  mov     qword ptr [rip + 0x1c3f651], rax           -> 0x143d18f88 .data+0xa00f88
+  0x1420d9937  lea     rax, [rip + 0x1c4b8c2]                     -> 0x143d25200 .data+0xa0d200
+  0x1420d993e  mov     qword ptr [rsp + 0x38], rbp                -> [rsp+0x38]
+  0x1420d9943  xor     ebp, ebp                                
+  0x1420d9945  mov     qword ptr [rip + 0x1c3f64c], rax           -> 0x143d18f98 .data+0xa00f98
+  0x1420d994c  lea     eax, [rbx + 1]                             -> [rbx+0x1]
+  0x1420d994f  movsxd  rcx, eax                                
+  0x1420d9952  mov     qword ptr [rsp + 0x40], rsi                -> [rsp+0x40]
+  0x1420d9957  mov     rax, rcx                                
+  0x1420d995a  sub     rax, r8                                 
+  0x1420d995d  mov     qword ptr [rsp + 0x48], rdi                -> [rsp+0x48]
+  0x1420d9962  mov     qword ptr [rsp + 0x20], r14                -> [rsp+0x20]
+  0x1420d9967  lea     r14d, [rbp + 1]                            -> [rbp+0x1]
+  0x1420d996b  mov     byte ptr [rip + 0xc5f31cb], 1              -> 0x14e6ccb3d .data+0xb3b4b3d
+  0x1420d9972  mov     qword ptr [rip + 0x1c3f677], rbp           -> 0x143d18ff0 .data+0xa00ff0
+  0x1420d9979  test    rax, rax                                
+  0x1420d997c  jle     0x1420d9a7b                             
+  0x1420d9982  mov     r9, qword ptr [rip + 0x1c3f627]            -> 0x143d18fb0 .data+0xa00fb0
+  0x1420d9989  test    r9, r9                                  
+  0x1420d998c  js      0x1420d9a7b                             
+  0x1420d9992  je      0x1420d99bc                             
+  0x1420d9994  lea     r8, [rcx - 1]                              -> [rcx+-0x1]
+  0x1420d9998  mov     rax, r8                                 
+  0x1420d999b  cqo                                             
+  0x1420d999d  idiv    r9                                      
+  0x1420d99a0  sub     r8, rdx                                 
+  0x1420d99a3  add     r8, r9                                  
+  0x1420d99a6  cmp     r8, rcx                                 
+  0x1420d99a9  jge     0x1420d99f4                             
+  0x1420d99ab  test    r8, r8                                  
+  0x1420d99ae  jne     0x1420d99e0                             
+  0x1420d99b0  cmp     rcx, -1                                 
+  0x1420d99b4  jg      0x1420d99e0                             
+  0x1420d99b6  lea     r8, [rbp - 1]                              -> [rbp+-0x1]
+  0x1420d99ba  jmp     0x1420d99f4                             
+  0x1420d99bc  test    r8, r8                                  
+  0x1420d99bf  cmove   r8, r14                                 
+  0x1420d99c3  cmp     r8, rcx                                 
+  0x1420d99c6  jge     0x1420d99f4                             
+  0x1420d99c8  add     r8, r8                                  
+  0x1420d99cb  cmp     r8, rcx                                 
+  0x1420d99ce  jl      0x1420d99c8                             
+  0x1420d99d0  jmp     0x1420d99f4                             
+  0x1420d99d2  nop     dword ptr [rax]                            -> [rax+0x0]
+  0x1420d99d6  nop     word ptr [rax + rax]                       -> [rax+0x0]
+  0x1420d99e0  lea     rax, [r8 + rcx]                            -> [r8+0x0]
+  0x1420d99e4  cqo                                             
+  0x1420d99e6  sub     rax, rdx                                
+  0x1420d99e9  sar     rax, 1                                  
+  0x1420d99ec  mov     r8, rax                                 
+  0x1420d99ef  cmp     rax, rcx                                
+  0x1420d99f2  jl      0x1420d99e0                             
+  0x1420d99f4  mov     rdx, qword ptr [rip + 0x1c3f5a5]           -> 0x143d18fa0 .data+0xa00fa0
+  0x1420d99fb  mov     rax, qword ptr [rip + 0x398b44e]           -> 0x145a64e50 .data+0x274ce50
+  0x1420d9a02  mov     qword ptr [rip + 0x1c3f59f], r8            -> 0x143d18fa8 .data+0xa00fa8
+  0x1420d9a09  test    rdx, rdx                                
+  0x1420d9a0c  je      0x1420d9a4a                             
+  0x1420d9a0e  test    rax, rax                                
+  0x1420d9a11  jne     0x1420d9a2d                             
+  0x1420d9a13  call    0x141dc6600                             
+  0x1420d9a18  mov     r8, qword ptr [rip + 0x1c3f589]            -> 0x143d18fa8 .data+0xa00fa8
+  0x1420d9a1f  mov     rdx, qword ptr [rip + 0x1c3f57a]           -> 0x143d18fa0 .data+0xa00fa0
+  0x1420d9a26  mov     qword ptr [rip + 0x398b423], rax           -> 0x145a64e50 .data+0x274ce50
+  0x1420d9a2d  mov     rcx, qword ptr [rax]                       -> [rax+0x0]
+  0x1420d9a30  imul    r8, r8, 0x58                            
+  0x1420d9a34  mov     r9, qword ptr [rcx + 0x18]                 -> [rcx+0x18]
+  0x1420d9a38  mov     rcx, rax                                
+  0x1420d9a3b  call    r9                                      
+  0x1420d9a3e  mov     rdx, rax                                
+  0x1420d9a41  mov     qword ptr [rip + 0x1c3f558], rax           -> 0x143d18fa0 .data+0xa00fa0
+  0x1420d9a48  jmp     0x1420d9a82                             
+  0x1420d9a4a  imul    rdi, r8, 0x58                           
+  0x1420d9a4e  test    rax, rax                                
+  0x1420d9a51  jne     0x1420d9a5f                             
+  0x1420d9a53  call    0x141dc6600                             
+  0x1420d9a58  mov     qword ptr [rip + 0x398b3f1], rax           -> 0x145a64e50 .data+0x274ce50
+  0x1420d9a5f  mov     rcx, qword ptr [rax]                       -> [rax+0x0]
+  0x1420d9a62  mov     rdx, rdi                                
+  0x1420d9a65  mov     r8, qword ptr [rcx + 8]                    -> [rcx+0x8]
+  0x1420d9a69  mov     rcx, rax                                
+  0x1420d9a6c  call    r8                                      
+  0x1420d9a6f  mov     rdx, rax                                
+  0x1420d9a72  mov     qword ptr [rip + 0x1c3f527], rax           -> 0x143d18fa0 .data+0xa00fa0
+  0x1420d9a79  jmp     0x1420d9a82                             
+  0x1420d9a7b  mov     rdx, qword ptr [rip + 0x1c3f51e]           -> 0x143d18fa0 .data+0xa00fa0
+  0x1420d9a82  inc     dword ptr [rip + 0x1c3f530]                -> 0x143d18fb8 .data+0xa00fb8
+  0x1420d9a88  imul    rcx, rbx, 0x58                          

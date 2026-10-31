@@ -1,0 +1,35 @@
+## target
+  exe=r5apex_dx12.exe pid=11996
+## control: notepad.exe
+  pid=15048 probe=0x7ff6f0d20000
+  rpm ok=1 err=0 bytes=b'MZ'
+  syscall status=0x0 got=2 bytes=b'MZ'
+
+## handle audit
+  SeDebugPrivilege: on
+  our OpenProcess(0x1F0FFF) -> 0x3bc
+  kernel handle entries: 169161
+  granted access=0x1f3001  VM_READ=False  type_index=8
+
+## processes holding VM_READ on pid 11996
+  candidate entries: 1497 across 87 owners
+  ssn NtReadVirtualMemoryEx=0x178
+  owner 17856  n=205  opened, no Apex handle
+  owner 1308   n=202  dup-open err=5/5
+  owner 1408   n=137  opened, no Apex handle
+  owner 1176   n=135  dup-open err=5/5
+  owner 1380   n=127  dup-open err=5/5
+  owner 2964   n=112  opened, no Apex handle
+  owner 10684  n=78   opened, no Apex handle
+  owner 1132   n=62   opened, no Apex handle
+  owner 6684   n=57   opened, no Apex handle
+  owner 20308  n=45   opened, no Apex handle
+  owner 12244  n=44   opened, no Apex handle
+  owner 2860   n=37   opened, no Apex handle
+  owner 29564  n=36   opened, no Apex handle
+  owner 12616  n=25   opened, no Apex handle
+  owner 7940   n=25   opened, no Apex handle
+  owner 1300   n=3    dup-open err=5/5
+
+stolen+readable: 0
+still unreachable owners (PPL?): [(1308, 202, 5), (1176, 135, 5), (1380, 127, 5), (1300, 3, 5)]

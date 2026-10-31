@@ -1,0 +1,25 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[*] Nothing to forget (C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.launcher.ini)
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] No sticky rung on this machine; ladder starts at the top
+[i] B3 (kernel) will SKIP: launcher is not elevated
+[*] 7 rung(s), target PID 15732, payload apexcheat.dll
+    verdict rule: A1-A4 count when apexcheat.dll is in the target's module list;
+                  A7/A8 count on a readable image + a completed entry call
+[1/7] A8 VAD-less Map (GHOST)
+       SKIP : not implemented in this build
+[2/7] A7 Manual Map (MANUAL)
+[*] Injection strategy: A7 Manual Map (MANUAL)
+[A7]       image   : 344064 bytes -> 0x2769DE40000 (preferred 0x180000000)
+[A7]       relocs  : applied for the real load address
+[A7]       imports : resolved against the target's module bases
+[A7]       entry   : thread 12524, exit 0x00000001 -> DllMain chain executed
+[+] Manual map complete at 0x2769de40000 (payload absent from the module list by design)
+       PASS : image at 0x2769DE40000, entry executed (absent from the module list by design)
+       sticky: A7 remembered (C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.launcher.ini)
+[+] Verified rung: A7 Manual Map (MANUAL) (A7)

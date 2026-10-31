@@ -1,0 +1,30 @@
+﻿; ---- match @ line 952 ----
+00001c6d  418bcf                 mov     ecx, r15d
+00001c70  e88b970000             call    0xb400
+00001c75  3d230000c0             cmp     eax, 0xc0000023                 ; imm 0xc0000023
+00001c7a  0f8545010000           jne     0x1dc5
+00001c80  8b55e0                 mov     edx, dword ptr [rbp - 0x20]
+; ---- match @ line 3412 ----
+000041f0  0fbaef0b               bts     edi, 0xb
+000041f4  498b5d00               mov     rbx, qword ptr [r13]
+000041f8  83feff                 cmp     esi, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+000041fb  8bce                   mov     ecx, esi
+000041fd  b8ffffff7f             mov     eax, 0x7fffffff
+; ---- match @ line 3870 ----
+00004833  0fbec9                 movsx   ecx, cl
+00004836  e885f7ffff             call    0x3fc0
+0000483b  83f8ff                 cmp     eax, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+0000483e  7504                   jne     0x4844
+00004840  0903                   or      dword ptr [rbx], eax
+; ---- match @ line 3898 ----
+0000487c  ffcb                   dec     ebx
+0000487e  e881ffffff             call    0x4804
+00004883  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+00004886  7404                   je      0x488c
+00004888  85db                   test    ebx, ebx
+; ---- match @ line 3935 ----
+000048e7  e818ffffff             call    0x4804
+000048ec  49ffc6                 inc     r14
+000048ef  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+000048f2  7516                   jne     0x490a
+000048f4  833d853700002a         cmp     dword ptr [rip + 0x3785], 0x2a

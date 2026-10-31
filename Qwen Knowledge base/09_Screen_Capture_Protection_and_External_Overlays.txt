@@ -1,0 +1,246 @@
+KNOWLEDGE BASE: SCREEN CAPTURE PROTECTION AND EXTERNAL OVERLAYS
+
+Purpose:
+Educational technical reference for understanding how one process
+observes another application's rendered window, how the operating
+system can block that observation, and how transparent overlay windows
+(heads-up displays) are constructed so that they do not disturb the
+application they are drawn over.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and the correct way to reason about failures. It is
+written from a defensive and engineering perspective.
+
+---
+
+1. THE OBSERVATION PROBLEM
+An external program that acts on what another application displays must
+first obtain that application's pixels.
+This is a perception input, not application state.
+The central question is therefore:
+"Can process A see the rendered output of process B?"
+The answer depends on the operating system, and on whether process B
+has asked the system to hide itself.
+
+---
+
+2. COMMON CAPTURE METHODS
+Several facilities obtain screen or window pixels:
+* GDI / BitBlt reading from the screen or window device context.
+* DXGI Desktop Duplication, which copies the composed desktop image.
+* Windows.Graphics.Capture (WGC), the modern compositor-based API.
+* PrintWindow, which asks a window to render its own content.
+These differ in speed, correctness, and supported surfaces, but they
+share one property: the operating system may filter out protected
+windows from what they return.
+
+---
+
+3. DISPLAY AFFINITY
+A window can declare how visible it is to capture by calling:
+SetWindowDisplayAffinity(hwnd, affinity)
+The defined values are:
+WDA_NONE = 0x00000000   (normal, captured like any window)
+WDA_MONITOR = 0x00000001   (window appears black in captures)
+WDA_EXCLUDEFROMCAPTURE = 0x00000011   (window removed from captures)
+WDA_EXCLUDEFROMCAPTURE was added in Windows 10 version 2004 and is the
+stronger of the two protective settings.
+The current value can be queried with GetWindowDisplayAffinity().
+A returned affinity of 0x11 (17) means the window has excluded itself.
+
+---
+
+4. WHY APPLICATIONS DO THIS
+Protective display affinity is used by DRM video players, by password
+and secure-input fields, and by anti-cheat systems.
+It is a protection, not an occlusion.
+Nothing is drawn over the application.
+The application is simply withheld from the capture path.
+From the capturing side the application is invisible; from the user's
+side it is fully visible and interactive.
+
+---
+
+5. CONSEQUENCE FOR EXTERNAL VISION
+If a protected window is captured, the capture returns whatever is
+behind it, not the window.
+A detector then sees unrelated desktop content.
+No game objects are found, no boxes can be drawn, and an overlay has
+nothing meaningful to annotate.
+This is not a defect in the observer.
+It is the operating system honoring the target's request.
+
+---
+
+6. IT IS NOT METHOD-SPECIFIC
+The exclusion is enforced at the composition and capture boundary, so
+it applies uniformly to GDI / BitBlt, DXGI Desktop Duplication, and
+Windows.Graphics.Capture.
+Third-party game capture and overlay tools are filtered in the same
+way for the same reason; that is why they render black or empty on
+protected titles.
+No ordinary user-mode capture API ignores it.
+
+---
+
+7. HARDWARE CAPTURE
+Capturing the physical display output, for example with a capture card
+or a second machine reading an HDMI signal, occurs outside the
+operating system's window model.
+Display affinity does not apply to a physical signal, so this remains
+the only external, non-tampering way to obtain the pixels of a
+protected title.
+It is still observation of a protected application; the rules of the
+target environment govern whether any particular use is permitted.
+
+---
+
+8. OVERLAY WINDOWS (HEADS-UP DISPLAYS)
+An overlay is a separate top-level window drawn above the target.
+To be useful it must normally be translucent, click-through, always on
+top, and must never steal input focus.
+These properties are assembled from window styles, extended styles,
+and layered-window attributes rather than from a single feature.
+
+---
+
+9. LAYERED WINDOWS AND TRANSPARENCY
+A window becomes layered with WS_EX_LAYERED, at which point its
+opacity is controlled by SetLayeredWindowAttributes, which offers:
+* LWA_ALPHA - one constant alpha for the whole window.
+* LWA_COLORKEY - one nominated colour treated as fully transparent.
+Per-pixel alpha is also possible via UpdateLayeredWindow.
+Colour-key transparency is the simplest way to make an annotations-only
+display: draw on a black canvas, nominate black as the key colour, and
+only the drawn marks remain visible.
+
+---
+
+10. CLICK-THROUGH AND NON-ACTIVATION
+Several extended styles shape how an overlay behaves:
+* WS_EX_TRANSPARENT - mouse input passes through to the window below.
+* WS_EX_NOACTIVATE - the window does not take focus when shown/clicked.
+* WS_EX_TOOLWINDOW - keeps the window out of the taskbar and Alt-Tab.
+* WS_EX_TOPMOST - keeps the window above ordinary windows.
+Together these produce a display that is visible but inert.
+
+---
+
+11. PRESERVING FOCUS PROGRAMMATICALLY
+A window operation such as SetWindowPos can activate the window it
+moves.
+Passing SWP_NOACTIVATE prevents that activation.
+If an overlay is repositioned or raised every frame without
+SWP_NOACTIVATE, it steals focus once per frame; the observed
+application consequently loses foreground and the user experiences a
+per-frame Alt-Tab.
+A well-behaved overlay raises itself with SWP_NOACTIVATE and never
+calls SetForegroundWindow on the target.
+
+---
+
+12. WINDOW RECTANGLE VERSUS CLIENT RECTANGLE
+GetWindowRect returns the outer window rectangle, including frame,
+title bar, and invisible resize borders.
+GetClientRect combined with ClientToScreen returns the area the
+application actually renders into.
+A visual overlay should match the client area, not the outer frame,
+otherwise it is offset and inset relative to the content.
+
+---
+
+13. DPI AWARENESS
+A DPI-unaware process has its coordinates virtualised by the operating
+system, so reported rectangles and coordinates can differ from the
+physical pixels that are captured.
+Declaring per-monitor DPI awareness, for example with
+DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2, makes window and screen
+coordinates agree with the captured pixels.
+A mismatch here is a common cause of an overlay that is the wrong size
+or scale, even when its logic is correct.
+
+---
+
+14. FOLLOWING A MOVING TARGET
+A window-source overlay must be repositioned and resized whenever the
+target window moves or changes size.
+Recomputing client-area geometry each frame supplies both the position
+and the size for the overlay.
+
+---
+
+15. SELF-CAPTURE RECURSION
+A capture that reads the whole screen also captures the observer's own
+overlay, which then appears inside itself, producing nested copies.
+Mitigations include moving the overlay outside the captured region,
+capturing only the target window rather than the desktop, or excluding
+the overlay window from capture using display affinity.
+
+---
+
+16. THE INFORMATION CHANNEL
+Every external system has an information channel through which it
+learns about the world.
+Common channels are:
+game memory
+network data
+rendered pixels
+external hardware
+user input
+The channel determines what can be observed and which defenses apply.
+Reasoning about capability begins with identifying the channel.
+
+---
+
+17. AIM ASSIST WITHOUT VISION
+Aiming assistance is not inherently a machine-learning problem.
+Reduced to mechanics, it obtains a target location, converts the
+current aim to a corrective angular or positional error, and applies a
+correction, usually through a smoothing control loop.
+If the target location is available as structured state, for example
+from memory or network data, then no perception model is required; only
+geometry and control.
+A visual perception model exists to recover a target location from
+imagery when structured state is unavailable or protected.
+Therefore a system that "looks at the screen" is the harder case, not
+the easier one; the classical approach did not look at the screen at
+all.
+
+---
+
+18. CHANNELS AND THEIR DEFENSES
+Vision as a channel is read-only, external, and modifies no process; it
+is countered by display affinity removing the pixels.
+Memory and network as channels require reading or tampering with the
+target process; they are countered by client integrity checks, kernel
+monitoring, and server-side validation.
+External hardware sits outside the window model; it is addressed by
+policy rather than by capture APIs.
+Each channel has a corresponding family of defenses.
+
+---
+
+19. EVALUATING CLAIMS
+Separate what a system can observe from what it claims.
+Ask which channel is used, which channels are blocked, and which
+statements are verified by output rather than merely asserted.
+A working overlay proves the overlay works, not that the observation
+succeeded.
+
+---
+
+20. SUMMARY
+The flow of an external visual system is:
+OBSERVE -> PERCEIVE -> ESTIMATE -> DECIDE -> ACT
+The first step, OBSERVE, is gated by the operating system and by the
+target's own choices.
+Everything downstream can only operate on what that gate allows
+through.
+
+CORE PRINCIPLE:
+An external observer can only act on information the operating system
+is willing to expose. Capture protection removes the visual channel
+without touching the observer. Overlay correctness, its size, opacity,
+and focus behavior, is a separate problem from whether any pixels
+exist at all. Diagnose "cannot see the target" and "drew the overlay
+wrong" as two different failures.

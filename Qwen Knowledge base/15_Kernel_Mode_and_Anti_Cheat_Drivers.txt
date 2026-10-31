@@ -1,0 +1,191 @@
+KNOWLEDGE BASE: KERNEL MODE AND ANTI-CHEAT DRIVERS
+
+Purpose:
+Educational reference for understanding why anti-cheat systems include a
+kernel-mode component, what such a component can observe and control,
+and how kernel and hypervisor defenses change the security model.
+
+This document is conceptual and defensive. It explains categories of
+mechanism and their consequences. It does not provide methods for
+evading or defeating any specific anti-cheat product.
+
+---
+
+1. RING LEVELS
+Processors expose privilege rings; ring 0 is the most privileged and
+ring 3 is the least.
+Ordinary applications run in ring 3 and cannot touch privileged
+instructions or another process's kernel memory.
+Kernel code runs in ring 0 and can observe and control nearly everything
+on the machine.
+The gap between ring 3 and ring 0 is the platform's strongest boundary.
+
+---
+
+2. WHY A KERNEL COMPONENT CHANGES THE PROBLEM
+A user-mode defender can only see what the operating system exposes to
+it.
+A kernel defender sees events before user-mode code does and can affect
+decisions the user-mode layer cannot.
+Adding a kernel component therefore expands both visibility and control.
+
+---
+
+3. WHAT A DRIVER IS
+A driver is kernel-mode code loaded into the operating system.
+It can register for notifications, intercept certain operations, and
+inspect or alter the behavior of other components.
+Because it runs at high privilege, a driver is a powerful and sensitive
+piece of software.
+
+---
+
+4. KERNEL CALLBACKS
+The kernel offers registration points that notify a driver when chosen
+events occur.
+Instead of polling, the driver is told when a process starts, when a
+handle is requested, or when a file is accessed.
+Callbacks are the primary way kernel defenses observe activity.
+
+---
+
+5. PROCESS AND THREAD NOTIFICATIONS
+A driver can subscribe to process-creation and thread-creation events.
+This lets it learn the moment a new process appears, before that process
+has done meaningful work.
+It can then decide to monitor, allow, or block it.
+
+---
+
+6. OBJECT CALLBACKS
+A driver can register to be consulted whenever a handle to a protected
+object type is requested.
+This covers processes, threads, and other object types.
+It runs before the handle is granted, which is what makes it powerful.
+
+---
+
+7. HANDLE PRE-PROCESSING
+In an object callback the driver can modify the requested access before
+the handle is created.
+It can delete read or write rights while leaving a valid handle, or deny
+the request entirely.
+This is how protection is enforced at the moment of access rather than
+after the fact.
+
+---
+
+8. FILE SYSTEM MINIFILTERS
+A minifilter attaches to the file system and observes file operations.
+It can scan or block reads and writes against chosen paths.
+It is one way a defender watches for suspicious files being loaded or
+modified.
+
+---
+
+9. WHY ANTI-CHEAT LOADS A DRIVER AT STARTUP
+A defense that is present before any cheating tool is far more effective
+than one that starts late.
+That is why anti-cheat typically loads its kernel component when the
+machine boots or when the game launches, ahead of ordinary software.
+
+---
+
+10. LOAD ORDER AND EARLY START
+Control of load order determines what a defense can guarantee about what
+came before it.
+Starting early lets it establish a baseline it trusts, and detect later
+changes relative to that baseline.
+
+---
+
+11. CONTINUOUS MONITORING VERSUS ONE-TIME CHECKS
+A signature check answers a question once.
+Continuous monitoring answers it repeatedly as the system changes.
+The latter is harder to evade because there is no single moment of
+inspection to satisfy.
+
+---
+
+12. HYPERVISOR-BASED PROTECTION
+Some systems move part of the defense below the operating system into a
+hypervisor.
+A hypervisor runs at a privilege above the kernel and controls the
+virtual machine in which the operating system runs.
+This places the defense outside the reach of even kernel code.
+
+---
+
+13. VIRTUALIZATION AND THE GUEST / VMM SPLIT
+The operating system becomes a guest running on virtualized hardware.
+The hypervisor, or virtual machine monitor, manages the guest from
+outside.
+Code in the guest cannot directly observe or alter the hypervisor.
+
+---
+
+14. WHAT A HYPERVISOR DEFENSE CAN SEE
+Running below the kernel, it can inspect memory, intercept privileged
+operations, and observe the guest's view of hardware.
+This makes it substantially harder to reach from inside the guest.
+
+---
+
+15. CODE INTEGRITY
+Features such as hypervisor-enforced code integrity protect the kernel
+from unauthorized modification.
+They raise the cost of modifying kernel code, which is a common goal of
+advanced cheating.
+
+---
+
+16. THE TRUST CHAIN
+Defenses are stacked: hardware, hypervisor, kernel, user mode, server.
+Each layer trusts the layer below and is trusted by the layer above.
+Weakening any lower layer compromises the ones above it.
+
+---
+
+17. DEFENSIVE DESIGN PRINCIPLES
+Prefer prevention at the lowest practical layer.
+Combine detection with prevention, because each covers the other's blind
+spots.
+Keep the client's trust assumptions explicit: the client can never be
+fully trusted, so critical decisions belong on the server.
+Measure false positives as carefully as detections.
+
+---
+
+18. PLAYER IMPACT AND FALSE POSITIVES
+A kernel defense sees legitimate software as well as malicious.
+Over-aggressive rules harm honest users and erode trust.
+Accuracy and transparency are therefore part of the design, not
+afterthoughts.
+
+---
+
+19. SCOPE OF THIS REFERENCE
+This document describes categories of defensive mechanism so that their
+purpose and consequences can be reasoned about.
+It deliberately omits operational detail sufficient to bypass any real
+system.
+Understanding why a defense exists is the goal; reproducing a specific
+bypass is not.
+
+---
+
+20. SUMMARY
+Anti-cheat increasingly spans rings: user mode, kernel, hypervisor, and
+server.
+Each layer increases visibility and control while also increasing the
+cost of failure.
+The design question is always which layer can enforce a guarantee most
+reliably, and how the layers together remain trustworthy.
+
+CORE PRINCIPLE:
+Security is layered by privilege. A kernel or hypervisor component exists
+because it can observe and constrain things user-mode code cannot. Those
+capabilities are defensive guarantees, not incidental features, and they
+are why deep tampering is difficult. Study these mechanisms to understand
+why systems are built the way they are and how robustness is measured,
+not to defeat a specific product.

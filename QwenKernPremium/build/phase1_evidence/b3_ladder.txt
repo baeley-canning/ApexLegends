@@ -1,0 +1,20 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[*] r5apex_dx12.exe detected
+
+--- configuration ---------------------------------------------
+  1) method            : Kernel Driver (KERNEL)
+  2) payload DLL       : apexcheat.dll
+  3) kernel driver     : apexdrv.sys
+  4) staged DLL copy   : off
+  5) wait for game     : off (120 s)
+  6) sticky strategy   : on
+     game PID          : 164
+----------------------------------------------------------------
+  [i] inject (ladder)   [1] cycle method   [2] set DLL path
+  [3] set driver path   [4] toggle staging   [5] toggle wait
+  [6] toggle sticky     [p] enter PID   [q] quit
+> 
+B3_EXIT=1

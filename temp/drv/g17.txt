@@ -1,0 +1,18 @@
+﻿   \Device\GIOV3
+   \DosDevices\GIOV3
+MsIo64.sys  (19672 bytes)
+   \Device\MsIo
+   \Device\PhysicalMemory
+   \DosDevices\MsIo
+   MsIO v1,3,23,1211
+   [MS_SYS][MsIoDispatch] IOCTL_MSIO_MAPPHYSTOLIN ProbeForRead Exception 
+   [MS_SYS][MsIoDispatch] IOCTL_MSIO_MAPPHYSTOLIN ProbeForWrite Exception 
+   [MS_SYS][MsIoDispatch] IOCTL_MSIO_UNMAPPHYSADDR ProbeForRead Exception 
+   [MS_SYS][MsIoDispatch] IOCTL_MSIO_UNMAPPHYSADDR ProbeForWrite Exception 
+   [MS_SYS][MsIoDispatch]ERROR: Unknown IRP_MJ_DEVICE_CONTROL
+   [MS_SYS][MsIoDispatch]IRP_MJ_CLOSE
+   [MS_SYS][MsIoDispatch]IRP_MJ_CREATE - %s
+   [MS_SYS][MsIoUnload]ERROR: IoDeleteSymbolicLink
+   [MS_SYS][MsIoUnload]Entering MsIoUnload
+   [MS_SYS][MsIoUnload]Leaving MsIoUnload
+   d:\cti_cy\documents\01.cti\01.project\01.ddr4_rgb\02.io\01.msio\drv\amd64\MsIo64.pdb

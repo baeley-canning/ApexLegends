@@ -1,0 +1,10 @@
+﻿000012df  4883c350               add     rbx, 0x50
+0000136a  4883c350               add     rbx, 0x50
+; gdrv3.sys  imagebase=0x140000000  entry=0x1250
+; imports: 26
+;   WDFLDR!WdfVersionBind, WDFLDR!WdfVersionBindClass, WDFLDR!WdfVersionUnbind, WDFLDR!WdfVersionUnbindClass
+;   ntoskrnl!ExAllocatePoolWithQuotaTag, ntoskrnl!ExAllocatePoolWithTag, ntoskrnl!ExFreePoolWithTag, ntoskrnl!IoAllocateMdl
+;   ntoskrnl!IoFreeMdl, ntoskrnl!IoWMIRegistrationControl, ntoskrnl!KeBugCheckEx, ntoskrnl!MmBuildMdlForNonPagedPool
+;   ntoskrnl!MmGetSystemRoutineAddress, ntoskrnl!MmMapIoSpace, ntoskrnl!MmMapLockedPagesSpecifyCache, ntoskrnl!MmUnmapIoSpace
+;   ntoskrnl!MmUnmapLockedPages, ntoskrnl!PsGetVersion, ntoskrnl!RtlCompareMemory, ntoskrnl!RtlCopyUnicodeString
+;   ntoskrnl!RtlInitUnicodeString, ntoskrnl!RtlUnicodeToMultiByteN, ntoskrnl!ZwClose, ntoskrnl!ZwCreateFile

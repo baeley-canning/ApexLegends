@@ -1,0 +1,41 @@
+﻿--- km include top ---
+acx
+crt
+HidSpiCx
+mbbcx
+ndis
+netcx
+sercx
+spb
+ucm
+UcmTcpci
+UcmUcsi
+ucx
+ude
+ufx
+urs
+wificx
+wlan
+1394.h
+61883.h
+a2dpsidebandaudio.h
+acpitabl.h
+amtvuids.h
+ata.h
+atm.h
+AudioAggregation.h
+AudioSensors.h
+aux_klib.h
+avc.h
+avcstrm.h
+backpack.h
+--- km special ---
+False C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\windows.h
+True C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km\crt
+True C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared
+--- km libs ---
+True ntoskrnl.lib
+True hal.lib
+True wdm.lib
+True BufferOverflowK.lib
+True libcntpr.lib

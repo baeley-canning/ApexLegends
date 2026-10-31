@@ -1,0 +1,172 @@
+KNOWLEDGE BASE: MOBILE AND CROSS-PLATFORM ANTI-CHEAT
+
+Purpose:
+Educational reference for anti-cheat on mobile and cross-platform
+titles, where the operating-system model, the distribution model, and
+the attacker's capabilities differ substantially from the desktop.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about them. It is written from a
+defensive and engineering perspective, and uses only publicly documented
+facts about commercial systems.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ANTI-CHEAT PRODUCTS AND
+SYSTEMS, SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES,
+VIRTUALIZATION, CLOUD GAMING, AND ANTI-CHEAT, CONSOLE AND
+CLOSED-PLATFORM INTEGRITY, and the numbered technical series.
+
+---
+
+1. WHY MOBILE IS DIFFERENT
+Desktop anti-cheat can rely on a kernel driver and a long-lived,
+user-controlled install.
+Mobile differs in ways that change every design decision:
+* applications are sandboxed and cannot read one another's memory.
+* the platform does not permit third-party kernel drivers for ordinary
+  store apps.
+* the store is the only sanctioned install path, so piracy usually means
+  a repackaged, modified build.
+* the "machine" may be a phone, a tablet, an emulator, or a cloud
+  instance.
+The threat model is therefore not "an external program on the same
+machine" but "a modified client, a rooted or emulated device, or a
+remote session".
+
+---
+
+2. THE MOBILE THREAT MODEL, NAMED
+The concrete threats a mobile title faces:
+* modified builds: an attacker edits or re-signs the application.
+* memory tampering: achieved through a rooted device or an instrumented
+  runtime, because ordinary apps are sandboxed.
+* emulator abuse: running the game in a controlled PC environment.
+* input automation: macros and botting on touch input.
+* multi-instance and cloud farms: many sessions under one operator.
+* account and store abuse: fraud, resale, and stolen accounts.
+Each implies a different defense, and no single control covers them all.
+
+---
+
+3. THE PLATFORM SANDBOX AND WHY IT HELPS
+Mobile operating systems run each app in a sandbox with its own memory
+and permissions.
+An app cannot read another app's memory or another process's files.
+This dramatically reduces the "external program on the same machine"
+class of attack that desktop fights.
+It does not, however, stop an attacker who controls the whole device
+through root or an emulator, because the sandbox trusts the operating
+system beneath it - the same trust-chain logic as in the kernel
+reference.
+
+---
+
+4. WHY THERE IS NO ORDINARY MOBILE KERNEL DRIVER
+The desktop model of shipping a privileged kernel component does not
+transfer, because store platforms do not grant arbitrary kernel access
+to ordinary apps.
+Consequences:
+* detection is largely user-mode and server-side.
+* integrity leans on platform attestation APIs that report device state.
+* some vendors achieve deeper access through non-store deployments,
+  partnerships, or platform features, which is why availability differs
+  by title and region.
+The absence of a driver does not mean a weak system; it means the defense
+is assembled from attestation, server validation, and behavioural
+analysis instead.
+
+---
+
+5. PLATFORM-ATTESTATION SERVICES
+Android and iOS both expose APIs that let an app ask the platform whether
+the device is "known good" in some limited sense.
+Publicly documented examples include Google's Play Integrity and Apple's
+DeviceCheck/App Attest families, and, historically, SafetyNet on Android.
+These services return verdicts about device integrity and app
+authenticity; they do not prove the game is untampered, and they are
+deliberately coarse so as not to become an oracle for attackers.
+They are inputs to a decision, not the decision.
+
+---
+
+6. ROOT, JAILBREAK, AND EMULATOR DETECTION
+Because rooted/jailbroken devices and emulators undermine the sandbox or
+substitute the hardware, detection focuses on the environment:
+* integrity signals from the platform.
+* the presence of characteristic properties, hooks, or instrumentation.
+* hardware and sensor behaviour implausible for a real phone.
+Every such check carries false positives (genuine, exotic, or developer
+hardware), so enforcement is usually tiered rather than automatic.
+
+---
+
+7. THE INPUT PROBLEM ON TOUCH
+Touch input removes the keyboard and mouse, which changes both the
+mechanic and the cheat:
+* aim assistance is a feature users expect, so distinguishing help from
+  automation is harder.
+* macros and scripted gestures are indistinguishable from fast fingers at
+  the input layer.
+* absent physical precision, behavioural signals (timing, path shape,
+  consistency) carry more of the detection load.
+Input integrity on mobile therefore leans heavily on behavioural analysis
+and server-side plausibility, not on input provenance.
+
+---
+
+8. CROSS-PLATFORM AND CROSS-PLAY
+When one title runs across PC, console, and mobile, the anti-cheat
+picture becomes the union of every platform's model:
+* PC brings kernel drivers and external programs.
+* mobile brings modified builds, emulators, and rooted devices.
+* cross-play joins players whose guarantees differ, which a title must
+  reconcile (for example with matching pools or trust tiers).
+The platform-specific ideas in the products reference meet here, and the
+design question is how much weaker the weakest platform is allowed to
+make the shared matchmaking pool.
+
+---
+
+9. WHERE MOBILE ENFORCEMENT LIVES
+Because client-side access is limited, mobile enforcement concentrates
+server-side:
+* server validation of outcomes and rates (the server-authoritative
+  model).
+* behavioural and statistical detection across matches.
+* account and device graphs to counter multi-instance farms.
+The net effect is that mobile anti-cheat looks less like a scanner and
+more like a fraud- and abuse-prevention system - the direction the whole
+field is moving.
+
+---
+
+10. REALITY: NO STACK IS COMPLETE
+No single mobile control is decisive:
+* the sandbox blocks cross-app attacks but trusts a compromised OS.
+* attestation reports device state but not game integrity.
+* behavioural analysis catches patterns but lags and can misfire.
+* server authority fixes outcomes but not input or information.
+The realistic architecture is all of them together, each covering a slice,
+with enforcement weighed by confidence - the same layered logic as
+everywhere else, adapted to a platform that will not grant the kernel.
+
+---
+
+11. SUMMARY
+Mobile and cross-platform anti-cheat works under a different threat model:
+modified builds, rooted or emulated devices, automated touch, and cloud or
+multi-instance farms, rather than an external program on the same machine.
+The platform's sandbox helps, but its refusal of ordinary kernel access
+means detection leans on attestation services, server-side validation, and
+behavioural analysis.
+Cross-play compounds the problem by joining players whose guarantees
+differ.
+
+CORE PRINCIPLE:
+On mobile you rarely get to watch the cheater's machine, so you move the
+fight to where you do control the ground: the server, the store, and the
+platform's own integrity verdicts. Trust is not proven on the device but
+assembled from attestation, server-side rules, and behaviour over time -
+and when platforms with different guarantees share a match, the weakest
+guarantee is the one you are actually defending.
+
+---

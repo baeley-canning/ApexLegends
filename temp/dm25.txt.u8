@@ -1,0 +1,29 @@
+﻿DT_ records: 36
+
+DT_BaseEntity: not found in slots
+
+DT_Player: not found in slots
+
+DT_LocalPlayerExclusive: not found in slots
+
+=== DT_HealthKit  base=0x143cdedd0
+  +00  0000000000000000  lo=0            hi=0           
+  +08  0000000000000000  lo=0            hi=0           
+  +10  0000000000000000  lo=0            hi=0           
+  +18  000015d000000000  lo=0            hi=5584        
+  +20  0000000000000000  lo=0            hi=0             -> NULL
+  +28  0000000143032c70  lo=1124281456   hi=1             -> ident:DT_HealthKit
+  +30  0000000000000000  lo=0            hi=0             -> NULL
+  +38  0000000000000000  lo=0            hi=0             -> NULL
+  +40  0000000000000000  lo=0            hi=0             -> NULL
+  +48  0000000000000000  lo=0            hi=0             -> NULL
+  +50  0000000000000000  lo=0            hi=0             -> NULL
+  +58  0000000000000000  lo=0            hi=0             -> NULL
+  +60  0000000000000000  lo=0            hi=0             -> NULL
+
+DT_AI_BaseNPC: not found in slots
+
+record bases: 4050
+records whose +0x60 points at another record base: 0
+records whose +0x20 points at another record base: 0
+records whose +0x50 points at another record base: 0

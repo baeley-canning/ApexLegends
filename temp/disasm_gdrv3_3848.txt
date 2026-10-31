@@ -1,0 +1,39 @@
+== gdrv3.sys  va 0x3848 (file 0x2c48) .. 0x38e8
+  0x003848  4c8bdc               mov      r11, rsp
+  0x00384b  49895b08             mov      qword ptr [r11 + 8], rbx
+  0x00384f  49896b10             mov      qword ptr [r11 + 0x10], rbp
+  0x003853  49897318             mov      qword ptr [r11 + 0x18], rsi
+  0x003857  57                   push     rdi
+  0x003858  4154                 push     r12
+  0x00385a  4156                 push     r14
+  0x00385c  4883ec40             sub      rsp, 0x40
+  0x003860  488b0531410000       mov      rax, qword ptr [rip + 0x4131]
+  0x003867  488bda               mov      rbx, rdx
+  0x00386a  498363c800           and      qword ptr [r11 - 0x38], 0
+  0x00386f  488bd1               mov      rdx, rcx
+  0x003872  4d8bf1               mov      r14, r9
+  0x003875  498bf0               mov      rsi, r8
+  0x003878  488be9               mov      rbp, rcx
+  0x00387b  4d8d4bd8             lea      r9, [r11 - 0x28]
+  0x00387f  488b0d32450000       mov      rcx, qword ptr [rip + 0x4532]
+  0x003886  41bc20000000         mov      r12d, 0x20
+  0x00388c  458bc4               mov      r8d, r12d
+  0x00388f  ff1553280000         call     qword ptr [rip + 0x2853]
+  0x003895  8bf8                 mov      edi, eax
+  0x003897  85c0                 test     eax, eax
+  0x003899  7947                 jns      0x38e2
+  0x00389b  488b0586370000       mov      rax, qword ptr [rip + 0x3786]
+  0x0038a2  488d0d7f370000       lea      rcx, [rip + 0x377f]
+  0x0038a9  483bc1               cmp      rax, rcx
+  0x0038ac  0f84d1010000         je       0x3a83
+  0x0038b2  8b502c               mov      edx, dword ptr [rax + 0x2c]
+  0x0038b5  f6c208               test     dl, 8
+  0x0038b8  0f84c5010000         je       0x3a83
+  0x0038be  80782902             cmp      byte ptr [rax + 0x29], 2
+  0x0038c2  0f82bb010000         jb       0x3a83
+  0x0038c8  488b4818             mov      rcx, qword ptr [rax + 0x18]
+  0x0038cc  418d5424fa           lea      edx, [r12 - 6]
+  0x0038d1  4c8d05b8280000       lea      r8, [rip + 0x28b8]
+  0x0038d8  e82bf2ffff           call     0x2b08
+  0x0038dd  e9a1010000           jmp      0x3a83
+  0x0038e2  0faee8               lfence   

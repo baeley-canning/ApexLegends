@@ -1,0 +1,17 @@
+﻿; MsIo64.sys  imagebase=0x10000  entry=0x5010
+000010be  4c896c2458             mov     qword ptr [rsp + 0x58], r13     ; <- IRP_MJ_READ slot
+0000114a  4c89ac2480000000       mov     qword ptr [rsp + 0x80], r13     ; <- IRP_MJ_CLEANUP slot
+0000115d  4889842488000000       mov     qword ptr [rsp + 0x88], rax     ; <- IRP_MJ_SHUTDOWN slot
+000011c8  48894c2470             mov     qword ptr [rsp + 0x70], rcx     ; <- IRP_MJ_DEVICE_CONTROL slot
+000011d0  4c89442460             mov     qword ptr [rsp + 0x60], r8      ; <- IRP_MJ_CREATE slot
+000011d5  44896c2450             mov     dword ptr [rsp + 0x50], r13d    ; <- IRP_MJ_WRITE slot
+00001201  44896c2450             mov     dword ptr [rsp + 0x50], r13d    ; <- IRP_MJ_WRITE slot
+00001236  4889442468             mov     qword ptr [rsp + 0x68], rax     ; <- IRP_MJ_CLOSE slot
+000012f6  48894c2458             mov     qword ptr [rsp + 0x58], rcx     ; <- IRP_MJ_READ slot
+0000143b  3d40201080             cmp     eax, 0x80102040                 ; ** IOCTL? 0x80102040  dev=0x8010 fn=0x810 method=0 access=0
+00001446  3d44201080             cmp     eax, 0x80102044                 ; ** IOCTL? 0x80102044  dev=0x8010 fn=0x811 method=0 access=0
+00001451  3d50201080             cmp     eax, 0x80102050                 ; ** IOCTL? 0x80102050  dev=0x8010 fn=0x814 method=0 access=0
+0000145c  3d54201080             cmp     eax, 0x80102054                 ; ** IOCTL? 0x80102054  dev=0x8010 fn=0x815 method=0 access=0
+00001810  48898780000000         mov     qword ptr [rdi + 0x80], rax     ; <- IRP_MJ_CLEANUP slot
+00001817  48894770               mov     qword ptr [rdi + 0x70], rax     ; <- IRP_MJ_DEVICE_CONTROL slot
+00001822  48894768               mov     qword ptr [rdi + 0x68], rax     ; <- IRP_MJ_CLOSE slot

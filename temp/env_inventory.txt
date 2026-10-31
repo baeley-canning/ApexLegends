@@ -1,0 +1,14 @@
+﻿## suspicious/vulnerable-looking drivers
+EhStorTcgDrv.sys
+gdrv3.sys
+MsIo64.sys
+## anti-cheat
+svc BEService = Stopped
+svc EasyAntiCheat_EOS = Stopped
+## toolchain
+sdk 10.0.19041.0
+sdk 10.0.26100.0
+sdk wdf
+vs C:\BuildTools
+km wdm.h True
+## boot

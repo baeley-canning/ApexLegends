@@ -1,0 +1,192 @@
+KNOWLEDGE BASE: EVADING ANTI-CHEAT - CATEGORIES AND COUNTERMEASURES
+
+Purpose:
+Survey how players and cheat authors try to avoid, defeat, or delay
+anti-cheat detection and enforcement, organised by the layer of the
+defence each family targets, and pair each with the response defenders
+use. It complements ADAPTIVE CHEATING, RED TEAMING, AND EVOLVING
+ANTI-CHEAT SYSTEMS and HOW ANTI-CHEATS WORK - VANGUARD, BATTLTEYE, EAC,
+AND JAVELIN.
+
+This document is reference knowledge. It describes evasion as categories
+of behaviour and the countermeasures against them, from a defensive and
+engineering perspective. It deliberately contains no operational steps,
+tools, or product-specific bypass detail.
+
+Evasion and detection both change constantly, so treat each statement as
+a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: ADAPTIVE CHEATING, RED TEAMING, AND EVOLVING
+ANTI-CHEAT SYSTEMS, ANTI-CHEAT ARCHITECTURE, CLIENT INTEGRITY,
+ANTI-TAMPER, AND ATTESTATION, SPOOFING AND BAN EVASION, HOW ANTI-CHEATS
+WORK - VANGUARD, BATTLTEYE, EAC, AND JAVELIN, and the numbered technical
+series.
+
+---
+
+1. WHAT "GETTING AROUND" MEANS
+Getting around anti-cheat means achieving one of three things: not being
+detected, not being enforced, or not being punished for long.
+These are different problems with different techniques.
+A cheat that is undetectable and one that is detectable but unpunished
+are both "getting around" the intent of the system.
+This document treats them as one family of behaviours.
+
+---
+
+2. THE UNIVERSAL PATTERN
+Almost every evasion reduces to one of four moves.
+HIDE: do not let the observer see the act.
+CONFUSE: let it see, but not believe.
+OUTRUN: act only when the observer is off duty.
+IMPERSONATE: look like something trusted.
+Naming the move is more useful than naming the technique.
+
+---
+
+3. EVADING SIGNATURE DETECTION
+Signature detection matches known bad artifacts.
+It is evaded by changing the artifact so the known pattern no longer
+fits.
+This is cheap once a signature is public, so signatures age quickly.
+The defender's answer is to rely less on any single artifact and to
+combine signatures with behaviour and integrity.
+
+---
+
+4. EVADING BEHAVIOUR ANALYSIS
+Behaviour detection looks at what a player does, not only what they run.
+It is evaded by making the cheating behave more like legitimate play:
+occasional mistakes, human-like timing, varied results.
+This is the "humanising" problem, and it is fundamentally about
+statistical plausibility.
+The defender's answer is richer context and cross-player, cross-session
+patterns, not a single threshold.
+
+---
+
+5. HIDING FROM THE OBSERVER
+An attacker can try to act where the observer cannot see: at a lower
+privilege level, a different process, or outside the monitor's scope.
+This is the same "observer below the observed" race, from the attacker's
+side.
+The defence is to move the observer lower and widen its scope: kernel,
+hypervisor, and hardware roots.
+What cannot be hidden from a lower observer must instead be made costly.
+
+---
+
+6. TAMPERING WITH THE OBSERVER
+Rather than hide from the monitor, an attacker may attack it directly:
+disable, alter, or confuse it.
+That turns a detection problem into a self-protection problem.
+Defences include loading early, protecting the monitor's own integrity,
+keeping critical checks off the client, and validating from the server.
+An observer that can be switched off is not an observer.
+
+---
+
+7. EVADING INTEGRITY AND ATTESTATION
+Integrity and attestation try to prove the client is unchanged and the
+platform is genuine.
+They are evaded by presenting a false but consistent picture, or by
+attesting through a layer the attacker controls.
+See CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION for the mechanisms.
+The defence is a trust anchor the attacker cannot reprogram, plus
+corroboration from the server.
+
+---
+
+8. BLENDING IN AND "HUMANISING" INPUT
+Automation is often obvious because it is too precise or too consistent.
+Evasion makes automated input look human: jitter, delay, variability, and
+errors.
+This targets detection that looks for superhuman precision or regularity.
+The defence is to look at distributions and consistency over time rather
+than at single events.
+
+---
+
+9. TIMING AND SCHEDULING EVASION
+An attacker can choose when to cheat as well as how.
+Cheating sparingly, only in key moments, or only outside review windows
+reduces exposure.
+It also complicates ban waves, because the behaviour is intermittent.
+The defence is to reason over long windows and to keep some detection
+hidden, so timing cannot be optimised against it.
+
+---
+
+10. IDENTITY ROTATION AND RE-ENTRY
+Detection is only as useful as enforcement, and enforcement needs an
+identity to attach to.
+Rotating accounts, devices, and networks turns one offender into many
+apparently new players.
+See SPOOFING AND BAN EVASION for the identity mechanics.
+The defence is linkage across signals and enforcement that raises the
+cost of re-entry.
+
+---
+
+11. MOVING THE CHEAT OFF THE MACHINE
+If the machine is watched closely, an attacker can put the advantage
+elsewhere.
+Reading the game from another device, or driving input through external
+hardware, keeps the main machine clean.
+This targets client-side monitoring that only sees its own host.
+The defence reaches the boundaries: bus and device-level checks,
+attestation of the whole platform, and server-side plausibility.
+
+---
+
+12. EVADING NETWORK-LEVEL CHECKS
+Some advantage comes from abusing timing and shared state rather than
+from memory.
+Timing abuse is hard to separate from a poor connection, which is itself
+a form of camouflage.
+See NETWORK AND LAG MANIPULATION for the mechanisms.
+The defence is server authority over timing and state, not client trust.
+
+---
+
+13. THE DEFENDER'S PLAYBOOK
+No single answer covers all of the above, so defences are layered.
+Use several independent signals, so confusing one is not enough.
+Keep critical decisions on the server, so hiding on the client is not
+enough.
+Anchor trust in hardware and attestation, so impersonation is costly.
+Link identities, so rotation is not enough.
+Keep some detection hidden and act in waves, so timing is not enough.
+Each layer removes one evasion's payoff.
+
+---
+
+14. WHY THERE IS NO PERMANENT WIN
+Every defence is a cost that an attacker can pay, given enough incentive.
+Every evasion is a signal a defender can learn to read.
+The loop is the point: adaptation is continuous, not a finish line.
+The realistic goal is to keep evasion more expensive than honest play.
+
+---
+
+15. SUMMARY
+Evasion aims to go unseen, unenforced, or unpunished, which are different
+problems.
+Its moves are few - hide, confuse, outrun, impersonate - and reusable
+across layers.
+Each family targets a specific defence: signatures, behaviour, integrity,
+input, timing, identity, host, or network.
+The defender's answer always has the same shape: layer independent
+signals, decide on the server, anchor in hardware, link identities, and
+act in waves.
+Because both sides adapt, the aim is to keep evasion costlier than
+playing straight, not to end the race.
+
+CORE PRINCIPLE:
+Getting around anti-cheat is not one trick but four moves - hide, confuse,
+outrun, impersonate - aimed at whichever layer is weakest. So a defence
+survives not by being unbreakable but by having no single weak layer to
+aim at: many independent signals, decisions on the server, trust anchored
+in hardware, identities linked, and enforcement that stays hidden and
+delayed. You do not stop evasion; you make it cost more than playing
+honestly, and you keep making it cost more as the other side adapts.

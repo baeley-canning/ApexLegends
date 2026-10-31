@@ -1,0 +1,141 @@
+KNOWLEDGE BASE: COMPUTING HARDWARE AND EXECUTION FOUNDATIONS
+
+Purpose:
+Educational reference for the physical machine every higher layer runs
+on: how work is executed, where data is stored, how fast each stage is,
+and why those limits shape everything above.
+
+---
+
+1. THE MACHINE MODEL
+A computer is a processor that executes instructions, a memory that holds
+data and code, and devices joined by buses.
+Software is a description; the hardware decides how fast and how
+predictably it actually runs.
+Understanding the machine explains the performance and latency seen by
+every layer above it.
+
+---
+
+2. THE PROCESSOR
+A central processing unit executes instructions one step at a time per
+core.
+Modern chips have several cores, so several instruction streams can run
+at once.
+Each core is fast, but its real speed depends on whether the data it
+needs is already close by.
+
+---
+
+3. THE MEMORY HIERARCHY
+Storage is arranged in levels by speed and size:
+registers (fastest, tiny)
+-> cache levels (fast, small)
+-> main memory (moderate, large)
+-> persistent storage (slow, huge)
+Data moves between levels in blocks, and a miss at one level means
+waiting for the next.
+This hierarchy, more than raw clock speed, explains most real-world
+performance.
+
+---
+
+4. CACHES AND LOCALITY
+A cache keeps recently used data close to the core.
+Programs that reuse data (temporal locality) or read it in order
+(spatial locality) run far faster than ones that jump around.
+Cache misses, not arithmetic, are often the true bottleneck.
+
+---
+
+5. MAIN MEMORY
+Main memory holds the working set of running programs.
+Accessing it is far slower than the processor, so processors hide the
+delay with caching and by overlapping other work.
+Memory bandwidth - how much can be moved per second - matters as much as
+capacity.
+
+---
+
+6. STORAGE
+Persistent storage keeps data when power is off, and is far slower than
+memory.
+It is measured in throughput and in access latency, and the two differ by
+orders of magnitude between media types.
+Treat storage access as an expensive operation and design around it.
+
+---
+
+7. BUSES AND DEVICE I/O
+Devices - disks, network cards, cameras, input devices - connect over
+buses such as PCIe.
+Data crosses these buses by direct memory access, where the device moves
+data to or from memory without the processor copying each byte.
+This is why input and output can be fast even while the processor does
+little.
+
+---
+
+8. DEVICES AND DRIVERS
+A device is controlled through a driver: the operating-system code that
+knows how to talk to that hardware.
+Device access therefore passes through the operating system, which can
+allow, deny, or filter it.
+A device that acts on memory directly, bypassing the operating system, is
+the subject of the hardware-threat document.
+
+---
+
+9. ACCELERATORS
+Specialised processors - most commonly GPUs - perform many operations in
+parallel.
+They are powerful for uniform, parallel work such as image processing and
+neural-network inference.
+Because they are separate processors with their own memory, moving data
+to and from them is itself a cost.
+
+---
+
+10. THE CPU-GPU BOUNDARY
+Accelerators have their own memory, so data must be transferred across
+the bus before and after processing.
+A transfer that forces the processor to wait for the accelerator (a
+synchronisation point) is a common source of latency.
+The capture-pipeline document treats this boundary in detail.
+
+---
+
+11. LATENCY VERSUS THROUGHPUT
+Throughput is how much work completes per unit time; latency is how long
+one piece of work takes.
+Hardware can be built for one at the expense of the other, through
+pipelining, batching, and buffers.
+Perception-and-react systems care about latency; bulk processing cares
+about throughput.
+
+---
+
+12. LIMITS ARE PHYSICAL
+Signal speed, memory bandwidth, and heat dissipation bound what any layer
+can achieve.
+No amount of software removes these limits; good software works within
+them.
+When a design seems to beat them, the cost has usually been moved rather
+than removed.
+
+---
+
+13. SUMMARY
+The machine is a fast processor, a hierarchy of memory, and devices on
+buses, with accelerators for parallel work.
+Most performance comes from locality and from moving less data, not from
+raw clock speed.
+Transfer costs and synchronisation points are physical facts that every
+higher layer inherits.
+
+CORE PRINCIPLE:
+The hardware is the floor every other layer stands on. It is fast near
+the core and slow far from it, so performance is mostly about locality
+and about how much data is moved. Transfer costs and synchronisation
+points are not software bugs - they are physics. Work with the machine's
+grain, and the layers above become predictable.

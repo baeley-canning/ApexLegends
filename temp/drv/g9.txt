@@ -1,0 +1,10 @@
+﻿; MsIo64.sys  imagebase=0x10000  entry=0x5010
+; imports: 17
+;   HAL!HalTranslateBusAddress, ntoskrnl!DbgPrint, ntoskrnl!IoCreateDevice, ntoskrnl!IoCreateSymbolicLink
+;   ntoskrnl!IoDeleteDevice, ntoskrnl!IoDeleteSymbolicLink, ntoskrnl!IofCompleteRequest, ntoskrnl!ObReferenceObjectByHandle
+;   ntoskrnl!ObfDereferenceObject, ntoskrnl!ProbeForRead, ntoskrnl!ProbeForWrite, ntoskrnl!RtlInitUnicodeString
+;   ntoskrnl!ZwClose, ntoskrnl!ZwMapViewOfSection, ntoskrnl!ZwOpenSection, ntoskrnl!ZwUnmapViewOfSection
+;   ntoskrnl!__C_specific_handler
+
+00001000  0000                   add     byte ptr [rax], al
+00001002  0000                   add     byte ptr [rax], al

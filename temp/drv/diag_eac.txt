@@ -1,0 +1,65 @@
+﻿=== boot config (bcdedit)
+  (testsigning) <absent>
+  (nointegritychecks) <absent>
+  (debug ) <absent>
+  (hypervisorlaunchtype) <absent>
+  (SecureBoot) <absent>
+  (vsmlaunchtype) <absent>
+  (isolatedcontext) <absent>
+
+=== os
+  product   = Windows 10 Pro
+  version   = 25H2 build 26200.9711
+  edition   = Professional
+  installed = 1757089400
+  uptime    = 00:05:31.2641714
+
+=== secure boot / HVCI / VBS
+  UEFISecureBootEnabled = 0
+  VBS status            = 2  (0=off 1=configured 2=running)
+  services running      = 0  (1=CredGuard 2=HVCI 3=both)
+  services configured   = 0
+  HVCI reg Enabled      = 
+
+=== driver / service
+  apexr.sys on disk     = True
+  device \\\\.\\apexr      = False
+  TYPE               : 1  KERNEL_DRIVER
+  STATE              : 1  STOPPED
+  WIN32_EXIT_CODE    : 1077  (0x435)
+  SERVICE_EXIT_CODE  : 0  (0x0)
+
+=== potentially blocklisted / byovd drivers present
+  gdrv3.sys  52440  10/12/2025 22:19:43
+  MsIo64.sys  19672  10/12/2025 22:16:21
+  MsIo64.sys  19672  10/12/2025 22:16:21
+
+=== protocol / filter drivers mentioning apex or asus
+  apexdrv.sys  8616
+  apexr.sys  5488
+
+=== EA anti-cheat logs (recent)
+  20:49:19  C:\Users\New User\AppData\Local\Temp\pip-unpack-zgw8igcq\pydantic-2.14.1-py3-none-any.whl.metadata
+  20:45:19  C:\Users\New User\AppData\Local\Temp\_MEI344602\tzdata\zoneinfo\Canada\Atlantic
+  20:45:19  C:\Users\New User\AppData\Local\Temp\_MEI344602\tzdata\zoneinfo\America\Santiago
+  20:45:19  C:\Users\New User\AppData\Local\Temp\_MEI344602\tzdata\zoneinfo\America\Antigua
+  20:45:17  C:\Users\New User\AppData\Local\Temp\_MEI344602\jedi\third_party\typeshed\stubs\networkx\networkx\algorithms\centrality\reaching.pyi
+  20:45:16  C:\Users\New User\AppData\Local\Temp\_MEI344602\jedi\third_party\typeshed\stubs\antlr4-python3-runtime\antlr4\atn\SemanticContext.pyi
+  20:45:15  C:\Users\New User\AppData\Local\Temp\_MEI344602\jedi\third_party\typeshed\stdlib\antigravity.pyi
+
+=== game / launcher processes now
+  EABackgroundService pid=20536 started=(no access)
+  EACefSubProcess pid=692 started=22:27:00
+  EACefSubProcess pid=5008 started=22:27:14
+  EACefSubProcess pid=10404 started=22:27:05
+  EACefSubProcess pid=10740 started=22:27:00
+  EACefSubProcess pid=18828 started=22:27:00
+  EADesktop pid=15248 started=22:26:59
+  EALocalHostSvc pid=21284 started=22:27:02
+  EasyTuneEngineService pid=20468 started=(no access)
+  OneApp.IGCC.WinService pid=4672 started=(no access)
+  SearchFilterHost pid=20652 started=(no access)
+  SearchHost pid=12196 started=22:26:12
+  SearchIndexer pid=15008 started=(no access)
+  SearchProtocolHost pid=21712 started=(no access)
+  SecurityHealthService pid=17220 started=(no access)

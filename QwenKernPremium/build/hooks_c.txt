@@ -1,0 +1,132 @@
+﻿340:     ReleaseD3D11Overlay();
+341:     bDXGIHooked     = false;
+342:     bPresentHooked  = false;
+343:     bHooksInstalled = false;
+344: }
+345: 
+346: // ============================================================================
+347: // Window discovery
+348: // ============================================================================
+349: namespace {
+350: 
+351: struct WindowSearch {
+352:     DWORD processId;
+353:     HWND  result;
+354: };
+355: 
+356: BOOL CALLBACK EnumGameWindowsProc(HWND hwnd, LPARAM param) {
+357:     WindowSearch* search = reinterpret_cast<WindowSearch*>(param);
+358: 
+359:     DWORD pid = 0;
+360:     GetWindowThreadProcessId(hwnd, &pid);
+361:     if (pid != search->processId) return TRUE;
+362:     if (!IsWindowVisible(hwnd)) return TRUE;
+363:     if (GetWindow(hwnd, GW_OWNER) != nullptr) return TRUE;
+364:     if (GetWindowTextLengthW(hwnd) == 0) return TRUE;
+365: 
+366:     search->result = hwnd;
+367:     return FALSE;
+368: }
+369: 
+370: } // namespace
+371: 
+372: bool GameHooks::FindGameWindow() {
+373:     if (hGameWindow && IsWindow(hGameWindow)) return true;
+374: 
+375:     // Primary: the known r5apex window class.  Fallback: any visible
+376:     // top-level window owned by our own process (covers class renames).
+377:     hGameWindow = FindWindowW(kGameWindowClass, nullptr);
+378:     if (hGameWindow) return true;
+379: 
+380:     WindowSearch search{ GetCurrentProcessId(), nullptr };
+381:     EnumWindows(EnumGameWindowsProc, reinterpret_cast<LPARAM>(&search));
+382:     hGameWindow = search.result;
+383:     return hGameWindow != nullptr;
+384: }
+385: 
+386: // ============================================================================
+387: // D3D9 Present hook (idx 17 of IDirect3DDevice9)
+388: // ============================================================================
+389: bool GameHooks::HookPresent(IDirect3DDevice9* pDevice) {
+390:     if (bPresentHooked) return true;
+391:     (void)pDevice;
+392: 
+393:     HWND dummyWindow = CreateWindowExW(0, L"STATIC", L"apex_dummy", WS_POPUP,
+394:                                        0, 0, 8, 8, nullptr, nullptr, nullptr, nullptr);
+395:     if (!dummyWindow) return false;
+396: 
+397:     const Direct3DCreate9Fn createD3D9 = ResolveDirect3DCreate9();
+398:     IDirect3D9* d3d9 = createD3D9 ? createD3D9(D3D_SDK_VERSION) : nullptr;
+399:     if (!d3d9) {
+400:         DestroyWindow(dummyWindow);
+401:         return false;
+402:     }
+403: 
+404:     D3DPRESENT_PARAMETERS params{};
+405:     params.Windowed         = TRUE;
+406:     params.hDeviceWindow    = dummyWindow;
+407:     params.SwapEffect       = D3DSWAPEFFECT_DISCARD;
+408:     params.BackBufferFormat = D3DFMT_UNKNOWN;
+409: 
+410:     IDirect3DDevice9* dummyDevice = nullptr;
+411:     if (FAILED(d3d9->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, dummyWindow,
+412:                                   D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+413:                                   &params, &dummyDevice))) {
+414:         d3d9->Release();
+415:         DestroyWindow(dummyWindow);
+416:         return false;
+417:     }
+418: 
+419:     void** vtable = *reinterpret_cast<void***>(dummyDevice);
+420:     g_d3d9PresentSlot = &vtable[17];
+421: 
+422:     const bool patched = PatchVtableSlot(g_d3d9PresentSlot,
+423:                                          &GameHooks::D3D9PresentHook,
+424:                                          &originalPresent);
+425:     dummyDevice->Release();
+426:     d3d9->Release();
+427:     DestroyWindow(dummyWindow);
+428: 
+429:     bPresentHooked = patched;
+430:     return patched;
+431: }
+432: 
+433: // ============================================================================
+434: // DXGI SwapChain::Present hook (idx 8 of IDXGISwapChain)
+435: // ============================================================================
+436: bool GameHooks::HookPresentDXGI() {
+437:     if (bDXGIHooked) return true;
+438: 
+439:     HWND dummyWindow = CreateWindowExW(0, L"STATIC", L"apex_dummy", WS_POPUP,
+440:                                        0, 0, 8, 8, nullptr, nullptr, nullptr, nullptr);
+441:     if (!dummyWindow) return false;
+442: 
+443:     DXGI_SWAP_CHAIN_DESC desc{};
+444:     desc.BufferCount                        = 1;
+445:     desc.BufferDesc.Width                  = 8;
+446:     desc.BufferDesc.Height                 = 8;
+447:     desc.BufferDesc.Format                 = DXGI_FORMAT_R8G8B8A8_UNORM;
+448:     desc.BufferUsage                        = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+449:     desc.OutputWindow                       = dummyWindow;
+450:     desc.SampleDesc.Count                   = 1;
+451:     desc.Windowed                           = TRUE;
+452:     desc.SwapEffect                         = DXGI_SWAP_EFFECT_DISCARD;
+453: 
+454:     ID3D11Device*        device    = nullptr;
+455:     ID3D11DeviceContext* context   = nullptr;
+456:     IDXGISwapChain*      swapChain = nullptr;
+457:     D3D_FEATURE_LEVEL     level     = D3D_FEATURE_LEVEL_11_0;
+458: 
+459:     HRESULT hr = D3D11CreateDeviceAndSwapChain(
+460:         nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, nullptr, 0,
+461:         D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+462: 
+463:     if (FAILED(hr)) {
+464:         // Headless/VM fallback: WARP still exposes the same dxgi vtable.
+465:         hr = D3D11CreateDeviceAndSwapChain(
+466:             nullptr, D3D_DRIVER_TYPE_WARP, nullptr, 0, nullptr, 0,
+467:             D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+468:     }
+469: 
+470:     if (FAILED(hr) || !swapChain) {
+471:         if (context) context->Release();

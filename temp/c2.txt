@@ -1,0 +1,39 @@
+﻿### DT_MaterialHarvester   init=0x14195d8d0 (144 insn)  desc=-  array=0x14e6ca8b0  n=36
+   sentinel 0x014e6ca848  t=0x43032c38 off=0x00001 sz=0x000 fl=0x0000 (null)                         alt=0x143d1b620 .data+0xa03620 ~96/104
+   field  0 0x014e6ca8b0  t=0x0000 off=0x00000 sz=0x000 fl=0x0000 sr=0x100000000 0x141e0b720 .text              alt=(null) ~96/104
+   field  1 0x014e6ca918  t=0x430bf670 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field  2 0x014e6ca980  t=0x430bf648 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field  3 0x014e6ca9e8  t=0x430bf6a0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field  4 0x014e6caa50  t=0x430bf680 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field  5 0x014e6caab8  t=0x430bf618 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field  6 0x014e6cab20  t=0x430bf610 off=0x00001 sz=0x000 fl=0x0000 sr=0xc00000000 (null)                         alt=(null) ~96/104
+   field  7 0x014e6cab88  t=0x430bf638 off=0x00001 sz=0x000 fl=0x0000 sr=0xc00000000 (null)                         alt=(null) ~96/104
+   field  8 0x014e6cabf0  t=0x430bf628 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field  9 0x014e6cac58  t=0x43032c38 off=0x00001 sz=0x000 fl=0x0000 (null)                         alt=0x143d24930 .data+0xa0c930 ~96/104
+   field 10 0x014e6cacc0  t=0x0000 off=0x00000 sz=0x000 fl=0x0000 0x141e0b720 .text              alt=(null) ~96/104
+   field 11 0x014e6cad28  t=0x4305c7c8 off=0x00001 sz=0x000 fl=0x0000 desc=0x142131cf0 (null)                         alt=(null) ~96/104
+   field 12 0x014e6cad90  t=0x430c11f0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b540 (null)                         alt=0x143eb2570 .data+0xb9a570 ~96/104
+   field 13 0x014e6cadf8  t=0x43032c50 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 0x141e0b720 .text              alt=(null) ~96/104
+   field 14 0x014e6cae60  t=0x430bbae0 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 15 0x014e6caec8  t=0x4305c850 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 16 0x014e6caf30  t=0x4305c840 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 17 0x014e6caf98  t=0x430bbfe8 off=0x00001 sz=0x000 fl=0x0000 desc=0x141ffd5b0 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 18 0x014e6cb000  t=0x430bc028 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b1b0 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 19 0x014e6cb068  t=0x430bc010 off=0x00001 sz=0x000 fl=0x0000 desc=0x141ffd5b0 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 20 0x014e6cb0d0  t=0x430bbfa0 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 21 0x014e6cb138  t=0x430bbf88 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 22 0x014e6cb1a0  t=0x430bbfd0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b1b0 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field 23 0x014e6cb208  t=0x430c1228 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 24 0x014e6cb270  t=0x430c1210 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b530 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 25 0x014e6cb2d8  t=0x43089ac8 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 26 0x014e6cb340  t=0x430c11a8 off=0x00001 sz=0x000 fl=0x0000 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 27 0x014e6cb3a8  t=0x430c1188 off=0x00001 sz=0x000 fl=0x0000 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field 28 0x014e6cb410  t=0x430c11d0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x400000000 (null)                         alt=(null) ~96/104
+   field 29 0x014e6cb478  t=0x43032c38 off=0x00001 sz=0x000 fl=0x0000 (null)                         alt=0x143d1b620 .data+0xa03620 ~96/104
+   field 30 0x014e6cb4e0  t=0x0000 off=0x00000 sz=0x000 fl=0x0000 sr=0x100000000 0x141e0b720 .text              alt=(null) ~96/104
+   field 31 0x014e6cb548  t=0x430c0e68 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field 32 0x014e6cb5b0  t=0x430c0eb0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 sr=0x100000000 (null)                         alt=(null) ~96/104
+   field 33 0x014e6cb618  t=0x430891a0 off=0x00001 sz=0x000 fl=0x0000 desc=0x141e0b510 (null)                         alt=(null) ~56/104
+   field 34 0x014e6cb680  t=0x0000 off=0x00000 sz=0x004 fl=0x0000 'should_never_see_this'        alt=(null) ~96/104
+   field 35 0x014e6cb6e8  t=0x000a off=0x00000 sz=0x000 fl=0x0000 desc=0x143d24930 (null)                         alt=(null) ~96/104
+

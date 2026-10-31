@@ -1,0 +1,74 @@
+KNOWLEDGE BASE: NEURAL NETWORK TRAINING AND EVALUATION
+
+1. TRAINING VERSUS INFERENCE
+Training uses data to learn parameters. Inference applies learned parameters to new inputs. A deployed model is not automatically learning while running.
+
+2. PARAMETERS
+Neural-network parameters are learned through optimisation of a defined loss function.
+
+3. DATASET
+A dataset contains inputs and labels. Object detection datasets contain images and annotated object regions/classes.
+
+4. TRAIN / VALIDATION / TEST
+Training data learns parameters. Validation data helps choose settings. Test data estimates final generalisation. Training performance alone does not demonstrate generalisation.
+
+5. OVERFITTING
+Overfitting occurs when a model learns its training distribution too closely and performs poorly on unseen data.
+
+6. GENERALISATION
+Generalisation is performance on relevant unseen conditions.
+
+7. DOMAIN SHIFT
+A model trained on one visual domain may encounter another. Example: real-world photographs versus rendered game imagery. Domain shift can reduce performance.
+
+8. DATA AUGMENTATION
+Augmentation creates controlled training variation such as scale, crop, brightness, noise, or other transformations to improve robustness.
+
+9. DETECTION LOSS
+Object detectors can optimise classification, localisation, objectness, and related objectives. Exact formulations depend on architecture.
+
+10. CONFIDENCE
+A detector confidence score is a model output. It should not automatically be treated as a perfectly calibrated probability of correctness.
+
+11. CALIBRATION
+A calibrated model has confidence values that correspond reasonably to observed correctness frequencies.
+
+12. PRECISION AND RECALL
+Precision asks how many predicted positives are correct. Recall asks how many real positives were detected. Changing thresholds can trade these against each other.
+
+13. IoU
+Intersection-over-Union compares predicted and reference regions:
+IoU = intersection area / union area
+
+14. mAP
+Mean Average Precision summarises precision-recall performance across classes and thresholds. It is useful but does not capture all real-time properties.
+
+15. TEMPORAL EVALUATION
+A temporal system should also measure track stability, identity switches, prediction error, and temporal consistency.
+
+16. KNOWLEDGE DISTILLATION
+A smaller student model can learn from a larger teacher model to improve deployment efficiency.
+
+17. QUANTIZATION
+FP32, FP16, and INT8 are examples of numerical precision choices. Lower precision can reduce memory/computation but may affect accuracy.
+
+18. MODEL EXPORT
+A trained model may be exported from a training framework to a deployment representation and executed by a specialised runtime.
+
+19. INFERENCE BENCHMARKING
+Separate cold-start effects from steady-state performance and distinguish model inference latency from complete pipeline latency.
+
+20. ERROR ANALYSIS
+Inspect false positives, false negatives, localisation errors, occlusion failures, small-object failures, and domain-shift failures.
+
+21. ABLATION STUDY
+Remove or change one component at a time and measure the effect. This provides evidence that a component actually contributes.
+
+22. BASELINES
+Compare sophisticated systems against simpler baselines such as constant-position prediction, constant-velocity prediction, nearest-neighbour tracking, or proportional control.
+
+23. REPRODUCIBILITY
+Record model version, dataset version, configuration, hardware, runtime, and relevant randomness/seeds where appropriate.
+
+CORE PRINCIPLE:
+"More AI" does not automatically mean more accurate, robust, or intelligent. Each additional model or algorithm should have a measurable reason for existing.

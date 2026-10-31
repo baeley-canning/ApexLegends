@@ -1,0 +1,158 @@
+KNOWLEDGE BASE: NETWORK AND LAG MANIPULATION
+
+Purpose:
+Explain how network conditions - latency, jitter, and packet timing - can
+be abused to gain an advantage, and how server authority and validation
+defend against it. It complements SERVER-AUTHORITATIVE ARCHITECTURE AND
+TRUST BOUNDARIES and the numbered LATENCY BUDGETS AND REAL-TIME
+PIPELINES.
+
+This document is reference knowledge. It describes network-layer abuse
+and its defences from a defensive, engineering perspective, using
+publicly documented behaviour. It contains no instructions for carrying
+out or hiding such abuse.
+
+Practices evolve and disclosures are partial, so treat each statement as a
+documented CLAIM. Details are given "as of October 2026".
+
+Related documents: SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST
+BOUNDARIES, LATENCY BUDGETS AND REAL-TIME PIPELINES, CHEATING IN GAMES -
+HISTORY, TAXONOMY, AND DETECTION, and the numbered technical series.
+
+---
+
+1. WHY NETWORK IS A CHEAT SURFACE
+Not every advantage comes from changing the game; some comes from changing
+how the game communicates.
+The network is a channel, and a channel can be manipulated.
+Attacks on it target the timing and integrity of shared state rather than
+memory or input.
+This makes them distinct from the cheat classes that run on the machine.
+
+---
+
+2. THE CLIENT-SERVER MODEL, IN ONE PARAGRAPH
+In a multiplayer game the server holds authoritative state and the client
+predicts.
+The client sends inputs; the server applies them and sends the result
+back.
+Everything the player sees is a prediction that may be corrected.
+This structure is what makes network abuse possible and also what limits
+it.
+
+---
+
+3. LATENCY, PING, AND JITTER
+Latency is the delay between an action and its visibility to others.
+Jitter is the variation in that delay.
+Both are unavoidable and vary between players.
+An attacker tries to control latency in ways that favour their own view of
+the world.
+Understanding the normal range is the first step to spotting abuse.
+
+---
+
+4. CLIENT-SIDE PREDICTION AND RECONCILIATION
+Clients show results immediately by predicting the server's response.
+When the server's true state arrives, the client reconciles, sometimes
+visibly correcting.
+Prediction exists because waiting for the server would feel unplayable.
+It also creates a window in which a delayed or manipulated client sees
+something that is not true.
+
+---
+
+5. LAG SWITCHING
+Lag switching is deliberately interrupting one's own connection at chosen
+moments.
+A classic use is to stall data during a vulnerable moment and resume
+after.
+The effect is that the attacker's client and the server disagree about
+timing temporarily.
+It is a timing attack, not a memory or input attack.
+
+---
+
+6. DESYNC AND STATE MISMATCH
+Desync is a divergence between what the client believes and what the
+server knows.
+Small desync is normal; large or sustained desync is exploitable.
+An attacker who can hold the client out of step can act on stale or
+favourable information.
+Detection looks for mismatches that persist beyond normal reconciliation.
+
+---
+
+7. PACKET AND TIMING MANIPULATION
+Beyond cutting a connection, timing can be shaped: delaying some packets,
+reordering others, or pacing traffic.
+The goal is to control when one's action becomes visible relative to
+others'.
+The server may see only plausible-looking latency rather than tampering.
+This is what makes timing attacks hard to separate from bad connections.
+
+---
+
+8. HIT REGISTRATION AND THE TRUST QUESTION
+Many disputes come down to whose view the server should believe.
+If the server trusts the client's claim of a hit, that claim is
+manipulable.
+If it trusts only its own view, honest high-latency players suffer.
+This is the core trust question of networked combat, expressed in one
+decision.
+
+---
+
+9. WHAT THE SERVER CAN VALIDATE
+A server can check whether an action was possible in its own timeline.
+It can reject impossible positions, speeds, or sequences.
+It can compare two clients' reports of the same event.
+It cannot see what a client saw, only what the client sent.
+Validation is bounded by what the client is willing to reveal.
+
+---
+
+10. SERVER-SIDE MITIGATIONS
+Defences include lag compensation that is bounded and equalised, server-
+first hit registration, plausibility checks, and reconciliation limits.
+The design principle is to make the server the arbiter of timing and
+state.
+See SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES for the
+general model.
+
+---
+
+11. WHY NETWORK CHEATS ARE HARD TO ATTRIBUTE
+A timing attack can look identical to a poor connection.
+Natural jitter and packet loss produce the same symptoms as intent.
+Attribution therefore needs patterns over many sessions, not one event.
+This is why network abuse is often addressed by design rather than by
+punishment.
+
+---
+
+12. DESIGN GUIDANCE
+Bound how much one client's latency may affect another's outcome.
+Prefer server-side arbitration of contested events.
+Keep reconciliation honest and visible.
+Assume some clients will misreport and design so that it matters as
+little as possible.
+
+---
+
+13. SUMMARY
+Network abuse targets timing and shared state rather than memory or input.
+Its tools are lag switching, desync, and packet timing manipulation.
+Client prediction is both the enabler and the limiter of these attacks.
+The server's role is to arbitrate timing and state, within what the
+client reveals.
+Because timing abuse resembles a bad connection, it is managed by design
+more than by punishment.
+
+CORE PRINCIPLE:
+In a networked game, whoever controls timing controls the fight, so the
+defence is to keep the server the arbiter of time and state rather than to
+trust a client's account of either. Lag switching and desync are hard to
+tell from a bad connection, so design so that a mistimed or misreporting
+client cannot change another player's outcome. You cannot ban your way out
+of a latency problem; you architect around it.

@@ -1,0 +1,9 @@
+gdrv ref @0x1000: e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10
+opened \\.\MSIO handle=0xc8
+map size=0x4 phys=0x1000 -> ok=0 err=998 info=0 out=-
+map size=0x1000 phys=0x1000 -> ok=0 err=998 info=0 out=-
+map size=0x4 phys=0x2000 -> ok=0 err=998 info=0 out=-
+map size=0x4 phys=0x100000 -> ok=0 err=998 info=0 out=-
+
+=== VERDICTS ===
+  MsIo map               FAIL

@@ -1,0 +1,16 @@
+﻿== elev_fltmc_instances.txt  2026-10-26 17:19:44 ==
+
+    instances -- Lists all instances or the instances associated with a
+                 Filter or Volume
+
+    C:\WINDOWS\system32\fltMC.exe instances [-f filterName ]|[-v volumeName ]
+
+        The -f flag denotes that the instances associated with the filter
+        identified by filterName should be listed
+
+        The -v flag denotes that the instances associated with the volume
+        identified by volumeName should be listed
+
+        The full information on each instance will be listed
+
+

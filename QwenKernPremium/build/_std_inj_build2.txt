@@ -1,0 +1,15 @@
+﻿
+  launcher_main.cpp
+  apex_injector.cpp
+  kernel_injector.cpp
+  apex_injector.cpp
+  manual_map.cpp
+  kernel_injector.cpp
+  Generating code
+  4 of 927 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    111 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+apex_injector.obj : error LNK2001: unresolved external symbol "struct ManualMapper::MapResult __cdecl ManualMapper::Map(unsigned long,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?Map@ManualMapper@@YA?AUMapResult@1@KAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) [C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\apex_launcher.vcxproj]
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apex_launcher.exe : fatal error LNK1120: 1 unresolved externals [C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\apex_launcher.vcxproj]
+  apex_cheat.vcxproj -> C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll

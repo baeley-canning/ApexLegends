@@ -1,0 +1,15 @@
+﻿--- CTL_CODE definitions ---
+devioctl.h:133
+wdm.h:7190: #define CTL_CODE( DeviceType, Function, Method, Access ) (                 \
+wdm.h:7249: // devioctl.h as FILE_READ_ACCESS and FILE_WRITE_ACCESS. The values for these
+wdm.h:7251: // The values are redefined in devioctl.h because they must be available to
+ntddk.h:4879: #define CTL_CODE( DeviceType, Function, Method, Access ) (                 \
+ntifs.h:4724: #define CTL_CODE( DeviceType, Function, Method, Access ) (                 \
+ntifs.h:8013: // These macros are defined in devioctl.h which contains the portable IO
+--- header guards ---
+ntifs.h:19: #define _NTIFS_
+ntifs.h:21: #define _NTIFS_INCLUDED_
+ntddk.h:19: #define _NTDDK_
+ntddk.h:22: #define _NTDDK_INCLUDED_
+wdm.h:22: #define _WDM_INCLUDED_
+wdm.h:33: #define _NTDDK_

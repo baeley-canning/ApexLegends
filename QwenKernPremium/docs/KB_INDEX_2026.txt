@@ -1,0 +1,60 @@
+================================================================================
+KB INDEX — 2026 RESEARCH SET (read in this order)
+================================================================================
+Last Updated: 2026-10-26
+This index covers the files added 2026-10-26 plus the pre-existing RE files, so
+an agent (or a human) can pick up the project cold.
+
+--------------------------------------------------------------------------------
+READ ORDER FOR "WHAT IS THE WORLD DOING TO US"
+--------------------------------------------------------------------------------
+1. docs/JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt
+   The live anti-cheat reality after 2026-09-29 (Javelin replaced EAC; ACG
+   behaviour; CR3 manipulation; unbacked-memory scanning; error codes; what
+   injector authors actually hit). Read this FIRST — it invalidates older docs.
+2. docs/R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt            (pre-existing)
+   Client-side R5AC: monitored VMTs, module whitelist, stack walking.
+3. docs/JAVELIN_REVERSE_ENGINEERING.txt              (pre-existing)
+   Javelin internals: loading chain, Griffin VM, E111, anti-debug.
+4. docs/INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt  (pre-existing)
+   The original four-evasion-moves framing + our two chosen methods.
+
+--------------------------------------------------------------------------------
+READ ORDER FOR "WHAT SHOULD WE BUILD"
+--------------------------------------------------------------------------------
+5. docs/PREMIUM_MARKET_TEARDOWN_2026.txt
+   Named-product teardown (Kernaim, Ignite, Chudvision, bnuuy) + market-wide
+   2026 feature snapshot + the premium quality bar + differentiation ideas.
+6. docs/INJECTION_MENU_AND_RISK_MATRIX.txt
+   Every usermode / kernel / proxy / external injection technique, ranked for
+   this game, with the recommended target stack and anti-pattern list.
+7. docs/ROADMAP_TO_PREMIUM_PRODUCT.txt
+   Phases 0-8 with hard gates, risk register and open decision points.
+8. docs/APEX_OFFSETS_AND_DUMPING_METHODS.txt         (pre-existing)
+   How to produce offsets after every patch; tooling list.
+9. docs/LAUNCHER_AND_INJECTION_METHODS.md            (pre-existing)
+   Our launcher/injector implementation notes (incl. dumpbin IAT verification).
+10. docs/KB_SOURCES_AND_RELIABILITY.txt
+   Source grading [A]/[B]/[C] behind every claim above.
+
+--------------------------------------------------------------------------------
+CHANGES MADE 2026-10-26 (code)
+--------------------------------------------------------------------------------
+- src\hooks.cpp: removed static d3d9.lib / d3dcompiler.lib linkage; added
+  ResolveD3DCompile() / ResolveDirect3DCreate9() lazy resolvers; renamed call
+  sites to runtime pointers with null-guards.
+- apex_cheat.vcxproj: dropped d3d9.lib + d3dcompiler.lib from
+  AdditionalDependencies.
+- Verified: clean /t:Rebuild EXIT=0; dumpbin /dependents = d3d11.dll,
+  KERNEL32.dll, USER32.dll only (no module the game does not load).
+
+--------------------------------------------------------------------------------
+STANDING RULES (apply to every future KB file here)
+--------------------------------------------------------------------------------
+- Date-stamp and grade every claim; [A] official, [B] community-code, [C] copy.
+- Mark [VERIFIED-<date> by <test>] once we measure it ourselves.
+- One file per topic; the index above is the map, keep it in sync.
+- Any claim we publish to users must be reproducible by us first.
+================================================================================
+END OF KB INDEX
+================================================================================

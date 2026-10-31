@@ -1,0 +1,198 @@
+KNOWLEDGE BASE: SIGNAL PROCESSING AND FILTERING
+
+Purpose:
+Educational reference for the treatment of sampled measurements: how
+discrete signals behave, why smoothing costs latency, and how filters
+interact with control and tracking. It provides the foundations beneath
+the tracking and control references.
+
+---
+
+1. WHAT A SIGNAL IS
+A signal is a quantity that varies, usually with time.
+In these systems it is sampled: measured at discrete instants and stored
+as a sequence of numbers.
+Everything downstream reasons about that sequence, not a continuous
+reality.
+
+---
+
+2. DISCRETE SAMPLING
+Sampling records a value at regular intervals.
+The interval and its regularity both matter.
+An irregular sampling clock is itself a source of error and must be
+accounted for.
+
+---
+
+3. SAMPLING RATE AND THE SAMPLING THEOREM
+To represent a phenomenon faithfully, it must be sampled faster than
+twice its highest meaningful frequency (the Nyquist rate).
+Sampling too slowly loses detail irreversibly.
+
+---
+
+4. ALIASING
+A phenomenon faster than half the sampling rate appears as a slower,
+false pattern.
+This is an alias: an artifact of sampling, not the real signal.
+Aliasing cannot be undone after sampling, only prevented before it.
+
+---
+
+5. NOISE VERSUS SIGNAL
+Noise is unwanted variation; signal is the variation of interest.
+They are often distinguished by how fast they change, which is why
+filtering is fundamentally about frequency.
+
+---
+
+6. FREQUENCY AS A VIEWPOINT
+Any sampled sequence can be seen as a sum of components at different
+rates of change.
+Filters act by attenuating some components and preserving others.
+Thinking in frequency explains what a filter does before any formula.
+
+---
+
+7. AVERAGING AND ITS EFFECTS
+Averaging suppresses fast variation.
+The more samples averaged, the smoother the output and the more it lags
+behind real change.
+Smoothing and responsiveness trade against each other.
+
+---
+
+8. MOVING AVERAGE
+A moving average outputs the mean of the last N samples.
+It is simple and predictable.
+Its lag grows with N, and a single large disturbance biases the whole
+window.
+
+---
+
+9. EXPONENTIAL MOVING AVERAGE
+An exponential moving average blends the new sample with the previous
+output using a weight.
+A small weight is smooth but slow; a large weight is responsive but
+jumpy.
+It needs little memory and is common in real-time systems.
+
+---
+
+10. LOW-PASS FILTERING
+A low-pass filter keeps slow changes and attenuates fast ones.
+It is the general form of smoothing.
+Cutoff frequency sets what "slow" means.
+
+---
+
+11. HIGH-PASS AND BANDPASS
+A high-pass filter does the opposite: it keeps fast changes and removes
+slow drift.
+A bandpass keeps a middle range.
+Choosing a band is choosing which behaviour to treat as signal.
+
+---
+
+12. SMOOTHING VERSUS LAG
+Every linear filter trades noise reduction against delay.
+Less noise means more lag, and lag degrades control and tracking.
+This trade-off should be a measured decision, not a default.
+
+---
+
+13. PHASE AND DELAY
+Filters shift a signal in time.
+That shift is a phase change, and in a control loop it acts like added
+latency, which reduces stability margin.
+Smoothed sensors are not free.
+
+---
+
+14. FILTER GAIN AND CUTOFF
+Gain describes how much each frequency is passed; cutoff marks the
+transition.
+Filters are characterised by these responses, not only by their code.
+
+---
+
+15. JITTER
+Jitter is variation in timing rather than in value.
+It produces spurious apparent change even when the underlying quantity
+is steady.
+Regular timestamps and timestamp-based math reduce it.
+
+---
+
+16. OUTLIERS AND ROBUST FILTERING
+A single wrong sample can dominate a mean.
+Robust methods reduce the influence of extreme values.
+Detection and rejection of outliers is often more valuable than
+smoothing everything.
+
+---
+
+17. MEDIAN AND RANK FILTERS
+A median filter outputs the middle of the last N samples.
+It rejects isolated outliers while preserving edges better than a mean.
+Rank-based filters trade some smoothness for robustness.
+
+---
+
+18. HYSTERESIS
+Hysteresis uses different thresholds for entering and leaving a state.
+It prevents rapid flicker when a value hovers near one threshold.
+It is a decision-shaping tool, not a value-smoothing tool.
+
+---
+
+19. DEBOUNCE
+Debounce ignores changes shorter than a chosen duration.
+It is the temporal cousin of hysteresis and is common for noisy binary
+signals.
+
+---
+
+20. DIFFERENTIATION AND NOISE AMPLIFICATION
+Estimating a rate of change amplifies high-frequency content.
+Differentiating a noisy signal therefore amplifies noise.
+This is why derivative terms in control need filtering and why velocity
+from position is delicate.
+
+---
+
+21. FILTERS IN THE CONTROL LOOP
+A filter inside a feedback loop adds lag and phase shift.
+It can trade steady output for reduced stability margin, producing
+oscillation.
+Filter placement is a control decision, not a cosmetic one.
+
+---
+
+22. FILTERS IN TRACKING
+Trackers use filters to combine prediction with noisy measurements.
+The filter's assumptions about noise shape the resulting estimate.
+Mismatched assumptions cause either sluggishness or jitter.
+
+---
+
+23. CHOOSING A FILTER
+State what must be preserved and what must be rejected.
+Then pick the simplest filter meeting the noise and lag budget.
+Validate against measured data, not by intuition.
+
+---
+
+24. SUMMARY
+Filters shape which parts of a signal survive.
+Every choice trades noise against lag, and lag interacts with control
+and tracking stability.
+Reason in terms of frequency, delay, and robustness, and measure the
+result.
+
+CORE PRINCIPLE:
+Filtering is a deliberate trade, never a free improvement. Smoothing
+reduces noise but adds lag and phase shift, which degrade control and
+tracking. Choose a filter from what must be preserved, what must be
+rejected, and the lag budget, and validate it on real measurements.

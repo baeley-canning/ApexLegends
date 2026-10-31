@@ -1,0 +1,69 @@
+WRITING KNOWLEDGE BASES THAT MODELS USE WELL
+============================================
+Purpose: how to write and organise reference files for retrieval-augmented
+generation (RAG), so a model finds the right facts and uses them correctly.
+
+1. HOW RETRIEVAL WORKS
+- Documents are split into chunks (often 300-1000 tokens, with some overlap).
+- Each chunk is turned into an embedding vector. The question is embedded the
+  same way, and the most similar chunks (top-k, often 3-8) are pasted into the
+  model's context.
+- The model only sees those chunks, not the whole file. A fact that is split
+  across chunks, or never mentioned near its keywords, may never be found.
+
+2. WRITE EACH SECTION TO STAND ALONE
+- Repeat the subject in each section. Bad: "It should be set to 4." Good:
+  "The batch size for the evaluation script should be set to 4."
+- Avoid "see above" and "as mentioned earlier"; the reader (the model) may not
+  have the earlier chunk.
+- Put the key fact in the first sentence of a section, then explain.
+- Use the words people will actually ask with. If users say "VRAM", don't only
+  say "graphics memory".
+
+3. STRUCTURE
+- One topic per file. Descriptive file names: 04_Git_Basics.txt, not
+  notes2.txt.
+- Clear headings, short paragraphs, numbered steps for procedures, lists for
+  options. Headings help chunking land on topic boundaries.
+- Include concrete examples (commands, inputs, expected outputs). Models copy
+  examples more reliably than they follow abstract rules.
+- State constraints and edge cases explicitly ("does not work on Windows").
+
+4. AVOID DUPLICATES AND CONTRADICTIONS
+- Duplicate files (e.g. "file.txt" and "file (1).txt") take up retrieval slots
+  with the same text and push out other useful chunks. Delete copies.
+- Double extensions ("notes.txt.txt") are harmless to the model but make files
+  hard to manage; rename them.
+- If two files disagree, the model may pick either one. Keep one source of
+  truth per fact and update it in place.
+- Date or version facts that change: "As of Oct 2026, version 3.2 ..."
+
+5. KEEP IT ACCURATE
+- Wrong information in a knowledge base is worse than none: the model trusts
+  retrieved text and repeats it confidently.
+- Prefer primary sources (official docs) when writing entries. Mark uncertain
+  items as uncertain.
+- Review files periodically; remove outdated ones.
+
+6. WHAT NOT TO PUT IN
+- Secrets: API keys, passwords, tokens, .env files. Anything in the knowledge
+  base can be quoted back in an answer.
+- Code files are fine as examples, but large code dumps chunk poorly. Prefer
+  explained snippets.
+- Long chat logs: summarise the conclusions instead.
+
+7. INSTRUCTIONS VS KNOWLEDGE
+- Behaviour rules ("always answer in British English", "show steps") belong in
+  the system prompt, which is always present.
+- Facts belong in the knowledge base, which is only partly present.
+- A rule hidden in a knowledge file is only followed when that chunk happens
+  to be retrieved.
+
+8. TESTING A KNOWLEDGE BASE
+- Write 10-20 test questions whose answers you know are in the files.
+- Ask each one, check: was the right chunk retrieved? Was the answer correct?
+  Did the model cite or reflect the source?
+- If retrieval misses: rephrase headings, add the user's keywords, make
+  sections self-contained, adjust chunk size or top-k.
+- If retrieval hits but the answer is wrong: the text may be ambiguous, or the
+  model too small/too quantised to use it well.

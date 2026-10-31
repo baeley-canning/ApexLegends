@@ -1,0 +1,13 @@
+﻿--- sanity: PsThreadType (top-level glob) ---
+ntddk.h:112
+ntddk.h:122
+wdm.h:49380
+--- x64 search via Get-ChildItem -Filter ---
+header count: 619
+--- MmCopyVirtualMemory ---
+--- PsGetProcessPeb ---
+--- MmMapLockedPagesSpecifyCache ---
+vmbuskernelmodeclientlibapi.h:1956: /// then it must call MmMapLockedPagesSpecifyCache, or MmGetSystemAddressForMdlSafe,
+wdm.h:29469: __drv_preferredFunction("MmMapLockedPagesSpecifyCache",
+wdm.h:29633: MmMapLockedPagesSpecifyCache (
+wdm.h:29646: // If NX Pool Opt-In is enabled, then MmMapLockedPagesSpecifyCache calls are

@@ -1,0 +1,171 @@
+KNOWLEDGE BASE: BAN GOVERNANCE AND IDENTITY INTEGRITY
+
+Purpose:
+Educational reference for what happens after detection: how infractions
+affect accounts and devices, how identity and device linkage work, how
+ban evasion is countered, and how honesty, privacy, and due process
+constrain the whole process.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive, engineering, and policy perspective, and uses only publicly
+documented practices.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ANTI-CHEAT PRODUCTS AND
+SYSTEMS, SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES,
+TELEMETRY, PRIVACY, AND PLAYER DATA ETHICS, MATCHMAKING AND ACCOUNT
+ECONOMY INTEGRITY, CHEAT ECONOMICS AND THE UNDERGROUND MARKET,
+SPOOFING AND BAN EVASION, and the numbered technical series.
+
+---
+
+1. DETECTION IS NOT ENFORCEMENT
+The products reference stresses that detection and enforcement are
+separate stages.
+This document is about the second stage.
+A detection is a signal; a ban is a decision about a person, applied
+through systems of identity, reputation, and appeals.
+Getting the detection right is only half the problem; applying it
+consistently and reversibly is the other half, and it is where most of
+the harm to a legitimate player, and most of the attacker's opportunity,
+actually lives.
+
+---
+
+2. THE ENFORCEMENT TOOLKIT
+Enforcement actions, from lightest to heaviest:
+* warnings and advisories.
+* match-level mitigations (disabling a cheater's effect on others).
+* temporary suspensions.
+* permanent account bans.
+* hardware or device bans.
+* global bans across titles and platforms (rare and partner-dependent).
+The heavier the action, the more confidence it demands, because its cost
+of error rises with it and its reversibility falls.
+
+---
+
+3. DELAYED BANS AND BAN WAVES
+Many systems detect on one schedule and enforce on another.
+Delaying enforcement:
+* lets a detection mature before acting, reducing false positives.
+* avoids signalling to attackers exactly which behaviour tripped a
+  detector.
+* lets the operator ban a cohort at once, which is harder to learn from
+  and cheapens any single detection.
+The trade-off is that cheaters keep playing during the delay, so the
+timing is a deliberate balance between certainty and harm.
+
+---
+
+4. WHAT A BAN ACTUALLY ADDRESSES
+An account ban removes access to an account; it does not remove the
+person.
+If creating a new account is cheap, an account-only ban is temporary.
+This is why enforcement escalates to properties that are harder to
+change: payment instruments, phone numbers, and hardware fingerprints.
+Each escalation increases friction for cheaters and, unavoidably, some
+friction for legitimate players.
+
+---
+
+5. DEVICE AND HARDWARE IDENTIFICATION
+A "hardware ban" is really a ban of a set of device identifiers and
+their combination (sometimes called a fingerprint).
+Publicly, vendors describe combining many signals - not one serial
+number - so that no single, easily spoofed value decides the outcome.
+The engineering tension is explicit:
+* too stable an identifier is a privacy problem and a target for
+  spoofing.
+* too volatile an identifier produces false positives when hardware or
+  software changes.
+The design goal is a fingerprint that stays stable for one legitimate
+user and costs a cheater to vary.
+
+---
+
+6. BAN EVASION
+Evasion is the arms race at the identity layer rather than at the
+detection layer: new accounts, altered identifiers, spoofed hardware,
+shared devices, and purchased or stolen accounts.
+Defenses include linking accounts and devices into a graph, weighting
+signals by how hard they are to change, and reactively banning accounts
+that cluster with known-bad ones.
+Because a shared device or household can legitimately produce similar
+signals, this is a place where false positives concentrate, and where
+appeals matter most.
+
+---
+
+7. FALSE POSITIVES AND THEIR COST
+A false positive is a legitimate player punished for resembling a
+cheater.
+Its costs are asymmetric, and permanent in a way the cheater's are not:
+* an unjust ban can lose a paying, long-term customer outright.
+* a hardware ban can remove access for everyone sharing a device.
+* the reputational cost of a visible mistake exceeds the value of one
+  caught cheater.
+This asymmetry is why mature systems prefer high-confidence, delayed
+enforcement over fast, aggressive action, and why they measure false
+positives with the same seriousness as detections.
+
+---
+
+8. APPEALS AND DUE PROCESS
+Because errors happen, the enforcement system needs a path back:
+* a way for a banned player to be heard.
+* human review for contested or high-stakes cases.
+* a record of why an action was taken, sufficient to review it.
+A system that cannot distinguish "we are confident" from "we are
+uncertain" cannot offer due process, and due process is what separates
+enforcement from punishment without recourse.
+
+---
+
+9. PRIVACY AND LEGAL CONSTRAINTS
+Enforcement touches personal data and crosses jurisdictions:
+* device and hardware identifiers are personal data in many regimes, and
+  their collection must be justified and disclosed.
+* cross-title or cross-platform sharing raises consent and contractual
+  questions.
+* some jurisdictions and platform policies limit what may be collected,
+  or how long it may be kept.
+These constraints shape what enforcement is allowed to do, and they are
+part of the design rather than an afterthought. The ethics-and-scope
+material extends this theme.
+
+---
+
+10. TRANSPARENCY AND COMMUNICATION
+Because enforcement is a decision about a person, how it is communicated
+matters as much as what is decided:
+* telling players what is and is not allowed, before, not after.
+* communicating enforcement honestly - including when a detection is a
+  claim, not a certainty.
+* explaining the appeal path so it can actually be used.
+Opaque enforcement erodes trust even when it is correct; transparent
+enforcement survives the occasional mistake.
+
+---
+
+11. SUMMARY
+Detection produces a signal; enforcement turns it into a decision about
+an account, a device, and a person, and the two must stay separate.
+Enforcement escalates from mitigations to account and hardware bans, and
+lighter actions demand less confidence because they are more reversible.
+Identity is really a fingerprint of many signals, chosen to be stable for
+one user and costly for a cheater to vary, and ban evasion is the arms
+race at that layer.
+False positives cost more than missed cheaters, so due process, appeals,
+and privacy limits are part of the design.
+
+CORE PRINCIPLE:
+A ban is a decision about a person, and that is a heavier thing than a
+detection. Enforce with the least confidence you have, delay until
+certain, prefer the reversible action to the permanent one, and give
+everyone a path back - because the cost of punishing a legitimate player
+is not symmetric to the value of catching one cheater. Build the identity
+layer to be stable for the honest and expensive for the evader, and never
+let detection and enforcement be the same act.
+
+---

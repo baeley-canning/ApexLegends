@@ -1,0 +1,38 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] Target PID 14044, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+[*] Injection strategy: A4 Thread Hijack (HIJACK)
+[A4]       thread 1336 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 21088 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 11624 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 15916 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 19384 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 10508 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 24556 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 26464 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 6592 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 23264 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 28924 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 3764 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 28796 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 4700 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 23484 (RIP 0x7FFD48745A24): stub-ran=no module=no
+[A4]       thread 2028 (RIP 0x7FFD48741E74): stub-ran=no module=no
+[A4]       thread 28668 (RIP 0x7FFD487428A4): stub-ran=no module=no
+[A4]       thread 8704 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 21976 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 10116 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 12764 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 1988 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 25528 (RIP 0x7FFD48741DD4): stub-ran=no module=no
+[A4]       thread 17352 (RIP 0x7FFD28FB5D7A): stub-ran=no module=yes
+---------------------------------------------------------------
+[+] Injection succeeded via A4 Thread Hijack (HIJACK)
+    thread id  : 17352
+    module base: 0x00007FFD0E990000
+---------------------------------------------------------------

@@ -1,0 +1,100 @@
+PYTHON ENGINEERING PRACTICES
+============================
+Purpose: write Python that is easy to run, test, debug and change.
+
+1. PROJECT STRUCTURE
+- Typical layout:
+    myproject/
+      pyproject.toml        (metadata + dependencies; preferred over setup.py)
+      README.md
+      src/myproject/__init__.py
+      src/myproject/core.py
+      tests/test_core.py
+      .gitignore
+- Keep entry points thin: main.py parses arguments and calls functions that
+  live in modules. Logic inside main.py cannot be imported or tested easily.
+- Guard script code with:  if __name__ == "__main__": main()
+  so importing the module does not run it.
+- One responsibility per module. If a file passes ~500 lines, look for a split.
+
+2. ENVIRONMENTS AND DEPENDENCIES
+- Always use a virtual environment per project:
+    python -m venv .venv
+    Windows:  .venv\Scripts\activate      Linux/macOS: source .venv/bin/activate
+- Pin dependencies (requirements.txt with versions, or a lock file from uv /
+  poetry / pip-tools). "It worked yesterday" bugs are usually unpinned upgrades.
+- Never commit .venv/ or __pycache__/ to version control.
+- "ModuleNotFoundError" usually means the wrong interpreter is active. Check
+  with:  python -c "import sys; print(sys.executable)"
+
+3. CODE STYLE
+- Follow PEP 8. Use a formatter (black or ruff format) and a linter (ruff) so
+  style is automatic, not debated.
+- Names: snake_case functions/variables, PascalCase classes, UPPER_CASE
+  constants. Names should say what a thing is, not how it is stored.
+- Type hints on public functions:  def load(path: Path) -> dict[str, str]:
+  Check them with mypy or pyright. Hints catch bugs before running code.
+- Prefer pathlib.Path over string paths; it handles Windows/Unix separators.
+- Use f-strings for formatting. Use logging, not print, for anything that
+  outlives a quick experiment.
+
+4. ERRORS
+- Catch specific exceptions, never bare "except:". A bare except also hides
+  KeyboardInterrupt and real bugs.
+- Fail loudly and early: validate inputs at boundaries (config loading, user
+  input, file reads) and raise clear errors with context:
+    raise ValueError(f"config key 'port' must be int, got {port!r}")
+- Use context managers ("with open(...) as f:") so files and locks are always
+  released, even on error.
+
+5. CONFIGURATION
+- Keep settings in a config file (YAML/TOML/JSON) or environment variables,
+  not hard-coded. Load once at startup, validate, pass the result around.
+- Secrets (API keys, passwords) go in environment variables or a .env file
+  that is excluded from version control and cloud sync. See the secrets file.
+
+6. TESTING
+- pytest is the standard. Test files: tests/test_*.py, functions: test_*.
+- A good unit test: arrange inputs, act once, assert on the result. Fast, no
+  network, no dependence on other tests' order.
+- Test behaviour, not implementation details, so refactors don't break tests.
+- Use fixtures for shared setup and tmp_path for temporary files.
+- Use pytest.mark.parametrize to cover many inputs with one test.
+- Mock only at boundaries (network, clock, filesystem); over-mocking makes
+  tests that pass while the real code is broken.
+- Run tests before and after every change. A failing test you ignored is a
+  bug you shipped.
+
+7. DEBUGGING METHOD
+- Reproduce first. Get the smallest input that triggers the bug reliably.
+- Read the full traceback from the bottom up: the last line is the error, the
+  frames above show how execution got there. The first frame inside YOUR code
+  is usually where to look.
+- Form a hypothesis, then test it with one change at a time.
+- Tools: breakpoint() drops into pdb (n=next, s=step, c=continue, p expr=print,
+  l=list, q=quit). IDE debuggers do the same with a GUI.
+- Binary search: comment out or bisect halves of the code (or git bisect over
+  commits) to find where behaviour changes.
+- After fixing, add a test that would have caught the bug.
+
+8. PERFORMANCE
+- Measure before optimising. Use time.perf_counter() for quick timing,
+  cProfile + snakeviz for where time goes:  python -m cProfile -o out.prof x.py
+- Big wins usually come from algorithms and data structures: a set/dict
+  lookup is O(1), a list search is O(n).
+- Vectorise numeric work with NumPy instead of Python loops (often 10-100x).
+- Cache repeated pure computations with functools.lru_cache.
+- I/O-bound work (network, disk): use threads or asyncio. CPU-bound work: use
+  multiprocessing or native libraries, because the GIL limits threads.
+- Avoid premature optimisation: clear code first, fast code where profiling
+  shows it matters.
+
+9. COMMON PITFALLS
+- Mutable default arguments:  def f(x=[])  shares one list across calls.
+  Use  def f(x=None): x = [] if x is None else x
+- Modifying a list while iterating over it skips items; iterate over a copy.
+- "is" compares identity, "==" compares value. Use "is" only for None.
+- Floating point: 0.1 + 0.2 != 0.3. Compare with math.isclose.
+- Integer division: 7 / 2 == 3.5, 7 // 2 == 3.
+- Late binding in closures inside loops: lambdas capture the variable, not the
+  value at that moment.

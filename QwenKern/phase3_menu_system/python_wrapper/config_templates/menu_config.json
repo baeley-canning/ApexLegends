@@ -1,0 +1,84 @@
+{
+  "MenuVisible": true,
+  "MenuActive": true,
+  "AimbotEnabled": true,
+  "ESPEnabled": true,
+  "GlowEnabled": true,
+  "SkeletonEnabled": true,
+  "FOV": 22.0,
+  "MaxDynamicFOV": 200.0,
+  "SmoothingX": 15.0,
+  "SmoothingY": 16.0,
+  "DeadZone": 5.0,
+  "MaxDistance": 250.0,
+  "UseLeftMouse": true,
+  "UseLeftControl": false,
+  "VisibilityCheck": true,
+  "PredictionEnabled": true,
+  "LowLatencyMode": false,
+  "FPSTarget": 144,
+  "Streamproof": true,
+  "WatermarkControl": true,
+  "LegendConfigs": {
+    "Wraith": {
+      "FOVMultiplier": 1.2,
+      "SmoothingMultiplier": 0.8,
+      "ReactionTime": 75.0
+    },
+    "Gibraltar": {
+      "FOVMultiplier": 0.9,
+      "SmoothingMultiplier": 1.2,
+      "ReactionTime": 125.0
+    },
+    "Bangalore": {
+      "FOVMultiplier": 1.0,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 100.0
+    },
+    "Caustic": {
+      "FOVMultiplier": 0.95,
+      "SmoothingMultiplier": 1.1,
+      "ReactionTime": 110.0
+    },
+    "Mirage": {
+      "FOVMultiplier": 1.1,
+      "SmoothingMultiplier": 0.9,
+      "ReactionTime": 90.0
+    },
+    "Octane": {
+      "FOVMultiplier": 1.15,
+      "SmoothingMultiplier": 0.85,
+      "ReactionTime": 85.0
+    },
+    "Pathfinder": {
+      "FOVMultiplier": 1.05,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 95.0
+    },
+    "Rampart": {
+      "FOVMultiplier": 0.95,
+      "SmoothingMultiplier": 1.1,
+      "ReactionTime": 110.0
+    },
+    "Horizon": {
+      "FOVMultiplier": 1.0,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 100.0
+    },
+    "Flores": {
+      "FOVMultiplier": 1.0,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 100.0
+    },
+    "Lifeline": {
+      "FOVMultiplier": 1.0,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 100.0
+    },
+    "Doppler": {
+      "FOVMultiplier": 1.0,
+      "SmoothingMultiplier": 1.0,
+      "ReactionTime": 100.0
+    }
+  }
+}

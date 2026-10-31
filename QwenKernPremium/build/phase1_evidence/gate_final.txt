@@ -1,0 +1,11 @@
+﻿
+BUILD GATE REPORT - Release|x64 - 2026-10-26 17:06:58
+verdict: PASS  (0 failure(s))
+  [ok] IAT OK  : build\apex_launcher.exe == { ADVAPI32.dll, KERNEL32.dll }
+  [ok] IAT OK  : build\apexcheat.dll == { d3d11.dll, KERNEL32.dll, USER32.dll }
+gate criteria: rebuild EXIT=0; warnings 0; IAT == allowlist; x64; no dead symbols.
+
+
+
+apex_launcher.exe 389632 17:06:55
+apexcheat.dll 318464 17:06:58

@@ -1,0 +1,105 @@
+﻿73:         'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe')) {
+74:         if (Test-Path $candidate) { return $candidate }
+75:     }
+76:     $command = Get-Command msbuild.exe -ErrorAction SilentlyContinue
+77:     if ($command) { return $command.Source }
+78:     return $null
+79: }
+80: function Find-Dumpbin {
+81:     $roots = @(
+82:         'C:\BuildTools\VC\Tools\MSVC',
+83:         (Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10\bin'))
+84:     foreach ($root in $roots) {
+85:         if (-not (Test-Path $root)) { continue }
+86:         $hit = Get-ChildItem $root -Recurse -Filter 'dumpbin.exe' -ErrorAction SilentlyContinue |
+87:                Where-Object { $_.FullName -match 'Hostx64\\x64' -or $_.FullName -match '\\x64\\' } |
+88:                Select-Object -First 1
+89:         if ($hit) { return $hit.FullName }
+90:     }
+91:     $command = Get-Command dumpbin.exe -ErrorAction SilentlyContinue
+92:     if ($command) { return $command.Source }
+93:     return $null
+94: }
+95: 
+96: function Get-StaticImports([string] $dumpbin, [string] $artifact) {
+97:     $output  = @(& $dumpbin /nologo /dependents $artifact 2>&1)
+98:     $imports = New-Object System.Collections.Generic.List[string]
+99:     $inBlock = $false
+100:     foreach ($line in $output) {
+101:         $trimmed = "$line".Trim()
+102:         if ($trimmed -match '^Image has the following dependencies:') { $inBlock = $true;  continue }
+103:         if ($trimmed -match 'following delay load dependencies:')      { $inBlock = $false; continue }
+104:         if (-not $inBlock) { continue }
+105:         if ($trimmed -eq '') {
+106:             # dumpbin prints a blank line immediately AFTER the header, so a
+107:             # blank line only closes the block once names have been collected.
+108:             if ($imports.Count -gt 0) { $inBlock = $false }
+109:             continue
+110:         }
+111:         $imports.Add($trimmed)
+112:     }
+113:     return $imports
+114: }
+115: 
+116: New-Item -ItemType Directory -Force -Path $GateDir | Out-Null
+117: 
+118: Write-Host '=== BUILD GATE (PHASE 0) ===' -ForegroundColor Cyan
+119: Write-Host "repo    : $RepoRoot"
+120: Write-Host "config  : $Configuration|$Platform"
+121: 
+122: # --- 1/2: build clean ------------------------------------------------------
+123: if ($SkipBuild) {
+124:     Add-Note 'rebuild skipped (-SkipBuild): import + symbol checks run on existing artifacts'
+125: } else {
+126:     $msbuild = Find-MSBuild
+127:     if (-not $msbuild) {
+128:         Add-Failure 'MSBuild.exe not found (vswhere, BuildTools and PATH all missed)'
+129:     } else {
+130:         Write-Host "msbuild : $msbuild"
+131:         & $msbuild $Solution /t:Rebuild /p:Configuration=$Configuration /p:Platform=$Platform /m /nologo /v:minimal *> $BuildLog
+132:         $buildExit = $LASTEXITCODE
+133:         Add-Note "msbuild exit code = $buildExit"
+134: 
+135:         $warnings = @(Select-String -Path $BuildLog -Pattern ': warning ' -ErrorAction SilentlyContinue)
+136:         $errors   = @(Select-String -Path $BuildLog -Pattern ': error '   -ErrorAction SilentlyContinue)
+137:         if ($warnings.Count -gt 0) {
+138:             Add-Failure "$($warnings.Count) compiler warning(s) - /W4+/WX must make this impossible"
+139:             $warnings | Select-Object -First 10 | ForEach-Object { Add-Note ('  warn: ' + $_.Line.Trim()) }
+140:         }
+141:         if ($errors.Count -gt 0) {
+142:             Add-Failure "$($errors.Count) compiler error(s)"
+143:             $errors | Select-Object -First 10 | ForEach-Object { Add-Note ('  err : ' + $_.Line.Trim()) }
+144:         }
+145:         if ($buildExit -ne 0) { Add-Failure "MSBuild exit code $buildExit (expected 0)" }
+146:     }
+147: }
+148: 
+149: # --- 3/4/5: artifacts + import allowlists ----------------------------------
+150: $dumpbin = Find-Dumpbin
+151: if (-not $dumpbin) { Add-Failure 'dumpbin.exe not found (MSVC toolset / Windows Kits)' }
+152: else { Add-Note "dumpbin : $dumpbin" }
+153: 
+154: foreach ($artifact in ($AllowList.Keys | Sort-Object)) {
+155:     $full = Join-Path $RepoRoot $artifact
+156:     if (-not (Test-Path $full)) { Add-Failure "missing artifact: $artifact"; continue }
+157: 
+158:     $length = (Get-Item $full).Length
+159:     if ($length -le 0) { Add-Failure "empty artifact: $artifact"; continue }
+160:     Add-Note "artifact: $artifact ($length bytes)"
+161: 
+162:     if (-not $dumpbin) { continue }
+163: 
+164:     $machine = & $dumpbin /nologo /headers $full 2>&1 |
+165:                Select-String -Pattern 'machine \(x64\)' -ErrorAction SilentlyContinue
+166:     if (-not $machine) { Add-Failure "$artifact is not x64" }
+167: 
+168:     $actual  = @(Get-StaticImports $dumpbin $full | Sort-Object -Unique)
+169:     $allowed = @($AllowList[$artifact] | Sort-Object -Unique)
+170: 
+171:     $extra   = @($actual  | Where-Object { $allowed -notcontains $_ })
+172:     $missing = @($allowed | Where-Object { $actual  -notcontains $_ })
+173: 
+174:     if ($extra.Count -eq 0 -and $missing.Count -eq 0) {
+175:         Add-Note "IAT OK  : $artifact == { $($allowed -join ', ') }"
+176:     } else {
+177:         if ($extra.Count -gt 0)   { Add-Failure "$artifact has UNEXPECTED imports: $($extra -join ', ')" }

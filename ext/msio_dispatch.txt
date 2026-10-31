@@ -1,0 +1,126 @@
+---- tail of worker 0x1090 ----
+012d2  85ff                 test edi, edi
+012d4  790e                 jns 0x12e4
+012d6  488d0d43080000       lea rcx, [rip + 0x843]
+012dd  e852060000           call 0x1934
+012e2  eb45                 jmp 0x1329
+012e4  488b4c2458           mov rcx, qword ptr [rsp + 0x58]
+012e9  488b442460           mov rax, qword ptr [rsp + 0x60]
+012ee  482b442468           sub rax, qword ptr [rsp + 0x68]
+012f3  4803c8               add rcx, rax
+012f6  48894c2458           mov qword ptr [rsp + 0x58], rcx
+012fb  49890c24             mov qword ptr [r12], rcx
+012ff  eb28                 jmp 0x1329
+01301  488d0dc8070000       lea rcx, [rip + 0x7c8]
+01308  e827060000           call 0x1934
+0130d  eb1a                 jmp 0x1329
+0130f  488d0d5a070000       lea rcx, [rip + 0x75a]
+01316  e819060000           call 0x1934
+0131b  eb0c                 jmp 0x1329
+0131d  488d0dfc060000       lea rcx, [rip + 0x6fc]
+01324  e80b060000           call 0x1934
+01329  85ff                 test edi, edi
+0132b  4c8bb424c0000000     mov r14, qword ptr [rsp + 0xc0]
+01333  488bac24e8000000     mov rbp, qword ptr [rsp + 0xe8]
+0133b  7909                 jns 0x1346
+0133d  488b0e               mov rcx, qword ptr [rsi]
+01340  ff15da0c0000         call qword ptr [rip + 0xcda]
+01346  8bc7                 mov eax, edi
+01348  488bbc24d8000000     mov rdi, qword ptr [rsp + 0xd8]
+01350  4c8bac24c8000000     mov r13, qword ptr [rsp + 0xc8]
+01358  4c8ba424d0000000     mov r12, qword ptr [rsp + 0xd0]
+01360  488bb424e0000000     mov rsi, qword ptr [rsp + 0xe0]
+01368  488b9c24f0000000     mov rbx, qword ptr [rsp + 0xf0]
+01370  4881c4f8000000       add rsp, 0xf8
+01377  c3                   ret 
+01378  cc                   int3 
+01379  cc                   int3 
+0137a  cc                   int3 
+0137b  cc                   int3 
+0137c  cc                   int3 
+0137d  cc                   int3 
+0137e  cc                   int3 
+0137f  cc                   int3 
+01380  4883ec28             sub rsp, 0x28
+01384  48895c2438           mov qword ptr [rsp + 0x38], rbx
+01389  4889742440           mov qword ptr [rsp + 0x40], rsi
+0138e  488bf1               mov rsi, rcx
+01391  48c7c1ffffffff       mov rcx, 0xffffffffffffffff
+01398  48897c2448           mov qword ptr [rsp + 0x48], rdi
+0139d  498bd8               mov rbx, r8
+013a0  ff15da0c0000         call qword ptr [rip + 0xcda]
+013a6  85c0                 test eax, eax
+013a8  8bf8                 mov edi, eax
+013aa  790c                 jns 0x13b8
+013ac  488d0ded070000       lea rcx, [rip + 0x7ed]
+013b3  e87c050000           call 0x1934
+013b8  4885db               test rbx, rbx
+013bb  7409                 je 0x13c6
+013bd  488bcb               mov rcx, rbx
+013c0  ff157a0c0000         call qword ptr [rip + 0xc7a]
+013c6  488bce               mov rcx, rsi
+013c9  ff15510c0000         call qword ptr [rip + 0xc51]
+013cf  488b742440           mov rsi, qword ptr [rsp + 0x40]
+013d4  488b5c2438           mov rbx, qword ptr [rsp + 0x38]
+013d9  8bc7                 mov eax, edi
+013db  488b7c2448           mov rdi, qword ptr [rsp + 0x48]
+013e0  4883c428             add rsp, 0x28
+013e4  c3                   ret 
+013e5  cc                   int3 
+013e6  cc                   int3 
+013e7  cc                   int3 
+013e8  cc                   int3 
+013e9  cc                   int3 
+013ea  cc                   int3 
+013eb  cc                   int3 
+013ec  cc                   int3 
+013ed  cc                   int3 
+013ee  cc                   int3 
+013ef  cc                   int3 
+013f0  4889542410           mov qword ptr [rsp + 0x10], rdx
+013f5  488bc4               mov rax, rsp
+013f8  4883ec68             sub rsp, 0x68
+013fc  48895818             mov qword ptr [rax + 0x18], rbx
+
+---- worker 0x1380 (0x80102044 write?) ----
+01380  4883ec28             sub rsp, 0x28
+01384  48895c2438           mov qword ptr [rsp + 0x38], rbx
+01389  4889742440           mov qword ptr [rsp + 0x40], rsi
+0138e  488bf1               mov rsi, rcx
+01391  48c7c1ffffffff       mov rcx, 0xffffffffffffffff
+01398  48897c2448           mov qword ptr [rsp + 0x48], rdi
+0139d  498bd8               mov rbx, r8
+013a0  ff15da0c0000         call qword ptr [rip + 0xcda]
+013a6  85c0                 test eax, eax
+013a8  8bf8                 mov edi, eax
+013aa  790c                 jns 0x13b8
+013ac  488d0ded070000       lea rcx, [rip + 0x7ed]
+013b3  e87c050000           call 0x1934
+013b8  4885db               test rbx, rbx
+013bb  7409                 je 0x13c6
+013bd  488bcb               mov rcx, rbx
+013c0  ff157a0c0000         call qword ptr [rip + 0xc7a]
+013c6  488bce               mov rcx, rsi
+013c9  ff15510c0000         call qword ptr [rip + 0xc51]
+013cf  488b742440           mov rsi, qword ptr [rsp + 0x40]
+013d4  488b5c2438           mov rbx, qword ptr [rsp + 0x38]
+013d9  8bc7                 mov eax, edi
+013db  488b7c2448           mov rdi, qword ptr [rsp + 0x48]
+013e0  4883c428             add rsp, 0x28
+013e4  c3                   ret 
+013e5  cc                   int3 
+013e6  cc                   int3 
+013e7  cc                   int3 
+013e8  cc                   int3 
+013e9  cc                   int3 
+013ea  cc                   int3 
+013eb  cc                   int3 
+013ec  cc                   int3 
+013ed  cc                   int3 
+013ee  cc                   int3 
+013ef  cc                   int3 
+013f0  4889542410           mov qword ptr [rsp + 0x10], rdx
+013f5  488bc4               mov rax, rsp
+013f8  4883ec68             sub rsp, 0x68
+013fc  48895818             mov qword ptr [rax + 0x18], rbx
+

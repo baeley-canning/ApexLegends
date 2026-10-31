@@ -1,0 +1,596 @@
+==============================================================================
+### initializer 0x1418d8d60
+==============================================================================
+0x01418d8d60  mov                        qword ptr [rsp + 8], rbx   ; rbx -> [rsp+0x8] 
+0x01418d8d65  mov                        qword ptr [rsp + 0x10], rsi   ; rsi -> [rsp+0x10] 
+0x01418d8d6a  push                       rdi
+0x01418d8d6b  sub                        rsp, 0x20
+0x01418d8d6f  mov                        rax, qword ptr gs:[0x58]
+0x01418d8d78  lea                        rsi, [rip + 0x1759ef1]  ; 'DT_HealthKit'
+0x01418d8d7f  inc                        qword ptr [rip + 0x7f8100a]
+0x01418d8d86  movabs                     rdi, 0x76c1b709961bb121
+0x01418d8d90  add                        qword ptr [rip + 0x7f80fa9], rdi
+0x01418d8d97  xor                        ebx, ebx
+0x01418d8d99  mov                        ecx, 0x20
+0x01418d8d9e  mov                        rax, qword ptr [rax]
+0x01418d8da1  mov                        dword ptr [rip + 0x2406041], 0x15d0
+0x01418d8dab  mov                        eax, dword ptr [rcx + rax]
+0x01418d8dae  cmp                        dword ptr [rip + 0xcdc037c], eax
+0x01418d8db4  jg                         0x1418d8e83
+0x01418d8dba  add                        dword ptr [rip + 0x418d62f], 0x10
+0x01418d8dc1  mov                        rax, qword ptr [rip + 0x418c088]
+0x01418d8dc8  mov                        qword ptr [rip + 0x2406039], rbx
+0x01418d8dcf  mov                        dword ptr [rip + 0x2405b57], 0xffffffff
+0x01418d8dd9  test                       rax, rax
+0x01418d8ddc  jne                        0x1418d8dea
+0x01418d8dde  call                       0x141dc6600
+0x01418d8de3  mov                        qword ptr [rip + 0x418c066], rax
+0x01418d8dea  mov                        rcx, qword ptr [rax]
+0x01418d8ded  mov                        edx, 0x10
+0x01418d8df2  mov                        r8, qword ptr [rcx + 8]
+0x01418d8df6  mov                        rcx, rax
+0x01418d8df9  call                       r8
+0x01418d8dfc  mov                        qword ptr [rip + 0x2405b35], rax
+0x01418d8e03  lea                        rcx, [rip + 0xcdc039e]
+0x01418d8e0a  mov                        qword ptr [rip + 0x2405fdf], rbx
+0x01418d8e11  mov                        qword ptr [rip + 0x2405fe0], rsi
+0x01418d8e18  mov                        rsi, qword ptr [rsp + 0x38]
+0x01418d8e1d  mov                        word ptr [rip + 0x2405fdc], bx
+0x01418d8e24  mov                        dword ptr [rip + 0x2405fbe], ebx
+0x01418d8e2a  mov                        rbx, qword ptr [rsp + 0x30]
+0x01418d8e2f  mov                        dword ptr [rip + 0x2405b07], 2
+0x01418d8e39  mov                        qword ptr [rax], rcx   ; rcx (=0x14e6991a8) -> [rax+0x0] 
+0x01418d8e3c  lea                        rcx, [rip + 0xcdc03cd]
+0x01418d8e43  mov                        rax, qword ptr [rip + 0x2405aee]
+0x01418d8e4a  mov                        qword ptr [rax + 8], rcx   ; rcx (=0x14e699210) -> [rax+0x8] 
+0x01418d8e4e  mov                        ecx, dword ptr [rip + 0xcdc0368]
+0x01418d8e54  not                        ecx
+0x01418d8e56  shr                        rcx, 6
+0x01418d8e5a  and                        ecx, 1
+0x01418d8e5d  test                       byte ptr [rip + 0xcdc03c0], 0x40
+0x01418d8e64  lea                        rax, [rcx + 1]
+0x01418d8e68  cmovne                     rax, rcx
+0x01418d8e6c  xor                        rax, rdi
+0x01418d8e6f  add                        qword ptr [rip + 0x7f80ed2], rax
+0x01418d8e76  inc                        qword ptr [rip + 0x7f80f1b]
+0x01418d8e7d  add                        rsp, 0x20
+0x01418d8e81  pop                        rdi
+0x01418d8e82  ret                        
+0x01418d8e83  lea                        rcx, [rip + 0xcdc02a6]
+0x01418d8e8a  call                       0x142c0a798
+0x01418d8e8f  cmp                        dword ptr [rip + 0xcdc029a], -1
+0x01418d8e96  jne                        0x1418d8dba
+0x01418d8e9c  xorps                      xmm0, xmm0
+0x01418d8e9f  lea                        rdx, [rip + 0x53287a]
+0x01418d8ea6  xor                        eax, eax
+0x01418d8ea8  lea                        rcx, [rip + 0xcdc0281]
+0x01418d8eaf  mov                        qword ptr [rip + 0xcdc02ea], rax
+0x01418d8eb6  lea                        rax, [rip + 0x1759d7b]  ; 'should_never_see_this'
+0x01418d8ebd  movups                     xmmword ptr [rip + 0xcdc027c], xmm0
+0x01418d8ec4  mov                        dword ptr [rip + 0xcdc027e], ebx
+0x01418d8eca  movups                     xmmword ptr [rip + 0xcdc0327], xmm0
+0x01418d8ed1  mov                        qword ptr [rip + 0xcdc0268], rbx
+0x01418d8ed8  movups                     xmmword ptr [rip + 0xcdc0381], xmm0
+0x01418d8edf  mov                        dword ptr [rip + 0xcdc031b], 1
+0x01418d8ee9  movups                     xmmword ptr [rip + 0xcdc02d8], xmm0
+0x01418d8ef0  mov                        dword ptr [rip + 0xcdc0306], 0xffffffff
+0x01418d8efa  movups                     xmmword ptr [rip + 0xcdc032f], xmm0
+0x01418d8f01  mov                        qword ptr [rip + 0xcdc02c8], rsi
+0x01418d8f08  movups                     xmmword ptr [rip + 0xcdc0241], xmm0
+0x01418d8f0f  mov                        qword ptr [rip + 0xcdc0232], 4
+0x01418d8f1a  movups                     xmmword ptr [rip + 0xcdc026f], xmm0
+0x01418d8f21  mov                        dword ptr [rip + 0xcdc0271], 1
+0x01418d8f2b  movups                     xmmword ptr [rip + 0xcdc0276], xmm0
+0x01418d8f32  mov                        dword ptr [rip + 0xcdc025c], 0xffffffff
+0x01418d8f3c  movups                     xmmword ptr [rip + 0xcdc02cd], xmm0
+0x01418d8f43  mov                        dword ptr [rip + 0xcdc020b], ebx
+0x01418d8f49  movups                     xmmword ptr [rip + 0xcdc0210], xmm0
+0x01418d8f50  mov                        qword ptr [rip + 0xcdc0211], rax
+0x01418d8f57  xor                        eax, eax
+0x01418d8f59  mov                        qword ptr [rip + 0xcdc02a8], rax
+0x01418d8f60  lea                        rax, [rip + 0x2425979]
+0x01418d8f67  mov                        qword ptr [rip + 0xcdc025a], rax
+0x01418d8f6e  xor                        eax, eax
+0x01418d8f70  mov                        qword ptr [rip + 0xcdc02f9], rax
+0x01418d8f77  lea                        rax, [rip + 0x1759cd2]  ; 'm_minimapData'
+0x01418d8f7e  mov                        qword ptr [rip + 0xcdc02b3], rax
+0x01418d8f85  lea                        rax, [rip + 0x25d95e4]
+0x01418d8f8c  movups                     xmmword ptr [rip + 0xcdc01ed], xmm0
+0x01418d8f93  mov                        qword ptr [rip + 0xcdc0296], rax
+0x01418d8f9a  movups                     xmmword ptr [rip + 0xcdc0217], xmm0
+0x01418d8fa1  mov                        qword ptr [rip + 0xcdc01e0], rbx
+0x01418d8fa8  movups                     xmmword ptr [rip + 0xcdc0271], xmm0
+0x01418d8faf  mov                        qword ptr [rip + 0xcdc01f6], rbx
+0x01418d8fb6  movups                     xmmword ptr [rip + 0xcdc01b3], xmm0
+0x01418d8fbd  mov                        dword ptr [rip + 0xcdc01e1], 0xa
+0x01418d8fc7  movups                     xmmword ptr [rip + 0xcdc020a], xmm0
+0x01418d8fce  mov                        dword ptr [rip + 0xcdc01e8], ebx
+0x01418d8fd4  movups                     xmmword ptr [rip + 0xcdc020d], xmm0
+0x01418d8fdb  mov                        qword ptr [rip + 0xcdc0216], rdx
+0x01418d8fe2  movups                     xmmword ptr [rip + 0xcdc0257], xmm0
+0x01418d8fe9  mov                        dword ptr [rip + 0xcdc0279], 1
+0x01418d8ff3  movups                     xmmword ptr [rip + 0xcdc0256], xmm0
+0x01418d8ffa  mov                        dword ptr [rip + 0xcdc0264], 0xffffffff
+0x01418d9004  mov                        qword ptr [rip + 0xcdc0205], 0x818
+0x01418d900f  mov                        dword ptr [rip + 0xcdc01f7], 0xa
+0x01418d9019  mov                        dword ptr [rip + 0xcdc0205], ebx
+0x01418d901f  mov                        qword ptr [rip + 0xcdc023a], rdx
+0x01418d9026  call                       0x142c0a72c
+0x01418d902b  jmp                        0x1418d8dba
+0x01418d9030  push                       rbx
+0x01418d9032  sub                        rsp, 0x20
+0x01418d9036  mov                        cl, 7
+0x01418d9038  call                       0x141dd2830
+0x01418d903d  lea                        rax, [rip + 0x170bedc]  ; '1'
+0x01418d9044  mov                        word ptr [rip + 0x24064a3], 0
+0x01418d904d  mov                        qword ptr [rip + 0x240647c], rax
+0x01418d9054  lea                        rbx, [rip + 0x2406435]
+0x01418d905b  mov                        rax, qword ptr [rip + 0x418bdee]
+0x01418d9062  mov                        qword ptr [rip + 0x240645f], rbx
+0x01418d9069  mov                        qword ptr [rip + 0x2406480], 0
+0x01418d9074  mov                        qword ptr [rip + 0x2406461], 2
+0x01418d907f  test                       rax, rax
+0x01418d9082  jne                        0x1418d9090
+0x01418d9084  call                       0x141dc6600
+0x01418d9089  mov                        qword ptr [rip + 0x418bdc0], rax
+0x01418d9090  mov                        r8, qword ptr [rax]
+0x01418d9093  mov                        edx, 2
+0x01418d9098  mov                        rcx, rax
+0x01418d909b  call                       qword ptr [r8 + 8]
+0x01418d909f  mov                        r8, qword ptr [rip + 0x240643a]
+0x01418d90a6  mov                        rcx, rax
+0x01418d90a9  mov                        rdx, qword ptr [rip + 0x2406420]
+0x01418d90b0  mov                        qword ptr [rip + 0x2406421], rax
+0x01418d90b7  call                       0x142c5fcb0
+0x01418d90bc  mov                        rdx, qword ptr [rip + 0x2406415]
+0x01418d90c3  mov                        rcx, rbx
+0x01418d90c6  call                       0x141ddef50
+0x01418d90cb  test                       al, al
+0x01418d90cd  jne                        0x1418d911a
+0x01418d90cf  mov                        rcx, qword ptr [rip + 0x2406402]
+0x01418d90d6  call                       0x142c32d1c
+0x01418d90db  xorps                      xmm1, xmm1
+0x01418d90de  cvtsd2ss                   xmm1, xmm0
+0x01418d90e2  movss                      dword ptr [rsp + 0x30], xmm1   ; xmm1 -> [rsp+0x30] 
+0x01418d90e8  mov                        eax, dword ptr [rsp + 0x30]
+0x01418d90ec  and                        eax, 0x7f800000
+0x01418d90f1  movss                      dword ptr [rip + 0x24063ef], xmm1
+0x01418d90f9  cmp                        eax, 0x7f800000
+0x01418d90fe  jne                        0x1418d9110
+0x01418d9100  movss                      xmm1, dword ptr [rip + 0x18f6818]
+0x01418d9108  movss                      dword ptr [rip + 0x24063d8], xmm1
+0x01418d9110  cvttss2si                  eax, xmm1
+0x01418d9114  mov                        dword ptr [rip + 0x24063d2], eax
+0x01418d911a  mov                        rcx, qword ptr [rip + 0x240636f]
+0x01418d9121  lea                        rdx, [rip + 0x1344c8]
+0x01418d9128  mov                        rax, qword ptr [rcx + 0x90]
+0x01418d912f  cmp                        rax, rdx
+0x01418d9132  je                         0x1418d9147
+0x01418d9134  mov                        rdx, qword ptr [rip + 0x240639d]
+0x01418d913b  mov                        rcx, rbx
+0x01418d913e  call                       rax
+0x01418d9140  mov                        rcx, qword ptr [rip + 0x2406349]
+0x01418d9147  mov                        r8, qword ptr [rip + 0x418c1f2]
+0x01418d914e  lea                        rax, [rip + 0x173df2b]  ; 'settings_field_lookup_doesnt_exist_is_fatal'
+0x01418d9155  mov                        qword ptr [rip + 0x2406344], rax
+0x01418d915c  lea                        rax, [rip + 0x170be4d]
+0x01418d9163  mov                        qword ptr [rip + 0x240633e], rax
+0x01418d916a  mov                        rax, qword ptr [rip + 0x418c1df]
+0x01418d9171  mov                        qword ptr [rip + 0x2406320], rax
+0x01418d9178  mov                        byte ptr [rip + 0x240633d], 0
+0x01418d917f  mov                        qword ptr [rip + 0x2406326], 0
+0x01418d918a  mov                        dword ptr [rip + 0x2406324], 0x2002
+0x01418d9194  mov                        qword ptr [rip + 0x418c1b5], rbx
+0x01418d919b  test                       r8, r8
+0x01418d919e  je                         0x1418d91c2
+0x01418d91a0  mov                        rax, qword ptr [rcx + 0x68]
+0x01418d91a4  lea                        rcx, [rip + 0x505325]
+0x01418d91ab  cmp                        rax, rcx
+0x01418d91ae  jne                        0x1418d91bd
+0x01418d91b0  mov                        rax, qword ptr [r8]
+0x01418d91b3  mov                        rdx, rbx
+0x01418d91b6  mov                        rcx, r8
+0x01418d91b9  call                       qword ptr [rax]
+0x01418d91bb  jmp                        0x1418d91c2
+0x01418d91bd  mov                        rcx, rbx
+0x01418d91c0  call                       rax
+0x01418d91c2  cmp                        byte ptr [rip + 0x27901cf], 0
+0x01418d91c9  jne                        0x1418d91df
+0x01418d91cb  mov                        rax, qword ptr gs:[0x58]
+0x01418d91d4  mov                        edx, 0x98
+0x01418d91d9  mov                        rcx, qword ptr [rax]
+0x01418d91dc  dec                        dword ptr [rdx + rcx]
+0x01418d91df  lea                        rcx, [rip + 0x139d96a]
+0x01418d91e6  add                        rsp, 0x20
+0x01418d91ea  pop                        rbx
+0x01418d91eb  jmp                        0x142c0aa38
+0x01418d91f0  lea                        rcx, [rip + 0x139d969]
+0x01418d91f7  jmp                        0x142c0aa38
+0x01418d91fc  int3                       
+==============================================================================
+### initializer 0x1420d8e70
+==============================================================================
+0x01420d8e70  mov                        qword ptr [rsp + 8], rbx   ; rbx -> [rsp+0x8] 
+0x01420d8e75  push                       rdi
+0x01420d8e76  sub                        rsp, 0x20
+0x01420d8e7a  mov                        rax, qword ptr gs:[0x58]
+0x01420d8e83  lea                        rdi, [rip + 0xfe1d8e]  ; 'DT_AI_BaseNPC'
+0x01420d8e8a  inc                        qword ptr [rip + 0x7780eff]
+0x01420d8e91  movabs                     rbx, 0x596f8c0f47efab0d
+0x01420d8e9b  add                        qword ptr [rip + 0x7780e9e], rbx
+0x01420d8ea2  mov                        ecx, 0x20
+0x01420d8ea7  mov                        rax, qword ptr [rax]
+0x01420d8eaa  mov                        dword ptr [rip + 0x1c4f088], 0x1e80
+0x01420d8eb4  mov                        eax, dword ptr [rcx + rax]
+0x01420d8eb7  cmp                        dword ptr [rip + 0xc5ee223], eax
+0x01420d8ebd  jg                         0x1420d8ff0
+0x01420d8ec3  mov                        r9, rdi
+0x01420d8ec6  lea                        rdx, [rip + 0xc5f82fb]
+0x01420d8ecd  mov                        r8d, 0x10
+0x01420d8ed3  lea                        rcx, [rip + 0x1c4eba6]
+0x01420d8eda  call                       0x141e0af60
+0x01420d8edf  mov                        ecx, dword ptr [rip + 0xc5f82f7]
+0x01420d8ee5  not                        ecx
+0x01420d8ee7  shr                        rcx, 6
+0x01420d8eeb  and                        ecx, 1
+0x01420d8eee  test                       byte ptr [rip + 0xc5f834f], 0x40
+0x01420d8ef5  lea                        rax, [rcx + 1]
+0x01420d8ef9  cmovne                     rax, rcx
+0x01420d8efd  test                       byte ptr [rip + 0xc5f83a8], 0x40
+0x01420d8f04  lea                        rcx, [rax + 1]
+0x01420d8f08  cmovne                     rcx, rax
+0x01420d8f0c  test                       byte ptr [rip + 0xc5f8401], 0x40
+0x01420d8f13  lea                        rax, [rcx + 1]
+0x01420d8f17  cmovne                     rax, rcx
+0x01420d8f1b  test                       byte ptr [rip + 0xc5f845a], 0x40
+0x01420d8f22  lea                        rcx, [rax + 1]
+0x01420d8f26  cmovne                     rcx, rax
+0x01420d8f2a  test                       byte ptr [rip + 0xc5f84b3], 0x40
+0x01420d8f31  lea                        rax, [rcx + 1]
+0x01420d8f35  cmovne                     rax, rcx
+0x01420d8f39  test                       byte ptr [rip + 0xc5f850c], 0x40
+0x01420d8f40  lea                        rcx, [rax + 1]
+0x01420d8f44  cmovne                     rcx, rax
+0x01420d8f48  test                       byte ptr [rip + 0xc5f8565], 0x40
+0x01420d8f4f  lea                        rax, [rcx + 1]
+0x01420d8f53  cmovne                     rax, rcx
+0x01420d8f57  test                       byte ptr [rip + 0xc5f85be], 0x40
+0x01420d8f5e  lea                        rcx, [rax + 1]
+0x01420d8f62  cmovne                     rcx, rax
+0x01420d8f66  test                       byte ptr [rip + 0xc5f8617], 0x40
+0x01420d8f6d  lea                        rax, [rcx + 1]
+0x01420d8f71  cmovne                     rax, rcx
+0x01420d8f75  test                       byte ptr [rip + 0xc5f8670], 0x40
+0x01420d8f7c  lea                        rcx, [rax + 1]
+0x01420d8f80  cmovne                     rcx, rax
+0x01420d8f84  test                       byte ptr [rip + 0xc5f86c9], 0x40
+0x01420d8f8b  lea                        rax, [rcx + 1]
+0x01420d8f8f  cmovne                     rax, rcx
+0x01420d8f93  test                       byte ptr [rip + 0xc5f8722], 0x40
+0x01420d8f9a  lea                        rcx, [rax + 1]
+0x01420d8f9e  cmovne                     rcx, rax
+0x01420d8fa2  test                       byte ptr [rip + 0xc5f877b], 0x40
+0x01420d8fa9  mov                        eax, 1
+0x01420d8fae  lea                        rdx, [rcx + 1]
+0x01420d8fb2  cmovne                     rdx, rcx
+0x01420d8fb6  test                       byte ptr [rip + 0xc5f87cf], 0x40
+0x01420d8fbd  lea                        r8, [rdx + 1]
+0x01420d8fc1  cmovne                     r8, rdx
+0x01420d8fc5  test                       byte ptr [rip + 0xc5f8828], 0x40
+0x01420d8fcc  lea                        rcx, [r8 + 1]
+0x01420d8fd0  cmovne                     rcx, r8
+0x01420d8fd4  xor                        rcx, rbx
+0x01420d8fd7  mov                        rbx, qword ptr [rsp + 0x30]
+0x01420d8fdc  add                        qword ptr [rip + 0x7780d65], rcx
+0x01420d8fe3  inc                        qword ptr [rip + 0x7780dae]
+0x01420d8fea  add                        rsp, 0x20
+0x01420d8fee  pop                        rdi
+0x01420d8fef  ret                        
+0x01420d8ff0  lea                        rcx, [rip + 0xc5ee0e9]
+0x01420d8ff7  call                       0x142c0a798
+0x01420d8ffc  cmp                        dword ptr [rip + 0xc5ee0dd], -1
+0x01420d9003  jne                        0x1420d8ec3
+0x01420d9009  xorps                      xmm0, xmm0
+0x01420d900c  lea                        rcx, [rip - 0x2cd8f3]
+0x01420d9013  xor                        r10d, r10d
+0x01420d9016  xor                        eax, eax
+0x01420d9018  mov                        qword ptr [rip + 0xc5f81a1], rax
+0x01420d901f  lea                        rax, [rip + 0xf59c12]  ; 'should_never_see_this'
+0x01420d9026  movups                     xmmword ptr [rip + 0xc5f8133], xmm0
+0x01420d902d  mov                        dword ptr [rip + 0xc5f8134], r10d
+0x01420d9034  movups                     xmmword ptr [rip + 0xc5f81dd], xmm0
+0x01420d903b  mov                        qword ptr [rip + 0xc5f811e], r10
+0x01420d9042  movups                     xmmword ptr [rip + 0xc5f81e7], xmm0
+0x01420d9049  mov                        dword ptr [rip + 0xc5f81d1], 1
+0x01420d9053  movups                     xmmword ptr [rip + 0xc5f823e], xmm0
+0x01420d905a  mov                        dword ptr [rip + 0xc5f81bc], 0xffffffff
+0x01420d9064  movups                     xmmword ptr [rip + 0xc5f817d], xmm0
+0x01420d906b  mov                        qword ptr [rip + 0xc5f817e], rdi
+0x01420d9072  movups                     xmmword ptr [rip + 0xc5f80f7], xmm0
+0x01420d9079  mov                        qword ptr [rip + 0xc5f80e8], 4
+0x01420d9084  movups                     xmmword ptr [rip + 0xc5f8125], xmm0
+0x01420d908b  mov                        dword ptr [rip + 0xc5f8127], 1
+0x01420d9095  movups                     xmmword ptr [rip + 0xc5f812c], xmm0
+0x01420d909c  mov                        dword ptr [rip + 0xc5f8112], 0xffffffff
+0x01420d90a6  movups                     xmmword ptr [rip + 0xc5f8193], xmm0
+0x01420d90ad  mov                        dword ptr [rip + 0xc5f80c0], r10d
+0x01420d90b4  movups                     xmmword ptr [rip + 0xc5f81c5], xmm0
+0x01420d90bb  mov                        qword ptr [rip + 0xc5f810a], r10
+0x01420d90c2  movups                     xmmword ptr [rip + 0xc5f81df], xmm0
+0x01420d90c9  mov                        dword ptr [rip + 0xc5f80f5], 0xa
+0x01420d90d3  movups                     xmmword ptr [rip + 0xc5f820e], xmm0
+0x01420d90da  mov                        qword ptr [rip + 0xc5f8137], rcx
+0x01420d90e1  movups                     xmmword ptr [rip + 0xc5f8268], xmm0
+0x01420d90e8  mov                        dword ptr [rip + 0xc5f819a], 1
+0x01420d90f2  movups                     xmmword ptr [rip + 0xc5f8087], xmm0
+0x01420d90f9  mov                        qword ptr [rip + 0xc5f8088], rax
+0x01420d9100  xor                        eax, eax
+0x01420d9102  mov                        qword ptr [rip + 0xc5f811f], rax
+0x01420d9109  lea                        rax, [rip + 0x1c3b9b0]
+0x01420d9110  mov                        qword ptr [rip + 0xc5f80d1], rax
+0x01420d9117  xor                        eax, eax
+0x01420d9119  mov                        qword ptr [rip + 0xc5f8170], rax
+0x01420d9120  lea                        rax, [rip + 0xf83729]  ; 'm_iHealth'
+0x01420d9127  movups                     xmmword ptr [rip + 0xc5f8122], xmm0
+0x01420d912e  mov                        qword ptr [rip + 0xc5f8123], rax
+0x01420d9135  xor                        eax, eax
+0x01420d9137  mov                        qword ptr [rip + 0xc5f81ba], rax
+0x01420d913e  lea                        rax, [rip + 0xf836fb]  ; 'm_iMaxHealth'
+0x01420d9145  movups                     xmmword ptr [rip + 0xc5f816c], xmm0
+0x01420d914c  mov                        qword ptr [rip + 0xc5f816d], rax
+0x01420d9153  xor                        eax, eax
+0x01420d9155  movups                     xmmword ptr [rip + 0xc5f8044], xmm0
+0x01420d915c  mov                        qword ptr [rip + 0xc5f81fd], rax
+0x01420d9163  movups                     xmmword ptr [rip + 0xc5f806e], xmm0
+0x01420d916a  mov                        qword ptr [rip + 0xc5f8037], r10
+0x01420d9171  movups                     xmmword ptr [rip + 0xc5f80f8], xmm0
+0x01420d9178  mov                        dword ptr [rip + 0xc5f805d], r10d
+0x01420d917f  movups                     xmmword ptr [rip + 0xc5f8152], xmm0
+0x01420d9186  mov                        dword ptr [rip + 0xc5f80f8], 0xffffffff
+0x01420d9190  movups                     xmmword ptr [rip + 0xc5f7ff9], xmm0
+0x01420d9197  mov                        qword ptr [rip + 0xc5f8092], 0x330
+0x01420d91a2  movups                     xmmword ptr [rip + 0xc5f804f], xmm0
+0x01420d91a9  mov                        qword ptr [rip + 0xc5f8088], 4
+0x01420d91b4  movups                     xmmword ptr [rip + 0xc5f804d], xmm0
+0x01420d91bb  mov                        dword ptr [rip + 0xc5f806e], r10d
+0x01420d91c2  movups                     xmmword ptr [rip + 0xc5f8097], xmm0
+0x01420d91c9  mov                        dword ptr [rip + 0xc5f8074], r10d
+0x01420d91d0  mov                        qword ptr [rip + 0xc5f80a1], r10
+0x01420d91d7  movups                     xmmword ptr [rip + 0xc5f80ea], xmm0
+0x01420d91de  mov                        dword ptr [rip + 0xc5f810c], 1
+0x01420d91e8  mov                        dword ptr [rip + 0xc5f80fe], 0xffffffff
+0x01420d91f2  mov                        qword ptr [rip + 0xc5f809f], 0x470
+0x01420d91fd  mov                        qword ptr [rip + 0xc5f809c], 4
+0x01420d9208  mov                        dword ptr [rip + 0xc5f8089], r10d
+0x01420d920f  mov                        dword ptr [rip + 0xc5f8096], r10d
+0x01420d9216  mov                        qword ptr [rip + 0xc5f80c3], r10
+0x01420d921d  movups                     xmmword ptr [rip + 0xc5f80dc], xmm0
+0x01420d9224  mov                        dword ptr [rip + 0xc5f812e], 1
+0x01420d922e  movups                     xmmword ptr [rip + 0xc5f80db], xmm0
+0x01420d9235  mov                        dword ptr [rip + 0xc5f8119], 0xffffffff
+0x01420d923f  movups                     xmmword ptr [rip + 0xc5f80da], xmm0
+0x01420d9246  movups                     xmmword ptr [rip + 0xc5f80e3], xmm0
+0x01420d924d  movups                     xmmword ptr [rip + 0xc5f80ec], xmm0
+0x01420d9254  lea                        rax, [rip + 0xfaff45]  ; 'm_lifeState'
+0x01420d925b  mov                        qword ptr [rip + 0xc5f809e], 0x698
+0x01420d9266  mov                        qword ptr [rip + 0xc5f80bb], rax
+0x01420d926d  lea                        rdx, [rip - 0x2cdd64]
+0x01420d9274  xor                        eax, eax
+0x01420d9276  mov                        qword ptr [rip + 0xc5f808b], 1
+0x01420d9281  mov                        qword ptr [rip + 0xc5f8140], rax
+0x01420d9288  lea                        rax, [rip + 0xfafbf9]  ; 'm_inventory'
+0x01420d928f  movups                     xmmword ptr [rip + 0xc5f8122], xmm0
+0x01420d9296  mov                        dword ptr [rip + 0xc5f8063], r10d
+0x01420d929d  movups                     xmmword ptr [rip + 0xc5f812c], xmm0
+0x01420d92a4  mov                        dword ptr [rip + 0xc5f8069], r10d
+0x01420d92ab  movups                     xmmword ptr [rip + 0xc5f81d6], xmm0
+0x01420d92b2  mov                        qword ptr [rip + 0xc5f808f], rdx
+0x01420d92b9  movups                     xmmword ptr [rip + 0xc5f80c8], xmm0
+0x01420d92c0  mov                        qword ptr [rip + 0xc5f80c9], rax
+0x01420d92c7  lea                        rax, [rip + 0x1c32f32]
+0x01420d92ce  mov                        qword ptr [rip + 0xc5f80b3], rax
+0x01420d92d5  xor                        eax, eax
+0x01420d92d7  mov                        qword ptr [rip + 0xc5f8152], rax
+0x01420d92de  lea                        rax, [rip + 0xfe196b]  ; 'm_fireteamSlotIndex'
+0x01420d92e5  movups                     xmmword ptr [rip + 0xc5f816c], xmm0
+0x01420d92ec  mov                        dword ptr [rip + 0xc5f80ce], 1
+0x01420d92f6  movups                     xmmword ptr [rip + 0xc5f806b], xmm0
+0x01420d92fd  mov                        dword ptr [rip + 0xc5f80b9], 0xffffffff
+0x01420d9307  movups                     xmmword ptr [rip + 0xc5f80d2], xmm0
+0x01420d930e  mov                        qword ptr [rip + 0xc5f8053], 0x1958
+0x01420d9319  movups                     xmmword ptr [rip + 0xc5f8100], xmm0
+0x01420d9320  mov                        dword ptr [rip + 0xc5f803e], 0xa
+0x01420d932a  movups                     xmmword ptr [rip + 0xc5f8107], xmm0
+0x01420d9331  mov                        qword ptr [rip + 0xc5f8080], rcx
+0x01420d9338  movups                     xmmword ptr [rip + 0xc5f8161], xmm0
+0x01420d933f  mov                        dword ptr [rip + 0xc5f80e3], 1
+0x01420d9349  movups                     xmmword ptr [rip + 0xc5f8160], xmm0
+0x01420d9350  mov                        dword ptr [rip + 0xc5f80ce], 0xffffffff
+0x01420d935a  movups                     xmmword ptr [rip + 0xc5f818f], xmm0
+0x01420d9361  mov                        qword ptr [rip + 0xc5f8068], 0x1cb0
+0x01420d936c  movups                     xmmword ptr [rip + 0xc5f807d], xmm0
+0x01420d9373  mov                        qword ptr [rip + 0xc5f807e], rax
+0x01420d937a  xor                        eax, eax
+0x01420d937c  mov                        qword ptr [rip + 0xc5f8115], rax
+0x01420d9383  lea                        rax, [rip + 0xfe18ae]  ; 'statuseffectsdata_npc'
+0x01420d938a  mov                        qword ptr [rip + 0xc5f80cf], rax
+0x01420d9391  lea                        rax, [rip + 0x1c41398]
+0x01420d9398  mov                        qword ptr [rip + 0xc5f80b9], rax
+0x01420d939f  xor                        eax, eax
+0x01420d93a1  mov                        qword ptr [rip + 0xc5f8158], rax
+0x01420d93a8  lea                        rax, [rip + 0xf83419]  ; 'm_title'
+0x01420d93af  movups                     xmmword ptr [rip + 0xc5f810a], xmm0
+0x01420d93b6  mov                        qword ptr [rip + 0xc5f810b], rax
+0x01420d93bd  lea                        rax, [rip - 0xa14]
+0x01420d93c4  movups                     xmmword ptr [rip + 0xc5f8115], xmm0
+0x01420d93cb  mov                        qword ptr [rip + 0xc5f8116], rax
+0x01420d93d2  xor                        eax, eax
+0x01420d93d4  movups                     xmmword ptr [rip + 0xc5f7f9d], xmm0
+0x01420d93db  mov                        dword ptr [rip + 0xc5f7f9a], r10d
+0x01420d93e2  movups                     xmmword ptr [rip + 0xc5f8027], xmm0
+0x01420d93e9  mov                        qword ptr [rip + 0xc5f7fe8], 4
+0x01420d93f4  movups                     xmmword ptr [rip + 0xc5f804d], xmm0
+0x01420d93fb  mov                        dword ptr [rip + 0xc5f7fce], r10d
+0x01420d9402  movups                     xmmword ptr [rip + 0xc5f7f8f], xmm0
+0x01420d9409  mov                        dword ptr [rip + 0xc5f7fd4], r10d
+0x01420d9410  movups                     xmmword ptr [rip + 0xc5f7f91], xmm0
+0x01420d9417  mov                        qword ptr [rip + 0xc5f7ffa], r10
+0x01420d941e  movups                     xmmword ptr [rip + 0xc5f7fdb], xmm0
+0x01420d9425  mov                        dword ptr [rip + 0xc5f8065], 1
+0x01420d942f  movups                     xmmword ptr [rip + 0xc5f8032], xmm0
+0x01420d9436  mov                        dword ptr [rip + 0xc5f8050], 0xffffffff
+0x01420d9440  movups                     xmmword ptr [rip + 0xc5f8031], xmm0
+0x01420d9447  mov                        qword ptr [rip + 0xc5f7fee], r10
+0x01420d944e  mov                        dword ptr [rip + 0xc5f7fe0], 0xa
+0x01420d9458  mov                        dword ptr [rip + 0xc5f7fed], r10d
+0x01420d945f  mov                        qword ptr [rip + 0xc5f8022], rcx
+0x01420d9466  movups                     xmmword ptr [rip + 0xc5f8063], xmm0
+0x01420d946d  mov                        dword ptr [rip + 0xc5f8085], 1
+0x01420d9477  mov                        dword ptr [rip + 0xc5f8077], 0xffffffff
+0x01420d9481  mov                        qword ptr [rip + 0xc5f8018], 0x1e51
+0x01420d948c  mov                        dword ptr [rip + 0xc5f800a], 4
+0x01420d9496  mov                        dword ptr [rip + 0xc5f8017], r10d
+0x01420d949d  mov                        dword ptr [rip + 0xc5f8011], 0x20
+0x01420d94a7  movups                     xmmword ptr [rip + 0xc5f805a], xmm0
+0x01420d94ae  mov                        qword ptr [rip + 0xc5f80b3], rax
+0x01420d94b5  lea                        rax, [rip + 0xfe171c]  ; 'm_aiSettingsIndex'
+0x01420d94bc  movups                     xmmword ptr [rip + 0xc5f80ad], xmm0
+0x01420d94c3  mov                        qword ptr [rip + 0xc5f803e], 0x1e74
+0x01420d94ce  movups                     xmmword ptr [rip + 0xc5f8103], xmm0
+0x01420d94d5  mov                        dword ptr [rip + 0xc5f802c], r10d
+0x01420d94dc  movups                     xmmword ptr [rip + 0xc5f815d], xmm0
+0x01420d94e3  mov                        qword ptr [rip + 0xc5f8086], 0x1e78
+0x01420d94ee  movups                     xmmword ptr [rip + 0xc5f81b3], xmm0
+0x01420d94f5  mov                        dword ptr [rip + 0xc5f8074], r10d
+0x01420d94fc  movups                     xmmword ptr [rip + 0xc5f8015], xmm0
+0x01420d9503  mov                        qword ptr [rip + 0xc5f8006], 4
+0x01420d950e  movups                     xmmword ptr [rip + 0xc5f8043], xmm0
+0x01420d9515  mov                        dword ptr [rip + 0xc5f8045], 1
+0x01420d951f  movups                     xmmword ptr [rip + 0xc5f805a], xmm0
+0x01420d9526  mov                        dword ptr [rip + 0xc5f8030], 0xffffffff
+0x01420d9530  movups                     xmmword ptr [rip + 0xc5f8089], xmm0
+0x01420d9537  mov                        dword ptr [rip + 0xc5f7fde], r10d
+0x01420d953e  movups                     xmmword ptr [rip + 0xc5f80a3], xmm0
+0x01420d9545  mov                        dword ptr [rip + 0xc5f807d], 1
+0x01420d954f  movups                     xmmword ptr [rip + 0xc5f80d2], xmm0
+0x01420d9556  mov                        dword ptr [rip + 0xc5f8068], 0xffffffff
+0x01420d9560  movups                     xmmword ptr [rip + 0xc5f80e9], xmm0
+0x01420d9567  mov                        qword ptr [rip + 0xc5f800a], 4
+0x01420d9572  movups                     xmmword ptr [rip + 0xc5f8117], xmm0
+0x01420d9579  mov                        dword ptr [rip + 0xc5f8004], r10d
+0x01420d9580  movups                     xmmword ptr [rip + 0xc5f8171], xmm0
+0x01420d9587  mov                        dword ptr [rip + 0xc5f80a3], 1
+0x01420d9591  movups                     xmmword ptr [rip + 0xc5f7f90], xmm0
+0x01420d9598  mov                        qword ptr [rip + 0xc5f7f91], rax
+0x01420d959f  xor                        eax, eax
+0x01420d95a1  mov                        qword ptr [rip + 0xc5f8028], rax
+0x01420d95a8  lea                        rax, [rip + 0xfe1619]  ; 'm_subclass'
+0x01420d95af  movups                     xmmword ptr [rip + 0xc5f7fda], xmm0
+0x01420d95b6  mov                        qword ptr [rip + 0xc5f7fdb], rax
+0x01420d95bd  xor                        eax, eax
+0x01420d95bf  mov                        qword ptr [rip + 0xc5f8072], rax
+0x01420d95c6  lea                        rax, [rip + 0xfe163b]  ; 'm_aiSprinting'
+0x01420d95cd  movups                     xmmword ptr [rip + 0xc5f8024], xmm0
+0x01420d95d4  mov                        qword ptr [rip + 0xc5f8025], rax
+0x01420d95db  xor                        eax, eax
+0x01420d95dd  mov                        qword ptr [rip + 0xc5f80bc], rax
+0x01420d95e4  lea                        rax, [rip + 0xfe1605]  ; 'm_aiNetworkFlags'
+0x01420d95eb  movups                     xmmword ptr [rip + 0xc5f806e], xmm0
+0x01420d95f2  mov                        qword ptr [rip + 0xc5f806f], rax
+0x01420d95f9  xor                        eax, eax
+0x01420d95fb  mov                        qword ptr [rip + 0xc5f8106], rax
+0x01420d9602  lea                        rax, [rip + 0xfe158f]  ; 'm_isHologram'
+0x01420d9609  movups                     xmmword ptr [rip + 0xc5f7f38], xmm0
+0x01420d9610  mov                        qword ptr [rip + 0xc5f7f39], r10
+0x01420d9617  movups                     xmmword ptr [rip + 0xc5f7f92], xmm0
+0x01420d961e  mov                        qword ptr [rip + 0xc5f7f93], r10
+0x01420d9625  movups                     xmmword ptr [rip + 0xc5f7fec], xmm0
+0x01420d962c  mov                        dword ptr [rip + 0xc5f7ffa], 0xffffffff
+0x01420d9636  movups                     xmmword ptr [rip + 0xc5f8043], xmm0
+0x01420d963d  mov                        qword ptr [rip + 0xc5f7f94], 0x1e2a
+0x01420d9648  movups                     xmmword ptr [rip + 0xc5f8069], xmm0
+0x01420d964f  mov                        qword ptr [rip + 0xc5f7f8a], 1
+0x01420d965a  movups                     xmmword ptr [rip + 0xc5f8067], xmm0
+0x01420d9661  mov                        qword ptr [rip + 0xc5f8068], rax
+0x01420d9668  movups                     xmmword ptr [rip + 0xc5f7ec9], xmm0
+0x01420d966f  mov                        dword ptr [rip + 0xc5f7f62], r10d
+0x01420d9676  movups                     xmmword ptr [rip + 0xc5f7f23], xmm0
+0x01420d967d  mov                        dword ptr [rip + 0xc5f7f68], r10d
+0x01420d9684  movups                     xmmword ptr [rip + 0xc5f7f7d], xmm0
+0x01420d968b  mov                        qword ptr [rip + 0xc5f7f8e], rdx
+0x01420d9692  movups                     xmmword ptr [rip + 0xc5f7fd7], xmm0
+0x01420d9699  mov                        dword ptr [rip + 0xc5f7ff9], 1
+0x01420d96a3  mov                        dword ptr [rip + 0xc5f7feb], 0xffffffff
+0x01420d96ad  mov                        qword ptr [rip + 0xc5f7f8c], 0x1e4c
+0x01420d96b8  mov                        qword ptr [rip + 0xc5f7f89], 4
+0x01420d96c3  mov                        dword ptr [rip + 0xc5f7f76], r10d
+0x01420d96ca  mov                        dword ptr [rip + 0xc5f7f83], r10d
+0x01420d96d1  mov                        qword ptr [rip + 0xc5f7fb0], r10
+0x01420d96d8  movups                     xmmword ptr [rip + 0xc5f7ff9], xmm0
+0x01420d96df  mov                        dword ptr [rip + 0xc5f801b], 1
+0x01420d96e9  movups                     xmmword ptr [rip + 0xc5f7ff8], xmm0
+0x01420d96f0  mov                        dword ptr [rip + 0xc5f8006], 0xffffffff
+0x01420d96fa  mov                        qword ptr [rip + 0xc5f7fa7], 0x1e50
+0x01420d9705  mov                        qword ptr [rip + 0xc5f7fa4], 1
+0x01420d9710  mov                        dword ptr [rip + 0xc5f7f91], r10d
+0x01420d9717  xor                        eax, eax
+0x01420d9719  mov                        dword ptr [rip + 0xc5f7f9c], r10d
+0x01420d9720  mov                        qword ptr [rip + 0xc5f8049], rax
+0x01420d9727  lea                        rcx, [rip + 0xc5ed9b2]
+0x01420d972e  movups                     xmmword ptr [rip + 0xc5f7fdb], xmm0
+0x01420d9735  lea                        rax, [rip + 0xf6ee6c]  ; 'm_localOrigin'
+0x01420d973c  mov                        qword ptr [rip + 0xc5f7fad], rdx
+0x01420d9743  movups                     xmmword ptr [rip + 0xc5f802e], xmm0
+0x01420d974a  mov                        dword ptr [rip + 0xc5f7fc7], r10d
+0x01420d9751  movups                     xmmword ptr [rip + 0xc5f8088], xmm0
+0x01420d9758  mov                        dword ptr [rip + 0xc5f7fba], 0xc
+0x01420d9762  movups                     xmmword ptr [rip + 0xc5f7ff7], xmm0
+0x01420d9769  mov                        dword ptr [rip + 0xc5f7ff9], 1
+0x01420d9773  movups                     xmmword ptr [rip + 0xc5f804e], xmm0
+0x01420d977a  mov                        dword ptr [rip + 0xc5f7fe4], 0xffffffff
+0x01420d9784  movups                     xmmword ptr [rip + 0xc5f8065], xmm0
+0x01420d978b  mov                        dword ptr [rip + 0xc5f7f7f], 0x20
+0x01420d9795  movups                     xmmword ptr [rip + 0xc5f8094], xmm0
+0x01420d979c  mov                        dword ptr [rip + 0xc5f7f6a], 2
+0x01420d97a6  movups                     xmmword ptr [rip + 0xc5f7f83], xmm0
+0x01420d97ad  mov                        qword ptr [rip + 0xc5f7f84], rax
+0x01420d97b4  lea                        rax, [rip + 0x134995]
+0x01420d97bb  movups                     xmmword ptr [rip + 0xc5f7f8e], xmm0
+0x01420d97c2  mov                        qword ptr [rip + 0xc5f7f8f], rax
+0x01420d97c9  xor                        eax, eax
+0x01420d97cb  mov                        qword ptr [rip + 0xc5f8006], rax
+0x01420d97d2  lea                        rax, [rip + 0xf6edbf]  ; 'm_localAngles'
+0x01420d97d9  movups                     xmmword ptr [rip + 0xc5f7fb8], xmm0
+0x01420d97e0  mov                        qword ptr [rip + 0xc5f7fb9], rax
+0x01420d97e7  xor                        eax, eax
+0x01420d97e9  mov                        qword ptr [rip + 0xc5f8050], rax
+0x01420d97f0  lea                        rax, [rip + 0xfab159]  ; 'm_hGroundEntity'
+0x01420d97f7  movups                     xmmword ptr [rip + 0xc5f8002], xmm0
+0x01420d97fe  mov                        qword ptr [rip + 0xc5f8003], rax
+0x01420d9805  lea                        rax, [rip + 0x134914]
+0x01420d980c  movups                     xmmword ptr [rip + 0xc5f7f0d], xmm0
+0x01420d9813  mov                        dword ptr [rip + 0xc5f7f07], 0x10
+0x01420d981d  movups                     xmmword ptr [rip + 0xc5f7f64], xmm0
+0x01420d9824  mov                        dword ptr [rip + 0xc5f7fa6], 1
+0x01420d982e  movups                     xmmword ptr [rip + 0xc5f7f83], xmm0
+0x01420d9835  mov                        dword ptr [rip + 0xc5f7f91], 0xffffffff
+0x01420d983f  movups                     xmmword ptr [rip + 0xc5f7fda], xmm0
+0x01420d9846  mov                        qword ptr [rip + 0xc5f7fdb], rax
+0x01420d984d  movups                     xmmword ptr [rip + 0xc5f7eec], xmm0
+0x01420d9854  mov                        dword ptr [rip + 0xc5f7f25], r10d
+0x01420d985b  movups                     xmmword ptr [rip + 0xc5f7f46], xmm0
+0x01420d9862  mov                        dword ptr [rip + 0xc5f7f18], 0xc
+0x01420d986c  mov                        dword ptr [rip + 0xc5f7f06], 0x390
+0x01420d9876  mov                        dword ptr [rip + 0xc5f7ef8], 2
+0x01420d9880  mov                        dword ptr [rip + 0xc5f7f02], 2
+0x01420d988a  mov                        qword ptr [rip + 0xc5f7f2f], r10
+0x01420d9891  movups                     xmmword ptr [rip + 0xc5f7f78], xmm0
+0x01420d9898  mov                        dword ptr [rip + 0xc5f7f9a], 1
+0x01420d98a2  mov                        dword ptr [rip + 0xc5f7f8c], 0xffffffff
+0x01420d98ac  mov                        qword ptr [rip + 0xc5f7f2d], 0x32c
+0x01420d98b7  mov                        qword ptr [rip + 0xc5f7f2a], 4
+0x01420d98c2  mov                        dword ptr [rip + 0xc5f7f17], r10d
+0x01420d98c9  mov                        dword ptr [rip + 0xc5f7f24], r10d
+0x01420d98d0  call                       0x142c0a72c
+0x01420d98d5  jmp                        0x1420d8ec3
+0x01420d98da  int3                       

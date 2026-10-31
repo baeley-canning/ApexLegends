@@ -1,0 +1,150 @@
+KNOWLEDGE BASE: MATCHMAKING AND ACCOUNT ECONOMY INTEGRITY
+
+Purpose:
+Explain the forms of unfairness that are not cheating in the software
+sense - smurfing, boosting, win trading, account trading, and bot farms -
+and how they undermine matchmaking. It complements CHEATING IN GAMES -
+HISTORY, TAXONOMY, AND DETECTION and BAN GOVERNANCE AND IDENTITY
+INTEGRITY.
+
+This document is reference knowledge. It describes these behaviours and
+the defences against them from a defensive, design perspective. It
+contains no instructions for carrying them out.
+
+Practices change quickly and are only partly public, so treat each
+statement as a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: BAN GOVERNANCE AND IDENTITY INTEGRITY, CHEATING IN
+GAMES - HISTORY, TAXONOMY, AND DETECTION, SERVER-AUTHORITATIVE
+ARCHITECTURE AND TRUST BOUNDARIES, and the numbered technical series.
+
+---
+
+1. INTEGRITY BEYOND DETECTION
+Not every fairness problem is a cheat running on a machine.
+Some are ordinary accounts used dishonestly.
+These problems are economic and social, not technical, yet they damage
+the same thing anti-cheat protects.
+They attack a trustworthy match without any cheat software being
+involved.
+
+---
+
+2. THE MATCHMAKING PROMISE
+Matchmaking promises that players of similar skill meet.
+Every integrity problem below breaks that promise in some way.
+Skill rating is the currency, and the misdeeds are attempts to fake or
+trade it.
+Protecting matchmaking means protecting the meaning of that rating.
+
+---
+
+3. SMURFING
+A smurf is a high-skill player on a new, low-rated account.
+It is used to farm easy games or to play without consequence.
+It is not cheating, but it corrupts the rating of everyone it meets.
+Detection leans on statistical patterns: unusually fast climbs, and
+skill that does not match the account's history.
+
+---
+
+4. BOOSTING AND RANK MANIPULATION
+Boosting is paying someone else to raise an account's rank.
+It can be done by playing on the account or by partying with it.
+It directly forges the skill signal matchmaking relies on.
+Defences include detecting sudden skill discontinuities and linked-account
+clusters.
+
+---
+
+5. WIN TRADING AND MATCH FIXING
+Win trading is colluding to decide outcomes, so both sides gain rating.
+It is common in small high-rank pools where the same players meet
+repeatedly.
+It is closer to fraud than to cheating, and in organised settings to
+match fixing.
+Detection looks at outcome patterns that are improbable under fair play.
+
+---
+
+6. ACCOUNT TRADING AND THE BLACK MARKET
+Accounts with desirable ranks, items, or history are bought and sold.
+Trading moves a rating to a new owner without a new climb.
+It also concentrates value in a market that rewards theft and fraud.
+Defences include linking accounts to durable identity and detecting
+ownership changes through behavioural discontinuities.
+
+---
+
+7. THROWAWAY ACCOUNTS AND BOT FARMS
+Cheap accounts make bans affordable to absorb.
+If a new account is free and instant, a ban costs little.
+Bot farms create such accounts at scale to feed cheating and trading.
+This is why account-creation friction is itself an anti-cheat tool.
+
+---
+
+8. TRUST SCORES AND REPUTATION SYSTEMS
+Some platforms attach a trust or reputation score to an account or
+device.
+The score aggregates signals: age, verification, behaviour, and history.
+Matchmaking can then separate trusted players from untrusted ones.
+This shifts the problem from "is this person cheating?" to "how much do
+we trust this account?".
+
+---
+
+9. PHONE AND IDENTITY VERIFICATION
+Requiring a verified phone number or identity raises the cost of a new
+account.
+It links accounts to a scarce resource and slows ban evasion.
+It also raises privacy and access concerns, especially for players
+without a number or in restrictive regions.
+The trade-off is friction for abusers against friction for everyone
+else.
+
+---
+
+10. WHY BANS DO NOT STOP IT
+A ban addresses an account, but the economy rewards new accounts.
+Without identity friction, banning is a cost of doing business.
+This is why enforcement alone cannot fix matchmaking integrity.
+The problem is structural, so the fix must be structural too.
+
+---
+
+11. DESIGN LEVERS
+Several levers raise the cost of abuse without punishing honest players:
+account-creation friction, verification, trust-based matchmaking, rating
+that resists fast inflation, and detection of linked clusters.
+Each lever trades some convenience for some integrity.
+The right mix depends on the game and its community.
+
+---
+
+12. THE TENSION WITH HONEST PLAYERS
+Every anti-abuse measure also burdens legitimate newcomers.
+Too much friction and the game cannot grow; too little and integrity
+collapses.
+Getting this balance right is a product decision as much as a technical
+one.
+It is the same proportionality problem that runs through all anti-abuse
+design.
+
+---
+
+13. SUMMARY
+Matchmaking integrity covers dishonesty that is not cheat software:
+smurfing, boosting, win trading, account trading, and bot farms.
+All of them forge or trade the skill signal that matchmaking depends on.
+Bans alone cannot fix it because accounts are cheap to replace.
+The structural defences are account friction, verification, trust scores,
+and rating that resists manipulation.
+The governing tension is always friction for abusers against friction for
+honest players.
+
+CORE PRINCIPLE:
+Matchmaking integrity is an economic problem wearing a technical mask. The
+skill rating is the asset, and the misdeeds are ways to fake or trade it,
+so the strongest defences make a dishonest account expensive to create and
+hard to hand over. Detect the patterns, but fix the incentives.

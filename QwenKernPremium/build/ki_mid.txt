@@ -1,0 +1,68 @@
+﻿84:         std::cout << "[*] Kernel service already registered, reusing it" << std::endl;
+85:     }
+86: 
+87:     if (!StartServiceW(service, 0, nullptr)) {
+88:         const DWORD lastError = GetLastError();
+89:         if (lastError != ERROR_SERVICE_ALREADY_RUNNING) {
+90:             error = "StartService(apexdrv) failed" + LastErrorText(lastError) +
+91:                     " - unsigned drivers need test-signing or a BYOVD loader";
+92:             CloseServiceHandle(service);
+93:             return false;
+94:         }
+95:     }
+96: 
+97:     CloseServiceHandle(service);
+98:     return true;
+99: }
+100: 
+101: void StopAndDeleteKernelService(SC_HANDLE scm) {
+102:     SC_HANDLE service = OpenServiceW(scm, APEXDRV_SERVICE_NAME,
+103:                                      SERVICE_STOP | SERVICE_QUERY_STATUS | DELETE);
+104:     if (!service) return;
+105: 
+106:     SERVICE_STATUS status{};
+107:     ControlService(service, SERVICE_CONTROL_STOP, &status);
+108: 
+109:     // Give the I/O manager a moment to tear the device object down.
+110:     for (int i = 0; i < 20; ++i) {
+111:         if (!QueryServiceStatus(service, &status) ||
+112:             status.dwCurrentState == SERVICE_STOPPED) {
+113:             break;
+114:         }
+115:         Sleep(50);
+116:     }
+117: 
+118:     DeleteService(service);
+119:     CloseServiceHandle(service);
+120: }
+121: 
+122: } // namespace
+123: 
+124: InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
+125:                                                     const std::string& dllPath,
+126:                                                     const std::string& driverPath) {
+127:     InjectionResult result{};
+128:     result.success = false;
+129:     result.threadId = 0;
+130:     result.dllBaseAddress = nullptr;
+131: 
+132:     if (driverPath.empty()) {
+133:         result.errorMessage = "Kernel driver path is empty";
+134:         return result;
+135:     }
+136:     if (dllPath.empty()) {
+137:         result.errorMessage = "DLL path is empty";
+138:         return result;
+139:     }
+140: 
+141:     SC_HANDLE scm = OpenSCManagerW(nullptr, nullptr, SC_MANAGER_CREATE_SERVICE);
+142:     if (!scm) {
+143:         result.errorMessage = "OpenSCManager failed" + LastErrorText(GetLastError()) +
+144:                               " - run the launcher as administrator";
+145:         return result;
+146:     }
+147: 
+148:     // The driver calls ZwCreateThreadEx with this user-mode entry point, so it
+149:     // needs the LoadLibraryW address as seen inside the target.  kernel32.dll
+150:     // is mapped at the same base across processes of a session, and the
+151:     // export RVA is identical for the same build, so resolving it locally is

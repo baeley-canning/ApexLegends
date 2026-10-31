@@ -1,0 +1,20 @@
+﻿== ImagePath diagnostic 2026-10-27 11:58:17 ==
+image : C:\Windows\System32\drivers\apexdrv.sys (8616 bytes) sig=Valid
+[SC] CreateService SUCCESS
+after sc create : ' C:\Windows\System32\drivers\apexdrv.sys'
+after reg write : '\??\C:\Windows\System32\drivers\apexdrv.sys'
+start           : [SC] StartService FAILED 577:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+SERVICE_NAME: apexdrv 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 577  (0x241)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+service state   : Stopped
+device present  : False
+[11:57:26] 7000: The apexdrv service failed to start due to the following error: The filename, directory name, or volume label syntax is incorrect.
+[11:57:26] 7045: A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\apexdrv\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account: 
+[11:57:25] 7000: The apexdrv service failed to start due to the following error: The filename, directory name, or volume label syntax is incorrect.
+[11:57:25] 7045: A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\Windows\System32\drivers\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account: 

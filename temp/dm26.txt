@@ -1,0 +1,332 @@
+## slot reject audit (base = name_store - 0x28)
+     unreadable                2795
+     ok                         814
+     all-zero frame             407
+     offset not %%4              22
+     offset neg/huge              3
+     type out of range (1124874784)     2
+     type out of range (268373208)     1
+     size 80                      1
+     type out of range (1125378776)     1
+     type out of range (1139547232)     1
+     type out of range (-386665270)     1
+     type out of range (873611161)     1
+     type out of range (1672903530)     1
+
+## fields per record frame: distinct names at the same base?
+     bases 814 ; max names in one frame 1 ; dups 0
+
+## DT_ name slots and the surrounding frames
+     DT_ frames: 52
+
+=== DT_BCCLocalPlayerExclusive  name frame 0x143d0da20
+   [-2] 0x143d0d950  (empty)
+   [-1] 0x143d0d9b8  (empty)
+   [+0] 0x143d0da20  +18=0x1cb000000000  +28=ident:DT_BCCLocalPlayerExclusive
+   [+1] 0x143d0da88  (empty)
+
+=== DT_BaseTempEntity  name frame 0x143d37620
+   [-2] 0x143d37550  (empty)
+   [-1] 0x143d375b8  (empty)
+   [+0] 0x143d37620  +18=0x2800000000  +28=ident:DT_BaseTempEntity
+   [+1] 0x143d37688  (empty)
+
+=== DT_BaseTempEntity  name frame 0x14e6d2738
+   [-2] 0x14e6d2668  +04=0xffffffff00000000  +08=0x1ffffffff  +0c=0x421983a000000001  +10=@0x1421983a0  +14=0x700000001  +18=0x111800000007  +1c=0x1118  +20=0x800000000  +40=ident:m_crossPlayWithPcRealmsBitMask
+   [-1] 0x14e6d26d0  +04=0xffffffff00000000  +08=0x1ffffffff  +0c=0x430c5cd000000001  +10=ident:m_crossPlayGen5PcRealmsBitMask  +38=0x400000000  +58=ident:should_never_see_this
+   [+0] 0x14e6d2738  +1c=0xffffffff00000000  +20=0x1ffffffff  +28=ident:DT_BaseTempEntity  +58=0xdc65cd7c5c7db455  +60=0x400000000
+   [+1] 0x14e6d27a0  +14=0x43032c3800000000  +18=ident:should_never_see_this  +1c=0x1  +38=0xdc65cd7c5c7db455  +48=0x1ffffffff  +58=0x5c7db4550000000a  +60=0xdc65cd7c
+
+=== DT_BaseTrigger  name frame 0x143d3dcf0
+   [-2] 0x143d3dc20  (empty)
+   [-1] 0x143d3dc88  (empty)
+   [+0] 0x143d3dcf0  +18=0x98000000000  +28=ident:DT_BaseTrigger
+   [+1] 0x143d3dd58  (empty)
+
+=== DT_BaseTrigger  name frame 0x14e6d6238
+   [-2] 0x14e6d6168  +08=@0x143eb2570  +0c=0x43032c5000000001  +10=ident:m_minimapData  +38=@0x141e0b720  +40=0x1ffffffff  +48=@0x14220e120
+   [-1] 0x14e6d61d0  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6d6238  +1c=0x43d0da6000000000  +20=@0x143d0da60  +28=ident:DT_BaseTrigger  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6d62a0  +00=0x97000000000  +04=0x970  +08=0x100000000  +0c=0x1  +28=ident:m_bClientSidePredicted  +48=@0x141e0b510  +58=0x1ffffffff  +60=@0x143d0da60
+
+=== DT_BaseVPhysicsTrigger  name frame 0x143d356e0
+   [-2] 0x143d35610  (empty)
+   [-1] 0x143d35678  (empty)
+   [+0] 0x143d356e0  +18=0x95000000000  +28=ident:DT_BaseVPhysicsTrigger
+   [+1] 0x143d35748  (empty)
+
+=== DT_BaseVPhysicsTrigger  name frame 0x14e6d2af8
+   [-2] 0x14e6d2a28  +60=0xffffffffffffffff
+   [-1] 0x14e6d2a90  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6d2af8  +1c=0x43d00f4000000000  +20=@0x143d00f40  +28=ident:DT_BaseVPhysicsTrigger  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6d2b60  +0c=0x4  +58=0x1ffffffff
+
+=== DT_CarePackageInsightProp  name frame 0x143d10ae0
+   [-2] 0x143d10a10  (empty)
+   [-1] 0x143d10a78  (empty)
+   [+0] 0x143d10ae0  +18=0x166000000000  +28=ident:DT_CarePackageInsightProp
+   [+1] 0x143d10b48  (empty)
+
+=== DT_ConnectionQualityIndex  name frame 0x143d09f00
+   [-2] 0x143d09e30  (empty)
+   [-1] 0x143d09e98  (empty)
+   [+0] 0x143d09f00  +18=0x4c1000000000  +28=ident:DT_ConnectionQualityIndex
+   [+1] 0x143d09f68  (empty)
+
+=== DT_CoverWallChargeTracker  name frame 0x143d307c0
+   [-2] 0x143d306f0  (empty)
+   [-1] 0x143d30758  (empty)
+   [+0] 0x143d307c0  +18=0x167000000000  +28=ident:DT_CoverWallChargeTracker
+   [+1] 0x143d30828  (empty)
+
+=== DT_EntityBlocker  name frame 0x143e738d0
+   [-2] 0x143e73800  (empty)
+   [-1] 0x143e73868  (empty)
+   [+0] 0x143e738d0  +18=0x95000000000  +1c=0x4305bb2800000950  +20=ident:entity_blocker  +28=ident:DT_EntityBlocker  +38=ident:entity_blocker
+   [+1] 0x143e73938  (empty)
+
+=== DT_EntityBlocker  name frame 0x14e6f9f28
+   [-2] 0x14e6f9e58  (empty)
+   [-1] 0x14e6f9ec0  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6f9f28  +1c=0x43d00f4000000000  +20=@0x143d00f40  +28=ident:DT_EntityBlocker  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6f9f90  +08=0xffffffffffffffff
+
+=== DT_EntityBlocker  name frame 0x14df94240
+   [-2] 0x14df94170  +30=ident:m_prevAngle
+   [-1] 0x14df941d8  (empty)
+   [+0] 0x14df94240  +28=ident:DT_EntityBlocker  +40=ident:DT_EntityBlocker  +48=ident:DT_EntityBlocker  +50=ident:DT_EntityBlocker  +60=0x1
+   [+1] 0x14df942a8  (empty)
+
+=== DT_EntityBlocker  name frame 0x14df94258
+   [-2] 0x14df94188  +18=ident:m_prevAngle  +1c=0x16f800000001
+   [-1] 0x14df941f0  (empty)
+   [+0] 0x14df94258  +10=ident:DT_EntityBlocker  +14=0x1  +28=ident:DT_EntityBlocker  +30=ident:DT_EntityBlocker  +38=ident:DT_EntityBlocker  +48=0x1
+   [+1] 0x14df942c0  (empty)
+
+=== DT_EntityBlocker  name frame 0x14df94260
+   [-2] 0x14df94190  +10=ident:m_prevAngle  +14=0x16f800000001
+   [-1] 0x14df941f8  (empty)
+   [+0] 0x14df94260  +08=ident:DT_EntityBlocker  +0c=0x1  +20=ident:DT_EntityBlocker  +28=ident:DT_EntityBlocker  +30=ident:DT_EntityBlocker  +40=0x1
+   [+1] 0x14df942c8  (empty)
+
+=== DT_EntityBlocker  name frame 0x14df94268
+   [-2] 0x14df94198  +08=ident:m_prevAngle  +0c=0x16f800000001
+   [-1] 0x14df94200  (empty)
+   [+0] 0x14df94268  +00=ident:DT_EntityBlocker  +04=0x1  +18=ident:DT_EntityBlocker  +1c=0x43117b8000000001  +20=ident:DT_EntityBlocker  +28=ident:DT_EntityBlocker  +38=0x1
+   [+1] 0x14df942d0  (empty)
+
+=== DT_EntityBlocker  name frame 0x143fee6e0
+   [-2] 0x143fee610  (empty)
+   [-1] 0x143fee678  (empty)
+   [+0] 0x143fee6e0  +28=ident:DT_EntityBlocker
+   [+1] 0x143fee748  (empty)
+
+=== DT_EnvWind  name frame 0x143d34130
+   [-2] 0x143d34060  (empty)
+   [-1] 0x143d340c8  (empty)
+   [+0] 0x143d34130  +18=0xab000000000  +28=ident:DT_EnvWind
+   [+1] 0x143d34198  (empty)
+
+=== DT_FirstPersonProxy  name frame 0x143ce8440
+   [-2] 0x143ce8370  (empty)
+   [-1] 0x143ce83d8  (empty)
+   [+0] 0x143ce8440  +18=0x163000000000  +28=ident:DT_FirstPersonProxy
+   [+1] 0x143ce84a8  (empty)
+
+=== DT_FuncBrush  name frame 0x143d1f070
+   [-2] 0x143d1efa0  (empty)
+   [-1] 0x143d1f008  (empty)
+   [+0] 0x143d1f070  +18=0x9b000000000  +1c=0x43d193c0000009b0  +20=@0x143d193c0  +28=ident:DT_FuncBrush  +38=@0x143d193c0  +40=ident:C_PointCamera  +48=ident:C_PointCamera  +50=ident:Point Camera Client Entity  +58=@0x143d01510
+   [+1] 0x143d1f0d8  (empty)
+
+=== DT_FuncMoveLinear  name frame 0x143d263e0
+   [-2] 0x143d26310  (empty)
+   [-1] 0x143d26378  (empty)
+   [+0] 0x143d263e0  +18=0x97000000000  +1c=0x430be49800000970  +20=ident:func_brush  +28=ident:DT_FuncMoveLinear  +38=ident:func_brush
+   [+1] 0x143d26448  (empty)
+
+=== DT_FuncMoveLinear  name frame 0x14e6c0978
+   [-2] 0x14e6c08a8  (empty)
+   [-1] 0x14e6c0910  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6c0978  +1c=0x43d0da6000000000  +20=@0x143d0da60  +28=ident:DT_FuncMoveLinear  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6c09e0  +00=0x38400000002  +04=0x384  +08=0xc00000000  +0c=0xc  +28=ident:m_vecVelocity  +48=@0x141ffd310  +58=0x1ffffffff  +60=@0x143d0da60
+
+=== DT_HealthKit  name frame 0x143cdedd0
+   [-2] 0x143cded00  (empty)
+   [-1] 0x143cded68  (empty)
+   [+0] 0x143cdedd0  +18=0x15d000000000  +28=ident:DT_HealthKit
+   [+1] 0x143cdee38  (empty)
+
+=== DT_InfoTargetGravity  name frame 0x143ea8dd0
+   [-2] 0x143ea8d00  (empty)
+   [-1] 0x143ea8d68  (empty)
+   [+0] 0x143ea8dd0  +18=0x95000000000  +1c=0x431117b800000950  +20=ident:info_gravity  +28=ident:DT_InfoTargetGravity  +38=ident:info_gravity
+   [+1] 0x143ea8e38  (empty)
+
+=== DT_InfoTargetGravity  name frame 0x14e6f6d88
+   [-2] 0x14e6f6cb8  (empty)
+   [-1] 0x14e6f6d20  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6f6d88  +1c=0x43e72f5000000000  +20=@0x143e72f50  +28=ident:DT_InfoTargetGravity  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6f6df0  +00=0x94000000000  +04=0x940  +08=0x400000000  +0c=0x4  +28=ident:m_gravityDirectionType  +58=0x1ffffffff  +60=@0x143e72f50
+
+=== DT_InfoTargetMinimap  name frame 0x143eaafe0
+   [-2] 0x143eaaf10  (empty)
+   [-1] 0x143eaaf78  (empty)
+   [+0] 0x143eaafe0  +18=0x94000000000  +1c=0x430727a000000940  +20=ident:viewmodel  +28=ident:DT_InfoTargetMinimap  +38=ident:viewmodel
+   [+1] 0x143eab048  (empty)
+
+=== DT_InfoTargetMinimap  name frame 0x14e6faf78
+   [-2] 0x14e6faea8  +00=0x1ffffffff  +04=0x4308453000000001  +08=ident:m_invulnerableToDamageCount
+   [-1] 0x14e6faf10  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6faf78  +1c=0x43e72f5000000000  +20=@0x143e72f50  +28=ident:DT_InfoTargetMinimap  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6fafe0  +00=0x8180000000a  +04=0x818  +1c=0x43eb257000000000  +20=@0x143eb2570  +28=ident:m_minimapData  +50=@0x141e0b720  +58=0x1ffffffff  +60=@0x143e72f50
+
+=== DT_LootRoller  name frame 0x143d19ef0
+   [-2] 0x143d19e20  (empty)
+   [-1] 0x143d19e88  (empty)
+   [+0] 0x143d19ef0  +18=0x164000000000  +28=ident:DT_LootRoller
+   [+1] 0x143d19f58  (empty)
+
+=== DT_MaterialHarvester  name frame 0x143d16e50
+   [-2] 0x143d16d80  (empty)
+   [-1] 0x143d16de8  (empty)
+   [+0] 0x143d16e50  +18=0x166000000000  +28=ident:DT_MaterialHarvester
+   [+1] 0x143d16eb8  (empty)
+
+=== DT_NPC_Dropship  name frame 0x143d11a50
+   [-2] 0x143d11980  (empty)
+   [-1] 0x143d119e8  (empty)
+   [+0] 0x143d11a50  +18=0x1eb000000000  +28=ident:DT_NPC_Dropship
+   [+1] 0x143d11ab8  (empty)
+
+=== DT_NPC_Dropship  name frame 0x14e6d18b8
+   [-2] 0x14e6d17e8  +00=0x400000000  +04=0x4  +20=ident:m_hGroundEntity  +40=@0x14220e120  +50=0x1ffffffff  +58=ident:m_localAngles
+   [-1] 0x14e6d1850  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6d18b8  +1c=0x43d27a8000000000  +20=@0x143d27a80  +28=ident:DT_NPC_Dropship  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6d1920  +00=0x1a9800000000  +04=0x1a98  +08=0x400000000  +0c=0x4  +28=ident:m_titanSoul  +48=@0x14220e120  +58=0x1ffffffff  +60=@0x143d27a80
+
+=== DT_NearbyPushers  name frame 0x143d03a10
+   [-2] 0x143d03940  (empty)
+   [-1] 0x143d039a8  (empty)
+   [+0] 0x143d03a10  +18=0x4c1000000000  +28=ident:DT_NearbyPushers
+   [+1] 0x143d03a78  (empty)
+
+=== DT_NonRewindMiscData  name frame 0x143e73db0
+   [-2] 0x143e73ce0  (empty)
+   [-1] 0x143e73d48  (empty)
+   [+0] 0x143e73db0  +18=0x800000000  +28=ident:DT_NonRewindMiscData
+   [+1] 0x143e73e18  (empty)
+
+=== DT_ObserverMode  name frame 0x143e75080
+   [-2] 0x143e74fb0  (empty)
+   [-1] 0x143e75018  (empty)
+   [+0] 0x143e75080  +18=0x1000000000  +28=ident:DT_ObserverMode
+   [+1] 0x143e750e8  (empty)
+
+=== DT_OverlayVars  name frame 0x143d17c00
+   [-2] 0x143d17b30  (empty)
+   [-1] 0x143d17b98  (empty)
+   [+0] 0x143d17c00  +18=0x191000000000  +28=ident:DT_OverlayVars
+   [+1] 0x143d17c68  (empty)
+
+=== DT_PlayerShared  name frame 0x143d049d0
+   [-2] 0x143d04900  (empty)
+   [-1] 0x143d04968  (empty)
+   [+0] 0x143d049d0  +18=0x2800000000  +28=ident:DT_PlayerShared
+   [+1] 0x143d04a38  (empty)
+
+=== DT_PlayerStickerInventory  name frame 0x143d077c0
+   [-2] 0x143d076f0  (empty)
+   [-1] 0x143d07758  (empty)
+   [+0] 0x143d077c0  +18=0x4c1000000000  +28=ident:DT_PlayerStickerInventory
+   [+1] 0x143d07828  (empty)
+
+=== DT_PredictableId  name frame 0x143d022c0
+   [-2] 0x143d021f0  (empty)
+   [-1] 0x143d02258  (empty)
+   [+0] 0x143d022c0  +18=0x94000000000  +28=ident:DT_PredictableId
+   [+1] 0x143d02328  (empty)
+
+=== DT_PredictedFirstPersonProxy  name frame 0x143cf09e0
+   [-2] 0x143cf0910  (empty)
+   [-1] 0x143cf0978  (empty)
+   [+0] 0x143cf09e0  +18=0x165000000000  +28=ident:DT_PredictedFirstPersonProxy
+   [+1] 0x143cf0a48  (empty)
+
+=== DT_PredictedFirstPersonProxy  name frame 0x14e6a6568
+   [-2] 0x14e6a6498  +48=0xffffffffffffffff
+   [-1] 0x14e6a6500  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6a6568  +1c=0x43ce7fa000000000  +20=@0x143ce7fa0  +28=ident:DT_PredictedFirstPersonProxy  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6a65d0  +14=0xffffffffffffffff
+
+=== DT_ScriptNetData  name frame 0x143eb7280
+   [-2] 0x143eb71b0  (empty)
+   [-1] 0x143eb7218  (empty)
+   [+0] 0x143eb7280  +18=0xc5000000000  +28=ident:DT_ScriptNetData
+   [+1] 0x143eb72e8  (empty)
+
+=== DT_SequenceTransitioner  name frame 0x143ec0a10
+   [-2] 0x143ec0940  (empty)
+   [-1] 0x143ec09a8  (empty)
+   [+0] 0x143ec0a10  +28=ident:DT_SequenceTransitioner
+   [+1] 0x143ec0a78  (empty)
+
+=== DT_ShieldProp  name frame 0x143d126e0
+   [-2] 0x143d12610  (empty)
+   [-1] 0x143d12678  (empty)
+   [+0] 0x143d126e0  +18=0x166000000000  +28=ident:DT_ShieldProp
+   [+1] 0x143d12748  (empty)
+
+=== DT_SkyCamera  name frame 0x143d00bc0
+   [-2] 0x143d00af0  (empty)
+   [-1] 0x143d00b58  (empty)
+   [+0] 0x143d00bc0  +18=0x94000000000  +28=ident:DT_SkyCamera
+   [+1] 0x143d00c28  (empty)
+
+=== DT_TEEffectDispatch  name frame 0x143d40a10
+   [-2] 0x143d40940  (empty)
+   [-1] 0x143d409a8  (empty)
+   [+0] 0x143d40a10  +18=0xc800000000  +28=ident:DT_TEEffectDispatch  +50=ident:cl_warnAboutSoundsOnInvalidEntities  +58=@0x142fe4fb0
+   [+1] 0x143d40a78  +10=@0x143d40a50  +14=0x42fe4f2000000001  +18=@0x142fe4f20  +28=0x2
+
+=== DT_TEEffectDispatch  name frame 0x14e6d6e78
+   [-2] 0x14e6d6da8  +1c=0x41e0b72000000000  +20=@0x141e0b720  +28=0x1ffffffff  +30=ident:should_never_see_this  +50=0xffffffffffffffff  +58=0xffffffffffffffff
+   [-1] 0x14e6d6e10  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6d6e78  +1c=0x43d3718000000000  +20=@0x143d37180  +28=ident:DT_TEEffectDispatch  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6d6ee0  +00=0x280000000a  +04=0x28  +1c=0x43eae6f000000000  +20=@0x143eae6f0  +28=ident:m_EffectData  +50=@0x141e0b720  +58=0x1ffffffff  +60=@0x143d37180
+
+=== DT_TEGibEvent  name frame 0x143d0e8c0
+   [-2] 0x143d0e7f0  (empty)
+   [-1] 0x143d0e858  (empty)
+   [+0] 0x143d0e8c0  +18=0x3800000000  +28=ident:DT_TEGibEvent
+   [+1] 0x143d0e928  (empty)
+
+=== DT_TEScriptParticleSystemOnEntityWithPos  name frame 0x143ea5cd0
+   [-2] 0x143ea5c00  (empty)
+   [-1] 0x143ea5c68  (empty)
+   [+0] 0x143ea5cd0  +18=0x5800000000  +28=ident:DT_TEScriptParticleSystemOnEntityWithPos
+   [+1] 0x143ea5d38  (empty)
+
+=== DT_TESoundDispatch  name frame 0x143d42fe0
+   [-2] 0x143d42f10  (empty)
+   [-1] 0x143d42f78  (empty)
+   [+0] 0x143d42fe0  +18=0x4800000000  +28=ident:DT_TESoundDispatch
+   [+1] 0x143d43048  (empty)
+
+=== DT_TESoundDispatch  name frame 0x14e6d5268
+   [-2] 0x14e6d5198  +00=0x1000000000  +04=0x10  +14=0x430873f800000000  +18=ident:m_localOrigin.z  +1c=0x1  +38=@0x14220e1c0  +48=0x1ffffffff  +50=@0x14220e170  +58=0xffffffffffffffff
+   [-1] 0x14e6d5200  +08=0x400000000  +0c=0x4  +28=ident:should_never_see_this  +58=0x1ffffffff
+   [+0] 0x14e6d5268  +1c=0x43d3718000000000  +20=@0x143d37180  +28=ident:DT_TESoundDispatch  +50=@0x141e0b720  +58=0x1ffffffff  +60=ident:should_never_see_this
+   [+1] 0x14e6d52d0  +00=0x280000000a  +04=0x28  +1c=0x43ebf16000000000  +20=@0x143ebf160  +28=ident:m_soundData  +50=@0x141e0b720  +58=0x1ffffffff  +60=@0x143d37180
+
+=== DT_VoidNexus  name frame 0x143d10120
+   [-2] 0x143d10050  (empty)
+   [-1] 0x143d100b8  (empty)
+   [+0] 0x143d10120  +18=0x167000000000  +28=ident:DT_VoidNexus
+   [+1] 0x143d10188  (empty)
+
+=== DT_WaterLODControl  name frame 0x143d39510
+   [-2] 0x143d39440  (empty)
+   [-1] 0x143d394a8  (empty)
+   [+0] 0x143d39510  +18=0x95000000000  +28=ident:DT_WaterLODControl
+   [+1] 0x143d39578  (empty)

@@ -1,0 +1,331 @@
+KNOWLEDGE BASE: HOW ANTI-CHEATS WORK - VANGUARD, BATTLTEYE, EAC, AND JAVELIN
+
+Purpose:
+Educational reference explaining the shared anatomy of a modern PC game
+anti-cheat, then how four well-known products - Riot Vanguard, BattlEye,
+Easy Anti-Cheat (EAC), and EA Javelin (with its EAAC roots) - each
+implement that anatomy in practice. It covers what each loads, when it
+loads, what it observes, what it trusts, how it decides, and how it
+enforces, so the four can be compared by mechanism rather than by
+reputation.
+
+This document is reference knowledge. It describes systems from a
+defensive and engineering perspective, using only publicly documented
+facts and the vendors' own public statements. It deliberately contains
+no recipes for defeating, evading, or bypassing any product, and no
+operational detail beyond what the vendors themselves publish.
+
+These products change frequently and disclose only part of their design,
+so treat every statement here as a publicly documented CLAIM, not as a
+verified internal fact. Details are given "as of October 2026".
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ANTI-CHEAT PRODUCTS AND
+SYSTEMS, KERNEL MODE AND ANTI-CHEAT DRIVERS, SERVER-AUTHORITATIVE
+ARCHITECTURE AND TRUST BOUNDARIES, HARDWARE, DMA, AND BELOW-KERNEL
+THREATS, APEX LEGENDS ANTI-CHEAT AND THE PROVIDER CHANGE, MEASURING
+ANTI-CHEAT EFFECTIVENESS, EVADING ANTI-CHEAT - CATEGORIES AND
+COUNTERMEASURES, and the numbered technical series.
+
+---
+
+1. WHAT "HOW IT WORKS" MEANS HERE
+"How it works" does not mean reverse-engineering instructions.
+It means the same five questions ANTI-CHEAT PRODUCTS AND SYSTEMS uses:
+where the observer runs, when it loads, what it trusts, how it decides,
+and how it enforces.
+Answering those five for a product tells you almost everything that
+matters about how it behaves in practice.
+The four products below are four different sets of answers to the same
+five questions.
+
+---
+
+2. THE SHARED ANATOMY OF A MODERN ANTI-CHEAT
+Nearly every serious PC anti-cheat is assembled from the same parts:
+* a client agent that runs with the game.
+* a privileged component - usually a kernel-mode driver - that observes
+  and constrains what user mode cannot.
+* a backend that receives telemetry and decides.
+* a detection engine: signatures, behavioural heuristics, machine
+  learning, or all three.
+* an enforcement system: ban waves, kicks, hardware or account bans, or
+  live mitigation.
+The differences between products are mostly differences in which part
+they emphasise and what they choose to trust.
+
+---
+
+3. THE SESSION LIFECYCLE, SHARED IN OUTLINE
+Almost all of them follow the same timeline:
+boot or launch, driver or agent load, handshake with the game and
+backend, continuous observation, telemetry to the backend, a decision,
+and then enforcement.
+Where a product sits on this timeline - especially how early it loads -
+sets what it can guarantee about everything that happened before it.
+A product that loads at boot sees the whole session from the start;
+one that loads with the game sees only from that point.
+That single timing choice explains many of the visible differences
+below.
+
+---
+
+4. COUNTER-FORENSICS: WHY ENFORCEMENT IS OFTEN DELAYED
+Detection and enforcement are deliberately separated.
+If a cheat is banned the instant it is detected, its author learns what
+was detected and can adapt the very next day.
+Delayed ban waves let one detection catch many users of the same cheat
+before its author can react.
+This is why "detected" and "banned" are not the same moment, and why a
+cheat can appear to "work" while it is already flagged.
+The same logic drives server-side-only detection, where the client is
+never told what triggered a flag.
+
+---
+
+5. RIOT VANGUARD - HOW IT WORKS
+Vendor: Riot Games, first shipped broadly with VALORANT (2020).
+Vanguard has two parts: a user-mode client that runs with the game, and
+a kernel-mode driver plus a service that installs on the machine.
+Its defining choice is timing: the driver loads at boot and stays
+resident, so it is present before the game launches and even when the
+game is not running.
+Because it is already loaded, it can establish a baseline it trusts
+before any other software has had a chance to interfere.
+Vanguard requires the machine to be in a known-good boot state.
+On Windows 11, VALORANT requires TPM 2.0 and Secure Boot, and the client
+also checks for Virtualization-Based Security and OS exploit protection.
+Riot publishes specific error codes for these, such as VAN 9001 (Secure
+Boot) and codes for missing TPM or VBS, so a blocked machine is told
+exactly which requirement failed.
+Vanguard also maintains and updates a blocklist of known-vulnerable
+drivers and refuses to let them load, closing a common way of reaching
+the kernel.
+The kernel driver is Windows-only; there is no Linux or macOS driver.
+What it trusts: the boot chain and hardware measurements - the part of
+the machine a cheat running underneath the game cannot easily forge.
+Trade-off it illustrates: maximum visibility into early-boot and
+low-level activity, bought with a driver that lives on every machine at
+all times, which is exactly what draws the most privacy criticism.
+
+---
+
+6. BATTLTEYE - HOW IT WORKS
+Vendor: BattlEye Innovations (Germany), independent since 2004, and
+originally created for the Battlefield series.
+BattlEye combines proactive kernel-based protection with dynamic
+detection rather than one fixed scan.
+Its distinctive mechanism is server-directed scanning: the backend
+chooses what the client should look at, on the fly.
+Because the scan targets are decided centrally and change over time, a
+cheat author cannot profile the client once, defeat that single check,
+and assume safety.
+It also has a server component that keeps control of the server side and
+can kick clients, plus administrative tooling for operators.
+Its global ban system is tied to account identity (for example a
+SteamID), and the vendor claims its ban reach rivals or exceeds that of
+Valve's VAC bans.
+Used by: PUBG, Rainbow Six Siege, the Arma and DayZ lineage, and many
+others.
+What it trusts: its own kernel module plus a backend it controls, rather
+than requiring a hardware-attested boot the way Vanguard does.
+Trade-off it illustrates: a mostly proactive kernel defender, with a
+strong server side and consolidated, identity-linked global bans.
+
+---
+
+7. EASY ANTI-CHEAT (EAC) - HOW IT WORKS
+Vendor: Epic Games, via its 2018 acquisition of the Finnish firm Kamu,
+and now part of Epic Online Services.
+EAC is modular and tiered rather than one fixed configuration.
+A title can run it with only the lighter, user-mode level of protection,
+or add a kernel-mode component for higher-risk competitive games.
+That choice belongs to the publisher, so two EAC-protected games can be
+protected to quite different depths.
+It is cross-platform by design: Windows, macOS, Linux, and Steam Deck
+(through the Proton compatibility layer), with compatibility for console
+crossplay.
+The kernel driver, where used, is effectively the Windows component; the
+other platforms lean on the lighter layer.
+It integrates tightly with Epic Online Services for accounts and
+matchmaking, which is another reason large publishers adopt it.
+What it trusts: its own client and driver plus a strong tie-in to Epic's
+platform; by default it does not demand a hardware-attested boot the way
+Vanguard does.
+Used by a very large share of PC multiplayer, including Rust and
+Fortnite, and Apex Legends from its 2019 launch until the September 2026
+switch away from it.
+Trade-off it illustrates: standardisation and scale - one vendor,
+integrated with a platform, serving many titles across many operating
+systems, with a protection depth that varies per game.
+
+---
+
+8. EA JAVELIN (AND ITS EAAC ROOTS) - HOW IT WORKS
+Vendor: Electronic Arts, as a first-party (in-house) system.
+It began in September 2022 as EA Anti-Cheat (EAAC), EA's own kernel-mode
+PC anti-cheat, and was reintroduced under the "EA Javelin Anticheat"
+brand in April 2025 as the evolution of that same system.
+It is kernel-mode, and EA states plainly that it runs at the kernel
+level because detecting external cheats requires it.
+Its model is game-scoped rather than boot-resident: EA states Javelin
+runs only while a Javelin-protected game is running, and uninstalls
+itself from a machine once no protected games remain installed.
+EA frames it as part of a "defense-in-depth" strategy and publishes
+accuracy figures - a claimed detection accuracy above 99% and a
+false-positive rate below 1%.
+A September 2026 EA progress report cites 20 protected titles, 57.1
+million players, and 26.7 million cheat attempts prevented over the
+year.
+It protects a growing list of EA titles, including EA SPORTS FC, Madden
+NFL, the Battlefield series (and Battlefield 6), F1, WRC, Plants vs.
+Zombies, skate., and - from September 29, 2026 - Apex Legends.
+What it trusts: EA's own client, driver, telemetry, and backend; it is
+first-party like Vanguard, but it does not make Secure Boot a hard
+requirement for every title (Apex, for example, did not require it).
+Trade-off it illustrates: a first-party system tuned to EA's own engines
+and threat model, at the cost of running EA's privileged code on players'
+machines and depending on EA alone for detections.
+
+---
+
+9. THE FOUR SIDE BY SIDE
+A compact comparison on the five questions, using public claims only:
+VANGUARD
+* where it runs: user-mode client plus a kernel driver.
+* when it loads: at boot, and it stays resident.
+* what it trusts: hardware and boot measurements (TPM, Secure Boot).
+* how it decides: kernel observation, machine learning, and a
+  vulnerable-driver blocklist.
+* how it enforces: account and hardware bans, in waves.
+* ownership: first-party (Riot), Windows kernel driver only.
+BATTLTEYE
+* where it runs: kernel mode, plus a server component.
+* when it loads: with the game, and can keep a persistent presence.
+* what it trusts: its own kernel module and backend.
+* how it decides: proactive protection plus backend-directed dynamic
+  scanning.
+* how it enforces: global account-linked bans and server kicks.
+* ownership: third-party vendor, independent.
+EASY ANTI-CHEAT
+* where it runs: user mode plus an optional kernel component.
+* when it loads: with the game.
+* what it trusts: its own client/driver and the Epic platform.
+* how it decides: signatures, heuristics, and backend analysis, tiered
+  per title.
+* how it enforces: publisher-configured bans.
+* ownership: third-party vendor (Epic), cross-platform.
+JAVELIN
+* where it runs: kernel mode, plus client and backend.
+* when it loads: with a protected game; self-uninstalls when none
+  remain.
+* what it trusts: EA's own client, driver, telemetry, and backend.
+* how it decides: in-house detections over aggregated EA telemetry and
+  data.
+* how it enforces: EA account bans across EA titles.
+* ownership: first-party (EA), EA titles only.
+
+---
+
+10. THE TIMING AXIS: BOOT-RESIDENT VERSUS GAME-SCOPED
+The sharpest real difference among these four is when the privileged
+component is present.
+Vanguard is boot-resident: it is on the machine from startup, so its
+trust baseline predates the game.
+Javelin is game-scoped: it is present while a protected game runs and
+removes itself once none remain.
+BattlEye and EAC load with the game, though BattlEye can keep a
+persistent presence in practice.
+Boot-residency buys the strongest guarantee about what happened before
+the game, at the highest ongoing cost in privilege.
+Game-scoped operation is a smaller footprint on the machine, at the cost
+of a later baseline.
+Neither is "better"; they are two points on the same trade-off curve.
+
+---
+
+11. THE TRUST AXIS: WHAT EACH RELIES ON
+The second sharp difference is what the system ultimately trusts.
+Vanguard pushes trust down to hardware and boot measurements a cheat
+running beneath the game cannot easily forge.
+BattlEye trusts its own kernel module plus a backend it fully controls.
+EAC trusts its own client/driver and its integration with the Epic
+platform.
+Javelin trusts EA's own client, driver, telemetry, and backend.
+The whole field is trending toward the Vanguard end: adding Secure Boot,
+TPM, and attestation so trust rests on the hardware rather than on
+software an attacker might already control.
+
+---
+
+12. THE OWNERSHIP AXIS: THIRD-PARTY VERSUS FIRST-PARTY
+BattlEye and EAC are third-party vendors: one product, many publishers,
+tuned to a shared baseline.
+Vanguard and Javelin are first-party: built and owned by the company
+that also owns the game, its accounts, and - for Riot and EA - its
+esports.
+First-party systems can be tuned to one engine and one threat model and
+can fuse detection with the publisher's own account and matchmaking
+data.
+Third-party systems bring scale, cross-platform reach, and expertise
+across many titles.
+This axis, rather than any single feature, is why publishers switch
+providers in either direction.
+
+---
+
+13. WHAT ALL FOUR HAVE IN COMMON
+Despite the differences, all four converge on the same decisions:
+a privileged kernel component, because a user-mode observer can be
+manipulated by something beneath it.
+A backend that owns detection and receives telemetry.
+A separation between detection and enforcement, usually with delayed
+ban waves.
+A growing reliance on account and device identity to punish the person,
+not just the process.
+And an implicit admission that the client alone can never be fully
+trusted.
+
+---
+
+14. HOW TO REASON ABOUT ANY ANTI-CHEAT YOU MEET
+Run the five questions in order: where does the observer run, when does
+it load, what does it ultimately trust, how does it decide, and how does
+it enforce.
+Then ask the framing question from ANTI-CHEAT PRODUCTS AND SYSTEMS: what
+would have to be true about the machine for this product's evidence to
+be sound, and who controls that.
+Use the timing, trust, and ownership axes above to place any product
+relative to these four.
+And read SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES to see
+the part of the problem no client-side product can solve on its own.
+
+---
+
+15. SUMMARY
+Vanguard, BattlEye, EAC, and Javelin are the same anatomy in different
+proportions: a client agent, a privileged component, a backend, a
+detection engine, and an enforcement system.
+They differ mainly on three axes: timing (Vanguard is boot-resident,
+while Javelin, EAC, and largely BattlEye load with the game), trust
+(Vanguard leans on hardware and boot measurements; the others on their
+own kernel module and backend), and ownership (Vanguard and Javelin are
+first-party; BattlEye and EAC are third-party vendors).
+Detection is driven from the backend in all four, and detection is
+always separated from enforcement so that ban waves can catch many users
+of one cheat before its author reacts.
+The kernel component is the shared default because a user-mode observer
+can be hidden from or manipulated by code beneath it.
+Read any of them by these axes, and by what they trust, rather than by
+the brand on the box.
+
+CORE PRINCIPLE:
+Every serious PC anti-cheat is one anatomy - client, privileged
+component, backend, detection, enforcement - arranged around a single
+question: what does it ultimately trust? Vanguard answers with hardware
+and boot measurements, BattlEye and EAC with their own kernel module and
+backend, and Javelin with EA's own client, driver, and telemetry. Apex
+Legends moving from EAC to Javelin was a change on the ownership axis,
+not the anatomy: the same layered design, a different owner. Learn the
+five questions - where, when, trust, decide, enforce - and any
+anti-cheat, present or future, stops being a mysterious brand and
+becomes a set of understandable trade-offs.

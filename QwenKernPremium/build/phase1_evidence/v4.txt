@@ -1,0 +1,57 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] AG measurement harness (target PID 10508)
+pid=10508 image=powershell.exe base=0x7FF7CE190000 modules=97
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=loaded dxgi=loaded d3d12=absent d3d9=absent d3dcompiler=absent[*] reference integrity:
+    image            : powershell.exe (NOT the expected r5apex_dx12.exe)
+    module base      : 0x7FF7CE190000 (PE headers readable)
+    modules in target: 97
+    render modules   : d3d11=loaded dxgi=loaded d3d12=absent d3d9=absent
+==========================================================================
+ACG / INJECTION PROBE REPORT - ACG measurement
+==========================================================================
+environment:
+pid=10508 image=powershell.exe base=0x7FF7CE190000 modules=97
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=loaded dxgi=loaded d3d12=absent d3d9=absent d3dcompiler=absent
+
+probes:
+  [PASS] I0_inventory           module inventory / reference integrity
+        address=0x7FF7CE190000 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: image=powershell.exe modules=99 d3d11=loaded dxgi=loaded d3d12=absent d3d9=absent d3dcompiler=absent os=10.0 build 26200 hvci=unknown (key absent)
+  [PASS] X1_open_process        OpenProcess with injector rights
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: handle acquired
+  [PASS] X2_alloc_ex_rwx        VirtualAllocEx RWX in target
+        address=0x1DBDCFB0000 size=0x1000 status=STATUS_SUCCESS win32Err=0
+        detail: allocated, written and verified in target
+  [PASS] X3_alloc_ex_rw_protect_rx VirtualAllocEx RW + VirtualProtectEx RX in target
+        address=0x1DBDCFB0000 size=0x1000 status=STATUS_SUCCESS win32Err=0
+        detail: RW->RX in target accepted
+  [PASS] X4_nt_alloc_ex         ntdll!NtAllocateVirtualMemory RWX in target
+        address=0x1DBDCFB0000 size=0x1000 status=STATUS_SUCCESS win32Err=0
+        detail: native remote RWX allocation accepted (no kernel32 wrapper)
+  [PASS] X5_section_map_execute map section RWX into target + execute there
+        address=0x1DBDCFC0000 size=0x1000 status=STATUS_SUCCESS win32Err=0
+        detail: remote thread ran in mapped section and exited (code 0)
+  [PASS] X6_remote_thread       NtCreateThreadEx at kernel32!ExitThread
+        address=0x7FFD4865EE90 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: remote thread created and exited as expected
+  [PASS] X7_apc_queue           QueueUserAPC into an existing target thread
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: APC queued to thread 23068; runs at the target's next alertable wait
+
+8/8 probes passed
+recommendation: section-map + remote execution WORK here => the A7 (manual map) rung is worth building; A8 (VAD-less/MDL) stays the stretch goal. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. NtCreateThreadEx (A2) works => keep it as the ladder fallback. APC queue (A3) queues => keep it as the low-footprint option. 
+==========================================================================
+END OF PROBE REPORT
+==========================================================================
+[*] recommendation: section-map + remote execution WORK here => the A7 (manual map) rung is worth building; A8 (VAD-less/MDL) stays the stretch goal. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. NtCreateThreadEx (A2) works => keep it as the ladder fallback. APC queue (A3) queues => keep it as the low-footprint option. 
+[*] measured 8/8 probe(s) passing
+[*] report written: C:\Users\NEWUSE~1\AppData\Local\Temp\apexcheat_acg_probe_target_6180_20261026_163402.txt
+EXITP=0

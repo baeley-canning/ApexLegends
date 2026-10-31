@@ -1,0 +1,174 @@
+KNOWLEDGE BASE: SOFTWARE ARCHITECTURE AND DESIGN
+
+Purpose:
+Educational reference for structuring software so it is understandable,
+testable, and changeable: how to divide responsibility, control
+dependencies, and make boundaries explicit.
+
+---
+
+1. WHY ARCHITECTURE
+Architecture is the set of decisions that are expensive to change later.
+It shapes how easily the system can be understood, tested, and extended.
+Its purpose is to keep change affordable over time.
+
+---
+
+2. SEPARATION OF CONCERNS
+Each part of a system should address one concern.
+Mixing capture, perception, control, and I/O in one module makes every
+change risky.
+Separation lets each concern evolve independently.
+
+---
+
+3. MODULARITY AND COHESION
+A module should hold closely related responsibilities (high cohesion).
+Unrelated responsibilities bundled together reduce clarity and reuse.
+Cohesion is about what belongs together.
+
+---
+
+4. COUPLING
+Coupling is how much modules depend on each other's details.
+Loose coupling means a change in one rarely forces a change in another.
+Low coupling and high cohesion together make systems maintainable.
+
+---
+
+5. INTERFACES AND BOUNDARIES
+An interface defines what a module offers without exposing how it works.
+Boundaries mark where assumptions are checked and where implementations
+can be swapped.
+Explicit boundaries are where complexity is contained.
+
+---
+
+6. DEPENDENCY DIRECTION
+Dependencies should point from volatile, high-level policy toward
+stable, low-level mechanisms.
+Reversing this makes core logic depend on details, which is fragile.
+
+---
+
+7. DEPENDENCY INJECTION
+Instead of creating its own dependencies, a component receives them.
+This makes collaborations explicit and replaceable in tests.
+It turns hidden coupling into visible wiring.
+
+---
+
+8. INVERSION OF CONTROL
+Control over flow is given to a framework or caller rather than
+hard-coded.
+This decouples high-level logic from the mechanics that invoke it.
+
+---
+
+9. PORTS AND ADAPTERS
+Define the core in terms of interfaces (ports) and implement them with
+replaceable adapters.
+The core does not know whether it talks to a real camera, a file, or a
+test double.
+This isolates the domain from its environment.
+
+---
+
+10. LAYERING
+Organise code into layers with clear responsibilities and allowed
+dependency directions.
+Layers prevent a change deep in the system from rippling everywhere.
+
+---
+
+11. PIPELINES AND STAGES
+A linear flow of stages is easy to reason about and to measure.
+Each stage has one job and a clear input and output.
+Pipelines align naturally with real-time constraints.
+
+---
+
+12. CONFIGURATION AND PARAMETERS
+Values that vary by environment belong in configuration, not in code.
+Load and validate once, then pass the result around explicitly.
+
+---
+
+13. FAIL FAST AT BOUNDARIES
+Validate inputs where they enter the system and raise clear errors.
+Failing early localises the fault instead of propagating corrupt state.
+Silent fallbacks hide the real problem.
+
+---
+
+14. VALIDATION AND CONTRACTS
+A contract states what a component expects and guarantees.
+Checking it at boundaries makes violations obvious.
+Well-defined contracts let components be developed and tested
+separately.
+
+---
+
+15. ERROR HANDLING AS A DESIGN CHOICE
+Decide, per boundary, whether to retry, degrade, or abort.
+Handling every error the same way is rarely right.
+Error policy belongs in the design, not in scattered try blocks.
+
+---
+
+16. STATELESS VERSUS STATEFUL
+Stateless components are easier to reason about and to test.
+State should be explicit and owned where it is needed, not scattered
+globally.
+
+---
+
+17. IMMUTABILITY
+Data that does not change after creation avoids whole classes of bugs.
+Where possible, pass values rather than sharing mutable structures.
+
+---
+
+18. OBSERVABILITY AS A DESIGN CONCERN
+Decide what to log and measure while designing, not after shipping.
+Components should expose their behaviour, not hide it.
+
+---
+
+19. TESTABILITY AND SEAMS
+A seam is a place where behaviour can be substituted for testing.
+Designing seams up front makes testing possible without contorting the
+code.
+
+---
+
+20. REFACTORING
+Improve structure in small, behaviour-preserving steps.
+Tests make refactoring safe; without them it is rewriting.
+
+---
+
+21. YAGNI AND PREMATURE ABSTRACTION
+Do not build for imagined future needs.
+Abstraction should follow real, repeated variation, not speculation.
+
+---
+
+22. DOCUMENTING DECISIONS
+Record why a choice was made, not only what it is.
+The reasoning is what future readers lack.
+
+---
+
+23. SUMMARY
+Architecture keeps a system changeable by separating concerns,
+controlling dependencies, and making boundaries explicit.
+Cohesion, coupling, and dependency direction are the levers; tests and
+seams make change safe.
+
+CORE PRINCIPLE:
+Good architecture minimises the cost of the next change. Separate
+concerns, point dependencies toward stable abstractions, make boundaries
+explicit, and validate at them. Prefer simple, honest structures that
+are easy to test and to observe over clever ones that are hard to
+change.

@@ -1,0 +1,114 @@
+## sections
+  .text      va=0x0140001000 vsize=0x02c951ac raw=0x02c95200  CODE
+  .rdata     va=0x0142c97000 vsize=0x00680b60 raw=0x00680c00  DATA
+  .data      va=0x0143318000 vsize=0x0b40ab8c raw=0x00d00000  DATA
+  .pdata     va=0x014e723000 vsize=0x000e32bc raw=0x000e3400  DATA
+  _RDATA     va=0x014e807000 vsize=0x00000a24 raw=0x00000c00  DATA
+  .fptable   va=0x014e808000 vsize=0x00000100 raw=0x00000200  DATA
+  .rsrc      va=0x014e809000 vsize=0x000035f8 raw=0x00003600  DATA
+  .reloc     va=0x014e80d000 vsize=0x000571b0 raw=0x00057200  DATA
+  .ooa       va=0x014e865000 vsize=0x00000712 raw=0x00000800  CODE
+
+## lea sites onto m_* names: 3574 over 2202 names
+
+### context for m_iHealth @ 0x14195eab2
+
+### disasm from 0x14195ea8a
+  0x014195ea8a  fst      st(6)                                     
+  0x014195ea8c  or       al, 0x48                                  
+  0x014195ea8e  mov      dword ptr [rip + 0xcd6ddf4], eax             ; 0x14e6cc888
+  0x014195ea94  lea      rax, [rip + 0x4aca75]                        ; 0x141e0b510 '\x0f¶A A\x88'
+  0x014195ea9b  movups   xmmword ptr [rip + 0xcd6ddfe], xmm0          ; 0x14e6cc8a0
+  0x014195eaa2  mov      qword ptr [rip + 0xcd6ddff], rax             ; 0x14e6cc8a8
+  0x014195eaa9  xor      eax, eax                                  
+  0x014195eaab  mov      qword ptr [rip + 0xcd6de76], rax             ; 0x14e6cc928
+  0x014195eab2  lea      rax, [rip + 0x16fdd97]                       ; 0x14305c850 'm_iHealth'
+  0x014195eab9  movups   xmmword ptr [rip + 0xcd6dd10], xmm0          ; 0x14e6cc7d0
+  0x014195eac0  mov      qword ptr [rip + 0xcd6dd11], rbx             ; 0x14e6cc7d8
+  0x014195eac7  movups   xmmword ptr [rip + 0xcd6dd3a], xmm0          ; 0x14e6cc808
+  0x014195eace  mov      dword ptr [rip + 0xcd6dd38], ebx             ; 0x14e6cc80c
+  0x014195ead4  movups   xmmword ptr [rip + 0xcd6de0d], xmm0          ; 0x14e6cc8e8
+  0x014195eadb  mov      qword ptr [rip + 0xcd6de0e], rax             ; 0x14e6cc8f0
+  0x014195eae2  movups   xmmword ptr [rip + 0xcd6de1f], xmm0          ; 0x14e6cc908
+  0x014195eae9  mov      dword ptr [rip + 0xcd6ddc5], 0xffffffff      ; 0x14e6cc8b8
+  0x014195eaf3  movups   xmmword ptr [rip + 0xcd6dcc6], xmm0          ; 0x14e6cc7c0
+  0x014195eafa  mov      qword ptr [rip + 0xcd6dd5f], 0x1650          ; 0x14e6cc864
+  0x014195eb05  movups   xmmword ptr [rip + 0xcd6dd1c], xmm0          ; 0x14e6cc828
+  0x014195eb0c  mov      qword ptr [rip + 0xcd6dd55], 1               ; 0x14e6cc86c
+  0x014195eb17  movups   xmmword ptr [rip + 0xcd6dd1a], xmm0          ; 0x14e6cc838
+  0x014195eb1e  mov      dword ptr [rip + 0xcd6dd3c], ebx             ; 0x14e6cc860
+  0x014195eb24  movups   xmmword ptr [rip + 0xcd6dd65], xmm0          ; 0x14e6cc890
+  0x014195eb2b  mov      dword ptr [rip + 0xcd6dd43], ebx             ; 0x14e6cc874
+  0x014195eb31  movups   xmmword ptr [rip + 0xcd6ddc0], xmm0          ; 0x14e6cc8f8
+  0x014195eb38  mov      dword ptr [rip + 0xcd6dde2], 1               ; 0x14e6cc924
+  0x014195eb42  mov      dword ptr [rip + 0xcd6ddd4], 0xffffffff      ; 0x14e6cc920
+  0x014195eb4c  mov      qword ptr [rip + 0xcd6dd75], 0x330           ; 0x14e6cc8cc
+  0x014195eb57  mov      qword ptr [rip + 0xcd6dd72], 4               ; 0x14e6cc8d4
+
+### context for m_iTeamNum @ 0x141f39b41
+
+### disasm from 0x141f39b19
+  0x0141f39b19  or       al, 0x33                                  
+  0x0141f39b1b  ror      byte ptr [rax - 0x77], 5                  
+  0x0141f39b1f  sbb      eax, 0x480c76e9                           
+  0x0141f39b24  lea      eax, [rip + 0x112cb5e]                       ; 0x143066688 'm_networkedFlags'
+  0x0141f39b2a  movups   xmmword ptr [rip + 0xc76e8cf], xmm0          ; 0x14e6a8400
+  0x0141f39b31  mov      qword ptr [rip + 0xc76e8d0], rax             ; 0x14e6a8408
+  0x0141f39b38  xor      eax, eax                                  
+  0x0141f39b3a  mov      qword ptr [rip + 0xc76e967], rax             ; 0x14e6a84a8
+  0x0141f39b41  lea      rax, [rip + 0x112cb58]                       ; 0x1430666a0 'm_iTeamNum'
+  0x0141f39b48  movups   xmmword ptr [rip + 0xc76e919], xmm0          ; 0x14e6a8468
+  0x0141f39b4f  mov      qword ptr [rip + 0xc76e91a], rax             ; 0x14e6a8470
+  0x0141f39b56  xor      eax, eax                                  
+  0x0141f39b58  movups   xmmword ptr [rip + 0xc76e7c1], xmm0          ; 0x14e6a8320
+  0x0141f39b5f  mov      dword ptr [rip + 0xc76e7bf], esi             ; 0x14e6a8324
+  0x0141f39b65  movups   xmmword ptr [rip + 0xc76e7e4], xmm0          ; 0x14e6a8350
+  0x0141f39b6c  mov      qword ptr [rip + 0xc76e7e5], rsi             ; 0x14e6a8358
+  0x0141f39b73  movups   xmmword ptr [rip + 0xc76e80e], xmm0          ; 0x14e6a8388
+  0x0141f39b7a  mov      dword ptr [rip + 0xc76e7f8], 0x384           ; 0x14e6a837c
+  0x0141f39b84  movups   xmmword ptr [rip + 0xc76e82d], xmm0          ; 0x14e6a83b8
+  0x0141f39b8b  mov      dword ptr [rip + 0xc76e7e3], 2               ; 0x14e6a8378
+  0x0141f39b95  movups   xmmword ptr [rip + 0xc76e884], xmm0          ; 0x14e6a8420
+  0x0141f39b9c  mov      dword ptr [rip + 0xc76e7ea], esi             ; 0x14e6a838c
+  0x0141f39ba2  movups   xmmword ptr [rip + 0xc76e8df], xmm0          ; 0x14e6a8488
+  0x0141f39ba9  mov      qword ptr [rip + 0xc76e810], rsi             ; 0x14e6a83c0
+  0x0141f39bb0  movups   xmmword ptr [rip + 0xc76e789], xmm0          ; 0x14e6a8340
+  0x0141f39bb7  mov      dword ptr [rip + 0xc76e87b], 1               ; 0x14e6a843c
+  0x0141f39bc1  movups   xmmword ptr [rip + 0xc76e7e0], xmm0          ; 0x14e6a83a8
+  0x0141f39bc8  mov      dword ptr [rip + 0xc76e866], 0xffffffff      ; 0x14e6a8438
+  0x0141f39bd2  movups   xmmword ptr [rip + 0xc76e837], xmm0          ; 0x14e6a8410
+  0x0141f39bd9  mov      qword ptr [rip + 0xc76e800], 0x2dc           ; 0x14e6a83e4
+
+### context for m_vecOrigin @ 0x1421bf63a
+
+### disasm from 0x1421bf612
+  0x01421bf612  push     rcx                                       
+  0x01421bf614  or       al, 0x48                                  
+  0x01421bf616  lea      eax, [rip - 0x3b3efc]                        ; 0x141e0b720 'L\x89\x02ÃÌÌÌÌÌÌÌÌÌÌÌÌL\x89D$\x18L\x89L$ SWH\x83ì(H\x8bÚL\x8dL$XHÇÀÿÿÿÿ\x90HÿÀ\x80<\x01'
+  0x01421bf61c  mov      qword ptr [rip + 0xc513df5], rax             ; 0x14e6d3418
+  0x01421bf623  lea      rax, [rip + 0x1b77b56]                       ; 0x143d37180 'ÿÿÿÿ'
+  0x01421bf62a  mov      qword ptr [rip + 0xc513db7], rax             ; 0x14e6d33e8
+  0x01421bf631  xor      eax, eax                                  
+  0x01421bf633  mov      qword ptr [rip + 0xc513e56], rax             ; 0x14e6d3490
+  0x01421bf63a  lea      rax, [rip + 0xf09637]                        ; 0x1430c8c78 'm_vecOrigin'
+  0x01421bf641  movups   xmmword ptr [rip + 0xc513e08], xmm0          ; 0x14e6d3450
+  0x01421bf648  mov      qword ptr [rip + 0xc513e09], rax             ; 0x14e6d3458
+  0x01421bf64f  xor      eax, eax                                  
+  0x01421bf651  mov      qword ptr [rip + 0xc513ea0], rax             ; 0x14e6d34f8
+  0x01421bf658  lea      rax, [rip + 0xf09649]                        ; 0x1430c8ca8 'm_angRotation.x'
+  0x01421bf65f  movups   xmmword ptr [rip + 0xc513e52], xmm0          ; 0x14e6d34b8
+  0x01421bf666  mov      qword ptr [rip + 0xc513e53], rax             ; 0x14e6d34c0
+  0x01421bf66d  xor      eax, eax                                  
+  0x01421bf66f  movups   xmmword ptr [rip + 0xc513d2a], xmm0          ; 0x14e6d33a0
+  0x01421bf676  mov      qword ptr [rip + 0xc513ee3], rax             ; 0x14e6d3560
+  0x01421bf67d  movups   xmmword ptr [rip + 0xc513d54], xmm0          ; 0x14e6d33d8
+  0x01421bf684  mov      qword ptr [rip + 0xc513d1d], rdx             ; 0x14e6d33a8
+  0x01421bf68b  movups   xmmword ptr [rip + 0xc513dae], xmm0          ; 0x14e6d3440
+  0x01421bf692  mov      qword ptr [rip + 0xc513d33], rdx             ; 0x14e6d33cc
+  0x01421bf699  movups   xmmword ptr [rip + 0xc513dd0], xmm0          ; 0x14e6d3470
+  0x01421bf6a0  mov      qword ptr [rip + 0xc513d49], rdi             ; 0x14e6d33f0
+  0x01421bf6a7  movups   xmmword ptr [rip + 0xc513dfa], xmm0          ; 0x14e6d34a8
+  0x01421bf6ae  mov      dword ptr [rip + 0xc513d10], 0xa             ; 0x14e6d33c8
+  0x01421bf6b8  movups   xmmword ptr [rip + 0xc513e19], xmm0          ; 0x14e6d34d8
+  0x01421bf6bf  mov      dword ptr [rip + 0xc513d17], edx             ; 0x14e6d33dc
+  0x01421bf6c5  movups   xmmword ptr [rip + 0xc513cc4], xmm0          ; 0x14e6d3390

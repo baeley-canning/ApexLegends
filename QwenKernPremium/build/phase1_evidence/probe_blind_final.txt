@@ -1,0 +1,19 @@
+﻿
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown[*] reference integrity:
+    image            :  (NOT the expected r5apex_dx12.exe)
+    modules in target: 0
+    render modules   : d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown
+        every 'unknown' above is genuinely UNMEASURED, not absent ->
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown
+  [FAIL] I0_inventory           module inventory / reference integrity
+        detail: image=r5apex_dx12.exe modules=0 d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown os=10.0 build 26200 hvci=unknown (key absent) | module list UNREADABLE: 
+presence is unknown, not absent
+
+
+
+EXIT=4
+usage: apex_launcher.exe [options]
+
+  --inject                 run the LADDER once and exit (default)

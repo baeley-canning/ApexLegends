@@ -1,0 +1,10 @@
+﻿
+verdict: PASS  (0 failure(s))
+  [ok] IAT OK  : build\apex_launcher.exe == { ADVAPI32.dll, KERNEL32.dll }
+  [ok] IAT OK  : build\apexcheat.dll == { d3d11.dll, KERNEL32.dll, USER32.dll }
+  [ok] symbol  : no 'QwenKernPremium' in code (OK)
+  [ok] symbol  : no 'g_pCheat\b' in code (OK)
+gate criteria: rebuild EXIT=0; warnings 0; IAT == allowlist; x64; no dead symbols.
+
+
+

@@ -1,0 +1,71 @@
+# diag4  64-bit=True pid=25268
+
+## control walk on our own process
+   regions=342 calls=342 stop=0x7fffffff0000 err=87
+   MEM_IMAGE=209 MEM_MAPPED=30 MEM_PRIVATE=42
+
+## target pid=11996  arch: process=0x0(native) native=0x8664(amd64)
+   OpenProcess h=0x1d4 err=18
+   walk: regions=6000 calls=6000 stop=0x200e10000 last_err=18
+   MEM_IMAGE=0 MEM_MAPPED=56 MEM_PRIVATE=5802 committed=5702
+      base=0x0000000000 size=0x00010000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000010000 size=0x00002000 state=0x1000 type=0x040000 prot=0x4
+      base=0x0000012000 size=0x0000e000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000020000 size=0x00001000 state=0x1000 type=0x020000 prot=0x4
+      base=0x0000021000 size=0x0000f000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000030000 size=0x0002a000 state=0x1000 type=0x040000 prot=0x2
+      base=0x000005a000 size=0x00006000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000060000 size=0x00004000 state=0x1000 type=0x040000 prot=0x2
+      base=0x0000064000 size=0x0000c000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000070000 size=0x00001000 state=0x1000 type=0x040000 prot=0x2
+      base=0x0000071000 size=0x0000f000 state=0x10000 type=0x000000 prot=0x1
+      base=0x0000080000 size=0x00002000 state=0x1000 type=0x020000 prot=0x4
+   rpm at the base of the first 40 committed regions:
+      0x0000010000 FAIL                       err=87
+      0x0000020000 FAIL                       err=87
+      0x0000030000 FAIL                       err=87
+      0x0000060000 FAIL                       err=87
+      0x0000070000 FAIL                       err=87
+      0x0000080000 FAIL                       err=87
+      0x0000090000 FAIL                       err=87
+      0x00000a0000 FAIL                       err=87
+      0x00000c0000 FAIL                       err=87
+      0x00001c0000 FAIL                       err=87
+      0x00001d0000 FAIL                       err=87
+      0x00001f0000 FAIL                       err=87
+      0x0000306000 FAIL                       err=87
+      0x000031a000 FAIL                       err=87
+      0x0000326000 FAIL                       err=87
+      0x0000363000 FAIL                       err=87
+      0x0000387000 FAIL                       err=87
+      0x000038b000 FAIL                       err=87
+      0x00003b9000 FAIL                       err=87
+      0x00003c5000 FAIL                       err=87
+      0x00003cb000 FAIL                       err=87
+      0x00003d1000 FAIL                       err=87
+      0x00003e5000 FAIL                       err=87
+      0x0000aaf000 FAIL                       err=87
+      0x0000ab2000 FAIL                       err=87
+      0x0000bb0000 FAIL                       err=87
+      0x0000c20000 FAIL                       err=87
+      0x0000c30000 FAIL                       err=87
+      0x0000c40000 FAIL                       err=87
+      0x0000c50000 FAIL                       err=87
+      0x0000c60000 FAIL                       err=87
+      0x0000c70000 FAIL                       err=87
+      0x0000c90000 FAIL                       err=87
+      0x000144c000 FAIL                       err=87
+      0x000144f000 FAIL                       err=87
+      0x0001bef000 FAIL                       err=87
+      0x0001bf2000 FAIL                       err=87
+      0x0001c00000 FAIL                       err=87
+      0x0001c10000 FAIL                       err=87
+      0x0001c20000 FAIL                       err=87
+   rpm successes: 0/40
+   ntdll.NtReadVirtualMemory probes:
+      0x0140000000 -> status=0xc000000d got=0 
+      0x007ffe0000 -> status=0xc000000d got=0 
+      0x0000010000 -> status=0xc000000d got=0 
+
+## drivers / services worth knowing about
+   driver enumeration ok=1 count=15

@@ -1,0 +1,270 @@
+## blob bases
+  string 0x0305c850 'm_iHealth'      blob rva 0x0305c719..0x0305d094  (2427 bytes)
+  string 0x030666a0 'm_iTeamNum'     blob rva 0x03065995..0x03066830  (3739 bytes)
+  string 0x030c8c78 'm_vecOrigin'    blob rva 0x030c7df3..0x030c90e0  (4845 bytes)
+  string 0x0307a9e0 'm_currentFrameZipline.ziplinePreviousPositions' blob rva 0x030780ba..0x0307b2be  (12804 bytes)
+
+## offset-reference test (u32 relative to blob base)
+  anchor 0x0305c850 base 0x0305c719 (delta 0x137) 'm_iHealth'
+    u32==0x137 hits: 214 ['0x3455', '0x228e39', '0x28cc66', '0x3a6ca9', '0x4c38e4', '0x50bfe8', '0x5193bb', '0x6e1d3e', '0x789c38', '0x87f25d']
+      hit at rva 0x00003455:
+        0x00003449 u32=0x1f0f05eb None
+        0x0000344d u32=0x4d000044 None
+        0x00003451 u32=0x870feb39 None
+        0x00003455 u32=0x00000137 'm_iHealth'
+        0x00003459 u32=0x0ac78348 None
+        0x0000345d u32=0x04c64c8b None
+        0x00003461 u32=0xf570e2c4 None
+      hit at rva 0x00228e39:
+        0x00228e2d u32=0x48d2f748 None
+        0x00228e31 u32=0xc148c2ff None
+        0x00228e35 u32=0x880f02ea None
+        0x00228e39 u32=0x00000137 'm_iHealth'
+        0x00228e3d u32=0xfffec7e9 None
+        0x00228e41 u32=0xc48148ff None
+        0x00228e45 u32=0x00000008 'urret_weapon'
+      hit at rva 0x0028cc66:
+        0x0028cc5a u32=0x00000049 'ventParity[0]'
+        0x0028cc5e u32=0x80ea214d None
+        0x0028cc62 u32=0x850f00f9 None
+        0x0028cc66 u32=0x00000137 'm_iHealth'
+        0x0028cc6a u32=0x49ed8949 None
+        0x0028cc6e u32=0x003ce781 None
+        0x0028cc72 u32=0x094d0000 None
+      hit at rva 0x003a6ca9:
+        0x003a6c9d u32=0x4808c483 None
+        0x003a6ca1 u32=0x4808c483 None
+        0x003a6ca5 u32=0xe908c483 None
+        0x003a6ca9 u32=0x00000137 'm_iHealth'
+        0x003a6cad u32=0x415b419d None
+        0x003a6cb1 u32=0x4de9e3ff None
+        0x003a6cb5 u32=0xff000001 None
+    u16==0x137 hits: 1476 ['0x3455', '0x87810', '0x94693', '0xb6094', '0xcedf8', '0xd7bc9', '0xd9025', '0xdf4f2', '0xe7859', '0xf552a']
+      hit at rva 0x00003455:
+        0x00003449 u32=0x1f0f05eb None
+        0x0000344d u32=0x4d000044 None
+        0x00003451 u32=0x870feb39 None
+        0x00003455 u32=0x00000137 'm_iHealth'
+        0x00003459 u32=0x0ac78348 None
+        0x0000345d u32=0x04c64c8b None
+        0x00003461 u32=0xf570e2c4 None
+      hit at rva 0x00087810:
+        0x00087804 u32=0x7032a35c None
+        0x00087808 u32=0xc80fc6be None
+        0x0008780c u32=0x65ae7bbc None
+        0x00087810 u32=0x03990137 None
+        0x00087814 u32=0x58aa1fd0 None
+        0x00087818 u32=0x3d9664b2 None
+        0x0008781c u32=0xef9b2d3c None
+      hit at rva 0x00094693:
+        0x00094687 u32=0x47e718df None
+        0x0009468b u32=0x6b695429 None
+        0x0009468f u32=0x9fefb456 None
+        0x00094693 u32=0xc37a0137 None
+        0x00094697 u32=0x863af65c None
+        0x0009469b u32=0x09a3fa0b None
+        0x0009469f u32=0xbbc9ec72 None
+      hit at rva 0x000b6094:
+        0x000b6088 u32=0x5a168946 None
+        0x000b608c u32=0xaa1cbdea None
+        0x000b6090 u32=0xecc894fd None
+        0x000b6094 u32=0xb73c0137 None
+        0x000b6098 u32=0xb87bb793 None
+        0x000b609c u32=0xcae252e8 None
+        0x000b60a0 u32=0x8084337f None
+  anchor 0x030666a0 base 0x03065995 (delta 0xd0b) 'm_iTeamNum'
+    u32==0xd0b hits: 60 ['0x8febb9', '0x905883', '0x91d90e', '0x9ef9cc', '0xa5730f', '0xab92d0', '0xac4a01', '0xae30d1', '0xbb7e02', '0xc61ae6']
+      hit at rva 0x008febb9:
+        0x008febad u32=0x3b2f39e2 None
+        0x008febb1 u32=0x00000000 None
+        0x008febb5 u32=0x7242f900 None
+        0x008febb9 u32=0x00000d0b 'm_iTeamNum'
+        0x008febbd u32=0x0000126d '£A\x01'
+        0x008febc1 u32=0x0cb1c565 None
+        0x008febc5 u32=0xb3f8e12a None
+      hit at rva 0x00905883:
+        0x00905877 u32=0x6ebd0064 None
+        0x0090587b u32=0xbcd12a9d None
+        0x0090587f u32=0x64c47e33 None
+        0x00905883 u32=0x00000d0b 'm_iTeamNum'
+        0x00905887 u32=0x00000021 None
+        0x0090588b u32=0x000dee00 None
+        0x0090588f u32=0x120064e2 None
+      hit at rva 0x0091d90e:
+        0x0091d902 u32=0x00a10052 None
+        0x0091d906 u32=0x88000000 None
+        0x0091d90a u32=0x4ed3f44c None
+        0x0091d90e u32=0x00000d0b 'm_iTeamNum'
+        0x0091d912 u32=0xd1ae9c58 None
+        0x0091d916 u32=0xfe5a0064 None
+        0x0091d91a u32=0x60606997 None
+      hit at rva 0x009ef9cc:
+        0x009ef9c0 u32=0x43081400 None
+        0x009ef9c4 u32=0xfc88a953 None
+        0x009ef9c8 u32=0x29000000 None
+        0x009ef9cc u32=0x00000d0b 'm_iTeamNum'
+        0x009ef9d0 u32=0x000000b0 'tor'
+        0x009ef9d4 u32=0x8bd31500 None
+        0x009ef9d8 u32=0xfff00983 None
+    u16==0xd0b hits: 303 ['0x73ad7', '0xa60ae', '0xbe76d', '0xd5431', '0xf29cc', '0x14b35f', '0x2bae50', '0x522b8c', '0x52caa9', '0x535e1e']
+      hit at rva 0x00073ad7:
+        0x00073acb u32=0x66f2a17f None
+        0x00073acf u32=0x42e19cc5 None
+        0x00073ad3 u32=0xcb86cd11 None
+        0x00073ad7 u32=0x7dc70d0b None
+        0x00073adb u32=0x6eb84b14 None
+        0x00073adf u32=0xa5c94836 None
+        0x00073ae3 u32=0xb9cfa5e7 None
+      hit at rva 0x000a60ae:
+        0x000a60a2 u32=0xefca83df None
+        0x000a60a6 u32=0x2951e0f7 None
+        0x000a60aa u32=0x80959d77 None
+        0x000a60ae u32=0x60990d0b None
+        0x000a60b2 u32=0xae0863f6 None
+        0x000a60b6 u32=0x20e99660 None
+        0x000a60ba u32=0x5f822f1c None
+      hit at rva 0x000be76d:
+        0x000be761 u32=0x84ec4eb3 None
+        0x000be765 u32=0x4c90ac1d None
+        0x000be769 u32=0xea962ad2 None
+        0x000be76d u32=0xbe6d0d0b None
+        0x000be771 u32=0xdbc4c51c None
+        0x000be775 u32=0xd5dfdff4 None
+        0x000be779 u32=0x9b80629e None
+      hit at rva 0x000d5431:
+        0x000d5425 u32=0x254a9b94 None
+        0x000d5429 u32=0x03bf08a8 None
+        0x000d542d u32=0xa0003bd8 None
+        0x000d5431 u32=0xb5ed0d0b None
+        0x000d5435 u32=0xa20c3acb None
+        0x000d5439 u32=0xc8006149 None
+        0x000d543d u32=0x207ce4a7 None
+  anchor 0x030c8c78 base 0x030c7df3 (delta 0xe85) 'm_vecOrigin'
+    u32==0xe85 hits: 888 ['0x11e1e', '0x17b1a', '0x1bd69', '0x1c6ee', '0x1c716', '0x1c72d', '0x1cd91', '0x22bf8', '0x2644d', '0x2a785']
+      hit at rva 0x00011e1e:
+        0x00011e12 u32=0x7805489c None
+        0x00011e16 u32=0x41000000 None
+        0x00011e1a u32=0x0f97f980 None
+        0x00011e1e u32=0x00000e85 'm_vecOrigin'
+        0x00011e22 u32=0xddf74100 None
+        0x00011e26 u32=0xeb81499c None
+        0x00011e2a u32=0x00000020 'kButtonPair'
+      hit at rva 0x00017b1a:
+        0x00017b0e u32=0x00000485 'ActivateOffhandWeaponByIndex'
+        0x00017b12 u32=0xf0204500 None
+        0x00017b16 u32=0x0f163c9c None
+        0x00017b1a u32=0x00000e85 'm_vecOrigin'
+        0x00017b1e u32=0x21456600 None
+        0x00017b22 u32=0x014c9cf0 None
+        0x00017b26 u32=0xc1014deb None
+      hit at rva 0x0001bd69:
+        0x0001bd5d u32=0x41660000 None
+        0x0001bd61 u32=0x409cdff7 None
+        0x0001bd65 u32=0x0f97ff80 None
+        0x0001bd69 u32=0x00000e85 'm_vecOrigin'
+        0x0001bd6d u32=0xdff74100 None
+        0x0001bd71 u32=0xc981499c None
+        0x0001bd75 u32=0x00000800 None
+      hit at rva 0x0001c6ee:
+        0x0001c6e2 u32=0x00ecc681 'º9ôS2\x0c÷CÇã·¾\x97\tw®9'
+        0x0001c6e6 u32=0x168a0000 None
+        0x0001c6ea u32=0x0f6dfa80 None
+        0x0001c6ee u32=0x00000e85 'm_vecOrigin'
+        0x0001c6f2 u32=0xd0384400 None
+        0x0001c6f6 u32=0xc981499c None
+        0x0001c6fa u32=0x00000080 'selook'
+    u16==0xe85 hits: 1249 ['0x11e1e', '0x17b1a', '0x1bd69', '0x1c6ee', '0x1c716', '0x1c72d', '0x1cd91', '0x22bf8', '0x2644d', '0x2a785']
+      hit at rva 0x00011e1e:
+        0x00011e12 u32=0x7805489c None
+        0x00011e16 u32=0x41000000 None
+        0x00011e1a u32=0x0f97f980 None
+        0x00011e1e u32=0x00000e85 'm_vecOrigin'
+        0x00011e22 u32=0xddf74100 None
+        0x00011e26 u32=0xeb81499c None
+        0x00011e2a u32=0x00000020 'kButtonPair'
+      hit at rva 0x00017b1a:
+        0x00017b0e u32=0x00000485 'ActivateOffhandWeaponByIndex'
+        0x00017b12 u32=0xf0204500 None
+        0x00017b16 u32=0x0f163c9c None
+        0x00017b1a u32=0x00000e85 'm_vecOrigin'
+        0x00017b1e u32=0x21456600 None
+        0x00017b22 u32=0x014c9cf0 None
+        0x00017b26 u32=0xc1014deb None
+      hit at rva 0x0001bd69:
+        0x0001bd5d u32=0x41660000 None
+        0x0001bd61 u32=0x409cdff7 None
+        0x0001bd65 u32=0x0f97ff80 None
+        0x0001bd69 u32=0x00000e85 'm_vecOrigin'
+        0x0001bd6d u32=0xdff74100 None
+        0x0001bd71 u32=0xc981499c None
+        0x0001bd75 u32=0x00000800 None
+      hit at rva 0x0001c6ee:
+        0x0001c6e2 u32=0x00ecc681 'º9ôS2\x0c÷CÇã·¾\x97\tw®9'
+        0x0001c6e6 u32=0x168a0000 None
+        0x0001c6ea u32=0x0f6dfa80 None
+        0x0001c6ee u32=0x00000e85 'm_vecOrigin'
+        0x0001c6f2 u32=0xd0384400 None
+        0x0001c6f6 u32=0xc981499c None
+        0x0001c6fa u32=0x00000080 'selook'
+  anchor 0x0307a9e0 base 0x030780ba (delta 0x2926) 'm_currentFrameZipline.ziplinePreviousPositions'
+    u32==0x2926 hits: 3 ['0xbcba11', '0xc58602', '0x28b5766']
+      hit at rva 0x00bcba11:
+        0x00bcba05 u32=0x63006400 None
+        0x00bcba09 u32=0xb972f5a2 None
+        0x00bcba0d u32=0x57d9bf74 None
+        0x00bcba11 u32=0x00002926 'm_currentFrameZipline.ziplinePreviousPositions'
+        0x00bcba15 u32=0xec000000 None
+        0x00bcba19 u32=0x01d6c27e None
+        0x00bcba1d u32=0xec300000 None
+      hit at rva 0x00c58602:
+        0x00c585f6 u32=0x1a006400 None
+        0x00c585fa u32=0x1cbbd623 None
+        0x00c585fe u32=0x37e8f5e2 None
+        0x00c58602 u32=0x00002926 'm_currentFrameZipline.ziplinePreviousPositions'
+        0x00c58606 u32=0xec000000 None
+        0x00c5860a u32=0x00c746d1 None
+        0x00c5860e u32=0x00640000 None
+      hit at rva 0x028b5766:
+        0x028b575a u32=0x2930e8cf None
+        0x028b575e u32=0x8b490000 None
+        0x028b5762 u32=0xe8d88bce None
+        0x028b5766 u32=0x00002926 'm_currentFrameZipline.ziplinePreviousPositions'
+        0x028b576a u32=0x9c0fd83b None
+        0x028b576e u32=0x484cebc0 None
+        0x028b5772 u32=0x87e8cf8b None
+    u16==0x2926 hits: 265 ['0x38279', '0x6b1de', '0x8b407', '0x8c0ae', '0x98af5', '0x9e3d4', '0xa6cb1', '0xf2589', '0x51ab3c', '0x5289b9']
+      hit at rva 0x00038279:
+        0x0003826d u32=0xbad4120b None
+        0x00038271 u32=0x6ce1b0de None
+        0x00038275 u32=0xea5aa366 None
+        0x00038279 u32=0xd6e32926 None
+        0x0003827d u32=0x5837e165 None
+        0x00038281 u32=0x400998f8 None
+        0x00038285 u32=0x95053f04 None
+      hit at rva 0x0006b1de:
+        0x0006b1d2 u32=0x337ed50a None
+        0x0006b1d6 u32=0x8871dd5c None
+        0x0006b1da u32=0xa46b2a76 None
+        0x0006b1de u32=0xac222926 None
+        0x0006b1e2 u32=0x8cccfce0 None
+        0x0006b1e6 u32=0x8a2b0418 None
+        0x0006b1ea u32=0x6d818c9f None
+      hit at rva 0x0008b407:
+        0x0008b3fb u32=0x3d42291f None
+        0x0008b3ff u32=0x0fa2afc1 None
+        0x0008b403 u32=0x86891a98 None
+        0x0008b407 u32=0xea112926 None
+        0x0008b40b u32=0x7d6c0cea None
+        0x0008b40f u32=0x7761c3c4 None
+        0x0008b413 u32=0x24eb223e None
+      hit at rva 0x0008c0ae:
+        0x0008c0a2 u32=0x2d706b6e None
+        0x0008c0a6 u32=0xfd59c2a3 None
+        0x0008c0aa u32=0xaed36516 None
+        0x0008c0ae u32=0x8e2b2926 None
+        0x0008c0b2 u32=0x06afe6c8 None
+        0x0008c0b6 u32=0x77ec4651 None
+        0x0008c0ba u32=0xa259ada3 None
+
+## arbitrary-base sweep: u32 values that land on an m_* string
+  distinct m_* string rvas referenced as u32: 0

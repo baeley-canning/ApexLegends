@@ -1,0 +1,3 @@
+elevation=4
+gdrv read 0x1000[0:16] = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10
+H1 FAILED: [Errno -1073741790] NtOpenSection(\Device\PhysicalMemory) failed 0xc0000022

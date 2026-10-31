@@ -1,0 +1,23 @@
+﻿== service keys whose ImagePath smells Javelin/EA ==
+EAAntiCheat => system32\drivers\eaanticheat.sys
+EAAntiCheatService => "C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+EasyAntiCheat_EOS => "C:\Program Files (x86)\EasyAntiCheat_EOS\EasyAntiCheat_EOS.exe"
+== sc qc EAAntiCheatService ==
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: EAAntiCheatService
+        TYPE               : 10  WIN32_OWN_PROCESS 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : "C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : EAAntiCheatService
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : LocalSystem
+== fltmc filters ==
+
+Filter listing failed with error: 0x80070005
+Access is denied.
+== all running drivers, names only (scan for odd ones) ==
+ACPI acpiex acpipagr acpitime AFD afunix ahcache amdfendr amdfendrmgr amdwps AMDXE bam BasicDisplay BasicRender Beep bfs bindflt bowser BTHPORT BTHUSB buttonconverter CDD cdrom CimFS CldFlt CLFS CNG CompositeBus condrv CSC CTIIO Dfsc disk DXGKrnl e2fnexpress EhStorClass ExecutionContext fastfat FileCrypt FileInfo FltMgr FsDepends fse fvevol gameflt gdrv3 GPIOClx0101 HDAudBus HidEventFilter HidUsb HTTP hvservice hvsocketcontrol iaLPSS2_GPIO2_ADL iaLPSS2_I2C_ADL ibtusb ICCWDT igfxn IntcAzAudAddService intelpep IntelPMT intelppm iorate kbdclass kbdhid kdnic KSecDD KSecPkg ksthunk lltdio logi_audio_surround logi_joy_bus_enum logi_joy_xlcore logi_lamparray luafv lxss MEIx64 MMCSS monitor mouclass mouhid mountmgr mpsdrv mrxsmb mrxsmb20 Msfs mshidkmdf MSIO msisadrv MsLldp MsSecCore mssmbios Mup NativeWifiP NDIS NdisCap NdisTapi Ndisuio NdisVirtualBus NdisWan ndproxy Ndu NetAdapterCx NetBIOS NetBT Netwtw14 npcap Npfs npsvctrig nsiproxy Ntfs Null NVHDA nvlddmkm nvmedisk nvvad_WaveExtensible P9Rdr partmgr pci pcw pdc PEAUTH PptpMiniport PRM Psched QWAVEdrv RasAgileVpn Rasl2tp RasPppoe RasSstp rdbss rdpbus rdyboost rhproxy rspndr spaceport SpbCx srv2 srvnet storahci stornvme storqosflt storvsp swenum Tcpip tcpipreg tdx TPM UCPD Ucx01000 UEFI umbus UnionFS usbaudio usbccgp USBHUB3 USBXHCI vdrvroot VfpExt vhdmp vhdparser vhf Vid vmbusr vmsmp VMSNPXY VMSP VmsProxy voicemodvad volmgr volmgrx volsnap volume vpcivsp vwifibus vwififlt vwifimp wanarp wcifs Wdf01000 wdiwifi WFPLWFS WindowsTrustedRT WindowsTrustedRTProxy WinNat WmiAcpi Wof wtd WUDFRd WUDFWpdFs WUDFWpdMtp XTUComponent Xvdd

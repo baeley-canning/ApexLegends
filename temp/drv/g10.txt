@@ -1,0 +1,71 @@
+﻿00001626  e9f8000000             jmp     0x1723
+0000162b  83f928                 cmp     ecx, 0x28
+0000162e  0f85e8000000           jne     0x171c
+00001634  488d4c2430             lea     rcx, [rsp + 0x30]
+00001639  488b03                 mov     rax, qword ptr [rbx]
+0000163c  488901                 mov     qword ptr [rcx], rax
+0000163f  488b4308               mov     rax, qword ptr [rbx + 8]
+00001643  48894108               mov     qword ptr [rcx + 8], rax
+00001647  488b4310               mov     rax, qword ptr [rbx + 0x10]
+0000164b  48894110               mov     qword ptr [rcx + 0x10], rax
+0000164f  488b4318               mov     rax, qword ptr [rbx + 0x18]
+00001653  48894118               mov     qword ptr [rcx + 0x18], rax
+00001657  488b4320               mov     rax, qword ptr [rbx + 0x20]
+0000165b  48894120               mov     qword ptr [rcx + 0x20], rax
+0000165f  41b804000000           mov     r8d, 4
+00001665  488b542430             mov     rdx, qword ptr [rsp + 0x30]
+0000166a  488b4c2438             mov     rcx, qword ptr [rsp + 0x38]
+0000166f  ff15f3090000           call    qword ptr [rip + 0x9f3]         ; ntoskrnl!ProbeForRead
+00001675  90                     nop
+00001676  41b804000000           mov     r8d, 4
+0000167c  488b542430             mov     rdx, qword ptr [rsp + 0x30]
+00001681  488b4c2438             mov     rcx, qword ptr [rsp + 0x38]
+00001686  ff15d4090000           call    qword ptr [rip + 0x9d4]         ; ntoskrnl!ProbeForWrite
+0000168c  90                     nop
+0000168d  488d442450             lea     rax, [rsp + 0x50]
+00001692  4889442420             mov     qword ptr [rsp + 0x20], rax
+00001697  4c8d4c2440             lea     r9, [rsp + 0x40]
+0000169c  4c8d442448             lea     r8, [rsp + 0x48]
+000016a1  488b542430             mov     rdx, qword ptr [rsp + 0x30]
+000016a6  488b4c2438             mov     rcx, qword ptr [rsp + 0x38]
+000016ab  e8e0f9ffff             call    0x1090
+000016b0  85c0                   test    eax, eax
+000016b2  7833                   js      0x16e7
+000016b4  488d542430             lea     rdx, [rsp + 0x30]
+000016b9  488b0a                 mov     rcx, qword ptr [rdx]
+000016bc  48890b                 mov     qword ptr [rbx], rcx
+000016bf  488b4a08               mov     rcx, qword ptr [rdx + 8]
+000016c3  48894b08               mov     qword ptr [rbx + 8], rcx
+000016c7  488b4a10               mov     rcx, qword ptr [rdx + 0x10]
+000016cb  48894b10               mov     qword ptr [rbx + 0x10], rcx
+000016cf  488b4a18               mov     rcx, qword ptr [rdx + 0x18]
+000016d3  48894b18               mov     qword ptr [rbx + 0x18], rcx
+000016d7  488b4a20               mov     rcx, qword ptr [rdx + 0x20]
+000016db  48894b20               mov     qword ptr [rbx + 0x20], rcx
+000016df  48c7473828000000       mov     qword ptr [rdi + 0x38], 0x28
+000016e7  894730                 mov     dword ptr [rdi + 0x30], eax
+000016ea  eb37                   jmp     0x1723
+000016ec  8bd8                   mov     ebx, eax
+000016ee  488d0d9b050000         lea     rcx, [rip + 0x59b]
+000016f5  e83a020000             call    0x1934
+000016fa  488b7c2478             mov     rdi, qword ptr [rsp + 0x78]
+000016ff  895f30                 mov     dword ptr [rdi + 0x30], ebx
+00001702  eb1f                   jmp     0x1723
+00001704  8bd8                   mov     ebx, eax
+00001706  488d0d33050000         lea     rcx, [rip + 0x533]
+0000170d  e822020000             call    0x1934
+00001712  488b7c2478             mov     rdi, qword ptr [rsp + 0x78]
+00001717  895f30                 mov     dword ptr [rdi + 0x30], ebx
+0000171a  eb07                   jmp     0x1723
+0000171c  c747300d0000c0         mov     dword ptr [rdi + 0x30], 0xc000000d
+00001723  eb21                   jmp     0x1746
+00001725  488d0de4040000         lea     rcx, [rip + 0x4e4]
+0000172c  e803020000             call    0x1934
+00001731  eb13                   jmp     0x1746
+00001733  488d15c6190000         lea     rdx, [rip + 0x19c6]
+0000173a  488d0d9f040000         lea     rcx, [rip + 0x49f]
+00001741  e8ee010000             call    0x1934
+00001746  8b5f30                 mov     ebx, dword ptr [rdi + 0x30]
+00001749  33d2                   xor     edx, edx
+0000174b  488bcf                 mov     rcx, rdi
+0000174e  ff1504090000           call    qword ptr [rip + 0x904]         ; ntoskrnl!IofCompleteRequest

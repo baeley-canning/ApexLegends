@@ -1,0 +1,483 @@
+KNOWLEDGE BASE: CHEATING IN GAMES - HISTORY, TAXONOMY, AND DETECTION
+
+Purpose:
+Educational reference for understanding cheating in multiplayer games as a
+domain: what "cheating" means, how cheating has evolved historically, the
+categories of cheats and how each category works conceptually, and how each
+category is detected.
+
+This document is reference knowledge. It describes mechanisms and their
+consequences at a conceptual level so that they can be reasoned about and
+defended against. It is written from a defensive and engineering
+perspective and deliberately does not provide recipes for defeating any
+specific commercial anti-cheat system.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, ADVERSARIAL AI AND CHEAT
+DETECTION, ADAPTIVE CHEATING AND EVOLVING SYSTEMS, INPUT INTEGRITY AND
+DEVICE FRAUD, MATCHMAKING AND ACCOUNT ECONOMY INTEGRITY, CHEAT ECONOMICS
+AND THE UNDERGROUND MARKET, CLIENT INTEGRITY, ANTI-TAMPER, AND
+ATTESTATION, and the numbered technical series.
+
+---
+
+1. WHAT "CHEATING" MEANS
+"Cheating" is acting outside the intended rules of play to gain an advantage
+the game never meant to grant, or that the other players did not agree to.
+It is defined relative to the game's rules and the players' expectations,
+not relative to any single technology.
+Useful neighbouring terms:
+* cheat - alters capability or information beyond the rules.
+* exploit - misuses a bug or edge case the rules did not anticipate.
+* automation - plays without full human control.
+* collusion - breaks the competitive structure between players.
+* terms-of-service violation - breaks the operator's contract, which may or
+  may not also be a competitive advantage.
+Keeping these distinctions is worthwhile, because each has different
+detection signals and different remedies.
+
+---
+
+2. WHY PEOPLE CHEAT
+Motivation shapes behavior, and behavior shapes detection.
+Common motivations:
+* competitive advantage - winning, rank, status.
+* monetization - boosting, account selling, cheat licensing.
+* curiosity and research - understanding how a system works.
+* griefing - disrupting other players' experience.
+* accessibility and assistance - compensating for ability or hardware.
+* social pressure - belonging to a group or community.
+A defensive system benefits from understanding motivation, because it partly
+predicts which categories of cheat, and which evasions, will follow.
+
+---
+
+3. THE OLDEST CHEAT IS INFORMATION
+Before software, cheating meant seeing or doing what others could not:
+reading another player's hand, listening to the room, marking cards.
+The digital equivalent preserves this core idea.
+The most valuable cheat has always been an unfair INFORMATION asymmetry:
+knowing something the other player cannot.
+This is why the categories below are organised as much around information
+channels as around techniques.
+
+---
+
+4. A SHORT HISTORY - ARCADES AND EARLY MACHINES
+The earliest video-game cheating targeted high scores and local machines.
+Because many arcade and early console games stored scores in memory with no
+integrity checking, a player could alter the recorded value directly, or
+manipulate the hardware.
+There was usually no network and no persistent identity, so "detection"
+barely existed; there was only a local record nobody else verified.
+This established a lasting lesson: a value stored where its owner can reach
+it, and confirmed nowhere else, is not trustworthy.
+
+---
+
+5. A SHORT HISTORY - THE ONLINE FPS ERA (LATE 1990S - 2000S)
+Online multiplayer created both the incentive and the audience for software
+cheats.
+In first-person shooters this produced the archetypes still used today:
+* the aimbot - software that assists or takes over aiming.
+* the wallhack - software that reveals players through geometry.
+* the triggerbot - software that acts automatically when a target is under
+  the crosshair.
+Cheats read or reconstructed hidden game state and fed it to the player.
+Because the client ran on the player's own machine, the player controlled
+the very environment being measured - the problem that is still central.
+Early client-side scanners and server plugins responded, beginning the arms
+race that continues today.
+
+---
+
+6. A SHORT HISTORY - THE MODERN ERA
+Later phases added:
+* kernel-mode protection - anti-cheat drivers running at the same privilege
+  level as anything that could otherwise hide from a user-mode check.
+* hardware and external methods - microcontrollers, second machines, and
+  DMA-style reads that sit outside the game process entirely.
+* visual and machine-learning methods - recovering information from pixels
+  rather than from process memory.
+* cheating as a service - subscription products, resellers, and frequent
+  updates, making cheating an economy rather than a hobby.
+Each phase moved either the observation point or the trust boundary, and
+each forced a matching shift in defense.
+
+---
+
+7. THE ETERNAL ARMS RACE
+Cheats and defenses co-evolve:
+CHEAT -> DETECTION -> CHEAT ADAPTATION -> DETECTION ADAPTATION -> ...
+Two consequences follow.
+First, a detector tuned only to yesterday's cheat becomes obsolete.
+Second, the useful research object is not one cheat but the relationship
+between a defense's assumptions and the ways those assumptions can fail.
+
+---
+
+8. TWO AXES FOR CLASSIFYING CHEATS
+Every cheat can be located on two independent questions.
+WHERE IT RUNS relative to the game:
+* internal - inside the game process.
+* external - a separate process on the same machine.
+* external-hardware - another device or machine.
+* server-side / network - manipulating the data path.
+WHERE IT GETS INFORMATION:
+* game memory
+* network data
+* rendered pixels
+* user input
+* hardware / side channels
+These axes are independent.
+A wallhack may be internal or external; an aimbot may be memory-based,
+pixel-based, or hardware-based.
+The axes matter because the channel determines what is observable, and thus
+which defenses are even applicable.
+
+---
+
+9. THE INFORMATION CHANNEL MODEL
+Every cheat has an information channel and an action channel.
+Example channels:
+game memory | network data | rendered pixels | user input | hardware
+The question "what can the attacker observe, and what can the defender
+observe?" frames most detection problems.
+Where the defender controls the information (for example authoritative
+server state), detection is stronger; where the attacker controls it (for
+example their own machine), detection is weaker.
+
+---
+
+10. CATEGORY - MEMORY READING (INFORMATION CHEATS)
+Mechanism, conceptually: the cheat reads the game's own process memory to
+recover hidden state - positions, health, visibility, entity lists - that
+the game already knows but does not display.
+This is the direct, structured-state route: no perception model is needed,
+only reading and rendering.
+Typical forms: wallhack / ESP overlays, radar, information overlays.
+Because it produces structured state rather than pixels, it is a
+fundamentally different channel from a visual cheat.
+Detection: it requires cross-process access, so it leaves traces a defender
+can look for - unexpected handles to the game process, foreign modules,
+reads that do not correspond to legitimate callers, and integrity anomalies.
+It is countered in part by protected memory, integrity checks, and
+kernel-level observation.
+
+---
+
+11. CATEGORY - MEMORY WRITING AND PATCHING (CAPABILITY CHEATS)
+Mechanism: instead of reading state, the cheat modifies it - writing values
+or patching code so the game behaves differently (for example removing
+recoil, spread, or cooldowns, or changing damage).
+It changes what the game does, not merely what the player knows.
+Detection: code patches and value edits tend to be detectable by
+self-integrity checks - comparing running code and critical values against
+expected values - and by server-side validation that recomputes outcomes
+authoritatively instead of trusting the client.
+
+---
+
+12. CATEGORY - CODE INJECTION AND HOOKING
+Mechanism: to read or write another process's state, a cheat must run code
+in or around that process, or intercept its calls. Conceptually this is
+"load code where the game's code runs, or intercept the calls the game
+makes".
+Loading a library into a process, mapping code manually, and intercepting
+functions are all forms of this.
+Because the defender and attacker share the same machine and privilege
+level, this is where user-mode versus kernel-mode trust matters most.
+Detection: module lists, code-page integrity, API-call anomalies, and
+kernel-mode monitoring of the loading and hooking primitives.
+
+---
+
+13. CATEGORY - AIMBOTS AND TRIGGERBOTS
+An aimbot is not inherently "artificial intelligence"; mechanically it is a
+control system.
+Reduced to parts:
+OBSERVE target position -> COMPUTE angular or positional error -> APPLY a
+correction through a control loop.
+If the target position arrives as structured state (memory or network), no
+perception is required - only geometry and control. A perception model
+exists only to recover the target from pixels when structured state is
+unavailable or protected.
+Smoothing and humanisation are control-loop shaping, intended to make the
+resulting motion resemble human input.
+A triggerbot is simpler: it acts when a target condition is satisfied,
+adding timing rather than aiming.
+Detection: aim behavior is a statistical signal - aim trajectories,
+reaction-time distributions, correction patterns, accuracy under conditions
+humans find difficult, and consistency across time.
+
+---
+
+14. CATEGORY - AUTOMATION, MACROS, AND INPUT SCRIPTS
+Mechanism: instead of reading game state, the cheat replays or generates
+INPUT - scripted movement, recoil compensation, repeated actions, or
+"one-button" macros.
+It may run in software on the machine or in external hardware that presents
+itself as an ordinary input device.
+This is the boundary case between "assist" and "cheat", and is often defined
+by rules rather than by technique.
+Detection: input telemetry - inter-event timing that is more regular than
+is humanly possible, impossible precision, repeated identical patterns, and
+distributions that separate from the human population.
+
+---
+
+15. CATEGORY - HARDWARE AND EXTERNAL-DEVICE CHEATS
+Mechanism: move the cheating logic off the monitored machine or into a
+device the game cannot inspect - a microcontroller that emulates a mouse, a
+small board inserted between mouse and PC, or a second computer that reads
+game state another way.
+Because the game runs on the machine the player controls, "the machine" is
+not a trustworthy witness; hardware moves the attacker outside that
+witness's reach.
+Detection: this is largely a policy, physical, and platform-trust problem
+rather than a pure software scan. Relevant defenses include input-device
+attestation, platform integrity, and rules that shift the evidence to
+server-side behavioral analysis.
+
+---
+
+16. CATEGORY - NETWORK AND PROTOCOL CHEATS
+Mechanism: manipulate the data path rather than the machine - delay or
+selectively drop packets ("lag switching"), tamper with protocol messages,
+replay or forge actions, or exploit trust the server places in the client.
+It also includes exploiting desynchronization between the client's view and
+the server's truth.
+Detection: server authority is the main defense - validate what the client
+claims by recomputing it from authoritative state, reject impossible
+transitions, and treat the client as untrusted input. Network statistics
+(timing, loss, asymmetry) can also flag manipulation.
+
+---
+
+17. CATEGORY - GAME EXPLOITS (BUGS, NOT SOFTWARE)
+Not all unfair advantage comes from external software.
+Glitches, geometry exploits, duplication bugs, and unintended mechanics can
+be exploited using only the shipped game.
+They are cheats in effect, though not in mechanism.
+Detection: because no client integrity is broken, these are usually found
+by telemetry and by the developers themselves, then fixed in the game, or
+answered by rules and moderation.
+The long-term remedy is correctness: remove the exploit, do not scan for
+it.
+
+---
+
+18. CATEGORY - SOCIAL AND META CHEATS
+Some advantages come from manipulating people rather than code:
+* collusion / teaming in solo modes.
+* boosting and win-trading.
+* botting and account farming.
+* account sharing and smurfing (deliberately playing below one's rank).
+Detection: account and device graphs - relationships between accounts,
+shared hardware, behavioral similarity, and population-level statistics.
+This reframes the question from "is this executable suspicious?" to "is
+this account's behavior and network consistent?"
+
+---
+
+19. CATEGORY - VISUAL AND AI CHEATS
+Mechanism: obtain only rendered pixels and recover game state from imagery
+with computer vision.
+This is the harder route, not the easier one: it throws away structured
+state and must reconstruct it.
+Its significance is defensive: such a cheat may modify no process and read
+no protected memory, so assumptions that "cheating means touching the game"
+no longer hold.
+Detection: because the software is external and read-only, detection leans
+on behavioral analysis and on removing the observation channel (for example
+capture protection), rather than on process integrity.
+
+---
+
+20. TAXONOMY SUMMARY
+The categories, by information channel:
+memory read -> information cheats (wallhack, radar)
+memory write -> capability cheats (patch, value edit)
+code injection -> enables the above inside the process
+pixels -> visual / AI cheats
+input -> automation, macros, hardware input
+network -> protocol, desync, and trust cheats
+people -> social and meta cheats
+rules / bugs -> exploits
+Each row has a characteristic family of defenses, treated next.
+
+---
+
+21. THE DETECTION PROBLEM
+The defender must reason about a machine controlled by the person being
+measured.
+This asymmetry, not any particular cheat, is the root difficulty.
+Progress comes from three directions:
+* make some attack paths unavailable (prevent).
+* gather independent evidence (detect).
+* rely on authority the client cannot fake (server validation, hardware
+  trust).
+
+---
+
+22. MATCHING DEFENSES TO CHANNELS
+The practical rule: detect a cheat through the channel it uses.
+memory / process cheats -> integrity checks, module and handle inspection,
+kernel monitoring.
+network cheats -> server authority and validation.
+input automation -> input telemetry and behavioral statistics.
+pixel cheats -> behavioral analysis and control of the observation channel.
+hardware -> platform trust, attestation, and policy.
+A single defense rarely covers all channels; layering is the norm.
+
+---
+
+23. SIGNATURE DETECTION
+The oldest method: recognise a known artifact - a file hash, a byte string,
+a named module, or a known tool's fingerprint.
+Strengths: cheap, precise, and low false-positive for whatever it matches.
+Limits: defeated by any change to the artifact.
+Signatures can only catch the past, so they must be combined with behavior
+and integrity to stay useful.
+
+---
+
+24. INTEGRITY AND ANTI-TAMPER
+Method: verify that the running code and critical values are what they
+should be.
+Conceptually this includes checking code pages against expected values,
+detecting patches, and detecting code that is inspecting the checker.
+It raises the cost of tampering and underpins memory and injection
+defenses.
+Its weakness is the same as the system's: a verifier running on the
+attacker's machine can itself be tampered with, which is why verifiers are
+moved into protected or kernel-level components.
+
+---
+
+25. BEHAVIOR AND STATISTICAL DETECTION
+Method: model what legitimate play looks like, then flag departures.
+Common signals:
+aim paths and their smoothness or entropy
+reaction-time distributions
+accuracy under difficult conditions
+consistency and repetition
+timing regularity of inputs
+This is channel-agnostic, so it can catch cheats whose software footprint
+is invisible. But it is statistical: it trades false positives against
+detection rate, and it drifts as the population changes.
+
+---
+
+26. SERVER-SIDE AUTHORITY AND VALIDATION
+Method: do not trust the client's claims; recompute outcomes from
+authoritative server state.
+The server validates movement, line of sight, damage, and actions, and
+rejects impossible transitions.
+This is the strongest defense for network, memory-write, and capability
+cheats, because the client cannot fabricate a truth the server never
+accepted.
+Its costs are bandwidth, latency, and design complexity, and some
+information (for example precise aim) is genuinely client-side.
+
+---
+
+27. HARDWARE AND PLATFORM TRUST
+Method: make the machine's trust state independently verifiable.
+Conceptually this includes secure boot, measured boot, TPM-based
+attestation, IOMMU / DMA protection, and signed drivers.
+The goal is to detect or prevent conditions under which the attacker can
+observe or alter the game from outside the software stack.
+It is a platform problem, not a game problem, which is why it appears in
+anti-cheat but is owned by operating systems and hardware vendors.
+
+---
+
+28. MACHINE-LEARNING DETECTION
+Method: learn a classifier of behavior instead of hand-writing rules.
+Strength: it finds patterns too complex to specify by hand, and it can
+adapt to new variants when retrained.
+Costs: it needs labelled data, it can be attacked adversarially, it drifts
+as the population changes, and it must be governed (versioned, measured,
+calibrated, and rollback-capable).
+See ADVERSARIAL AI AND CHEAT DETECTION for depth.
+
+---
+
+29. SIGNALS SUMMARY
+A compact mapping of cheat category to primary detection signal:
+memory read -> process access and integrity anomalies
+memory write -> self-integrity and server recomputation
+injection -> module / code-page integrity, kernel monitoring
+aimbot -> aim-behavior statistics
+automation -> input-timing statistics
+hardware -> platform attestation and policy
+network -> server validation and network statistics
+exploit -> game telemetry and developer fixes
+social -> account and device graphs
+The strongest systems combine several INDEPENDENT rows.
+Repeating the same evidence three times is weaker than three different
+kinds of evidence.
+
+---
+
+30. ENFORCEMENT AND INVESTIGATION
+Detection produces evidence; enforcement acts on it.
+A mature pipeline separates:
+DETECT -> CORRELATE -> INVESTIGATE -> DECIDE -> ENFORCE -> APPEAL
+Enforcement varies in cost and reversibility: a warning, match
+invalidation, a temporary suspension, a permanent ban, and hardware or
+account bans.
+Because false positives are expensive (they punish legitimate players),
+high-confidence, explainable evidence is more valuable than a marginally
+higher detection rate.
+
+---
+
+31. FALSE POSITIVES AND COST ASYMMETRY
+Two errors exist: missing a cheat (a false negative) and punishing a
+legitimate player (a false positive).
+Their costs are not symmetric - a false positive damages trust, community,
+and business - so thresholds are often set conservatively and combined with
+confirmation before enforcement.
+This is why "detected" and "banned" are deliberately separate stages.
+
+---
+
+32. THE ADAPTATION LOOP
+A detector changes attacker behavior; attacker behavior changes the
+population; the changed population changes the detector's data.
+Therefore detection is not a static gate but a control loop that must be
+monitored, evaluated, and retuned over time.
+Static-signature thinking fails here; population-level thinking is
+required.
+
+---
+
+33. DETECTING CHEATS VERSUS DETECTING ELITE PLAYERS
+The hardest cases are where cheating and legitimately extreme skill look
+alike.
+Confounds include professional-level mechanics, unusual hardware, and
+accessibility tools.
+Good systems therefore reason about evidence and uncertainty rather than
+asserting certainty from a single signal, and they keep humans in the loop
+for ambiguous cases.
+
+---
+
+34. SUMMARY
+Cheating is best understood as the pursuit of an unfair information or
+capability advantage through a specific channel.
+Its history is a sequence of shifting observation points and trust
+boundaries.
+Its taxonomy is organised by where a cheat runs and which channel it uses.
+Its detection is organised by those same channels, layered, and weighed
+against the cost of being wrong.
+
+CORE PRINCIPLE:
+Every cheat has a channel, and every channel has a defense. Reason about
+cheating by asking where it runs and what it can observe, not by the name
+of the tool. Detection is not a blacklist but a layered, adaptive control
+loop across independent signals; and because the defender measures a
+machine the attacker controls, the strongest defenses are the ones that
+lean on authority the attacker cannot fake - server-side validation and
+hardware/platform trust - rather than on the client's own honesty.

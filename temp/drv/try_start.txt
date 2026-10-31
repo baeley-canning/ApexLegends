@@ -1,0 +1,23 @@
+=== try start
+[SC] StartService FAILED 577:
+
+Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+
+SERVICE_NAME: apexr 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 577  (0x241)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+=== game
+
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+r5apex_dx12.exe               8700 Console                    1  9,118,928 K
+=== selftest
+target r5apex_dx12.exe pid=8700
+CreateFile(\\.\apexr) failed err=2 (driver loaded?)
+exit=1 
+=== done

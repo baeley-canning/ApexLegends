@@ -1,0 +1,10 @@
+elevated: False
+QUERY_LIMITED_INFORMATION          h=0x198 err=0
+    ReadProcessMemory ok=0 err=87 got=0 bytes=0000000000000000
+    NtReadVirtualMemory status=0xc000000d got=0 bytes=0000000000000000
+VM_READ                            h=0x0 err=5
+VM_READ|QUERY_LIMITED              h=0x0 err=5
+QUERY_INFORMATION                  h=0x0 err=5
+VM_READ|QUERY_INFORMATION          h=0x0 err=5
+VM_READ|VM_WRITE|VM_OPERATION      h=0x0 err=5
+PROCESS_ALL_ACCESS                 h=0x0 err=5

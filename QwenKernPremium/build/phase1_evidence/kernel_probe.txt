@@ -1,0 +1,12 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[*] Kernel reachability probe - the driver is loaded for this call and
+    removed again afterwards; nothing is injected
+[*] driver: apexdrv.sys
+[*] target: (explicit pid) PID 164
+[*] Kernel service already registered, reusing it
+StartService(apexdrv) failed (GetLastError=123) - unsigned drivers need test-signing or a BYOVD loader
+[*] report written: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\\apexdrv_probe.txt
+KERNEL_PROBE_EXIT=3

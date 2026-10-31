@@ -1,0 +1,7 @@
+# Protected terms. The handler blocks any request containing one of these (case-insensitive).
+# One term per line. Lines starting with # are ignored.
+# Add project names, codenames, company names, client names, product names,
+# internal tool names, and anything else that must never reach DeepSeek.
+# Example lines (delete and replace with your own):
+# ExampleProjectName
+# ExampleClientName

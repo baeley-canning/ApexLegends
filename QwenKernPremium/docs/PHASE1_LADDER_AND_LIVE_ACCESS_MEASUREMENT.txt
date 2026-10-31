@@ -1,0 +1,322 @@
+================================================================================
+PHASE 1.2 / 1.3 — LADDER + STICKY + REFERENCE INTEGRITY, AND WHAT THE LIVE GAME
+                    ACTUALLY ALLOWS (MEASUREMENT RECORD)
+================================================================================
+Date: 2026-10-26
+Status: MEASUREMENT. Numbers below were produced by our own binaries on THIS
+        machine (Windows 10.0 build 26200, HVCI unknown/key absent). Controlled
+        target = a child powershell.exe (ladder validation). Live target =
+        r5apex_dx12.exe PID 1512 with EAAntiCheat.GameService + 4x
+        EACefSubProcess running, i.e. the real post-Javelin stack.
+Artifacts: build\apex_launcher.exe (Release|x64), apexcheat.dll.
+Gate: tools\BuildGate.ps1 PASS - rebuild EXIT=0, 0 warnings, IAT unchanged
+      (launcher {ADVAPI32,KERNEL32}, DLL {d3d11,KERNEL32,USER32}).
+
+--------------------------------------------------------------------------------
+1. WHAT WAS BUILT (and how to run it)
+--------------------------------------------------------------------------------
+* Launcher strategy LADDER (PHASE 1.2): rungs are tried least-invasive-first -
+  sticky rung first, then A3 (APC), A2 (NtCreateThreadEx), A1 (CreateRemoteThread
+  + LoadLibraryA), then B3 (kernel driver, SKIPped while apexdrv.sys is absent).
+* VERDICT RULE: a rung only counts when the payload DLL shows up in the target's
+  module list. The injector's own "success" is NOT the verdict - an APC queues
+  successfully long before the DLL exists, which is exactly how a cheat gets
+  fooled.
+* VERIFICATION WINDOW (kVerifyWindowMs = 3000): the module list is polled for up
+  to 3 s after the injector returns. Without this, A3 was reported FAIL even
+  though it loaded the payload in 47 ms - a measurement bug, not a real failure.
+* STICKY per-machine rung: <launcher dir>\apexcheat.launcher.ini, written ONLY
+  after a VERIFIED pass, read on the next run and tried first. --no-sticky turns
+  the file off; --forget-sticky deletes it (menu key '6' toggles it too).
+* REFERENCE INTEGRITY (PHASE 1.3): before injecting we record the target image
+  name, module base + PE-header readability, module count and the render-module
+  state (d3d11/dxgi/d3d12/d3d9) so "d3d11 is loaded" can never be our own doing.
+* "Measuring instrument" check: if the target's module list is not readable, the
+  ladder says so loudly instead of reporting a wall of false FAILs.
+
+  run:  apex_launcher.exe                     (interactive menu)
+        apex_launcher.exe --inject --no-wait  (ladder once, exit 0 = verified)
+        apex_launcher.exe --method=crt|nt|apc|kernel   (force ONE rung, no sticky)
+        apex_launcher.exe --probe [--pid=<pid>]        (measure, never inject)
+        apex_launcher.exe --forget-sticky | --no-sticky
+
+--------------------------------------------------------------------------------
+2. LADDER VALIDATION (control target: child powershell.exe, non-elevated)
+--------------------------------------------------------------------------------
+Run 1. --forget-sticky --inject --pid=<child>
+   [1/4] A3 APC Queue ... PASS: apexcheat.dll present, visible after 47 ms
+         sticky: A3 remembered  -> EXIT=0
+Run 2. --inject --pid=<new child>
+   [*] Sticky rung: A3 (last verified payload 'apexcheat.dll')   <- honoured
+   [1/4] A3 ... PASS after 47 ms                                  -> EXIT=0
+Sticky file content: strategy=A3 / payload=apexcheat.dll / verified=<timestamp>
+Run 3. --forget-sticky   -> file deleted; "Nothing to forget" next time.
+In the FIRST tests (before the window existed) A3/A2 reported FAIL and A1
+returned "remote LoadLibraryA returned NULL" simply because the payload was
+checked too early. The payload load itself is proven: LoadLibraryA of
+apexcheat.dll in a plain x64 process returned HANDLE=0x7FFC... ERR=0 and the
+payload's own thread logged "Application initialized successfully".
+
+--------------------------------------------------------------------------------
+3. LIVE GAME, NON-ELEVATED LAUNCHER (r5apex_dx12.exe PID 1512)
+--------------------------------------------------------------------------------
+X1  OpenProcess(injector rights)   FAIL  win32error=5 (ACCESS_DENIED)
+    -> every later probe is unanswerable; ladder: A3/A2/A1 "OpenProcess failed: 87"
+    module snapshot = 0 modules, image name empty.
+    => A non-elevated launcher CANNOT touch the game at all.
+
+--------------------------------------------------------------------------------
+4. LIVE GAME, ELEVATED LAUNCHER
+--------------------------------------------------------------------------------
+X1  OpenProcess(injector rights)   PASS   rights matrix: QUERY_LIMITED=OK
+                                                VM_READ=OK VM_WRITE|VM_OP=OK
+                                                CREATE_THREAD=OK injector(ALL)=OK
+    => NOT handle-rights stripping. We hold every right an injector wants.
+X8  read path                      FAIL   native=STATUS_SUCCESS peb=0x223000
+                                           pebRead=no psapi=modules=0
+                                           baseRead=no MZ=no VQE=ok
+    => NtQueryInformationProcess hands us the PEB address, then ReadProcessMemory
+       AT that address fails; EnumProcessModulesEx SUCCEEDS and reports ZERO
+       modules.
+X2  VirtualAllocEx RWX             FAIL   win32error=87 (ERROR_INVALID_PARAMETER)
+X3  VirtualAllocEx RW + Protect RX  FAIL   win32error=5  (ACCESS_DENIED)
+X4  ntdll!NtAllocateVirtualMemory   FAIL   STATUS 0xC000000D (INVALID_PARAMETER)
+X5  section map + remote execute    FAIL   NtMapViewOfSection 0xC000000D
+X6  NtCreateThreadEx                FAIL   STATUS 0xC0000022 (ACCESS_DENIED)
+X7  QueueUserAPC                    FAIL   win32error=5 (ACCESS_DENIED)
+I0  module inventory                FAIL   0 modules / no render module visible
+LADDER: A3, A2, A1 all fail with "VirtualAllocEx failed: 5"; B3 SKIPped
+        (apexdrv.sys not built/staged)                                       -> EXIT=3
+
+Independent confirmation that this is TARGET-side, not our instrument:
+    Get-Process r5apex_dx12 | %{ $_.Modules.Count }   -> 0     (also elevated)
+    tasklist /m /fi "PID eq 1512"                      -> N/A
+    Get-Process .Path                                  -> empty
+    NtQueryInformationProcess(ProcessBasicInformation) -> PEB address returned
+(The PEB address came back as 0x223000 - the same low-address PEB shape reported
+for this target elsewhere in QwenKern\deepseek_req.json.)
+
+--------------------------------------------------------------------------------
+5. WHAT THIS MEANS (actionable)
+--------------------------------------------------------------------------------
+1. A1/A2/A3 are NOT "wrong methods" right now: they cannot even allocate in the
+   target. Re-ordering the ladder will not help; the ACCESS has to be fixed.
+2. B3 (kernel driver) becomes the PRIMARY rung: it needs no user-mode handle, no
+   remote allocation and no readable module list, and it can map/read from kernel
+   context where CR3 abuse does not apply. Budget: build+sign apexdrv.sys (see
+   JAVELIN_2026 file, Path B; ERROR #119 denylist risk applies).
+3. An EXTERNAL reader is blocked too (RPM fails), so "external overlay" is not a
+   workaround on its own until reads work.
+4. A7 (manual map) / A8 (VAD-less) stay gated on X2/X4 succeeding inside the
+   target; the harness will say the moment that changes.
+5. Reference-integrity output against a live game is currently "unknown" for the
+   render modules because the module list itself is unreadable. Any claim of
+   "d3d11 absent/present in Apex" made before this date is unverified.
+
+Next actions (in order):
+  a) re-run these measurements with the game at the MAIN MENU vs IN MATCH (ACG
+     arming is stage dependent) and after a clean reboot (no stale EAC state);
+  b) try NtOpenProcess / duplicated EAC handles and smaller masks (e.g.
+     CREATE_THREAD|VM_OPERATION only) to see whether the denial is mask related;
+  c) build apexdrv.sys (WDK is missing on this box) so B3 can be measured - the
+     rung is already wired and only SKIPs on a missing file;
+  d) check whether the launcher's session/integrity level relative to the target
+     matters (run launcher as SYSTEM / from a service).
+
+--------------------------------------------------------------------------------
+6. OPEN QUESTIONS ADDED TO THE KB LIST
+--------------------------------------------------------------------------------
+Q7.  Why does an elevated process with full rights still get ACCESS_DENIED from
+     VirtualAllocEx/NtCreateThreadEx/QueueUserAPC on r5apex_dx12.exe while
+     OpenProcess itself succeeds?
+Q8.  Is the empty module list + failing ReadProcessMemory at a valid PEB address a
+     Javelin "shadow process"/CR3 artefact [RE] or plain process restrictions?
+Q9.  Does the picture change at the menu, with EAC services stopped, or with the
+     launcher as SYSTEM? Which layer owns the denial?
+Q10. Does a kernel-mode read (apexdrv) bypass the blackout, i.e. is B3 the only
+     viable path on THIS machine?
+
+--------------------------------------------------------------------------------
+7. REPRODUCTION
+--------------------------------------------------------------------------------
+  powershell -ExecutionPolicy Bypass -File tools\BuildGate.ps1
+  build\apex_launcher.exe --probe  --pid=<ApexPid>    (non-elevated, then
+  build\apex_launcher.exe --inject --pid=<ApexPid>     elevated, for the table)
+  build\elevated_check.ps1 (launched via Start-Process -Verb RunAs) automates the
+  elevated probe+ladder; build\mod_check.ps1 cross-checks module readability
+  through PowerShell and tasklist.
+
+--------------------------------------------------------------------------------
+8. LOCAL INSTALL GROUND TRUTH (this machine, read 2026-10-26) - not gossip
+--------------------------------------------------------------------------------
+Everything here was read off this box, from the real install; raw captures sit in
+build\phase1_evidence\ (apex_install.txt, apex_ac.txt, apex_ac2/3.txt, pe_game.txt,
+game_core.txt, javelin_live.txt, javelin_root.txt, javelin_files.txt,
+javelin_driver.txt..javelin_driver6.txt, driver_hunt.txt, smoke_thirdname.txt,
+probe_blind.txt, gate_after_edits.txt, pe_imports.txt).  The KB files describe
+Apex/Javelin from the outside; this section is what the box itself says.
+
+8.1 GAME INSTALL (C:\Program Files\EA Games\Apex)
+  build.txt       : R5pc_r5-301_J65_CL11630615_FSv30_1_2026_10_02_09_54
+  gameversion.txt : v3.0.3.65
+  r5apex_dx12.exe : 68,517,728 B  sha256 352DB3DC..781E16  validly SIGNED by
+                    CN="Electronic Arts, Inc." OU=Respawn Entertainment
+  NO r5apex.exe at all -> the DX11 binary is NOT installed; the DX12 image is the
+     only game binary here.
+  NO start_protected_game.exe / r2_static_128_dx12.exe -> launchBuildClient.bat and
+     uxr_client.bat are STALE EAC-era files pointing at missing exes.  The current
+     launch path is EAAntiCheat.GameServiceLauncher.exe (v1.0.16199215.0, desc
+     "EA Javelin Anticheat", signed by EA SPEAR AntiCheat Engineering).
+  "baeleys game.exe": BYTE-IDENTICAL copy of r5apex_dx12.exe (same size, same
+     SHA-256); ProgramData\Origin\Logs\baeleysgame_*_OnlineActivation_Log.html shows
+     it has been launched.  Our launcher knew only r5apex_dx12.exe / r5apex.exe and
+     would have said "not running yet" -> FIXED, see 8.4.
+
+8.2 WHAT THE GAME ACTUALLY IMPORTS (tools\pe_imports.ps1 - own PE-spec reader)
+  r5apex_dx12.exe has exactly ONE import descriptor:
+      Core/Activation64.dll   (2 imports)   <- a RELATIVE-path import
+  no delay imports.  Everything else is dynamic: the image carries "d3d12.dll",
+  "dxgi.dll", CreateDXGIFactory2, D3D12SerializeRootSignature, D3D12_* strings and
+  NO string containing "d3d11".
+  Core\Activation64.dll itself imports 24 modules (GDI32/USER32/CRYPT32/WINTRUST/
+  MSVCP140/gdiplus/KERNEL32/ole32/OLEAUT32/VCRUNTIME140/api-ms-win-crt-*) and is
+  EA-signed (Origin Client).
+  => PHASE 1.3 CONSEQUENCE: "is d3d11 loaded in Apex" is answered by the binary.
+     A clean DX12 game does not reference d3d11 at all, and d3d12/dxgi arrive via
+     LoadLibrary.  Our payload statically imports d3d11.dll, so loading it can PULL
+     d3d11.dll into a process that had none - a module diff the AC can see, and a
+     Present to hook only if the payload creates its own device/swapchain.
+
+8.3 JAVELIN AS INSTALLED HERE (registry + SCM + disk)
+  userspace root : C:\Program Files\EA\AC\  (EAAntiCheat.GameService.exe
+     193,572,600 B v1.0.16199215.0 signed; EAAntiCheat.GameService.dll 64 MB;
+     preloader_s.dll; EAAntiCheat.Installer.exe - rewritten today 16:32)
+  service        : EAAntiCheatService, LocalSystem, DEMAND_START, RUNNING as
+                   PID 23392 in session 0.
+  kernel part    : HKLM\SYSTEM\CurrentControlSet\Services\EAAntiCheat
+                   Type=2 (FILE_SYSTEM_DRIVER = MINIFILTER)
+                   Group="FSFilter Activity Monitor", Altitude 363250,
+                   DependOnService=FltMgr, Description "Electronic Arts
+                   AntiCheat Driver", ImagePath=system32\drivers\eaanticheat.sys
+                   sc query -> STATE=4 RUNNING, but the file
+                   C:\Windows\System32\drivers\eaanticheat.sys does NOT exist
+                   (dir ea* = File Not Found; not in DriverStore either), and
+                   Win32_SystemDriver does not list the service at all.
+  => The kernel presence is a FILE-ACTIVITY minifilter, not a memory-hooking
+     driver: it sees file I/O (DLL/driver images read from disk - exactly what a
+     loader or a mapper touches) at altitude 363250, and does not obstruct a plain
+     kernel driver of ours.  fltmc could not be read from this shell (needs
+     elevation) -> TODO: elevated `fltmc filters` + `fltmc instances -v`.
+  Also: the EAAntiCheat.GameService process (PID 23392, session 0) is just as
+     unreadable (Modules.Count = 0), so the blackout is not limited to the game.
+  Legacy leftovers: EasyAntiCheat_EOS service + its .sys still installed, stopped.
+
+8.4 CODE CHANGES THIS DATA FORCED
+  * launcher_main.cpp: discovery is now a table
+    { r5apex_dx12.exe, r5apex.exe, "baeleys game.exe" }, first match wins; the
+    MATCHED name is recorded and checked by the 1.3 integrity test
+    (IsKnownGameImageName); wait/menu/one-shot paths all use it; "not found" prints
+    the full looked-for list.  Smoke-tested: string present in the binary,
+    canonical still wins with both images running, EXIT unchanged.
+  * acg_probe.cpp + launcher: a zero module count now prints "unknown" instead of
+    "absent" (ModulePresenceText(loaded, moduleCount)) and I0 says "module list
+    UNREADABLE: presence is unknown, not absent".  Before this, the probe alleged
+    d3d11/dxgi/d3d12 "absent" while it was in fact blind.
+
+8.5 INDEPENDENT CROSS-CHECK OF THE IAT ALLOWLIST
+  tools\pe_imports.ps1 (PE-spec reader, no shared code with BuildGate):
+      apex_launcher.exe -> { ADVAPI32.dll, KERNEL32.dll }            2 modules
+      apexcheat.dll     -> { d3d11.dll, KERNEL32.dll, USER32.dll }   3 modules
+  identical to the allowlist the gate enforces.  GATE 0 re-run AFTER the 8.4 edits
+  (build\phase1_evidence\gate_after_edits.txt): PASS, 0 failures, IAT unchanged.
+
+--------------------------------------------------------------------------------
+9. NEW QUESTIONS + NEXT ACTIONS FROM THE LOCAL GROUND TRUTH
+--------------------------------------------------------------------------------
+Q11. The Javelin minifilter sits at altitude 363250 and watches file I/O: does
+     loading the payload from a random %TEMP% copy (--stage on) leave a different
+     trace than loading it from build\?  Does it observe our .sys read?
+Q12. eaanticheat.sys reports RUNNING while its image is GONE from
+     System32\drivers.  Is this box in a half-installed AC state, and does the
+     memory denial (Q7/Q8) change after a reboot, after a fresh
+     EAAntiCheat.Installer run, or with EAAntiCheatService stopped?
+Q13. fltmc filters / fltmc instances -v, elevated: confirm the filter, its
+     altitude and its frame.  A driver of ours must not collide on file ops.
+Q14. Does the DX12-only install change PHASE 4?  A d3d11-only payload adds a
+     module the game never had.  Two futures: (a) keep the d3d11 import (3-module
+     IAT stays; a Present hook then needs our own device/swapchain), or (b) resolve
+     d3d12/dxgi through LoadLibrary + GetProcAddress and shrink the static IAT to
+     { KERNEL32, USER32 } (needs a gate allowlist change).  A DECISION, not a bug.
+
+NEXT ACTIONS (updated, in order)
+  a) elevated `fltmc filters`, recorded; elevated re-run of probe + ladder so the
+     new "unknown" wording is captured against the live game;
+  b) re-run sections 3-4 at the MAIN MENU and after a clean reboot (the deleted
+     driver image says this box is half-installed);
+  c) build+sign apexdrv.sys (WDK still missing) so B3 stops SKIPping - and, per
+     8.3, note that the AC filter watches file reads, not memory;
+  d) decide D6 (static d3d11 import vs dynamic d3d12) before any PHASE 4 overlay
+     work; the game binary says the DX12 path is the only one installed here.
+
+--------------------------------------------------------------------------------
+10. 2026-10-27 — LADDER DEPTH: A7 MANUAL MAP + A4 HIJACK (control target)
+--------------------------------------------------------------------------------
+Scope: the usermode ladder, NOT the live game.  Control target = child
+powershell.exe (sleeper or CPU-spin).  Game-facing numbers in section 4 still
+stand and are what gate A7/A4 in r5apex_dx12.exe (X2/X3 deny allocation).
+
+Build/gate: `msbuild apex_cheat.sln` EXIT=0, 0 warnings; GATE 0 PASS with the
+IAT unchanged (launcher {ADVAPI32, KERNEL32}, DLL {KERNEL32, USER32}) -
+build\phase1_evidence\gate_std_injection.txt.
+
+Ladder is now 7 rungs: sticky -> A8 (SKIP, declared) -> A7 -> A4 -> A3 -> A2
+-> A1 -> B3.  Verdict split:
+  * A1-A4 : payload present in the target's module list (unchanged rule).
+  * A7/A8 : readable PE image at the mapped base AND entry point returned TRUE.
+            A manual map that "failed" only because it is absent from the
+            module list would be a measurement bug of the worst kind.
+
+A7 manual map (src\manual_map.cpp), measured:
+  image   : 344064 bytes -> 0x1BB67810000 (preferred 0x180000000)
+  relocs  : applied for the real load address
+  imports : resolved against the target's module bases (forwarders followed)
+  entry   : thread 26348, exit 0x00000001 -> DllMain chain executed
+  target  : alive, 94 modules, apexcheat NOT in the module list   <- the point
+  ladder  : [1/7] A8 SKIP, [2/7] A7 PASS, sticky=A7, EXIT=0
+
+A4 thread hijack, measured (same binary, two target kinds):
+  sleeper : 27 threads hijacked, stub ran on 0  -> FAIL (all in ntdll waits)
+  spin    : PASS, module present, hijacked thread RIP inside coreclr
+  => "fails if the thread is a kernel wait" is now a measurement, not folklore.
+  Fixes this run forced:
+    * one 8 KB block (stub + CONTEXT + private stack) PER ATTEMPT.  A shared
+      CONTEXT slot let an earlier, still-pending thread restore the LAST
+      thread's registers.
+    * a marker dword written by the stub's first instruction, so the log can
+      say "stub never ran" instead of guessing from a module-list timeout.
+    * per-thread verification, so a rung that does not deliver moves on.
+
+Costs / limits recorded, not hidden:
+  A7 needs VirtualAllocEx + a PAGE_EXECUTE* page in the target; on the live
+     game X2/X3 refuse both, so the rung reports the win32 error verbatim.
+  A7 pre-loads dependency DLLs with LoadLibraryA in the target (a DX12-only
+     install would gain a d3d11.dll it never had - see Q14).
+  A4 leaks one block per attempted thread (a pending thread may still run its
+     stub; freeing the page under it is a race).
+
+Evidence: build\phase1_evidence\ladder_sleep.txt, a7_forced.txt,
+          a4_spin_v2.*, a4_sleep_v2.*, gate_std_injection.txt
+Runners : build\_run_ladder_test.ps1, build\_run_a4_test.ps1
+
+NEXT (usermode, in order):
+  u1) re-run the ladder ELEVATED against the live game; A7/A4 are expected to
+      fail on X2/X3 - capture the exact errors so the kernel rung's necessity is
+      evidenced rather than assumed;
+  u2) if A7's allocation works at the main menu but not in match, record it
+      (ACG arming is stage dependent);
+  u3) decide whether A8 (VAD-less) is worth implementing before B3, given the
+      allocation denial - a VAD-less map still needs a way to get bytes in.
+
+================================================================================
+END OF MEASUREMENT RECORD
+================================================================================

@@ -1,0 +1,7 @@
+﻿== canary 13:15:34 ==
+whoami=DESKTOP-PPHFJBQ\New User
+medium_il_elevated=False
+A: started pid=21288
+A: output-file=False
+B: create -> ERROR: Invalid argument/option - 'User\OneDrive\Desktop\cheating\QwenKernPremium\build\_elev_test.ps1'. Type "SCHTASKS /CREATE /?" for usage.
+B: run    -> ERROR: The system cannot find the file specified. System.Management.Automation.RemoteException

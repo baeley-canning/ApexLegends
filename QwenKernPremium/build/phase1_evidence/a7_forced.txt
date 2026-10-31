@@ -1,0 +1,19 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] Target PID 22352, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+[*] Injection strategy: A7 Manual Map (MANUAL)
+[A7]       image   : 344064 bytes -> 0x20066FE0000 (preferred 0x180000000)
+[A7]       relocs  : applied for the real load address
+[A7]       imports : resolved against the target's module bases
+[A7]       entry   : thread 6760, exit 0x00000001 -> DllMain chain executed
+[+] Manual map complete at 0x20066fe0000 (payload absent from the module list by design)
+---------------------------------------------------------------
+[+] Injection succeeded via A7 Manual Map (MANUAL)
+    thread id  : 6760
+    module base: 0x0000020066FE0000
+---------------------------------------------------------------

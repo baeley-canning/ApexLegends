@@ -1,0 +1,9 @@
+pid=13296  crt fd=4  os handle=0x1ac
+class16 status=0x0 need=0x2a8ea0 cap=0x800000
+class16 count=65536 stride=32 -> 0x200000 bytes used
+class16 matches=0
+class64 status=0x0 need=0x46edb8
+class64 count=116209
+  stride=40 match @116167  tail dwords: 24:0x120089 28:0x2a0000 32:0x0 36:0x0
+  stride=40 matches=1
+  stride=48 matches=0

@@ -1,0 +1,469 @@
+﻿== TOP LEVEL ==
+
+T         LastWriteTime          Name                                 
+-         -------------          ----                                 
+DIR       7/10/2026 8:49:58 am   __Installer                          
+DIR       29/09/2026 8:33:33 pm  audio                                
+68517728  7/10/2026 8:49:42 am   baeleys game.exe                     
+DIR       7/10/2026 8:49:55 am   bin                                  
+421792    29/09/2026 8:33:37 pm  bink2w64.dll                         
+53        7/10/2026 8:49:30 am   build.txt                            
+DIR       29/09/2026 8:33:33 pm  cfg                                  
+DIR       29/09/2026 9:10:41 pm  Core                                 
+12536     30/09/2026 9:13:13 am  EAAntiCheat.cfg                      
+53116664  22/10/2026 12:02:42 pm EAAntiCheat.GameServiceLauncher.dll  
+52015864  8/10/2026 1:42:16 pm   EAAntiCheat.GameServiceLauncher.dll_b
+20286712  22/10/2026 12:01:56 pm EAAntiCheat.GameServiceLauncher.exe  
+20031736  8/10/2026 1:42:22 pm   EAAntiCheat.GameServiceLauncher.exe_b
+271269624 30/09/2026 9:13:22 am  EAAntiCheat.Installer.exe            
+594412    30/09/2026 9:13:12 am  EAAntiCheat.splash.png               
+11        7/10/2026 8:49:30 am   gameversion.txt                      
+2314848   29/09/2026 8:33:38 pm  GFSDK_Aftermath_Lib.x64.dll          
+206       29/09/2026 8:33:38 pm  launchBuildClient.bat                
+DIR       29/09/2026 9:10:41 pm  LiveAPI                              
+DIR       29/09/2026 8:33:33 pm  materials                            
+DIR       29/09/2026 9:10:41 pm  media                                
+1121120   7/10/2026 8:49:30 am   OriginSDK.dll                        
+DIR       29/09/2026 8:33:33 pm  paks                                 
+46840     22/10/2026 12:02:42 pm preloader_l.dll                      
+46840     8/10/2026 1:42:18 pm   preloader_l.dll_b                    
+68517728  18/10/2026 4:24:51 pm  r5apex_dx12.exe                      
+4096      7/10/2026 8:49:30 am   r5apexdata.bin                       
+34        29/09/2026 8:33:37 pm  script_net.md5sum                    
+293216    7/10/2026 8:49:30 am   steam_api64.dll                      
+4248928   7/10/2026 8:49:30 am   steamnetworkingsockets.dll           
+32120     29/09/2026 8:33:41 pm  steamnetworkingsockets_config.json   
+DIR       7/10/2026 8:49:58 am   Support                              
+151       29/09/2026 8:33:41 pm  uxr_client.bat                       
+45944     29/09/2026 8:33:41 pm  WinPixEventRuntime.dll               
+
+
+
+== DIRS (depth 2) ==
+C:\Program Files\EA Games\Apex\audio
+C:\Program Files\EA Games\Apex\bin
+C:\Program Files\EA Games\Apex\cfg
+C:\Program Files\EA Games\Apex\Core
+C:\Program Files\EA Games\Apex\LiveAPI
+C:\Program Files\EA Games\Apex\materials
+C:\Program Files\EA Games\Apex\media
+C:\Program Files\EA Games\Apex\paks
+C:\Program Files\EA Games\Apex\Support
+C:\Program Files\EA Games\Apex\__Installer
+C:\Program Files\EA Games\Apex\audio\ship
+C:\Program Files\EA Games\Apex\cfg\client
+C:\Program Files\EA Games\Apex\materials\correction
+C:\Program Files\EA Games\Apex\materials\correction\gcards
+C:\Program Files\EA Games\Apex\media\activation
+C:\Program Files\EA Games\Apex\media\battle_pass
+C:\Program Files\EA Games\Apex\media\character_executions
+C:\Program Files\EA Games\Apex\media\deathboxes
+C:\Program Files\EA Games\Apex\media\gamemodes
+C:\Program Files\EA Games\Apex\media\lobby
+C:\Program Files\EA Games\Apex\media\melee_addon
+C:\Program Files\EA Games\Apex\media\mythic_weapons
+C:\Program Files\EA Games\Apex\media\reactive_weapons
+C:\Program Files\EA Games\Apex\media\select_animation
+C:\Program Files\EA Games\Apex\media\skydive_emotes
+C:\Program Files\EA Games\Apex\media\skydive_trails
+C:\Program Files\EA Games\Apex\media\ultimate_states
+C:\Program Files\EA Games\Apex\media\weapon_addon
+C:\Program Files\EA Games\Apex\media\battle_pass\purchase
+C:\Program Files\EA Games\Apex\paks\Win64
+C:\Program Files\EA Games\Apex\Support\EA Help
+C:\Program Files\EA Games\Apex\Support\Privacy and Cookie Policy
+C:\Program Files\EA Games\Apex\Support\User Agreement
+C:\Program Files\EA Games\Apex\__Installer\customcomponent
+C:\Program Files\EA Games\Apex\__Installer\vc
+C:\Program Files\EA Games\Apex\__Installer\customcomponent\Javelin
+C:\Program Files\EA Games\Apex\__Installer\vc\vc2019
+== FILES matching javelin/eac/sys/anticheat ==
+
+     Size LastWriteTime          FullName                                                                                                                                               
+     ---- -------------          --------                                                                                                                                               
+    12536 30/09/2026 9:13:13 am  C:\Program Files\EA Games\Apex\EAAntiCheat.cfg                                                                                                         
+ 53116664 22/10/2026 12:02:42 pm C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll                                                                                     
+ 52015864 8/10/2026 1:42:16 pm   C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b                                                                                   
+ 20286712 22/10/2026 12:01:56 pm C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe                                                                                     
+ 20031736 8/10/2026 1:42:22 pm   C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b                                                                                   
+271269624 30/09/2026 9:13:22 am  C:\Program Files\EA Games\Apex\EAAntiCheat.Installer.exe                                                                                               
+   594412 30/09/2026 9:13:12 am  C:\Program Files\EA Games\Apex\EAAntiCheat.splash.png                                                                                                  
+   143752 29/09/2026 8:34:12 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\fuse\epic_v22_partybeach01.raw_hdr                                                          
+   143752 29/09/2026 8:34:13 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\lifeline\epic_v25_breachcharged01.raw_hdr                                                   
+   143752 29/09/2026 8:34:14 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\newcastle\epic_v22_partybeach01.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam01.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam02.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam03.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam04.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam05.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam06.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam07.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam08.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachbeam09.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged02.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged03.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged04.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged05.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged06.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachcharged07.raw_hdr                                                     
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp01.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp02.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp03.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp04.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp05.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp06.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp07.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachchargedbp08.raw_hdr                                                   
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat01.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat02.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat03.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat04.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat05.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswat06.raw_hdr                                                        
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp01.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp02.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp03.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp04.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp05.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp06.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp07.raw_hdr                                                      
+   143752 29/09/2026 8:34:17 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\epic_v25_breachswatbp08.raw_hdr                                                      
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachbeam01.raw_hdr                                                        
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachbeam02.raw_hdr                                                        
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachbeam03.raw_hdr                                                        
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachbeam04.raw_hdr                                                        
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachcharged01.raw_hdr                                                     
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachswat01.raw_hdr                                                        
+   143752 29/09/2026 8:34:19 pm  C:\Program Files\EA Games\Apex\materials\correction\gcards\shared\lgnd_v25_breachswat02.raw_hdr                                                        
+  5360100 29/09/2026 8:37:51 pm  C:\Program Files\EA Games\Apex\media\mythic_weapons\mythicpeacekeeper.bik                                                                              
+  8635412 29/09/2026 8:37:51 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\eva8_react_v23_resdopa_rt02.bik                                                                  
+  6754696 29/09/2026 8:37:51 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\eva8_react_v23_resdopa_rt02_hover.bik                                                            
+ 80417460 29/09/2026 8:37:57 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\flatline_react_s20_rt03.bik                                                                      
+ 14915200 29/09/2026 8:37:53 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\flatline_react_s21_rt02.bik                                                                      
+  3598132 29/09/2026 8:37:53 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\flatline_react_s21_rt02_hover.bik                                                                
+  9627924 29/09/2026 8:37:54 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\havoc_react_v19_silverstorm_rt03.bik                                                             
+ 10354612 29/09/2026 8:37:55 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\hemlok_react_v21_rebelbiker_rt02.bik                                                             
+  6483516 29/09/2026 8:37:57 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\pdw_react_v21_scavenger_rt02.bik                                                                 
+  3177684 29/09/2026 8:37:58 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\pdw_react_v21_scavenger_rt02_hover.bik                                                           
+ 12711568 29/09/2026 8:37:58 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\r97_react_v20_ascension_rt02.bik                                                                 
+  2896836 29/09/2026 8:37:59 pm  C:\Program Files\EA Games\Apex\media\reactive_weapons\r97_react_v20_ascension_rt02_hover.bik                                                           
+  3018812 29/09/2026 8:38:56 pm  C:\Program Files\EA Games\Apex\media\weapon_addon\peacekeeper_knockfx.bik                                                                              
+  1032296 29/09/2026 8:38:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_asset_v22_loot_beachball01.opt.starpak                                                            
+    50494 29/09/2026 8:38:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_asset_v22_loot_beachball01.rpak                                                                   
+    81976 29/09/2026 8:38:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_asset_v22_loot_beachball01.starpak                                                                
+   749672 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach01.opt.starpak                                                     
+    45897 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach01.rpak                                                            
+    53288 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach01.starpak                                                         
+   786536 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach02.opt.starpak                                                     
+    52227 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach02.rpak                                                            
+    53288 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach02.starpak                                                         
+   634968 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach03.opt.starpak                                                     
+    40163 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach03.rpak                                                            
+    53288 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach03.starpak                                                         
+   553064 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach04.opt.starpak                                                     
+    43318 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach04.rpak                                                            
+    49192 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach04.starpak                                                         
+   684136 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach05.opt.starpak                                                     
+    48494 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach05.rpak                                                            
+    49192 29/09/2026 8:39:13 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_apex_theme_v22_partybeach_partybeach05.starpak                                                         
+   888952 29/09/2026 8:39:31 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_pathfinder_peacock.opt.starpak                                                                         
+    59303 29/09/2026 8:39:31 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_pathfinder_peacock.rpak                                                                                
+    53288 29/09/2026 8:39:31 pm  C:\Program Files\EA Games\Apex\paks\Win64\charm_pathfinder_peacock.starpak                                                                             
+     3420 29/09/2026 8:39:54 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_fuse_epic_v22_partybeach01.rpak                                                                  
+   184360 29/09/2026 8:39:54 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_fuse_epic_v22_partybeach01.starpak                                                               
+     3420 29/09/2026 8:39:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_lifeline_epic_v25_breachcharged01.rpak                                                           
+   192552 29/09/2026 8:39:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_lifeline_epic_v25_breachcharged01.starpak                                                        
+     3420 29/09/2026 8:40:00 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_newcastle_epic_v22_partybeach01.rpak                                                             
+   200744 29/09/2026 8:40:01 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_newcastle_epic_v22_partybeach01.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam01.rpak                                                                
+   163880 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam01.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam02.rpak                                                                
+   172072 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam02.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam03.rpak                                                                
+   159784 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam03.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam04.rpak                                                                
+   155688 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam04.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam05.rpak                                                                
+   200744 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam05.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam06.rpak                                                                
+   180264 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam06.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam07.rpak                                                                
+   188456 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam07.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam08.rpak                                                                
+   192552 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam08.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam09.rpak                                                                
+   184360 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachbeam09.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged02.rpak                                                             
+   155688 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged02.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged03.rpak                                                             
+   143400 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged03.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged04.rpak                                                             
+   159784 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged04.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged05.rpak                                                             
+   159784 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged05.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged06.rpak                                                             
+   180264 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged06.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged07.rpak                                                             
+   217128 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachcharged07.starpak                                                          
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp01.rpak                                                           
+   225320 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp01.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp02.rpak                                                           
+   217128 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp02.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp03.rpak                                                           
+   147496 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp03.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp04.rpak                                                           
+   147496 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp04.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp05.rpak                                                           
+   155688 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp05.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp06.rpak                                                           
+   233512 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp06.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp07.rpak                                                           
+   200744 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp07.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp08.rpak                                                           
+   208936 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachchargedbp08.starpak                                                        
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat01.rpak                                                                
+   176168 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat01.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat02.rpak                                                                
+   180264 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat02.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat03.rpak                                                                
+   196648 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat03.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat04.rpak                                                                
+   204840 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat04.starpak                                                             
+     3420 29/09/2026 8:40:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat05.rpak                                                                
+   176168 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat05.starpak                                                             
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat06.rpak                                                                
+   167976 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswat06.starpak                                                             
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp01.rpak                                                              
+   213032 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp01.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp02.rpak                                                              
+   172072 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp02.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp03.rpak                                                              
+   213032 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp03.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp04.rpak                                                              
+   213032 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp04.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp05.rpak                                                              
+   192552 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp05.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp06.rpak                                                              
+   188456 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp06.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp07.rpak                                                              
+   180264 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp07.starpak                                                           
+     3420 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp08.rpak                                                              
+   213032 29/09/2026 8:40:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_epic_v25_breachswatbp08.starpak                                                           
+    12038 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam01.rpak                                                                
+   450840 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam01.starpak                                                             
+    26396 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam02.rpak                                                                
+   688584 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam02.starpak                                                             
+    31251 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam03.rpak                                                                
+   684632 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam03.starpak                                                             
+    20155 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam04.rpak                                                                
+  1163784 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachbeam04.starpak                                                             
+    17716 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachcharged01.rpak                                                             
+   249976 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachcharged01.starpak                                                          
+    30269 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachswat01.rpak                                                                
+   496024 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachswat01.starpak                                                             
+    33730 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachswat02.rpak                                                                
+   614936 29/09/2026 8:40:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\gcard_frame_shared_lgnd_v25_breachswat02.starpak                                                             
+   713322 29/09/2026 8:40:55 pm  C:\Program Files\EA Games\Apex\paks\Win64\loadscreen_s28bp_breachchargedbp_01.rpak                                                                     
+   726159 29/09/2026 8:40:55 pm  C:\Program Files\EA Games\Apex\paks\Win64\loadscreen_s28bp_breachchargedbp_02.rpak                                                                     
+   794197 29/09/2026 8:40:55 pm  C:\Program Files\EA Games\Apex\paks\Win64\loadscreen_s28bp_breachswatbp_01.rpak                                                                        
+  1120062 29/09/2026 8:40:55 pm  C:\Program Files\EA Games\Apex\paks\Win64\loadscreen_s28bp_breachswatbp_02.rpak                                                                        
+   840166 29/09/2026 8:40:55 pm  C:\Program Files\EA Games\Apex\paks\Win64\loadscreen_s28me02_breachbeam_01.rpak                                                                        
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_01_sticker_epic_v23_beachparty_01.opt.starpak                          
+     8070 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_01_sticker_epic_v23_beachparty_01.rpak                                 
+    40984 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_02_sticker_epic_v23_beachparty_02.opt.starpak                          
+     7019 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_02_sticker_epic_v23_beachparty_02.rpak                                 
+    40984 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_03_sticker_epic_v23_beachparty_03.opt.starpak                          
+     7027 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_03_sticker_epic_v23_beachparty_03.rpak                                 
+    61464 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_04_sticker_epic_v23_beachparty_04.opt.starpak                          
+     8146 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_04_sticker_epic_v23_beachparty_04.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_05_sticker_epic_v23_beachparty_05.opt.starpak                          
+     7623 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_05_sticker_epic_v23_beachparty_05.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_06_sticker_epic_v23_beachparty_06.opt.starpak                          
+     7847 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_06_sticker_epic_v23_beachparty_06.rpak                                 
+    53272 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_07_sticker_epic_v23_beachparty_07.opt.starpak                          
+     7703 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_07_sticker_epic_v23_beachparty_07.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_08_sticker_epic_v23_beachparty_08.opt.starpak                          
+     7779 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_08_sticker_epic_v23_beachparty_08.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_09_sticker_epic_v23_beachparty_09.opt.starpak                          
+     7535 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_09_sticker_epic_v23_beachparty_09.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_10_sticker_epic_v23_beachparty_10.opt.starpak                          
+     7938 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_10_sticker_epic_v23_beachparty_10.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_11_sticker_epic_v23_beachparty_11.opt.starpak                          
+     7315 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_11_sticker_epic_v23_beachparty_11.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_12_sticker_epic_v23_beachparty_12.opt.starpak                          
+     7466 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_12_sticker_epic_v23_beachparty_12.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_13_sticker_epic_v23_beachparty_13.opt.starpak                          
+     7507 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_13_sticker_epic_v23_beachparty_13.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_14_sticker_epic_v23_beachparty_14.opt.starpak                          
+     7735 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_14_sticker_epic_v23_beachparty_14.rpak                                 
+    36888 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_15_sticker_epic_v23_beachparty_15.opt.starpak                          
+     7004 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_15_sticker_epic_v23_beachparty_15.rpak                                 
+    57368 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_16_sticker_epic_v23_beachparty_16.opt.starpak                          
+     8164 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_16_sticker_epic_v23_beachparty_16.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_17_sticker_epic_v23_beachparty_17.opt.starpak                          
+     7540 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_17_sticker_epic_v23_beachparty_17.rpak                                 
+    45080 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_18_sticker_epic_v23_beachparty_18.opt.starpak                          
+     7719 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_18_sticker_epic_v23_beachparty_18.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_19_sticker_epic_v23_beachparty_19.opt.starpak                          
+     7560 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_19_sticker_epic_v23_beachparty_19.rpak                                 
+    49176 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_20_sticker_epic_v23_beachparty_20.opt.starpak                          
+     7901 29/09/2026 8:40:57 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v23_beachparty_20_sticker_epic_v23_beachparty_20.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_01_sticker_epic_v25_breachbeam_01.opt.starpak                          
+     7224 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_01_sticker_epic_v25_breachbeam_01.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_02_sticker_epic_v25_breachbeam_02.opt.starpak                          
+     7415 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_02_sticker_epic_v25_breachbeam_02.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_03_sticker_epic_v25_breachbeam_03.opt.starpak                          
+     6926 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_03_sticker_epic_v25_breachbeam_03.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_04_sticker_epic_v25_breachbeam_04.opt.starpak                          
+     7352 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_04_sticker_epic_v25_breachbeam_04.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_05_sticker_epic_v25_breachbeam_05.opt.starpak                          
+     7389 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_05_sticker_epic_v25_breachbeam_05.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_06_sticker_epic_v25_breachbeam_06.opt.starpak                          
+     7880 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_06_sticker_epic_v25_breachbeam_06.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_07_sticker_epic_v25_breachbeam_07.opt.starpak                          
+     7570 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_07_sticker_epic_v25_breachbeam_07.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_08_sticker_epic_v25_breachbeam_08.opt.starpak                          
+     7565 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_08_sticker_epic_v25_breachbeam_08.rpak                                 
+    57368 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_09_sticker_epic_v25_breachbeam_09.opt.starpak                          
+     8417 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_09_sticker_epic_v25_breachbeam_09.rpak                                 
+    32792 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_10_sticker_epic_v25_breachbeam_10.opt.starpak                          
+     6346 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_10_sticker_epic_v25_breachbeam_10.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_11_sticker_epic_v25_breachbeam_11.opt.starpak                          
+     8164 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_11_sticker_epic_v25_breachbeam_11.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_12_sticker_epic_v25_breachbeam_12.opt.starpak                          
+     7653 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_12_sticker_epic_v25_breachbeam_12.rpak                                 
+    40984 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_13_sticker_epic_v25_breachbeam_13.opt.starpak                          
+     7159 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_13_sticker_epic_v25_breachbeam_13.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_14_sticker_epic_v25_breachbeam_14.opt.starpak                          
+     7504 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_14_sticker_epic_v25_breachbeam_14.rpak                                 
+    57368 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_15_sticker_epic_v25_breachbeam_15.opt.starpak                          
+     8310 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_15_sticker_epic_v25_breachbeam_15.rpak                                 
+    57368 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_16_sticker_epic_v25_breachbeam_16.opt.starpak                          
+     8270 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachbeam_16_sticker_epic_v25_breachbeam_16.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_01_sticker_epic_v25_breachcharged_01.opt.starpak                    
+     7303 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_01_sticker_epic_v25_breachcharged_01.rpak                           
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_02_sticker_epic_v25_breachcharged_02.opt.starpak                    
+     8112 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_02_sticker_epic_v25_breachcharged_02.rpak                           
+    36888 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_03_sticker_epic_v25_breachcharged_03.opt.starpak                    
+     6789 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_03_sticker_epic_v25_breachcharged_03.rpak                           
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_04_sticker_epic_v25_breachcharged_04.opt.starpak                    
+     8086 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachcharged_04_sticker_epic_v25_breachcharged_04.rpak                           
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_01_sticker_epic_v25_breachswatbp_01.opt.starpak                      
+     7863 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_01_sticker_epic_v25_breachswatbp_01.rpak                             
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_02_sticker_epic_v25_breachswatbp_02.opt.starpak                      
+     7319 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_02_sticker_epic_v25_breachswatbp_02.rpak                             
+    57368 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_03_sticker_epic_v25_breachswatbp_03.opt.starpak                      
+     8014 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_03_sticker_epic_v25_breachswatbp_03.rpak                             
+    57368 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_04_sticker_epic_v25_breachswatbp_04.opt.starpak                      
+     8144 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswatbp_04_sticker_epic_v25_breachswatbp_04.rpak                             
+    36888 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_01_sticker_epic_v25_breachswat_01.opt.starpak                          
+     6645 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_01_sticker_epic_v25_breachswat_01.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_02_sticker_epic_v25_breachswat_02.opt.starpak                          
+     7122 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_02_sticker_epic_v25_breachswat_02.rpak                                 
+    40984 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_03_sticker_epic_v25_breachswat_03.opt.starpak                          
+     7334 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_03_sticker_epic_v25_breachswat_03.rpak                                 
+    40984 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_04_sticker_epic_v25_breachswat_04.opt.starpak                          
+     7174 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_04_sticker_epic_v25_breachswat_04.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_05_sticker_epic_v25_breachswat_05.opt.starpak                          
+     7444 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_05_sticker_epic_v25_breachswat_05.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_06_sticker_epic_v25_breachswat_06.opt.starpak                          
+     7563 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_06_sticker_epic_v25_breachswat_06.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_07_sticker_epic_v25_breachswat_07.opt.starpak                          
+     8009 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_07_sticker_epic_v25_breachswat_07.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_08_sticker_epic_v25_breachswat_08.opt.starpak                          
+     7751 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_08_sticker_epic_v25_breachswat_08.rpak                                 
+    49176 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_09_sticker_epic_v25_breachswat_09.opt.starpak                          
+     7569 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_09_sticker_epic_v25_breachswat_09.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_10_sticker_epic_v25_breachswat_10.opt.starpak                          
+     7924 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_10_sticker_epic_v25_breachswat_10.rpak                                 
+    45080 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_11_sticker_epic_v25_breachswat_11.opt.starpak                          
+     7605 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_11_sticker_epic_v25_breachswat_11.rpak                                 
+    53272 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_12_sticker_epic_v25_breachswat_12.opt.starpak                          
+     8007 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_epic_v25_breachswat_12_sticker_epic_v25_breachswat_12.rpak                                 
+    94280 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_01_sticker_lgnd_v23_beachparty_01.opt.starpak                     
+    12935 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_01_sticker_lgnd_v23_beachparty_01.rpak                            
+    53304 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_02_sticker_lgnd_v23_beachparty_02.opt.starpak                     
+    13786 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_02_sticker_lgnd_v23_beachparty_02.rpak                            
+    32792 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_03_sticker_lgnd_v23_beachparty_03.opt.starpak                     
+     6791 29/09/2026 8:40:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v23_beachparty_03_sticker_lgnd_v23_beachparty_03.rpak                            
+   118856 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_01_sticker_lgnd_v25_breachbeam_01.opt.starpak                     
+    21460 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_01_sticker_lgnd_v25_breachbeam_01.rpak                            
+   110664 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_02_sticker_lgnd_v25_breachbeam_02.opt.starpak                     
+    19207 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_02_sticker_lgnd_v25_breachbeam_02.rpak                            
+   122952 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_03_sticker_lgnd_v25_breachbeam_03.opt.starpak                     
+    23198 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachbeam_03_sticker_lgnd_v25_breachbeam_03.rpak                            
+   110664 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_01_sticker_lgnd_v25_breachswat_01.opt.starpak                     
+    18424 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_01_sticker_lgnd_v25_breachswat_01.rpak                            
+   106568 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_02_sticker_lgnd_v25_breachswat_02.opt.starpak                     
+    15317 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_02_sticker_lgnd_v25_breachswat_02.rpak                            
+   110664 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_03_sticker_lgnd_v25_breachswat_03.opt.starpak                     
+    17118 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_03_sticker_lgnd_v25_breachswat_03.rpak                            
+   110664 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_04_sticker_lgnd_v25_breachswat_04.opt.starpak                     
+    17461 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_04_sticker_lgnd_v25_breachswat_04.rpak                            
+   110664 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_05_sticker_lgnd_v25_breachswat_05.opt.starpak                     
+    18504 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_05_sticker_lgnd_v25_breachswat_05.rpak                            
+   135240 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_06_sticker_lgnd_v25_breachswat_06.opt.starpak                     
+    21507 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_06_sticker_lgnd_v25_breachswat_06.rpak                            
+   106568 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_07_sticker_lgnd_v25_breachswat_07.opt.starpak                     
+    17489 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_07_sticker_lgnd_v25_breachswat_07.rpak                            
+   106568 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_08_sticker_lgnd_v25_breachswat_08.opt.starpak                     
+    17112 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_08_sticker_lgnd_v25_breachswat_08.rpak                            
+   118856 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_09_sticker_lgnd_v25_breachswat_09.opt.starpak                     
+    19239 29/09/2026 8:40:59 pm  C:\Program Files\EA Games\Apex\paks\Win64\material_stickers_legendary_v25_breachswat_09_sticker_lgnd_v25_breachswat_09.rpak                            
+   240141 29/09/2026 8:50:51 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_heavy_gibraltar_icon_v25_breachbeam_w.rpak                                      
+   289772 29/09/2026 8:50:52 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_heavy_gibraltar_lgnd_v25_breachcharged_w.rpak                                   
+   251521 29/09/2026 8:50:53 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_heavy_pathfinder_lgnd_v25_breachcharged_w.rpak                                  
+   407065 29/09/2026 8:50:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_heavy_revenant_icon_v25_breachbeam_w.rpak                                       
+   171034 29/09/2026 8:50:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_heavy_revenant_icon_v25_breachbeam_w_shdrs.rpak                                 
+   338098 29/09/2026 8:51:08 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_light_wattson_lgnd_v25_breachcharged_w.rpak                                     
+   109223 29/09/2026 8:51:08 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_light_wattson_lgnd_v25_breachcharged_w_shdrs.rpak                               
+   163642 29/09/2026 8:51:11 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_light_wraith_lgnd_v25_breachswat_w.rpak                                         
+   254343 29/09/2026 8:51:15 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_crypto_icon_v25_breachbeam_w.rpak                                        
+     1180 29/09/2026 8:51:15 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_crypto_icon_v25_breachbeam_w_shdrs.rpak                                  
+   274824 29/09/2026 8:51:16 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_crypto_lgnd_v25_breachcharged_w.rpak                                     
+    59694 29/09/2026 8:51:16 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_crypto_lgnd_v25_breachcharged_w_shdrs.rpak                               
+   208156 29/09/2026 8:51:19 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_fuse_lgnd_v25_breachswat_w.rpak                                          
+   341824 29/09/2026 8:51:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_fuse_v22_partybeach_w.rpak                                               
+   105748 29/09/2026 8:51:22 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_fuse_v22_partybeach_w_shdrs.rpak                                         
+   210688 29/09/2026 8:51:23 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_horizon_lgnd_v25_breachcharged_w.rpak                                    
+   466292 29/09/2026 8:51:26 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_loba_lgnd_v25_breachchargedbpelite_w.rpak                                
+    34527 29/09/2026 8:51:27 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_loba_lgnd_v25_breachchargedbpelite_w_shdrs.rpak                          
+   212824 29/09/2026 8:51:27 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_loba_lgnd_v25_breachchargedbp_w.rpak                                     
+   200318 29/09/2026 8:51:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_loba_v22_partybeach_w.rpak                                               
+     1332 29/09/2026 8:51:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_loba_v22_partybeach_w_shdrs.rpak                                         
+   271038 29/09/2026 8:51:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_mirage_icon_v25_breachbeam_w.rpak                                        
+    54471 29/09/2026 8:51:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_mirage_icon_v25_breachbeam_w_shdrs.rpak                                  
+   173952 29/09/2026 8:51:31 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_octane_icon_v25_breachbeam_w.rpak                                        
+   278687 29/09/2026 8:51:32 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_octane_lgnd_v25_breachswatbpelite_w.rpak                                 
+    68410 29/09/2026 8:51:32 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_octane_lgnd_v25_breachswatbpelite_w_shdrs.rpak                           
+   150631 29/09/2026 8:51:32 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_octane_lgnd_v25_breachswatbp_w.rpak                                      
+   186640 29/09/2026 8:51:44 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_rampart_lgnd_v25_breachswat_w.rpak                                       
+   217410 29/09/2026 8:51:45 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_humans_class_medium_valkyrie_icon_v25_breachbeam_w.rpak                                      
+   234363 29/09/2026 8:51:53 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_alter_alter_icon_v25_breachbeam_w.rpak                      
+    58745 29/09/2026 8:51:53 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_alter_alter_icon_v25_breachbeam_w_shdrs.rpak                
+   183056 29/09/2026 8:51:54 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_alter_alter_lgnd_v25_breachswat_w.rpak                      
+   279685 29/09/2026 8:51:56 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_ash_ash_lgnd_v25_breachcharged_w.rpak                       
+   110728 29/09/2026 8:51:56 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_ash_ash_lgnd_v25_breachcharged_w_shdrs.rpak                 
+   377377 29/09/2026 8:51:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_ash_ash_v22_partybeach_w.rpak                               
+   148355 29/09/2026 8:51:58 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_ash_ash_v22_partybeach_w_shdrs.rpak                         
+   597425 29/09/2026 8:52:05 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_catalyst_catalyst_lgnd_v25_breachchargedbpelite_w.rpak      
+   307236 29/09/2026 8:52:05 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_catalyst_catalyst_lgnd_v25_breachchargedbpelite_w_shdrs.rpak
+   355182 29/09/2026 8:52:05 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_catalyst_catalyst_lgnd_v25_breachchargedbp_w.rpak           
+   142263 29/09/2026 8:52:05 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_catalyst_catalyst_lgnd_v25_breachchargedbp_w_shdrs.rpak     
+   222241 29/09/2026 8:52:06 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_catalyst_catalyst_v22_partybeach_w.rpak                     
+   203626 29/09/2026 8:52:07 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_conduit_conduit_icon_v25_breachbeam_w.rpak                  
+   267508 29/09/2026 8:52:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_mirage_mirage_v22_partybeach_w.rpak                         
+    55876 29/09/2026 8:52:17 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_mirage_mirage_v22_partybeach_w_shdrs.rpak                   
+   164090 29/09/2026 8:52:18 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_newcastle_newcastle_lgnd_v25_breachswat_w.rpak              
+   147894 29/09/2026 8:52:19 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_newcastle_newcastle_v22_partybeach_w.rpak                   
+   377640 29/09/2026 8:52:26 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_seer_seer_lgnd_v25_breachswatbpelite_w.rpak                 
+   176411 29/09/2026 8:52:26 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_seer_seer_lgnd_v25_breachswatbpelite_w_shdrs.rpak           
+   174197 29/09/2026 8:52:26 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_seer_seer_lgnd_v25_breachswatbp_w.rpak                      
+   337495 29/09/2026 8:52:27 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_seer_seer_v22_partybeach_w.rpak                             
+   114782 29/09/2026 8:52:27 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_seer_seer_v22_partybeach_w_shdrs.rpak                       
+   249296 29/09/2026 8:52:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_sparrow_sparrow_lgnd_v25_breachswat_w.rpak                  
+    58959 29/09/2026 8:52:28 pm  C:\Program Files\EA Games\Apex\paks\Win64\root_lgnd_skins_techart_mshop_characters_legends_sparrow_sparrow_lgnd_v25_breachswat_w_shdrs.rpak            
+271269624 30/09/2026 9:13:22 am  C:\Program Files\EA Games\Apex\__Installer\customcomponent\Javelin\EAAntiCheat.Installer.exe                                                           
+
+
+

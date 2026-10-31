@@ -1,0 +1,7 @@
+# Oversized session log — GitHub rejects files larger than 100 MB.
+# The file stays on disk; it is just not tracked.
+Qwen Knowledge base/phase4_apex_cheat/apex_pack_monitor.log
+
+# Python caches
+__pycache__/
+*.py[cod]

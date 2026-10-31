@@ -1,0 +1,39 @@
+﻿== *.sys anywhere under the Apex tree / ProgramData EA ==
+
+
+== stale EAC launcher referenced by launchBuildClient.bat? ==
+start_protected_game.exe       False
+r2_static_128_dx12.exe         False
+r5apex.exe                     False
+baeleys game.exe               True
+== recently written files in Apex root (last 60d) ==
+
+   Length LastWriteTime          Name                                 
+   ------ -------------          ----                                 
+    46840 22/10/2026 12:02:42 pm preloader_l.dll                      
+ 53116664 22/10/2026 12:02:42 pm EAAntiCheat.GameServiceLauncher.dll  
+ 20286712 22/10/2026 12:01:56 pm EAAntiCheat.GameServiceLauncher.exe  
+ 68517728 18/10/2026 4:24:51 pm  r5apex_dx12.exe                      
+ 20031736 8/10/2026 1:42:22 pm   EAAntiCheat.GameServiceLauncher.exe_b
+    46840 8/10/2026 1:42:18 pm   preloader_l.dll_b                    
+ 52015864 8/10/2026 1:42:16 pm   EAAntiCheat.GameServiceLauncher.dll_b
+ 68517728 7/10/2026 8:49:42 am   baeleys game.exe                     
+       53 7/10/2026 8:49:30 am   build.txt                            
+     4096 7/10/2026 8:49:30 am   r5apexdata.bin                       
+       11 7/10/2026 8:49:30 am   gameversion.txt                      
+  1121120 7/10/2026 8:49:30 am   OriginSDK.dll                        
+  4248928 7/10/2026 8:49:30 am   steamnetworkingsockets.dll           
+   293216 7/10/2026 8:49:30 am   steam_api64.dll                      
+271269624 30/09/2026 9:13:22 am  EAAntiCheat.Installer.exe            
+    12536 30/09/2026 9:13:13 am  EAAntiCheat.cfg                      
+   594412 30/09/2026 9:13:12 am  EAAntiCheat.splash.png               
+      151 29/09/2026 8:33:41 pm  uxr_client.bat                       
+    45944 29/09/2026 8:33:41 pm  WinPixEventRuntime.dll               
+    32120 29/09/2026 8:33:41 pm  steamnetworkingsockets_config.json   
+  2314848 29/09/2026 8:33:38 pm  GFSDK_Aftermath_Lib.x64.dll          
+      206 29/09/2026 8:33:38 pm  launchBuildClient.bat                
+   421792 29/09/2026 8:33:37 pm  bink2w64.dll                         
+       34 29/09/2026 8:33:37 pm  script_net.md5sum                    
+
+
+

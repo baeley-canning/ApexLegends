@@ -1,0 +1,191 @@
+KNOWLEDGE BASE: REAL-TIME SYSTEMS ENGINEERING
+
+Purpose:
+Educational reference for building systems that must respond within time
+constraints: how to structure capture, inference, and action as a
+pipeline, how to manage latency and load, and how to keep behaviour
+predictable.
+
+---
+
+1. REAL-TIME DOES NOT MEAN FAST
+A real-time system is one whose correctness depends on meeting timing
+constraints.
+Being fast is not the same as being predictable.
+A slow but consistent system can be more useful than a fast irregular
+one.
+
+---
+
+2. DEADLINES AND DETERMINISM
+A deadline is the latest acceptable time to complete work.
+Determinism is how repeatable the timing is.
+Real-time engineering seeks to bound the worst case, not only improve
+the average.
+
+---
+
+3. HARD, FIRM, SOFT
+Hard: missing a deadline is a failure.
+Firm: a late result is useless but not catastrophic.
+Soft: a late result is degraded but still useful.
+Classifying the requirement decides how much effort is justified.
+
+---
+
+4. THE PIPELINE AS A CHAIN OF DEADLINES
+Capture, preprocess, infer, postprocess, track, decide, and act each
+consume time.
+The end-to-end deadline is satisfied only if the stages fit within it.
+Every stage and transfer is a candidate bottleneck.
+
+---
+
+5. PRODUCER-CONSUMER
+One component produces frames; another consumes them.
+Decoupling them prevents a slow consumer from blocking the producer, at
+the cost of a buffer.
+
+---
+
+6. BUFFERS AND QUEUES
+A buffer smooths bursts but adds delay.
+A queue that grows without bound converts a latency problem into a
+memory problem and hides overload.
+Buffer size is a latency decision.
+
+---
+
+7. FRAME DROP POLICY
+When the pipeline cannot keep up, some frames must be discarded.
+Dropping the oldest frame keeps results fresh; dropping the newest
+preserves order at the cost of staleness.
+The policy should be explicit and matched to the goal.
+
+---
+
+8. BACKPRESSURE
+Backpressure is signalling a producer to slow down when the consumer
+cannot keep up.
+Ignoring it leads to ever-growing queues and rising latency.
+Applying it keeps the system stable under overload.
+
+---
+
+9. LATENCY VERSUS THROUGHPUT
+Throughput is work per unit time; latency is delay per item.
+They can be improved independently and sometimes trade against each
+other.
+Batching improves throughput while increasing latency.
+
+---
+
+10. BATCHING
+Processing several items together amortises fixed costs.
+It raises per-item latency, which may be unacceptable in a control loop.
+
+---
+
+11. BLOCKING VERSUS NON-BLOCKING
+Blocking waits for a result; non-blocking proceeds and checks later.
+Blocking code is simpler but can stall an entire pipeline.
+Non-blocking code is more complex but keeps stages decoupled.
+
+---
+
+12. THREADS
+Threads run concurrently and share memory.
+They suit I/O-bound wait and can overlap stages.
+Sharing memory requires synchronization, and oversubscription causes
+context-switching overhead.
+
+---
+
+13. ASYNCIO
+An event loop multiplexes many waits on one thread.
+It suits many concurrent I/O operations and avoids lock contention.
+It does not speed up CPU-bound work and can be blocked by a single
+long computation.
+
+---
+
+14. PROCESSES
+Processes isolate memory and can use multiple cores for CPU-bound work.
+They avoid the constraints of a shared interpreter, at the cost of
+communication and startup overhead.
+
+---
+
+15. SYNCHRONIZATION AND CONTENTION
+Locks and shared state create waiting.
+Contention converts parallelism into serialization and adds jitter.
+Prefer message passing and immutable data where practical.
+
+---
+
+16. SCHEDULING AND PRIORITY
+The operating system decides when threads run.
+Priorities and affinity influence timeliness but are not guarantees.
+Jitter from scheduling is a real source of missed deadlines.
+
+---
+
+17. TIMESTAMPS AND FRAME AGE
+Every stage should know when its input was captured.
+Frame age is the gap between capture and use, and it grows under load.
+Acting on stale data is a silent cause of poor behaviour.
+
+---
+
+18. THE INTERPRETER AND CONCURRENCY
+In Python, the global interpreter lock limits true parallel execution of
+pure-Python threads.
+CPU-bound work should use processes or native libraries; I/O-bound work
+suits threads or asyncio.
+
+---
+
+19. MEASUREMENT AND PROFILING
+Measure per-stage timing, not just end-to-end.
+Report percentiles, not only averages.
+The slowest stage and the slowest case together determine the
+experience.
+
+---
+
+20. ADAPTIVE RATE
+A system can lower its own frame rate or resolution under load.
+Adaptation trades fidelity for timeliness deliberately.
+
+---
+
+21. DETERMINISTIC REPLAY
+Recording inputs and timestamps lets a run be replayed identically.
+Replay makes regressions reproducible and comparisons fair.
+
+---
+
+22. TESTING REAL-TIME CODE
+Test the pipeline with synthetic loads and worst-case inputs.
+Verify behaviour under overload, not only in the happy path.
+
+---
+
+23. FAILURE MODES
+Unbounded queues, hidden blocking, and unmeasured jitter are the common
+ways real-time systems fail while appearing to work.
+
+---
+
+24. SUMMARY
+Real-time engineering is about bounded, predictable timing.
+Structure the pipeline with explicit buffers and drop policies, measure
+per-stage latency and its variation, and keep the system stable under
+overload.
+
+CORE PRINCIPLE:
+Real-time means timely, not merely fast. Design the pipeline around
+deadlines and predictable worst-case behaviour, make buffering and frame
+dropping explicit, and measure per-stage latency with percentiles.
+Unbounded queues and unmeasured jitter are the most common ways a
+working-looking system still fails.

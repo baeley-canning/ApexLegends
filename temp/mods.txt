@@ -1,0 +1,25 @@
+# mods probe  pid=11996
+# on-disk exe: timestamp=0x6abfe359 sizeofimage=0xe866000
+# handle=564 err=0
+
+## CreateToolhelp32Snapshot module variants
+  flags=0x08 snap=-1
+      FAIL err=87
+  flags=0x10 snap=-1
+      FAIL err=87
+  flags=0x18 snap=-1
+      FAIL err=87
+
+## EnumProcessModulesEx(LIST_MODULES_ALL=3)
+  ok=0 err=87 count=0
+
+## PEB
+  status=0x0 peb=0x32c000
+  rpm(peb,0x40)=FAIL
+
+## MEM_IMAGE regions (PE headers parsed through RPM)
+  regions with PE headers: 0
+
+## region matching the on-disk exe timestamp
+
+## RPM test at 0x140000000: FAIL

@@ -1,0 +1,15 @@
+# diag3  interpreter is 64-bit: True
+# pid=33364  hproc=0xffffffffffffffff
+
+## control A: own process, QUERY_LIMITED handle, rpm at a mapped page
+   own image regions >1MB: 6 first=0x7ffc6e711000
+   rpm(0x7ffc6e711000) QUERY_LIMITED -> FAIL err=5
+
+## control B: own process, VM_READ handle, same page
+   rpm(0x7ffc6e711000) VM_READ -> 48 83 ec 38 8b 0d 62 24 5f 00 65 48 8b 04 25 58 err=5
+   => 87 in A + bytes in B means err 87 == 'handle has no VM_READ'.
+
+## target r5apex_dx12.exe pid=11996
+   protection: raw=0x0 type=none signer=0x0
+   OpenProcess(QUERY_INFO|VM_READ) h=0x1c4 err=18
+   MEM_IMAGE regions visible through the handle: 0

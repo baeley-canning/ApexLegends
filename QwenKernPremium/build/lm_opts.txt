@@ -1,0 +1,17 @@
+﻿64: 
+65: struct LauncherOptions {
+66:     std::string     dllPath;
+67:     std::string     driverPath;
+68:     InjectionMethod method           = InjectionMethod::NtCreateThreadEx;
+69:     bool            methodForced     = false;  // --method=<x> given: no ladder
+70:     bool            randomizeMethod  = false;
+71:     bool            stageDll         = false;   // inject from a random-named copy
+72:     bool            waitForGame      = true;
+73:     DWORD           waitTimeoutMs    = 120000;
+74:     DWORD           explicitPid      = 0;
+75:     bool            runProbe         = false;   // --probe: measure, do not inject
+76:     bool            allowSticky      = true;    // persist/read the working rung
+77:     bool            forgetSticky     = false;
+78: };
+79: 
+80: void PrintBanner() {

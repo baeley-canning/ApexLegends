@@ -1,0 +1,50 @@
+﻿== elev2_fltmc_instances.txt  2026-10-26 17:22:42 ==
+Filter                Volume Name                              Altitude        Instance Name       Frame   SprtFtrs  VlStatus
+--------------------  -------------------------------------  ------------  ----------------------  -----   --------  --------
+EAAntiCheat                                                     363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           C:                                        363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat                                                     363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           \Device\HarddiskVolumeShadowCopy4         363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           \Device\HarddiskVolumeShadowCopy5         363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           \Device\HarddiskVolumeShadowCopy6         363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           \Device\HarddiskVolumeShadowCopy7         363250     EAAntiCheat Instance      0     0000000f  
+EAAntiCheat           \Device\Mup                               363250     EAAntiCheat Instance      0     0000000f  
+FileInfo                                                         40500     FileInfo                  0     0000000f  
+FileInfo              C:                                         40500     FileInfo                  0     0000000f  
+FileInfo                                                         40500     FileInfo                  0     0000000f  
+FileInfo              \Device\HarddiskVolumeShadowCopy4          40500     FileInfo                  0     0000000f  
+FileInfo              \Device\HarddiskVolumeShadowCopy5          40500     FileInfo                  0     0000000f  
+FileInfo              \Device\HarddiskVolumeShadowCopy6          40500     FileInfo                  0     0000000f  
+FileInfo              \Device\HarddiskVolumeShadowCopy7          40500     FileInfo                  0     0000000f  
+FileInfo              \Device\Mup                                40500     FileInfo                  0     0000000f  
+UCPD                                                            385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  C:                                        385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                                                            385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  \Device\HarddiskVolumeShadowCopy4         385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  \Device\HarddiskVolumeShadowCopy5         385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  \Device\HarddiskVolumeShadowCopy6         385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  \Device\HarddiskVolumeShadowCopy7         385250.5   UCPD - Top Instance       0     0000000f  
+UCPD                  \Device\Mup                               385250.5   UCPD - Top Instance       0     0000000f  
+Wof                   C:                                         40700     Wof Instance              0     0000000f  
+Wof                                                              40700     Wof Instance              0     0000000f  
+Wof                   \Device\HarddiskVolumeShadowCopy4          40700     Wof Instance              0     0000000f  
+Wof                   \Device\HarddiskVolumeShadowCopy5          40700     Wof Instance              0     0000000f  
+Wof                   \Device\HarddiskVolumeShadowCopy6          40700     Wof Instance              0     0000000f  
+Wof                   \Device\HarddiskVolumeShadowCopy7          40700     Wof Instance              0     0000000f  
+bfs                                                             150000     bfs                       0     0000000f  
+bfs                   C:                                        150000     bfs                       0     0000000f  
+bfs                                                             150000     bfs                       0     0000000f  
+bfs                   \Device\HarddiskVolumeShadowCopy4         150000     bfs                       0     0000000f  
+bfs                   \Device\HarddiskVolumeShadowCopy5         150000     bfs                       0     0000000f  
+bfs                   \Device\HarddiskVolumeShadowCopy6         150000     bfs                       0     0000000f  
+bfs                   \Device\HarddiskVolumeShadowCopy7         150000     bfs                       0     0000000f  
+bfs                   \Device\Mailslot                          150000     bfs                       0     0000000f  
+bfs                   \Device\Mup                               150000     bfs                       0     0000000f  
+bfs                   \Device\NamedPipe                         150000     bfs                       0     0000000f  
+bindflt               C:                                        409800     bindflt Instance          0     0000000f  
+gameflt               C:                                        189850     gameflt Instance          0     0000000b  
+gameflt                                                         189850     gameflt Instance          0     0000000b  
+luafv                 C:                                        135000     luafv                     0     0000000f  
+npsvctrig             \Device\NamedPipe                          46000     npsvctrig                 0     00000008  
+storqosflt            C:                                        244000     storqosflt                0     0000000f  
+

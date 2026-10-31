@@ -1,0 +1,53 @@
+﻿== driverquery (running drivers, EA hits) ==
+
+"BthPan","Bluetooth Device (Personal Area Network)","Kernel 
+",""
+"cdfs","CD/DVD File System Reader","File System ",""
+"IntcAzAudAddService","Service for Realtek HD Audio 
+(WDM)","Kernel ","26/08/2025 9:26:03 pm"
+"intelpmax","Intel(R) Dynamic Device Peak Power Manager 
+Driver","Kernel ",""
+"ksthunk","Kernel Streaming Thunks","Kernel ",""
+"MSKSSRV","Microsoft Streaming Service Proxy","Kernel ",""
+"MSPCLOCK","Microsoft Streaming Clock Proxy","Kernel ",""
+"MSPQM","Microsoft Streaming Quality Manager Proxy","Kernel 
+",""
+"MSTEE","Microsoft Streaming Tee/Sink-to-Sink 
+Converter","Kernel ",""
+"PEAUTH","PEAUTH","Kernel ",""
+"rdyboost","ReadyBoost","Kernel ",""
+"UfxChipidea","USB Chipidea Controller","Kernel ",""
+"UrsChipidea","Chipidea USB Role-Switch Driver","Kernel ",""
+
+
+== cim Win32_SystemDriver name like EA* ==
+
+== drivers dir ea* (fast) ==
+
+== full service key dump ==
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EAAntiCheat
+    DebugFlags    REG_DWORD    0x0
+    DependOnService    REG_MULTI_SZ    FltMgr
+
+    Description    REG_SZ    Electronic Arts AntiCheat Driver
+    DisplayName    REG_SZ    EAAntiCheat
+    ErrorControl    REG_DWORD    0x1
+    Group    REG_SZ    FSFilter Activity Monitor
+    ImagePath    REG_EXPAND_SZ    system32\drivers\eaanticheat.sys
+    Start    REG_DWORD    0x3
+    SupportedFeatures    REG_DWORD    0x3
+    Tag    REG_DWORD    0x4
+    Type    REG_DWORD    0x2
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EAAntiCheat\Instances
+    DefaultInstance    REG_SZ    EAAntiCheat Instance
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EAAntiCheat\Instances\EAAntiCheat Instance
+    Altitude    REG_SZ    363250
+    Flags    REG_DWORD    0x0
+
+== search DriverStore for eaanticheat* ==
+
+== EOS (legacy) driver location ==
+

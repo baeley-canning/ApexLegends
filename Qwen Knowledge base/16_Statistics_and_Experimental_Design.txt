@@ -1,0 +1,214 @@
+KNOWLEDGE BASE: STATISTICS AND EXPERIMENTAL DESIGN
+
+Purpose:
+Educational reference for turning measurements into defensible
+decisions: how to characterise uncertainty, compare systems fairly, and
+choose thresholds when different errors carry different costs. It sits
+beneath the model-evaluation material and above raw metrics.
+
+---
+
+1. WHY THIS MATTERS
+A single measurement rarely proves anything.
+Conclusions about thresholds, models, and defenses depend on how much a
+number varies and how confident we can be in it.
+Statistics is the discipline of drawing conclusions that survive
+variation and limited data.
+
+---
+
+2. POPULATIONS AND SAMPLES
+A population is everything of interest; a sample is the subset actually
+observed.
+Conclusions about the population are inferred from the sample.
+If the sample is not representative, the inference is unreliable no
+matter how large it is.
+
+---
+
+3. VARIABILITY
+Almost every real quantity varies: latency, scores, and outcomes.
+Reporting only an average hides variation that may matter more than the
+centre.
+
+---
+
+4. SPREAD AND CENTRAL TENDENCY
+Mean, median, and mode summarise the centre; the median resists extreme
+values.
+Standard deviation, variance, and interquartile range summarise spread.
+Two systems can share an average and differ completely in consistency,
+and consistency is often what matters operationally.
+
+---
+
+5. SAMPLING BIAS
+A sample can be skewed by how it was collected.
+Collecting data only at convenient times, or only from easy cases,
+distorts conclusions.
+Bias is a design problem and is not cured by averaging.
+
+---
+
+6. CONFIDENCE INTERVALS
+An interval expresses a range of plausible values with a stated
+confidence.
+It communicates uncertainty in a way a single number cannot.
+A point estimate without an interval invites false precision.
+
+---
+
+7. HYPOTHESIS TESTING
+A test asks whether observed data are consistent with a stated
+assumption.
+It produces evidence for or against that assumption, not proof.
+
+---
+
+8. NULL AND ALTERNATIVE HYPOTHESES
+The null is the default, often "no effect" or "no difference."
+The alternative is what the experiment tries to detect.
+The test measures evidence against the null.
+
+---
+
+9. P-VALUES AND THEIR MISUSE
+A p-value is the probability of data at least this extreme if the null
+were true.
+It is not the probability that the null is true, nor that the result is
+important.
+With enough data, trivial differences become significant, so
+significance alone is not a decision.
+
+---
+
+10. EFFECT SIZE
+Effect size measures how large a difference is, independent of sample
+count.
+Significance says a difference probably exists; effect size says whether
+it matters.
+
+---
+
+11. TYPE I AND TYPE II ERRORS
+A Type I error concludes an effect exists when it does not (false
+positive).
+A Type II error misses an effect that exists (false negative).
+Reducing one usually increases the other; the trade-off should be chosen
+deliberately.
+
+---
+
+12. PRECISION AND RECALL AS COSTS
+Precision reflects how many flagged items are genuinely positive.
+Recall reflects how many positives were found.
+Their balance is a decision about which error is more costly, not a
+property of the model.
+
+---
+
+13. CLASS IMBALANCE
+In many detection settings the event of interest is rare, so positives
+are greatly outnumbered by negatives.
+Accuracy is then misleading: predicting "no" for everything scores well.
+Report per-class metrics, and evaluate with the prevalence of the real
+deployment.
+
+---
+
+14. BASE RATES
+The base rate is how common the event actually is.
+The rarer the event, the more a modest false-positive rate floods the
+alerts.
+Base rate is often the dominant factor in whether a detector is usable.
+
+---
+
+15. ROC AND PR CURVES
+An ROC curve shows true-positive against false-positive rate across
+thresholds.
+A precision-recall curve is more informative when positives are rare.
+Both describe the trade-off; neither chooses a threshold for you.
+
+---
+
+16. THRESHOLD SELECTION
+A threshold converts a score into a decision.
+It should follow from the relative cost of each error and the base rate,
+not from the curve's shape alone.
+A defensible threshold is justified by its expected consequences.
+
+---
+
+17. EXPECTED COST OF DECISIONS
+Assign costs to false positives and false negatives.
+Expected cost = cost(fp) * rate(fp) + cost(fn) * rate(fn).
+The best threshold minimises expected cost for the deployment, not some
+abstract score.
+
+---
+
+18. CALIBRATION
+A calibrated score means a stated probability matches observed frequency.
+Well-calibrated scores let costs be combined in a principled way.
+Poorly calibrated scores can rank well yet be unusable for decisions.
+
+---
+
+19. EXPERIMENTAL DESIGN
+A good comparison fixes everything except the variable under test.
+Randomise where possible, hold the rest constant, and change one factor
+at a time.
+
+---
+
+20. CONFOUNDING
+A confounder varies with the factor under study and can masquerade as its
+effect.
+Latency, load, and time of day are common confounders.
+Detecting them is part of designing the experiment.
+
+---
+
+21. OFFLINE AND REPLAY EVALUATION
+Replaying recorded data lets systems be compared reproducibly and
+cheaply.
+If the data came from a different policy, the replay reflects that
+policy, not the new system's behaviour in the world.
+
+---
+
+22. SAMPLE SIZE
+Too few samples cannot detect a real effect; too many manufacture
+trivial significance.
+Sample size should follow from the effect size and the confidence
+required.
+
+---
+
+23. REPORTING AND REPRODUCIBILITY
+Report sample sizes, intervals, and the exact conditions.
+A result that cannot be reproduced is a claim, not a finding.
+
+---
+
+24. COMMON PITFALLS
+Optimising a metric that does not match the goal.
+Testing many hypotheses and reporting only the significant one.
+Comparing on a non-representative sample.
+Treating a model score as a probability without checking calibration.
+
+---
+
+25. SUMMARY
+Statistics does not remove uncertainty; it quantifies and manages it.
+Good decisions come from representative data, honest uncertainty,
+cost-aware thresholds, and comparisons that isolate the factor under
+test.
+
+CORE PRINCIPLE:
+A measurement is not a conclusion. Decide using effect sizes, intervals,
+and the real base rate, then choose thresholds from the relative cost of
+false positives and false negatives. When positives are rare, accuracy
+and ROC flatter a useless detector; report per-class metrics and reason
+about expected cost.

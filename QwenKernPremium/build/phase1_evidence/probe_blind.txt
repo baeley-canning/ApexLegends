@@ -1,0 +1,46 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] AG measurement harness (target PID 1512)
+pid=1512 image=r5apex_dx12.exe base=0x0 modules=0
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown[*] reference integrity:
+    image            :  (NOT the expected r5apex_dx12.exe)
+    module base      : 0x0 (NOT a readable PE image)
+    modules in target: 0
+    render modules   : d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown
+    [!] module snapshot EMPTY (OpenProcess/TH32CS_SNAPMODULE denied):
+        every 'unknown' above is genuinely UNMEASURED, not absent ->
+        run the launcher ELEVATED, otherwise every verdict below is
+        meaningless
+==========================================================================
+ACG / INJECTION PROBE REPORT - ACG measurement
+==========================================================================
+environment:
+pid=1512 image=r5apex_dx12.exe base=0x0 modules=0
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown
+
+probes:
+  [FAIL] I0_inventory           module inventory / reference integrity
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: image=r5apex_dx12.exe modules=0 d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown os=10.0 build 26200 hvci=unknown (key absent) | module list UNREADABLE: presence is unknown, not absent
+  [FAIL] X1_open_process        OpenProcess with injector rights
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=5
+        detail: OpenProcess refused (elevation / protected process?) | rights: QUERY_LIMITED=OK VM_READ=DENIED(5) VM_WRITE|VM_OP=DENIED(5) CREATE_THREAD=DENIED(5) injector(ALL)=DENIED(5) 
+  [FAIL] X2_alloc_ex_rwx        VirtualAllocEx RWX in target
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: skipped: no target handle
+
+0/3 probes passed
+recommendation: the target refused a handle => no user-mode strategy can run until the elevation/rights problem is solved. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+==========================================================================
+END OF PROBE REPORT
+==========================================================================
+[*] recommendation: the target refused a handle => no user-mode strategy can run until the elevation/rights problem is solved. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+[*] measured 0/3 probe(s) passing
+[*] report written: C:\Users\NEWUSE~1\AppData\Local\Temp\apexcheat_acg_probe_target_7468_20261026_170514.txt
+EXIT=4

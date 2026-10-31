@@ -1,0 +1,47 @@
+# diag2 -- API/handle problem, or target problem?
+# own pid=34396  GetCurrentProcess=0xffffffffffffffff
+
+## CONTROL: own process, GetCurrentProcess()  handle=0xffffffffffffffff
+   rpm(0x140000000,0x40) -> FAIL err=299 got=0
+   vqe(0) -> base=0x0 size=0x7ffe0000 type=0x0 state=0x10000 err=0
+   vqe walk: 341 calls -> 209 MEM_IMAGE regions, stop=0x7fffffff0000 err=0
+      image base=0x2210e4c0000 size=0x0000f000 state=0x1000
+      image base=0x7ff7fd8f0000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f1000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f2000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f3000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f4000 size=0x00016000 state=0x1000
+      image base=0x7ffc6e710000 size=0x00001000 state=0x1000
+      image base=0x7ffc6e711000 size=0x00285000 state=0x1000
+
+## CONTROL: own process, OpenProcess(QUERY_INFO|VM_READ)  handle=0x22c
+   rpm(0x140000000,0x40) -> FAIL err=299 got=0
+   vqe(0) -> base=0x0 size=0x7ffe0000 type=0x0 state=0x10000 err=0
+   vqe walk: 341 calls -> 209 MEM_IMAGE regions, stop=0x7fffffff0000 err=0
+      image base=0x2210e4c0000 size=0x0000f000 state=0x1000
+      image base=0x7ff7fd8f0000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f1000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f2000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f3000 size=0x00001000 state=0x1000
+      image base=0x7ff7fd8f4000 size=0x00016000 state=0x1000
+      image base=0x7ffc6e710000 size=0x00001000 state=0x1000
+      image base=0x7ffc6e711000 size=0x00285000 state=0x1000
+
+## r5apex_dx12.exe instances (pid, threads): [(11996, 64)]
+
+## target pid=11996 threads=64
+   OpenProcess(0x1f0fff ALL_ACCESS           ) h=0x230 err=18
+      rpm(0x140000000) -> FAIL err=87 got=0
+      vqe(0) -> size=0x10000 type=0x0 err=0
+   OpenProcess(0x0410 QUERY_INFO|VM_READ   ) h=0x1a4 err=87
+      rpm(0x140000000) -> FAIL err=87 got=0
+      vqe(0) -> size=0x10000 type=0x0 err=0
+   OpenProcess(0x0010 VM_READ              ) h=0x18c err=87
+      rpm(0x140000000) -> FAIL err=87 got=0
+      vqe(0) -> FAIL err=5
+   OpenProcess(0x0400 QUERY_INFORMATION    ) h=0x18c err=5
+      rpm(0x140000000) -> FAIL err=87 got=0
+      vqe(0) -> size=0x10000 type=0x0 err=0
+   OpenProcess(0x1000 QUERY_LIMITED        ) h=0x234 err=87
+      rpm(0x140000000) -> FAIL err=87 got=0
+      vqe(0) -> size=0x10000 type=0x0 err=0

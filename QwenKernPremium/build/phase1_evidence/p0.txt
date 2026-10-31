@@ -1,0 +1,19 @@
+﻿usage: apex_launcher.exe [options]
+
+  --inject                 run the LADDER once and exit (default)
+  --method=nt|apc|crt|kernel  force ONE rung (no ladder, no sticky)
+  --probe                  AG measurement harness only, never injects
+  --dll=<path>             payload DLL (default: apexcheat.dll next to the exe)
+  --driver=<path>          kernel driver for the B3 rung
+  --pid=<pid>              target PID (otherwise auto-detected)
+  --stage                  inject from a randomly named %TEMP% copy
+  --random                 randomise the usermode method per run
+  --timeout=<seconds>      wait-for-game timeout (default 120)
+  --no-wait                fail immediately if the game is not running
+  --no-sticky              do not read/write the per-machine rung
+  --forget-sticky          delete the remembered rung and continue
+  --help                   show this help
+
+Without any of the above the launcher opens its interactive menu.
+Ladder order: sticky rung, A3, A2, A1, B3 (driver).  A rung only
+counts when the payload shows up in the target's module list.

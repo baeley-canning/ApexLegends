@@ -1,0 +1,51 @@
+# diag5  64-bit=True pid=29464
+
+## who could be refusing the read
+   loaded kernel modules: 243
+      Beep.SYS                 base=0x0 size=0xa000
+      eaanticheat.sys          base=0x0 size=0x53d0000
+   driver services enumerated=44 ok=1
+      EAAntiCheat                              state=4
+   easyanticheat processes: EasyTuneEngineService.exe(18312), EACefSubProcess.exe(17656), EACefSubProcess.exe(16260), EACefSubProcess.exe(20676), EACefSubProcess.exe(20212), EACefSubProcess.exe(17576), EACefSubProcess.exe(25468)
+   r5apex_dx12.exe pids: [11996]
+
+## target pid=11996
+   -- access mask vs. read status (16 bytes at 0x140000000)
+      ALL_ACCESS           NtRead=0xc000000d NtWrite=0xc000000d 
+      QUERY_INFO|VM_READ   NtRead=0xc000000d NtWrite=0xc000000d 
+      VM_READ              NtRead=0xc000000d NtWrite=0xc000000d 
+      QUERY_INFO           NtRead=0xc000000d NtWrite=0xc000000d 
+      QUERY_LIMITED        NtRead=0xc000000d NtWrite=0xc000000d 
+      VM_OPERATION         NtRead=0xc000000d NtWrite=0xc000000d 
+      SYNCHRONIZE          NtRead=0xc000000d NtWrite=0xc000000d 
+   -- duplicate handle, then read through the copy
+      DuplicateHandle ok=1 err=18
+      NtRead through duplicate=0xc000000d 
+   -- other primitives
+      QueryFullProcessImageNameW ok=1 err=18 path=b'C'
+      NtWow64ReadVirtualMemory64 not exported by this ntdll
+      NtReadVirtualMemoryEx      status=0xc0000022 got=0
+      control explorer.exe(10684) base=0x7ff72a090000 NtRead=0x00000000 4d 5a 90 00 03 00 00 00
+      toolhelp modules: ok
+   -- thread-level reads
+      thread ids sampled: [21084, 26464, 10264, 5572]
+         tid=21084 GetThreadContext ok=0 err=5 rip=0x0 rsp=0x0
+         tid=26464 GetThreadContext ok=0 err=5 rip=0x0 rsp=0x0
+         tid=10264 GetThreadContext ok=0 err=5 rip=0x0 rsp=0x0
+         tid=5572 GetThreadContext ok=0 err=5 rip=0x0 rsp=0x0
+   -- VAD walk: calls=12860 stop=0x7fffffff0000 MEM_IMAGE regions=1279
+      base=0x7ff724063000 size=0x0a740000 prot=0x4
+      base=0x7ffd36691000 size=0x0421e000 prot=0x20
+      base=0x7ff720081000 size=0x02c96000 prot=0x20
+      base=0x7ffd2dbc7000 size=0x026cf000 prot=0x2
+      base=0x7ffd3a8af000 size=0x0175f000 prot=0x2
+      base=0x7ffcab65f000 size=0x01685000 prot=0x2
+      base=0x7ffd2c671000 size=0x01556000 prot=0x20
+      base=0x7ffd30683000 size=0x00f62000 prot=0x8
+      low base=0x7ff720080000 size=0x00001000 prot=0x2
+      low base=0x7ff720081000 size=0x02c96000 prot=0x20
+      low base=0x7ff722d17000 size=0x00002000 prot=0x4
+      low base=0x7ff722d19000 size=0x0067f000 prot=0x2
+      low base=0x7ff723398000 size=0x00006000 prot=0x4
+      low base=0x7ff72339e000 size=0x00002000 prot=0x8
+exit=0 

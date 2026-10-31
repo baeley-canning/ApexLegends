@@ -1,0 +1,12 @@
+﻿### C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib
+  CreateThreadEx           ABSENT
+  WriteVirtualMemory       ABSENT
+  MmCopyVirtualMemory      B80CA MmCopyVirtualMemory | B80CA __imp_MmCopyVirtualMemory
+  PsGetProcessPeb          C471E PsGetProcessPeb | C471E __imp_PsGetProcessPeb
+  KeStackAttachProcess     B5E46 KeStackAttachProcess | B5E46 __imp_KeStackAttachProcess
+### C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\wdm.lib
+  CreateThreadEx           ABSENT
+  WriteVirtualMemory       ABSENT
+  MmCopyVirtualMemory      ABSENT
+  PsGetProcessPeb          ABSENT
+  KeStackAttachProcess     ABSENT

@@ -1,0 +1,72 @@
+================================================================================
+KNOWLEDGE BASE — SOURCES LOG & RELIABILITY GRADING
+================================================================================
+Last Updated: 2026-10-26
+Purpose: Every claim in the 2026 KB files should be traceable and graded, so we
+         can tell official facts from community lore. Grade definitions:
+         [A] OFFICIAL (EA/Microsoft/vendor's own product doc)
+         [B] COMMUNITY-CODE (unknowncheats authors, RE blogs with code)
+         [C] MARKETING (vendor sales copy, resellers, roundup blogs)
+
+--------------------------------------------------------------------------------
+A / OFFICIAL
+--------------------------------------------------------------------------------
+[A1] EA, "EA Javelin Anticheat is coming to Apex Legends" (2026-09-24)
+     -> transition date, Secure Boot not required for Apex.
+[A2] EA Help, "How to install and troubleshoot EA Javelin anticheat on PC"
+     -> error catalogue #41/#95/#119/#701, Win10 20H1 minimum.
+[A3] ApexLiveComms (2026-10-08) + GameLeap writeup (2026-10-08)
+     -> week-1 numbers, hardware bans (Aimzenix/Cronus/XIM/Titan), prevention!=ban.
+[A4] Microsoft Learn: attestation signing, driver code signing requirements
+     -> EV cert -> Hardware Dev Center -> attestation counter-signature, no HLK.
+[A5] EA security page (082124) - historic EAC statements (pre-Javelin baseline).
+
+--------------------------------------------------------------------------------
+B / COMMUNITY-CODE (highest engineering value, verify locally)
+--------------------------------------------------------------------------------
+[B1] unknowncheats Apex thread 775860 "injector issue" (2026-10-09 -> 10-18)
+     -> PAGE_EXECUTE alloc failure, VAD mismatch, MDL/VAD-less mapping, CRT
+        VirtualProtect stub, AGC suspicion, CR3 manipulation by Javelin,
+        reflective inject + DX12 hook eventually working after ACG + trust fixes.
+[B2] unknowncheats Apex thread 776094 "EAAC unbacked kernel memory" (10-10)
+     -> idle-driver kills the game, ghost stomp, signing recommendation,
+        MmCopyMemory suspicion.
+[B3] tulach.cc "Detecting manually mapped drivers"
+     -> physical-memory scan + FF25 import-thunk heuristic detector + code.
+[B4] hlunaaa "Bypassing CR3 Abuse with Physical R/W"
+     -> EAC/Vanguard KPROCESS.DirectoryTableBase concealment + PML4 brute force
+        with 'ZM' validation + code.
+[B5] drof's labs R5AC analysis (already in repo: R5AC_APEX_ANTI_CHEAT_ANALYSIS)
+     -> VMT list, whitelist, stack walking, RtlCaptureSBT weakness.
+[B6] github Rogue619Z/Manual-Map-Injector (README)
+     -> suspend AC threads, disable image-load callbacks, manual map, restore;
+        claims Apex + Rust tested.
+[B7] github bigdragon46/APEX_offsets offsets.json
+     -> current offset set incl. ENTITY_LIST/LOCAL_PLAYER/GLOW/BONES/VIEWRENDER.
+        Use as a cross-check for our own dump, values drift per patch.
+[B8] deepwiki kacejot/dx12-imgui-overlay
+     -> DXGI factory->CreateSwapChain(ForHwnd)->Present/ResizeBuffers hook
+        pipeline with MinHook, is_inside_dxgi guard, duplicate-hook guards.
+
+--------------------------------------------------------------------------------
+C / MARKETING (shape of the market, not proof)
+--------------------------------------------------------------------------------
+[C1] kernaim.to product page + help.kernaim.to cheat guide (feature taxonomy)
+[C2] ignite.pub product page + rev1ve reseller listing
+[C3] chudvision.net + elitepvpers chudvision thread
+[C4] elitepvpers bnuuy thread (403/Cloudflare when fetched; snippet-level only)
+[C5] madchad.net 2026 roundup (Nemesis/Ancient/MadTech/Onyx/X-Ray/Eclipse)
+[C6] tateware.com Apex/EAC/architecture blogs (polymorphism + <2h update claims)
+[C7] aegis/polar/forge/xday/jupiter/kernelware/division/hypno listings
+
+--------------------------------------------------------------------------------
+HOW TO KEEP THIS FILE HONEST
+--------------------------------------------------------------------------------
+- When a claim moves from B/C to measured fact in our own testing, mark it
+  [VERIFIED-YYYY-MM-DD by <test name>] in the KB file it belongs to.
+- When EA changes something, add an [A] entry and bump the "Last Updated" line of
+  every file whose assumptions it invalidates (that is what the dates are for).
+- Any vendor claim we advertise must be reproducible by us first.
+================================================================================
+END OF SOURCES LOG
+================================================================================

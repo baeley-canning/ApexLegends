@@ -1,0 +1,58 @@
+﻿== driver sign + load 2026-10-27 11:52:46 ==
+driver : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys (7168 bytes)
+signtool: C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+SUCCESS: The process "apex_launcher.exe" with PID 29412 has been terminated.
+[SC] DeleteService SUCCESS
+service deleted (a reboot may be needed before the image unloads fully)
+gate   : EXIT=0
+cert   : reusing 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+cert   : imported into LocalMachine\Root
+cert   : imported into LocalMachine\TrustedPublisher
+The following certificate was selected:
+    Issued to: ApexDrv Dev (QwenKern Premium)
+
+    Issued by: ApexDrv Dev (QwenKern Premium)
+
+    Expires:   Fri Oct 26 17:43:18 2029
+
+    SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+
+
+Done Adding Additional Store
+Successfully signed: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+
+
+Number of files successfully Signed: 1
+
+Number of warnings: 0
+
+Number of errors: 0
+
+signtool EXIT=0
+signature: Valid  signer: CN=ApexDrv Dev (QwenKern Premium)
+staged : C:\ProgramData\QwenKern\apexdrv.sys (8616 bytes)
+[SC] CreateService SUCCESS
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: apexdrv
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   :  \??\C:\ProgramData\QwenKern\apexdrv.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : apexdrv
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+
+SERVICE_NAME: apexdrv 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 123  (0x7b)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+loaded : False
+apex   : PID 
+[SC] DeleteService SUCCESS
+service deleted (a reboot may be needed before the image unloads fully)

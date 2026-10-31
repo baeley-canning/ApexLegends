@@ -1,0 +1,126 @@
+KNOWLEDGE BASE: MATHEMATICS FOR PERCEPTION AND CONTROL
+
+Purpose:
+Educational reference for the mathematical tools that the perception,
+tracking, control, and learning documents depend on: linear algebra,
+calculus and optimisation, and probability.
+
+---
+
+1. WHY MATHEMATICS
+Perception maps measurements to a world state; control maps error to
+action; learning maps data to parameters.
+Each of those is a mathematical relationship, so the tools below recur
+throughout the series.
+The goal here is fluency with the ideas, not formal proof.
+
+---
+
+2. NUMBERS AND PRECISION
+Real-world quantities are represented as finite-precision numbers.
+Integers are exact within range; floating-point numbers are approximate
+and cannot represent most decimal values exactly.
+Small errors accumulate, so results should be compared with tolerances,
+never for exact equality.
+
+---
+
+3. VECTORS
+A vector is an ordered list of numbers representing a point, a direction,
+or a set of measurements.
+Vector addition combines displacements; scaling changes magnitude.
+Distances and angles between vectors are the basis of geometry in several
+dimensions.
+
+---
+
+4. MATRICES AND LINEAR MAPS
+A matrix represents a linear transformation: it maps one vector to
+another.
+Rotation, scaling, and projection are all matrices.
+Composing transformations means multiplying their matrices, which is why
+linear algebra underlies camera geometry and coordinate changes.
+
+---
+
+5. COORDINATE FRAMES AND TRANSFORMS
+A point's coordinates are meaningless without the frame they are measured
+in.
+Changing frames means applying a translation and a rotation - an affine
+transform.
+Most projection and overlay errors trace back to mixing frames.
+
+---
+
+6. CALCULUS AND RATES OF CHANGE
+A derivative is a rate of change; an integral accumulates change over
+time.
+Velocity is the derivative of position, so motion is naturally expressed
+in calculus.
+Smoothing and filtering are continuous ideas applied to discrete samples.
+
+---
+
+7. OPTIMISATION
+Optimisation finds the inputs that minimise or maximise an objective.
+Gradient descent follows the slope of a function toward a minimum, and is
+the engine of modern learning.
+Fitting and control are both optimisation problems in disguise.
+
+---
+
+8. PROBABILITY
+Probability measures uncertainty numerically, between 0 and 1.
+A random variable takes values with a distribution; expectation is the
+average and variance is the spread.
+Measurements are noisy, so quantities are best treated as distributions.
+
+---
+
+9. CONDITIONAL PROBABILITY AND BAYES
+Conditional probability is the chance of an event given that another
+occurred.
+Bayes' rule updates a belief in light of new evidence, which is the
+formal basis of filtering and of reasoning about detectors.
+It is why a rare event still warrants caution after a positive test.
+
+---
+
+10. ESTIMATION
+Estimation infers hidden quantities from noisy measurements.
+Estimators trade bias against variance, and accuracy against simplicity.
+Tracking and filtering are estimation problems over time.
+
+---
+
+11. LINEAR ALGEBRA IN PRACTICE
+Systems of equations, least squares, and eigen-decomposition recur in
+fitting, geometry, and stability analysis.
+The practical skill is choosing the right representation, not hand
+computing large matrices.
+
+---
+
+12. DISCRETE VERSUS CONTINUOUS
+Signals, images, and time are sampled, so continuous mathematics is
+applied at discrete points.
+Sampling has its own rules, covered in the signal-processing document.
+Mixing the continuous idea with the discrete implementation causes subtle
+errors.
+
+---
+
+13. SUMMARY
+Linear algebra represents geometry and transforms; calculus describes
+change; optimisation finds the best inputs; probability handles
+uncertainty.
+These tools are the common language of perception, estimation, control,
+and learning.
+Comfort with the ideas matters more than formal derivation.
+
+CORE PRINCIPLE:
+Perception, control, and learning are the same mathematics wearing
+different hats: linear algebra for geometry, calculus for change,
+optimisation for choice, and probability for uncertainty. Learn the
+ideas, respect finite precision, and always ask which coordinate frame
+you are working in.

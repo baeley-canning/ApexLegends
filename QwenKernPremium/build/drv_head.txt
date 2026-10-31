@@ -1,0 +1,121 @@
+﻿20: //   * WDK 10 + MSVC -> driver\apexdrv.vcxproj
+21: //   * loadable by the standard loader: signed, test-signed
+22: //     (bcdedit /set testsigning on), or pre-mapped via a BYOVD loader
+23: //   * the launcher installs it as a demand-start SERVICE_KERNEL_DRIVER
+24: // ============================================================================
+25: 
+26: #include <ntifs.h>
+27: #include <ntddk.h>
+28: 
+29: #include "apex_driver_ioctl.h"
+30: 
+31: // ntddk.h does not always declare ZwCreateThreadEx; declare the documented
+32: // signature (11 parameters) so the driver builds against any recent WDK.
+33: NTSTATUS NTAPI ZwCreateThreadEx(
+34:     PHANDLE            ThreadHandle,
+35:     ACCESS_MASK        DesiredAccess,
+36:     POBJECT_ATTRIBUTES ObjectAttributes,
+37:     HANDLE             ProcessHandle,
+38:     PVOID              StartRoutine,
+39:     PVOID              Argument,
+40:     ULONG              CreateFlags,
+41:     SIZE_T             ZeroBits,
+42:     SIZE_T             StackSize,
+43:     SIZE_T             MaximumStackSize,
+44:     PVOID              AttributeList);
+45: 
+46: // Same story as ZwCreateThreadEx: WDK 10.0.26100 declares neither of these in
+47: // any header a WDM driver pulls in (verified by searching every .h under
+48: // Include\10.0.26100.0), although both are documented, exported and stable.
+49: // Declaring them here is what makes the kernel-side probe (Q10) portable across
+50: // WDK revisions instead of relying on a header accident.
+51: NTKERNELAPI PPEB NTAPI PsGetProcessPeb(PEPROCESS Process);
+52: 
+53: NTKERNELAPI NTSTATUS NTAPI MmCopyVirtualMemory(
+54:     PEPROCESS        SourceProcess,
+55:     PVOID            SourceAddress,
+56:     PEPROCESS        TargetProcess,
+57:     PVOID            TargetAddress,
+58:     SIZE_T           BufferSize,
+59:     KPROCESSOR_MODE  PreviousMode,
+60:     PSIZE_T          ReturnSize);
+61: 
+62: // WDK 10.0.26100 leaves ZwWriteVirtualMemory undeclared for a WDM driver as
+63: // well (only the ntifs.h memory calls are), so the documented prototype is here.
+64: NTKERNELAPI NTSTATUS NTAPI ZwWriteVirtualMemory(
+65:     HANDLE  ProcessHandle,
+66:     PVOID   BaseAddress,
+67:     PVOID   Buffer,
+68:     SIZE_T  NumberOfBytesToWrite,
+69:     PSIZE_T NumberOfBytesWritten);
+70: 
+71: // The process/thread access masks are the stable NT ABI values.  wdm.h only
+72: // defines the ones a filter driver historically needed (PROCESS_ALL_ACCESS,
+73: // THREAD_TERMINATE, ...), so the ones this driver passes to ZwOpenProcess /
+74: // ObReferenceObjectByHandle are pinned here, guarded so a WDK that does define
+75: // them still wins.
+76: #ifndef PROCESS_CREATE_THREAD
+77: #define PROCESS_CREATE_THREAD       (0x0002)
+78: #endif
+79: #ifndef PROCESS_VM_OPERATION
+80: #define PROCESS_VM_OPERATION        (0x0008)
+81: #endif
+82: #ifndef PROCESS_VM_READ
+83: #define PROCESS_VM_READ             (0x0010)
+84: #endif
+85: #ifndef PROCESS_VM_WRITE
+86: #define PROCESS_VM_WRITE            (0x0020)
+87: #endif
+88: #ifndef PROCESS_QUERY_INFORMATION
+89: #define PROCESS_QUERY_INFORMATION   (0x0400)
+90: #endif
+91: #ifndef THREAD_QUERY_INFORMATION
+92: #define THREAD_QUERY_INFORMATION    (0x0040)
+93: #endif
+94: 
+95: #define APEXDRV_TAG                 'vpxA'   // 'Apxv'
+96: #define APEXDRV_MAX_THREAD_WAIT_MS  5000
+97: 
+98: static PDEVICE_OBJECT g_DeviceObject  = NULL;
+99: static BOOLEAN        g_SymlinkCreated = FALSE;
+100: 
+101: // ----------------------------------------------------------------------------
+102: // Helpers
+103: // ----------------------------------------------------------------------------
+104: static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle) {
+105:     CLIENT_ID clientId = { 0 };
+106:     OBJECT_ATTRIBUTES attributes;
+107: 
+108:     clientId.UniqueProcess = ULongToHandle(processId);
+109:     clientId.UniqueThread  = NULL;
+110: 
+111:     InitializeObjectAttributes(&attributes, NULL, OBJ_KERNEL_HANDLE, NULL, NULL);
+112: 
+113:     return ZwOpenProcess(processHandle,
+114:                          PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION |
+115:                          PROCESS_VM_WRITE | PROCESS_VM_READ |
+116:                          PROCESS_QUERY_INFORMATION,
+117:                          &attributes, &clientId);
+118: }
+119: 
+120: // ----------------------------------------------------------------------------
+121: // IOCTL_APEXDRV_INJECT
+122: // ----------------------------------------------------------------------------
+123: static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
+124:     HANDLE   processHandle = NULL;
+125:     HANDLE   threadHandle  = NULL;
+126:     PVOID    remoteBuffer  = NULL;
+127:     SIZE_T   regionSize    = 0;
+128:     SIZE_T   pathBytes     = 0;
+129:     NTSTATUS status;
+130: 
+131:     if (request->ProcessId == 0)          return STATUS_INVALID_PARAMETER;
+132:     if (request->LoadLibraryAddress == 0)  return STATUS_INVALID_PARAMETER;
+133: 
+134:     // Ensure the wide path is NUL terminated inside the supplied buffer.
+135:     request->DllPath[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
+136:     pathBytes = (wcslen(request->DllPath) + 1) * sizeof(WCHAR);
+137:     if (pathBytes <= sizeof(WCHAR)) return STATUS_INVALID_PARAMETER;
+138: 
+139:     status = ApexdrvOpenProcess(request->ProcessId, &processHandle);
+140:     if (!NT_SUCCESS(status)) return status;

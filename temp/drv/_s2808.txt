@@ -1,0 +1,27 @@
+﻿
+> map_ioctls.txt:308:site 0x18000280F code=0xC3502808 owner=0x180002790 b'YCC_MapMem_Copy_Userbuf_To_Phys'
+  map_ioctls.txt:309:    0001800027c2  ff15d0d80100             call     qword ptr [rip + 0x1d8d0]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+  map_ioctls.txt:310:    0001800027c8  e8f3e9ffff               call     0x1800011c0
+  map_ioctls.txt:311:    0001800027cd  488bd8                   mov      rbx, rax
+  map_ioctls.txt:312:    0001800027d0  4883f8ff                 cmp      rax, -1
+  map_ioctls.txt:313:    0001800027d4  744c                     je       0x180002822
+  map_ioctls.txt:314:    0001800027d6  33c9                     xor      ecx, ecx
+  map_ioctls.txt:315:    0001800027d8  48897c2450               mov      qword ptr [rsp + 0x50], rdi
+  map_ioctls.txt:316:    0001800027dd  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+  map_ioctls.txt:317:    0001800027e2  488d442440               lea      rax, [rsp + 0x40]
+  map_ioctls.txt:318:    0001800027e7  4889442430               mov      qword ptr [rsp + 0x30], rax
+  map_ioctls.txt:319:    0001800027ec  4c8d442448               lea      r8, [rsp + 0x48]
+  map_ioctls.txt:320:    0001800027f1  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+  map_ioctls.txt:321:    0001800027f5  ba082850c3               mov      edx, 0xc3502808
+  map_ioctls.txt:322:    0001800027fa  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+  map_ioctls.txt:323:    0001800027ff  448d4918                 lea      r9d, [rcx + 0x18]
+  map_ioctls.txt:324:    000180002803  488bcb                   mov      rcx, rbx
+  map_ioctls.txt:325:    000180002806  4889742448               mov      qword ptr [rsp + 0x48], rsi
+  map_ioctls.txt:326:    00018000280b  896c2458                 mov      dword ptr [rsp + 0x58], ebp
+  map_ioctls.txt:327:site 0x1800028BC code=0xC350280C owner=0x180002850 b'YCC_TranslateLinsToPhys'
+  map_ioctls.txt:328:    000180002862  ff1538d80100             call     qword ptr [rip + 0x1d838]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+  map_ioctls.txt:329:    000180002868  488bc8                   mov      rcx, rax
+  map_ioctls.txt:330:    00018000286b  ba01000000               mov      edx, 1
+
+
+

@@ -1,0 +1,10 @@
+﻿## cl.exe
+C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+## signtool
+C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe
+C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+## kernel libs
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib
+## boot state
+## secure boot
+secureboot=unknown

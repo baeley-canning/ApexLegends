@@ -1,0 +1,40 @@
+﻿== small text files ==
+--- build.txt ---
+R5pc_r5-301_J65_CL11630615_FSv30_1_2026_10_02_09_54
+--- gameversion.txt ---
+v3.0.3.65
+--- launchBuildClient.bat ---
+echo off setlocal EnableDelayedExpansion  start start_protected_game.exe -anticheat_settings=Settings.json -noautopak +errorHud_enabled 0 -nop4 +net_showchoke 1 -shipsound -originForceupToDate exit /b 0
+--- uxr_client.bat ---
+setlocal EnableDelayedExpansion  start r2_static_128_dx12.exe -fnf %* -noautopak +errorHud_enabled 0 -nop4 -shipsound -originForceupToDate exit /b 0
+--- script_net.md5sum ---
+39C376D8EE99A917A7EB35F171B38A38
+--- r5apexdata.bin ---
+bkub4e2zm88tz4qp45h5t780n6x66r615f9hf6acbk9ii1objevkbp6qrhhxzcd6opvbklyjsragubjwsd24p3qfb856h9m6hzii0nyj1voujuvkzdkk6bngriqxf34pog95bvt0mamtutmkxclge9brzwcezycj2fuhqi023qp711djok84drivfzmuwtm9x7egbdqq8th7u6r1t3mhjcl1rwdsm2hyelswk9wvlflxv0anhzz6o70bfawd5byqudkdj91eaq1ieneoypu8o56bwkcgx5gu4bkxig6pc8n0xisge0j2vu7pk5pxj845r2ea4h3idb0qurk0o6sspihboiy0d017pwi3lpv57hvto817w1ier86zhrzy0k01lzxl08mkor5bryodx2bd7ia5ycq2p59hrobjrmipy4tjfkg7x5vsmmyvqtwwqbn6merpxe44k2x28ci3b6uv1p1zf94ldevhcr9z2mjrxrpjm06w7grvrblw0h70wyw4km7q20kkf4jmltzr1kyjzrbzo1ol53bmyym5ahu2xlortrduh3c7fj571x9dfojoz4t5cd3ivafreqlg7qpgixrsa52bhmpo94q9lg3rlqxl1qz9ockhvmobjwsrh1ww15p9ph0dbvl50a2yicaekmxi0vf26xxk7h7pt9nsxft0kvnqqxu7gtiwarqag6sasagib8mx3zhla15etshxa37dd45ffe10m:<0oɾ�%�\�@�$��̟XW3fa231144fe2e33ae4783feead2b8a73ff021fac326df0ef9753ab9cdf6573ddff0312fab0b0ff39779eaff312a4f5de65892ffee33a44569bebf21f66d22e54a22347efd375981188743afd99baacc342d88a99321235798725fedcbf43252669dade32415fee89da543bf23d4ex3yt3adaloyck3hu3f47t7rm3g158juscqavoztim9k8hfr696ztotpu733hvk3heseimwr0ougbcsgyxwhc3f8d8tzpw3iiakdvsdlhq15xevnq8hjxas3af98gn8g3ergauur0y8obhkhnu4hbl679aq33of4t1puxo2u9b81oezxw4zee0rrianrkj8rgjqoyqey1hx30pfsdgoz23hsis6lllyoaomawwnqqgiywj16vzsfcmqesylgq46s1wozzma7jw5776tq567nbqegoy8lxagic7e7kdmgx58uhsbhrwp6w5vyb6p8ol0fo1inyjummb0ajvrquc1t98fikcrkzrmnzyh7md5xpqpog5dm9o1r4cox3nd5k3ptnmq6mkgw6vr4kp4cgnvptrwyozskdgq6ge71s2fva01l4v5pg5szqfcakb0l5slt0oikkxyccuh3724tfd8odur4bdxvpeq3hmtu0k5ocadbxgpj0tu99yvirwy3cip7ve6z6yjuzqedio0o08k5nmmgas8l686ykmls15h34kzsbmsrtbo165psbmo4v04g6009eorizqulvy6xukn9m183200wcyok9yttkzd996l77w6ljgpk8l3bk3wfw2ua3zmlneb8hvu3edckprxen1dgsrmy81m8en14jxs4zx718rwqbil0fhgev5ovfh77l9vz94h5cwok5j9eifzy8lugvvk6tn3ydz7mgjvu7w7wuyp4kj0bzlkmius3u0g71cbwhyr4gpfaa6ux7zg4ze6p8b9h3i72l8xpbpcevjn2xplpv67sw63l7t6onfg8d0ammdx9xecrwh1vizogfel59vx9e52d2i63q0lh5qqyykcg6o9srj2exvoggifkr3x3w75hnvobjdsc64cz5j7f4kgoept597qzr35hkighsfyu3vytf4wd52p24a9myfrvnr13jxcknsmyc978n09f0xvxgojwopmhtidc969dnf01ltut0hlem1lao9f6jfw44a0rorrw14wniihf3i2m96tczskatrxmwy71eq6svfpzolirfvmi00tsyh0g8vowdtmlydaqk45amzq4or2b4viq39lhgxjhoddhpae9hrmn5094zs5cbfo5tashfnom4pkha0nekx8zn4u3bx5ig9mupp5vzg4a69amd35dj4xib43v4qggzbu812bwvkrmhpw0ze8lqp87aq6dyzsrxeegoqvf8flxt6nu3rwmc18yurw3m9rztrflyze1x9psemkdh9guteq9i85xru1bf8powfmim2sflqew1156pyqhu057pb87g3355octja7hp6w44xz5grst6qrwp0e87nb7h4ruxp836zpp5qusbfr3z4h86i5awnf6p15qvkfk5jaylgqaadhrx51wo3ztk94wo541dl6xl4jf6vjl3wsu6p40gh5rd8mu6j5i4tvdiwke604pwydzkkxb5f6jq8dr7v4urtvt9510hl2b063cuu6e3kkjw90pw95p6radlupwdgtrwgcm5vp4j2x71zpkcdjmytw06qxns3t4fo7nkjo6k0qdc6adgvfx2xtjxvhsqcxvdaf3j65va2nma244nfub2h8l18d1tinziydmioo0eb0w1frgxh203gy3qldqvdhlf59ridnti9or7iqhahjb0ifkkq4czs4tfh222i9x1z9z41vt3cbd9mnlcz3byts6z7u8ql1hsq1zmucdvssdbqitpkjq734cxsf1fwgs9c17vny8ur7kolox0dpqemudjmag8hivf29gvilglzo1fn8t7fcyzmgqtj3e5mb5isgm8ho57yvpdpvg10zzz37et56avd2jfjckcux4sm4cwddfr9p5xibrtaexpsw45x3vz86l99axn0ulnjbby5o1s4dm7qqpwsmazu0r5ufdm2hvcclhkppp3hliyfaitqtqim3zc4t3awwc6uj91bsahcvdcbgqv1c67bvczdh4641teoxotdb6upzykeiy27yv3l030wmrmgdymdm9a1bq34clbci17qth5g58qp2xricyxvnxupv8ed8cnxl8ldn3x43mmkfug85xs1cvh3t0281ljlwrw49azeaditet5tepljx5tmvyk9govoghhrm10wqa9hnf3w97f96jsxb8ysl202sa2as1vzq57ua39zjq7bqa9a35vm4ed4q7mtdp0vkt51flrhc4cxe21c3bn1s9nss0ykvu85qzq2dr5efpmrzibv5vbeirkowcc3wsirxqrmpzce629hynnrzciuij6qjc7ik66b5jqf7xr1zverms5kvqsv4mtk4vblt05sa61fvyvfn3suyuqyjre7sbjol69p53q1zarppmnou3nwl999w9zdijaokhw4y35c5g5kwcn9ke4e8c7exc38hxh3efs8yvfkwruyxd7w5tytbn2f0tjyeud174qvysrhs8uqosgusrl4yn4lb4u6duxirytn5u97xiqs1y9g2x6a94hpfw4su4hyeadfl0p2ritsouuovfglr17ho1loddl53fnaw6s65bnu5h8478vslv8bex6itgyznzi6rhx38qgez7eqyc02z2se5xuy7qfsyq2ym9t9kz54bfwgj961hl9lccmovm90k98i1xy01p9gddnhj09wjchycsc41p6ntreioam8vt9a5mhpu0lzw8rk1t3z9jhiwqem2wpad27ne2dwszz2hhoz7ss7ejzb778q0mi409p52d0xx52yrev3y5tpix24s1faugp4slf131om8nzxjwswpjxafid70x3q07qo5zzkmpwfb54ssevm1n4cuycu6ewr27mqjzf4brtasmrn1xd9e8zdu473k2jjvvbo1o7bhvpgg2ovdld1s39wtdrsg97jg0g05qdsi7uh6rt6l9oqbf6cthc8bswspdu5lezagsw1groah54lydubf3gz5vzwqfnras8vkduhce1ptefwjti8nftx2p7p71amzgh26vgrshmltk9dgilnh2u2unsenk0m2wp3qhuh17tt424mag8cpw8200bq8csjpncqz1lli9i8rha5dde
+== AC file versions ==
+bink2w64.dll size=421792 ver=2023.08 prod=Bink and Smacker desc=RAD Video Tools sha=804F05A1CD57CC59
+EAAntiCheat.cfg size=12536 ver= prod= desc= sha=B9E43F572E4915D0
+EAAntiCheat.GameServiceLauncher.dll size=53116664 ver= prod= desc= sha=119082EE9C37EC43
+EAAntiCheat.GameServiceLauncher.dll_b size=52015864 ver= prod= desc= sha=7D53B70C940E9296
+EAAntiCheat.GameServiceLauncher.exe size=20286712 ver=1.0.16199215.0 prod=EA Javelin Anticheat desc=EA Javelin Anticheat sha=117FD9848EA6EDAD
+EAAntiCheat.GameServiceLauncher.exe_b size=20031736 ver=1.0.15973373.0 prod=EA Javelin Anticheat desc=EA Javelin Anticheat sha=32ED87237E64B96A
+EAAntiCheat.Installer.exe size=271269624 ver=1.0.15546623.0 prod=EA Javelin Anticheat desc=EA Javelin Anticheat sha=F866BB20167D0376
+EAAntiCheat.splash.png size=594412 ver= prod= desc= sha=D4C257C9AEBFF3BA
+GFSDK_Aftermath_Lib.x64.dll size=2314848 ver=2.20.0.0 prod=NVIDIA Nsight Aftermath desc=NVIDIA Nsight Aftermath DLL sha=ED0302C733EE77BD
+OriginSDK.dll size=1121120 ver=9.12.1.3 prod=OriginSDK desc=Connection library between a game, and Origin sha=53157D2E6ACFE202
+preloader_l.dll size=46840 ver= prod= desc= sha=6E7128C34E1200E7
+preloader_l.dll_b size=46840 ver= prod= desc= sha=855B6CDDD756FDAF
+steamnetworkingsockets.dll size=4248928 ver= prod= desc= sha=843249FEF0D6E5F6
+steam_api64.dll size=293216 ver=05.25.65.21 prod=Steam Client API desc=Steam Client API sha=98A99DA947B74546
+WinPixEventRuntime.dll size=45944 ver=1.0.2001.27001 prod=PIX desc=WinPixEventRuntime.dll sha=9982B53014D1ED24
+== all drivers w/ EA/easy/javelin in path ==
+
+Name        State   Started PathName                                                                                             
+----        -----   ------- --------                                                                                             
+devmap      Stopped   False C:\WINDOWS\system32\DriverStore\FileRepository\devmap.inf_amd64_be39703ead246fc4\devmap.sys          
+PEAUTH      Running    True C:\WINDOWS\system32\drivers\peauth.sys                                                               
+UfxChipidea Stopped   False C:\WINDOWS\system32\DriverStore\FileRepository\ufxchipidea.inf_amd64_6e8bb2ed82835828\UfxChipidea.sys
+UrsChipidea Stopped   False C:\WINDOWS\system32\DriverStore\FileRepository\urschipidea.inf_amd64_37fb14618bce547b\urschipidea.sys
+
+
+

@@ -1,0 +1,7 @@
+﻿9: // have been seen; CTL_CODE, DWORD, ULONG etc. are all available by then.
+31: // CTL_CODE() expands to an `int` expression: APEXDRV_DEVICE_TYPE << 16 is
+32: // 0x8A700000, which does not fit in a signed int (C4245 when passed as a DWORD
+33: // parameter, fatal under /WX).  The cast pins the macro to ULONG's bit pattern
+37: ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x800, METHOD_BUFFERED, FILE_ANY_ACCESS))
+40: ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x801, METHOD_BUFFERED, FILE_ANY_ACCESS))
+51: ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x802, METHOD_BUFFERED, FILE_ANY_ACCESS))

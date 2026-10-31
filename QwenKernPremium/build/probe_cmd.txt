@@ -1,0 +1,67 @@
+﻿695:     printf("[-] Ladder exhausted: no rung verified the payload\n");
+696:     return outcome.last;
+697: }
+698: 
+699: // PHASE 1.1 in launcher form: measure, never inject.  Falls back to our own PID
+700: // so it is runnable with the game closed (results are only comparable within
+701: // the same process kind, hence the explicit self/target tag on the report).
+702: int RunProbeCommand(DWORD pid) {
+703:     const DWORD targetPid = (pid != 0) ? pid : GetCurrentProcessId();
+704:     const bool  self      = (targetPid == GetCurrentProcessId());
+705:     const char* tag       = self ? "self" : "target";
+706: 
+707:     printf("[*] AG measurement harness (%s PID %lu)%s\n", tag, targetPid,
+708:            self ? " - game not running, measuring the launcher itself" : "");
+709: 
+710:     const ProbeEnvironment env = self ? AcgProbe::DescribeSelf()
+711:                                       : AcgProbe::DescribeProcess(targetPid);
+712:     printf("%s", AcgProbe::FormatEnvironment(env).c_str());
+713: 
+714:     // PHASE 1.3: reference facts for the same target, taken BEFORE any payload
+715:     // is introduced, so "d3d11 is loaded" cannot be our own doing.
+716:     if (!self) PrintReferenceIntegrity(CollectReferenceIntegrity(targetPid));
+717: 
+718:     const std::vector<ProbeResult> results =
+719:         self ? AcgProbe::RunInternal() : AcgProbe::RunExternal(targetPid);
+720:     printf("%s", AcgProbe::FormatReport("ACG measurement", env, results).c_str());
+721: 
+722:     int passed = 0;
+723:     for (size_t i = 0; i < results.size(); ++i) {
+724:         if (results[i].passed) ++passed;
+725:     }
+726: 
+727:     // Advisory only - the ladder never reads this string.
+728:     printf("[*] recommendation: %s\n", AcgProbe::Recommendation(results).c_str());
+729:     printf("[*] measured %d/%d probe(s) passing\n", passed,
+730:            static_cast<int>(results.size()));
+731: 
+732:     const std::string reportPath = AcgProbe::DefaultReportPath(tag);
+733:     std::string error;
+734:     if (AcgProbe::WriteReportFile(reportPath, "ACG measurement", env, results, error)) {
+735:         printf("[*] report written: %s\n", reportPath.c_str());
+736:     } else {
+737:         printf("[!] report NOT written: %s\n", error.c_str());
+738:     }
+739: 
+740:     return (passed == static_cast<int>(results.size())) ? 0 : 4;
+741: }
+742: 
+743: void PrintMenu(const LauncherOptions& options, DWORD pid) {
+744: 
+745:     printf("\n--- configuration ---------------------------------------------\n");
+746:     printf("  1) method            : %s%s\n", MethodLabel(options.method),
+747:            options.randomizeMethod ? "  [randomised]" : "");
+748:     printf("  2) payload DLL       : %s\n", options.dllPath.c_str());
+749:     printf("  3) kernel driver     : %s\n", options.driverPath.c_str());
+750:     printf("  4) staged DLL copy   : %s\n", options.stageDll ? "on" : "off");
+751:     printf("  5) wait for game     : %s (%lu s)\n",
+752:            options.waitForGame ? "on" : "off", options.waitTimeoutMs / 1000);
+753:     printf("  6) sticky strategy   : %s\n", options.allowSticky ? "on" : "off");
+754:     if (pid) printf("     game PID          : %lu\n", pid);
+755:     else     printf("     game PID          : not running\n");
+756:     printf("----------------------------------------------------------------\n");
+757:     printf("  [i] inject (ladder)   [1] cycle method   [2] set DLL path\n");
+758:     printf("  [3] set driver path   [4] toggle staging   [5] toggle wait\n");
+759:     printf("  [6] toggle sticky     [p] enter PID   [q] quit\n");
+760:     printf("> ");
+761:     fflush(stdout);

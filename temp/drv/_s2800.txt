@@ -1,0 +1,27 @@
+﻿
+> map_ioctls.txt:270:site 0x1800026A4 code=0xC3502800 owner=0x180002610 b'YCC_Alloc_Kernel_PhysMem'
+  map_ioctls.txt:271:    000180002653  ba01000000               mov      edx, 1
+  map_ioctls.txt:272:    000180002658  ff153ada0100             call     qword ptr [rip + 0x1da3a]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+  map_ioctls.txt:273:    00018000265e  e85debffff               call     0x1800011c0
+  map_ioctls.txt:274:    000180002663  488bf8                   mov      rdi, rax
+  map_ioctls.txt:275:    000180002666  4883f8ff                 cmp      rax, -1
+  map_ioctls.txt:276:    00018000266a  7452                     je       0x1800026be
+  map_ioctls.txt:277:    00018000266c  33ed                     xor      ebp, ebp
+  map_ioctls.txt:278:    00018000266e  8bdd                     mov      ebx, ebp
+  map_ioctls.txt:279:    000180002670  48896c2438               mov      qword ptr [rsp + 0x38], rbp
+  map_ioctls.txt:280:    000180002675  488d442478               lea      rax, [rsp + 0x78]
+  map_ioctls.txt:281:    00018000267a  4889442430               mov      qword ptr [rsp + 0x30], rax
+  map_ioctls.txt:282:    00018000267f  4c8d442470               lea      r8, [rsp + 0x70]
+  map_ioctls.txt:283:    000180002684  488d442440               lea      rax, [rsp + 0x40]
+  map_ioctls.txt:284:    000180002689  c744242810000000         mov      dword ptr [rsp + 0x28], 0x10
+  map_ioctls.txt:285:    000180002691  41b904000000             mov      r9d, 4
+  map_ioctls.txt:286:    000180002697  4889442420               mov      qword ptr [rsp + 0x20], rax
+  map_ioctls.txt:287:    00018000269c  ba002850c3               mov      edx, 0xc3502800
+  map_ioctls.txt:288:    0001800026a1  488bcf                   mov      rcx, rdi
+  map_ioctls.txt:289:site 0x180002758 code=0xC3502804 owner=0x180002700 b'YCC_Free_Kernel_PhysMem'
+  map_ioctls.txt:290:    00018000270b  ff158fd90100             call     qword ptr [rip + 0x1d98f]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+  map_ioctls.txt:291:    000180002711  488bc8                   mov      rcx, rax
+  map_ioctls.txt:292:    000180002714  ba01000000               mov      edx, 1
+
+
+

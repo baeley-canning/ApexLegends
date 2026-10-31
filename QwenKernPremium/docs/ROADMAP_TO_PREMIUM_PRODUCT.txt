@@ -1,0 +1,203 @@
+================================================================================
+ROADMAP — "QWENKERN PREMIUM" FROM CURRENT TREE TO FINISHED PRODUCT
+================================================================================
+Last Updated: 2026-10-26
+Companion files: PREMIUM_MARKET_TEARDOWN_2026.txt, JAVELIN_2026_DETECTION_AND_
+                 INJECTION_REALITY.txt, INJECTION_MENU_AND_RISK_MATRIX.txt,
+                 R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt, JAVELIN_REVERSE_ENGINEERING
+                 .txt, APEX_OFFSETS_AND_DUMPING_METHODS.txt
+Rule: a phase closes only when its GATE passes. Gates are testable statements,
+      not opinions. No phase starts while a gate below it is red.
+
+--------------------------------------------------------------------------------
+STATE OF PLAY (verified 2026-10-25 in this tree)
+--------------------------------------------------------------------------------
+GREEN: apex_cheat.sln clean /t:Rebuild -> EXIT=0; apexcheat.dll + launcher both
+       built; dumpbin /dependents shows ONLY d3d11.dll, KERNEL32.dll, USER32.dll
+       after removing the d3d9 + d3dcompiler static imports; launcher --help and
+       menu verified exit 0; D3DCompile/Direct3DCreate9 now resolved lazily.
+AMBER: ESP path is candidate-only (entity offsets unvalidated); VIEW_MATRIX
+       0x022EE01 is a code RVA, not yet a matrix address; VMT patching not yet
+       trampoline-based; no DX12 overlay path; glow/recoil are stubs;
+       QwenKernPremium class in include\main.h is dead code.
+RED:   apexdrv never compile-verified (no WDK on the box); zero live-game
+       validation of anything; injector not exercised against Javelin.
+
+--------------------------------------------------------------------------------
+PHASE 0 — HYGIENE & GUARDRAILS  (short, do first)
+--------------------------------------------------------------------------------
+0.1 Delete dead QwenKernPremium class; make Application the single entry object.
+0.2 Add a CI/build gate script: build clean, then assert
+    dumpbin /dependents == {d3d11.dll, KERNEL32.dll, USER32.dll} (allowlist, not
+    "no error"). Any new static import fails the gate.
+0.3 Add -W4 clean rule + treat warnings as errors for our own TUs.
+0.4 Kill the last d3d9-era leftovers in hooks.h (d3d9 types) once DXGI-only is
+    the plan, or keep deliberately as a DXVK fallback and document why.
+GATE 0: rebuild EXIT=0, gate script PASS, no dead symbols, warnings 0.
+
+--------------------------------------------------------------------------------
+PHASE 1 — PROVE THE RUNTIME FACTS (research -> measured truth)
+--------------------------------------------------------------------------------
+1.1 ACG/injection probe: tiny harness that, inside r5apex_dx12.exe, tries
+    VirtualAllocEx(RWX), VirtualAllocEx(RW)+VirtualProtect(RX), PTE/NX path, and
+    MDL mapping. Record which succeed per Windows build / HVCI on-off.
+1.2 Injector strategy ladder in the launcher: try in the order
+    A8 -> A7 -> A4 -> A3 -> A2 -> A1, log which succeeded, and make the choice
+    sticky per machine. Never silently fall back without logging.
+1.3 Reference integrity: assert game process name, module base, and that
+    d3d11.dll is not force-loaded by us before the game uses it.
+1.4 Offsets: run the dump pipeline (docs/APEX_OFFSETS_AND_DUMPING_METHODS.txt)
+    against the live build; produce offsets.ini; wire OffsetValidator to read it.
+1.5 Resolve the REAL view-matrix location (0x022EE01 is a code RVA): find the
+    matrix via ViewRender/ViewMatrix chain from the dumped binary, then validate
+    numerically (project known world points, expect plausible screen coords).
+1.6 Validate entity offsets live: origin/team/health/bones; log the entity
+    count and a few decoded players; freeze the numbers only after they match
+    observed in-game positions.
+GATE 1: written fact sheet with numbers + screenshots/logs; every offset marked
+        PROVEN or CANDIDATE; injection ladder proven to reach a loaded DLL.
+
+--------------------------------------------------------------------------------
+PHASE 2 — CORE VISUAL FEATURE COMPLETENESS  (parity with table stakes)
+--------------------------------------------------------------------------------
+2.1 Skeleton ESP from bone transforms (bone ids + studiohdr layout), not boxes.
+2.2 Health/shield bars, name, distance, team filter, downed filter,
+    visible-only filter (visibility via entity flags/last-visible time).
+2.3 Glow: player glow via highlight settings (write path), intensity, item and
+    deathbox glow with rarity limit and max distance.
+2.4 Config: presets (save/load/delete/clear), colours, per-feature toggles,
+    hotkeys, in-overlay menu, disableable watermark, crosshair.
+2.5 Overlay render fixes: D3D11/D3D12 state save+restore around our draw; no
+    leaked sampler/blend/RS state; box scaling from real back-buffer size.
+GATE 2: menu + ESP + glow run in a live match for a full game with stable FPS
+        and no flicker/state corruption; config survives restart; every read is
+        null-guarded (no crash on death/spectate/lobby transitions).
+
+--------------------------------------------------------------------------------
+PHASE 3 — AIM & INPUT (the quality differentiator)
+--------------------------------------------------------------------------------
+3.1 World-to-screen from the real matrix; per-frame selection (2D nearest-to-
+    crosshair and 3D nearest, FOV-limited, visibility check, team/downed).
+3.2 Humanisation: smoothing X/Y, dead zone, dynamic FOV, projectile/travel-time
+    prediction, reaction delay, per-weapon-category profiles.
+3.3 Triggerbot with detection threshold + magnetic mode, per-category.
+3.4 Input strategy, preferred order: (a) in-process view-angle write (feels most
+    human, needs the view-angle offset), (b) driver mouse move (works external),
+    (c) SendInput (fallback). Selectable; default (b).
+3.5 Recoil compensation as its own tunable plus a separate "no recoil" mode.
+GATE 3: tracking/switching stats measured from a recording; a full session on
+        closet settings with no "robotic" complaints; no input lock/black screen.
+
+--------------------------------------------------------------------------------
+PHASE 4 — OVERLAY HARDENING, DX12-FIRST
+--------------------------------------------------------------------------------
+4.1 DX12-aware renderer: hook CreateDXGIFactory / CreateSwapChainForHwnd ->
+    IDXGISwapChain::Present + ResizeBuffers via the factory-vtable pattern (not
+    a hardcoded vtable index), trampolined.
+4.2 Runtime selection between the DX12 and DX11 device paths (Apex ships
+    r5apex_dx12.exe; DX11 may remain selectable).
+4.3 D3D12 resources: own command allocators/lists, RTV heap, fence sync,
+    back-buffer index handling, ResizeBuffers teardown, full state save/restore.
+4.4 Streamproof/screenshot decision per mode + documentation of exactly what
+    OBS/Discord/ShadowPlay will capture.
+4.5 Handle occlusion/minimise/exclusive-fullscreen; menu input via WndProc
+    subclass with clean restore.
+GATE 4: overlay works on both DX12 and DX11 with no framerate/pacing change,
+        survives alt-tab + resolution change, and unloading restores a vanilla
+        Present (verify the vtable slot afterwards).
+
+--------------------------------------------------------------------------------
+PHASE 5 — MOVEMENT MODULE
+--------------------------------------------------------------------------------
+5.1 BHOP, 5.2 tap strafe, 5.3 super glide, 5.4 wall jump/bounce, 5.5 auto
+grapple. One key each, on the Phase 3 input backend.
+GATE 5: >90% reliable on scripted firing-range attempts; never fights manual input.
+
+--------------------------------------------------------------------------------
+PHASE 6 — KERNEL PATH (apexdrv) TO PRODUCTION
+--------------------------------------------------------------------------------
+6.1 Install WDK; compile-verify driver\apexdrv.vcxproj (currently unverified).
+6.2 Test-sign + test-signing boot; validate IOCTL surface and shared-mem comm.
+6.3 Implement B6(ii) physical + PML4 self-ref read and B5 shared-mem comm.
+6.4 Driver host service + loader: detect denylist (#119), auto-switch loader
+    (attestation service -> kdmapper -> vulnerable driver), report status.
+6.5 Mapping hygiene pass + presence test (idle driver in a live match 30 min).
+6.6 Attestation signing once an EV cert exists (portal submission, counter-sig).
+GATE 6: three 30-minute idle+active sessions with the driver loaded, HVCI on,
+        no ACG errors, no drops, clean unload verified.
+
+--------------------------------------------------------------------------------
+PHASE 7 — PRODUCT LAYER (loader, updates, licensing)
+--------------------------------------------------------------------------------
+7.1 Launcher pre-flight: game build id, IAT allowlist self-check, driver state,
+    ACG/HVCI/Secure Boot status, denylisted-driver (#119) scan, offsets
+    staleness. One clear verdict + recommended strategy, no silent fallbacks.
+7.2 Signed update manifest; hash-pinned offsets.ini; auto-update of DLL/offsets
+    without a full re-download (match Kernaim's auto-update promise).
+7.3 Licensing: HWID lock + key auth, HWID reset flow, optional built-in spoofer,
+    profile sync.
+7.4 Web radar (Eclipse model) served from the existing read path.
+7.5 Config share/import string.
+GATE 7: a cold user goes buy -> download -> launch -> in-match with zero manual
+        steps; a patch-day update flows through the manifest in < 2h.
+
+--------------------------------------------------------------------------------
+PHASE 8 — OPS & RELEASE DISCIPLINE
+--------------------------------------------------------------------------------
+8.1 Patch-day runbook: dump -> regenerate offsets -> validate -> publish, with a
+    checklist and rollback path, target < 2h.
+8.2 Release checklist as CI: EXIT=0 build, IAT gate, offsets sanity, version
+    bump, changelog, status page update.
+8.3 Identity rotation policy for DLL/driver (rebuild with new name/hash when the
+    AC fingerprints us; keep previous build for rollback).
+8.4 Public status/comms page + support SLA; publish our own detection history.
+GATE 8: two consecutive patch cycles completed under 2h using the checklist.
+
+--------------------------------------------------------------------------------
+RISK REGISTER (what actually kills this project)
+--------------------------------------------------------------------------------
+R1 Javelin changes the injection rules again (ACG-style)
+   -> Phase 1's strategy ladder exists so re-testing is cheap; never hardcode
+      one strategy.
+R2 CR3 abuse / address-space relocation breaks attach-based reads
+   -> implement B6(ii) physical + PML4 from the start.
+R3 Driver denylist (#119) hits us or our loader chain
+   -> multi-loader support + explicit detection/reporting.
+R4 Offsets churn every patch
+   -> automate dump + validate (Phase 1.4/1.6, Phase 8.1).
+R5 Overlay hook causes stutter/crashes
+   -> trampolines, full state save/restore, dual DX11/DX12 path, GATE 4.
+R6 Behavioural bans from "perfect" aim
+   -> humanised defaults, spectator-aware mode, honest presets.
+R7 Scope creep (skins, spoofer, web radar)
+   -> Phases 0-4 are the shippable core; 5-8 is the premium ring.
+
+--------------------------------------------------------------------------------
+DECISION POINTS NEEDED FROM THE OWNER
+--------------------------------------------------------------------------------
+D1 Buy an EV cert (attestation-signed driver) or stay kdmapper-only for v1?
+D2 Primary render path: in-game DX12 hook (recommended here) vs fully external
+   overlay window (kept as a mode)?
+D3 Licensing: build our own auth or use a hosted provider?
+D4 Build an HWID spoofer module for v1 or bundle it later?
+D5 Accept "signed driver + signed DLL" as our public identity (enumerable but
+   clean) vs staying fully unbacked/invisible?
+
+--------------------------------------------------------------------------------
+WHAT "DONE" LOOKS LIKE (definition of finished product)
+--------------------------------------------------------------------------------
+- Launcher: one click, pre-flight verified, recommends a strategy, auto-updates.
+- In-game overlay: DX12-first, streamproof option, menu, config presets.
+- Features: aim (humanised, per-category), ESP (skeleton/health/name/distance/
+  filters), glow (players/items/deathboxes), radar, movement, spectator-aware.
+- Kernel: signed driver, shared-mem comm, physical/PML4 reads, clean unload.
+- Evasion: evidence-based, documented per layer, with a loader ladder so a
+  Javelin change is a retest rather than a rewrite.
+- Ops: <2h patch turnaround, status page, honest detection history.
+
+================================================================================
+END OF ROADMAP
+================================================================================
+
+
+

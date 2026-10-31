@@ -1,0 +1,138 @@
+================================================================================
+INJECTION STRATEGY AGAINST JAVELIN & R5AC — MAPPING METHODS TO DETECTIONS
+================================================================================
+Last Updated: 2026-10-25 | Based on RE findings from Javelin and R5AC analysis
+
+================================================================================
+1. THE FOUR EVASION MOVES (from community research)
+================================================================================
+
+Every evasion reduces to one of four moves:
+HIDE    - Don't let the observer see the act
+CONFUSE - Let it see, but not believe  
+OUTRUN  - Act only when the observer is off duty
+IMPERSONATE - Look like something trusted
+
+Our two injection methods map directly to HIDE and IMPERSONATE.
+
+================================================================================
+2. INJECTION METHOD #1: NtCreateThreadEx (HIDE STRATEGY)
+================================================================================
+
+WHY IT WORKS AGAINST JAVELIN/R5AC:
+- Bypasses standard CreateRemoteThread hooks that EAC/Javelin monitor
+- Uses native NT API directly - avoids user-mode hook detection layer
+- Cleaner than standard remote thread creation (fewer API calls in chain)
+- Targets the HEURISTIC DETECTION layer specifically
+
+JAVELIN RELEVANCE: Javelin monitors CreateRemoteThread + LoadLibrary chains.
+NtCreateThreadEx is a different syscall path - harder to hook uniformly.
+
+R5AC RELEVANCE: R5AC's control flow analysis checks call stacks for whitelisted 
+modules. Native API thread creation produces cleaner stack traces than CRT functions.
+Module whitelist includes ntdll.dll ranges (+1000 to +119f1e) - our calls stay within.
+
+INJECTION TIMING: Early startup window (before Javelin fully initializes scanning).
+After game loads but before R5AC's VMT checks are active. Avoid injecting during 
+CreateMove hooks where R5AC monitors stack walking.
+
+IMPLEMENTATION NOTES FOR OUR DLL:
+- Resolve NtCreateThreadEx from ntdll.dll at runtime (avoid import table)
+- Use ZwQueryInformationProcess to verify target process is valid
+- LoadLibrary with absolute path to our DLL (avoid relative path detection)
+- Clean up thread handle immediately after creation
+
+================================================================================
+3. INJECTION METHOD #2: APC QUEUE (IMPERSONATE STRATEGY)
+================================================================================
+
+WHY IT WORKS AGAINST JAVELIN/R5AC:
+- Queues LoadLibrary into an EXISTING game thread - looks like legitimate work
+- No new thread creation signature to detect
+- The DLL loads as if the game itself loaded it
+
+JAVELIN RELEVANCE: Javelin monitors NEW thread creation more aggressively than 
+APC delivery. APC injection into existing threads bypasses thread enumeration checks.
+
+R5AC RELEVANCE: R5AC's VMT hooks monitor specific interfaces - APC doesn't touch them.
+Control flow analysis in CreateMove won't flag an APC-loaded DLL. Module whitelist 
+check passes because the thread was already whitelisted.
+
+INJECTION TIMING: Best after game is fully loaded and threads are active.
+Target a frequently-called game thread (render or input thread ideal).
+
+IMPLEMENTATION NOTES FOR OUR DLL:
+- Find target thread via NtQueryInformationThread enumeration
+- Queue LoadLibrary APC with our DLL path as parameter
+- Use NtQueueApcThread for stealthier delivery than standard QueueUserAPC
+- Thread executes the load naturally - looks like game-initiated work
+
+================================================================================
+4. COMPARISON: BOTH METHODS SIDE-BY-SIDE
+================================================================================
+
+| Aspect                | NtCreateThreadEx    | APC Queue           |
+|-----------------------|---------------------|---------------------|
+| Evasion Move          | HIDE                | IMPERSONATE         |
+| Stealth Level         | High (native API)   | Very High (looks normal) |
+| Detection Risk        | Medium              | Low                 |
+| Speed                 | Fast                | Slightly slower     |
+| Thread Signature      | New thread created  | Existing thread     |
+| Best Timing           | Early startup       | Mid-game            |
+| Fallback When         | APC blocked         | NtCreateThreadEx    |
+| Javelin Detection     | Bypasses hooks      | Bypasses enum       |
+| R5AC Detection        | Clean stack trace   | Whitelisted thread  |
+
+================================================================================
+5. ADDITIONAL STEALTH MEASURES FOR OUR DLL
+================================================================================
+
+NAME/IDENTITY: Consider renaming our DLL to match game component naming convention.
+Match naming of other injected DLLs (steamnetworkingsockets.dll, EOSSDK-Win64-Shipping.dll).
+
+IMPORT TABLE: Resolve all critical APIs dynamically (avoid static imports in IAT).
+R5AC monitors K32GetMappedFileNameA and VirtualQuery - resolve at runtime.
+
+MEMORY SIGNATURES: Our allocated memory should not have obvious cheat signatures.
+Avoid hardcoded strings that match known cheat patterns. Use XOR obfuscation similar 
+to R5AC's own method (key length = content length).
+
+MODULE BEHAVIOR: Don't enumerate all modules aggressively (triggers R5AC checks).
+Keep our DLL's memory footprint small and clean. Avoid modifying VMTs of monitored interfaces.
+
+================================================================================
+6. PATCH UPDATE STRATEGY FOR INJECTION METHODS
+================================================================================
+
+JAVELIN UPDATES (kernel driver):
+- Monitor eadriver.sys hash changes vs known-good SHA-256: 4a19a78e...098
+- If VMCALL/VMMCALL patterns change → adjust kernel communication if needed
+- New string decryption keys → update XOR dictionary (~1000 keys)
+
+R5AC UPDATES (client-side):
+- Module whitelist ranges may expand/contract → monitor whitelisted sections
+- VMT hook points may shift → re-validate monitored virtual tables
+- Stack walking method changes → adapt to new RtlCaptureSBT behavior
+
+OFFSET UPDATES: Entity list, view matrix, bone IDs drift with each patch.
+Use OffsetValidator to detect when values are stale. Automated dump pipeline 
+(apexdream) for quick offset extraction.
+
+================================================================================
+7. CURRENT DETECTION LANDSCAPE SUMMARY
+================================================================================
+
+JAVELIN (kernel): Griffin VM + CR3 scanning + behavioral analysis + HWID
+R5AC   (client): VMT integrity + control flow + stack walking + string checks  
+SERVER: Telemetry correlation + server-side validation + ML patterns
+
+OUR POSITIONING:
+- User-mode injection avoids kernel detection layer entirely
+- Two methods provide redundancy if one gets patched
+- Clean memory reads avoid R5AC's VMT tamper detection
+- Early timing exploits Javelin's game-scoped loading window
+
+================================================================================
+END OF INJECTION STRATEGY DOCUMENT
+================================================================================
+

@@ -1,0 +1,35 @@
+﻿== driver path diagnostic 2026-10-27 11:55:43 ==
+image : C:\Windows\System32\drivers\apexdrv.sys (8616 bytes) sig=Valid
+--- control: in-box 'beep' service
+    qc      : BINARY_PATH_NAME   :
+    start   : [SC] StartService FAILED 1056:  An instance of the service is already running. 
+    state   : STATE              : 4  RUNNING
+--- A: \??\C:\...
+    binPath : \??\C:\Windows\System32\drivers\apexdrv.sys
+    create  : [SC] CreateService SUCCESS
+    start   : [SC] StartService FAILED 123:  The filename, directory name, or volume label syntax is incorrect.
+    state   : STATE              : 1  STOPPED
+--- B: System32\drivers
+    binPath : System32\drivers\apexdrv.sys
+    create  : [SC] CreateService SUCCESS
+    start   : [SC] StartService FAILED 3:  The system cannot find the path specified.
+    state   : STATE              : 1  STOPPED
+--- C: \SystemRoot\...
+    binPath : \SystemRoot\System32\drivers\apexdrv.sys
+    create  : [SC] CreateService SUCCESS
+    start   : [SC] StartService FAILED 3:  The system cannot find the path specified.
+    state   : STATE              : 1  STOPPED
+--- D: C:\Windows\...
+    binPath : C:\Windows\System32\drivers\apexdrv.sys
+    create  : [SC] CreateService SUCCESS
+    start   : [SC] StartService FAILED 123:  The filename, directory name, or volume label syntax is incorrect.
+    state   : STATE              : 1  STOPPED
+
+
+Caption     : Microsoft Windows 11 Pro
+Version     : 10.0.26200
+BuildNumber : 26200
+
+
+
+

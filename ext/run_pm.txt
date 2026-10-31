@@ -1,0 +1,19 @@
+﻿python = C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe
+--- tasklog
+mask=0xf001f -> 0xc0000022 handle=False
+mask=0x00006 -> 0xc0000022 handle=False
+mask=0x00004 -> 0xc0000022 handle=False
+mask=0x00002 -> 0xc0000022 handle=False
+mask=0x00001 -> 0xc0000022 handle=False
+mask=0x00008 -> 0xc0000022 handle=False
+mask=0x00010 -> 0xc0000022 handle=False
+mask=0x20000 -> 0xc0000022 handle=False
+--- result
+mask=0xf001f -> 0xc0000022 handle=False
+mask=0x00006 -> 0xc0000022 handle=False
+mask=0x00004 -> 0xc0000022 handle=False
+mask=0x00002 -> 0xc0000022 handle=False
+mask=0x00001 -> 0xc0000022 handle=False
+mask=0x00008 -> 0xc0000022 handle=False
+mask=0x00010 -> 0xc0000022 handle=False
+mask=0x20000 -> 0xc0000022 handle=False

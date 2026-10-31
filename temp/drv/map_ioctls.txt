@@ -1,0 +1,402 @@
+exports parsed: 27
+DeviceIoControl call sites: 21
+
+site 0x180001641 code=0xC3502400 owner=0x1800015B0 b'gb_outp'
+    0001800015ee  ff15a4ea0100             call     qword ptr [rip + 0x1eaa4]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    0001800015f4  e8c7fbffff               call     0x1800011c0
+    0001800015f9  488bd8                   mov      rbx, rax
+    0001800015fc  4883f8ff                 cmp      rax, -1
+    000180001600  744e                     je       0x180001650
+    000180001602  48896c2438               mov      qword ptr [rsp + 0x38], rbp
+    000180001607  488d442444               lea      rax, [rsp + 0x44]
+    00018000160c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001611  448d4d0c                 lea      r9d, [rbp + 0xc]
+    000180001615  488d442440               lea      rax, [rsp + 0x40]
+    00018000161a  c744242804000000         mov      dword ptr [rsp + 0x28], 4
+    000180001622  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001627  4889442420               mov      qword ptr [rsp + 0x20], rax
+    00018000162c  ba002450c3               mov      edx, 0xc3502400
+    000180001631  4489742448               mov      dword ptr [rsp + 0x48], r14d
+    000180001636  488bcb                   mov      rcx, rbx
+    000180001639  89742450                 mov      dword ptr [rsp + 0x50], esi
+    00018000163d  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+site 0x180001706 code=0xC3502400 owner=0x180001680 b'gb_outpd'
+    0001800016b7  e804fbffff               call     0x1800011c0
+    0001800016bc  488bd8                   mov      rbx, rax
+    0001800016bf  4883f8ff                 cmp      rax, -1
+    0001800016c3  7450                     je       0x180001715
+    0001800016c5  48896c2438               mov      qword ptr [rsp + 0x38], rbp
+    0001800016ca  488d442444               lea      rax, [rsp + 0x44]
+    0001800016cf  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800016d4  8d4d04                   lea      ecx, [rbp + 4]
+    0001800016d7  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800016db  488d442440               lea      rax, [rsp + 0x40]
+    0001800016e0  488bcb                   mov      rcx, rbx
+    0001800016e3  4889442420               mov      qword ptr [rsp + 0x20], rax
+    0001800016e8  448d4d0c                 lea      r9d, [rbp + 0xc]
+    0001800016ec  c744244804000000         mov      dword ptr [rsp + 0x48], 4
+    0001800016f4  4c8d442448               lea      r8, [rsp + 0x48]
+    0001800016f9  89742450                 mov      dword ptr [rsp + 0x50], esi
+    0001800016fd  ba002450c3               mov      edx, 0xc3502400
+    000180001702  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+site 0x1800017C8 code=0xC3502400 owner=0x180001740 b'gb_outpw'
+    000180001772  ff1520e90100             call     qword ptr [rip + 0x1e920]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180001778  e843faffff               call     0x1800011c0
+    00018000177d  488bd8                   mov      rbx, rax
+    000180001780  4883f8ff                 cmp      rax, -1
+    000180001784  7451                     je       0x1800017d7
+    000180001786  48896c2438               mov      qword ptr [rsp + 0x38], rbp
+    00018000178b  488d442444               lea      rax, [rsp + 0x44]
+    000180001790  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001795  448d4d0c                 lea      r9d, [rbp + 0xc]
+    000180001799  488d442440               lea      rax, [rsp + 0x40]
+    00018000179e  c744242804000000         mov      dword ptr [rsp + 0x28], 4
+    0001800017a6  4c8d442448               lea      r8, [rsp + 0x48]
+    0001800017ab  4889442420               mov      qword ptr [rsp + 0x20], rax
+    0001800017b0  ba002450c3               mov      edx, 0xc3502400
+    0001800017b5  c744244802000000         mov      dword ptr [rsp + 0x48], 2
+    0001800017bd  488bcb                   mov      rcx, rbx
+    0001800017c0  89742450                 mov      dword ptr [rsp + 0x50], esi
+    0001800017c4  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+site 0x18000188C code=0xC3502400 owner=0x180001800 b'gb_inp'
+    00018000183c  4883f8ff                 cmp      rax, -1
+    000180001840  7504                     jne      0x180001846
+    000180001842  32c0                     xor      al, al
+    000180001844  eb5a                     jmp      0x1800018a0
+    000180001846  33c0                     xor      eax, eax
+    000180001848  c744244801000100         mov      dword ptr [rsp + 0x48], 0x10001
+    000180001850  4889442438               mov      qword ptr [rsp + 0x38], rax
+    000180001855  4c8d442448               lea      r8, [rsp + 0x48]
+    00018000185a  89442450                 mov      dword ptr [rsp + 0x50], eax
+    00018000185e  41b90c000000             mov      r9d, 0xc
+    000180001864  488d442444               lea      rax, [rsp + 0x44]
+    000180001869  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+    00018000186d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001872  ba002450c3               mov      edx, 0xc3502400
+    000180001877  488d442440               lea      rax, [rsp + 0x40]
+    00018000187c  c744242804000000         mov      dword ptr [rsp + 0x28], 4
+    000180001884  488bcb                   mov      rcx, rbx
+    000180001887  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x18000194C code=0xC3502400 owner=0x1800018C0 b'gb_inpw'
+    0001800018fc  4883f8ff                 cmp      rax, -1
+    000180001900  7504                     jne      0x180001906
+    000180001902  33c0                     xor      eax, eax
+    000180001904  eb5a                     jmp      0x180001960
+    000180001906  33c0                     xor      eax, eax
+    000180001908  c744244802000100         mov      dword ptr [rsp + 0x48], 0x10002
+    000180001910  4889442438               mov      qword ptr [rsp + 0x38], rax
+    000180001915  4c8d442448               lea      r8, [rsp + 0x48]
+    00018000191a  89442450                 mov      dword ptr [rsp + 0x50], eax
+    00018000191e  41b90c000000             mov      r9d, 0xc
+    000180001924  488d442444               lea      rax, [rsp + 0x44]
+    000180001929  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+    00018000192d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001932  ba002450c3               mov      edx, 0xc3502400
+    000180001937  488d442440               lea      rax, [rsp + 0x40]
+    00018000193c  c744242804000000         mov      dword ptr [rsp + 0x28], 4
+    000180001944  488bcb                   mov      rcx, rbx
+    000180001947  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001A09 code=0xC3502400 owner=0x180001980 b'gb_inpd'
+    0001800019c0  7504                     jne      0x1800019c6
+    0001800019c2  33c0                     xor      eax, eax
+    0001800019c4  eb56                     jmp      0x180001a1c
+    0001800019c6  33c0                     xor      eax, eax
+    0001800019c8  c744244804000100         mov      dword ptr [rsp + 0x48], 0x10004
+    0001800019d0  4889442438               mov      qword ptr [rsp + 0x38], rax
+    0001800019d5  4c8d442448               lea      r8, [rsp + 0x48]
+    0001800019da  89442450                 mov      dword ptr [rsp + 0x50], eax
+    0001800019de  ba002450c3               mov      edx, 0xc3502400
+    0001800019e3  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+    0001800019e7  8d4804                   lea      ecx, [rax + 4]
+    0001800019ea  488d442444               lea      rax, [rsp + 0x44]
+    0001800019ef  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800019f4  448d4908                 lea      r9d, [rcx + 8]
+    0001800019f8  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800019fc  488d442440               lea      rax, [rsp + 0x40]
+    000180001a01  488bcb                   mov      rcx, rbx
+    000180001a04  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001B7A code=0xC3502004 owner=0x180001AF0 b'MapMemEx'
+    000180001b2c  e88ff6ffff               call     0x1800011c0
+    000180001b31  488bf8                   mov      rdi, rax
+    000180001b34  4883f8ff                 cmp      rax, -1
+    000180001b38  7504                     jne      0x180001b3e
+    000180001b3a  33c0                     xor      eax, eax
+    000180001b3c  eb60                     jmp      0x180001b9e
+    000180001b3e  488d442440               lea      rax, [rsp + 0x40]
+    000180001b43  4889b42480000000         mov      qword ptr [rsp + 0x80], rsi
+    000180001b4b  33f6                     xor      esi, esi
+    000180001b4d  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001b52  4889742438               mov      qword ptr [rsp + 0x38], rsi
+    000180001b57  ba042050c3               mov      edx, 0xc3502004
+    000180001b5c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001b61  488bcf                   mov      rcx, rdi
+    000180001b64  488d442448               lea      rax, [rsp + 0x48]
+    000180001b69  c744242810000000         mov      dword ptr [rsp + 0x28], 0x10
+    000180001b71  448d4e10                 lea      r9d, [rsi + 0x10]
+    000180001b75  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001CA7 code=0xC3502580 owner=0x180001C20 b'ReadMSR64'
+    000180001c4a  48c744245800000000       mov      qword ptr [rsp + 0x58], 0
+    000180001c53  48c744246000000000       mov      qword ptr [rsp + 0x60], 0
+    000180001c5c  e85ff5ffff               call     0x1800011c0
+    000180001c61  488bd8                   mov      rbx, rax
+    000180001c64  4883f8ff                 cmp      rax, -1
+    000180001c68  7505                     jne      0x180001c6f
+    000180001c6a  8d4302                   lea      eax, [rbx + 2]
+    000180001c6d  eb6d                     jmp      0x180001cdc
+    000180001c6f  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    000180001c78  488d442440               lea      rax, [rsp + 0x40]
+    000180001c7d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001c82  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001c87  488d442448               lea      rax, [rsp + 0x48]
+    000180001c8c  c744242820000000         mov      dword ptr [rsp + 0x28], 0x20
+    000180001c94  41b920000000             mov      r9d, 0x20
+    000180001c9a  4889442420               mov      qword ptr [rsp + 0x20], rax
+    000180001c9f  ba802550c3               mov      edx, 0xc3502580
+    000180001ca4  488bcb                   mov      rcx, rbx
+site 0x180001D87 code=0xC3502584 owner=0x180001D00 b'MS_ReadMSR'
+    000180001d2a  48c744245800000000       mov      qword ptr [rsp + 0x58], 0
+    000180001d33  48c744246000000000       mov      qword ptr [rsp + 0x60], 0
+    000180001d3c  e87ff4ffff               call     0x1800011c0
+    000180001d41  488bd8                   mov      rbx, rax
+    000180001d44  4883f8ff                 cmp      rax, -1
+    000180001d48  7505                     jne      0x180001d4f
+    000180001d4a  8d4302                   lea      eax, [rbx + 2]
+    000180001d4d  eb6d                     jmp      0x180001dbc
+    000180001d4f  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    000180001d58  488d442440               lea      rax, [rsp + 0x40]
+    000180001d5d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001d62  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001d67  488d442448               lea      rax, [rsp + 0x48]
+    000180001d6c  c744242820000000         mov      dword ptr [rsp + 0x28], 0x20
+    000180001d74  41b920000000             mov      r9d, 0x20
+    000180001d7a  4889442420               mov      qword ptr [rsp + 0x20], rax
+    000180001d7f  ba842550c3               mov      edx, 0xc3502584
+    000180001d84  488bcb                   mov      rcx, rbx
+site 0x180001EA6 code=0xC3502580 owner=0x180001E20 b'WriteMSR64'
+    000180001e4d  48c744244800000000       mov      qword ptr [rsp + 0x48], 0
+    000180001e56  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    000180001e5b  e860f3ffff               call     0x1800011c0
+    000180001e60  488bf8                   mov      rdi, rax
+    000180001e63  4883f8ff                 cmp      rax, -1
+    000180001e67  7505                     jne      0x180001e6e
+    000180001e69  8d4702                   lea      eax, [rdi + 2]
+    000180001e6c  eb6e                     jmp      0x180001edc
+    000180001e6e  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    000180001e77  488d442440               lea      rax, [rsp + 0x40]
+    000180001e7c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001e81  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001e86  488d442448               lea      rax, [rsp + 0x48]
+    000180001e8b  c744242820000000         mov      dword ptr [rsp + 0x28], 0x20
+    000180001e93  41b920000000             mov      r9d, 0x20
+    000180001e99  4889442420               mov      qword ptr [rsp + 0x20], rax
+    000180001e9e  ba802550c3               mov      edx, 0xc3502580
+    000180001ea3  488bcf                   mov      rcx, rdi
+site 0x180001F86 code=0xC3502584 owner=0x180001F00 b'MS_WriteMSR'
+    000180001f2d  48c744244800000000       mov      qword ptr [rsp + 0x48], 0
+    000180001f36  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    000180001f3b  e880f2ffff               call     0x1800011c0
+    000180001f40  488bf8                   mov      rdi, rax
+    000180001f43  4883f8ff                 cmp      rax, -1
+    000180001f47  7505                     jne      0x180001f4e
+    000180001f49  8d4702                   lea      eax, [rdi + 2]
+    000180001f4c  eb6e                     jmp      0x180001fbc
+    000180001f4e  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    000180001f57  488d442440               lea      rax, [rsp + 0x40]
+    000180001f5c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001f61  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001f66  488d442448               lea      rax, [rsp + 0x48]
+    000180001f6b  c744242820000000         mov      dword ptr [rsp + 0x28], 0x20
+    000180001f73  41b920000000             mov      r9d, 0x20
+    000180001f79  4889442420               mov      qword ptr [rsp + 0x20], rax
+    000180001f7e  ba842550c3               mov      edx, 0xc3502584
+    000180001f83  488bcf                   mov      rcx, rdi
+site 0x18000210E code=0xC3502014 owner=0x180001F00 b'MS_WriteMSR'
+    0001800020c2  ff15d0df0100             call     qword ptr [rip + 0x1dfd0]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    0001800020c8  e8f3f0ffff               call     0x1800011c0
+    0001800020cd  488bf8                   mov      rdi, rax
+    0001800020d0  4883f8ff                 cmp      rax, -1
+    0001800020d4  7447                     je       0x18000211d
+    0001800020d6  33c9                     xor      ecx, ecx
+    0001800020d8  4c896dc8                 mov      qword ptr [rbp - 0x38], r13
+    0001800020dc  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    0001800020e1  488d45e0                 lea      rax, [rbp - 0x20]
+    0001800020e5  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800020ea  4c8d45c8                 lea      r8, [rbp - 0x38]
+    0001800020ee  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800020f2  ba142050c3               mov      edx, 0xc3502014
+    0001800020f7  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    0001800020fc  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002100  488bcf                   mov      rcx, rdi
+    000180002103  c745d010000000           mov      dword ptr [rbp - 0x30], 0x10
+    00018000210a  48895dd8                 mov      qword ptr [rbp - 0x28], rbx
+site 0x1800021A2 code=0xC3502014 owner=0x180001F00 b'MS_WriteMSR'
+    00018000215a  ff1538df0100             call     qword ptr [rip + 0x1df38]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002160  e85bf0ffff               call     0x1800011c0
+    000180002165  488bf0                   mov      rsi, rax
+    000180002168  4883f8ff                 cmp      rax, -1
+    00018000216c  7443                     je       0x1800021b1
+    00018000216e  33c9                     xor      ecx, ecx
+    000180002170  4c896dc8                 mov      qword ptr [rbp - 0x38], r13
+    000180002174  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002179  488d45e4                 lea      rax, [rbp - 0x1c]
+    00018000217d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002182  4c8d45c8                 lea      r8, [rbp - 0x38]
+    000180002186  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    00018000218a  ba142050c3               mov      edx, 0xc3502014
+    00018000218f  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002194  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002198  488bce                   mov      rcx, rsi
+    00018000219b  897dd0                   mov      dword ptr [rbp - 0x30], edi
+    00018000219e  48895dd8                 mov      qword ptr [rbp - 0x28], rbx
+site 0x180002593 code=0xC3502440 owner=0x180002330 b'SMICmd64'
+    000180002536  4889442460               mov      qword ptr [rsp + 0x60], rax
+    00018000253b  488bcb                   mov      rcx, rbx
+    00018000253e  498b4500                 mov      rax, qword ptr [r13]
+    000180002542  4889442468               mov      qword ptr [rsp + 0x68], rax
+    000180002547  488b07                   mov      rax, qword ptr [rdi]
+    00018000254a  4889442470               mov      qword ptr [rsp + 0x70], rax
+    00018000254f  498b07                   mov      rax, qword ptr [r15]
+    000180002552  4889442478               mov      qword ptr [rsp + 0x78], rax
+    000180002557  488b4500                 mov      rax, qword ptr [rbp]
+    00018000255b  4889842480000000         mov      qword ptr [rsp + 0x80], rax
+    000180002563  498b06                   mov      rax, qword ptr [r14]
+    000180002566  4889842488000000         mov      qword ptr [rsp + 0x88], rax
+    00018000256e  488d442450               lea      rax, [rsp + 0x50]
+    000180002573  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    00018000257c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002581  488d442458               lea      rax, [rsp + 0x58]
+    000180002586  c744242838000000         mov      dword ptr [rsp + 0x28], 0x38
+    00018000258e  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x1800026A4 code=0xC3502800 owner=0x180002610 b'YCC_Alloc_Kernel_PhysMem'
+    000180002653  ba01000000               mov      edx, 1
+    000180002658  ff153ada0100             call     qword ptr [rip + 0x1da3a]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    00018000265e  e85debffff               call     0x1800011c0
+    000180002663  488bf8                   mov      rdi, rax
+    000180002666  4883f8ff                 cmp      rax, -1
+    00018000266a  7452                     je       0x1800026be
+    00018000266c  33ed                     xor      ebp, ebp
+    00018000266e  8bdd                     mov      ebx, ebp
+    000180002670  48896c2438               mov      qword ptr [rsp + 0x38], rbp
+    000180002675  488d442478               lea      rax, [rsp + 0x78]
+    00018000267a  4889442430               mov      qword ptr [rsp + 0x30], rax
+    00018000267f  4c8d442470               lea      r8, [rsp + 0x70]
+    000180002684  488d442440               lea      rax, [rsp + 0x40]
+    000180002689  c744242810000000         mov      dword ptr [rsp + 0x28], 0x10
+    000180002691  41b904000000             mov      r9d, 4
+    000180002697  4889442420               mov      qword ptr [rsp + 0x20], rax
+    00018000269c  ba002850c3               mov      edx, 0xc3502800
+    0001800026a1  488bcf                   mov      rcx, rdi
+site 0x180002758 code=0xC3502804 owner=0x180002700 b'YCC_Free_Kernel_PhysMem'
+    00018000270b  ff158fd90100             call     qword ptr [rip + 0x1d98f]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+    000180002711  488bc8                   mov      rcx, rax
+    000180002714  ba01000000               mov      edx, 1
+    000180002719  ff1579d90100             call     qword ptr [rip + 0x1d979]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    00018000271f  e89ceaffff               call     0x1800011c0
+    000180002724  488bd8                   mov      rbx, rax
+    000180002727  4883f8ff                 cmp      rax, -1
+    00018000272b  743e                     je       0x18000276b
+    00018000272d  33c9                     xor      ecx, ecx
+    00018000272f  488d442450               lea      rax, [rsp + 0x50]
+    000180002734  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002739  4c8d442458               lea      r8, [rsp + 0x58]
+    00018000273e  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002743  ba042850c3               mov      edx, 0xc3502804
+    000180002748  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    00018000274c  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002751  448d4908                 lea      r9d, [rcx + 8]
+    000180002755  488bcb                   mov      rcx, rbx
+site 0x18000280F code=0xC3502808 owner=0x180002790 b'YCC_MapMem_Copy_Userbuf_To_Phys'
+    0001800027c2  ff15d0d80100             call     qword ptr [rip + 0x1d8d0]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    0001800027c8  e8f3e9ffff               call     0x1800011c0
+    0001800027cd  488bd8                   mov      rbx, rax
+    0001800027d0  4883f8ff                 cmp      rax, -1
+    0001800027d4  744c                     je       0x180002822
+    0001800027d6  33c9                     xor      ecx, ecx
+    0001800027d8  48897c2450               mov      qword ptr [rsp + 0x50], rdi
+    0001800027dd  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    0001800027e2  488d442440               lea      rax, [rsp + 0x40]
+    0001800027e7  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800027ec  4c8d442448               lea      r8, [rsp + 0x48]
+    0001800027f1  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800027f5  ba082850c3               mov      edx, 0xc3502808
+    0001800027fa  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    0001800027ff  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002803  488bcb                   mov      rcx, rbx
+    000180002806  4889742448               mov      qword ptr [rsp + 0x48], rsi
+    00018000280b  896c2458                 mov      dword ptr [rsp + 0x58], ebp
+site 0x1800028BC code=0xC350280C owner=0x180002850 b'YCC_TranslateLinsToPhys'
+    000180002862  ff1538d80100             call     qword ptr [rip + 0x1d838]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+    000180002868  488bc8                   mov      rcx, rax
+    00018000286b  ba01000000               mov      edx, 1
+    000180002870  ff1522d80100             call     qword ptr [rip + 0x1d822]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002876  e845e9ffff               call     0x1800011c0
+    00018000287b  488bd8                   mov      rbx, rax
+    00018000287e  4883f8ff                 cmp      rax, -1
+    000180002882  744b                     je       0x1800028cf
+    000180002884  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    00018000288d  488d442450               lea      rax, [rsp + 0x50]
+    000180002892  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002897  4c8d442460               lea      r8, [rsp + 0x60]
+    00018000289c  488d442468               lea      rax, [rsp + 0x68]
+    0001800028a1  c744242808000000         mov      dword ptr [rsp + 0x28], 8
+    0001800028a9  41b908000000             mov      r9d, 8
+    0001800028af  4889442420               mov      qword ptr [rsp + 0x20], rax
+    0001800028b4  ba0c2850c3               mov      edx, 0xc350280c
+    0001800028b9  488bcb                   mov      rcx, rbx
+site 0x18000297D code=0xC3502014 owner=0x180002900 b'MapMem_Phys_To_Linear'
+    000180002930  e88be8ffff               call     0x1800011c0
+    000180002935  488bd8                   mov      rbx, rax
+    000180002938  4883f8ff                 cmp      rax, -1
+    00018000293c  744e                     je       0x18000298c
+    00018000293e  488b0f                   mov      rcx, qword ptr [rdi]
+    000180002941  488d842488000000         lea      rax, [rsp + 0x88]
+    000180002949  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    00018000294e  4c8d442440               lea      r8, [rsp + 0x40]
+    000180002953  33c9                     xor      ecx, ecx
+    000180002955  48896c2440               mov      qword ptr [rsp + 0x40], rbp
+    00018000295a  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    00018000295f  ba142050c3               mov      edx, 0xc3502014
+    000180002964  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002969  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    00018000296d  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002972  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002976  488bcb                   mov      rcx, rbx
+    000180002979  89742448                 mov      dword ptr [rsp + 0x48], esi
+site 0x180002A2D code=0xC3502019 owner=0x1800029B0 b'MapMem_Phys_To_Linear2'
+    0001800029e0  e8dbe7ffff               call     0x1800011c0
+    0001800029e5  488bd8                   mov      rbx, rax
+    0001800029e8  4883f8ff                 cmp      rax, -1
+    0001800029ec  744e                     je       0x180002a3c
+    0001800029ee  488b0f                   mov      rcx, qword ptr [rdi]
+    0001800029f1  488d842488000000         lea      rax, [rsp + 0x88]
+    0001800029f9  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    0001800029fe  4c8d442440               lea      r8, [rsp + 0x40]
+    000180002a03  33c9                     xor      ecx, ecx
+    000180002a05  48896c2440               mov      qword ptr [rsp + 0x40], rbp
+    000180002a0a  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002a0f  ba192050c3               mov      edx, 0xc3502019
+    000180002a14  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002a19  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    000180002a1d  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002a22  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002a26  488bcb                   mov      rcx, rbx
+    000180002a29  89742448                 mov      dword ptr [rsp + 0x48], esi
+site 0x180002AD5 code=0xC3502008 owner=0x180002A60 b'UnMapMem'
+    000180002a87  ba01000000               mov      edx, 1
+    000180002a8c  ff1506d60100             call     qword ptr [rip + 0x1d606]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002a92  48895c2448               mov      qword ptr [rsp + 0x48], rbx
+    000180002a97  48897c2450               mov      qword ptr [rsp + 0x50], rdi
+    000180002a9c  e81fe7ffff               call     0x1800011c0
+    000180002aa1  488bd8                   mov      rbx, rax
+    000180002aa4  4883f8ff                 cmp      rax, -1
+    000180002aa8  743a                     je       0x180002ae4
+    000180002aaa  33c9                     xor      ecx, ecx
+    000180002aac  488d442440               lea      rax, [rsp + 0x40]
+    000180002ab1  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002ab6  4c8d442448               lea      r8, [rsp + 0x48]
+    000180002abb  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002ac0  ba082050c3               mov      edx, 0xc3502008
+    000180002ac5  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    000180002ac9  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002ace  448d4910                 lea      r9d, [rcx + 0x10]
+    000180002ad2  488bcb                   mov      rcx, rbx

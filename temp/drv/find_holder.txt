@@ -1,0 +1,14 @@
+=== 113887 system handles
+=== File ObjectTypeIndex = 42
+=== scanned 6389 file handles (3676 dup'd, 736 pipes skipped, 2 name-query timeouts), 0 hits
+=== name resolution OK: 2937/2940 non-pipe dup'd handles returned a name
+    sample device handle: pid=7636   \Device\HarddiskVolume3\Windows\System32
+    sample device handle: pid=7636   \Device\DeviceApi
+    sample device handle: pid=7636   \Device\CNG
+    sample device handle: pid=7636   \Device\KsecDD
+    sample device handle: pid=7636   \Device\KsecDD
+    sample device handle: pid=7636   \Device\HarddiskVolume3\Windows\System32\en-US\KernelBase.dll.mui
+    sample device handle: pid=7692   \Device\HarddiskVolume3\Windows\System32
+    sample device handle: pid=7692   \Device\CNG
+no handle named GIOV3/GDRV/MSIO exists system-wide
+=> the access-denied is a DACL/SDDL restriction, not a collision

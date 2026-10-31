@@ -1,0 +1,28 @@
+﻿== bcd probe 2026-10-27 12:11:47 ==
+powershell      : 5.1.26100.9711
+elevated        : False
+
+--- A: bcdedit /enum all (first 25 lines) ---
+The boot configuration data store could not be opened.
+Access is denied.
+
+--- B: cmd /c bcdedit /enum {current} ---
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+
+--- C: loader flags in store ---
+(no output)
+
+--- D: manage-bde -status C: ---
+BitLocker Drive Encryption: Configuration Tool version 10.0.26100
+Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+ERROR: An attempt to access a required resource was denied.
+
+Check that you have administrative rights on the computer.
+
+--- E: Secure Boot / VBS ---
+security services running : 0
+UEFISecureBootEnabled     : 1
+END

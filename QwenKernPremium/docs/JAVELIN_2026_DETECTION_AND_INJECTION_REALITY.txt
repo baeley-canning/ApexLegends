@@ -1,0 +1,156 @@
+================================================================================
+JAVELIN 2026 — OPERATIONAL REALITY FOR INJECTORS (AFTER 2026-09-29)
+================================================================================
+Last Updated: 2026-10-26
+Sources: EA official Javelin announcement (2026-09-24), EA help "PC EA
+         AntiCheat", ApexLiveComms 2026-10-08, GameLeap report 2026-10-08,
+         xdaycheat timeline 2026-10-23, unknowncheats Apex threads
+         2026-10-09/10/15/18, community RE blogs (hlunaaa CR3 manipulation,
+         tulach manual-mapped-driver detection).
+Status: RESEARCH FILE. [EA] = official EA statement. [RE] = reverse-engineered
+        or community-reported, treat as strong hypothesis, not proof.
+
+--------------------------------------------------------------------------------
+1. TIMELINE THAT INVALIDATES MOST PRE-2026 INJECTOR KNOWLEDGE
+--------------------------------------------------------------------------------
+[EA] 2026-09-24 Apex announced EAC -> EA Javelin Anticheat transition.
+[EA] 2026-09-29 Apex PC flipped to Javelin; EAC's integration is gone.
+[EA] Secure Boot NOT required for the Apex implementation (BF6 differs).
+[EA] 2026-10-08 first Javelin report: 265,550 cheat attempts prevented, 12,969
+     accounts banned, 40 cheat programs tracked, 91% of tracked programs
+     "disrupted". Hardware bans: Aimzenix 4058, Cronus 1201, XIM 199, Titan 141.
+     => Javelin is PROACTIVE: it can neutralise a cheat's function without
+        banning the account (prevention != ban).
+[EA] Javelin minimum Windows: Win10 20H1 (19041)+. Error codes: #41 (Insider
+     cert), #95 (unacceptable config: cheat/tampering tools, VPN/proxy),
+     #119 (DENYLISTED DRIVER — names the offending .sys), #701 (installer txn).
+[EA] Apex ALSO ships its own client-side layer, R5AC, inside r5apex_dx12.exe
+     (VMT integrity, call-stack walking, module whitelist) — see R5AC KB file.
+
+*** CONSEQUENCE: everything in this repo written before 2026-09-29 that says
+    "EAC bypass / EAC module list / EAC driver" is historical. Live stack is
+    Javelin + R5AC + server telemetry. Even TATEWARE's 2026 blog still uses
+    EAC wording. Verify by DATE, not by brand. ***
+
+--------------------------------------------------------------------------------
+2. HARD CONSTRAINTS OBSERVED BY INJECTOR AUTHORS POST-JAVELIN
+--------------------------------------------------------------------------------
+[RE] 2026-10-09 UC "injector issue":
+  - ZwAllocateVirtualMemory with PAGE_EXECUTE now FAILS inside Apex;
+    ZwProtectVirtualMemory effectively unusable there.
+  - Author's workaround: clear the NX bit in the PTE, set page RX. Side effect:
+    VAD mismatch, expected to be catchable.
+  - Senior responder's advice: map via MDL (VAD-less). Caveats he flagged:
+    MDL regions unmap automatically on process exit; CRT init FAILS in VAD-less
+    memory because the CRT calls VirtualProtect internally -> must IAT-redirect
+    VirtualProtect to a stub returning success during DllMain, then restore.
+  - Suspected root cause: AGC / dynamic-code policy.
+[RE] 2026-10-15 same thread: reflective injection that worked under EAC now
+  freezes under Javelin. An EV+attestation-signed-loader author states the
+  answer is understanding Apex's Javelin implementation first and signing the
+  LOADER AND THE DLL. Another notes Javelin installs a manipulated CR3 into the
+  game process.
+[RE] 2026-10-18 resolution posted: two root causes were (a) ACG and (b) getting
+  the module "recognised as trusted"; once fixed, reflective injection AND a
+  DX12 Present hook ran without stutter.
+
+*** ACTIONABLE: the classic VirtualAllocEx(PAGE_EXECUTE_READWRITE) +
+    CreateRemoteThread(LoadLibrary) chain is now the WEAKEST option for Apex.
+    Order of preference becomes: signed-driver-assisted load / MDL or VAD-less
+    reflective map / APC+MDL / plain CRT. Assume ACG unless proven otherwise. ***
+
+--------------------------------------------------------------------------------
+3. KERNEL SIDE: NOW-UNAVOIDABLE TOPICS
+--------------------------------------------------------------------------------
+[RE] UC "EAAC unbacked kernel memory" (2026-10-10):
+  - Symptom: "with my driver loaded the game closes after a few minutes; with
+    the driver unloaded it runs fine" => detection occurs while the driver is
+    present but IDLE (no reads, no writes). Presence of unbacked kernel memory
+    is enough.
+  - Community answers: (a) use a "ghost stomp" style mapping so the image looks
+    backed; (b) stop treating kdmapper alone as sufficient in 2026; (c) get the
+    driver SIGNED (EV + attestation) and load it as a real service; (d) note
+    that MmCopyMemory itself is suspected to be a flag.
+[RE] tulach, "detecting manually mapped drivers": scanners enumerate physical
+  memory (MmGetPhysicalMemoryRanges + chunked MmCopyMemory) and hunt for
+  compiler-generated tell-tales OUTSIDE any legitimate module region. Their
+  best detector: absolute indirect jump import thunks (FF 25 xx xx xx xx) whose
+  resolved target IS in ntoskrnl but whose thunk address is NOT inside a real
+  module. Zeroing DOS/NT headers is not enough to hide.
+[RE] hlunaaa, "bypassing CR3 abuse": EAC and Vanguard already conceal
+  KPROCESS.DirectoryTableBase by relocating the address space via page-table
+  surgery at startup; Javelin is reported to do the same for Apex. Counter:
+  brute-force PML4 self-reference across physical ranges, validate a candidate
+  CR3 by translating a known user VA (e.g. EPROCESS.SectionBaseAddress) and
+  checking for 'ZM' at the MZ offset.
+[RE] Consequence: a driver that caches DirectoryTableBase once at attach can
+  read the wrong physical pages under Javelin. The robust read primitive is
+  physical access + PML4 self-ref walk, optionally memoised per launch.
+
+--------------------------------------------------------------------------------
+4. IMPACT OF THE ABOVE ON OUR TWO PATHS
+--------------------------------------------------------------------------------
+Path A - user-mode injector into r5apex_dx12.exe (today's default):
+  - Must survive ACG: RW alloc -> write -> attempt VirtualProtect(RX) -> on
+    failure fall back to PTE/NX manipulation -> then MDL/VAD-less mapping.
+  - Must satisfy the "trusted module" expectation [RE]: sign the DLL, keep the
+    IAT minimal (already true: only d3d11/kernel32/user32 after the d3d9 +
+    d3dcompiler removal), and choose deliberately between "be a normal module"
+    (visible, clean) and "be unbacked" (invisible, needs ghost-stomp hygiene).
+  - Loader must detect ACG state in the target and select the strategy, instead
+    of hard-failing like the UC author did.
+Path B - kernel driver (apexdrv) as read/comm layer:
+  - kdmapper-only presence is now a medium risk. 2026 direction: EV cert ->
+    attestation-signed driver (no HLK needed) -> normal service load, so it
+    passes HVCI/Secure Boot/VBS cleanly and is off the "unbacked" hook.
+  - Keep comm off IOCTL-dispatch hooks: shared memory section is the community
+    norm and the easiest to keep clean.
+  - Implement BOTH read primitives: (i) physical + PML4-walk (CR3-abuse-proof),
+    (ii) attach-process/section path as a fast case when CR3 is not moved.
+  - Also budget for the Javelin ERROR #119 denylist: a *vulnerable driver* used
+    as a loader (e.g. iqvw64e.sys style) can be denylisted by name — the loader
+    must be able to switch exploit drivers.
+
+--------------------------------------------------------------------------------
+5. QUESTIONS WE MUST ANSWER BY TESTING (NOT BY GOSSIP)
+--------------------------------------------------------------------------------
+Q1. Does ACG really reject PAGE_EXECUTE allocations in the CURRENT build, on
+    which Windows builds, and with/without HVCI enabled?
+Q2. Is a minimal-IAT unsigned DLL enough for the "trusted" expectation, or is
+    signing mandatory post-Javelin?
+Q3. Does a manual-mapped module get flagged faster than a normally loaded one?
+Q4. Reproduce "game exits with idle driver loaded"; does ghost-stomp mapping +
+    no dispatch hook clear it?
+Q5. Does the current Apex build actually manipulate CR3 (compare
+    EPROCESS.DirectoryTableBase against a PML4-walk-derived CR3)?
+Q6. Which clean/unsigned driver loaders are currently NOT denylisted (#119)?
+
+MEASURED ANSWERS (2026-10-26, our own harness, live r5apex_dx12.exe) live in
+docs\PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt: OpenProcess with full
+injector rights SUCCEEDS when elevated; ReadProcessMemory, module enumeration
+(tasklist/psapi/Toolhelp all report N/A or 0), VirtualAllocEx, VirtualProtectEx,
+NtAllocateVirtualMemory, NtMapViewOfSection, NtCreateThreadEx and QueueUserAPC
+all FAIL against the live target. => the access layer, not the method choice, is
+what blocks the user-mode ladder today. New questions Q7-Q10 there.
+
+[LOCAL] READ OFF THIS MACHINE 2026-10-26 (registry + disk, not community reports):
+  userspace Javelin root = C:\Program Files\EA\AC\ (EAAntiCheat.GameService.exe
+  v1.0.16199215.0, service EAAntiCheatService, LocalSystem, RUNNING, session 0).
+  Its KERNEL component is a FILE-SYSTEM MINIFILTER: service "EAAntiCheat", Type=2,
+  Group "FSFilter Activity Monitor", Altitude 363250, DependOnService FltMgr,
+  ImagePath system32\drivers\eaanticheat.sys - and `sc query` says RUNNING while
+  that .sys does NOT exist on disk (deleted after load; Win32_SystemDriver does not
+  even list the service).  So on this box the AC kernel layer watches FILE I/O, not
+  memory: a plain driver of ours does not collide with it, but every image read from
+  disk is observable at that altitude (relevant to ERROR #119 and to file-backed vs
+  unbacked mapping).
+  The install is DX12-ONLY (no r5apex.exe) and r5apex_dx12.exe statically imports
+  ONE module, Core/Activation64.dll; d3d12.dll and dxgi.dll are resolved
+  dynamically and "d3d11" appears NOWHERE in the game image.  The folder also holds
+  "baeleys game.exe", a byte-identical copy of the game image (both facts forced
+  code changes; see the measurement doc sections 8-9).
+
+================================================================================
+END OF JAVELIN 2026 REALITY FILE
+================================================================================
+

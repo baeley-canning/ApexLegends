@@ -1,0 +1,760 @@
+KNOWLEDGE BASE: ANTI-CHEAT ARCHITECTURE
+
+Purpose:
+Educational technical reference for understanding modern game
+anti-cheat systems, their architectural layers, detection signals,
+trust models, client security, server-side validation, machine
+learning, hardware security, and defensive engineering.
+
+This document describes anti-cheat systems from a defensive and
+research perspective. It should be used to understand how defenses
+work, their assumptions, strengths, weaknesses, and trade-offs.
+
+---
+
+1. WHAT ANTI-CHEAT ACTUALLY IS
+
+---
+
+Anti-cheat is not one mechanism.
+
+A modern anti-cheat system is usually a collection of controls
+operating at several levels:
+
+client integrity
++
+operating-system security
++
+process/module integrity
++
+kernel security
++
+hardware trust
++
+network/server validation
++
+behavioral analytics
++
+machine learning
++
+account and identity systems
+
+The overall objective is to determine whether gameplay is consistent
+with an allowed and trustworthy execution environment.
+
+A useful mental model is:
+
+PLAYER MACHINE
+v
+CLIENT INTEGRITY
+v
+SYSTEM INTEGRITY
+v
+GAMEPLAY TELEMETRY
+v
+SERVER VALIDATION
+v
+BEHAVIOURAL ANALYSIS
+v
+RISK / EVIDENCE
+v
+ENFORCEMENT
+
+---
+
+2. CLIENT-SIDE ANTI-CHEAT
+
+---
+
+Client-side anti-cheat runs on or alongside the player's machine.
+
+Its responsibilities may include:
+
+* checking process state
+* checking loaded modules
+* validating executable integrity
+* identifying unexpected modifications
+* checking driver state
+* monitoring protected components
+* collecting security telemetry
+* participating in secure communication with backend systems
+
+Client-side systems are useful because the client can observe
+information unavailable to the server.
+
+However, the client is also an untrusted environment.
+
+The fundamental security problem is:
+
+"The defender is trying to measure a machine controlled by the person
+being measured."
+
+---
+
+3. USER-MODE VERSUS KERNEL-MODE
+
+---
+
+User-mode software operates with normal application privileges.
+
+Kernel-mode software operates at the operating-system kernel level.
+
+Kernel-level anti-cheat can observe or protect against classes of
+activity that user-mode software cannot reliably observe.
+
+Riot Vanguard publicly documents a client plus kernel-mode driver
+architecture.
+
+BattlEye publicly describes user-mode and kernel-mode scanning and
+dynamic detection mechanisms.
+
+Therefore modern anti-cheat architecture cannot be understood purely
+as an application-level scanner.
+
+---
+
+4. WHY KERNEL SECURITY EXISTS
+
+---
+
+A simplified trust hierarchy is:
+
+APPLICATION
+v
+USER MODE
+v
+KERNEL
+v
+HARDWARE / BOOT TRUST
+
+If protection exists only at the application level, a sufficiently
+privileged component underneath that protection may be able to
+interfere with the observations.
+
+This leads to a classic security principle:
+
+The observer must itself be protected from the observed environment.
+
+This is one reason competitive anti-cheat products increasingly use
+kernel-level components.
+
+---
+
+5. BOOT-TIME TRUST
+
+---
+
+A deeper security architecture starts establishing trust before the
+game itself launches.
+
+Relevant technologies include:
+
+* Secure Boot
+* TPM
+* measured boot
+* driver attestation
+* code signing
+* virtualization-based security
+* memory integrity
+* IOMMU / DMA protection
+
+These mechanisms attempt to establish a trusted chain from system
+startup onward.
+
+The goal is not merely:
+
+"Is the game process clean right now?"
+
+but:
+
+"Did the system begin and remain in a sufficiently trustworthy state?"
+
+---
+
+6. DRIVER SECURITY
+
+---
+
+Modern anti-cheat systems are concerned with vulnerable or
+unauthorized drivers because a driver can have powerful access to
+system resources.
+
+Defensive mechanisms can therefore include:
+
+* driver allowlists
+* vulnerable-driver blocklists
+* driver integrity verification
+* signed-driver requirements
+* runtime driver monitoring
+* boot-time trust measurements
+
+Riot's 2026 Vanguard documentation describes a local vulnerable-driver
+blocklist and Microsoft's Runtime Driver Attestation mechanism as
+additional ways of determining what drivers entered the system.
+
+FACEIT publicly documents driver restrictions and hardware security
+requirements.
+
+---
+
+7. DMA AND HARDWARE TRUST
+
+---
+
+DMA stands for Direct Memory Access.
+
+Hardware with DMA capabilities can potentially access system memory
+without behaving like a conventional user-mode application.
+
+This creates a different threat model from ordinary software cheats.
+
+IOMMU provides memory-access isolation for devices.
+
+FACEIT publicly documents IOMMU / DMA protection as part of its
+anti-cheat security architecture.
+
+This illustrates an important principle:
+
+Security can be moved downward into hardware and platform mechanisms
+rather than relying entirely on application-level inspection.
+
+---
+
+8. PROCESS INTEGRITY
+
+---
+
+Traditional anti-cheat systems may inspect:
+
+* process structure
+* executable integrity
+* loaded modules
+* memory regions
+* permissions
+* thread state
+* unusual execution patterns
+
+The defensive objective is to identify evidence that the program's
+expected execution environment has been altered.
+
+Integrity verification can occur at:
+
+startup
++
+runtime
++
+periodic intervals
++
+event-triggered checks
+
+---
+
+9. MEMORY INTEGRITY
+
+---
+
+Memory integrity mechanisms attempt to identify unexpected changes to
+important code or data.
+
+Conceptual approaches include:
+
+* code hashing
+* integrity checksums
+* protected memory regions
+* validation of executable pages
+* consistency checks
+
+The important architectural concept is:
+
+EXPECTED STATE
+v
+COMPARE
+v
+OBSERVED STATE
+v
+EVIDENCE
+
+Integrity checks are only useful when the reference state itself can
+be trusted.
+
+---
+
+10. STATIC SIGNATURES VERSUS BEHAVIOURAL DETECTION
+
+---
+
+Signature detection attempts to identify known artifacts.
+
+Examples include:
+
+known files
+known binaries
+known module patterns
+known vulnerable drivers
+known software fingerprints
+
+Behavioural detection instead asks:
+
+"Does this system behave like cheating software?"
+
+This is more general but also more difficult because legitimate
+software can exhibit unusual behavior.
+
+Modern anti-cheat systems often combine both.
+
+---
+
+11. HEURISTIC DETECTION
+
+---
+
+A heuristic is a rule or statistical test that identifies suspicious
+patterns without requiring an exact signature.
+
+Examples of defensive signal categories include:
+
+* anomalous process interaction
+* unusual memory access
+* unexpected driver relationships
+* abnormal input patterns
+* suspicious execution sequences
+* improbable gameplay behavior
+
+Heuristics are useful against previously unseen variants.
+
+They can also generate false positives.
+
+---
+
+12. SERVER-SIDE VALIDATION
+
+---
+
+The server has an important advantage:
+
+It can observe information generated by many players and can often
+treat the server's own simulation state as authoritative.
+
+Server-side systems can validate things such as:
+
+* movement
+* fire rate
+* weapon state
+* damage
+* impossible transitions
+* impossible positions
+* impossible resource changes
+
+The principle is:
+
+TRUST WHAT THE SERVER KNOWS
+rather than
+TRUST WHAT THE CLIENT CLAIMS
+
+This is especially important for gameplay properties that can be
+validated mathematically.
+
+---
+
+13. SERVER-OWNED EVIDENCE
+
+---
+
+The strongest evidence often comes from events the attacker cannot
+fully control.
+
+Conceptual examples:
+
+SERVER STATE
++
+SERVER EVENTS
++
+NETWORK EVENTS
+v
+RECONSTRUCTION
+
+This can produce evidence independently of what a client displays.
+
+This is one reason server-authoritative design is valuable even when
+client-side anti-cheat exists.
+
+---
+
+14. BEHAVIOURAL ANTI-CHEAT
+
+---
+
+A behavioural system evaluates how a player behaves rather than only
+what software exists on the machine.
+
+Potential feature categories include:
+
+* reaction timing
+* aiming trajectories
+* target acquisition patterns
+* movement consistency
+* input timing
+* shot timing
+* target switching
+* long-term statistical patterns
+
+The objective is to identify behavior that is statistically unusual
+or inconsistent with normal human play.
+
+---
+
+15. HUMAN INPUT DETECTION
+
+---
+
+A current example is FACEIT's publicly documented Human Input Detection.
+
+FACEIT describes it as a machine-learning layer that evaluates player
+actions rather than relying solely on the software being used.
+
+FACEIT says the system is trained using match data and high-ranked
+human players and is designed to identify machine-like behavior,
+including previously unseen cheat approaches.
+
+This is an important architectural development because detection is
+moving from:
+
+"Have we seen this cheat?"
+
+toward:
+
+"Does this behavior resemble legitimate human input?"
+
+---
+
+16. MACHINE LEARNING IN ANTI-CHEAT
+
+---
+
+ML can be used for:
+
+classification
+anomaly detection
+sequence analysis
+risk scoring
+trajectory analysis
+clustering
+player-behavior modelling
+
+A generic pipeline is:
+
+RAW TELEMETRY
+v
+FEATURE EXTRACTION
+v
+MODEL
+v
+RISK SCORE
+v
+REVIEW / ENFORCEMENT
+
+The model should not necessarily make the final ban decision.
+
+A safer architecture often separates:
+
+evidence
+from
+decision.
+
+---
+
+17. FALSE POSITIVES
+
+---
+
+Anti-cheat operates under uncertainty.
+
+An unusual player is not necessarily a cheater.
+
+Potential causes of unusual behavior include:
+
+* exceptional skill
+* hardware differences
+* unusual peripherals
+* accessibility devices
+* network conditions
+* game-specific quirks
+* rare legitimate play styles
+
+Therefore evidence should ideally be:
+
+multi-signal
+persistent
+contextual
+reviewable
+
+rather than based on one unusual event.
+
+---
+
+18. RISK SCORING
+
+---
+
+A modern system can combine multiple weak signals.
+
+Conceptually:
+
+SIGNAL A
++
+SIGNAL B
++
+SIGNAL C
++
+SIGNAL D
+v
+RISK MODEL
+v
+CASE / ACTION
+
+The exact weighting is implementation-specific.
+
+An important principle is that weak signals can become powerful when
+they are correlated.
+
+---
+
+19. DELAYED ENFORCEMENT
+
+---
+
+Anti-cheat does not necessarily have to reveal exactly when a
+detection occurs.
+
+Possible enforcement timing models include:
+
+immediate
+delayed
+batch
+post-match
+post-investigation
+
+Delayed enforcement can make behavioral analysis more difficult for
+attackers to interpret because the relationship between an action and
+a resulting punishment becomes less obvious.
+
+---
+
+20. ACCOUNT AND IDENTITY LAYERS
+
+---
+
+Anti-cheat increasingly extends beyond a single game process.
+
+Relevant concepts include:
+
+* account reputation
+* hardware linkage
+* device identity
+* account similarity
+* ban-evasion detection
+* multi-account detection
+* behavioral history
+
+FACEIT publicly documents account-similarity and hardware/security
+requirements in competitive contexts.
+
+This means the anti-cheat problem increasingly includes:
+
+"Who is operating this environment?"
+
+not simply:
+
+"Is this executable suspicious?"
+
+---
+
+21. TRUSTED COMPUTING
+
+---
+
+Modern anti-cheat increasingly intersects with trusted-computing
+principles.
+
+Important concepts include:
+
+* Secure Boot
+* TPM
+* measured boot
+* attestation
+* IOMMU
+* virtualization-based security
+* memory integrity
+* signed drivers
+
+These technologies attempt to make important parts of the machine's
+security state independently verifiable.
+
+---
+
+22. PROACTIVE VERSUS REACTIVE DEFENSE
+
+---
+
+Reactive defense:
+
+detect something after it appears.
+
+Proactive defense:
+
+make important attack paths unavailable in the first place.
+
+BattlEye publicly describes a proactive protection model combined with
+dynamic detection.
+
+This produces a useful distinction:
+
+PREVENT
+versus
+DETECT
+versus
+INVESTIGATE
+versus
+ENFORCE
+
+A mature system uses all four.
+
+---
+
+23. THE ANTI-CHEAT DEFENSIVE STACK
+
+---
+
+A useful conceptual architecture is:
+
+BOOT TRUST
+v
+OS SECURITY
+v
+KERNEL SECURITY
+v
+CLIENT INTEGRITY
+v
+GAME TELEMETRY
+v
+SERVER VALIDATION
+v
+BEHAVIOURAL ML
+v
+ACCOUNT / DEVICE GRAPH
+v
+EVIDENCE
+v
+ENFORCEMENT
+
+No single layer should be assumed to solve the entire problem.
+
+---
+
+24. THE SECURITY ARMS RACE
+
+---
+
+Cheats evolve.
+
+Anti-cheat evolves.
+
+Therefore anti-cheat should be treated as an adversarial system:
+
+ATTACK
+v
+DEFENSE
+v
+ADAPTATION
+v
+NEW ATTACK
+v
+NEW DEFENSE
+
+A detector that only recognises yesterday's cheat will eventually
+become obsolete.
+
+---
+
+25. CURRENT TREND
+
+---
+
+The field is increasingly moving toward layered trust.
+
+Examples publicly documented by current anti-cheat vendors include:
+
+* kernel-mode monitoring
+* secure boot requirements
+* TPM / attestation
+* IOMMU / DMA protection
+* vulnerable-driver blocking
+* server-side validation
+* machine-learning behavioral analysis
+* account and device correlation
+
+The important architectural trend is that anti-cheat is becoming a
+general security system rather than merely a "cheat scanner."
+
+---
+
+26. FINAL MENTAL MODEL
+
+---
+
+The modern anti-cheat problem can be represented as:
+
+```
+         IS THE MACHINE TRUSTWORTHY?
+                     +
+         IS THE CLIENT INTEGRAL?
+                     +
+         IS THE GAME STATE VALID?
+                     +
+         IS THE BEHAVIOR HUMAN/LEGITIMATE?
+                     +
+         IS THE ACCOUNT CONSISTENT?
+                     v
+                  EVIDENCE
+                     v
+                ENFORCEMENT
+```
+
+The strongest anti-cheat systems combine independent sources of
+evidence rather than relying on a single detector.
+
+---
+
+27. THREE AXES THAT PLACE ANY ANTI-CHEAT PRODUCT
+
+---
+
+The mental model above describes what a system checks.
+Three axes describe where any particular product sits:
+* TIMING - when the privileged observer loads: at boot and resident, or
+  with the game and scoped to it.
+* TRUST - what the system ultimately trusts: hardware and boot
+  measurements, or its own kernel module and backend.
+* OWNERSHIP - who builds and runs it: a third-party vendor serving many
+  titles, or the publisher itself as a first-party system.
+These axes cut across the layers in section 23 rather than replacing
+them.
+Timing decides how much of the session the observer can account for.
+A boot-resident observer, as in Riot Vanguard, has a baseline that
+predates the game.
+A game-scoped observer, as in EA Javelin, which self-uninstalls when no
+protected game remains, sees only from launch.
+Trust decides how hard the evidence is to forge.
+Anchoring on hardware and boot state (TPM, Secure Boot, attestation) is
+stronger than trusting software the attacker may already control.
+Ownership decides how the system is tuned and funded.
+A first-party system, as in Riot Vanguard or EA Javelin, can fuse
+detection with the publisher's own account and matchmaking data.
+A third-party vendor, as in BattlEye or Easy Anti-Cheat, brings scale
+and cross-platform reach instead.
+Placing a product on these three axes explains its behaviour without
+knowing its internals.
+It also predicts where the field is heading: toward earlier loading and
+hardware-backed trust.
+The axes do not change the final model.
+They tell you which version of the model you are looking at.

@@ -1,0 +1,8 @@
+Oracle VirtualBox Command Line Management Interface Version 7.2.22
+Copyright (C) 2005-2026 Oracle and/or its affiliates
+
+VBoxManage.exe: error: Incorrect number of parameters
+
+Usage - Change global settings:
+
+  VBoxManage setproperty <property-name> <property-value>

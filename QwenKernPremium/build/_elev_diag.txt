@@ -1,0 +1,9 @@
+﻿== diag 13:16:49 ==
+A-pid 21288 gone
+probe-exists(before)=False
+A2 pid=28256 hasExited=True
+A2 exitcode=0
+A2 probe-exists=True
+C: EXCEPTION Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))
+C: output-file=False
+diag done

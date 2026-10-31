@@ -1,0 +1,19 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[*] Nothing to forget (C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.launcher.ini)
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] No sticky rung on this machine; ladder starts at the top
+[i] B3 (kernel) will SKIP: driver not staged (apexdrv.sys)
+[*] 4 rung(s), target PID 4376, payload apexcheat.dll
+    verdict rule: a rung only counts when apexcheat.dll is in the target's module list
+[1/4] A3 APC Queue (IMPERSONATE)
+[*] Injection strategy: A3 APC Queue (IMPERSONATE)
+[+] APC Queue injection SUCCESS ΓÇö Thread ID: 3760
+[+] DLL will load when target thread reaches alertable state
+       PASS : apexcheat.dll present at 0x0000000000000000 (thread 3760, visible after 47 ms)
+       sticky: A3 remembered (C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.launcher.ini)
+[+] Verified rung: A3 APC Queue (IMPERSONATE) (A3)
+EXIT=0

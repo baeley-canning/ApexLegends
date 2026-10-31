@@ -1,0 +1,81 @@
+KNOWLEDGE BASE: CONTROL THEORY AND SYSTEM IDENTIFICATION
+
+1. CONTROL PROBLEM
+A controller moves a system toward a desired state.
+error = desired state - current state
+
+2. FEEDBACK
+A feedback system repeatedly measures, compares, acts, and measures again.
+
+3. OPEN LOOP
+Open-loop control produces an action without using the resulting state to correct itself.
+
+4. CLOSED LOOP
+Closed-loop control is:
+command -> action -> measurement -> error -> correction -> action
+
+5. PROPORTIONAL CONTROL
+u = Kp * error
+Large error produces a larger correction. P control is simple but may leave steady-state error or produce overshoot/oscillation.
+
+6. INTEGRAL CONTROL
+Integral control accumulates past error to reduce persistent steady-state error. Accumulation can cause integral windup when the system cannot immediately respond.
+
+7. ANTI-WINDUP
+Anti-windup limits or manages integral accumulation.
+
+8. DERIVATIVE CONTROL
+Derivative control responds to the rate of change of error:
+D is proportional to change in error / change in time
+It can provide damping but is sensitive to noisy measurements.
+
+9. PID
+PID combines proportional, integral, and derivative terms. In discrete time, derivative calculations should account for the sampling interval unless time is intentionally normalised.
+
+10. FILTERING
+An additional EMA or low-pass filter may be applied after PID. It is a separate filter, not part of the PID equations.
+
+11. DEADBAND
+A deadband ignores sufficiently small errors to reduce unnecessary control activity.
+
+12. SATURATION
+Real actuators have limits. Controllers may be constrained by maximum output, velocity, or acceleration.
+
+13. OVERSHOOT
+Overshoot occurs when the system passes beyond the desired state. Causes can include high gains, excess integral, insufficient damping, latency, and system inertia.
+
+14. OSCILLATION
+Repeated movement around the desired state can arise from high gains, latency, poor damping, or noisy observations.
+
+15. SETTLING TIME
+Settling time measures how long a system takes to remain within an acceptable range around the desired state.
+
+16. LATENCY
+A controller acting on old information can lose stability or responsiveness. Sensing and processing latency should therefore be part of system analysis.
+
+17. SYSTEM IDENTIFICATION
+System identification learns the behaviour of a system from observed input/output relationships:
+input -> system -> output
+
+18. STATE DYNAMICS
+A general model is:
+x_(t+1) = f(x_t, u_t)
+where x is state and u is control input.
+
+An observation model is:
+y_t = h(x_t)
+
+19. MODEL PREDICTIVE CONTROL
+MPC uses a model to simulate future outcomes of possible actions and choose an action accordingly. It is more computationally demanding than basic PID.
+
+20. ADAPTIVE CONTROL
+Adaptive control changes controller behaviour as system parameters change.
+
+21. PID IS NOT MAGIC
+Having P/I/D terms does not automatically make a controller high quality. Performance depends on model correctness, gains, sampling rate, latency, noise, saturation, filtering, and system dynamics.
+
+22. CONTROL VERSUS PREDICTION
+Prediction estimates where a system or target is likely to be. Control decides what action should be taken.
+
+CORE PRINCIPLE:
+A controller should be evaluated experimentally rather than judged by the presence of familiar equations alone.

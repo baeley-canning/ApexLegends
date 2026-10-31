@@ -1,0 +1,17 @@
+﻿000012e3  483b1dbe5d0000         cmp     rbx, qword ptr [rip + 0x5dbe]
+000014fe  81fb00000070           cmp     ebx, 0x70000000
+00001536  81fb00000020           cmp     ebx, 0x20000000
+00001c75  3d230000c0             cmp     eax, 0xc0000023                 ; imm 0xc0000023
+00002383  81f96e74656c           cmp     ecx, 0x6c65746e
+0000238f  81fa696e6549           cmp     edx, 0x49656e69
+00002584  4881f9ffff0000         cmp     rcx, 0xffff
+000025b7  4881f90000800c         cmp     rcx, 0xc800000
+000041f8  83feff                 cmp     esi, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+0000483b  83f8ff                 cmp     eax, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+00004883  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+000048ef  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+000048f4  833d853700002a         cmp     dword ptr [rip + 0x3785], 0x2a
+00004935  48390dd4270000         cmp     qword ptr [rip + 0x27d4], rcx
+00004977  483dffffff7f           cmp     rax, 0x7fffffff
+00004a20  483b0d29260000         cmp     rcx, qword ptr [rip + 0x2629]
+00004bc0  4981f900100000         cmp     r9, 0x1000

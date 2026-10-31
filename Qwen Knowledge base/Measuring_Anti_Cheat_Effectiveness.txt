@@ -1,0 +1,145 @@
+KNOWLEDGE BASE: MEASURING ANTI-CHEAT EFFECTIVENESS
+
+Purpose:
+Explain how to judge whether an anti-cheat actually works: what
+"effective" means, why detection rate alone is misleading, and how to
+design honest measurement. It complements the numbered STATISTICS AND
+EXPERIMENTAL DESIGN and ADVERSARIAL AI AND CHEAT DETECTION.
+
+This document is reference knowledge. It describes measurement and
+evaluation from a defensive, engineering perspective, using publicly
+documented practice. It contains no instructions for defeating any
+system.
+
+Claims and designs change, so treat each statement as a documented
+CLAIM. Details are given "as of October 2026".
+
+Related documents: STATISTICS AND EXPERIMENTAL DESIGN, ADVERSARIAL AI AND
+CHEAT DETECTION, ANTI-CHEAT PRODUCTS AND SYSTEMS, BAN GOVERNANCE AND
+IDENTITY INTEGRITY, and the numbered technical series.
+
+---
+
+1. WHY MEASUREMENT IS HARD
+The thing being measured is adversarial and partly hidden.
+You cannot count cheats you never detect.
+Success is often invisible: nothing happens.
+This makes anti-cheat unusually hard to evaluate honestly.
+
+---
+
+2. WHAT "EFFECTIVE" MEANS
+Effectiveness is not one number.
+It includes detection, timeliness, fairness, and cost.
+A system can be strong on one axis and weak on another.
+Agreeing on the axes is the first step to measuring any of them.
+
+---
+
+3. DETECTION RATE AND ITS LIMITS
+Detection rate is how many known cheats are caught.
+Its denominator is always incomplete, because unknown cheats are
+excluded.
+A high rate against known cheats says little about unknown ones.
+It is a useful but narrow signal.
+
+---
+
+4. FALSE POSITIVES AND FALSE NEGATIVES
+False positives punish honest players; false negatives miss cheats.
+Both have costs, and they trade against each other.
+Tuning to reduce one usually raises the other.
+Reporting only one of them is a misleading summary.
+
+---
+
+5. THE COST ASYMMETRY
+A false positive can destroy a player's trust and career; a false
+negative lets a cheat last longer.
+The costs are not symmetric, so the acceptable balance is not a coin
+flip.
+Most systems rightly prefer to tolerate some misses over some false bans.
+Stating that preference is part of honest measurement.
+
+---
+
+6. LATENCY OF DETECTION
+How fast a cheat is caught matters as much as whether it is caught.
+A detection after months of damage is worth less than one in days.
+Ban-wave timing is a deliberate trade between speed and coverage.
+Detection latency is therefore a first-class metric.
+
+---
+
+7. ACCURACY CLAIMS AND WHAT THEY OMIT
+Vendors sometimes cite very high accuracy figures.
+Such figures usually describe a specific dataset, period, or task.
+They rarely state the false-positive rate in production or the unknown
+cheats missed.
+A claim is only as meaningful as its denominator and its scope.
+
+---
+
+8. GROUND TRUTH AND LABELS
+Measurement needs labels, and labels need certainty.
+Confirmed cheats come from bans, confessions, or forensic review.
+Unknown behaviour is unlabelled and biases every metric.
+Weak ground truth is the deepest limit of anti-cheat evaluation.
+
+---
+
+9. EVALUATION DESIGN
+Good evaluation states the population, the period, and the definition of
+a cheat.
+It separates training data from test data to avoid self-congratulation.
+It reports false positives and false negatives together.
+See the numbered STATISTICS AND EXPERIMENTAL DESIGN for the underlying
+principles.
+
+---
+
+10. CONTROLLED ROLLOUTS
+New detections are often tested on a controlled subset before wide use.
+This measures real-world impact while limiting harm from mistakes.
+Rollouts can be paused if false positives rise.
+Controlled deployment is measurement and safety at once.
+
+---
+
+11. DRIFT AND DECAY
+Cheats and players change, so a detector's accuracy decays over time.
+A model tuned to last year's cheats may be weak against this year's.
+Continuous monitoring and retraining are part of effectiveness, not
+extras.
+See ADVERSARIAL AI AND CHEAT DETECTION for drift in detail.
+
+---
+
+12. METRICS THAT MATTER
+Useful metrics include confirmed detections, confirmed false positives,
+time-to-detection, appeal-overturn rate, and coverage across cheat
+classes.
+Together they describe a system better than any single accuracy figure.
+Metrics should be published with their definitions and their limits.
+Honest metrics build more trust than impressive ones.
+
+---
+
+13. SUMMARY
+Anti-cheat is hard to measure because the target is adversarial and
+partly invisible.
+Effectiveness spans detection, timeliness, fairness, and cost, not one
+number.
+Detection rate omits unknown cheats, and false positives trade against
+false negatives.
+Accuracy claims are meaningful only with their denominator, scope, and
+false-positive rate.
+Weak ground truth and decay set the real limits of any evaluation.
+
+CORE PRINCIPLE:
+You cannot prove an anti-cheat works by counting the cheats it caught,
+because the ones that matter are the ones it never saw. Judge it on
+several axes at once - detections, false positives, time-to-detection,
+appeals, and coverage - and always ask what the number's denominator is.
+Honest measurement, including its own blind spots, is worth more than an
+impressive figure.

@@ -1,0 +1,9 @@
+﻿--- km include ---
+False
+False
+--- kits build ---
+False
+--- signtool candidates ---
+C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm64\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\arm64\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x86\signtool.exe
+--- vs ---
+C:\BuildTools\Common7;C:\BuildTools\DIA SDK;C:\BuildTools\ImportProjects;C:\BuildTools\Licenses;C:\BuildTools\MSBuild;C:\BuildTools\SDK;C:\BuildTools\Team Tools;C:\BuildTools\VB;C:\BuildTools\VC;C:\BuildTools\VC#;C:\BuildTools\Xml

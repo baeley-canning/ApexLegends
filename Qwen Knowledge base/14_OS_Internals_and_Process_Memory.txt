@@ -1,0 +1,211 @@
+KNOWLEDGE BASE: OPERATING SYSTEM INTERNALS AND PROCESS MEMORY
+
+Purpose:
+Educational technical reference for understanding how the operating
+system isolates processes, how one process can observe or modify
+another, and how the system and protective software can prevent that
+observation.
+
+This document is reference knowledge. It explains mechanisms, their
+purposes, and why certain channels are available or blocked. It is
+written from a defensive and engineering perspective.
+
+---
+
+1. WHY THIS MATTERS
+An external program that wants to act on another application has a
+choice of information channels.
+One family of channels reads the target's memory instead of its pixels.
+Understanding memory access explains why some observation methods are
+available and others are blocked.
+This is the counterpart to the visual channel described in the capture
+and overlay reference.
+
+---
+
+2. USER MODE VERSUS KERNEL MODE
+Modern operating systems run code at different privilege levels.
+User mode is where ordinary applications run; each process is isolated
+and cannot freely touch another process's memory.
+Kernel mode is where the operating system core and privileged drivers
+run; code here can touch almost anything.
+The boundary between them is the central security mechanism of the
+platform.
+
+---
+
+3. VIRTUAL ADDRESS SPACE
+Each process is given its own virtual address space.
+A virtual address is translated by the memory manager into a physical
+address.
+Two processes can hold the same numeric virtual address while referring
+to entirely different physical memory.
+Virtualization is what makes per-process isolation possible.
+
+---
+
+4. PROCESSES AND THREADS
+A process is a container: it owns an address space, handles, and other
+resources.
+Threads are the units that execute inside it and share its address
+space.
+An observer often cares about two processes at once: its own, and the
+target it wants to read.
+
+---
+
+5. HANDLES
+The operating system grants access to objects (processes, threads,
+files, sections, windows) through handles.
+A handle is an indirection; it carries a set of granted rights such as
+read, write, or query.
+Without a suitable handle to the target process, most memory operations
+cannot even be attempted.
+
+---
+
+6. READPROCESSMEMORY AND WRITEPROCESSMEMORY
+The documented user-mode APIs for cross-process memory access are
+ReadProcessMemory and WriteProcessMemory.
+They require a handle with PROCESS_VM_READ or PROCESS_VM_WRITE.
+They copy bytes between the caller's buffer and the target's virtual
+address space.
+These calls are ordinary, well-known, and therefore heavily monitored.
+
+---
+
+7. THE PROCESS ENVIRONMENT BLOCK
+The PEB is a user-mode structure inside each process that the loader
+maintains.
+It contains process parameters, the loaded module list, environment, and
+other bookkeeping.
+Because it is in the target's address space, reading it requires the
+same access as reading memory generally.
+Its contents describe the process rather than any single secret.
+
+---
+
+8. MODULES, BASE ADDRESSES, AND OFFSETS
+A module is a loaded image such as the executable or a DLL.
+Each module has a base address in the target's address space.
+Because layouts are not fixed, useful values are often addressed as a
+base address plus a fixed offset, or by following a chain of pointers.
+
+---
+
+9. ADDRESS SPACE LAYOUT AND ASLR
+Address space layout randomization deliberately varies where modules and
+structures are placed on each run.
+It raises the effort required to hardcode addresses.
+It is one of several layers that make cross-process access fragile and
+observable rather than trivial.
+
+---
+
+10. WHY MEMORY READING IS A CHANNEL
+Reading the target's memory yields structured state directly: positions,
+health, entity lists, and other values that pixels only reveal
+indirectly.
+For many tasks this is a stronger channel than vision, because it needs
+no perception model.
+That strength is exactly why it is the most defended channel.
+
+---
+
+11. PROCESS PROTECTION
+The operating system can mark a process as protected.
+A lightweight form forbids handle access from unprotected processes.
+A stronger form also restricts which drivers may access and modify it.
+When a process is protected, ordinary ReadProcessMemory against it fails
+even though the same call would succeed against an unprotected target.
+
+---
+
+12. HANDLE STRIPPING
+Rather than refusing the handle outright, the kernel can grant a handle
+with reduced rights.
+The caller believes it holds a handle, but the requested access has been
+removed.
+This produces failures that look like permission errors deep inside
+otherwise-correct code.
+
+---
+
+13. WHY ANTI-CHEAT USES PROTECTION
+If the valuable channel is structured state, an effective defense is to
+put that state behind a protection boundary.
+Protecting the game process denies the memory channel to ordinary
+observers without changing the game itself.
+It is a protection of the target, not an attack on the observer.
+
+---
+
+14. WHY ANTI-CHEAT HIDES WINDOWS
+Hiding a window from capture protects the visual channel for the same
+reason.
+The two defenses target two different channels and can coexist; a system
+may see neither the pixels nor the memory.
+Protecting the pixels and protecting the state are separate decisions.
+
+---
+
+15. INTEGRITY AND TAMPER DETECTION
+Beyond denying access, a defender can detect that access was attempted
+or that its own code changed.
+Code signing, self-checks, and monitoring of sensitive APIs all serve
+this purpose.
+Detection and prevention are different goals and are often combined.
+
+---
+
+16. WHY THE VISUAL CHANNEL IS OFTEN CHOSEN
+An external vision system reads rendered pixels through a capture API.
+It opens no handle to the target, writes nothing to it, and modifies no
+process.
+Because it is read-only and external, it does not trip the defenses that
+guard memory, and it does not require those defenses to be defeated.
+This is why vision is selected only when structured state is
+unavailable: not because it is easier, but because it is the remaining
+channel.
+
+---
+
+17. COMPARING THE CHANNELS
+memory: structured, direct, requires cross-process access, defended by
+isolation and process protection.
+network: structured, travels between machines, defended by encryption
+and server validation.
+pixels: unstructured, read-only, external, defended by display affinity.
+input: indirect and coarse, defended by validation of the resulting
+behavior.
+Each channel pairs with a distinct family of defenses.
+
+---
+
+18. DIAGNOSING A BLOCKED CHANNEL
+When access fails, identify which call failed and with what error.
+Access denied on an open call usually indicates protection or rights.
+A successful open followed by zero bytes read suggests address or layout
+errors.
+A failure that appears only against one process indicates a per-process
+protection.
+Naming the failing boundary is the first step of any diagnosis.
+
+---
+
+19. SUMMARY
+Isolation, handles, and process protection exist to keep processes from
+freely reading one another.
+Those same mechanisms determine whether an external observer can obtain
+structured state.
+When they succeed, the memory channel is closed, and any external system
+must fall back to a channel the operating system still exposes.
+
+CORE PRINCIPLE:
+Memory is the strongest and most defended information channel. Process
+isolation, handle rights, and protected processes exist to deny
+cross-process access, and protective software uses them deliberately.
+An external observer that cannot obtain a handle is not defeated by a
+bug; it is being correctly excluded. Distinguish "the API returned an
+error" from "the channel is closed by design," and identify the channel
+before reasoning about capability.

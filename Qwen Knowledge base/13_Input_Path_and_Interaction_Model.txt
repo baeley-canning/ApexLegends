@@ -1,0 +1,151 @@
+KNOWLEDGE BASE: THE INPUT PATH AND INTERACTION MODEL
+
+Purpose:
+Educational reference for how user input travels from a physical device
+to an application, how the operating system routes mouse and keyboard
+events, and how that path determines what an interactive or assistive
+program can observe and produce.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive and engineering perspective.
+
+---
+
+1. WHY THE INPUT PATH MATTERS
+A closed loop needs an output as well as an input.
+An interactive program reads input and produces output; an automated or
+assistive one reads the world and produces input.
+Understanding where input is generated, how it is sampled, and how it is
+delivered explains both the precision that is physically possible and
+the points at which the operating system or a game can observe,
+validate, or reject it.
+Input is the channel the user controls directly, and it is the one the
+server can most easily check for plausibility.
+
+---
+
+2. THE PHYSICAL LAYER
+Input begins at a device: a mouse, keyboard, gamepad, or touch surface.
+The device reports discrete events - movement deltas, button states, key
+transitions - at a rate set by the device, not the application.
+A higher polling rate means more, smaller reports each second; a lower
+one means coarser, lumpier motion.
+The application never sees the physical signal; it sees what the
+operating system chose to deliver, which is already a processed and
+rate-controlled view.
+
+---
+
+3. HOW THE OS SAMPLES AND COALESCES
+Between the device and the application, the operating system samples and
+may coalesce motion.
+Mouse movement is often reported as accumulated deltas since the last
+read, which means the application can be told "this much motion
+happened" rather than "the pointer is now here".
+This is why reading mouse state at a low rate loses detail: the
+individual deltas are summed and only the total is visible.
+
+---
+
+4. THE TWO WINDOWS INPUT MODELS
+An application receives input in one of two broad ways:
+* the classic message model, where input is posted to the focused or
+  hovered window and delivered through the message queue.
+* the raw input model, where the application registers for device data
+  and receives it with less filtering and no dependence on focus.
+The message model routes input by which window is active or under the
+cursor; the raw model gives the application device-level events directly.
+The choice determines both what the program can see and how much the
+windowing state (focus, z-order) affects it.
+
+---
+
+5. SYNTHESISED VERSUS PHYSICAL INPUT
+Not all input originates at a device.
+An application can inject input, and injected input travels a different
+path from physical input.
+The distinction matters because physical and synthesised events can be
+distinguished, attributed, and validated differently, and because the
+server can reason about whether the resulting behaviour is
+human-plausible regardless of where the events came from.
+
+---
+
+6. CURSOR, CLIPPING, AND CAPTURE
+The on-screen pointer is often drawn by the system above the
+application, not by the application itself.
+Consequences:
+* a capture may or may not include the pointer, depending on the API.
+* the pointer may be clipped or drawn separately from the frame.
+* some capture paths report the pointer position as separate data.
+A program that needs the true on-screen pointer must account for where
+it is drawn and whether its capture path included it.
+
+---
+
+7. POINTER ACCELERATION AND SENSITIVITY
+Between the sensor and the game, mouse motion is frequently transformed:
+* an acceleration curve maps fast motion to more motion per count.
+* a sensitivity multiplier scales the result.
+* dead zones and smoothing alter small or noisy motion.
+The application receives the transformed result, so raw device counts and
+on-screen movement are not linearly related.
+This is why the same physical motion produces different in-game movement
+across settings, and why reasoning about precision must account for the
+transformation, not the raw sensor.
+
+---
+
+8. INPUT PRECISION AND THE HUMAN FACTOR
+Input is ultimately constrained by the person and the device:
+* sensor resolution and polling rate bound the finest achievable motion.
+* human motor noise and reaction time bound the fastest achievable
+  correction.
+* the transformation chain (acceleration, sensitivity) bounds the mapping
+  from intent to result.
+These bounds are why "is it human?" is a meaningful question: human input
+has characteristic limits and noise, and behaviour that violates them -
+impossibly fast, impossibly precise, impossibly consistent - is a signal
+the server can reason about.
+
+---
+
+9. INPUT AS A CHANNEL
+Among the information channels, input is unusual: it is the one the user
+controls directly and the one the server can validate for plausibility
+without seeing the machine.
+It is coarse (mouse deltas, key states), indirect (already transformed by
+the platform), and synthesizable (a program or a device can produce it).
+Each of those properties shapes both what an assistive system can do and
+how a defense reasons about it.
+
+---
+
+10. THE WEAKEST SIGNAL AND THE HARDEST TO FORGE WELL
+Producing input is easy; producing input that looks human is hard.
+A single event proves nothing, but a pattern of events carries human
+signatures: reaction times, correction patterns, micro-imperfections, and
+consistency limits.
+This is why input-based defenses are statistical rather than signature
+based, and why they judge behaviour over time rather than any one event.
+
+---
+
+11. SUMMARY
+Input flows from a device, through platform sampling and transformation,
+to whichever window or raw-input path the application uses.
+The application sees a processed view, and that view can also be produced
+by software or hardware rather than a person.
+The path determines the precision physically available and the point at
+which a game or server can observe, validate, or reject what it receives.
+
+CORE PRINCIPLE:
+Input is the user's channel and the server's best cross-check. It is easy
+to generate and hard to generate convincingly: the platform has already
+transformed it, and the human characteristics appear only in aggregate.
+Judge the behaviour, not the event, and remember that the raw precision a
+device allows and the precision a person can produce are two different
+ceilings.
+
+---

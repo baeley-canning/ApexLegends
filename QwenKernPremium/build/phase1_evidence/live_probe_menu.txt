@@ -1,0 +1,62 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[*] AG measurement harness (target PID 11996)
+pid=11996 image=r5apex_dx12.exe base=0x0 modules=0
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown[*] reference integrity:
+    image            :  (NOT the expected r5apex_dx12.exe)
+    module base      : 0x0 (NOT a readable PE image)
+    modules in target: 0
+    render modules   : d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown
+    [!] module snapshot EMPTY (OpenProcess/TH32CS_SNAPMODULE denied):
+        every 'unknown' above is genuinely UNMEASURED, not absent ->
+        run the launcher ELEVATED, otherwise every verdict below is
+        meaningless
+==========================================================================
+ACG / INJECTION PROBE REPORT - ACG measurement
+==========================================================================
+environment:
+pid=11996 image=r5apex_dx12.exe base=0x0 modules=0
+os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown
+
+probes:
+  [FAIL] I0_inventory           module inventory / reference integrity
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: image=r5apex_dx12.exe modules=0 d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown os=10.0 build 26200 hvci=unknown (key absent) | module list UNREADABLE: presence is unknown, not absent
+  [PASS] X1_open_process        OpenProcess with injector rights
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: handle acquired | rights: QUERY_LIMITED=OK VM_READ=OK VM_WRITE|VM_OP=OK CREATE_THREAD=OK injector(ALL)=OK 
+  [FAIL] X8_read_target         read target: PEB, module base, VirtualQueryEx
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+        detail: native=STATUS_SUCCESS peb=0x32C000 pebRead=no psapi=modules=0 base=none baseRead=no MZ=no VQE=ok protect=0x0 regionSize=0x0
+  [FAIL] X2_alloc_ex_rwx        VirtualAllocEx RWX in target
+        address=0x0 size=0x1000 status=STATUS_SUCCESS win32Err=87
+        detail: RWX remote allocation refused
+  [FAIL] X3_alloc_ex_rw_protect_rx VirtualAllocEx RW + VirtualProtectEx RX in target
+        address=0x0 size=0x1000 status=STATUS_SUCCESS win32Err=5
+        detail: RW remote allocation refused
+  [FAIL] X4_nt_alloc_ex         ntdll!NtAllocateVirtualMemory RWX in target
+        address=0x0 size=0x1000 status=0xC000000D win32Err=0
+        detail: NTSTATUS 0xC000000D
+  [FAIL] X5_section_map_execute map section RWX into target + execute there
+        address=0x0 size=0x1000 status=0xC000000D win32Err=0
+        detail: NtMapViewOfSection NTSTATUS 0xC000000D
+  [FAIL] X6_remote_thread       NtCreateThreadEx at kernel32!ExitThread
+        address=0x7FFD4865EE90 size=0x0 status=0xC0000022 win32Err=5
+        detail: NtCreateThreadEx NTSTATUS 0xC0000022
+  [FAIL] X7_apc_queue           QueueUserAPC into an existing target thread
+        address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=5
+        detail: QueueUserAPC failed (tid 21084)
+
+1/9 probes passed
+recommendation: no remote ALLOCATION primitive works => the user-mode ladder (A1/A2/A3) cannot run as written; put B3 (driver maps from kernel context) first and treat A7/A8 as gated until the allocation path opens. reads fail too => even an external overlay needs the driver. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+==========================================================================
+END OF PROBE REPORT
+==========================================================================
+[*] recommendation: no remote ALLOCATION primitive works => the user-mode ladder (A1/A2/A3) cannot run as written; put B3 (driver maps from kernel context) first and treat A7/A8 as gated until the allocation path opens. reads fail too => even an external overlay needs the driver. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+[*] measured 1/9 probe(s) passing
+[*] report written: C:\Users\NEWUSE~1\AppData\Local\Temp\apexcheat_acg_probe_target_22328_20261027_131803.txt

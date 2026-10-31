@@ -1,0 +1,102 @@
+﻿900:         return true;
+901:     }
+902:     if (normalized == "crt" || normalized == "createremotethread" || normalized == "baseline") {
+903:         method = InjectionMethod::CreateRemoteThread;
+904:         return true;
+905:     }
+906:     return false;
+907: }
+908: 
+909: void PrintUsage() {
+910:     printf("usage: apex_launcher.exe [options]\n\n");
+911:     printf("  --inject                 run the LADDER once and exit (default)\n");
+912:     printf("  --method=nt|apc|crt|kernel  force ONE rung (no ladder, no sticky)\n");
+913:     printf("  --probe                  AG measurement harness only, never injects\n");
+914:     printf("  --dll=<path>             payload DLL (default: %s next to the exe)\n",
+915:            kDefaultDllName);
+916:     printf("  --driver=<path>          kernel driver for the B3 rung\n");
+917:     printf("  --pid=<pid>              target PID (otherwise auto-detected)\n");
+918:     printf("  --stage                  inject from a randomly named %%TEMP%% copy\n");
+919:     printf("  --random                 randomise the usermode method per run\n");
+920:     printf("  --timeout=<seconds>      wait-for-game timeout (default 120)\n");
+921:     printf("  --no-wait                fail immediately if the game is not running\n");
+922:     printf("  --no-sticky              do not read/write the per-machine rung\n");
+923:     printf("  --forget-sticky          delete the remembered rung and continue\n");
+924:     printf("  --help                   show this help\n\n");
+925:     printf("Without any of the above the launcher opens its interactive menu.\n");
+926:     printf("Ladder order: sticky rung, A3, A2, A1, B3 (driver).  A rung only\n");
+927:     printf("counts when the payload shows up in the target's module list.\n");
+928: }
+929: 
+930: ArgResult ParseArgs(int argc, char** argv, LauncherOptions& options, bool& runOnce) {
+931:     runOnce = false;
+932: 
+933:     for (int i = 1; i < argc; ++i) {
+934:         std::string arg = argv[i];
+935:         std::string value;
+936: 
+937:         const size_t equals = arg.find('=');
+938:         if (equals != std::string::npos) {
+939:             value = arg.substr(equals + 1);
+940:             arg   = arg.substr(0, equals);
+941:         }
+942: 
+943:         // Helper: value from "--opt=value" or from the next argv element.
+944:         const auto takeValue = [&](std::string& out) -> bool {
+945:             if (!value.empty()) { out = value; return true; }
+946:             if (i + 1 < argc)   { out = argv[++i]; return true; }
+947:             return false;
+948:         };
+949: 
+950:         if (arg == "--help" || arg == "-h") {
+951:             PrintUsage();
+952:             return ArgResult::ExitSuccess;
+953:         }
+954:         if (arg == "--stage")   { options.stageDll = true;        continue; }
+955:         if (arg == "--random")  { options.randomizeMethod = true; continue; }
+956:         if (arg == "--no-wait") { options.waitForGame = false;    continue; }
+957:         if (arg == "--inject") { runOnce = true;                  continue; }
+958:         if (arg == "--probe")  { runOnce = true; options.runProbe = true; continue; }
+959:         if (arg == "--no-sticky")     { options.allowSticky = false; continue; }
+960:         if (arg == "--forget-sticky") { options.forgetSticky = true; continue; }
+961: 
+962:         if (arg == "--method") {
+963:             std::string methodName;
+964:             if (!takeValue(methodName) || !ParseMethod(methodName, options.method)) {
+965:                 printf("[-] Bad --method value\n");
+966:                 return ArgResult::ExitError;
+967:             }
+968:             // Forced: run exactly this rung, no ladder, no sticky.
+969:             options.methodForced = true;
+970:             continue;
+971:         }
+972:         if (arg == "--dll") {
+973:             std::string path;
+974:             if (!takeValue(path)) { printf("[-] --dll needs a path\n"); return ArgResult::ExitError; }
+975:             options.dllPath = ResolvePayloadPath(path);
+976:             continue;
+977:         }
+978:         if (arg == "--driver") {
+979:             std::string path;
+980:             if (!takeValue(path)) { printf("[-] --driver needs a path\n"); return ArgResult::ExitError; }
+981:             options.driverPath = ResolvePayloadPath(path);
+982:             continue;
+983:         }
+984:         if (arg == "--pid") {
+985:             std::string pidText;
+986:             if (!takeValue(pidText)) { printf("[-] --pid needs a value\n"); return ArgResult::ExitError; }
+987:             options.explicitPid = static_cast<DWORD>(strtoul(pidText.c_str(), nullptr, 10));
+988:             continue;
+989:         }
+990:         if (arg == "--timeout") {
+991:             std::string secondsText;
+992:             if (!takeValue(secondsText)) { printf("[-] --timeout needs a value\n"); return ArgResult::ExitError; }
+993:             options.waitTimeoutMs = static_cast<DWORD>(strtoul(secondsText.c_str(), nullptr, 10)) * 1000u;
+994:             continue;
+995:         }
+996: 
+997:         printf("[-] Unknown option: %s (try --help)\n", arg.c_str());
+998:         return ArgResult::ExitError;
+999:     }
+1000: 
+1001:     return ArgResult::Continue;

@@ -1,0 +1,69 @@
+﻿83:     if (pathBytes <= sizeof(WCHAR)) return STATUS_INVALID_PARAMETER;
+84: 
+85:     status = ApexdrvOpenProcess(request->ProcessId, &processHandle);
+86:     if (!NT_SUCCESS(status)) return status;
+87: 
+88:     regionSize = pathBytes;
+89:     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
+90:                                      MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+91:     if (!NT_SUCCESS(status)) {
+92:         ZwClose(processHandle);
+93:         return status;
+94:     }
+95: 
+96:     status = ZwWriteVirtualMemory(processHandle, remoteBuffer,
+97:                                   request->DllPath, pathBytes, NULL);
+98:     if (!NT_SUCCESS(status)) {
+99:         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+100:         ZwClose(processHandle);
+101:         return status;
+102:     }
+103: 
+104:     // User-mode thread running kernel32!LoadLibraryW(remotePath).
+105:     status = ZwCreateThreadEx(&threadHandle, THREAD_ALL_ACCESS, NULL, processHandle,
+106:                               (PVOID)(ULONG_PTR)request->LoadLibraryAddress,
+107:                               remoteBuffer, 0, 0, 0, 0, NULL);
+108:     if (!NT_SUCCESS(status)) {
+109:         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+110:         ZwClose(processHandle);
+111:         return status;
+112:     }
+113: 
+114:     {
+115:         PETHREAD threadObject = NULL;
+116:         if (NT_SUCCESS(ObReferenceObjectByHandle(threadHandle,
+117:                                                  THREAD_QUERY_INFORMATION,
+118:                                                  *PsThreadType, KernelMode,
+119:                                                  (PVOID*)&threadObject, NULL))) {
+120:             request->ThreadId = (ULONG)(ULONG_PTR)PsGetThreadId(threadObject);
+121:             ObDereferenceObject(threadObject);
+122:         }
+123:     }
+124: 
+125:     // Wait for the loader so the path buffer can safely be released.
+126:     {
+127:         LARGE_INTEGER timeout;
+128:         timeout.QuadPart = -((LONGLONG)APEXDRV_MAX_THREAD_WAIT_MS * 10000);
+129:         KeWaitForSingleObject(threadHandle, Executive, KernelMode, FALSE, &timeout);
+130:     }
+131: 
+132:     request->RemoteBase   = (ULONG64)(ULONG_PTR)remoteBuffer;
+133:     request->ResultStatus = STATUS_SUCCESS;
+134: 
+135:     ZwClose(threadHandle);
+136:     ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+137:     ZwClose(processHandle);
+138: 
+139: // ----------------------------------------------------------------------------
+140: // IRP dispatch
+141: // ----------------------------------------------------------------------------
+142: static NTSTATUS ApexdrvCreateClose(PDEVICE_OBJECT deviceObject, PIRP irp) {
+143:     UNREFERENCED_PARAMETER(deviceObject);
+144: 
+145:     irp->IoStatus.Status      = STATUS_SUCCESS;
+146:     irp->IoStatus.Information = 0;
+147:     IoCompleteRequest(irp, IO_NO_INCREMENT);
+148:     return STATUS_SUCCESS;
+149: }
+150: 
+151: static NTSTATUS ApexdrvDeviceControl(PDEVICE_OBJECT deviceObject, PIRP irp) {

@@ -1,0 +1,181 @@
+KNOWLEDGE BASE: SPOOFING AND BAN EVASION
+
+Purpose:
+Explain what spoofing is, why bans - and especially hardware bans - are
+evaded, and how defenders respond when an identity can be faked. It
+complements BAN GOVERNANCE AND IDENTITY INTEGRITY and CLIENT INTEGRITY,
+ANTI-TAMPER, AND ATTESTATION.
+
+This document is reference knowledge. It describes spoofing and evasion
+as categories of behaviour, and the defences against them, from a
+defensive and engineering perspective. It deliberately contains no
+operational steps, tools, or procurement guidance for spoofing
+identifiers or for evading a ban.
+
+Evasion techniques and defences change constantly, so treat each
+statement as a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: BAN GOVERNANCE AND IDENTITY INTEGRITY, CLIENT
+INTEGRITY, ANTI-TAMPER, AND ATTESTATION, CHEAT ECONOMICS AND THE
+UNDERGROUND MARKET, HARDWARE, DMA, AND BELOW-KERNEL THREATS, EVADING
+ANTI-CHEAT - CATEGORIES AND COUNTERMEASURES, and the numbered
+technical series.
+
+---
+
+1. WHAT "SPOOFING" MEANS
+To spoof is to present a signal as something it is not.
+In anti-cheat the signal is usually an identity: who or what this is.
+Spoofing is not one trick; it is a class of techniques across many
+layers.
+It matters because most enforcement depends on being able to identify
+who is responsible.
+
+---
+
+2. IDENTITY IS COMPOSITE
+A player is identified by many signals, not one.
+There is the account, the device, the network, the payment method, and
+the behaviour.
+Any single signal can be changed; the whole set is harder to change at
+once.
+Evasion tries to break the links between these signals.
+
+---
+
+3. WHY PEOPLE EVADE BANS
+A ban is only a punishment if it sticks.
+Where an account is cheap and the incentive is high, a banned player
+simply returns.
+This is why the economics in CHEAT ECONOMICS AND THE UNDERGROUND MARKET
+drive evasion.
+The cheaper an identity is, the weaker a ban becomes.
+
+---
+
+4. WHAT A "HARDWARE BAN" IS
+A hardware ban targets the machine rather than the account.
+It records identifiers the device presents to software.
+The idea is that a new account on the same machine is still the same
+machine.
+It exists precisely because accounts are cheap to replace.
+
+---
+
+5. THE IDENTIFIERS A DEVICE PRESENTS
+Devices expose many identifiers to software: serials, addresses, and
+capability strings.
+These are read by the operating system and passed to the game or its
+protection.
+They were designed for identification, not for defence.
+Anything a program can read, a program can in principle misreport.
+
+---
+
+6. SPOOFING AS A GENERAL TECHNIQUE
+Spoofing appears wherever a signal is trusted.
+It can target a device identifier, a network address, a process's name,
+or even timing.
+The common pattern is to make a false signal look like a true one.
+Defences therefore try not to trust any single signal in isolation.
+
+---
+
+7. WHY SPOOFING IS POSSIBLE AT ALL
+Identifiers are reported by layers that an attacker may control.
+At the lower layers that control is strong; at the higher layers it is
+weaker but still present.
+The deeper an attacker controls, the more convincingly they can lie.
+This is the same "observer below the observed" logic, seen from the
+attacker's side.
+
+---
+
+8. THE LAYERS OF SPOOFING
+Spoofing is usually described by where in the stack the false signal is
+produced.
+In software, the values returned to the game are altered.
+In firmware, the device itself reports something different.
+In hardware, a different device stands in for the original.
+Each layer is harder for defenders to inspect than the one above it.
+
+---
+
+9. THE DEFENDER'S FIRST RULE
+Do not trust one identifier; treat every signal as a claim.
+Corroborate across independent signals and over time.
+A single suspicious value proves little; a pattern of them proves more.
+This is the defensive counterpart to composite identity.
+
+---
+
+10. HARDWARE-BACKED IDENTITY AND ATTESTATION
+The strongest fix is a root of trust the attacker cannot reprogram.
+Attestation lets a machine prove its state to the server.
+See CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION for the mechanism.
+Where attestation is weak, spoofing is easy; where it is strong, it is
+costly.
+
+---
+
+11. SERVER-SIDE FINGERPRINTING
+Defenders can derive identity from many observations the client does not
+fully control.
+Consistency of behaviour, capability, and reported values forms a
+fingerprint.
+A fingerprint built server-side is harder to see and harder to fake than
+a single local identifier.
+It also raises privacy questions, treated below.
+
+---
+
+12. LINKAGE AND GRAPH ANALYSIS
+Evasion creates many identities; detection links them.
+Relationships between accounts, machines, payments, and timing form a
+graph.
+Suspicious clusters reveal a returning player even when each signal is
+fresh.
+Linkage shifts the fight from single identifiers to relationships.
+
+---
+
+13. GRADED AND DELAYED ENFORCEMENT
+If evasion is cheap, enforcement should raise its cost.
+Detections can be batched into waves so offenders cannot tell what
+triggered them.
+Some responses mitigate rather than ban: isolated matchmaking or reduced
+trust.
+Making the safe response cheaper than evasion is the goal.
+
+---
+
+14. THE PRIVACY AND FALSE-POSITIVE TRADE-OFF
+Stronger identification collects more about the player.
+That raises privacy duties and the risk of punishing the innocent.
+A shared or second-hand machine can look like a returning cheater's.
+Identity work must therefore be proportionate and correctable.
+See TELEMETRY, PRIVACY, AND PLAYER DATA ETHICS.
+
+---
+
+15. SUMMARY
+Spoofing is presenting a false signal, usually an identity, and it spans
+software, firmware, and hardware layers.
+Hardware bans exist because accounts are cheap; they work only if a
+device cannot easily become a new device.
+Defenders answer with composite identity, attestation, server-side
+fingerprinting, and linkage.
+Graded, delayed enforcement raises the cost of evasion without harming the
+innocent more than necessary.
+Because weak identification is easy and strong identification is costly,
+this is an arms race measured in economics and trade-offs.
+
+CORE PRINCIPLE:
+A ban is only as strong as the identity it attaches to, and an identity
+is only as strong as the attacker's cost to change it. Hardware bans
+exist because accounts are cheap; spoofing exists because identifiers are
+read by software, and anything read can be misreported. The defender's
+answer is never one perfect identifier but many independent, corroborated
+signals, plus attestation where hardware can be trusted. You do not win
+this by being unfakeable; you win by making evasion and re-entry cost more
+than playing straight.

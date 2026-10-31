@@ -1,0 +1,180 @@
+KNOWLEDGE BASE: OBSERVABILITY, LOGGING, AND DIAGNOSTICS
+
+Purpose:
+Educational reference for making a running system understandable:
+recording what it did, measuring how it behaves, and capturing evidence
+that turns a vague problem into a specific, testable question.
+
+---
+
+1. WHY OBSERVABILITY
+A system that cannot be observed cannot be reasoned about.
+Observability is the ability to ask new questions of a running system
+without changing it.
+It is the difference between guessing and knowing.
+
+---
+
+2. THE THREE SIGNALS
+Logs record discrete events.
+Metrics record numeric behaviour over time.
+Traces record the path and timing of a request or frame.
+Together they cover what happened, how much, and where time went.
+
+---
+
+3. STRUCTURED LOGGING
+Structured logs are key-value records, not free text.
+They can be filtered, searched, and aggregated.
+A message plus fields such as stage, duration, and outcome is far more
+useful than a sentence.
+
+---
+
+4. LOG LEVELS
+Levels separate routine detail from problems.
+Debug for development, info for significant events, warning for
+recoverable trouble, error for failures.
+Consistent use of levels keeps signal visible above noise.
+
+---
+
+5. WHAT TO LOG AND WHAT NOT
+Log decisions, boundaries, and failures with enough context to
+reconstruct them.
+Do not log secrets, keys, or bulk payloads.
+Excessive logging hides the important entries and costs storage.
+
+---
+
+6. CORRELATION IDENTIFIERS
+A shared identifier ties related records together across stages.
+It lets a single frame or request be followed end to end.
+Without it, events are disconnected fragments.
+
+---
+
+7. METRICS
+Metrics are numeric measurements collected over time.
+They answer "how much," "how often," and "how variable."
+They are cheap to record and easy to aggregate.
+
+---
+
+8. COUNTERS, GAUGES, AND HISTOGRAMS
+Counters only increase and record totals.
+Gauges record a current value.
+Histograms record a distribution, which is what latency needs.
+
+---
+
+9. PERCENTILES
+The p95 and p99 capture the tail that averages hide.
+Users experience the tail, not the mean.
+Report percentiles for anything time-related.
+
+---
+
+10. TRACING
+A trace follows one unit of work through all its stages.
+It shows where time is spent and where delays accumulate.
+It turns an end-to-end number into an explainable breakdown.
+
+---
+
+11. SPANS AND STAGES
+Each stage of work is a span with a start, duration, and parent.
+Nested spans reveal the structure and the dominant stage.
+
+---
+
+12. REPRODUCIBLE-EVIDENCE CAPTURE
+When something seems wrong, capture the exact inputs, outputs, and
+timings that demonstrate it.
+A minimal, repeatable case is worth more than a description.
+Evidence should let someone else reproduce the observation.
+
+---
+
+13. PROBES AND MINIMAL EXPERIMENTS
+A probe is a small, focused measurement built to answer one question.
+Keep probes small, isolated, and temporary, and clean them up.
+They convert a suspicion into a reading.
+
+---
+
+14. GROUND TRUTH COMPARISON
+Compare measured values against a known reference, not against
+expectation.
+Requested size versus actual size, expected coordinate versus observed
+coordinate, and similar pairs localise errors precisely.
+
+---
+
+15. DIAGNOSING WITH EVIDENCE
+State the observation before the explanation.
+The observation is a fact; the explanation is a hypothesis.
+Separating them prevents fixing the wrong thing.
+
+---
+
+16. DESIRED VERSUS OBSERVED
+The clearest diagnosis names what was expected and what occurred.
+This frames the gap and points to where they diverge.
+
+---
+
+17. ISOLATION AND BISECTION
+Change one variable at a time, or bisect the system, to find where
+behaviour changes.
+Eliminating possibilities is as valuable as confirming them.
+
+---
+
+18. HEALTH AND READINESS
+A health check answers whether the system is functioning; readiness
+answers whether it can serve now.
+They are different questions and often need different probes.
+
+---
+
+19. ALERTING AND NOISE
+An alert should correspond to something worth acting on.
+Alert fatigue from noisy thresholds makes real problems invisible.
+Tune alerts to the cost of the condition, not to every fluctuation.
+
+---
+
+20. RETENTION AND COST
+Storing everything forever is neither affordable nor useful.
+Retain detail long enough to investigate, and summarise the rest.
+
+---
+
+21. DASHBOARDS
+A dashboard shows the few signals that matter at a glance.
+Its purpose is orientation, not completeness.
+The best panels answer the questions asked most often.
+
+---
+
+22. SHARING DIAGNOSTICS SAFELY
+Logs and traces often leave the machine.
+Remove secrets and personal data before sharing.
+Treat any captured evidence as if it could be published.
+
+---
+
+23. SUMMARY
+Observability turns a running system into an interrogable one.
+Structured logs, metrics, and traces answer different questions;
+percentiles and traces expose where time really goes.
+Turning a problem into reproducible evidence is the core diagnostic
+skill.
+
+CORE PRINCIPLE:
+You cannot fix what you cannot see, and you cannot see what you do not
+record. Capture structured events, measure distributions and percentiles,
+and turn every problem into a minimal, reproducible piece of evidence.
+State observations before explanations, and compare against ground truth
+rather than expectation.

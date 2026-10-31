@@ -1,0 +1,675 @@
+## cache: img bytes 401702, slots 4050, strings 38550, dt_leas 144
+## (-1,1) record starts in image: 2298
+##   with string at +0x38 (field name): 1705
+##   with string at +0x08 (class name?): 1208
+##   with both: 871
+
+## what sits at +0x08 when a field name is at +0x38 (by38):
+     <other str>                                  871
+     None                                         834
+
+## names found at +0x08 for starts that also own +0x38 (sample):
+     should_never_see_this                         45
+     m_cellX                                       15
+     m_cellY                                       14
+     m_nModelIndex                                 10
+     m_networkedFlags                               7
+     m_bools                                        7
+     m_ranges                                       7
+     m_int32s                                       7
+     m_float32s                                     7
+     m_visibilityFlags                              6
+
+## starts with +0x08 string but no +0x38 string: 337 ; DT_ among them: 1
+## sample 25:
+     0x14e699d18 +08='m_flInnerRadius'                  +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a55a8 +08='m_boxMaxs'                        +38=(unknown) off=0xffffffff size=0xdd1957a0
+     0x14e6a57b8 +08='m_targetPosition'                 +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a59c8 +08='m_enabled'                        +38=(unknown) off=0x948 size=0x4
+     0x14e6a5b68 +08='m_bulletAbsorbedCount'            +38=(unknown) off=0x958 size=0x4
+     0x14e6a5e40 +08='m_iHealth'                        +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a6058 +08='m_cellZ'                          +38=(unknown) off=0x390 size=0xc
+     0x14e6a61f8 +08='moveparent'                       +38=(unknown) off=0x15d0 size=0x4
+     0x14e6a6398 +08='m_visibilityFlags'                +38=(unknown) off=0xffffffff size=(unknown)
+     0x14e6a65c0 +08='should_never_see_this'            +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a6b58 +08='m_driverState'                    +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a6e38 +08='m_grapplePoints'                  +38=(unknown) off=0x48 size=0x1
+     0x14e6a74b8 +08='m_grappleSwingDetachLowSpeed'     +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a7730 +08='m_endPos'                         +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a7868 +08='m_projectileTrailIndex'           +38=(unknown) off=0xffffffff size=(unknown)
+     0x14e6a7c18 +08='m_CollisionGroup'                 +38=(unknown) off=0x3a4 size=0x4
+     0x14e6a7e20 +08='m_weaponClassIndex'               +38=(unknown) off=0x15dc size=0x4
+     0x14e6a7f58 +08='m_impactEffectTable'              +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a8508 +08='m_iTeamNum'                       +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a8ae0 +08='m_shotCount'                      +38=(unknown) off=0x1888 size=0x2
+     0x14e6a9178 +08='durPlateau'                       +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a9320 +08='m_ammoInStockpile'                +38=(unknown) off=0x160c size=0x4
+     0x14e6a9388 +08='m_infiniteAmmoState'              +38=(unknown) off=0x161a size=0x1
+     0x14e6a96c8 +08='m_nNextThinkTick'                 +38=(unknown) off=(unknown) size=(unknown)
+     0x14e6a9a78 +08='m_kickTime'                       +38=(unknown) off=0x28 size=0x4
+
+## stride between consecutive field records (by38, sorted):
+      +0x68 :  1221
+      +0xd0 :   288
+     +0x138 :    41
+      +0xd8 :    16
+     +0x140 :    13
+     +0x1a0 :    13
+      +0xe0 :     9
+     +0x148 :     8
+     +0x1e0 :     5
+     +0x150 :     4
+      +0xe8 :     4
+     +0x158 :     4
+
+## field records whose +0x08 is a DT_ name: 0 (0 distinct)
+
+=== DT_Player / m_iHealth array (dm11 base 0x14e6b3888)
+    range 0x14e6b3800 .. 0x14e6b3a40
+    0x14e6b3800  (unknown)
+    0x14e6b3808  (unknown)
+    0x14e6b3810  (unknown)
+    0x14e6b3818  (unknown)
+    0x14e6b3820  00000001ffffffff  <= (-1,1) record start
+    0x14e6b3828  0000000143089180  => 'm_titanSoul'
+    0x14e6b3830  (unknown)
+    0x14e6b3838  0000000100000000
+    0x14e6b3840  (unknown)
+    0x14e6b3848  (unknown)
+    0x14e6b3850  (unknown)
+    0x14e6b3858  00000001430891a0  => 'm_lifeState'
+    0x14e6b3860  (unknown)
+    0x14e6b3868  (unknown)
+    0x14e6b3870  (unknown)
+    0x14e6b3878  (unknown)
+    0x14e6b3880  (unknown)
+    0x14e6b3888  00000001ffffffff  <= (-1,1) record start
+    0x14e6b3890  0000000143089170  => 'm_petTitan'
+    0x14e6b3898  (unknown)
+    0x14e6b38a0  0000000400000000
+    0x14e6b38a8  (unknown)
+    0x14e6b38b0  (unknown)
+    0x14e6b38b8  (unknown)
+    0x14e6b38c0  000000014305c850  => 'm_iHealth'
+    0x14e6b38c8  (unknown)
+    0x14e6b38d0  (unknown)
+    0x14e6b38d8  (unknown)
+    0x14e6b38e0  (unknown)
+    0x14e6b38e8  (unknown)
+    0x14e6b38f0  00000001ffffffff  <= (-1,1) record start
+    0x14e6b38f8  00000001430891a0  => 'm_lifeState'
+    0x14e6b3900  (unknown)
+    0x14e6b3908  0000000400000000
+    0x14e6b3910  (unknown)
+    0x14e6b3918  (unknown)
+    0x14e6b3920  (unknown)
+    0x14e6b3928  (unknown)
+    0x14e6b3930  (unknown)
+    0x14e6b3938  (unknown)
+    0x14e6b3940  (unknown)
+    0x14e6b3948  (unknown)
+    0x14e6b3950  (unknown)
+    0x14e6b3958  00000001ffffffff  <= (-1,1) record start
+    0x14e6b3960  (unknown)
+    0x14e6b3968  (unknown)
+    0x14e6b3970  0000000400000000
+    0x14e6b3978  (unknown)
+    0x14e6b3980  (unknown)
+    0x14e6b3988  (unknown)
+    0x14e6b3990  0000000143089190  => 'm_bleedoutState'
+    0x14e6b3998  (unknown)
+    0x14e6b39a0  (unknown)
+    0x14e6b39a8  (unknown)
+    0x14e6b39b0  (unknown)
+    0x14e6b39b8  (unknown)
+    0x14e6b39c0  00000001ffffffff  <= (-1,1) record start
+    0x14e6b39c8  (unknown)
+    0x14e6b39d0  000027a400000001
+    0x14e6b39d8  (unknown)
+    0x14e6b39e0  (unknown)
+    0x14e6b39e8  (unknown)
+    0x14e6b39f0  (unknown)
+    0x14e6b39f8  00000001430896f0  => 'm_bleedoutStartTime'
+    0x14e6b3a00  (unknown)
+    0x14e6b3a08  (unknown)
+    0x14e6b3a10  (unknown)
+    0x14e6b3a18  (unknown)
+    0x14e6b3a20  (unknown)
+    0x14e6b3a28  00000001ffffffff  <= (-1,1) record start
+    0x14e6b3a30  0000000143089190  => 'm_bleedoutState'
+    0x14e6b3a38  (unknown)
+
+
+=== region dm11 scored base=name_store-0x08 (m_iHealth dt=0x14e6a5e48)
+    range 0x14e6a5d80 .. 0x14e6a5ea0
+    0x14e6a5d80  (unknown)
+    0x14e6a5d88  0000000400000000
+    0x14e6a5d90  (unknown)
+    0x14e6a5d98  (unknown)
+    0x14e6a5da0  (unknown)
+    0x14e6a5da8  000000014305c850  => 'm_iHealth'
+    0x14e6a5db0  (unknown)
+    0x14e6a5db8  (unknown)
+    0x14e6a5dc0  (unknown)
+    0x14e6a5dc8  (unknown)
+    0x14e6a5dd0  (unknown)
+    0x14e6a5dd8  00000001ffffffff  <= (-1,1) record start
+    0x14e6a5de0  000000014305cbd0  => 'm_useExactSphereRadiusForHit'
+    0x14e6a5de8  (unknown)
+    0x14e6a5df0  0000000400000000
+    0x14e6a5df8  (unknown)
+    0x14e6a5e00  (unknown)
+    0x14e6a5e08  (unknown)
+    0x14e6a5e10  000000014305c840  => 'm_iMaxHealth'
+    0x14e6a5e18  (unknown)
+    0x14e6a5e20  (unknown)
+    0x14e6a5e28  (unknown)
+    0x14e6a5e30  (unknown)
+    0x14e6a5e38  (unknown)
+    0x14e6a5e40  00000001ffffffff  <= (-1,1) record start
+    0x14e6a5e48  000000014305c850  => 'm_iHealth'
+    0x14e6a5e50  (unknown)
+    0x14e6a5e58  (unknown)
+    0x14e6a5e60  (unknown)
+    0x14e6a5e68  0000000400000000
+    0x14e6a5e70  (unknown)
+    0x14e6a5e78  (unknown)
+    0x14e6a5e80  (unknown)
+    0x14e6a5e88  (unknown)
+    0x14e6a5e90  (unknown)
+    0x14e6a5e98  (unknown)
+
+
+=== DT_BaseEntity array (m_iTeamNum dm11 base 0x14e6b1218)
+    range 0x14e6b0d40 .. 0x14e6b1260
+    0x14e6b0d40  (unknown)
+    0x14e6b0d48  (unknown)
+    0x14e6b0d50  (unknown)
+    0x14e6b0d58  0000001000000000
+    0x14e6b0d60  (unknown)
+    0x14e6b0d68  (unknown)
+    0x14e6b0d70  000000014305b0b8  => 'm_cellX'
+    0x14e6b0d78  (unknown)
+    0x14e6b0d80  (unknown)
+    0x14e6b0d88  (unknown)
+    0x14e6b0d90  (unknown)
+    0x14e6b0d98  (unknown)
+    0x14e6b0da0  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0da8  (unknown)
+    0x14e6b0db0  (unknown)
+    0x14e6b0db8  0000000400000000
+    0x14e6b0dc0  0000001000000000
+    0x14e6b0dc8  (unknown)
+    0x14e6b0dd0  (unknown)
+    0x14e6b0dd8  000000014305b0b0  => 'm_cellY'
+    0x14e6b0de0  (unknown)
+    0x14e6b0de8  (unknown)
+    0x14e6b0df0  (unknown)
+    0x14e6b0df8  (unknown)
+    0x14e6b0e00  (unknown)
+    0x14e6b0e08  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0e10  000000014305b0b8  => 'm_cellX'
+    0x14e6b0e18  (unknown)
+    0x14e6b0e20  0000000400000000
+    0x14e6b0e28  0000001000000000
+    0x14e6b0e30  (unknown)
+    0x14e6b0e38  (unknown)
+    0x14e6b0e40  000000014305b118  => 'm_cellZ'
+    0x14e6b0e48  (unknown)
+    0x14e6b0e50  (unknown)
+    0x14e6b0e58  (unknown)
+    0x14e6b0e60  (unknown)
+    0x14e6b0e68  (unknown)
+    0x14e6b0e70  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0e78  000000014305b0b0  => 'm_cellY'
+    0x14e6b0e80  0000001800000002
+    0x14e6b0e88  (unknown)
+    0x14e6b0e90  (unknown)
+    0x14e6b0e98  (unknown)
+    0x14e6b0ea0  (unknown)
+    0x14e6b0ea8  00000001430485a8  => 'm_localOrigin'
+    0x14e6b0eb0  (unknown)
+    0x14e6b0eb8  (unknown)
+    0x14e6b0ec0  (unknown)
+    0x14e6b0ec8  (unknown)
+    0x14e6b0ed0  (unknown)
+    0x14e6b0ed8  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0ee0  000000014305b118  => 'm_cellZ'
+    0x14e6b0ee8  0000039000000002
+    0x14e6b0ef0  (unknown)
+    0x14e6b0ef8  (unknown)
+    0x14e6b0f00  (unknown)
+    0x14e6b0f08  (unknown)
+    0x14e6b0f10  (unknown)
+    0x14e6b0f18  (unknown)
+    0x14e6b0f20  (unknown)
+    0x14e6b0f28  (unknown)
+    0x14e6b0f30  (unknown)
+    0x14e6b0f38  (unknown)
+    0x14e6b0f40  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0f48  00000001430485a8  => 'm_localOrigin'
+    0x14e6b0f50  (unknown)
+    0x14e6b0f58  0000000400000000
+    0x14e6b0f60  0000001000000000
+    0x14e6b0f68  (unknown)
+    0x14e6b0f70  (unknown)
+    0x14e6b0f78  000000014305b0e0  => 'm_nModelIndex'
+    0x14e6b0f80  (unknown)
+    0x14e6b0f88  (unknown)
+    0x14e6b0f90  (unknown)
+    0x14e6b0f98  (unknown)
+    0x14e6b0fa0  (unknown)
+    0x14e6b0fa8  00000001ffffffff  <= (-1,1) record start
+    0x14e6b0fb0  (unknown)
+    0x14e6b0fb8  (unknown)
+    0x14e6b0fc0  0000000400000000
+    0x14e6b0fc8  0000001000000000
+    0x14e6b0fd0  (unknown)
+    0x14e6b0fd8  (unknown)
+    0x14e6b0fe0  00000001430842d0  => 'm_fEffects'
+    0x14e6b0fe8  (unknown)
+    0x14e6b0ff0  (unknown)
+    0x14e6b0ff8  (unknown)
+    0x14e6b1000  (unknown)
+    0x14e6b1008  (unknown)
+    0x14e6b1010  00000001ffffffff  <= (-1,1) record start
+    0x14e6b1018  000000014305b0e0  => 'm_nModelIndex'
+    0x14e6b1020  (unknown)
+    0x14e6b1028  0000000100000000
+    0x14e6b1030  (unknown)
+    0x14e6b1038  (unknown)
+    0x14e6b1040  (unknown)
+    0x14e6b1048  000000014307e5a8  => 'm_nRenderMode'
+    0x14e6b1050  (unknown)
+    0x14e6b1058  (unknown)
+    0x14e6b1060  (unknown)
+    0x14e6b1068  0000000141ffd590
+    0x14e6b1070  (unknown)
+    0x14e6b1078  00000001ffffffff  <= (-1,1) record start
+    0x14e6b1080  00000001430842d0  => 'm_fEffects'
+    0x14e6b1088  (unknown)
+    0x14e6b1090  0000000100000000
+    0x14e6b1098  (unknown)
+    0x14e6b10a0  (unknown)
+    0x14e6b10a8  (unknown)
+    0x14e6b10b0  (unknown)
+    0x14e6b10b8  (unknown)
+    0x14e6b10c0  (unknown)
+    0x14e6b10c8  (unknown)
+    0x14e6b10d0  (unknown)
+    0x14e6b10d8  (unknown)
+    0x14e6b10e0  00000001ffffffff  <= (-1,1) record start
+    0x14e6b10e8  (unknown)
+    0x14e6b10f0  (unknown)
+    0x14e6b10f8  0000000400000000
+    0x14e6b1100  (unknown)
+    0x14e6b1108  (unknown)
+    0x14e6b1110  (unknown)
+    0x14e6b1118  000000014307e5b8  => 'm_clrRender'
+    0x14e6b1120  (unknown)
+    0x14e6b1128  (unknown)
+    0x14e6b1130  (unknown)
+    0x14e6b1138  0000000141ffd530
+    0x14e6b1140  (unknown)
+    0x14e6b1148  00000001ffffffff  <= (-1,1) record start
+    0x14e6b1150  (unknown)
+    0x14e6b1158  (unknown)
+    0x14e6b1160  0000000100000000
+    0x14e6b1168  (unknown)
+    0x14e6b1170  (unknown)
+    0x14e6b1178  (unknown)
+    0x14e6b1180  00000001430842e0  => 'm_clIntensity'
+    0x14e6b1188  (unknown)
+    0x14e6b1190  (unknown)
+    0x14e6b1198  (unknown)
+    0x14e6b11a0  (unknown)
+    0x14e6b11a8  (unknown)
+    0x14e6b11b0  00000001ffffffff  <= (-1,1) record start
+    0x14e6b11b8  0000000141ffd530
+    0x14e6b11c0  (unknown)
+    0x14e6b11c8  0000000100000000
+    0x14e6b11d0  (unknown)
+    0x14e6b11d8  (unknown)
+    0x14e6b11e0  (unknown)
+    0x14e6b11e8  0000000143084250  => 'm_bRenderWithViewModels'
+    0x14e6b11f0  (unknown)
+    0x14e6b11f8  (unknown)
+    0x14e6b1200  (unknown)
+    0x14e6b1208  (unknown)
+    0x14e6b1210  (unknown)
+    0x14e6b1218  00000001ffffffff  <= (-1,1) record start
+    0x14e6b1220  00000001430842e0  => 'm_clIntensity'
+    0x14e6b1228  (unknown)
+    0x14e6b1230  0000000400000000
+    0x14e6b1238  (unknown)
+    0x14e6b1240  (unknown)
+    0x14e6b1248  (unknown)
+    0x14e6b1250  00000001430666a0  => 'm_iTeamNum'
+    0x14e6b1258  (unknown)
+
+
+## DT_ name slots: 52
+
+  slot 0x143cdedf8  'DT_HealthKit'
+     -0x10 000015d000000000
+      -0x8 (unknown)
+      +0x0 0000000143032c70
+      +0x8 (unknown)
+
+  slot 0x143ce8468  'DT_FirstPersonProxy'
+     -0x10 0000163000000000
+      -0x8 (unknown)
+      +0x0 000000014305ae48
+      +0x8 (unknown)
+
+  slot 0x143cf0a08  'DT_PredictedFirstPersonProxy'
+     -0x10 0000165000000000
+      -0x8 (unknown)
+      +0x0 000000014305ae10
+      +0x8 (unknown)
+
+  slot 0x14e6a6590  'DT_PredictedFirstPersonProxy'
+     start=0x14e6a6558 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_PredictedFirstPersonProxy'
+
+  slot 0x143d022e8  'DT_PredictableId'
+     -0x10 0000094000000000
+      -0x8 (unknown)
+      +0x0 00000001430843d0
+      +0x8 (unknown)
+
+  slot 0x143d00be8  'DT_SkyCamera'
+     -0x10 0000094000000000
+      -0x8 (unknown)
+      +0x0 0000000143084a30
+      +0x8 (unknown)
+
+  slot 0x143d03a38  'DT_NearbyPushers'
+     -0x10 00004c1000000000
+      -0x8 (unknown)
+      +0x0 00000001430870f0
+      +0x8 (unknown)
+
+  slot 0x143d09f28  'DT_ConnectionQualityIndex'
+     -0x10 00004c1000000000
+      -0x8 (unknown)
+      +0x0 00000001430874f8
+      +0x8 (unknown)
+
+  slot 0x143d049f8  'DT_PlayerShared'
+     -0x10 0000002800000000
+      -0x8 (unknown)
+      +0x0 00000001430890f0
+      +0x8 (unknown)
+
+  slot 0x143d077e8  'DT_PlayerStickerInventory'
+     -0x10 00004c1000000000
+      -0x8 (unknown)
+      +0x0 0000000143088f58
+      +0x8 (unknown)
+
+  slot 0x143d17c28  'DT_OverlayVars'
+     -0x10 0000191000000000
+      -0x8 (unknown)
+      +0x0 00000001430bb428
+      +0x8 (unknown)
+
+  slot 0x143d0da48  'DT_BCCLocalPlayerExclusive'
+     -0x10 00001cb000000000
+      -0x8 (unknown)
+      +0x0 00000001430bb630
+      +0x8 (unknown)
+
+  slot 0x143d1f098  'DT_FuncBrush'
+     -0x10 000009b000000000
+      -0x8 0000000143d193c0
+      +0x0 00000001430be4e0
+      +0x8 (unknown)
+
+  slot 0x143d26408  'DT_FuncMoveLinear'
+     -0x10 0000097000000000
+      -0x8 00000001430be498
+      +0x0 00000001430be4b8
+      +0x8 (unknown)
+
+  slot 0x14e6c09a0  'DT_FuncMoveLinear'
+     start=0x14e6c0968 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_FuncMoveLinear'
+
+  slot 0x143d0e8e8  'DT_TEGibEvent'
+     -0x10 0000003800000000
+      -0x8 (unknown)
+      +0x0 00000001430be920
+      +0x8 (unknown)
+
+  slot 0x143d11a78  'DT_NPC_Dropship'
+     -0x10 00001eb000000000
+      -0x8 (unknown)
+      +0x0 00000001430be720
+      +0x8 (unknown)
+
+  slot 0x14e6d18e0  'DT_NPC_Dropship'
+     start=0x14e6d18a8 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_NPC_Dropship'
+
+  slot 0x143d19f18  'DT_LootRoller'
+     -0x10 0000164000000000
+      -0x8 (unknown)
+      +0x0 00000001430bf5d8
+      +0x8 (unknown)
+
+  slot 0x143d10b08  'DT_CarePackageInsightProp'
+     -0x10 0000166000000000
+      -0x8 (unknown)
+      +0x0 00000001430c1658
+      +0x8 (unknown)
+
+  slot 0x143d16e78  'DT_MaterialHarvester'
+     -0x10 0000166000000000
+      -0x8 (unknown)
+      +0x0 00000001430c15a0
+      +0x8 (unknown)
+
+  slot 0x143d10148  'DT_VoidNexus'
+     -0x10 0000167000000000
+      -0x8 (unknown)
+      +0x0 00000001430c1568
+      +0x8 (unknown)
+
+  slot 0x143d307e8  'DT_CoverWallChargeTracker'
+     -0x10 0000167000000000
+      -0x8 (unknown)
+      +0x0 00000001430c14d8
+      +0x8 (unknown)
+
+  slot 0x143d12708  'DT_ShieldProp'
+     -0x10 0000166000000000
+      -0x8 (unknown)
+      +0x0 00000001430c1950
+      +0x8 (unknown)
+
+  slot 0x143d3dd18  'DT_BaseTrigger'
+     -0x10 0000098000000000
+      -0x8 (unknown)
+      +0x0 00000001430c35b8
+      +0x8 (unknown)
+
+  slot 0x14e6d6260  'DT_BaseTrigger'
+     start=0x14e6d6228 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_BaseTrigger'
+
+  slot 0x143d35708  'DT_BaseVPhysicsTrigger'
+     -0x10 0000095000000000
+      -0x8 (unknown)
+      +0x0 00000001430c3780
+      +0x8 (unknown)
+
+  slot 0x14e6d2b20  'DT_BaseVPhysicsTrigger'
+     start=0x14e6d2ae8 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_BaseVPhysicsTrigger'
+
+  slot 0x143d39538  'DT_WaterLODControl'
+     -0x10 0000095000000000
+      -0x8 (unknown)
+      +0x0 00000001430c5c58
+      +0x8 (unknown)
+
+  slot 0x143d37648  'DT_BaseTempEntity'
+     -0x10 0000002800000000
+      -0x8 (unknown)
+      +0x0 00000001430c8918
+      +0x8 (unknown)
+
+  slot 0x14e6d2760  'DT_BaseTempEntity'
+     start=0x14e6d2758 ( -0x8) off=(unknown) size=(unknown) flags=(unknown)
+        +08='DT_BaseTempEntity'                  +38=None
+
+  slot 0x143d34158  'DT_EnvWind'
+     -0x10 00000ab000000000
+      -0x8 (unknown)
+      +0x0 00000001430c8cb8
+      +0x8 (unknown)
+
+  slot 0x143d40a38  'DT_TEEffectDispatch'
+     -0x10 000000c800000000
+      -0x8 (unknown)
+      +0x0 00000001430c8c00
+      +0x8 (unknown)
+
+  slot 0x14e6d6ea0  'DT_TEEffectDispatch'
+     start=0x14e6d6e68 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_TEEffectDispatch'
+
+  slot 0x143d43008  'DT_TESoundDispatch'
+     -0x10 0000004800000000
+      -0x8 (unknown)
+      +0x0 00000001430c8b60
+      +0x8 (unknown)
+
+  slot 0x14e6d5290  'DT_TESoundDispatch'
+     start=0x14e6d5258 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_TESoundDispatch'
+
+  slot 0x143eab008  'DT_InfoTargetMinimap'
+     -0x10 0000094000000000
+      -0x8 00000001430727a0
+      +0x0 0000000143110fc8
+      +0x8 (unknown)
+
+  slot 0x14e6fafa0  'DT_InfoTargetMinimap'
+     start=0x14e6faf68 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_InfoTargetMinimap'
+
+  slot 0x143ea8df8  'DT_InfoTargetGravity'
+     -0x10 0000095000000000
+      -0x8 00000001431117b8
+      +0x0 00000001431117a0
+      +0x8 (unknown)
+
+  slot 0x14e6f6db0  'DT_InfoTargetGravity'
+     start=0x14e6f6d78 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_InfoTargetGravity'
+
+  slot 0x143ea5cf8  'DT_TEScriptParticleSystemOnEntityWithPos'
+     -0x10 0000005800000000
+      -0x8 (unknown)
+      +0x0 00000001431175b8
+      +0x8 (unknown)
+
+  slot 0x143e738f8  'DT_EntityBlocker'
+     -0x10 0000095000000000
+      -0x8 000000014305bb28
+      +0x0 0000000143117b80
+      +0x8 (unknown)
+
+  slot 0x14e6f9f50  'DT_EntityBlocker'
+     start=0x14e6f9f18 (-0x38) off=(unknown) size=0x0 flags=0x0
+        +08=None                                 +38='DT_EntityBlocker'
+
+  slot 0x14df94268  'DT_EntityBlocker'
+     -0x10 0000000000000000
+      -0x8 (unknown)
+      +0x0 0000000143117b80
+      +0x8 (unknown)
+
+  slot 0x14df94280  'DT_EntityBlocker'
+     -0x10 (unknown)
+      -0x8 (unknown)
+      +0x0 0000000143117b80
+      +0x8 0000000143117b80
+
+  slot 0x14df94288  'DT_EntityBlocker'
+     -0x10 (unknown)
+      -0x8 0000000143117b80
+      +0x0 0000000143117b80
+      +0x8 0000000143117b80
+
+  slot 0x14df94290  'DT_EntityBlocker'
+     -0x10 0000000143117b80
+      -0x8 0000000143117b80
+      +0x0 0000000143117b80
+      +0x8 (unknown)
+
+  slot 0x143fee708  'DT_EntityBlocker'
+     -0x10 (unknown)
+      -0x8 (unknown)
+      +0x0 0000000143117b80
+      +0x8 (unknown)
+
+  slot 0x143e750a8  'DT_ObserverMode'
+     -0x10 0000001000000000
+      -0x8 (unknown)
+      +0x0 000000014311d6f0
+      +0x8 (unknown)
+
+  slot 0x143e73dd8  'DT_NonRewindMiscData'
+     -0x10 0000000800000000
+      -0x8 (unknown)
+      +0x0 000000014311d6d8
+      +0x8 (unknown)
+
+  slot 0x143eb72a8  'DT_ScriptNetData'
+     -0x10 00000c5000000000
+      -0x8 (unknown)
+      +0x0 000000014313c618
+      +0x8 (unknown)
+
+  slot 0x143ec0a38  'DT_SequenceTransitioner'
+     -0x10 (unknown)
+      -0x8 (unknown)
+      +0x0 000000014313eaf8
+      +0x8 (unknown)
+
+## distribution of (-1,1) candidate deltas over DT_ slots:
+     ()                                41
+     ('-0x38',)                        10
+     ('-0x8',)                          1
+
+
+=== first DT_ slot 'DT_HealthKit' at 0x143cdedf8
+    range 0x143cded98 .. 0x143cdee58
+    0x143cded98  (unknown)
+    0x143cdeda0  (unknown)
+    0x143cdeda8  (unknown)
+    0x143cdedb0  (unknown)
+    0x143cdedb8  (unknown)
+    0x143cdedc0  (unknown)
+    0x143cdedc8  (unknown)
+    0x143cdedd0  (unknown)
+    0x143cdedd8  (unknown)
+    0x143cdede0  (unknown)
+    0x143cdede8  000015d000000000
+    0x143cdedf0  (unknown)
+    0x143cdedf8  0000000143032c70  => 'DT_HealthKit'
+    0x143cdee00  (unknown)
+    0x143cdee08  (unknown)
+    0x143cdee10  (unknown)
+    0x143cdee18  (unknown)
+    0x143cdee20  (unknown)
+    0x143cdee28  (unknown)
+    0x143cdee30  (unknown)
+    0x143cdee38  (unknown)
+    0x143cdee40  (unknown)
+    0x143cdee48  (unknown)
+    0x143cdee50  (unknown)
+

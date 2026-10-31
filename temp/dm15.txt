@@ -1,0 +1,43 @@
+## image base 0x140000000 ; sections 9
+   .text      va 0x0140001000 vsize 0x02c951ac raw 0x02c95200 ch 0x60000020  end 0x0142c96200
+   .rdata     va 0x0142c97000 vsize 0x00680b60 raw 0x00680c00 ch 0x40000040  end 0x0143317c00
+   .data      va 0x0143318000 vsize 0x0b40ab8c raw 0x00d00000 ch 0xc0000040  end 0x014e722b8c
+   .pdata     va 0x014e723000 vsize 0x000e32bc raw 0x000e3400 ch 0x40000040  end 0x014e806400
+   _RDATA     va 0x014e807000 vsize 0x00000a24 raw 0x00000c00 ch 0x40000040  end 0x014e807c00
+   .fptable   va 0x014e808000 vsize 0x00000100 raw 0x00000200 ch 0xc0000040  end 0x014e808200
+   .rsrc      va 0x014e809000 vsize 0x000035f8 raw 0x00003600 ch 0x40000040  end 0x014e80c600
+   .reloc     va 0x014e80d000 vsize 0x000571b0 raw 0x00057200 ch 0x40000040  end 0x014e864200
+   .ooa       va 0x014e865000 vsize 0x00000712 raw 0x00000800 ch 0x60000020  end 0x014e865800
+## img bytes: 401702 ; va range 0xcb598ed3 .. 0x1b770fa07
+## img va pages (1MB), top 24: 0x14e6:224959 0x14df:143954 0x14e7:20207 0x143d:5957 0x143e:2347 0x1433:1177 0x143c:1089 0x143f:581 0x14a0:240 0x145c:165 0x147f:144 0x142c:136 0x1478:108 0x1471:79 0x149e:64 0x14e0:58 0x145a:49 0x1496:37 0x1498:32 0x1436:32 0x1440:31 0x1473:29 0x149b:28 0x144b:24
+## img low-nibble histogram: {0: 25093, 1: 25036, 2: 25284, 3: 25184, 4: 25290, 5: 25132, 6: 25308, 7: 25261, 8: 25283, 9: 25135, 10: 25064, 11: 25044, 12: 24861, 13: 24713, 14: 24963, 15: 25051}
+## slots: 4050
+## slot dst pages, top 16: 0x14e6:2634 0x14df:1123 0x14e7:250 0x143d:29 0x143e:8 0x143c:3 0x143f:1 0x145c:1 0x1466:1
+## slots in 0x14e000000-0x14f000000: 2884
+## slot dst range: 0x143cdedf8 .. 0x14e705dd8
+## gaps between consecutive name slots (<=0x400), top 14: 0x38:995 0x30:824 0x88:779 0x68:657 0x110:197 0x98:125 0xa0:73 0x74:44 0xd0:33 0x14:26 0x100:26 0x9c:18 0x138:13 0x108:12
+## name slot 'm_cellX': 30
+     ins 0x141ee7e9f -> dst 0x14e6a5ef0  (str @ 0x14305b0b8)
+     ins 0x141ee7ea8 -> dst 0x14e6a5f90  (str @ 0x14305b0b8)
+     ins 0x141f38c7b -> dst 0x14e6a7910  (str @ 0x14305b0b8)
+     ins 0x141f38c84 -> dst 0x14e6a79b0  (str @ 0x14305b0b8)
+     ins 0x14200862c -> dst 0x14e6b0d70  (str @ 0x14305b0b8)
+     ins 0x142008635 -> dst 0x14e6b0e10  (str @ 0x14305b0b8)
+## name slot 'm_iTeamNum': 10
+     ins 0x141f39b4f -> dst 0x14e6a8470  (str @ 0x1430666a0)
+     ins 0x141f39c54 -> dst 0x14e6a8510  (str @ 0x1430666a0)
+     ins 0x142008b85 -> dst 0x14e6b1250  (str @ 0x1430666a0)
+     ins 0x142118303 -> dst 0x14e6ca068  (str @ 0x1430666a0)
+     ins 0x14211830c -> dst 0x14e6ca108  (str @ 0x1430666a0)
+     ins 0x14213689b -> dst 0x14e6c38d0  (str @ 0x1430666a0)
+## name slot 'm_iHealth': 15
+     ins 0x14195eadb -> dst 0x14e6cc8f0  (str @ 0x14305c850)
+     ins 0x141f0789b -> dst 0x14e6a68b8  (str @ 0x14305c850)
+     ins 0x141f0ab78 -> dst 0x14e6a5da8  (str @ 0x14305c850)
+     ins 0x141f0ab81 -> dst 0x14e6a5e48  (str @ 0x14305c850)
+     ins 0x14203cc53 -> dst 0x14e6b38c0  (str @ 0x14305c850)
+     ins 0x1420d912e -> dst 0x14e6d1258  (str @ 0x14305c850)
+## name slot 'm_impactEffectColorID': 3
+     ins 0x14195ea8d -> dst 0x14e6cc888  (str @ 0x1430c1368)
+     ins 0x14213710e -> dst 0x14e6c54c0  (str @ 0x1430c1368)
+     ins 0x14213711e -> dst 0x14e6c5560  (str @ 0x1430c1368)

@@ -1,0 +1,85 @@
+=== secureboot
+SecureBoot=False
+=== bcdedit before
+
+Windows Boot Loader
+-------------------
+identifier              {current}
+device                  partition=C:
+path                    \WINDOWS\system32\winload.efi
+description             Windows 11
+locale                  en-US
+inherit                 {bootloadersettings}
+recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b}
+displaymessageoverride  Recovery
+recoveryenabled         Yes
+isolatedcontext         Yes
+allowedinmemorysettings 0x15000075
+osdevice                partition=C:
+systemroot              \WINDOWS
+resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b}
+nx                      OptIn
+bootmenupolicy          Standard
+hypervisorlaunchtype    Auto
+=== enable testsigning
+The operation completed successfully.
+=== bcdedit after
+
+Windows Boot Loader
+-------------------
+identifier              {current}
+device                  partition=C:
+path                    \WINDOWS\system32\winload.efi
+description             Windows 11
+locale                  en-US
+inherit                 {bootloadersettings}
+recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b}
+displaymessageoverride  Recovery
+recoveryenabled         Yes
+testsigning             Yes
+isolatedcontext         Yes
+allowedinmemorysettings 0x15000075
+osdevice                partition=C:
+systemroot              \WINDOWS
+resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b}
+nx                      OptIn
+bootmenupolicy          Standard
+hypervisorlaunchtype    Auto
+=== cert stores
+Root "Trusted Root Certification Authorities"
+CertUtil: -store command FAILED: 0x80090011 (-2146893807 NTE_NOT_FOUND)
+CertUtil: Object was not found.
+TrustedPublisher "Trusted Publishers"
+CertUtil: -store command FAILED: 0x80090011 (-2146893807 NTE_NOT_FOUND)
+CertUtil: Object was not found.
+=== driver file
+ Volume in drive C has no label.
+ Volume Serial Number is 562A-C0DF
+
+ Directory of C:\Windows\System32\drivers
+
+27/10/2026  10:07 pm             5,488 apexr.sys
+               1 File(s)          5,488 bytes
+               0 Dir(s)  72,461,959,168 bytes free
+=== service
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: apexr
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : System32\drivers\apexr.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : apexr
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+
+SERVICE_NAME: apexr 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 1077  (0x435)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+=== done

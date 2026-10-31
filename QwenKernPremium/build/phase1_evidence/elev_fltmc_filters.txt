@@ -1,0 +1,18 @@
+﻿== elev_fltmc_filters.txt  2026-10-26 17:19:44 ==
+
+Filter Name                     Num Instances    Altitude    Frame
+------------------------------  -------------  ------------  -----
+bindflt                                 1       409800         0
+UCPD                                    8       385250.5       0
+storqosflt                              1       244000         0
+wcifs                                   0       189900         0
+gameflt                                 2       189850         0
+CldFlt                                  0       180451         0
+bfs                                    10       150000         0
+FileCrypt                               0       141100         0
+luafv                                   1       135000         0
+UnionFS                                 0       130850         0
+npsvctrig                               1        46000         0
+Wof                                     6        40700         0
+FileInfo                                8        40500         0
+

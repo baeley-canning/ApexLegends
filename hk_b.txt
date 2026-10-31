@@ -1,0 +1,210 @@
+﻿350| 
+351| struct WindowSearch {
+352|     DWORD processId;
+353|     HWND  result;
+354| };
+355| 
+356| BOOL CALLBACK EnumGameWindowsProc(HWND hwnd, LPARAM param) {
+357|     WindowSearch* search = reinterpret_cast<WindowSearch*>(param);
+358| 
+359|     DWORD pid = 0;
+360|     GetWindowThreadProcessId(hwnd, &pid);
+361|     if (pid != search->processId) return TRUE;
+362|     if (!IsWindowVisible(hwnd)) return TRUE;
+363|     if (GetWindow(hwnd, GW_OWNER) != nullptr) return TRUE;
+364|     if (GetWindowTextLengthW(hwnd) == 0) return TRUE;
+365| 
+366|     search->result = hwnd;
+367|     return FALSE;
+368| }
+369| 
+370| } // namespace
+371| 
+372| bool GameHooks::FindGameWindow() {
+373|     if (hGameWindow && IsWindow(hGameWindow)) return true;
+374| 
+375|     // Primary: the known r5apex window class.  Fallback: any visible
+376|     // top-level window owned by our own process (covers class renames).
+377|     hGameWindow = FindWindowW(kGameWindowClass, nullptr);
+378|     if (hGameWindow) return true;
+379| 
+380|     WindowSearch search{ GetCurrentProcessId(), nullptr };
+381|     EnumWindows(EnumGameWindowsProc, reinterpret_cast<LPARAM>(&search));
+382|     hGameWindow = search.result;
+383|     return hGameWindow != nullptr;
+384| }
+385| 
+386| // ============================================================================
+387| // D3D9 Present hook (idx 17 of IDirect3DDevice9)
+388| // ============================================================================
+389| bool GameHooks::HookPresent(IDirect3DDevice9* pDevice) {
+390|     if (bPresentHooked) return true;
+391|     (void)pDevice;
+392| 
+393|     HWND dummyWindow = CreateWindowExW(0, L"STATIC", L"apex_dummy", WS_POPUP,
+394|                                        0, 0, 8, 8, nullptr, nullptr, nullptr, nullptr);
+395|     if (!dummyWindow) return false;
+396| 
+397|     const Direct3DCreate9Fn createD3D9 = ResolveDirect3DCreate9();
+398|     IDirect3D9* d3d9 = createD3D9 ? createD3D9(D3D_SDK_VERSION) : nullptr;
+399|     if (!d3d9) {
+400|         DestroyWindow(dummyWindow);
+401|         return false;
+402|     }
+403| 
+404|     D3DPRESENT_PARAMETERS params{};
+405|     params.Windowed         = TRUE;
+406|     params.hDeviceWindow    = dummyWindow;
+407|     params.SwapEffect       = D3DSWAPEFFECT_DISCARD;
+408|     params.BackBufferFormat = D3DFMT_UNKNOWN;
+409| 
+410|     IDirect3DDevice9* dummyDevice = nullptr;
+411|     if (FAILED(d3d9->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, dummyWindow,
+412|                                   D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+413|                                   &params, &dummyDevice))) {
+414|         d3d9->Release();
+415|         DestroyWindow(dummyWindow);
+416|         return false;
+417|     }
+418| 
+419|     void** vtable = *reinterpret_cast<void***>(dummyDevice);
+420|     g_d3d9PresentSlot = &vtable[17];
+421| 
+422|     const bool patched = PatchVtableSlot(g_d3d9PresentSlot,
+423|                                          &GameHooks::D3D9PresentHook,
+424|                                          &originalPresent);
+425|     dummyDevice->Release();
+426|     d3d9->Release();
+427|     DestroyWindow(dummyWindow);
+428| 
+429|     bPresentHooked = patched;
+430|     return patched;
+431| }
+432| 
+433| // ============================================================================
+434| // DXGI SwapChain::Present hook (idx 8 of IDXGISwapChain)
+435| // ============================================================================
+436| bool GameHooks::HookPresentDXGI() {
+437|     if (bDXGIHooked) return true;
+438| 
+439|     HWND dummyWindow = CreateWindowExW(0, L"STATIC", L"apex_dummy", WS_POPUP,
+440|                                        0, 0, 8, 8, nullptr, nullptr, nullptr, nullptr);
+441|     if (!dummyWindow) return false;
+442| 
+443|     DXGI_SWAP_CHAIN_DESC desc{};
+444|     desc.BufferCount                        = 1;
+445|     desc.BufferDesc.Width                  = 8;
+446|     desc.BufferDesc.Height                 = 8;
+447|     desc.BufferDesc.Format                 = DXGI_FORMAT_R8G8B8A8_UNORM;
+448|     desc.BufferUsage                        = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+449|     desc.OutputWindow                       = dummyWindow;
+450|     desc.SampleDesc.Count                   = 1;
+451|     desc.Windowed                           = TRUE;
+452|     desc.SwapEffect                         = DXGI_SWAP_EFFECT_DISCARD;
+453| 
+454|     ID3D11Device*        device    = nullptr;
+455|     ID3D11DeviceContext* context   = nullptr;
+456|     IDXGISwapChain*      swapChain = nullptr;
+457|     D3D_FEATURE_LEVEL     level     = D3D_FEATURE_LEVEL_11_0;
+458| 
+459|     HRESULT hr = D3D11CreateDeviceAndSwapChain(
+460|         nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, nullptr, 0,
+461|         D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+462| 
+463|     if (FAILED(hr)) {
+464|         // Headless/VM fallback: WARP still exposes the same dxgi vtable.
+465|         hr = D3D11CreateDeviceAndSwapChain(
+466|             nullptr, D3D_DRIVER_TYPE_WARP, nullptr, 0, nullptr, 0,
+467|             D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+468|     }
+469| 
+470|     if (FAILED(hr) || !swapChain) {
+471|         if (context) context->Release();
+472|         if (device)  device->Release();
+473|         DestroyWindow(dummyWindow);
+474|         return false;
+475|     }
+476| 
+477|     void** vtable = *reinterpret_cast<void***>(swapChain);
+478|     g_dxgiPresentSlot = &vtable[8];
+479| 
+480|     const bool patched = PatchVtableSlot(g_dxgiPresentSlot,
+481|                                          &GameHooks::DXGISwapChainPresentHook,
+482|                                          &originalDXGIPresent);
+483| 
+484|     swapChain->Release();
+485|     context->Release();
+486|     device->Release();
+487|     DestroyWindow(dummyWindow);
+488| 
+489|     bDXGIHooked = patched;
+490|     return patched;
+491| }
+492| 
+493| // ============================================================================
+494| // Hook thunks
+495| // ============================================================================
+496| LRESULT CALLBACK GameHooks::WndProcHook(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+497|     // INSERT toggles the ESP overlay without touching the render thread.
+498|     if (uMsg == WM_KEYDOWN && wParam == VK_INSERT && g_pCheatFeatures) {
+499|         const bool enabled = g_pCheatFeatures->IsFeatureEnabled(FEATURE_ESP);
+500|         g_pCheatFeatures->EnableFeature(FEATURE_ESP, !enabled);
+501|         printf("[*] ESP %s\n", enabled ? "disabled" : "enabled");
+502|     }
+503| 
+504|     if (originalWndProc) {
+505|         return CallWindowProcW(originalWndProc, hwnd, uMsg, wParam, lParam);
+506|     }
+507|     return DefWindowProcW(hwnd, uMsg, wParam, lParam);
+508| }
+509| 
+510| HRESULT STDMETHODCALLTYPE GameHooks::D3D9PresentHook(IDirect3DDevice9* pDevice,
+511|                                                      CONST RECT* pSourceRect,
+512|                                                      CONST RECT* pDestRect,
+513|                                                      HWND hDestWindowOverride,
+514|                                                      CONST RGNDATA* pDirtyRegion) {
+515|     // Draw before the real Present so the overlay lands in this frame.
+516|     if (pDevice) {
+517|         RenderOverlay(pDevice);
+518|     }
+519| 
+520|     if (!originalPresent) return D3DERR_DEVICELOST;
+521|     return originalPresent(pDevice, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
+522| }
+523| 
+524| HRESULT STDMETHODCALLTYPE GameHooks::DXGISwapChainPresentHook(IDXGISwapChain* pSwapChain,
+525|                                                               UINT syncInterval,
+526|                                                               UINT flags) {
+527|     if (pSwapChain) {
+528|         RenderOverlayDX11(pSwapChain);
+529|     }
+530| 
+531|     if (!originalDXGIPresent) return S_OK;
+532|     return originalDXGIPresent(pSwapChain, syncInterval, flags);
+533| }
+534| 
+535| // ============================================================================
+536| // D3D9 overlay rendering
+537| // ============================================================================
+538| void GameHooks::RenderOverlay(IDirect3DDevice9* pDevice) {
+539|     if (!pDevice) return;
+540| 
+541|     D3DVIEWPORT9 viewport{};
+542|     if (FAILED(pDevice->GetViewport(&viewport))) return;
+543| 
+544|     g_ScreenWidth  = static_cast<int>(viewport.Width);
+545|     g_ScreenHeight = static_cast<int>(viewport.Height);
+546| 
+547|     const LONG boxCount = g_EspBoxCount;
+548|     if (boxCount <= 0) return;
+549| 
+550|     pDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+551|     pDevice->SetTexture(0, nullptr);
+552|     pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+553|     pDevice->SetRenderState(D3DRS_ZENABLE,  D3DZB_FALSE);
+554|     pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+555|     pDevice->SetRenderState(D3DRS_SRCBLEND,  D3DBLEND_SRCALPHA);
+556|     pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+557| 
+558|     for (LONG i = 0; i < boxCount && i < MAX_ESP_BOXES; ++i) {
+559|         const ESPBox& box = g_EspBoxes[i];

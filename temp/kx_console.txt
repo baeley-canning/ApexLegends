@@ -1,0 +1,3 @@
+target r5apex_dx12.exe pid=8700
+CreateFile(\\.\apexr) failed err=2 (driver loaded?)
+exit=1 

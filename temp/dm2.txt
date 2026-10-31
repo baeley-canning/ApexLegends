@@ -1,0 +1,332 @@
+# datamap forensics 2
+imagebase 0x140000000  file 68517728 bytes
+  .text     va=0x00001000 vsize=0x02c951ac rawptr=0x00000600 rawsize=0x02c95200  raw-backed rva end=0x2c96200
+  .rdata    va=0x02c97000 vsize=0x00680b60 rawptr=0x02c95800 rawsize=0x00680c00  raw-backed rva end=0x3317c00
+  .data     va=0x03318000 vsize=0x0b40ab8c rawptr=0x03316400 rawsize=0x00d00000  raw-backed rva end=0x4018000
+  .pdata    va=0x0e723000 vsize=0x000e32bc rawptr=0x04016400 rawsize=0x000e3400  raw-backed rva end=0xe806400
+  _RDATA    va=0x0e807000 vsize=0x00000a24 rawptr=0x040f9800 rawsize=0x00000c00  raw-backed rva end=0xe807c00
+  .fptable  va=0x0e808000 vsize=0x00000100 rawptr=0x040fa400 rawsize=0x00000200  raw-backed rva end=0xe808200
+  .rsrc     va=0x0e809000 vsize=0x000035f8 rawptr=0x040fa600 rawsize=0x00003600  raw-backed rva end=0xe80c600
+  .reloc    va=0x0e80d000 vsize=0x000571b0 rawptr=0x040fdc00 rawsize=0x00057200  raw-backed rva end=0xe864200
+  .ooa      va=0x0e865000 vsize=0x00000712 rawptr=0x04154e00 rawsize=0x00000800  raw-backed rva end=0xe865800
+
+## qword references to identifier strings
+  identifier strings found: 29968
+  sample: ['TLS_AES_128_GCM_SHA256', 'TLS_AES_256_GCM_SHA384', 'TLS_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256', 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_RSA_WITH_AES_128_GCM_SHA256', 'TLS_RSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256']
+  aligned qword refs to those strings: 9971
+  top gaps between consecutive refs:
+    gap 0x0008 : 4777
+    gap 0x0018 : 1221
+    gap 0x0010 : 1026
+    gap 0x0020 : 853
+    gap 0x0030 : 506
+    gap 0x0040 : 138
+    gap 0x0028 : 123
+    gap 0x00b0 : 87
+    gap 0x0060 : 86
+    gap 0x00a8 : 86
+    gap 0x00f0 : 53
+    gap 0x0080 : 42
+
+  --- stride 0x8 : 4777 pairs, 1770 distinct names ---
+    slot 0x02cc8fc0 name@string 0x2fe5254 'ERROR'
+       +0x08 u32=0x42cc90d8
+       +0x10 u32=0x42ff3cc4
+       +0x18 u32=0x42cc90e0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cc90e8
+    slot 0x02cc8fc8 name@string 0x2cc90d8 'double'
+       +0x08 u32=0x42ff3cc4
+       +0x10 u32=0x42cc90e0
+       +0x18 u32=0x42cc90e8
+       +0x1c u32=0x1
+       +0x20 u32=0x42cc90f0
+    slot 0x02cc8fd0 name@string 0x2ff3cc4 'float'
+       +0x08 u32=0x42cc90e0
+       +0x10 u32=0x42cc90e8
+       +0x18 u32=0x42cc90f0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cc90f8
+    slot 0x02cc8fd8 name@string 0x2cc90e0 'int64'
+       +0x08 u32=0x42cc90e8
+       +0x10 u32=0x42cc90f0
+       +0x18 u32=0x42cc90f8
+       +0x1c u32=0x1
+       +0x20 u32=0x42cc9100
+    slot 0x02cc8fe0 name@string 0x2cc90e8 'uint64'
+       +0x08 u32=0x42cc90f0
+       +0x10 u32=0x42cc90f8
+       +0x18 u32=0x42cc9100
+       +0x1c u32=0x1
+       +0x20 u32=0x42fe62bc
+    slot 0x02cc8fe8 name@string 0x2cc90f0 'int32'
+       +0x08 u32=0x42cc90f8
+       +0x10 u32=0x42cc9100
+       +0x18 u32=0x42fe62bc
+       +0x1c u32=0x1
+       +0x20 u32=0x42ff3cd4
+
+  --- stride 0x18 : 1221 pairs, 1117 distinct names ---
+    slot 0x02d0b900 name@string 0x2d0a5b4 'LOGOUT'
+       +0x08 u32=0x42d0bb80
+       +0x10 u32=0x42d0bb90
+       +0x18 u32=0x42d0bb9c
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0bba8
+    slot 0x02d0b950 name@string 0x2d0bc08 'TTYLOC'
+       +0x08 u32=0x42d0bc10
+       +0x10 u32=0x42d0bc1c
+       +0x18 u32=0x42d0bc24
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0bc30
+    slot 0x02d0b9e8 name@string 0x2d0bcc4 'BRK'
+       +0x08 u32=0x42d0bcc8
+       +0x10 u32=0x42d0bccc
+       +0x18 u32=0x42d0bcd0
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0bcd4
+    slot 0x02d0e790 name@string 0x2d0e880 'LOGIN'
+       +0x08 u32=0x5
+       +0x10 u32=0x1
+       +0x18 u32=0x42d0e888
+       +0x1c u32=0x1
+       +0x20 u32=0x5
+    slot 0x02d0e7f0 name@string 0x2d0e8ac 'GSSAPI'
+       +0x08 u32=0x6
+       +0x10 u32=0x10
+       +0x18 u32=0x42d0e8b8
+       +0x1c u32=0x1
+       +0x20 u32=0x8
+    slot 0x02d0e808 name@string 0x2d0e8b8 'EXTERNAL'
+       +0x08 u32=0x8
+       +0x10 u32=0x20
+       +0x18 u32=0x42d04a4c
+       +0x1c u32=0x1
+       +0x20 u32=0x4
+
+  --- stride 0x10 : 1026 pairs, 921 distinct names ---
+    slot 0x02cb53c8 name@string 0x2ff0b50 'GET'
+       +0x08 u32=0x42cab8b0
+       +0x10 u32=0x42ff5338
+       +0x18 u32=0x42cab8b8
+       +0x1c u32=0x1
+       +0x20 u32=0x430156ec
+    slot 0x02cb5408 name@string 0x3011fac 'http'
+       +0x08 u32=0x42cb5f90
+       +0x10 u32=0x43011fb4
+       +0x18 u32=0x42cb5f98
+       +0x1c u32=0x1
+       +0x20 u32=0x42fe6c3c
+    slot 0x02cb54f0 name@string 0x3049314 'age'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x4302984c
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cb6028
+    slot 0x02cb5500 name@string 0x302984c 'allow'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42cb6028
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cb6038
+    slot 0x02cb55a0 name@string 0x2cb60b8 'cookie'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42ff4990
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cb60c0
+    slot 0x02cb55b0 name@string 0x2ff4990 'date'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42cb60c0
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x431cd970
+
+  --- stride 0x20 : 853 pairs, 789 distinct names ---
+    slot 0x02cb54d0 name@string 0x2cb6000 'accept'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42cb6008
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x43049314
+    slot 0x02cb56e0 name@string 0x2cb6178 'refresh'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42cb6180
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x4300de84
+    slot 0x02d0ee68 name@string 0x2d0f164 'dsa'
+       +0x08 u32=0x42d0f168
+       +0x10 u32=0x42d0f180
+       +0x18 u32=0x42d0f190
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f1a8
+    slot 0x02d0ee98 name@string 0x2d0f1d0 'c2pnb163v1'
+       +0x08 u32=0x42d0f1e0
+       +0x10 u32=0x42d0f1f8
+       +0x18 u32=0x42d0f208
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f220
+    slot 0x02d0eef8 name@string 0x2d0f2d0 'sha1WithRSAEncryption'
+       +0x08 u32=0x42d0f2e8
+       +0x10 u32=0x42d0f300
+       +0x18 u32=0x42d0f310
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f328
+    slot 0x02f61840 name@string 0x2f5e320 'BlendDesignPositions'
+       +0x08 u32=0x431bd61c
+       +0x10 u32=0x42f61e6c
+       +0x18 u32=0x42f61e70
+       +0x1c u32=0x1
+       +0x20 u32=0x42f61e78
+
+  --- stride 0x30 : 506 pairs, 455 distinct names ---
+    slot 0x02cb53d8 name@string 0x2ff5338 'POST'
+       +0x08 u32=0x42cab8b8
+       +0x10 u32=0x430156ec
+       +0x18 u32=0x42cab8b8
+       +0x1c u32=0x1
+       +0x20 u32=0x42cb5f80
+    slot 0x02d0ef78 name@string 0x2d0f410 'sha1'
+       +0x08 u32=0x42d0ee40
+       +0x10 u32=0x42d0f418
+       +0x18 u32=0x42d0f420
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f428
+    slot 0x02d0efe8 name@string 0x2d0f480 'streetAddress'
+       +0x08 u32=0x42d0f490
+       +0x10 u32=0x42d0f49c
+       +0x18 u32=0x42d0f4a0
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f4ac
+    slot 0x02f5e5a0 name@string 0x3193690 'kerning'
+       +0x08 u32=0x42f5e538
+       +0x10 u32=0x42f5eeb0
+       +0x18 u32=0x42f5e4c0
+       +0x1c u32=0x1
+       +0x20 u32=0x0
+    slot 0x02f5e5d0 name@string 0x2fef228 'version'
+       +0x08 u32=0x3
+       +0x10 u32=0x0
+       +0x18 u32=0x0
+       +0x1c u32=0x8
+       +0x20 u32=0x0
+    slot 0x02f5e600 name@string 0x2f5e0f0 'Notice'
+       +0x08 u32=0x3
+       +0x10 u32=0x0
+       +0x18 u32=0x8
+       +0x1c u32=0x8
+       +0x20 u32=0x0
+
+  --- stride 0x40 : 138 pairs, 129 distinct names ---
+    slot 0x02cb5680 name@string 0x2cabdb8 'location'
+       +0x08 u32=0x42fe4fb0
+       +0x10 u32=0x42cb6130
+       +0x18 u32=0x42fe4fb0
+       +0x1c u32=0x1
+       +0x20 u32=0x42cb6140
+    slot 0x02d0efa8 name@string 0x2d0f438 'serialNumber'
+       +0x08 u32=0x42d0f448
+       +0x10 u32=0x42d0f450
+       +0x18 u32=0x42d0f458
+       +0x1c u32=0x1
+       +0x20 u32=0x42d0f460
+    slot 0x02fc00d0 name@string 0x2fe6280 'cem_ea_id'
+       +0x08 u32=0x2
+       +0x10 u32=0x42fe4fb0
+       +0x18 u32=0x3
+       +0x1c u32=0x0
+       +0x20 u32=0x42fe4fb0
+    slot 0x02fc2e40 name@string 0x3013d58 'spectateparams'
+       +0x08 u32=0x43013d38
+       +0x10 u32=0x0
+       +0x18 u32=0x436d4090
+       +0x1c u32=0x1
+       +0x20 u32=0x0
+    slot 0x02fdb1b0 name@string 0x313a860 'mtx_entity_userinfo'
+       +0x08 u32=0x42480000
+       +0x10 u32=0x3f800000
+       +0x18 u32=0x0
+       +0x1c u32=0xbf800000
+       +0x20 u32=0x0
+    slot 0x02fe2550 name@string 0x3176310 'rtk_selector'
+       +0x08 u32=0x0
+       +0x10 u32=0x42fd2900
+       +0x18 u32=0x0
+       +0x1c u32=0x0
+       +0x20 u32=0x0
+
+## 32-bit reference test
+  m_iHealth      whole-string occurrences: ['0x305b050', '0x313a9d0', '0x313aa28']
+    rva 0x0305c850  qword-refs=[]  u32-refs=[]
+    rva 0x0313c1d0  qword-refs=[]  u32-refs=[]
+    rva 0x0313c228  qword-refs=[]  u32-refs=[]
+  m_iTeamNum     whole-string occurrences: ['0x3064ea0']
+    rva 0x030666a0  qword-refs=[]  u32-refs=[]
+  m_vecOrigin    whole-string occurrences: ['0x30c7478', '0x30c7898', '0x30c78c0', '0x30c78d0']
+    rva 0x030c8c78  qword-refs=[]  u32-refs=[]
+    rva 0x030c9098  qword-refs=[]  u32-refs=[]
+    rva 0x030c90c0  qword-refs=[]  u32-refs=[]
+  m_currentFrame whole-string occurrences: ['0x30791e0', '0x3079210', '0x3079290', '0x30792b8', '0x307cec0', '0x307cef0']
+    rva 0x0307a9e0  qword-refs=[]  u32-refs=[]
+    rva 0x0307aa10  qword-refs=[]  u32-refs=[]
+    rva 0x0307aa90  qword-refs=[]  u32-refs=[]
+
+## C_BaseEntity table neighbourhood (0x40 records)
+  0x03354b20  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 43082e38 1 940 10
+  0x03354b60  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 43082e38 1 940 10
+  0x03354ba0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a2f8 1 40 8
+  0x03354be0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a298 1 10 8
+  0x03354c20  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a390 1 80 8
+  0x03354c60  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a370 1 78 8
+  0x03354ca0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a2d0 1 4c10 10
+  0x03354ce0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 4308a2e0 1 18 8
+  0x03354d20  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430be128 1 1c8 8
+  0x03354d60  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1488 1 1690 10
+  0x03354da0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c16a8 1 1650 10
+  0x03354de0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430bd858 1 960 10
+  0x03354e20  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1708 1 1650 10
+  0x03354e60  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430bd0b8 1 970 10
+  0x03354ea0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c0ce0 1 1700 10
+  0x03354ee0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430be6d0 1 da0 10
+  0x03354f20  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1310 1 1660 10
+  0x03354f60  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1990 1 1670 10
+  0x03354fa0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430be0a8 1 9c0 10
+  0x03354fe0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1f40 1 1620 10
+  0x03355020  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c1980 1 1660 10
+  0x03355060  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430beb10 1 1ea0 10
+  0x033550a0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430bf298 1 a20 10
+  0x033550e0  q0=0x0 None                   q1=0x0 None                   dwords=0 0 0 0 430c15b8 1 1660 10
+
+## densest run of name-pointer slots
+  run start 0x0333a7f0 len 1782 span 0x37a8
+    0x0333a7f0 'cbFSR2'
+    0x0333a7f8 'cbRCAS'
+    0x0333a800 'r_exposure'
+    0x0333a808 'r_rcas_input'
+    0x0333a810 'rw_upscaled_output'
+    0x0333a818 'cbFSR2'
+    0x0333a820 'cbRCAS'
+    0x0333a828 'r_exposure'
+    0x0333a830 'r_rcas_input'
+    0x0333a838 'rw_upscaled_output'
+    0x0333a840 'cbGenerateReactive'
+    0x0333a848 'r_input_color_pre_alpha'
+    0x0333a850 'r_input_color_post_alpha'
+    0x0333a858 'rw_output_reactive_mask'
+    0x0333a860 'cbFSR2'
+    0x0333a868 'rw_internal_upscaled_color'
+    0x0333a870 'rw_lock_status'
+    0x0333a878 'rw_upscaled_output'
+    0x0333a880 'r_exposure'
+    0x0333a888 'r_transparency_and_composition_mask'
+    0x0333a890 'r_internal_upscaled_color'
+    0x0333a898 'r_lock_status'
+    0x0333a8a0 'r_depth_clip'
+    0x0333a8a8 'r_prepared_input_color'
+    0x0333a8b0 'r_luma_history'
+    0x0333a8b8 'r_lanczos_lut'
+    0x0333a8c0 'r_imgMips'
+    0x0333a8c8 'r_reactive_max'
+    0x0333a8d0 's_LinearClamp'
+    0x0333a8d8 'cbFSR2'

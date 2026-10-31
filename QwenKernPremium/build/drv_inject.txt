@@ -1,0 +1,109 @@
+﻿128: // Helpers
+129: // ----------------------------------------------------------------------------
+130: static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle) {
+131:     CLIENT_ID clientId = { 0 };
+132:     OBJECT_ATTRIBUTES attributes;
+133: 
+134:     clientId.UniqueProcess = ULongToHandle(processId);
+135:     clientId.UniqueThread  = NULL;
+136: 
+137:     InitializeObjectAttributes(&attributes, NULL, OBJ_KERNEL_HANDLE, NULL, NULL);
+138: 
+139:     return ZwOpenProcess(processHandle,
+140:                          PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION |
+141:                          PROCESS_VM_WRITE | PROCESS_VM_READ |
+142:                          PROCESS_QUERY_INFORMATION,
+143:                          &attributes, &clientId);
+144: }
+145: 
+146: // ----------------------------------------------------------------------------
+147: // IOCTL_APEXDRV_INJECT
+148: // ----------------------------------------------------------------------------
+149: static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
+150:     HANDLE   processHandle = NULL;
+151:     HANDLE   threadHandle  = NULL;
+152:     PVOID    remoteBuffer  = NULL;
+153:     SIZE_T   regionSize    = 0;
+154:     SIZE_T   pathBytes     = 0;
+155:     NTSTATUS status;
+156: 
+157:     if (request->ProcessId == 0)          return STATUS_INVALID_PARAMETER;
+158:     if (request->LoadLibraryAddress == 0)  return STATUS_INVALID_PARAMETER;
+159: 
+160:     // Ensure the wide path is NUL terminated inside the supplied buffer.
+161:     request->DllPath[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
+162:     pathBytes = (wcslen(request->DllPath) + 1) * sizeof(WCHAR);
+163:     if (pathBytes <= sizeof(WCHAR)) return STATUS_INVALID_PARAMETER;
+164: 
+165:     status = ApexdrvOpenProcess(request->ProcessId, &processHandle);
+166:     if (!NT_SUCCESS(status)) return status;
+167: 
+168:     regionSize = pathBytes;
+169:     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
+170:                                      MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+171:     if (!NT_SUCCESS(status)) {
+172:         ZwClose(processHandle);
+173:         return status;
+174:     }
+175: 
+176:     status = ZwWriteVirtualMemory(processHandle, remoteBuffer,
+177:                                   request->DllPath, pathBytes, NULL);
+178:     if (!NT_SUCCESS(status)) {
+179:         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+180:         ZwClose(processHandle);
+181:         return status;
+182:     }
+183: 
+184:     // User-mode thread running kernel32!LoadLibraryW(remotePath).
+185:     status = ZwCreateThreadEx(&threadHandle, THREAD_ALL_ACCESS, NULL, processHandle,
+186:                               (PVOID)(ULONG_PTR)request->LoadLibraryAddress,
+187:                               remoteBuffer, 0, 0, 0, 0, NULL);
+188:     if (!NT_SUCCESS(status)) {
+189:         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+190:         ZwClose(processHandle);
+191:         return status;
+192:     }
+193: 
+194:     {
+195:         PETHREAD threadObject = NULL;
+196:         if (NT_SUCCESS(ObReferenceObjectByHandle(threadHandle,
+197:                                                  THREAD_QUERY_INFORMATION,
+198:                                                  *PsThreadType, KernelMode,
+199:                                                  (PVOID*)&threadObject, NULL))) {
+200:             request->ThreadId = (ULONG)(ULONG_PTR)PsGetThreadId(threadObject);
+201:             ObDereferenceObject(threadObject);
+202:         }
+203:     }
+204: 
+205:     // Wait for the loader so the path buffer can safely be released.
+206:     {
+207:         LARGE_INTEGER timeout;
+208:         timeout.QuadPart = -((LONGLONG)APEXDRV_MAX_THREAD_WAIT_MS * 10000);
+209:         KeWaitForSingleObject(threadHandle, Executive, KernelMode, FALSE, &timeout);
+210:     }
+211: 
+212:     request->RemoteBase   = (ULONG64)(ULONG_PTR)remoteBuffer;
+213:     request->ResultStatus = STATUS_SUCCESS;
+214: 
+215:     ZwClose(threadHandle);
+216:     ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+217:     ZwClose(processHandle);
+218: 
+219:     return STATUS_SUCCESS;
+220: }
+221: 
+222: // ----------------------------------------------------------------------------
+223: // IOCTL_APEXDRV_PROBE â€” does the target accept work issued from KERNEL context?
+224: //
+225: // Mirrors the user-mode probe exactly: lookup -> open with injector rights ->
+226: // allocate/write/free -> copy the PEB out.  Each step's NTSTATUS is stored so a
+227: // partial result (e.g. handle fine, allocation refused) is still evidence.
+228: // Deliberately returns STATUS_SUCCESS when the request was understood: the
+229: // caller reads the per-step statuses, and a driver-side failure would hide
+230: // which step produced it.
+231: //
+232: // Runs at PASSIVE_LEVEL in the requesting thread's context (synchronous
+233: // DeviceIoControl), which is what PsLookupProcessByProcessId, ObOpenObjectByPointer
+234: // and MmCopyVirtualMemory all require.
+235: // ----------------------------------------------------------------------------
+236: static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {

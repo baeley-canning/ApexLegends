@@ -1,0 +1,15 @@
+self     pid=34004
+target   r5apex_dx12.exe pid=11996
+self     elevated=False (err=0)
+game     elevated=True (err=0)
+
+## OpenProcess masks
+  QUERY_LIMITED_INFORMATION    0x001000  OK    handle=0x1a4
+  VM_READ                      0x000010  FAIL  err=5
+  VM_READ|QUERY_INFORMATION    0x000410  FAIL  err=5
+  VM_READ|QUERY_LIMITED        0x001010  FAIL  err=5
+  VM_READ|VM_WRITE|QUERY       0x000438  FAIL  err=5
+  ALL_ACCESS                   0x1f0fff  FAIL  err=5
+
+## read test with whatever handle we can get
+  mask QUERY_LIMITED_INFORMATION    rpm_ok=0 got=0 err=87 mz=0000

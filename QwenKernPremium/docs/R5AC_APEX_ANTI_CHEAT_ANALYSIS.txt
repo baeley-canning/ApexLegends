@@ -1,0 +1,88 @@
+================================================================================
+R5AC — APEX LEGENDS ANTI-CHEAT ANALYSIS (FROM DROF'S LABS)
+================================================================================
+Last Updated: 2026-10-25 | Source: drof's labs R5AC S25 Analysis
+
+================================================================================
+1. OVERVIEW & SPECIFICATION
+================================================================================
+
+R5AC is Respawn Entertainment's in-house cheat detection for Apex Legends.
+Embedded in r5apex_dx12.exe — sometimes entire functions, sometimes inline code.
+
+OBFUSCATION: Basic XOR transform on C-strings (key length = content length)
+FOCUS: Client-side internal cheat detection (heuristics → concrete signals)
+
+================================================================================
+2. VIRTUAL METHOD TABLE (VMT) ANALYSIS
+================================================================================
+
+R5AC ensures VMTPs point within expected bounds and read-only VMT data is intact.
+
+CHECK PROCESS (VTP_GetFilesystemInterface):
+1. Verifies FilesystemInterfaceVMTP lies within valid PE section of game module
+2. Scans loaded modules for KERNEL32.DLL → finds K32GetMappedFileName export
+3. If VMTP outside legitimate section → R5AC::PushViolation()
+
+MONITORED VIRTUAL TABLES:
+| Function                          | RVA       | Purpose                    |
+|-----------------------------------|-----------|----------------------------|
+| VTP_GetEngineTraceClient          | 0x22ee01  | Engine trace interface     |
+| VTP_GetFilesystemInterface        | 0x479351  | Filesystem interface       |
+| VTP_C_Player::Spawn               | 0x817371  | Player spawn method        |
+| VTP_GetEntityList                 | 0x865491  | Entity list retrieval      |
+| VTP_GetViewRenderInstance         | 0x9f13b1  | View render instance       |
+
+IMPACT: Hooking these VMTPs can trigger detection. Use alternative entry points.
+
+================================================================================
+3. CONTROL FLOW ANALYSIS (DEEP DIVE)
+================================================================================
+
+R5AC plants control flow enumeration helpers in important game functions.
+Signed modules are NOT automatically trusted — strict whitelist enforced.
+
+MODULE WHITELIST: r5apex_dx12.exe, KERNEL32.DLL, ntdll.dll, steamnetworkingsockets.dll, EOSSDK-Win64-Shipping.dll
+
+WHITELIST STRUCTURE: struct WHITELISTED_REGION { u64 Begin; u64 End; };
+Recent builds switched to LDR-based checking (not fully reverse engineered).
+
+STACK WALKING (2026): RtlCaptureContext + RtlLookupFunctionEntry + RtlVirtualUnwind
+
+CALL STACK SPOOFING DETECTION: Interprets instructions around callsite, checks MODRM bytes.
+
+DETECTION PIPELINE (C_ViewRender::GetMostRecentClipTransform):
+1. RtlCaptureSBT(1, 5, stackData) — captures 1-5 frames
+2. Hash captured stack (djb2 variant), check against known-good hashmap with lock
+3. If unknown → iterate frames, check each in whitelisted regions
+4. Non-whitelisted frame → fetch module name → push violation
+
+KEY VULNERABILITY: RtlCaptureSBT pointer resolved into .data is unchecked — can be swapped to fake back trace buffer. Referenced by numerous critical game functions.
+
+================================================================================
+4. HARDWARE ID / MACHINE FINGERPRINTING
+================================================================================
+
+R5AC itself does NOT directly do HWID. Apex uses Theia (Javelin component) for this.
+COLLECTED DATA: os_version, gpu_vendor, render_device_driver_version, cpu_brand, 
+                windows_install_date, is_wine, language
+
+KEY APIs USED BY R5AC: K32GetMappedFileNameA(0x20ea60), VirtualQuery(0x20ee00),
+VirtualProtect(0x7df831), OpenSCManagerA/OpenServiceA(0x54ee91+), 
+RtlCaptureStackBackTrace(0x541fc0)
+
+GAME FUNCTION REFERENCES: Engine_SetViewAngles(0x20e9f0), GetMostRecentClipTransform(0x878620),
+Input_CreateMove(0x951be1/0x952811 VMT hook point)
+
+================================================================================
+5. R5AC vs JAVELIN RELATIONSHIP
+================================================================================
+
+R5AC (Apex-specific) + Javelin (EA-wide kernel) = Layered detection:
+- R5AC catches local anomalies → Javelin validates with kernel/hardware data
+- Server correlates with other players' observations
+- Purely client-side evasion is harder with this architecture
+
+================================================================================
+END OF R5AC APEX LEGENDS ANTI-CHEAT ANALYSIS
+================================================================================

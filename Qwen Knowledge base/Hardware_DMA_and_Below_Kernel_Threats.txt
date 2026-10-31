@@ -1,0 +1,197 @@
+KNOWLEDGE BASE: HARDWARE, DMA, AND BELOW-KERNEL THREATS
+
+Purpose:
+Educational reference for cheating and defenses that operate below the
+operating system: dedicated hardware that reads or writes memory without
+the CPU, device-level input emulation, and the platform features
+(IOMMU, virtualization, attestation) used to defend against them.
+
+This document is reference knowledge. It describes classes of mechanism
+and defense at a conceptual level. It deliberately contains no
+procurement guidance, product recommendations, or operational steps for
+building or fielding such hardware, consistent with house policy on
+bypass content.
+
+Related documents: ANTI-CHEAT ARCHITECTURE, KERNEL MODE AND ANTI-CHEAT
+DRIVERS, OPERATING SYSTEM INTERNALS AND PROCESS MEMORY, ANTI-CHEAT
+PRODUCTS AND SYSTEMS, CLIENT INTEGRITY, ANTI-TAMPER, AND ATTESTATION,
+VIRTUALIZATION, CLOUD GAMING, AND ANTI-CHEAT, SPOOFING AND BAN
+EVASION, CONSOLE AND CLOSED-PLATFORM INTEGRITY, and the numbered
+technical series.
+
+---
+
+1. WHY BELOW-KERNEL MATTERS
+The kernel reference explains why defenses move down the privilege
+ladder: the observer must sit below the observed.
+Below the kernel lies hardware and firmware.
+A device can access system memory without the CPU executing any of the
+game's or the anti-cheat's instructions, which means a defense that only
+watches software never sees the access happen.
+This is the "below the kernel" frontier: threats and countermeasures
+that live in a space a kernel driver cannot easily police, and the
+reason modern defensive stacks reach all the way down to device
+isolation and boot trust.
+
+---
+
+2. WHAT DMA IS
+Direct Memory Access is a normal, essential feature: a device reads and
+writes system memory on its own, without the CPU copying every byte.
+Storage controllers, network cards, and GPUs all use DMA; it is why
+those devices are fast.
+The security problem is that DMA is, by design, a path to memory that
+does not pass through the CPU or the operating system's normal checks.
+Anything able to issue DMA requests can, in principle, read or write
+memory the operating system believes is private.
+
+---
+
+3. WHY THIS IS A DISTINCT THREAT CLASS
+Software defenses - user-mode scanners, kernel callbacks, even many
+hypervisor hooks - observe the system from within the system.
+A device performing DMA is not executing the defended system's code, so
+none of those observers is naturally positioned to see it.
+This is what makes below-kernel approaches categorically different from
+"another program running on the machine": the access can be entirely
+absent from the monitored software's view.
+
+---
+
+4. FLAVOURS OF DEVICE-LEVEL MEMORY ACCESS
+Broadly, device memory access appears in a few flavours:
+* an ordinary, legitimate device (a GPU or network card) DMA-ing as
+  designed.
+* a device that is legitimate but whose driver is exploited.
+* a dedicated device whose sole purpose is to read and write arbitrary
+  system memory.
+The first two are ordinary engineering and security concerns; the third
+is the dedicated-hardware case this document is about.
+All three are governed by the same bottom-line question: what is allowed
+to address what in physical memory, and who enforces it.
+
+---
+
+5. HOW THE PLATFORM CONTAINS DEVICE ACCESS
+The defense does not try to spot the device from inside the game.
+It denies the device the ability to reach memory it should not:
+* an input/output memory management unit translates device addresses
+  much as the CPU's memory manager translates program addresses, so a
+  device can only reach ranges it has been granted.
+* PCIe topology determines what can be grouped and isolated.
+* the operating system limits which drivers may run and which devices
+  may be enabled.
+The principle is the same as process isolation, moved down a layer:
+contain the actor by controlling its address translation.
+
+---
+
+6. IOMMU IN PRACTICE
+An IOMMU (Intel VT-d and AMD-Vi are the common names) sits between
+devices and memory.
+When enabled, a device's DMA requests are translated through a
+device-specific mapping, so a device can only reach memory its driver has
+been given.
+Publicly documented anti-cheat stacks rely on this class of feature as
+part of their "trusted machine" requirements, alongside Secure Boot and
+virtualization-based security.
+A disabled or misconfigured IOMMU is precisely the condition that
+reopens the uninspected memory path.
+
+---
+
+7. PCIE TOPOLOGY AND EXTERNAL DEVICES
+PCIe devices attach in a tree of switches and bridges, and the topology
+determines what can be isolated.
+An added device - especially an external one on a riser or in an
+expansion enclosure - changes that topology, and is a normal thing for a
+system-integrity check to notice.
+This is why device enumeration and attestation belong in the defensive
+picture: what memory a device can reach depends on where and how it is
+attached, not just on what it claims to be.
+
+---
+
+8. VULNERABLE-DRIVER AND FIRMWARE ATTACKS
+Not every below-kernel attack uses exotic hardware.
+Two documented categories use ordinary components:
+* a legitimate, signed driver with a flaw that lets it perform memory
+  access its author never intended ("bring your own vulnerable driver").
+* firmware beneath the driver that behaves in ways the operating system
+  cannot see.
+The defenses are the ones already described: blocklists of known-
+vulnerable drivers, memory- and code-integrity features that raise the
+cost of kernel tampering, and attestation of the boot state so that a
+below-OS compromise is at least visible as a mismatch.
+
+---
+
+9. DEVICE-LEVEL INPUT EMULATION
+Input can also be generated below the software stack, by hardware that
+presents itself as a human-interface device and drives the machine like
+a very fast, very precise user.
+Because the events are physically generated, they may be
+indistinguishable from real input at the device layer, which is why the
+defense focuses on the resulting behaviour rather than the source: the
+server asks whether the pattern of play is human-plausible, regardless
+of how the events were produced.
+This is a place where the authenticity of input is an open problem, and
+where behavioural analysis carries the load.
+
+---
+
+10. DETECTION VERSUS PREVENTION BELOW THE OS
+The usual split applies with extra force here:
+* prevention is structural - the IOMMU, the device topology, the
+  blocklists, the boot attestation - and it removes the path rather than
+  watching it.
+* detection is residual - noticing an unexpected device, a vulnerable
+  driver, or an implausible input pattern.
+Prevention is the stronger lever because, once memory is unreachable, the
+class of attack is denied rather than merely observed.
+
+---
+
+11. THE TRUST CHAIN, EXTENDED BELOW THE OS
+The kernel reference describes a chain: hardware, hypervisor, kernel,
+user mode, server.
+This document adds the bottom of that chain.
+What the operating system believes about its own memory is only as sound
+as the device isolation and boot measurements beneath it; weaken those
+and every layer above inherits a false assumption.
+This is why the current defensive trend reaches down to firmware,
+measured boot, and device translation rather than stopping at the kernel.
+
+---
+
+12. SCOPE AND ETHICS NOTE
+This document describes a threat class and its defenses at a conceptual
+level because that is what is needed to reason about modern anti-cheat.
+It deliberately gives no procurement channels, no specific products, and
+no buildable designs, and it treats the attacker's tools only as
+categories.
+The point is to understand why the defenses exist and where they are
+still incomplete, not to reproduce any capability.
+
+---
+
+13. SUMMARY
+Below the operating system, memory can be read and written without the
+CPU or the anti-cheat executing a single instruction, and input can be
+generated as though by a human.
+The platform's answers are to control device address translation (IOMMU),
+limit what is attached and enabled (topology, blocklists), and attest the
+boot state so that a below-OS compromise is visible.
+Where hardware leaves no software trace, the defense falls back to
+behavioural plausibility on the server.
+
+CORE PRINCIPLE:
+The kernel can only see what runs on the CPU. Below that line, hardware
+moves memory and generates input without executing a line of the defended
+system, so no software observer is positioned to catch it. The response
+is structural rather than observational: deny the address path (IOMMU),
+constrain the devices, and verify the boot state - and where that still
+fails, fall back to the one thing hardware cannot forge well,
+human-plausible behaviour over time.
+
+---

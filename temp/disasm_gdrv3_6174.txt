@@ -1,0 +1,84 @@
+== gdrv3.sys  file 0x6174..0x62d4  (va delta 0xc00)
+  0x006d74  4c8bdc               mov      r11, rsp
+  0x006d77  49895b08             mov      qword ptr [r11 + 8], rbx
+  0x006d7b  49896b10             mov      qword ptr [r11 + 0x10], rbp
+  0x006d7f  49897318             mov      qword ptr [r11 + 0x18], rsi
+  0x006d83  57                   push     rdi
+  0x006d84  4154                 push     r12
+  0x006d86  4155                 push     r13
+  0x006d88  4156                 push     r14
+  0x006d8a  4157                 push     r15
+  0x006d8c  4883ec50             sub      rsp, 0x50
+  0x006d90  be10000000           mov      esi, 0x10
+  0x006d95  488bda               mov      rbx, rdx
+  0x006d98  488be9               mov      rbp, rcx
+  0x006d9b  4c3bce               cmp      r9, rsi
+  0x006d9e  0f85e0020000         jne      0x7084
+  0x006da4  4c3bc6               cmp      r8, rsi
+  0x006da7  0f85d7020000         jne      0x7084
+  0x006dad  488b05e4cfffff       mov      rax, qword ptr [rip - 0x301c]
+  0x006db4  4d8d4bc8             lea      r9, [r11 - 0x38]
+  0x006db8  488b0df9d3ffff       mov      rcx, qword ptr [rip - 0x2c07]
+  0x006dbf  4533e4               xor      r12d, r12d
+  0x006dc2  448bc6               mov      r8d, esi
+  0x006dc5  4d8963a8             mov      qword ptr [r11 - 0x58], r12
+  0x006dc9  ff1519b7ffff         call     qword ptr [rip - 0x48e7]
+  0x006dcf  8bf8                 mov      edi, eax
+  0x006dd1  85c0                 test     eax, eax
+  0x006dd3  7947                 jns      0x6e1c
+  0x006dd5  488b0d4cc6ffff       mov      rcx, qword ptr [rip - 0x39b4]
+  0x006ddc  488d3545c6ffff       lea      rsi, [rip - 0x39bb]
+  0x006de3  483bce               cmp      rcx, rsi
+  0x006de6  0f84d2020000         je       0x70be
+  0x006dec  8b512c               mov      edx, dword ptr [rcx + 0x2c]
+  0x006def  f6c208               test     dl, 8
+  0x006df2  0f84c6020000         je       0x70be
+  0x006df8  80792902             cmp      byte ptr [rcx + 0x29], 2
+  0x006dfc  0f82bc020000         jb       0x70be
+  0x006e02  418d54242a           lea      edx, [r12 + 0x2a]
+  0x006e07  488b4918             mov      rcx, qword ptr [rcx + 0x18]
+  0x006e0b  4c8d057eb7ffff       lea      r8, [rip - 0x4882]
+  0x006e12  e8f180ffff           call     0xffffffffffffef08
+  0x006e17  e9a2020000           jmp      0x70be
+  0x006e1c  0faee8               lfence   
+  0x006e1f  488b057acfffff       mov      rax, qword ptr [rip - 0x3086]
+  0x006e26  4c8d4c2448           lea      r9, [rsp + 0x48]
+  0x006e2b  488b0d86d3ffff       mov      rcx, qword ptr [rip - 0x2c7a]
+  0x006e32  4c8bc6               mov      r8, rsi
+  0x006e35  488bd3               mov      rdx, rbx
+  0x006e38  4c89642420           mov      qword ptr [rsp + 0x20], r12
+  0x006e3d  ff15a5b6ffff         call     qword ptr [rip - 0x495b]
+  0x006e43  8bf8                 mov      edi, eax
+  0x006e45  85c0                 test     eax, eax
+  0x006e47  7933                 jns      0x6e7c
+  0x006e49  488b0dd8c5ffff       mov      rcx, qword ptr [rip - 0x3a28]
+  0x006e50  488d35d1c5ffff       lea      rsi, [rip - 0x3a2f]
+  0x006e57  483bce               cmp      rcx, rsi
+  0x006e5a  0f845e020000         je       0x70be
+  0x006e60  8b412c               mov      eax, dword ptr [rcx + 0x2c]
+  0x006e63  a808                 test     al, 8
+  0x006e65  0f8453020000         je       0x70be
+  0x006e6b  80792902             cmp      byte ptr [rcx + 0x29], 2
+  0x006e6f  0f8249020000         jb       0x70be
+  0x006e75  ba2b000000           mov      edx, 0x2b
+  0x006e7a  eb8b                 jmp      0x6e07
+  0x006e7c  488b7c2440           mov      rdi, qword ptr [rsp + 0x40]
+  0x006e81  488b0da0c5ffff       mov      rcx, qword ptr [rip - 0x3a60]
+  0x006e88  488d3599c5ffff       lea      rsi, [rip - 0x3a67]
+  0x006e8f  483bce               cmp      rcx, rsi
+  0x006e92  742e                 je       0x6ec2
+  0x006e94  8b412c               mov      eax, dword ptr [rcx + 0x2c]
+  0x006e97  a808                 test     al, 8
+  0x006e99  7427                 je       0x6ec2
+  0x006e9b  80792904             cmp      byte ptr [rcx + 0x29], 4
+  0x006e9f  7221                 jb       0x6ec2
+  0x006ea1  488b4708             mov      rax, qword ptr [rdi + 8]
+  0x006ea5  4c8d05e4b6ffff       lea      r8, [rip - 0x491c]
+  0x006eac  4c8b0f               mov      r9, qword ptr [rdi]
+  0x006eaf  ba2c000000           mov      edx, 0x2c
+  0x006eb4  488b4918             mov      rcx, qword ptr [rcx + 0x18]
+  0x006eb8  4889442420           mov      qword ptr [rsp + 0x20], rax
+  0x006ebd  e80292ffff           call     0xc4
+  0x006ec2  488b054fcbffff       mov      rax, qword ptr [rip - 0x34b1]
+  0x006ec9  488bd5               mov      rdx, rbp
+  0x006ecc  488b0de5d2ffff       mov      rcx, qword ptr [rip - 0x2d1b]

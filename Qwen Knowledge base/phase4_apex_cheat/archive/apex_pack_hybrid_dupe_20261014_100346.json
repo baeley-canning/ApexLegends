@@ -1,0 +1,396 @@
+{
+  "timestamp": "2026-10-14T10:03:46.346235",
+  "total_duplicates": 3,
+  "methods_used": [
+    "hybrid"
+  ],
+  "results": [
+    {
+      "method": "hybrid",
+      "count": 3,
+      "timestamp": "2026-10-14T10:03:40.344443",
+      "memory_results": [
+        {
+          "duplicate_index": 0,
+          "pack_id": "10000000_dup1",
+          "seed": "efbeadce00000000",
+          "timestamp": "2026-10-14T10:03:40.344443",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efbeadce00000000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914669568
+              },
+              {
+                "name": "Item_efbeadce00001000",
+                "rarity": "Legendary",
+                "type": "legend_skin",
+                "seed_offset": 17275436320914673664
+              },
+              {
+                "name": "Item_efbeadce00002000",
+                "rarity": "Common",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914677760
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 1,
+          "pack_id": "10000000_dup2",
+          "seed": "efbeadce00000000",
+          "timestamp": "2026-10-14T10:03:40.344443",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efbeadce00000000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914669568
+              },
+              {
+                "name": "Item_efbeadce00001000",
+                "rarity": "Legendary",
+                "type": "legend_skin",
+                "seed_offset": 17275436320914673664
+              },
+              {
+                "name": "Item_efbeadce00002000",
+                "rarity": "Common",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914677760
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 2,
+          "pack_id": "10000000_dup3",
+          "seed": "efbeadce00000000",
+          "timestamp": "2026-10-14T10:03:40.344443",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efbeadce00000000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914669568
+              },
+              {
+                "name": "Item_efbeadce00001000",
+                "rarity": "Legendary",
+                "type": "legend_skin",
+                "seed_offset": 17275436320914673664
+              },
+              {
+                "name": "Item_efbeadce00002000",
+                "rarity": "Common",
+                "type": "weapon_skin",
+                "seed_offset": 17275436320914677760
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        }
+      ],
+      "packet_results": [
+        {
+          "replay_index": 0,
+          "original_seed": "38011437a1010000",
+          "modified_seed": "000001a137140138",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:40.344443"
+        },
+        {
+          "replay_index": 1,
+          "original_seed": "38011437a1010000",
+          "modified_seed": "efbeac7f37140138",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:40.344443"
+        },
+        {
+          "replay_index": 2,
+          "original_seed": "38011437a1010000",
+          "modified_seed": "de7d5a1c36140138",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:40.344443"
+        }
+      ],
+      "combined_success": true
+    },
+    {
+      "method": "hybrid",
+      "count": 3,
+      "timestamp": "2026-10-14T10:03:42.345026",
+      "memory_results": [
+        {
+          "duplicate_index": 0,
+          "pack_id": "10001000_dup1",
+          "seed": "efaeadce00000000",
+          "timestamp": "2026-10-14T10:03:42.345026",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efaeadce00000000",
+                "rarity": "Rare",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287299072
+              },
+              {
+                "name": "Item_efaeadce00001000",
+                "rarity": "Epic",
+                "type": "legend_skin",
+                "seed_offset": 17270932721287303168
+              },
+              {
+                "name": "Item_efaeadce00002000",
+                "rarity": "Legendary",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287307264
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 1,
+          "pack_id": "10001000_dup2",
+          "seed": "efaeadce00000000",
+          "timestamp": "2026-10-14T10:03:42.345026",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efaeadce00000000",
+                "rarity": "Rare",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287299072
+              },
+              {
+                "name": "Item_efaeadce00001000",
+                "rarity": "Epic",
+                "type": "legend_skin",
+                "seed_offset": 17270932721287303168
+              },
+              {
+                "name": "Item_efaeadce00002000",
+                "rarity": "Legendary",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287307264
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 2,
+          "pack_id": "10001000_dup3",
+          "seed": "efaeadce00000000",
+          "timestamp": "2026-10-14T10:03:42.345026",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_efaeadce00000000",
+                "rarity": "Rare",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287299072
+              },
+              {
+                "name": "Item_efaeadce00001000",
+                "rarity": "Epic",
+                "type": "legend_skin",
+                "seed_offset": 17270932721287303168
+              },
+              {
+                "name": "Item_efaeadce00002000",
+                "rarity": "Legendary",
+                "type": "weapon_skin",
+                "seed_offset": 17270932721287307264
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        }
+      ],
+      "packet_results": [
+        {
+          "replay_index": 0,
+          "original_seed": "09091437a1010000",
+          "modified_seed": "000001a137140909",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:42.345026"
+        },
+        {
+          "replay_index": 1,
+          "original_seed": "09091437a1010000",
+          "modified_seed": "efbeac7f37140909",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:42.345026"
+        },
+        {
+          "replay_index": 2,
+          "original_seed": "09091437a1010000",
+          "modified_seed": "de7d5a1c36140909",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:42.345026"
+        }
+      ],
+      "combined_success": true
+    },
+    {
+      "method": "hybrid",
+      "count": 3,
+      "timestamp": "2026-10-14T10:03:44.345663",
+      "memory_results": [
+        {
+          "duplicate_index": 0,
+          "pack_id": "10002000_dup1",
+          "seed": "ef9eadce00000000",
+          "timestamp": "2026-10-14T10:03:44.345663",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_ef9eadce00000000",
+                "rarity": "Uncommon",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659928576
+              },
+              {
+                "name": "Item_ef9eadce00001000",
+                "rarity": "Rare",
+                "type": "legend_skin",
+                "seed_offset": 17266429121659932672
+              },
+              {
+                "name": "Item_ef9eadce00002000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659936768
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 1,
+          "pack_id": "10002000_dup2",
+          "seed": "ef9eadce00000000",
+          "timestamp": "2026-10-14T10:03:44.345663",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_ef9eadce00000000",
+                "rarity": "Uncommon",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659928576
+              },
+              {
+                "name": "Item_ef9eadce00001000",
+                "rarity": "Rare",
+                "type": "legend_skin",
+                "seed_offset": 17266429121659932672
+              },
+              {
+                "name": "Item_ef9eadce00002000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659936768
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        },
+        {
+          "duplicate_index": 2,
+          "pack_id": "10002000_dup3",
+          "seed": "ef9eadce00000000",
+          "timestamp": "2026-10-14T10:03:44.345663",
+          "loot": {
+            "pack_type": "Rare",
+            "item_count": 3,
+            "items": [
+              {
+                "name": "Item_ef9eadce00000000",
+                "rarity": "Uncommon",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659928576
+              },
+              {
+                "name": "Item_ef9eadce00001000",
+                "rarity": "Rare",
+                "type": "legend_skin",
+                "seed_offset": 17266429121659932672
+              },
+              {
+                "name": "Item_ef9eadce00002000",
+                "rarity": "Epic",
+                "type": "weapon_skin",
+                "seed_offset": 17266429121659936768
+              }
+            ],
+            "is_heirloom_chance": false
+          },
+          "success": true
+        }
+      ],
+      "packet_results": [
+        {
+          "replay_index": 0,
+          "original_seed": "d9101437a1010000",
+          "modified_seed": "000001a1371410d9",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:44.345663"
+        },
+        {
+          "replay_index": 1,
+          "original_seed": "d9101437a1010000",
+          "modified_seed": "efbeac7f371410d9",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:44.345663"
+        },
+        {
+          "replay_index": 2,
+          "original_seed": "d9101437a1010000",
+          "modified_seed": "de7d5a1c361410d9",
+          "success": true,
+          "timestamp": "2026-10-14T10:03:44.345663"
+        }
+      ],
+      "combined_success": true
+    }
+  ],
+  "summary": {
+    "total_runs": 3,
+    "success_rate": 100.0,
+    "memory_success_rate": 100.0,
+    "packet_success_rate": 100.0
+  }
+}

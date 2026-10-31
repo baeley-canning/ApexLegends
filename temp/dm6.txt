@@ -1,0 +1,80 @@
+## field-name lea sites: 3574 over 2202 distinct names
+
+### m_iHealth
+  site 0x0195eab2  4 insns, dests 0x305c850..0xe6cc809
+    0x0195eab2  dst 0x0305c850 (+0x000) w= 8 lea  lea
+    0x0195eab9  dst 0x0e6cc7d1 (+0xb66ff81) w=16 reg  reg
+    0x0195eac1  dst 0x0e6cc7d8 (+0xb66ff88) w= 4 reg  reg
+    0x0195eac7  dst 0x0e6cc809 (+0xb66ffb9) w=16 reg  reg
+  site 0x01f0788a  3 insns, dests 0x305c850..0xe6a68ec
+    0x01f0788a  dst 0x0305c850 (+0x000) w= 8 lea  lea
+    0x01f07891  dst 0x0e6a68ec (+0xb64a09c) w= 4 imm  imm=0x1
+    0x01f0789b  dst 0x0e6a68b8 (+0xb64a068) w= 8 reg  reg
+
+### m_iTeamNum
+  site 0x01f39b41  3 insns, dests 0x30666a0..0xe6a8470
+    0x01f39b41  dst 0x030666a0 (+0x000) w= 8 lea  lea
+    0x01f39b48  dst 0x0e6a8469 (+0xb641dc9) w=16 reg  reg
+    0x01f39b50  dst 0x0e6a8470 (+0xb641dd0) w= 4 reg  reg
+  site 0x02008b35  4 insns, dests 0x30666a0..0xe6b1199
+    0x02008b35  dst 0x030666a0 (+0x000) w= 8 lea  lea
+    0x02008b3c  dst 0x0e6b10c9 (+0xb64aa29) w=16 reg  reg
+    0x02008b44  dst 0x0e6b10d0 (+0xb64aa30) w= 4 reg  reg
+    0x02008b4a  dst 0x0e6b1199 (+0xb64aaf9) w=16 reg  reg
+
+### m_lifeState
+  site 0x0203cbd6  3 insns, dests 0x30891a0..0xe6b3858
+    0x0203cbd6  dst 0x030891a0 (+0x000) w= 8 lea  lea
+    0x0203cbdd  dst 0x0e6b3851 (+0xb62a6b1) w=16 reg  reg
+    0x0203cbe5  dst 0x0e6b3858 (+0xb62a6b8) w= 4 reg  reg
+  site 0x020d9254  4 insns, dests 0x1e0b510..0xe6d1328
+    0x020d9254  dst 0x030891a0 (+0x000) w= 8 lea  lea
+    0x020d925b  dst 0x0e6d1304 (+0xb648164) w= 8 imm  imm=0x698
+    0x020d9266  dst 0x0e6d1328 (+0xb648188) w= 8 reg  reg
+    0x020d926d  dst 0x01e0b510 (-0x127dc90) w= 8 lea  lea
+
+### m_iMaxHealth
+  site 0x01f078ab  2 insns, dests 0x305c840..0xe6a69c9
+    0x01f078ab  dst 0x0305c840 (+0x000) w= 8 lea  lea
+    0x01f078b2  dst 0x0e6a69c9 (+0xb64a189) w=16 reg  reg
+  site 0x01f0ab88  10 insns, dests 0x305c840..0xe6a5e29
+    0x01f0ab88  dst 0x0305c840 (+0x000) w= 8 lea  lea
+    0x01f0ab8f  dst 0x0e6a5dc1 (+0xb649581) w=16 reg  reg
+    0x01f0ab97  dst 0x0e6a5d80 (+0xb649540) w= 4 reg  reg
+    0x01f0ab9d  dst 0x0e6a5e09 (+0xb6495c9) w=16 reg  reg
+    0x01f0aba5  dst 0x0e6a5e10 (+0xb6495d0) w= 4 reg  reg
+    0x01f0abab  dst 0x0e6a5e29 (+0xb6495e9) w=16 reg  reg
+    0x01f0abb3  dst 0x0e6a5d94 (+0xb649554) w= 4 reg  reg
+    0x01f0abb9  dst 0x0e6a5db1 (+0xb649571) w=16 reg  reg
+    0x01f0abc1  dst 0x0e6a5dc8 (+0xb649588) w= 4 reg  reg
+    0x01f0abc7  dst 0x0e6a5e19 (+0xb6495d9) w=16 reg  reg
+
+### m_vecOrigin
+  site 0x021bf63a  3 insns, dests 0x30c8c78..0xe6d3458
+    0x021bf63a  dst 0x030c8c78 (+0x000) w= 8 lea  lea
+    0x021bf641  dst 0x0e6d3451 (+0xb60a7d9) w=16 reg  reg
+    0x021bf649  dst 0x0e6d3458 (+0xb60a7e0) w= 4 reg  reg
+  site 0x021c1c3e  3 insns, dests 0x30c8c78..0xe6d6488
+    0x021c1c3e  dst 0x030c8c78 (+0x000) w= 8 lea  lea
+    0x021c1c45  dst 0x0e6d6481 (+0xb60d809) w=16 reg  reg
+    0x021c1c4d  dst 0x0e6d6488 (+0xb60d810) w= 4 reg  reg
+
+### m_hOwnerEntity
+  site 0x019d95fe  9 insns, dests 0x220e120..0xe700620
+    0x019d95fe  dst 0x0305b108 (+0x000) w= 8 lea  lea
+    0x019d9605  dst 0x0e7005f9 (+0xb6a54f1) w=16 reg  reg
+    0x019d960d  dst 0x0e700600 (+0xb6a54f8) w= 4 reg  reg
+    0x019d9613  dst 0x0220e120 (-0xe4cfe8) w= 8 lea  lea
+    0x019d961a  dst 0x0e7005b1 (+0xb6a54a9) w=16 reg  reg
+    0x019d9622  dst 0x0e7005b8 (+0xb6a54b0) w= 4 reg  reg
+    0x019d9628  dst 0x0e700619 (+0xb6a5511) w=16 reg  reg
+    0x019d9630  dst 0x0e700620 (+0xb6a5518) w= 4 reg  reg
+    0x019d9636  dst 0x0e7005a1 (+0xb6a5499) w=16 reg  reg
+  site 0x01ee80dd  3 insns, dests 0x305b108..0xe6a60f8
+    0x01ee80dd  dst 0x0305b108 (+0x000) w= 8 lea  lea
+    0x01ee80e4  dst 0x0e6a60f1 (+0xb64afe9) w=16 reg  reg
+    0x01ee80ec  dst 0x0e6a60f8 (+0xb64aff0) w= 4 reg  reg
+
+## distinct descriptor destinations: 8647
+  min 0x1e0b1b0  max 0xe705d38  span 0xc8fab88
+  most common dest gaps: [(7, 1516), (32, 902), (24, 837), (16, 691), (8, 518), (97, 439), (128, 342), (25, 300)]

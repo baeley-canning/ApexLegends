@@ -1,0 +1,25 @@
+﻿000011fa  48894768               mov     qword ptr [rdi + 0x68], rax     ; <- IRP_MJ_CLOSE slot
+000019a0  48897c2460             mov     qword ptr [rsp + 0x60], rdi     ; <- IRP_MJ_CREATE slot
+000019ab  897c2450               mov     dword ptr [rsp + 0x50], edi     ; <- IRP_MJ_WRITE slot
+00002117  4c897d60               mov     qword ptr [rbp + 0x60], r15     ; <- IRP_MJ_CREATE slot
+000021f5  4c897d60               mov     qword ptr [rbp + 0x60], r15     ; <- IRP_MJ_CREATE slot
+00002402  48894558               mov     qword ptr [rbp + 0x58], rax     ; <- IRP_MJ_READ slot
+00002410  48894d60               mov     qword ptr [rbp + 0x60], rcx     ; <- IRP_MJ_CREATE slot
+00002418  4c894550               mov     qword ptr [rbp + 0x50], r8      ; <- IRP_MJ_WRITE slot
+00002472  48894560               mov     qword ptr [rbp + 0x60], rax     ; <- IRP_MJ_CREATE slot
+00002489  48894d58               mov     qword ptr [rbp + 0x58], rcx     ; <- IRP_MJ_READ slot
+000024a5  48894560               mov     qword ptr [rbp + 0x60], rax     ; <- IRP_MJ_CREATE slot
+000024b8  48894558               mov     qword ptr [rbp + 0x58], rax     ; <- IRP_MJ_READ slot
+000024c1  48894560               mov     qword ptr [rbp + 0x60], rax     ; <- IRP_MJ_CREATE slot
+000024ed  48894d50               mov     qword ptr [rbp + 0x50], rcx     ; <- IRP_MJ_WRITE slot
+0000256a  48894d50               mov     qword ptr [rbp + 0x50], rcx     ; <- IRP_MJ_WRITE slot
+000026b0  4c897d60               mov     qword ptr [rbp + 0x60], r15     ; <- IRP_MJ_CREATE slot
+000026df  48894550               mov     qword ptr [rbp + 0x50], rax     ; <- IRP_MJ_WRITE slot
+00003ffe  48894c2458             mov     qword ptr [rsp + 0x58], rcx     ; <- IRP_MJ_READ slot
+00004026  89442450               mov     dword ptr [rsp + 0x50], eax     ; <- IRP_MJ_WRITE slot
+000041f8  83feff                 cmp     esi, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+0000427f  88442470               mov     byte ptr [rsp + 0x70], al       ; <- IRP_MJ_DEVICE_CONTROL slot
+0000479c  4489542450             mov     dword ptr [rsp + 0x50], r10d    ; <- IRP_MJ_WRITE slot
+0000483b  83f8ff                 cmp     eax, -1                         ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+00004883  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3
+000048ef  833fff                 cmp     dword ptr [rdi], -1             ; ** IOCTL? 0xffffffff  dev=0xffff fn=0xfff method=3 access=3

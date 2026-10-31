@@ -1,0 +1,30 @@
+; MsIo64.sys  imagebase=0x10000  entry=0x5010  target=0x3150
+
+; --- bytes around target (file off 0x1950, rva 0x3150) ---
+00001930  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+00001940  cd 5d 20 d2 66 d4 ff ff 32 a2 df 2d 99 2b 00 00  .] .f...2..-.+..
+00001950  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................  <== 0x13150
+00001960  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+
+; --- write @ 0x1862 : mov dword ptr [rip + 0x18e4], 0
+  00001842  488d0d57060000   lea     rcx, [rip + 0x657]
+  00001849  e8e6000000       call    0x1934
+  0000184e  488b4c2440       mov     rcx, qword ptr [rsp + 0x40]
+  00001853  ff152f080000     call    qword ptr [rip + 0x82f] ; ntoskrnl!IoDeleteDevice
+  00001859  b800000080       mov     eax, 0x80000000
+  0000185e  66baf80c         mov     dx, 0xcf8
+> 00001862  c705e418000000000000 mov     dword ptr [rip + 0x18e4], 0
+  0000186c  ef               out     dx, eax
+  0000186d  66bafc0c         mov     dx, 0xcfc
+
+; --- write @ 0x18c4 : mov dword ptr [rip + 0x1886], eax
+  000018b0  66baf80c         mov     dx, 0xcf8
+  000018b4  b890280080       mov     eax, 0x80002890
+  000018b9  ef               out     dx, eax
+  000018ba  66bafc0c         mov     dx, 0xcfc
+  000018be  ed               in      eax, dx
+  000018bf  25000000fc       and     eax, 0xfc000000
+> 000018c4  890586180000     mov     dword ptr [rip + 0x1886], eax
+  000018ca  488d0d9f050000   lea     rcx, [rip + 0x59f]
+  000018d1  418bd0           mov     edx, r8d
+

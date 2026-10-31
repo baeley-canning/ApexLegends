@@ -1,0 +1,151 @@
+================================================================================
+INJECTION MENU — EVERY WAY TO GET OUR CODE INTO / BESIDE APEX, RANKED
+================================================================================
+Last Updated: 2026-10-26
+Purpose: The full menu of "body injection" options (usermode, kernel, external,
+         proxy/loader tricks), what each costs us, and which fit the current
+         Javelin + R5AC + ACG reality documented in
+         JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt.
+Status: RESEARCH / DESIGN FILE. Risk ratings are engineering estimates to be
+        validated by testing, not measurements.
+
+--------------------------------------------------------------------------------
+0. TERMINOLOGY (so the roadmap is unambiguous)
+--------------------------------------------------------------------------------
+"Body injection" = getting our code executing inside the game's process image,
+as opposed to only reading it from outside. Three families:
+  A. INJECT - our code runs inside r5apex_dx12.exe (internal).
+  B. BESIDE - our code runs in another process and reads the game (external,
+              including driver-assisted and DMA/hypervisor).
+  C. BOTH   - split architecture: privileged read layer outside, thin renderer
+              inside (or no in-game renderer at all).
+Our current tree implements C/B: launcher + external overlay, plus the
+APC / NtCreateThreadEx injector; apexdrv supplies the kernel path.
+
+--------------------------------------------------------------------------------
+1. FAMILY A — USERMODE INJECTION TECHNIQUES
+--------------------------------------------------------------------------------
+A1. CreateRemoteThread + LoadLibraryA   (baseline, weakest)
+    + trivial; DLL appears in the PEB module list (looks legitimate)
+    - CRT runs in target, new thread visible, path string on the new stack
+A2. NtCreateThreadEx + LoadLibrary       (current tree, HIDE strategy)
+    + native syscall, fewer user-mode hooks in the chain
+    - still a new thread; still LoadLibrary / loader lock
+A3. QueueUserAPC / NtQueueApcThread into an existing thread  (IMPERSONATE)
+    + no new thread; delivery looks like the game's own work
+    - needs an alertable thread; latency; must select a live thread
+A4. Thread hijack (Suspend -> SetThreadContext -> Resume)
+    + no new thread, no APC requirement
+    - must preserve context exactly; fails if thread is in a kernel wait
+A5. SetWindowsHookEx (WH_GETMESSAGE / WH_CALLWNDPROC)
+    + classic; no injector process needed
+    - needs a message pump; our DLL becomes the hook proc (extra exposure)
+A6. Thread-pool / worker-factory injection
+    + lands in a pre-existing worker (looks native)
+    - more moving parts than A3/A4
+A7. MANUAL MAP (reflective loader)                        <-- 2026-credible
+    + no PEB module entry, no LoadLibrary, no loader lock, we control delay
+      imports/TLS, DllMain can be skipped
+    - we own relocs, .pdata/.xdata, TLS, cookie, section perms; must survive
+      ACG: Javelin now blocks PAGE_EXECUTE alloc / VirtualProtect in-process
+      [RE] -> use RW alloc + PTE/NX manipulation, or MDL/VAD-less mapping
+A8. MANUAL MAP into VAD-less / MDL memory (A7 variant)      <-- strongest A
+    + invisible to VirtualQuery scans; no VAD entry
+    - CRT init needs a VirtualProtect IAT stub returning success, then restore;
+      region auto-unmaps on exit; "unbacked hygiene" matters (either populate
+      headers/sections plausibly or wipe them completely — pick one and be
+      consistent)
+A9. Proxy / side-load DLL (dxgi.dll, d3d11.dll, d3d12.dll, winmm.dll,
+    version.dll, dbghelp.dll, xinput1_4.dll ...)
+    + loads with the game normally, no injector, and can host the Present hook
+    - name collision risk; must forward ALL exports incl. ordinals (dxgi.dll
+      has ordinal-only exports -> correct .def required)
+    - dxgi.dll is the attractive target today: DX11 and DX12 both go through it
+A10. Keep our own DLL name, loaded via A1-A8 (what we do now)
+    + no export-forwarding burden
+    - our module name is a fingerprint unless randomised per build
+
+--------------------------------------------------------------------------------
+2. FAMILY B — KERNEL / OUT-OF-PROCESS READ PATHS
+--------------------------------------------------------------------------------
+B1. Pure usermode ReadProcessMemory/WriteProcessMemory (no driver)
+    + zero driver risk, no signatures, ships today
+    - slowest; WriteProcessMemory is a classic signal; RPM is AC-visible
+B2. kdmapper-manual-mapped driver
+    + invisible to Windows driver enumeration; loadable before the AC starts
+    - 2026 status: unbacked-memory scanners find it via import-thunk heuristics;
+      presence alone reported to kill the game after a few minutes [RE]
+    - mitigations: header wipe or ghost-stomp hygiene, no dispatch overwrite, no
+      system thread living in unbacked memory, rotate build identity
+B3. Attestation-signed driver, loaded as a normal service   <-- 2026 direction
+    + legitimate loaded driver: passes HVCI/Secure Boot/VBS; off the "unbacked"
+      radar; survives patch day; easiest to support/ship
+    - needs EV cert + Hardware Dev Center registration; it is nameable/visible,
+      so treat the name+signature as a rotating brand asset
+    - can still be hit by Javelin error #119 (denylist) if the AC team decides
+B4. Vulnerable-driver abuse (e.g. iqvw64e.sys) for phys r/w
+    + no own driver; fastest to market
+    - the exploit driver itself can be denylisted by name (#119) -> the loader
+      must be able to switch drivers and detect denylist failures
+B5. Comm channel options (choose one, keep it clean):
+    - Shared-memory section   <-- recommended: no hooks, no dispatch overwrite
+    - IOCTL device (visible dispatch; fine when driver is legitimately loaded)
+    - Data/function-pointer swap read by our code
+    - Trampoline detour inside the game image (pairs with B3)
+B6. Driver read primitives, robustness ladder:
+    (i)  KeStackAttachProcess + MmCopyVirtualMemory (simple; WRONG if the AC
+         relocated the address space)
+    (ii) Physical read (MmCopyMemory PHYSICAL) + PML4 self-reference walk to
+         derive the TRUE CR3 and validate it by translating a known user VA
+         (EPROCESS.SectionBaseAddress -> 'ZM')  <-- CR3-abuse proof [RE]
+    (iii) Hypervisor (ring -1) guest-physical reads (Javelin checks the CPUID
+         hypervisor bit [RE], so being a VM is itself a signal)
+    Optional later: hide our pages from the AC's own walk (PML4/NX tricks).
+
+--------------------------------------------------------------------------------
+3. RANKING FOR *THIS* GAME, RIGHT NOW
+--------------------------------------------------------------------------------
+| Technique | Evasion vs Javelin/R5AC | Effort | Fragility | Verdict            |
+|-----------|------------------------|--------|-----------|--------------------|
+| A1 CRT+LL  | low                    | 1      | low       | fallback only      |
+| A2 NtCTE   | low-med (shipped now)  | 1      | low       | keep as fallback   |
+| A3 APC     | med-high               | 2      | med       | good secondary     |
+| A4 hijack  | med                    | 2      | med       | when APC blocked   |
+| A7 manual  | high                   | 4      | med-high  | PRIMARY (usermode) |
+| A8 VAD-less| highest                | 5      | high      | STRETCH target     |
+| A9 dxgi    | med-high + hosts hook  | 3      | med       | strong option      |
+| B1 RPM/WPM | low                    | 1      | none      | dev/fallback       |
+| B2 kdmapper| med                    | 3      | med       | compatibility path |
+| B3 attest  | high                   | 4 (+$)  | low       | PRIMARY (kernel)   |
+| B4 vuln drv| med                    | 1      | med       | quick path         |
+| B6(ii) phys| high (read-side)       | 4      | low       | mandatory if B*     |
+Ratings are estimates pending Phase 1 measurements.
+
+RECOMMENDED TARGET STACK (the "finished product" architecture):
+  1) apexdrv built for B3 (attestation-signed, service load) with B5 shared-mem
+     comm and B6(ii) physical+PML4 reads; B2/B4 preserved as fallback loaders.
+  2) apexcheat.dll injected internally ONLY for rendering/menu, loaded via A7/A8
+     with an A2/A3/A4 ladder; Present hook from A9 (dxgi) or device vtable with
+     a trampoline (no raw VMT overwrite of R5AC-monitored tables).
+  3) Everything game-knowledge (entities, bones, glow writes, view matrix) lives
+     in the kernel/external layer where reads are cheap and AC-invisible; the
+     in-game DLL draws. This keeps the in-process footprint tiny, which is the
+     single best mitigation against ACG/module/stack-based detection.
+
+ANTI-PATTERNS (do not do these):
+  - Overwrite R5AC-monitored VMT slots without a trampoline (VTP_GetEngineTrace
+    Client / GetFilesystemInterface / C_Player::Spawn / GetEntityList /
+    GetViewRenderInstance).
+  - Allocate PAGE_EXECUTE* and assume success post-Javelin.
+  - Overwrite an IOCTL MajorFunction table from an unbacked driver.
+  - Create a system thread that lives in unbacked memory.
+  - Run CRT init in VAD-less memory without the VirtualProtect IAT stub.
+  - Bundle static imports of modules the game does not load (d3d9/d3dcompiler —
+    already fixed) or of dxgi-only-symbols when proxying.
+  - Ship one binary forever with no identity rotation.
+
+================================================================================
+END OF INJECTION MENU & RISK MATRIX
+================================================================================
+
+

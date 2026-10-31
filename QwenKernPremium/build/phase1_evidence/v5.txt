@@ -1,0 +1,23 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  strategies: NtCreateThreadEx (HIDE) | APC (IMPERSONATE) | Kernel
+===============================================================
+[*] Sticky strategy forgotten (C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.launcher.ini)
+[!] Launcher is not elevated: opening r5apex.exe and loading a
+    kernel driver will likely fail.
+[*] r5apex_dx12.exe detected
+
+--- configuration ---------------------------------------------
+  1) method            : NtCreateThreadEx (HIDE)
+  2) payload DLL       : apexcheat.dll
+  3) kernel driver     : apexdrv.sys
+  4) staged DLL copy   : off
+  5) wait for game     : on (120 s)
+  6) sticky strategy   : on
+     game PID          : 1512
+----------------------------------------------------------------
+  [i] inject (ladder)   [1] cycle method   [2] set DLL path
+  [3] set driver path   [4] toggle staging   [5] toggle wait
+  [6] toggle sticky     [p] enter PID   [q] quit
+> 
+STICKY_TAIL=False

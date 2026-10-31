@@ -1,0 +1,146 @@
+KNOWLEDGE BASE: ANTI-CHEAT THREAT MODELING
+
+Purpose:
+Provide a repeatable method for reasoning about any anti-cheat system:
+its assets, adversaries, trust boundaries, attack surfaces, and
+assumptions. It is a capstone that ties together ANTI-CHEAT ARCHITECTURE,
+SERVER-AUTHORITATIVE ARCHITECTURE AND TRUST BOUNDARIES, and HOW
+ANTI-CHEATS WORK - VANGUARD, BATTLTEYE, EAC, AND JAVELIN.
+
+This document is reference knowledge. It describes a defensive analysis
+method, using publicly documented practice. It contains no instructions
+for attacking any system.
+
+Threat models depend on current designs and disclosures, so treat each
+statement as a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: ANTI-CHEAT ARCHITECTURE, SERVER-AUTHORITATIVE
+ARCHITECTURE AND TRUST BOUNDARIES, ADAPTIVE CHEATING, RED TEAMING, AND
+EVOLVING ANTI-CHEAT SYSTEMS, HARDWARE, DMA, AND BELOW-KERNEL THREATS, and
+the numbered technical series.
+
+---
+
+1. WHY A METHOD, NOT A CHECKLIST
+A checklist catches known problems; a method catches new ones.
+Anti-cheat changes constantly, so a static list ages badly.
+A threat model is a way of asking the right questions of any design.
+The goal is to reason, not to memorise.
+
+---
+
+2. THE ASSETS
+Start by naming what is being protected.
+The assets are the integrity of the game logic, the fairness of the
+match, the value of the account, and the trust of the players.
+Different assets call for different defences.
+You cannot protect what you have not named.
+
+---
+
+3. THE ADVERSARIES
+Name who might attack and with what motivation.
+They range from curious amateurs to organised sellers with business
+models.
+Each adversary has different resources and persistence.
+Modelling the strongest plausible adversary sets the bar.
+
+---
+
+4. THE TRUST BOUNDARIES
+Draw every line where trust changes hands.
+Client to server, user mode to kernel, kernel to hardware, player to
+provider.
+Each boundary is where an assumption can be tested.
+Trust boundaries are where most attacks live.
+
+---
+
+5. THE ATTACK SURFACES
+At each boundary, list what an attacker could influence.
+Input, memory, network timing, device identity, and boot state are common
+surfaces.
+Map each surface to the cheat classes that exploit it.
+Surfaces are the places where the model meets reality.
+
+---
+
+6. THE ASSUMPTIONS AND WHERE THEY BREAK
+Every defence rests on assumptions.
+Name them explicitly: that hardware is honest, that the client is intact,
+that the server validates.
+Then ask what happens if each is false.
+An unexamined assumption is the most common hidden weakness.
+
+---
+
+7. THE FIVE QUESTIONS AS A LENS
+Ask where the observer runs, when it loads, what it trusts, how it
+decides, and how it enforces.
+These five answers place any product on the timing, trust, and ownership
+axes.
+The questions convert a design into a set of testable claims.
+They are the practical core of this method.
+
+---
+
+8. SYSTEMATIC PROMPTS
+A few prompts make the analysis repeatable:
+what would have to be true for this defence to hold?
+who controls each thing it trusts?
+what does it not observe, and could that matter?
+what happens when two defences disagree?
+Prompts keep the analysis honest and comparable across systems.
+
+---
+
+9. SEVERITY AND LIKELIHOOD
+Not every risk deserves equal effort.
+Rate each threat by impact and by how easily it can be realised.
+Spend defences where severity and likelihood are both high.
+Prioritisation is what turns a model into decisions.
+
+---
+
+10. DEFENCE IN DEPTH
+Because single defences fail, layer independent ones.
+Each layer should catch what the layer beneath it misses.
+Layers should differ in kind, not just in amount.
+Independence is what makes depth real rather than nominal.
+
+---
+
+11. VALIDATING WITH RED TEAMING
+A model is a hypothesis until it is tested.
+Red teaming tries to falsify it under controlled, ethical conditions.
+See ADAPTIVE CHEATING, RED TEAMING, AND EVOLVING ANTI-CHEAT SYSTEMS for
+the method.
+A model that survives testing is worth more than one that only sounds
+complete.
+
+---
+
+12. KEEPING THE MODEL CURRENT
+Designs, adversaries, and disclosures all change.
+A model is a living document, not a one-time artefact.
+Review it when a new cheat class appears or a defence changes.
+Staleness is its own vulnerability.
+
+---
+
+13. SUMMARY
+A threat model is a method for asking the right questions, not a
+checklist.
+Name the assets, the adversaries, the trust boundaries, the surfaces, and
+the assumptions.
+The five questions place any product on the timing, trust, and ownership
+axes.
+Prioritise by severity and likelihood, and layer independent defences.
+Validate by red teaming and keep the model current.
+
+CORE PRINCIPLE:
+Threat modelling is the discipline of finding the assumption a defence
+cannot live without. Name the assets, the adversaries, and every trust
+boundary; then ask what would have to be true for the protection to hold,
+and who controls that. A model you test and update beats a checklist you
+memorise, because the field changes faster than any list.

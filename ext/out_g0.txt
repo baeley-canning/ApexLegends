@@ -1,0 +1,27 @@
+elevation=4  ram_top=0x800000000
+G1 read phys 0x1000: e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10
+G2 FAILED: [Errno 31] map_phys 0x1000+0x1000 failed
+locked user buffer at 0x22e61a30000
+G3 translate user  ubuf    0x22e61a30000 -> ok=False res=err=1
+G3 translate user  scratch 0x22e61a20000 -> ok=False res=err=1
+G3 translate kern  KUSD    0xfffff78000000000 -> ok=False res=err=1
+G4 kernel_alloc(0x1000) ok=False err=1 out=-
+G4 kernel_alloc(0x2000) ok=False err=1 out=-
+G4 kernel_alloc(0x4000) ok=False err=1 out=-
+G7 map_kernel ok=False err=short info 0 out=-
+G8 read u64: 4.75 us/op (200 ops)
+  stat 0xc3502004:    1 calls,  11.40 us/call
+  stat 0xc3502014:  201 calls,   2.47 us/call
+  stat 0xc3502019:    1 calls,   5.50 us/call
+  stat 0xc3502800:    3 calls,   3.33 us/call
+  stat 0xc350280c:    3 calls,   4.17 us/call
+
+=== VERDICTS ===
+  G1 phys read                       PASS
+  G2 map == read                     FAIL
+  G3 translate works                 FAIL
+  G3 translate kernel VA             FAIL
+  G4 kernel_alloc                    FAIL
+  G5 0x2808 write                    n/a
+  G6 map-write coherent              n/a
+  G7 0x2019 probe                    FAIL

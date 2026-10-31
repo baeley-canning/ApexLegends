@@ -1,0 +1,19 @@
+identity: S-1-5-18  elevated=True  pid=33336
+target: r5apex_dx12.exe pid=11996
+mask 0x1fffff -> 0x278
+   rpm=0 err=87 bytes=b''
+   plain status=0xc000000d got=0 bytes=b''
+   ex    status=0xc0000022 got=0 bytes=b''
+mask 0x001410 -> 0x278
+   rpm=0 err=87 bytes=b''
+   plain status=0xc000000d got=0 bytes=b''
+   ex    status=0xc0000022 got=0 bytes=b''
+mask 0x001000 -> 0x278
+   rpm=0 err=87 bytes=b''
+   plain status=0xc000000d got=0 bytes=b''
+   ex    status=0xc0000022 got=0 bytes=b''
+mask 0x000410 -> 0x278
+   rpm=0 err=87 bytes=b''
+   plain status=0xc000000d got=0 bytes=b''
+   ex    status=0xc0000022 got=0 bytes=b''
+granted=0x1ff001 vm_read=False type=8

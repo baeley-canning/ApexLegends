@@ -1,0 +1,158 @@
+﻿93|         VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+94|         CloseHandle(hTargetProcess_);
+95|         return result;
+96|     }
+97| 
+98|     HANDLE hThread = nullptr;
+99|     // NtCreateThreadEx takes exactly 11 arguments:
+100|     //   (ThreadHandle, DesiredAccess, ObjectAttributes, ProcessHandle, StartRoutine,
+101|     //    Argument, CreateFlags, ZeroBits, StackSize, MaximumStackSize, AttributeList)
+102|     // The previous call passed a 12th (extra) zero => C2660.
+103|     NTSTATUS status = pNtCreateThread(&hThread, THREAD_ALL_ACCESS, nullptr,
+104|         hTargetProcess_, reinterpret_cast<PVOID>(pLoadLibrary), remoteDllPath,
+105|         0, 0, 0, 0, nullptr);
+106| 
+107|     // STATUS_SUCCESS == 0.  winternl.h does not define the NTSTATUS code
+108|     // macros, and including ntstatus.h conflicts with winnt.h, so compare
+109|     // against the literal (documented) value.
+110|     if (status == 0 && hThread) {
+111|         result.success = true;
+112|         result.threadId = GetThreadId(hThread);
+113|         CloseHandle(hThread);
+114|         Sleep(500);
+115|         result.dllBaseAddress = GetModuleBase(targetPid, BaseNameOf(dllPath).c_str());
+116|         std::cout << "[+] NtCreateThreadEx injection SUCCESS â€” Thread ID: " 
+117|                   << result.threadId << std::endl;
+118|     } else {
+119|         // std::to_string has no (value, base) overload â€” C2661. Format explicitly.
+120|         char statusBuffer[32] = { 0 };
+121|         sprintf_s(statusBuffer, sizeof(statusBuffer), "0x%08lX",
+122|                   static_cast<unsigned long>(status));
+123|         result.errorMessage = std::string("NtCreateThreadEx failed with status: ") + statusBuffer;
+124|         if (hThread) CloseHandle(hThread);
+125|     }
+126| 
+127|     VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+128|     CloseHandle(hTargetProcess_);
+129|     hTargetProcess_ = nullptr;
+130|     return result;
+131| }
+132| 
+133| // ============================================================================
+134| // METHOD 2: APC Queue Injection (IMPERSONATE Strategy)
+135| // Queues LoadLibrary into an EXISTING game thread. Looks like legitimate work.
+136| // JAVELIN RELEVANCE: Bypasses thread enumeration checks (monitors NEW threads).
+137| // R5AC RELEVANCE: Whitelisted thread already passes module whitelist check.
+138| // ============================================================================
+139| 
+140| InjectionResult ApexInjector::InjectViaApcQueue(
+141|     DWORD targetPid, const std::string& dllPath)
+142| {
+143|     InjectionResult result{};
+144|     result.success = false;
+145|     result.threadId = 0;
+146|     result.dllBaseAddress = nullptr;
+147| 
+148|     hTargetProcess_ = OpenProcess(
+149|         PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION | 
+150|         PROCESS_VM_WRITE | PROCESS_QUERY_INFORMATION, FALSE, targetPid);
+151| 
+152|     if (!hTargetProcess_) {
+153|         result.errorMessage = "OpenProcess failed: " + std::to_string(GetLastError());
+154|         return result;
+155|     }
+156| 
+157|     auto threadIds = EnumerateThreads(targetPid);
+158|     
+159|     if (threadIds.empty()) {
+160|         result.errorMessage = "No threads found in target process";
+161|         CloseHandle(hTargetProcess_);
+162|         return result;
+163|     }
+164| 
+165|     size_t dllPathSize = dllPath.size() + 1;
+166|     LPVOID remoteDllPath = VirtualAllocEx(hTargetProcess_, nullptr, dllPathSize, 
+167|         MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+168| 
+169|     if (!remoteDllPath) {
+170|         result.errorMessage = "VirtualAllocEx failed: " + std::to_string(GetLastError());
+171|         CloseHandle(hTargetProcess_);
+172|         return result;
+173|     }
+174| 
+175|     SIZE_T bytesWritten = 0;
+176|     if (!WriteProcessMemory(hTargetProcess_, remoteDllPath, dllPath.c_str(), 
+177|                             dllPathSize, &bytesWritten)) {
+178|         VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+179|         CloseHandle(hTargetProcess_);
+180|         return result;
+181|     }
+182| 
+183|     HANDLE hTargetThread = nullptr;
+184|     for (DWORD tid : threadIds) {
+185|         HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, tid);
+186|         if (hThread) {
+187|             hTargetThread = hThread;
+188|             break;
+189|         }
+190|     }
+191| 
+192|     if (!hTargetThread) {
+193|         result.errorMessage = "Could not open target thread";
+194|         VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+195|         CloseHandle(hTargetProcess_);
+196|         return result;
+197|     }
+198| 
+199|     HMODULE hKernel32 = GetModuleHandleA("kernel32.dll");
+200|     FARPROC pLoadLibrary = GetProcAddress(hKernel32, "LoadLibraryA");
+201| 
+202|     if (!pLoadLibrary) {
+203|         CloseHandle(hTargetThread);
+204|         VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+205|         CloseHandle(hTargetProcess_);
+206|         return result;
+207|     }
+208| 
+209|     // Queue APC with LoadLibrary as the callback.
+210|     // The target thread will execute LoadLibrary(dllPath) when it reaches 
+211|     // an alertable state (waiting for I/O, sleep, etc.)
+212|     NTSTATUS status = QueueUserAPC(
+213|         reinterpret_cast<PAPCFUNC>(pLoadLibrary), hTargetThread,
+214|         reinterpret_cast<ULONG_PTR>(remoteDllPath));
+215| 
+216|     if (status != 0) {
+217|         result.success = true;
+218|         result.threadId = GetThreadId(hTargetThread);
+219|         std::cout << "[+] APC Queue injection SUCCESS â€” Thread ID: " 
+220|                   << result.threadId << std::endl;
+221|         std::cout << "[+] DLL will load when target thread reaches alertable state" << std::endl;
+222|     } else {
+223|         result.errorMessage = "QueueUserAPC failed: " + std::to_string(GetLastError());
+224|     }
+225| 
+226|     CloseHandle(hTargetThread);
+227|     VirtualFreeEx(hTargetProcess_, remoteDllPath, 0, MEM_RELEASE);
+228|     CloseHandle(hTargetProcess_);
+229|     hTargetProcess_ = nullptr;
+230|     return result;
+231| }
+232| 
+233| // ============================================================================
+234| // Utility: Enumerate all threads in a target process (for APC targeting)
+235| // Used to find frequently-called game threads for injection timing
+236| // ============================================================================
+237| 
+238| std::vector<DWORD> ApexInjector::EnumerateThreads(DWORD targetPid) {
+239|     std::vector<DWORD> threadIds;
+240|     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0);
+241|     if (hSnapshot == INVALID_HANDLE_VALUE) return threadIds;
+242| 
+243|     THREADENTRY32 te{};
+244|     te.dwSize = sizeof(THREADENTRY32);
+245| 
+246|     if (Thread32First(hSnapshot, &te)) {
+247|         do {
+248|             if (te.th32OwnerProcessID == targetPid) {
+249|                 threadIds.push_back(te.th32ThreadID);
+250|             }

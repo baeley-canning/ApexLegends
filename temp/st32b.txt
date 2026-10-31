@@ -1,0 +1,29 @@
+﻿classes with duplicate field names: 68
+   DT_FirstPersonProxy          (null)
+   DT_ZiplinePhysicsNode        (null)
+   DT_ZiplinePhysicsAttachedEntity (null)
+   DT_SkyCamera                 (null)
+   DT_PushingEntState           (null), 0x400000078 ?
+   DT_NearbyPushers             (null), should_never_see_this
+   DT_PlayerShared              (null)
+   DT_PlayerStickerInventory    (null), 0x3000000000 ?
+classes w/ unwritten records: 131 (124 with interior holes)
+   DT_Animationlayer              empty=131  n=137  interior=130 first=4, 6, 7, 8, 9, 10
+   DT_NearbyPushers               empty=35   n=44   interior=35  first=0, 1, 2, 3, 4, 5
+   DT_MaterialHarvester           empty=31   n=36   interior=30  first=1, 2, 3, 4, 5, 6
+   DT_BaseTrigger                 empty=30   n=32   interior=29  first=0, 1, 2, 3, 4, 5
+   DT_TESoundDispatch             empty=30   n=32   interior=29  first=0, 1, 2, 3, 4, 5
+   DT_LocalPlayerExclusive        empty=29   n=220  interior=28  first=0, 74, 90, 134, 155, 156
+   DT_OverlayVars                 empty=20   n=21   interior=20  first=0, 1, 2, 3, 4, 5
+   DT_NPC_Dropship                empty=19   n=30   interior=19  first=0, 1, 2, 3, 4, 5
+   DT_Player                      empty=19   n=173  interior=19  first=0, 31, 32, 50, 85, 86
+   DT_PlayerShared                empty=18   n=20   interior=17  first=0, 1, 2, 3, 4, 5
+records w/ impossible fieldType: 59 in 12 classes
+   DT_MaterialHarvester           31
+   DT_EnvDecoy                    6
+   DT_ScriptNetDataGlobalNonRewind 6
+   DT_WaterLODControl             3
+   DT_ScriptNetDataGlobal         3
+   DT_TriggerPlayerMovement       3
+   DT_NPC_Dropship                2
+   DT_Animationlayer              1

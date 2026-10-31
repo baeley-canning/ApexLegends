@@ -1,0 +1,207 @@
+KNOWLEDGE BASE: REVERSE ENGINEERING METHODOLOGY
+
+Purpose:
+Educational reference for understanding software that is not accompanied
+by readable source: how programs are represented on disk, how they are
+examined statically and dynamically, and how their structure and intent
+can be inferred.
+
+This document describes method, not targets. It is written to support
+understanding and defensible research, and deliberately omits detail
+aimed at circumventing protections.
+
+---
+
+1. WHAT REVERSE ENGINEERING MEANS
+Reverse engineering is inferring how a system works from its observable
+form rather than from its source.
+For software, that form is the executable and its behaviour at runtime.
+It is an analysis activity: the goal is understanding, not copying a
+specific artifact.
+
+---
+
+2. WHY IT IS A LEGITIMATE SKILL
+It underpins security assessment, interoperability, malware analysis,
+and debugging of software without source.
+The same methods are used defensively and offensively; the framing and
+authorisation differ, not the technique.
+
+---
+
+3. STATIC VERSUS DYNAMIC ANALYSIS
+Static analysis examines the program without running it: its bytes,
+layout, and code.
+Dynamic analysis observes it while it runs: execution, memory, and
+interactions.
+They answer different questions and are strongest when combined.
+
+---
+
+4. COMPILED SOFTWARE HAS NO ORIGINAL SOURCE ON DISK
+Compilers discard names, comments, and formatting, and reduce intent to
+machine instructions.
+Recovering a faithful original is generally impossible; recovering
+structure and behaviour is the practical goal.
+
+---
+
+5. THE EXECUTABLE IMAGE
+An executable is a structured file: a header, several sections, and
+metadata the loader uses.
+Understanding this layout is the entry point to static analysis.
+
+---
+
+6. THE PE FORMAT
+On Windows, executables and libraries use the Portable Executable
+format.
+It defines headers, sections, the entry point, imports, exports, and
+resource directories.
+Tools and the operating system both read this structure.
+
+---
+
+7. ENTRY POINT AND IMAGE BASE
+The entry point is where execution begins; the image base is the
+preferred load address.
+Because of address randomization, runtime addresses usually differ from
+those recorded in the file.
+Relating file offsets to runtime addresses is a core skill.
+
+---
+
+8. IMPORTS AND EXPORTS
+Imports reveal which external functions a module relies on; exports
+reveal what it offers to others.
+The set of imported APIs is a strong clue to what the software does,
+because functionality such as file access or process manipulation
+requires specific calls.
+
+---
+
+9. SYMBOLS AND STRINGS
+Symbols name functions and data when present; release builds often strip
+them.
+Embedded strings, error messages, and format specifiers survive
+stripping and often reveal intent and structure.
+
+---
+
+10. DISASSEMBLY VERSUS DECOMPILATION
+Disassembly converts machine code to assembly, preserving instruction
+detail.
+Decompilation attempts to reconstruct higher-level code, which is faster
+to read but approximate.
+Decompiler output is a guide, not ground truth.
+
+---
+
+11. CONTROL FLOW AND CALL GRAPHS
+A call graph shows which functions call which others.
+A control-flow graph shows the branches inside a function.
+These views turn a flat instruction listing into understandable
+structure.
+
+---
+
+12. BASIC BLOCKS AND FUNCTIONS
+A basic block is a straight-line run of instructions with one entry and
+one exit.
+Functions are composed of blocks; recognising their boundaries is
+fundamental.
+
+---
+
+13. DEBUGGERS
+A debugger runs a program under observation, allowing execution to be
+paused and inspected.
+It exposes registers, memory, and call stacks at chosen moments.
+
+---
+
+14. BREAKPOINTS
+A breakpoint pauses execution at a chosen location or condition.
+Software and hardware breakpoints differ in how they are implemented and
+in their side effects.
+Conditional breakpoints pause only when an expression holds, which
+narrows large searches.
+
+---
+
+15. TRACING AND SINGLE-STEPPING
+Tracing records what executed, in what order, with what arguments.
+It converts a static listing into an observed sequence, which is often
+the fastest path to understanding.
+
+---
+
+16. OBSERVING SYSTEM INTERACTIONS
+Watching file, registry, and network activity reveals what a program
+does to its environment.
+These observations are often more informative than reading the code
+alone.
+
+---
+
+17. READING A REPOSITORY'S ARCHITECTURE
+When source is available, reverse engineering becomes reading
+architecture.
+Identify entry points, the main data structures, and the flow between
+modules before studying details.
+
+---
+
+18. RECOGNISING DESIGN PATTERNS
+Patterns such as producer-consumer, state machines, and layered
+interfaces recur across projects.
+Recognising them lets prior understanding transfer to new code.
+
+---
+
+19. IDENTIFYING DATA FLOW
+Follow where data enters, how it is transformed, and where it is used.
+Data flow often reveals intent more clearly than control flow.
+
+---
+
+20. MAKING AND TESTING HYPOTHESES
+Form a specific claim about behaviour, then design the smallest
+observation that confirms or refutes it.
+Change one thing at a time to avoid confounding.
+
+---
+
+21. DOCUMENTING ANALYSIS
+Record what was examined, what was observed, and what remains uncertain.
+Findings that are not documented cannot be reviewed or reproduced.
+
+---
+
+22. LIMITS AND UNCERTAINTY
+Analysis recovers plausible explanations, not certainty.
+Optimisation, obfuscation, and generated code can mislead.
+Conclusions should be stated with their confidence and evidence.
+
+---
+
+23. ETHICS AND SCOPE
+Analysis should respect licences, terms of service, and law.
+The purpose here is comprehension and defense: reading a system to
+understand and evaluate it, not to remove its safeguards.
+
+---
+
+24. SUMMARY
+Reverse engineering is structured inquiry into opaque software.
+Static and dynamic methods together reveal layout, behaviour, and
+intent.
+The discipline is to observe, hypothesise, test, and document
+honestly.
+
+CORE PRINCIPLE:
+You do not need source code to understand behaviour, but you do need
+method. Combine static structure with dynamic observation, follow data
+rather than guessing, and treat every explanation as a hypothesis to be
+tested. Recovered understanding is approximate and must be documented
+with its evidence and its limits.

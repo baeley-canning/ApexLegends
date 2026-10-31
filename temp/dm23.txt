@@ -1,0 +1,278 @@
+
+==============================================================================
+## function 0x1418d8d60 .. 0x1418d9030  (720 bytes)
+   0x0001418d8d60  mov qword ptr [rsp + 8], rbx                  
+   0x0001418d8d65  mov qword ptr [rsp + 0x10], rsi               
+   0x0001418d8d6a  push rdi                                      
+   0x0001418d8d6b  sub rsp, 0x20                                 
+   0x0001418d8d6f  mov rax, qword ptr gs:[0x58]                  
+   0x0001418d8d78  lea rsi, [rip + 0x1759ef1]                       ; rsi = 'DT_HealthKit'   ; [.rdata+0x39bc70] (now 0x746c6165485f5444)
+   0x0001418d8d7f  inc qword ptr [rip + 0x7f8100a]                  ; [.data+0x6541d90]
+   0x0001418d8d86  movabs rdi, 0x76c1b709961bb121                   ; rdi = 0x76c1b709961bb121
+   0x0001418d8d90  add qword ptr [rip + 0x7f80fa9], rdi             ; [.data+0x6541d40] <= 0x76c1b709961bb121
+   0x0001418d8d97  xor ebx, ebx                                     ; zero
+   0x0001418d8d99  mov ecx, 0x20                                    ; ecx = 0x20
+   0x0001418d8d9e  mov rax, qword ptr [rax]                      
+   0x0001418d8da1  mov dword ptr [rip + 0x2406041], 0x15d0          ; [.data+0x9c6dec] <= =5584
+   0x0001418d8dab  mov eax, dword ptr [rcx + rax]                
+   0x0001418d8dae  cmp dword ptr [rip + 0xcdc037c], eax             ; [.data+0xb381130] <= eax
+   0x0001418d8db4  jg 0x1418d8e83                                
+   0x0001418d8dba  add dword ptr [rip + 0x418d62f], 0x10            ; [.data+0x274e3f0] <= =16
+   0x0001418d8dc1  mov rax, qword ptr [rip + 0x418c088]             ; [.data+0x274ce50]
+   0x0001418d8dc8  mov qword ptr [rip + 0x2406039], rbx             ; [.data+0x9c6e08] <= rbx
+   0x0001418d8dcf  mov dword ptr [rip + 0x2405b57], 0xffffffff      ; [.data+0x9c6930] <= 0xffffffff
+   0x0001418d8dd9  test rax, rax                                 
+   0x0001418d8ddc  jne 0x1418d8dea                               
+   0x0001418d8dde  call 0x141dc6600                              
+   0x0001418d8de3  mov qword ptr [rip + 0x418c066], rax             ; [.data+0x274ce50] <= rax
+   0x0001418d8dea  mov rcx, qword ptr [rax]                      
+   0x0001418d8ded  mov edx, 0x10                                    ; edx = 0x10
+   0x0001418d8df2  mov r8, qword ptr [rcx + 8]                   
+   0x0001418d8df6  mov rcx, rax                                  
+   0x0001418d8df9  call r8                                       
+   0x0001418d8dfc  mov qword ptr [rip + 0x2405b35], rax             ; [.data+0x9c6938] <= rax
+   0x0001418d8e03  lea rcx, [rip + 0xcdc039e]                       ; rcx = .data+0xb3811a8   ; [.data+0xb3811a8]
+   0x0001418d8e0a  mov qword ptr [rip + 0x2405fdf], rbx             ; [.data+0x9c6df0] <= rbx
+   0x0001418d8e11  mov qword ptr [rip + 0x2405fe0], rsi             ; [.data+0x9c6df8] <= 'DT_HealthKit'
+   0x0001418d8e18  mov rsi, qword ptr [rsp + 0x38]               
+   0x0001418d8e1d  mov word ptr [rip + 0x2405fdc], bx               ; [.data+0x9c6e00] <= bx
+   0x0001418d8e24  mov dword ptr [rip + 0x2405fbe], ebx             ; [.data+0x9c6de8] <= =0
+   0x0001418d8e2a  mov rbx, qword ptr [rsp + 0x30]               
+   0x0001418d8e2f  mov dword ptr [rip + 0x2405b07], 2               ; [.data+0x9c6940] <= =2
+   0x0001418d8e39  mov qword ptr [rax], rcx                      
+   0x0001418d8e3c  lea rcx, [rip + 0xcdc03cd]                       ; rcx = .data+0xb381210   ; [.data+0xb381210]
+   0x0001418d8e43  mov rax, qword ptr [rip + 0x2405aee]             ; [.data+0x9c6938]
+   0x0001418d8e4a  mov qword ptr [rax + 8], rcx                  
+   0x0001418d8e4e  mov ecx, dword ptr [rip + 0xcdc0368]             ; [.data+0xb3811bc]
+   0x0001418d8e54  not ecx                                       
+   0x0001418d8e56  shr rcx, 6                                    
+   0x0001418d8e5a  and ecx, 1                                    
+   0x0001418d8e5d  test byte ptr [rip + 0xcdc03c0], 0x40            ; [.data+0xb381224] <= =64
+   0x0001418d8e64  lea rax, [rcx + 1]                            
+   0x0001418d8e68  cmovne rax, rcx                               
+   0x0001418d8e6c  xor rax, rdi                                  
+   0x0001418d8e6f  add qword ptr [rip + 0x7f80ed2], rax             ; [.data+0x6541d48] <= rax
+   0x0001418d8e76  inc qword ptr [rip + 0x7f80f1b]                  ; [.data+0x6541d98]
+   0x0001418d8e7d  add rsp, 0x20                                 
+   0x0001418d8e81  pop rdi                                       
+   0x0001418d8e82  ret                                           
+   0x0001418d8e83  lea rcx, [rip + 0xcdc02a6]                       ; rcx = .data+0xb381130   ; [.data+0xb381130]
+   0x0001418d8e8a  call 0x142c0a798                              
+   0x0001418d8e8f  cmp dword ptr [rip + 0xcdc029a], -1              ; [.data+0xb381130] <= 0xffffffffffffffff
+   0x0001418d8e96  jne 0x1418d8dba                               
+   0x0001418d8e9c  xorps xmm0, xmm0                                 ; zero
+   0x0001418d8e9f  lea rdx, [rip + 0x53287a]                        ; rdx = .text+0x1e0a720   ; [.text+0x1e0a720] (now 0xccccccccc302894c)
+   0x0001418d8ea6  xor eax, eax                                     ; zero
+   0x0001418d8ea8  lea rcx, [rip + 0xcdc0281]                       ; rcx = .data+0xb381130   ; [.data+0xb381130]
+   0x0001418d8eaf  mov qword ptr [rip + 0xcdc02ea], rax             ; [.data+0xb3811a0] <= rax
+   0x0001418d8eb6  lea rax, [rip + 0x1759d7b]                       ; rax = 'should_never_see_this'   ; [.rdata+0x39bc38] (now 0x6e5f646c756f6873)
+   0x0001418d8ebd  movups xmmword ptr [rip + 0xcdc027c], xmm0       ; [.data+0xb381140] <= =0
+   0x0001418d8ec4  mov dword ptr [rip + 0xcdc027e], ebx             ; [.data+0xb381148] <= =0
+   0x0001418d8eca  movups xmmword ptr [rip + 0xcdc0327], xmm0       ; [.data+0xb3811f8] <= =0
+   0x0001418d8ed1  mov qword ptr [rip + 0xcdc0268], rbx             ; [.data+0xb381140] <= rbx
+   0x0001418d8ed8  movups xmmword ptr [rip + 0xcdc0381], xmm0       ; [.data+0xb381260] <= =0
+   0x0001418d8edf  mov dword ptr [rip + 0xcdc031b], 1               ; [.data+0xb381204] <= =1
+   0x0001418d8ee9  movups xmmword ptr [rip + 0xcdc02d8], xmm0       ; [.data+0xb3811c8] <= =0
+   0x0001418d8ef0  mov dword ptr [rip + 0xcdc0306], 0xffffffff      ; [.data+0xb381200] <= 0xffffffff
+   0x0001418d8efa  movups xmmword ptr [rip + 0xcdc032f], xmm0       ; [.data+0xb381230] <= =0
+   0x0001418d8f01  mov qword ptr [rip + 0xcdc02c8], rsi             ; [.data+0xb3811d0] <= rsi
+   0x0001418d8f08  movups xmmword ptr [rip + 0xcdc0241], xmm0       ; [.data+0xb381150] <= =0
+   0x0001418d8f0f  mov qword ptr [rip + 0xcdc0232], 4               ; [.data+0xb38114c] <= =4
+   0x0001418d8f1a  movups xmmword ptr [rip + 0xcdc026f], xmm0       ; [.data+0xb381190] <= =0
+   0x0001418d8f21  mov dword ptr [rip + 0xcdc0271], 1               ; [.data+0xb38119c] <= =1
+   0x0001418d8f2b  movups xmmword ptr [rip + 0xcdc0276], xmm0       ; [.data+0xb3811a8] <= =0
+   0x0001418d8f32  mov dword ptr [rip + 0xcdc025c], 0xffffffff      ; [.data+0xb381198] <= 0xffffffff
+   0x0001418d8f3c  movups xmmword ptr [rip + 0xcdc02cd], xmm0       ; [.data+0xb381210] <= =0
+   0x0001418d8f43  mov dword ptr [rip + 0xcdc020b], ebx             ; [.data+0xb381154] <= =0
+   0x0001418d8f49  movups xmmword ptr [rip + 0xcdc0210], xmm0       ; [.data+0xb381160] <= =0
+   0x0001418d8f50  mov qword ptr [rip + 0xcdc0211], rax             ; [.data+0xb381168] <= 'should_never_see_this'
+   0x0001418d8f57  xor eax, eax                                     ; zero
+   0x0001418d8f59  mov qword ptr [rip + 0xcdc02a8], rax             ; [.data+0xb381208] <= 'should_never_see_this'
+   0x0001418d8f60  lea rax, [rip + 0x2425979]                       ; rax = .data+0x9e68e0   ; [.data+0x9e68e0] (now 0xffffffff)
+   0x0001418d8f67  mov qword ptr [rip + 0xcdc025a], rax             ; [.data+0xb3811c8] <= .data+0x9e68e0
+   0x0001418d8f6e  xor eax, eax                                     ; zero
+   0x0001418d8f70  mov qword ptr [rip + 0xcdc02f9], rax             ; [.data+0xb381270] <= .data+0x9e68e0
+   0x0001418d8f77  lea rax, [rip + 0x1759cd2]                       ; rax = 'm_minimapData'   ; [.rdata+0x39bc50] (now 0x616d696e696d5f6d)
+   0x0001418d8f7e  mov qword ptr [rip + 0xcdc02b3], rax             ; [.data+0xb381238] <= 'm_minimapData'
+   0x0001418d8f85  lea rax, [rip + 0x25d95e4]                       ; rax = .data+0xb9a570   ; [.data+0xb9a570] (now 0xffffffff)
+   0x0001418d8f8c  movups xmmword ptr [rip + 0xcdc01ed], xmm0       ; [.data+0xb381180] <= =0
+   0x0001418d8f93  mov qword ptr [rip + 0xcdc0296], rax             ; [.data+0xb381230] <= .data+0xb9a570
+   0x0001418d8f9a  movups xmmword ptr [rip + 0xcdc0217], xmm0       ; [.data+0xb3811b8] <= =0
+   0x0001418d8fa1  mov qword ptr [rip + 0xcdc01e0], rbx             ; [.data+0xb381188] <= rbx
+   0x0001418d8fa8  movups xmmword ptr [rip + 0xcdc0271], xmm0       ; [.data+0xb381220] <= =0
+   0x0001418d8faf  mov qword ptr [rip + 0xcdc01f6], rbx             ; [.data+0xb3811ac] <= rbx
+   0x0001418d8fb6  movups xmmword ptr [rip + 0xcdc01b3], xmm0       ; [.data+0xb381170] <= =0
+   0x0001418d8fbd  mov dword ptr [rip + 0xcdc01e1], 0xa             ; [.data+0xb3811a8] <= =10
+   0x0001418d8fc7  movups xmmword ptr [rip + 0xcdc020a], xmm0       ; [.data+0xb3811d8] <= =0
+   0x0001418d8fce  mov dword ptr [rip + 0xcdc01e8], ebx             ; [.data+0xb3811bc] <= =0
+   0x0001418d8fd4  movups xmmword ptr [rip + 0xcdc020d], xmm0       ; [.data+0xb3811e8] <= =0
+   0x0001418d8fdb  mov qword ptr [rip + 0xcdc0216], rdx             ; [.data+0xb3811f8] <= .text+0x1e0a720
+   0x0001418d8fe2  movups xmmword ptr [rip + 0xcdc0257], xmm0       ; [.data+0xb381240] <= =0
+   0x0001418d8fe9  mov dword ptr [rip + 0xcdc0279], 1               ; [.data+0xb38126c] <= =1
+   0x0001418d8ff3  movups xmmword ptr [rip + 0xcdc0256], xmm0       ; [.data+0xb381250] <= =0
+   0x0001418d8ffa  mov dword ptr [rip + 0xcdc0264], 0xffffffff      ; [.data+0xb381268] <= 0xffffffff
+   0x0001418d9004  mov qword ptr [rip + 0xcdc0205], 0x818           ; [.data+0xb381214] <= =2072
+   0x0001418d900f  mov dword ptr [rip + 0xcdc01f7], 0xa             ; [.data+0xb381210] <= =10
+   0x0001418d9019  mov dword ptr [rip + 0xcdc0205], ebx             ; [.data+0xb381224] <= =0
+   0x0001418d901f  mov qword ptr [rip + 0xcdc023a], rdx             ; [.data+0xb381260] <= .text+0x1e0a720
+   0x0001418d9026  call 0x142c0a72c                              
+   0x0001418d902b  jmp 0x1418d8dba                               
+
+==============================================================================
+## function 0x141e55600 .. 0x141e55a23  (1059 bytes)
+   0x000141e55600  push rbx                                      
+   0x000141e55602  sub rsp, 0x20                                 
+   0x000141e55606  mov rax, qword ptr gs:[0x58]                  
+   0x000141e5560f  movabs rbx, 0x2a421a319abe1423                   ; rbx = 0x2a421a319abe1423
+   0x000141e55619  add qword ptr [rip + 0x7a04720], rbx             ; [.data+0x6541d40] <= 0x2a421a319abe1423
+   0x000141e55620  inc qword ptr [rip + 0x7a04769]                  ; [.data+0x6541d90]
+   0x000141e55627  mov ecx, 0x20                                    ; ecx = 0x20
+   0x000141e5562c  mov rax, qword ptr [rax]                      
+   0x000141e5562f  mov dword ptr [rip + 0x1e8c413], 0x960           ; [.data+0x9c9a4c] <= =2400
+   0x000141e55639  mov eax, dword ptr [rcx + rax]                
+   0x000141e5563c  cmp dword ptr [rip + 0xc844186], eax             ; [.data+0xb3817c8] <= eax
+   0x000141e55642  jg 0x141e556cf                                
+   0x000141e55648  lea r9, [rip + 0x11f2ef1]                        ; r9 = 'DT_InfoPlacementHelper'   ; [.rdata+0x3b1540] (now 0x506f666e495f5444)
+   0x000141e5564f  mov r8d, 5                                       ; r8d = 0x5
+   0x000141e55655  lea rdx, [rip + 0xc8441dc]                       ; rdx = .data+0xb381838   ; [.data+0xb381838]
+   0x000141e5565c  lea rcx, [rip + 0x1e8bf2d]                       ; rcx = .data+0x9c9590   ; [.data+0x9c9590] (now 0xffffffff)
+   0x000141e55663  call 0x141e0af60                              
+   0x000141e55668  mov ecx, dword ptr [rip + 0xc8441de]             ; [.data+0xb38184c]
+   0x000141e5566e  not ecx                                       
+   0x000141e55670  shr rcx, 6                                    
+   0x000141e55674  and ecx, 1                                    
+   0x000141e55677  test byte ptr [rip + 0xc844236], 0x40            ; [.data+0xb3818b4] <= =64
+   0x000141e5567e  lea rax, [rcx + 1]                            
+   0x000141e55682  cmovne rax, rcx                               
+   0x000141e55686  test byte ptr [rip + 0xc84428f], 0x40            ; [.data+0xb38191c] <= =64
+   0x000141e5568d  lea rcx, [rax + 1]                            
+   0x000141e55691  cmovne rcx, rax                               
+   0x000141e55695  test byte ptr [rip + 0xc8442e8], 0x40            ; [.data+0xb381984] <= =64
+   0x000141e5569c  mov eax, 1                                       ; eax = 0x1
+   0x000141e556a1  lea rdx, [rcx + 1]                            
+   0x000141e556a5  cmovne rdx, rcx                               
+   0x000141e556a9  test byte ptr [rip + 0xc84433c], 0x40            ; [.data+0xb3819ec] <= =64
+   0x000141e556b0  lea rcx, [rdx + 1]                            
+   0x000141e556b4  cmovne rcx, rdx                               
+   0x000141e556b8  xor rcx, rbx                                  
+   0x000141e556bb  add qword ptr [rip + 0x7a04686], rcx             ; [.data+0x6541d48] <= .data+0x9c9590
+   0x000141e556c2  inc qword ptr [rip + 0x7a046cf]                  ; [.data+0x6541d98]
+   0x000141e556c9  add rsp, 0x20                                 
+   0x000141e556cd  pop rbx                                       
+   0x000141e556ce  ret                                           
+   0x000141e556cf  lea rcx, [rip + 0xc8440f2]                       ; rcx = .data+0xb3817c8   ; [.data+0xb3817c8]
+   0x000141e556d6  call 0x142c0a798                              
+   0x000141e556db  cmp dword ptr [rip + 0xc8440e6], -1              ; [.data+0xb3817c8] <= 0xffffffffffffffff
+   0x000141e556e2  jne 0x141e55648                               
+   0x000141e556e8  xorps xmm0, xmm0                                 ; zero
+   0x000141e556eb  xor eax, eax                                     ; zero
+   0x000141e556ed  mov qword ptr [rip + 0xc84413c], rax             ; [.data+0xb381830] <= rax
+   0x000141e556f4  xor edx, edx                                     ; zero
+   0x000141e556f6  movups xmmword ptr [rip + 0xc84413b], xmm0       ; [.data+0xb381838] <= =0
+   0x000141e556fd  lea rax, [rip + 0x11dd534]                       ; rax = 'should_never_see_this'   ; [.rdata+0x39bc38] (now 0x6e5f646c756f6873)
+   0x000141e55704  mov dword ptr [rip + 0xc844136], edx             ; [.data+0xb381840] <= =0
+   0x000141e5570a  movups xmmword ptr [rip + 0xc84418f], xmm0       ; [.data+0xb3818a0] <= =0
+   0x000141e55711  mov dword ptr [rip + 0xc844129], 0xc             ; [.data+0xb381844] <= =12
+   0x000141e5571b  movups xmmword ptr [rip + 0xc8440ae], xmm0       ; [.data+0xb3817d0] <= =0
+   0x000141e55722  mov dword ptr [rip + 0xc8440b0], edx             ; [.data+0xb3817d8] <= =0
+   0x000141e55728  movups xmmword ptr [rip + 0xc8441d9], xmm0       ; [.data+0xb381908] <= =0
+   0x000141e5572f  mov qword ptr [rip + 0xc84409a], rdx             ; [.data+0xb3817d0] <= .data+0xb381838
+   0x000141e55736  movups xmmword ptr [rip + 0xc8440a3], xmm0       ; [.data+0xb3817e0] <= =0
+   0x000141e5573d  mov qword ptr [rip + 0xc844094], 4               ; [.data+0xb3817dc] <= =4
+   0x000141e55748  movups xmmword ptr [rip + 0xc8440d1], xmm0       ; [.data+0xb381820] <= =0
+   0x000141e5574f  mov dword ptr [rip + 0xc8440d3], 1               ; [.data+0xb38182c] <= =1
+   0x000141e55759  movups xmmword ptr [rip + 0xc844128], xmm0       ; [.data+0xb381888] <= =0
+   0x000141e55760  mov dword ptr [rip + 0xc8440be], 0xffffffff      ; [.data+0xb381828] <= 0xffffffff
+   0x000141e5576a  movups xmmword ptr [rip + 0xc84417f], xmm0       ; [.data+0xb3818f0] <= =0
+   0x000141e55771  mov dword ptr [rip + 0xc84406d], edx             ; [.data+0xb3817e4] <= =0
+   0x000141e55777  movups xmmword ptr [rip + 0xc84419a], xmm0       ; [.data+0xb381918] <= =0
+   0x000141e5577e  mov dword ptr [rip + 0xc84410c], 1               ; [.data+0xb381894] <= =1
+   0x000141e55788  movups xmmword ptr [rip + 0xc8441c9], xmm0       ; [.data+0xb381958] <= =0
+   0x000141e5578f  mov dword ptr [rip + 0xc8440f7], 0xffffffff      ; [.data+0xb381890] <= 0xffffffff
+   0x000141e55799  movups xmmword ptr [rip + 0xc844050], xmm0       ; [.data+0xb3817f0] <= =0
+   0x000141e557a0  mov qword ptr [rip + 0xc844051], rax             ; [.data+0xb3817f8] <= 'should_never_see_this'
+   0x000141e557a7  xor eax, eax                                     ; zero
+   0x000141e557a9  mov qword ptr [rip + 0xc8440e8], rax             ; [.data+0xb381898] <= 'should_never_see_this'
+   0x000141e557b0  lea rax, [rip + 0x11f2df1]                       ; rax = 'm_localOrigin'   ; [.rdata+0x3b15a8] (now 0x4f6c61636f6c5f6d)
+   0x000141e557b7  movups xmmword ptr [rip + 0xc84409a], xmm0       ; [.data+0xb381858] <= =0
+   0x000141e557be  mov qword ptr [rip + 0xc84409b], rax             ; [.data+0xb381860] <= 'm_localOrigin'
+   0x000141e557c5  lea rax, [rip + 0x3b8984]                        ; rax = .text+0x220d150   ; [.text+0x220d150] (now 0x2041100ff2108b49)
+   0x000141e557cc  movups xmmword ptr [rip + 0xc8440a5], xmm0       ; [.data+0xb381878] <= =0
+   0x000141e557d3  mov qword ptr [rip + 0xc8440a6], rax             ; [.data+0xb381880] <= .text+0x220d150
+   0x000141e557da  xor eax, eax                                     ; zero
+   0x000141e557dc  mov qword ptr [rip + 0xc84411d], rax             ; [.data+0xb381900] <= .text+0x220d150
+   0x000141e557e3  lea rax, [rip + 0x11f2dae]                       ; rax = 'm_localAngles'   ; [.rdata+0x3b1598] (now 0x416c61636f6c5f6d)
+   0x000141e557ea  movups xmmword ptr [rip + 0xc8440cf], xmm0       ; [.data+0xb3818c0] <= =0
+   0x000141e557f1  mov qword ptr [rip + 0xc8440d0], rax             ; [.data+0xb3818c8] <= 'm_localAngles'
+   0x000141e557f8  xor eax, eax                                     ; zero
+   0x000141e557fa  mov qword ptr [rip + 0xc844167], rax             ; [.data+0xb381968] <= 'm_localAngles'
+   0x000141e55801  lea rax, [rip + 0x11f2d80]                       ; rax = 'moveparent'   ; [.rdata+0x3b1588] (now 0x6572617065766f6d)
+   0x000141e55808  movups xmmword ptr [rip + 0xc844119], xmm0       ; [.data+0xb381928] <= =0
+   0x000141e5580f  mov qword ptr [rip + 0xc84411a], rax             ; [.data+0xb381930] <= 'moveparent'
+   0x000141e55816  lea rax, [rip + 0x3b8903]                        ; rax = .text+0x220d120   ; [.text+0x220d120] (now 0xfffffffa8120518b)
+   0x000141e5581d  movups xmmword ptr [rip + 0xc844124], xmm0       ; [.data+0xb381948] <= =0
+   0x000141e55824  mov qword ptr [rip + 0xc844125], rax             ; [.data+0xb381950] <= .text+0x220d120
+   0x000141e5582b  xor eax, eax                                     ; zero
+   0x000141e5582d  movups xmmword ptr [rip + 0xc843fdc], xmm0       ; [.data+0xb381810] <= =0
+   0x000141e55834  mov qword ptr [rip + 0xc843fdd], rdx             ; [.data+0xb381818] <= .data+0xb381838
+   0x000141e5583b  movups xmmword ptr [rip + 0xc844006], xmm0       ; [.data+0xb381848] <= =0
+   0x000141e55842  mov dword ptr [rip + 0xc843ff0], 0x20            ; [.data+0xb38183c] <= =32
+   0x000141e5584c  movups xmmword ptr [rip + 0xc84405d], xmm0       ; [.data+0xb3818b0] <= =0
+   0x000141e55853  mov dword ptr [rip + 0xc843fdb], 2               ; [.data+0xb381838] <= =2
+   0x000141e5585d  movups xmmword ptr [rip + 0xc84407c], xmm0       ; [.data+0xb3818e0] <= =0
+   0x000141e55864  mov dword ptr [rip + 0xc843fde], 0x10            ; [.data+0xb38184c] <= =16
+   0x000141e5586e  movups xmmword ptr [rip + 0xc843f8b], xmm0       ; [.data+0xb381800] <= =0
+   0x000141e55875  mov dword ptr [rip + 0xc84407d], 1               ; [.data+0xb3818fc] <= =1
+   0x000141e5587f  movups xmmword ptr [rip + 0xc843fe2], xmm0       ; [.data+0xb381868] <= =0
+   0x000141e55886  mov dword ptr [rip + 0xc844068], 0xffffffff      ; [.data+0xb3818f8] <= 0xffffffff
+   0x000141e55890  movups xmmword ptr [rip + 0xc844039], xmm0       ; [.data+0xb3818d0] <= =0
+   0x000141e55897  mov dword ptr [rip + 0xc84400b], edx             ; [.data+0xb3818a8] <= =0
+   0x000141e5589d  mov dword ptr [rip + 0xc844005], 0xc             ; [.data+0xb3818ac] <= =12
+   0x000141e558a7  mov dword ptr [rip + 0xc843ff3], 0x390           ; [.data+0xb3818a4] <= =912
+   0x000141e558b1  mov dword ptr [rip + 0xc843fe5], 2               ; [.data+0xb3818a0] <= =2
+   0x000141e558bb  mov dword ptr [rip + 0xc843fef], 2               ; [.data+0xb3818b4] <= =2
+   0x000141e558c5  mov qword ptr [rip + 0xc84401c], rdx             ; [.data+0xb3818e8] <= .data+0xb381838
+   0x000141e558cc  movups xmmword ptr [rip + 0xc844065], xmm0       ; [.data+0xb381938] <= =0
+   0x000141e558d3  mov dword ptr [rip + 0xc844087], 1               ; [.data+0xb381964] <= =1
+   0x000141e558dd  mov dword ptr [rip + 0xc844079], 0xffffffff      ; [.data+0xb381960] <= 0xffffffff
+   0x000141e558e7  mov qword ptr [rip + 0xc84401a], 0x34            ; [.data+0xb38190c] <= =52
+   0x000141e558f2  mov qword ptr [rip + 0xc844017], 4               ; [.data+0xb381914] <= =4
+   0x000141e558fd  mov dword ptr [rip + 0xc844005], edx             ; [.data+0xb381908] <= =0
+   0x000141e55903  mov dword ptr [rip + 0xc84400f], 0x10            ; [.data+0xb38191c] <= =16
+   0x000141e5590d  movups xmmword ptr [rip + 0xc84405c], xmm0       ; [.data+0xb381970] <= =0
+   0x000141e55914  movups xmmword ptr [rip + 0xc844065], xmm0       ; [.data+0xb381980] <= =0
+   0x000141e5591b  movups xmmword ptr [rip + 0xc84406e], xmm0       ; [.data+0xb381990] <= =0
+   0x000141e55922  movups xmmword ptr [rip + 0xc844077], xmm0       ; [.data+0xb3819a0] <= =0
+   0x000141e55929  movups xmmword ptr [rip + 0xc844080], xmm0       ; [.data+0xb3819b0] <= =0
+   0x000141e55930  movups xmmword ptr [rip + 0xc844089], xmm0       ; [.data+0xb3819c0] <= =0
+   0x000141e55937  mov qword ptr [rip + 0xc844092], rax             ; [.data+0xb3819d0] <= .text+0x220d120
+   0x000141e5593e  lea rcx, [rip + 0xc843e83]                       ; rcx = .data+0xb3817c8   ; [.data+0xb3817c8]
+   0x000141e55945  movups xmmword ptr [rip + 0xc84408c], xmm0       ; [.data+0xb3819d8] <= =0
+   0x000141e5594c  lea rax, [rip + 0x11f2c1d]                       ; rax = 'm_parentAttachment'   ; [.rdata+0x3b1570] (now 0x746e657261705f6d)
+   0x000141e55953  mov dword ptr [rip + 0xc84406f], 1               ; [.data+0xb3819cc] <= =1
+   0x000141e5595d  mov qword ptr [rip + 0xc844034], rax             ; [.data+0xb381998] <= 'm_parentAttachment'
+   0x000141e55964  lea rax, [rip - 0x4a45b]                         ; rax = .text+0x1e0a510   ; [.text+0x1e0a510] (now 0xc30088412041b60f)
+   0x000141e5596b  mov qword ptr [rip + 0xc844046], rax             ; [.data+0xb3819b8] <= .text+0x1e0a510
+   0x000141e55972  xor eax, eax                                     ; zero
+   0x000141e55974  movups xmmword ptr [rip + 0xc84406d], xmm0       ; [.data+0xb3819e8] <= =0
+   0x000141e5597b  mov qword ptr [rip + 0xc8440b6], rax             ; [.data+0xb381a38] <= .text+0x1e0a510
+   0x000141e55982  lea rax, [rip + 0x11f2b9f]                       ; rax = 'm_parentAttachmentModel'   ; [.rdata+0x3b1528] (now 0x746e657261705f6d)
+   0x000141e55989  movups xmmword ptr [rip + 0xc844098], xmm0       ; [.data+0xb381a28] <= =0
+   0x000141e55990  mov dword ptr [rip + 0xc84402e], 0xffffffff      ; [.data+0xb3819c8] <= 0xffffffff
+   0x000141e5599a  movups xmmword ptr [rip + 0xc844057], xmm0       ; [.data+0xb3819f8] <= =0
+   0x000141e559a1  mov qword ptr [rip + 0xc844058], rax             ; [.data+0xb381a00] <= 'm_parentAttachmentModel'
+   0x000141e559a8  movups xmmword ptr [rip + 0xc844069], xmm0       ; [.data+0xb381a18] <= =0
+   0x000141e559af  mov qword ptr [rip + 0xc843fba], 0x38            ; [.data+0xb381974] <= =56
+   0x000141e559ba  mov qword ptr [rip + 0xc843fb7], 1               ; [.data+0xb38197c] <= =1
+   0x000141e559c5  mov dword ptr [rip + 0xc843fa5], edx             ; [.data+0xb381970] <= =0
+   0x000141e559cb  mov dword ptr [rip + 0xc843faf], 0x10            ; [.data+0xb381984] <= =16
+   0x000141e559d5  movups xmmword ptr [rip + 0xc84402c], xmm0       ; [.data+0xb381a08] <= =0
+   0x000141e559dc  mov dword ptr [rip + 0xc84404e], 1               ; [.data+0xb381a34] <= =1
+   0x000141e559e6  mov dword ptr [rip + 0xc844040], 0xffffffff      ; [.data+0xb381a30] <= 0xffffffff
+   0x000141e559f0  mov qword ptr [rip + 0xc843fe1], 0x758           ; [.data+0xb3819dc] <= =1880
+   0x000141e559fb  mov qword ptr [rip + 0xc843fde], 4               ; [.data+0xb3819e4] <= =4
+   0x000141e55a06  mov dword ptr [rip + 0xc843fcc], edx             ; [.data+0xb3819d8] <= =0
+   0x000141e55a0c  mov dword ptr [rip + 0xc843fda], edx             ; [.data+0xb3819ec] <= =0
+   0x000141e55a12  mov qword ptr [rip + 0xc844007], rdx             ; [.data+0xb381a20] <= .data+0xb381838
+   0x000141e55a19  call 0x142c0a72c                              
+   0x000141e55a1e  jmp 0x141e55648                               

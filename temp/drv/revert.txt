@@ -1,0 +1,80 @@
+=== revert started Tue 27/10/2026 22:34:30.10
+ 
+=== before 
+
+Windows Boot Loader
+-------------------
+identifier              {current}
+device                  partition=C:
+path                    \WINDOWS\system32\winload.efi
+description             Windows 11
+locale                  en-US
+inherit                 {bootloadersettings}
+recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b}
+displaymessageoverride  Recovery
+recoveryenabled         Yes
+testsigning             Yes
+isolatedcontext         Yes
+allowedinmemorysettings 0x15000075
+osdevice                partition=C:
+systemroot              \WINDOWS
+resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b}
+nx                      OptIn
+bootmenupolicy          Standard
+hypervisorlaunchtype    Auto
+ 
+=== stop/delete services 
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+[SC] DeleteService SUCCESS
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+[SC] DeleteService SUCCESS
+ 
+=== remove driver files 
+  apexr.sys deleted
+  apexdrv.sys deleted
+ 
+=== clear test signing 
+The operation completed successfully.
+An error occurred while attempting to delete the specified data element.
+Element not found.
+ 
+=== after 
+
+Windows Boot Loader
+-------------------
+identifier              {current}
+device                  partition=C:
+path                    \WINDOWS\system32\winload.efi
+description             Windows 11
+locale                  en-US
+inherit                 {bootloadersettings}
+recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b}
+displaymessageoverride  Recovery
+recoveryenabled         Yes
+isolatedcontext         Yes
+allowedinmemorysettings 0x15000075
+osdevice                partition=C:
+systemroot              \WINDOWS
+resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b}
+nx                      OptIn
+bootmenupolicy          Standard
+hypervisorlaunchtype    Auto
+  (no testsigning / nointegritychecks entries left) 
+ 
+=== remaining apex*/gdrv/msio services 
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+ 
+=== revert done Tue 27/10/2026 22:34:30.31 

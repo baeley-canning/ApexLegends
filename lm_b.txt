@@ -1,0 +1,279 @@
+﻿260|     // Safe to delete: the loader keeps the mapped image alive.
+261|     if (!stagedPath.empty()) {
+262|         if (DeleteFileA(stagedPath.c_str())) {
+263|             printf("[*] Staged copy removed from disk\n");
+264|         }
+265|     }
+266| 
+267|     PrintResult(result, method);
+268|     return result;
+269| }
+270| 
+271| void PrintMenu(const LauncherOptions& options, DWORD pid) {
+272|     printf("\n--- configuration ---------------------------------------------\n");
+273|     printf("  1) method            : %s%s\n", MethodLabel(options.method),
+274|            options.randomizeMethod ? "  [randomised]" : "");
+275|     printf("  2) payload DLL       : %s\n", options.dllPath.c_str());
+276|     printf("  3) kernel driver     : %s\n", options.driverPath.c_str());
+277|     printf("  4) staged DLL copy   : %s\n", options.stageDll ? "on" : "off");
+278|     printf("  5) wait for game     : %s (%lu s)\n",
+279|            options.waitForGame ? "on" : "off", options.waitTimeoutMs / 1000);
+280|     if (pid) printf("     game PID          : %lu\n", pid);
+281|     else     printf("     game PID          : not running\n");
+282|     printf("----------------------------------------------------------------\n");
+283|     printf("  [i] inject   [1] cycle method   [2] set DLL path\n");
+284|     printf("  [3] set driver path   [4] toggle staging   [5] toggle wait\n");
+285|     printf("  [p] enter PID   [q] quit\n");
+286|     printf("> ");
+287|     fflush(stdout);
+288| }
+289| 
+290| // Returns true when the launcher should keep running.
+291| bool InteractiveMenu(LauncherOptions& options, bool gameFound) {
+292|     DWORD pid = gameFound ? FindProcessIdByName(kGameProcessName) : 0;
+293| 
+294|     for (;;) {
+295|         PrintMenu(options, pid);
+296| 
+297|         char line[64] = { 0 };
+298|         if (!fgets(line, sizeof(line), stdin)) return false;
+299| 
+300|         const char choice = Lowercase(std::string(line, 1))[0];
+301| 
+302|         if (choice == 'q' || choice == '\n') return false;
+303| 
+304|         if (choice == '1') {
+305|             if (options.method == InjectionMethod::NtCreateThreadEx)
+306|                 options.method = InjectionMethod::ApcQueue;
+307|             else if (options.method == InjectionMethod::ApcQueue)
+308|                 options.method = InjectionMethod::KernelDriver;
+309|             else
+310|                 options.method = InjectionMethod::NtCreateThreadEx;
+311|             printf("[*] Method set to %s\n", MethodLabel(options.method));
+312|             continue;
+313|         }
+314| 
+315|         if (choice == '2') {
+316|             printf("DLL path [%s]: ", options.dllPath.c_str());
+317|             fflush(stdout);
+318|             if (fgets(line, sizeof(line), stdin)) {
+319|                 std::string entered(line);
+320|                 while (!entered.empty() &&
+321|                        (entered.back() == '\n' || entered.back() == '\r')) {
+322|                     entered.pop_back();
+323|                 }
+324|                 if (!entered.empty()) options.dllPath = ResolvePayloadPath(entered);
+325|             }
+326|             continue;
+327|         }
+328| 
+329|         if (choice == '3') {
+330|             printf("Driver path [%s]: ", options.driverPath.c_str());
+331|             fflush(stdout);
+332|             if (fgets(line, sizeof(line), stdin)) {
+333|                 std::string entered(line);
+334|                 while (!entered.empty() &&
+335|                        (entered.back() == '\n' || entered.back() == '\r')) {
+336|                     entered.pop_back();
+337|                 }
+338|                 if (!entered.empty()) options.driverPath = ResolvePayloadPath(entered);
+339|             }
+340|             continue;
+341|         }
+342| 
+343|         if (choice == '4') {
+344|             options.stageDll = !options.stageDll;
+345|             printf("[*] Staged DLL copy %s\n", options.stageDll ? "enabled" : "disabled");
+346|             continue;
+347|         }
+348| 
+349|         if (choice == '5') {
+350|             options.waitForGame = !options.waitForGame;
+351|             printf("[*] Wait-for-game %s\n", options.waitForGame ? "enabled" : "disabled");
+352|             continue;
+353|         }
+354| 
+355|         if (choice == 'p') {
+356|             const DWORD enteredPid = PromptPid();
+357|             if (enteredPid != 0) pid = enteredPid;
+358|             continue;
+359|         }
+360| 
+361|         if (choice == 'i') {
+362|             if (pid == 0) {
+363|                 pid = options.waitForGame
+364|                         ? WaitForGameProcess(options.waitTimeoutMs)
+365|                         : FindProcessIdByName(kGameProcessName);
+366|             }
+367|             if (pid == 0) {
+368|                 printf("[-] r5apex.exe not found\n");
+369|                 continue;
+370|             }
+371| 
+372|             if (!FileExists(options.dllPath)) {
+373|                 printf("[-] Payload missing: %s\n", options.dllPath.c_str());
+374|                 continue;
+375|             }
+376|             if (options.method == InjectionMethod::KernelDriver &&
+377|                 !FileExists(options.driverPath)) {
+378|                 printf("[-] Driver missing: %s\n", options.driverPath.c_str());
+379|                 continue;
+380|             }
+381| 
+382|             RunInjection(options, pid);
+383|             continue;
+384|         }
+385| 
+386|         printf("[!] Unknown choice\n");
+387|     }
+388| }
+389| 
+390| enum class ArgResult { Continue, ExitSuccess, ExitError };
+391| 
+392| bool ParseMethod(const std::string& value, InjectionMethod& method) {
+393|     const std::string normalized = Lowercase(value);
+394| 
+395|     if (normalized == "nt" || normalized == "ntcreatethreadex" || normalized == "hide") {
+396|         method = InjectionMethod::NtCreateThreadEx;
+397|         return true;
+398|     }
+399|     if (normalized == "apc" || normalized == "impersonate") {
+400|         method = InjectionMethod::ApcQueue;
+401|         return true;
+402|     }
+403|     if (normalized == "kernel" || normalized == "drv" || normalized == "driver") {
+404|         method = InjectionMethod::KernelDriver;
+405|         return true;
+406|     }
+407|     return false;
+408| }
+409| 
+410| void PrintUsage() {
+411|     printf("usage: apex_launcher.exe [options]\n\n");
+412|     printf("  --method=nt|apc|kernel   injection strategy (default: nt)\n");
+413|     printf("  --dll=<path>             payload DLL (default: %s next to the exe)\n",
+414|            kDefaultDllName);
+415|     printf("  --driver=<path>          kernel driver for --method=kernel\n");
+416|     printf("  --pid=<pid>              target PID (otherwise auto-detected)\n");
+417|     printf("  --stage                  inject from a randomly named %%TEMP%% copy\n");
+418|     printf("  --random                 randomise the usermode method per run\n");
+419|     printf("  --timeout=<seconds>      wait-for-game timeout (default 120)\n");
+420|     printf("  --no-wait                fail immediately if the game is not running\n");
+421|     printf("  --inject                 inject once and exit (non-interactive)\n");
+422|     printf("  --help                   show this help\n\n");
+423|     printf("Without --inject the launcher opens its interactive menu.\n");
+424| }
+425| 
+426| ArgResult ParseArgs(int argc, char** argv, LauncherOptions& options, bool& runOnce) {
+427|     runOnce = false;
+428| 
+429|     for (int i = 1; i < argc; ++i) {
+430|         std::string arg = argv[i];
+431|         std::string value;
+432| 
+433|         const size_t equals = arg.find('=');
+434|         if (equals != std::string::npos) {
+435|             value = arg.substr(equals + 1);
+436|             arg   = arg.substr(0, equals);
+437|         }
+438| 
+439|         // Helper: value from "--opt=value" or from the next argv element.
+440|         const auto takeValue = [&](std::string& out) -> bool {
+441|             if (!value.empty()) { out = value; return true; }
+442|             if (i + 1 < argc)   { out = argv[++i]; return true; }
+443|             return false;
+444|         };
+445| 
+446|         if (arg == "--help" || arg == "-h") {
+447|             PrintUsage();
+448|             return ArgResult::ExitSuccess;
+449|         }
+450|         if (arg == "--stage")   { options.stageDll = true;        continue; }
+451|         if (arg == "--random")  { options.randomizeMethod = true; continue; }
+452|         if (arg == "--no-wait") { options.waitForGame = false;    continue; }
+453|         if (arg == "--inject") { runOnce = true;                  continue; }
+454| 
+455|         if (arg == "--method") {
+456|             std::string methodName;
+457|             if (!takeValue(methodName) || !ParseMethod(methodName, options.method)) {
+458|                 printf("[-] Bad --method value\n");
+459|                 return ArgResult::ExitError;
+460|             }
+461|             continue;
+462|         }
+463|         if (arg == "--dll") {
+464|             std::string path;
+465|             if (!takeValue(path)) { printf("[-] --dll needs a path\n"); return ArgResult::ExitError; }
+466|             options.dllPath = ResolvePayloadPath(path);
+467|             continue;
+468|         }
+469|         if (arg == "--driver") {
+470|             std::string path;
+471|             if (!takeValue(path)) { printf("[-] --driver needs a path\n"); return ArgResult::ExitError; }
+472|             options.driverPath = ResolvePayloadPath(path);
+473|             continue;
+474|         }
+475|         if (arg == "--pid") {
+476|             std::string pidText;
+477|             if (!takeValue(pidText)) { printf("[-] --pid needs a value\n"); return ArgResult::ExitError; }
+478|             options.explicitPid = static_cast<DWORD>(strtoul(pidText.c_str(), nullptr, 10));
+479|             continue;
+480|         }
+481|         if (arg == "--timeout") {
+482|             std::string secondsText;
+483|             if (!takeValue(secondsText)) { printf("[-] --timeout needs a value\n"); return ArgResult::ExitError; }
+484|             options.waitTimeoutMs = static_cast<DWORD>(strtoul(secondsText.c_str(), nullptr, 10)) * 1000u;
+485|             continue;
+486|         }
+487| 
+488|         printf("[-] Unknown option: %s (try --help)\n", arg.c_str());
+489|         return ArgResult::ExitError;
+490|     }
+491| 
+492|     return ArgResult::Continue;
+493| }
+494| 
+495| } // namespace
+496| 
+497| int main(int argc, char** argv) {
+498|     LauncherOptions options;
+499|     options.dllPath    = ResolvePayloadPath(kDefaultDllName);
+500|     options.driverPath = ResolvePayloadPath(kDefaultDriver);
+501| 
+502|     bool runOnce = false;
+503|     const ArgResult parsed = ParseArgs(argc, argv, options, runOnce);
+504|     if (parsed == ArgResult::ExitSuccess) return 0;
+505|     if (parsed == ArgResult::ExitError)   return 1;
+506| 
+507|     PrintBanner();
+508| 
+509|     if (!IsElevated()) {
+510|         printf("[!] Launcher is not elevated: opening r5apex.exe and loading a\n"
+511|                "    kernel driver will likely fail.\n");
+512|     }
+513|     if (!FileExists(options.dllPath)) {
+514|         printf("[!] Payload not found: %s\n", options.dllPath.c_str());
+515|     }
+516| 
+517|     if (runOnce) {
+518|         DWORD pid = options.explicitPid;
+519|         if (pid == 0) {
+520|             pid = options.waitForGame ? WaitForGameProcess(options.waitTimeoutMs)
+521|                                       : FindProcessIdByName(kGameProcessName);
+522|         }
+523|         if (pid == 0) {
+524|             printf("[-] r5apex.exe not found\n");
+525|             return 2;
+526|         }
+527| 
+528|         const InjectionResult result = RunInjection(options, pid);
+529|         return result.success ? 0 : 3;
+530|     }
+531| 
+532|     const bool gameFound = (options.explicitPid != 0) ||
+533|                            (FindProcessIdByName(kGameProcessName) != 0);
+534|     printf("[*] r5apex.exe %s\n", gameFound ? "detected" : "not running yet");
+535| 
+536|     InteractiveMenu(options, gameFound);
+537|     return 0;
+538| }

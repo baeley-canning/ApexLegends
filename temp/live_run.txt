@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\New User\OneDrive\Desktop\cheating\temp\live_probe.py", line 254, in <module>
+    main()
+  File "C:\Users\New User\OneDrive\Desktop\cheating\temp\live_probe.py", line 165, in main
+    L = Live()
+        ^^^^^^
+  File "C:\Users\New User\OneDrive\Desktop\cheating\temp\live_probe.py", line 78, in __init__
+    raise OSError("OpenProcess(%d) failed err=%d" % (self.pid, ctypes.get_last_error()))
+OSError: OpenProcess(11996) failed err=5

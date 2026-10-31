@@ -1,0 +1,174 @@
+KNOWLEDGE BASE: INPUT INTEGRITY AND DEVICE FRAUD
+
+Purpose:
+Explain how input reaches a game, why the input path is a trust boundary,
+and how macros, scripted automation, external translation devices, spoofed
+hardware, and shaped input are used and defended against. It complements
+the numbered INPUT PATH AND INTERACTION MODEL and the automation section
+of CHEATING IN GAMES - HISTORY, TAXONOMY, AND DETECTION.
+
+This document is reference knowledge. It describes input mechanisms and
+their detection from the defensive side, using publicly documented
+behaviour. It contains no instructions for building or hiding automation.
+
+Practices evolve quickly and are only partly public, so treat each
+statement as a documented CLAIM. Details are given "as of October 2026".
+
+Related documents: INPUT PATH AND INTERACTION MODEL, CHEATING IN GAMES -
+HISTORY, TAXONOMY, AND DETECTION, BAN GOVERNANCE AND IDENTITY INTEGRITY,
+HOW ANTI-CHEATS WORK - VANGUARD, BATTLTEYE, EAC, AND JAVELIN, and the
+numbered technical series.
+
+---
+
+1. WHY INPUT IS A TRUST BOUNDARY
+Every cheat eventually acts through the input path or beside it.
+A game that cannot trust its input cannot trust its match.
+Input is therefore a boundary: the point where intent becomes action.
+Defending it means deciding what kinds of input are legitimate.
+
+---
+
+2. THE INPUT PATH, IN ONE PARAGRAPH
+A physical action becomes a hardware interrupt, then a driver event, then
+an operating-system input message, then a game action.
+See the numbered INPUT PATH AND INTERACTION MODEL for the mechanism.
+The important point is that there are several stages, and each can be the
+place where legitimacy is decided.
+That layered structure is what makes input both defensible and hard to
+police.
+
+---
+
+3. WHAT "INPUT FRAUD" MEANS
+Input fraud is any attempt to produce game actions that did not come from
+one honest human using one honest device.
+It ranges from trivial (a single key-spamming macro) to elaborate
+(spoofed hardware that mimics a different device).
+The unifying idea is that the action is real but the intent behind it is
+manufactured.
+
+---
+
+4. MACROS AND SCRIPTED INPUT
+A macro replays a fixed sequence of inputs faster or more precisely than a
+person can.
+It needs no memory access and no injection, which makes it hard to
+classify.
+Many games ban it by policy even when they cannot detect it technically.
+Where the line falls between convenience and cheating is a design
+decision, not a technical one.
+
+---
+
+5. AUTOMATION VERSUS ASSISTANCE
+Pure automation acts with no human input.
+Assistance amplifies a human action - one click that produces a perfect
+burst.
+Assistance is far harder to judge because a legitimate human is still in
+the loop.
+This ambiguity is why many disputes are about intent rather than
+mechanism.
+
+---
+
+6. EXTERNAL INPUT DEVICES
+Some devices translate one kind of input into another before the game ever
+sees it.
+A common example presents keyboard-and-mouse behaviour through a
+controller, gaining console aim assistance.
+Because the translation happens outside the game's process, software
+observation may see only a normal controller.
+This class blurs the line between hardware cheating and clever use of
+permitted hardware.
+
+---
+
+7. DEVICE SPOOFING AND HID EMULATION
+Hardware can present itself to the operating system as a different device,
+or as a generic input device with no identifying details.
+When the game cannot tell devices apart, it loses a signal it could
+otherwise use.
+Detection then leans on timing and behaviour rather than on identity.
+
+---
+
+8. AIM ASSIST AND THE CONTROLLER QUESTION
+Many games give controller players aim assistance by design.
+Any input path that makes a mouse look like a controller can inherit that
+assistance, turning a fairness feature into an exploit.
+This is why the controller question is inseparable from input integrity.
+The defence is often to verify the input source, not just the input
+itself.
+
+---
+
+9. INPUT TIMING AS A SIGNAL
+Human input has characteristic timing: reaction delays, variability, and
+noise.
+Scripted input tends to be too fast, too regular, or too precise.
+Timing analysis can flag automation without reading the automation's
+code.
+It is a statistical signal, so it must be calibrated carefully to avoid
+punishing fast, skilled players.
+
+---
+
+10. DEVICE ATTESTATION AND INPUT IDENTITY
+Stronger designs try to establish what device produced an input, not just
+what the input was.
+This is the input-path version of hardware attestation.
+When it works, spoofing becomes much harder; when it fails, it is usually
+because the platform cannot prove device identity.
+
+---
+
+11. THE ACCESSIBILITY TENSION
+Some assistive tools help players with disabilities play at all.
+Automated detection cannot always tell an accessibility aid from a cheat.
+Punishing the former to catch the latter is a real cost.
+Good policy leaves room for reviewed, disclosed assistive tools rather
+than treating every amplifier as malicious.
+
+---
+
+12. DETECTING VERSUS PUNISHING
+Input fraud is often easier to detect than to judge.
+A macro is detectable; whether it is cheating depends on context and
+rules.
+Systems therefore separate detection from enforcement, exactly as they do
+elsewhere.
+The decision to punish is a policy decision, informed by but not equal to
+the technical signal.
+
+---
+
+13. WHY INPUT IS HARD TO POLICE
+Input is the most legitimate and most exploitable channel at once.
+The same action can be a skilled human, an accessibility aid, or a cheat.
+Hardware boundaries sit outside the game's process and often outside its
+authority.
+That combination - genuine ambiguity plus partial visibility - is why
+input integrity remains an open problem.
+
+---
+
+14. SUMMARY
+The input path is a trust boundary because every cheat acts through or
+beside it.
+Input fraud spans macros, scripted automation, external translation
+devices, spoofed hardware, and shaped input timing.
+Assistance is harder to judge than automation because a human remains in
+the loop.
+Defences include timing analysis, device identity, and attestation, each
+limited by what the platform can prove.
+Detection is a technical signal and punishing is a policy choice; the two
+must be kept separate.
+
+CORE PRINCIPLE:
+Input is simultaneously the most legitimate and the most abusable channel
+in a game, because an honest human, an assistive tool, and a cheat can
+produce the same action. Integrity therefore means deciding what kinds of
+input are legitimate - by timing, by device, and by policy - rather than
+assuming any single signal is decisive. Detect technically, judge by
+policy, and reserve room for the honest edge cases.

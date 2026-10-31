@@ -1,0 +1,5 @@
+﻿--- PROCESS_/THREAD_ rights ---
+--- ZwWriteVirtualMemory ---
+ntifs.h:31399: ZwAllocateVirtualMemory(
+ntifs.h:31416: ZwAllocateVirtualMemoryEx(
+--- NTDDI default ---

@@ -1,0 +1,24 @@
+size 68517728
+e_lfanew 0x1b0 b'PE\x00\x00'
+machine 0x8664 nsec 9 optmagic 0x20b
+imagebase 0x140000000 sizeofimage 0xe866000
+.text     va=0x00001000 vsize=0x2c951ac raw=0x0000600 rawsize=0x2c95200 chars=0x60000020 entropy=7.08
+.rdata    va=0x02c97000 vsize=0x0680b60 raw=0x2c95800 rawsize=0x0680c00 chars=0x40000040 entropy=6.47
+.data     va=0x03318000 vsize=0xb40ab8c raw=0x3316400 rawsize=0x0d00000 chars=0xc0000040 entropy=0.72
+.pdata    va=0x0e723000 vsize=0x00e32bc raw=0x4016400 rawsize=0x00e3400 chars=0x40000040 entropy=6.92
+_RDATA    va=0x0e807000 vsize=0x0000a24 raw=0x40f9800 rawsize=0x0000c00 chars=0x40000040 entropy=4.86
+.fptable  va=0x0e808000 vsize=0x0000100 raw=0x40fa400 rawsize=0x0000200 chars=0xc0000040 entropy=-0.00
+.rsrc     va=0x0e809000 vsize=0x00035f8 raw=0x40fa600 rawsize=0x0003600 chars=0x40000040 entropy=5.54
+.reloc    va=0x0e80d000 vsize=0x00571b0 raw=0x40fdc00 rawsize=0x0057200 chars=0x40000040 entropy=5.47
+.ooa      va=0x0e865000 vsize=0x0000712 raw=0x4154e00 rawsize=0x0000800 chars=0x60000020 entropy=3.14
+string b'C_Player': first=0x3088ad0 count>= 3
+string b'C_BaseEntity': first=0x3081638 count>= 3
+string b'CGameEntitySystem': first=-1 count>= 0
+string b'm_iHealth': first=0x305b050 count>= 3
+string b'ViewMatrix': first=-1 count>= 0
+string b'view_matrix': first=-1 count>= 0
+string b'LocalPlayer': first=0x3050e3f count>= 3
+string b'local_player': first=0x30811b7 count>= 1
+string b'CPlayer': first=0x3037520 count>= 3
+string b'WorldLayer': first=-1 count>= 0
+string b'.?AV': first=-1 count>= 0

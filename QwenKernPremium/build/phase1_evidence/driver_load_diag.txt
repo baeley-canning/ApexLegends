@@ -1,0 +1,69 @@
+﻿== driver load diagnostic 2026-10-27 11:54:41 ==
+source : C:\ProgramData\QwenKern\apexdrv.sys
+target : C:\Windows\System32\drivers\apexdrv.sys (8616 bytes) signature=Valid
+[SC] CreateService SUCCESS
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: apexdrv
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   :  \??\C:\Windows\System32\drivers\apexdrv.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : apexdrv
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+[SC] StartService FAILED 123:
+
+The filename, directory name, or volume label syntax is incorrect.
+
+net start apexdrv:
+net : System error 123 has occurred.
+At C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\diag_driver_load.ps1:35 char:2
++ (net start apexdrv) 2>&1 | Out-File -Encoding utf8 -Append $log
++  ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (System error 123 has occurred.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+The filename, directory name, or volume label syntax is incorrect.
+
+
+SERVICE_NAME: apexdrv 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 123  (0x7b)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+--- System log (SCM / CodeIntegrity, last 10 min) ---
+[11:52:55] Service Control Manager 7000: The apexdrv service failed to start due to the following error: The filename, directory name, or volume label syntax is incorrect.
+[11:52:55] Service Control Manager 7045: A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\ProgramData\QwenKern\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account: 
+--- CodeIntegrity/Operational ---
+[04:11:47] 3089: Signature information for another event. Match using the Correlation Id.
+[04:11:47] 3033: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+[04:11:47] 3089: Signature information for another event. Match using the Correlation Id.
+[04:11:47] 3033: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+[04:11:47] 3089: Signature information for another event. Match using the Correlation Id.
+[04:11:47] 3033: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+[04:11:47] 3089: Signature information for another event. Match using the Correlation Id.
+[04:11:47] 3033: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+--- device guard / testsigning state ---
+
+
+SecurityServicesRunning           : {0}
+VirtualizationBasedSecurityStatus : 2
+
+
+
+
+
+hypervisorlaunchtype    Auto
+
+
+[SC] ControlService FAILED 1062:
+
+The service has not been started.
+
+[SC] DeleteService SUCCESS

@@ -1,0 +1,171 @@
+KNOWLEDGE BASE: CHEAT ECONOMICS AND THE UNDERGROUND MARKET
+
+Purpose:
+Explain the business behind cheating software - how cheats are sold,
+priced, distributed, and sustained - and why the market keeps existing
+despite enforcement. It complements CHEATING IN GAMES - HISTORY,
+TAXONOMY, AND DETECTION and BAN GOVERNANCE AND IDENTITY INTEGRITY.
+
+This document is reference knowledge. It describes the market and its
+incentives from an analytical, defensive perspective. It contains no
+instructions for buying, building, or operating any cheat.
+
+The market changes constantly and much of it is deliberately hidden, so
+treat each statement as a documented CLAIM. Details are given "as of
+October 2026".
+
+Related documents: BAN GOVERNANCE AND IDENTITY INTEGRITY, CHEATING IN
+GAMES - HISTORY, TAXONOMY, AND DETECTION, ADAPTIVE CHEATING, RED TEAM,
+AND EVOLVING SYSTEMS, SPOOFING AND BAN EVASION, and the numbered
+technical series.
+
+---
+
+1. WHY ECONOMICS MATTERS
+Cheating persists because it is profitable, not because it is easy.
+Understanding the incentives explains why some defences fail and what
+actually raises cost.
+A purely technical view of anti-cheat misses half the problem.
+Economics is the other half.
+
+---
+
+2. THE SHAPE OF THE MARKET
+The market is a layered supply chain: developers, distributors,
+resellers, and support.
+Each layer adds margin and distance from the user.
+That distance protects the people at the top from consequence.
+Understanding the layers is the first step to understanding the
+incentives.
+
+---
+
+3. CHEAT-AS-A-SERVICE
+Most sellers do not ship a one-time product; they run a subscription
+service.
+The service must keep working after every anti-cheat update, or customers
+leave.
+This turns cheating into an ongoing operations business, not a one-off
+sale.
+It also aligns the seller's interest with staying undetected, which
+drives continuous adaptation.
+
+---
+
+4. PRICING AND TIERS
+Sellers often offer tiers: basic, premium, private, and invite-only.
+Higher tiers trade exclusivity and lower detection risk for a higher
+price.
+Low-tier cheats are cheap and widely detected; high-tier ones are
+expensive and quieter.
+The tiering itself is a detection signal: widespread, cheap cheats are
+the easiest to catch.
+
+---
+
+5. THE DETECTION-ADAPTATION CYCLE AS A PRODUCT
+Every ban wave is a service event for the seller: it prompts updates and
+sometimes new sales.
+Detections are absorbed and worked around, then marketed as improved
+stealth.
+This is the arms race seen through a commercial lens.
+See ADAPTIVE CHEATING, RED TEAM, AND EVOLVING SYSTEMS for the technical
+side.
+
+---
+
+6. HWID SPOOFERS AND BAN-EVASION SERVICES
+Because bans often target the machine, sellers offer spoofers that change
+device identifiers.
+These are sold alongside cheats as an insurance product.
+They attack the enforcement layer rather than the detection layer.
+They are also why identity friction, not just detection, matters.
+
+---
+
+7. RESELLERS AND DISTRIBUTION
+Cheats reach users through resellers, forums, and private channels.
+Reselling decentralises the business and dilutes accountability.
+It also spreads malware, because buyers cannot verify what they receive.
+The trust problem inside the market mirrors the trust problem the market
+exploits.
+
+---
+
+8. GOLD, BOOSTING, AND REAL-MONEY TRADING
+Not all market value is in code; ranks, items, and accounts are traded
+too.
+This overlaps with matchmaking integrity and the account economy.
+It links cheating to fraud and, in some cases, to organised crime.
+The money flow, not the code, is often the durable part.
+
+---
+
+9. THE DEVELOPMENT SIDE
+Cheat developers range from hobbyists to organised teams with release
+schedules.
+Sustained operation requires ongoing research into each anti-cheat.
+That requirement is why high-end cheats cost as much as they do.
+It is also the market's main weakness: skilled, sustained effort is
+scarce.
+
+---
+
+10. LAW ENFORCEMENT AND LITIGATION
+Publishers have sued cheat sellers and referred some cases to
+authorities.
+Litigation raises the cost and risk of operating in the open.
+It works best against large, visible sellers rather than diffuse ones.
+Its main value is deterrence and disruption, not elimination.
+
+---
+
+11. PLATFORM AND PAYMENT PRESSURE
+Removing a seller's payment processing or hosting is often more effective
+than a technical countermeasure.
+Platforms, storefronts, and payment providers add friction the seller
+cannot engineer around.
+This is economics used as defence: attack the business, not just the
+binary.
+It complements, but does not replace, technical detection.
+
+---
+
+12. WHY THE MARKET PERSISTS
+As long as some players value winning more than the rules, demand
+exists.
+Low barriers to entry and high margins sustain supply.
+Enforcement raises cost but does not remove the incentive.
+This is why the market is a permanent feature, not a passing nuisance.
+
+---
+
+13. WHAT ACTUALLY RAISES THE COST
+The effective levers are economic: account friction, identity
+requirements, payment and hosting pressure, and litigation against large
+sellers.
+Technical detection raises the seller's operating cost, which is the
+point.
+Combining technical and economic pressure is stronger than either alone.
+Neither alone ends the market; together they bend its economics.
+
+---
+
+14. SUMMARY
+Cheating persists because it is profitable, so anti-cheat is partly an
+economic problem.
+The market is layered, subscription-based, tiered, and supported by
+ban-evasion services.
+Detection drives adaptation, which sellers sell as improved stealth.
+The strongest levers beyond detection are identity friction, payment and
+hosting pressure, and litigation against large sellers.
+The market is permanent while demand exists; the goal is to raise its
+cost, not to imagine its disappearance.
+
+CORE PRINCIPLE:
+Cheating is a business, so it obeys business logic: it survives by
+staying profitable, not by staying undetected. Technical detection raises
+the seller's costs, but the durable levers are economic - making accounts
+dear, cutting off payments and hosting, and suing the largest sellers.
+Fight the market's economics and its code at the same time; either alone
+only moves the cost around.

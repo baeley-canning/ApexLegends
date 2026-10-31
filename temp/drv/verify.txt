@@ -1,0 +1,6 @@
+=== verify pid=19808 elevation=(-1, 12288) ioctl=0xc3502014
+control @0xE0000 ok=True err=0 first16=ffffffffffffffffffffffffffffffff
+control @0x2000  ok=True err=0 first16=ffffffffffffffffffffffffffffffff (5a => driver never wrote)
+--- scanning 0xE0000-0x100000 for RSDP
+--- 32 pages in 0.021s; 0 'RSD PTR ' candidates
+VERDICT: no RSDP found - addressing still in doubt

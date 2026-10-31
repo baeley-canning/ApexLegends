@@ -1,0 +1,59 @@
+KNOWLEDGE BASE: CAMERA GEOMETRY AND 3D VISION
+
+Purpose:
+Teach the mathematical relationship between a 3D scene and its 2D image representation.
+
+1. 3D WORLD TO 2D IMAGE
+A camera observes a 3D world and produces a 2D image:
+3D point -> camera transformation -> perspective projection -> 2D pixel
+
+The reverse process is generally ambiguous. A single pixel does not uniquely determine a 3D world point without additional information.
+
+2. PINHOLE CAMERA MODEL
+u = f_x * X/Z + c_x
+v = f_y * Y/Z + c_y
+
+X,Y,Z = camera-space coordinates
+f_x,f_y = focal lengths
+c_x,c_y = principal point
+u,v = pixel coordinates
+
+3. DEPTH
+For approximately fixed physical object size, projected size is roughly proportional to 1/Z. Closer objects generally project larger and distant objects smaller. Bounding-box size can therefore provide a crude depth cue, but not an exact distance measurement.
+
+4. CAMERA INTRINSICS
+Important intrinsic parameters include focal length, principal point, pixel aspect ratio, and image dimensions.
+
+5. CAMERA EXTRINSICS
+Extrinsics describe camera position and orientation relative to a world coordinate system. They can be represented by rotation and translation.
+
+6. FIELD OF VIEW
+Horizontal and vertical field of view depend on focal length and image dimensions. Pixel distance from the image centre is not exactly equivalent to angular distance from the camera centre.
+
+7. PRINCIPAL POINT
+The image centre is not universally identical to the optical principal point. Precise geometry distinguishes screen centre from principal point.
+
+8. ANGULAR ERROR
+Pixel-space error (delta-u, delta-v) is different from angular error (delta-theta-x, delta-theta-y). The mapping depends on camera intrinsics.
+
+9. PERSPECTIVE NONLINEARITY
+Equal movements in pixel space do not necessarily correspond to equal angular changes everywhere in the image. Nonlinearity becomes more important toward image edges and with wide fields of view.
+
+10. 2D VERSUS 3D REASONING
+2D reasoning uses image coordinates x,y. 3D reasoning uses world/camera coordinates X,Y,Z. 3D information requires a source of depth or world-state information.
+
+11. MONOCULAR DEPTH
+A single image does not directly reveal exact depth. Depth can be inferred using stereo, motion, known object size, learned depth models, scene geometry, or multiple observations, all with uncertainty.
+
+12. OPTICAL FLOW
+Optical flow estimates apparent pixel motion between frames. It provides motion information but is different from object tracking, which maintains object identity.
+
+13. CAMERA MOTION
+Observed image motion can be caused by object motion, camera motion, or both. Robust systems should distinguish ego-motion from object motion.
+
+14. REFERENCE FRAMES
+Positions must be understood relative to a coordinate frame such as world, camera, screen, or object coordinates.
+
+CORE PRINCIPLE:
+Always ask: "What coordinate system is this quantity expressed in?"
+Pixels are not automatically degrees or metres. Coordinate transformations must remain explicit.

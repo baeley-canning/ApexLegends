@@ -1,0 +1,45 @@
+=== add Root
+Root "Trusted Root Certification Authorities"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 1:
+Serial Number: 3043b15737ede3b14383961628a17ed2
+Issuer: CN=ApexR Test
+ NotBefore: 27/10/2026 9:57 pm
+ NotAfter: 27/10/2031 10:07 pm
+Subject: CN=ApexR Test
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): d33ed7478345a1f373111f13439dc34d76c96d55
+
+Certificate "ApexR Test" already in store.
+CertUtil: -addstore command completed successfully.
+=== add TrustedPublisher
+TrustedPublisher "Trusted Publishers"
+Signature matches Public Key
+Related Certificates:
+
+Exact match:
+Element 0:
+Serial Number: 3043b15737ede3b14383961628a17ed2
+Issuer: CN=ApexR Test
+ NotBefore: 27/10/2026 9:57 pm
+ NotAfter: 27/10/2031 10:07 pm
+Subject: CN=ApexR Test
+Signature matches Public Key
+Root Certificate: Subject matches Issuer
+Cert Hash(sha1): d33ed7478345a1f373111f13439dc34d76c96d55
+
+Certificate "ApexR Test" already in store.
+CertUtil: -addstore command completed successfully.
+=== verify Root
+Root "Trusted Root Certification Authorities"
+CertUtil: -store command FAILED: 0x80090011 (-2146893807 NTE_NOT_FOUND)
+CertUtil: Object was not found.
+=== verify TrustedPublisher
+TrustedPublisher "Trusted Publishers"
+CertUtil: -store command FAILED: 0x80090011 (-2146893807 NTE_NOT_FOUND)
+CertUtil: Object was not found.
+=== done

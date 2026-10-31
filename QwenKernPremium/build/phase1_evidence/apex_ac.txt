@@ -1,0 +1,23 @@
+﻿== r5apex / baeleys identity ==
+r5apex_dx12.exe  size=68517728  ver=1.0.0.0  product=Apex Legends  sha256=352DB3DC6D752FB0A51E6A41487A5FE174DBE1E198BEFB7258B199B2DB781E16
+baeleys game.exe  size=68517728  ver=1.0.0.0  product=Apex Legends  sha256=352DB3DC6D752FB0A51E6A41487A5FE174DBE1E198BEFB7258B199B2DB781E16
+== EAAntiCheat service/driver state ==
+
+== services ==
+
+
+Name        : EAAntiCheatService
+Status      : Running
+StartType   : Manual
+DisplayName : EAAntiCheatService
+
+Name        : EasyAntiCheat_EOS
+Status      : Stopped
+StartType   : Manual
+DisplayName : Easy Anti-Cheat (Epic Online Services)
+
+
+
+
+== system32 drivers matching ==
+

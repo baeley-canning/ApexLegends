@@ -1,0 +1,40 @@
+image base 0x180000000
+  sec .text    va=0x0180001000 vsize=0x1ec00 raw=0x1ec00
+  sec .rdata   va=0x0180020000 vsize=0xbc00 raw=0xbc00
+  sec .data    va=0x018002c000 vsize=0x1d10 raw=0xc00
+  sec .pdata   va=0x018002e000 vsize=0x1a00 raw=0x1a00
+  sec _RDATA   va=0x0180030000 vsize=0x200 raw=0x200
+  sec shared   va=0x0180031000 vsize=0x200 raw=0x200
+  sec .rsrc    va=0x0180032000 vsize=0xd400 raw=0xd400
+  sec .reloc   va=0x0180040000 vsize=0x800 raw=0x800
+--- imports
+  0x0180020000 ADVAPI32.dll!OpenSCManagerW
+  0x0180020008 ADVAPI32.dll!CloseServiceHandle
+  0x0180020010 ADVAPI32.dll!OpenServiceW
+  0x0180020018 ADVAPI32.dll!DeleteService
+  0x0180020020 ADVAPI32.dll!ControlService
+  0x0180020028 ADVAPI32.dll!CreateServiceW
+  0x0180020030 ADVAPI32.dll!StartServiceW
+  0x0180020038 ADVAPI32.dll!QueryServiceStatus
+  0x0180020040 ADVAPI32.dll!QueryServiceConfigW
+  0x0180020050 KERNEL32.dll!WriteConsoleW
+  0x0180020058 KERNEL32.dll!SetEndOfFile
+  0x0180020060 KERNEL32.dll!HeapReAlloc
+  0x0180020068 KERNEL32.dll!GetLastError
+  0x0180020070 KERNEL32.dll!CreateFileW
+  0x0180020078 KERNEL32.dll!LocalAlloc
+  0x0180020080 KERNEL32.dll!GetWindowsDirectoryW
+  0x0180020088 KERNEL32.dll!DeleteFileW
+  0x0180020090 KERNEL32.dll!LocalFree
+  0x0180020098 KERNEL32.dll!SetThreadAffinityMask
+  0x01800200a0 KERNEL32.dll!GetCurrentThread
+  0x01800200a8 KERNEL32.dll!DeviceIoControl
+  0x01800200b0 KERNEL32.dll!CloseHandle
+  0x01800200b8 KERNEL32.dll!GetSystemFirmwareTable
+  0x01800200c0 KERNEL32.dll!SetFileAttributesW
+  0x01800200c8 KERNEL32.dll!GetFileAttributesExW
+  0x01800200d0 KERNEL32.dll!FindResourceW
+  0x01800200d8 KERNEL32.dll!LoadResource
+  0x01800200e0 KERNEL32.dll!SizeofResource
+  0x01800200e8 KERNEL32.dll!LockResource
+  0x01800200f0 KERNEL32.dll!RtlCaptureContext

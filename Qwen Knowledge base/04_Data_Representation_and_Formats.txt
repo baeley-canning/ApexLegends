@@ -1,0 +1,122 @@
+KNOWLEDGE BASE: DATA REPRESENTATION AND FORMATS
+
+Purpose:
+Educational reference for how information is represented as bits and
+bytes: how numbers, text, images, and coordinates are encoded, and why
+representation choices cause bugs that look like logic errors.
+
+---
+
+1. EVERYTHING IS BITS
+All data is a sequence of bits, grouped into bytes.
+Meaning comes from interpretation: the same bytes can be a number, text,
+a colour, or an instruction depending on how they are read.
+Most "wrong value" bugs are really "wrong interpretation" bugs.
+
+---
+
+2. INTEGER REPRESENTATION
+Integers are exact within their range but wrap or overflow outside it.
+Signed and unsigned interpretations of the same bits differ.
+Fixed-width types silently truncate, which is a recurring source of
+errors in coordinates, sizes, and counters.
+
+---
+
+3. FLOATING-POINT
+Floating-point represents a wide range of magnitudes with limited
+precision.
+Most decimal fractions cannot be stored exactly, so equality tests fail
+and small errors accumulate.
+Compare with tolerances; never assume two independently computed floats
+are exactly equal.
+
+---
+
+4. TEXT AND ENCODING
+Text is bytes plus an encoding that maps byte sequences to characters.
+An encoding mismatch produces garbled text, not a clean error.
+Keeping one encoding (for example UTF-8) end to end avoids it.
+
+---
+
+5. IMAGES AS DATA
+An image is a grid of pixels, each holding colour in channels.
+Channels may be ordered differently (for example RGB versus BGR) and may
+include an alpha channel for transparency.
+Swapped channels produce plausible-looking but wrong colours, a classic
+integration bug.
+
+---
+
+6. COLOUR, RESOLUTION, AND DEPTH
+Colour depth is the number of bits per channel; higher depth means finer
+gradation.
+Resolution is the pixel count; more pixels mean more data and more cost.
+Compression may be lossless or lossy, and lossy compression changes the
+values themselves.
+
+---
+
+7. PIXEL FORMATS AND STRIDE
+A pixel format defines channel order and bits per channel.
+Stride is the number of bytes between the start of one row and the next,
+which may exceed the visible row width.
+Ignoring stride is a common cause of skewed or sheared images.
+
+---
+
+8. COORDINATE CONVENTIONS
+Conventions differ: origin at top-left or bottom-left; x then y, or row
+then column.
+Units may be pixels, degrees, or world units.
+Mixing conventions silently displaces everything drawn or measured.
+
+---
+
+9. UNITS AND DIMENSIONS
+Every physical quantity carries a unit; adding metres to pixels is
+meaningless.
+Carrying units through a computation catches errors early.
+Dimensionless ratios and angles are the exception, and should be labelled
+as such.
+
+---
+
+10. SERIALISATION
+Serialisation turns structured data into bytes for storage or transfer,
+and deserialisation reverses it.
+Both ends must agree on the format, including ordering and types.
+Binary and text formats trade compactness against readability.
+
+---
+
+11. BYTE ORDER
+Multi-byte values can be stored most-significant first or last
+(endianness).
+Reading a value in the wrong order produces a scrambled number.
+Network and file formats specify their byte order precisely.
+
+---
+
+12. WHY REPRESENTATION ERRORS HIDE
+A wrong format often produces plausible output rather than a crash.
+Swapped channels, offsets, and stride errors look like design mistakes.
+When output is subtly wrong, suspect the representation before the
+algorithm.
+
+---
+
+13. SUMMARY
+Data is bits plus an interpretation: numbers, text, images, and
+coordinates each have their own representation rules.
+Precision, channel order, stride, units, and frames are the recurring
+sources of error.
+Most "wrong value" bugs are representation mismatches, not logic bugs.
+
+CORE PRINCIPLE:
+Data is meaningless without its interpretation. The same bytes can be a
+number, a colour, or text, and a mismatch rarely crashes - it quietly
+produces plausible but wrong output. Before debugging the logic, verify
+the representation: precision, channel order, stride, units, and
+coordinate frame.

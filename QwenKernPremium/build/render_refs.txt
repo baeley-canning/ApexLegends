@@ -1,0 +1,209 @@
+﻿acg_probe.cpp:198: if (_stricmp(entry.szModule, "d3d11.dll") == 0) env.d3d11Loaded = true;
+acg_probe.cpp:199: if (_stricmp(entry.szModule, "dxgi.dll")  == 0) env.dxgiLoaded  = true;
+acg_probe.cpp:201: if (_stricmp(entry.szModule, "d3d9.dll")  == 0) env.d3d9Loaded  = true;
+acg_probe.cpp:202: if (_stricmp(entry.szModule, "d3dcompiler_47.dll") == 0) env.d3dCompilerLoaded = true;
+acg_probe.cpp:505: // (1.3) reads this: d3d11 must be present by the time we hook Present, d3d9 must
+acg_probe.cpp:514: "image=%s modules=%d d3d11=%s dxgi=%s d3d12=%s d3d9=%s d3dcompiler=%s os=%s hvci=%s",
+acg_probe.cpp:516: ModulePresenceText(env.d3d11Loaded, env.moduleCount).c_str(),
+acg_probe.cpp:517: ModulePresenceText(env.dxgiLoaded, env.moduleCount).c_str(),
+acg_probe.cpp:519: ModulePresenceText(env.d3d9Loaded, env.moduleCount).c_str(),
+acg_probe.cpp:520: ModulePresenceText(env.d3dCompilerLoaded, env.moduleCount).c_str(),
+acg_probe.cpp:523: const bool plausible = (env.d3d11Loaded || env.d3d9Loaded || env.d3d12Loaded);
+acg_probe.cpp:986: "d3d11=%s dxgi=%s d3d12=%s d3d9=%s d3dcompiler=%s",
+acg_probe.cpp:991: ModulePresenceText(env.d3d11Loaded, env.moduleCount).c_str(),
+acg_probe.cpp:992: ModulePresenceText(env.dxgiLoaded, env.moduleCount).c_str(),
+acg_probe.cpp:994: ModulePresenceText(env.d3d9Loaded, env.moduleCount).c_str(),
+acg_probe.cpp:995: ModulePresenceText(env.d3dCompilerLoaded, env.moduleCount).c_str());
+hooks.cpp:5: #include <d3d11.h>
+hooks.cpp:6: #include <d3dcompiler.h>
+hooks.cpp:9: #pragma comment(lib, "d3d11.lib")
+hooks.cpp:10: #pragma comment(lib, "dxgi.lib")
+hooks.cpp:18: GameHooks::DXGIPresentFunc GameHooks::originalDXGIPresent = nullptr;
+hooks.cpp:23: bool                       GameHooks::bDXGIHooked    = false;
+hooks.cpp:28: originalDXGIPresent = nullptr;
+hooks.cpp:42: void** g_d3d9PresentSlot = nullptr;
+hooks.cpp:43: void** g_dxgiPresentSlot = nullptr;
+hooks.cpp:62: // ---- D3D9 overlay primitives ----------------------------------------------
+hooks.cpp:63: struct D3D9Vertex {
+hooks.cpp:68: void DrawLineD3D9(IDirect3DDevice9* device, float x1, float y1,
+hooks.cpp:70: D3D9Vertex vertices[2] = {
+hooks.cpp:74: device->DrawPrimitiveUP(D3DPT_LINELIST, 1, vertices, sizeof(D3D9Vertex));
+hooks.cpp:77: // ---- D3D11 overlay pipeline ------------------------------------------------
+hooks.cpp:80: struct D3D11Vertex {
+hooks.cpp:101: ID3D11Device*            g_d3d11Device     = nullptr;
+hooks.cpp:102: ID3D11DeviceContext*     g_d3d11Context    = nullptr;
+hooks.cpp:103: ID3D11VertexShader*      g_overlayVS       = nullptr;
+hooks.cpp:104: ID3D11PixelShader*       g_overlayPS       = nullptr;
+hooks.cpp:105: ID3D11InputLayout*       g_overlayLayout   = nullptr;
+hooks.cpp:106: ID3D11Buffer*            g_overlayBuffer   = nullptr;
+hooks.cpp:107: ID3D11BlendState*        g_overlayBlend    = nullptr;
+hooks.cpp:108: ID3D11DepthStencilState* g_overlayDepth    = nullptr;
+hooks.cpp:109: ID3D11RasterizerState*   g_overlayRaster   = nullptr;
+hooks.cpp:111: bool                     g_d3d11Ready      = false;
+hooks.cpp:116: // d3d9.dll and d3dcompiler_47.dll are NOT loaded by r5apex.exe.  Importing
+hooks.cpp:129: HMODULE compiler = LoadLibraryA("d3dcompiler_47.dll");
+hooks.cpp:142: HMODULE d3d9Module = LoadLibraryA("d3d9.dll");
+hooks.cpp:143: if (!d3d9Module) return nullptr;
+hooks.cpp:146: GetProcAddress(d3d9Module, "Direct3DCreate9"));
+hooks.cpp:150: void ReleaseD3D11Overlay() {
+hooks.cpp:158: if (g_d3d11Context)  { g_d3d11Context->Release();  g_d3d11Context  = nullptr; }
+hooks.cpp:159: if (g_d3d11Device)   { g_d3d11Device->Release();   g_d3d11Device   = nullptr; }
+hooks.cpp:160: g_d3d11Ready      = false;
+hooks.cpp:167: // D3D11 pipeline (re)creation â€” called lazily from the Present thunk, i.e. on
+hooks.cpp:170: static bool EnsureD3D11Overlay(IDXGISwapChain* swapChain) {
+hooks.cpp:171: if (g_d3d11Ready) return true;
+hooks.cpp:174: if (FAILED(swapChain->GetDevice(__uuidof(ID3D11Device),
+hooks.cpp:175: reinterpret_cast<void**>(&g_d3d11Device)))) {
+hooks.cpp:178: g_d3d11Device->GetImmediateContext(&g_d3d11Context);
+hooks.cpp:182: ReleaseD3D11Overlay();
+hooks.cpp:207: ReleaseD3D11Overlay();
+hooks.cpp:211: bool ok = SUCCEEDED(g_d3d11Device->CreateVertexShader(vsBlob->GetBufferPointer(),
+hooks.cpp:214: SUCCEEDED(g_d3d11Device->CreatePixelShader(psBlob->GetBufferPointer(),
+hooks.cpp:218: const D3D11_INPUT_ELEMENT_DESC layout[] = {
+hooks.cpp:219: { "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT,   0, 0,
+hooks.cpp:220: D3D11_INPUT_PER_VERTEX_DATA, 0 },
+hooks.cpp:221: { "COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM, 0, 8,
+hooks.cpp:222: D3D11_INPUT_PER_VERTEX_DATA, 0 },
+hooks.cpp:223: { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,   0, 12,
+hooks.cpp:224: D3D11_INPUT_PER_VERTEX_DATA, 0 },
+hooks.cpp:227: ok = ok && SUCCEEDED(g_d3d11Device->CreateInputLayout(
+hooks.cpp:236: D3D11_BUFFER_DESC bufferDesc{};
+hooks.cpp:237: bufferDesc.ByteWidth      = g_overlayCapacity * sizeof(D3D11Vertex);
+hooks.cpp:238: bufferDesc.Usage          = D3D11_USAGE_DYNAMIC;
+hooks.cpp:239: bufferDesc.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
+hooks.cpp:240: bufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+hooks.cpp:241: ok = ok && SUCCEEDED(g_d3d11Device->CreateBuffer(&bufferDesc, nullptr,
+hooks.cpp:244: D3D11_BLEND_DESC blendDesc{};
+hooks.cpp:246: blendDesc.RenderTarget[0].SrcBlend              = D3D11_BLEND_SRC_ALPHA;
+hooks.cpp:247: blendDesc.RenderTarget[0].DestBlend             = D3D11_BLEND_INV_SRC_ALPHA;
+hooks.cpp:248: blendDesc.RenderTarget[0].BlendOp               = D3D11_BLEND_OP_ADD;
+hooks.cpp:249: blendDesc.RenderTarget[0].SrcBlendAlpha         = D3D11_BLEND_ONE;
+hooks.cpp:250: blendDesc.RenderTarget[0].DestBlendAlpha        = D3D11_BLEND_ZERO;
+hooks.cpp:251: blendDesc.RenderTarget[0].BlendOpAlpha          = D3D11_BLEND_OP_ADD;
+hooks.cpp:252: blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+hooks.cpp:253: ok = ok && SUCCEEDED(g_d3d11Device->CreateBlendState(&blendDesc, &g_overlayBlend));
+hooks.cpp:255: D3D11_DEPTH_STENCIL_DESC depthDesc{};
+hooks.cpp:257: ok = ok && SUCCEEDED(g_d3d11Device->CreateDepthStencilState(&depthDesc,
+hooks.cpp:260: D3D11_RASTERIZER_DESC rasterDesc{};
+hooks.cpp:261: rasterDesc.FillMode        = D3D11_FILL_SOLID;
+hooks.cpp:262: rasterDesc.CullMode        = D3D11_CULL_NONE;
+hooks.cpp:264: ok = ok && SUCCEEDED(g_d3d11Device->CreateRasterizerState(&rasterDesc,
+hooks.cpp:268: ReleaseD3D11Overlay();
+hooks.cpp:272: g_d3d11Ready = true;
+hooks.cpp:286: // Apex Legends is a DX11 title: hook IDXGISwapChain::Present first.  The
+hooks.cpp:287: // D3D9 path is only used when d3d9.dll is already loaded in the process
+hooks.cpp:289: bDXGIHooked = HookPresentDXGI();
+hooks.cpp:290: if (!bDXGIHooked && GetModuleHandleA("d3d9.dll") != nullptr) {
+hooks.cpp:294: if (!bDXGIHooked && !bPresentHooked) {
+hooks.cpp:298: bDXGIHooked ? "DXGI" : "D3D9");
+hooks.cpp:309: return bDXGIHooked || bPresentHooked;
+hooks.cpp:323: if (g_dxgiPresentSlot && originalDXGIPresent) {
+hooks.cpp:324: if (VirtualProtect(g_dxgiPresentSlot, sizeof(void*),
+hooks.cpp:326: *g_dxgiPresentSlot = reinterpret_cast<void*>(originalDXGIPresent);
+hooks.cpp:327: VirtualProtect(g_dxgiPresentSlot, sizeof(void*), oldProtect, &oldProtect);
+hooks.cpp:329: originalDXGIPresent = nullptr;
+hooks.cpp:331: if (g_d3d9PresentSlot && originalPresent) {
+hooks.cpp:332: if (VirtualProtect(g_d3d9PresentSlot, sizeof(void*),
+hooks.cpp:334: *g_d3d9PresentSlot = reinterpret_cast<void*>(originalPresent);
+hooks.cpp:335: VirtualProtect(g_d3d9PresentSlot, sizeof(void*), oldProtect, &oldProtect);
+hooks.cpp:340: ReleaseD3D11Overlay();
+hooks.cpp:341: bDXGIHooked     = false;
+hooks.cpp:387: // D3D9 Present hook (idx 17 of IDirect3DDevice9)
+hooks.cpp:397: const Direct3DCreate9Fn createD3D9 = ResolveDirect3DCreate9();
+hooks.cpp:398: IDirect3D9* d3d9 = createD3D9 ? createD3D9(D3D_SDK_VERSION) : nullptr;
+hooks.cpp:399: if (!d3d9) {
+hooks.cpp:411: if (FAILED(d3d9->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, dummyWindow,
+hooks.cpp:414: d3d9->Release();
+hooks.cpp:420: g_d3d9PresentSlot = &vtable[17];
+hooks.cpp:422: const bool patched = PatchVtableSlot(g_d3d9PresentSlot,
+hooks.cpp:423: &GameHooks::D3D9PresentHook,
+hooks.cpp:426: d3d9->Release();
+hooks.cpp:434: // DXGI SwapChain::Present hook (idx 8 of IDXGISwapChain)
+hooks.cpp:436: bool GameHooks::HookPresentDXGI() {
+hooks.cpp:437: if (bDXGIHooked) return true;
+hooks.cpp:443: DXGI_SWAP_CHAIN_DESC desc{};
+hooks.cpp:447: desc.BufferDesc.Format                 = DXGI_FORMAT_R8G8B8A8_UNORM;
+hooks.cpp:448: desc.BufferUsage                        = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+hooks.cpp:452: desc.SwapEffect                         = DXGI_SWAP_EFFECT_DISCARD;
+hooks.cpp:454: ID3D11Device*        device    = nullptr;
+hooks.cpp:455: ID3D11DeviceContext* context   = nullptr;
+hooks.cpp:456: IDXGISwapChain*      swapChain = nullptr;
+hooks.cpp:459: HRESULT hr = D3D11CreateDeviceAndSwapChain(
+hooks.cpp:461: D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+hooks.cpp:464: // Headless/VM fallback: WARP still exposes the same dxgi vtable.
+hooks.cpp:465: hr = D3D11CreateDeviceAndSwapChain(
+hooks.cpp:467: D3D11_SDK_VERSION, &desc, &swapChain, &device, &level, &context);
+hooks.cpp:478: g_dxgiPresentSlot = &vtable[8];
+hooks.cpp:480: const bool patched = PatchVtableSlot(g_dxgiPresentSlot,
+hooks.cpp:481: &GameHooks::DXGISwapChainPresentHook,
+hooks.cpp:482: &originalDXGIPresent);
+hooks.cpp:489: bDXGIHooked = patched;
+hooks.cpp:510: HRESULT STDMETHODCALLTYPE GameHooks::D3D9PresentHook(IDirect3DDevice9* pDevice,
+hooks.cpp:524: HRESULT STDMETHODCALLTYPE GameHooks::DXGISwapChainPresentHook(IDXGISwapChain* pSwapChain,
+hooks.cpp:531: if (!originalDXGIPresent) return S_OK;
+hooks.cpp:532: return originalDXGIPresent(pSwapChain, syncInterval, flags);
+hooks.cpp:536: // D3D9 overlay rendering
+hooks.cpp:562: DrawLineD3D9(pDevice, box.left, box.top,    box.right, box.top,    color);
+hooks.cpp:563: DrawLineD3D9(pDevice, box.left, box.bottom, box.right, box.bottom, color);
+hooks.cpp:564: DrawLineD3D9(pDevice, box.left, box.top,    box.left,  box.bottom, color);
+hooks.cpp:565: DrawLineD3D9(pDevice, box.right, box.top,   box.right, box.bottom, color);
+hooks.cpp:570: // DXGI / D3D11 overlay rendering
+hooks.cpp:572: void GameHooks::RenderOverlayDX11(IDXGISwapChain* pSwapChain) {
+hooks.cpp:575: DXGI_SWAP_CHAIN_DESC desc{};
+hooks.cpp:583: if (!EnsureD3D11Overlay(pSwapChain)) return;
+hooks.cpp:585: D3D11_MAPPED_SUBRESOURCE mapped{};
+hooks.cpp:586: if (FAILED(g_d3d11Context->Map(g_overlayBuffer, 0, D3D11_MAP_WRITE_DISCARD,
+hooks.cpp:591: D3D11Vertex* vertices = reinterpret_cast<D3D11Vertex*>(mapped.pData);
+hooks.cpp:627: g_d3d11Context->Unmap(g_overlayBuffer, 0);
+hooks.cpp:630: const UINT stride = sizeof(D3D11Vertex);
+hooks.cpp:633: g_d3d11Context->IASetInputLayout(g_overlayLayout);
+hooks.cpp:634: g_d3d11Context->IASetVertexBuffers(0, 1, &g_overlayBuffer, &stride, &offset);
+hooks.cpp:635: g_d3d11Context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+hooks.cpp:636: g_d3d11Context->VSSetShader(g_overlayVS, nullptr, 0);
+hooks.cpp:637: g_d3d11Context->PSSetShader(g_overlayPS, nullptr, 0);
+hooks.cpp:638: g_d3d11Context->OMSetBlendState(g_overlayBlend, nullptr, 0xFFFFFFFF);
+hooks.cpp:639: g_d3d11Context->OMSetDepthStencilState(g_overlayDepth, 0);
+hooks.cpp:640: g_d3d11Context->RSSetState(g_overlayRaster);
+hooks.cpp:641: g_d3d11Context->Draw(vertexCount, 0);
+main.cpp:14: // creates a temporary D3D11 device to discover the swap-chain vtable, and
+acg_probe.h:66: bool        d3d11Loaded;
+acg_probe.h:67: bool        dxgiLoaded;
+acg_probe.h:69: bool        d3d9Loaded;
+acg_probe.h:70: bool        d3dCompilerLoaded;
+hooks.h:3: #include <d3d9.h>
+hooks.h:4: #include <dxgi.h>
+hooks.h:13: //   PRIMARY  : IDXGISwapChain::Present (DXGI) — what r5apex_dx12.exe actually
+hooks.h:15: //   FALLBACK : IDirect3DDevice9::Present (D3D9) — KEPT DELIBERATELY, not a
+hooks.h:17: //              present through D3D9; (b) it costs nothing at rest because
+hooks.h:18: //              d3d9.dll is resolved with LoadLibrary/GetProcAddress instead of
+hooks.h:22: //   NOT YET  : D3D12.  Apex is DX12-first upstream; with the game's own DXGI
+hooks.h:23: //              swap chain the DXGI hook above is the same slot (Present index 8
+hooks.h:24: //              on IDXGISwapChain/IDXGISwapChain1..4), but a *D3D12* device has
+hooks.h:25: //              no ID3D11DeviceContext, so the overlay pipeline must be created
+hooks.h:30: //   The hook thunks (WndProcHook / D3D9PresentHook / DXGISwapChainPresentHook)
+hooks.h:54: static HRESULT STDMETHODCALLTYPE D3D9PresentHook(IDirect3DDevice9* pDevice,
+hooks.h:60: // Apex Legends renders through DXGI/D3D11, so IDXGISwapChain::Present is
+hooks.h:61: // the hook that actually fires in game.  The D3D9 path above is the
+hooks.h:63: static HRESULT STDMETHODCALLTYPE DXGISwapChainPresentHook(IDXGISwapChain* pSwapChain,
+hooks.h:71: typedef HRESULT (STDMETHODCALLTYPE *DXGIPresentFunc)(IDXGISwapChain*, UINT, UINT);
+hooks.h:75: static bool  HookPresentDXGI();
+hooks.h:77: static void  RenderOverlayDX11(IDXGISwapChain* pSwapChain);
+hooks.h:82: static DXGIPresentFunc    originalDXGIPresent;
+hooks.h:87: static bool               bDXGIHooked;
+main.h:19: //     init (temporary D3D11 device, hook install, memory reader) runs on the
+launcher_main.cpp:380: //      reason d3d11/dxgi appears in the target (that would be a fingerprint).
+launcher_main.cpp:386: bool        d3d11Loaded;
+launcher_main.cpp:387: bool        dxgiLoaded;
+launcher_main.cpp:389: bool        d3d9Loaded;
+launcher_main.cpp:417: facts.d3d11Loaded = ApexInjector::IsModuleLoaded(pid, "d3d11.dll");
+launcher_main.cpp:418: facts.dxgiLoaded  = ApexInjector::IsModuleLoaded(pid, "dxgi.dll");
+launcher_main.cpp:420: facts.d3d9Loaded  = ApexInjector::IsModuleLoaded(pid, "d3d9.dll");
+launcher_main.cpp:459: printf("    render modules   : d3d11=%s dxgi=%s d3d12=%s d3d9=%s\n",
+launcher_main.cpp:460: facts.d3d11Loaded ? "loaded" : noText,
+launcher_main.cpp:461: facts.dxgiLoaded  ? "loaded" : noText,
+launcher_main.cpp:463: facts.d3d9Loaded  ? "loaded" : noText);
+launcher_main.cpp:465: if (!blind && !facts.d3d11Loaded && facts.d3d12Loaded) {
+launcher_main.cpp:466: printf("    [!] DX12 is up and d3d11 is NOT mapped: our d3d11.dll import would\n"
+launcher_main.cpp:470: if (!blind && facts.d3d9Loaded) {
+launcher_main.cpp:471: printf("    [i] d3d9.dll is present: the D3D9 fallback hook is reachable\n");
+launcher_main.cpp:715: // is introduced, so "d3d11 is loaded" cannot be our own doing.

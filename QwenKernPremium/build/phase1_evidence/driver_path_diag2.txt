@@ -1,0 +1,27 @@
+﻿== driver path diagnostic 2 2026-10-27 11:57:24 ==
+--- existing in-box driver keys (reference) ---
+  beep : Type=1 Start=1 ImagePath=''
+  luafv : Type=2 Start=2 ImagePath='\SystemRoot\system32\drivers\luafv.sys'
+  null : Type=1 Start=1 ImagePath=''
+  msfs : Type=2 Start=1 ImagePath=''
+  cldflt : Type=2 Start=2 ImagePath='system32\drivers\cldflt.sys'
+--- control: in-box luafv.sys, demand start, created by us ---
+  luatest : Type=1 Start=3 ImagePath=' \??\C:\Windows\System32\drivers\luafv.sys'
+  create  : [SC] CreateService SUCCESS
+  start   : [SC] StartService FAILED 123:  The filename, directory name, or volume label syntax is incorrect.
+  state   : STATE              : 1  STOPPED
+--- ours from System32\drivers ---
+  apexdrv : Type=1 Start=3 ImagePath=' \??\C:\Windows\System32\drivers\apexdrv.sys'
+  create  : [SC] CreateService SUCCESS
+  start   : [SC] StartService FAILED 123:  The filename, directory name, or volume label syntax is incorrect.
+  state   : STATE              : 1  STOPPED
+--- ours from C:\apexdrv (short path, not System32) ---
+  apexdrv : Type=1 Start=3 ImagePath=' \??\C:\apexdrv\apexdrv.sys'
+  create  : [SC] CreateService SUCCESS
+  start   : [SC] StartService FAILED 123:  The filename, directory name, or volume label syntax is incorrect.
+  state   : STATE              : 1  STOPPED
+--- registry free space / value type of a fresh key ---
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\luafv
+    ImagePath    REG_EXPAND_SZ    \SystemRoot\system32\drivers\luafv.sys
+

@@ -1,0 +1,153 @@
+﻿1: // ============================================================================
+2: // apex_launcher.exe — QwenKern Premium launcher
+3: //
+4: // Responsibilities
+5: //   * locate r5apex.exe (or accept an explicit PID)
+6: //   * let the operator pick the injection strategy (usermode x2, kernel driver)
+7: //   * expose the launcher-side evasion switches (staged DLL copy, randomised
+8: //     method, delayed injection)
+9: //   * perform the injection through ApexInjector and report the outcome
+10: //
+11: // The launcher NEVER touches game memory itself: all game-facing work happens
+12: // in apexcheat.dll (usermode) or apexdrv.sys (kernel), which keeps the
+13: // launcher's own footprint small.
+14: // ============================================================================
+34: namespace {
+36: // The game's real process image after the 2026-09-29 EA Javelin move.  The
+37: // legacy name is still accepted (and reported) because a stale install or a
+38: // different store build must not be mistaken for "game not running".
+39: const char* const kGameProcessName      = "r5apex_dx12.exe";
+40: const char* const kLegacyProcessName    = "r5apex.exe";
+41: const char* const kDefaultDllName  = "apexcheat.dll";
+42: const char* const kDefaultDriver   = "apexdrv.sys";
+44: // The reference install (C:\Program Files\EA Games\Apex) ALSO holds
+45: // "baeleys game.exe": a byte-identical copy of r5apex_dx12.exe (same size and
+46: // SHA-256, verified 2026-10-26), i.e. the game renamed by the player.  It is the
+47: // game, but the matched name is recorded AND compared, so a module-base or
+48: // import-table assumption can never silently ride on the wrong binary.
+49: const char* const kCopiedProcessName    = "baeleys game.exe";
+51: // Order = preference: the canonical name wins when several images are running.
+52: const char* const kKnownProcessNames[]  = {
+58: bool IsKnownGameImageName(const std::string& imageName) {
+65: struct LauncherOptions {
+69: bool            methodForced     = false;  // --method=<x> given: no ladder
+75: bool            runProbe         = false;   // --probe: measure, do not inject
+80: void PrintBanner() {
+87: bool IsElevated() {
+103: std::string ExeDirectory() {
+112: bool FileExists(const std::string& path) {
+118: std::wstring Widen(const std::string& text) {
+129: std::string Lowercase(std::string text) {
+157: // Which image name matched the last successful lookup (for logs + integrity).
+158: const char* g_matchedProcessName = "";
+160: // Post-Javelin the image is r5apex_dx12.exe.  Accept the legacy name too, but
+161: // always record WHICH one matched: "the game was found" must be verifiable, and
+162: // an unknown image name is exactly what breaks module-base assumptions later.
+176: std::string RandomToken(size_t length) {
+192: // Copy the payload to %TEMP% under a random name.  Windows keeps a loaded
+193: // image mapped after the file is deleted, so a path/name based heuristic sees
+194: // nothing recognisable and no tell-tale file stays on disk.
+195: bool StageDllCopy(const std::string& sourcePath, std::string& stagedPath) {
+216: void PrintResult(const InjectionResult& result, InjectionMethod method) {
+232: // Resolve a payload next to the launcher, falling back to build\ and ..\build\.
+233: std::string ResolvePayloadPath(const std::string& candidate) {
+248: // Wait for the game process to appear (launcher started before the game).
+276: const char* MethodLabel(InjectionMethod method) {
+285: // ============================================================================
+286: // PHASE 1.2 — sticky strategy choice
+287: //
+288: // The working rung is remembered PER MACHINE (next to the launcher, so per
+289: // install rather than per user profile) and tried FIRST next run.  Every
+290: // attempt is still logged, so a machine that silently changes its mind stays
+291: // visible instead of invisible.
+292: // ============================================================================
+293: std::string StickyFilePath() {
+297: std::string TrimText(const std::string& text) {
+301: while (end > begin && std::isspace(static_cast<unsigned char>(text[end - 1]))) --end;
+305: bool ParseMethodCode(const std::string& code, InjectionMethod& methodOut) {
+324: bool ReadStickyMethod(InjectionMethod& methodOut, std::string& payloadOut) {
+343: bool WriteStickyMethod(InjectionMethod method, const std::string& payload) {
+364: void ForgetStickyMethod() {
+373: // ============================================================================
+374: // PHASE 1.3 — reference integrity
+375: //
+376: // Three independent facts must hold before an injection result means anything:
+377: //   1. the target image is the expected process (not our own launcher),
+378: //   2. the module base is a real PE image we can read,
+379: //   3. the render backend is ALREADY mapped by the game - we must not be the
+380: //      reason d3d11/dxgi appears in the target (that would be a fingerprint).
+381: // A failure is reported, not fatal: the roadmap wants the facts recorded.
+382: // ============================================================================
+383: struct ReferenceIntegrity {
+445: void PrintReferenceIntegrity(const ReferenceIntegrity& facts) {
+481: // Can the target's module list be read at all?  Apex under Javelin is a live
+482: // example of "no": without this check a rung whose payload loaded fine would be
+483: // reported FAIL simply because the snapshot failed.
+484: bool ModuleListReadable(DWORD pid) {
+526: // Basename of a path, used as the module-list key for the ladder verdict.
+527: std::string BaseNameOfPath(const std::string& path) {
+532: // ============================================================================
+533: // PHASE 1.2 — the strategy ladder
+534: //
+535: // Least-invasive-first, and it is a LADDER not a menu: every rung goes through
+536: // the same verdict so "success" means the payload is actually mapped:
+537: //   1. the injector call returns success,
+538: //   2. the payload appears in the target's module list.
+539: // A rung that passes 1 and fails 2 is a FAIL with the reason spelled out — that
+540: // is the AGC pattern from docs\JAVELIN_2026_*: the call "works", the image
+541: // never initialises.
+542: // ============================================================================
+543: std::vector<InjectionMethod> BuildLadderOrder(const LauncherOptions& options,
+582: struct LadderOutcome {
+588: // How long a rung may keep loading the payload before it is called a failure.
+589: // Needed because an APC rung (A3) is delivered on the target's NEXT alertable
+590: // wait: checking the module list the instant the injector returns would reject a
+591: // strategy that works, i.e. it would corrupt the measurement.
+592: const DWORD kVerifyWindowMs = 3000;
+594: bool WaitForModule(DWORD pid, const char* moduleName, DWORD timeoutMs) {
+699: // PHASE 1.1 in launcher form: measure, never inject.  Falls back to our own PID
+700: // so it is runnable with the game closed (results are only comparable within
+701: // the same process kind, hence the explicit self/target tag on the report).
+702: int RunProbeCommand(DWORD pid) {
+743: void PrintMenu(const LauncherOptions& options, DWORD pid) {
+764: // Returns true when the launcher should keep running.
+765: bool InteractiveMenu(LauncherOptions& options, bool gameFound) {
+875: printf("[*] No rung verified. Use [1] or --method= to force one.\n");
+887: bool ParseMethod(const std::string& value, InjectionMethod& method) {
+909: void PrintUsage() {
+911: printf("  --inject                 run the LADDER once and exit (default)\n");
+912: printf("  --method=nt|apc|crt|kernel  force ONE rung (no ladder, no sticky)\n");
+913: printf("  --probe                  AG measurement harness only, never injects\n");
+914: printf("  --dll=<path>             payload DLL (default: %s next to the exe)\n",
+916: printf("  --driver=<path>          kernel driver for the B3 rung\n");
+917: printf("  --pid=<pid>              target PID (otherwise auto-detected)\n");
+918: printf("  --stage                  inject from a randomly named %%TEMP%% copy\n");
+919: printf("  --random                 randomise the usermode method per run\n");
+920: printf("  --timeout=<seconds>      wait-for-game timeout (default 120)\n");
+921: printf("  --no-wait                fail immediately if the game is not running\n");
+922: printf("  --no-sticky              do not read/write the per-machine rung\n");
+923: printf("  --forget-sticky          delete the remembered rung and continue\n");
+924: printf("  --help                   show this help\n\n");
+943: // Helper: value from "--opt=value" or from the next argv element.
+950: if (arg == "--help" || arg == "-h") {
+954: if (arg == "--stage")   { options.stageDll = true;        continue; }
+955: if (arg == "--random")  { options.randomizeMethod = true; continue; }
+956: if (arg == "--no-wait") { options.waitForGame = false;    continue; }
+957: if (arg == "--inject") { runOnce = true;                  continue; }
+958: if (arg == "--probe")  { runOnce = true; options.runProbe = true; continue; }
+959: if (arg == "--no-sticky")     { options.allowSticky = false; continue; }
+960: if (arg == "--forget-sticky") { options.forgetSticky = true; continue; }
+962: if (arg == "--method") {
+965: printf("[-] Bad --method value\n");
+972: if (arg == "--dll") {
+974: if (!takeValue(path)) { printf("[-] --dll needs a path\n"); return ArgResult::ExitError; }
+978: if (arg == "--driver") {
+980: if (!takeValue(path)) { printf("[-] --driver needs a path\n"); return ArgResult::ExitError; }
+984: if (arg == "--pid") {
+986: if (!takeValue(pidText)) { printf("[-] --pid needs a value\n"); return ArgResult::ExitError; }
+990: if (arg == "--timeout") {
+992: if (!takeValue(secondsText)) { printf("[-] --timeout needs a value\n"); return ArgResult::ExitError; }
+997: printf("[-] Unknown option: %s (try --help)\n", arg.c_str());
+1006: int main(int argc, char** argv) {
+1018: // --forget-sticky applies to every path (probe included) and runs before
+1031: // --probe never injects: it resolves the same target, but a missing

@@ -1,0 +1,11 @@
+﻿== set testsigning 12:18:57 pid=26860 ==
+--- bcdedit /set testsigning on EXIT=1 ---
+  An error has occurred setting the element data.
+  The value is protected by Secure Boot policy and cannot be modified or deleted.
+t+ 2s  enum{current} has-testsigning=False  value='(absent)'
+t+ 4s  enum{current} has-testsigning=False  value='(absent)'
+t+ 6s  enum{current} has-testsigning=False  value='(absent)'
+t+ 8s  enum{current} has-testsigning=False  value='(absent)'
+t+10s  enum{current} has-testsigning=False  value='(absent)'
+--- /enum all EXIT=0: lines mentioning testsign = 0 ---
+END

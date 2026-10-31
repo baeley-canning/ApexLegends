@@ -1,0 +1,70 @@
+== MsIo64.sys  va 0x1150 (file 0x550) .. 0x12a0
+  0x001150  0000                 add      byte ptr [rax], al
+  0x001152  c784249000000000020000 mov      dword ptr [rsp + 0x90], 0x200
+  0x00115d  4889842488000000     mov      qword ptr [rsp + 0x88], rax
+  0x001165  4c89ac2498000000     mov      qword ptr [rsp + 0x98], r13
+  0x00116d  4c89ac24a0000000     mov      qword ptr [rsp + 0xa0], r13
+  0x001175  ff15bd0e0000         call     qword ptr [rip + 0xebd]
+  0x00117b  85c0                 test     eax, eax
+  0x00117d  8bf8                 mov      edi, eax
+  0x00117f  0f8898010000         js       0x131d
+  0x001185  488b0e               mov      rcx, qword ptr [rsi]
+  0x001188  4533c9               xor      r9d, r9d
+  0x00118b  4533c0               xor      r8d, r8d
+  0x00118e  ba1f000f00           mov      edx, 0xf001f
+  0x001193  4c896c2428           mov      qword ptr [rsp + 0x28], r13
+  0x001198  48896c2420           mov      qword ptr [rsp + 0x20], rbp
+  0x00119d  ff158d0e0000         call     qword ptr [rip + 0xe8d]
+  0x0011a3  85c0                 test     eax, eax
+  0x0011a5  8bf8                 mov      edi, eax
+  0x0011a7  0f8862010000         js       0x130f
+  0x0011ad  488b842408010000     mov      rax, qword ptr [rsp + 0x108]
+  0x0011b5  448bc3               mov      r8d, ebx
+  0x0011b8  33d2                 xor      edx, edx
+  0x0011ba  498d0c00             lea      rcx, [r8 + rax]
+  0x0011be  488d442460           lea      rax, [rsp + 0x60]
+  0x0011c3  4c8d4c2450           lea      r9, [rsp + 0x50]
+  0x0011c8  48894c2470           mov      qword ptr [rsp + 0x70], rcx
+  0x0011cd  8d4a01               lea      ecx, [rdx + 1]
+  0x0011d0  4c89442460           mov      qword ptr [rsp + 0x60], r8
+  0x0011d5  44896c2450           mov      dword ptr [rsp + 0x50], r13d
+  0x0011da  4889442420           mov      qword ptr [rsp + 0x20], rax
+  0x0011df  ff151b0e0000         call     qword ptr [rip + 0xe1b]
+  0x0011e5  4c8b442470           mov      r8, qword ptr [rsp + 0x70]
+  0x0011ea  33d2                 xor      edx, edx
+  0x0011ec  0fb6d8               movzx    ebx, al
+  0x0011ef  488d442470           lea      rax, [rsp + 0x70]
+  0x0011f4  4c8d4c2450           lea      r9, [rsp + 0x50]
+  0x0011f9  8d4a01               lea      ecx, [rdx + 1]
+  0x0011fc  4889442420           mov      qword ptr [rsp + 0x20], rax
+  0x001201  44896c2450           mov      dword ptr [rsp + 0x50], r13d
+  0x001206  ff15f40d0000         call     qword ptr [rip + 0xdf4]
+  0x00120c  84db                 test     bl, bl
+  0x00120e  0f84ed000000         je       0x1301
+  0x001214  84c0                 test     al, al
+  0x001216  0f84e5000000         je       0x1301
+  0x00121c  488b442460           mov      rax, qword ptr [rsp + 0x60]
+  0x001221  488b4c2470           mov      rcx, qword ptr [rsp + 0x70]
+  0x001226  c744244804020000     mov      dword ptr [rsp + 0x48], 0x204
+  0x00122e  482bc8               sub      rcx, rax
+  0x001231  44896c2440           mov      dword ptr [rsp + 0x40], r13d
+  0x001236  4889442468           mov      qword ptr [rsp + 0x68], rax
+  0x00123b  c744243801000000     mov      dword ptr [rsp + 0x38], 1
+  0x001243  488d842408010000     lea      rax, [rsp + 0x108]
+  0x00124b  48898c2408010000     mov      qword ptr [rsp + 0x108], rcx
+  0x001253  4889442430           mov      qword ptr [rsp + 0x30], rax
+  0x001258  488d442468           lea      rax, [rsp + 0x68]
+  0x00125d  4c8d442458           lea      r8, [rsp + 0x58]
+  0x001262  4889442428           mov      qword ptr [rsp + 0x28], rax
+  0x001267  48894c2420           mov      qword ptr [rsp + 0x20], rcx
+  0x00126c  488b0e               mov      rcx, qword ptr [rsi]
+  0x00126f  498d56fb             lea      rdx, [r14 - 5]
+  0x001273  4533c9               xor      r9d, r9d
+  0x001276  ff15ac0d0000         call     qword ptr [rip + 0xdac]
+  0x00127c  3d180000c0           cmp      eax, 0xc0000018
+  0x001281  8bf8                 mov      edi, eax
+  0x001283  754d                 jne      0x12d2
+  0x001285  488b0e               mov      rcx, qword ptr [rsi]
+  0x001288  4489742448           mov      dword ptr [rsp + 0x48], r14d
+  0x00128d  44896c2440           mov      dword ptr [rsp + 0x40], r13d
+  0x001292  c744243801000000     mov      dword ptr [rsp + 0x38], 1

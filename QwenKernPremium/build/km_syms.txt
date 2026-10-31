@@ -1,0 +1,14 @@
+﻿--- PsThreadType / PsProcessType ---
+ntddk.h:111: extern POBJECT_TYPE *PsProcessType;
+ntddk.h:112: extern POBJECT_TYPE *PsThreadType;
+ntddk.h:121: extern POBJECT_TYPE PsProcessType;
+ntddk.h:122: extern POBJECT_TYPE PsThreadType;
+wdm.h:49379: extern POBJECT_TYPE PsProcessType;
+wdm.h:49380: extern POBJECT_TYPE PsThreadType;
+wdm.h:49392: extern POBJECT_TYPE *PsProcessType;
+wdm.h:49393: extern POBJECT_TYPE *PsThreadType;
+--- PsGetProcessPeb ---
+--- MmCopyVirtualMemory ---
+--- include dirs in km props ---
+WindowsDriver.KernelMode.props:58: <AdditionalIncludeDirectories>$(DDK_LibraryPath_DDKPlatform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+WindowsDriver.KernelMode.props:61: <AdditionalIncludeDirectories>$(UM_IncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

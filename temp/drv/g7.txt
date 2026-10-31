@@ -1,0 +1,75 @@
+﻿00001400  48897820               mov     qword ptr [rax + 0x20], rdi
+00001404  488bfa                 mov     rdi, rdx
+00001407  33c0                   xor     eax, eax
+00001409  894230                 mov     dword ptr [rdx + 0x30], eax
+0000140c  48894238               mov     qword ptr [rdx + 0x38], rax
+00001410  488b92b8000000         mov     rdx, qword ptr [rdx + 0xb8]
+00001417  488b5f18               mov     rbx, qword ptr [rdi + 0x18]
+0000141b  8b4a10                 mov     ecx, dword ptr [rdx + 0x10]
+0000141e  8a02                   mov     al, byte ptr [rdx]
+00001420  84c0                   test    al, al
+00001422  0f840b030000           je      0x1733
+00001428  3c02                   cmp     al, 2
+0000142a  0f84f5020000           je      0x1725
+00001430  3c0e                   cmp     al, 0xe
+00001432  0f850e030000           jne     0x1746
+00001438  8b4218                 mov     eax, dword ptr [rdx + 0x18]
+0000143b  3d40201080             cmp     eax, 0x80102040                 ; ** IOCTL? 0x80102040  dev=0x8010 fn=0x810 method=0 access=0
+00001440  0f84e5010000           je      0x162b
+00001446  3d44201080             cmp     eax, 0x80102044                 ; ** IOCTL? 0x80102044  dev=0x8010 fn=0x811 method=0 access=0
+0000144b  0f841a010000           je      0x156b
+00001451  3d50201080             cmp     eax, 0x80102050                 ; ** IOCTL? 0x80102050  dev=0x8010 fn=0x814 method=0 access=0
+00001456  0f84a3000000           je      0x14ff
+0000145c  3d54201080             cmp     eax, 0x80102054                 ; ** IOCTL? 0x80102054  dev=0x8010 fn=0x815 method=0 access=0
+00001461  7418                   je      0x147b
+00001463  488d0d16090000         lea     rcx, [rip + 0x916]
+0000146a  e8c5040000             call    0x1934
+0000146f  c747300d0000c0         mov     dword ptr [rdi + 0x30], 0xc000000d
+00001476  e9a8020000             jmp     0x1723
+0000147b  85c9                   test    ecx, ecx
+0000147d  7474                   je      0x14f3
+0000147f  488d4c2478             lea     rcx, [rsp + 0x78]
+00001484  8b03                   mov     eax, dword ptr [rbx]
+00001486  8901                   mov     dword ptr [rcx], eax
+00001488  0fb74304               movzx   eax, word ptr [rbx + 4]
+0000148c  66894104               mov     word ptr [rcx + 4], ax
+00001490  0fb64306               movzx   eax, byte ptr [rbx + 6]
+00001494  884106                 mov     byte ptr [rcx + 6], al
+00001497  0fb7542478             movzx   edx, word ptr [rsp + 0x78]
+0000149c  8bca                   mov     ecx, edx
+0000149e  83e966                 sub     ecx, 0x66
+000014a1  7444                   je      0x14e7
+000014a3  83e92c                 sub     ecx, 0x2c
+000014a6  743f                   je      0x14e7
+000014a8  81f9670c0000           cmp     ecx, 0xc67
+000014ae  7437                   je      0x14e7
+000014b0  0fb64c247e             movzx   ecx, byte ptr [rsp + 0x7e]
+000014b5  ffc9                   dec     ecx
+000014b7  7423                   je      0x14dc
+000014b9  ffc9                   dec     ecx
+000014bb  7413                   je      0x14d0
+000014bd  83f902                 cmp     ecx, 2
+000014c0  0f855d020000           jne     0x1723
+000014c6  8b44247a               mov     eax, dword ptr [rsp + 0x7a]
+000014ca  ef                     out     dx, eax
+000014cb  e953020000             jmp     0x1723
+000014d0  0fb744247a             movzx   eax, word ptr [rsp + 0x7a]
+000014d5  66ef                   out     dx, ax
+000014d7  e947020000             jmp     0x1723
+000014dc  0fb644247a             movzx   eax, byte ptr [rsp + 0x7a]
+000014e1  ee                     out     dx, al
+000014e2  e93c020000             jmp     0x1723
+000014e7  c747300d0000c0         mov     dword ptr [rdi + 0x30], 0xc000000d
+000014ee  e930020000             jmp     0x1723
+000014f3  c747300d0000c0         mov     dword ptr [rdi + 0x30], 0xc000000d
+000014fa  e924020000             jmp     0x1723
+000014ff  85c9                   test    ecx, ecx
+00001501  745c                   je      0x155f
+00001503  488d4c2478             lea     rcx, [rsp + 0x78]
+00001508  8b03                   mov     eax, dword ptr [rbx]
+0000150a  8901                   mov     dword ptr [rcx], eax
+0000150c  0fb74304               movzx   eax, word ptr [rbx + 4]
+00001510  66894104               mov     word ptr [rcx + 4], ax
+00001514  0fb64306               movzx   eax, byte ptr [rbx + 6]
+00001518  884106                 mov     byte ptr [rcx + 6], al
+0000151b  0fb64c247e             movzx   ecx, byte ptr [rsp + 0x7e]

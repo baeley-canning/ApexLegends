@@ -1,0 +1,182 @@
+KNOWLEDGE BASE: CAPTURE PIPELINES AND FRAME ACQUISITION
+
+Purpose:
+Educational reference for how screen and window pixels are acquired as
+frames: the pipeline from the compositor's surface to a CPU- or
+GPU-accessible buffer, the cost of each stage, and where latency and
+correctness problems arise.
+
+This document is reference knowledge. It describes mechanisms, their
+consequences, and how to reason about failures. It is written from a
+defensive and engineering perspective. It complements the capture and
+overlay reference, which covers visibility and protection, by covering
+the data path once pixels are available.
+
+---
+
+1. WHERE THIS DOCUMENT SITS
+The capture and overlay reference answers whether pixels exist to be
+read.
+This document answers how those pixels travel once they do.
+The path from a rendered frame to something a program can process has
+several distinct stages, and each one can drop a frame, add latency,
+change the pixel format, or fail on a protected surface.
+Separating the stages turns a vague failure into a named one:
+"the capture API returned nothing" is different from "the frame
+arrived, but late, scaled, or in an unexpected format".
+
+---
+
+2. THE STAGES OF A CAPTURE PIPELINE
+A frame passes through several conceptual stages:
+1. the compositor or the application produces a rendered surface.
+2. a capture mechanism copies or references that surface.
+3. the data is moved to a buffer the capture program can read.
+4. the buffer is converted to a usable format.
+5. the program processes it (analysis, encoding, or display).
+Every stage has a cost and a failure mode.
+Naming the stage at which data disappeared or slowed is the core skill
+this document builds.
+
+---
+
+3. WHAT CAPTURE SOURCES ACTUALLY HAND OVER
+Different APIs deliver different things:
+* DXGI Desktop Duplication delivers the composed desktop image as a GPU
+  texture the program must then acquire.
+* Windows.Graphics.Capture delivers composited content for a window or
+  monitor, typically as a GPU-backed frame passed to a callback.
+* GDI-based capture delivers a CPU bitmap that has already been copied.
+The difference between "a GPU texture I still owe work to copy" and "a
+bitmap already in system memory" is one of the largest cost differences
+in the whole pipeline.
+
+---
+
+4. THE ACQUIRE / COPY / RELEASE CYCLE
+GPU capture sources usually follow the same shape:
+* acquire the next frame.
+* do the work you need with it (often copy into your own resource).
+* release it back so the producer may reuse it.
+Holding a frame longer than necessary stalls the producer; releasing too
+early loses the data.
+Correctly bounding this cycle is what keeps a capture pipeline from
+either blocking the game or dropping frames.
+
+---
+
+5. GPU TO CPU: READBACK AND ITS COST
+If the capture program needs the pixels on the CPU - to feed a model, an
+encoder, or non-GPU code - the frame must be copied to a staging
+resource and mapped.
+Readback is a synchronisation point: the CPU waits for the GPU to finish
+writing the frame.
+That wait is frequently the single largest latency contributor in a
+capture pipeline, and it is invisible in a simple "frames per second"
+measurement.
+
+---
+
+6. MULTIPLE MONITORS AND SURFACES
+A desktop can span several monitors, each a separate output with its own
+resolution and scale.
+Capture sources are chosen per-output or per-window, and the choice
+determines the geometry:
+* capturing one output yields that monitor's image and no others.
+* capturing the virtual desktop yields the combined extent, which may
+  include gaps and negative coordinates.
+A frame captured from the wrong output, or with the wrong origin offset,
+looks like a detection failure but is a geometry error.
+
+---
+
+7. FRAME PACING, VSYNC, AND TEARING
+The producer emits frames on its own cadence; the capture side consumes
+them on its schedule.
+If the two are unsynchronised, the capture may observe a partially
+updated frame (tearing) or wait unnecessarily.
+Vertical sync aligns production to the display refresh and avoids
+tearing at the cost of latency; capture-side strategies range from "take
+whatever is latest" (low latency, occasional tear) to "wait for a
+complete frame" (clean, more latency).
+The choice is the latency-versus-cleanliness trade in concrete form.
+
+---
+
+8. FORMATS AND COLOUR
+Frames arrive in a pixel format chosen by the producer: commonly 8-bit
+per channel BGRA for desktop duplication, with variants for HDR and
+10-bit content.
+A mismatch between what is captured and what the consumer expects
+produces colour shifts, swapped channels, or misaligned strides (the row
+length in bytes, which often exceeds the visible width).
+Stride handling in particular is a frequent, silent bug: correct width
+does not guarantee correct memory layout.
+
+---
+
+9. FAILURE MODES IN THE DATA PATH
+Common data-path failures and their signatures:
+* nothing delivered: the surface is protected, or the source closed.
+* stale frames: the consumer is not releasing frames fast enough.
+* torn frames: producer and consumer are unsynchronised.
+* wrong geometry: the capture region or offsets are misconfigured.
+* wrong colours or layout: a format or stride mismatch.
+Naming the failure by its signature turns a vague "capture is broken"
+into a specific, testable stage.
+
+---
+
+10. WINDOW CAPTURE VERSUS DESKTOP CAPTURE
+Two broad targets exist:
+* desktop capture reads the composited output of one or more monitors.
+* window capture reads the content of a single window.
+Window capture is more robust to overlapping windows and to where the
+window sits, but it may omit content the window did not draw itself (for
+example, some overlays or a hardware cursor) and behaves differently when
+the window is occluded, minimised, or off-screen.
+Choosing the target is therefore the first and most consequential
+decision in the pipeline.
+
+---
+
+11. PROTECTED AND DRM SURFACES
+The capture and overlay reference explains that a window can declare
+itself excluded from capture.
+In data-path terms this means the compositor withholds the surface from
+the frames the capture APIs are given: the API still succeeds, but the
+protected window's content is absent, replaced by whatever is behind it.
+Recognising this signature - an API that works but returns the wrong
+content - prevents wasting effort treating it as a pipeline bug.
+
+---
+
+12. ALTERNATIVES WHEN THE PIPELINE IS BLOCKED
+When the normal path is denied, the channels described in the OS and
+overlay references remain: the pixels may still be obtainable from
+outside the window model (for example, a hardware capture of the display
+signal), and structured state may be obtainable elsewhere.
+This document does not treat those as workarounds to build, but as an
+explanation of why "the capture is blocked" and "the information is
+unavailable" are different statements.
+
+---
+
+13. SUMMARY
+A capture pipeline is a sequence of stages: produce, capture, transfer,
+convert, process.
+Each stage has a cost and a signature failure, and the largest single
+cost is usually the GPU-to-CPU readback that synchronises the two.
+Correctness depends on geometry (which surface, which offsets), pacing
+(producer versus consumer), and format (colour and stride).
+Diagnose by stage and by signature, not by guessing.
+
+CORE PRINCIPLE:
+Pixels travel a path, and every stage of that path can fail in a
+characteristic way. Separate "no data" from "wrong data" from "late
+data": the first is protection or a closed source, the second is geometry
+or format, the third is pacing or readback. A capture is fast or slow,
+correct or wrong, protected or open - three independent axes, each with
+its own fix.
+
+---

@@ -1,0 +1,14 @@
+=== mem_scan pid=19148 elevation=(-1, 12288) ioctl=0xc3502014
+prefill test phys 0xF0000: ok=True first16=ffffffffffffffffffffffffffffffff (no 0xAA => written)
+  [lowRAM] nonzero page phys 0x1000 (251/4096 set)
+      00001000  e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10  |.M..........?...|
+      00001010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+      00001020  00 00 00 00 00 00 00 00 00 00 00 00 00 9b 20 00  |.............. .|
+      00001030  00 00 00 00 00 00 00 00 ff ff 00 00 00 93 cf 00  |................|
+  [lowRAM] nonzero page phys 0x2000 (4096/4096 set)
+      00002000  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+      00002010  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+      00002020  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+      00002030  ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff  |................|
+  [lowRAM] 0x0-0xa0000: 2/160 pages nonzero, 0.6 MiB in 0.01s (94.6 MiB/s)
+throughput: 161 ioctls, 161 ok, 0.6 MiB

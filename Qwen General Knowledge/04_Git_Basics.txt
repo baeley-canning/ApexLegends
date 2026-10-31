@@ -1,0 +1,75 @@
+GIT BASICS
+==========
+Purpose: track changes to a project so any mistake can be undone and history
+is clear.
+
+1. CORE IDEAS
+- Repository (repo): a project folder tracked by git (has a hidden .git dir).
+- Commit: a saved snapshot of the project with a message. Commits form a
+  history you can return to.
+- Working tree -> staging area (index) -> commit. You choose what goes into
+  each commit with "git add".
+- Branch: a movable pointer to a line of commits. Make a branch to try
+  something without disturbing the main line.
+- Remote: a copy of the repo elsewhere (GitHub, GitLab), used for backup and
+  sharing.
+
+2. FIRST-TIME SETUP
+    git config --global user.name "Your Name"
+    git config --global user.email "you@example.com"
+    git config --global init.defaultBranch main
+
+3. DAILY WORKFLOW
+    git init                      start tracking a folder
+    git status                    what changed, what is staged
+    git diff                      unstaged changes line by line
+    git add file.py               stage one file  (git add -A = everything)
+    git commit -m "Fix config loading when file is missing"
+    git log --oneline --graph     compact history
+- Commit small, related changes together, often. Write messages that say WHY
+  or WHAT changed, in the imperative: "Add retry to download".
+
+4. .gitignore
+- Lists files git should never track. Typical Python entries:
+    .venv/
+    __pycache__/
+    *.pyc
+    .env
+    *.log
+    models/          (large weights belong outside git or in git-lfs)
+- Add .gitignore BEFORE the first commit. If a file was already committed,
+  ignoring it later does not remove it from history.
+
+5. BRANCHES
+    git switch -c experiment      create and switch to a branch
+    git switch main               go back
+    git merge experiment          bring experiment's commits into current
+    git branch -d experiment      delete merged branch
+- Merge conflicts: git marks the clashing lines with <<<<<<< ======= >>>>>>>.
+  Edit the file to the correct final version, remove the markers, then
+  git add file and git commit.
+
+6. UNDOING THINGS
+    git restore file.py               discard unstaged edits to a file
+    git restore --staged file.py      unstage, keep edits
+    git commit --amend                fix the last commit (before pushing)
+    git revert <commit>               new commit that undoes an old one (safe)
+    git reset --hard <commit>         DANGER: move branch back, lose changes
+    git stash / git stash pop         shelve uncommitted work temporarily
+    git reflog                        list where HEAD has been; recovers
+                                      "lost" commits after a bad reset
+- Prefer revert over reset for anything already pushed or shared.
+
+7. REMOTES
+    git remote add origin https://github.com/user/repo.git
+    git push -u origin main       first push, sets upstream
+    git pull                      fetch + merge remote changes
+    git clone <url>               copy an existing repo
+- Never force-push (git push --force) to a shared branch unless everyone
+  agrees; it rewrites history others depend on.
+
+8. SAFETY
+- Never commit secrets. If you do, assume the secret is leaked: revoke and
+  rotate it first, then clean history. Deleting the file in a new commit
+  does NOT remove it from earlier commits.
+- Check "git status" and "git diff --staged" before every commit.

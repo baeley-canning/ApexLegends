@@ -1,0 +1,52 @@
+﻿== Core folder ==
+
+ Length LastWriteTime         Name            
+ ------ -------------         ----            
+2573888 29/09/2026 8:34:07 pm Activation.dll  
+3030080 29/09/2026 8:34:07 pm Activation64.dll
+
+
+
+== Core\Activation64.dll imports ==
+---------------- C:\Program Files\EA Games\Apex\Core\Activation64.dll ----------------
+  machine=0x8664  magic=0x020B  sections=6  ptr=8
+  [import] rva=0x0014F5C0 size=500
+    GDI32.dll                          imports=3
+    USER32.dll                         imports=18
+    CRYPT32.dll                        imports=6
+    SHLWAPI.dll                        imports=4
+    WINTRUST.dll                       imports=1
+    MSVCP140.dll                       imports=25
+    gdiplus.dll                        imports=10
+    KERNEL32.dll                       imports=84
+    ole32.dll                          imports=4
+    OLEAUT32.dll                       imports=1
+    VCRUNTIME140.dll                   imports=17
+    api-ms-win-crt-heap-l1-1-0.dll     imports=4
+    api-ms-win-crt-runtime-l1-1-0.dll  imports=18
+    api-ms-win-crt-string-l1-1-0.dll   imports=15
+    api-ms-win-crt-convert-l1-1-0.dll  imports=6
+    api-ms-win-crt-stdio-l1-1-0.dll    imports=25
+    api-ms-win-crt-environment-l1-1-0.dll imports=2
+    api-ms-win-crt-time-l1-1-0.dll     imports=5
+    api-ms-win-crt-filesystem-l1-1-0.dll imports=2
+    ADVAPI32.dll                       imports=10
+    SHELL32.dll                        imports=4
+    WINHTTP.dll                        imports=13
+    api-ms-win-crt-utility-l1-1-0.dll  imports=3
+    api-ms-win-crt-conio-l1-1-0.dll    imports=1
+    => 24 module(s)
+  [delay-import] rva=0x00000000 size=0
+== signatures ==
+r5apex_dx12.exe                               Valid                CN="Electronic Arts, Inc.", OU=Respawn Entertainment, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US
+preloader_l.dll                               Valid                CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US
+EAAntiCheat.GameServiceLauncher.exe           Valid                CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US
+Core\Activation64.dll                         Valid                CN="Electronic Arts, Inc.", OU=Origin Client, O="Electronic Arts, Inc.", L=Redwood City, S=CALIFORNIA, C=US
+== game still running? ==
+
+  Id ProcessName SessionId
+  -- ----------- ---------
+1512 r5apex_dx12         1
+
+
+

@@ -1,0 +1,10 @@
+# Python standard library (built-in)
+tkinter
+ctypes
+threading
+time
+dataclasses
+typing
+
+# Optional: Dear PyGui (if using DPG menu)
+# dearpygui>=2.3.1

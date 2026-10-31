@@ -1,0 +1,163 @@
+﻿98| std::string Lowercase(std::string text) {
+99|     for (size_t i = 0; i < text.size(); ++i) {
+100|         text[i] = static_cast<char>(::tolower(static_cast<unsigned char>(text[i])));
+101|     }
+102|     return text;
+103| }
+104| 
+105| DWORD FindProcessIdByName(const char* exeName) {
+106|     DWORD pid = 0;
+107|     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+108|     if (snapshot == INVALID_HANDLE_VALUE) return 0;
+109| 
+110|     PROCESSENTRY32 entry{};
+111|     entry.dwSize = sizeof(entry);
+112| 
+113|     if (Process32First(snapshot, &entry)) {
+114|         do {
+115|             if (_stricmp(entry.szExeFile, exeName) == 0) {
+116|                 pid = entry.th32ProcessID;
+117|                 break;
+118|             }
+119|         } while (Process32Next(snapshot, &entry));
+120|     }
+121| 
+122|     CloseHandle(snapshot);
+123|     return pid;
+124| }
+125| 
+126| std::string RandomToken(size_t length) {
+127|     static const char alphabet[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+128| 
+129|     std::random_device device;
+130|     std::mt19937 generator(device());
+131|     std::uniform_int_distribution<int> distribution(
+132|         0, static_cast<int>(sizeof(alphabet) - 2));
+133| 
+134|     std::string token;
+135|     token.reserve(length);
+136|     for (size_t i = 0; i < length; ++i) {
+137|         token.push_back(alphabet[distribution(generator)]);
+138|     }
+139|     return token;
+140| }
+141| 
+142| // Copy the payload to %TEMP% under a random name.  Windows keeps a loaded
+143| // image mapped after the file is deleted, so a path/name based heuristic sees
+144| // nothing recognisable and no tell-tale file stays on disk.
+145| bool StageDllCopy(const std::string& sourcePath, std::string& stagedPath) {
+146|     char tempDirectory[MAX_PATH] = { 0 };
+147|     if (GetTempPathA(MAX_PATH, tempDirectory) == 0) return false;
+148| 
+149|     stagedPath = std::string(tempDirectory) + RandomToken(10) + ".dll";
+150|     if (!CopyFileA(sourcePath.c_str(), stagedPath.c_str(), FALSE)) {
+151|         stagedPath.clear();
+152|         return false;
+153|     }
+154|     return true;
+155| }
+156| 
+157| InjectionMethod RandomizedMethod() {
+158|     std::random_device device;
+159|     std::mt19937 generator(device());
+160|     std::uniform_int_distribution<int> distribution(0, 1);
+161| 
+162|     return distribution(generator) == 0 ? InjectionMethod::NtCreateThreadEx
+163|                                         : InjectionMethod::ApcQueue;
+164| }
+165| 
+166| void PrintResult(const InjectionResult& result, InjectionMethod method) {
+167|     printf("---------------------------------------------------------------\n");
+168|     if (result.success) {
+169|         printf("[+] Injection succeeded via %s\n", InjectionMethodName(method));
+170|         printf("    thread id  : %lu\n", result.threadId);
+171|         printf("    module base: 0x%p\n",
+172|                reinterpret_cast<void*>(result.dllBaseAddress));
+173|     } else {
+174|         printf("[-] Injection FAILED via %s\n", InjectionMethodName(method));
+175|         if (!result.errorMessage.empty()) {
+176|             printf("    reason: %s\n", result.errorMessage.c_str());
+177|         }
+178|     }
+179|     printf("---------------------------------------------------------------\n");
+180| }
+181| 
+182| // Resolve a payload next to the launcher, falling back to build\ and ..\build\.
+183| std::string ResolvePayloadPath(const std::string& candidate) {
+184|     if (!candidate.empty() && FileExists(candidate)) return candidate;
+185| 
+186|     const std::string exeDir = ExeDirectory();
+187|     if (exeDir.empty()) return candidate;
+188| 
+189|     const std::string local = exeDir + candidate;
+190|     if (FileExists(local)) return local;
+191| 
+192|     const std::string build = exeDir + "build\\" + candidate;
+193|     if (FileExists(build)) return build;
+194| 
+195|     return candidate;
+196| }
+197| 
+198| // Wait for the game process to appear (launcher started before the game).
+199| DWORD WaitForGameProcess(DWORD timeoutMs) {
+200|     const DWORD start = GetTickCount();
+201|     DWORD pid = FindProcessIdByName(kGameProcessName);
+202| 
+203|     while (pid == 0) {
+204|         if (GetTickCount() - start > timeoutMs) return 0;
+205| 
+206|         printf(".");           // progress dot every second
+207|         fflush(stdout);
+208|         Sleep(1000);
+209|         pid = FindProcessIdByName(kGameProcessName);
+210|     }
+211| 
+212|     if (GetTickCount() - start > 0) printf("\n");
+213|     return pid;
+214| }
+215| 
+216| DWORD PromptPid() {
+217|     printf("Enter target PID (0 = cancel): ");
+218|     fflush(stdout);
+219| 
+220|     char buffer[32] = { 0 };
+221|     if (!fgets(buffer, sizeof(buffer), stdin)) return 0;
+222| 
+223|     return static_cast<DWORD>(strtoul(buffer, nullptr, 10));
+224| }
+225| 
+226| const char* MethodLabel(InjectionMethod method) {
+227|     switch (method) {
+228|         case InjectionMethod::NtCreateThreadEx: return "NtCreateThreadEx (HIDE)";
+229|         case InjectionMethod::ApcQueue:         return "APC Queue (IMPERSONATE)";
+230|         case InjectionMethod::KernelDriver:     return "Kernel Driver (KERNEL)";
+231|         default:                                return "?";
+232|     }
+233| }
+234| 
+235| InjectionResult RunInjection(const LauncherOptions& options, DWORD pid) {
+236|     ApexInjector injector;
+237| 
+238|     InjectionMethod method = options.method;
+239|     if (options.randomizeMethod && method != InjectionMethod::KernelDriver) {
+240|         method = RandomizedMethod();
+241|         printf("[*] Randomised usermode method -> %s\n", InjectionMethodName(method));
+242|     }
+243| 
+244|     std::string payload = options.dllPath;
+245|     std::string stagedPath;
+246| 
+247|     if (options.stageDll) {
+248|         if (StageDllCopy(options.dllPath, stagedPath)) {
+249|             payload = stagedPath;
+250|             printf("[*] Staged payload copy: %s\n", stagedPath.c_str());
+251|         } else {
+252|             printf("[!] Staging failed (0x%08lX), injecting original path\n",
+253|                    GetLastError());
+254|         }
+255|     }
+256| 
+257|     printf("[*] Target PID %lu, payload %s\n", pid, payload.c_str());
+258|     InjectionResult result = injector.Inject(pid, payload, method, options.driverPath);
+259| 
+260|     // Safe to delete: the loader keeps the mapped image alive.

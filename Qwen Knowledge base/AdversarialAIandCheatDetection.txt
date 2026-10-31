@@ -1,0 +1,697 @@
+KNOWLEDGE BASE: ADVERSARIAL AI, VISUAL CHEATS, AND CHEAT DETECTION
+
+Purpose:
+Educational reference for understanding the machine-learning arms race
+between visual automation systems and anti-cheat defenses.
+
+Focus on models, signals, threat models, adversarial ML, evaluation,
+and defensive research.
+
+---
+
+1. THE CENTRAL PROBLEM
+
+---
+
+A traditional anti-cheat may look for:
+
+"known malicious software"
+
+A machine-learning anti-cheat can instead ask:
+
+"Does this behavior resemble automation?"
+
+A visual cheat creates another shift:
+
+"What if the cheating system never needs to modify the game?"
+
+This leads to a new security model.
+
+---
+
+2. VISUAL CHEATS
+
+---
+
+A visual cheat may obtain information from rendered frames.
+
+Conceptual pipeline:
+
+FRAME
+v
+VISION MODEL
+v
+OBJECT DETECTION
+v
+TRACKING
+v
+DECISION
+v
+CONTROL
+
+Because the information source is visual, some traditional memory- and
+process-based detection assumptions no longer apply.
+
+This is why visual cheating has become a research problem.
+
+---
+
+3. THE INFORMATION CHANNEL
+
+---
+
+Every cheating system has an information channel.
+
+Examples:
+
+GAME MEMORY
+NETWORK DATA
+RENDERED PIXELS
+EXTERNAL HARDWARE
+USER INPUT
+
+The defense should identify:
+
+"What information can the attacker observe?"
+
+and:
+
+"What information can the defender observe?"
+
+Security depends partly on which side has the richer information.
+
+---
+
+4. THREAT MODEL
+
+---
+
+A threat model should specify:
+
+ATTACKER
+v
+CAPABILITIES
+v
+OBSERVATIONS
+v
+ACTIONS
+v
+OBJECTIVES
+
+For example, a visual system may have access to rendered imagery but
+not internal application state.
+
+An anti-cheat system may have access to client telemetry, kernel
+security state, and server-side gameplay events.
+
+Different information leads to different defensive strategies.
+
+---
+
+5. PIXELBOT DETECTION
+
+---
+
+A visual bot can be based on a neural object detector.
+
+Common detector families include:
+
+YOLO
+RT-DETR
+CNN detectors
+vision Transformers
+segmentation models
+pose models
+
+A visual anti-cheat may therefore need to consider:
+
+"How would a machine perceive this scene?"
+
+rather than only:
+
+"What software is running?"
+
+---
+
+6. ADVERSARIAL MACHINE LEARNING
+
+---
+
+Adversarial ML studies situations where one system intentionally
+produces inputs that cause another model to behave incorrectly.
+
+In this context:
+
+VISUAL DETECTOR
+v
+EXPECTED CLASSIFICATION
+
+can be challenged by:
+
+ADVERSARIAL VISUAL INPUT
+v
+ALTERED MODEL RESPONSE
+
+Potential goals of defensive research include:
+
+* reducing detection reliability
+* increasing uncertainty
+* generating false detections
+* hiding legitimate targets
+* creating high-confidence decoy detections
+
+---
+
+7. VISUAL DEFENSE
+
+---
+
+A 2026 research paper called AimTrap studies defenses specifically
+against visual aimbots.
+
+It describes:
+
+Adversarial Camouflage Textures
+and
+Adversarial Honeypot Textures
+
+The first attempts to make legitimate targets harder for a visual
+cheat to detect.
+
+The second creates deliberately misleading visual targets that can
+produce strong evidence of automated visual interaction.
+
+This demonstrates that anti-cheat can attack the machine-learning
+model rather than only the executable.
+
+---
+
+8. HONEYPOTS
+
+---
+
+A honeypot is a deliberately constructed decoy intended to reveal
+malicious activity.
+
+The general defensive principle is:
+
+LEGITIMATE PLAYER
+-> ignores irrelevant decoy
+
+AUTOMATED SYSTEM
+-> interacts with decoy because its perception model interprets it
+differently
+
+This can create highly informative evidence.
+
+Honeypots are not limited to games; the underlying idea exists in
+broader cybersecurity.
+
+---
+
+9. ADVERSARIAL CAMOUFLAGE
+
+---
+
+A defensive visual pattern can theoretically be optimised to reduce
+a model's ability to detect a particular object.
+
+Conceptually:
+
+TARGET
++
+DEFENSIVE TEXTURE
+v
+LOWER MODEL CONFIDENCE
+
+The key research problem is robustness.
+
+A defense that works only against one exact model may be weak against
+other architectures.
+
+---
+
+10. TRANSFERABILITY
+
+---
+
+Adversarial examples may or may not transfer between models.
+
+For example:
+
+MODEL A
+v
+attack succeeds
+
+does not automatically imply:
+
+MODEL B
+v
+attack succeeds
+
+A strong defense therefore evaluates across:
+
+different architectures
+different model sizes
+different training sets
+different inference settings
+
+---
+
+11. ROBUSTNESS
+
+---
+
+A defensive ML system should be evaluated against:
+
+* model changes
+* resolution changes
+* lighting changes
+* rendering changes
+* object scale
+* partial occlusion
+* compression
+* motion
+* viewpoint
+
+This is the general concept of adversarial robustness.
+
+---
+
+12. HUMAN-MIMICKING AUTOMATION
+
+---
+
+A major defensive challenge is automation deliberately designed to
+produce behavior resembling humans.
+
+This changes the problem from:
+
+"Does this look obviously automated?"
+
+to:
+
+"Does this behavior remain statistically consistent with the human
+population over a sufficiently long period?"
+
+This is one reason behavioral ML is becoming increasingly important.
+
+FACEIT's 2026 Human Input Detection documentation explicitly describes
+a system intended to distinguish human play from machine input and to
+identify new cheat methods by behavior rather than known software.
+
+---
+
+13. TEMPORAL BEHAVIOR
+
+---
+
+A single action may be ambiguous.
+
+A sequence can be much more informative.
+
+Conceptually:
+
+ACTION
+v
+ACTION
+v
+ACTION
+v
+ACTION
+v
+LONG-TERM PATTERN
+
+This allows the detector to evaluate:
+
+* consistency
+* timing
+* repetition
+* transitions
+* reaction distributions
+* target-switch patterns
+
+Machine learning can treat gameplay as a sequence rather than a
+collection of independent events.
+
+---
+
+14. SEQUENCE MODELS
+
+---
+
+Behavioral anti-cheat can conceptually use:
+
+time-series models
+recurrent models
+Transformers
+statistical sequence models
+anomaly detectors
+
+The important concept is:
+
+# INPUT
+
+sequence of events
+
+rather than:
+
+# INPUT
+
+single event
+
+---
+
+15. ANOMALY DETECTION
+
+---
+
+Anomaly detection asks:
+
+"What does unusual behavior look like relative to a reference
+population?"
+
+Possible reference populations include:
+
+* the general player population
+* high-ranked players
+* verified human players
+* game-specific cohorts
+
+The choice of reference population matters.
+
+A professional player may naturally produce behavior that looks
+extreme compared with the average player.
+
+---
+
+16. CALIBRATION
+
+---
+
+A model's confidence should correspond reasonably well with actual
+error rates.
+
+A model that says:
+
+"99% confidence"
+
+should ideally be correct approximately 99% of the time for the
+relevant population and calibration regime.
+
+Poor calibration can produce excessive bans or excessive false
+negatives.
+
+---
+
+17. FALSE POSITIVE CONTROL
+
+---
+
+Strong detection systems should distinguish:
+
+SUSPICION
+from
+EVIDENCE
+
+and:
+
+MODEL SCORE
+from
+ENFORCEMENT DECISION
+
+A mature architecture can therefore be:
+
+MODEL
+v
+RISK SCORE
+v
+EVIDENCE AGGREGATION
+v
+HUMAN / POLICY REVIEW
+v
+ACTION
+
+depending on the game's requirements.
+
+---
+
+18. MULTI-SIGNAL DETECTION
+
+---
+
+A powerful system does not necessarily depend on one classifier.
+
+Example conceptual evidence:
+
+CLIENT SIGNAL
++
+GAMEPLAY SIGNAL
++
+SERVER SIGNAL
++
+ACCOUNT HISTORY
++
+DEVICE SIGNAL
+
+```
+  v
+```
+
+JOINT RISK ESTIMATE
+
+Independent signals can reinforce one another.
+
+---
+
+19. DETECTION VERSUS ATTRIBUTION
+
+---
+
+Detection asks:
+
+"Is this behavior suspicious?"
+
+Attribution asks:
+
+"What caused it?"
+
+Those are different problems.
+
+A behavioral detector may identify unusual aiming but cannot
+necessarily prove which software caused it.
+
+This distinction is critical when designing enforcement systems.
+
+---
+
+20. DETECTION VERSUS EXPLANATION
+
+---
+
+A model may be statistically accurate without being interpretable.
+
+Anti-cheat systems benefit from evidence that can be explained to:
+
+* investigators
+* developers
+* administrators
+* appeal systems
+
+This motivates interpretable evidence pipelines.
+
+---
+
+21. ADVERSARIAL CO-EVOLUTION
+
+---
+
+A detector changes the behavior of the attacker.
+
+The attacker changes behavior in response.
+
+Therefore:
+
+ATTACKER
+v
+DETECTOR
+v
+ATTACKER ADAPTATION
+v
+DETECTOR ADAPTATION
+
+This is an adversarial feedback system.
+
+---
+
+22. RESEARCHING THIS SAFELY
+
+---
+
+The useful research question is not:
+
+"How do I bypass this particular commercial anti-cheat?"
+
+The useful research question is:
+
+"What classes of signals can distinguish automated behavior from
+legitimate behavior?"
+
+Safe research environments can use:
+
+* synthetic players
+* simulated trajectories
+* offline replay data
+* sandbox environments
+* deliberately generated bot behavior
+* controlled game prototypes
+
+These allow detector development without targeting production systems.
+
+---
+
+23. METRICS
+
+---
+
+Detection systems should be evaluated using metrics such as:
+
+precision
+recall
+false-positive rate
+false-negative rate
+ROC-AUC
+PR-AUC
+detection latency
+population drift
+calibration
+robustness
+
+For enforcement systems, false-positive cost is especially important.
+
+---
+
+24. DRIFT
+
+---
+
+The game changes.
+
+Players change.
+
+Hardware changes.
+
+Cheating techniques change.
+
+Therefore the data distribution changes.
+
+This is called:
+
+DISTRIBUTION DRIFT
+
+A model that performs well today may perform poorly later.
+
+Continuous monitoring is therefore part of anti-cheat ML engineering.
+
+---
+
+25. CONTINUAL LEARNING
+
+---
+
+A detector may need periodic retraining or updating.
+
+A generic pipeline is:
+
+NEW DATA
+v
+DATA VALIDATION
+v
+LABELING / REVIEW
+v
+MODEL UPDATE
+v
+OFFLINE EVALUATION
+v
+SHADOW DEPLOYMENT
+v
+MONITORING
+v
+PRODUCTION
+
+This prevents a detector from becoming permanently tied to old
+behavior.
+
+---
+
+26. MODEL GOVERNANCE
+
+---
+
+Anti-cheat models should ideally be:
+
+versioned
+measured
+calibrated
+rollback-capable
+auditable
+
+A new detector should not simply replace the old one without
+evaluation.
+
+---
+
+27. THE AI ARMS RACE
+
+---
+
+The important modern development is that both sides can use AI.
+
+CHEAT:
+visual perception
+prediction
+behavior generation
+
+ANTI-CHEAT:
+behavior classification
+anomaly detection
+adversarial defense
+risk scoring
+
+This turns cheating into a machine-learning security problem.
+
+---
+
+28. FINAL MODEL
+
+---
+
+Think of visual anti-cheat as:
+
+OBSERVE
+v
+MODEL
+v
+CLASSIFY
+v
+CORRELATE
+v
+VALIDATE
+v
+ATTRIBUTE
+v
+ENFORCE
+
+and visual cheating as:
+
+OBSERVE
+v
+PERCEIVE
+v
+ESTIMATE
+v
+DECIDE
+v
+ACT
+
+The security problem exists because both sides are adaptive systems.
