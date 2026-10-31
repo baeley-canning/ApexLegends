@@ -29,8 +29,9 @@
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Driver</ConfigurationType>
     <DriverType>WDM</DriverType>
-    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets">
@@ -46,12 +47,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\km;C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_AMD64_;POOL_NX_OPTIN=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>ntoskrnl.lib;hal.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>DriverEntry</EntryPointSymbol>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
