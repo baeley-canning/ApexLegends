@@ -7,12 +7,6 @@
 // a context where they do not parse (C2059 storm).  The macros below are the
 // WDK's own include guards, so they are set exactly when ntddk.h/ntifs.h/wdm.h
 // have been seen; CTL_CODE, DWORD, ULONG etc. are all available by then.
-#if defined(_NTIFS_) || defined(_NTIFS_INCLUDED_) || defined(_NTDDK_) || \
-    defined(_NTDDK_INCLUDED_) || defined(_WDM_INCLUDED_) || defined(_KERNEL_MODE)
-// kernel build - the WDK headers already supplied every type used below
-#else
-#include <windows.h>
-#endif
 
 // ============================================================================
 // Shared ABI between apex_launcher.exe and the companion driver apexdrv.sys.
@@ -64,7 +58,16 @@
 // reader needs and cannot get, and they sit inside the first 32 bytes.
 #define APEXDRV_PROBE_BYTES     32
 
+// PACKING: this header is included after <ntddk.h>/<ntifs.h> in the driver TU, which
+// brings in the WDM headers' #pragma pack(4); the user-mode TU (apex_launcher / the
+// PowerShell probes) gets the default pack(8).  Without this pin,
+// sizeof(APEXDRV_PROBE_REQUEST) is 84 in the driver and 88 in user mode, so the two
+// ULONG64 trailer fields land 4 bytes apart and user mode reads a garbage PEB address.
+// pack(1) is chosen because it reproduces EXACTLY the layout of the already-deployed
+// driver (84 bytes; PebAddress at 36, RemoteAllocation at 44, Bytes at 52), so the fix
+// needs no driver re-flash.  APEXDRV_INJECT_REQUEST is pack-insensitive (552 either way).
 #pragma pack(push, 1)
+
 typedef struct _APEXDRV_INJECT_REQUEST {
     ULONG   ProcessId;                          // [in]
     ULONG   Flags;                              // [in]  APEXDRV_FLAG_*
@@ -92,7 +95,8 @@ typedef struct _APEXDRV_PROBE_REQUEST {
     LONG    StatusLookup;                   // [out] PsLookupProcessByProcessId
     LONG    StatusOpen;                     // [out] ObOpenObjectByPointer(full rights)
     LONG    StatusAllocate;                 // [out] ZwAllocateVirtualMemory (target)
-    LONG    StatusWrite;                    // [out] ZwWriteVirtualMemory (target)
+    LONG    StatusWrite;                    // [out] ApexdrvWriteProcessMemory (target) -
+                                                //   KeStackAttachProcess + RtlCopyMemory, not ZwWriteVirtualMemory
     LONG    StatusFree;                     // [out] ZwFreeVirtualMemory (target)
     LONG    StatusCopyVirtual;              // [out] MmCopyVirtualMemory (target -> us)
     ULONG   BytesCopied;                    // [out] bytes actually copied out
@@ -100,5 +104,6 @@ typedef struct _APEXDRV_PROBE_REQUEST {
     ULONG64 RemoteAllocation;               // [out] address the allocation landed at
     UCHAR   Bytes[APEXDRV_PROBE_BYTES];     // [out] leading bytes of the target PEB
 } APEXDRV_PROBE_REQUEST, *PAPEXDRV_PROBE_REQUEST;
-#pragma pack(pop)
+
+#pragma pack(pop)   // see the packing note above the structs
 

@@ -1,1 +1,12 @@
-StartService(apexdrv) failed (GetLastError=123) - unsigned drivers need test-signing or a BYOVD loader
+driver ABI version 2 (launcher expects 2)
+target PID 11224 measured from KERNEL context:
+  PsLookupProcessByProcessId : 0x00000000 SUCCESS
+  EPROCESS->Peb              : 0x6E
+  ObOpenObjectByPointer(full): 0x00000000 SUCCESS
+  ZwAllocateVirtualMemory    : 0xC000010A  (at 0x0)
+  ZwWriteVirtualMemory       : 0x00000000 SUCCESS
+  ZwFreeVirtualMemory        : 0x00000000 SUCCESS
+  MmCopyVirtualMemory(PEB)   : 0x8000000D  (0/32 bytes)
+verdict: kernel_handle=yes  kernel_allocation=no  kernel_read=no
+         => kernel context is blocked too: the anti-cheat owns the
+            address space itself, and an external reader is not a way out.

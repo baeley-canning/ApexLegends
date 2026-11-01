@@ -1,5 +1,5 @@
 ﻿================================================================================
-BUILD GATE REPORT - Release|x64 - 2026-10-27 13:29:54
+BUILD GATE REPORT - Release|x64 - 2026-11-01 14:00:47
 ================================================================================
 verdict: PASS  (0 failure(s))
 
@@ -9,12 +9,12 @@ checks:
   [ok] artifact: build\apex_launcher.exe (428544 bytes)
   [ok] IAT OK  : build\apex_launcher.exe == { ADVAPI32.dll, KERNEL32.dll }
   [ok] IAT set : build\apex_launcher.exe actual = { ADVAPI32.dll, KERNEL32.dll }
-  [ok] artifact: build\apexcheat.dll (318464 bytes)
+  [ok] artifact: build\apexcheat.dll (318976 bytes)
   [ok] IAT OK  : build\apexcheat.dll == { KERNEL32.dll, USER32.dll }
   [ok] IAT set : build\apexcheat.dll actual = { KERNEL32.dll, USER32.dll }
   [ok] symbol  : no 'QwenKernPremium' in code (OK)
   [ok] symbol  : no 'g_pCheat\b' in code (OK)
-  [ok] artifact: build\apexdrv.sys (8616 bytes)
+  [ok] artifact: build\apexdrv.sys (15984 bytes)
   [ok] driver: signature = Valid (must be Valid for the loader)
   [ok] driver: ntoskrnl.exe import present (foreign deps: 0)
 

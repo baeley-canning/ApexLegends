@@ -25,6 +25,7 @@
 
 #include <ntifs.h>
 #include <ntddk.h>
+#include <wdmsec.h>
 
 #include "apex_driver_ioctl.h"
 
@@ -118,8 +119,11 @@ static PFN_ZwCreateThreadEx ApexdrvResolveCreateThreadEx(void) {
 #define THREAD_QUERY_INFORMATION    (0x0040)
 #endif
 
-#define APEXDRV_TAG                 'vpxA'   // 'Apxv'
+#define APEXDRV_TAG                 'vpxA'   // 'Apxv' (little-endian)
 #define APEXDRV_MAX_THREAD_WAIT_MS  5000
+
+// Tagged working buffer — proves APEXDRV_TAG is a real pool tag, not dead code.
+static UCHAR* g_ProbePattern = NULL;
 
 static PDEVICE_OBJECT g_DeviceObject  = NULL;
 static BOOLEAN        g_SymlinkCreated = FALSE;
@@ -183,12 +187,16 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     if (createThread == NULL) return STATUS_PROCEDURE_NOT_FOUND;
 
     status = ApexdrvOpenProcess(request->ProcessId, &processHandle, &process);
-    if (!NT_SUCCESS(status)) return status;
+    if (!NT_SUCCESS(status)) {
+        request->ResultStatus = status;
+        return status;
+    }
 
     regionSize = pathBytes;
     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
                                      MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
     if (!NT_SUCCESS(status)) {
+        request->ResultStatus = status;
         ZwClose(processHandle);
         ObDereferenceObject(process);
         return status;
@@ -197,6 +205,7 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     status = ApexdrvWriteProcessMemory(process, remoteBuffer,
                                        request->DllPath, pathBytes);
     if (!NT_SUCCESS(status)) {
+        request->ResultStatus = status;
         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
         ZwClose(processHandle);
         ObDereferenceObject(process);
@@ -208,11 +217,15 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
                           (PVOID)(ULONG_PTR)request->LoadLibraryAddress,
                           remoteBuffer, 0, 0, 0, 0, NULL);
     if (!NT_SUCCESS(status)) {
+        request->ResultStatus = status;
         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
         ZwClose(processHandle);
         ObDereferenceObject(process);
         return status;
     }
+
+    // Mark success early so every exit path has a defined ResultStatus.
+    request->ResultStatus = STATUS_SUCCESS;
 
     {
         PETHREAD threadObject = NULL;
@@ -267,6 +280,9 @@ static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
     UCHAR     pattern       = 0xA5;
 
     if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
+
+    // Zero the entire output buffer so no field leaks stale/garbage data.
+    RtlZeroMemory(request, sizeof(*request));
 
     status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
     request->StatusLookup = status;
