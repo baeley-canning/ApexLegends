@@ -1,0 +1,46 @@
+=== p23 LIVE POPUP A/B 01/11/2026 16:08:24 admin=True host=DESKTOP-PPHFJBQ ===
+  SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  booted             = 1/11/2026 3:59:37 pm
+  ok: TESTSIGNING gone from the booted kernel command line
+
+########## A: popups already in the log (last 6 h) - baseline ##########
+  PRE 15:59:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+  PRE 15:59:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+  PRE 15:59:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+  PRE 14:04:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+  PRE 14:04:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+  PRE 14:04:49 id=63 :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+
+########## B: close leftovers, relaunch EAAC GameServiceLauncher ##########
+  LAUNCHED C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe
+
+########## C: watch 150 s for a NEW popup ##########
+  t+ 10s popups=0 EAAntiCheatService=Running
+  t+ 20s popups=0 EAAntiCheatService=Stopped
+  t+ 30s popups=0 EAAntiCheatService=StartPending
+  t+ 40s popups=0 EAAntiCheatService=Running
+  t+ 50s popups=0 EAAntiCheatService=Running
+  t+ 60s popups=0 EAAntiCheatService=Running
+  t+ 70s popups=0 EAAntiCheatService=Running
+  t+ 80s popups=0 EAAntiCheatService=Running
+  t+ 90s popups=0 EAAntiCheatService=Running
+  t+100s popups=0 EAAntiCheatService=Running
+  t+110s popups=0 EAAntiCheatService=Running
+  t+120s popups=0 EAAntiCheatService=Running
+  t+130s popups=0 EAAntiCheatService=Running
+  t+140s popups=0 EAAntiCheatService=Running
+  t+150s popups=0 EAAntiCheatService=Running
+
+########## RESULT ##########
+  NO POPUP in 150 s => TESTSIGNING/nointegritychecks were the Javelin kill-flag. Launcher stage PASSES.
+  next: launch Apex itself and play a match; then update _ritual/_index.txt.
+
+-- processes now:
+  EAAntiCheat.GameService(13280)
+  r5apex_dx12(5292)
+  sc query EAAntiCheatService:  ~ SERVICE_NAME: EAAntiCheatService ~ TYPE : 10 WIN32_OWN_PROCESS ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query EAAntiCheat:  ~ SERVICE_NAME: EAAntiCheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query eaanticheat:  ~ SERVICE_NAME: eaanticheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query kernprobe: [SC] QueryServiceStatus FAILED 3: ~ ~ The system cannot find the path specified. ~ 
+
+-- p23 END 01/11/2026 16:11:01 --

@@ -1,0 +1,21 @@
+=== p31b GATE VERDICT (run27, post-reboot, testsigning OFF) 01/11/2026 20:57 ===
+E2 DISCRIMINATOR CONFIRMED: the TESTSIGNING boot flag was the Javelin kill-flag.
+
+Deciding evidence:
+  * kernel booted with SystemStartOptions = NOEXECUTE=OPTIN HYPERVISORLAUNCHTYPE=AUTO NODEBUG (no TESTSIGNING);
+    elevated bcdedit {current}: testsigning No, nointegritychecks No, debug No.
+  * run27 over 300s: 10/10 samples, ZERO new popup events (Application+System scanned since launch),
+    EAAntiCheatService=RUNNING the whole time, window r5apex_dx12:Apex Legends held end to end;
+    section D end state: EAAntiCheat.GameService(7532) + r5apex_dx12(15388) alive, eaanticheat RUNNING,
+    EAAntiCheatService RUNNING, CodeIntegrity events since launch = 0.
+  * identical test pre-reboot (testsigning ON) died in seconds with Application-Popup id=26
+    Security Violation : Test or debug mode must be disabled to start the game (15:32:33 and 20:36:21).
+
+  => TESTSIGNING alone was sufficient to block the launch; no gdrv3/MSIO/voicemodvad/Xvdd/VBoxSup/TeamViewer bisect needed.
+
+INSTRUMENTATION BUG (patched 20:56 in p27_gate.ps1 AND p28_esp.ps1): the game-name list held *.exe entries
+  while ProcessName carries no .exe, so the -contains test never matched -> alive= rows read alive=no and the
+  built-in VERDICT printed NO GAME SEEN on a live game. Popup collection and section D use -match and were sound.
+  Post-run direct check: r5apex_dx12 alive, window + AC Running => this run was GREEN.
+
+-- p31b END --

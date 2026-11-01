@@ -1,0 +1,310 @@
+== natpf add ==
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: A NAT rule 
+of this name 
+already exists
+At line:1 char:189
++ ...  ascii $o; (& 
+$vb controlvm 
+'Win11-Test2' 
+natpf1 'rdp,tcp,127.
+0.0.1,1 ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+already exists:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+NATEngineWrap, 
+interface 
+INATEngine, callee 
+IUnknown
+VBoxManage.exe: 
+error: Context: "Add
+Redirect(Bstr(strNam
+e).raw(), proto, Bst
+r(strHostIp).raw(), 
+RTStrToUInt16(strHos
+tPort), Bstr(strGues
+tIp).raw(), RTStrToU
+Int16(strGuestPort))
+" at line 1011 of 
+file VBoxManageContr
+olVM.cpp
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: A NAT rule 
+of this name 
+already exists
+At line:1 char:304
++ ...  ascii $o; (& 
+$vb controlvm 
+'Win11-Test2' 
+natpf2 'winrm,tcp,12
+7.0.0.1 ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+already exists:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+NATEngineWrap, 
+interface 
+INATEngine, callee 
+IUnknown
+VBoxManage.exe: 
+error: Context: "Add
+Redirect(Bstr(strNam
+e).raw(), proto, Bst
+r(strHostIp).raw(), 
+RTStrToUInt16(strHos
+tPort), Bstr(strGues
+tIp).raw(), RTStrToU
+Int16(strGuestPort))
+" at line 1011 of 
+file VBoxManageContr
+olVM.cpp
+== forwarding rules in vbox ==
+<Forwarding name="rdp" proto="1" hostip="127.0.0.1" hostport="13389" guestport="3389"/>
+<Forwarding name="winrm" proto="1" hostip="127.0.0.1" hostport="15985" guestport="5985"/>
+<Forwarding name="ssh" proto="1" hostip="127.0.0.1" hostport="12222" guestport="22"/>
+== host port tests ==
+127.0.0.1:13389 => True
+127.0.0.1:15985 => False
+127.0.0.1:12222 => False
+127.0.0.1:3390 => True
+== sweep 101-106 ==
+192.168.56.101 => False
+192.168.56.102 => False
+192.168.56.103 => False
+192.168.56.104 => False
+192.168.56.105 => False
+192.168.56.106 => False
+== metrics ==
+Object          Metric                                   Values
+--------------- ---------------------------------------- --------------------------------------------
+Win11-Test2     CPU/Load/User                            
+Win11-Test2     CPU/Load/User:avg                        
+Win11-Test2     CPU/Load/User:min                        
+Win11-Test2     CPU/Load/User:max                        
+Win11-Test2     CPU/Load/Kernel                          
+Win11-Test2     CPU/Load/Kernel:avg                      
+Win11-Test2     CPU/Load/Kernel:min                      
+Win11-Test2     CPU/Load/Kernel:max                      
+Win11-Test2     RAM/Usage/Used                           
+Win11-Test2     RAM/Usage/Used:avg                       
+Win11-Test2     RAM/Usage/Used:min                       
+Win11-Test2     RAM/Usage/Used:max                       
+Win11-Test2     Disk/Usage/Used                          
+Win11-Test2     Disk/Usage/Used:avg                      
+Win11-Test2     Disk/Usage/Used:min                      
+Win11-Test2     Disk/Usage/Used:max                      
+Win11-Test2     Net/Rate/Rx                              
+Win11-Test2     Net/Rate/Rx:avg                          
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: Invalid 
+machine name: 
+'--disable'
+At line:1 char:1610
++ ... g ascii $o; 
+(& $vb metrics 
+setup --disable 
+'Win11-Test2' 2>&1) 
+| Out- ...
++                  ~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...m    
+e: '--disable':    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+== mstsc to VRDE ==
+== screenshot after client ==
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: Unsupported 
+resolution for 
+screen shot: 0x0 
+(screen 0)
+At line:1 char:1922
++ ...  ascii $o; (& 
+$vb controlvm 
+'Win11-Test2' 
+screenshotpng 
+'c:\Users\New ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+0x0 (screen 0):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+DisplayWrap, 
+interface IDisplay, 
+callee IUnknown
+VBoxManage.exe: 
+error: Context: "Tak
+eScreenShotToArray(i
+Screen, width, 
+height, 
+BitmapFormat_PNG, Co
+mSafeArrayAsOutParam
+(saScreenshot))" at 
+line 1775 of file VB
+oxManageControlVM.cp
+p
+
+== vrde state ==
+
+State:              
+         running 
+(since 2026-10-31T22
+:36:34.766000000)
+VRDE:               
+         enabled 
+(Address 0.0.0.0, 
+Ports 3390, 
+MultiConn: off, 
+ReuseSingleConn: 
+off, Authentication 
+type: null)
+VRDE port:          
+         3390
+VRDE property       
+        : TCP/Ports 
+ = "3390"
+VRDE property       
+        : 
+TCP/Address = <not 
+set>
+VRDE property       
+        : VideoChann
+el/Enabled = <not 
+set>
+VRDE property       
+        : VideoChann
+el/Quality = <not 
+set>
+VRDE property       
+        : VideoChann
+el/DownscaleProtecti
+on = <not set>
+VRDE property       
+        : Client/Dis
+ableDisplay = <not 
+set>
+VRDE property       
+        : 
+Client/DisableInput 
+= <not set>
+VRDE property       
+        : 
+Client/DisableAudio 
+= <not set>
+VRDE property       
+        : 
+Client/DisableUSB = 
+<not set>
+VRDE property       
+        : Client/Dis
+ableClipboard = 
+<not set>
+VRDE property       
+        : Client/Dis
+ableUpstreamAudio = 
+<not set>
+VRDE property       
+        : 
+Client/DisableRDPDR 
+= <not set>
+VRDE property       
+        : 
+H3DRedirect/Enabled 
+= <not set>
+VRDE property       
+        : 
+Security/Method = 
+"TLS"
+VRDE property       
+        : Security/S
+erverCertificate = 
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+VRDE property       
+        : Security/S
+erverPrivateKey = 
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+VRDE property       
+        : Security/C
+ACertificate = <not 
+set>
+VRDE property       
+        : Audio/Rate
+CorrectionMode = 
+<not set>
+VRDE property       
+        : 
+Audio/LogPath = 
+<not set>
+VRDE Connection:    
+         not active
+
+
+DONE-Z7

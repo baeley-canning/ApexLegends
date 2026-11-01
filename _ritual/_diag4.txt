@@ -1,0 +1,82 @@
+d4 2026-11-01T19:42:21
+-- bcdedit current --
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+-- bcdedit all --
+The boot configuration data store could not be opened.
+Access is denied.
+-- SystemStartOptions --
+ERROR: The system was unable to find the specified registry key or value.
+-- SecureBoot State --
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State
+    UEFISecureBootEnabled    REG_DWORD    0x0
+
+-- CI Policy --
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy
+    EmodePolicyRequired    REG_DWORD    0x0
+    SkuPolicyRequired    REG_DWORD    0x0
+    VerifiedAndReputablePolicyState    REG_DWORD    0x0
+    SAC_EnforcementReason    REG_DWORD    0x0
+    SAC_PreviousState    REG_DWORD    0xffffffff
+
+-- CI Config --
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config
+    VulnerableDriverBlocklistEnable    REG_DWORD    0x0
+    RevocationListLcuKirValue    REG_DWORD    0x0
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config\Default
+-- CI Protected --
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Protected
+    RevocationListLastCreationTimeHigh    REG_DWORD    0x0
+    RevocationListLastCreationTimeLow    REG_DWORD    0x0
+    VerifiedAndReputablePolicyStateMinValueSeen    REG_DWORD    0x0
+    RevocationListLastLCUCreationTime    REG_QWORD    0x1dd2c449890af00
+    Licensed    REG_DWORD    0x1
+    CustomKernelSignerLockedEnabled    REG_DWORD    0x0
+
+-- HVCI --
+ERROR: The system was unable to find the specified registry key or value.
+-- os --
+Caption     : Micros
+              oft Wi
+              ndows 
+              11 Pro
+Version     : 10.0.2
+              6200
+BuildNumber : 26200
+-- file C:\Windows\System32\drivers\apexdrv.sys
+   authz status=Valid signer=CN=ApexDrv S2 Leaf (QwenKern)
+   -- /pa embedded only:
+File: C:\Windows\System32\drivers\apexdrv.sys
+Index  Algorithm  Timestamp    
+========================================
+0      sha256     None         
+
+Successfully verified: C:\Windows\System32\drivers\apexdrv.sys
+
+-- file C:\p26cat\apexdrv_build.sys
+   authz status=Valid signer=CN=ApexDrv Dev (QwenKern Premium)
+   -- /pa embedded only:
+File: C:\p26cat\apexdrv_build.sys
+Index  Algorithm  Timestamp    
+========================================
+0      sha256     None         
+
+Successfully verified: C:\p26cat\apexdrv_build.sys
+
+-- file C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+   authz status=Valid signer=CN=ApexDrv Dev (QwenKern Premium)
+   -- /pa embedded only:
+File: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+Index  Algorithm  Timestamp    
+========================================
+0      sha256     None         
+
+Successfully verified: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+
+done

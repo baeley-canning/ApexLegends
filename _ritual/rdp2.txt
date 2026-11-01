@@ -1,0 +1,5 @@
+rdp-banner ERR Exception calling "Read" with "3" argument(s): "Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."
+rdp-file launch pid=26952
+A t=2 GONE exited=True code=1
+plain-v launch pid=27820
+B t=2 GONE exited=True code=0

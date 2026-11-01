@@ -1,0 +1,60 @@
+== log meta ==
+135038 bytes  11/01/2026 12:58:19
+== tail 45 ==
+01:01:35.862243 [/Devices/ahci/0/LUN#0/Config/] (level 1) (restricted root)
+01:01:35.862244   BlockCache <integer> = 0x0000000000000001 (1)
+01:01:35.862245   Format     <string>  = "VDI" (cb=4)
+01:01:35.862245   Mountable  <integer> = 0x0000000000000000 (0)
+01:01:35.862246   Path       <string>  = "C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\{1b5a385b-4395-4acb-b43a-61e20b610cf6}.vdi" (cb=98)
+01:01:35.862246   Type       <string>  = "HardDisk" (cb=9)
+01:01:35.862246   UseNewIo   <integer> = 0x0000000000000001 (1)
+01:01:35.862247 
+01:01:35.862247 [/Devices/ahci/0/LUN#0/Config/Parent/] (level 2)
+01:01:35.862248   Format <string>  = "VDI" (cb=4)
+01:01:35.862248   Path   <string>  = "C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\{bd4ec7bd-ba2c-4568-b248-b2d607247294}.vdi" (cb=98)
+01:01:35.862248 
+01:01:35.862248 [/Devices/ahci/0/LUN#0/Config/Parent/Parent/] (level 3)
+01:01:35.862249   Format <string>  = "VDI" (cb=4)
+01:01:35.862249   Path   <string>  = "C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vdi" (cb=61)
+01:01:35.862249 
+01:01:35.862249 [/Devices/ahci/0/LUN#0/Config/Parent/Parent/VDConfig/] (level 4)
+01:01:35.862250   AllocationBlockSize <string>  = "1048576" (cb=8)
+01:01:35.862250 
+01:01:35.862251 [/Devices/ahci/0/LUN#0/Config/Parent/VDConfig/] (level 3)
+01:01:35.862251 
+01:01:35.862251 [/Devices/ahci/0/LUN#0/Config/VDConfig/] (level 2)
+01:01:35.862252 
+01:01:35.862252 ********************* End of CFGM dump **********************
+01:01:35.869653 Resuming VM execution, reason 'Snapshot'
+01:01:35.869725 Changing the VM state from 'SUSPENDED' to 'RESUMING'
+01:01:35.870394 VUSB: Attached 'HidMouse' to port 1 on RootHub#1 (FullSpeed)
+01:01:35.870611 Changing the VM state from 'RESUMING' to 'RUNNING'
+01:01:35.871792 Console: Machine state changed to 'Running'
+01:05:51.558018 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:12:04.398555 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:17:25.397001 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:25:39.842337 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:30:38.658535 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:34:31.402257 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:38:47.738337 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:46:27.682918 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+01:55:37.758004 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+02:01:15.498819 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+02:09:15.792584 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+02:16:12.415840 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+02:22:39.661562 ERROR [COM]: aRC=E_INVALIDARG (0x80070057) aIID={14fd6676-ee6b-441a-988b-c83025ab693a} aComponent={DisplayWrap} aText={Unsupported resolution for screen shot: 0x0 (screen 0)}, preserve=false aResultDetail=0
+02:22:48.360809 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+02:23:16.438042 VMMDev: SetVideoModeHint: Got a video mode hint (1280x800x32)@(0x0),(1;0) at 0
+02:23:20.479177 ERROR [COM]: aRC=E_INVALIDARG (0x80070057) aIID={14fd6676-ee6b-441a-988b-c83025ab693a} aComponent={DisplayWrap} aText={Unsupported resolution for screen shot: 0x0 (screen 0)}, preserve=false aResultDetail=0
+== display/vrde/resize matches (last 45) ==
+00:00:00.410309 VRDE: loaded version 4 of the server.
+00:00:00.410315 VRDE: [IMAGE]
+00:00:00.410317 VRDE: [MOUSEPTR]
+00:00:00.410319 VRDE: [SCARD]
+00:00:00.410321 VRDE: [TSMFRAW]
+00:00:00.410322 VRDE: [VIDEOIN]
+00:00:00.410324 VRDE: [VRDE::INPUT]
+00:00:00.815753   Driver <string>  = "MainDisplay" (cb=12)
+00:00:01.523459 Audio: Initializing VRDE driver
+02:22:39.661562 ERROR [COM]: aRC=E_INVALIDARG (0x80070057) aIID={14fd6676-ee6b-441a-988b-c83025ab693a} aComponent={DisplayWrap} aText={Unsupported resolution for screen shot: 0x0 (screen 0)}, preserve=false aResultDetail=0
+02:23:20.479177 ERROR [COM]: aRC=E_INVALIDARG (0x80070057) aIID={14fd6676-ee6b-441a-988b-c83025ab693a} aComponent={DisplayWrap} aText={Unsupported resolution for screen shot: 0x0 (screen 0)}, preserve=false aResultDetail=0

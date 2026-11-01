@@ -1,0 +1,41 @@
+=== p33 PHASE B 01/11/2026 21:15:09 admin=True ===
+21:15:09    SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+21:15:09    kernel booted in TEST MODE = True
+21:15:09    LastBoot = 11/01/2026 21:12:38
+21:15:09    bcd      : nointegritychecks       No / testsigning             Yes
+21:15:09  
+21:15:09  ########## 1: load apexdrv (this boot has testsigning ON for exactly this reason) ##########
+21:15:10    create: [SC] CreateService SUCCESS
+21:15:10    start :  SERVICE_NAME: apexdrv          TYPE               : 1  KERNEL_DRIVER           STATE              : 4  RUNNING                                  (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)         WIN32_EXIT_CODE    : 0  (0x0)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0         PID                : 0         FLAGS              : 
+21:15:12    query :  SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+21:15:12    \\\\.\\ApexDrv handle= lastErr=203
+21:15:12    driver RUNNING before any flip = True
+21:15:12  
+21:15:12  ########## 2: T1 - as booted (flag ON everywhere) : expect the Javelin refusal ##########
+21:15:15    [T1] EA app started
+21:15:21    [T1] launched r5apex_dx12.exe at 21:15:21
+21:15:31      T1 POPUP 21:15:27 id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+21:16:07    [T1] RESULT popup=True died=False alive=False apexdrv_RUNNING=True
+21:16:07  
+21:16:07  ########## 3: T2 - BCD flag OFF, live, no reboot (registry untouched) ##########
+21:16:07    bcdedit: The operation completed successfully.
+21:16:10    [T2] launched r5apex_dx12.exe at 21:16:10
+21:17:26    [T2] RESULT popup=False died=False alive=False apexdrv_RUNNING=True
+21:17:26  
+21:17:26  ########## 4: T3 - BCD flag OFF + registry SystemStartOptions scrubbed ##########
+21:17:26    SystemStartOptions now = [NOEXECUTE=OPTIN HYPERVISORLAUNCHTYPE=AUTO NODEBUG FVEBOOT=2666496 NOVGA]   (backup: _p33_sso.bak)
+21:17:29    [T3] launched r5apex_dx12.exe at 21:17:29
+21:18:45    [T3] RESULT popup=False died=False alive=False apexdrv_RUNNING=True
+21:18:45  
+21:18:45  ########## VERDICT ##########
+21:18:45    T1 as-booted        : popup=True died=False
+21:18:45    T2 bcd-off-live     : popup=False died=False
+21:18:45    T3 bcd+reg-scrubbed : popup=False died=False
+21:18:45    apexdrv still RUNNING after all trials = True
+21:18:45    *** GREEN (T3): Javelin reads the FLAG SOURCE, not the live kernel CI state. ***
+21:18:45    SHIP IT: boot with testsigning ON (driver loads at boot), scrub SystemStartOptions at logon,
+21:18:45             driver stays RUNNING while the game runs => B3 kernel inject is available with the game live.
+21:18:45    NEXT: build/verify the driver-side contract, then run28 / launcher --method=kernel against the live game.
+21:18:45  
+21:18:45  -- p33 END 01/11/2026 21:18:45 --
+21:18:45    (game left RUNNING on purpose so an injector can attach)

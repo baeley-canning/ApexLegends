@@ -1,0 +1,23 @@
+﻿ioctl1 2026-11-01T20:17:42
+codes: VERSION=0x8A702004 PROBE=0x8A702008
+elev=True
+Add-Type D27 OK
+CreateFile acc=0xC0000000 handle=0x8D0 err=0
+IOCTL_VERSION ok=True err=203 got=8 driverVersion=2 (header says launcher expects 2)
+probe target pid=10876 (explorer)
+IOCTL_PROBE ok=True err=203 bytes=84
+  PsLookupProcessByProcessId = 0x00000000
+  ObOpenObjectByPointer = 0x00000000
+  ZwAllocateVirtualMemory = 0x00000000
+  WriteProcessMemory = 0x00000000
+  ZwFreeVirtualMemory = 0x00000000
+  MmCopyVirtualMemory = 0x00000000
+  BytesCopied = 32
+  [pack] driver Information=84 vs launcher sizeof=88 -> use offset 36/52
+  PebAddress  = 0x3E4000
+  RemoteAlloc = 0x3010000
+  PebBytes    = 00 00 00 04 00 00 00 00 FF FF FF FF FF FF FF FF 00 00 61 D6 F6 7F 00 00 E0 38 CF C7 FD 7F 00 00
+  -> PEB.ImageBaseAddress = 0x7FF6D6610000
+*** KERNEL -> TARGET REACH: PROVEN ***
+service apexdrv = Running
+done

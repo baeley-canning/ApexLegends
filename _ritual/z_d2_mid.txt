@@ -1,0 +1,178 @@
+﻿        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+
+########## apexdrv.sys signature + chain ##########
+Status=Valid Msg=Signature verified.
+SignerSubj=CN=ApexDrv Dev (QwenKern Premium)
+SignerIss=CN=ApexDrv Dev (QwenKern Premium) NotAfter=10/26/2029 17:43:18 Thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+TimeStamper=
+ChainBuild=True status=
+  el: CN=ApexDrv Dev (QwenKern Premium) || 10/26/2029 17:43:18
+
+
+FullName      : C:\Windows\System32\drivers\apexdrv.sys
+Length        : 10152
+CreationTime  : 1/11/2026 2:10:29 pm
+LastWriteTime : 1/11/2026 2:01:45 pm
+
+
+
+
+SHA256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+
+########## apexdrv/eaac copies + hashes ##########
+
+FullName                                Length LastWriteTime        sha                                                             
+--------                                ------ -------------        ---                                                             
+C:\Windows\System32\drivers\apexdrv.sys  10152 1/11/2026 2:01:45 pm 9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+
+
+
+
+
+########## reg CI/SecureBoot/SessionMgr ##########
+-- HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot\State
+
+
+UEFISecureBootEnabled : 0
+PSPath                : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State
+PSParentPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot
+PSChildName           : State
+PSDrive               : HKLM
+PSProvider            : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot
+
+
+AvailableUpdates : 0
+PSPath           : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot
+PSParentPath     : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName      : SecureBoot
+PSDrive          : HKLM
+PSProvider       : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\CI
+
+
+DebugFlags   : 16
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName  : CI
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy
+
+
+EmodePolicyRequired             : 0
+SkuPolicyRequired               : 0
+VerifiedAndReputablePolicyState : 0
+SAC_EnforcementReason           : 0
+SAC_PreviousState               : 4294967295
+PSPath                          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy
+PSParentPath                    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI
+PSChildName                     : Policy
+PSDrive                         : HKLM
+PSProvider                      : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager
+
+
+AutoChkTimeout                 : 8
+BootExecute                    : {autocheck autochk *}
+BootShell                      : C:\WINDOWS\system32\bootim.exe
+CriticalSectionTimeout         : 2592000
+ExcludeFromKnownDlls           : {}
+GlobalFlag                     : 0
+GlobalFlag2                    : 0
+HeapDeCommitFreeBlockThreshold : 0
+HeapDeCommitTotalFreeThreshold : 0
+HeapSegmentCommit              : 0
+HeapSegmentReserve             : 0
+InitConsoleFlags               : 0
+NumberOfInitialSessions        : 2
+ObjectDirectories              : {\Windows, \RPC Control}
+ProcessorControl               : 2
+ProtectionMode                 : 1
+ResourceTimeoutCount           : 45
+RunLevelExecute                : {WinInit, ServiceControlManager}
+RunLevelValidate               : {ServiceControlManager}
+AutoChkSkipSystemPartition     : 0
+SetupExecute                   : {}
+PendingFileRenameOperations    : {*1\??\C:\Windows\System32\gamingservicesproxy_16.dll.0, , *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b, ...}
+PSPath                         : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
+PSParentPath                   : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName                    : Session Manager
+PSDrive                        : HKLM
+PSProvider                     : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+
+
+ClearPageFileAtShutdown  : 0
+DisablePagingExecutive   : 0
+HotPatchTableSize        : 8192
+LargeSystemCache         : 0
+NonPagedPoolQuota        : 0
+NonPagedPoolSize         : 0
+PagedPoolQuota           : 0
+PagedPoolSize            : 0
+PagingFiles              : {?:\pagefile.sys}
+SecondLevelDataCache     : 0
+SessionPoolSize          : 4
+SessionViewSize          : 48
+SystemPages              : 0
+PhysicalAddressExtension : 1
+FeatureSettings          : 0
+PagefileUsage            : {37, 12, 0, 0...}
+ExistingPageFiles        : {\??\C:\pagefile.sys}
+PSPath                   : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+PSParentPath             : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
+PSChildName              : Memory Management
+PSDrive                  : HKLM
+PSProvider               : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- value hunt under Control
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config :: VulnerableDriverBlocklistEnable = 0
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Hypervisor :: HypervisorLaunchType = 1
+
+-- fltmc filters
+
+Filter listing failed with error: 0x80070005
+Access is denied.
+
+
+########## CI events ##########
+11/01/2026 14:04:41 id=3116 Information :: Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+11/01/2026 14:04:41 id=3099 Information :: Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+11/01/2026 14:04:41 id=3116 Information :: Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+11/01/2026 14:04:41 id=3099 Information :: Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+11/01/2026 14:04:41 id=3116 Information :: Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+11/01/2026 14:04:41 id=3099 Information :: Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+11/01/2026 14:04:41 id=3085 Information :: Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+11/01/2026 14:00:47 id=3089 Information :: Signature information for another event. Match using the Correlation Id.
+11/01/2026 14:00:47 id=3004 Error :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+11/01/2026 13:58:58 id=3089 Information :: Signature information for another event. Match using the Correlation Id.
+11/01/2026 13:58:58 id=3004 Error :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+11/01/2026 04:59:04 id=3089 Information :: Signature information for another event. Match using the Correlation Id.
+11/01/2026 04:59:04 id=3033 Error :: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+11/01/2026 04:59:04 id=3089 Information :: Signature information for another event. Match using the Correlation Id.

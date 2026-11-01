@@ -1,0 +1,11 @@
+﻿=== _catwalk 2026-11-01T19:08:26 cat=C:\p26cat\apexdrv_p26.cat from=120 to=900 depth=8
+len=5134
+--- walk [120,900) ---
+  @   120 UP-OCTSTR   len=     1 82
+  @   123 UC-UTCTIME  len=    12 
+    @   125 UP-INT      len=     3 050030
+    @   130 XP-BITSTR   len=     2 C230
+    @   134 AC-T26      len=     4 
+      @   136 UP-T20      len=    35 C73EF919F18ECF9855331CF2563D3A15AF52BC31623010060A2B0601040182370C0203
+  BADLEN @137
+END-catwalk

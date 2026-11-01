@@ -1,0 +1,31 @@
+﻿ping100=True
+tcp 3389 closed
+tcp 5985 closed
+tcp 445 closed
+=== host apex procs ===
+EABackgroundService 9580
+EasyTuneEngineService 19476
+OneApp.IGCC.WinService 4920
+SearchHost 14120
+SearchIndexer 17328
+SecurityHealthService 9132
+TeamViewer 28436
+TeamViewer_Desktop 21572
+TeamViewer_Service 5460
+VBoxHeadless 9040
+VBoxHeadless 22188
+VBoxHeadless 30756
+=== temp_sign dir ===
+apexcert.cer 741
+apexcert.pfx 2526
+do_sign.cmd 169
+install.cmd 1101
+install_log.txt 0
+s.exe 543064
+sign.rsp 147
+signtool_out.txt 415
+test.rsp 69
+=== vms ===
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+=== apex install reg ===
+HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Respawn\Apex

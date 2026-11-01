@@ -1,0 +1,55 @@
+﻿probe2 2026-11-01T17:49:55
+identity=DESKTOP-PPHFJBQ\New User elevated=False
+cryptsvc=Running trustinstaller=Stopped
+signtool=
+catdb ts=10/31/2026 23:57:07 size=104857600
+dberr lines=341 ts=11/01/2026 17:26:32
+  DBERR CatalogDB: 5:03:23 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:46 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:46 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:46 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:46 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:13:47 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:23:38 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:23:38 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:23:38 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:23:38 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:26:32 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:26:32 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+  DBERR CatalogDB: 5:26:32 pm 1/11/2026: catdbsvc.cpp at line #7121 encountered error 0x00000005
+  DBERR CatalogDB: 5:26:32 pm 1/11/2026: catdbsvc.cpp at line #7159 encountered error 0x00000005
+engine sha1=9862B8A2F9A06F43CA7848F7EF0F1EE83796FCCB
+engine sha256=91277E39C4F76D6D0F296657AFE1702297CBC92051F38CCF2F72D3BD5A39997F
+cat=C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha1  enumV1 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha256 enumV1 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha1  enumV2 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha256 enumV2 -> NONE(err87)
+tcpip sha1  enumV3 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha256 enumV3 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha1  enumV4 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha256 enumV4 -> NONE(err87)
+tcpip sha1  enumV5 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+tcpip sha256 enumV5 -> NONE(err87)
+tcpip WVT catalog(engineSha1)   -> 0x00000000
+tcpip WVT catalog(engineSha256) -> 0x800B0100
+tcpip WVT file(embedded)        -> 0x00000000
+--- C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys
+  enumV1 sha1 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+  WVT file(embedded) -> 0x00000000
+  WVT catalog(MS cat, engineSha1) -> 0x00000000
+--- C:\WINDOWS\System32\drivers\apexdrv.sys
+  enumV1 sha1 -> FOUND Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+  WVT file(embedded) -> 0x00000000
+  WVT catalog(MS cat, engineSha1) -> 0x00000000

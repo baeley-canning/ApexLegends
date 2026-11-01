@@ -1,0 +1,140 @@
+=== p9 tail ===
+14:40:08  [p1] t=30s no apex process
+14:40:38  [p1] t=60s no apex process
+14:41:08  [p1] t=90s no apex process
+14:41:38  [p1] t=120s no apex process
+14:42:09  [p1] t=150s no apex process
+14:42:39  [p1] t=180s no apex process
+14:43:09  [p1] t=210s no apex process
+14:43:39  [p1] t=240s no apex process
+=== gdrv3 / apexdrv state ===
+
+
+Name      : gdrv3
+State     : Running
+StartMode : Manual
+PathName  : \??\C:\WINDOWS\System32\drivers\gdrv3.sys
+
+Name      : npcap
+State     : Running
+StartMode : System
+PathName  : C:\WINDOWS\system32\DRIVERS\npcap.sys
+
+Name      : npcap_wifi
+State     : Stopped
+StartMode : Disabled
+PathName  : C:\WINDOWS\system32\DRIVERS\npcap.sys
+
+Name      : VBoxNetAdp
+State     : Running
+StartMode : Manual
+PathName  : C:\WINDOWS\system32\DRIVERS\VBoxNetAdp6.sys
+
+Name      : VBoxNetLwf
+State     : Running
+StartMode : System
+PathName  : C:\WINDOWS\system32\DRIVERS\VBoxNetLwf.sys
+
+Name      : VBoxSup
+State     : Running
+StartMode : System
+PathName  : C:\WINDOWS\system32\DRIVERS\VBoxSup.sys
+
+Name      : VBoxUSBMon
+State     : Running
+StartMode : System
+PathName  : C:\WINDOWS\system32\DRIVERS\VBoxUSBMon.sys
+
+
+
+
+=== customcomponent\Javelin tree ===
+
+FullName                                                                                        Length LastWriteTime        
+--------                                                                                        ------ -------------        
+C:\Program Files\EA Games\Apex\__Installer\customcomponent\Javelin\EAAntiCheat.Installer.exe 271269624 30/09/2026 9:13:22 am
+
+
+
+=== qkp files ===
+
+Name              Length LastWriteTime       
+----              ------ -------------       
+bcd4.txt            1047 1/11/2026 2:10:56 pm
+boot3.txt            801 1/11/2026 2:05:21 pm
+diag7.txt           1636 1/11/2026 2:20:14 pm
+diag8.txt           3302 1/11/2026 2:21:33 pm
+diag9.txt          28939 1/11/2026 2:22:36 pm
+diagA.txt           7806 1/11/2026 2:24:53 pm
+diagB.txt            148 1/11/2026 2:26:34 pm
+diagC.txt            141 1/11/2026 2:27:02 pm
+diagD.txt            170 1/11/2026 2:27:59 pm
+diagE.txt            153 1/11/2026 2:28:17 pm
+drv1.txt             375 1/11/2026 2:00:28 pm
+drvdone.txt            9 1/11/2026 2:00:48 pm
+drvgate.txt         1120 1/11/2026 2:00:47 pm
+drvlog.txt          2371 1/11/2026 2:00:48 pm
+elevping.txt          29 1/11/2026 2:27:44 pm
+find6.txt            425 1/11/2026 2:16:12 pm
+fix4.txt            1742 1/11/2026 2:10:31 pm
+fix5.txt            2735 1/11/2026 2:15:31 pm
+g13389.rdp           312 1/11/2026 1:24:52 pm
+g3390.rdp            311 1/11/2026 1:24:52 pm
+gh_head_err.txt      114 1/11/2026 1:30:12 pm
+gh_head_out.txt      255 1/11/2026 1:28:38 pm
+mid.txt            19247 1/11/2026 1:58:09 pm
+p8.ps1             10077 1/11/2026 2:35:16 pm
+p8.txt              5776 1/11/2026 2:37:18 pm
+p9.ps1              9345 1/11/2026 2:38:05 pm
+p9.txt              1567 1/11/2026 2:43:39 pm
+ph2.txt            14073 1/11/2026 1:57:35 pm
+post3.txt            291 1/11/2026 2:09:37 pm
+prep3.txt            414 1/11/2026 2:03:14 pm
+probe6.txt          2623 1/11/2026 2:17:55 pm
+probe6_err.txt         0 1/11/2026 2:17:53 pm
+probe6_out.txt      1307 1/11/2026 2:17:54 pm
+probe7.txt         10743 1/11/2026 2:31:09 pm
+probe7_at2.txt     10743 1/11/2026 2:31:09 pm
+probe7_syntax.txt     11 1/11/2026 2:25:53 pm
+proj.txt            6202 1/11/2026 1:56:15 pm
+proj2.txt           4778 1/11/2026 1:56:53 pm
+r1.txt               266 1/11/2026 1:24:55 pm
+r2.txt               696 1/11/2026 1:26:27 pm
+recon1.ps1          4356 1/11/2026 1:28:17 pm
+recon1.txt          1150 1/11/2026 1:28:37 pm
+recon10.txt         1027 1/11/2026 1:37:35 pm
+recon11.txt         2591 1/11/2026 1:39:20 pm
+recon12.txt         4003 1/11/2026 1:40:20 pm
+recon13.txt         6719 1/11/2026 1:41:27 pm
+recon14.txt         1443 1/11/2026 1:42:12 pm
+recon15.txt         2249 1/11/2026 1:42:49 pm
+recon16.txt         1548 1/11/2026 1:43:47 pm
+recon17.txt         3532 1/11/2026 1:44:16 pm
+recon18.txt         1475 1/11/2026 1:44:48 pm
+recon19.txt         3301 1/11/2026 1:46:06 pm
+recon2.txt          2769 1/11/2026 1:30:38 pm
+recon20.txt         1837 1/11/2026 1:47:02 pm
+recon21.txt         9551 1/11/2026 1:48:07 pm
+recon3.txt          4296 1/11/2026 1:31:05 pm
+recon4.txt          6785 1/11/2026 1:31:31 pm
+recon5.txt           657 1/11/2026 1:32:05 pm
+recon6.txt          1911 1/11/2026 1:33:03 pm
+recon7.txt          3971 1/11/2026 1:35:18 pm
+recon8.txt          8469 1/11/2026 1:35:54 pm
+recon9.txt          1169 1/11/2026 1:36:45 pm
+reg4.txt             780 1/11/2026 2:11:27 pm
+sc5.txt             2859 1/11/2026 2:12:22 pm
+snapA.txt           1866 1/11/2026 2:13:31 pm
+snapB.txt           2735 1/11/2026 2:15:31 pm
+st2b.txt            5787 1/11/2026 1:59:30 pm
+st2c.txt            5789 1/11/2026 1:59:46 pm
+st3.txt             2237 1/11/2026 2:02:02 pm
+vr10.png           71638 1/11/2026 1:26:13 pm
+vr16.png           71635 1/11/2026 1:26:20 pm
+vr22.png           65009 1/11/2026 1:26:26 pm
+w32.cs              4534 1/11/2026 1:41:44 pm
+whereami.txt       33996 1/11/2026 1:55:48 pm
+
+
+
+DONE 11/01/2026 14:43:59

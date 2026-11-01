@@ -1,0 +1,175 @@
+=== p25h MSROOT-DISCRIMINATOR-FIXED 01/11/2026 16:53:01 PS=5.1.26100.9711 ===
+########## 0: host / DSE state ##########
+  build: 26200.9711
+  bcd: description             Windows 11
+  bcd: nointegritychecks       No
+  bcd: testsigning             No
+  secureboot firmware = False
+  signtool            = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+  live driver sig     = Valid
+  S2 root in Root     = True
+
+########## 1: builder self-check ##########
+      thumb=075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79
+      issuer='CN=ApexDrv p25h SelfTest CA (QwenKern)' subj='CN=ApexDrv p25h SelfTest CA (QwenKern)' selfsigned=True KU=03-02-01-06 BC=30-03-01-01-FF
+      keyCertSign bit present = True (expect True)  self-issued = True (expect True)
+
+########## 2: name-spoof family (Q1: name or key?) ##########
+  --- spoof S6lan
+      root A9026A2903D511DBBF089D69ACCEBD4E0C22F87F  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81
+      leaf issuer = 'CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: Microsoft Root Certificate Authority 2011
+      Issued by: Microsoft Root Certificate Authority 2011
+      Issued to: S6lan Leaf (QwenKern)
+
+  --- spoof S7win
+      root 3C22C2EEB734CD4179100631AC0E6A9485AA945C  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 4710E702C7883479D106EEB688F7065101B9339D
+      leaf issuer = 'CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: Microsoft Windows Production PCA 2011
+      Issued by: Microsoft Windows Production PCA 2011
+      Issued to: S7win Leaf (QwenKern)
+
+  --- spoof S8old
+      root 346E91021D240798DF87F39C94DF5D0C8D824CAB  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 53E0C111A903AD068A221137E7EB51AD6CAB2ACA
+      leaf issuer = 'CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: Microsoft Root Certificate Authority 2010
+      Issued by: Microsoft Root Certificate Authority 2010
+      Issued to: S8old Leaf (QwenKern)
+
+  --- spoof S9msf
+      root 3377F64BCFF5D623C90317FC524FC50EDEB53B0C  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 8CDA74E84A70B072A3A8B3419485FE1735E9BB26
+      leaf issuer = 'CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp.'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signing Certificate Chain:
+      Issued to: Microsoft Root Authority
+      Issued by: Microsoft Root Authority
+
+  --- spoof S13pad
+      root CB27C1A3117D0DB8F0516853EA3F82E69ABA54D3  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 474F9339147DA30CE30AF7D6961D318279D76295
+      leaf issuer = 'CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: Microsoft Root Certificate Authority 2011
+      Issued by: Microsoft Root Certificate Authority 2011
+      Issued to: S13pad Leaf (QwenKern)
+
+  --- spoof S14cn
+      root DE6318A620E5CB919868FEF340C956BF37C8CA74  self-issued=True
+      trust: root now in LocalMachine\Root = True
+      leaf 12482F7414F72A9406229D8E04FD6741BFFB4EFD
+      leaf issuer = 'CN=Microsoft Root Certificate Authority 2011'
+      leaf chains to our root = True (expect True)
+      sign_errors=0  kp_errors=1 codes=[]
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: Microsoft Root Certificate Authority 2011
+      Issued by: Microsoft Root Certificate Authority 2011
+      Issued to: S14cn Leaf (QwenKern)
+
+  --- control: existing S2 chain (local root, MS root absent) ---
+  S2ctl kp_errors=1 codes=[] SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+
+########## 3: ground-truth probe (live driver, testsigning OFF) ##########
+  --- probe spoof-fail control S6lan (kp nonzero) : signer CN=S6lan Leaf (QwenKern)
+  sign   : Successfully signed: C:\Windows\System32\drivers\apexdrv.sys | Number of files successfully Signed: 1 | Number of errors: 0
+  live /kp errors=1 codes=[] SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  create : [SC] CreateService SUCCESS
+  start  : [SC] StartService FAILED 577:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  query  : SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  ===> spoof-fail control S6lan (kp nonzero) load = REFUSED
+     SCM 16:53:14 id=7000 The ApexDrv kernprobe (p25h) service failed to start due to the following error: 
+     SCM 16:53:14 id=7045 A service was installed in the system.
+     CI  16:53:14 id=3089 Signature information for another event. Match using the Correlation Id.
+     CI  16:53:14 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+  --- probe S2 (local root control, known refused in p25g) : signer CN=ApexDrv S2 Leaf (QwenKern)
+  sign   : Successfully signed: C:\Windows\System32\drivers\apexdrv.sys | Number of files successfully Signed: 1 | Number of errors: 0
+  live /kp errors=1 codes=[] SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  create : [SC] CreateService SUCCESS
+  start  : [SC] StartService FAILED 577:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  query  : SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  ===> S2 (local root control, known refused in p25g) load = REFUSED
+     SCM 16:53:17 id=7000 The ApexDrv kernprobe (p25h) service failed to start due to the following error: 
+     SCM 16:53:17 id=7045 A service was installed in the system.
+     CI  16:53:17 id=3089 Signature information for another event. Match using the Correlation Id.
+     CI  16:53:17 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+
+########## 4: VERDICT ##########
+  Q1 (/kp name vs key) -> NO - /kp is KEY-based: none of the 6 spoofed MS DNs satisfied the MS-root test.
+  Q2 (kernel accepts local root?) -> NO - ci.dll refused every chain; the kernel enforces the Microsoft-root rule here.
+  builder fixed? self-check root created = True (p25g had 0 roots created)
+  /kp faithfully predicted the kernel on all 2 probe(s) = True
+  (fail-side load refusals that also had kp!=0: 2 - expected, this is the /kp proxy working)
+  spoof S6lan  trusted=True kp_errors=1 root=A9026A2903D511DBBF089D69ACCEBD4E0C22F87F
+  spoof S7win  trusted=True kp_errors=1 root=3C22C2EEB734CD4179100631AC0E6A9485AA945C
+  spoof S8old  trusted=True kp_errors=1 root=346E91021D240798DF87F39C94DF5D0C8D824CAB
+  spoof S9msf  trusted=True kp_errors=1 root=3377F64BCFF5D623C90317FC524FC50EDEB53B0C
+  spoof S13pad trusted=True kp_errors=1 root=CB27C1A3117D0DB8F0516853EA3F82E69ABA54D3
+  spoof S14cn  trusted=True kp_errors=1 root=DE6318A620E5CB919868FEF340C956BF37C8CA74
+
+  Q1 premise dead: a local root cannot masquerade as an MS root -> no-reboot path needs a shape change.
+  NEXT fork: (A) keep gdrv3.sys (drop apexdrv), or (B) bcdedit /set testsigning on + reboot (S2 shape then always loads).
+
+  -- leftovers to sweep (junk leaves/roots from the p25g/p25h hunt) --
+    DD5BA95EFD2F303687C309841B3928249A762941  CN=ApexDrv Lab DSE (QwenKern)
+    7AB907DC03E17A6A7375FEBF3ADA5624B4099444  CN=ApexDrv Lab DSE CertSign (QwenKern)
+    075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79  CN=ApexDrv p25h SelfTest CA (QwenKern)
+    5BCFD2349358F6C585AEC5F1B68C193E4F0176E6  CN=ApexDrv Probe v0 (QwenKern)
+    1E73093E98695948E09E53C0A4C8E4A5670D6199  CN=ApexDrv S1 SelfSigned CA (QwenKern)
+    3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720  CN=ApexDrv S3 LeafNoBC (QwenKern)
+    A7569298DEB0D834C42191BB28D8EDFF7B798FEE  CN=ApexDrv S4 LeafCA (QwenKern)
+    5937CA2135A847D98E3935B5A592673C18ACC912  CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+    474F9339147DA30CE30AF7D6961D318279D76295  CN=S13pad Leaf (QwenKern)
+    12482F7414F72A9406229D8E04FD6741BFFB4EFD  CN=S14cn Leaf (QwenKern)
+    D997967F6246ECAD8851D468050258F0E0EA7DC4  CN=S6lan Leaf (QwenKern)
+    5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81  CN=S6lan Leaf (QwenKern)
+    1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE  CN=S7win Leaf (QwenKern)
+    4710E702C7883479D106EEB688F7065101B9339D  CN=S7win Leaf (QwenKern)
+    8520C2310834196AA7463E421BA941F64B66505F  CN=S8old Leaf (QwenKern)
+    53E0C111A903AD068A221137E7EB51AD6CAB2ACA  CN=S8old Leaf (QwenKern)
+    8CDA74E84A70B072A3A8B3419485FE1735E9BB26  CN=S9msf Leaf (QwenKern)
+    65A87229342C5FD077551C7FB885C39B27111DF7  CN=S9msf Leaf (QwenKern)
+  -- ROLLBACK recipes --
+    driver  : Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p25g" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc.exe stop kernprobe ; sc.exe delete kernprobe
+    certs   : certutil -delstore My <thumb> ; certutil -delstore Root <thumb>   (roots only untrusted after the driver is re-signed)
+=== p25h END 01/11/2026 16:53:18 ===

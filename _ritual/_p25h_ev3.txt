@@ -1,0 +1,57 @@
+--- testsigning / integritychecks / debug (bcdedit) ---
+The boot configuration data store could not be opened.
+Access is denied.
+
+--- gdrv3 service key ---
+Type = 1
+Start = 3
+ErrorControl = 1
+ImagePath = \??\C:\WINDOWS\System32\drivers\gdrv3.sys
+DisplayName = gdrv3
+DisplayName = gdrv3
+--- 7036 events in last 24h (Service Control Manager) ---
+--- Win32_SystemDriver gdrv3 ---
+
+
+Name        : gdrv3
+DisplayName : gdrv3
+State       : Runnin
+              g
+StartMode   : Manual
+PathName    : \??\C:
+              \WINDO
+              WS\Sys
+              tem32\
+              driver
+              s\gdrv
+              3.sys
+Started     : True
+
+
+
+
+--- sc query gdrv3 ---
+
+SERVICE_NAME: gdrv3 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 4  RUNNING 
+                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+--- sc qc gdrv3 ---
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: gdrv3
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : \??\C:\WINDOWS\System32\drivers\gdrv3.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : gdrv3
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+

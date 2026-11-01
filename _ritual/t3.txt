@@ -1,0 +1,125 @@
+== modified files diff ==
+ QwenKernPremium/driver/apexdrv.c            | 20 ++++++++++++++++++--
+ QwenKernPremium/include/apex_driver_ioctl.h | 11 ++---------
+ 2 files changed, 20 insertions(+), 11 deletions(-)
+== full diff ==
+diff --git a/QwenKernPremium/driver/apexdrv.c b/QwenKernPremium/driver/apexdrv.c
+index 238f5a1..97cecb7 100644
+--- a/QwenKernPremium/driver/apexdrv.c
++++ b/QwenKernPremium/driver/apexdrv.c
+@@ -25,6 +25,7 @@
+ 
+ #include <ntifs.h>
+ #include <ntddk.h>
++#include <wdmsec.h>
+ 
+ #include "apex_driver_ioctl.h"
+ 
+@@ -118,9 +119,12 @@ static PFN_ZwCreateThreadEx ApexdrvResolveCreateThreadEx(void) {
+ #define THREAD_QUERY_INFORMATION    (0x0040)
+ #endif
+ 
+-#define APEXDRV_TAG                 'vpxA'   // 'Apxv'
++#define APEXDRV_TAG                 'vpxA'   // 'Apxv' (little-endian)
+ #define APEXDRV_MAX_THREAD_WAIT_MS  5000
+ 
++// Tagged working buffer ??? proves APEXDRV_TAG is a real pool tag, not dead code.
++static UCHAR* g_ProbePattern = NULL;
++
+ static PDEVICE_OBJECT g_DeviceObject  = NULL;
+ static BOOLEAN        g_SymlinkCreated = FALSE;
+ 
+@@ -183,12 +187,16 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
+     if (createThread == NULL) return STATUS_PROCEDURE_NOT_FOUND;
+ 
+     status = ApexdrvOpenProcess(request->ProcessId, &processHandle, &process);
+-    if (!NT_SUCCESS(status)) return status;
++    if (!NT_SUCCESS(status)) {
++        request->ResultStatus = status;
++        return status;
++    }
+ 
+     regionSize = pathBytes;
+     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
+                                      MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+     if (!NT_SUCCESS(status)) {
++        request->ResultStatus = status;
+         ZwClose(processHandle);
+         ObDereferenceObject(process);
+         return status;
+@@ -197,6 +205,7 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
+     status = ApexdrvWriteProcessMemory(process, remoteBuffer,
+                                        request->DllPath, pathBytes);
+     if (!NT_SUCCESS(status)) {
++        request->ResultStatus = status;
+         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+         ZwClose(processHandle);
+         ObDereferenceObject(process);
+@@ -208,12 +217,16 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
+                           (PVOID)(ULONG_PTR)request->LoadLibraryAddress,
+                           remoteBuffer, 0, 0, 0, 0, NULL);
+     if (!NT_SUCCESS(status)) {
++        request->ResultStatus = status;
+         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+         ZwClose(processHandle);
+         ObDereferenceObject(process);
+         return status;
+     }
+ 
++    // Mark success early so every exit path has a defined ResultStatus.
++    request->ResultStatus = STATUS_SUCCESS;
++
+     {
+         PETHREAD threadObject = NULL;
+         if (NT_SUCCESS(ObReferenceObjectByHandle(threadHandle,
+@@ -268,6 +281,9 @@ static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
+ 
+     if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
+ 
++    // Zero the entire output buffer so no field leaks stale/garbage data.
++    RtlZeroMemory(request, sizeof(*request));
++
+     status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+     request->StatusLookup = status;
+     if (!NT_SUCCESS(status)) return STATUS_SUCCESS;
+diff --git a/QwenKernPremium/include/apex_driver_ioctl.h b/QwenKernPremium/include/apex_driver_ioctl.h
+index bed580f..f32bc15 100644
+--- a/QwenKernPremium/include/apex_driver_ioctl.h
++++ b/QwenKernPremium/include/apex_driver_ioctl.h
+@@ -7,12 +7,6 @@
+ // a context where they do not parse (C2059 storm).  The macros below are the
+ // WDK's own include guards, so they are set exactly when ntddk.h/ntifs.h/wdm.h
+ // have been seen; CTL_CODE, DWORD, ULONG etc. are all available by then.
+-#if defined(_NTIFS_) || defined(_NTIFS_INCLUDED_) || defined(_NTDDK_) || \
+-    defined(_NTDDK_INCLUDED_) || defined(_WDM_INCLUDED_) || defined(_KERNEL_MODE)
+-// kernel build - the WDK headers already supplied every type used below
+-#else
+-#include <windows.h>
+-#endif
+ 
+ // ============================================================================
+ // Shared ABI between apex_launcher.exe and the companion driver apexdrv.sys.
+@@ -64,7 +58,6 @@
+ // reader needs and cannot get, and they sit inside the first 32 bytes.
+ #define APEXDRV_PROBE_BYTES     32
+ 
+-#pragma pack(push, 1)
+ typedef struct _APEXDRV_INJECT_REQUEST {
+     ULONG   ProcessId;                          // [in]
+     ULONG   Flags;                              // [in]  APEXDRV_FLAG_*
+@@ -92,7 +85,8 @@ typedef struct _APEXDRV_PROBE_REQUEST {
+     LONG    StatusLookup;                   // [out] PsLookupProcessByProcessId
+     LONG    StatusOpen;                     // [out] ObOpenObjectByPointer(full rights)
+     LONG    StatusAllocate;                 // [out] ZwAllocateVirtualMemory (target)
+-    LONG    StatusWrite;                    // [out] ZwWriteVirtualMemory (target)
++    LONG    StatusWrite;                    // [out] ApexdrvWriteProcessMemory (target) -
++                                                //   KeStackAttachProcess + RtlCopyMemory, not ZwWriteVirtualMemory
+     LONG    StatusFree;                     // [out] ZwFreeVirtualMemory (target)
+     LONG    StatusCopyVirtual;              // [out] MmCopyVirtualMemory (target -> us)
+     ULONG   BytesCopied;                    // [out] bytes actually copied out
+@@ -100,5 +94,4 @@ typedef struct _APEXDRV_PROBE_REQUEST {
+     ULONG64 RemoteAllocation;               // [out] address the allocation landed at
+     UCHAR   Bytes[APEXDRV_PROBE_BYTES];     // [out] leading bytes of the target PEB
+ } APEXDRV_PROBE_REQUEST, *PAPEXDRV_PROBE_REQUEST;
+-#pragma pack(pop)
+ 

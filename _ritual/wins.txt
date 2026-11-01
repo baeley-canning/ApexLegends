@@ -1,0 +1,7 @@
+MON \\.\DISPLAY1 {X=0,Y=0,Width=1920,Height=1080} primary=True
+VIRTUAL 0,0 1920x1080
+mstsc hwnd=9634224 iconic=True rect=-32000,-32000,-31840,-31972
+after-fg rect=231,145 800x600
+saved gscr1.png
+saved hscr2.png
+20589 bytes

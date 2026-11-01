@@ -1,0 +1,118 @@
+Exception calling "ContainsKey" with "1" argument(s): "Key cannot be null.
+Parameter name: key"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:65 char:9
++     if ($done.ContainsKey($c.Thumbprint)) { continue }
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Index operation failed; the array index evaluated to null.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:66 char:5
++     $done[$c.Thumbprint] = 1
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : NullArrayIndex
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "ContainsKey" with "1" argument(s): "Key cannot be null.
+Parameter name: key"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:65 char:9
++     if ($done.ContainsKey($c.Thumbprint)) { continue }
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Index operation failed; the array index evaluated to null.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:66 char:5
++     $done[$c.Thumbprint] = 1
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : NullArrayIndex
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "ContainsKey" with "1" argument(s): "Key cannot be null.
+Parameter name: key"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:65 char:9
++     if ($done.ContainsKey($c.Thumbprint)) { continue }
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Index operation failed; the array index evaluated to null.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:66 char:5
++     $done[$c.Thumbprint] = 1
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : NullArrayIndex
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+Exception calling "WriteAllBytes" with "2" argument(s): "Value cannot be null.
+Parameter name: bytes"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_fix1.ps1:72 char:9
++         [System.IO.File]::WriteAllBytes($p, $c.RawData)
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+rc=0 

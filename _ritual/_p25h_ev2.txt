@@ -1,0 +1,115 @@
+LastBootUpTime = 11/01/2026 15:59:37
+Now            = 11/01/2026 16:59:19
+--- testsigning now ---
+--- SCM 7036/7000/7045 events mentioning gdrv3/kernprobe (System, last 700) ---
+1/11/2026 4:53:17 pm id=7000 The ApexDrv kernprobe (p25h) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:53:17 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25h) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:53:14 pm id=7000 The ApexDrv kernprobe (p25h) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:53:14 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25h) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:50:50 pm id=7000 The ApexDrv kernprobe (p25h) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:50:50 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25h) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:43:54 pm id=7000 The ApexDrv kernprobe (p25g) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:43:54 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25g) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:30:59 pm id=7000 The ApexDrv kernprobe (p25d) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:30:59 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25d) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:27:48 pm id=7000 The ApexDrv kernprobe (p25c) service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:27:48 pm id=7045 A service was installed in the system.  Service Name:  ApexDrv kernprobe (p25c) Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:25:21 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:25:21 pm id=7045 A service was installed in the system.  Service Name:  kernprobe Service File Name:  System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:24:23 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:24:23 pm id=7045 A service was installed in the system.  Service Name:  kernprobe Service File Name:  System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:21:33 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:21:32 pm id=7045 A service was installed in the system.  Service Name:  kernprobe Service File Name:  System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:16:17 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:16:16 pm id=7045 A service was installed in the system.  Service Name:  kernprobe Service File Name:  System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 4:16:11 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:00:11 pm id=7000 The kernprobe service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 2:30:29 pm id=7045 A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 2:13:29 pm id=7045 A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 2:12:22 pm id=7045 A service was installed in the system.  Service Name:  zzprobe Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+1/11/2026 2:00:47 pm id=7000 The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 1:58:58 pm id=7000 The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 3:35:32 am id=7000 The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 3:35:32 am id=7045 A service was installed in the system.  Service Name:  apexdrv Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+--- gdrv3 service reg ---
+
+
+Type         : 1
+Start        : 3
+ErrorControl : 1
+ImagePath    : \??\C
+               :\WIN
+               DOWS\
+               Syste
+               m32\d
+               river
+               s\gdr
+               v3.sy
+               s
+DisplayName  : gdrv3
+PSPath       : Micro
+               soft.
+               Power
+               Shell
+               .Core
+               \Regi
+               stry:
+               :HKEY
+               _LOCA
+               L_MAC
+               HINE\
+               SYSTE
+               M\Cur
+               rentC
+               ontro
+               lSet\
+               Servi
+               ces\g
+               drv3
+PSParentPath : Micro
+               soft.
+               Power
+               Shell
+               .Core
+               \Regi
+               stry:
+               :HKEY
+               _LOCA
+               L_MAC
+               HINE\
+               SYSTE
+               M\Cur
+               rentC
+               ontro
+               lSet\
+               Servi
+               ces
+PSChildName  : gdrv3
+PSDrive      : HKLM
+PSProvider   : Micro
+               soft.
+               Power
+               Shell
+               .Core
+               \Regi
+               stry
+
+
+
+
+--- CodeIntegrity operational (last events) ---
+1/11/2026 4:53:17 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:53:17 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:53:14 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:53:14 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:50:50 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:50:50 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:43:54 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:43:54 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:30:59 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:30:59 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:27:48 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:27:48 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:25:21 pm id=3089 Signature information for another event. Match using the Correlation Id.
+1/11/2026 4:25:21 pm id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+1/11/2026 4:24:23 pm id=3089 Signature information for another event. Match using the Correlation Id.

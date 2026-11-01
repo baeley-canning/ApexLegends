@@ -1,0 +1,56 @@
+=== apex process/still-running p9 ===
+
+=== apexdrv state (must stay Stopped for driverless runs) ===
+
+=== RUNNING drivers whose signer is NOT Microsoft ===
+
+Name  Start  Status Signer Path                                       
+----  -----  ------ ------ ----                                       
+MSIO  System ?      ?      \??\C:\WINDOWS\system32\drivers\MsIo64.sys 
+gdrv3 Manual ?      ?      \??\C:\WINDOWS\System32\drivers\gdrv3.sys  
+CTIIO System ?      ?      \??\C:\WINDOWS\system32\drivers\CtiIo64.sys
+
+
+
+=== running driver signer counts ===
+
+Count Name                                                 
+----- ----                                                 
+  163 CN=Microsoft Windows                                 
+   31 CN=Microsoft Windows Hardware Compatibility Publisher
+    3 ?                                                    
+
+
+
+=== bcd current ===
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+
+=== services: teamviewer/npcap/vbox/gigabyte ===
+
+
+Name      : GamingServices
+State     : Running
+StartMode : Auto
+PathName  : "C:\Program Files\WindowsApps\Microsoft.GamingServices_39.118.21002.0_x64__8wekyb3d8bbwe\GamingServices.exe"
+
+Name      : GamingServicesNet
+State     : Running
+StartMode : Auto
+PathName  : "C:\Program Files\WindowsApps\Microsoft.GamingServices_39.118.21002.0_x64__8wekyb3d8bbwe\GamingServicesNet.exe"
+
+Name      : TeamViewer
+State     : Running
+StartMode : Auto
+PathName  : "C:\Program Files\TeamViewer\TeamViewer_Service.exe"
+
+Name      : GigabyteUpdateService
+State     : Running
+StartMode : Auto
+PathName  : C:\WINDOWS\system32\GigabyteUpdateService.exe ?
+
+
+
+
+DONE 11/01/2026 14:45:09

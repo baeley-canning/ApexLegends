@@ -1,0 +1,380 @@
+﻿18:54:42 elev=True pid=3244 exe=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\run3.ps1
+18:54:43   | host build=26200.9711  boot=1/11/2026 3:59:37 pm  now=1/11/2026 6:54:43 pm
+18:54:43   | bcd.testsigning=Yes
+18:54:43   | bcd.nointegritychecks=No
+18:54:43   | test signing is armed in BCD only if it differs from the boot time -> no reboot has happened yet
+18:54:43   | makecat = C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\makecat.exe
+18:54:43   | signtool = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+18:54:43   | staged apexdrv_build.sys  len=10152 sha256=9B119FD0C38740A2 status=Valid signer=CN=ApexDrv Dev (QwenKern Premium)
+18:54:43   | staged apexdrv_sys.sys    len=10192 sha256=4F1106853D05986B status=Valid signer=CN=ApexDrv S2 Leaf (QwenKern)
+18:54:43   | === C:\p26cat\apexdrv_build.sys  size=10152
+18:54:43   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+18:54:43   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+18:54:43   | DONE-cateng
+18:54:43   | engineHash apexdrv_build.sys  sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+18:54:43   | === C:\p26cat\apexdrv_sys.sys  size=10192
+18:54:43   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+18:54:43   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+18:54:43   | DONE-cateng
+18:54:43   | engineHash apexdrv_sys.sys    sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+18:54:43   | --- sha256 member probe: which .cdf form gives the cat a 32-byte member hash? ---
+18:54:43   | === C:\p26cat\p26probe.bin  size=62
+18:54:43   |   sha1 engine=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  api=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  MATCH
+18:54:44   |   sha1 osCatalog=p26pr_enc-10001.cat;
+18:54:44   |   sha256 engine=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  api=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  MATCH
+18:54:44   |   sha256 osCatalog=NONE(err1168)
+18:54:44   | DONE-cateng
+18:54:44   |   probe enc-10001      cat=   382 sha256Lookup=NONE(err1168)  miss
+18:54:44   | === C:\p26cat\p26probe.bin  size=62
+18:54:44   |   sha1 engine=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  api=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  MATCH
+18:54:44   |   sha1 osCatalog=p26pr_enc-10001.cat;
+18:54:44   |   sha256 engine=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  api=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  MATCH
+18:54:44   |   sha256 osCatalog=NONE(err1168)
+18:54:44   | DONE-cateng
+18:54:44   |   probe enc-10002      cat=     0 sha256Lookup=NONE(err1168)  miss
+18:54:44   |   probe hashalg-800c   makecat rc=1 -> no .cat
+18:54:44   |   probe hashalg-8004   makecat rc=1 -> no .cat
+18:54:44   |   probe hashalg-both   makecat rc=1 -> no .cat
+18:54:44   |   probe hashalg-spaced makecat rc=1 -> no .cat
+18:54:44   |   probe hashalg-name   makecat rc=1 -> no .cat
+18:54:44   |   probe catver+800c    makecat rc=1 -> no .cat
+18:54:45   | === C:\p26cat\p26probe.bin  size=62
+18:54:45   |   sha1 engine=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  api=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  MATCH
+18:54:45   |   sha1 osCatalog=p26pr_enc-10001.cat;
+18:54:45   |   sha256 engine=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  api=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  MATCH
+18:54:45   |   sha256 osCatalog=NONE(err1168)
+18:54:45   | DONE-cateng
+18:54:45   |   probe literal-name   cat=   431 sha256Lookup=NONE(err1168)  miss
+18:54:45   | --- PSCatalog probe: New-FileCatalog available=True  (CatalogVersion 2 => SHA-256 members)
+18:54:45   | === C:\p26cat\psc\p26probe.bin  size=62
+18:54:45   |   sha1 engine=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  api=E7F579DBDC02B84E76A8A529EEA3C9A7407FD972  MATCH
+18:54:45   |   sha1 osCatalog=p26pr_enc-10001.cat; p26pr_pscatalog.cat;
+18:54:45   |   sha256 engine=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  api=BE1C6FD37A9DED94E5442C877766AAA4C0B5B3648A7822722A55ED6C7B4237D5  MATCH
+18:54:45   |   sha256 osCatalog=p26pr_pscatalog.cat;
+18:54:45   | DONE-cateng
+18:54:45   |   probe pscatalog-v2   cat=   806 sha256Lookup=p26pr_pscatalog.cat;  HIT
+18:54:45   |   generator chosen = pscatalog-v2
+18:54:45   |   no variant emitted a 32-byte member; falling back to sha1-only .cdf
+18:54:45   |   real cat will use hdr=[EncodingType=0x00010001] tag=<hash>
+18:54:45   | --- cdf ---
+18:54:45   |   [CatalogHeader]
+18:54:45   |   Name=apexdrv_p26.cat
+18:54:45   |   ResultDir=C:\p26cat
+18:54:45   |   PublicVersion=0x00000001
+18:54:45   |   EncodingType=0x00010001
+18:54:45   |   CATATTR1=0x10010001:OSAttr:2:10.0,6.1
+18:54:45   |   
+18:54:45   |   [CatalogFiles]
+18:54:45   |   <hash>apexdrv_build.sys=C:\p26cat\apexdrv_build.sys
+18:54:45   |   <hash>apexdrv_sys.sys=C:\p26cat\apexdrv_sys.sys
+18:54:45   | --- New-FileCatalog -CatalogVersion 2   dir=C:\p26cat\real
+18:54:45   |   pscatalog: Adding file 'C:\p26cat\real\apexdrv_build.sys' to the catalog. Relative path of file in catalog is 'apexdrv_build.sys'.
+18:54:45   |   pscatalog: Adding file 'C:\p26cat\real\apexdrv_sys.sys' to the catalog. Relative path of file in catalog is 'apexdrv_sys.sys'.
+18:54:45   |   pscatalog: C:\p26cat\apexdrv_p26.cat
+18:54:45   | cat built len=826 generator=pscatalog-v2
+18:54:47   | cat signers -> build=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 sys=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+18:54:47   |   sign: The following certificate was selected:
+18:54:47   |   sign:     Issued to: ApexDrv Dev (QwenKern Premium)
+18:54:47   |   sign: 
+18:54:47   |   sign:     Issued by: ApexDrv Dev (QwenKern Premium)
+18:54:47   |   sign: 
+18:54:47   |   sign:     Expires:   Fri Oct 26 17:43:18 2029
+18:54:47   |   sign: 
+18:54:47   |   sign:     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+18:54:47   |   sign: 
+18:54:47   |   sign: 
+18:54:47   |   sign: Done Adding Additional Store
+18:54:47   |   sign: Successfully signed: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   sign: 
+18:54:47   |   sign: 
+18:54:47   |   sign: Number of files successfully Signed: 1
+18:54:47   |   sign: 
+18:54:47   |   sign: Number of warnings: 0
+18:54:47   |   sign: 
+18:54:47   |   sign: Number of errors: 0
+18:54:47   |   sign: 
+18:54:47   |   sign/as: The following certificate was selected:
+18:54:47   |   sign/as:     Issued to: ApexDrv S2 Leaf (QwenKern)
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as:     Issued by: ApexDrv S2 Root CA (QwenKern)
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as:     Expires:   Sat Nov 01 16:36:28 2031
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as:     SHA1 hash: 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: Done Adding Additional Store
+18:54:47   |   sign/as: Successfully signed: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: Number of files successfully Signed: 1
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: Number of warnings: 0
+18:54:47   |   sign/as: 
+18:54:47   |   sign/as: Number of errors: 0
+18:54:47   |   sign/as: 
+18:54:47   |   verify/pa: File: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   verify/pa: Index  Algorithm  Timestamp    
+18:54:47   |   verify/pa: ========================================
+18:54:47   |   verify/pa: 0      sha256     None         
+18:54:47   |   verify/pa: 
+18:54:47   |   verify/pa: Successfully verified: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   verify/pa: 
+18:54:47   |   verify/kp: File: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   verify/kp: Index  Algorithm  Timestamp    
+18:54:47   |   verify/kp: ========================================
+18:54:47   |   verify/kp: 
+18:54:47   |   verify/kp: Number of errors: 1
+18:54:47   |   verify/kp: 
+18:54:47   |   verify/kp: SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+18:54:47   | cat signature status=Valid
+18:54:47   | chain[build] buildOk=True status= root=CN=ApexDrv Dev (QwenKern Premium)
+18:54:47   |   already in LocalMachine\Root: CN=ApexDrv Dev (QwenKern Premium)
+18:54:47   | chain[sys] buildOk=True status= root=CN=ApexDrv S2 Root CA (QwenKern)
+18:54:47   |   already in LocalMachine\CA: CN=ApexDrv S2 Leaf (QwenKern)
+18:54:47   |   already in LocalMachine\Root: CN=ApexDrv S2 Root CA (QwenKern)
+18:54:47   | --- LocalMachine\My private-key certs and their chain roots (looking for a Microsoft-rooted one) ---
+18:54:47   |   F132233D0A5B97262DFE57170D237CECF51BF657 CN=ApexDrv CA c1 (QwenKern)  -> root: CN=ApexDrv CA c1 (QwenKern) buildOk=False
+18:54:47   |   DFFA64113CF6589043CE0E4AD74A84CF0CA91690 CN=ApexDrv Lab Code Signing (QwenKern)  -> root: CN=ApexDrv Lab Root CA (QwenKern) buildOk=True
+18:54:47   |   DE6318A620E5CB919868FEF340C956BF37C8CA74 CN=Microsoft Root Certificate Authority 2011  -> root: CN=Microsoft Root Certificate Authority 2011 buildOk=True
+18:54:47   |   DD5BA95EFD2F303687C309841B3928249A762941 CN=ApexDrv Lab DSE (QwenKern)  -> root: CN=ApexDrv Lab DSE (QwenKern) buildOk=False
+18:54:47   |   DB248C944EACF7DD4F9BE6114358C2CE6D63F18C CN=ApexDrv CA c3 (QwenKern)  -> root: CN=ApexDrv CA c3 (QwenKern) buildOk=False
+18:54:47   |   D997967F6246ECAD8851D468050258F0E0EA7DC4 CN=S6lan Leaf (QwenKern)  -> root: CN=S6lan Leaf (QwenKern) buildOk=False
+18:54:47   |   D33ED7478345A1F373111F13439DC34D76C96D55 CN=ApexR Test  -> root: CN=ApexR Test buildOk=True
+18:54:47   |   CB27C1A3117D0DB8F0516853EA3F82E69ABA54D3 CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   C8919A5488F56972F157360DB6B30CFE3A2B3970 CN=ApexDrv CA c2 (QwenKern)  -> root: CN=ApexDrv CA c2 (QwenKern) buildOk=False
+18:54:47   |   A9026A2903D511DBBF089D69ACCEBD4E0C22F87F CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   A7569298DEB0D834C42191BB28D8EDFF7B798FEE CN=ApexDrv S4 LeafCA (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+18:54:47   |   8CDA74E84A70B072A3A8B3419485FE1735E9BB26 CN=S9msf Leaf (QwenKern)  -> root: CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp. buildOk=True
+18:54:47   |   8520C2310834196AA7463E421BA941F64B66505F CN=S8old Leaf (QwenKern)  -> root: CN=S8old Leaf (QwenKern) buildOk=False
+18:54:47   |   7AB907DC03E17A6A7375FEBF3ADA5624B4099444 CN=ApexDrv Lab DSE CertSign (QwenKern)  -> root: CN=ApexDrv Lab DSE CertSign (QwenKern) buildOk=True
+18:54:47   |   76589C69A7DEBEF1093D9B98C60CA6707A54E36C CN=ApexDrv Lab Root CA (QwenKern)  -> root: CN=ApexDrv Lab Root CA (QwenKern) buildOk=True
+18:54:47   |   65A87229342C5FD077551C7FB885C39B27111DF7 CN=S9msf Leaf (QwenKern)  -> root: CN=S9msf Leaf (QwenKern) buildOk=False
+18:54:47   |   5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81 CN=S6lan Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 CN=ApexDrv Probe v0 (QwenKern)  -> root: CN=ApexDrv Probe v0 (QwenKern) buildOk=True
+18:54:47   |   5937CA2135A847D98E3935B5A592673C18ACC912 CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)  -> root: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) buildOk=True
+18:54:47   |   53E0C111A903AD068A221137E7EB51AD6CAB2ACA CN=S8old Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D CN=ApexDrv S2 Leaf (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+18:54:47   |   474F9339147DA30CE30AF7D6961D318279D76295 CN=S13pad Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   4710E702C7883479D106EEB688F7065101B9339D CN=S7win Leaf (QwenKern)  -> root: CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   3C22C2EEB734CD4179100631AC0E6A9485AA945C CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720 CN=ApexDrv S3 LeafNoBC (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+18:54:47   |   346E91021D240798DF87F39C94DF5D0C8D824CAB CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+18:54:47   |   3377F64BCFF5D623C90317FC524FC50EDEB53B0C CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp.  -> root: CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp. buildOk=True
+18:54:47   |   2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 CN=ApexDrv Dev (QwenKern Premium)  -> root: CN=ApexDrv Dev (QwenKern Premium) buildOk=True
+18:54:47   |   1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE CN=S7win Leaf (QwenKern)  -> root: CN=S7win Leaf (QwenKern) buildOk=False
+18:54:47   |   1E73093E98695948E09E53C0A4C8E4A5670D6199 CN=ApexDrv S1 SelfSigned CA (QwenKern)  -> root: CN=ApexDrv S1 SelfSigned CA (QwenKern) buildOk=True
+18:54:47   |   1A5520EED6638BEC2A5EE297D3FF984B2CACF889 CN=ApexDrv S2 Root CA (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+18:54:47   |   12482F7414F72A9406229D8E04FD6741BFFB4EFD CN=S14cn Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011 buildOk=True
+18:54:47   |   075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79 CN=ApexDrv p25h SelfTest CA (QwenKern)  -> root: CN=ApexDrv p25h SelfTest CA (QwenKern) buildOk=False
+18:54:47   | MS-rooted signer -> promoting to PRIMARY signature: 8CDA74E84A70B072A3A8B3419485FE1735E9BB26 CN=S9msf Leaf (QwenKern)
+18:54:47   |   sign/msprimary: The following certificate was selected:
+18:54:47   |   sign/msprimary:     Issued to: S9msf Leaf (QwenKern)
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary:     Issued by: Microsoft Root Authority
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary:     Expires:   Sat Nov 01 16:53:09 2031
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary:     SHA1 hash: 8CDA74E84A70B072A3A8B3419485FE1735E9BB26
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: Done Adding Additional Store
+18:54:47   |   sign/msprimary: Successfully signed: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: Number of files successfully Signed: 1
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: Number of warnings: 0
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/msprimary: Number of errors: 0
+18:54:47   |   sign/msprimary: 
+18:54:47   |   sign/as2: The following certificate was selected:
+18:54:47   |   sign/as2:     Issued to: ApexDrv Dev (QwenKern Premium)
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     Issued by: ApexDrv Dev (QwenKern Premium)
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     Expires:   Fri Oct 26 17:43:18 2029
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Done Adding Additional Store
+18:54:47   |   sign/as2: Successfully signed: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of files successfully Signed: 1
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of warnings: 0
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of errors: 0
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: The following certificate was selected:
+18:54:47   |   sign/as2:     Issued to: ApexDrv S2 Leaf (QwenKern)
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     Issued by: ApexDrv S2 Root CA (QwenKern)
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     Expires:   Sat Nov 01 16:36:28 2031
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2:     SHA1 hash: 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Done Adding Additional Store
+18:54:47   |   sign/as2: Successfully signed: C:\p26cat\apexdrv_p26.cat
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of files successfully Signed: 1
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of warnings: 0
+18:54:47   |   sign/as2: 
+18:54:47   |   sign/as2: Number of errors: 0
+18:54:47   |   sign/as2: 
+18:54:47   | cat status after MS-primary re-sign: Valid primarySigner=CN=S9msf Leaf (QwenKern)
+18:54:47   | catroot pre-existing apexdrv members: apexdrv_p26.cat
+18:54:47   |   certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+18:54:50   |   certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: Cannot open Cert store.
+18:54:50   |   certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: -addstore command FAILED: 0x80070035 (WIN32: 53 ERROR_BAD_NETPATH)
+18:54:50   |   certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: The network path was not found.
+18:54:50   |   certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+18:54:50   |   certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: Cannot open Cert store.
+18:54:50   |   certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: -addstore command FAILED: 0x80070035 (WIN32: 53 ERROR_BAD_NETPATH)
+18:54:50   |   certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: The network path was not found.
+18:54:50   | CryptCATAdminAcquireContext2 alg=SHA1 ok=0 err=-2146893816
+18:54:50   | CryptCATAdminAcquireContext2 alg=SHA256 ok=0 err=-2146893816
+18:54:50   | installed -> C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\apexdrv_p26.cat  exists=True
+18:54:50   | === C:\p26cat\apexdrv_build.sys  size=10152
+18:54:50   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC  api=23C73EF919F18ECF9855331CF2563D3A15AF52BC  MATCH
+18:54:50   |   sha1 osCatalog=apexdrv_p26.cat;
+18:54:50   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  api=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  MATCH
+18:54:50   |   sha256 osCatalog=NONE(err1168)
+18:54:50   | === C:\p26cat\apexdrv_sys.sys  size=10192
+18:54:50   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC  api=23C73EF919F18ECF9855331CF2563D3A15AF52BC  MATCH
+18:54:50   |   sha1 osCatalog=apexdrv_p26.cat;
+18:54:50   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  api=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  MATCH
+18:54:50   |   sha256 osCatalog=NONE(err1168)
+18:54:50   | DONE-cateng
+18:54:50   | LOOKUP[before-flush] sha1  =apexdrv_p26.cat; apexdrv_p26.cat;
+18:54:50   | LOOKUP[before-flush] sha256=NONE(err1168) NONE(err1168)   <- ci's lookup (event 3004 criterion)
+18:54:50   | flushing catalog caches: stop/start cryptsvc unconditionally
+18:54:53   |   net: The Cryptographic Services service is stopping..
+18:54:53   |   net: The Cryptographic Services service was stopped successfully.
+18:54:53   |   net: 
+18:54:58   |   net: The Cryptographic Services service is starting.
+18:54:58   |   net: The Cryptographic Services service was started successfully.
+18:54:58   |   net: 
+18:55:02   | === C:\p26cat\apexdrv_build.sys  size=10152
+18:55:02   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC  api=23C73EF919F18ECF9855331CF2563D3A15AF52BC  MATCH
+18:55:02   |   sha1 osCatalog=apexdrv_p26.cat;
+18:55:02   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  api=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  MATCH
+18:55:02   |   sha256 osCatalog=NONE(err1168)
+18:55:02   | === C:\p26cat\apexdrv_sys.sys  size=10192
+18:55:02   |   sha1 engine=23C73EF919F18ECF9855331CF2563D3A15AF52BC  api=23C73EF919F18ECF9855331CF2563D3A15AF52BC  MATCH
+18:55:02   |   sha1 osCatalog=apexdrv_p26.cat;
+18:55:02   |   sha256 engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  api=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8  MATCH
+18:55:02   |   sha256 osCatalog=NONE(err1168)
+18:55:02   | DONE-cateng
+18:55:02   | LOOKUP[after-flush] sha1  =apexdrv_p26.cat; apexdrv_p26.cat;
+18:55:02   | LOOKUP[after-flush] sha256=NONE(err1168) NONE(err1168)   <- ci's lookup (event 3004 criterion)
+18:55:02   | --- kp re-verify after root install / MS append on: C:\p26cat\apexdrv_p26.cat
+18:55:02   |   verify/kp2: File: C:\p26cat\apexdrv_p26.cat
+18:55:02   |   verify/kp2: Index  Algorithm  Timestamp    
+18:55:02   |   verify/kp2: ========================================
+18:55:02   |   verify/kp2: 
+18:55:02   |   verify/kp2: Number of errors: 1
+18:55:02   |   verify/kp2: 
+18:55:02   |   verify/kp2: SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+18:55:02   |   kp2 exit=1
+18:55:02   |   ci-criterion (32-byte lookup resolves to our cat) = False
+18:55:02   | --- svc apexdrv_cat image=\??\C:\p26cat\apexdrv_build.sys
+18:55:02   |   sc create: [SC] CreateService FAILED 1073:
+18:55:02   |   sc create: 
+18:55:02   |   sc create: The specified service already exists.
+18:55:02   |   sc create: 
+18:55:03   |   start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+18:55:03   |   state: SERVICE_NAME: apexdrv_cat TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+18:55:03   |   => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+18:55:03   | --- svc kernprobe image=\??\C:\Windows\System32\drivers\apexdrv.sys
+18:55:03   |   start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+18:55:03   |   state: SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+18:55:03   |   => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+18:55:03   | --- svc apexdrv image=\??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+18:55:04   |   start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+18:55:04   |   state: SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+18:55:04   |   => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+18:55:04   | --- events (CodeIntegrity full records + System/Service Control Manager) ---
+18:55:04   |   CI 3089 11/01/2026 18:55:03 Signature information for another event. Match using the Correlation Id.
+18:55:04   |      TotalSignatureCount = 1
+18:55:04   |      Signature = 0
+18:55:04   |      CacheState = 0
+18:55:04   |      Hash Size = 32
+18:55:04   |      Hash = 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+18:55:04   |      PageHash = false
+18:55:04   |      SignatureType = 1
+18:55:04   |      ValidatedSigningLevel = 1
+18:55:04   |      VerificationError = 7
+18:55:04   |      Flags = 0
+18:55:04   |      PolicyBits = 16
+18:55:04   |      NotValidBefore = 2026-11-01T03:26:28.0000000Z
+18:55:04   |      NotValidAfter = 2031-11-01T03:36:28.0000000Z
+18:55:04   |      PublisherNameLength = 26
+18:55:04   |      PublisherName = ApexDrv S2 Leaf (QwenKern)
+18:55:04   |      IssuerNameLength = 29
+18:55:04   |      IssuerName = ApexDrv S2 Root CA (QwenKern)
+18:55:04   |      PublisherTBSHashSize = 32
+18:55:04   |      PublisherTBSHash = 4E772A5D9878919CFE38A8293243E7EA754549518FADA439EFB78A30448C8D9E
+18:55:04   |      IssuerTBSHashSize = 0
+18:55:04   |      OPUSInfoLength = 4
+18:55:04   |      OPUSInfo = None
+18:55:04   |      EKUsSize = 10
+18:55:04   |      EKUs = 01082B06010505070303
+18:55:04   |      KnownRoot = 1
+18:55:04   |   CI 3004 11/01/2026 18:55:03 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+18:55:04   |      FileNameLength = 60
+18:55:04   |      FileNameBuffer = \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys
+18:55:04   |      SecureRequired = 0x1
+18:55:04   |      RequestedSigningLevel = 1
+18:55:04   |      ProcessNameLength = 6
+18:55:04   |      ProcessNameBuffer = System
+18:55:04   |   CI 3089 11/01/2026 18:55:03 Signature information for another event. Match using the Correlation Id.
+18:55:04   |      TotalSignatureCount = 1
+18:55:04   |      Signature = 0
+18:55:04   |      CacheState = 0
+18:55:04   |      Hash Size = 32
+18:55:04   |      Hash = 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+18:55:04   |      PageHash = false
+18:55:04   |      SignatureType = 1
+18:55:04   |      ValidatedSigningLevel = 1
+18:55:04   |      VerificationError = 7
+18:55:04   |      Flags = 0
+18:55:04   |      PolicyBits = 1
+18:55:04   |      NotValidBefore = 2026-10-26T04:33:18.0000000Z
+18:55:04   |      NotValidAfter = 2029-10-26T04:43:18.0000000Z
+18:55:04   |      PublisherNameLength = 30
+18:55:04   |      PublisherName = ApexDrv Dev (QwenKern Premium)
+18:55:04   |      IssuerNameLength = 30
+18:55:04   |      IssuerName = ApexDrv Dev (QwenKern Premium)
+18:55:04   |      PublisherTBSHashSize = 32
+18:55:04   |      PublisherTBSHash = 6C4B5CEC8D68185C759CDFC42752449E01A2755C77F47506C17B7FD5E1C701AB
+18:55:04   |      IssuerTBSHashSize = 0
+18:55:04   |      OPUSInfoLength = 4
+18:55:04   |      OPUSInfo = None
+18:55:04   |      EKUsSize = 10
+18:55:04   |      EKUs = 01082B06010505070303
+18:55:04   |      KnownRoot = 2
+18:55:04   |   CI 3004 11/01/2026 18:55:03 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\p26cat\apexdrv_build.sys because file hash could not be found on t
+18:55:04   |      FileNameLength = 48
+18:55:04   |      FileNameBuffer = \Device\HarddiskVolume3\p26cat\apexdrv_build.sys
+18:55:04   |      SecureRequired = 0x1
+18:55:04   |      RequestedSigningLevel = 1
+18:55:04   |      ProcessNameLength = 6
+18:55:04   |      ProcessNameBuffer = System
+18:55:04   |   SCM 7000 11/01/2026 18:55:03 The ApexDrv kernprobe (p25h) service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a 
+18:55:04   |   SCM 7000 11/01/2026 18:55:03 The p26 cat DSE test service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file tha
+18:55:04   | --- VERDICT ---
+18:55:04   | CI sha256 (32-byte) lookup -> our cat : False   (before=NONE(err1168) NONE(err1168) | after=NONE(err1168) NONE(err1168))
+18:55:04   | CI sha1   (20-byte) lookup -> our cat : True
+18:55:04   | signtool /kp exit after chain fix      : 1
+18:55:04   | services RUNNING now               : (none)
+18:55:04   | cat installed but CI still cannot see the hash -> inspect the LOOKUP lines and catroot
+18:55:04   | END-p26_cat
+18:55:05 p26_cat finished, exit=0 elapsed=22s
+18:55:05 END-run3

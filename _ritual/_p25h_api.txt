@@ -1,0 +1,84 @@
+﻿elevated=False
+=== C:\WINDOWS\System32\drivers\gdrv3.sys
+  size=52440  mtime=10/12/2025 22:19:43
+  AcquireContext2(SHA256)=False err=5
+  AcquireContext(legacy)=False err=5
+  CalcHash(cb=32)=True hash=C4C347210FADCE1EA25D621B2EC7D2365596861D
+    NULLadmin -> no catalog (lastErr=87)
+  CalcHash(cb=20)=True hash=C4C347210FADCE1EA25D621B2EC7D2365596861D
+    NULLadmin -> no catalog (lastErr=87)
+
+  AuthSig: status=Valid type=Authenticode signer=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+=== C:\WINDOWS\System32\drivers\tcpip.sys
+  size=3493240  mtime=10/14/2026 12:48:20
+  AcquireContext2(SHA256)=False err=5
+  AcquireContext(legacy)=False err=5
+  CalcHash(cb=32)=True hash=9862B8A2F9A06F43CA7848F7EF0F1EE83796FCCB
+    NULLadmin -> no catalog (lastErr=87)
+  CalcHash(cb=20)=True hash=9862B8A2F9A06F43CA7848F7EF0F1EE83796FCCB
+    NULLadmin -> no catalog (lastErr=87)
+
+  AuthSig: status=Valid type=Catalog signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+  catalog path from AuthSig: C:\WINDOWS\System32\drivers\tcpip.sys
+    CATKP Hash of file (sha256): 91277E39C4F76D6D0F296657AFE1702297CBC92051F38CCF2F72D3BD5A39997F
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows
+    CATKP Issued by: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Time-Stamp PCA 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Time-Stamp Service
+    CATKP Issued by: Microsoft Time-Stamp PCA 2010
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows
+    CATKP Issued by: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Number of errors: 0
+=== C:\WINDOWS\System32\drivers\apexdrv.sys
+  size=10192  mtime=11/01/2026 16:53:16
+  AcquireContext2(SHA256)=False err=5
+  AcquireContext(legacy)=False err=5
+  CalcHash(cb=32)=True hash=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+    NULLadmin -> no catalog (lastErr=87)
+  CalcHash(cb=20)=True hash=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+    NULLadmin -> no catalog (lastErr=87)
+
+  AuthSig: status=Valid type=Authenticode signer=CN=ApexDrv S2 Leaf (QwenKern)
+=== C:\WINDOWS\System32\ntoskrnl.exe
+  size=13131136  mtime=10/14/2026 12:48:15
+  AcquireContext2(SHA256)=False err=5
+  AcquireContext(legacy)=False err=5
+  CalcHash(cb=32)=True hash=342AB181296783B0551152810B824F7C1AE7F39F
+    NULLadmin -> no catalog (lastErr=87)
+  CalcHash(cb=20)=True hash=342AB181296783B0551152810B824F7C1AE7F39F
+    NULLadmin -> no catalog (lastErr=87)
+
+  AuthSig: status=Valid type=Catalog signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+  catalog path from AuthSig: C:\WINDOWS\System32\ntoskrnl.exe
+    CATKP Hash of file (sha256): 1431F39B8486352ADE8B17BD65C3F33B8F6A0D85A98AAF16616AA1EE8F38BA1A
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows
+    CATKP Issued by: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Time-Stamp PCA 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Time-Stamp Service
+    CATKP Issued by: Microsoft Time-Stamp PCA 2010
+    CATKP Issued to: Microsoft Root Certificate Authority 2010
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Issued by: Microsoft Root Certificate Authority 2010
+    CATKP Issued to: Microsoft Windows
+    CATKP Issued by: Microsoft Windows Production PCA 2026 RSA2048-SHA256
+    CATKP Number of errors: 0
+DONE

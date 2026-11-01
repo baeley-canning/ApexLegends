@@ -1,0 +1,101 @@
+=== p25d KEYUSAGE TRUTH + /kp PROOF 01/11/2026 16:30:58 PS=5.1.26100.9711 ===
+signtool = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+--- 0: reader diagnostics (why p25/p25b reported "CertSign=False" on good certs) ---
+  [Subject]
+  CN=ApexDrv CA c1 (QwenKern)
+
+[Issuer]
+  CN=ApexDrv CA c1 (QwenKern)
+
+[Serial Number]
+  5D8A2799246D6D834C3AF80E036050F1
+
+[Not Before]
+  1/11/2026 4:17:46 pm
+
+[Not After]
+  1/11/2036 4:27:46 pm
+
+[Thumbprint]
+  F132233D0A5B97262DFE57170D237CECF51BF657
+.KeyUsage has a member? False
+  [X509KeyUsageFlags]::CertSign exists? False   (real name is KeyCertSign = 4)
+  [Subject]
+  CN=ApexDrv CA c1 (QwenKern)
+
+[Issuer]
+  CN=ApexDrv CA c1 (QwenKern)
+
+[Serial Number]
+  5D8A2799246D6D834C3AF80E036050F1
+
+[Not Before]
+  1/11/2026 4:17:46 pm
+
+[Not After]
+  1/11/2036 4:27:46 pm
+
+[Thumbprint]
+  F132233D0A5B97262DFE57170D237CECF51BF657
+.KeyUsage value = ''  (empty + 0 => property absent under PS7 / .NET Core)
+
+########## 1: inventory of ApexDrv certs (decoded, no guessing) ##########
+  --- Cert:\LocalMachine\My ---
+    F132233D0A5B97262DFE57170D237CECF51BF657  CN=ApexDrv CA c1 (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    DFFA64113CF6589043CE0E4AD74A84CF0CA91690  CN=ApexDrv Lab Code Signing (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    DD5BA95EFD2F303687C309841B3928249A762941  CN=ApexDrv Lab DSE (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    DB248C944EACF7DD4F9BE6114358C2CE6D63F18C  CN=ApexDrv CA c3 (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    C8919A5488F56972F157360DB6B30CFE3A2B3970  CN=ApexDrv CA c2 (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    7AB907DC03E17A6A7375FEBF3ADA5624B4099444  CN=ApexDrv Lab DSE CertSign (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    76589C69A7DEBEF1093D9B98C60CA6707A54E36C  CN=ApexDrv Lab Root CA (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=
+    5BCFD2349358F6C585AEC5F1B68C193E4F0176E6  CN=ApexDrv Probe v0 (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6  CN=ApexDrv Dev (QwenKern Premium)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=False cA=False crit=False | EKU=1.3.6.1.5.5.7.3.3
+  --- Cert:\LocalMachine\Root ---
+    7AB907DC03E17A6A7375FEBF3ADA5624B4099444  CN=ApexDrv Lab DSE CertSign (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    76589C69A7DEBEF1093D9B98C60CA6707A54E36C  CN=ApexDrv Lab Root CA (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=
+    5BCFD2349358F6C585AEC5F1B68C193E4F0176E6  CN=ApexDrv Probe v0 (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6  CN=ApexDrv Dev (QwenKern Premium)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=False cA=False crit=False | EKU=1.3.6.1.5.5.7.3.3
+  --- Cert:\LocalMachine\TrustedPublisher ---
+    DFFA64113CF6589043CE0E4AD74A84CF0CA91690  CN=ApexDrv Lab Code Signing (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    7AB907DC03E17A6A7375FEBF3ADA5624B4099444  CN=ApexDrv Lab DSE CertSign (QwenKern)
+       ku_raw=03-02-01-86 certSign=True ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    5BCFD2349358F6C585AEC5F1B68C193E4F0176E6  CN=ApexDrv Probe v0 (QwenKern)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=True cA=False crit=True | EKU=1.3.6.1.5.5.7.3.3
+    2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6  CN=ApexDrv Dev (QwenKern Premium)
+       ku_raw=03-02-07-80 certSign=False ku=(decode failed) | BC present=False cA=False crit=False | EKU=1.3.6.1.5.5.7.3.3
+  candidates (My + certSign + cA=1) = 0
+  testing newest 0 (junk-cert cap)
+
+########## 2: sign+verify /kp with every candidate (0 errors = working signer) ##########
+
+NO SIGNER - skipping real-driver sign
+
+  create : [SC] CreateService SUCCESS
+  start  : [SC] StartService FAILED 577:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. 
+  query  :  SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+
+STILL BLOCKED - every trusted self-signed CA failed /kp. Fork: (A) keep gdrv3 transport, (B) testsigning+reboot.
+-- CI events (last 30 min):
+   16:30:59 id=3089 Signature information for another event. Match using the Correlation Id.
+   16:30:59 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+   16:27:48 id=3089 Signature information for another event. Match using the Correlation Id.
+   16:27:48 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+   16:25:21 id=3089 Signature information for another event. Match using the Correlation Id.
+   16:25:21 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+   16:24:23 id=3089 Signature information for another event. Match using the Correlation Id.
+   16:24:23 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+--- p25d END 01/11/2026 16:31:00 ---

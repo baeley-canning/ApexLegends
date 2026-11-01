@@ -1,0 +1,24 @@
+﻿=== _probe4 2026-11-01T19:12:31
+elevated=False
+--- store copy vs source copy of the broken cat ---
+store size=5134 src size=5134 samebytes=True
+store copy contains driver sha1 23C73EF9..? True
+store copy contains driver sha256 37647B46..? True
+--- staging all arms ---
+ctrl size=826 sha256=A5A0736849836E406453BD5E898FBCC6980F3D02800F30E4FAF41875D285BE87
+signtool=C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe cert=NONE
+   signtool: SignTool Error: Invalid SHA1 hash format: C:\p26cat\p29sig.cat
+   signtool: System.Management.Automation.RemoteException
+signed size=826 sha256=A5A0736849836E406453BD5E898FBCC6980F3D02800F30E4FAF41875D285BE87
+staged: p29ref.cat / p29un.cat / p29sig.cat (+ preexisting apexdrv_p26.cat)
+--- poll loop: which cat answers the driver (37647B46..) and the probe bin (45800E4D..) ---
+[c1 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c1 drive] sha256 osCatalog=NONE(err1168)
+[c2 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c2 drive] sha256 osCatalog=NONE(err1168)
+[c3 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c3 drive] sha256 osCatalog=NONE(err1168)
+[c3 pbin ] sha1 osCatalog=NONE(err1168)
+[c3 pbin ] sha256 osCatalog=NONE(err1168)
+[c4 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c4 drive] sha256 osCatalog=NONE(err1168)

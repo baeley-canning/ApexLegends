@@ -1,0 +1,71 @@
+﻿MS cat = C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\apexdrv_p26.cat
+PKCS7 Message:
+  CMSG_SIGNED(2)
+  CMSG_SIGNED_DATA_PKCS_1_5_VERSION(1)
+  Content Type: 1.3.6.1.4.1.311.10.1 Certificate Trust List
+
+PKCS7 Message Content:
+================ Begin Nesting Level 1 ================
+Certificate Trust List:
+Version: 1
+Usage Entries: 1
+  [0] 1.3.6.1.4.1.311.12.1.1
+List Identifier: 2fb483e90284089c4ddce6f1ca806ada
+ ThisUpdate: 1/11/2026 6:50 pm
+ NextUpdate: EMPTY
+Subject Algorithm:
+    Algorithm ObjectId: 1.3.6.1.4.1.311.12.1.2
+    Algorithm Parameters:
+    05 00
+CTL Entries: 2
+
+Subject Identifier: 32003300430037003300450046003900310039004600310038004500430046003900380035003500330033003100430046003200350036003300440033004100310035004100460035003200420043000000
+  2 attributes:
+
+  Attribute[0]: 1.3.6.1.4.1.311.2.1.4 (SPC_INDIRECT_DATA_OBJID)
+    Value[0][0], Length = 3f
+    0000  30 3d 30 18 06 0a 2b 06  01 04 01 82 37 02 01 0f   0=0...+.....7...
+    0010  30 0a 03 02 05 a0 a0 04  a2 02 80 00 30 21 30 09   0...........0!0.
+    0020  06 05 2b 0e 03 02 1a 05  00 04 14 23 c7 3e f9 19   ..+........#.>..
+    0030  f1 8e cf 98 55 33 1c f2  56 3d 3a 15 af 52 bc      ....U3..V=:..R.
+0000: 30 3d					; SEQUENCE (3d Bytes)
+0002:    30 18					; SEQUENCE (18 Bytes)
+0004:    |  06 0a				; OBJECT_ID (a Bytes)
+0006:    |  |  2b 06 01 04 01 82 37 02  01 0f
+         |  |     ; 1.3.6.1.4.1.311.2.1.15 SPC_PE_IMAGE_DATA_OBJID
+0010:    |  30 0a				; SEQUENCE (a Bytes)
+0012:    |     03 02				; BIT_STRING (2 Bytes)
+0014:    |     |  05
+0015:    |     |  a0
+0016:    |     a0 04				; OPTIONAL[0] (4 Bytes)
+0018:    |        a2 02				; OPTIONAL[2] (2 Bytes)
+001a:    |           80 00			; CONTEXT_SPECIFIC[0] (0 Bytes)
+001c:    30 21					; SEQUENCE (21 Bytes)
+001e:       30 09				; SEQUENCE (9 Bytes)
+0020:       |  06 05				; OBJECT_ID (5 Bytes)
+0022:       |  |  2b 0e 03 02 1a
+            |  |     ; 1.3.14.3.2.26 sha1 (sha1NoSign)
+0027:       |  05 00				; NULL (0 Bytes)
+0029:       04 14				; OCTET_STRING (14 Bytes)
+002b:          23 c7 3e f9 19 f1 8e cf  98 55 33 1c f2 56 3d 3a  ; #.>......U3..V=:
+003b:          15 af 52 bc                                       ; ..R.
+
+  Attribute[1]: 1.3.6.1.4.1.311.12.2.2
+    Value[1][0], Length = 54
+    0000  30 52 1e 4c 00 7b 00 43  00 36 00 38 00 39 00 41   0R.L.{.C.6.8.9.A
+    0010  00 41 00 42 00 38 00 2d  00 38 00 45 00 37 00 38   .A.B.8.-.8.E.7.8
+    0020  00 2d 00 31 00 31 00 44  00 30 00 2d 00 38 00 43   .-.1.1.D.0.-.8.C
+    0030  00 34 00 37 00 2d 00 30  00 30 00 43 00 30 00 34   .4.7.-.0.0.C.0.4
+    0040  00 46 00 43 00 32 00 39  00 35 00 45 00 45 00 7d   .F.C.2.9.5.E.E.}
+    0050  02 02 02 00                                        ....
+0000: 30 52					; SEQUENCE (52 Bytes)
+0002:    1e 4c					; UNICODE_STRING (4c Bytes)
+0004:    |  00 7b 00 43 00 36 00 38  00 39 00 41 00 41 00 42  ; .{.C.6.8.9.A.A.B
+0014:    |  00 38 00 2d 00 38 00 45  00 37 00 38 00 2d 00 31  ; .8.-.8.E.7.8.-.1
+0024:    |  00 31 00 44 00 30 00 2d  00 38 00 43 00 34 00 37  ; .1.D.0.-.8.C.4.7
+0034:    |  00 2d 00 30 00 30 00 43  00 30 00 34 00 46 00 43  ; .-.0.0.C.0.4.F.C
+0044:    |  00 32 00 39 00 35 00 45  00 45 00 7d              ; .2.9.5.E.E.}
+         |     ; "{C689AAB8-8E78-11D0-8C47-00C04FC295EE}"
+0050:    02 02					; INTEGER (2 Bytes)
+0052:       02 00
+

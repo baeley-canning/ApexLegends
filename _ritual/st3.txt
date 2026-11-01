@@ -1,0 +1,43 @@
+﻿== st3 2026-11-01 14:01:44 ==
+file   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys  10152 B  11/01/2026 14:00:47  sig=Valid  signer=CN=ApexDrv Dev (QwenKern Premium)
+file   : C:\ProgramData\QwenKern\apexdrv.sys  10152 B  11/01/2026 14:00:47  sig=Valid  signer=CN=ApexDrv Dev (QwenKern Premium)
+secureboot : False
+VBS status=2 running=0
+lastboot : 10/31/2026 14:12:22
+bcd ts   : True
+  sign| The following certificate was selected:
+  sign|     Issued to: ApexDrv Dev (QwenKern Premium)
+  sign| 
+  sign|     Issued by: ApexDrv Dev (QwenKern Premium)
+  sign| 
+  sign|     Expires:   Fri Oct 26 17:43:18 2029
+  sign| 
+  sign|     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  sign| 
+  sign| 
+  sign| Done Adding Additional Store
+  sign| Successfully signed: C:\ProgramData\QwenKern\apexdrv.sys
+  sign| 
+  sign| 
+  sign| Number of files successfully Signed: 1
+  sign| 
+  sign| Number of warnings: 0
+  sign| 
+  sign| Number of errors: 0
+  sign| 
+resigned sig=Valid
+  create| [SC] CreateService FAILED 487:
+  create| 
+  create| Attempt to access invalid address.
+  create| 
+  [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+  
+  The specified service does not exist as an installed service.
+  
+loaded : False
+--- CodeIntegrity ---
+  11-01 14:00:47 id=3089 Signature information for another event. Match using the Correlation Id.
+  11-01 14:00:47 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  11-01 13:58:58 id=3089 Signature information for another event. Match using the Correlation Id.
+  11-01 13:58:58 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+END

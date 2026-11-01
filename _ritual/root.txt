@@ -1,0 +1,5119 @@
+﻿=== ROOT depth1 ===
+DIR  .git
+DIR  deepseekharness
+DIR  dump
+DIR  ext
+DIR  generated_cheats
+DIR  harness
+DIR  Qwen General Knowledge
+DIR  Qwen Knowledge base
+DIR  QwenKern
+DIR  QwenKernPremium
+DIR  Sentinel
+DIR  temp
+DIR  _ritual
+FILE .gitignore
+FILE ai_apex_external_aimbot_architecture.md
+FILE allfiles.txt
+FILE apexcheat.ini
+FILE apexdrv.obj
+FILE apexr - run after reboot.lnk
+FILE build_all.py
+FILE build_debug.txt
+FILE build_harness.py
+FILE build_log.txt
+FILE build_output.txt
+FILE build_output2.txt
+FILE build_output3.txt
+FILE build_output4.txt
+FILE build_output5.txt
+FILE build_output6.txt
+FILE build_output7.txt
+FILE build_output8.txt
+FILE build_output9.txt
+FILE build_output_debug.txt
+FILE build_quick_test.py
+FILE dep_dll.txt
+FILE dep_launcher.txt
+FILE dirs.txt
+FILE dirs_rel.txt
+FILE example.py
+FILE files.txt
+FILE find_dumpbin.txt
+FILE ft_a.txt
+FILE gate3.txt
+FILE gate_run.txt
+FILE gate_run2.txt
+FILE hk_a.txt
+FILE hk_b.txt
+FILE hk_c.txt
+FILE inj_a.txt
+FILE kb2.txt
+FILE kb_listing.txt
+FILE kern2.txt
+FILE kern_listing.txt
+FILE list.ps1
+FILE listing.txt
+FILE listing2.txt
+FILE list_phase5.ps1
+FILE lm_a.txt
+FILE lm_b.txt
+FILE lm_c.txt
+FILE mh.txt
+FILE names.txt
+FILE p1.log
+FILE p1_summary.txt
+FILE p2.log
+FILE p2_summary.txt
+FILE p2_tail.txt
+FILE p5.txt
+FILE p5_dirs.txt
+FILE p5_files.txt
+FILE p5_listing.txt
+FILE phase5_all.txt
+FILE phase5_files.txt
+FILE phase5_tree.txt
+FILE query
+FILE quick_test2.py
+FILE qw_listing.txt
+FILE README.md
+FILE System.Net.Sockets.Socket
+FILE test_harness.py
+FILE tree.txt
+FILE vc140.pdb
+FILE w4.log
+FILE w4_ctx.txt
+FILE w4_summary.txt
+FILE wt_list.txt
+FILE _dirs.txt
+FILE _explore.ps1
+FILE _gc.txt
+FILE _gc1.txt
+FILE _listing_top.txt
+FILE _out.txt
+FILE _p5.txt
+FILE _p5b.txt
+FILE _p5tree.txt
+FILE _rdpout.txt
+FILE _rdpprobe.ps1
+FILE _rdpset.txt
+FILE _rdpusage.txt
+FILE _src.txt
+FILE _test2.obj
+FILE _tools.txt
+FILE _top.txt
+FILE _v1.txt
+FILE _v3.txt
+FILE _vresults.txt
+FILE _v_one.txt
+=== AGENT/NOTES search ===
+=== git log ===
+
+df4ec6d QwenKern 
+Premium: Phase 2 
+kernel driver ΓÇö 
+build + VM 
+deployment artifacts
+ QwenKernPremium/bui
+ld/Win11-Test2-VRDP.
+rdp         |   8 
++++
+ QwenKernPremium/bui
+ld/Win11-Test2.rdp  
+            |  10 
+++++
+ QwenKernPremium/bui
+ld/apexdrv.sys      
+            | Bin 
+8616 -> 15984 bytes
+ QwenKernPremium/bui
+ld/build_driver.cmd 
+            |  51 
+++++++++++++++++++
+ .../build/import_ce
+rt_and_enable_testsi
+gn.cmd      |  35 
+++++++++++++
+ QwenKernPremium/bui
+ld/setup_driver_vm.c
+md          |  60 ++
++++++++++++++++++++
+ QwenKernPremium/dri
+ver/apexdrv.vcxproj 
+            |   6 
+++-
+ System.Net.Sockets.
+Socket              
+            |   0
+ _test2.obj         
+                    
+            | Bin 0 
+-> 618 bytes
+ apexdrv.obj        
+                    
+            | Bin 0 
+-> 43312 bytes
+ query              
+                    
+            |   1 +
+ vc140.pdb          
+                    
+            | Bin 0 
+-> 184320 bytes
+ 12 files changed, 
+169 insertions(+), 
+2 deletions(-)
+c6be71f first commit
+ .gitignore         
+                    
+            |     7 
++
+ Qwen General Knowle
+dge/01_Python_Engine
+ering.txt   |   100 
++
+ Qwen General Knowle
+dge/02_Running_Local
+_LLMs.txt   |    87 
++
+ .../03_Writing_Effe
+ctive_Knowledge_Base
+s.txt       |    69 
++
+ Qwen General Knowle
+dge/04_Git_Basics.tx
+t           |    75 
++
+ .../05_Secrets_and_
+Security_Hygiene.txt
+            |    56 
++
+ .../01_Orientation_
+How_to_Read_This_Ser
+ies.txt     |   134 
++
+ ...omputing_Hardwar
+e_and_Execution_Foun
+dations.txt |   141 
++
+ .../03_Mathematics_
+for_Perception_and_C
+ontrol.txt  |   126 
++
+ .../04_Data_Represe
+ntation_and_Formats.
+txt         |   122 
++
+ .../05_Camera_Geome
+try_and_3D_Vision.tx
+t           |    59 
++
+ ...cking_Data_Assoc
+iation_and_State_Est
+imation.txt |    81 
++
+ ...07_Control_Theor
+y_and_System_Identif
+ication.txt |    81 
++
+ .../08_Neural_Netwo
+rks_Training_and_Eva
+luation.txt |    74 
++
+ ...en_Capture_Prote
+ction_and_External_O
+verlays.txt |   246 
++
+ ...0_Windows_Window
+ing_and_Desktop_Comp
+osition.txt |   211 
++
+ .../11_Capture_Pipe
+lines_and_Frame_Acqu
+isition.txt |   182 
++
+ .../12_Latency_Budg
+ets_and_Real_Time_Pi
+pelines.txt |   159 
++
+ .../13_Input_Path_a
+nd_Interaction_Model
+.txt        |   151 
++
+ .../14_OS_Internals
+_and_Process_Memory.
+txt         |   211 
++
+ .../15_Kernel_Mode_
+and_Anti_Cheat_Drive
+rs.txt      |   191 
++
+ .../16_Statistics_a
+nd_Experimental_Desi
+gn.txt      |   214 
++
+ .../17_Reverse_Engi
+neering_Methodology.
+txt         |   207 
++
+ .../18_Signal_Proce
+ssing_and_Filtering.
+txt         |   198 
++
+ .../19_Real_Time_Sy
+stems_Engineering.tx
+t           |   191 
++
+ .../20_Observabilit
+y_Logging_and_Diagno
+stics.txt   |   180 
++
+ .../21_Software_Arc
+hitecture_and_Design
+.txt        |   174 
++
+ Qwen Knowledge base
+/AI_Aimbot_Knowledge
+.txt        |  1678 
++
+ Qwen Knowledge base
+/ARCHIVE_PHASE4_LEGA
+CY.md       |    77 
++
+ .../AdaptiveCheatin
+gRedTeamandEvolvingS
+ystems.txt  |   703 
++
+ .../AdversarialAIan
+dCheatDetection.txt 
+            |   697 
++
+ Qwen Knowledge base
+/AntiCheatArchitectu
+re.txt      |   760 
++
+ .../AntiCheat_Produ
+cts_and_Systems.txt 
+            |   410 
++
+ Qwen Knowledge base
+/Anti_Cheat_Threat_M
+odeling.txt |   146 
++
+ ...Apex_Legends_Ant
+i_Cheat_and_Provider
+_Change.txt |   245 
++
+ .../Ban_Governance_
+and_Identity_Integri
+ty.txt      |   171 
++
+ .../Cheat_Economics
+_and_the_Underground
+_Market.txt |   171 
++
+ .../Cheating_Histor
+y_Taxonomy_and_Detec
+tion.txt    |   483 
++
+ ...lient_Integrity_
+Anti_Tamper_and_Atte
+station.txt |   168 
++
+ .../Console_and_Clo
+sed_Platform_Integri
+ty.txt      |   157 
++
+ .../Esports_and_Com
+petitive_Integrity.t
+xt          |   142 
++
+ ...g_Anti_Cheat_Cat
+egories_and_Counterm
+easures.txt |   192 
++
+ Qwen Knowledge base
+/GPUcomputeInference
+.txt        |   907 
++
+ .../Hardware_DMA_an
+d_Below_Kernel_Threa
+ts.txt      |   197 
++
+ ...eats_Work_Vangua
+rd_BattlEye_EAC_and_
+Javelin.txt |   331 
++
+ .../Input_Integrity
+_and_Device_Fraud.tx
+t           |   174 
++
+ .../Javelin 
+Anti-Cheat Research 
+2026.txt           
+|   222 +
+ ... Behavioral 
+Biometrics & 
+Humanizer 
+Pipeline.txt |   
+234 +
+ .../Javelin 
+Detection 
+Categories & 
+Evasion.txt     |   
+223 +
+ .../Detection_Patte
+rns_Research.txt    
+            |   288 
++
+ .../Griffin_VM_Rese
+arch.txt            
+            |   146 
++
+ .../Javelin 
+Research Agents/KDMa
+pper_Research.txt  
+|   104 +
+ .../Low-Level_Detec
+tion_Cheat_Architect
+ure.txt     |   264 
++
+ .../Telemetry_EASPE
+AR_Research.txt     
+            |   471 
++
+ .../Matchmaking_and
+_Account_Economy_Int
+egrity.txt  |   150 
++
+ .../Measuring_Anti_
+Cheat_Effectiveness.
+txt         |   145 
++
+ .../Mobile_and_Cros
+s_Platform_AntiCheat
+.txt        |   172 
++
+ .../Network_and_Lag
+_Manipulation.txt   
+            |   158 
++
+ Qwen Knowledge base
+/PHASE4_CHEAT_CLEANU
+P.md        |   110 
++
+ Qwen Knowledge base
+/PreviousModelsLearn
+ings.txt    |    93 
++
+ Qwen Knowledge base
+/README_START_HERE.t
+xt          |   194 
++
+ ...oritative_Archit
+ecture_and_Trust_Bou
+ndaries.txt |   182 
++
+ Qwen Knowledge base
+/Spoofing_and_Ban_Ev
+asion.txt   |   181 
++
+ .../Telemetry_Priva
+cy_and_Player_Data_E
+thics.txt   |   199 
++
+ .../Virtualization_
+Cloud_Gaming_and_Ant
+i_Cheat.txt |   147 
++
+ ...g_Data_Associati
+on_and_State_Estimat
+ion (1).txt |    81 
++
+ Qwen Knowledge 
+base/deepseek.env   
+                |   
+  1 +
+ Qwen Knowledge base
+/deepseek_handler.py
+            |   300 
++
+ .../phase2_kernel_d
+river/IMPLEMENTATION
+_SUMMARY.md |   202 
++
+ .../phase2_kernel_d
+river/VERIFICATION_R
+EPORT.md    |   185 
++
+ .../phase2_kernel_d
+river/include/common
+.h          |   226 
++
+ .../phase2_kernel_d
+river/include/griffi
+n.h         |   294 
++
+ .../phase2_kernel_d
+river/include/hooks.
+h           |   308 
++
+ .../phase2_kernel_d
+river/include/obfusc
+ation.h     |   262 
++
+ .../phase2_kernel_d
+river/include/phase2
+.h          |   188 
++
+ .../phase2_kernel_d
+river/src/drivers/in
+jection.c   |   273 
++
+ .../phase2_kernel_d
+river/src/drivers/ma
+in.c        |   346 
++
+ .../phase2_kernel_d
+river/src/drivers/te
+lemetry.c   |   353 
++
+ .../phase2_kernel_d
+river/src/hooks/grif
+fin.c       |   225 
++
+ .../phase2_kernel_d
+river/src/hooks/hook
+s.c         |   486 
++
+ .../phase2_kernel_d
+river/src/hooks/memo
+ry.c        |   229 
++
+ .../phase2_kernel_d
+river/src/hooks/proc
+ess.c       |   204 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/griffin.c |   445 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/handle.c  |   201 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/memory.c  |   146 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/module.c  |   170 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/timing.c  |   415 
++
+ .../phase2_kernel_d
+river/src/obfuscatio
+n/xor.c     |   193 
++
+ .../phase2_kernel_d
+river/tests/README.m
+d           |   245 
++
+ .../tests/integrati
+on/test_kdmapper_inj
+ection.c    |   328 
++
+ .../tests/test_easp
+ear_telemetry.c     
+            |   372 
++
+ .../tests/test_grif
+fin_integration.c   
+            |   386 
++
+ .../tests/test_grif
+fin_obfuscation.c   
+            |   403 
++
+ .../tests/test_hand
+le_management.c     
+            |   332 
++
+ .../phase2_kernel_d
+river/tests/test_mba
+_folding.c  |   466 
++
+ .../tests/test_ring
+0_overhead.c        
+            |   429 
++
+ .../tests/test_tele
+metry_batching.c    
+            |   320 
++
+ .../tests/test_tele
+metry_latency.c     
+            |   379 
++
+ .../tests/unit/test
+_griffin_vm_context.
+c           |   392 
++
+ .../tests/unit/test
+_handle_refresh.c   
+            |   355 
++
+ .../tests/unit/test
+_timing_evasion.c   
+            |   412 
++
+ .../tests/unit/test
+_xor_encryption.c   
+            |   378 
++
+ .../EVASION_OPPORTU
+NITY_MATRIX.md      
+            |   161 
++
+ .../behavioral_anal
+ysis_report.md      
+            |   163 
++
+ .../hardware_finger
+printing_report.md  
+            |   131 
++
+ .../heuristic_detec
+tion_report.md      
+            |   124 
++
+ .../kernel_mode_sca
+nning_report.md     
+            |   124 
++
+ .../ml_detection_re
+port.md             
+            |   171 
++
+ .../server_side_val
+idation_report.md   
+            |   180 
++
+ .../signature_scann
+ing_report.md       
+            |   135 
++
+ Qwen Knowledge base
+/phase4_apex_cheat/R
+EADME.md    |    99 
++
+ .../apex_pack_dupli
+cator.cpython-312.py
+c           |   Bin 
+0 -> 18137 bytes
+ .../__pycache__/che
+at_menu.cpython-312.
+pyc         |   Bin 
+0 -> 8393 bytes
+ .../__pycache__/esp
+_overlay.cpython-312
+.pyc        |   Bin 
+0 -> 10990 bytes
+ .../__pycache__/mai
+n.cpython-312.pyc   
+            |   Bin 
+0 -> 10468 bytes
+ .../archive/DPG_CRA
+SH_DIAGNOSIS.md     
+            |   126 
++
+ .../phase4_apex_che
+at/archive/DPG_FIX.m
+d           |   126 
++
+ .../phase4_apex_che
+at/archive/FEATURE_R
+ESEARCH.md  |   301 
++
+ .../phase4_apex_che
+at/archive/LAUNCH_GU
+IDE.md      |    88 
++
+ .../phase4_apex_che
+at/archive/MENU_COMP
+ARISON.md   |   232 
++
+ .../phase4_apex_che
+at/archive/README.md
+            |   181 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+011647.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+011647.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+012040.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+012040.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+012313.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+012313.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+012641.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+012641.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+012707.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+012707.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+012802.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+012802.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+013231.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+013231.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+013345.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+013345.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+013440.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+013440.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+013549.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+013549.pcap |   Bin 
+0 -> 24 bytes
+ .../archive/apex_pa
+ck_capture_20261014_
+013839.json |     1 
++
+ .../archive/apex_pa
+ck_capture_20261014_
+013839.pcap |   Bin 
+0 -> 24 bytes
+ .../apex_pack_dupli
+cation_implementatio
+n_guide.md  |   503 
++
+ .../apex_pack_dupli
+cation_methods_resea
+rch.md      |   233 
++
+ .../archive/apex_pa
+ck_duplication_summa
+ry.md       |   285 
++
+ .../archive/apex_pa
+ck_duplicator.py    
+            |   378 
++
+ .../apex_pack_hybri
+d_dupe_20261014_0922
+53.json     |    12 
++
+ .../apex_pack_hybri
+d_dupe_20261014_0923
+28.json     |   396 
++
+ .../apex_pack_hybri
+d_dupe_20261014_0932
+56.json     |   396 
++
+ .../apex_pack_hybri
+d_dupe_20261014_1003
+46.json     |   396 
++
+ .../phase4_apex_che
+at/archive/cheat_men
+u.py        |   209 
++
+ .../phase4_apex_che
+at/archive/check_win
+dows.py     |    54 
++
+ .../archive/d3d_int
+ernal_overlay.py    
+            |   137 
++
+ .../phase4_apex_che
+at/archive/esp_overl
+ay.py       |   261 
++
+ .../phase4_apex_che
+at/archive/launch_st
+able.py     |   113 
++
+ .../archive/legacy_
+apex_pack_dupe.py   
+            |   474 
++
+ .../archive/legacy_
+apex_pack_network.py
+            |   463 
++
+ .../legacy_cheat_co
+re/apex_pack/__init_
+_.py        |    48 
++
+ .../apex_pack/__pyc
+ache__/__init__.cpyt
+hon-312.pyc |   Bin 
+0 -> 968 bytes
+ .../__pycache__/inv
+entory_snapshot.cpyt
+hon-312.pyc |   Bin 
+0 -> 19582 bytes
+ .../__pycache__/mem
+ory_hooks.cpython-31
+2.pyc       |   Bin 
+0 -> 27492 bytes
+ .../apex_pack/inven
+tory_snapshot.py    
+            |   395 
++
+ .../legacy_cheat_co
+re/apex_pack/memory_
+hooks.py    |   617 
++
+ .../archive/legacy_
+dpg_subprocess.py   
+            |   323 
++
+ .../archive/legacy_
+external_menu.py    
+            |   392 
++
+ .../phase4_apex_che
+at/archive/legacy_im
+gui_menu.py |   245 
++
+ .../archive/legacy_
+launch_phase4.py    
+            |   189 
++
+ .../archive/legacy_
+launch_subprocess.py
+            |   306 
++
+ .../phase4_apex_che
+at/archive/legacy_la
+uncher.py   |   151 
++
+ .../phase4_apex_che
+at/archive/legacy_ma
+in.py       |   352 
++
+ .../archive/legacy_
+minimal_menu.py     
+            |   185 
++
+ .../archive/legacy_
+test_memory_hooks.py
+            |   372 
++
+ .../archive/legacy_
+test_pack_duplicatio
+n.py        |   154 
++
+ .../phase4_apex_che
+at/archive/legacy_vm
+_deploy.py  |   314 
++
+ .../archive/legacy_
+vm_exclude.txt      
+            |    26 
++
+ .../phase4_apex_che
+at/archive/simple_ov
+erlay.py    |   206 
++
+ .../archive/subproc
+ess_launcher.py     
+            |   139 
++
+ .../phase4_apex_che
+at/archive/test_mini
+mal_dpg.py  |   100 
++
+ .../archive/validat
+e_human_baseline.py 
+            |   204 
++
+ .../phase4_apex_che
+at/archive/vm_setup.
+py          |   314 
++
+ .../phase4_apex_che
+at/requirements.txt 
+            |    10 
++
+ .../__pycache__/tes
+t_esp_overlay.cpytho
+n-312.pyc   |   Bin 
+0 -> 6129 bytes
+ .../test_menu_integ
+ration.cpython-312.p
+yc          |   Bin 
+0 -> 5206 bytes
+ .../phase4_apex_che
+at/tests/test_esp_ov
+erlay.py    |   166 
++
+ .../tests/test_menu
+_integration.py     
+            |   136 
++
+ .../phase4_apex_che
+at/tests/test_runner
+.py         |    65 
++
+ .../PHASE4_COMPLETI
+ON_REPORT.md        
+            |   318 
++
+ .../phase4_apex_che
+at_package/README.md
+            |   149 
++
+ .../phase4_apex_che
+at_package/TODO.md  
+            |   116 
++
+ .../__pycache__/che
+at_menu.cpython-312.
+pyc         |   Bin 
+0 -> 8847 bytes
+ .../phase4_apex_che
+at_package/apex_chea
+t.dll       |   Bin 
+0 -> 41984 bytes
+ .../phase4_apex_che
+at_package/apex_chea
+t.exp       |   Bin 
+0 -> 4331 bytes
+ .../phase4_apex_che
+at_package/apex_chea
+t.lib       |   Bin 
+0 -> 7846 bytes
+ .../phase4_apex_che
+at_package/apex_chea
+t.pdb       |   Bin 
+0 -> 1593344 bytes
+ .../phase4_apex_che
+at_package/apex_chea
+t_py.py     |   461 
++
+ .../phase4_apex_che
+at_package/cheat_men
+u.py        |   219 
++
+ .../phase4_apex_che
+at_package/launcher.
+py          |   278 
++
+ .../phase4_apex_che
+at_package/requireme
+nts.txt     |     6 
++
+ .../phase4_apex_che
+at_package/source/ap
+ex_cheat.h  |   200 
++
+ .../source/apex_che
+at_main.cpp         
+            |   693 
++
+ .../source/d3d11_re
+nderer.cpp          
+            |   680 
++
+ .../source/d3d11_re
+nderer.h            
+            |   184 
++
+ .../phase4_apex_che
+at_package/test_proo
+fs.py       |   123 
++
+ .../tests/__pycache
+__/esp_overlay.cpyth
+on-312.pyc  |   Bin 
+0 -> 5062 bytes
+ .../__pycache__/tes
+t_esp_overlay.cpytho
+n-312.pyc   |   Bin 
+0 -> 6129 bytes
+ .../test_menu_integ
+ration.cpython-312.p
+yc          |   Bin 
+0 -> 5206 bytes
+ .../tests/__pycache
+__/test_minimal.cpyt
+hon-312.pyc |   Bin 
+0 -> 6522 bytes
+ .../phase4_apex_che
+at_package/tests/esp
+_overlay.py |   127 
++
+ .../tests/test_dpg_
+menu_window.py      
+            |   109 
++
+ .../tests/test_esp_
+overlay.py          
+            |   178 
++
+ .../tests/test_menu
+_integration.py     
+            |   136 
++
+ .../tests/test_mini
+mal.py              
+            |   172 
++
+ .../phase4_apex_che
+at_package/tests/tes
+t_runner.py |    65 
++
+ .../tests/test_subp
+rocess_runner.py    
+            |   351 
++
+ .../phase5_cpp_ImGu
+i/BUILD_GUIDE.md    
+            |   141 
++
+ .../phase5_cpp_ImGu
+i/BUILD_READINESS.md
+            |   147 
++
+ Qwen Knowledge base
+/phase5_cpp_ImGui/CO
+DE_AUDIT.md |   208 
++
+ .../phase5_cpp_ImGu
+i/COMPLETION_REPORT.
+md          |   171 
++
+ .../phase5_cpp_ImGu
+i/FINAL_REPORT.md   
+            |   226 
++
+ .../phase5_cpp_ImGu
+i/IMPLEMENTATION_SUM
+MARY.md     |   181 
++
+ .../phase5_cpp_ImGu
+i/PHASE5_COMPLETE.md
+            |   206 
++
+ .../phase5_cpp_ImGu
+i/QUICK_REFERENCE.md
+            |   133 
++
+ Qwen Knowledge base
+/phase5_cpp_ImGui/RE
+ADME.md     |   179 
++
+ .../phase5_cpp_ImGu
+i/apex_cheat.sln    
+            |    28 
++
+ .../phase5_cpp_ImGu
+i/apex_cheat.vcxproj
+            |    84 
++
+ .../phase5_cpp_ImGu
+i/include/apex_cheat
+.h          |   139 
++
+ .../phase5_cpp_ImGu
+i/include/d3d11_rend
+erer.h      |   149 
++
+ Qwen Knowledge base
+/phase5_cpp_ImGui/la
+uncher.py   |   151 
++
+ .../python_wrapper/
+apex_cheat_py.py    
+            |   295 
++
+ .../phase5_cpp_ImGu
+i/src/apex_cheat_mai
+n.cpp       |   391 
++
+ .../phase5_cpp_ImGu
+i/src/d3d/d3d11_rend
+erer.cpp    |   470 
++
+ Qwen Knowledge base
+/phase5_cpp_ImGui/to
+do.md       |    75 
++
+ Qwen Knowledge base
+/redaction_list.txt 
+            |     7 
++
+ Qwen Knowledge 
+base/request.json   
+                |   
+  1 +
+ 
+QwenKern/.last_call 
+                    
+           |     1 +
+ QwenKern/01_RESEARC
+H_SUMMARY.md        
+            |   205 
++
+ QwenKern/02_ARCHITE
+CTURE_PLAN.md       
+            |   438 
++
+ QwenKern/03_IMPLEME
+NTATION_GUIDE.md    
+            |   514 
++
+ QwenKern/04_DESIGN_
+DOCUMENT.md         
+            |   564 
++
+ QwenKern/05_MASTER_
+PLAN.md             
+            |   549 
++
+ QwenKern/06_FINAL_S
+UMMARY.md           
+            |   533 
++
+ QwenKern/07_COMPLET
+E_STATUS.md         
+            |   549 
++
+ QwenKern/ARCHIVE_PH
+ASE4_LEGACY.md      
+            |    77 
++
+ QwenKern/ApexLegend
+sCheats.md          
+            |    57 
++
+ QwenKern/CHEAT_LAUN
+CH_SUMMARY.md       
+            |   136 
++
+ QwenKern/CHEAT_VISI
+BILITY_PROOF.md     
+            |   116 
++
+ QwenKern/CLAUDE_DEL
+EGATION_PROMPT.md   
+            |   194 
++
+ QwenKern/ESP_MENU_R
+EVIEW.md            
+            |   243 
++
+ QwenKern/GOALS.md  
+                    
+            |   260 
++
+ QwenKern/IMPLEMENTA
+TION_SUMMARY.md     
+            |   202 
++
+ QwenKern/INJECTION_
+STRATEGY.md         
+            |   236 
++
+ QwenKern/JAVELIN_RE
+SEARCH_COMPLETE.md  
+            |   174 
++
+ QwenKern/Javelin 
+Anti-Cheat Research 
+2026.txt      |   
+222 +
+ ... Behavioral 
+Biometrics & 
+Humanizer 
+Pipeline.txt |   
+234 +
+ QwenKern/ONBOARDING
+.md                 
+            |   236 
++
+ QwenKern/PHASE3_FIX
+_REPORT.md          
+            |   281 
++
+ QwenKern/PHASE4_CHE
+AT_CLEANUP.md       
+            |   110 
++
+ QwenKern/PHASE4_TES
+T_REPORT.md         
+            |    75 
++
+ QwenKern/PROJECT_IN
+FO.md               
+            |    27 
++
+ QwenKern/README.md 
+                    
+            |    19 
++
+ QwenKern/README_JAV
+ELIN_AND_CHEAT_RESEA
+RCH.md      |   190 
++
+ QwenKern/SESSION_SU
+MMARY.md            
+            |   234 
++
+ QwenKern/VERIFICATI
+ON_REPORT.md        
+            |   185 
++
+ QwenKern/apex_legen
+ds_cheats_guide.md  
+            |    76 
++
+ QwenKern/build_menu
+.bat                
+            |    44 
++
+ QwenKern/build_phas
+e4.py               
+            |   257 
++
+ QwenKern/cheat-laun
+ch-sequence.md      
+            |   104 
++
+ QwenKern/check_over
+lay.py              
+            |   121 
++
+ QwenKern/deepseek.e
+nv                  
+            |     1 
++
+ QwenKern/deepseek_a
+udit.log            
+            |     1 
++
+ QwenKern/deepseek_h
+andler.py           
+            |   300 
++
+ QwenKern/deepseek_r
+eq.json             
+            |    13 
++
+ QwenKern/diag2.py  
+                    
+            |   159 
++
+ QwenKern/diag3.py  
+                    
+            |   134 
++
+ QwenKern/diag_arch.
+py                  
+            |   143 
++
+ QwenKern/diag_esp_i
+nit.py              
+            |   163 
++
+ QwenKern/eac_apex_l
+egends_analysis.md  
+            |   100 
++
+ QwenKern/esp_debug.
+log                 
+            | 10153 
++++++
+ QwenKern/external/a
+wesome-reverse-engin
+eering      |     1 
++
+ QwenKern/filelist.t
+xt                  
+            |   185 
++
+ .../Detection_Patte
+rns_Research.txt    
+            |   288 
++
+ .../Griffin_VM_Rese
+arch.txt            
+            |   146 
++
+ .../javelin_researc
+h_agents/KDMapper_Re
+search.txt  |   104 
++
+ .../Low-Level_Detec
+tion_Cheat_Architect
+ure.txt     |   264 
++
+ .../Telemetry_EASPE
+AR_Research.txt     
+            |   471 
++
+ QwenKern/kdmapper_e
+xample.bat          
+            |    24 
++
+ QwenKern/knowledge_
+base/README.md      
+            |   215 
++
+ .../phase5-research
+-apex-season30.md   
+            |   286 
++
+ .../reverse-enginee
+ring-apex-and-javeli
+n.md        |   234 
++
+ .../knowledge_base/
+similar-cheats-refer
+ence.md     |   175 
++
+ QwenKern/knowledge_
+store/facts.md      
+            |    36 
++
+ QwenKern/knowledge_
+store/howto.md      
+            |    30 
++
+ QwenKern/knowledge_
+store/lessons.md    
+            |    26 
++
+ QwenKern/knowledge_
+store/log.md        
+            |    36 
++
+ QwenKern/launcher.p
+y                   
+            |   203 
++
+ .../EVASION_OPPORTU
+NITY_MATRIX.md      
+            |   161 
++
+ .../behavioral_anal
+ysis_report.md      
+            |   163 
++
+ .../hardware_finger
+printing_report.md  
+            |   131 
++
+ .../heuristic_detec
+tion_report.md      
+            |   124 
++
+ .../kernel_mode_sca
+nning_report.md     
+            |   124 
++
+ .../phase3_javelin_
+reports/ml_detection
+_report.md  |   171 
++
+ .../server_side_val
+idation_report.md   
+            |   180 
++
+ .../signature_scann
+ing_report.md       
+            |   135 
++
+ QwenKern/phase3_men
+u_system/BUILD_GUIDE
+.md         |   225 
++
+ QwenKern/phase3_men
+u_system/README.md  
+            |   114 
++
+ .../imgui_integrati
+on/Release/ApexCheat
+Menu.exe    |   Bin 
+0 -> 47616 bytes
+ .../imgui_integrati
+on/Release/ApexCheat
+Menu.exp    |   Bin 
+0 -> 1193 bytes
+ .../imgui_integrati
+on/Release/ApexCheat
+Menu.lib    |   Bin 
+0 -> 2688 bytes
+ .../imgui_integrati
+on/Release/entity_ex
+tractor.obj |   Bin 
+0 -> 202846 bytes
+ .../imgui_integrati
+on/Release/esp_gdi.o
+bj          |   Bin 
+0 -> 68007 bytes
+ .../imgui_integrati
+on/Release/main.obj 
+            |   Bin 
+0 -> 4655 bytes
+ .../imgui_integrati
+on/Release/menu_core
+.obj        |   Bin 
+0 -> 92713 bytes
+ .../imgui_integrati
+on/esp_gdi.cpp      
+            |   288 
++
+ .../imgui_integrati
+on/esp_gdi.hpp      
+            |    26 
++
+ .../phase3_menu_sys
+tem/imgui_integratio
+n/main.cpp  |    82 
++
+ .../imgui_integrati
+on/menu_config.hpp  
+            |    84 
++
+ .../imgui_integrati
+on/menu_core.cpp    
+            |   832 
++
+ .../imgui_integrati
+on/menu_core.hpp    
+            |    28 
++
+ .../imgui_integrati
+on/menu_renderer.hpp
+            |    34 
++
+ .../imgui_integrati
+on/shared_memory.hpp
+            |   103 
++
+ .../config_template
+s/menu_config.json  
+            |    84 
++
+ .../python_wrapper/
+menu_interface.py   
+            |   282 
++
+ QwenKern/phase3_men
+u_system/tests/test_
+esp.cpp     |   184 
++
+ QwenKern/phase3_men
+u_system/tests/test_
+menu.cpp    |   147 
++
+ QwenKern/phase4_esp
+_overlay/BUILD_GUIDE
+.md         |   234 
++
+ QwenKern/phase4_esp
+_overlay/ESP_VISIBIL
+ITY_FIX.md  |   117 
++
+ .../RESEARCH_AND_IM
+PROVEMENTS.md       
+            |   509 
++
+ QwenKern/phase4_esp
+_overlay/entity_extr
+actor.cpp   |   605 
++
+ QwenKern/phase4_esp
+_overlay/entity_extr
+actor.hpp   |   233 
++
+ QwenKern/phase4_esp
+_overlay/esp_manager
+.cpp        |   518 
++
+ QwenKern/phase4_esp
+_overlay/esp_manager
+.hpp        |   156 
++
+ QwenKern/phase4_esp
+_overlay/esp_rendere
+r.cpp       |  1134 
++
+ QwenKern/phase4_esp
+_overlay/esp_rendere
+r.hpp       |   267 
++
+ .../tests/test_enti
+ty_extractor.cpp    
+            |   277 
++
+ .../tests/test_enti
+ty_extractor.hpp    
+            |    57 
++
+ .../phase4_esp_over
+lay/tests/test_esp_m
+anager.cpp  |   243 
++
+ .../phase4_esp_over
+lay/tests/test_esp_m
+anager.hpp  |    53 
++
+ .../phase4_esp_over
+lay/tests/test_esp_r
+enderer.cpp |   352 
++
+ .../phase4_esp_over
+lay/tests/test_esp_r
+enderer.hpp |    59 
++
+ QwenKern/phase4_esp
+_overlay/tests/test_
+main.cpp    |   219 
++
+ QwenKern/phase4_esp
+_overlay/vc140.pdb  
+            |   Bin 
+0 -> 559872 bytes
+ QwenKern/phase5/inc
+lude/d3d11_renderer.
+h           |   135 
++
+ QwenKern/phase5_cpp
+_imgui/BUILD_GUIDE.m
+d           |   141 
++
+ QwenKern/phase5_cpp
+_imgui/COMPLETION_RE
+PORT.md     |   171 
++
+ QwenKern/phase5_cpp
+_imgui/FINAL_REPORT.
+md          |   226 
++
+ .../phase5_cpp_imgu
+i/IMPLEMENTATION_SUM
+MARY.md     |   181 
++
+ QwenKern/phase5_cpp
+_imgui/PHASE5_COMPLE
+TE.md       |   206 
++
+ QwenKern/phase5_cpp
+_imgui/QUICK_REFEREN
+CE.md       |   133 
++
+ QwenKern/phase5_cpp
+_imgui/README.md    
+            |   179 
++
+ QwenKern/phase5_cpp
+_imgui/todo.md      
+            |    75 
++
+ QwenKern/test.txt  
+                    
+            |     1 
++
+ QwenKern/test_cheat
+.py                 
+            |   341 
++
+ QwenKern/verify_che
+at_visibility.py    
+            |   191 
++
+ QwenKernPremium/ape
+x_cheat.sln         
+            |    27 
++
+ QwenKernPremium/ape
+x_cheat.vcxproj     
+            |    93 
++
+ QwenKernPremium/ape
+x_launcher.vcxproj  
+            |    92 
++
+ QwenKernPremium/ape
+xcheat.ini          
+            |     0
+ QwenKernPremium/bui
+ld/_check_syntax.ps1
+            |    22 
++
+ QwenKernPremium/bui
+ld/_dxgiexp2.txt    
+            |   Bin 
+0 -> 3324 bytes
+ QwenKernPremium/bui
+ld/_elev_canary.ps1 
+            |    51 
++
+ QwenKernPremium/bui
+ld/_elev_canary.txt 
+            |     7 
++
+ QwenKernPremium/bui
+ld/_elev_diag.ps1   
+            |    64 
++
+ QwenKernPremium/bui
+ld/_elev_diag.txt   
+            |     9 
++
+ QwenKernPremium/bui
+ld/_elev_test.ps1   
+            |     7 
++
+ QwenKernPremium/bui
+ld/_find_game_path.p
+s1          |    36 
++
+ QwenKernPremium/bui
+ld/_probe_bcd.ps1   
+            |    72 
++
+ QwenKernPremium/bui
+ld/_probe_kernel_sta
+te.ps1      |    27 
++
+ .../build/_resume_a
+fter_testsigning.ps1
+            |   130 
++
+ QwenKernPremium/bui
+ld/_run_a4_test.ps1 
+            |    47 
++
+ QwenKernPremium/bui
+ld/_run_ladder_test.
+ps1         |    52 
++
+ QwenKernPremium/bui
+ld/_run_live_ladder.
+ps1         |    56 
++
+ QwenKernPremium/bui
+ld/_run_live_probe.p
+s1          |    60 
++
+ QwenKernPremium/bui
+ld/_set_ts.ps1      
+            |    61 
++
+ QwenKernPremium/bui
+ld/_std_inj_build.tx
+t           |   Bin 
+0 -> 440 bytes
+ QwenKernPremium/bui
+ld/_std_inj_build2.t
+xt          |    15 
++
+ QwenKernPremium/bui
+ld/_std_inj_build3.t
+xt          |     9 
++
+ QwenKernPremium/bui
+ld/_std_inj_build4.t
+xt          |    15 
++
+ QwenKernPremium/bui
+ld/_std_inj_ladder.t
+xt          |   Bin 
+0 -> 2944 bytes
+ QwenKernPremium/bui
+ld/_target_pid.txt  
+            |     1 
++
+ QwenKernPremium/bui
+ld/_verify_testsigni
+ng.ps1      |    49 
++
+ QwenKernPremium/bui
+ld/_vs.txt          
+            |   Bin 
+0 -> 38 bytes
+ QwenKernPremium/bui
+ld/apex_launcher.exe
+            |   Bin 
+0 -> 428544 bytes
+ QwenKernPremium/bui
+ld/apex_launcher.pdb
+            |   Bin 
+0 -> 6647808 bytes
+ QwenKernPremium/bui
+ld/apexcheat.dll    
+            |   Bin 
+0 -> 318976 bytes
+ QwenKernPremium/bui
+ld/apexcheat.ini    
+            |     0
+ QwenKernPremium/bui
+ld/apexcheat.launche
+r.ini       |     5 
++
+ QwenKernPremium/bui
+ld/apexcheat.pdb    
+            |   Bin 
+0 -> 6975488 bytes
+ QwenKernPremium/bui
+ld/apexdrv.sys      
+            |   Bin 
+0 -> 8616 bytes
+ QwenKernPremium/bui
+ld/apexdrv_dev.cer  
+            |   Bin 
+0 -> 806 bytes
+ QwenKernPremium/bui
+ld/apexdrv_probe.txt
+            |     1 
++
+ QwenKernPremium/bui
+ld/diag_ci_state.ps1
+            |    71 
++
+ QwenKernPremium/bui
+ld/diag_driver_image
+path.ps1    |    42 
++
+ QwenKernPremium/bui
+ld/diag_driver_load.
+ps1         |    60 
++
+ QwenKernPremium/bui
+ld/diag_driver_path.
+ps1         |    50 
++
+ QwenKernPremium/bui
+ld/diag_driver_path2
+.ps1        |    54 
++
+ QwenKernPremium/bui
+ld/driver_build.log 
+            |   Bin 
+0 -> 396 bytes
+ QwenKernPremium/bui
+ld/drv_build_msbuild
+.txt        |   Bin 
+0 -> 1170 bytes
+ QwenKernPremium/bui
+ld/drv_build_out.txt
+            |   Bin 
+0 -> 11864 bytes
+ QwenKernPremium/bui
+ld/drv_head.txt     
+            |   121 
++
+ QwenKernPremium/bui
+ld/drv_inject.txt   
+            |   109 
++
+ QwenKernPremium/bui
+ld/drv_mid.txt      
+            |    69 
++
+ QwenKernPremium/bui
+ld/drv_result.txt   
+            |     1 
++
+ QwenKernPremium/bui
+ld/ea_state.txt     
+            |     9 
++
+ QwenKernPremium/bui
+ld/elevated_check.ps
+1           |    24 
++
+ QwenKernPremium/bui
+ld/elevated_phase1.p
+s1          |    76 
++
+ QwenKernPremium/bui
+ld/elevated_with_gam
+e.ps1       |    54 
++
+ QwenKernPremium/bui
+ld/enable_testsignin
+g.ps1       |   164 
++
+ QwenKernPremium/bui
+ld/env_scan.txt     
+            |     9 
++
+ QwenKernPremium/bui
+ld/game_boot.txt    
+            |    10 
++
+ QwenKernPremium/bui
+ld/game_boot_and_mea
+sure.ps1    |    45 
++
+ QwenKernPremium/bui
+ld/gate/build.log   
+            |   Bin 
+0 -> 1876 bytes
+ QwenKernPremium/bui
+ld/gate/gate_report.
+txt         |    23 
++
+ QwenKernPremium/bui
+ld/gate_b.txt       
+            |   105 
++
+ QwenKernPremium/bui
+ld/hooks_a.txt      
+            |   241 
++
+ QwenKernPremium/bui
+ld/hooks_b.txt      
+            |    87 
++
+ QwenKernPremium/bui
+ld/hooks_c.txt      
+            |   132 
++
+ QwenKernPremium/bui
+ld/install_wdk.ps1  
+            |    39 
++
+ QwenKernPremium/bui
+ld/ioctl_check.txt  
+            |     7 
++
+ QwenKernPremium/bui
+ld/ki_mid.txt       
+            |    68 
++
+ QwenKernPremium/bui
+ld/km_check.txt     
+            |    41 
++
+ QwenKernPremium/bui
+ld/km_ctlcode.txt   
+            |    15 
++
+ QwenKernPremium/bui
+ld/km_findstr.txt   
+            |     2 
++
+ QwenKernPremium/bui
+ld/km_findstr2.txt  
+            |    13 
++
+ QwenKernPremium/bui
+ld/km_findstr3.txt  
+            |     2 
++
+ QwenKernPremium/bui
+ld/km_lib.txt       
+            |    31 
++
+ QwenKernPremium/bui
+ld/km_lib2.txt      
+            |    12 
++
+ QwenKernPremium/bui
+ld/km_peb.txt       
+            |     9 
++
+ QwenKernPremium/bui
+ld/km_rights.txt    
+            |     5 
++
+ QwenKernPremium/bui
+ld/km_rights2.txt   
+            |     5 
++
+ QwenKernPremium/bui
+ld/km_syms.txt      
+            |    14 
++
+ QwenKernPremium/bui
+ld/km_syms2.txt     
+            |    33 
++
+ QwenKernPremium/bui
+ld/launcher_map.txt 
+            |   153 
++
+ QwenKernPremium/bui
+ld/live_state.txt   
+            |     9 
++
+ QwenKernPremium/bui
+ld/lm_main.txt      
+            |    79 
++
+ QwenKernPremium/bui
+ld/lm_opts.txt      
+            |    17 
++
+ QwenKernPremium/bui
+ld/lm_usage.txt     
+            |   102 
++
+ QwenKernPremium/bui
+ld/mod_check.ps1    
+            |    21 
++
+ QwenKernPremium/bui
+ld/obj/Release/acg_p
+robe.obj    |   Bin 
+0 -> 730837 bytes
+ .../obj/Release/ape
+x_cheat.tlog/CL.comm
+and.1.tlog  |   Bin 
+0 -> 17248 bytes
+ .../obj/Release/ape
+x_cheat.tlog/CL.read
+.1.tlog     |   Bin 
+0 -> 418938 bytes
+ .../obj/Release/ape
+x_cheat.tlog/CL.writ
+e.1.tlog    |   Bin 
+0 -> 12306 bytes
+ .../obj/Release/ape
+x_cheat.tlog/Cl.item
+s.tlog      |    13 
++
+ .../apex_cheat.tlog
+/apex_cheat.lastbuil
+dstate      |     2 
++
+ .../Release/apex_ch
+eat.tlog/link.comman
+d.1.tlog    |   Bin 
+0 -> 6328 bytes
+ .../obj/Release/ape
+x_cheat.tlog/link.re
+ad.1.tlog   |   Bin 
+0 -> 8446 bytes
+ .../Release/apex_ch
+eat.tlog/link.second
+ary.1.tlog  |     3 
++
+ .../obj/Release/ape
+x_cheat.tlog/link.wr
+ite.1.tlog  |   Bin 
+0 -> 2726 bytes
+ .../build/obj/Relea
+se/apex_injector.obj
+            |   Bin 
+0 -> 1230009 bytes
+ .../build/obj/Relea
+se/apexcheat.Build.C
+ppClean.log |    25 
++
+ .../build/obj/Relea
+se/apexcheat.dll.rec
+ipe         |    11 
++
+ QwenKernPremium/bui
+ld/obj/Release/apexc
+heat.iobj   |   Bin 
+0 -> 2411316 bytes
+ QwenKernPremium/bui
+ld/obj/Release/apexc
+heat.ipdb   |   Bin 
+0 -> 861552 bytes
+ QwenKernPremium/bui
+ld/obj/Release/appli
+cation.obj  |   Bin 
+0 -> 590130 bytes
+ QwenKernPremium/bui
+ld/obj/Release/confi
+g.obj       |   Bin 
+0 -> 1086191 bytes
+ .../build/obj/Relea
+se/d3d12_overlay.obj
+            |   Bin 
+0 -> 348288 bytes
+ QwenKernPremium/bui
+ld/obj/Release/featu
+res.obj     |   Bin 
+0 -> 452234 bytes
+ QwenKernPremium/bui
+ld/obj/Release/hooks
+.obj        |   Bin 
+0 -> 721601 bytes
+ .../build/obj/Relea
+se/kernel_injector.o
+bj          |   Bin 
+0 -> 1161292 bytes
+ QwenKernPremium/bui
+ld/obj/Release/log.o
+bj          |   Bin 
+0 -> 266230 bytes
+ QwenKernPremium/bui
+ld/obj/Release/main.
+obj         |   Bin 
+0 -> 151527 bytes
+ QwenKernPremium/bui
+ld/obj/Release/manua
+l_map.obj   |   Bin 
+0 -> 690455 bytes
+ QwenKernPremium/bui
+ld/obj/Release/memor
+y.obj       |   Bin 
+0 -> 575462 bytes
+ .../build/obj/Relea
+se/offset_validator.
+obj         |   Bin 
+0 -> 677591 bytes
+ QwenKernPremium/bui
+ld/obj/Release/vc143
+.pdb        |   Bin 
+0 -> 1241088 bytes
+ .../build/obj/apexd
+rv/Release/apexdrv.o
+bj          |   Bin 
+0 -> 15880 bytes
+ .../build/obj/launc
+her/Release/acg_prob
+e.obj       |   Bin 
+0 -> 730770 bytes
+ .../build/obj/launc
+her/Release/apex_inj
+ector.obj   |   Bin 
+0 -> 1230039 bytes
+ .../Release/apex_la
+uncher.Build.CppClea
+n.log       |    20 
++
+ .../obj/launcher/Re
+lease/apex_launcher.
+exe.recipe  |    11 
++
+ .../build/obj/launc
+her/Release/apex_lau
+ncher.iobj  |   Bin 
+0 -> 2866277 bytes
+ .../build/obj/launc
+her/Release/apex_lau
+ncher.ipdb  |   Bin 
+0 -> 1973728 bytes
+ .../Release/apex_la
+uncher.tlog/CL.comma
+nd.1.tlog   |   Bin 
+0 -> 7582 bytes
+ .../Release/apex_la
+uncher.tlog/CL.read.
+1.tlog      |   Bin 
+0 -> 217922 bytes
+ .../Release/apex_la
+uncher.tlog/CL.write
+.1.tlog     |   Bin 
+0 -> 4590 bytes
+ .../Release/apex_la
+uncher.tlog/Cl.items
+.tlog       |     6 
++
+ .../apex_launcher.l
+astbuildstate       
+            |     2 
++
+ .../Release/apex_la
+uncher.tlog/link.com
+mand.1.tlog |   Bin 
+0 -> 4010 bytes
+ .../Release/apex_la
+uncher.tlog/link.rea
+d.1.tlog    |   Bin 
+0 -> 5958 bytes
+ .../apex_launcher.t
+log/link.secondary.1
+.tlog       |     3 
++
+ .../Release/apex_la
+uncher.tlog/link.wri
+te.1.tlog   |   Bin 
+0 -> 1582 bytes
+ .../build/obj/launc
+her/Release/kernel_i
+njector.obj |   Bin 
+0 -> 1161322 bytes
+ .../build/obj/launc
+her/Release/launcher
+_main.obj   |   Bin 
+0 -> 1418524 bytes
+ .../build/obj/launc
+her/Release/manual_m
+ap.obj      |   Bin 
+0 -> 689976 bytes
+ .../build/obj/launc
+her/Release/memory.o
+bj          |   Bin 
+0 -> 574496 bytes
+ .../build/obj/launc
+her/Release/vc143.pd
+b           |   Bin 
+0 -> 651264 bytes
+ QwenKernPremium/bui
+ld/phase1_evidence/_
+bcdtest.txt |    28 
++
+ .../build/phase1_ev
+idence/_grep_launche
+r.txt       |    15 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/_
+n.txt       |     1 
++
+ .../build/phase1_ev
+idence/_probe_stdout
+.txt        |   Bin 
+0 -> 1602 bytes
+ QwenKernPremium/bui
+ld/phase1_evidence/_
+set_ts.txt  |    11 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/_
+syntax.txt  |     4 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/_
+tail.txt    |     7 
++
+ .../build/phase1_ev
+idence/_verify_ts.tx
+t           |    55 
++
+ .../build/phase1_ev
+idence/a4_sleep_v2.d
+one         |     3 
++
+ .../build/phase1_ev
+idence/a4_sleep_v2.t
+xt          |    40 
++
+ .../build/phase1_ev
+idence/a4_spin_v2.do
+ne          |     3 
++
+ .../build/phase1_ev
+idence/a4_spin_v2.tx
+t           |    38 
++
+ .../build/phase1_ev
+idence/a7_forced.txt
+            |    19 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/a
+pex_ac.txt  |    23 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/a
+pex_ac2.txt |    40 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/a
+pex_ac3.txt |   Bin 
+0 -> 9599 bytes
+ .../build/phase1_ev
+idence/apex_install.
+txt         |   469 
++
+ .../build/phase1_ev
+idence/b3_ladder.txt
+            |    20 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/c
+i_state.txt |    24 
++
+ .../build/phase1_ev
+idence/diag_done.txt
+            |     1 
++
+ .../build/phase1_ev
+idence/driver_done.t
+xt          |     1 
++
+ .../build/phase1_ev
+idence/driver_hunt.t
+xt          |    35 
++
+ .../phase1_evidence
+/driver_imagepath_di
+ag.txt      |    20 
++
+ .../build/phase1_ev
+idence/driver_load_d
+iag.txt     |    69 
++
+ .../build/phase1_ev
+idence/driver_path_d
+iag.txt     |    35 
++
+ .../build/phase1_ev
+idence/driver_path_d
+iag2.txt    |    27 
++
+ .../build/phase1_ev
+idence/driver_sign_l
+oad.txt     |    58 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/e
+1_probe.txt |    61 
++
+ .../build/phase1_ev
+idence/e2_ladder.txt
+            |    24 
++
+ .../build/phase1_ev
+idence/e3_sticky.txt
+            |     1 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/e
+_apex.txt   |     1 
++
+ .../build/phase1_ev
+idence/elev2_apex.tx
+t           |     1 
++
+ .../build/phase1_ev
+idence/elev2_done.tx
+t           |     1 
++
+ .../build/phase1_ev
+idence/elev2_drivers
+.txt        |     2 
++
+ .../build/phase1_ev
+idence/elev2_fltmc_f
+ilters.txt  |    19 
++
+ .../phase1_evidence
+/elev2_fltmc_instanc
+es.txt      |    50 
++
+ .../build/phase1_ev
+idence/elev2_fltmc_v
+olumes.txt  |    14 
++
+ .../build/phase1_ev
+idence/elev2_ladder.
+txt         |    24 
++
+ .../build/phase1_ev
+idence/elev2_mod_che
+ck.txt      |     5 
++
+ .../build/phase1_ev
+idence/elev2_probe.t
+xt          |    63 
++
+ .../build/phase1_ev
+idence/elev_apex.txt
+            |     1 
++
+ .../build/phase1_ev
+idence/elev_done.txt
+            |     1 
++
+ .../build/phase1_ev
+idence/elev_fltmc_fi
+lters.txt   |    18 
++
+ .../build/phase1_ev
+idence/elev_fltmc_in
+stances.txt |    16 
++
+ .../build/phase1_ev
+idence/elev_fltmc_vo
+lumes.txt   |    14 
++
+ .../build/phase1_ev
+idence/elev_identity
+.txt        |    24 
++
+ .../build/phase1_ev
+idence/elev_probe.tx
+t           |     1 
++
+ .../build/phase1_ev
+idence/elev_services
+.txt        |  1266 
++
+ .../build/phase1_ev
+idence/elevated_flag
+.txt        |     1 
++
+ .../build/phase1_ev
+idence/final_ladder.
+txt         |    19 
++
+ .../build/phase1_ev
+idence/final_probe_s
+elf.txt     |    45 
++
+ .../build/phase1_ev
+idence/final_sticky.
+txt         |     5 
++
+ .../build/phase1_ev
+idence/game_core.txt
+            |    52 
++
+ .../build/phase1_ev
+idence/game_ready.tx
+t           |     1 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/g
+ate2.txt    |   Bin 
+0 -> 3043 bytes
+ .../build/phase1_ev
+idence/gate_after_ed
+its.txt     |    10 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/g
+ate_d6.txt  |   Bin 
+0 -> 2025 bytes
+ .../build/phase1_ev
+idence/gate_final.tx
+t           |    11 
++
+ .../build/phase1_ev
+idence/gate_for_driv
+er.txt      |    20 
++
+ .../build/phase1_ev
+idence/gate_std_inje
+ction.txt   |    20 
++
+ .../build/phase1_ev
+idence/gate_with_dri
+ver.txt     |   Bin 
+0 -> 2229 bytes
+ .../build/phase1_ev
+idence/imagepath_don
+e.txt       |     1 
++
+ .../build/phase1_ev
+idence/javelin_drive
+r2.txt      |    23 
++
+ .../build/phase1_ev
+idence/javelin_drive
+r3.txt      |   205 
++
+ .../build/phase1_ev
+idence/javelin_drive
+r4.txt      |    47 
++
+ .../build/phase1_ev
+idence/javelin_drive
+r5.txt      |     8 
++
+ .../build/phase1_ev
+idence/javelin_drive
+r6.txt      |    53 
++
+ .../build/phase1_ev
+idence/javelin_files
+.txt        |    39 
++
+ .../build/phase1_ev
+idence/javelin_live.
+txt         |   504 
++
+ .../build/phase1_ev
+idence/javelin_logs.
+txt         |     3 
++
+ .../build/phase1_ev
+idence/javelin_root.
+txt         |    19 
++
+ .../build/phase1_ev
+idence/kernel_probe.
+txt         |    12 
++
+ .../build/phase1_ev
+idence/ladder_final.
+done        |     4 
++
+ .../build/phase1_ev
+idence/ladder_final.
+txt         |    25 
++
+ .../build/phase1_ev
+idence/ladder_sleep.
+done        |     4 
++
+ .../build/phase1_ev
+idence/ladder_sleep.
+txt         |    24 
++
+ .../build/phase1_ev
+idence/live_ladder_m
+enu.done    |     6 
++
+ .../build/phase1_ev
+idence/live_ladder_m
+enu.txt     |    34 
++
+ .../build/phase1_ev
+idence/live_probe_me
+nu.done     |     5 
++
+ .../build/phase1_ev
+idence/live_probe_me
+nu.txt      |    62 
++
+ .../build/phase1_ev
+idence/nonelev_ladde
+r.txt       |    26 
++
+ .../build/phase1_ev
+idence/nonelev_probe
+.txt        |    47 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+0.txt       |    19 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+1.txt       |    29 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+2.txt       |    28 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+3.txt       |     0
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+4.txt       |    22 
++
+ .../build/phase1_ev
+idence/pathdiag2_don
+e.txt       |     1 
++
+ .../build/phase1_ev
+idence/pathdiag_done
+.txt        |     1 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/p
+e_game.txt  |    52 
++
+ .../build/phase1_ev
+idence/pe_imports.tx
+t           |    25 
++
+ .../build/phase1_ev
+idence/post_reboot.t
+xt          |    26 
++
+ .../build/phase1_ev
+idence/probe_blind.t
+xt          |    46 
++
+ .../build/phase1_ev
+idence/probe_blind_f
+inal.txt    |    19 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/q
+1.txt       |    24 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/r
+1.txt       |     1 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/r
+2.txt       |    23 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/r
+3.txt       |     5 
++
+ .../build/phase1_ev
+idence/sanity_unprot
+ected.done  |     4 
++
+ .../build/phase1_ev
+idence/sanity_unprot
+ected.txt   |    25 
++
+ .../build/phase1_ev
+idence/smoke_thirdna
+me.txt      |    24 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/t
+.txt        |     1 
++
+ .../build/phase1_ev
+idence/testsigning.t
+xt          |     9 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/v
+1.txt       |    19 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/v
+2.txt       |     5 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/v
+3.txt       |    18 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/v
+4.txt       |    57 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/v
+5.txt       |    23 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/w
+0.txt       |     1 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/w
+1.txt       |    42 
++
+ QwenKernPremium/bui
+ld/phase1_evidence/w
+dk_done.txt |     1 
++
+ .../build/phase1_ev
+idence/wdk_install.t
+xt          |    15 
++
+ QwenKernPremium/bui
+ld/probe_cmd.txt    
+            |    67 
++
+ QwenKernPremium/bui
+ld/render_refs.txt  
+            |   209 
++
+ QwenKernPremium/bui
+ld/sign_and_test_dri
+ver.ps1     |   131 
++
+ QwenKernPremium/bui
+ld/svc_check.txt    
+            |    29 
++
+ QwenKernPremium/bui
+ld/tree.txt         
+            |   108 
++
+ QwenKernPremium/bui
+ld/warnflags.txt    
+            |    14 
++
+ QwenKernPremium/bui
+ld/wdk_layout.txt   
+            |    95 
++
+ QwenKernPremium/bui
+ld/winget_wdk.txt   
+            |     8 
++
+ .../docs/APEX_OFFSE
+TS_AND_DUMPING_METHO
+DS.txt      |    94 
++
+ .../docs/INJECTION_
+MENU_AND_RISK_MATRIX
+.txt        |   151 
++
+ .../INJECTION_STRAT
+EGY_AGAINST_JAVELIN_
+R5AC.txt    |   138 
++
+ ...AVELIN_2026_DETE
+CTION_AND_INJECTION_
+REALITY.txt |   156 
++
+ .../docs/JAVELIN_RE
+VERSE_ENGINEERING.tx
+t           |   189 
++
+ QwenKernPremium/doc
+s/KB_INDEX_2026.txt 
+            |    60 
++
+ .../docs/KB_SOURCES
+_AND_RELIABILITY.txt
+            |    72 
++
+ .../docs/LAUNCHER_A
+ND_INJECTION_METHODS
+.md         |   196 
++
+ .../PHASE1_LADDER_A
+ND_LIVE_ACCESS_MEASU
+REMENT.txt  |   322 
++
+ .../docs/PREMIUM_MA
+RKET_TEARDOWN_2026.t
+xt          |   140 
++
+ .../docs/R5AC_APEX_
+ANTI_CHEAT_ANALYSIS.
+txt         |    88 
++
+ .../docs/ROADMAP_TO
+_PREMIUM_PRODUCT.txt
+            |   203 
++
+ QwenKernPremium/dri
+ver/apexdrv.c       
+            |   438 
++
+ QwenKernPremium/dri
+ver/apexdrv.vcxproj 
+            |    74 
++
+ QwenKernPremium/inc
+lude/acg_probe.h    
+            |   102 
++
+ QwenKernPremium/inc
+lude/apex_driver_ioc
+tl.h        |   104 
++
+ QwenKernPremium/inc
+lude/application.h  
+            |    44 
++
+ QwenKernPremium/inc
+lude/config.h       
+            |    33 
++
+ QwenKernPremium/inc
+lude/d3d12_overlay.h
+            |    53 
++
+ QwenKernPremium/inc
+lude/features.h     
+            |    67 
++
+ QwenKernPremium/inc
+lude/hooks.h        
+            |   117 
++
+ QwenKernPremium/inc
+lude/injector.h     
+            |   189 
++
+ QwenKernPremium/inc
+lude/log.h          
+            |    35 
++
+ QwenKernPremium/inc
+lude/main.h         
+            |    24 
++
+ QwenKernPremium/inc
+lude/manual_map.h   
+            |    54 
++
+ QwenKernPremium/inc
+lude/memory.h       
+            |    82 
++
+ QwenKernPremium/inc
+lude/offset_validato
+r.h         |    40 
++
+ QwenKernPremium/lau
+ncher/launcher_main.
+cpp         |  1239 
++
+ QwenKernPremium/src
+/acg_probe.cpp      
+            |  1131 
++
+ QwenKernPremium/src
+/apex_injector.cpp  
+            |   804 
++
+ QwenKernPremium/src
+/application.cpp    
+            |   210 
++
+ QwenKernPremium/src
+/application.h      
+            |    16 
++
+ QwenKernPremium/src
+/config.cpp         
+            |   133 
++
+ QwenKernPremium/src
+/d3d12_overlay.cpp  
+            |   744 
++
+ QwenKernPremium/src
+/features.cpp       
+            |   260 
++
+ QwenKernPremium/src
+/hooks.cpp          
+            |   748 
++
+ QwenKernPremium/src
+/kernel_injector.cpp
+            |   373 
++
+ QwenKernPremium/src
+/log.cpp            
+            |   109 
++
+ QwenKernPremium/src
+/main.cpp           
+            |    54 
++
+ QwenKernPremium/src
+/manual_map.cpp     
+            |   616 
++
+ QwenKernPremium/src
+/memory.cpp         
+            |    93 
++
+ QwenKernPremium/src
+/offset_validator.cp
+p           |   257 
++
+ QwenKernPremium/too
+ls/BuildDriver.ps1  
+            |   117 
++
+ QwenKernPremium/too
+ls/BuildGate.ps1    
+            |   313 
++
+ QwenKernPremium/too
+ls/pe_imports.ps1   
+            |   130 
++
+ README.md          
+                    
+            |     1 
++
+ Sentinel/README.md 
+                    
+            |    31 
++
+ 
+Sentinel/ROADMAP.md 
+                    
+           |   126 +
+ Sentinel/docs/ANALY
+SIS-TO-DETECTION.md 
+            |    48 
++
+ Sentinel/docs/PROJE
+CT-01-sentinel.md   
+            |    56 
++
+ _dirs.txt          
+                    
+            |     5 
++
+ _explore.ps1       
+                    
+            |    10 
++
+ _gc.txt            
+                    
+            |    42 
++
+ _gc1.txt           
+                    
+            |    23 
++
+ _listing_top.txt   
+                    
+            |    48 
++
+ _out.txt           
+                    
+            |    23 
++
+ _p5.txt            
+                    
+            |   127 
++
+ _p5b.txt           
+                    
+            |   123 
++
+ _p5tree.txt        
+                    
+            |   Bin 
+0 -> 5514 bytes
+ _rdpout.txt        
+                    
+            |     4 
++
+ _rdpprobe.ps1      
+                    
+            |    10 
++
+ _rdpset.txt        
+                    
+            |     8 
++
+ _rdpusage.txt      
+                    
+            |     1 
++
+ _src.txt           
+                    
+            |     0
+ _tools.txt         
+                    
+            |     0
+ _top.txt           
+                    
+            |    18 
++
+ _v1.txt            
+                    
+            |     8 
++
+ _v3.txt            
+                    
+            |     8 
++
+ _v_one.txt         
+                    
+            |     8 
++
+ _vresults.txt      
+                    
+            |     1 
++
+ ai_apex_external_ai
+mbot_architecture.md
+            |   105 
++
+ allfiles.txt       
+                    
+            |  1237 
++
+ apexcheat.ini      
+                    
+            |     0
+ apexr - run after 
+reboot.lnk          
+             |   
+Bin 0 -> 1177 bytes
+ build_all.py       
+                    
+            |    42 
++
+ build_debug.txt    
+                    
+            |   Bin 
+0 -> 11300 bytes
+ build_harness.py   
+                    
+            |    14 
++
+ build_log.txt      
+                    
+            |   Bin 
+0 -> 76430 bytes
+ build_output.txt   
+                    
+            |   Bin 
+0 -> 5240 bytes
+ build_output2.txt  
+                    
+            |   Bin 
+0 -> 13156 bytes
+ build_output3.txt  
+                    
+            |   Bin 
+0 -> 13156 bytes
+ build_output4.txt  
+                    
+            |   Bin 
+0 -> 9978 bytes
+ build_output5.txt  
+                    
+            |   Bin 
+0 -> 46866 bytes
+ build_output6.txt  
+                    
+            |   Bin 
+0 -> 11004 bytes
+ build_output7.txt  
+                    
+            |   Bin 
+0 -> 7852 bytes
+ build_output8.txt  
+                    
+            |   Bin 
+0 -> 7852 bytes
+ build_output9.txt  
+                    
+            |   Bin 
+0 -> 11516 bytes
+ build_output_debug.
+txt                 
+            |   Bin 
+0 -> 10116 bytes
+ 
+build_quick_test.py 
+                    
+           |    42 +
+ deepseekharness/.en
+v.example           
+            |    10 
++
+ deepseekharness/.gi
+tignore             
+            |     3 
++
+ deepseekharness/REA
+DME.md              
+            |    60 
++
+ deepseekharness/__i
+nit__.py            
+            |    10 
++
+ deepseekharness/__m
+ain__.py            
+            |    11 
++
+ deepseekharness/cli
+.py                 
+            |   280 
++
+ deepseekharness/cli
+ent.py              
+            |   110 
++
+ deepseekharness/con
+fig.py              
+            |    47 
++
+ deepseekharness/ds.
+cmd                 
+            |     2 
++
+ deepseekharness/mcp
+_server.py          
+            |   153 
++
+ deepseekharness/pro
+mpts.py             
+            |    64 
++
+ deepseekharness/ses
+sion.py             
+            |   288 
++
+ dep_dll.txt        
+                    
+            |    20 
++
+ dep_launcher.txt   
+                    
+            |    19 
++
+ dirs.txt           
+                    
+            |    12 
++
+ dirs_rel.txt       
+                    
+            |   111 
++
+ example.py         
+                    
+            |   152 
++
+ ext/__pycache__/gio
+.cpython-312.pyc    
+            |   Bin 
+0 -> 17700 bytes
+ ext/__pycache__/phy
+smem.cpython-312.pyc
+            |   Bin 
+0 -> 11975 bytes
+ ext/__pycache__/t_g
+0.cpython-312.pyc   
+            |   Bin 
+0 -> 15037 bytes
+ ext/__pycache__/t_g
+1.cpython-312.pyc   
+            |   Bin 
+0 -> 13169 bytes
+ ext/__pycache__/t_m
+sio.cpython-312.pyc 
+            |   Bin 
+0 -> 6423 bytes
+ ext/gio.py         
+                    
+            |   299 
++
+ ext/msio_dispatch.t
+xt                  
+            |   126 
++
+ ext/msio_init.txt  
+                    
+            |  4897 
+++
+ ext/out_g0.txt     
+                    
+            |    27 
++
+ ext/out_g1.txt     
+                    
+            |     3 
++
+ ext/out_g1.txt.task
+log                 
+            |     3 
++
+ ext/out_msio.txt   
+                    
+            |     9 
++
+ ext/out_msio.txt.ta
+sklog               
+            |     9 
++
+ ext/out_pm.txt     
+                    
+            |     8 
++
+ ext/out_pm.txt.task
+log                 
+            |     8 
++
+ ext/page_handlers.t
+xt                  
+            |   117 
++
+ ext/page_workers.tx
+t                   
+            | 39360 
+++++++++++++++++
+ ext/physmem.py     
+                    
+            |   193 
++
+ ext/run1.txt       
+                    
+            |     9 
++
+ ext/run_msio.txt   
+                    
+            |    21 
++
+ ext/run_pm.txt     
+                    
+            |    19 
++
+ ext/run_task.ps1   
+                    
+            |    40 
++
+ ext/sec_dump.py    
+                    
+            |    86 
++
+ ext/sec_dump2.py   
+                    
+            |    77 
++
+ ext/t_g0.py        
+                    
+            |   269 
++
+ ext/t_g1.py        
+                    
+            |   205 
++
+ ext/t_msio.py      
+                    
+            |   102 
++
+ ext/t_pm.py        
+                    
+            |    72 
++
+ files.txt          
+                    
+            |    14 
++
+ find_dumpbin.txt   
+                    
+            |     6 
++
+ ft_a.txt           
+                    
+            |    55 
++
+ gate3.txt          
+                    
+            |   Bin 
+0 -> 1926 bytes
+ gate_run.txt       
+                    
+            |   Bin 
+0 -> 1848 bytes
+ gate_run2.txt      
+                    
+            |   Bin 
+0 -> 1926 bytes
+ generated_cheats/ai
+mbot.py             
+            |    25 
++
+ generated_cheats/ai
+mbot_fictional.py   
+            |    19 
++
+ generated_cheats/ai
+mbot_flash.py       
+            |    27 
++
+ generated_cheats/ai
+mbot_singleplayer.py
+            |    37 
++
+ generated_cheats/ai
+mbot_v2.py          
+            |     0
+ generated_cheats/ai
+mbot_v3.py          
+            |     0
+ .../comparison_test
+/coordinate_transfor
+mer_full.py |    43 
++
+ .../coordinate_tran
+sformer_minimal.py  
+            |   122 
++
+ .../comparison_test
+/memory_reader_full.
+py          |    31 
++
+ .../comparison_test
+/memory_reader_minim
+al.py       |    29 
++
+ .../coordinate_tran
+sformer_full.py     
+            |    25 
++
+ .../coordinate_tran
+sformer_minimal.py  
+            |    27 
++
+ .../comparison_test
+_v2/memory_reader_fu
+ll.py       |    27 
++
+ .../comparison_test
+_v2/memory_reader_mi
+nimal.py    |    33 
++
+ generated_cheats/co
+ordtransform.py     
+            |   247 
++
+ generated_cheats/de
+bug.log             
+            |   146 
++
+ generated_cheats/es
+p_overlay.py        
+            |    72 
++
+ generated_cheats/es
+p_reasoner.py       
+            |    41 
++
+ .../final_test/coor
+dinate_transformer.p
+y           |    33 
++
+ generated_cheats/fi
+nal_test/entity_pars
+er.py       |    39 
++
+ generated_cheats/fi
+nal_test/memory_read
+er.py       |    29 
++
+ generated_cheats/fu
+ll_system/bone_resol
+ver.py      |    38 
++
+ generated_cheats/fu
+ll_system/cheat_syst
+em.py       |   251 
++
+ .../full_system/coo
+rdinate_transformer.
+py          |    46 
++
+ generated_cheats/fu
+ll_system/data_provi
+der.py      |    36 
++
+ generated_cheats/fu
+ll_system/entity_par
+ser.py      |    40 
++
+ generated_cheats/fu
+ll_system/memory_rea
+der.py      |    38 
++
+ generated_cheats/fu
+ll_system/team_class
+ifier.py    |    32 
++
+ generated_cheats/fu
+ll_system_v2/bone_re
+solver.py   |    30 
++
+ generated_cheats/fu
+ll_system_v2/cheat_s
+ystem.py    |   237 
++
+ .../full_system_v2/
+coordinate_transform
+er.py       |    46 
++
+ generated_cheats/fu
+ll_system_v2/data_pr
+ovider.py   |    30 
++
+ generated_cheats/fu
+ll_system_v2/entity_
+parser.py   |    40 
++
+ generated_cheats/fu
+ll_system_v2/memory_
+reader.py   |    30 
++
+ generated_cheats/fu
+ll_system_v2/team_cl
+assifier.py |    40 
++
+ generated_cheats/me
+mreader.py          
+            |   260 
++
+ generated_cheats/ra
+dar_minimap.py      
+            |    31 
++
+ harness/AI_USAGE_GU
+IDE.md              
+            |   264 
++
+ 
+harness/__init__.py 
+                    
+           |     4 +
+ harness/__pycache__
+/__init__.cpython-31
+2.pyc       |   Bin 
+0 -> 314 bytes
+ harness/__pycache__
+/harness.cpython-312
+.pyc        |   Bin 
+0 -> 18191 bytes
+ harness/__pycache__
+/models.cpython-312.
+pyc         |   Bin 
+0 -> 1475 bytes
+ harness/harness.py 
+                    
+            |   355 
++
+ harness/models.py  
+                    
+            |    26 
++
+ hk_a.txt           
+                    
+            |   250 
++
+ hk_b.txt           
+                    
+            |   210 
++
+ hk_c.txt           
+                    
+            |    47 
++
+ inj_a.txt          
+                    
+            |   158 
++
+ kb2.txt            
+                    
+            |    24 
++
+ kb_listing.txt     
+                    
+            |    24 
++
+ kern2.txt          
+                    
+            |    14 
++
+ kern_listing.txt   
+                    
+            |    14 
++
+ list.ps1           
+                    
+            |    10 
++
+ list_phase5.ps1    
+                    
+            |     8 
++
+ listing.txt        
+                    
+            |     0
+ listing2.txt       
+                    
+            |     2 
++
+ lm_a.txt           
+                    
+            |   163 
++
+ lm_b.txt           
+                    
+            |   279 
++
+ lm_c.txt           
+                    
+            |   121 
++
+ mh.txt             
+                    
+            |    28 
++
+ names.txt          
+                    
+            |     0
+ p1.log             
+                    
+            |   Bin 
+0 -> 42798 bytes
+ p1_summary.txt     
+                    
+            |    38 
++
+ p2.log             
+                    
+            |   Bin 
+0 -> 1818 bytes
+ p2_summary.txt     
+                    
+            |     0
+ p2_tail.txt        
+                    
+            |    12 
++
+ p5.txt             
+                    
+            |    20 
++
+ p5_dirs.txt        
+                    
+            |    31 
++
+ p5_files.txt       
+                    
+            |   102 
++
+ p5_listing.txt     
+                    
+            |   Bin 
+0 -> 1114 bytes
+ phase5_all.txt     
+                    
+            |   Bin 
+0 -> 718 bytes
+ phase5_files.txt   
+                    
+            |     8 
++
+ phase5_tree.txt    
+                    
+            |    14 
++
+ quick_test2.py     
+                    
+            |    58 
++
+ qw_listing.txt     
+                    
+            |   121 
++
+ temp/__pycache__/di
+ag2.cpython-312.pyc 
+            |   Bin 
+0 -> 11555 bytes
+ temp/__pycache__/di
+ag3.cpython-312.pyc 
+            |   Bin 
+0 -> 11995 bytes
+ temp/__pycache__/di
+ag4.cpython-312.pyc 
+            |   Bin 
+0 -> 18490 bytes
+ temp/__pycache__/di
+ag5.cpython-312.pyc 
+            |   Bin 
+0 -> 33647 bytes
+ temp/__pycache__/di
+ag6.cpython-312.pyc 
+            |   Bin 
+0 -> 21308 bytes
+ temp/__pycache__/dm
+11.cpython-312.pyc  
+            |   Bin 
+0 -> 29847 bytes
+ temp/__pycache__/dm
+2.cpython-312.pyc   
+            |   Bin 
+0 -> 11995 bytes
+ temp/__pycache__/dm
+32.cpython-312.pyc  
+            |   Bin 
+0 -> 46658 bytes
+ temp/__pycache__/gl
+obals.cpython-312.py
+c           |   Bin 
+0 -> 25698 bytes
+ temp/__pycache__/kx
+.cpython-312.pyc    
+            |   Bin 
+0 -> 15536 bytes
+ temp/__pycache__/mo
+ds.cpython-312.pyc  
+            |   Bin 
+0 -> 16319 bytes
+ temp/__pycache__/na
+mehunt.cpython-312.p
+yc          |   Bin 
+0 -> 34959 bytes
+ temp/__pycache__/pe
+drv.cpython-312.pyc 
+            |   Bin 
+0 -> 2753 bytes
+ temp/__pycache__/re
+adprobe2.cpython-312
+.pyc        |   Bin 
+0 -> 18978 bytes
+ temp/_fix.py       
+                    
+            |    12 
++
+ temp/_listing.txt  
+                    
+            |   265 
++
+ temp/_listing_paren
+t.txt               
+            |    23 
++
+ temp/_ls_now.txt   
+                    
+            |   133 
++
+ temp/_mods_now.txt 
+                    
+            |     3 
++
+ temp/apex_exe.txt  
+                    
+            |     2 
++
+ temp/c1.txt        
+                    
+            |    47 
++
+ temp/c2.txt        
+                    
+            |    39 
++
+ temp/c3.txt        
+                    
+            |   140 
++
+ temp/c6.txt        
+                    
+            |   Bin 
+0 -> 18 bytes
+ temp/d1.txt        
+                    
+            |   126 
++
+ temp/datamaps.txt  
+                    
+            |     1 
++
+ temp/dbg1.txt      
+                    
+            |   Bin 
+0 -> 1082 bytes
+ temp/dbg_pe.py     
+                    
+            |    21 
++
+ temp/dbg_pe.txt    
+                    
+            |   Bin 
+0 -> 2784 bytes
+ temp/dbg_pe2.txt   
+                    
+            |   Bin 
+0 -> 906 bytes
+ temp/dbg_pe2a.txt  
+                    
+            |     6 
++
+ temp/diag2.py      
+                    
+            |   189 
++
+ temp/diag2.txt     
+                    
+            |    47 
++
+ temp/diag3.py      
+                    
+            |   187 
++
+ temp/diag3.txt     
+                    
+            |    15 
++
+ temp/diag4.py      
+                    
+            |   259 
++
+ temp/diag4.txt     
+                    
+            |    71 
++
+ temp/diag5.py      
+                    
+            |   459 
++
+ temp/diag5.txt     
+                    
+            |    50 
++
+ temp/diag5_console.
+txt                 
+            |    51 
++
+ temp/diag6.py      
+                    
+            |   339 
++
+ temp/diag6.txt     
+                    
+            |    83 
++
+ temp/diag6_console.
+txt                 
+            |    85 
++
+ temp/dis32.py      
+                    
+            |    34 
++
+ temp/disasm_MsIo64_
+1090.txt            
+            |    42 
++
+ temp/disasm_MsIo64_
+1150.txt            
+            |    70 
++
+ temp/disasm_MsIo64_
+820.txt             
+            |   259 
++
+ temp/disasm_gdrv3_3
+3b0.txt             
+            |    39 
++
+ temp/disasm_gdrv3_3
+848.txt             
+            |    39 
++
+ temp/disasm_gdrv3_6
+174.txt             
+            |    84 
++
+ temp/disasm_gdrv3_6
+4e0.txt             
+            |    86 
++
+ temp/disasm_gdrv3_6
+64c.txt             
+            |    87 
++
+ temp/disasm_gdrv3_6
+8b0.txt             
+            |    98 
++
+ temp/disasm_gdrv3_6
+9f0.txt             
+            |   191 
++
+ temp/disasm_gdrv3_6
+a20.txt             
+            |     1 
++
+ temp/disasm_gdrv3_6
+a35.txt             
+            |   107 
++
+ temp/disasm_gdrv3_7
+6f0.txt             
+            |     2 
++
+ temp/disasm_gdrv3_b
+235.txt             
+            |   107 
++
+ temp/disasm_gdrv3_e
+bb0.txt             
+            |     1 
++
+ temp/disasm_gdrv3_f
+048.txt             
+            |     1 
++
+ temp/dm10.py       
+                    
+            |   462 
++
+ temp/dm10.txt      
+                    
+            |  1153 
++
+ temp/dm10_err.txt  
+                    
+            |     0
+ temp/dm10_fields.ts
+v                   
+            |     1 
++
+ temp/dm10_prog.txt 
+                    
+            |  1165 
++
+ temp/dm11.py       
+                    
+            |   548 
++
+ temp/dm11.txt      
+                    
+            |  1782 
++
+ 
+temp/dm11_cache.pkl 
+                    
+           |   Bin 
+0 -> 5953298 bytes
+ temp/dm11_err.txt  
+                    
+            |     0
+ temp/dm11_fields.ts
+v                   
+            |  1577 
++
+ temp/dm11_out.txt  
+                    
+            |     0
+ temp/dm11_prog.txt 
+                    
+            |  1794 
++
+ temp/dm12.py       
+                    
+            |   219 
++
+ temp/dm12.txt      
+                    
+            |   675 
++
+ temp/dm12_out.txt  
+                    
+            |   Bin 
+0 -> 154 bytes
+ temp/dm13.py       
+                    
+            |   255 
++
+ temp/dm13.txt      
+                    
+            | 44735 
++++++++++++++++++++
+ temp/dm13_err.txt  
+                    
+            |     0
+ temp/dm13_keys.py  
+                    
+            |    13 
++
+ temp/dm13_keys.txt 
+                    
+            |     8 
++
+ temp/dm13_log.txt  
+                    
+            |     1 
++
+ temp/dm13_run.txt  
+                    
+            |   Bin 
+0 -> 158 bytes
+ temp/dm15.py       
+                    
+            |    77 
++
+ temp/dm15.txt      
+                    
+            |    43 
++
+ temp/dm15_run.txt  
+                    
+            |   Bin 
+0 -> 6572 bytes
+ temp/dm16.py       
+                    
+            |    63 
++
+ temp/dm16.txt      
+                    
+            |    21 
++
+ temp/dm16_run.txt  
+                    
+            |   Bin 
+0 -> 2458 bytes
+ temp/dm17.py       
+                    
+            |   256 
++
+ temp/dm17.txt      
+                    
+            |  8614 
+++++
+ temp/dm17_err.txt  
+                    
+            |     0
+ temp/dm17_run.txt  
+                    
+            |     1 
++
+ temp/dm18.py       
+                    
+            |    73 
++
+ temp/dm18_out.txt  
+                    
+            |   Bin 
+0 -> 178 bytes
+ temp/dm18_secs.txt 
+                    
+            |   Bin 
+0 -> 1242 bytes
+ temp/dm19.py       
+                    
+            |    57 
++
+ temp/dm19_out.txt  
+                    
+            |   Bin 
+0 -> 4134 bytes
+ temp/dm2.py        
+                    
+            |   237 
++
+ temp/dm2.txt       
+                    
+            |   332 
++
+ temp/dm20.py       
+                    
+            |   191 
++
+ temp/dm20.txt      
+                    
+            |    40 
++
+ temp/dm20_err.txt  
+                    
+            |     0
+ temp/dm20_run.txt  
+                    
+            |     1 
++
+ temp/dm21.py       
+                    
+            |   173 
++
+ temp/dm21.txt      
+                    
+            |   175 
++
+ temp/dm21_err.txt  
+                    
+            |     0
+ temp/dm21_err2.txt 
+                    
+            |     0
+ temp/dm21_run.txt  
+                    
+            |     1 
++
+ temp/dm21_run2.txt 
+                    
+            |     1 
++
+ temp/dm22.py       
+                    
+            |   337 
++
+ temp/dm22.txt      
+                    
+            |   202 
++
+ temp/dm22_err.txt  
+                    
+            |     0
+ temp/dm22_run.txt  
+                    
+            |   Bin 
+0 -> 44 bytes
+ temp/dm23.py       
+                    
+            |   135 
++
+ temp/dm23.txt      
+                    
+            |   278 
++
+ temp/dm23_run.txt  
+                    
+            |   Bin 
+0 -> 44 bytes
+ temp/dm24.py       
+                    
+            |   267 
++
+ temp/dm24_fields.ts
+v                   
+            |   552 
++
+ temp/dm24_layout.tx
+t                   
+            |   149 
++
+ temp/dm25.py       
+                    
+            |   101 
++
+ temp/dm25.txt      
+                    
+            |   Bin 
+0 -> 2486 bytes
+ temp/dm25.txt.u8   
+                    
+            |    29 
++
+ temp/dm26.py       
+                    
+            |   141 
++
+ temp/dm26.txt      
+                    
+            |   332 
++
+ temp/dm26.txt.u8   
+                    
+            |     1 
++
+ temp/dm27.py       
+                    
+            |   125 
++
+ temp/dm27.txt      
+                    
+            |   596 
++
+ temp/dm27.txt.u8   
+                    
+            |     1 
++
+ temp/dm28.py       
+                    
+            |   192 
++
+ temp/dm28.txt      
+                    
+            |  1558 
++
+ temp/dm28.txt.u8   
+                    
+            |     1 
++
+ temp/dm28_u8.txt   
+                    
+            |   236 
++
+ temp/dm29.py       
+                    
+            |   207 
++
+ temp/dm29.txt      
+                    
+            |   132 
++
+ temp/dm2_compile.tx
+t                   
+            |     1 
++
+ temp/dm2_done.txt  
+                    
+            |     1 
++
+ temp/dm2_lines.txt 
+                    
+            |     1 
++
+ temp/dm2_mid.txt   
+                    
+            |   196 
++
+ 
+temp/dm2_mid_ok.txt 
+                    
+           |     1 +
+ temp/dm2_run.txt   
+                    
+            |     1 
++
+ temp/dm3.py        
+                    
+            |   134 
++
+ temp/dm3.txt       
+                    
+            |    61 
++
+ temp/dm30.py       
+                    
+            |   209 
++
+ temp/dm30.txt      
+                    
+            |   209 
++
+ temp/dm30_stdout.tx
+t                   
+            |   Bin 
+0 -> 23896 bytes
+ temp/dm31.py       
+                    
+            |    83 
++
+ temp/dm31_1420d8e70
+.txt                
+            |   383 
++
+ temp/dm31_1420d98f0
+.txt                
+            |  1444 
++
+ temp/dm31_grep.txt 
+                    
+            |     2 
++
+ temp/dm32.py       
+                    
+            |   906 
++
+ temp/dm32.txt      
+                    
+            |  4580 
+++
+ temp/dm32_fields.ts
+v                   
+            |  3406 
+++
+ temp/dm32_probe.py 
+                    
+            |    54 
++
+ temp/dm32_stats.py 
+                    
+            |   134 
++
+ temp/dm3_done.txt  
+                    
+            |   Bin 
+0 -> 14 bytes
+ temp/dm3_run.txt   
+                    
+            |   Bin 
+0 -> 72 bytes
+ temp/dm4.py        
+                    
+            |   150 
++
+ temp/dm4.txt       
+                    
+            |   270 
++
+ temp/dm4_done.txt  
+                    
+            |   Bin 
+0 -> 14 bytes
+ temp/dm4_run.txt   
+                    
+            |   Bin 
+0 -> 74 bytes
+ temp/dm5.py        
+                    
+            |   140 
++
+ temp/dm5.txt       
+                    
+            |    84 
++
+ temp/dm5_done.txt  
+                    
+            |   Bin 
+0 -> 14 bytes
+ temp/dm5_run.txt   
+                    
+            |   Bin 
+0 -> 72 bytes
+ temp/dm6.py        
+                    
+            |   189 
++
+ temp/dm6.txt       
+                    
+            |    80 
++
+ temp/dm6_run.txt   
+                    
+            |   Bin 
+0 -> 72 bytes
+ temp/dm7.py        
+                    
+            |   129 
++
+ temp/dm7.txt       
+                    
+            |   114 
++
+ 
+temp/dm7_health.txt 
+                    
+           |   320 +
+ temp/dm7_run.txt   
+                    
+            |   Bin 
+0 -> 74 bytes
+ temp/dm8.py        
+                    
+            |   254 
++
+ temp/dm8.txt       
+                    
+            |   241 
++
+ temp/dm8_err.txt   
+                    
+            |     0
+ temp/dm8_head.txt  
+                    
+            |     0
+ temp/dm8_pid.txt   
+                    
+            |     1 
++
+ temp/dm8_proc.txt  
+                    
+            |   Bin 
+0 -> 526 bytes
+ temp/dm8_prog.txt  
+                    
+            |   252 
++
+ temp/dm8_run.txt   
+                    
+            |     1 
++
+ 
+temp/dm8_status.txt 
+                    
+           |     1 +
+ temp/dm8_tail.txt  
+                    
+            |   Bin 
+0 -> 72 bytes
+ temp/dm8_wait.txt  
+                    
+            |   Bin 
+0 -> 44 bytes
+ temp/dm9.py        
+                    
+            |   166 
++
+ temp/dm9.txt       
+                    
+            |  2235 
++
+ temp/dm9_err.txt   
+                    
+            |     0
+ temp/dm9_pid.txt   
+                    
+            |     1 
++
+ temp/dm9_prog.txt  
+                    
+            |    11 
++
+ temp/dm9_run.txt   
+                    
+            |     1 
++
+ temp/dm_probe.py   
+                    
+            |   125 
++
+ temp/dm_probe.txt  
+                    
+            |    46 
++
+ 
+temp/drv/README.txt 
+                    
+           |    48 +
+ temp/drv/YccDrvv3.d
+ll.dis.txt          
+            | 32375 
+++++++++++++++
+ temp/drv/__pycache_
+_/elev_probe.cpython
+-312.pyc    |   Bin 
+0 -> 18403 bytes
+ temp/drv/__pycache_
+_/physread.cpython-3
+12.pyc      |   Bin 
+0 -> 6913 bytes
+ 
+temp/drv/_s2800.txt 
+                    
+           |    27 +
+ 
+temp/drv/_s2808.txt 
+                    
+           |    27 +
+ temp/drv/after_rebo
+ot.bat              
+            |    45 
++
+ temp/drv/after_rebo
+ot.txt              
+            |    46 
++
+ temp/drv/ann_run.tx
+t                   
+            |     2 
++
+ temp/drv/ann_run2.t
+xt                  
+            |     2 
++
+ temp/drv/annot_MsIo
+64.txt              
+            |   624 
++
+ temp/drv/annot_gdrv
+3.txt               
+            |  4478 
+++
+ temp/drv/annot_gdrv
+3_1b80.txt          
+            |   196 
++
+ temp/drv/annot_gdrv
+3_3000.txt          
+            |   224 
++
+ temp/drv/annot_gdrv
+3_33a0.txt          
+            |   196 
++
+ temp/drv/annot_gdrv
+3_3680.txt          
+            |   167 
++
+ temp/drv/annotate.p
+y                   
+            |   121 
++
+ temp/drv/apexr.c   
+                    
+            |   183 
++
+ temp/drv/apexr.cer 
+                    
+            |   Bin 
+0 -> 766 bytes
+ temp/drv/apexr.obj 
+                    
+            |   Bin 
+0 -> 6981 bytes
+ temp/drv/apexr.sys 
+                    
+            |   Bin 
+0 -> 5488 bytes
+ temp/drv/backup/ape
+xdrv.sys            
+            |   Bin 
+0 -> 8616 bytes
+ temp/drv/backup/ape
+xr.sys              
+            |   Bin 
+0 -> 5488 bytes
+ temp/drv/build.cmd 
+                    
+            |    28 
++
+ temp/drv/build.txt 
+                    
+            |   Bin 
+0 -> 62 bytes
+ temp/drv/capstone_i
+nstall.txt          
+            |   Bin 
+0 -> 946 bytes
+ temp/drv/ctx.py    
+                    
+            |    29 
++
+ temp/drv/dbg_handle
+s.py                
+            |   112 
++
+ temp/drv/dbg_handle
+s.txt               
+            |     9 
++
+ 
+temp/drv/dd_out.txt 
+                    
+           |   Bin 
+0 -> 192 bytes
+ temp/drv/diag_eac.p
+s1                  
+            |    84 
++
+ temp/drv/diag_eac.t
+xt                  
+            |    65 
++
+ temp/drv/disasm_MsI
+o64.txt             
+            |   617 
++
+ temp/drv/disasm_drv
+.py                 
+            |    56 
++
+ temp/drv/disasm_gdr
+v3.txt              
+            |  4469 
+++
+ temp/drv/disasm_out
+.txt                
+            |   Bin 
+0 -> 362 bytes
+ 
+temp/drv/dll_dis.py 
+                    
+           |   148 +
+ temp/drv/drv_ioctl.
+py                  
+            |    99 
++
+ temp/drv/drv_ioctl.
+txt                 
+            |    14 
++
+ temp/drv/drv_ioctl_
+console.txt         
+            |   Bin 
+0 -> 1184 bytes
+ temp/drv/drv_string
+s.py                
+            |    94 
++
+ temp/drv/drv_string
+s.txt               
+            |  6417 
++++
+ temp/drv/elev_probe
+.py                 
+            |   314 
++
+ temp/drv/elev_probe
+.txt                
+            |    56 
++
+ temp/drv/enable_tes
+tsigning.bat        
+            |    11 
++
+ 
+temp/drv/f_open.txt 
+                    
+           |   Bin 
+0 -> 18224 bytes
+ 
+temp/drv/f_prim.txt 
+                    
+           |   Bin 
+0 -> 48516 bytes
+ temp/drv/find_globa
+l.py                
+            |   119 
++
+ temp/drv/find_holde
+r.py                
+            |   260 
++
+ temp/drv/find_holde
+r.txt               
+            |    14 
++
+ temp/drv/find_str_x
+ref.py              
+            |    79 
++
+ temp/drv/find_xref.
+py                  
+            |    71 
++
+ temp/drv/g10.txt   
+                    
+            |    71 
++
+ temp/drv/g11.txt   
+                    
+            |    16 
++
+ temp/drv/g12.txt   
+                    
+            |    74 
++
+ temp/drv/g13.txt   
+                    
+            |   248 
++
+ temp/drv/g14.txt   
+                    
+            |    19 
++
+ temp/drv/g15.txt   
+                    
+            |    30 
++
+ temp/drv/g16.txt   
+                    
+            |     1 
++
+ temp/drv/g17.txt   
+                    
+            |    18 
++
+ temp/drv/g18.txt   
+                    
+            |    17 
++
+ temp/drv/g2.txt    
+                    
+            |    10 
++
+ temp/drv/g3.txt    
+                    
+            |   153 
++
+ temp/drv/g4.txt    
+                    
+            |   203 
++
+ temp/drv/g5.txt    
+                    
+            |    17 
++
+ temp/drv/g6.txt    
+                    
+            |     0
+ temp/drv/g7.txt    
+                    
+            |    75 
++
+ temp/drv/g8.txt    
+                    
+            |    24 
++
+ temp/drv/g9.txt    
+                    
+            |    10 
++
+ temp/drv/giov3_scan
+.txt                
+            |  2623 
+++
+ temp/drv/global_315
+0.txt               
+            |    30 
++
+ temp/drv/grep_gdrv.
+txt                 
+            |    25 
++
+ temp/drv/grep_msio.
+txt                 
+            |    17 
++
+ temp/drv/h3680.txt 
+                    
+            |    50 
++
+ temp/drv/install.cm
+d                   
+            |    31 
++
+ temp/drv/install.tx
+t                   
+            |    70 
++
+ temp/drv/ioctl_site
+s.py                
+            |    21 
++
+ temp/drv/ioctl_site
+s.txt               
+            |   726 
++
+ temp/drv/libs.txt  
+                    
+            |   Bin 
+0 -> 70 bytes
+ temp/drv/listing.tx
+t                   
+            |    44 
++
+ temp/drv/ls.txt    
+                    
+            |   114 
++
+ temp/drv/map_ioctls
+.py                 
+            |    82 
++
+ temp/drv/map_ioctls
+.txt                
+            |   402 
++
+ temp/drv/mem_scan.p
+y                   
+            |   165 
++
+ temp/drv/mem_scan.t
+xt                  
+            |    14 
++
+ temp/drv/msio_1200.
+txt                 
+            |    54 
++
+ temp/drv/msio_1400.
+txt                 
+            |    66 
++
+ temp/drv/msio_1500.
+txt                 
+            |   197 
++
+ temp/drv/o1.txt    
+                    
+            |    40 
++
+ temp/drv/o2.txt    
+                    
+            |     3 
++
+ temp/drv/open_probe
+.py                 
+            |   110 
++
+ temp/drv/open_probe
+.txt                
+            |    39 
++
+ temp/drv/paths.txt 
+                    
+            |    40 
++
+ 
+temp/drv/paths2.txt 
+                    
+           |     3 +
+ temp/drv/physread.p
+y                   
+            |   118 
++
+ temp/drv/physread.t
+xt                  
+            |     4 
++
+ temp/drv/pmem_probe
+.py                 
+            |   204 
++
+ temp/drv/pmem_probe
+.txt                
+            |     9 
++
+ temp/drv/probe_addr
+.py                 
+            |    97 
++
+ temp/drv/probe_addr
+.txt                
+            |    45 
++
+ temp/drv/pyok.txt  
+                    
+            |   Bin 
+0 -> 10 bytes
+ temp/drv/read_probe
+.py                 
+            |   167 
++
+ temp/drv/read_probe
+.txt                
+            |    21 
++
+ 
+temp/drv/revert.txt 
+                    
+           |    80 +
+ temp/drv/revert_tes
+tsigning.bat        
+            |    81 
++
+ 
+temp/drv/run_a1.txt 
+                    
+           |     1 +
+ 
+temp/drv/run_a2.txt 
+                    
+           |     1 +
+ 
+temp/drv/run_a3.txt 
+                    
+           |     1 +
+ 
+temp/drv/run_a4.txt 
+                    
+           |     1 +
+ temp/drv/run_dbg.tx
+t                   
+            |     0
+ 
+temp/drv/run_fg.txt 
+                    
+           |     1 +
+ temp/drv/run_holder
+.txt                
+            |     0
+ temp/drv/run_map.tx
+t                   
+            |   Bin 
+0 -> 626 bytes
+ temp/drv/run_open.t
+xt                  
+            |    53 
++
+ temp/drv/run_probe.
+txt                 
+            |     9 
++
+ 
+temp/drv/run_sx.txt 
+                    
+           |     1 +
+ 
+temp/drv/run_x1.txt 
+                    
+           |     1 +
+ 
+temp/drv/run_x2.txt 
+                    
+           |     0
+ temp/drv/scan_giov3
+.py                 
+            |   117 
++
+ temp/drv/scanout.tx
+t                   
+            |   Bin 
+0 -> 362 bytes
+ temp/drv/seg1.txt  
+                    
+            |    53 
++
+ temp/drv/seg2.txt  
+                    
+            |   111 
++
+ temp/drv/seg3.txt  
+                    
+            |     9 
++
+ temp/drv/seg4.txt  
+                    
+            |     5 
++
+ temp/drv/show.py   
+                    
+            |    25 
++
+ temp/drv/sites_2400
+.txt                
+            |   Bin 
+0 -> 37240 bytes
+ temp/drv/state.txt 
+                    
+            |    85 
++
+ temp/drv/state_and_
+set.bat             
+            |    23 
++
+ temp/drv/strxref.tx
+t                   
+            |    44 
++
+ temp/drv/svc.txt   
+                    
+            |    42 
++
+ temp/drv/svc2.txt  
+                    
+            |    41 
++
+ temp/drv/svc_probe.
+ps1                 
+            |    67 
++
+ temp/drv/svc_probe.
+txt                 
+            |    26 
++
+ temp/drv/trust.txt 
+                    
+            |    45 
++
+ temp/drv/trust_cert
+.bat                
+            |    16 
++
+ temp/drv/try_start.
+bat                 
+            |    16 
++
+ temp/drv/try_start.
+txt                 
+            |    23 
++
+ temp/drv/verify.py 
+                    
+            |   123 
++
+ 
+temp/drv/verify.txt 
+                    
+           |     6 +
+ temp/drv/xref.txt  
+                    
+            |     1 
++
+ temp/drvdisasm.py  
+                    
+            |    39 
++
+ temp/drvscan.py    
+                    
+            |    41 
++
+ temp/drvscan.txt   
+                    
+            |    18 
++
+ temp/env_inventory.
+txt                 
+            |    14 
++
+ temp/err32.txt     
+                    
+            |     0
+ temp/exports.py    
+                    
+            |    64 
++
+ temp/gdrv_strings.t
+xt                  
+            |    45 
++
+ temp/globals.py    
+                    
+            |   461 
++
+ temp/globals.txt   
+                    
+            |     1 
++
+ temp/h_access.py   
+                    
+            |   129 
++
+ temp/h_access.txt  
+                    
+            |    15 
++
+ temp/handle_probe.p
+y                   
+            |    47 
++
+ temp/handle_probe.t
+xt                  
+            |    10 
++
+ temp/kx.py         
+                    
+            |   262 
++
+ temp/kx.txt        
+                    
+            |     2 
++
+ 
+temp/kx_console.txt 
+                    
+           |     3 +
+ temp/live_probe.py 
+                    
+            |   254 
++
+ temp/live_run.txt  
+                    
+            |     9 
++
+ temp/ls.txt        
+                    
+            |    38 
++
+ temp/ls_temp.txt   
+                    
+            |   Bin 
+0 -> 2718 bytes
+ temp/mods.py       
+                    
+            |   254 
++
+ temp/mods.txt      
+                    
+            |    25 
++
+ temp/msio.py       
+                    
+            |   206 
++
+ temp/msio.txt      
+                    
+            |   284 
++
+ temp/msio_console.t
+xt                  
+            |   285 
++
+ temp/namehunt.py   
+                    
+            |   586 
++
+ temp/namehunt.txt  
+                    
+            |    21 
++
+ temp/namehunt_conso
+le.txt              
+            |     1 
++
+ 
+temp/nh_compile.txt 
+                    
+           |     1 +
+ temp/nh_lines.txt  
+                    
+            |     1 
++
+ temp/nh_run.txt    
+                    
+            |     1 
++
+ temp/nh_tail.txt   
+                    
+            |    12 
++
+ temp/now.txt       
+                    
+            |   Bin 
+0 -> 72 bytes
+ temp/offsets_probe.
+py                  
+            |   574 
++
+ temp/offsets_static
+.txt                
+            |    53 
++
+ temp/out32.txt     
+                    
+            |     8 
++
+ temp/out32a.txt    
+                    
+            |     8 
++
+ temp/p32.txt       
+                    
+            |     6 
++
+ temp/pedrv.py      
+                    
+            |    43 
++
+ temp/peek.py       
+                    
+            |    67 
++
+ temp/pip.txt       
+                    
+            |   Bin 
+0 -> 1014 bytes
+ temp/pip2.txt      
+                    
+            |     1 
++
+ temp/pr32.txt      
+                    
+            |    45 
++
+ temp/probe.txt     
+                    
+            |     3 
++
+ 
+temp/probe_maps.txt 
+                    
+           |    55 +
+ temp/probe_pe.py   
+                    
+            |    49 
++
+ temp/probe_pe.txt  
+                    
+            |    24 
++
+ temp/probe_run.txt 
+                    
+            |    57 
++
+ temp/proc_dx12.txt 
+                    
+            |    12 
++
+ temp/pychk.txt     
+                    
+            |     2 
++
+ temp/readprobe.py  
+                    
+            |   151 
++
+ temp/readprobe.txt 
+                    
+            |    19 
++
+ temp/readprobe2.py 
+                    
+            |   280 
++
+ 
+temp/readprobe2.txt 
+                    
+           |    35 +
+ temp/readprobe2_con
+sole.txt            
+            |     1 
++
+ temp/readprobe_cons
+ole.txt             
+            |     1 
++
+ temp/roots.txt     
+                    
+            |    17 
++
+ temp/rp2_compile.tx
+t                   
+            |     1 
++
+ temp/rp2_run.txt   
+                    
+            |     1 
++
+ temp/rp_run.txt    
+                    
+            |     1 
++
+ 
+temp/rtti_check.txt 
+                    
+           |     2 +
+ temp/run_as_system.
+bat                 
+            |     9 
++
+ temp/run_diag5.bat 
+                    
+            |     4 
++
+ temp/run_diag6.bat 
+                    
+            |     4 
++
+ temp/run_kx.bat    
+                    
+            |     4 
++
+ temp/run_msio.bat  
+                    
+            |     4 
++
+ temp/run_namehunt.b
+at                  
+            |     4 
++
+ temp/run_readprobe.
+bat                 
+            |     4 
++
+ temp/run_readprobe2
+.bat                
+            |     4 
++
+ temp/run_sysprobe.b
+at                  
+            |     4 
++
+ temp/scan_offsets.p
+y                   
+            |   252 
++
+ temp/scan_offsets.t
+xt                  
+            |   Bin 
+0 -> 3070 bytes
+ temp/show32.py     
+                    
+            |    15 
++
+ temp/sizes.txt     
+                    
+            |    79 
++
+ temp/st32.txt      
+                    
+            |    33 
++
+ temp/st32b.txt     
+                    
+            |    29 
++
+ temp/sysprobe.py   
+                    
+            |   110 
++
+ temp/sysprobe.txt  
+                    
+            |    19 
++
+ temp/sysprobe_conso
+le.txt              
+            |     1 
++
+ temp/tail32.txt    
+                    
+            |     8 
++
+ temp/test_image_inf
+o.py                
+            |    56 
++
+ temp/toolchain.txt 
+                    
+            |    10 
++
+ temp/tree2.txt     
+                    
+            |   551 
++
+ temp/tree3.txt     
+                    
+            |    45 
++
+ temp/treelist.txt  
+                    
+            | 36959 
++++++++++++++++
+ test_harness.py    
+                    
+            |   128 
++
+ tree.txt           
+                    
+            |    40 
++
+ w4.log             
+                    
+            |   Bin 
+0 -> 1750 bytes
+ w4_ctx.txt         
+                    
+            |    12 
++
+ w4_summary.txt     
+                    
+            |     1 
++
+ wt_list.txt        
+                    
+            |    46 
++
+ 1242 files 
+changed, 345202 
+insertions(+)
+
+

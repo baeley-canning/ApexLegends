@@ -1,0 +1,45 @@
+﻿     6	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:06.765Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:06.777Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:36:35.031Z]	PID: 12576	TID: 12580	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:36:35.031Z]	PID: 12576	TID: 12580	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:36:35.040Z]	PID: 12576	TID: 12580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[12576]
+     5	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:35.044Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:35.063Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:36:58.245Z]	PID: 10764	TID: 10048	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:36:58.245Z]	PID: 10764	TID: 10048	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:36:58.252Z]	PID: 10764	TID: 10048	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[10764]
+     5	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:58.255Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:58.267Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:39:38.843Z]	PID: 24200	TID: 21000	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:39:38.843Z]	PID: 24200	TID: 21000	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:39:38.849Z]	PID: 24200	TID: 21000	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[24200]
+     5	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:39:38.853Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:39:38.865Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+
+########## trust-cert / blocked lines across EA logs ##########
+EABackgroundServiceVerbose.log:3560:      7	[2026-11-01T01:16:55.871Z]	PID: 11460	TID:  3540	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADesktop.log:4:      3	[2026-11-01T01:16:54.669Z]	PID: 14356	TID:  2744	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADesktop.log:55:     54	[2026-11-01T01:16:56.932Z]	PID: 14356	TID:  7188	INFO    	(eax::apps::startup::StartupCoordinator::begin)	End of startup flow, result[ProceedToMainApp], reason[Update Not Required]
+EADesktop.log:162:    161	[2026-11-01T01:16:59.563Z]	PID: 14356	TID:  5436	INFO    	(eax::apps::DesktopCoordinator::FsmHost::doHandleAuthenticationChange)	Application state is now Online.  Skipping notification.

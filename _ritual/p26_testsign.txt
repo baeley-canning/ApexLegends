@@ -1,0 +1,14 @@
+﻿=== p26_testsign 11/01/2026 18:20:09  elevated=False
+self-elevating via UAC
+elevated child launched; run  shutdown /r /t 0  afterwards
+=== p26_testsign 11/01/2026 18:20:09  elevated=True
+The operation completed successfully.
+bcd.testsigning=Yes
+bcd.nointegritychecks=No
+bcd.hypervisorlaunchtype=Auto
+tool makecat.exe = NOT IN PATH
+tool inf2cat.exe = NOT IN PATH
+tool signtool.exe = NOT IN PATH
+tool certutil.exe = C:\WINDOWS\system32\certutil.exe
+NEXT: shutdown /r /t 0  -> then run _ritual\p26_drv.ps1 (expect RUNNING + IOCTL_PROBE SUCCESS)
+=== done ===

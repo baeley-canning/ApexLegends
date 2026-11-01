@@ -1,0 +1,148 @@
+﻿fix1 2026-11-01T19:45:47
+elev=True
+user=DESKTOP-PPHFJBQ\New User
+=== A. bcd BEFORE ===
+enum: Windows Boot Manager ~~ -------------------- ~~ identifier              {bootmgr} ~~ device                  partition=\Device\HarddiskVolume1 ~~ path                    \EFI\Microsoft\Boot\bootmgfw.efi ~~ description             Windows Boot Manager ~~ locale                  en-US ~~ inherit                 {globalsettings} ~~ default                 {current} ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ displayorder            {current} ~~ toolsdisplayorder       {memdiag} ~~ timeout                 30 ~~ Windows Boot Loader ~~ ------------------- ~~ identifier              {current} ~~ device                  partition=C: ~~ path                    \WINDOWS\system32\winload.efi ~~ description             Windows 11 ~~ locale                  en-US ~~ inherit                 {bootloadersettings} ~~ recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b} ~~ displaymessageoverride  Recovery ~~ recoveryenabled         Yes ~~ nointegritychecks       No ~~ testsigning             Yes ~~ isolatedcontext         Yes ~~ allowedinmemorysettings 0x15000075 ~~ osdevice                partition=C: ~~ systemroot              \WINDOWS ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ nx                      OptIn ~~ bootmenupolicy          Standard ~~ hypervisorlaunchtype    Auto ~~ debug                   No
+enum-current: Windows Boot Loader ~~ ------------------- ~~ identifier              {current} ~~ device                  partition=C: ~~ path                    \WINDOWS\system32\winload.efi ~~ description             Windows 11 ~~ locale                  en-US ~~ inherit                 {bootloadersettings} ~~ recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b} ~~ displaymessageoverride  Recovery ~~ recoveryenabled         Yes ~~ nointegritychecks       No ~~ testsigning             Yes ~~ isolatedcontext         Yes ~~ allowedinmemorysettings 0x15000075 ~~ osdevice                partition=C: ~~ systemroot              \WINDOWS ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ nx                      OptIn ~~ bootmenupolicy          Standard ~~ hypervisorlaunchtype    Auto ~~ debug                   No
+=== B. flip TESTSIGNING ===
+set testsigning on rc=0 :: The operation completed successfully.
+set {current} testsigning on rc=0 :: The operation completed successfully.
+=== C. bcd AFTER ===
+enum: Windows Boot Manager ~~ -------------------- ~~ identifier              {bootmgr} ~~ device                  partition=\Device\HarddiskVolume1 ~~ path                    \EFI\Microsoft\Boot\bootmgfw.efi ~~ description             Windows Boot Manager ~~ locale                  en-US ~~ inherit                 {globalsettings} ~~ default                 {current} ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ displayorder            {current} ~~ toolsdisplayorder       {memdiag} ~~ timeout                 30 ~~ Windows Boot Loader ~~ ------------------- ~~ identifier              {current} ~~ device                  partition=C: ~~ path                    \WINDOWS\system32\winload.efi ~~ description             Windows 11 ~~ locale                  en-US ~~ inherit                 {bootloadersettings} ~~ recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b} ~~ displaymessageoverride  Recovery ~~ recoveryenabled         Yes ~~ nointegritychecks       No ~~ testsigning             Yes ~~ isolatedcontext         Yes ~~ allowedinmemorysettings 0x15000075 ~~ osdevice                partition=C: ~~ systemroot              \WINDOWS ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ nx                      OptIn ~~ bootmenupolicy          Standard ~~ hypervisorlaunchtype    Auto ~~ debug                   No
+startopts: ERROR: The system was unable to find the specified registry key or value.
+=== D. service image paths ===
+  apexdrv :: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\apexdrv ~~ ImagePath    REG_EXPAND_SZ    \??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+  apexdrv_cat :: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\apexdrv_cat ~~ ImagePath    REG_EXPAND_SZ    \??\C:\p26cat\apexdrv_build.sys
+  kernprobe :: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kernprobe ~~ ImagePath    REG_EXPAND_SZ    \??\C:\Windows\System32\drivers\apexdrv.sys
+=== E. extract signers from the 577 images ===
+  signer C:\Windows\System32\drivers\apexdrv.sys :: CN=ApexDrv S2 Leaf (QwenKern) thumb=
+    chainok=True depth=2 status=
+      el CN=ApexDrv S2 Leaf (QwenKern)
+      el CN=ApexDrv S2 Root CA (QwenKern)
+  signer C:\p26cat\apexdrv_build.sys :: CN=ApexDrv Dev (QwenKern Premium) thumb=
+    chainok=True depth=1 status=
+      el CN=ApexDrv Dev (QwenKern Premium)
+  signer C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys :: CN=ApexDrv Dev (QwenKern Premium) thumb=
+    chainok=True depth=1 status=
+      el CN=ApexDrv Dev (QwenKern Premium)
+=== F. apex-ish certs in My stores + loose .cer files ===
+  my Cert:\LocalMachine\My :: CN=ApexDrv CA c1 (QwenKern) thumb=F132233D0A5B97262DFE57170D237CECF51BF657
+  my Cert:\LocalMachine\My :: CN=ApexDrv Lab Code Signing (QwenKern) thumb=DFFA64113CF6589043CE0E4AD74A84CF0CA91690
+  my Cert:\LocalMachine\My :: CN=ApexDrv Lab DSE (QwenKern) thumb=DD5BA95EFD2F303687C309841B3928249A762941
+  my Cert:\LocalMachine\My :: CN=ApexDrv CA c3 (QwenKern) thumb=DB248C944EACF7DD4F9BE6114358C2CE6D63F18C
+  my Cert:\LocalMachine\My :: CN=S6lan Leaf (QwenKern) thumb=D997967F6246ECAD8851D468050258F0E0EA7DC4
+  my Cert:\LocalMachine\My :: CN=ApexR Test thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+  my Cert:\LocalMachine\My :: CN=ApexDrv CA c2 (QwenKern) thumb=C8919A5488F56972F157360DB6B30CFE3A2B3970
+  my Cert:\LocalMachine\My :: CN=ApexDrv S4 LeafCA (QwenKern) thumb=A7569298DEB0D834C42191BB28D8EDFF7B798FEE
+  my Cert:\LocalMachine\My :: CN=S9msf Leaf (QwenKern) thumb=8CDA74E84A70B072A3A8B3419485FE1735E9BB26
+  my Cert:\LocalMachine\My :: CN=S8old Leaf (QwenKern) thumb=8520C2310834196AA7463E421BA941F64B66505F
+  my Cert:\LocalMachine\My :: CN=ApexDrv Lab DSE CertSign (QwenKern) thumb=7AB907DC03E17A6A7375FEBF3ADA5624B4099444
+  my Cert:\LocalMachine\My :: CN=ApexDrv Lab Root CA (QwenKern) thumb=76589C69A7DEBEF1093D9B98C60CA6707A54E36C
+  my Cert:\LocalMachine\My :: CN=S9msf Leaf (QwenKern) thumb=65A87229342C5FD077551C7FB885C39B27111DF7
+  my Cert:\LocalMachine\My :: CN=S6lan Leaf (QwenKern) thumb=5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81
+  my Cert:\LocalMachine\My :: CN=ApexDrv Probe v0 (QwenKern) thumb=5BCFD2349358F6C585AEC5F1B68C193E4F0176E6
+  my Cert:\LocalMachine\My :: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) thumb=5937CA2135A847D98E3935B5A592673C18ACC912
+  my Cert:\LocalMachine\My :: CN=S8old Leaf (QwenKern) thumb=53E0C111A903AD068A221137E7EB51AD6CAB2ACA
+  my Cert:\LocalMachine\My :: CN=ApexDrv S2 Leaf (QwenKern) thumb=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  my Cert:\LocalMachine\My :: CN=S13pad Leaf (QwenKern) thumb=474F9339147DA30CE30AF7D6961D318279D76295
+  my Cert:\LocalMachine\My :: CN=S7win Leaf (QwenKern) thumb=4710E702C7883479D106EEB688F7065101B9339D
+  my Cert:\LocalMachine\My :: CN=ApexDrv S3 LeafNoBC (QwenKern) thumb=3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720
+  my Cert:\LocalMachine\My :: CN=ApexDrv Dev (QwenKern Premium) thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  my Cert:\LocalMachine\My :: CN=S7win Leaf (QwenKern) thumb=1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE
+  my Cert:\LocalMachine\My :: CN=ApexDrv S1 SelfSigned CA (QwenKern) thumb=1E73093E98695948E09E53C0A4C8E4A5670D6199
+  my Cert:\LocalMachine\My :: CN=ApexDrv S2 Root CA (QwenKern) thumb=1A5520EED6638BEC2A5EE297D3FF984B2CACF889
+  my Cert:\LocalMachine\My :: CN=S14cn Leaf (QwenKern) thumb=12482F7414F72A9406229D8E04FD6741BFFB4EFD
+  my Cert:\LocalMachine\My :: CN=ApexDrv p25h SelfTest CA (QwenKern) thumb=075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79
+  my Cert:\CurrentUser\My :: CN=apexcert thumb=7804D6A90DD199EE970AE0B2FB657E8286DC70EB
+  my Cert:\CurrentUser\My :: CN=apexcert thumb=1273B7EA5730A9D47692285FDE7073DD58B0161D
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\apexdrv_lab_dse.cer :: CN=ApexDrv Lab DSE (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\apexdrv_lab_leaf.cer :: CN=ApexDrv Lab Code Signing (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\apexdrv_lab_oneshot.cer :: CN=ApexDrv Lab DSE CertSign (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\apexdrv_lab_root.cer :: CN=ApexDrv Lab Root CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_76589C69.cer :: CN=ApexDrv Lab Root CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_7AB907DC.cer :: CN=ApexDrv Lab DSE CertSign (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_C8919A54.cer :: CN=ApexDrv CA c2 (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_DB248C94.cer :: CN=ApexDrv CA c3 (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_pub_1E73093E.cer :: CN=ApexDrv S1 SelfSigned CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_pub_5937CA21.cer :: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_root_1E73093E.cer :: CN=ApexDrv S1 SelfSigned CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_root_3BEBB1C2.cer :: CN=ApexDrv S3 LeafNoBC (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_root_4CB0B52D.cer :: CN=ApexDrv S2 Leaf (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_root_5937CA21.cer :: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_root_A7569298.cer :: CN=ApexDrv S4 LeafCA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S1.cer :: CN=ApexDrv S1 SelfSigned CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S2.cer :: CN=ApexDrv S2 Leaf (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S2root.cer :: CN=ApexDrv S2 Root CA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S3.cer :: CN=ApexDrv S3 LeafNoBC (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S4.cer :: CN=ApexDrv S4 LeafCA (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25e_S5.cer :: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+  cer C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_probe_v0.cer :: CN=ApexDrv Probe v0 (QwenKern)
+=== G. install every apex cert into Root + TrustedPublisher + CA ===
+  ADD Root CN=ApexDrv S2 Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD TrustedPublisher CN=ApexDrv S2 Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD CA CN=ApexDrv S2 Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD TrustedPublisher CN=ApexDrv S2 Root CA (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv S2 Root CA (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv Dev (QwenKern Premium) :: Root "Trusted Root Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD TrustedPublisher CN=ApexDrv Dev (QwenKern Premium) :: TrustedPublisher "Trusted Publishers" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD CA CN=ApexDrv Dev (QwenKern Premium) :: CA "Intermediate Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD Root CN=ApexDrv Dev (QwenKern Premium) :: Root "Trusted Root Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD TrustedPublisher CN=ApexDrv Dev (QwenKern Premium) :: TrustedPublisher "Trusted Publishers" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD CA CN=ApexDrv Dev (QwenKern Premium) :: CA "Intermediate Certification Authorities" ~~ DecodeFile returned The system cannot find the file specified. 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: -addstore command FAILED: 0x80070002 (WIN32: 2 ERROR_FILE_NOT_FOUND) ~~ CertUtil: The system cannot find the file specified.
+  ADD Root CN=ApexDrv CA c1 (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c1 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv CA c1 (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c1 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv Lab Code Signing (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "ApexDrv Lab Code Signing (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=ApexDrv Lab Code Signing (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "ApexDrv Lab Code Signing (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv Lab DSE (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "ApexDrv Lab DSE (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv Lab DSE (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv Lab DSE (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv CA c3 (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c3 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv CA c3 (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c3 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S6lan Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "S6lan Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S6lan Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "S6lan Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv CA c2 (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c2 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv CA c2 (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv CA c2 (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv S4 LeafCA (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "ApexDrv S4 LeafCA (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S9msf Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S9msf Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S9msf Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S9msf Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S9msf Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S9msf Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S8old Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "S8old Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S8old Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "S8old Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv Lab Root CA (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv Lab Root CA (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S9msf Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "S9msf Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S9msf Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "S9msf Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S6lan Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S6lan Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S6lan Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S6lan Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S6lan Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S6lan Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S8old Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S8old Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S8old Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S8old Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S8old Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S8old Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S13pad Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S13pad Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S13pad Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S13pad Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S13pad Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S13pad Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S7win Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S7win Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S7win Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S7win Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S7win Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S7win Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv S3 LeafNoBC (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "ApexDrv S3 LeafNoBC (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=ApexDrv S3 LeafNoBC (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "ApexDrv S3 LeafNoBC (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S7win Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "S7win Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S7win Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "S7win Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=S14cn Leaf (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Certificate "S14cn Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=S14cn Leaf (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Certificate "S14cn Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=S14cn Leaf (QwenKern) :: CA "Intermediate Certification Authorities" ~~ Certificate "S14cn Leaf (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=ApexDrv p25h SelfTest CA (QwenKern) :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "ApexDrv p25h SelfTest CA (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=ApexDrv p25h SelfTest CA (QwenKern) :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "ApexDrv p25h SelfTest CA (QwenKern)" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=apexcert :: CA "Intermediate Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "apexcert" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD Root CN=apexcert :: Root "Trusted Root Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "apexcert" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD TrustedPublisher CN=apexcert :: TrustedPublisher "Trusted Publishers" ~~ Signature matches Public Key ~~ Certificate "apexcert" added to store. ~~ CertUtil: -addstore command completed successfully.
+  ADD CA CN=apexcert :: CA "Intermediate Certification Authorities" ~~ Signature matches Public Key ~~ Certificate "apexcert" added to store. ~~ CertUtil: -addstore command completed successfully.
+  total-distinct-certs=29
+=== H. sc start (pre-reboot baseline) ===
+  start apexdrv rc=577 :: [SC] StartService FAILED 577: ~~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    q: SERVICE_NAME: apexdrv ~~ TYPE               : 1  KERNEL_DRIVER ~~ STATE              : 1  STOPPED ~~ WIN32_EXIT_CODE    : 577  (0x241) ~~ SERVICE_EXIT_CODE  : 0  (0x0) ~~ CHECKPOINT         : 0x0 ~~ WAIT_HINT          : 0x0
+  start apexdrv_cat rc=577 :: [SC] StartService FAILED 577: ~~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    q: SERVICE_NAME: apexdrv_cat ~~ TYPE               : 1  KERNEL_DRIVER ~~ STATE              : 1  STOPPED ~~ WIN32_EXIT_CODE    : 577  (0x241) ~~ SERVICE_EXIT_CODE  : 0  (0x0) ~~ CHECKPOINT         : 0x0 ~~ WAIT_HINT          : 0x0
+  start kernprobe rc=577 :: [SC] StartService FAILED 577: ~~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    q: SERVICE_NAME: kernprobe ~~ TYPE               : 1  KERNEL_DRIVER ~~ STATE              : 1  STOPPED ~~ WIN32_EXIT_CODE    : 577  (0x241) ~~ SERVICE_EXIT_CODE  : 0  (0x0) ~~ CHECKPOINT         : 0x0 ~~ WAIT_HINT          : 0x0
+=== I. post-reboot logon task ===
+  create: SUCCESS: The scheduled task "p9post" has successfully been created.
+  query: Folder: \ ~~ HostName:      DESKTOP-PPHFJBQ ~~ TaskName:      \p9post ~~ Next Run Time: N/A ~~ Status:        Ready ~~ Logon Mode:    Interactive only
+done 2026-11-01T19:45:52

@@ -1,0 +1,30 @@
+== ping .100 ==
+True
+== ports .100 ==
+3389 => False
+5985 => False
+5986 => False
+445 => False
+135 => False
+22 => False
+3390 => False
+== arp ==
+
+Interface: 192.168.56.1 --- 0x4
+  Internet Address      Physical Address      Type
+  192.168.56.100        08-00-27-6e-07-4d     dynamic   
+  192.168.56.255        ff-ff-ff-ff-ff-ff     static    
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  239.255.255.250       01-00-5e-7f-ff-fa     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    
+
+Interface: 192.168.4.177 --- 0x9
+  Internet Address      Physical Address      Type
+  192.168.4.1           b4-20-46-d8-b8-8d     dynamic   
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    
+== vboxmanage ==

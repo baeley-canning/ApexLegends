@@ -1,0 +1,123 @@
+== 14:30:59
+--- probe7.ps1 lines 64-152 ---
+function LaunchAndWatch($tag, $seconds) {
+    $p = Get-Process r5apex_dx12 -ErrorAction SilentlyContinue | Select-Object -First 1
+    if (-not $p) {
+        Start-Process -FilePath $apexExe -WorkingDirectory (Split-Path $apexExe)
+        W "[$tag] apex launched (direct exe, no-wait)"
+    } else { W "[$tag] apex already running pid=$($p.Id)" }
+
+    $saw = $false
+    $steps = [int]($seconds / 5)
+    for ($i = 1; $i -le $steps; $i++) {
+        Start-Sleep -Seconds 5
+        $p = Get-Process r5apex_dx12 -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($p) {
+            $saw = $true
+            $up = [int]((Get-Date) - $p.StartTime).TotalSeconds
+            if ($i % 3 -eq 0) { W "[$tag] t=$($i*5)s alive pid=$($p.Id) uptime=${up}s" }
+        } elseif ($saw) {
+            W "[$tag] t=$($i*5)s apex GONE (was alive) -> AC rejection or crash"
+            $null = DialogUp $tag
+            return $false
+        } else {
+            W "[$tag] t=$($i*5)s apex not up yet"
+        }
+        if ($i % 4 -eq 0) { if (DialogUp $tag) { W "[$tag] -> dialog present at t=$($i*5)s"; return $false } }
+    }
+    $p = Get-Process r5apex_dx12 -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($p) {
+        W "[$tag] VERDICT: apex ALIVE after ${seconds}s (uptime $([int]((Get-Date) - $p.StartTime).TotalSeconds)s), no dialog -> AC PASSED"
+        return $true
+    }
+    W "[$tag] VERDICT: apex never stayed up -> AC BLOCKED"
+    return $false
+}
+
+function LoadDrv {
+    if (-not (ServState)) {
+        (& sc.exe create apexdrv binPath= '\??\C:\Windows\System32\drivers\apexdrv.sys' type= kernel start= demand error= normal 2>&1) | ForEach-Object { W "  create| $_" }
+    }
+    (& sc.exe start apexdrv 2>&1) | ForEach-Object { W "  start| $_" }
+    Start-Sleep -Seconds 2
+    W "  service now : $((Get-Service apexdrv -ErrorAction SilentlyContinue).Status)"
+}
+function UnloadDrv {
+    (& sc.exe stop apexdrv 2>&1) | ForEach-Object { W "  stop| $_" }
+    (& sc.exe delete apexdrv 2>&1) | ForEach-Object { W "  delete| $_" }
+}
+
+# ---------------------------------------------------------------------------
+Hdr 'PHASE 0 - snapshot'
+SnapState 'p0'
+W ("AC dir: " + ((Get-ChildItem $acDir -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + '(' + $_.Length + ')' }) -join ' '))
+foreach ($p in (Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle })) {
+    W "  win $($p.ProcessName): $($p.MainWindowTitle)"
+}
+
+# ---------------------------------------------------------------------------
+Hdr 'PHASE 1 - NO apexdrv loaded, launch apex, wait for the AC'
+KillGame
+UnloadDrv
+Start-Sleep -Seconds 3
+SnapState 'p1'
+$cleanPass = LaunchAndWatch 'p1' 120
+$null = DialogUp 'p1'
+W "PHASE1 RESULT: ac_passed_without_driver=$cleanPass"
+
+# ---------------------------------------------------------------------------
+Hdr 'PHASE 2 - kernel probe against the live target (driver loaded now)'
+LoadDrv
+$ap = Get-Process r5apex_dx12 -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($ap) {
+    $up = [int]((Get-Date) - $ap.StartTime).TotalSeconds
+    W "  target: pid=$($ap.Id) uptime=${up}s (short uptime => measuring a dying process again)"
+    $out = 'C:\qkp\probe7_out.txt'
+    $err = 'C:\qkp\probe7_err.txt'
+    Remove-Item $out,$err -ErrorAction SilentlyContinue
+    $pr = Start-Process -FilePath (Join-Path $b 'apex_launcher.exe') `
+                        -ArgumentList @('--kernel-probe', "--pid=$($ap.Id)", '--no-wait', "--driver=$drv") `
+                        -WorkingDirectory $b -Wait -PassThru `
+                        -RedirectStandardOutput $out -RedirectStandardError $err
+    W "  PROBE_EXIT=$($pr.ExitCode)"
+    Get-Content $out -ErrorAction SilentlyContinue | ForEach-Object { W "  | $_" }
+    Get-Content $err -ErrorAction SilentlyContinue | ForEach-Object { W "  err| $_" }
+    Get-Content (Join-Path $b 'apexdrv_probe.txt') -ErrorAction SilentlyContinue | ForEach-Object { W "  rep| $_" }
+    SnapState 'p2'
+} else { W '  no live apex - probe skipped' }
+
+# ---------------------------------------------------------------------------
+# PHASE 2b - if the AC already popped in P1, that target was dying.  Take the
+# measurement again inside the early window (apex up, AC has not decided yet).
+if (-not $cleanPass) {
+--- probe7.txt tail 14 ---
+14:30:29    start|         STATE              : 4  RUNNING 
+14:30:29    start|                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+14:30:29    start|         WIN32_EXIT_CODE    : 0  (0x0)
+14:30:29    start|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:30:29    start|         CHECKPOINT         : 0x0
+14:30:29    start|         WAIT_HINT          : 0x0
+14:30:29    start|         PID                : 0
+14:30:29    start|         FLAGS              : 
+14:30:31    service now : Running
+14:30:31    no live apex - probe skipped
+14:30:31  
+14:30:31  ===== PHASE 2b - early-window probe on a fresh launch (healthy target) =====
+14:30:31    kill EAAntiCheat.GameServiceLauncher (24464)
+14:30:39    apex relaunched, waiting 30 s (before the AC verdict)
+--- apex/ac now ---
+
+ProcessName              Id
+-----------              --
+EABackgroundService   11460
+EACefSubProcess        3204
+EACefSubProcess        5504
+EACefSubProcess       10540
+EACefSubProcess       10900
+EACefSubProcess       18892
+EADesktop             14356
+EALocalHostSvc         3448
+EasyTuneEngineService  7664
+
+
+

@@ -1,0 +1,175 @@
+﻿
+firmware="EFI"
+VMState="running"
+VMStateChangeTime="2
+026-10-31T22:36:34.7
+66000000"
+graphicscontroller="
+vboxsvga"
+storagecontrollernam
+e0="SATA"
+storagecontrollertyp
+e0="IntelAhci"
+storagecontrollerins
+tance0="0"
+storagecontrollermax
+portcount0="30"
+storagecontrollerpor
+tcount0="2"
+storagecontrollerboo
+table0="on"
+"SATA-0-0"="C:\\User
+s\\New 
+User\\VirtualBox VMs
+\\Win11-Test2\\Snaps
+hots\\{1b5a385b-4395
+-4acb-b43a-61e20b610
+cf6}.vdi"
+"SATA-ImageUUID-0-0"
+="1b5a385b-4395-4acb
+-b43a-61e20b610cf6"
+"SATA-hot-pluggable-
+0-0"="off"
+"SATA-nonrotational-
+0-0"="off"
+"SATA-discard-0-0"="
+off"
+"SATA-1-0"="C:\\Prog
+ram Files\\Oracle\\V
+irtualBox\\VBoxGuest
+Additions.iso"
+"SATA-ImageUUID-1-0"
+="8203e4c9-4976-465c
+-b1ab-37377187f0f8"
+"SATA-tempeject-1-0"
+="off"
+"SATA-IsEjected-1-0"
+="off"
+"SATA-hot-pluggable-
+1-0"="off"
+"SATA-nonrotational-
+1-0"="off"
+"SATA-discard-1-0"="
+off"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+hidkeyboard="ps2kbd"
+vrde="on"
+vrdeport=3390
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="of
+f"
+vrdeproperty[TCP/Por
+ts]="3390"
+vrdeproperty[TCP/Add
+ress]=<not set>
+vrdeproperty[VideoCh
+annel/Enabled]=<not 
+set>
+vrdeproperty[VideoCh
+annel/Quality]=<not 
+set>
+vrdeproperty[VideoCh
+annel/DownscaleProte
+ction]=<not set>
+vrdeproperty[Client/
+DisableDisplay]=<not
+ set>
+vrdeproperty[Client/
+DisableInput]=<not 
+set>
+vrdeproperty[Client/
+DisableAudio]=<not 
+set>
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+vrdeproperty[Client/
+DisableUpstreamAudio
+]=<not set>
+vrdeproperty[Client/
+DisableRDPDR]=<not 
+set>
+vrdeproperty[H3DRedi
+rect/Enabled]=<not 
+set>
+vrdeproperty[Securit
+y/Method]="TLS"
+vrdeproperty[Securit
+y/ServerCertificate]
+="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+vrdeproperty[Securit
+y/ServerPrivateKey]=
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+vrdeproperty[Securit
+y/CACertificate]=<no
+t set>
+vrdeproperty[Audio/R
+ateCorrectionMode]=<
+not set>
+vrdeproperty[Audio/L
+ogPath]=<not set>
+VRDEActiveConnection
+="on"
+VRDEClients==2
+VRDEStartTime="2026/
+11/01 00:06:48 UTC"
+VRDEBytesSent=2460
+VRDEThroughputSend=9
+VRDEBytesSentTotal=2
+460
+VRDEBytesReceived=78
+32
+VRDEThroughputReceiv
+e=29
+VRDEBytesReceivedTot
+al=7832
+VRDEUserName=""
+VRDEDomain=""
+VRDEClientName="DESK
+TOP-PPHFJBQ"
+VRDEClientIP="127.0.
+0.1"
+VRDEClientVersion=26
+100
+VRDEEncryption="RDP5
+ (X.509)"
+GuestOSType="Windows
+11_64"
+GuestAdditionsRunLev
+el=0
+
+
+
+Name       Source   
+----       ------   
+python.exe C:\Use...
+py.exe     C:\Use...
+mstsc.exe  C:\WIN...
+ssh.exe    C:\WIN...
+
+

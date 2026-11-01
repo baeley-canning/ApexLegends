@@ -1,0 +1,141 @@
+=== p15b 01/11/2026 15:28:15 admin=False ===
+########## A existence triple-check ##########
+  C:\Windows\System32\drivers\eaanticheat.sys          TestPath=False  IO=False  raw=NO
+  C:\Windows\System32\drivers\apexdrv.sys              TestPath=True   IO=True   raw=YES
+  C:\Windows\System32\drivers\gdrv3.sys                TestPath=True   IO=True   raw=YES
+  C:\Windows\System32\drivers\EAAntiCheat.sys          TestPath=False  IO=False  raw=NO
+-- raw dir listing of drivers dir (ea|apex|javelin), incl hidden:
+   [     10152] 01/11/2026 14:01:45 C:\Windows\System32\drivers\apexdrv.sys
+   [    108016] 09/09/2026 08:51:57 C:\Windows\System32\drivers\CEA.sys
+   [       646] 01/04/2024 20:22:30 C:\Windows\System32\drivers\gmreadme.txt
+   [    872448] 14/10/2026 12:48:15 C:\Windows\System32\drivers\PEAuth.sys
+   [    118784] 06/09/2024 16:03:24 C:\Windows\System32\drivers\stream.sys
+
+########## B setupapi install history ##########
+-- C:\Windows\INF\setupapi.dev.log
+   matches=0
+-- C:\Windows\INF\setupapi.app.log MISSING
+
+########## C DriverStore INF scan for eaanticheat/apexdrv ##########
+   total inf matches=0
+-- FileRepository dirs matching eaa|apex|javelin|game:
+   DIR C:\Windows\System32\DriverStore\FileRepository\gameflt.inf_amd64_c03f7ce96acee3d6
+   DIR C:\Windows\System32\DriverStore\FileRepository\gameport.inf_amd64_d07f8cf2ad877fe4
+   DIR C:\Windows\System32\DriverStore\FileRepository\hidgamepad.inf_amd64_66e5eb14670e10ae
+   DIR C:\Windows\System32\DriverStore\FileRepository\percsas3i.inf_amd64_c17a63dada1eaa02
+
+########## D service + filter state ##########
+  sc query EAAntiCheat:  ~ SERVICE_NAME: EAAntiCheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 1077 (0x435) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query eaanticheat:  ~ SERVICE_NAME: eaanticheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 1077 (0x435) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query EAAntiCheatService: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  sc query apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  sc query kernprobe: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  sc query zzprobe: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  fltmc filters:  | Filter listing failed with error: 0x80070005 | Access is denied.
+
+########## E Instances + Altitude + SupportedFeatures ##########
+   KEY EAAntiCheat Type=2 Start=3 Tag=4 SupportedFeatures=3 Altitude(Instances)=363250
+   KEY eaanticheat Type=2 Start=3 Tag=4 SupportedFeatures=3 Altitude(Instances)=363250
+   KEY apexdrv MISSING
+   KEY zzprobe MISSING
+   KEY kernprobe Type=1 Start=3 Tag= SupportedFeatures= Altitude(Instances)=(none)
+
+########## F CI / HVCI / DeviceGuard registry ##########
+  [HKLM:\SYSTEM\CurrentControlSet\Control\CI\Config]
+     VulnerableDriverBlocklistEnable = 0
+     RevocationListLcuKirValue = 0
+  [HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard]
+     CachedDrtmAuthIndex = 0
+     RequireMicrosoftSignedBootChain = 1
+  [HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity] MISSING
+-- CI operational log id histogram (72h) + recent 3004/3010/3033/3077:
+   id=3116 count=6
+   id=3099 count=6
+   id=3085 count=2
+   id=3089 count=7
+   id=3004 count=3
+   id=3033 count=4
+   [3004] 01/11 14:00:47 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software c
+   [3004] 01/11 13:58:58 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or softwa
+   [3033] 01/11 04:59:04 :: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the M
+   [3033] 01/11 04:59:04 :: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the M
+   [3033] 01/11 04:59:03 :: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the M
+   [3033] 01/11 04:59:03 :: Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the M
+   [3004] 01/11 03:35:32 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or softwa
+
+########## G EA/Qwen certs + signature status ##########
+  certutil Root matches (10): Issuer: CN=DigiCert Trusted Root G4, OU=www.digicert.com, O=DigiCert Inc, C=US ~ Subject: CN=DigiCert Trusted Root G4, OU=www.digicert.com, O=DigiCert Inc, C=US ~ Issuer: CN=ApexR Test ~ Subject: CN=ApexR Test ~ Issuer: CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O=DigiCert, Inc., C=US ~ Subject: CN=Electronic Arts, Inc., OU=EA SPEAR AntiCheat Engineering, O=Electronic Arts, Inc., L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US ~ Issuer: CN=apexcert ~ Subject: CN=apexcert ~ Issuer: CN=ApexDrv Dev (QwenKern Premium) ~ Subject: CN=ApexDrv Dev (QwenKern Premium)
+  Cert:\LocalMachine\Root: D33ED7478345A1F373111F13439DC34D76C96D55 | CN=ApexR Test | exp 27/10/2031 10:07:14 pm | D33ED7478345A1F373111F13439DC34D76C96D55 ~ CFF746C534683778BB5A301CBFB4087C34A2B9D6 | CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US | exp 26/01/2027 12:59:59 pm | CFF746C534683778BB5A301CBFB4087C34A2B9D6 ~ 7804D6A90DD199EE970AE0B2FB657E8286DC70EB | CN=apexcert | exp 1/11/2027 2:51:48 am | 7804D6A90DD199EE970AE0B2FB657E8286DC70EB ~ 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 | CN=ApexDrv Dev (QwenKern Premium) | exp 26/10/2029 5:43:18 pm | 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  Cert:\LocalMachine\CA: D33ED7478345A1F373111F13439DC34D76C96D55 | CN=ApexR Test | exp 27/10/2031 10:07:14 pm | D33ED7478345A1F373111F13439DC34D76C96D55 ~ 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 | CN=ApexDrv Dev (QwenKern Premium) | exp 26/10/2029 5:43:18 pm | 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  Cert:\LocalMachine\TrustedPublisher: D33ED7478345A1F373111F13439DC34D76C96D55 | CN=ApexR Test | exp 27/10/2031 10:07:14 pm | D33ED7478345A1F373111F13439DC34D76C96D55 ~ 7804D6A90DD199EE970AE0B2FB657E8286DC70EB | CN=apexcert | exp 1/11/2027 2:51:48 am | 7804D6A90DD199EE970AE0B2FB657E8286DC70EB ~ 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 | CN=ApexDrv Dev (QwenKern Premium) | exp 26/10/2029 5:43:18 pm | 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  Cert:\LocalMachine\TrustedPeople: 
+  SIG C:\Windows\System32\drivers\apexdrv.sys :: Valid | signer=CN=ApexDrv Dev (QwenKern Premium) | issuer=CN=ApexDrv Dev (QwenKern Premium)
+  SIG C:\ProgramData\QwenKern\apexdrv.sys :: Valid | signer=CN=ApexDrv Dev (QwenKern Premium) | issuer=CN=ApexDrv Dev (QwenKern Premium)
+  SIG C:\Program Files\EA\AC\EAAntiCheat.GameService.exe :: Valid | signer=CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US | issuer=CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O="DigiCert, Inc.", C=US
+  SIG C:\Program Files\EA\AC\EAAntiCheat.Installer.exe :: Valid | signer=CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US | issuer=CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O="DigiCert, Inc.", C=US
+
+########## H driver delivery artefacts ##########
+-- C:\ProgramData\eaanticheat (recursive, first 40):
+              1 30/09/2026 09:14:48 C:\ProgramData\eaanticheat\Crashdumps
+-- C:\Program Files\EA Games\Apex (recursive, first 40):
+              1 29/09/2026 20:33:33 C:\Program Files\EA Games\Apex\audio
+              1 07/10/2026 08:49:55 C:\Program Files\EA Games\Apex\bin
+              1 29/09/2026 20:33:33 C:\Program Files\EA Games\Apex\cfg
+              1 29/09/2026 21:10:41 C:\Program Files\EA Games\Apex\Core
+              1 29/09/2026 21:10:41 C:\Program Files\EA Games\Apex\LiveAPI
+              1 29/09/2026 20:33:33 C:\Program Files\EA Games\Apex\materials
+              1 29/09/2026 21:10:41 C:\Program Files\EA Games\Apex\media
+              1 29/09/2026 20:33:33 C:\Program Files\EA Games\Apex\paks
+              1 07/10/2026 08:49:58 C:\Program Files\EA Games\Apex\Support
+              1 07/10/2026 08:49:58 C:\Program Files\EA Games\Apex\__Installer
+       68517728 07/10/2026 08:49:42 C:\Program Files\EA Games\Apex\baeleys game.exe
+         421792 29/09/2026 20:33:37 C:\Program Files\EA Games\Apex\bink2w64.dll
+             53 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\build.txt
+          12536 30/09/2026 09:13:13 C:\Program Files\EA Games\Apex\EAAntiCheat.cfg
+       53116664 22/10/2026 12:02:42 C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll
+       53116664 22/10/2026 12:02:42 C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+       20286712 22/10/2026 12:01:56 C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe
+       20286712 22/10/2026 12:01:56 C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+      271269624 30/09/2026 09:13:22 C:\Program Files\EA Games\Apex\EAAntiCheat.Installer.exe
+         594412 30/09/2026 09:13:12 C:\Program Files\EA Games\Apex\EAAntiCheat.splash.png
+             11 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\gameversion.txt
+        2314848 29/09/2026 20:33:38 C:\Program Files\EA Games\Apex\GFSDK_Aftermath_Lib.x64.dll
+            206 29/09/2026 20:33:38 C:\Program Files\EA Games\Apex\launchBuildClient.bat
+        1121120 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\OriginSDK.dll
+          46840 22/10/2026 12:02:42 C:\Program Files\EA Games\Apex\preloader_l.dll
+          46840 22/10/2026 12:02:42 C:\Program Files\EA Games\Apex\preloader_l.dll_b
+           4096 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\r5apexdata.bin
+       68517728 18/10/2026 16:24:51 C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+             34 29/09/2026 20:33:37 C:\Program Files\EA Games\Apex\script_net.md5sum
+        4248928 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\steamnetworkingsockets.dll
+          32120 29/09/2026 20:33:41 C:\Program Files\EA Games\Apex\steamnetworkingsockets_config.json
+         293216 07/10/2026 08:49:30 C:\Program Files\EA Games\Apex\steam_api64.dll
+            151 29/09/2026 20:33:41 C:\Program Files\EA Games\Apex\uxr_client.bat
+          45944 29/09/2026 20:33:41 C:\Program Files\EA Games\Apex\WinPixEventRuntime.dll
+              1 06/10/2026 20:10:13 C:\Program Files\EA Games\Apex\audio\ship
+        4780316 06/10/2026 20:09:59 C:\Program Files\EA Games\Apex\audio\ship\audio.mprj
+      278980806 06/10/2026 20:09:59 C:\Program Files\EA Games\Apex\audio\ship\general.mbnk
+       13862430 29/09/2026 20:33:44 C:\Program Files\EA Games\Apex\audio\ship\general.mbnk_digest
+     3524276127 29/09/2026 20:44:32 C:\Program Files\EA Games\Apex\audio\ship\general_english.mstr
+       47729853 29/09/2026 20:34:07 C:\Program Files\EA Games\Apex\audio\ship\general_english_patch_1.mstr
+-- C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2 (recursive, first 40):
+              1 08/08/2026 21:44:33 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production
+              1 08/08/2026 21:44:35 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\69b933646f0db664fbea2443f040e69fcb2d0186d8f43dee2f0f19b6bc37e9e3
+              1 27/06/2026 14:40:10 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\7ab8c7053c7842d912f1bbef4ba43ff1c252b30adf4d2a681e1e39204d4f2c3d
+          86352 12/08/2026 10:06:18 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\69b933646f0db664fbea2443f040e69fcb2d0186d8f43dee2f0f19b6bc37e9e3\AC2
+           7024 14/10/2026 22:03:36 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\7ab8c7053c7842d912f1bbef4ba43ff1c252b30adf4d2a681e1e39204d4f2c3d\AC2
+-- Apex *.sys files:
+-- EA uninstall/install registry records:
+   HKLM:\SOFTWARE\Electronic Arts :
+     EA Core
+     EA Desktop
+   HKLM:\SOFTWARE\WOW6432Node\Electronic Arts :
+     EA Core
+     EA Desktop
+     EADM
+   HKLM:\SOFTWARE\EA Games :
+     Need For Speed Hot Pursuit Remastered
+   HKLM:\SOFTWARE\WOW6432Node\EA Games :
+     Need For Speed Hot Pursuit Remastered
+     Need for Speed(TM) Most Wanted
+=== END 01/11/2026 15:28:20 ===

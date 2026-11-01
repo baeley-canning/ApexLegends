@@ -1,0 +1,79 @@
+=== p27 GATE TEST 01/11/2026 20:52:09 user=New User admin=False host=DESKTOP-PPHFJBQ launch=True ===
+
+########## A: pre-flight state ##########
+  SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  booted             = 1/11/2026 8:49:53 pm  (uptime 2 min)
+  >> kernel booted WITHOUT testsigning: apexdrv should NOT load (577) and no test-mode popup is expected
+  svc apexdrv              
+  svc apexdrv_cat          
+  svc kernprobe            
+  svc eaanticheat          STATE              : 1  STOPPED
+  svc EAAntiCheatService   STATE              : 1  STOPPED
+  our cats in the system catalog store: apexdrv_p26.cat@11-01 19:20, apexdrv_p9.cat@11-01 19:35
+  game processes before launch: 
+  popups in the last 6 h (baseline): 37
+    PRE 20:50:04 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 20:50:04 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 20:50:04 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 20:36:21 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+    PRE 19:45:51 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:45:50 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:39:20 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:39:19 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:35:13 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:35:12 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:55:03 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:55:03 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:51:11 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:51:10 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:39:41 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:39:40 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:35:58 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:35:57 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:53:17 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:53:14 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:50:50 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:43:54 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:30:59 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:27:48 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:25:21 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:24:23 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:21:33 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:16:17 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:16:11 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:00:11 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 15:32:33 System id=26 src=Application Popup :: Application popup: Security Violation : Test or debug mode must be disabled to start the game.
+
+########## B: launch ##########
+  EA app not running -> starting C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EADesktop.exe
+  launching C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+
+########## C: watch (popup / survival / AC service) ##########
+  t+ 30s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+ 60s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+ 90s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+120s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+150s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+180s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+210s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+240s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+270s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+300s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+
+########## D: EAAC / driver state after the test ##########
+  processes: EAAntiCheat.GameService(7532),r5apex_dx12(15388)
+  sc query eaanticheat:  ~ SERVICE_NAME: eaanticheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query EAAntiCheatService:  ~ SERVICE_NAME: EAAntiCheatService ~ TYPE : 10 WIN32_OWN_PROCESS ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  CodeIntegrity events since launch: 0
+
+########## VERDICT ##########
+  NO GAME SEEN. Start Apex by hand, then re-run without -Launch.
+
+-- p27 END 01/11/2026 20:57:30 --

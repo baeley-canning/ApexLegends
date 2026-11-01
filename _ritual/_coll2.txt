@@ -1,0 +1,20 @@
+﻿coll2 2026-11-01T20:09:55
+elev=True
+dev-before=unavailable
+state-before apexdrv=SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+1) sc stop apexdrv rc=0 :: SERVICE_NAME: apexdrv ~ TYPE               : 1  KERNEL_DRIVER ~ STATE              : 1  STOPPED ~ WIN32_EXIT_CODE    : 0  (0x0) ~ SERVICE_EXIT_CODE  : 0  (0x0) ~ CHECKPOINT         : 0x0 ~ WAIT_HINT          : 0x0
+   apexdrv=SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+   dev=unavailable
+2) sc start kernprobe (apexdrv down) rc=0 :: SERVICE_NAME: kernprobe ~ TYPE               : 1  KERNEL_DRIVER ~ STATE              : 4  RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE    : 0  (0x0) ~ SERVICE_EXIT_CODE  : 0  (0x0) ~ CHECKPOINT         : 0x0 ~ WAIT_HINT          : 0x0 ~ PID                : 0 ~ FLAGS              :
+   kernprobe=SERVICE_NAME: kernprobe ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+   dev=unavailable
+3) sc start apexdrv_cat (kernprobe up) rc=183 :: [SC] StartService FAILED 183: ~ Cannot create a file when that file already exists.
+   apexdrv_cat=SERVICE_NAME: apexdrv_cat ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 183 (0xb7) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+   dev=unavailable
+4) sc stop kernprobe rc=0 :: SERVICE_NAME: kernprobe ~ TYPE               : 1  KERNEL_DRIVER ~ STATE              : 1  STOPPED ~ WIN32_EXIT_CODE    : 0  (0x0) ~ SERVICE_EXIT_CODE  : 0  (0x0) ~ CHECKPOINT         : 0x0 ~ WAIT_HINT          : 0x0
+5) RESTORE sc start apexdrv rc=0 :: SERVICE_NAME: apexdrv ~ TYPE               : 1  KERNEL_DRIVER ~ STATE              : 4  RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE    : 0  (0x0) ~ SERVICE_EXIT_CODE  : 0  (0x0) ~ CHECKPOINT         : 0x0 ~ WAIT_HINT          : 0x0 ~ PID                : 0 ~ FLAGS              :
+   apexdrv=SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+   dev-final=unavailable
+6) final apexdrv=SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0 | apexdrv_cat=SERVICE_NAME: apexdrv_cat ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 183 (0xb7) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0 | kernprobe=SERVICE_NAME: kernprobe ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+CI events last 8 min:
+done 2026-11-01T20:10:08

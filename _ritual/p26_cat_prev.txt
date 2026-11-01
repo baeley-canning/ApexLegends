@@ -1,0 +1,323 @@
+﻿=== p26_cat  01/11/2026 18:50:51  elevated=True ===
+host build=26200.9711  boot=1/11/2026 3:59:37 pm  now=1/11/2026 6:50:51 pm
+bcd.testsigning=Yes
+bcd.nointegritychecks=No
+test signing is armed in BCD only if it differs from the boot time -> no reboot has happened yet
+makecat = C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\makecat.exe
+signtool = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+staged apexdrv_build.sys  len=10152 sha256=9B119FD0C38740A2 status=Valid signer=CN=ApexDrv Dev (QwenKern Premium)
+staged apexdrv_sys.sys    len=10192 sha256=4F1106853D05986B status=Valid signer=CN=ApexDrv S2 Leaf (QwenKern)
+engineHash apexdrv_build.sys  sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+engineHash apexdrv_sys.sys    sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+--- sha256 member probe: which .cdf form gives the cat a 32-byte member hash? ---
+  probe enc-10001      cat=   382 sha256Lookup=NONE(err1168)  miss
+  probe enc-10002      cat=     0 sha256Lookup=NONE(err1168)  miss
+  probe hashalg-800c   makecat rc=1 -> no .cat
+  probe hashalg-8004   makecat rc=1 -> no .cat
+  probe hashalg-both   makecat rc=1 -> no .cat
+  probe hashalg-spaced makecat rc=1 -> no .cat
+  probe hashalg-name   makecat rc=1 -> no .cat
+  probe catver+800c    makecat rc=1 -> no .cat
+  probe literal-name   cat=   431 sha256Lookup=NONE(err1168)  miss
+  no variant emitted a 32-byte member; falling back to sha1-only .cdf
+  real cat will use hdr=[EncodingType=0x00010001] tag=<hash>
+--- cdf ---
+  [CatalogHeader]
+  Name=apexdrv_p26.cat
+  ResultDir=C:\p26cat
+  PublicVersion=0x00000001
+  EncodingType=0x00010001
+  CATATTR1=0x10010001:OSAttr:2:10.0,6.1
+  
+  [CatalogFiles]
+  <hash>apexdrv_build.sys=C:\p26cat\apexdrv_build.sys
+  <hash>apexdrv_sys.sys=C:\p26cat\apexdrv_sys.sys
+--- makecat ---
+  makecat: opened:    C:\p26cat\apexdrv_p26.cdf
+  makecat:     attribute: OSAttr
+  makecat: processing: <hash>apexdrv_build.sys
+  makecat: processing: <hash>apexdrv_sys.sys
+  makecat: Succeeded
+cat built len=726 sha1=9F039BC16A7015D6B3A3122365A9F3F0D383FC58
+cat signers -> build=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 sys=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  sign: The following certificate was selected:
+  sign:     Issued to: ApexDrv Dev (QwenKern Premium)
+  sign: 
+  sign:     Issued by: ApexDrv Dev (QwenKern Premium)
+  sign: 
+  sign:     Expires:   Fri Oct 26 17:43:18 2029
+  sign: 
+  sign:     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  sign: 
+  sign: 
+  sign: Done Adding Additional Store
+  sign: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign: 
+  sign: 
+  sign: Number of files successfully Signed: 1
+  sign: 
+  sign: Number of warnings: 0
+  sign: 
+  sign: Number of errors: 0
+  sign: 
+  sign/as: The following certificate was selected:
+  sign/as:     Issued to: ApexDrv S2 Leaf (QwenKern)
+  sign/as: 
+  sign/as:     Issued by: ApexDrv S2 Root CA (QwenKern)
+  sign/as: 
+  sign/as:     Expires:   Sat Nov 01 16:36:28 2031
+  sign/as: 
+  sign/as:     SHA1 hash: 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  sign/as: 
+  sign/as: 
+  sign/as: Done Adding Additional Store
+  sign/as: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign/as: 
+  sign/as: 
+  sign/as: Number of files successfully Signed: 1
+  sign/as: 
+  sign/as: Number of warnings: 0
+  sign/as: 
+  sign/as: Number of errors: 0
+  sign/as: 
+  verify/pa: File: C:\p26cat\apexdrv_p26.cat
+  verify/pa: Index  Algorithm  Timestamp    
+  verify/pa: ========================================
+  verify/pa: 0      sha256     None         
+  verify/pa: 
+  verify/pa: Successfully verified: C:\p26cat\apexdrv_p26.cat
+  verify/pa: 
+  verify/kp: File: C:\p26cat\apexdrv_p26.cat
+  verify/kp: Index  Algorithm  Timestamp    
+  verify/kp: ========================================
+  verify/kp: 
+  verify/kp: Number of errors: 1
+  verify/kp: 
+  verify/kp: SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+cat signature status=Valid
+chain[build] buildOk=True status= root=CN=ApexDrv Dev (QwenKern Premium)
+  already in LocalMachine\Root: CN=ApexDrv Dev (QwenKern Premium)
+chain[sys] buildOk=True status= root=CN=ApexDrv S2 Root CA (QwenKern)
+  already in LocalMachine\CA: CN=ApexDrv S2 Leaf (QwenKern)
+  already in LocalMachine\Root: CN=ApexDrv S2 Root CA (QwenKern)
+--- LocalMachine\My private-key certs and their chain roots (looking for a Microsoft-rooted one) ---
+  F132233D0A5B97262DFE57170D237CECF51BF657 CN=ApexDrv CA c1 (QwenKern)  -> root: CN=ApexDrv CA c1 (QwenKern) buildOk=False
+  DFFA64113CF6589043CE0E4AD74A84CF0CA91690 CN=ApexDrv Lab Code Signing (QwenKern)  -> root: CN=ApexDrv Lab Root CA (QwenKern) buildOk=True
+  DE6318A620E5CB919868FEF340C956BF37C8CA74 CN=Microsoft Root Certificate Authority 2011  -> root: CN=Microsoft Root Certificate Authority 2011 buildOk=True
+  DD5BA95EFD2F303687C309841B3928249A762941 CN=ApexDrv Lab DSE (QwenKern)  -> root: CN=ApexDrv Lab DSE (QwenKern) buildOk=False
+  DB248C944EACF7DD4F9BE6114358C2CE6D63F18C CN=ApexDrv CA c3 (QwenKern)  -> root: CN=ApexDrv CA c3 (QwenKern) buildOk=False
+  D997967F6246ECAD8851D468050258F0E0EA7DC4 CN=S6lan Leaf (QwenKern)  -> root: CN=S6lan Leaf (QwenKern) buildOk=False
+  D33ED7478345A1F373111F13439DC34D76C96D55 CN=ApexR Test  -> root: CN=ApexR Test buildOk=True
+  CB27C1A3117D0DB8F0516853EA3F82E69ABA54D3 CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  C8919A5488F56972F157360DB6B30CFE3A2B3970 CN=ApexDrv CA c2 (QwenKern)  -> root: CN=ApexDrv CA c2 (QwenKern) buildOk=False
+  A9026A2903D511DBBF089D69ACCEBD4E0C22F87F CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  A7569298DEB0D834C42191BB28D8EDFF7B798FEE CN=ApexDrv S4 LeafCA (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+  8CDA74E84A70B072A3A8B3419485FE1735E9BB26 CN=S9msf Leaf (QwenKern)  -> root: CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp. buildOk=True
+  8520C2310834196AA7463E421BA941F64B66505F CN=S8old Leaf (QwenKern)  -> root: CN=S8old Leaf (QwenKern) buildOk=False
+  7AB907DC03E17A6A7375FEBF3ADA5624B4099444 CN=ApexDrv Lab DSE CertSign (QwenKern)  -> root: CN=ApexDrv Lab DSE CertSign (QwenKern) buildOk=True
+  76589C69A7DEBEF1093D9B98C60CA6707A54E36C CN=ApexDrv Lab Root CA (QwenKern)  -> root: CN=ApexDrv Lab Root CA (QwenKern) buildOk=True
+  65A87229342C5FD077551C7FB885C39B27111DF7 CN=S9msf Leaf (QwenKern)  -> root: CN=S9msf Leaf (QwenKern) buildOk=False
+  5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81 CN=S6lan Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 CN=ApexDrv Probe v0 (QwenKern)  -> root: CN=ApexDrv Probe v0 (QwenKern) buildOk=True
+  5937CA2135A847D98E3935B5A592673C18ACC912 CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)  -> root: CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) buildOk=True
+  53E0C111A903AD068A221137E7EB51AD6CAB2ACA CN=S8old Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D CN=ApexDrv S2 Leaf (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+  474F9339147DA30CE30AF7D6961D318279D76295 CN=S13pad Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  4710E702C7883479D106EEB688F7065101B9339D CN=S7win Leaf (QwenKern)  -> root: CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  3C22C2EEB734CD4179100631AC0E6A9485AA945C CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720 CN=ApexDrv S3 LeafNoBC (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+  346E91021D240798DF87F39C94DF5D0C8D824CAB CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US  -> root: CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US buildOk=True
+  3377F64BCFF5D623C90317FC524FC50EDEB53B0C CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp.  -> root: CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp. buildOk=True
+  2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 CN=ApexDrv Dev (QwenKern Premium)  -> root: CN=ApexDrv Dev (QwenKern Premium) buildOk=True
+  1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE CN=S7win Leaf (QwenKern)  -> root: CN=S7win Leaf (QwenKern) buildOk=False
+  1E73093E98695948E09E53C0A4C8E4A5670D6199 CN=ApexDrv S1 SelfSigned CA (QwenKern)  -> root: CN=ApexDrv S1 SelfSigned CA (QwenKern) buildOk=True
+  1A5520EED6638BEC2A5EE297D3FF984B2CACF889 CN=ApexDrv S2 Root CA (QwenKern)  -> root: CN=ApexDrv S2 Root CA (QwenKern) buildOk=True
+  12482F7414F72A9406229D8E04FD6741BFFB4EFD CN=S14cn Leaf (QwenKern)  -> root: CN=Microsoft Root Certificate Authority 2011 buildOk=True
+  075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79 CN=ApexDrv p25h SelfTest CA (QwenKern)  -> root: CN=ApexDrv p25h SelfTest CA (QwenKern) buildOk=False
+MS-rooted signer -> promoting to PRIMARY signature: 8CDA74E84A70B072A3A8B3419485FE1735E9BB26 CN=S9msf Leaf (QwenKern)
+  sign/msprimary: The following certificate was selected:
+  sign/msprimary:     Issued to: S9msf Leaf (QwenKern)
+  sign/msprimary: 
+  sign/msprimary:     Issued by: Microsoft Root Authority
+  sign/msprimary: 
+  sign/msprimary:     Expires:   Sat Nov 01 16:53:09 2031
+  sign/msprimary: 
+  sign/msprimary:     SHA1 hash: 8CDA74E84A70B072A3A8B3419485FE1735E9BB26
+  sign/msprimary: 
+  sign/msprimary: 
+  sign/msprimary: Done Adding Additional Store
+  sign/msprimary: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign/msprimary: 
+  sign/msprimary: 
+  sign/msprimary: Number of files successfully Signed: 1
+  sign/msprimary: 
+  sign/msprimary: Number of warnings: 0
+  sign/msprimary: 
+  sign/msprimary: Number of errors: 0
+  sign/msprimary: 
+  sign/as2: The following certificate was selected:
+  sign/as2:     Issued to: ApexDrv Dev (QwenKern Premium)
+  sign/as2: 
+  sign/as2:     Issued by: ApexDrv Dev (QwenKern Premium)
+  sign/as2: 
+  sign/as2:     Expires:   Fri Oct 26 17:43:18 2029
+  sign/as2: 
+  sign/as2:     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  sign/as2: 
+  sign/as2: 
+  sign/as2: Done Adding Additional Store
+  sign/as2: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign/as2: 
+  sign/as2: 
+  sign/as2: Number of files successfully Signed: 1
+  sign/as2: 
+  sign/as2: Number of warnings: 0
+  sign/as2: 
+  sign/as2: Number of errors: 0
+  sign/as2: 
+  sign/as2: The following certificate was selected:
+  sign/as2:     Issued to: ApexDrv S2 Leaf (QwenKern)
+  sign/as2: 
+  sign/as2:     Issued by: ApexDrv S2 Root CA (QwenKern)
+  sign/as2: 
+  sign/as2:     Expires:   Sat Nov 01 16:36:28 2031
+  sign/as2: 
+  sign/as2:     SHA1 hash: 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  sign/as2: 
+  sign/as2: 
+  sign/as2: Done Adding Additional Store
+  sign/as2: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign/as2: 
+  sign/as2: 
+  sign/as2: Number of files successfully Signed: 1
+  sign/as2: 
+  sign/as2: Number of warnings: 0
+  sign/as2: 
+  sign/as2: Number of errors: 0
+  sign/as2: 
+cat status after MS-primary re-sign: Valid primarySigner=CN=S9msf Leaf (QwenKern)
+catroot pre-existing apexdrv members: apexdrv_p26.cat
+  certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+  certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: Cannot open Cert store.
+  certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: -addstore command FAILED: 0x80070035 (WIN32: 53 ERROR_BAD_NETPATH)
+  certutil[CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: The network path was not found.
+  certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+  certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: Cannot open Cert store.
+  certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: -addstore command FAILED: 0x80070035 (WIN32: 53 ERROR_BAD_NETPATH)
+  certutil[C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}]: CertUtil: The network path was not found.
+CryptCATAdminAcquireContext2 alg=SHA1 ok=0 err=-2146893816
+CryptCATAdminAcquireContext2 alg=SHA256 ok=0 err=-2146893816
+installed -> C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\apexdrv_p26.cat  exists=True
+LOOKUP[before-flush] sha1  =apexdrv_p26.cat; apexdrv_p26.cat;
+LOOKUP[before-flush] sha256=NONE(err1168) NONE(err1168)   <- ci's lookup (event 3004 criterion)
+flushing catalog caches: stop/start cryptsvc unconditionally
+  net: The Cryptographic Services service is stopping..
+  net: The Cryptographic Services service was stopped successfully.
+  net: 
+  net: The Cryptographic Services service is starting.
+  net: The Cryptographic Services service was started successfully.
+  net: 
+LOOKUP[after-flush] sha1  =apexdrv_p26.cat; apexdrv_p26.cat;
+LOOKUP[after-flush] sha256=NONE(err1168) NONE(err1168)   <- ci's lookup (event 3004 criterion)
+--- kp re-verify after root install / MS append on: C:\p26cat\apexdrv_p26.cat
+  verify/kp2: File: C:\p26cat\apexdrv_p26.cat
+  verify/kp2: Index  Algorithm  Timestamp    
+  verify/kp2: ========================================
+  verify/kp2: 
+  verify/kp2: Number of errors: 1
+  verify/kp2: 
+  verify/kp2: SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  kp2 exit=1
+  ci-criterion (32-byte lookup resolves to our cat) = False
+--- svc apexdrv_cat image=\??\C:\p26cat\apexdrv_build.sys
+  sc create: [SC] CreateService FAILED 1073:
+  sc create: 
+  sc create: The specified service already exists.
+  sc create: 
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: apexdrv_cat TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- svc kernprobe image=\??\C:\Windows\System32\drivers\apexdrv.sys
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- svc apexdrv image=\??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- events (CodeIntegrity full records + System/Service Control Manager) ---
+  CI 3089 11/01/2026 18:51:11 Signature information for another event. Match using the Correlation Id.
+     TotalSignatureCount = 1
+     Signature = 0
+     CacheState = 0
+     Hash Size = 32
+     Hash = 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+     PageHash = false
+     SignatureType = 1
+     ValidatedSigningLevel = 1
+     VerificationError = 7
+     Flags = 0
+     PolicyBits = 16
+     NotValidBefore = 2026-11-01T03:26:28.0000000Z
+     NotValidAfter = 2031-11-01T03:36:28.0000000Z
+     PublisherNameLength = 26
+     PublisherName = ApexDrv S2 Leaf (QwenKern)
+     IssuerNameLength = 29
+     IssuerName = ApexDrv S2 Root CA (QwenKern)
+     PublisherTBSHashSize = 32
+     PublisherTBSHash = 4E772A5D9878919CFE38A8293243E7EA754549518FADA439EFB78A30448C8D9E
+     IssuerTBSHashSize = 0
+     OPUSInfoLength = 4
+     OPUSInfo = None
+     EKUsSize = 10
+     EKUs = 01082B06010505070303
+     KnownRoot = 1
+  CI 3004 11/01/2026 18:51:11 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not b
+     FileNameLength = 60
+     FileNameBuffer = \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys
+     SecureRequired = 0x1
+     RequestedSigningLevel = 1
+     ProcessNameLength = 6
+     ProcessNameBuffer = System
+  CI 3089 11/01/2026 18:51:10 Signature information for another event. Match using the Correlation Id.
+     TotalSignatureCount = 1
+     Signature = 0
+     CacheState = 0
+     Hash Size = 32
+     Hash = 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+     PageHash = false
+     SignatureType = 1
+     ValidatedSigningLevel = 1
+     VerificationError = 7
+     Flags = 0
+     PolicyBits = 1
+     NotValidBefore = 2026-10-26T04:33:18.0000000Z
+     NotValidAfter = 2029-10-26T04:43:18.0000000Z
+     PublisherNameLength = 30
+     PublisherName = ApexDrv Dev (QwenKern Premium)
+     IssuerNameLength = 30
+     IssuerName = ApexDrv Dev (QwenKern Premium)
+     PublisherTBSHashSize = 32
+     PublisherTBSHash = 6C4B5CEC8D68185C759CDFC42752449E01A2755C77F47506C17B7FD5E1C701AB
+     IssuerTBSHashSize = 0
+     OPUSInfoLength = 4
+     OPUSInfo = None
+     EKUsSize = 10
+     EKUs = 01082B06010505070303
+     KnownRoot = 2
+  CI 3004 11/01/2026 18:51:10 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\p26cat\apexdrv_build.sys because file hash could not be found on t
+     FileNameLength = 48
+     FileNameBuffer = \Device\HarddiskVolume3\p26cat\apexdrv_build.sys
+     SecureRequired = 0x1
+     RequestedSigningLevel = 1
+     ProcessNameLength = 6
+     ProcessNameBuffer = System
+  SCM 7000 11/01/2026 18:51:11 The ApexDrv kernprobe (p25h) service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a 
+  SCM 7000 11/01/2026 18:51:10 The p26 cat DSE test service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file tha
+--- VERDICT ---
+CI sha256 (32-byte) lookup -> our cat : False   (before=NONE(err1168) NONE(err1168) | after=NONE(err1168) NONE(err1168))
+CI sha1   (20-byte) lookup -> our cat : True
+signtool /kp exit after chain fix      : 1
+services RUNNING now               : (none)
+cat installed but CI still cannot see the hash -> inspect the LOOKUP lines and catroot
+END-p26_cat

@@ -1,0 +1,19 @@
+﻿=== ELEVATED ===
+False
+desktop-pphfjbq\new user
+=== HOST PROCS ===
+EABackgroundService pid=9580 
+=== HOST TESTSIGNING ===
+=== HOST SECUREBOOT ===
+SecureBoot err: Unable to set proper privileges. Access was denied.
+=== VS/TOOLCHAIN ===
+C:\BuildTools\MSBuild\Current\Bin\MSBuild.exe -> True
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe -> False
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe -> False
+=== ARTIFACTS PRESENT ===
+QwenKernPremium\build\apex_launcher.exe -> False
+QwenKernPremium\build\apexcheat.dll -> False
+QwenKernPremium\build\apexdrv.sys -> True
+QwenKernPremium\build\build_driver.cmd -> True
+QwenKernPremium\apex_launcher.vcxproj -> True
+QwenKernPremium\apex_cheat.vcxproj -> True

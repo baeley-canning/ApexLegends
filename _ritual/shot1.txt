@@ -1,0 +1,47 @@
+﻿VBoxManage.exe : 
+VBoxManage.exe: 
+error: Unsupported 
+resolution for 
+screen shot: 0x0 
+(screen 0)
+At line:1 char:118
++ ... anage.exe'; & 
+$vb controlvm 
+'Win11-Test2' 
+screenshotpng 
+'c:\Users\New ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+0x0 (screen 0):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+DisplayWrap, 
+interface IDisplay, 
+callee IUnknown
+VBoxManage.exe: 
+error: Context: "Tak
+eScreenShotToArray(i
+Screen, width, 
+height, 
+BitmapFormat_PNG, Co
+mSafeArrayAsOutParam
+(saScreenshot))" at 
+line 1775 of file VB
+oxManageControlVM.cp
+p
+NO PNG

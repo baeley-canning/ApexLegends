@@ -1,0 +1,54 @@
+﻿LastBoot=11/01/2026 15:59:37
+Now=11/01/2026 17:25:02
+--- boot events
+
+TimeCreated         
+-----------         
+1/11/2026 3:59:47 pm
+1/11/2026 3:59:47 pm
+1/11/2026 3:59:38 pm
+1/11/2026 3:59:22 pm
+1/11/2026 3:59:47 pm
+1/11/2026 3:59:47 pm
+1/11/2026 2:04:48 pm
+1/11/2026 2:04:48 pm
+
+
+
+--- 3085
+1/11/2026 3:59:40 pm | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+1/11/2026 2:04:41 pm | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+31/10/2026 2:12:25 pm | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+28/10/2026 8:03:22 pm | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+28/10/2026 6:55:15 am | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+27/10/2026 11:50:24 pm | Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+--- cert added (Root)
+CN=ApexDrv S4 LeafCA (QwenKern) | added= | notBefore=11/01/2026 16:26:30
+CN=ApexDrv Lab DSE CertSign (QwenKern) | added= | notBefore=11/01/2026 16:11:29
+CN=ApexDrv Lab Root CA (QwenKern) | added= | notBefore=11/01/2026 16:11:28
+CN=ApexDrv Probe v0 (QwenKern) | added= | notBefore=11/01/2026 16:15:21
+CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) | added= | notBefore=11/01/2026 16:26:31
+CN=ApexDrv S2 Leaf (QwenKern) | added= | notBefore=11/01/2026 16:26:28
+CN=ApexDrv S3 LeafNoBC (QwenKern) | added= | notBefore=11/01/2026 16:26:29
+CN=ApexDrv Dev (QwenKern Premium) | added= | notBefore=10/26/2026 17:33:18
+CN=ApexDrv S1 SelfSigned CA (QwenKern) | added= | notBefore=11/01/2026 16:26:26
+CN=ApexDrv S2 Root CA (QwenKern) | added= | notBefore=11/01/2026 16:26:27
+CN=GlobalSign Code Signing Root R45, O=GlobalSign nv-sa, C=BE | added=nokey | notBefore=03/18/2020 13:00:00
+--- cert added (CA)
+CN=ApexDrv CA c1 (QwenKern) | added=
+CN=ApexDrv Lab DSE (QwenKern) | added=
+CN=ApexDrv CA c3 (QwenKern) | added=
+CN=S6lan Leaf (QwenKern) | added=
+CN=ApexDrv CA c2 (QwenKern) | added=
+CN=ApexDrv S4 LeafCA (QwenKern) | added=
+CN=S8old Leaf (QwenKern) | added=
+CN=ApexDrv Lab DSE CertSign (QwenKern) | added=
+CN=ApexDrv Lab Root CA (QwenKern) | added=
+CN=S9msf Leaf (QwenKern) | added=
+CN=ApexDrv Probe v0 (QwenKern) | added=
+CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) | added=
+CN=ApexDrv Dev (QwenKern Premium) | added=
+CN=S7win Leaf (QwenKern) | added=
+CN=ApexDrv S1 SelfSigned CA (QwenKern) | added=
+CN=ApexDrv S2 Root CA (QwenKern) | added=
+CN=ApexDrv p25h SelfTest CA (QwenKern) | added=

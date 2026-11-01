@@ -1,0 +1,70 @@
+﻿DIR  build
+DIR  docs
+DIR  driver
+DIR  include
+DIR  launcher
+DIR  lib
+DIR  src
+DIR  tools
+FILE apexcheat.ini
+FILE apex_cheat.sln
+FILE apex_cheat.vcxproj
+FILE apex_launcher.vcxproj
+=== launcher ===
+FILE QwenKernPremium\launcher\launcher_main.cpp  51079
+FILE QwenKernPremium\src\acg_probe.cpp  52830
+FILE QwenKernPremium\src\apex_injector.cpp  32905
+FILE QwenKernPremium\src\application.cpp  7464
+FILE QwenKernPremium\src\application.h  841
+FILE QwenKernPremium\src\config.cpp  4266
+FILE QwenKernPremium\src\d3d12_overlay.cpp  30285
+FILE QwenKernPremium\src\features.cpp  9211
+FILE QwenKernPremium\src\hooks.cpp  31783
+FILE QwenKernPremium\src\kernel_injector.cpp  16483
+FILE QwenKernPremium\src\log.cpp  3307
+FILE QwenKernPremium\src\main.cpp  2055
+FILE QwenKernPremium\src\manual_map.cpp  25270
+FILE QwenKernPremium\src\memory.cpp  2686
+FILE QwenKernPremium\src\offset_validator.cpp  10649
+FILE QwenKernPremium\include\acg_probe.h  5099
+FILE QwenKernPremium\include\apex_driver_ioctl.h  5772
+FILE QwenKernPremium\include\application.h  842
+FILE QwenKernPremium\include\config.h  1074
+FILE QwenKernPremium\include\d3d12_overlay.h  2610
+FILE QwenKernPremium\include\features.h  1858
+FILE QwenKernPremium\include\hooks.h  6284
+FILE QwenKernPremium\include\injector.h  9989
+FILE QwenKernPremium\include\log.h  1678
+FILE QwenKernPremium\include\main.h  1472
+FILE QwenKernPremium\include\manual_map.h  2599
+FILE QwenKernPremium\include\memory.h  3141
+FILE QwenKernPremium\include\offset_validator.h  1323
+DIR  QwenKernPremium\driver\build  1
+FILE QwenKernPremium\driver\apexdrv.c  18385
+FILE QwenKernPremium\driver\apexdrv.obj  43376
+FILE QwenKernPremium\driver\apexdrv.vcxproj  3636
+FILE QwenKernPremium\driver\vc140.pdb  184320
+FILE QwenKernPremium\tools\BuildDriver.ps1  5305
+FILE QwenKernPremium\tools\BuildGate.ps1  15848
+FILE QwenKernPremium\tools\pe_imports.ps1  5586
+DIR  QwenKernPremium\build\build  1
+FILE QwenKernPremium\build\apexdrv.obj  43376
+FILE QwenKernPremium\build\apexdrv.sys  15984
+FILE QwenKernPremium\build\build_driver.cmd  1958
+FILE QwenKernPremium\build\import_cert_and_enable_testsign.cmd  1075
+FILE QwenKernPremium\build\setup_driver_vm.cmd  1930
+FILE QwenKernPremium\build\vc140.pdb  184320
+FILE QwenKernPremium\build\Win11-Test2-VRDP.rdp  176
+FILE QwenKernPremium\build\Win11-Test2.rdp  365
+FILE QwenKernPremium\docs\APEX_OFFSETS_AND_DUMPING_METHODS.txt  4782
+FILE QwenKernPremium\docs\INJECTION_MENU_AND_RISK_MATRIX.txt  9736
+FILE QwenKernPremium\docs\INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt  7373
+FILE QwenKernPremium\docs\JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt  10389
+FILE QwenKernPremium\docs\JAVELIN_REVERSE_ENGINEERING.txt  8765
+FILE QwenKernPremium\docs\KB_INDEX_2026.txt  3698
+FILE QwenKernPremium\docs\KB_SOURCES_AND_RELIABILITY.txt  4665
+FILE QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md  10104
+FILE QwenKernPremium\docs\PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt  21025
+FILE QwenKernPremium\docs\PREMIUM_MARKET_TEARDOWN_2026.txt  8813
+FILE QwenKernPremium\docs\R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt  4822
+FILE QwenKernPremium\docs\ROADMAP_TO_PREMIUM_PRODUCT.txt  13050

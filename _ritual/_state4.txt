@@ -1,0 +1,8 @@
+﻿t=2026-11-01T19:32:54 alive=True cpu0=0.828125 thr=11
+cat len=1 attr=Directory ctime=2026-11-01T19:20:01
+nbytes=0 first=-
+acl=NT SERVICE\CryptSvc Allow  FullControl ; NT SERVICE\CryptSvc Allow  268435456 ; NT SERVICE\TrustedInstaller Allow  FullControl ; NT SERVICE\TrustedInstaller Allow  268435456 ; NT AUTHORITY\SYSTEM Allow  FullControl ; NT AUTHORITY\SYSTEM Allow  268435456 ; BUILTIN\Administrators Allow  FullControl ; BUILTIN\Administrators Allow  268435456 ; BUILTIN\Users Allow  ReadAndExecute, Synchronize ; BUILTIN\Users Allow  -1610612736 ; CREATOR OWNER Allow  268435456 ; APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize ; APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES Allow  -1610612736 ; APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES Allow  ReadAndExecute, Synchronize ; APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES Allow  -1610612736
+filedelete=ERR MethodInvocationException ms=4
+existsAfter=True
+t2=2026-11-01T19:32:54 alive=True cpu1=0.828125
+catroot_apex=apexdrv_p26.cat(1)

@@ -1,0 +1,32 @@
+=== GATE RUN 27 - C/D/VERDICT 20:57:39 ===
+########## C: watch (popup / survival / AC service) ##########
+  t+ 30s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+ 60s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+ 90s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+120s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+150s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+180s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+210s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+240s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+270s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+  t+300s alive=no EAAntiCheatService=Running windows=[r5apex_dx12:Apex Legends]
+
+########## D: EAAC / driver state after the test ##########
+  processes: EAAntiCheat.GameService(7532),r5apex_dx12(15388)
+  sc query eaanticheat:  ~ SERVICE_NAME: eaanticheat ~ TYPE : 2 FILE_SYSTEM_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query EAAntiCheatService:  ~ SERVICE_NAME: EAAntiCheatService ~ TYPE : 10 WIN32_OWN_PROCESS ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  CodeIntegrity events since launch: 0
+
+########## VERDICT ##########
+  NO GAME SEEN. Start Apex by hand, then re-run without -Launch.
+
+-- p27 END 01/11/2026 20:57:30 --
+
+=== post-run reality (independent of the buggy probe) ===
+r5apex_dx12 alive=True ws=6839MB title=[Apex Legends] cpu=804.3
+EAAntiCheatService=Running
+EA app up=True
+run27.log: WRAPPER_START Sun 01/11/2026 20:52:08.92  / WRAPPER_END Sun 01/11/2026 20:57:30.15 
+build: apexcheat.dll(318976), apexcheat.ini(0), apexcheat.launcher.ini(203), apexcheat.pdb(6836224), apexdrv.obj(43376), apexdrv.sys(10152), apexdrv_dev.cer(806), apexdrv_probe.txt(640), apex_launcher.exe(428544), apex_launcher.pdb(6647808)
+drivers dir: apexdrv.sys.bak_p24.off, apexdrv.sys.bak_p25g.off, apexdrv.sys.bak_p25h.off, apexdrv.sys.off

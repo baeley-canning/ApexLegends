@@ -1,0 +1,7 @@
+﻿boot=11/01/2026 15:59:37
+now=11/01/2026 19:46:35
+SystemStartOptions=[ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+ControlHasProp=BootDriverFlags,CurrentUser,EarlyStartServices,PreshutdownOrder,SvcHostSplitThresholdInKB,SystemBootDriveLetter,WaitToKillServiceTimeout,SystemStartOptions,SystemBootDevice,FirmwareBootDevice,LastBootSucceeded,LastBootShutdown,ServicesPipeTimeout,DirtyShutdownCount,PSPath,PSParentPath,PSChildName,PSDrive,PSProvider
+securebootState=0
+CIpolicy=EmodePolicyRequired=0 SkuPolicyRequired=0 VerifiedAndReputablePolicyState=0 SAC_EnforcementReason=0 SAC_PreviousState=4294967295
+BCD-C=False

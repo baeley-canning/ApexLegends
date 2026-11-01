@@ -1,0 +1,6 @@
+  SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  bcdedit /export C:\Users\New User\OneDrive\Desktop\cheating\_ritual\bcd_before_20261101_204255.bcd: The operation completed successfully.
+  bcdedit /set testsigning off -> [The operation completed successfully.] RC=0
+  bcdedit /set nointegritychecks off -> [The operation completed successfully.] RC=0
+  bcdedit /set debug off -> [The operation completed successfully.] RC=0
+  SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]

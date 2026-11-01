@@ -1,0 +1,10 @@
+﻿brute7 2026-11-01T17:40:35
+=== C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys
+file=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys cp=8704 cl=1680 len=10384
+API(full) sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC sha256=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+  HIT chkOp=2 secOp=2 certOp=2 len=8692 sha1match=True sha256match=True api1=ERR-2147024703 api2=ERR-2147024703
+=== C:\WINDOWS\System32\drivers\apexdrv.sys
+file=C:\WINDOWS\System32\drivers\apexdrv.sys cp=8704 cl=1488 len=10192
+API(full) sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC sha256=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+  HIT chkOp=2 secOp=2 certOp=2 len=8692 sha1match=True sha256match=True api1=ERR-2147024703 api2=ERR-2147024703
+DONE-brute7

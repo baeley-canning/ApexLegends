@@ -1,0 +1,40 @@
+lines=193
+
+if (Get-Process r5apex_dx12 -ErrorAction SilentlyContinue) {
+    Hdr 'S3 - LIVE target: load apexdrv LATE and watch for the popup'
+    LoadDrv
+    W ('  driver: ' + ((& sc.exe query apexdrv 2>&1 | Out-String) -match 'RUNNING'))
+    $late = $false
+    for ($i = 1; $i -le 24; $i++) {
+        Start-Sleep -Seconds 5
+        if (PopupInfo 's3') { $late = $true; break }
+        if (-not (Get-Process r5apex_dx12 -ErrorAction SilentlyContinue)) { W "  apex died at t=$($i*5)s after driver load"; break }
+    }
+    W "S3 RESULT popup_after_late_driver_load=$late"
+
+    $ap = Get-Process r5apex_dx12 -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($ap -and -not $late) {
+        $up = [int]((Get-Date) - $ap.StartTime).TotalSeconds
+        W "  target pid=$($ap.Id) uptime=${up}s"
+        $out = 'C:\qkp\p8_out.txt'; $err = 'C:\qkp\p8_err.txt'
+        Remove-Item $out, $err -ErrorAction SilentlyContinue
+        $pr = Start-Process -FilePath (Join-Path $b 'apex_launcher.exe') `
+                            -ArgumentList @('--kernel-probe', "--pid=$($ap.Id)", '--no-wait', "--driver=$drv") `
+                            -WorkingDirectory $b -Wait -PassThru `
+                            -RedirectStandardOutput $out -RedirectStandardError $err
+        W "  PROBE_EXIT=$($pr.ExitCode)"
+        Get-Content $out -ErrorAction SilentlyContinue | ForEach-Object { W "  | $_" }
+        Get-Content $err -ErrorAction SilentlyContinue | ForEach-Object { W "  err| $_" }
+        Get-Content (Join-Path $b 'apexdrv_probe.txt') -ErrorAction SilentlyContinue | ForEach-Object { W "  rep| $_" }
+    } else { W "  probe skipped (late=$late)" }
+} else { W 'S3 skipped - no live apex' }
+
+SnapState 'end'
+UnloadDrv
+Hdr 'RESULT'
+W "clean_driverless_pass = $clean"
+if (-not $clean) { W 'driverless run still popped #95 => apexdrv is NOT the trigger; bisect machine config' }
+W 'END'
+
+    W "[$tag] VERDICT BLOCKED: apex never persisted (no popup caught)"; return $false
+}

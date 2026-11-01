@@ -1,0 +1,169 @@
+﻿Class of Signing Tool KB2
+Class of Signing Tool KC1
+Class of Signing Tool KC2
+Class of Signing Tool KC3
+ClientSignatureAlgorithms
+Could not find Crl related to certificate.
+Could not get AKID from certificate.
+Created new LB policy "
+CRL signature failure
+CRL signing
+crypto\ct\ct_policy.c
+crypto\evp\signature.c
+CT_POLICY_EVAL_CTX_new_ex
+CurrentUserGroupPolicy
+curve does not support signing
+Digital Signature
+digitalSignature
+dwvBs?
+e?$VBs7???B???40??r?
+EA Javelin Anticheat
+EA SPEAR AntiCheat Engineering1
+EA TPM Attestation SDK/0.1
+EAAntiCheat.GameService.exe
+EAAntiCheat.GameService.pdb
+-----END CERTIFICATE-----
+error decoding certificate
+error decrypting certificate
+error signing hash
+error validating signature
+errors validating pick_first LB policy config
+ess add signing cert error
+ess add signing cert v2 error
+ess signing cert add error
+ess signing cert v2 add error
+ess signing certid mismatch error
+ess signing certificate error
+EVP_PKEY_CTX_get_signature_md
+evp_pkey_signature_init
+evp_signature_from_algorithm
+evp_signature_new
+excluded subtree violation
+Factory not found for policy "%s"
+format error in certificate's notAfter field
+format error in certificate's notBefore field
+g???::l?JNC???VbS
+g??G/c?????_VbS?;I?
+g?U??/???vbs?Xor?rN??W
+Got a malformed root certificate.
+grpc.authorization_policy_provider
+grpc.lb_policy_name
+i2o_SCT_signature
+id-ct-resourceTaggedAttest
+incorrect policy syntax tag
+indicator integrity failure
+Inhibit Policy Mapping
+inhibitPolicyMapping
+integrity
+invalid certificate
+invalid non-CA certificate (has CA markings)
+invalid or inconsistent certificate extension
+invalid or inconsistent certificate policy extension
+invalid policy identifier
+invalid proxy policy setting
+invalid signature size
+invalid signer certificate purpose
+issuer certificate doesn't have a public key
+issuerDomainPolicy
+JVbsYa
+Key type: 1=AT_KEYEXCHANGE (default), 2=AT_SIGNATURE
+key usage does not include certificate signing
+key usage does not include CRL signing
+key usage does not include digital signature
+l?VBs??#w
+LB policy "
+List all certificates in store
+loadBalancingPolicy
+local_certificate
+LocalMachineGroupPolicy
+Lookup and output certificates
+M??9pQ?vBs
+M??u??LI"?Dvbs?|??[?
+MaxPolicyElementKey
+missing key usage digitalsignature
+missing ocspsigning usage
+missing signing certificate attribute
+module integrity failure
+mVBs/???p?
+NEW CERTIFICATE REQUEST
+no certificate found
+no certificate or crl found
+No certificates found.
+no certificates in chain
+no explicit policy
+no issuer certificate
+no matching signature
+no policy found in child entry
+no policy identifier
+no proxy cert policy language defined
+no recipient matches certificate
+no signatures on data
+not a certificate
+O[?VBsj?B??
+o2i_SCT_signature
+OAEP padding not allowed for signing / verifying
+Object Signing
+Object Signing CA
+OCSP_SIGNATURE
+oneOf violation
+Opening certificate store %s
+optionalSignature
+ossl_policy_data_new
+ossl_policy_level_add_node
+p;vBs?
+permitted subtree violation
+ping_rate_policy
+pkcs7 add signature error
+PKCS7_add0_attrib_signing_time
+policy
+policy language already defined
+policy mismatch
+policy path length
+policy path length already defined
+policy when proxy language requires no policy
+policy_cache_create
+policy_cache_new
+POLICY_CONSTRAINTS
+POLICY_MAPPING
+POLICY_MAPPINGS
+policy_section
+policyid
+policyIdentifier
+POLICYINFO
+policyLanguage
+POLICYQUALINFO
+potentially invalid certificate
+private key does not match certificate
+providers\implementations\signature\dsa_sig.c
+providers\implementations\signature\ecdsa_sig.c
+providers\implementations\signature\eddsa_sig.c
+providers\implementations\signature\mac_legacy_sig.c
+providers\implementations\signature\rsa_sig.c
+providers\implementations\signature\sm2_sig.c
+proxy certificates not allowed, please set the appropriate flag
+PROXY_POLICY
+proxyPolicy
+PvbS??
+QE?????[vBS??G2
+R$?vbS??T\*??
+remote_certificate
+Require Explicit Policy
+requireExplicitPolicy
+retryPolicy
+rsa_generate_signature_aid
+S/MIME signing
+s???}?{?Q?1"??O2Dvbsv
+schannel: added %d certificate(s) from CA file '%s'
+schannel: CertGetCertificateChain error mask: 0x%08x
+schannel: CertGetCertificateChain failed: %s
+schannel: CertGetCertificateChain trust error CERT_TRUST_IS_NOT_TIME_VALID
+schannel: CertGetCertificateChain trust error CERT_TRUST_IS_PARTIAL_CHAIN
+schannel: CertGetCertificateChain trust error CERT_TRUST_IS_REVOKED
+schannel: CertGetCertificateChain trust error CERT_TRUST_IS_UNTRUSTED_ROOT
+schannel: CertGetCertificateChain trust error CERT_TRUST_REVOCATION_STATUS_UNKNOWN
+schannel: CertGetNameString() failed to match connection hostname (%s) against server certificate names
+schannel: CertGetNameString() returned certificate name information of unexpected size
+schannel: CertGetNameString() returned no certificate name information
+schannel: certificate format compatibility error  for %s
+schannel: connection hostname (%s) did not match against certificate name (%s)
+schannel: connection hostname (%s) validated against certificate name (%s)

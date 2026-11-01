@@ -1,0 +1,154 @@
+=== p28 ESP STAGE 2 01/11/2026 21:03:50 admin=True requestedMethod=nt pid=0 ===
+
+########## A: pre-flight ##########
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apex_launcher.exe exists=True 428544 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll exists=True 318976 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys exists=True 10152 bytes
+  target: r5apex_dx12 pid=15388 ws=6322 MB
+  EAAntiCheatService=Running  apexdrv=
+  wrote C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.ini
+  wrote C:\Program Files\EA Games\Apex\apexcheat.ini
+  payload log: C:\Users\New User\AppData\Local\QwenKern\payload_15388.log
+
+########## B: probe (measure, never injects) ##########
+  probe exit=4 -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_probe.txt
+   | os=10.0 build 26200 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+   | d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown
+   | 
+   | probes:
+   |   [FAIL] I0_inventory           module inventory / reference integrity
+   |         address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+   |         detail: image=r5apex_dx12.exe modules=0 d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown os=10.0 build 26200 hvci=unknown (key absent) | module list UNREADABLE: presence is unknown, not absent
+   |   [PASS] X1_open_process        OpenProcess with injector rights
+   |         address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+   |         detail: handle acquired | rights: QUERY_LIMITED=OK VM_READ=OK VM_WRITE|VM_OP=OK CREATE_THREAD=OK injector(ALL)=OK 
+   |   [FAIL] X8_read_target         read target: PEB, module base, VirtualQueryEx
+   |         address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+   |         detail: native=STATUS_SUCCESS peb=0x210000 pebRead=no psapi=modules=0 base=none baseRead=no MZ=no VQE=ok protect=0x0 regionSize=0x0
+   |   [FAIL] X2_alloc_ex_rwx        VirtualAllocEx RWX in target
+   |         address=0x0 size=0x1000 status=STATUS_SUCCESS win32Err=87
+   |         detail: RWX remote allocation refused
+   |   [FAIL] X3_alloc_ex_rw_protect_rx VirtualAllocEx RW + VirtualProtectEx RX in target
+   |         address=0x0 size=0x1000 status=STATUS_SUCCESS win32Err=5
+   |         detail: RW remote allocation refused
+   |   [FAIL] X4_nt_alloc_ex         ntdll!NtAllocateVirtualMemory RWX in target
+   |         address=0x0 size=0x1000 status=0xC000000D win32Err=0
+   |         detail: NTSTATUS 0xC000000D
+   |   [FAIL] X5_section_map_execute map section RWX into target + execute there
+   |         address=0x0 size=0x1000 status=0xC000000D win32Err=0
+   |         detail: NtMapViewOfSection NTSTATUS 0xC000000D
+   |   [FAIL] X6_remote_thread       NtCreateThreadEx at kernel32!ExitThread
+   |         address=0x7FFE16C3EE90 size=0x0 status=0xC0000022 win32Err=5
+   |         detail: NtCreateThreadEx NTSTATUS 0xC0000022
+   |   [FAIL] X7_apc_queue           QueueUserAPC into an existing target thread
+   |         address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=5
+   |         detail: QueueUserAPC failed (tid 14184)
+   | 
+   | 1/9 probes passed
+   | recommendation: no remote ALLOCATION primitive works => the user-mode ladder (A1/A2/A3) cannot run as written; put B3 (driver maps from kernel context) first and treat A7/A8 as gated until the allocation path opens. reads fail too => even an external overlay needs the driver. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+   | ==========================================================================
+   | END OF PROBE REPORT
+   | ==========================================================================
+   | [*] recommendation: no remote ALLOCATION primitive works => the user-mode ladder (A1/A2/A3) cannot run as written; put B3 (driver maps from kernel context) first and treat A7/A8 as gated until the allocation path opens. reads fail too => even an external overlay needs the driver. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path. 
+   | [*] measured 1/9 probe(s) passing
+   | [*] report written: C:\Users\NEWUSE~1\AppData\Local\Temp\apexcheat_acg_probe_target_26408_20261101_210350.txt
+
+########## C: inject (first rung that leaves PROOF in the payload log) ##########
+  --- attempt method=nt ---
+    exit=3 proof=False elapsed=8.0s -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_nt.txt
+    | ===============================================================
+    |   QwenKern Premium - Apex Legends launcher
+    |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    |   kernel rung    : B3 (apexdrv.sys)
+    | ===============================================================
+    | [*] Target PID 15388, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+    | [*] Injection strategy: A2 NtCreateThreadEx (HIDE)
+    | ---------------------------------------------------------------
+    | [-] Injection FAILED via A2 NtCreateThreadEx (HIDE)
+    |     reason: VirtualAllocEx failed: 5
+    | ---------------------------------------------------------------
+  --- attempt method=apc ---
+    exit=3 proof=False elapsed=8.1s -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_apc.txt
+    | ===============================================================
+    |   QwenKern Premium - Apex Legends launcher
+    |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    |   kernel rung    : B3 (apexdrv.sys)
+    | ===============================================================
+    | [*] Target PID 15388, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+    | [*] Injection strategy: A3 APC Queue (IMPERSONATE)
+    | ---------------------------------------------------------------
+    | [-] Injection FAILED via A3 APC Queue (IMPERSONATE)
+    |     reason: VirtualAllocEx failed: 5
+    | ---------------------------------------------------------------
+  --- attempt method=crt ---
+    exit=3 proof=False elapsed=8.0s -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_crt.txt
+    | ===============================================================
+    |   QwenKern Premium - Apex Legends launcher
+    |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    |   kernel rung    : B3 (apexdrv.sys)
+    | ===============================================================
+    | [*] Target PID 15388, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+    | [*] Injection strategy: A1 CreateRemoteThread + LoadLibraryA
+    | ---------------------------------------------------------------
+    | [-] Injection FAILED via A1 CreateRemoteThread + LoadLibraryA
+    |     reason: VirtualAllocEx failed: 5
+    | ---------------------------------------------------------------
+  --- attempt method=hijack ---
+    exit=3 proof=False elapsed=8.0s -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_hijack.txt
+    | ===============================================================
+    |   QwenKern Premium - Apex Legends launcher
+    |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    |   kernel rung    : B3 (apexdrv.sys)
+    | ===============================================================
+    | [*] Target PID 15388, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+    | [*] Injection strategy: A4 Thread Hijack (HIJACK)
+    | ---------------------------------------------------------------
+    | [-] Injection FAILED via A4 Thread Hijack (HIJACK)
+    |     reason: target kernel32/ntdll base unreadable (module list denied)
+    | ---------------------------------------------------------------
+  --- attempt method=manual ---
+    exit=3 proof=False elapsed=8.0s -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p28_launcher_manual.txt
+    | ===============================================================
+    |   QwenKern Premium - Apex Legends launcher
+    |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    |   kernel rung    : B3 (apexdrv.sys)
+    | ===============================================================
+    | [*] Target PID 15388, payload C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+    | [*] Injection strategy: A7 Manual Map (MANUAL)
+    | ---------------------------------------------------------------
+    | [-] Injection FAILED via A7 Manual Map (MANUAL)
+    |     reason: VirtualAllocEx(image) failed: win32error=5
+    | ---------------------------------------------------------------
+
+########## D: payload log (the proof that matters) ##########
+  !! no payload log was created: the DLL never reached DllMain in the target.
+     suspects: method refused (see exit codes above), or the loader could not map the payload.
+
+########## E: observe 45s (game survival after injection) ##########
+  t+5s alive yes  payloadLog=0 bytes
+  t+20s alive yes  payloadLog=0 bytes
+  t+35s alive yes  payloadLog=0 bytes
+
+########## F: what the log says about the game ##########
+  [module base       ] 0 line(s)
+  [offset validation ] 0 line(s)
+  [features:         ] 0 line(s)
+  [InstallHooks      ] 0 line(s)
+  [Failed to install ] 0 line(s)
+  [render hooks      ] 0 line(s)
+  [D3D12             ] 0 line(s)
+  [ESP               ] 0 line(s)
+
+########## VERDICT ##########
+  method used       : (none produced proof)
+  payload proof     : False
+  game module base  : not found
+  offset validation : 0/0 probes matched
+  game alive after  : True
+  payload log bytes : 0
+
+  NO PROOF. Work down the attempt rows in C: the exit code names the rung verdict.
+  If every usermode rung fails, the next lever is the kernel rung B3 (needs apexdrv RUNNING,
+  which is true today only while TESTSIGNING stays on).
+
+-- p28 END 01/11/2026 21:05:16 --

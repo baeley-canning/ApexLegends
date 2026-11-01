@@ -1,0 +1,10 @@
+run30 Sun 01/11/2026 20:45:33.63 
+Set-Content : The process cannot access the file 'C:\Users\New User\OneDrive\Desktop\cheating\_ritual\run30.log' 
+because it is being used by another process.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p30_prep.ps1:16 char:5
++     Set-Content -LiteralPath (Join-Path $PSScriptRoot 'run30.log')
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Set-Content], IOException
+    + FullyQualifiedErrorId : System.IO.IOException,Microsoft.PowerShell.Commands.SetContentCommand
+ 
+run30 wrapper exit=0 20:45:33.98 

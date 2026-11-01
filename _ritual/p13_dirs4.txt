@@ -1,0 +1,752 @@
+﻿=== p13 dirs4 01/11/2026 15:22:04 admin=False ===
+
+########## A1 ALL 'Application Popup' events ever ##########
+
+########## A2 Javelin popups per day + oldest/newest ##########
+no Javelin popups in Application log
+
+########## A2b popup string variants ##########
+
+   VARIANT: 
+
+########## A3 SCM 7023/7045/7031/7034 for EA/apex/Qwen (120d) ##########
+11/01/2026 14:39:51 [Service Control Manager] id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+11/01/2026 14:37:03 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  EAAntiCheatService Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Service Type:  user mode service Service Start Type:  demand start Service Account:
+11/01/2026 14:36:46 [Service Control Manager] id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+11/01/2026 14:36:12 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  EAAntiCheatService Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Service Type:  user mode service Service Start Type:  demand start Service Account:
+11/01/2026 14:30:51 [Service Control Manager] id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+11/01/2026 14:30:29 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+11/01/2026 14:28:35 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  EAAntiCheatService Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Service Type:  user mode service Service Start Type:  demand start Service Account:
+11/01/2026 14:17:46 [Service Control Manager] id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+11/01/2026 14:13:29 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+11/01/2026 14:12:22 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  zzprobe Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+11/01/2026 03:35:32 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 22:27:23 [Service Control Manager] id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+10/27/2026 11:58:18 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:57:26 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\apexdrv\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:57:25 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:55:46 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:55:45 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \SystemRoot\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:55:45 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:55:44 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:54:41 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/27/2026 11:52:55 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\ProgramData\QwenKern\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+10/26/2026 17:43:19 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:   \??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand st
+10/18/2026 16:25:07 [Service Control Manager] id=7045 :: A service was installed in the system.  Service Name:  EAAntiCheatService Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Service Type:  user mode service Service Start Type:  demand start Service Account:
+
+########## A4 FilterManager events for EAAntiCheat/apexdrv (120d) ##########
+11/01/2026 14:39:51 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+11/01/2026 14:39:47 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+11/01/2026 14:36:46 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+11/01/2026 14:36:43 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+11/01/2026 14:30:52 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+11/01/2026 14:30:48 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+11/01/2026 14:17:46 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+11/01/2026 14:17:36 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/27/2026 22:27:24 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+10/27/2026 22:27:20 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/27/2026 22:25:18 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+10/27/2026 22:15:39 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/27/2026 22:12:24 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+10/27/2026 13:12:58 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/26/2026 17:45:08 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+10/26/2026 17:21:30 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/26/2026 17:13:41 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+10/26/2026 16:32:55 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+10/18/2026 22:52:06 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/18/2026 19:48:05 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/18/2026 19:47:11 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/18/2026 16:42:25 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/18/2026 16:22:42 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/18/2026 15:46:58 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/16/2026 23:36:32 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/16/2026 23:21:08 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/16/2026 22:35:42 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/16/2026 21:22:42 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 23:07:21 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 22:41:55 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 22:26:22 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 22:04:19 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 16:28:17 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 16:09:54 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 16:08:42 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 15:59:20 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 15:54:28 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 15:44:41 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 15:44:36 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 15:44:31 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 14:58:31 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 14:56:07 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 13:21:14 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 13:20:35 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 13:14:59 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 13:13:49 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 13:03:43 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 12:59:09 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 12:54:33 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 12:52:21 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 11:29:50 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 11:24:32 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+10/14/2026 10:50:03 id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) unloaded successfully.
+10/14/2026 09:56:30 id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎09T09:00:10.000000000Z) has successfully loaded and registered with Filter Manager.
+
+########## A5 CodeIntegrity Operational events mentioning apexdrv/QwenKern (120d) ##########
+11/01/2026 14:00:47 id=3004 [Error] :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that
+11/01/2026 13:58:58 id=3004 [Error] :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or 
+11/01/2026 03:35:32 id=3004 [Error] :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or 
+10/27/2026 13:19:10 id=3004 [Error] :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or 
+10/27/2026 11:58:18 id=3004 [Error] :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or 
+
+########## B1 apexdrv / eaanticheat file + signature facts ##########
+-- C:\Windows\System32\drivers\apexdrv.sys
+   Len=10152 Created=11/01/2026 14:10:29 Written=11/01/2026 14:01:45 Ver=
+   SigStatus=Valid Type=Authenticode Msg=Signature verified.
+   SHA256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+   Signer=CN=ApexDrv Dev (QwenKern Premium)
+   Issuer=CN=ApexDrv Dev (QwenKern Premium) NotBefore=10/26/2026 17:33:18 NotAfter=10/26/2029 17:43:18
+-- C:\ProgramData\QwenKern\apexdrv.sys
+   Len=10152 Created=10/27/2026 11:52:55 Written=11/01/2026 14:01:45 Ver=
+   SigStatus=Valid Type=Authenticode Msg=Signature verified.
+   SHA256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+   Signer=CN=ApexDrv Dev (QwenKern Premium)
+   Issuer=CN=ApexDrv Dev (QwenKern Premium) NotBefore=10/26/2026 17:33:18 NotAfter=10/26/2029 17:43:18
+-- C:\Windows\System32\drivers\eaanticheat.sys
+   MISSING
+
+-- apexdrv embedded (nested) certs count via .p7b style probe
+
+########## B2 cert stores: dev/test/AAA hunt ##########
+-- Cert:\LocalMachine\Root total=70 matches=5
+   [CN=ApexR Test] 10/27/2026 21:57:14 -> 10/27/2031 22:07:14 Thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+   [CN=ApexDrv Dev (QwenKern Premium)] 10/26/2026 17:33:18 -> 10/26/2029 17:43:18 Thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+   [CN=Microsoft ECC Testing Root Certificate Authority 2017, O=Microsoft Corporation, L=Redmond, S=Washington, C=US] 11/10/2017 08:53:14 -> 11/10/2042 09:01:55 Thumb=A4B37F4F6DE956922273D5CB8E7E0AAFB7033B90
+   [CN=Microsoft Testing Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US] 06/18/2010 08:58:02 -> 06/18/2035 09:04:11 Thumb=8A334AA8052DD244A647306A76B8178FA215F344
+   [CN=Microsoft Test Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1999 Microsoft Corp.] 01/10/1999 20:00:00 -> 12/31/2020 20:00:00 Thumb=2BD63D28D7BCD0E251195AEB519243C13142EBC3
+   -- newest 12 by NotBefore:
+      11/01/2026 02:41:48 CN=apexcert thumb=7804D6A90DD199EE970AE0B2FB657E8286DC70EB
+      10/27/2026 21:57:14 CN=ApexR Test thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+      10/26/2026 17:33:18 CN=ApexDrv Dev (QwenKern Premium) thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+      12/21/2025 13:10:22 CN=Blizzard Battle.net Local Cert, OU=Battle.net, O=Blizzard Entertainment, L=Irvine, S=California, C=US thumb=10FB6E9E3856FF49B91E6BEF702FA49EE64BBB11
+      01/22/2025 13:00:00 CN="Electronic Arts, Inc.", OU=EA SPEAR AntiCheat Engineering, O="Electronic Arts, Inc.", L=Redwood City, S=California, C=US, SERIALNUMBER=2262497, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US thumb=CFF746C534683778BB5A301CBFB4087C34A2B9D6
+      03/22/2021 13:00:00 CN=Sectigo Public Code Signing Root R46, O=Sectigo Limited, C=GB thumb=CCBBF9E1485AF63CE47ABF8E9E648C2504FC319D
+      03/22/2021 13:00:00 CN=Sectigo Public Server Authentication Root E46, O=Sectigo Limited, C=GB thumb=EC8A396C40F02EBC4275D49FAB1C1A5B67BED29A
+      03/22/2021 13:00:00 CN=Sectigo Public Server Authentication Root R46, O=Sectigo Limited, C=GB thumb=AD98F9F3E47D753B65D482B3A45217BB6EF5E438
+      01/15/2021 13:00:00 CN=DigiCert CS RSA4096 Root G5, O="DigiCert, Inc.", C=US thumb=5EEED86FA37C675230642F55C84DDBF67CD33C80
+      01/15/2021 13:00:00 CN=DigiCert TLS RSA4096 Root G5, O="DigiCert, Inc.", C=US thumb=A78849DC5D7C758C8CDE399856B3AAD0B2A57135
+      01/15/2021 13:00:00 CN=DigiCert CS ECC P384 Root G5, O="DigiCert, Inc.", C=US thumb=843573112A3B319344E5E4ECABC9F26C7CD54D07
+      04/17/2020 06:36:16 CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microsoft Corporation, C=US thumb=F40042E2E5F7E8EF8189FED15519AECE42C3BFA2
+-- Cert:\LocalMachine\CA total=8 matches=2
+   [CN=ApexR Test] 10/27/2026 21:57:14 -> 10/27/2031 22:07:14 Thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+   [CN=ApexDrv Dev (QwenKern Premium)] 10/26/2026 17:33:18 -> 10/26/2029 17:43:18 Thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+-- Cert:\CurrentUser\Root total=70 matches=5
+   [CN=ApexR Test] 10/27/2026 21:57:14 -> 10/27/2031 22:07:14 Thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+   [CN=ApexDrv Dev (QwenKern Premium)] 10/26/2026 17:33:18 -> 10/26/2029 17:43:18 Thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+   [CN=Microsoft ECC Testing Root Certificate Authority 2017, O=Microsoft Corporation, L=Redmond, S=Washington, C=US] 11/10/2017 08:53:14 -> 11/10/2042 09:01:55 Thumb=A4B37F4F6DE956922273D5CB8E7E0AAFB7033B90
+   [CN=Microsoft Testing Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US] 06/18/2010 08:58:02 -> 06/18/2035 09:04:11 Thumb=8A334AA8052DD244A647306A76B8178FA215F344
+   [CN=Microsoft Test Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1999 Microsoft Corp.] 01/10/1999 20:00:00 -> 12/31/2020 20:00:00 Thumb=2BD63D28D7BCD0E251195AEB519243C13142EBC3
+-- Cert:\CurrentUser\CA total=29 matches=2
+   [CN=ApexR Test] 10/27/2026 21:57:14 -> 10/27/2031 22:07:14 Thumb=D33ED7478345A1F373111F13439DC34D76C96D55
+   [CN=ApexDrv Dev (QwenKern Premium)] 10/26/2026 17:33:18 -> 10/26/2029 17:43:18 Thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+
+-- AAA root exact match anywhere (Subject -match 'AAA Certificate Services')
+
+########## C1 kernel/file-system driver services with non-MS or invalid image ##########
+032c7t | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\af4n72.sys | Status= | Signer=<none>
+08r0j | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ampn0o59.sys | Status= | Signer=<none>
+0iqqncls | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\p76133d4eo.sys | Status= | Signer=<none>
+1mga0q | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\tnhtrs4.sys | Status= | Signer=<none>
+355d12 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\emceh85.sys | Status= | Signer=<none>
+398frdku | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\uk7b4j.sys | Status= | Signer=<none>
+3dfub | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\fkb3ge.sys | Status= | Signer=<none>
+3f12 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\8n9s2hhd.sys | Status= | Signer=<none>
+3gss | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\lfrmk8opq5.sys | Status= | Signer=<none>
+3urud | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ofleabgr.sys | Status= | Signer=<none>
+4gkmu55 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\jer4a0ab7d.sys | Status= | Signer=<none>
+4j3qb | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\mdhdp4g3g.sys | Status= | Signer=<none>
+4kgf507a | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\fnudp01k9.sys | Status= | Signer=<none>
+4tpqir5n | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\icfnmif9f.sys | Status= | Signer=<none>
+58o6ch | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\rl3ala.sys | Status= | Signer=<none>
+66e0s | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\59io51.sys | Status= | Signer=<none>
+6sfdc | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\bl4r0kc.sys | Status= | Signer=<none>
+76km | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\7qt7i9686n.sys | Status= | Signer=<none>
+7p2285u | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\6es614.sys | Status= | Signer=<none>
+86duas4 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\aru7ifro9.sys | Status= | Signer=<none>
+9flr | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ueac65bu83.sys | Status= | Signer=<none>
+9mlb5 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\r9k1agg.sys | Status= | Signer=<none>
+aairn91 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\85sbm1p5.sys | Status= | Signer=<none>
+amsuu4l | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\oqpn0ai6h.sys | Status= | Signer=<none>
+ao062 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\3rcu9nea.sys | Status= | Signer=<none>
+apehek7h | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\saci1eh.sys | Status= | Signer=<none>
+b8s2i | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\m9qm7b.sys | Status= | Signer=<none>
+bohh9u | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\k12drehlfg.sys | Status= | Signer=<none>
+BTHMODEM | Start=3 | Type=1 | C:\Windows\System32\drivers\bthmodem.sys | Status=NotSigned | Signer=<none>
+cblph | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\23m0o2h2j.sys | Status= | Signer=<none>
+ccb6tbu | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\cb44pnpq2s.sys | Status= | Signer=<none>
+ce4r8i | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\gn5dqt.sys | Status= | Signer=<none>
+du0ftcu | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\h2f5ao08.sys | Status= | Signer=<none>
+e6457qus | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\5engnls.sys | Status= | Signer=<none>
+EAAntiCheat | Start=3 | Type=2 | C:\Windows\system32\drivers\eaanticheat.sys | Status= | Signer=<none>
+fibr | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\2ti8psc.sys | Status= | Signer=<none>
+fq3oe | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\q8chh2.sys | Status= | Signer=<none>
+fs6j9ft5 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ecfnk51.sys | Status= | Signer=<none>
+gdrv3 | Start=3 | Type=1 | C:\WINDOWS\System32\drivers\gdrv3.sys | Status=Valid | Signer=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+gl107 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\dn7r7b5a.sys | Status= | Signer=<none>
+gtn2o30 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\fjbh213.sys | Status= | Signer=<none>
+h6ar | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\tlujm8.sys | Status= | Signer=<none>
+Huawei | Start=3 | Type=1 | C:\Windows\System32\drivers\hwmonitor.sys | Status=Valid | Signer=CN="Huawei Technologies Co., Ltd.", OU=Consumer Business Group, O="Huawei Technologies Co., Ltd.", L=Shenzhen, S=Guangdong, C=CN
+HWiNFO_202 | Start=3 | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\HWiNFO_x64_202.sys | Status= | Signer=<none>
+isdu5t3 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\gkbstr6se3.sys | Status= | Signer=<none>
+j3e9kp8 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\jloomcb7fu.sys | Status= | Signer=<none>
+jee4og8 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\iogg1n1e.sys | Status= | Signer=<none>
+jf5k | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\r2la55s48.sys | Status= | Signer=<none>
+kernprobe | Start=3 | Type=1 | C:\Windows\System32\drivers\apexdrv.sys | Status=Valid | Signer=CN=ApexDrv Dev (QwenKern Premium)
+mkq5 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\5j5hn2scgp.sys | Status= | Signer=<none>
+nnb524 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ammd3dl.sys | Status= | Signer=<none>
+o2mt | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\lu1485a6.sys | Status= | Signer=<none>
+omqj3dr | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\9lbj2n1i.sys | Status= | Signer=<none>
+p676u1np | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\rkglpl4n.sys | Status= | Signer=<none>
+pamp9em | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\70k1irea.sys | Status= | Signer=<none>
+phtrp | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\18dhg1.sys | Status= | Signer=<none>
+pi1905 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\9s3gsmp95.sys | Status= | Signer=<none>
+qdrm172 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\4er53pci1.sys | Status= | Signer=<none>
+qpqknbtp | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\ma0jmu8t6k.sys | Status= | Signer=<none>
+qr7djd | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\11mme41c.sys | Status= | Signer=<none>
+r359b1 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\u25j9pu9hf.sys | Status= | Signer=<none>
+ri9h | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\5m2n2u4.sys | Status= | Signer=<none>
+rjeqr7q | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\dk4j7n4kg.sys | Status= | Signer=<none>
+sd5kajd6 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\cf5brqtpo.sys | Status= | Signer=<none>
+strn | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\59idc05r.sys | Status= | Signer=<none>
+ta1ikf2 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\3l82b4l.sys | Status= | Signer=<none>
+tgfpp | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\h73h0r4m6c.sys | Status= | Signer=<none>
+tid8 | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\clb79io3.sys | Status= | Signer=<none>
+tlsgdl | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\mbqrqh.sys | Status= | Signer=<none>
+unjrc8s | Start= | Type=1 | C:\Users\NEWUSE~1\AppData\Local\Temp\r4fe70j103.sys | Status= | Signer=<none>
+WinSetupMon | Start=0 | Type=2 | C:\Windows\system32\DRIVERS\WinSetupMon.sys | Status= | Signer=<none>
+
+########## C2 all FSFilter-group drivers ##########
+AppvStrm | FSFilter HSM | Tag= | Start=3 | \SystemRoot\system32\drivers\AppvStrm.sys
+AppvVemgr | FSFilter Activity Monitor | Tag= | Start=3 | \SystemRoot\system32\drivers\AppvVemgr.sys
+AppvVfs | FSFilter Activity Monitor | Tag= | Start=3 | \SystemRoot\system32\drivers\AppvVfs.sys
+bfs | FSFilter Virtualization | Tag= | Start=2 | \SystemRoot\system32\drivers\bfs.sys
+bindflt | FSFilter Top | Tag= | Start=2 | \SystemRoot\system32\drivers\bindflt.sys
+CldFlt | FSFilter HSM | Tag=1 | Start=2 | system32\drivers\cldflt.sys
+EAAntiCheat | FSFilter Activity Monitor | Tag=4 | Start=3 | system32\drivers\eaanticheat.sys
+FileCrypt | FSFilter Encryption | Tag= | Start=1 | system32\drivers\filecrypt.sys
+FileInfo | FSFilter Bottom | Tag= | Start=0 | System32\drivers\fileinfo.sys
+Filetrace | FSFilter Activity Monitor | Tag=1 | Start=3 | system32\drivers\filetrace.sys
+FltMgr | FSFilter Infrastructure | Tag=1 | Start=0 | system32\drivers\fltmgr.sys
+FsDepends | FSFilter Top | Tag=1 | Start=3 | System32\drivers\FsDepends.sys
+gameflt | FSFilter Activity Monitor | Tag=2 | Start=3 | \SystemRoot\System32\DriverStore\FileRepository\gameflt.inf_amd64_c03f7ce96acee3d6\gameflt.sys
+luafv | FSFilter Virtualization | Tag= | Start=2 | \SystemRoot\system32\drivers\luafv.sys
+storqosflt | FSFilter Quota Management | Tag= | Start=2 | system32\drivers\storqosflt.sys
+UCPD | FSFilter Activity Monitor | Tag= | Start=1 | system32\drivers\UCPD.sys
+UevAgentDriver | FSFilter Top | Tag= | Start=4 | \SystemRoot\system32\drivers\UevAgentDriver.sys
+UnionFS | FSFilter HSM | Tag= | Start=2 | \SystemRoot\system32\drivers\UnionFS.sys
+wcifs | FSFilter Virtualization | Tag= | Start=2 | \SystemRoot\system32\drivers\wcifs.sys
+WdFilter | FSFilter Anti-Virus | Tag= | Start=4 | system32\drivers\wd\WdFilter.sys
+WIMMount | FSFilter Infrastructure | Tag=1 | Start=3 | system32\drivers\wimmount.sys
+WinSetupMon | FSFilter Bottom | Tag=2 | Start=0 | system32\DRIVERS\WinSetupMon.sys
+Wof | FSFilter Compression | Tag= | Start=0 | 
+
+########## H1 last boot + apexdrv/zzprobe events SINCE that boot (was it resident at popup?) ##########
+LastBootUpTime = 11/01/2026 14:04:38
+   11/01/2026 14:30:29 id=7045 [Service Control Manager] :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Servi
+   11/01/2026 14:13:29 id=7045 [Service Control Manager] :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Servi
+   11/01/2026 14:12:22 id=7045 [Service Control Manager] :: A service was installed in the system.  Service Name:  zzprobe Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Servi
+-- Win32_SystemDriver matches:
+-- service keys now:
+   apexdrv : <no key>
+   zzprobe : <no key>
+   EAAntiCheat : Start=3 Type=2 Image=system32\drivers\eaanticheat.sys Group=FSFilter Activity Monitor Tag=4
+   EAAntiCheatService : Start=3 Type=16 Image="C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Group= Tag=
+   eaanticheat : Start=3 Type=2 Image=system32\drivers\eaanticheat.sys Group=FSFilter Activity Monitor Tag=4
+-- object namespace Device scan:
+
+########## H2 boot history (system uptime events) ##########
+   11/01/2026 14:04:48 id=6013 [EventLog]
+   11/01/2026 14:04:48 id=6005 [EventLog]
+   11/01/2026 14:04:16 id=6006 [EventLog]
+   11/01/2026 12:00:03 id=6013 [EventLog]
+   10/31/2026 14:12:49 id=6013 [EventLog]
+   10/31/2026 14:12:49 id=6005 [EventLog]
+   10/31/2026 14:12:49 id=6008 [EventLog]
+   10/31/2026 12:00:04 id=6013 [EventLog]
+   10/30/2026 12:00:05 id=6013 [EventLog]
+   10/29/2026 12:00:02 id=6013 [EventLog]
+   10/28/2026 20:03:30 id=6013 [EventLog]
+   10/28/2026 20:03:30 id=6005 [EventLog]
+   10/28/2026 10:53:24 id=6006 [EventLog]
+   10/28/2026 06:55:21 id=6013 [EventLog]
+   10/28/2026 06:55:21 id=6005 [EventLog]
+   10/28/2026 03:30:34 id=6006 [EventLog]
+   10/27/2026 23:50:32 id=6013 [EventLog]
+   10/27/2026 23:50:32 id=6005 [EventLog]
+   10/27/2026 23:50:32 id=6008 [EventLog]
+   10/27/2026 22:26:09 id=6013 [EventLog]
+   10/27/2026 22:26:09 id=6005 [EventLog]
+   10/27/2026 22:25:39 id=6006 [EventLog]
+   10/27/2026 22:14:36 id=6013 [EventLog]
+   10/27/2026 22:14:36 id=6005 [EventLog]
+   10/27/2026 22:12:37 id=6006 [EventLog]
+   10/27/2026 12:00:00 id=6013 [EventLog]
+   10/26/2026 12:00:05 id=6013 [EventLog]
+   10/25/2026 12:00:03 id=6013 [EventLog]
+   10/24/2026 22:56:51 id=6013 [EventLog]
+   10/24/2026 22:56:51 id=6005 [EventLog]
+   10/24/2026 22:56:15 id=6006 [EventLog]
+   10/24/2026 15:17:44 id=6013 [EventLog]
+   10/24/2026 15:17:44 id=6005 [EventLog]
+   10/24/2026 08:16:59 id=6006 [EventLog]
+   10/23/2026 18:08:09 id=6013 [EventLog]
+   10/23/2026 18:08:09 id=6005 [EventLog]
+   10/23/2026 18:07:40 id=6006 [EventLog]
+   10/23/2026 12:00:03 id=6013 [EventLog]
+   10/22/2026 18:18:45 id=6013 [EventLog]
+   10/22/2026 18:18:45 id=6005 [EventLog]
+   10/21/2026 23:15:24 id=6006 [EventLog]
+   10/21/2026 12:13:45 id=6013 [EventLog]
+   10/21/2026 12:13:45 id=6005 [EventLog]
+   10/21/2026 12:13:12 id=6006 [EventLog]
+   10/21/2026 12:00:00 id=6013 [EventLog]
+   10/21/2026 08:26:00 id=6013 [EventLog]
+   10/21/2026 08:26:00 id=6005 [EventLog]
+   10/20/2026 22:33:27 id=6006 [EventLog]
+   10/20/2026 21:06:15 id=6013 [EventLog]
+   10/20/2026 21:06:15 id=6005 [EventLog]
+   10/19/2026 21:59:06 id=6006 [EventLog]
+   10/19/2026 18:07:56 id=6013 [EventLog]
+   10/19/2026 18:07:56 id=6005 [EventLog]
+   10/18/2026 23:14:08 id=6006 [EventLog]
+
+########## D1 exit code 0xFFFF57A6 / 0x000057A6 occurrences in GameService.exe ##########
+file=C:\Program Files\EA\AC\EAAntiCheat.GameService.exe bytes=193572600
+pattern A6 57 FF FF -> 0 hit(s)
+pattern A6 57 00 00 -> 0 hit(s)
+
+########## D2 ascii strings with 57A6 / attest / testsign / secureboot / hvci ##########
+Attest @0x1559C8C : .id-ct-rpkiGhostbusters..id-ct-resourceTaggedAttest..id-cp.......sbgp-ipAddrBlockv2......sbgp-autono
+attest @0x1BF3AD3 : tp_issuer_fetcher@?A0xA9D0837A@detail@device_attestation@ea@@.............??_A.............?AVissuer
+attest @0x1BF3B21 : .............?AVissuer_fetcher@detail@device_attestation@ea@@...............??_A.............?AVbad_
+VBS @0x37AD37 : l??????u???)?UeZ????=?R.?oT<O5M?.?jc???.B?H.?VBS1?\?y#^???.?R??.???)??????j???.o..N?.?.=?.S.??.?..[+
+VBS @0x2168EBD : ?`.??j#&??=?<?:>2]???[q?&??+>.?L>Q~?.????c???VBS^IB?..?.?E?p ?.z9?yu9s.Y?k?.R??????...$?N?C.PG*.?or?
+VBS @0x359BECB : $,X????%?@???r.?.{??B.%%??.?.??.?'?.?T?/?p~IJVBSrU_??b.??B???9?.??%?:0?;.h?????.?.C/y".I??x????B?.??
+VBS @0x55724D0 : ?z?y?M??s_3.?#.?.?Y???.q??.8??._?RBu??.[?????VBS???.??&+52.????0?;.??7?5/h/ZH?.?h7?.'$Q??????S?..?.g
+VBS @0x59081B8 : ??????M?$(}W????.??-?.??.?.%?\jE?.?jy.??P.;?DVBS???W????o..5(??"<????=>[.??%??+??(??q?h?|l?.#e?i????
+VBS @0x7C04B72 : ?.?a???+w(.???r??..?}?g?R..????2k??K??.???.?4VBS#???3?<???.$??.5?.u?'??.L?????.?D?S?@.q??[!?????a@?D
+skyfall @0x17FD22A : ;)?L...............??_A.............?AUGSCDE@skyfall@@.............??_A.............?AUGameServiceCo
+skyfall @0x17FD270 : A.............?AUGameServiceContextException@skyfall@@.......QrNrOrD.X..X-.XO\X..XNXX-.X[RX.7X."X..-
+skyfall @0x17FDA75 : 3.......??_A.............?AVZipException@zip@skyfall@@..'..T<O/..n.O.*.Z??Od>c}bwO..Y_ 8<Lb.YM.#&(t9
+unacceptable @0x1590098 : ed...tst info setup error....ts datasign.....unacceptable policy.....unsupported md algorithm.......
+
+########## E1 EA log dirs + Javelin/attestation grep ##########
+-- C:\ProgramData\EA Desktop\Logs
+   11/01/2026 14:39:30 2476 C:\ProgramData\EA Desktop\Logs\cef.log
+   11/01/2026 14:36:59 4194882 C:\ProgramData\EA Desktop\Logs\EABackgroundService.bak
+   11/01/2026 15:02:06 10654 C:\ProgramData\EA Desktop\Logs\EABackgroundService.log
+   10/31/2026 23:09:07 12583009 C:\ProgramData\EA Desktop\Logs\EABackgroundServiceVerbose.bak
+   11/01/2026 15:13:04 1218130 C:\ProgramData\EA Desktop\Logs\EABackgroundServiceVerbose.log
+   11/01/2026 15:02:54 293413 C:\ProgramData\EA Desktop\Logs\EADesktop.log
+   11/01/2026 15:12:17 1392917 C:\ProgramData\EA Desktop\Logs\EADesktopVerbose.log
+   10/26/2026 16:30:45 58234 C:\ProgramData\EA Desktop\Logs\EADestager.log
+   10/26/2026 16:30:45 103072 C:\ProgramData\EA Desktop\Logs\EADestagerVerbose.log
+   11/01/2026 14:39:38 19927 C:\ProgramData\EA Desktop\Logs\EALauncher.log
+   11/01/2026 14:39:38 21760 C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log
+   11/01/2026 14:39:53 11109 C:\ProgramData\EA Desktop\Logs\EALocalHostSvc.log
+   11/01/2026 14:39:53 36099 C:\ProgramData\EA Desktop\Logs\EALocalHostSvcVerbose.log
+   08/09/2026 16:45:44 9208 C:\ProgramData\EA Desktop\Logs\EAUninstall.log
+   08/09/2026 16:45:44 14171 C:\ProgramData\EA Desktop\Logs\EAUninstallVerbose.log
+   11/01/2026 14:16:59 2138 C:\ProgramData\EA Desktop\Logs\IGOProxy_EADesktop.log
+   11/01/2026 14:17:00 2665 C:\ProgramData\EA Desktop\Logs\IGOProxy_IGOProxy32.log
+   11/01/2026 14:39:42 1525 C:\ProgramData\EA Desktop\Logs\IGO_EADesktop_14356.log
+-- C:\ProgramData\eaanticheat
+-- C:\Users\New User\AppData\Local\Electronic Arts
+   11/01/2026 14:16:58 384 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cookie.ini
+   06/27/2026 14:39:36 52 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\telemetry.ini
+   08/12/2026 15:52:29 489 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\user_12342777894904493042.ini
+   11/01/2026 14:39:41 507 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\user_6324283081715137738.ini
+   08/12/2026 10:06:18 86352 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\69b933646f0db664fbea2443f040e69fcb2d0186d8f43dee2f0f19b6bc37e9e3\AC2
+   10/14/2026 22:03:36 7024 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production\7ab8c7053c7842d912f1bbef4ba43ff1c252b30adf4d2a681e1e39204d4f2c3d\AC2
+   08/05/2026 09:04:16 657 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\LocalPrefs.json
+   11/01/2026 14:18:06 657 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\LocalPrefs.json
+   08/08/2026 21:44:30 0 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\000003.log
+   08/08/2026 21:44:30 16 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\CURRENT
+   08/08/2026 21:44:30 0 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\LOCK
+   11/01/2026 14:16:56 0 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\LOG
+   10/31/2026 19:09:00 342 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\LOG.old
+   08/08/2026 21:44:30 41 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\MANIFEST-000001
+   10/06/2026 20:09:55 131072 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Visited Links
+   11/01/2026 14:37:05 45056 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\data_0
+   11/01/2026 14:37:05 532480 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\data_1
+   11/01/2026 14:37:03 1056768 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\data_2
+   11/01/2026 14:37:05 4202496 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\data_3
+   10/31/2026 19:09:06 31693 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000001
+   10/31/2026 19:09:06 65098 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000002
+   10/31/2026 19:09:06 45225 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000003
+   10/31/2026 19:09:06 82018 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000004
+   10/31/2026 19:09:06 57568 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000005
+   10/31/2026 19:09:06 26813 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000006
+   10/31/2026 19:09:06 16597 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000007
+   10/31/2026 19:09:06 22610 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000008
+   10/31/2026 19:09:06 24977 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000009
+   10/31/2026 19:09:06 23543 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000a
+   10/31/2026 19:09:06 30609 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000b
+   10/31/2026 19:09:06 29841 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000c
+   10/31/2026 19:09:06 93295 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000d
+   10/31/2026 19:09:06 21342 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000e
+   10/31/2026 19:09:06 42108 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00000f
+   10/31/2026 19:09:06 64075 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000010
+   10/31/2026 19:09:06 58088 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000011
+   10/31/2026 19:09:06 57156 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000012
+   10/31/2026 19:09:06 35097 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000013
+   10/31/2026 19:09:07 70233 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000015
+   10/31/2026 19:09:07 64159 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000016
+   10/31/2026 19:09:07 60134 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000017
+   10/31/2026 19:09:07 29235 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000018
+   10/31/2026 19:09:07 116334 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000019
+   10/31/2026 19:09:07 38342 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001a
+   10/31/2026 19:09:07 31152 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001b
+   10/31/2026 19:09:08 28008 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001c
+   10/31/2026 19:09:09 29128 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001d
+   10/31/2026 19:09:09 24407 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001e
+   10/31/2026 19:09:09 571587 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00001f
+   10/31/2026 19:09:09 17749 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000020
+   10/31/2026 19:09:09 31160 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000021
+   10/31/2026 19:09:09 25485 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000022
+   10/31/2026 19:09:09 18472 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000023
+   10/31/2026 19:09:09 27604 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000024
+   10/31/2026 19:09:09 19860 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000025
+   10/31/2026 19:09:09 21082 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000026
+   10/31/2026 19:09:09 17881 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000027
+   10/31/2026 19:09:09 35784 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000028
+   10/31/2026 19:09:09 20573 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_000029
+   10/31/2026 19:09:09 30490 C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2\EADesktop\BrowserCache\Cache\Cache_Data\f_00002a
+-- C:\Users\New User\AppData\Roaming\Electronic Arts
+   08/15/2026 13:28:56 3976 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\eadp.director.3619880437.dat
+   01/15/2026 12:54:18 3247 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\eadp.director.3698010002.dat
+   08/15/2026 13:29:05 3976 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\eadp.director.3899539020.dat
+   01/15/2026 12:54:21 7658 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\eadp.identity.1143289164.dat
+   08/15/2026 13:28:58 7338 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\eadp.identity.4099808324.dat
+   08/09/2026 22:14:27 0 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.log90.st.dat
+   08/10/2026 12:56:58 0 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.log92.st.dat
+   08/12/2026 10:45:28 6655 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.log93.st.dat
+   08/12/2026 17:02:52 0 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.log94.st.dat
+   08/15/2026 13:29:05 0 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.log95.st.dat
+   08/15/2026 13:29:05 289 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\EadpErrorsData.st.dat
+   10/31/2025 22:02:14 62 C:\Users\New User\AppData\Roaming\Electronic Arts\5lkt\0\eadp-sdk\persistence\PROD\environment.dat
+-- C:\Users\New User\AppData\Local\EA
+
+-- grep: Javelin|attest|Session ID|Violation|unacceptable|apexdrv in EA logs
+
+########## E2 crashdumps + WER for EA AC ##########
+   09/30/2026 09:14:48 1 C:\ProgramData\eaanticheat\Crashdumps
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive
+-- C:\ProgramData\Microsoft\Windows\WER\ReportQueue
+-- C:\Users\New User\AppData\Local\Microsoft\Windows\WER
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_stremio.exe_19c5aa8ac6f15ddac03f1184fa612f699fb72c6_cb079b57_13c5d5b4-a97b-40e5-a89b-2596d239ab6a\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134379725552143605
+     ReportType=2
+     Consent=1
+     UploadTime=134379725583434703
+     ReportStatus=268435456
+     ReportIdentifier=13c5d5b4-a97b-40e5-a89b-2596d239ab6a
+     IntegratorReportIdentifier=a3ed5c86-76f2-4abc-aab8-b1e739198ab3
+     FeatureStaging=Version:1;SiV:1;CD:2609D,MD:9999,TR:0,MO:0
+     Wow64Host=34404
+     Wow64Guest=332
+     NsAppName=stremio.exe
+     AppSessionGuid=00004e80-0001-01a2-acef-d82ba069dd01
+     TargetAppId=W:0000e40e928d6e689eae4149b6a17c26bd8f0000ffff!0000bb91011b5d5bccef2cdbb566b6608266d05ca069!stremio.exe
+     TargetAppVer=2026//02//16:11:41:10!5a7f9!stremio.exe
+     BootId=4294967295
+     TargetAsId=1903
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=e44da7a77de7630b3e587b3c9ee17abf
+     Response.BucketTable=1
+     Response.LegacyBucketId=2186633119382207167
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=stremio.exe
+     Sig[1].Name=Application Version
+     Sig[1].Value=0.0.0.0
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=69930256
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=KERNELBASE.dll
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=10.0.26100.9711
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=4505e14c
+     Sig[6].Name=Exception Code
+     Sig[6].Value=e0000008
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=0016bae4
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_python.exe_efd3e075fcd2961e894321af4e114e096357da2_636aa578_1d77316d-5aa1-4bcc-91fe-4543e431702b\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134375701458963869
+     ReportType=2
+     Consent=1
+     UploadTime=134375701461539503
+     ReportStatus=268435456
+     ReportIdentifier=1d77316d-5aa1-4bcc-91fe-4543e431702b
+     IntegratorReportIdentifier=4f772834-4c48-433a-9a81-42ad9327c0b7
+     FeatureStaging=Version:1;SiV:1;CD:2609D,MD:9999,TR:0,MO:0//KERNELBASE.dll;2;25;62398185,0,0,0;59388597,0,0,0;48433719,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;58989092,0,0,0;57048216,0,0,0;49453572,0,0,0;61154042,0,0,0;61154041,0,0,0;60301787,0,0,0;57441842,0,0,0;40454786,0,0,0;57383490,0,0,0;62877103,0,0,0;62082934,0,0,0;61012278,0,0,0;61937906,0,0,0;60393887,0,0,0;61456009,0,0,0;63498810,0,0,0;62041504,0,0,0;53520691,1,1,1;50221998,0,0,0//WS2_32.dll;2;11;59345096,0,0,0;61067931,0,0,0;60712647,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;62637744,0,0,0//ADVAPI32.dll;2;5;63500684,0,0,0;61154041,0,0,0;58989177,0,0,0;61160789,0,0,0;62332443,0,0,0//sechost.dll;2;3;63167767,0,0,0;60154546,0,0,0;58989177,0,0,0//ole32.dll;2;26;49453572,0,0,0;61456009,0,0,0;58989070,0,0,0;61853962,0,0,0;61154041,0,0,0;61729029,0,0,0;61154042,0,0,0;48433719,0,0,0;61161244,0,0,0;58989177,0,0,0;61160789,0,0,0;61001778,0,0,0;41016858,0,0,0;61873897,0,0,0;61269115,0,0,0;61351974,0,0,0;61422416,0,0,0;61331149,0,0,0;61212369,0,0,0;61055914,0,0,0;61389575,0,0,0;61612406,0,0,0;53579675,0,0,0;58429068,0,0,0;42932704,0,0,0;62381393,0,0,0//gdi32full.dll;2;17;62197041,0,0,0;63048886,0,0,0;62215882,0,0,0;63568082,0,0,0;62196888,0,0,0;63341907,0,0,0;63523050,0,0,0;62769239,0,0,0;61161268,0,0,0;61160789,0,0,0;61161244,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;63342034,0,0,0;63172296,0,0,0//USER32.dll;2;17;49453572,0,0,0;61456009,0,1,2;48433719,0,0,0;58989177,0,0,0;60490815,0,0,0;36642232,0,0,0;35590764,0,0,0;34912776,0,0,0;59949899,0,0,0;54098532,0,1,1;63367030,0,0,0;60643700,0,0,0;61086807,0,0,0;61086798,0,0,0;58429068,0,0,0;62125982,0,0,0;41016858,0,0,0//combase.dll;2;39;49453572,0,0,0;58599570,0,0,0;62293424,0,0,0;55047707,0,0,0;59355008,0,0,0;45036797,0,0,0;61456009,0,0,0;62655472,0,0,0;60128432,0,0,0;61161283,0,0,0;5195825,0,0,0;61698200,0,0,0;58989070,0,0,0;60473437,0,0,0;61154044,0,0,0;25681502,0,0,0;61154041,0,0,0;61154042,0,0,0;58977763,0,0,0;62682494,0,0,0;48433719,0,0,0;61161244,0,0,0;58599550,0,0,0;58599532,0,0,0;58989177,0,0,0;8482243,0,0,0;61160789,0,0,0;61161268,0,0,0;61154043,0,0,0;63066093,0,0,0;60288851,0,0,0;61443112,0,0,0;63176488,0,0,0;52973182,0,0,0;61790051,0,0,0;60765642,0,0,0;60764371,0,0,0;62278733,0,0,0;63072520,0,0,0//OLEAUT32.dll;2;11;60473437,0,0,0;60473431,0,0,0;58092406,0,0,0;43860926,0,0,0;43860922,0,0,0;58599550,0,0,0;58599532,0,0,0;64006220,0,0,0;62743952,0,0,0;63297900,0,0,0;63043634,0,0,0
+     Wow64Host=34404
+     NsAppName=python.exe
+     OriginalFilename=python.exe
+     AppSessionGuid=0000076c-0001-019d-d537-d00ffd65dd01
+     TargetAppId=W:00004729d1c3d060944c00df139946b7ebd100000904!0000f0ef24bbb793b93c33274fadd7cba49fbda8a56e!python.exe
+     TargetAppVer=2025//04//08:12:25:11!1ec86!python.exe
+     BootId=4294967295
+     TargetAsId=2731
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=1554cd04bb1b57fad5eeca1b64d80d43
+     Response.BucketTable=4
+     Response.LegacyBucketId=1580422738258431299
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=python.exe
+     Sig[1].Name=Application Version
+     Sig[1].Value=3.12.10150.1013
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=67f515a7
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=_ctypes.pyd
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=3.12.10150.1013
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=67f5157c
+     Sig[6].Name=Exception Code
+     Sig[6].Value=c0000005
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=000000000000f078
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_bad_module_info_59ea469c9cde70e5cc5fc8dc983f2f16bebbf3_85207d7d_59bd3a02-d7ee-47eb-89ff-a078c737c190\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134375323385181609
+     ReportType=2
+     Consent=1
+     UploadTime=134375323427492275
+     ReportStatus=268566528
+     ReportIdentifier=59bd3a02-d7ee-47eb-89ff-a078c737c190
+     IntegratorReportIdentifier=63a8575c-7d9a-4422-97b9-0164f7e3aa93
+     Wow64Host=34404
+     NsAppName=bad_module_info
+     AppSessionGuid=000036dc-0001-019b-38b0-d804a565dd01
+     TargetAppId=W:0000f519feec486de87ed73cb92d3cac802400000000!0000e6a9f4477b2c5e4915a93524a00d85346c314182!powershell.exe
+     TargetAppVer=1970//01//01:00:00:00!0!powershell.exe
+     BootId=4294967295
+     TargetAsId=44420
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=0758bc351100ecb0a46f1e72d1780692
+     Response.BucketTable=4
+     Response.LegacyBucketId=120858127557
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=bad_module_info
+     Sig[1].Name=Application Version
+     Sig[1].Value=0.0.0.0
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=00000000
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=StackHash_0000
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=0.0.0.0
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=00000000
+     Sig[6].Name=Exception Code
+     Sig[6].Value=c0000005
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=PCH_84
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+     DynamicSig[22].Value=0000
+     DynamicSig[23].Name=Additional Information 2
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_fd2ec124-2848-4dbc-99f9-389a88deca38\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134375320504092709
+     ReportType=2
+     Consent=1
+     UploadTime=134375320546801702
+     ReportStatus=268566528
+     ReportIdentifier=fd2ec124-2848-4dbc-99f9-389a88deca38
+     IntegratorReportIdentifier=d87295b9-a02f-47f2-84f5-df6ea0904741
+     Wow64Host=34404
+     NsAppName=powershell.exe
+     OriginalFilename=PowerShell.EXE
+     AppSessionGuid=00004958-0001-019b-7ea1-9656a465dd01
+     TargetAppId=W:0000f519feec486de87ed73cb92d3cac802400000000!0000e6a9f4477b2c5e4915a93524a00d85346c314182!powershell.exe
+     TargetAppVer=2047//07//10:23:22:52!82a28!powershell.exe
+     BootId=4294967295
+     TargetAsId=44232
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=2307ae04a57776505ed09e21ef9911ce
+     Response.BucketTable=4
+     Response.LegacyBucketId=2220448484884550094
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=powershell.exe
+     Sig[1].Name=Application Version
+     Sig[1].Value=10.0.26100.9549
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=91d14fcc
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=ntdll.dll
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=10.0.26100.9711
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=5fd39a05
+     Sig[6].Name=Exception Code
+     Sig[6].Value=c0000005
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=00000000000cd5e9
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+     DynamicSig[22].Value=0000
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_4be50d8f-cb73-4cbe-8771-d63423355a39\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134375319531148400
+     ReportType=2
+     Consent=1
+     UploadTime=134375319536690634
+     ReportStatus=268435456
+     ReportIdentifier=4be50d8f-cb73-4cbe-8771-d63423355a39
+     IntegratorReportIdentifier=5c31a425-7d70-4ff4-8159-4f0a7b8bc751
+     FeatureStaging=Version:1;SiV:1;CD:2609D,MD:9999,TR:0,MO:0//powershell.exe;2;6;61154041,1,1,0;62223421,1,1,1;61154042,1,1,0;61161244,1,1,2;58989177,1,1,0;61160789,1,1,3//KERNELBASE.dll;2;25;62398185,0,0,0;59388597,0,0,0;48433719,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;58989092,0,0,0;57048216,0,0,0;49453572,0,0,0;61154042,0,0,0;61154041,0,0,0;60301787,0,0,0;57441842,0,0,0;40454786,0,0,0;57383490,0,0,0;62877103,0,0,0;62082934,0,0,0;61012278,0,0,0;61937906,0,0,0;60393887,0,0,0;61456009,0,1,1;63498810,0,0,0;62041504,0,0,0;53520691,1,1,2;50221998,0,0,0//OLEAUT32.dll;2;11;60473437,0,0,0;60473431,0,0,0;58092406,0,0,0;43860926,0,0,0;43860922,0,0,0;58599550,0,0,0;58599532,0,0,0;64006220,0,0,0;62743952,0,0,0;63297900,0,0,0;63043634,0,0,0//combase.dll;2;39;49453572,0,0,0;58599570,0,0,0;62293424,1,1,5;55047707,0,0,0;59355008,1,1,2;45036797,1,1,0;61456009,0,1,4;62655472,0,0,0;60128432,0,0,0;61161283,0,0,0;5195825,1,1,0;61698200,0,0,0;58989070,0,0,0;60473437,1,1,1;61154044,0,0,0;25681502,0,1,6;61154041,0,0,0;61154042,0,0,0;58977763,1,1,3;62682494,0,0,0;48433719,0,0,0;61161244,0,0,0;58599550,1,1,0;58599532,1,1,0;58989177,0,0,0;8482243,1,1,0;61160789,0,0,0;61161268,0,0,0;61154043,0,0,0;63066093,0,0,0;60288851,0,0,0;61443112,0,0,0;63176488,0,0,0;52973182,0,0,0;61790051,0,0,0;60765642,1,1,7;60764371,1,1,8;62278733,0,0,0;63072520,0,0,0//USER32.dll;2;17;49453572,0,0,0;61456009,0,1,1;48433719,0,0,0;58989177,0,0,0;60490815,0,0,0;36642232,0,0,0;35590764,0,0,0;34912776,0,0,0;59949899,0,0,0;54098532,0,1,2;63367030,0,0,0;60643700,0,0,0;61086807,0,0,0;61086798,0,0,0;58429068,0,0,0;62125982,0,0,0;41016858,0,0,0//ADVAPI32.dll;2;5;63500684,0,0,0;61154041,0,0,0;58989177,0,0,0;61160789,0,0,0;62332443,0,0,0//gdi32full.dll;2;17;62197041,0,0,0;63048886,0,0,0;62215882,0,0,0;63568082,0,0,0;62196888,0,0,0;63341907,0,0,0;63523050,0,0,0;62769239,0,0,0;61161268,0,0,0;61160789,0,0,0;61161244,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;63342034,0,0,0;63172296,0,0,0//sechost.dll;2;3;63167767,0,0,0;60154546,0,0,0;58989177,0,0,0//OLE32.dll;2;26;49453572,0,0,0;61456009,0,0,0;58989070,0,0,0;61853962,0,0,0;61154041,0,0,0;61729029,0,0,0;61154042,0,0,0;48433719,0,0,0;61161244,0,0,0;58989177,0,0,0;61160789,0,0,0;61001778,0,0,0;41016858,0,0,0;61873897,0,0,0;61269115,0,0,0;61351974,0,0,0;61422416,0,0,0;61331149,0,0,0;61212369,0,0,0;61055914,0,0,0;61389575,0,0,0;61612406,0,0,0;53579675,0,0,0;58429068,0,0,0;42932704,0,0,0;62381393,0,0,0//uxtheme.dll;2;9;30901086,0,0,0;57048237,0,0,0;58383338,0,0,0;39941783,0,0,0;36459537,0,0,0;10397285,0,0,0;57857165,0,0,0;29983356,0,0,0;62233595,0,0,0//clbcatq.dll;2;1;63197782,1,1,1//windows.storage.dll;2;238;57427023,0,0,0;54644696,0,0,0;47942714,0,0,0;51718004,0,0,0;59687846,0,0,0;62972914,0,1,25;61051567,0,0,0;62446788,0,0,0;61392886,0,0,0;61098847,0,0,0;61508919,1,1,15;21593280,0,0,0;61392938,0,0,0;61389601,0,1,11;60843683,0,0,0;61021332,0,0,0;61127915,0,0,0;61084172,0,0,0;62597531,0,0,0;61023838,0,0,0;61014170,0,1,18;61983655,0,0,0;61542315,0,1,26;61203641,0,0,0;61255433,0,0,0;61077825,0,0,0;61077813,0,0,0;62781537,0,0,0;61702203,0,1,12;60998145,1,1,27;61138180,0,0,0;61141778,0,0,0;60747555,1,1,16;61110674,0,1,19;59355007,0,0,0;58778013,0,0,0;62662576,0,0,0;61934903,0,0,0;62059635,0,0,0;60813048,0,0,0;45274402,0,0,0;44755019,0,0,0;47557358,1,1,9;56699092,0,0,0;53693389,0,0,0;55920876,1,1,30;55920864,1,1,29;48433719,0,0,0;61161283,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;58989092,0,0,0;58989070,0,0,0;58989002,0,0,0;57048237,0,0,0;57048231,1,1,0;57048218,0,0,0;54238000,0,0,0;54237993,0,0,0;54237988,1,1,0;54237977,0,0,0;49453572,0,0,0;61154044,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,1,1,0;58599570,1,1,0;58599559,0,0,0;45036797,1,1,0;45036792,0,0,0;45036787,1,1,0;45036785,1,1,0;45036777,1,1,0;45036774,0,0,0;42105254,0,0,0;62781828,0,0,0;62039392,0,1,28;62877103,0,0,0;61012278,0,0,0;60851339,0,0,0;58459845,0,0,0;59978822,0,0,0;59255444,0,0,0;56314744,1,1,3;56859762,1,1,4;53797701,0,0,0;56676567,0,0,0;53481887,0,0,0;45262758,0,0,0;55730600,0,0,0;57407887,0,0,0;48895801,0,1,21;47135408,0,0,0;54113335,0,0,0;45130483,1,1,5;56049733,1,1,7;44079899,0,0,0;46084709,0,0,0;57173102,0,0,0;60131311,1,1,6;40767182,0,0,0;33591120,0,0,0;38849712,0,0,0;27060184,0,0,0;25176540,0,0,0;20169383,0,0,0;21154437,0,0,0;18001239,0,0,0;9673591,0,0,0;23394095,0,0,0;26856818,0,0,0;20240189,0,0,0;8278123,0,0,0;16669717,0,0,0;13133736,0,0,0;8182961,0,0,0;7242324,0,0,0;9675209,0,0,0;8117523,0,0,0;6390483,0,0,0;24750601,0,0,0;14354675,1,1,0;55433826,0,0,0;45690266,0,0,0;60610656,0,0,0;47526251,0,0,0;44776738,0,0,0;44353396,1,1,8;43699941,1,1,10;6353283,0,0,0;31809544,0,0,0;27289015,0,0,0;21167812,0,0,0;61831103,0,0,0;61214697,0,0,0;62908316,0,0,0;55990087,1,1,14;62816659,0,0,0;58083564,0,0,0;57283410,0,0,0;43998308,0,0,0;62580187,0,0,0;61259154,1,1,23;60498285,0,0,0;54845141,0,1,22;48308861,0,0,0;58755841,0,0,0;10079435,0,0,0;9004739,0,0,0;61456009,0,1,2;62915594,0,0,0;63262877,1,1,1;61743297,0,0,0;61637429,0,0,0;61434912,0,0,0;63525535,0,0,0;58810067,0,0,0;58679359,0,0,0;62049188,0,0,0;27623730,0,0,0;59144945,0,0,0;43229420,0,0,0;59764273,0,0,0;63390075,0,0,0;58637795,0,0,0;56860052,0,0,0;63113857,0,0,0;62470501,0,0,0;61798433,0,0,0;56066650,0,0,0;62052180,0,0,0;60945864,0,0,0;60895405,0,0,0;62832182,0,0,0;62372070,0,0,0;59345818,0,0,0;61014711,0,0,0;63627158,0,0,0;61766564,0,1,17;61052451,0,0,0;62129458,0,0,0;62658472,0,0,0;62868888,0,0,0;53060104,0,0,0;60565095,0,0,0;59188571,0,0,0;61000861,0,0,0;47113245,0,0,0;60907231,0,0,0;59060913,0,0,0;57556150,0,0,0;60565484,0,0,0;46634830,0,0,0;39907225,0,0,0;41312981,1,1,0;24051083,0,0,0;61579316,0,0,0;62900396,0,0,0;62900277,0,0,0;56197835,0,0,0;56360630,0,0,0;61155835,0,0,0;56197649,0,0,0;46702346,0,0,0;38860785,0,0,0;23057199,0,0,0;62167253,0,0,0;63519373,0,0,0;54461705,0,0,0;46008958,0,0,0;44304240,0,0,0;62441042,0,0,0;58797537,0,0,0;60761895,1,1,24;55840883,1,1,13;61314441,0,0,0;62295369,0,0,0;61611787,0,0,0;47113215,0,0,0;61012336,0,0,0;59345162,0,0,0;61473570,0,0,0;42868018,0,0,0;61078993,0,0,0;62657073,1,1,20;54412425,0,0,0;61296509,0,0,0;61012802,0,0,0;61934604,0,0,0;61188158,0,0,0;61284073,0,0,0;57539182,0,0,0;55067093,0,0,0;45333194,0,0,0;59111371,0,0,0;37254716,0,0,0//SHCORE.dll;2;13;49453572,0,0,0;58599559,0,0,0;61012278,0,0,0;62877103,0,0,0;61995194,0,0,0;61995289,0,0,0;21607690,0,0,0;46889786,0,0,0;56032533,0,0,0;50550682,0,0,0;60937769,0,0,0;58988972,0,0,0;60444501,0,0,0//SHLWAPI.dll;2;7;60747555,0,0,0;58599570,0,0,0;63843960,0,0,0;63101315,0,0,0;55063784,0,0,0;62877103,0,0,0;61314441,0,0,0//propsys.dll;2;13;8221526,0,0,0;50935757,0,0,0;63132328,0,0,0;60747555,0,0,0;55990087,0,0,0;55920864,0,0,0;49453572,0,0,0;61154041,0,0,0;58599570,0,0,0;45036777,0,0,0;62832182,0,0,0;61442283,0,0,0;63111381,0,0,0//SHELL32.dll;2;251;8284466,0,0,0;58683033,0,0,0;61831103,0,0,0;62972914,0,0,0;45036797,0,0,0;40767182,0,0,0;61021332,0,0,0;17202054,0,0,0;54237988,0,0,0;56631583,0,0,0;59986399,0,0,0;34545233,0,0,0;13294624,0,0,0;45036785,0,0,0;6688715,0,0,0;61110674,0,0,0;44353396,0,0,0;61127915,0,0,0;13686160,0,0,0;61100238,0,0,0;60997921,0,0,0;61501351,0,0,0;60597084,0,0,0;45036790,0,0,0;61412580,0,0,0;60131311,0,0,0;57048218,0,0,0;61133658,0,0,0;61141778,0,0,0;60813048,0,0,0;24750601,0,0,0;47135408,0,0,0;3261926,0,0,0;60998121,0,0,0;63524660,0,0,0;45036774,0,0,0;61113361,0,0,0;47942714,0,0,0;54237977,0,0,0;62340835,0,0,0;61011963,0,0,0;62141177,0,0,0;54113335,0,0,0;63232498,0,0,0;60732382,0,0,0;43699941,0,0,0;54237951,0,0,0;56049733,0,0,0;61200251,0,0,0;61389601,0,0,0;61154041,0,0,0;58599559,0,0,0;56632969,0,0,0;59993914,0,0,0;24087738,0,0,0;21167812,0,0,0;55007339,0,0,0;62166875,0,0,0;57048237,0,0,0;61084166,0,0,0;59684742,0,0,0;61154042,0,0,0;61203636,0,0,0;57048231,0,0,0;8278123,0,0,0;61051567,0,0,0;31648052,0,0,0;59355007,0,0,0;48433719,0,0,0;59277861,0,0,0;10397285,0,0,0;14354675,0,0,0;51718004,0,0,0;61161244,0,0,0;45130483,0,0,0;61098847,0,0,0;62059635,0,0,0;47557358,0,0,0;61705842,0,0,0;58989177,0,0,0;60998126,0,0,0;58599553,0,0,0;60997935,0,0,0;61160789,0,0,0;55990087,0,0,0;61208345,0,0,0;61558864,0,0,0;33591120,0,0,0;46084709,0,0,0;61161268,0,0,0;48895801,0,0,0;61154043,0,0,0;61166176,0,0,0;58696284,0,0,0;45690266,0,0,0;58989092,0,0,0;49453572,0,0,0;58599570,0,0,0;58778013,0,0,0;6390483,0,0,0;35532193,0,0,0;56699092,0,0,0;39071906,0,0,0;62061516,0,0,0;60747555,0,0,0;41486951,0,0,0;45036777,0,0,0;62708949,0,0,0;45262758,0,0,0;55920864,0,0,0;61412579,0,0,0;53693389,0,0,0;31782608,0,0,0;45624564,0,0,0;54722642,0,0,0;61203640,0,0,0;61217928,0,0,0;27289015,0,0,0;14105151,0,0,0;55182332,0,0,0;61259154,0,0,0;54845141,0,0,0;61136950,0,0,0;61136946,0,0,0;63330572,0,0,0;59439536,0,0,0;60851339,0,0,0;58459845,0,0,0;60551673,0,0,0;56314744,0,0,0;56859762,0,0,0;62877103,0,0,0;61012278,0,0,0;61434912,0,0,0;63525535,0,0,0;61637429,0,0,0;58810067,0,0,0;58679359,0,0,0;59144945,0,0,0;43229420,0,0,0;27623730,0,0,0;62374504,0,0,0;63022755,0,0,0;60490208,0,0,0;61483244,0,0,0;33954786,0,0,0;33149564,0,0,0;60174695,0,0,0;48870529,0,0,0;59764273,0,0,0;43031342,0,0,0;41312981,0,0,0;45080165,0,0,0;33541742,0,0,0;48472359,0,0,0;42167512,0,0,0;60945864,0,0,0;62657073,1,1,1;61078993,0,0,0;62039392,0,0,0;60770424,0,0,0;62691688,0,0,0;55063786,0,0,0;59089691,0,0,0;57437827,0,0,0;55239673,0,0,0;61815311,0,0,0;60888654,0,0,0;58383338,0,0,0;59270880,0,0,0;62844283,0,0,0;61997161,0,0,0;62711238,0,0,0;33393253,0,0,0;20509036,0,0,0;62816659,0,0,0;58083564,0,0,0;60658525,0,0,0;61155835,0,0,0;56197649,0,0,0;46702346,0,0,0;31265023,0,0,0;59807256,0,0,0;63655373,0,0,0;61831596,0,0,0;58027087,0,0,0;57504232,0,0,0;62431354,0,0,0;60708181,0,0,0;56186037,0,0,0;49140016,0,0,0;43946929,0,0,0;40268500,0,0,0;6258161,0,0,0;56860052,0,0,0;54469339,0,0,0;62372070,0,0,0;61365987,0,0,0;55738935,0,0,0;58305402,0,0,0;53579675,0,0,0;58429068,0,0,0;62052180,0,0,0;61202788,0,0,0;45079713,0,0,0;57918084,0,0,0;53060104,0,0,0;62851157,0,0,0;62295249,0,0,0;62295185,0,0,0;57994323,0,0,0;60547019,0,0,0;59203365,0,0,0;57857165,0,0,0;60738547,0,0,0;63206119,0,0,0;55007559,0,0,0;55007364,0,0,0;63190595,0,0,0;60570053,0,0,0;46719714,0,0,0;35548429,0,0,0;45550845,0,0,0;56369454,0,0,0;62658707,0,0,0;61231461,0,0,0;57071200,0,0,0;56068911,0,0,0;54761410,0,0,0;54412425,0,0,0;58933348,0,0,0;63092242,0,0,0;61296509,0,0,0;59927077,0,0,0;46018710,0,0,0;35032763,0,0,0;59889836,0,0,0;59889821,0,0,0;62466961,0,0,0;63272818,0,0,0;54629273,0,0,0;59111371,0,0,0;33122876,0,0,0;59345162,0,0,0;61012336,0,0,0;61599065,0,0,0;27923788,0,0,0;61120456,0,0,0;46008958,0,0,0;46084421,0,0,0;42868018,0,0,0//profapi.dll;2;4;63262877,0,0,0;61456009,0,0,0;48433719,0,0,0;49453572,0,0,0//ntshrui.dll;2;36;61936678,0,0,0;33541742,1,1,1;48433719,0,0,0;57048231,0,0,0;54237988,0,0,0;49453572,0,0,0;61154042,0,0,0;61154041,0,0,0;58599570,0,0,0;58599559,0,0,0;45036797,0,0,0;45036785,0,0,0;61127915,0,0,0;61100239,0,0,0;60747555,0,0,0;61110674,0,0,0;58778013,0,0,0;47557358,0,0,0;60851339,0,0,0;58459845,0,0,0;56314744,0,0,0;56859762,0,0,0;62877103,0,0,0;61012278,0,0,0;58047213,0,0,0;47135408,0,0,0;45130483,0,0,0;56049733,0,0,0;60131311,0,0,0;10397285,0,0,0;44353396,0,0,0;43699941,0,0,0;50658022,0,0,0;56493959,0,0,0;62441042,0,0,0;63022755,0,0,0//policymanager.dll;2;20;49476302,1,1,6;58988972,1,1,0;45036787,0,0,0;49170978,1,1,2;31840299,1,1,0;60288851,1,1,1;58989177,1,1,0;58989092,0,0,0;61160789,1,1,5;61154042,1,1,0;61154041,1,1,0;61161244,1,1,4;58599570,1,1,0;61443112,1,1,3;58321559,0,0,0;61161268,0,0,0;61154043,0,0,0;61659643,0,0,0;60712647,0,0,0;59345096,0,0,0//wintrust.dll;2;12;45036777,1,1,0;56881338,1,1,2;57834291,1,1,1;50565209,0,0,0;56300739,0,0,0;56083284,0,0,0;60077537,0,0,0;61794946,0,0,0;51254211,0,0,0;57048226,0,0,0;58989092,0,0,0;57710740,1,1,3//CRYPT32.dll;2;17;55751182,0,1,4;48002234,1,1,0;41646097,1,1,0;41646436,1,1,0;48433719,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,1,1,3;58989177,1,1,0;49453572,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,1,1,0;62251127,0,0,0;62225697,1,1,2;53079589,1,1,1;63185907,0,0,0//wldp.dll;2;15;49453572,0,0,0;56300739,0,0,0;56083284,0,0,0;60077537,0,0,0;62643951,0,0,0;57880660,0,0,0;45036787,0,0,0;54238000,1,1,0;58818620,1,1,2;58988972,1,1,0;57048231,1,1,0;48433719,0,0,0;54474375,1,1,3;57048226,0,0,0;56840930,1,1,1//WS2_32.dll;2;11;59345096,0,0,0;61067931,0,0,0;60712647,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;62637744,0,0,0
+     Wow64Host=34404
+     NsAppName=powershell.exe
+     OriginalFilename=PowerShell.EXE
+     AppSessionGuid=00004f40-0001-019b-767b-2270a365dd01
+     TargetAppId=W:0000f519feec486de87ed73cb92d3cac802400000000!0000e6a9f4477b2c5e4915a93524a00d85346c314182!powershell.exe
+     TargetAppVer=2047//07//10:23:22:52!82a28!powershell.exe
+     BootId=4294967295
+     TargetAsId=44007
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=2307ae04a57776505ed09e21ef9911ce
+     Response.BucketTable=4
+     Response.LegacyBucketId=2220448484884550094
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=powershell.exe
+     Sig[1].Name=Application Version
+     Sig[1].Value=10.0.26100.9549
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=91d14fcc
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=ntdll.dll
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=10.0.26100.9711
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=5fd39a05
+     Sig[6].Name=Exception Code
+     Sig[6].Value=c0000005
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=00000000000cd5e9
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+-- C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_782b7a89f92471c31ef8dd9c3df6594fa9d7add2_07f00a10_22417325-3a7c-4407-b7c6-7576f8331633\Report.wer
+     Version=1
+     EventType=APPCRASH
+     EventTime=134375319516669935
+     ReportType=2
+     Consent=1
+     UploadTime=134375319524551867
+     ReportStatus=268435456
+     ReportIdentifier=22417325-3a7c-4407-b7c6-7576f8331633
+     IntegratorReportIdentifier=e49752ed-60cf-4d17-9f98-03d45cc371bd
+     FeatureStaging=Version:1;SiV:1;CD:2609D,MD:9999,TR:0,MO:0//powershell.exe;2;6;61154041,1,1,0;62223421,1,1,1;61154042,1,1,0;61161244,1,1,2;58989177,1,1,0;61160789,1,1,3//KERNELBASE.dll;2;25;62398185,0,0,0;59388597,0,0,0;48433719,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;58989092,0,0,0;57048216,0,0,0;49453572,0,0,0;61154042,0,0,0;61154041,0,0,0;60301787,0,0,0;57441842,0,0,0;40454786,0,0,0;57383490,0,0,0;62877103,0,0,0;62082934,0,0,0;61012278,0,0,0;61937906,0,0,0;60393887,0,0,0;61456009,0,1,1;63498810,0,0,0;62041504,0,0,0;53520691,1,1,2;50221998,0,0,0//OLEAUT32.dll;2;11;60473437,0,0,0;60473431,0,0,0;58092406,0,0,0;43860926,0,0,0;43860922,0,0,0;58599550,0,0,0;58599532,0,0,0;64006220,0,0,0;62743952,0,0,0;63297900,0,0,0;63043634,0,0,0//USER32.dll;2;17;49453572,0,0,0;61456009,0,1,1;48433719,0,0,0;58989177,0,0,0;60490815,0,0,0;36642232,0,0,0;35590764,0,0,0;34912776,0,0,0;59949899,0,0,0;54098532,0,1,2;63367030,0,0,0;60643700,0,0,0;61086807,0,0,0;61086798,0,0,0;58429068,0,0,0;62125982,0,0,0;41016858,0,0,0//combase.dll;2;39;49453572,0,0,0;58599570,0,0,0;62293424,1,1,5;55047707,0,0,0;59355008,1,1,3;45036797,1,1,0;61456009,0,1,4;62655472,0,0,0;60128432,0,0,0;61161283,0,0,0;5195825,1,1,0;61698200,0,0,0;58989070,0,0,0;60473437,1,1,1;61154044,0,0,0;25681502,0,1,6;61154041,0,0,0;61154042,0,0,0;58977763,1,1,2;62682494,0,0,0;48433719,0,0,0;61161244,0,0,0;58599550,1,1,0;58599532,1,1,0;58989177,0,0,0;8482243,1,1,0;61160789,0,0,0;61161268,0,0,0;61154043,0,0,0;63066093,0,0,0;60288851,0,0,0;61443112,0,0,0;63176488,0,0,0;52973182,0,0,0;61790051,0,0,0;60765642,1,1,7;60764371,1,1,8;62278733,0,0,0;63072520,0,0,0//gdi32full.dll;2;17;62197041,0,0,0;63048886,0,0,0;62215882,0,0,0;63568082,0,0,0;62196888,0,0,0;63341907,0,0,0;63523050,0,0,0;62769239,0,0,0;61161268,0,0,0;61160789,0,0,0;61161244,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;63342034,0,0,0;63172296,0,0,0//ADVAPI32.dll;2;5;63500684,0,0,0;61154041,0,0,0;58989177,0,0,0;61160789,0,0,0;62332443,0,0,0//sechost.dll;2;3;63167767,0,0,0;60154546,0,0,0;58989177,0,0,0//OLE32.dll;2;26;49453572,0,0,0;61456009,0,0,0;58989070,0,0,0;61853962,0,0,0;61154041,0,0,0;61729029,0,0,0;61154042,0,0,0;48433719,0,0,0;61161244,0,0,0;58989177,0,0,0;61160789,0,0,0;61001778,0,0,0;41016858,0,0,0;61873897,0,0,0;61269115,0,0,0;61351974,0,0,0;61422416,0,0,0;61331149,0,0,0;61212369,0,0,0;61055914,0,0,0;61389575,0,0,0;61612406,0,0,0;53579675,0,0,0;58429068,0,0,0;42932704,0,0,0;62381393,0,0,0//uxtheme.dll;2;9;30901086,0,0,0;57048237,0,0,0;58383338,0,0,0;39941783,0,0,0;36459537,0,0,0;10397285,0,0,0;57857165,0,0,0;29983356,0,0,0;62233595,0,0,0//clbcatq.dll;2;1;63197782,1,1,1//windows.storage.dll;2;238;57427023,0,0,0;54644696,0,0,0;47942714,0,0,0;51718004,0,0,0;59687846,0,0,0;62972914,0,1,25;61051567,0,0,0;62446788,0,0,0;61392886,0,0,0;61098847,0,0,0;61508919,1,1,15;21593280,0,0,0;61392938,0,0,0;61389601,0,1,11;60843683,0,0,0;61021332,0,0,0;61127915,0,0,0;61084172,0,0,0;62597531,0,0,0;61023838,0,0,0;61014170,0,1,18;61983655,0,0,0;61542315,0,1,26;61203641,0,0,0;61255433,0,0,0;61077825,0,0,0;61077813,0,0,0;62781537,0,0,0;61702203,0,1,12;60998145,1,1,27;61138180,0,0,0;61141778,0,0,0;60747555,1,1,16;61110674,0,1,19;59355007,0,0,0;58778013,0,0,0;62662576,0,0,0;61934903,0,0,0;62059635,0,0,0;60813048,0,0,0;45274402,0,0,0;44755019,0,0,0;47557358,1,1,9;56699092,0,0,0;53693389,0,0,0;55920876,1,1,30;55920864,1,1,29;48433719,0,0,0;61161283,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;58989092,0,0,0;58989070,0,0,0;58989002,0,0,0;57048237,0,0,0;57048231,1,1,0;57048218,0,0,0;54238000,0,0,0;54237993,0,0,0;54237988,1,1,0;54237977,0,0,0;49453572,0,0,0;61154044,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,1,1,0;58599570,1,1,0;58599559,0,0,0;45036797,1,1,0;45036792,0,0,0;45036787,1,1,0;45036785,1,1,0;45036777,1,1,0;45036774,0,0,0;42105254,0,0,0;62781828,0,0,0;62039392,0,1,28;62877103,0,0,0;61012278,0,0,0;60851339,0,0,0;58459845,0,0,0;59978822,0,0,0;59255444,0,0,0;56314744,1,1,3;56859762,1,1,4;53797701,0,0,0;56676567,0,0,0;53481887,0,0,0;45262758,0,0,0;55730600,0,0,0;57407887,0,0,0;48895801,0,1,21;47135408,0,0,0;54113335,0,0,0;45130483,1,1,5;56049733,1,1,7;44079899,0,0,0;46084709,0,0,0;57173102,0,0,0;60131311,1,1,6;40767182,0,0,0;33591120,0,0,0;38849712,0,0,0;27060184,0,0,0;25176540,0,0,0;20169383,0,0,0;21154437,0,0,0;18001239,0,0,0;9673591,0,0,0;23394095,0,0,0;26856818,0,0,0;20240189,0,0,0;8278123,0,0,0;16669717,0,0,0;13133736,0,0,0;8182961,0,0,0;7242324,0,0,0;9675209,0,0,0;8117523,0,0,0;6390483,0,0,0;24750601,0,0,0;14354675,1,1,0;55433826,0,0,0;45690266,0,0,0;60610656,0,0,0;47526251,0,0,0;44776738,0,0,0;44353396,1,1,8;43699941,1,1,10;6353283,0,0,0;31809544,0,0,0;27289015,0,0,0;21167812,0,0,0;61831103,0,0,0;61214697,0,0,0;62908316,0,0,0;55990087,1,1,14;62816659,0,0,0;58083564,0,0,0;57283410,0,0,0;43998308,0,0,0;62580187,0,0,0;61259154,1,1,23;60498285,0,0,0;54845141,0,1,22;48308861,0,0,0;58755841,0,0,0;10079435,0,0,0;9004739,0,0,0;61456009,0,1,2;62915594,0,0,0;63262877,1,1,1;61743297,0,0,0;61637429,0,0,0;61434912,0,0,0;63525535,0,0,0;58810067,0,0,0;58679359,0,0,0;62049188,0,0,0;27623730,0,0,0;59144945,0,0,0;43229420,0,0,0;59764273,0,0,0;63390075,0,0,0;58637795,0,0,0;56860052,0,0,0;63113857,0,0,0;62470501,0,0,0;61798433,0,0,0;56066650,0,0,0;62052180,0,0,0;60945864,0,0,0;60895405,0,0,0;62832182,0,0,0;62372070,0,0,0;59345818,0,0,0;61014711,0,0,0;63627158,0,0,0;61766564,0,1,17;61052451,0,0,0;62129458,0,0,0;62658472,0,0,0;62868888,0,0,0;53060104,0,0,0;60565095,0,0,0;59188571,0,0,0;61000861,0,0,0;47113245,0,0,0;60907231,0,0,0;59060913,0,0,0;57556150,0,0,0;60565484,0,0,0;46634830,0,0,0;39907225,0,0,0;41312981,1,1,0;24051083,0,0,0;61579316,0,0,0;62900396,0,0,0;62900277,0,0,0;56197835,0,0,0;56360630,0,0,0;61155835,0,0,0;56197649,0,0,0;46702346,0,0,0;38860785,0,0,0;23057199,0,0,0;62167253,0,0,0;63519373,0,0,0;54461705,0,0,0;46008958,0,0,0;44304240,0,0,0;62441042,0,0,0;58797537,0,0,0;60761895,1,1,24;55840883,1,1,13;61314441,0,0,0;62295369,0,0,0;61611787,0,0,0;47113215,0,0,0;61012336,0,0,0;59345162,0,0,0;61473570,0,0,0;42868018,0,0,0;61078993,0,0,0;62657073,1,1,20;54412425,0,0,0;61296509,0,0,0;61012802,0,0,0;61934604,0,0,0;61188158,0,0,0;61284073,0,0,0;57539182,0,0,0;55067093,0,0,0;45333194,0,0,0;59111371,0,0,0;37254716,0,0,0//SHCORE.dll;2;13;49453572,0,0,0;58599559,0,0,0;61012278,0,0,0;62877103,0,0,0;61995194,0,0,0;61995289,0,0,0;21607690,0,0,0;46889786,0,0,0;56032533,0,0,0;50550682,0,0,0;60937769,0,0,0;58988972,0,0,0;60444501,0,0,0//SHLWAPI.dll;2;7;60747555,0,0,0;58599570,0,0,0;63843960,0,0,0;63101315,0,0,0;55063784,0,0,0;62877103,0,0,0;61314441,0,0,0//propsys.dll;2;13;8221526,0,0,0;50935757,0,0,0;63132328,0,0,0;60747555,0,0,0;55990087,0,0,0;55920864,0,0,0;49453572,0,0,0;61154041,0,0,0;58599570,0,0,0;45036777,0,0,0;62832182,0,0,0;61442283,0,0,0;63111381,0,0,0//SHELL32.dll;2;251;8284466,0,0,0;58683033,0,0,0;61831103,0,0,0;62972914,0,0,0;45036797,0,0,0;40767182,0,0,0;61021332,0,0,0;17202054,0,0,0;54237988,0,0,0;56631583,0,0,0;59986399,0,0,0;34545233,0,0,0;13294624,0,0,0;45036785,0,0,0;6688715,0,0,0;61110674,0,0,0;44353396,0,0,0;61127915,0,0,0;13686160,0,0,0;61100238,0,0,0;60997921,0,0,0;61501351,0,0,0;60597084,0,0,0;45036790,0,0,0;61412580,0,0,0;60131311,0,0,0;57048218,0,0,0;61133658,0,0,0;61141778,0,0,0;60813048,0,0,0;24750601,0,0,0;47135408,0,0,0;3261926,0,0,0;60998121,0,0,0;63524660,0,0,0;45036774,0,0,0;61113361,0,0,0;47942714,0,0,0;54237977,0,0,0;62340835,0,0,0;61011963,0,0,0;62141177,0,0,0;54113335,0,0,0;63232498,0,0,0;60732382,0,0,0;43699941,0,0,0;54237951,0,0,0;56049733,0,0,0;61200251,0,0,0;61389601,0,0,0;61154041,0,0,0;58599559,0,0,0;56632969,0,0,0;59993914,0,0,0;24087738,0,0,0;21167812,0,0,0;55007339,0,0,0;62166875,0,0,0;57048237,0,0,0;61084166,0,0,0;59684742,0,0,0;61154042,0,0,0;61203636,0,0,0;57048231,0,0,0;8278123,0,0,0;61051567,0,0,0;31648052,0,0,0;59355007,0,0,0;48433719,0,0,0;59277861,0,0,0;10397285,0,0,0;14354675,0,0,0;51718004,0,0,0;61161244,0,0,0;45130483,0,0,0;61098847,0,0,0;62059635,0,0,0;47557358,0,0,0;61705842,0,0,0;58989177,0,0,0;60998126,0,0,0;58599553,0,0,0;60997935,0,0,0;61160789,0,0,0;55990087,0,0,0;61208345,0,0,0;61558864,0,0,0;33591120,0,0,0;46084709,0,0,0;61161268,0,0,0;48895801,0,0,0;61154043,0,0,0;61166176,0,0,0;58696284,0,0,0;45690266,0,0,0;58989092,0,0,0;49453572,0,0,0;58599570,0,0,0;58778013,0,0,0;6390483,0,0,0;35532193,0,0,0;56699092,0,0,0;39071906,0,0,0;62061516,0,0,0;60747555,0,0,0;41486951,0,0,0;45036777,0,0,0;62708949,0,0,0;45262758,0,0,0;55920864,0,0,0;61412579,0,0,0;53693389,0,0,0;31782608,0,0,0;45624564,0,0,0;54722642,0,0,0;61203640,0,0,0;61217928,0,0,0;27289015,0,0,0;14105151,0,0,0;55182332,0,0,0;61259154,0,0,0;54845141,0,0,0;61136950,0,0,0;61136946,0,0,0;63330572,0,0,0;59439536,0,0,0;60851339,0,0,0;58459845,0,0,0;60551673,0,0,0;56314744,0,0,0;56859762,0,0,0;62877103,0,0,0;61012278,0,0,0;61434912,0,0,0;63525535,0,0,0;61637429,0,0,0;58810067,0,0,0;58679359,0,0,0;59144945,0,0,0;43229420,0,0,0;27623730,0,0,0;62374504,0,0,0;63022755,0,0,0;60490208,0,0,0;61483244,0,0,0;33954786,0,0,0;33149564,0,0,0;60174695,0,0,0;48870529,0,0,0;59764273,0,0,0;43031342,0,0,0;41312981,0,0,0;45080165,0,0,0;33541742,0,0,0;48472359,0,0,0;42167512,0,0,0;60945864,0,0,0;62657073,1,1,1;61078993,0,0,0;62039392,0,0,0;60770424,0,0,0;62691688,0,0,0;55063786,0,0,0;59089691,0,0,0;57437827,0,0,0;55239673,0,0,0;61815311,0,0,0;60888654,0,0,0;58383338,0,0,0;59270880,0,0,0;62844283,0,0,0;61997161,0,0,0;62711238,0,0,0;33393253,0,0,0;20509036,0,0,0;62816659,0,0,0;58083564,0,0,0;60658525,0,0,0;61155835,0,0,0;56197649,0,0,0;46702346,0,0,0;31265023,0,0,0;59807256,0,0,0;63655373,0,0,0;61831596,0,0,0;58027087,0,0,0;57504232,0,0,0;62431354,0,0,0;60708181,0,0,0;56186037,0,0,0;49140016,0,0,0;43946929,0,0,0;40268500,0,0,0;6258161,0,0,0;56860052,0,0,0;54469339,0,0,0;62372070,0,0,0;61365987,0,0,0;55738935,0,0,0;58305402,0,0,0;53579675,0,0,0;58429068,0,0,0;62052180,0,0,0;61202788,0,0,0;45079713,0,0,0;57918084,0,0,0;53060104,0,0,0;62851157,0,0,0;62295249,0,0,0;62295185,0,0,0;57994323,0,0,0;60547019,0,0,0;59203365,0,0,0;57857165,0,0,0;60738547,0,0,0;63206119,0,0,0;55007559,0,0,0;55007364,0,0,0;63190595,0,0,0;60570053,0,0,0;46719714,0,0,0;35548429,0,0,0;45550845,0,0,0;56369454,0,0,0;62658707,0,0,0;61231461,0,0,0;57071200,0,0,0;56068911,0,0,0;54761410,0,0,0;54412425,0,0,0;58933348,0,0,0;63092242,0,0,0;61296509,0,0,0;59927077,0,0,0;46018710,0,0,0;35032763,0,0,0;59889836,0,0,0;59889821,0,0,0;62466961,0,0,0;63272818,0,0,0;54629273,0,0,0;59111371,0,0,0;33122876,0,0,0;59345162,0,0,0;61012336,0,0,0;61599065,0,0,0;27923788,0,0,0;61120456,0,0,0;46008958,0,0,0;46084421,0,0,0;42868018,0,0,0//profapi.dll;2;4;63262877,0,0,0;61456009,0,0,0;48433719,0,0,0;49453572,0,0,0//ntshrui.dll;2;36;61936678,0,0,0;33541742,1,1,1;48433719,0,0,0;57048231,0,0,0;54237988,0,0,0;49453572,0,0,0;61154042,0,0,0;61154041,0,0,0;58599570,0,0,0;58599559,0,0,0;45036797,0,0,0;45036785,0,0,0;61127915,0,0,0;61100239,0,0,0;60747555,0,0,0;61110674,0,0,0;58778013,0,0,0;47557358,0,0,0;60851339,0,0,0;58459845,0,0,0;56314744,0,0,0;56859762,0,0,0;62877103,0,0,0;61012278,0,0,0;58047213,0,0,0;47135408,0,0,0;45130483,0,0,0;56049733,0,0,0;60131311,0,0,0;10397285,0,0,0;44353396,0,0,0;43699941,0,0,0;50658022,0,0,0;56493959,0,0,0;62441042,0,0,0;63022755,0,0,0//policymanager.dll;2;20;49476302,1,1,6;58988972,1,1,0;45036787,0,0,0;49170978,1,1,2;31840299,1,1,0;60288851,1,1,1;58989177,1,1,0;58989092,0,0,0;61160789,1,1,5;61154042,1,1,0;61154041,1,1,0;61161244,1,1,4;58599570,1,1,0;61443112,1,1,3;58321559,0,0,0;61161268,0,0,0;61154043,0,0,0;61659643,0,0,0;60712647,0,0,0;59345096,0,0,0//wintrust.dll;2;12;45036777,1,1,0;56881338,1,1,2;57834291,1,1,1;50565209,0,0,0;56300739,0,0,0;56083284,0,0,0;60077537,0,0,0;61794946,0,0,0;51254211,0,0,0;57048226,0,0,0;58989092,0,0,0;57710740,1,1,3//CRYPT32.dll;2;17;55751182,0,1,4;48002234,1,1,0;41646097,1,1,0;41646436,1,1,0;48433719,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,1,1,3;58989177,1,1,0;49453572,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,1,1,0;62251127,0,0,0;62225697,1,1,2;53079589,1,1,1;63185907,0,0,0//WS2_32.dll;2;11;59345096,0,0,0;61067931,0,0,0;60712647,0,0,0;61161268,0,0,0;61161244,0,0,0;61160789,0,0,0;58989177,0,0,0;61154043,0,0,0;61154042,0,0,0;61154041,0,0,0;62637744,0,0,0//wldp.dll;2;15;49453572,0,0,0;56300739,0,0,0;56083284,0,0,0;60077537,0,0,0;62643951,0,0,0;57880660,0,0,0;45036787,0,0,0;54238000,1,1,0;58818620,1,1,2;58988972,1,1,0;57048231,1,1,0;48433719,0,0,0;54474375,1,1,3;57048226,0,0,0;56840930,1,1,1//AppxSip.dll;2;9;58989177,0,0,0;61160789,0,0,0;61161244,0,0,0;61154042,0,0,0;61154041,0,0,0;49453572,0,0,0;48433719,0,0,0;62296459,0,0,0;61609689,0,0,0//OpcServices.DLL;2;1;62541501,0,0,0//pwrshsip.dll;2;8;62809753,1,1,1;61161268,1,1,2;61161244,1,1,3;61160789,1,1,4;58989177,1,1,0;61154043,1,1,0;61154042,1,1,0;61154041,1,1,0
+     Wow64Host=34404
+     NsAppName=powershell.exe
+     OriginalFilename=PowerShell.EXE
+     AppSessionGuid=00006c38-0001-019b-fb8b-201ca465dd01
+     TargetAppId=W:0000f519feec486de87ed73cb92d3cac802400000000!0000e6a9f4477b2c5e4915a93524a00d85346c314182!powershell.exe
+     TargetAppVer=2047//07//10:23:22:52!82a28!powershell.exe
+     BootId=4294967295
+     TargetAsId=44184
+     IsFatal=1
+     EtwNonCollectReason=1
+     Response.BucketId=e83ad5e43da163addcfd679df5618119
+     Response.BucketTable=4
+     Response.LegacyBucketId=2088939730294112537
+     Response.type=4
+     Sig[0].Name=Application Name
+     Sig[0].Value=powershell.exe
+     Sig[1].Name=Application Version
+     Sig[1].Value=10.0.26100.9549
+     Sig[2].Name=Application Timestamp
+     Sig[2].Value=91d14fcc
+     Sig[3].Name=Fault Module Name
+     Sig[3].Value=ntdll.dll
+     Sig[4].Name=Fault Module Version
+     Sig[4].Value=10.0.26100.9711
+     Sig[5].Name=Fault Module Timestamp
+     Sig[5].Value=5fd39a05
+     Sig[6].Name=Exception Code
+     Sig[6].Value=c0000005
+     Sig[7].Name=Exception Offset
+     Sig[7].Value=000000000002ab24
+     DynamicSig[1].Name=OS Version
+     DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+     DynamicSig[2].Name=Locale ID
+     DynamicSig[2].Value=5129
+     DynamicSig[22].Name=Additional Information 1
+
+########## F1 pending rename / reboot flags ##########
+   PFR : *1\??\C:\Windows\System32\gamingservicesproxy_16.dll.0
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   PFR : 
+   PFR : *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   PFR : 
+   PFR2: 
+RebootPending=False WU_RebootRequired=False
+
+########## G1 System32\drivers written last 7 days ##########
+   11/01/2026 14:01:45 10152 apexdrv.sys
+
+### G2 C:\Boot + SystemStartOptions
+   SystemStartOptions= TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  FVEBOOT=2666496  NOVGA
+
+=== END 01/11/2026 15:24:51 ===

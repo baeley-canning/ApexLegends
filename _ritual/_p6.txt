@@ -1,0 +1,85 @@
+﻿=== _p6 2026-11-01T19:15:17
+elevated=False
+catroot exists=True
+--- private-key certs available for signing ---
+  Cert:\CurrentUser\My B030DE3700D307B6D6F7BF0B99EFD6EA707A560B CN=4e1ed099-6421-4667-b930-81e8f6224e59 notafter=05/05/2027 18:35:48
+  Cert:\CurrentUser\My A65E1F812B445FA10E6B16604E8213E840423E55 CN=trust_201cdd35-848d-4817-9ec1-f871d044166f notafter=09/03/2027 18:34:16
+  Cert:\CurrentUser\My 7804D6A90DD199EE970AE0B2FB657E8286DC70EB CN=apexcert notafter=11/01/2027 02:51:48
+  Cert:\CurrentUser\My 758E506ADD2978823F5E9775DAB42952845C1C7F CN=201cdd35-848d-4817-9ec1-f871d044166f notafter=08/31/2027 18:27:31
+  Cert:\CurrentUser\My 335EA8D2763947BE9EE59B28AF8AB3AC10E3FE94 CN=trust_4e1ed099-6421-4667-b930-81e8f6224e59 notafter=08/19/2027 08:26:33
+  Cert:\CurrentUser\My 1273B7EA5730A9D47692285FDE7073DD58B0161D CN=apexcert notafter=11/01/2027 02:50:23
+  Cert:\LocalMachine\My F132233D0A5B97262DFE57170D237CECF51BF657 CN=ApexDrv CA c1 (QwenKern) notafter=11/01/2036 16:27:46
+  Cert:\LocalMachine\My DFFA64113CF6589043CE0E4AD74A84CF0CA91690 CN=ApexDrv Lab Code Signing (QwenKern) notafter=11/01/2031 16:21:28
+  Cert:\LocalMachine\My DE6318A620E5CB919868FEF340C956BF37C8CA74 CN=Microsoft Root Certificate Authority 2011 notafter=11/01/2046 16:53:12
+  Cert:\LocalMachine\My DD5BA95EFD2F303687C309841B3928249A762941 CN=ApexDrv Lab DSE (QwenKern) notafter=11/01/2031 16:16:13
+  Cert:\LocalMachine\My DB248C944EACF7DD4F9BE6114358C2CE6D63F18C CN=ApexDrv CA c3 (QwenKern) notafter=11/01/2036 16:27:47
+  Cert:\LocalMachine\My D997967F6246ECAD8851D468050258F0E0EA7DC4 CN=S6lan Leaf (QwenKern) notafter=11/01/2031 16:43:50
+  Cert:\LocalMachine\My D33ED7478345A1F373111F13439DC34D76C96D55 CN=ApexR Test notafter=10/27/2031 22:07:14
+  Cert:\LocalMachine\My CB27C1A3117D0DB8F0516853EA3F82E69ABA54D3 CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US notafter=11/01/2046 16:53:10
+  Cert:\LocalMachine\My C8919A5488F56972F157360DB6B30CFE3A2B3970 CN=ApexDrv CA c2 (QwenKern) notafter=11/01/2036 16:27:47
+  Cert:\LocalMachine\My A9026A2903D511DBBF089D69ACCEBD4E0C22F87F CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US notafter=11/01/2046 16:53:03
+  Cert:\LocalMachine\My A7569298DEB0D834C42191BB28D8EDFF7B798FEE CN=ApexDrv S4 LeafCA (QwenKern) notafter=11/01/2036 16:36:30
+  Cert:\LocalMachine\My 8CDA74E84A70B072A3A8B3419485FE1735E9BB26 CN=S9msf Leaf (QwenKern) notafter=11/01/2031 16:53:09
+  Cert:\LocalMachine\My 8520C2310834196AA7463E421BA941F64B66505F CN=S8old Leaf (QwenKern) notafter=11/01/2031 16:43:52
+  Cert:\LocalMachine\My 7AB907DC03E17A6A7375FEBF3ADA5624B4099444 CN=ApexDrv Lab DSE CertSign (QwenKern) notafter=11/01/2031 16:21:29
+  Cert:\LocalMachine\My 76589C69A7DEBEF1093D9B98C60CA6707A54E36C CN=ApexDrv Lab Root CA (QwenKern) notafter=11/01/2036 16:21:27
+  Cert:\LocalMachine\My 65A87229342C5FD077551C7FB885C39B27111DF7 CN=S9msf Leaf (QwenKern) notafter=11/01/2031 16:43:53
+  Cert:\LocalMachine\My 5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81 CN=S6lan Leaf (QwenKern) notafter=11/01/2031 16:53:04
+  Cert:\LocalMachine\My 5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 CN=ApexDrv Probe v0 (QwenKern) notafter=11/01/2036 16:25:21
+  Cert:\LocalMachine\My 5937CA2135A847D98E3935B5A592673C18ACC912 CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) notafter=11/01/2036 16:36:31
+  Cert:\LocalMachine\My 53E0C111A903AD068A221137E7EB51AD6CAB2ACA CN=S8old Leaf (QwenKern) notafter=11/01/2031 16:53:08
+  Cert:\LocalMachine\My 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D CN=ApexDrv S2 Leaf (QwenKern) notafter=11/01/2031 16:36:28
+  Cert:\LocalMachine\My 474F9339147DA30CE30AF7D6961D318279D76295 CN=S13pad Leaf (QwenKern) notafter=11/01/2031 16:53:11
+  Cert:\LocalMachine\My 4710E702C7883479D106EEB688F7065101B9339D CN=S7win Leaf (QwenKern) notafter=11/01/2031 16:53:06
+  Cert:\LocalMachine\My 3C22C2EEB734CD4179100631AC0E6A9485AA945C CN=Microsoft Windows Production PCA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US notafter=11/01/2046 16:53:05
+  Cert:\LocalMachine\My 3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720 CN=ApexDrv S3 LeafNoBC (QwenKern) notafter=11/01/2031 16:36:29
+  Cert:\LocalMachine\My 346E91021D240798DF87F39C94DF5D0C8D824CAB CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US notafter=11/01/2046 16:53:07
+  Cert:\LocalMachine\My 3377F64BCFF5D623C90317FC524FC50EDEB53B0C CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp. notafter=11/01/2046 16:53:09
+  Cert:\LocalMachine\My 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 CN=ApexDrv Dev (QwenKern Premium) notafter=10/26/2029 17:43:18
+  Cert:\LocalMachine\My 1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE CN=S7win Leaf (QwenKern) notafter=11/01/2031 16:43:51
+  Cert:\LocalMachine\My 1E73093E98695948E09E53C0A4C8E4A5670D6199 CN=ApexDrv S1 SelfSigned CA (QwenKern) notafter=11/01/2036 16:36:26
+  Cert:\LocalMachine\My 1A5520EED6638BEC2A5EE297D3FF984B2CACF889 CN=ApexDrv S2 Root CA (QwenKern) notafter=11/01/2036 16:36:27
+  Cert:\LocalMachine\My 12482F7414F72A9406229D8E04FD6741BFFB4EFD CN=S14cn Leaf (QwenKern) notafter=11/01/2031 16:53:13
+  Cert:\LocalMachine\My 075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79 CN=ApexDrv p25h SelfTest CA (QwenKern) notafter=11/01/2046 16:53:02
+--- 1. baseline (store as it stands) ---
+[baseline] sha1 osCatalog=apexdrv_p26.cat;
+[baseline] sha256 osCatalog=NONE(err1168)
+--- 2. clear everything, cryptsvc restart ---
+  restart failed: Service 'Cryptographic Services (cryptsvc)' cannot be stopped due to the following error: Cannot open cryptsvc service on computer '.'. ; state=Running
+--- 3. nothing staged: does ANY other store answer? ---
+[nothing-1] sha1 osCatalog=apexdrv_p26.cat;
+[nothing-1] sha256 osCatalog=NONE(err1168)
+[nothing-2] sha1 osCatalog=apexdrv_p26.cat;
+[nothing-2] sha256 osCatalog=NONE(err1168)
+--- 4. ARM A: unsigned v2 cat over the exact driver bytes, ALONE ---
+  restart failed: Service 'Cryptographic Services (cryptsvc)' cannot be stopped due to the following error: Cannot open cryptsvc service on computer '.'. ; state=Running
+[unsigned-p1] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p1] sha256 osCatalog=NONE(err1168)
+[unsigned-p2] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p2] sha256 osCatalog=NONE(err1168)
+[unsigned-p3] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p3] sha256 osCatalog=NONE(err1168)
+[unsigned-p4] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p4] sha256 osCatalog=NONE(err1168)
+[unsigned-p5] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p5] sha256 osCatalog=NONE(err1168)
+[unsigned-p6] sha1 osCatalog=apexdrv_p26.cat;
+[unsigned-p6] sha256 osCatalog=NONE(err1168)
+--- 5. ARM B: the SIGNED cat, ALONE ---
+  restart failed: Service 'Cryptographic Services (cryptsvc)' cannot be stopped due to the following error: Cannot open cryptsvc service on computer '.'. ; state=Running
+[signed-pre] sha1 osCatalog=apexdrv_p26.cat;
+[signed-pre] sha256 osCatalog=NONE(err1168)
+  restart failed: Service 'Cryptographic Services (cryptsvc)' cannot be stopped due to the following error: Cannot open cryptsvc service on computer '.'. ; state=Running
+[signed-p1] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p1] sha256 osCatalog=NONE(err1168)
+[signed-p2] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p2] sha256 osCatalog=NONE(err1168)
+[signed-p3] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p3] sha256 osCatalog=NONE(err1168)
+[signed-p4] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p4] sha256 osCatalog=NONE(err1168)
+[signed-p5] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p5] sha256 osCatalog=NONE(err1168)
+[signed-p6] sha1 osCatalog=apexdrv_p26.cat;
+[signed-p6] sha256 osCatalog=NONE(err1168)
+END-p6

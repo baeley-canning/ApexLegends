@@ -1,0 +1,14 @@
+﻿launcher_lines=1239
+hooks_lines=748
+=== EAAC services ===
+ | SERVICE_NAME: eaanticheat  |         TYPE               : 2  FILE_SYSTEM_DRIVER   |         STATE              : 1  STOPPED  |         WIN32_EXIT_CODE    : 1077  (0x435) |         SERVICE_EXIT_CODE  : 0  (0x0) |         CHECKPOINT         : 0x0 |         WAIT_HINT          : 0x0
+=== EAAC driver file ===
+
+=== EA app ===
+13.813.1.6327-1792985412, EA Desktop
+=== apex exe hashes ===
+baeleys game.exe 68517728 | EAAntiCheat.GameServiceLauncher.exe 20286712 | EAAntiCheat.Installer.exe 271269624 | r5apex_dx12.exe 68517728
+=== cert store apexdrv dev ===
+
+=== EAAntiCheat dir ===
+EAAntiCheat.GameService.dll 10/22/2026 12:01:56 | EAAntiCheat.GameService.exe 10/22/2026 12:01:56 | EAAntiCheat.Installer.exe 10/26/2026 16:32:46 | preloader_s.dll 10/22/2026 12:02:42

@@ -1,0 +1,55 @@
+﻿--- wdk tools
+makecat.exe: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm64\makecat.exe | C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\makecat.exe | C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\makecat.exe
+inf2cat.exe: C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x86\Inf2Cat.exe
+--- ritual artefacts
+apexdrv_lab_dse.cer 815
+apexdrv_lab_leaf.cer 858
+apexdrv_lab_oneshot.cer 833
+apexdrv_lab_root.cer 802
+_p25e_76589C69.cer 802
+_p25e_7AB907DC.cer 833
+_p25e_C8919A54.cer 811
+_p25e_DB248C94.cer 811
+_p25e_pub_1E73093E.cer 833
+_p25e_pub_5937CA21.cer 818
+_p25e_root_1E73093E.cer 833
+_p25e_root_3BEBB1C2.cer 838
+_p25e_root_4CB0B52D.cer 848
+_p25e_root_5937CA21.cer 818
+_p25e_root_A7569298.cer 853
+_p25e_S1.cer 833
+_p25e_S2.cer 848
+_p25e_S2root.cer 800
+_p25e_S3.cer 838
+_p25e_S4.cer 853
+_p25e_S5.cer 818
+_p25h_S13pad.cer 994
+_p25h_S14cn.cer 824
+_p25h_S6lan.cer 994
+_p25h_S7win.cer 986
+_p25h_S8old.cer 994
+_p25h_S9msf.cer 944
+_probe_v0.cer 817
+--- apexdrv presence
+present len=10192 mtime=11/01/2026 16:53:16 sig=Valid type=Authenticode signer=CN=ApexDrv S2 Leaf (QwenKern)
+--- sc query
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060: /  / The specified service does not exist as an installed service. / 
+ / SERVICE_NAME: gdrv3  /         TYPE               : 1  KERNEL_DRIVER   /         STATE              : 4  RUNNING  /                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) /         WIN32_EXIT_CODE    : 0  (0x0) /         SERVICE_EXIT_CODE  : 0  (0x0) /         CHECKPOINT         : 0x0 /         WAIT_HINT          : 0x0
+--- boot flags
+
+--- apexdrv files anywhere
+C:\Users\New User\OneDrive\Desktop\cheating\apexdrv.obj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.obj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv_dev.cer
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv_probe.txt
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\obj\apexdrv
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\obj\apexdrv\Release\apexdrv.obj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.obj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.vcxproj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\build\obj\apexdrv
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.Build.CppClean.log
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.obj
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.sys.recipe

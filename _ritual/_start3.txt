@@ -1,0 +1,12 @@
+﻿start3 2026-11-01T19:39:18
+authz=True
+start apexdrv -> rc=577 out=[SC] StartService FAILED 577: |  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. | 
+  q:  | SERVICE_NAME: apexdrv  |         TYPE               : 1  KERNEL_DRIVER   |         STATE              : 1  STOPPED  |         WIN32_EXIT_CODE    : 577  (0x241) |         SERVICE_EXIT_CODE  : 0  (0x0) |         CHECKPOINT         : 0x0 |         WAIT_HINT          : 0x0
+start apexdrv_cat -> rc=577 out=[SC] StartService FAILED 577: |  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. | 
+  q:  | SERVICE_NAME: apexdrv_cat  |         TYPE               : 1  KERNEL_DRIVER   |         STATE              : 1  STOPPED  |         WIN32_EXIT_CODE    : 577  (0x241) |         SERVICE_EXIT_CODE  : 0  (0x0) |         CHECKPOINT         : 0x0 |         WAIT_HINT          : 0x0
+start kernprobe -> rc=577 out=[SC] StartService FAILED 577: |  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. | 
+  q:  | SERVICE_NAME: kernprobe  |         TYPE               : 1  KERNEL_DRIVER   |         STATE              : 1  STOPPED  |         WIN32_EXIT_CODE    : 577  (0x241) |         SERVICE_EXIT_CODE  : 0  (0x0) |         CHECKPOINT         : 0x0 |         WAIT_HINT          : 0x0
+--- stop/cleanup ---
+stop apexdrv: [SC] ControlService FAILED 1062: |  | The service has not been started. | 
+stop apexdrv_cat: [SC] ControlService FAILED 1062: |  | The service has not been started. | 
+stop kernprobe: [SC] ControlService FAILED 1062: |  | The service has not been started. | 

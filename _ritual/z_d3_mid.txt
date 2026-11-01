@@ -1,0 +1,134 @@
+﻿11/01/2026 14:28:35 [System] Service Control Manager id=7045 :: A service was installed in the system.  Service Name:  EAAntiCheatService Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Service Type:  user mode service Service Start Type:  demand start Service Account:  LocalSystem
+11/01/2026 14:17:46 [System] Microsoft-Windows-FilterManager id=1 :: File System Filter 'EAAntiCheat' (Version 10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) unloaded successfully.
+11/01/2026 14:17:46 [System] Service Control Manager id=7023 :: The EAAntiCheatService service terminated with the following error:  %%4294924198
+11/01/2026 14:17:38 [System] Application Popup id=26 :: Application popup: Security Violation :  EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.  Session ID: gn0xByDlvrrx2d3htM3KTEktWFPNKZlrYNuFB8QpULIAt1iW  Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+11/01/2026 14:17:36 [System] Microsoft-Windows-FilterManager id=6 :: File System Filter 'EAAntiCheat' (10.0, ‎2026‎-‎10‎-‎23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+11/01/2026 14:13:29 [System] Service Control Manager id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+11/01/2026 14:12:22 [System] Service Control Manager id=7045 :: A service was installed in the system.  Service Name:  zzprobe Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+11/01/2026 14:03:49 [System] User32 id=1074 :: The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: QwenKern: activating test-signing for apexdrv
+11/01/2026 14:00:47 [System] Service Control Manager id=7000 :: The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+11/01/2026 13:58:58 [System] Service Control Manager id=7000 :: The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+11/01/2026 03:35:32 [System] Service Control Manager id=7000 :: The apexdrv service failed to start due to the following error:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+11/01/2026 03:35:32 [System] Service Control Manager id=7045 :: A service was installed in the system.  Service Name:  apexdrv Service File Name:  C:\Windows\System32\drivers\apexdrv.sys Service Type:  kernel mode driver Service Start Type:  demand start Service Account:  
+
+
+########## logs eaanticheat tree ##########
+
+FullName                              Length LastWriteTime        
+--------                              ------ -------------        
+C:\ProgramData\eaanticheat\Crashdumps        30/09/2026 9:14:48 am
+
+
+
+
+########## EA Desktop recent files ##########
+
+FullName                                                                                                    Length LastWriteTime       
+--------                                                                                                    ------ -------------       
+C:\ProgramData\EA Desktop\Logs\IGO_EADesktop_14356.log                                                        1525 1/11/2026 2:39:42 pm
+C:\ProgramData\EA Desktop\Logs\EALauncher.log                                                                19927 1/11/2026 2:39:38 pm
+C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log                                                         21760 1/11/2026 2:39:38 pm
+C:\ProgramData\EA Desktop\Logs\cef.log                                                                        2476 1/11/2026 2:39:30 pm
+C:\ProgramData\EA Desktop\Logs\EABackgroundService.log                                                           0 1/11/2026 2:36:59 pm
+C:\ProgramData\EA Desktop\Logs\EABackgroundService.bak                                                     4194882 1/11/2026 2:36:59 pm
+C:\ProgramData\EA Desktop\Logs                                                                                     1/11/2026 2:36:59 pm
+C:\ProgramData\EA Desktop\Logs\IGOProxy_IGOProxy32.log                                                        2665 1/11/2026 2:17:00 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\CATS2             45296 1/11/2026 2:17:00 pm
+C:\ProgramData\EA Desktop\80bdd6646affe9a2ffdd7e4d276a4274dea554b806dec6fb04be74957a787b11\NS                 1040 1/11/2026 2:16:59 pm
+C:\ProgramData\EA Desktop\Logs\IGOProxy_EADesktop.log                                                         2138 1/11/2026 2:16:59 pm
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvc.log                                                                0 1/11/2026 2:16:57 pm
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvcVerbose.log                                                         0 1/11/2026 2:16:57 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\IQ                 1600 1/11/2026 2:16:56 pm
+C:\ProgramData\EA Desktop\backgroundservice.ini                                                                 55 1/11/2026 2:16:56 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e                         1/11/2026 2:16:55 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\CONF-production   32992 1/11/2026 2:16:55 pm
+C:\ProgramData\EA Desktop\Logs\EADesktop.log                                                                     0 1/11/2026 2:16:54 pm
+C:\ProgramData\EA Desktop\Logs\EADesktopVerbose.log                                                              0 1/11/2026 2:16:54 pm
+C:\ProgramData\EA Desktop\machine.ini                                                                          987 1/11/2026 1:09:22 pm
+
+
+
+
+########## EALauncher.log tail 40 ##########
+     4	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[18400]
+     5	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:06.763Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:06.765Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:06.777Z]	PID: 18400	TID: 16428	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:36:35.031Z]	PID: 12576	TID: 12580	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:36:35.031Z]	PID: 12576	TID: 12580	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:36:35.040Z]	PID: 12576	TID: 12580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[12576]
+     5	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:35.041Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:35.044Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:35.063Z]	PID: 12576	TID: 12580	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:36:58.245Z]	PID: 10764	TID: 10048	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:36:58.245Z]	PID: 10764	TID: 10048	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:36:58.252Z]	PID: 10764	TID: 10048	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[10764]
+     5	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:36:58.253Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:36:58.255Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:36:58.267Z]	PID: 10764	TID: 10048	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+     1	[2026-11-01T01:39:38.843Z]	PID: 24200	TID: 21000	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-01T01:39:38.843Z]	PID: 24200	TID: 21000	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-01T01:39:38.849Z]	PID: 24200	TID: 21000	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     4	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[true], processId[24200]
+     5	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.813.1-6327-d5ea2a1ad
+     6	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     7	[2026-11-01T01:39:38.850Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALauncher.exe]
+     8	[2026-11-01T01:39:38.853Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams=]
+     9	[2026-11-01T01:39:38.865Z]	PID: 24200	TID: 21000	INFO    	(eax::apps::startExecUsingExplorerCred)	Starting client using explorer credentials: 'C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe' with args: 'origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams='
+goodbye
+
+
+########## trust-cert / blocked lines across EA logs ##########
+EABackgroundServiceVerbose.log:3560:      7	[2026-11-01T01:16:55.871Z]	PID: 11460	TID:  3540	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADesktop.log:4:      3	[2026-11-01T01:16:54.669Z]	PID: 14356	TID:  2744	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADesktop.log:55:     54	[2026-11-01T01:16:56.932Z]	PID: 14356	TID:  7188	INFO    	(eax::apps::startup::StartupCoordinator::begin)	End of startup flow, result[ProceedToMainApp], reason[Update Not Required]
+EADesktop.log:162:    161	[2026-11-01T01:16:59.563Z]	PID: 14356	TID:  5436	INFO    	(eax::apps::DesktopCoordinator::FsmHost::doHandleAuthenticationChange)	Application state is now Online.  Skipping notification.
+EADesktopVerbose.log:15:     14	[2026-11-01T01:16:54.669Z]	PID: 14356	TID:  2744	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADesktopVerbose.log:390:    389	[2026-11-01T01:16:56.932Z]	PID: 14356	TID:  7188	INFO    	(eax::apps::startup::StartupCoordinator::begin)	End of startup flow, result[ProceedToMainApp], reason[Update Not Required]
+EADesktopVerbose.log:675:    674	[2026-11-01T01:16:59.563Z]	PID: 14356	TID:  5436	INFO    	(eax::apps::DesktopCoordinator::FsmHost::doHandleAuthenticationChange)	Application state is now Online.  Skipping notification.
+EADesktopVerbose.log:752:    751	[2026-11-01T01:16:59.991Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:1012:   1010	[2026-11-01T01:17:03.044Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:1] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:1745:   1428	[2026-11-01T01:17:26.669Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:1867:   1534	[2026-11-01T01:17:28.156Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:2] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:2422:   1955	[2026-11-01T01:28:32.329Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:2531:   2052	[2026-11-01T01:28:33.891Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:3] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:3021:   2470	[2026-11-01T01:30:42.402Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:3140:   2573	[2026-11-01T01:30:44.171Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:4] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:3640:   3002	[2026-11-01T01:36:09.530Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:3744:   3094	[2026-11-01T01:36:11.134Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:5] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:4147:   3435	[2026-11-01T01:36:37.740Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:4251:   3527	[2026-11-01T01:36:39.345Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:6] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:4647:   3857	[2026-11-01T01:37:00.957Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:4755:   3953	[2026-11-01T01:37:02.689Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:7] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADesktopVerbose.log:5305:   4441	[2026-11-01T01:39:41.443Z]	PID: 14356	TID:  2744	DEBUG   	(eax::services::cefUtils::start)	Skipping CEF start because CEF message pump is already started
+EADesktopVerbose.log:5411:   4535	[2026-11-01T01:39:43.232Z]	PID: 14356	TID:  2744	DEBUG   	(SPA)	[JS:8] [https://pc.ea.com/static/js/main-b9f4b7fc.e9ea627f.js:1] [ServiceWorker] Gate is off, skipping registration
+EADestager.log:318:      3	[2026-10-26T03:30:42.657Z]	PID: 18012	TID: 19632	WARN    	(eax::services::httpUtils::isTrustCertificateAllowed)	Skipping blocked trust certificate [AAA Certificate Services (root)], SHA1[d1eb23a46d17d68fd92564c2f1f1601764d8e349]
+EADestager.log:319:      4	[2026-10-26T03:30:42.658Z]	PID: 18012	TID: 19632	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EADestagerVerbose.log:562:      3	[2026-10-26T03:30:42.657Z]	PID: 18012	TID: 19632	WARN    	(eax::services::httpUtils::isTrustCertificateAllowed)	Skipping blocked trust certificate [AAA Certificate Services (root)], SHA1[d1eb23a46d17d68fd92564c2f1f1601764d8e349]
+EADestagerVerbose.log:563:      4	[2026-10-26T03:30:42.658Z]	PID: 18012	TID: 19632	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:24:      3	[2026-10-26T04:21:17.201Z]	PID: 12724	TID:  2920	WARN    	(eax::services::httpUtils::isTrustCertificateAllowed)	Skipping blocked trust certificate [AAA Certificate Services (root)], SHA1[d1eb23a46d17d68fd92564c2f1f1601764d8e349]
+EALauncher.log:25:      4	[2026-10-26T04:21:17.202Z]	PID: 12724	TID:  2920	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:36:      3	[2026-10-27T00:12:47.820Z]	PID:  3500	TID: 11848	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:47:      3	[2026-11-01T01:17:24.303Z]	PID:  1184	TID: 14144	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:58:      3	[2026-11-01T01:28:29.292Z]	PID: 23484	TID: 23488	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:69:      3	[2026-11-01T01:30:39.816Z]	PID: 10116	TID: 22580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:80:      3	[2026-11-01T01:36:06.762Z]	PID: 18400	TID: 16428	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:91:      3	[2026-11-01T01:36:35.040Z]	PID: 12576	TID: 12580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:102:      3	[2026-11-01T01:36:58.252Z]	PID: 10764	TID: 10048	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncher.log:113:      3	[2026-11-01T01:39:38.849Z]	PID: 24200	TID: 21000	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+EALauncherVerbose.log:26:      3	[2026-10-26T04:21:17.201Z]	PID: 12724	TID:  2920	WARN    	(eax::services::httpUtils::isTrustCertificateAllowed)	Skipping blocked trust certificate [AAA Certificate Services (root)], SHA1[d1eb23a46d17d68fd92564c2f1f1601764d8e349]
+EALauncherVerbose.log:27:      4	[2026-10-26T04:21:17.202Z]	PID: 12724	TID:  2920	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]

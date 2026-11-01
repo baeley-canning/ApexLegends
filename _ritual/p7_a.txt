@@ -1,0 +1,128 @@
+14:28:17  
+14:28:17  ===== probe7 start =====
+14:28:17  elevated : True
+14:28:17  apex exe : 10/18/2026 16:24:51
+14:28:17  driver   : 10152 B sig=Valid
+14:28:17  
+14:28:17  ===== PHASE 0 - snapshot =====
+14:28:17  [p0] testsigning=True  nointegrity=False
+14:28:17  [p0] apexdrv registered=False  running=False
+14:28:17  [p0] r5apex pid=  AC procs=EACefSubProcess
+14:28:17  AC dir: EAAntiCheat.GameService.dll(64006392) EAAntiCheat.GameService.exe(193572600) EAAntiCheat.Installer.exe(282016504) preloader_s.dll(46840)
+14:28:17    win ApplicationFrameHost: Settings
+14:28:17    win Code: live_probe_menu.txt - cheating - Visual Studio Code
+14:28:17    win EADesktop: EA
+14:28:17    win opera: Venice | Private, Uncensored AI - Opera
+14:28:17    win powershell: Administrator: Windows PowerShell
+14:28:17    win SystemSettings: Settings
+14:28:17    win TeamViewer: TeamViewer Panel
+14:28:17    win TextInputHost: Windows Input Experience
+14:28:17    win WindowsTerminal: Windows PowerShell
+14:28:17  
+14:28:17  ===== PHASE 1 - NO apexdrv loaded, launch apex, wait for the AC =====
+14:28:25    stop| [SC] OpenService FAILED 1060:
+14:28:25    stop| 
+14:28:25    stop| The specified service does not exist as an installed service.
+14:28:25    stop| 
+14:28:25    delete| [SC] OpenService FAILED 1060:
+14:28:25    delete| 
+14:28:25    delete| The specified service does not exist as an installed service.
+14:28:25    delete| 
+14:28:28  [p1] testsigning=True  nointegrity=False
+14:28:28  [p1] apexdrv registered=False  running=False
+14:28:28  [p1] r5apex pid=  AC procs=EACefSubProcess
+14:28:28  [p1] apex launched (direct exe, no-wait)
+14:28:33  [p1] t=5s apex not up yet
+14:28:38  [p1] t=10s apex not up yet
+14:28:43  [p1] t=15s apex not up yet
+14:28:48  [p1] t=20s apex not up yet
+14:28:48  [p1] no Javelin/Apex window
+14:28:54  [p1] t=25s apex not up yet
+14:28:59  [p1] t=30s apex not up yet
+14:29:04  [p1] t=35s apex not up yet
+14:29:09  [p1] t=40s apex not up yet
+14:29:09  [p1] no Javelin/Apex window
+14:29:14  [p1] t=45s apex not up yet
+14:29:19  [p1] t=50s apex not up yet
+14:29:24  [p1] t=55s apex not up yet
+14:29:29  [p1] t=60s apex not up yet
+14:29:29  [p1] no Javelin/Apex window
+14:29:34  [p1] t=65s apex not up yet
+14:29:39  [p1] t=70s apex not up yet
+14:29:44  [p1] t=75s apex not up yet
+14:29:49  [p1] t=80s apex not up yet
+14:29:49  [p1] no Javelin/Apex window
+14:29:54  [p1] t=85s apex not up yet
+14:29:59  [p1] t=90s apex not up yet
+14:30:04  [p1] t=95s apex not up yet
+14:30:09  [p1] t=100s apex not up yet
+14:30:09  [p1] no Javelin/Apex window
+14:30:14  [p1] t=105s apex not up yet
+14:30:19  [p1] t=110s apex not up yet
+14:30:24  [p1] t=115s apex not up yet
+14:30:29  [p1] t=120s apex not up yet
+14:30:29  [p1] no Javelin/Apex window
+14:30:29  [p1] VERDICT: apex never stayed up -> AC BLOCKED
+14:30:29  [p1] no Javelin/Apex window
+14:30:29  PHASE1 RESULT: ac_passed_without_driver=False
+14:30:29  
+14:30:29  ===== PHASE 2 - kernel probe against the live target (driver loaded now) =====
+14:30:29    create| [SC] CreateService SUCCESS
+14:30:29    start| 
+14:30:29    start| SERVICE_NAME: apexdrv 
+14:30:29    start|         TYPE               : 1  KERNEL_DRIVER  
+14:30:29    start|         STATE              : 4  RUNNING 
+14:30:29    start|                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+14:30:29    start|         WIN32_EXIT_CODE    : 0  (0x0)
+14:30:29    start|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:30:29    start|         CHECKPOINT         : 0x0
+14:30:29    start|         WAIT_HINT          : 0x0
+14:30:29    start|         PID                : 0
+14:30:29    start|         FLAGS              : 
+14:30:31    service now : Running
+14:30:31    no live apex - probe skipped
+14:30:31  
+14:30:31  ===== PHASE 2b - early-window probe on a fresh launch (healthy target) =====
+14:30:31    kill EAAntiCheat.GameServiceLauncher (24464)
+14:30:39    apex relaunched, waiting 30 s (before the AC verdict)
+14:31:09    apex not up in the early window
+14:31:09  
+14:31:09  ===== PHASE 3 - is the popup caused by the driver being LOADED at AC init? =====
+14:31:09  phase1 was already blocked WITH NO DRIVER LOADED
+14:31:09  => trigger is machine config (testsigning / VBS / HVCI / 3rd-party drivers), not apexdrv
+14:31:09  
+14:31:09  ===== EVIDENCE - CodeIntegrity + Application errors =====
+14:31:09    11-01 14:04:41 id=3116 Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+14:31:09    11-01 14:04:41 id=3099 Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+14:31:09    11-01 14:04:41 id=3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+14:31:09    11-01 14:04:41 id=3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+14:31:09    11-01 14:04:41 id=3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+14:31:09    11-01 14:04:41 id=3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+14:31:09    11-01 14:04:41 id=3085 Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.
+14:31:09    11-01 14:00:47 id=3089 Signature information for another event. Match using the Correlation Id.
+14:31:09    11-01 14:00:47 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+14:31:09    11-01 13:58:58 id=3089 Signature information for another event. Match using the Correlation Id.
+14:31:09    11-01 14:30:47 id=1000 EA Javelin Anticheat :: ExitType: 0xC1C73E72028557A6 (0x2C56D92149E46F4C)
+14:31:09    11-01 14:17:35 id=1000 EA Javelin Anticheat :: ExitType: 0xC1C73E72028557A6 (0x2C56D92149E46F4C)
+14:31:09    10-31 00:51:37 id=33 SideBySide :: Activation context generation failed for "C:\Program Files (x86)\Windows Kits\10\App Certification Kit\appcertui.exe". Dependent Assembly Microsoft.Windows.Build.Appx.AppxPackaging.dll,version="0.0.0.0" could not be found. Please use sxstrace.exe for detailed diagnosis.
+14:31:09    10-31 00:51:37 id=33 SideBySide :: Activation context generation failed for "C:\Program Files (x86)\Windows Kits\10\App Certification Kit\appcertui.exe". Dependent Assembly Microsoft.Windows.Build.Appx.AppxPackaging.dll,version="0.0.0.0" could not be found. Please use sxstrace.exe for detailed diagnosis.
+14:31:09    10-27 23:22:25 id=1000 Application Error :: Faulting application name: python.exe, version: 3.12.10150.1013, time stamp: 0x67f515a7 Faulting module name: _ctypes.pyd, version: 3.12.10150.1013, time stamp: 0x67f5157c Exception code: 0xc0000005 Fault offset: 0x000000000000f078 Faulting process id: 0x76C Faulting application start time: 0x1DD65FD0FD037D5 Faulting application path: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe Faulting module path: C:\Users\New User\AppData\Local\Programs\Python\Python312\DLLs\_ctypes.pyd Report Id: 4f772834-4c48-433a-9a81-42ad9327c0b7 Faulting package full name: Faulting package-relative application ID: 
+14:31:09    10-27 22:27:19 id=1000 EA Javelin Anticheat :: ExitType: 0xC1C73E72028557A6 (0x2C56D92149E46F4C)
+14:31:09    10-27 22:12:24 id=1000 EA Javelin Anticheat :: The game r5apex_dx12.exe exited unexpectedly, exit code: 0x40010004
+14:31:09    10-27 14:51:44 id=3 usbipd-win :: Category: Usbipd.ConnectedClient EventId: 3 An exception occurred while communicating with the client: Exception: System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.. ---> System.Net.Sockets.SocketException (10060): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. --- End of inner exception stack trace --- at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError, CancellationToken) + 0x4b at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetResult(Int16) + 0xbf at System.IO.Stream.<ReadAtLeastAsyncCore>d__46.MoveNext() + 0x82 --- End of stack trace from previous location --- at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16) + 0x46 at Usbipd.Tools.<ReadMessageAsync>d__0.MoveNext() + 0xb8 --- End of stack trace from previous location --- at Usbipd.Interop.UsbIp.<ReadUsbIpHeaderAsync>d__17.MoveNext() + 0x123 --- End of stack trace from previous location --- at Usbipd.AttachedClient.<RunAsync>d__12.MoveNext() + 0x293 --- End of stack trace from previous location --- at Usbipd.ConnectedClient.<HandleRequestImportAsync>d__8.MoveNext() + 0x1647 --- End of stack trace from previous location --- at Usbipd.ConnectedClient.<HandleRequestImportAsync>d__8.MoveNext() + 0x19af --- End of stack trace from previous location --- at Usbipd.ConnectedClient.<HandleRequestImportAsync>d__8.MoveNext() + 0x1ae9 --- End of stack trace from previous location --- at Usbipd.ConnectedClient.<RunAsync>d__5.MoveNext() + 0x32f 
+14:31:09    stop| 
+14:31:09    stop| SERVICE_NAME: apexdrv 
+14:31:09    stop|         TYPE               : 1  KERNEL_DRIVER  
+14:31:09    stop|         STATE              : 1  STOPPED 
+14:31:09    stop|         WIN32_EXIT_CODE    : 0  (0x0)
+14:31:09    stop|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:31:09    stop|         CHECKPOINT         : 0x0
+14:31:09    stop|         WAIT_HINT          : 0x0
+14:31:09    delete| [SC] DeleteService SUCCESS
+14:31:09  
+14:31:09  ===== RESULT =====
+14:31:09  ac_passed_without_driver          = False
+14:31:09  driver_blamed_for_popup           = False
+14:31:09  B: #95 appears with NO driver of ours loaded -> machine config. Fix that first:
+14:31:09     testsigning on, Secure Boot off, HVCI off, gdrv3/EasyTune + TeamViewer present.
+14:31:09  END

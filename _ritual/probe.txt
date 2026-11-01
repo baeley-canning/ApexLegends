@@ -1,0 +1,22 @@
+﻿probe 2026-11-01T18:03:25
+--- store inventory
+STORE C:\WINDOWS\System32\CatRoot files=4759 bytes=172790008
+  big C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem85.cat 13690669
+  big C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem86.cat 13690669
+  big C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem112.cat 4620714
+  big C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem31.cat 3582754
+  big C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem92.cat 3552814
+STORE C:\WINDOWS\System32\CatRoot2 files=5 bytes=105139051
+  catdb C:\WINDOWS\System32\CatRoot2\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\catdb size=196608 ts=10/31/2026 23:57:07
+  catdb C:\WINDOWS\System32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\catdb size=104857600 ts=10/31/2026 23:57:07
+  big C:\WINDOWS\System32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\catdb 104857600
+  big C:\WINDOWS\System32\CatRoot2\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\catdb 196608
+  big C:\WINDOWS\System32\CatRoot2\dberr.txt 52075
+  big C:\WINDOWS\System32\CatRoot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\catdb.jfm 16384
+  big C:\WINDOWS\System32\CatRoot2\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\catdb.jfm 16384
+--- OS trust verdict (Get-AuthenticodeSignature)
+SIG C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys status=Valid signer=CN=S6lan Leaf (QwenKern)
+SIG C:\WINDOWS\System32\drivers\apexdrv.sys status=Valid signer=CN=ApexDrv S2 Leaf (QwenKern)
+SIG C:\WINDOWS\System32\drivers\tcpip.sys status=Valid signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+--- raw store scan (engine hashes)
+--- OS catalog enum (engine hashes)

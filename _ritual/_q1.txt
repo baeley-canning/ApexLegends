@@ -1,0 +1,16 @@
+=== p29 GATE DISCRIMINATOR 01/11/2026 20:38:55 admin=True host=DESKTOP-PPHFJBQ ===
+QUESTION: with TESTSIGNING still in the boot config, does the game start once the self-signed
+          driver is NOT loaded?  yes -> our loaded driver is the trigger (no reboot needed)
+                                   no  -> the boot flag alone is the trigger (reboot required)
+
+########## A: stop our driver (leave it stopped) ##########
+  archived p27_gate.txt -> p27_gate_run1.txt
+  before:  ~ SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc stop apexdrv rc=0
+  after :  ~ SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  other lab services: apexdrv_cat=STATE              : 1  STOPPED ; kernprobe=STATE              : 1  STOPPED
+  popup windows before dismiss: [csrss:Security Violation]
+  (no exact-titled window found - the operator may need to click OK)
+
+########## B: launch the game with the driver stopped ##########
+  (p27 is invoked with -Launch; its popup watcher is the detector)

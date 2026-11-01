@@ -1,0 +1,64 @@
+=== p27 GATE TEST 01/11/2026 20:36:00 user=New User admin=False host=DESKTOP-PPHFJBQ launch=True ===
+
+########## A: pre-flight state ##########
+  SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  booted             = 1/11/2026 7:49:02 pm  (uptime 47 min)
+  >> this KERNEL was booted WITH testsigning: a popup now is the expected test-mode gate (not our driver)
+  svc apexdrv              STATE              : 4  RUNNING
+  svc apexdrv_cat          STATE              : 1  STOPPED
+  svc kernprobe            STATE              : 1  STOPPED
+  svc eaanticheat          STATE              : 1  STOPPED
+  svc EAAntiCheatService   STATE              : 1  STOPPED
+  our cats in the system catalog store: apexdrv_p26.cat@11-01 19:20, apexdrv_p9.cat@11-01 19:35
+  game processes before launch: 
+  popups in the last 6 h (baseline): 37
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:49:17 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 15:59:49 Application id=63 src=Microsoft-Windows-WMI :: A provider, IntelMEProv, has been registered in the Windows Management Instrumentation namespace root\Intel_ME to use the LocalSystem account. This account is privileged and the provider may cause a security violation if it does not correctly impersonate user requests.
+    PRE 19:45:51 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:45:50 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:39:20 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:39:19 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:35:13 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 19:35:12 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:55:03 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:55:03 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:51:11 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:51:10 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:39:41 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:39:40 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:35:58 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 18:35:57 System id=26 src=Application Popup ::  | \??\C:\p26cat\apexdrv_build.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:53:17 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:53:14 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:50:50 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:43:54 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:30:59 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:27:48 System id=26 src=Application Popup ::  | \??\C:\Windows\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:25:21 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:24:23 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:21:33 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:16:17 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:16:11 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 16:00:11 System id=26 src=Application Popup ::  | \SystemRoot\System32\drivers\apexdrv.sys failed to load | 0 0 0 0 2 0 48 0 0 0 0 0 26 0 0 64 40 4 0 192 108 2 0 192 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    PRE 15:32:33 System id=26 src=Application Popup :: Application popup: Security Violation : Test or debug mode must be disabled to start the game.
+    PRE 14:39:50 System id=26 src=Application Popup :: Application popup: Security Violation : EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game. Session ID: gn5mVXDr6+bx2ojg4M3KGxiEXbMmO6lkNyB0TMWV2hl6JplI Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+    PRE 14:37:15 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+    PRE 14:36:46 System id=26 src=Application Popup :: Application popup: Security Violation : EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game. Session ID: hSw9CHyx5rHxjNi8483KS/wBfKXq2sF3W16sHCDQ8PszBEtZ Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+    PRE 14:36:26 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+
+########## B: launch ##########
+  EA app not running -> starting C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EADesktop.exe
+  launching C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+
+########## C: watch (popup / survival / AC service) ##########
+  t+ 15s *** POPUP ***
+     20:36:21 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+  t+ 30s alive=no EAAntiCheatService=Stopped windows=[csrss:Security Violation]
+  t+ 60s alive=no EAAntiCheatService=Stopped windows=[csrss:Security Violation]
+  t+ 90s alive=no EAAntiCheatService=Stopped windows=[csrss:Security Violation]
+  t+120s alive=no EAAntiCheatService=Stopped windows=[csrss:Security Violation]
+  t+150s alive=no EAAntiCheatService=Stopped windows=[csrss:Security Violation]

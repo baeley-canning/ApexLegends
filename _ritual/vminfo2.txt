@@ -1,0 +1,148 @@
+﻿
+Memory size:        
+         4096MB
+State:              
+         running 
+(since 2026-10-31T22
+:36:34.766000000)
+NIC 1:              
+         MAC: 
+08002745F596, 
+Attachment: NAT, 
+Cable connected: 
+on, Trace: off 
+(file: none), Type: 
+82540EM, Reported 
+speed: 0 Mbps, Boot 
+priority: 0, 
+Promisc Policy: 
+deny, Bandwidth 
+group: none
+NIC 1 Settings:
+NIC 2:              
+         MAC: 
+08002754DF67, 
+Attachment: 
+Host-only Interface 
+'VirtualBox 
+Host-Only Ethernet 
+Adapter', Cable 
+connected: on, 
+Trace: off (file: 
+none), Type: 
+82540EM, Reported 
+speed: 0 Mbps, Boot 
+priority: 0, 
+Promisc Policy: 
+deny, Bandwidth 
+group: none
+NIC 3:              
+         disabled
+NIC 4:              
+         disabled
+NIC 5:              
+         disabled
+NIC 6:              
+         disabled
+NIC 7:              
+         disabled
+NIC 8:              
+         disabled
+VRDE:               
+         enabled 
+(Address 0.0.0.0, 
+Ports 3390, 
+MultiConn: off, 
+ReuseSingleConn: 
+off, Authentication 
+type: null)
+VRDE port:          
+         3390
+VRDE property       
+        : TCP/Ports 
+ = "3390"
+VRDE property       
+        : 
+TCP/Address = <not 
+set>
+VRDE property       
+        : VideoChann
+el/Enabled = <not 
+set>
+VRDE property       
+        : VideoChann
+el/Quality = <not 
+set>
+VRDE property       
+        : VideoChann
+el/DownscaleProtecti
+on = <not set>
+VRDE property       
+        : Client/Dis
+ableDisplay = <not 
+set>
+VRDE property       
+        : 
+Client/DisableInput 
+= <not set>
+VRDE property       
+        : 
+Client/DisableAudio 
+= <not set>
+VRDE property       
+        : 
+Client/DisableUSB = 
+<not set>
+VRDE property       
+        : Client/Dis
+ableClipboard = 
+<not set>
+VRDE property       
+        : Client/Dis
+ableUpstreamAudio = 
+<not set>
+VRDE property       
+        : 
+Client/DisableRDPDR 
+= <not set>
+VRDE property       
+        : 
+H3DRedirect/Enabled 
+= <not set>
+VRDE property       
+        : 
+Security/Method = 
+"TLS"
+VRDE property       
+        : Security/S
+erverCertificate = 
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+VRDE property       
+        : Security/S
+erverPrivateKey = 
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+VRDE property       
+        : Security/C
+ACertificate = <not 
+set>
+VRDE property       
+        : Audio/Rate
+CorrectionMode = 
+<not set>
+VRDE property       
+        : 
+Audio/LogPath = 
+<not set>
+VRDE Connection:    
+         not active
+Configured memory 
+balloon:   0MB
+
+

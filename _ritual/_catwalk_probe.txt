@@ -1,0 +1,29 @@
+﻿=== _catwalk 2026-11-01T19:09:18 cat=C:\p26cat\p28pr.cat from=0 to=0 depth=8
+len=449
+--- walk [0,449) ---
+  @     0 UC-SEQ      len=   445 
+    @     4 UP-OID      len=     9 OID 1.2.840.113549.1.7.2
+    @    15 XC-T0       len=   430 
+      @    19 UC-SEQ      len=   426 
+        @    23 UP-BITSTR   len=     1 01
+        @    26 UC-SET      len=     0 
+        @    28 UC-SEQ      len=   415 
+          @    32 UP-OID      len=     9 OID 1.3.6.1.4.1.311.10.1
+          @    43 XC-T0       len=   400 
+            @    47 UC-SEQ      len=   396 
+              @    51 UC-SEQ      len=    12 
+                @    53 UP-OID      len=    10 OID 1.3.6.1.4.1.311.12.1.1
+              @    65 UP-OCTSTR   len=    16 427FFA003D40AA438E703B2792F2EE5B
+              @    83 UP-UTCTIME  len=    13 3236313130313036303931385A
+              @    98 UC-SEQ      len=    14 
+                @   100 UP-OID      len=    10 OID 1.3.6.1.4.1.311.12.1.3
+                @   112 UP-NULL     len=     0 
+              @   114 UC-SEQ      len=   329 
+                @   118 UC-SEQ      len=   212 
+                  @   121 UP-OCTSTR   len=    32 45800E4D6191626B66D3BE92EE24A639E55E0BA94D5DBC9BACC44BF531B404C0
+                  @   155 UC-SET      len=   175 
+                @   333 UC-SEQ      len=   112 
+                  @   335 UP-OCTSTR   len=    20 705C264470047AD95AE267452244A764246D22D5
+                  @   357 UC-SET      len=    88 
+        @   447 UC-SET      len=     0 
+END-catwalk

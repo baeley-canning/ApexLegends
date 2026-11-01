@@ -1,0 +1,31 @@
+=== narrowed strings from Javelin binaries ===
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe : 94303 total strings, 24 matched -----
+&|KVM
+\sIV:
+AcquireSRWLockExclusive
+aes_siv_get_ctx_params
+aes_siv_set_ctx_params
+aes-128-siv
+aes-192-siv
+aes-256-siv
+kvMtw/
+O#KVm
+pkvM..
+providers\implementations\ciphers\cipher_aes_siv.c
+recursive directory include
+ReleaseSRWLockExclusive
+RFC9113: The initial value is 2^14 (16,384) octets. The value advertised by an endpoint MUST be between this initial value and the maximum allowed frame size (2^24)-1 or 16,777,215 octets), inclusive. 
+siV&h
+siv_cipher
+siv_dupctx
+siv_init
+tlsivfixed
+tlsivgen
+tlsivinv
+TryAcquireSRWLockExclusive
+unacceptable policy
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll : 175156 total strings, 2 matched -----
+\kvMI
+~SiVAhp
+----- C:\Program Files\EA Games\Apex\preloader_l.dll : 214 total strings, 0 matched -----
+DONE 11/01/2026 14:44:06

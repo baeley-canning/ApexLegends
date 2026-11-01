@@ -1,0 +1,432 @@
+=== CodeIntegrity/Operational ===
+
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+
+TimeCreated : 1/11/2026 2:04:41 pm
+Id          : 3085
+Message     : Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+
+TimeCreated : 1/11/2026 2:00:47 pm
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 2:00:47 pm
+Id          : 3004
+Message     : Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that 
+              might be malicious software from an unknown source.
+
+TimeCreated : 1/11/2026 1:58:58 pm
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 1:58:58 pm
+Id          : 3004
+Message     : Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that 
+              might be malicious software from an unknown source.
+
+TimeCreated : 1/11/2026 4:59:04 am
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 4:59:04 am
+Id          : 3033
+Message     : Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+
+TimeCreated : 1/11/2026 4:59:04 am
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 4:59:04 am
+Id          : 3033
+Message     : Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+
+TimeCreated : 1/11/2026 4:59:03 am
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 4:59:03 am
+Id          : 3033
+Message     : Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+
+TimeCreated : 1/11/2026 4:59:03 am
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 4:59:03 am
+Id          : 3033
+Message     : Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing level requirements.
+
+TimeCreated : 1/11/2026 3:35:32 am
+Id          : 3089
+Message     : Signature information for another event. Match using the Correlation Id.
+
+TimeCreated : 1/11/2026 3:35:32 am
+Id          : 3004
+Message     : Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that 
+              might be malicious software from an unknown source.
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+
+TimeCreated : 31/10/2026 2:12:25 pm
+Id          : 3085
+Message     : Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+
+TimeCreated : 28/10/2026 8:03:22 pm
+Id          : 3085
+Message     : Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.
+
+TimeCreated : 28/10/2026 6:55:15 am
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+
+TimeCreated : 28/10/2026 6:55:15 am
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+
+TimeCreated : 28/10/2026 6:55:15 am
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+
+TimeCreated : 28/10/2026 6:55:15 am
+Id          : 3099
+Message     : Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+
+TimeCreated : 28/10/2026 6:55:15 am
+Id          : 3116
+Message     : Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+
+
+
+
+=== System log (drivers/anticheat/signature) last 2h ===
+
+
+TimeCreated  : 1/11/2026 2:39:51 pm
+Id           : 1
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (Version 10.0, ?2026?-?10?-?23T06:42:59.000000000Z) unloaded successfully.
+
+TimeCreated  : 1/11/2026 2:39:51 pm
+Id           : 7023
+ProviderName : Service Control Manager
+Message      : The EAAntiCheatService service terminated with the following error: 
+               %%4294924198
+
+TimeCreated  : 1/11/2026 2:39:50 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : 
+               EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+               
+               Session ID: gn5mVXDr6+bx2ojg4M3KGxiEXbMmO6lkNyB0TMWV2hl6JplI
+               
+               Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+
+TimeCreated  : 1/11/2026 2:39:47 pm
+Id           : 6
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (10.0, ?2026?-?10?-?23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+
+TimeCreated  : 1/11/2026 2:37:15 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+
+TimeCreated  : 1/11/2026 2:37:03 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  EAAntiCheatService
+               Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+               Service Type:  user mode service
+               Service Start Type:  demand start
+               Service Account:  LocalSystem
+
+TimeCreated  : 1/11/2026 2:36:46 pm
+Id           : 1
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (Version 10.0, ?2026?-?10?-?23T06:42:59.000000000Z) unloaded successfully.
+
+TimeCreated  : 1/11/2026 2:36:46 pm
+Id           : 7023
+ProviderName : Service Control Manager
+Message      : The EAAntiCheatService service terminated with the following error: 
+               %%4294924198
+
+TimeCreated  : 1/11/2026 2:36:46 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : 
+               EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+               
+               Session ID: hSw9CHyx5rHxjNi8483KS/wBfKXq2sF3W16sHCDQ8PszBEtZ
+               
+               Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+
+TimeCreated  : 1/11/2026 2:36:43 pm
+Id           : 6
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (10.0, ?2026?-?10?-?23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+
+TimeCreated  : 1/11/2026 2:36:26 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+
+TimeCreated  : 1/11/2026 2:36:12 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  EAAntiCheatService
+               Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+               Service Type:  user mode service
+               Service Start Type:  demand start
+               Service Account:  LocalSystem
+
+TimeCreated  : 1/11/2026 2:30:52 pm
+Id           : 1
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (Version 10.0, ?2026?-?10?-?23T06:42:59.000000000Z) unloaded successfully.
+
+TimeCreated  : 1/11/2026 2:30:51 pm
+Id           : 7023
+ProviderName : Service Control Manager
+Message      : The EAAntiCheatService service terminated with the following error: 
+               %%4294924198
+
+TimeCreated  : 1/11/2026 2:30:51 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : 
+               EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+               
+               Session ID: 0XlhCHC0vufx3ty9t83KF0ETRFsB5/WA0dXjH6YSOV3WekaT
+               
+               Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+
+TimeCreated  : 1/11/2026 2:30:48 pm
+Id           : 6
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (10.0, ?2026?-?10?-?23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+
+TimeCreated  : 1/11/2026 2:30:29 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  apexdrv
+               Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys
+               Service Type:  kernel mode driver
+               Service Start Type:  demand start
+               Service Account:  
+
+TimeCreated  : 1/11/2026 2:28:35 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  EAAntiCheatService
+               Service File Name:  "C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+               Service Type:  user mode service
+               Service Start Type:  demand start
+               Service Account:  LocalSystem
+
+TimeCreated  : 1/11/2026 2:17:46 pm
+Id           : 1
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (Version 10.0, ?2026?-?10?-?23T06:42:59.000000000Z) unloaded successfully.
+
+TimeCreated  : 1/11/2026 2:17:46 pm
+Id           : 7023
+ProviderName : Service Control Manager
+Message      : The EAAntiCheatService service terminated with the following error: 
+               %%4294924198
+
+TimeCreated  : 1/11/2026 2:17:38 pm
+Id           : 26
+ProviderName : Application Popup
+Message      : Application popup: Security Violation : 
+               EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+               
+               Session ID: gn0xByDlvrrx2d3htM3KTEktWFPNKZlrYNuFB8QpULIAt1iW
+               
+               Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+
+TimeCreated  : 1/11/2026 2:17:36 pm
+Id           : 6
+ProviderName : Microsoft-Windows-FilterManager
+Message      : File System Filter 'EAAntiCheat' (10.0, ?2026?-?10?-?23T06:42:59.000000000Z) has successfully loaded and registered with Filter Manager.
+
+TimeCreated  : 1/11/2026 2:13:29 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  apexdrv
+               Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys
+               Service Type:  kernel mode driver
+               Service Start Type:  demand start
+               Service Account:  
+
+TimeCreated  : 1/11/2026 2:12:22 pm
+Id           : 7045
+ProviderName : Service Control Manager
+Message      : A service was installed in the system.
+               
+               Service Name:  zzprobe
+               Service File Name:  \??\C:\Windows\System32\drivers\apexdrv.sys
+               Service Type:  kernel mode driver
+               Service Start Type:  demand start
+               Service Account:  
+
+TimeCreated  : 1/11/2026 2:04:49 pm
+Id           : 7026
+ProviderName : Service Control Manager
+Message      : The following boot-start or system-start driver(s) did not load: 
+               dam
+               uiomap
+               WinSetupMon
+
+TimeCreated  : 1/11/2026 2:04:49 pm
+Id           : 10001
+ProviderName : Microsoft-Windows-WLAN-AutoConfig
+Message      : WLAN Extensibility Module has successfully started.
+               
+               Module Path: C:\WINDOWS\System32\DriverStore\FileRepository\netwtw6e.inf_amd64_ee761166daec7794\IntelIHVRouter14.dll
+               
+
+TimeCreated  : 1/11/2026 2:04:48 pm
+Id           : 12
+ProviderName : Microsoft-Windows-UserModePowerService
+Message      : Process C:\Windows\System32\DriverStore\FileRepository\ipf_cpu.inf_amd64_fe2967a6eb0d3a7d\ipf_uf.exe (process ID:4664) reset policy scheme from {381b4222-f694-41f0-9685-ff5bb260df2e} to {381b4222-f694-41f0-9685-ff5bb260df2e}
+
+TimeCreated  : 1/11/2026 2:04:48 pm
+Id           : 12
+ProviderName : Microsoft-Windows-UserModePowerService
+Message      : Process C:\Windows\System32\DriverStore\FileRepository\ipf_cpu.inf_amd64_fe2967a6eb0d3a7d\ipf_uf.exe (process ID:4664) reset policy scheme from {381b4222-f694-41f0-9685-ff5bb260df2e} to {381b4222-f694-41f0-9685-ff5bb260df2e}
+
+TimeCreated  : 1/11/2026 2:04:43 pm
+Id           : 219
+ProviderName : Microsoft-Windows-Kernel-PnP
+Message      : The driver \Driver\WUDFRd failed to load.
+               Device: USB\VID_05AC&PID_12AB&MI_01\6&249665c2&0&0001
+               Status: 0xC0000365
+
+TimeCreated  : 1/11/2026 2:04:42 pm
+Id           : 2
+ProviderName : MEIx64
+Message      : Intel(R) Management Engine Interface driver has started successfully.
+
+TimeCreated  : 1/11/2026 2:04:41 pm
+Id           : 7036
+ProviderName : VfpExt
+Message      : The  service entered the Driver load complete state.
+
+TimeCreated  : 1/11/2026 2:04:41 pm
+Id           : 7036
+ProviderName : VfpExt
+Message      : The  service entered the Driver load start state.
+
+TimeCreated  : 1/11/2026 2:04:18 pm
+Id           : 10002
+ProviderName : Microsoft-Windows-WLAN-AutoConfig
+Message      : WLAN Extensibility Module has stopped.
+               
+               Module Path: C:\WINDOWS\System32\DriverStore\FileRepository\netwtw6e.inf_amd64_ee761166daec7794\IntelIHVRouter14.dll
+               
+
+TimeCreated  : 1/11/2026 2:03:49 pm
+Id           : 1074
+ProviderName : User32
+Message      : The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found
+                Reason Code: 0x800000ff
+                Shutdown Type: restart
+                Comment: QwenKern: activating test-signing for apexdrv
+
+TimeCreated  : 1/11/2026 2:00:47 pm
+Id           : 7000
+ProviderName : Service Control Manager
+Message      : The apexdrv service failed to start due to the following error: 
+               Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+TimeCreated  : 1/11/2026 1:58:58 pm
+Id           : 7000
+ProviderName : Service Control Manager
+Message      : The apexdrv service failed to start due to the following error: 
+               Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+
+
+
+DONE 11/01/2026 14:42:29

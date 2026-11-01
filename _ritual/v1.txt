@@ -1,0 +1,196 @@
+== rdp file A ==
+screen mode id:i:2
+use multimon:i:0
+localconnections:i:1
+drivestoredirect:s:drive;Guest Additions Share:C:\temp_sign\;C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys::QwenKern Premium Build
+smart-sizing:i:1
+promptcredentialonce:i:1
+authentication level:i:2
+negotiate security layer:i:1
+server port:i:3389
+full address:s:192.168.56.100
+== rdp file B ==
+screen mode id:i:2
+use multimon:i:0
+smart-sizing:i:1
+promptcredentialonce:i:1
+authentication level:i:2
+negotiate security layer:i:1
+server port:s:3390
+full address:s:127.0.0.1
+== arp ==
+
+Interface: 192.168.56.1 --- 0x4
+  Internet Address      Physical Address      Type
+  192.168.56.100        08-00-27-6e-07-4d     dynamic   
+  192.168.56.255        ff-ff-ff-ff-ff-ff     static    
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  239.255.255.250       01-00-5e-7f-ff-fa     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    
+
+Interface: 192.168.4.177 --- 0x9
+  Internet Address      Physical Address      Type
+  192.168.4.1           b4-20-46-d8-b8-8d     dynamic   
+  192.168.4.140         04-b9-e3-09-4e-f2     dynamic   
+  192.168.7.255         ff-ff-ff-ff-ff-ff     static    
+  224.0.0.22            01-00-5e-00-00-16     static    
+  224.0.0.251           01-00-5e-00-00-fb     static    
+  224.0.0.252           01-00-5e-00-00-fc     static    
+  239.255.255.250       01-00-5e-7f-ff-fa     static    
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static    
+== showvminfo filt ==
+
+memory=4096
+VMState="running"
+VMStateChangeTime="2
+026-10-31T22:36:34.7
+66000000"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+hostonlyadapter2="Vi
+rtualBox Host-Only 
+Ethernet Adapter"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+vrde="on"
+vrdeport=3390
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="of
+f"
+vrdeproperty[TCP/Por
+ts]="3390"
+vrdeproperty[TCP/Add
+ress]=<not set>
+vrdeproperty[VideoCh
+annel/Enabled]=<not 
+set>
+vrdeproperty[VideoCh
+annel/Quality]=<not 
+set>
+vrdeproperty[VideoCh
+annel/DownscaleProte
+ction]=<not set>
+vrdeproperty[Client/
+DisableDisplay]=<not
+ set>
+vrdeproperty[Client/
+DisableInput]=<not 
+set>
+vrdeproperty[Client/
+DisableAudio]=<not 
+set>
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+vrdeproperty[Client/
+DisableUpstreamAudio
+]=<not set>
+vrdeproperty[Client/
+DisableRDPDR]=<not 
+set>
+vrdeproperty[H3DRedi
+rect/Enabled]=<not 
+set>
+vrdeproperty[Securit
+y/Method]="TLS"
+vrdeproperty[Securit
+y/ServerCertificate]
+="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+vrdeproperty[Securit
+y/ServerPrivateKey]=
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+vrdeproperty[Securit
+y/CACertificate]=<no
+t set>
+vrdeproperty[Audio/R
+ateCorrectionMode]=<
+not set>
+vrdeproperty[Audio/L
+ogPath]=<not set>
+VRDEActiveConnection
+="off"
+VRDEClients==0
+GuestMemoryBalloon=0
+
+
+== dhcpservers ==
+NetworkName:    HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+Dhcpd IP:       192.168.56.100
+LowerIPAddress: 192.168.56.101
+UpperIPAddress: 192.168.56.254
+NetworkMask:    255.255.255.0
+Enabled:        Yes
+Global Configuration:
+    minLeaseTime:     default
+    defaultLeaseTime: default
+    maxLeaseTime:     default
+    Forced options:   None
+    Suppressed opts.: None
+        1/legacy: 255.255.255.0
+Groups:               None
+Individual Configs:   None
+== vbox profile files ==
+
+Name                                                                       Length LastWriteTime         
+----                                                                       ------ -------------         
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.config    504 1/11/2026 10:34:59 am 
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.log         0 1/11/2026 10:35:01 am 
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.log.1    1887 1/11/2026 10:00:18 am 
+selectorwindow.log                                                           1691 30/10/2026 10:03:52 pm
+selectorwindow.log.1                                                         1584 30/10/2026 10:03:54 pm
+selectorwindow.log.2                                                         1975 30/10/2026 10:03:57 pm
+selectorwindow.log.3                                                         2002 30/10/2026 10:03:59 pm
+selectorwindow.log.4                                                         2507 30/10/2026 10:04:02 pm
+selectorwindow.log.5                                                          140 30/10/2026 2:54:28 pm 
+selectorwindow.log.9                                                          429 30/10/2026 2:54:22 pm 
+VBoxSVC.log                                                                     0 1/11/2026 10:34:56 am 
+VBoxSVC.log.1                                                                4135 1/11/2026 10:34:45 am 
+VBoxSVC.log.10                                                               3595 1/11/2026 9:29:33 am  
+VBoxSVC.log.2                                                                8107 1/11/2026 10:34:27 am 
+VBoxSVC.log.3                                                                3915 1/11/2026 9:59:41 am  
+VBoxSVC.log.4                                                                3595 1/11/2026 9:59:01 am  
+VBoxSVC.log.5                                                                3915 1/11/2026 9:58:42 am  
+VBoxSVC.log.6                                                                8988 1/11/2026 9:57:51 am  
+VBoxSVC.log.7                                                                3595 1/11/2026 9:32:15 am  
+VBoxSVC.log.8                                                                3842 1/11/2026 9:31:55 am  
+VBoxSVC.log.9                                                                3841 1/11/2026 9:30:19 am  
+VirtualBox.xml                                                               2704 1/11/2026 9:40:21 am  
+VirtualBox.xml-prev                                                          2704 30/10/2026 10:04:01 pm
+
+
+
+== leases ==
+<ExtraDataItem name="GUI/RecentListCD" value="C:/Users/New User/Downloads/26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"/>
+<ExtraDataItem name="GUI/SuppressMessages" value="confirmResetMachine"/>
+<ExtraDataItem name="GUI/Tools/LastItemsSelected" value="Machines,Details"/>
+<ExtraDataItem name="HostOnly/{19e21330-abb6-42ec-abde-6775578713fe}/IPAddress" value="192.168.56.1"/>
+<MachineRegistry>
+<MachineEntry uuid="{15e012c5-3c43-4b33-99e0-926e867cecef}" src="C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vbox"/>
+</MachineRegistry>
+<DHCPServer networkName="HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter" IPAddress="192.168.56.100" networkMask="255.255.255.0" lowerIP="192.168.56.101" upperIP="192.168.56.254" enabled="1"/>
+<SystemProperties defaultMachineFolder="C:\Users\New User\VirtualBox VMs" defaultHardDiskFormat="VDI" VRDEAuthLibrary="VBoxAuth" webServiceAuthLibrary="VBoxAuth" LogHistoryCount="3" proxyMode="0" exclusiveHwVirt="false"/>
+DONE-V1

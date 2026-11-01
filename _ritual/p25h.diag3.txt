@@ -1,0 +1,23 @@
+=== p25h.diag3 01/11/2026 16:52:09 PS=5.1.26100.9711 ===
+-- A: parameter type metadata --
+   KeyUsage ParameterType   = Microsoft.CertificateServices.Commands.KeyUsage[]
+   isArray=True  isEnum=False  hasFlagsAttr=False
+   elementType=Microsoft.CertificateServices.Commands.KeyUsage elementIsEnum=True
+   enumNames=[None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly]
+   Enum.Parse('CertSign,CRLSign') -> 6
+-- B: spelling matrix (the SAME string p25h.ps1 used, plus every neighbour) --
+  T1 joined-string           splat  THREW -> Cannot bind parameter 'KeyUsage'. Cannot convert value "CertSign,CRLSign" to type "Microsoft.CertificateServices.Commands.KeyUsage" due to enumeration values that are not valid. Specify one of the following enumeration values and try again. The possible enumeration values are "None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly".
+  T2 array-strings           splat  OK KU=03-02-01-06 thumb=59B65D22A33FC7055A0D7B622434982C51223DC6
+  T3 array-lowercase         splat  OK KU=03-02-01-06 thumb=72CB5C3BFDB01BE409B5942F88826FA17FFE5CD6
+  T4 array-wrongcase         splat  OK KU=03-02-01-06 thumb=E23384D9F541ECC50677590C4F0BC38FD306AC54
+  T5 single CertSign         splat  OK KU=03-02-02-04 thumb=B508FA3E862BEA3A10CCAF9260B5CA8C2537D5BC
+  T6 single CRLSign          splat  OK KU=03-02-01-02 thumb=EB533B3C8E2F0B7259EB860BF2B48B56FF2D3403
+  T7 array-3elem             splat  OK KU=03-02-01-86 thumb=2370977C74B562351509941B781F04C298DB5BCC
+  T8 direct-joinedstr        direct THREW -> Cannot bind parameter 'KeyUsage'. Cannot convert value "CertSign,CRLSign" to type "Microsoft.CertificateServices.Commands.KeyUsage" due to enumeration values that are not valid. Specify one of the following enumeration values and try again. The possible enumeration values are "None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly".
+  T9 direct-array            direct OK KU=03-02-01-06 thumb=57B8022A3D0C8A4C2046AEECE676A7A47DE70F83
+  T10 enum-int               splat  THREW -> Cannot bind parameter 'KeyUsage'. Cannot convert value "6" to type "Microsoft.CertificateServices.Commands.KeyUsage" due to enumeration values that are not valid. Specify one of the following enumeration values and try again. The possible enumeration values are "None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly".
+-- C: leaf spelling control (DigitalSignature, ca=0) --
+   leaf KU param form that p25h.ps1 uses = 'DigitalSignature' (single name, no comma)
+  T11 leaf singlesign        splat  OK KU=03-02-07-80 thumb=F2516DF1227BEA3E590F832EBCC5230BFB0FB17C
+-- D: cleanup --
+-- done --

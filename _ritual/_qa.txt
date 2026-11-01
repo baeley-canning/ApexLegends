@@ -1,0 +1,57 @@
+--- p21 flag lines ---
+  SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  bcdedit /export C:\Users\New User\OneDrive\Desktop\cheating\_ritual\bcd_before_20261101_204255.bcd: The operation completed successfully.
+  bcdedit /set testsigning off -> [The operation completed successfully.] RC=0
+  bcdedit /set nointegritychecks off -> [The operation completed successfully.] RC=0
+  bcdedit /set debug off -> [The operation completed successfully.] RC=0
+  SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+--- p30.txt ---
+=== p30 CLEAN-BASELINE PREP 01/11/2026 20:45:34 admin=True host=DESKTOP-PPHFJBQ ===
+GOAL: before the reboot, remove OUR driver from the system so the next Javelin launch is vanilla:
+      3 demand services (apexdrv / apexdrv_cat / kernprobe) + 2 copies of apexdrv.sys.
+      Nothing is deleted outright: services are re-creatable by the launcher, .sys files are renamed.
+
+########## A state BEFORE ##########
+  boot flags: SystemStartOptions = [ TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  sc query apexdrv:  ~ SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query apexdrv_cat:  ~ SERVICE_NAME: apexdrv_cat ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 183 (0xb7) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc query kernprobe:  ~ SERVICE_NAME: kernprobe ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  on disk: C:\Windows\System32\drivers\apexdrv.sys  10192 bytes  sig=Valid
+  on disk: C:\Windows\System32\drivers\apexdrv.sys.bak_p24  10152 bytes  sig=Valid
+  on disk: C:\Windows\System32\drivers\apexdrv.sys.bak_p25g  10184 bytes  sig=UnknownError
+  on disk: C:\Windows\System32\drivers\apexdrv.sys.bak_p25h  10192 bytes  sig=Valid
+  on disk: C:\p26cat\apexdrv_build.sys  10152 bytes  sig=Valid
+  on disk: C:\p26cat\apexdrv_sys.sys  10192 bytes  sig=Valid
+  on disk: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys  10152 bytes  sig=Valid
+
+########## B remove the services ##########
+  sc stop apexdrv: [SC] ControlService FAILED 1062: ~ ~ The service has not been started. ~ 
+  sc stop apexdrv_cat: [SC] ControlService FAILED 1062: ~ ~ The service has not been started. ~ 
+  sc stop kernprobe: [SC] ControlService FAILED 1062: ~ ~ The service has not been started. ~ 
+  sc delete apexdrv: [SC] DeleteService SUCCESS
+  sc delete apexdrv_cat: [SC] DeleteService SUCCESS
+  sc delete kernprobe: [SC] DeleteService SUCCESS
+
+########## C move the .sys copies out of the driver path ##########
+  renamed: C:\Windows\System32\drivers\apexdrv.sys -> C:\Windows\System32\drivers\apexdrv.sys.off
+  renamed: C:\Windows\System32\drivers\apexdrv.sys.bak_p24 -> C:\Windows\System32\drivers\apexdrv.sys.bak_p24.off
+  renamed: C:\Windows\System32\drivers\apexdrv.sys.bak_p25g -> C:\Windows\System32\drivers\apexdrv.sys.bak_p25g.off
+  renamed: C:\Windows\System32\drivers\apexdrv.sys.bak_p25h -> C:\Windows\System32\drivers\apexdrv.sys.bak_p25h.off
+  (left in place, not a driver-path image): C:\p26cat\apexdrv_build.sys
+  (left in place, not a driver-path image): C:\p26cat\apexdrv_sys.sys
+  (left in place, not a driver-path image): C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+
+########## D state AFTER ##########
+  sc query apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  sc query apexdrv_cat: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  sc query kernprobe: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~ ~ The specified service does not exist as an installed service. ~ 
+  .sys left in drivers dir: apexdrv.sys.bak_p24.off , apexdrv.sys.bak_p25g.off , apexdrv.sys.bak_p25h.off , apexdrv.sys.off
+  leftover popup windows: (none)
+  running EA/AC processes: EACefSubProcess , EACefSubProcess , EACefSubProcess , EACefSubProcess , EACefSubProcess
+
+########## NEXT ##########
+  1. REBOOT now (this is what clears the dirty EAAC state + drops TESTSIGNING from the boot config).
+  2. after the reboot run:  run22.cmd   (post-reboot verification: flags + services + who is on the box)
+  3. then run:              run27.cmd   (gate test: launch Apex vanilla, 150 s watch)
+  4. if the game SURVIVES -> run28.cmd  (inject; INSERT toggles the menu; expect %LOCALAPPDATA%\QwenKern\payload_<pid>.log)
+-- p30 END 01/11/2026 20:45:36 --

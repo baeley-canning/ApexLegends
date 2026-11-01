@@ -1,0 +1,107 @@
+=== p24 DSE GROUND TRUTH + CERT REPAIR 01/11/2026 16:16:09 admin=True host=DESKTOP-PPHFJBQ ===
+########## 0: environment truth ##########
+  SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  testsigning in booted cmdline = False  (False is REQUIRED for the EAAC gate)
+  SecureBoot = False
+  signtool  = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+  driver = C:\Windows\System32\drivers\apexdrv.sys exists=True size=10152 lastWrite=1/11/2026 2:01:45 pm
+  current kernel transport gdrv3 =  SERVICE_NAME: gdrv3 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+
+########## 1: BASELINE - sc start kernprobe as-shipped (expect FAILED 577) ##########
+  sc stop : [SC] ControlService FAILED 3: ~ ~ The system cannot find the path specified. ~ 
+  sc start: [SC] StartService FAILED 577: ~ ~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. ~ 
+  sc query: [SC] QueryServiceStatus FAILED 3: ~ ~ The system cannot find the path specified. ~ 
+  baseline sig status = Valid signer = CN=ApexDrv Dev (QwenKern Premium)
+  latest CI 3004      = 16:16:11 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+########## 2: build a kernel-valid self-signed code-signing cert (BasicConstraints ca=1) ##########
+  created CN=ApexDrv Lab DSE (QwenKern) thumb=DD5BA95EFD2F303687C309841B3928249A762941 notAfter=1/11/2031 4:16:13 pm
+  cert check: BasicConstraints present=True cA=True critical=True AKI=False SKI=True EKU=Code Signing
+  imported -> LocalMachine\Root
+  imported -> LocalMachine\TrustedPublisher
+
+########## 3: re-sign apexdrv.sys with that cert (shipped file kept as .bak_p24) ##########
+  backup -> C:\Windows\System32\drivers\apexdrv.sys.bak_p24
+  -- signtool sign:
+The following certificate was selected:
+    Issued to: ApexDrv Lab DSE (QwenKern)
+
+    Issued by: ApexDrv Lab DSE (QwenKern)
+
+    Expires:   Sat Nov 01 16:16:13 2031
+
+    SHA1 hash: DD5BA95EFD2F303687C309841B3928249A762941
+
+
+Done Adding Additional Store
+Successfully signed: C:\Windows\System32\drivers\apexdrv.sys
+
+
+Number of files successfully Signed: 1
+
+Number of warnings: 0
+
+Number of errors: 0
+
+  -- signtool verify /kp:
+
+
+Verifying: C:\Windows\System32\drivers\apexdrv.sys
+
+
+Signature Index: 0 (Primary Signature)
+Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+
+Signing Certificate Chain:
+    Issued to: ApexDrv Lab DSE (QwenKern)
+
+    Issued by: ApexDrv Lab DSE (QwenKern)
+
+    Expires:   Sat Nov 01 16:16:13 2031
+
+    SHA1 hash: DD5BA95EFD2F303687C309841B3928249A762941
+
+
+File is not timestamped.
+
+
+Number of files successfully Verified: 0
+
+Number of warnings: 0
+
+Number of errors: 1
+
+SignTool Error: WinVerifyTrust returned error: 0x80096019
+System.Management.Automation.RemoteException
+	A certificate's basic constraint extension has not been observed.
+System.Management.Automation.RemoteException
+  new sig status = UnknownError signer = CN=ApexDrv Lab DSE (QwenKern)
+
+########## 4: clean service object + start under DSE (testsigning OFF) ##########
+  [SC] ControlService FAILED 3: ~ ~ The system cannot find the path specified. ~ 
+  [SC] DeleteService SUCCESS
+  sc create: [SC] CreateService SUCCESS
+  sc start : [SC] StartService FAILED 577: ~ ~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. ~ 
+  sc query :  SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+
+########## 5: RESULT / NEXT ACTION ##########
+  STILL BLOCKED on the embedded-signature path.
+  -> fallback A (recommended): keep testsigning OFF (EAAC gate satisfied) and let gdrv3.sys
+     carry the kernel path (see ext/gio.py: "No own driver is used").
+  -> fallback B: only if apexdrv must load, bcdedit /set testsigning on + reboot - but EAAC
+     pops again, so pair it with the p21 flag matrix.
+-- CodeIntegrity events matching apexdrv/kernprobe (last 10):
+   16:16:17 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:16:11 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:00:11 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   14:00:47 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   13:58:58 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   03:35:32 id=3004 :: Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+-- Service Control Manager driver-load events (last 10):
+   16:16:17 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:16:16 id=7045 :: A service was installed in the system. Service Name: kernprobe Service File Name: System32\drivers\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+   16:16:11 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:00:11 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+-- ROLLBACK: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p24" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc stop kernprobe ; sc delete kernprobe
+-- p24 END 01/11/2026 16:16:20 --

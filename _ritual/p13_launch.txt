@@ -1,0 +1,24 @@
+=== launch 11/01/2026 15:03:18 ===
+shellAdmin=False
+p13_boot.ps1 PARSE-OK
+p13_strings.ps1 PARSE-OK
+
+FullName                                                                                        Length
+--------                                                                                        ------
+C:\Program Files\EA Games\Apex\EAAntiCheat.cfg                                                   12536
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll                            53116664
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b                          53116664
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe                            20286712
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b                          20286712
+C:\Program Files\EA Games\Apex\EAAntiCheat.Installer.exe                                     271269624
+C:\Program Files\EA Games\Apex\EAAntiCheat.splash.png                                           594412
+C:\Program Files\EA Games\Apex\__Installer\customcomponent\Javelin\EAAntiCheat.Installer.exe 271269624
+C:\Program Files\EA\AC\EAAntiCheat.GameService.dll                                            64006392
+C:\Program Files\EA\AC\EAAntiCheat.GameService.exe                                           193572600
+C:\Program Files\EA\AC\EAAntiCheat.Installer.exe                                             282016504
+
+
+
+launcher=[C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe] gameservice=[C:\Program Files\EA\AC\EAAntiCheat.GameService.exe]
+started 11/01/2026 15:03:19
+dll passes started 11/01/2026 15:03:47

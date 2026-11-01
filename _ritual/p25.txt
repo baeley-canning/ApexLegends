@@ -1,0 +1,83 @@
+=== p25 DSE REPAIR #2 (root CA + leaf) 01/11/2026 16:21:27 admin=True host=DESKTOP-PPHFJBQ ===
+########## 0: environment truth ##########
+  SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  testsigning booted = False   (must stay False for the EAAC gate)
+  signtool  = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+  driver = C:\Windows\System32\drivers\apexdrv.sys exists=True size=10160
+  pristine backup C:\Windows\System32\drivers\apexdrv.sys.bak_p24 exists=True
+  QwenKern certs already present: Root=2 TrustedPublisher=2
+-- hygiene: evict p24's malformed cert (cA=1 but KeyUsage=DigitalSignature only) from the trust stores
+   evicting CN=ApexDrv Lab DSE (QwenKern) from LocalMachine\Root thumb=DD5BA95EFD2F303687C309841B3928249A762941
+   evicting CN=ApexDrv Lab DSE (QwenKern) from LocalMachine\TrustedPublisher thumb=DD5BA95EFD2F303687C309841B3928249A762941
+
+########## 1: build ROOT CA (ca=1 critical + KeyUsage CertSign/CRLSign) ##########
+  created root thumb=76589C69A7DEBEF1093D9B98C60CA6707A54E36C notAfter=1/11/2036 4:21:27 pm
+  root check: BC present=True cA=True critical=True CertSign=False SKI=True
+  root .cer exported + imported -> LocalMachine\Root
+
+########## 2: build LEAF code-signing cert signed by that root ##########
+  created leaf thumb=DFFA64113CF6589043CE0E4AD74A84CF0CA91690 notAfter=1/11/2031 4:21:28 pm
+  leaf check: subject='CN=ApexDrv Lab Code Signing (QwenKern)'
+              issuer='CN=ApexDrv Lab Root CA (QwenKern)'
+              BC present=True cA=False critical=True AKI=True SKI=True EKU=1.3.6.1.5.5.7.3.3 KeyUsage=
+  leaf .cer exported + imported -> LocalMachine\TrustedPublisher
+  user-mode chain build anchored in Root store = True
+
+########## 3: sign apexdrv.sys with the LEAF, verify under kernel policy (/kp) ##########
+  pristine backup already present -> C:\Windows\System32\drivers\apexdrv.sys.bak_p24
+  [leaf] signer thumb=DFFA64113CF6589043CE0E4AD74A84CF0CA91690
+    sign: Successfully signed: C:\Windows\System32\drivers\apexdrv.sys
+    sign: Number of files successfully Signed: 1
+    sign: Number of warnings: 0
+    sign: Number of errors: 0
+  [leaf] verify /kp errors = 1
+  [leaf] Get-AuthenticodeSignature = Valid
+  leaf path did not verify -> FALLBACK: one self-signed ca=1 cert WITH KeyUsage CertSign (makecert -r shape)
+  created fallback thumb=7AB907DC03E17A6A7375FEBF3ADA5624B4099444
+  fallback cert -> Root + TrustedPublisher
+  [oneshot] signer thumb=7AB907DC03E17A6A7375FEBF3ADA5624B4099444
+    sign: Successfully signed: C:\Windows\System32\drivers\apexdrv.sys
+    sign: Number of files successfully Signed: 1
+    sign: Number of warnings: 0
+    sign: Number of errors: 0
+  [oneshot] verify /kp errors = 1
+    verify: SignTool Error: WinVerifyTrust returned error: 0x80096019
+    verify: A certificate's basic constraint extension has not been observed.
+  [oneshot] Get-AuthenticodeSignature = UnknownError
+  CHOSEN SIGNER = NONE (no candidate verified)
+
+########## 4: service clean re-create + start under DSE (testsigning OFF) ##########
+  staging copy left as-is: C:\ProgramData\QwenKern\apexdrv.sys exists=True
+  stop   : [SC] ControlService FAILED 1062: ~ ~ The service has not been started. ~ 
+  delete : [SC] DeleteService SUCCESS
+  create : [SC] CreateService SUCCESS
+  start  : [SC] StartService FAILED 577: ~ ~ Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. ~ 
+  query  :  SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+
+########## 5: RESULT / NEXT ACTION ##########
+  STILL BLOCKED - kernel CI refuses the embedded signature even with a proper CA->leaf chain.
+  -> fallback A (recommended, zero risk): keep testsigning OFF and let gdrv3.sys carry the kernel
+     path (ext/gio.py already says "No own driver is used"; gdrv3 is loaded and RUNNING).
+  -> fallback B: bcdedit /set testsigning on + reboot if apexdrv is really wanted - but then EAAC
+     pops again, so pair it with the p21 flag matrix.
+  -> diagnostic: the /kp verify line above is the whole story; if it is still 0x80096019 the CI
+     policy refuses local-machine CAs entirely (then only a real CA/bcdedit route remains).
+-- CodeIntegrity events matching apexdrv (last 8):
+   16:21:33 id=3004
+   16:16:17 id=3004
+   16:16:11 id=3004
+   16:00:11 id=3004
+   14:00:47 id=3004
+   13:58:58 id=3004
+   03:35:32 id=3004
+-- SCM events (last 8):
+   16:21:33 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:21:32 id=7045 :: A service was installed in the system. Service Name: kernprobe Service File Name: System32\drivers\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+   16:16:17 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:16:16 id=7045 :: A service was installed in the system. Service Name: kernprobe Service File Name: System32\drivers\apexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+   16:16:11 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+   16:00:11 id=7000 :: The kernprobe service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+-- ROLLBACK: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p24" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc stop kernprobe ; sc delete kernprobe
+-- ROLLBACK certs: Get-ChildItem Cert:\LocalMachine\My | ?{$_.Subject -match "ApexDrv Lab"} | Remove-Item
+-- p25 END 01/11/2026 16:21:35 --

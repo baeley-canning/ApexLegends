@@ -1,0 +1,75 @@
+13389(host)->CONNECT-OK-BUT-SILENT
+3390 (vrde)->CONNECT-OK-BUT-SILENT
+g:3389->connect-fail
+g:445 ->connect-fail
+g:135 ->connect-fail
+ping  ->Reply from 192.168.56.100: bytes=32 time<1ms TTL=255
+--- nic/nat config ---
+macaddress1="08002745F596"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+hostonlyadapter2="VirtualBox Host-Only Ethernet Adapter"
+macaddress2="08002754DF67"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+--- setvideomodehint 1024x768x32 ---
+
+VideoMode now: VideoMode="0,0,0"@0,0 1
+--- screenshotpng retry ---
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: Unsupported 
+resolution for 
+screen shot: 0x0 
+(screen 0)
+At line:1 char:6
++ $o+=(& $vb 
+controlvm 
+Win11-Test2 
+screenshotpng 
+"$r\vmshot2.png" 
+2>&1  ...
++      ~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+0x0 (screen 0):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+DisplayWrap, 
+interface IDisplay, 
+callee IUnknown
+VBoxManage.exe: 
+error: Context: "Tak
+eScreenShotToArray(i
+Screen, width, 
+height, 
+BitmapFormat_PNG, Co
+mSafeArrayAsOutParam
+(saScreenshot))" at 
+line 1775 of file VB
+oxManageControlVM.cp
+p
+
+shot-exists=False bytes=0

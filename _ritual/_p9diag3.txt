@@ -1,0 +1,14 @@
+﻿adm=False
+catrootWritable=NO Exception calling "WriteAllText" with "2" argument(s): "Access to the path 'C:\WINDOWS\System32\CatRoot\_p9w.tmp' is denied."
+  pid=20316 start=11/01/2026 16:00:16 cl=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+  pid=13332 start=11/01/2026 17:59:08 cl=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Import-Module 'c:\Users\New User\.vscode\extensions\ms-vscode.powershell-2025.4.0\modules\PowerShellEditorServices\PowerShellEditorServices.psd1'; Start-EditorServices -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '2025.4.0' -BundledModulesPath 'c:\Users\New User\.vscode\extensions\ms-vscode.powershell-2025.4.0\modules' -EnableConsoleRepl -StartupBanner \"PowerShell Extension v2025.4.0
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/vscode-powershell
+Type 'help' to get help.
+\" -LogLevel 'Warning' -LogPath 'c:\Users\New User\AppData\Roaming\Code\logs\20261101T160014\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\New User\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-17364-607936.json' -FeatureFlags @() "
+  pid=23628 start=11/01/2026 18:08:01 cl=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+  pid=3800 start=11/01/2026 19:26:20 cl=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+create: ERROR: Invalid argument/option - 'User\OneDrive\Desktop\cheating\_ritual\_p9.ps1'. | Type "SCHTASKS /CREATE /?" for usage.
+run: ERROR: The system cannot find the file specified. | System.Management.Automation.RemoteException
+p9txtExists=False

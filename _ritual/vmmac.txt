@@ -1,0 +1,103 @@
+﻿
+ostype="Windows 11 
+(64-bit)"
+memory=4096
+"SATA-1-0"="C:\\Prog
+ram Files\\Oracle\\V
+irtualBox\\VBoxGuest
+Additions.iso"
+macaddress1="0800274
+5F596"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+macaddress2="0800275
+4DF67"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+vrde="on"
+vrdeport=3390
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="of
+f"
+vrdeproperty[TCP/Por
+ts]="3390"
+vrdeproperty[TCP/Add
+ress]=<not set>
+vrdeproperty[VideoCh
+annel/Enabled]=<not 
+set>
+vrdeproperty[VideoCh
+annel/Quality]=<not 
+set>
+vrdeproperty[VideoCh
+annel/DownscaleProte
+ction]=<not set>
+vrdeproperty[Client/
+DisableDisplay]=<not
+ set>
+vrdeproperty[Client/
+DisableInput]=<not 
+set>
+vrdeproperty[Client/
+DisableAudio]=<not 
+set>
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+vrdeproperty[Client/
+DisableUpstreamAudio
+]=<not set>
+vrdeproperty[Client/
+DisableRDPDR]=<not 
+set>
+vrdeproperty[H3DRedi
+rect/Enabled]=<not 
+set>
+vrdeproperty[Securit
+y/Method]="TLS"
+vrdeproperty[Securit
+y/ServerCertificate]
+="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+vrdeproperty[Securit
+y/ServerPrivateKey]=
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+vrdeproperty[Securit
+y/CACertificate]=<no
+t set>
+vrdeproperty[Audio/R
+ateCorrectionMode]=<
+not set>
+vrdeproperty[Audio/L
+ogPath]=<not set>
+VRDEActiveConnection
+="off"
+VRDEClients==0
+GuestMemoryBalloon=0
+GuestOSType="Windows
+11_64"
+GuestAdditionsRunLev
+el=0
+
+

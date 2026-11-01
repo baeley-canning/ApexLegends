@@ -1,0 +1,9 @@
+﻿== enable test signing 2026-10-27 12:15:19 ==
+user     : DESKTOP-PPHFJBQ\New User on DESKTOP-PPHFJBQ
+elevated : True
+task     : 'QwenKern-PostReboot-DriverTest' registered=True state=Ready
+resume   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\_resume_after_testsigning.ps1
+
+RESULT: OK - test signing is ON.  REBOOT now; the task re-runs the driver test 30s after logon.
+        (manual equivalent: powershell -File build\_resume_after_testsigning.ps1)
+END

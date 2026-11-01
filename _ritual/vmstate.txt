@@ -1,0 +1,111 @@
+﻿VBEXISTS True
+7.2.22r175245
+=== VMS ===
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+=== RUNNING ===
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+=== INFO ===
+
+CfgFile="C:\\Users\\
+New 
+User\\VirtualBox VMs
+\\Win11-Test2\\Win11
+-Test2.vbox"
+VMState="running"
+VMStateChangeTime="2
+026-10-31T22:36:34.7
+66000000"
+nic1="nat"
+vrde="on"
+vrdeport=3390
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="of
+f"
+vrdeproperty[TCP/Por
+ts]="3390"
+vrdeproperty[TCP/Add
+ress]=<not set>
+vrdeproperty[VideoCh
+annel/Enabled]=<not 
+set>
+vrdeproperty[VideoCh
+annel/Quality]=<not 
+set>
+vrdeproperty[VideoCh
+annel/DownscaleProte
+ction]=<not set>
+vrdeproperty[Client/
+DisableDisplay]=<not
+ set>
+vrdeproperty[Client/
+DisableInput]=<not 
+set>
+vrdeproperty[Client/
+DisableAudio]=<not 
+set>
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+vrdeproperty[Client/
+DisableUpstreamAudio
+]=<not set>
+vrdeproperty[Client/
+DisableRDPDR]=<not 
+set>
+vrdeproperty[H3DRedi
+rect/Enabled]=<not 
+set>
+vrdeproperty[Securit
+y/Method]="TLS"
+vrdeproperty[Securit
+y/ServerCertificate]
+="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+vrdeproperty[Securit
+y/ServerPrivateKey]=
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+vrdeproperty[Securit
+y/CACertificate]=<no
+t set>
+vrdeproperty[Audio/R
+ateCorrectionMode]=<
+not set>
+vrdeproperty[Audio/L
+ogPath]=<not set>
+VRDEActiveConnection
+="off"
+VRDEClients==0
+SnapshotName="VRDP-r
+eady"
+SnapshotName-1="pre-
+baseline"
+CurrentSnapshotName=
+"pre-baseline"
+CurrentSnapshotNode=
+"SnapshotName-1"
+GuestOSType="Windows
+11_64"
+
+
+=== SNAPS ===
+SnapshotName="VRDP-ready"
+SnapshotUUID="e099b86b-9b0e-48b3-87ab-55c0827ec144"
+SnapshotDescription="Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x"
+SnapshotName-1="pre-baseline"
+SnapshotUUID-1="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotName="pre-baseline"
+CurrentSnapshotUUID="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotNode="SnapshotName-1"

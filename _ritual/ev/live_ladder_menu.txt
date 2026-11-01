@@ -1,0 +1,34 @@
+﻿===============================================================
+  QwenKern Premium - Apex Legends launcher
+  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+  kernel rung    : B3 (apexdrv.sys)
+===============================================================
+[*] Sticky rung: A7 Manual Map (MANUAL) (last verified payload 'apexcheat.dll')
+[*] 7 rung(s), target PID 11996, payload apexcheat.dll
+    verdict rule: A1-A4 count when apexcheat.dll is in the target's module list;
+                  A7/A8 count on a readable image + a completed entry call
+[!] module list of PID 11996 is NOT readable -> verdicts are unreliable
+    relaunch the launcher elevated (Run as administrator) and retry
+[1/7] A7 Manual Map (MANUAL)
+[*] Injection strategy: A7 Manual Map (MANUAL)
+       FAIL : VirtualAllocEx(image) failed: win32error=5
+[2/7] A8 VAD-less Map (GHOST)
+       SKIP : not implemented in this build
+[3/7] A4 Thread Hijack (HIJACK)
+[*] Injection strategy: A4 Thread Hijack (HIJACK)
+       FAIL : target kernel32/ntdll base unreadable (module list denied)
+[4/7] A3 APC Queue (IMPERSONATE)
+[*] Injection strategy: A3 APC Queue (IMPERSONATE)
+       FAIL : VirtualAllocEx failed: 5
+[5/7] A2 NtCreateThreadEx (HIDE)
+[*] Injection strategy: A2 NtCreateThreadEx (HIDE)
+       FAIL : VirtualAllocEx failed: 5
+[6/7] A1 CreateRemoteThread + LoadLibraryA
+[*] Injection strategy: A1 CreateRemoteThread + LoadLibraryA
+       FAIL : VirtualAllocEx failed: 5
+[7/7] B3 Kernel Driver (KERNEL)
+[*] Injection strategy: B3 Kernel Driver (KERNEL)
+[*] Kernel service already registered, reusing it
+       FAIL : StartService(apexdrv) failed (GetLastError=577) - unsigned drivers need test-signing or a BYOVD loader
+[-] Ladder exhausted: no rung verified the payload
+[-] No rung verified the payload

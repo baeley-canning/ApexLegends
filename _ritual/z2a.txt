@@ -1,0 +1,42 @@
+﻿GlobalFlag                     : 0
+GlobalFlag2                    : 0
+HeapDeCommitFreeBlockThreshold : 0
+HeapDeCommitTotalFreeThreshold : 0
+HeapSegmentCommit              : 0
+HeapSegmentReserve             : 0
+InitConsoleFlags               : 0
+NumberOfInitialSessions        : 2
+ObjectDirectories              : {\Windows, \RPC Control}
+ProcessorControl               : 2
+ProtectionMode                 : 1
+ResourceTimeoutCount           : 45
+RunLevelExecute                : {WinInit, ServiceControlManager}
+RunLevelValidate               : {ServiceControlManager}
+AutoChkSkipSystemPartition     : 0
+SetupExecute                   : {}
+PendingFileRenameOperations    : {*1\??\C:\Windows\System32\gamingservicesproxy_16.dll.0, , *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b, ...}
+PSPath                         : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
+PSParentPath                   : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName                    : Session Manager
+PSDrive                        : HKLM
+PSProvider                     : Microsoft.PowerShell.Core\Registry
+
+
+
+
+-- HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+
+
+ClearPageFileAtShutdown  : 0
+DisablePagingExecutive   : 0
+HotPatchTableSize        : 8192
+LargeSystemCache         : 0
+NonPagedPoolQuota        : 0
+NonPagedPoolSize         : 0
+PagedPoolQuota           : 0
+PagedPoolSize            : 0
+PagingFiles              : {?:\pagefile.sys}
+SecondLevelDataCache     : 0
+SessionPoolSize          : 4
+SessionViewSize          : 48
+SystemPages              : 0

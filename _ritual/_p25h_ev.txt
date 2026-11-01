@@ -1,0 +1,8 @@
+=== gdrv3 chain (root?) ===
+status=Valid
+signer=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+root=
+=== gdrv3 cert chain via X509 ===
+subject=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+=== boot/systemstartoptions ===
+ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA

@@ -1,0 +1,237 @@
+=== sentence-like strings (>=14 chars, contains a space) filtered by keywords ===
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe : raw_ascii=6331 raw_wide=56 phrases=209 -----
+    </security>
+    <security>
+ bytes redacted for security reasons.
+" requires a config. Please use loadBalancingConfig instead.
+%*sPolicy Language: 
+%*sPolicy Text: %.*s
+%*sSignature : 
+%*sSignature Algorithm: 
+%*sSignature Value:
+%*sSigned Certificate Timestamp:
+%*ssignTool    : 
+%*ssignToolCert: 
+`virtual displacement map'
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA10
+A control value that can be used to scale buffer sizes up or down to adjust memory pressure to our target set point.
+A SPIFFE bundle map was configured but the leaf cert is null
+add signer error
+AES Hardware detection failed (%d).
+assertion failed: ctx->cipher->block_size == 1 || ctx->cipher->block_size == 8 || ctx->cipher->block_size == 16
+assertion failed: ctx->multiblock_max_send_fragment != 0
+bad checkafter in pollrep
+block not big enough for even one level
+block type is not 01
+block type is not 02
+called a function that was disabled at compile-time
+Called CAPI_dsa_do_sign()
+Called CAPI_rsa_sign()
+Cannot check peer: invalid ALPN value.
+Cannot check peer: missing pem cert property.
+Cannot check peer: missing selected ALPN property.
+cannot configure spiffe roots with a nullptr spiffe_bundle_map.
+cannot find config variable
+cannot parse health check response
+Cannot use autodetected salt length
+cant check dh key
+Certificate Sign
+certificate signature failure
+Check %s failed: %s
+Check (v & (kMuWait | kMuWrWait)) != kMuWrWait failed: %s: Mutex corrupt: waiting writer with no waiters: %p
+Check (v & (kMuWriter | kMuReader)) != (kMuWriter | kMuReader) failed: %s: Mutex corrupt: both reader and writer lock held: %p
+Check input_len <= kMaxSize failed: 
+check invalid j value
+check invalid q value
+check p not prime
+check p not safe prime
+check pubkey invalid
+check pubkey too large
+check pubkey too small
+check q not prime
+checkafter out of range
+CheckConnectivityState not supported
+Class of Signing Tool
+Class of Signing Tool KA1
+Class of Signing Tool KB1
+Class of Signing Tool KB2
+Class of Signing Tool KC1
+Class of Signing Tool KC2
+Class of Signing Tool KC3
+Compression algorithm '%s' is disabled.
+configuration file routines
+content type not signed data
+could not write to memory BIO
+Created new LB policy "
+CRL signature failure
+curve does not support signing
+data not multiple of block length
+detected illegal recursion in Mutex code
+detected illegal recursion into Mutex code
+Digital Signature
+duplicate default method config
+ems not enabled
+engine configuration error
+error signing hash
+error validating signature
+errors validating pick_first LB policy config
+errors validating service config
+ess add signing cert error
+ess add signing cert v2 error
+ess signing cert add error
+ess signing cert v2 add error
+ess signing certid mismatch error
+ess signing certificate error
+Established channel does not have a sufficient security level to transfer call credential.
+Established channel does not have an auth property representing a security level.
+excluded subtree violation
+Factory not found for policy "%s"
+Failed to create security handshaker.
+Failed to create security handshaker: 
+failed to parse service config: 
+failed to sign
+gRPC Transport Error : Security frame is larger than the maximum allowed size : 
+health check call failed; will retry after backoff
+health checking Watch method returned UNIMPLEMENTED; disabling health checks but assuming server is healthy
+incorrect data check
+incorrect header check
+incorrect length check
+incorrect policy syntax tag
+indicator integrity failure
+Inhibit Policy Mapping
+insufficient memory
+invalid block type
+invalid code -- missing end-of-block
+invalid config data
+invalid or inconsistent certificate policy extension
+invalid policy identifier
+invalid proxy policy setting
+invalid signature size
+invalid signed data type
+invalid signer certificate purpose
+invalid stored block lengths
+Key type: 1=AT_KEYEXCHANGE (default), 2=AT_SIGNATURE
+key usage does not include certificate signing
+key usage does not include CRL signing
+key usage does not include digital signature
+Lock blocking 
+Malicious varint encoding detected in HPACK stream
+memory buffer routines
+memory limit exceeded
+missing config data
+missing equal sign
+missing key usage digitalsignature
+missing ocspsigning usage
+missing signing certificate attribute
+module integrity failure
+multiple method configs for path 
+need one signer
+No ciphers enabled for max supported SSL/TLS version
+no config database
+No DNS servers were configured
+no explicit policy
+No groups enabled for max supported SSL/TLS version
+No known policies in list: 
+no matching signature
+no policy found in child entry
+no policy identifier
+no proxy cert policy language defined
+no signatures on data
+no valid service config
+not a signed receipt
+not enough memory
+null before block missing
+OAEP padding not allowed for signing / verifying
+Object Signing
+Object Signing CA
+oneOf violation
+operation would block
+padding check failed
+param unsigned integer negative value unsupported
+parent locking not enabled
+permitted subtree violation
+PKCS #7 SIGNED DATA
+pkcs7 add signature error
+pkcs7 add signed attr error
+pkcs7 add signer error
+pkcs7 datasign
+policy language already defined
+policy mismatch
+policy path length
+policy path length already defined
+policy when proxy language requires no policy
+PSS padding only allowed for sign and verify operations
+ReaderLock blocking 
+redirection not enabled
+request not signed
+Require Explicit Policy
+RFC9113 : Field blocks MUST be transmitted as a contiguous sequence of frames, with no interleaved frames of any other type or from any other stream.
+RFC9113: PUSH_PROMISE MUST NOT be sent if the SETTINGS_ENABLE_PUSH setting of the peer endpoint is set to 0
+S/MIME signing
+salt length check failed
+sct invalid signature
+secure memory buffer
+security connector already present in channel args.
+Security connector missing from client auth filter args
+self-signed certificate
+self-signed certificate in certificate chain
+sequence or set needs config
+Service config changed
+SignalAll wakeup
+signature failure
+signer certificate not found
+signfinal error
+signing ctrl failure
+signing not supported for this key type
+Software\Policies\Microsoft\Windows NT\DNSClient
+Specifies to continue even if version checking fails (boolean)
+sys$assign error
+The current instantaneously measured memory pressure.
+The passed EVP_PKEY must be assigned a key
+there must be one signer
+Time Stamp signing
+tls not enabled
+unable to check generator
+unable to decrypt certificate's signature
+unable to decrypt CRL's signature
+unable to enable locking
+unacceptable policy
+Unexpected SECURITY frame scheduled for write
+unknown LB policy "
+unknown signature algorithm
+unrecognized signature nid
+unsupported signature type
+VirtualAlloc failed
+Visual C++ CRT: Not enough memory to complete call to strerror.
+Wait unblocked 
+wrong final block length
+wrong signature length
+wrong signature size
+wrong signature type
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll : raw_ascii=546 raw_wide=60 phrases=17 -----
+    </ms_asmv1:security>
+    <ms_asmv1:security xmlns:ms_asmv1="urn:schemas-microsoft-com:asm.v1">
+%scertificate policies : 
+%sDigital Signature
+%sKey Cert Sign
+%sObject Signing
+%sObject Signing CA
+%ssigned using      : 
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA10
+A hardware error was detected. This is usually an indication of faulty hardware. If you see this message repeatedly, please ensure your hardware is stable, not overclocked, and free of faulty components.
+Create memory dump
+DIRIONPOLICIADNI 2308
+http://www.chambersign.org1"0 
+r!OCSP Signing
+RCertificate Policies
+You can choose to create a memory dump, which will aid our support team in diagnosing your issue.
+----- C:\Program Files\EA Games\Apex\preloader_l.dll : raw_ascii=103 raw_wide=28 phrases=6 -----
+    </security>
+    <security>
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1
+8DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA10
+Conflicting software detected!
+Syscall emulation is disabled in this Wine build. Please use a version with syscall emulation enabled.
+DONE 11/01/2026 14:47:50

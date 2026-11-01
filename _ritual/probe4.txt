@@ -1,0 +1,14 @@
+﻿probe4 2026-11-01T17:59:16
+tcpip  sha1=9862B8A2F9A06F43CA7848F7EF0F1EE83796FCCB
+apexdrv sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC
+S6lan  sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  sameAsApex=True
+  tcpip writeback calls=501 ms=1 -> Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+  tcpip explicit  calls=1 ms=0 -> Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat
+  tcpip once      ms=0 -> Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat [prevAfter=NULL]
+  apexdrv writeback calls=0 ms=0 -> NONE(err1168)
+  apexdrv explicit  calls=0 ms=0 -> NONE(err1168)
+  apexdrv once      ms=0 -> NONE(err1168)
+CHILD real CE2.FindCatalog: STILL RUNNING after 25s -> HANG
+CHILD stdout len=29 head=DONE-cateng
+cateng-complete
+

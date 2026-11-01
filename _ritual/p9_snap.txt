@@ -1,0 +1,25 @@
+14:39:30  
+14:39:30  ===== p9 start =====
+14:39:30  elevated : True
+14:39:30  secureboot reg UEFISecureBootEnabled = 0
+14:39:30  testsigning=True  nointegrity=False  dse_off_hint=False
+14:39:30  cert CN=ApexDrv Dev present in Root = True
+14:39:30  cert CN=ApexDrv Dev present in TrustedPublisher = True
+14:39:30  
+14:39:30  ===== P1 - apex with NO apexdrv, dismiss every Javelin popup, keep watching 300s =====
+14:39:30    kill EAAntiCheat.GameServiceLauncher (20528)
+14:39:30    kill EACefSubProcess (11232)
+14:39:30    kill EACefSubProcess (12492)
+14:39:30    kill EACefSubProcess (12856)
+14:39:30    kill EACefSubProcess (12876)
+14:39:30    kill EACefSubProcess (18692)
+14:39:38  [p1] apexdrv registered = False
+14:39:38  [p1] apex launched (direct exe)
+14:39:53  [p1] NEW POPUP proc=csrss class=#32770
+14:39:53  [p1]   body: Security Violation |  | 
+EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+
+Session ID: gn5mVXDr6+bx2ojg4M3KGxiEXbMmO6lkNyB0TMWV2hl6JplI
+
+Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+14:39:53  [p1] clicked OK on a Javelin popup (continuing)

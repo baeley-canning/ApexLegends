@@ -1,0 +1,31 @@
+﻿=== SHAREDFOLDERS ===
+
+ostype="Windows 11 
+(64-bit)"
+firmware="EFI"
+hpet="off"
+longmode="on"
+nested-hw-virt="off"
+nestedpaging="on"
+vtxvpid="on"
+vtxux="on"
+"SATA-1-0"="C:\\Prog
+ram Files\\Oracle\\V
+irtualBox\\VBoxGuest
+Additions.iso"
+hostonlyadapter2="Vi
+rtualBox Host-Only 
+Ethernet Adapter"
+nic2="hostonly"
+hidpointing="usbtabl
+et"
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+usb="off"
+GuestOSType="Windows
+11_64"
+GuestAdditionsRunLev
+el=0
+
+

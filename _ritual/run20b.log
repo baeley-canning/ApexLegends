@@ -1,0 +1,10 @@
+WRAPPER_START Sun 01/11/2026 15:45:48.78 
+Get-WinEvent : The parameter is incorrect
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p20b.ps1:195 char:18
++ ... ch($e2 in @(Get-WinEvent -FilterHashtable @{LogName='Application'; Pr ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-WinEvent], EventLogException
+    + FullyQualifiedErrorId : System.Diagnostics.Eventing.Reader.EventLogException,Microsoft.PowerShell.Commands.GetWi 
+   nEventCommand
+ 
+WRAPPER_END exit=0 Sun 01/11/2026 15:47:06.26 

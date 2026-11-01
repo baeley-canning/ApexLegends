@@ -1,0 +1,26 @@
+﻿post1 2026-11-01T21:15:01
+elev=True
+user=DESKTOP-PPHFJBQ\New User
+lastboot=11/01/2026 21:12:38
+startopts: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control ~~ SystemStartOptions    REG_SZ     TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA
+testsigning-honored: True
+bcd: Windows Boot Manager ~~ -------------------- ~~ identifier              {bootmgr} ~~ device                  partition=\Device\HarddiskVolume1 ~~ path                    \EFI\Microsoft\Boot\bootmgfw.efi ~~ description             Windows Boot Manager ~~ locale                  en-US ~~ inherit                 {globalsettings} ~~ default                 {current} ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ displayorder            {current} ~~ toolsdisplayorder       {memdiag} ~~ timeout                 30 ~~ Windows Boot Loader ~~ ------------------- ~~ identifier              {current} ~~ device                  partition=C: ~~ path                    \WINDOWS\system32\winload.efi ~~ description             Windows 11 ~~ locale                  en-US ~~ inherit                 {bootloadersettings} ~~ recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b} ~~ displaymessageoverride  Recovery ~~ recoveryenabled         Yes ~~ nointegritychecks       No ~~ testsigning             Yes ~~ isolatedcontext         Yes ~~ allowedinmemorysettings 0x15000075 ~~ osdevice                partition=C: ~~ systemroot              \WINDOWS ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ nx                      OptIn ~~ bootmenupolicy          Standard ~~ hypervisorlaunchtype    Auto ~~ debug                   No
+=== service start attempts ===
+  start apexdrv rc=1060 :: [SC] StartService: OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+    q: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+  start apexdrv_cat rc=1060 :: [SC] StartService: OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+    q: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+  start kernprobe rc=1060 :: [SC] StartService: OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+    q: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
+=== CI events last 10 min ===
+21:12:41 id=3085 Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.
+21:12:41 id=3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+21:12:41 id=3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+21:12:41 id=3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+21:12:41 id=3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+21:12:41 id=3099 Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0
+21:12:41 id=3116 Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.
+SCM 21:12:03 id=7009 A timeout was reached (90000 milliseconds) while waiting for the GameDVR and Broadcast User Service_104cba service to connect.
+SCM 21:12:03 id=7000 The GameDVR and Broadcast User Service_104cba service failed to start due to the following error: The service did not respond to the start or control request in a timely fashion.
+SCM 21:12:49 id=7026 The following boot-start or system-start driver(s) did not load: dam uiomap WinSetupMon
+done 2026-11-01T21:15:04

@@ -1,0 +1,46 @@
+== key artifact existence ==
+apexdrv.sys  15984  11/01/2026 03:09:24
+== QKP build listing ==
+
+Mode   Length Name                                LastWriteTime        
+----   ------ ----                                -------------        
+d-----        build                               1/11/2026 2:12:02 am 
+-a---- 43376  apexdrv.obj                         1/11/2026 2:25:31 am 
+-a---- 15984  apexdrv.sys                         1/11/2026 3:09:24 am 
+-a---- 1958   build_driver.cmd                    1/11/2026 2:31:53 am 
+-a---- 1075   import_cert_and_enable_testsign.cmd 1/11/2026 8:17:21 am 
+-a---- 1930   setup_driver_vm.cmd                 1/11/2026 10:44:16 am
+-a---- 184320 vc140.pdb                           1/11/2026 2:32:25 am 
+-a---- 176    Win11-Test2-VRDP.rdp                1/11/2026 10:36:01 am
+-a---- 365    Win11-Test2.rdp                     1/11/2026 9:55:34 am 
+
+
+== QKP top-level dirs ==
+
+Mode   Length Name                 
+----   ------ ----                 
+d-----        build                
+d-----        docs                 
+d-----        driver               
+d-----        include              
+d-----        launcher             
+d-----        lib                  
+d-----        src                  
+d-----        tools                
+-a---- 0      apexcheat.ini        
+-a---- 1391   apex_cheat.sln       
+-a---- 8824   apex_cheat.vcxproj   
+-a---- 4310   apex_launcher.vcxproj
+
+
+== driver dir ==
+
+Mode   Length Name           
+----   ------ ----           
+d-----        build          
+-a---- 18385  apexdrv.c      
+-a---- 43376  apexdrv.obj    
+-a---- 3636   apexdrv.vcxproj
+-a---- 184320 vc140.pdb      
+
+

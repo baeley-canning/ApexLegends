@@ -1,0 +1,33 @@
+﻿=== host-only iface ===
+Ethernet 2 192.168.56.1
+Local Area Connection* 10 169.254.171.47
+Local Area Connection* 1 169.254.156.76
+Ethernet 192.168.137.1
+Ethernet 192.168.100.1
+Ethernet 169.254.125.143
+Ethernet 169.254.100.1
+Wi-Fi 192.168.4.177
+Loopback Pseudo-Interface 1 127.0.0.1
+=== arp 192.168.56 ===
+
+Interface: 
+192.168.56.1 --- 0x4
+  192.168.56.100    
+    
+08-00-27-6e-07-4d   
+  dynamic   
+  192.168.56.255    
+    
+ff-ff-ff-ff-ff-ff   
+  static    
+
+
+=== ping 101/102/103 ===
+192.168.56.101 alive=False
+192.168.56.102 alive=False
+192.168.56.103 alive=False
+192.168.56.104 alive=False
+=== apex on host ===
+C:\Program Files\EA Games\Apex
+C:\Program Files\EA Games\Battlefield 6
+=== r5apex search ===

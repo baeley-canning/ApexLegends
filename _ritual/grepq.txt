@@ -1,0 +1,22 @@
+﻿INJECTION_MENU_AND_RISK_MATRIX.txt:28: A1. CreateRemoteThread + LoadLibraryA   (baseline, weakest)
+INJECTION_MENU_AND_RISK_MATRIX.txt:34: A3. QueueUserAPC / NtQueueApcThread into an existing thread  (IMPERSONATE)
+INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt:46: 3. INJECTION METHOD #2: APC QUEUE (IMPERSONATE STRATEGY)
+INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt:50: - Queues LoadLibrary into an EXISTING game thread - looks like legitimate work
+INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt:66: - Queue LoadLibrary APC with our DLL path as parameter
+INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt:67: - Use NtQueueApcThread for stealthier delivery than standard QueueUserAPC
+INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt:74: | Aspect                | NtCreateThreadEx    | APC Queue           |
+JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt:117: Q1. Does ACG really reject PAGE_EXECUTE allocations in the CURRENT build, on
+JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt:132: NtAllocateVirtualMemory, NtMapViewOfSection, NtCreateThreadEx and QueueUserAPC
+KB_SOURCES_AND_RELIABILITY.txt:22: [A5] EA security page (082124) - historic EAC statements (pre-Javelin baseline).
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:22:   module list. The injector's own "success" is NOT the verdict - an APC queues
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:47:    [1/4] A3 APC Queue ... PASS: apexcheat.dll present, visible after 47 ms
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:86: X7  QueueUserAPC                    FAIL   win32error=5 (ACCESS_DENIED)
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:130:      VirtualAllocEx/NtCreateThreadEx/QueueUserAPC on r5apex_dx12.exe while
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:136: Q10. Does a kernel-mode read (apexdrv) bypass the blackout, i.e. is B3 the only
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:236: Q11. The Javelin minifilter sits at altitude 363250 and watches file I/O: does
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:239: Q12. eaanticheat.sys reports RUNNING while its image is GONE from
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:243: Q13. fltmc filters / fltmc instances -v, elevated: confirm the filter, its
+PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt:245: Q14. Does the DX12-only install change PHASE 4?  A d3d11-only payload adds a
+PREMIUM_MARKET_TEARDOWN_2026.txt:124:    can report "offsets stale" BEFORE the user queues a match.
+LAUNCHER_AND_INJECTION_METHODS.md:69: | `apc` (IMPERSONATE) | `QueueUserAPC` into an existing r5apex thread | New-thread enumeration; the executing thread is already whitelisted |
+LAUNCHER_AND_INJECTION_METHODS.md:122: | 5 | A3 APC queue | module list |

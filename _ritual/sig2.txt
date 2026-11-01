@@ -1,0 +1,121 @@
+=== signature of suspect / non-MS driver services ===
+gdrv3 | State=Running | Start=Manual | SigStatus=Valid | Path=C:\WINDOWS\System32\drivers\gdrv3.sys | FileVersion=1.2.0.1
+   Signer=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+   Issuer=CN=GlobalSign GCC R45 EV CodeSigning CA 2020, O=GlobalSign nv-sa, C=BE | NotBefore=23/11/2021 10:20:39 pm | NotAfter=23/11/2024 10:20:39 pm
+   StatusMessage=Signature verified.
+MSIO | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\drivers\MsIo64.sys | FileVersion=1.3 x64 built by: WinDDK
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=7/04/2023 7:16:30 am | NotAfter=4/04/2024 8:16:30 am
+   StatusMessage=Signature verified.
+CTIIO | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\drivers\CtiIo64.sys | FileVersion=1.1 x64 built by: WinDDK
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=12/01/2024 9:09:15 am | NotAfter=11/01/2025 9:09:15 am
+   StatusMessage=Signature verified.
+npcap | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\DRIVERS\npcap.sys | FileVersion=1.89
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=14/05/2026 6:17:34 am | NotAfter=12/05/2027 6:17:34 am
+   StatusMessage=Signature verified.
+VBoxSup | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\DRIVERS\VBoxSup.sys | FileVersion=7.2.22.175245
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=14/05/2026 6:17:34 am | NotAfter=12/05/2027 6:17:34 am
+   StatusMessage=Signature verified.
+VBoxUSBMon | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\DRIVERS\VBoxUSBMon.sys | FileVersion=7.2.22.175245
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=14/05/2026 6:17:34 am | NotAfter=12/05/2027 6:17:34 am
+   StatusMessage=Signature verified.
+VBoxNetLwf | State=Running | Start=System | SigStatus=Valid | Path=C:\WINDOWS\system32\DRIVERS\VBoxNetLwf.sys | FileVersion=7.2.22.175245
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=14/05/2026 6:17:34 am | NotAfter=12/05/2027 6:17:34 am
+   StatusMessage=Signature verified.
+VBoxNetAdp | State=Running | Start=Manual | SigStatus=Valid | Path=C:\WINDOWS\system32\DRIVERS\VBoxNetAdp6.sys | FileVersion=7.2.22.175245
+   Signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+   Issuer=CN=Microsoft Windows Third Party Component CA 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US | NotBefore=14/05/2026 6:17:34 am | NotAfter=12/05/2027 6:17:34 am
+   StatusMessage=Signature verified.
+TeamViewer : service NOT present
+TeamViewerVPN : service NOT present
+tv_x64 : service NOT present
+tv_w32 : service NOT present
+apexdrv : service NOT present
+=== ALL running drivers with a non-Microsoft signer (detailed) ===
+gdrv3 | Valid | CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization | C:\WINDOWS\System32\drivers\gdrv3.sys
+=== every running driver from a non-Windows vendor path (teamviewer/npcap/vbox/gigabyte/msi/creative/sandboxie) ===
+
+Name                State   StartMode PathName                                                                                          
+----                -----   --------- --------                                                                                          
+CTIIO               Running System    \??\C:\WINDOWS\system32\drivers\CtiIo64.sys                                                       
+EhStorTcgDrv        Stopped Manual    C:\WINDOWS\system32\drivers\EhStorTcgDrv.sys                                                      
+gdrv3               Running Manual    \??\C:\WINDOWS\System32\drivers\gdrv3.sys                                                         
+IntcAzAudAddService Running Manual    C:\WINDOWS\system32\DriverStore\FileRepository\hdxgigabyte.inf_amd64_c4cd83654074023d\RTKVHD64.sys
+mausbhost           Stopped Manual    C:\WINDOWS\system32\drivers\mausbhost.sys                                                         
+mausbip             Stopped Manual    C:\WINDOWS\system32\drivers\mausbip.sys                                                           
+MSIO                Running System    \??\C:\WINDOWS\system32\drivers\MsIo64.sys                                                        
+npcap               Running System    C:\WINDOWS\system32\DRIVERS\npcap.sys                                                             
+npcap_wifi          Stopped Disabled  C:\WINDOWS\system32\DRIVERS\npcap.sys                                                             
+VBoxNetAdp          Running Manual    C:\WINDOWS\system32\DRIVERS\VBoxNetAdp6.sys                                                       
+VBoxNetLwf          Running System    C:\WINDOWS\system32\DRIVERS\VBoxNetLwf.sys                                                        
+VBoxSup             Running System    C:\WINDOWS\system32\DRIVERS\VBoxSup.sys                                                           
+VBoxUSBMon          Running System    C:\WINDOWS\system32\DRIVERS\VBoxUSBMon.sys                                                        
+
+
+
+=== apexdrv service query ===
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+
+=== sc qc apexdrv (config / start type after p9) ===
+[SC] OpenService FAILED 1060:
+
+The specified service does not exist as an installed service.
+
+
+=== bcdedit /enum {current} ===
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+
+=== is testsigning / nointegritychecks currently ON? (Win32 query) ===
+
+=== CodeIntegrity operational events since today 00:00 ===
+
+TimeCreated            Id Msg                                                                                                                                                                                                                             
+-----------            -- ---                                                                                                                                                                                                                             
+1/11/2026 2:04:41 pm 3116 Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                                                      
+1/11/2026 2:04:41 pm 3099 Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                                                        
+1/11/2026 2:04:41 pm 3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                                                      
+1/11/2026 2:04:41 pm 3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0                               
+1/11/2026 2:04:41 pm 3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                                                      
+1/11/2026 2:04:41 pm 3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                                                    
+1/11/2026 2:04:41 pm 3085 Code Integrity will disable WHQL driver enforcement for this boot session.  Settings 0x0.                                                                                                                                       
+1/11/2026 2:00:47 pm 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 2:00:47 pm 3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\ProgramData\QwenKern\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have inst...
+1/11/2026 1:58:58 pm 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 1:58:58 pm 3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have ...
+1/11/2026 4:59:04 am 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 4:59:04 am 3033 Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing leve...
+1/11/2026 4:59:04 am 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 4:59:04 am 3033 Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing leve...
+1/11/2026 4:59:03 am 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 4:59:03 am 3033 Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing leve...
+1/11/2026 4:59:03 am 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 4:59:03 am 3033 Code Integrity determined that a process (\Device\HarddiskVolume3\Windows\UUS\amd64\WaaSMedicAgent.exe) attempted to load \Device\HarddiskVolume3\Windows\System32\nvspcap64.dll that did not meet the Microsoft signing leve...
+1/11/2026 3:35:32 am 3089 Signature information for another event. Match using the Correlation Id.                                                                                                                                                        
+1/11/2026 3:35:32 am 3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have ...
+
+
+
+=== currently running anti-cheat / apex related processes ===
+
+Name                  Id Path                                      
+----                  -- ----                                      
+EACefSubProcess     6692                                           
+EACefSubProcess    19988                                           
+EACefSubProcess    23548                                           
+EACefSubProcess    23612                                           
+TeamViewer          7132 C:\Program Files\TeamViewer\TeamViewer.exe
+TeamViewer_Service 17760                                           
+
+
+
+DONE 11/01/2026 14:46:12

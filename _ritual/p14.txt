@@ -1,0 +1,139 @@
+﻿=== p14 01/11/2026 15:24:55 admin=False ===
+
+########## 1 EA\AC folder recursive (size/date) ##########
+    64006392 22/10/2026 12:01:56 C:\Program Files\EA\AC\EAAntiCheat.GameService.dll
+   193572600 22/10/2026 12:01:56 C:\Program Files\EA\AC\EAAntiCheat.GameService.exe
+   282016504 26/10/2026 16:32:46 C:\Program Files\EA\AC\EAAntiCheat.Installer.exe
+       46840 22/10/2026 12:02:42 C:\Program Files\EA\AC\preloader_s.dll
+
+########## 2 eaanticheat.sys / apexdrv.sys existence hunt ##########
+EXIST=False C:\Windows\System32\drivers\eaanticheat.sys
+EXIST=True C:\Windows\System32\drivers\apexdrv.sys
+EXIST=True C:\ProgramData\QwenKern\apexdrv.sys
+EXIST=False C:\Program Files\EA\AC\eaanticheat.sys
+EXIST=False C:\Program Files\EA\AC\apexdrv.sys
+EXIST=False C:\Program Files\EA\AC\EAAntiCheat.sys
+-- wildcard hunt in drivers dir (ea|apex|javelin):
+        10152 01/11/2026 14:01:45 C:\Windows\System32\drivers\apexdrv.sys
+       108016 09/09/2026 08:51:57 C:\Windows\System32\drivers\CEA.sys
+          646 01/04/2024 20:22:30 C:\Windows\System32\drivers\gmreadme.txt
+       872448 14/10/2026 12:48:15 C:\Windows\System32\drivers\PEAuth.sys
+       118784 06/09/2024 16:03:24 C:\Windows\System32\drivers\stream.sys
+-- DriverStore hunt (eaanticheat|apexdrv|gameflt):
+   DIR C:\Windows\System32\DriverStore\FileRepository\gameflt.inf_amd64_c03f7ce96acee3d6
+      gameflt.cat  11681
+      gameflt.inf  2313
+      gameflt.sys  171760
+-- Win32_SystemDriver / Win32_Service state+excode:
+   DRV gdrv3 State=Running Status=OK Start=Manual Path=\??\C:\WINDOWS\System32\drivers\gdrv3.sys
+
+########## 3 service keys live snapshot ##########
+-- apexdrv : KEY MISSING
+-- zzprobe : KEY MISSING
+-- kernprobe : ImagePath=System32\drivers\apexdrv.sys Type=1 Start=3 Group= Tag= DisplayName= StartOverride= FilterType= Altitude=
+   subkeys: 
+   valuenames: Type,Start,ErrorControl,ImagePath,ObjectName
+-- EAAntiCheat : ImagePath=system32\drivers\eaanticheat.sys Type=2 Start=3 Group=FSFilter Activity Monitor Tag=4 DisplayName=EAAntiCheat StartOverride= FilterType= Altitude=
+   subkeys: Instances
+   valuenames: DebugFlags,DependOnService,Description,DisplayName,ErrorControl,Group,ImagePath,Start,SupportedFeatures,Tag,Type
+-- eaanticheat : ImagePath=system32\drivers\eaanticheat.sys Type=2 Start=3 Group=FSFilter Activity Monitor Tag=4 DisplayName=EAAntiCheat StartOverride= FilterType= Altitude=
+   subkeys: Instances
+   valuenames: DebugFlags,DependOnService,Description,DisplayName,ErrorControl,Group,ImagePath,Start,SupportedFeatures,Tag,Type
+-- EAAntiCheatService : ImagePath="C:\Program Files\EA\AC\eaanticheat.gameservice.exe" Type=16 Start=3 Group= Tag= DisplayName=EAAntiCheatService StartOverride= FilterType= Altitude=
+   subkeys: 
+   valuenames: Type,Start,ErrorControl,ImagePath,DisplayName,ObjectName,Description,CacheKeyUm,CacheKey
+-- gdrv3 : ImagePath=\??\C:\WINDOWS\System32\drivers\gdrv3.sys Type=1 Start=3 Group= Tag= DisplayName=gdrv3 StartOverride= FilterType= Altitude=
+   subkeys: Parameters
+   valuenames: Type,Start,ErrorControl,ImagePath,DisplayName
+
+########## 4 fltmc + driverquery (EA/apex lines) ##########
+-- cmd: fltmc filters
+   
+   Filter listing failed with error: 0x80070005
+   Access is denied.
+-- cmd: fltmc instances
+   
+   Filter/instance listing failed with error: 0x80070005
+   Access is denied.
+-- cmd: driverquery /v /fo csv filtered
+   "Filetrace","Filetrace","Filetrace","File System ","Manual","Stopped","OK","FALSE","FALSE","16,384","20,480","0","","C:\WINDOWS\system32\drivers\filetrace.sys","4,096"
+   "FltMgr","FltMgr","FltMgr","File System ","Boot","Running","OK","TRUE","FALSE","237,568","172,032","0","","C:\WINDOWS\system32\drivers\fltmgr.sys","8,192"
+   "gameflt","gameflt","gameflt","File System ","Manual","Running","OK","TRUE","FALSE","61,440","28,672","0","","C:\WINDOWS\system32\DriverStore\FileRepository\gameflt.inf_amd64_c03f7ce96acee3d6\gameflt.sys","4,096"
+   "gdrv3","gdrv3","gdrv3","Kernel ","Manual","Running","OK","TRUE","FALSE","8,192","20,480","0","11/09/2024 3:09:58 pm","\??\C:\WINDOWS\System32\drivers\gdrv3.sys","4,096"
+
+########## 5 popup-string scan of EA\AC binaries ##########
+== C:\Program Files\EA\AC\EAAntiCheat.GameService.dll  len=64006392  hits=1
+   [unsupported] @0x20E9F8 :: ..??V?Z.?3?y?..???..??W?9E??;..??j?0?......%s    <unsupported>....)?..?.g.................\???.e~.?up??g?i?(?0???M3[E?....invalid PK......................B.u.i.l.d.L.a.b.E.x........?..................
+== C:\Program Files\EA\AC\EAAntiCheat.GameService.exe  len=193572600  hits=79
+   [unsupported] @0x150B63C :: ..]E..?...??..`4..??...?$.}?2.?.F.M?`.4??.?2?.....unsupported data flags: 0x%02x stream: %d.Bad GRPC frame type 0x%02x.CLIENT.SERVER.%s: Received message larger than max (%d vs. %u).Data frame with EN
+   [unsupported] @0x153C352 :: X_KEY...evp_pkey_get0_DH_int....%s algorithm "%s" unsupported...TEXT....Public Key..group.......encoded-pub-key.EVP_PKEY_new....pkey_set_type...EVP_PKEY_set_type_by_keymgmt....EVP_PKEY_dup....evp_pkey
+   [unsupported] @0x153E3F0 :: ..nested asn1 error.......missing asn1 eos........unsupported.....fetch failed....invalid property definition.....unable to get read lock.unable to get write lock................C:\dev\git\vcpkg\build
+   [unsupported] @0x153F3D8 :: ..no explicit policy......different CRL scope.....unsupported extension feature...RFC 3779 resource not subset of parent's resources......permitted subtree violation.....excluded subtree violation....
+   [unsupported] @0x153F4D0 :: rted......application verification failure........unsupported name constraint type........unsupported or invalid name constraint syntax...unsupported or invalid name syntax......CRL path validation er
+   [unsupported] @0x153F4F8 :: re........unsupported name constraint type........unsupported or invalid name constraint syntax...unsupported or invalid name syntax......CRL path validation error.......path loop.......Suite B: certi
+   [unsupported] @0x153F528 :: ..unsupported or invalid name constraint syntax...unsupported or invalid name syntax......CRL path validation error.......path loop.......Suite B: certificate version invalid....Suite B: invalid publi
+   [unsupported] @0x15626F1 :: RAM_BLD_push_BN_pad......Negative big numbers are unsupported for OSSL_PARAM.....OSSL_PARAM_BLD_push_utf8_string.OSSL_PARAM_BLD_push_octet_string........OSSL_PARAM_BLD_to_param.........??..Q?..&?..??.
+   [unsupported] @0x15681DE :: n OSSL_PARAM data type %d...[action:%d, state:%d] unsupported OSSL_PARAM data type %d.......fix_dh_nid......fix_dh_nid5114..fix_dh_paramgen_type....explicit........fix_ec_param_enc........fix_rsa_padd
+   [unsupported] @0x156A608 ::  export error.....pubkey export length error......unsupported algorithm nid.......unsupported padding.....unsupported public key algorithm........win32 error.capi........CryptoAPI ENGINE..............
+   [unsupported] @0x156A628 :: length error......unsupported algorithm nid.......unsupported padding.....unsupported public key algorithm........win32 error.capi........CryptoAPI ENGINE................?.......P?VA....`?VA..........
+   [unsupported] @0x156A640 :: orted algorithm nid.......unsupported padding.....unsupported public key algorithm........win32 error.capi........CryptoAPI ENGINE................?.......P?VA....`?VA............?.......??VA....??VA..
+   [unsupported] @0x157CDD1 :: me: NAIRealm:....othername: %s:..othername:......<unsupported>...X400Name........EdiPartyName....email...DNS.URI.DirName.IP Address......crypto\x509\v3_san.c....Registered ID...othername:<unsupported>
+   [unsupported] @0x157CE5B :: rypto\x509\v3_san.c....Registered ID...othername:<unsupported>.othername:SmtpUTF8Mailbox:%.*s..othername:XmppAddr:%.*s.othername:SRVName:%.*s..othername:UPN:%.*s......othername:NAIRealm:%.*s.X400Name:
+   [unsupported] @0x157CEF2 :: e:UPN:%.*s......othername:NAIRealm:%.*s.X400Name:<unsupported>..EdiPartyName:<unsupported>..email:..DNS:....URI:........DirName:........IP Address:%s...Registered ID:..v2i_issuer_alt..copy....copy_iss
+   [unsupported] @0x157CF0E :: IRealm:%.*s.X400Name:<unsupported>..EdiPartyName:<unsupported>..email:..DNS:....URI:........DirName:........IP Address:%s...Registered ID:..v2i_issuer_alt..copy....copy_issuer.....v2i_subject_alt.move
+   [unsupported] @0x157EAF5 :: e....user....SXNETID.ids.SXNET.......%*sVersion: <unsupported>.......%*sVersion: %ld (0x%lX)..%*sZone: %s, User: ....crypto\x509\v3_sxnet.c..SXNET_add_id_asc........SXNET_add_id_INTEGER....H.......?.?
+   [unsupported] @0x1587576 :: e type......param unsigned integer negative value unsupported.......param unsupported floating point format.param value too large for destination...provider already exists.provider section error..rand
+   [unsupported] @0x158758E :: ed integer negative value unsupported.......param unsupported floating point format.param value too large for destination...provider already exists.provider section error..random section error....secu
+   [unsupported] @0x15887A8 :: e.unknown signature algorithm.....unknown tag.....unsupported any defined by type.unsupported cipher......unsupported public key type.....unsupported type........wrong integer type......wrong public k
+   [unsupported] @0x15887C8 :: ..unknown tag.....unsupported any defined by type.unsupported cipher......unsupported public key type.....unsupported type........wrong integer type......wrong public key type...wrong tag.............
+   [unsupported] @0x15887E0 :: orted any defined by type.unsupported cipher......unsupported public key type.....unsupported type........wrong integer type......wrong public key type...wrong tag...............d.?.....??XA....e.?...
+   [unsupported] @0x1588800 :: orted cipher......unsupported public key type.....unsupported type........wrong integer type......wrong public key type...wrong tag...............d.?.....??XA....e.?.....??XA....r.?.....??XA....v.?...
+   [unsupported] @0x1589680 :: n cofactor........unknown group...unknown order...unsupported field.......wrong curve parameters..wrong order.....................d.......P?XA....?.......`?XA....?.......??XA....e.......??XA....|.....
+   [unsupported] @0x1589C28 :: ..unavailable ip family...unknown info type.......unsupported ip family...unsupported method......unsupported protocol family.....write to read only BIO..WSAStartup......c.?.....??XA....d.?.....??XA..
+   [unsupported] @0x1589C40 :: ..unknown info type.......unsupported ip family...unsupported method......unsupported protocol family.....write to read only BIO..WSAStartup......c.?.....??XA....d.?.....??XA....e.?......?XA..........
+   [unsupported] @0x1589C58 :: ..unsupported ip family...unsupported method......unsupported protocol family.....write to read only BIO..WSAStartup......c.?.....??XA....d.?.....??XA....e.?......?XA....................zlib deflate e
+   [unsupported] @0x158A44B :: ongruent to 1..first octet invalid.....illegal or unsupported padding mode.....invalid header..invalid keypair.invalid key length......invalid label...invalid message length..invalid mgf1 md.invalid m
+   [unsupported] @0x158A900 :: ..unknown mask digest.....unknown padding type....unsupported encryption type.....unsupported label source........unsupported mask algorithm......unsupported mask parameter......unsupported signature 
+   [unsupported] @0x158A920 :: n padding type....unsupported encryption type.....unsupported label source........unsupported mask algorithm......unsupported mask parameter......unsupported signature type......value missing.....?...
+   [unsupported] @0x158A940 :: cryption type.....unsupported label source........unsupported mask algorithm......unsupported mask parameter......unsupported signature type......value missing.....?.....??XA....e.?.....??XA....m.?...
+   [unsupported] @0x158A960 :: bel source........unsupported mask algorithm......unsupported mask parameter......unsupported signature type......value missing.....?.....??XA....e.?.....??XA....m.?.....??XA....j.?.....??XA....s.?...
+   [unsupported] @0x158A980 :: sk algorithm......unsupported mask parameter......unsupported signature type......value missing.....?.....??XA....e.?.....??XA....m.?.....??XA....j.?.....??XA....s.?.....??XA....t.?.....??XA....z.?...
+   [unsupported] @0x158BD70 :: pe........unknown option..unknown pbe algorithm...unsupported algorithm...unsupported keylength...unsupported key derivation function.....unsupported key size....unsupported key type....unsupported nu
+   [unsupported] @0x158BD88 :: ..unknown pbe algorithm...unsupported algorithm...unsupported keylength...unsupported key derivation function.....unsupported key size....unsupported key type....unsupported number of rounds....unsupp
+   [unsupported] @0x158BDA0 :: ..unsupported algorithm...unsupported keylength...unsupported key derivation function.....unsupported key size....unsupported key type....unsupported number of rounds....unsupported prf.unsupported pr
+   [unsupported] @0x158BDC8 :: ylength...unsupported key derivation function.....unsupported key size....unsupported key type....unsupported number of rounds....unsupported prf.unsupported private key algorithm.......unsupported sa
+   [unsupported] @0x158BDE0 :: y derivation function.....unsupported key size....unsupported key type....unsupported number of rounds....unsupported prf.unsupported private key algorithm.......unsupported salt type...update error..
+   [unsupported] @0x158BDF8 :: ..unsupported key size....unsupported key type....unsupported number of rounds....unsupported prf.unsupported private key algorithm.......unsupported salt type...update error....wrap mode not allowed.
+   [unsupported] @0x158BE18 :: orted key type....unsupported number of rounds....unsupported prf.unsupported private key algorithm.......unsupported salt type...update error....wrap mode not allowed...wrong final block length......
+
+########## 6 EA log inventory + tails ##########
+-- newest 30 EA logs:
+
+########## 7 PendingFileRenameOperations now ##########
+   *1\??\C:\Windows\System32\gamingservicesproxy_16.dll.0
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b
+   
+   *1\??\C:\Program Files\EA Games\Apex\preloader_l.dll_b
+   
+
+########## 8 boot options / VBS / DeviceGuard ##########
+SystemStartOptions= TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  FVEBOOT=2666496  NOVGA
+   VbsStatus=2 ServicesConfigured=0 ServicesRunning=0 CiPolicyEnforcement=2 UsermodeCiEnforcement=0
+   CiPolicyActive=
+
+== p14 END 15:27:42 ==

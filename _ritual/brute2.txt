@@ -1,0 +1,18 @@
+﻿brute2 2026-11-01T17:32:59
+=== C:\WINDOWS\System32\drivers\gdrv3.sys  target=CTXFAIL
+  parse=ok cp=31744 cl=20696 len=52440 secOff=432 chkOff=352
+  no hit  (cp=31744 cl=20696 len=52440)
+
+=== C:\WINDOWS\System32\drivers\tcpip.sys  target=91277E39C4F76D6D0F296657AFE1702297CBC92051F38CCF2F72D3BD5A39997F
+  parse=ok cp=3473408 cl=19832 len=3493240 secOff=408 chkOff=328
+  no hit  (cp=3473408 cl=19832 len=3493240)
+
+=== C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys  target=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+  parse=ok cp=8704 cl=1680 len=10384 secOff=384 chkOff=304
+  no hit  (cp=8704 cl=1680 len=10384)
+
+=== C:\WINDOWS\System32\drivers\apexdrv.sys  target=CTXFAIL
+  parse=ok cp=8704 cl=1488 len=10192 secOff=384 chkOff=304
+  no hit  (cp=8704 cl=1488 len=10192)
+
+DONE

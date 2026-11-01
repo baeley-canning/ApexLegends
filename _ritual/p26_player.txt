@@ -1,0 +1,17 @@
+﻿=== p26_player_probe  11/01/2026 18:17:10 ===
+pid=19684 name=r5apex_dx12 mb=4787
+OpenProcess(0x410) handle=2660 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x1010) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x10) handle=2708 peb=0x0 NtReadVM=0xFFFFFFFFFFFFFFFF imageBase=0x0
+OpenProcess(0x400) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x1000) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x1008) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x1020) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+OpenProcess(0x1F0FFF) handle=2708 peb=0x253000 NtReadVM=0xFFFFFFFFC000000D imageBase=0x0
+chosen handle mask=0x0 peb=0x253000
+NtQueryInformationProcess(ProcessBasicInformation) st=0x00000000 peb=0x253000
+PEB.ImageBaseAddress (read via BLOCKED(st=0xC000000D)) = 0x0
+base via MainModule = 0x0
+  Toolhelp32 snapshot failed err=87
+game base NOT FOUND (PEB + MainModule + Toolhelp all failed)
+=== DONE ===

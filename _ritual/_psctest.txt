@@ -1,0 +1,17 @@
+﻿psctest 11/01/2026 18:53:07
+New-FileCatalog available = True
+added signed driver: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+  verbose: Adding file 'C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_psctest\src\apexdrv_build.sys' to the catalog. Relative path of file in catalog is 'apexdrv_build.sys'.
+  verbose: Adding file 'C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_psctest\src\p26probe.bin' to the catalog. Relative path of file in catalog is 'p26probe.bin'.
+  verbose: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_psctest\psc.cat
+cat len = 806
+  file=apexdrv_build.sys len=10152
+    engine sha256 present in cat = False   engine=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+    plain  sha256 present in cat = False
+    plain  sha1   present in cat = False
+  file=p26probe.bin len=52
+    engine sha256 present in cat = False   engine=1FD88B12165443521C6AC5E0591EF8C7D4AF1C8B52AB9B4771E76B1F83E47F33
+    plain  sha256 present in cat = False
+    plain  sha1   present in cat = False
+  hex tokens in cat: 64-char=0  40-char=0
+END-psctest

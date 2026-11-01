@@ -1,0 +1,113 @@
+﻿=== p26_cat  01/11/2026 18:35:53  elevated=True ===
+host build=26200.9711  boot=1/11/2026 3:59:37 pm  now=1/11/2026 6:35:53 pm
+bcd.testsigning=Yes
+bcd.nointegritychecks=No
+test signing is armed in BCD only if it differs from the boot time -> no reboot has happened yet
+makecat = C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\makecat.exe
+signtool = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+staged apexdrv_build.sys  len=10152 sha256=9B119FD0C38740A2 status=Valid signer=CN=ApexDrv Dev (QwenKern Premium)
+staged apexdrv_sys.sys    len=10192 sha256=4F1106853D05986B status=Valid signer=CN=ApexDrv S2 Leaf (QwenKern)
+engineHash apexdrv_build.sys  sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+engineHash apexdrv_sys.sys    sha1=23C73EF919F18ECF9855331CF2563D3A15AF52BC  cateng=23C73EF919F18ECF9855331CF2563D3A15AF52BC  match=True
+--- cdf ---
+  [CatalogHeader]
+  Name=apexdrv_p26.cat
+  ResultDir=C:\p26cat
+  PublicVersion=0x00000001
+  EncodingType=0x00010001
+  CATATTR1=0x10010001:OSAttr:2:10.0,6.1
+  
+  [CatalogFiles]
+  <hash>apexdrv_build.sys=C:\p26cat\apexdrv_build.sys
+  <hash>apexdrv_sys.sys=C:\p26cat\apexdrv_sys.sys
+--- makecat ---
+  makecat: opened:    C:\p26cat\apexdrv_p26.cdf
+  makecat:     attribute: OSAttr
+  makecat: processing: <hash>apexdrv_build.sys
+  makecat: processing: <hash>apexdrv_sys.sys
+  makecat: Succeeded
+cat built len=726 sha1=BA92E56CE110A16D788E58A1F8F875ABF541C85A
+cat signers -> build=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 sys=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  sign: The following certificate was selected:
+  sign:     Issued to: ApexDrv Dev (QwenKern Premium)
+  sign: 
+  sign:     Issued by: ApexDrv Dev (QwenKern Premium)
+  sign: 
+  sign:     Expires:   Fri Oct 26 17:43:18 2029
+  sign: 
+  sign:     SHA1 hash: 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+  sign: 
+  sign: 
+  sign: Done Adding Additional Store
+  sign: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign: 
+  sign: 
+  sign: Number of files successfully Signed: 1
+  sign: 
+  sign: Number of warnings: 0
+  sign: 
+  sign: Number of errors: 0
+  sign: 
+  sign/as: The following certificate was selected:
+  sign/as:     Issued to: ApexDrv S2 Leaf (QwenKern)
+  sign/as: 
+  sign/as:     Issued by: ApexDrv S2 Root CA (QwenKern)
+  sign/as: 
+  sign/as:     Expires:   Sat Nov 01 16:36:28 2031
+  sign/as: 
+  sign/as:     SHA1 hash: 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+  sign/as: 
+  sign/as: 
+  sign/as: Done Adding Additional Store
+  sign/as: Successfully signed: C:\p26cat\apexdrv_p26.cat
+  sign/as: 
+  sign/as: 
+  sign/as: Number of files successfully Signed: 1
+  sign/as: 
+  sign/as: Number of warnings: 0
+  sign/as: 
+  sign/as: Number of errors: 0
+  sign/as: 
+  verify/pa: File: C:\p26cat\apexdrv_p26.cat
+  verify/pa: Index  Algorithm  Timestamp    
+  verify/pa: ========================================
+  verify/pa: 0      sha256     None         
+  verify/pa: 
+  verify/pa: Successfully verified: C:\p26cat\apexdrv_p26.cat
+  verify/pa: 
+  verify/kp: File: C:\p26cat\apexdrv_p26.cat
+  verify/kp: Index  Algorithm  Timestamp    
+  verify/kp: ========================================
+  verify/kp: 
+  verify/kp: Number of errors: 1
+  verify/kp: 
+  verify/kp: SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+cat signature status=Valid
+catroot pre-existing apexdrv members: (none)
+  certutil: CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+  certutil: Cannot open Cert store.
+  certutil: CertUtil: -addstore command FAILED: 0x80070035 (WIN32: 53 ERROR_BAD_NETPATH)
+  certutil: CertUtil: The network path was not found.
+installed -> C:\WINDOWS\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\apexdrv_p26.cat  exists=True
+LOOKUP[before-cryptsvc-restart] apexdrv_p26.cat; || apexdrv_p26.cat;
+--- svc apexdrv_cat image=(absent)
+  sc create: [SC] CreateService SUCCESS
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: apexdrv_cat TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- svc kernprobe image=\??\C:\Windows\System32\drivers\apexdrv.sys
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- svc apexdrv image=\??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+  start rc=577  [SC] StartService FAILED 577: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  state: SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  => 577 / ERROR_INVALID_IMAGE_HASH (CI refused the load)
+--- events (CodeIntegrity + System/Service Control Manager) ---
+  CI 3089 11/01/2026 18:35:57 Signature information for another event. Match using the Correlation Id.
+  CI 3004 11/01/2026 18:35:57 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\p26cat\apexdrv_build.sys because file hash could not be found on the system. A recent hardware o
+--- VERDICT ---
+CI-catalog-hash resolves to our cat : True
+services RUNNING now               : (none)
+cat installed + CI hash found, but loader still refused -> last wall is the chain (/kp), reboot with testsigning=Yes
+END-p26_cat

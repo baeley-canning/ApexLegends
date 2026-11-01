@@ -1,0 +1,64 @@
+=== p31 PRE-REBOOT SNAPSHOT 01/11/2026 20:49:07 admin=False ===
+
+########## A: boot flags that Javelin reads (live BCD) ##########
+  identifier           (absent)
+  testsigning          (absent)
+  nointegritychecks    (absent)
+  debug                (absent)
+  hypervisorlaunchtype (absent)
+  bootmenupolicy       (absent)
+  NOTE: SystemStartOptions in the registry still shows TESTSIGNING because that is the BOOTED
+        config; it drops only at the next boot. That is exactly what this reboot is for.
+  backup present: bcd_before_20261101_204255.bcd = True
+
+########## B: lab services (must all be ABSENT) + AC state ##########
+  apexdrv      present=False  
+  apexdrv_cat  present=False  
+  kernprobe    present=False  
+  EAAntiCheatService   Stopped
+  EAAntiCheat          Stopped
+  EasyAntiCheat        (not installed)
+  gdrv3                Running
+  MSIO                 Running
+  voicemodvad          Running
+  Xvdd                 Running
+  VBoxSup              Running
+
+########## C: apexdrv binaries on the box ##########
+  C:\WINDOWS\System32\drivers\apexdrv.sys.bak_p24.off  10152 bytes
+  C:\WINDOWS\System32\drivers\apexdrv.sys.bak_p25g.off  10184 bytes
+  C:\WINDOWS\System32\drivers\apexdrv.sys.bak_p25h.off  10192 bytes
+  C:\WINDOWS\System32\drivers\apexdrv.sys.off  10192 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.obj  43376 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys  10152 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv_dev.cer  806 bytes
+  C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv_probe.txt  640 bytes
+
+########## D: EA / AC processes alive right now ##########
+  EABackgroundService          pid=23224
+  EACefSubProcess              pid=18544
+  EACefSubProcess              pid=22376
+  EACefSubProcess              pid=8848
+  EACefSubProcess              pid=1660
+  EACefSubProcess              pid=5320
+  EADesktop                    pid=23296
+  EALocalHostSvc               pid=22048
+  EasyTuneEngineService        pid=2720
+  OneApp.IGCC.WinService       pid=4800
+  SearchHost                   pid=5204
+  SearchIndexer                pid=3372
+  SecurityHealthService        pid=9128
+  TeamViewer                   pid=6544
+  TeamViewer_Service           pid=5112
+  (any leftovers listed above die with this reboot)
+
+########## E: arm one-shot logon verification ##########
+  RunOnce QwenKern_BootVerify = cmd /c ""C:\Users\New User\OneDrive\Desktop\cheating\_ritual\run22.cmd""
+  -> after logon run22.cmd fires by itself; read _ritual\p22.txt. If p22 pops UAC, approve it.
+  -> to cancel: Remove-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce QwenKern_BootVerify
+
+########## F: reboot now (t-20s, /f) ##########
+  next steps after logon: read _ritual\p31_reboot.txt + _ritual\p22.txt, then _ritual\run27.cmd (gate test).
+  DO NOT launch Apex by hand before run27 - the first post-reboot launch is the measurement.
+-- p31 END 01/11/2026 20:49:07 --
+shutdown rc=0 at 20:49:07

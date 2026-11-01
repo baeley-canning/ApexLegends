@@ -1,0 +1,60 @@
+== 14:33:24
+--- windows with titles ---
+
+ProcessName             Id MainWindowTitle                                                               
+-----------             -- ---------------                                                               
+ApplicationFrameHost 11364 Settings                                                                      
+Code                  9160 live_probe_menu.txt - cheating - Visual Studio Code                           
+EADesktop            14356 EA                                                                            
+opera                 9152 (1131) Why Bella Poarch Deleted Her Viral ?M to the B? Video - YouTube - Opera
+powershell           22124 Administrator: Windows PowerShell                                             
+SystemSettings        5500 Settings                                                                      
+TextInputHost        16532 Windows Input Experience                                                      
+WindowsTerminal      17496 Windows PowerShell                                                            
+
+
+
+--- DeviceGuard / VBS ---
+
+
+VirtualizationBasedSecurityStatus : 2
+SecurityServicesConfigured        : {0}
+SecurityServicesRunning           : {0}
+
+
+
+
+--- bcdedit {current} ---
+  The specified entry type is invalid.
+  Run "bcdedit /?" for command line assistance.
+  The parameter is incorrect.
+--- SecureBoot ---
+  SecureBoot: query failed (legacy BIOS?)
+--- HVCI registry ---
+  HVCI Enabled = 
+  VBS Enabled  = 
+--- RUNNING kernel drivers (<= flag) ---
+  gdrv3 | C:\WINDOWS\System32\drivers\gdrv3.sys | CN="GIGA-BYTE TECHNOLOGY CO. <=SUSPECT
+--- services of interest ---
+  vgk => absent
+  vgc => absent
+  gdrv3 => Running  (start=)
+  gdrv => absent
+  EasyTune => absent
+  iomap64 => absent
+  WinRing0x64 => absent
+  TeamViewer => Running  (start=Auto)
+  npcap => Running  (start=)
+  cpuz => absent
+  BEDaisy => absent
+  EasyAntiCheat => absent
+  RTCore64 => absent
+  sandboxie => absent
+  aswArPot => absent
+  HWiNFO => absent
+  msio => Running  (start=)
+  inpoutx64 => absent
+  WinIo => absent
+--- apexdrv ---
+  apexdrv => absent
+done

@@ -1,0 +1,66 @@
+elevated=False now=11/01/2026 18:32:01
+user=New User host=DESKTOP-PPHFJBQ
+build=26200.9711 boot=11/01/2026 15:59:37
+--- bcd ---
+secureboot=ERR Unable to set proper privileges. Access was denied.
+--- tools ---
+makecat.exe -> C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm64\makecat.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\makecat.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\makecat.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\arm64\makecat.exe
+inf2cat.exe -> C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x86\Inf2Cat.exe
+signtool.exe -> C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm\signtool.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\arm64\signtool.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe ; C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\signtool.exe
+certutil.exe -> NOT FOUND
+--- sys candidates ---
+C:\Windows\System32\drivers\apexdrv.sys
+   sha256=4F1106853D05986BD075BD72DF83FEAA866330BA2A7D867A1368F17DBD97D917
+   subj=CN=ApexDrv S2 Leaf (QwenKern)
+   thumb=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+   status=Valid
+c:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys
+   sha256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+   subj=CN=ApexDrv Dev (QwenKern Premium)
+   thumb=2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+   status=Valid
+c:\Users\New User\OneDrive\Desktop\cheating\_ritual\_p25h_S6lan.sys
+   sha256=49D44924B08C34922410D2EB75FD226CA06985813C99BB14A7958F525B45D0D4
+   subj=CN=S6lan Leaf (QwenKern)
+   thumb=5E1E53C2FD49AAF9864ACBD0F3A36A0CC231EF81
+   status=Valid
+--- certs ---
+My F132233D0A5B97262DFE57170D237CECF51BF657 | CN=ApexDrv CA c1 (QwenKern) | issuer=CN=ApexDrv CA c1 (QwenKern)
+My DFFA64113CF6589043CE0E4AD74A84CF0CA91690 | CN=ApexDrv Lab Code Signing (QwenKern) | issuer=CN=ApexDrv Lab Root CA (QwenKern)
+My DD5BA95EFD2F303687C309841B3928249A762941 | CN=ApexDrv Lab DSE (QwenKern) | issuer=CN=ApexDrv Lab DSE (QwenKern)
+My DB248C944EACF7DD4F9BE6114358C2CE6D63F18C | CN=ApexDrv CA c3 (QwenKern) | issuer=CN=ApexDrv CA c3 (QwenKern)
+My C8919A5488F56972F157360DB6B30CFE3A2B3970 | CN=ApexDrv CA c2 (QwenKern) | issuer=CN=ApexDrv CA c2 (QwenKern)
+My A7569298DEB0D834C42191BB28D8EDFF7B798FEE | CN=ApexDrv S4 LeafCA (QwenKern) | issuer=CN=ApexDrv S2 Root CA (QwenKern)
+My 7AB907DC03E17A6A7375FEBF3ADA5624B4099444 | CN=ApexDrv Lab DSE CertSign (QwenKern) | issuer=CN=ApexDrv Lab DSE CertSign (QwenKern)
+My 76589C69A7DEBEF1093D9B98C60CA6707A54E36C | CN=ApexDrv Lab Root CA (QwenKern) | issuer=CN=ApexDrv Lab Root CA (QwenKern)
+My 5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 | CN=ApexDrv Probe v0 (QwenKern) | issuer=CN=ApexDrv Probe v0 (QwenKern)
+My 5937CA2135A847D98E3935B5A592673C18ACC912 | CN=ApexDrv S5 SelfSigned NoEKU (QwenKern) | issuer=CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+My 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D | CN=ApexDrv S2 Leaf (QwenKern) | issuer=CN=ApexDrv S2 Root CA (QwenKern)
+My 3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720 | CN=ApexDrv S3 LeafNoBC (QwenKern) | issuer=CN=ApexDrv S2 Root CA (QwenKern)
+My 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 | CN=ApexDrv Dev (QwenKern Premium) | issuer=CN=ApexDrv Dev (QwenKern Premium)
+My 1E73093E98695948E09E53C0A4C8E4A5670D6199 | CN=ApexDrv S1 SelfSigned CA (QwenKern) | issuer=CN=ApexDrv S1 SelfSigned CA (QwenKern)
+My 1A5520EED6638BEC2A5EE297D3FF984B2CACF889 | CN=ApexDrv S2 Root CA (QwenKern) | issuer=CN=ApexDrv S2 Root CA (QwenKern)
+My 075DF0E1B0757C2E91D9D34C9CA0CF3C1BB44B79 | CN=ApexDrv p25h SelfTest CA (QwenKern) | issuer=CN=ApexDrv p25h SelfTest CA (QwenKern)
+Root A7569298DEB0D834C42191BB28D8EDFF7B798FEE | CN=ApexDrv S4 LeafCA (QwenKern)
+Root 7AB907DC03E17A6A7375FEBF3ADA5624B4099444 | CN=ApexDrv Lab DSE CertSign (QwenKern)
+Root 76589C69A7DEBEF1093D9B98C60CA6707A54E36C | CN=ApexDrv Lab Root CA (QwenKern)
+Root 5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 | CN=ApexDrv Probe v0 (QwenKern)
+Root 5937CA2135A847D98E3935B5A592673C18ACC912 | CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+Root 4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D | CN=ApexDrv S2 Leaf (QwenKern)
+Root 3BEBB1C2EA5636CD515FB2A40DCFD289B69E6720 | CN=ApexDrv S3 LeafNoBC (QwenKern)
+Root 2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6 | CN=ApexDrv Dev (QwenKern Premium)
+Root 1E73093E98695948E09E53C0A4C8E4A5670D6199 | CN=ApexDrv S1 SelfSigned CA (QwenKern)
+Root 1A5520EED6638BEC2A5EE297D3FF984B2CACF889 | CN=ApexDrv S2 Root CA (QwenKern)
+--- services ---
+[apexdrv] [SC] QueryServiceConfig SUCCESS |  | SERVICE_NAME: apexdrv |         TYPE               : 1  KERNEL_DRIVER  |         START_TYPE         : 3   DEMAND_START |         ERROR_CONTROL      : 1   NORMAL |         BINARY_PATH_NAME   : \??\C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys |         LOAD_ORDER_GROUP   :  |         TAG                : 0 |         DISPLAY_NAME       : apexdrv |         DEPENDENCIES       :  |         SERVICE_START_NAME :  | 
+[kernprobe] [SC] QueryServiceConfig SUCCESS |  | SERVICE_NAME: kernprobe |         TYPE               : 1  KERNEL_DRIVER  |         START_TYPE         : 3   DEMAND_START |         ERROR_CONTROL      : 1   NORMAL |         BINARY_PATH_NAME   : \??\C:\Windows\System32\drivers\apexdrv.sys |         LOAD_ORDER_GROUP   :  |         TAG                : 0 |         DISPLAY_NAME       : ApexDrv kernprobe (p25h) |         DEPENDENCIES       :  |         SERVICE_START_NAME :  | 
+--- existing cat/cdf in tree ---
+--- catroot recent ---
+10/24/2026 22:37:00 oem125.cat
+10/19/2026 13:23:16 oem131.cat
+10/19/2026 13:23:16 oem130.cat
+10/19/2026 13:23:14 oem127.cat
+10/19/2026 13:23:12 oem129.cat
+10/19/2026 13:23:10 oem132.cat
+10/16/2026 21:26:26 oem128.cat
+10/14/2026 12:48:17 SbatLevel.cat

@@ -1,0 +1,137 @@
+=== p25f ISSUER-TRUST REPAIR 01/11/2026 16:39:52 PS=5.1.26100.9711 ===
+signtool = C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+########## 1: import the S2 ROOT CA into LocalMachine\Root ##########
+  S2 root CA in My = True
+  certutil -addstore -f Root S2root.cer -> Root "Trusted Root Certification Authorities" Signature matches Public Key Certificate "ApexDrv S2 Root CA (QwenKern)" added to store. CertUtil: -addstore command completed successfully.
+  root now in LocalMachine\Root = True
+  --- certutil truth on the root that is now trusted ---
+    Issuer:
+    Subject:
+    Public Key Length: 2048 bits
+    2.5.29.15: Flags = 1(Critical), Length = 4
+    Key Usage
+    Certificate Signing, Off-line CRL Signing, CRL Signing (06)
+    2.5.29.19: Flags = 1(Critical), Length = 5
+    Subject Type=CA
+    Path Length Constraint=None
+    2.5.29.14: Flags = 0, Length = 16
+    Root Certificate: Subject matches Issuer
+
+########## 2: /kp re-verify of the already-signed p25e shape files (issuer now trusted) ##########
+  S2    kp_errors=1   codes=[] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S2 Leaf (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  S2tp  kp_errors=1   codes=[] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S2 Leaf (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  S3    kp_errors=1   codes=[] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S3 LeafNoBC (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+  S3tp  kp_errors=1   codes=[] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S3 LeafNoBC (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  S4    kp_errors=1   codes=[0x80096019] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S4 LeafCA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: WinVerifyTrust returned error: 0x80096019
+  S4tp  kp_errors=1   codes=[0x80096019] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S2 Root CA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Issued to: ApexDrv S4 LeafCA (QwenKern)
+      Issued by: ApexDrv S2 Root CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: WinVerifyTrust returned error: 0x80096019
+  S1    kp_errors=1   codes=[0x80096019] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S1 SelfSigned CA (QwenKern)
+      Issued by: ApexDrv S1 SelfSigned CA (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: WinVerifyTrust returned error: 0x80096019
+  S5    kp_errors=1   codes=[0x80096019] System.Object[]
+      Signature Index: 0 (Primary Signature)
+      Hash of file (sha256): 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+      Signing Certificate Chain:
+      Issued to: ApexDrv S5 SelfSigned NoEKU (QwenKern)
+      Issued by: ApexDrv S5 SelfSigned NoEKU (QwenKern)
+      Number of files successfully Verified: 0
+      Number of errors: 1
+      SignTool Error: WinVerifyTrust returned error: 0x80096019
+  --- contrast: p25e legacy sweep files (self-signed CAs ALREADY trusted in Root) ---
+  _p25e_L1A5520.sys      kp_errors=1   codes=[0x80096019] System.Object[]
+  _p25e_L1E7309.sys      kp_errors=1   codes=[0x80096019] System.Object[]
+  _p25e_L5937CA.sys      kp_errors=1   codes=[0x80096019] System.Object[]
+  _p25e_L76589C.sys      kp_errors=1   codes=[0x80096019] System.Object[]
+  _p25e_L7AB907.sys      kp_errors=1   codes=[0x80096019] System.Object[]
+  _p25e_LC8919A.sys      kp_errors=1   codes=[] System.Object[]
+  _p25e_LDB248C.sys      kp_errors=1   codes=[] System.Object[]
+
+########## 3: real driver ##########
+  NO WINNER - live driver untouched.
+
+########## 4: VERDICT ##########
+  STILL BLOCKED: even with the issuer root trusted no shape reached /kp 0, so the block is the
+  SHAPE/root itself, not the missing import. Compare codes above:
+    0x800B0109 on the leaf shapes with 0x80096019 on the self-signed shapes = the kernel policy
+    wants a real chain whose root it accepts; the local root is already accepted by /kp here.
+  -- CI events (last 30 min) --
+    16:30:59 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:30:59 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    16:27:48 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:27:48 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    16:25:21 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:25:21 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    16:24:23 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:24:23 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    16:21:33 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:21:33 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+    16:16:17 id=3089 Signature information for another event. Match using the Correlation Id.
+    16:16:17 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  -- ROLLBACK driver: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p25f" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc.exe stop kernprobe ; sc.exe delete kernprobe
+  -- ROLLBACK root  : certutil -delstore Root 1A5520EED6638BEC2A5EE297D3FF984B2CACF889
+=== p25f END 01/11/2026 16:39:53 ===

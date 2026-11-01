@@ -1,0 +1,139 @@
+﻿ADMIN=False
+--- BCD
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+--- 3004 last XML
+
+Sunday, 1 November 2026 4:53:17 pm
+<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-CodeIntegrity' Guid='{4ee76bd8-3cf4-44a0-a0ac-3937643e37a3}'/><EventID>3004</EventID><Version>1</Version><Level>2</Level><Task>1</Task><Opcode>104</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2026-11-01T03:53:17.1723771Z'/><EventRecordID>145313</EventRecordID><Correlation ActivityID='{084b8230-69ad-0000-b4f1-4e08ad69dd01}'/><Execution ProcessID='4' ThreadID='11776'/><Channel>Microsoft-Windows-CodeIntegrity/Operational</Channel><Computer>DESKTOP-PPHFJBQ</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='FileNameLength'>60</Data><Data Name='FileNameBuffer'>\Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys</Data><Data Name='SecureRequired'>0x1</Data><Data Name='RequestedSigningLevel'>1</Data><Data Name='ProcessNameLength'>6</Data><Data Name='ProcessNameBuffer'>System</Data></EventData></Event>
+--- 3089 last XML
+Sunday, 1 November 2026 4:53:17 pm
+<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-CodeIntegrity' Guid='{4ee76bd8-3cf4-44a0-a0ac-3937643e37a3}'/><EventID>3089</EventID><Version>3</Version><Level>4</Level><Task>1</Task><Opcode>130</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated SystemTime='2026-11-01T03:53:17.1723802Z'/><EventRecordID>145314</EventRecordID><Correlation ActivityID='{084b8230-69ad-0000-b4f1-4e08ad69dd01}'/><Execution ProcessID='4' ThreadID='11776'/><Channel>Microsoft-Windows-CodeIntegrity/Operational</Channel><Computer>DESKTOP-PPHFJBQ</Computer><Security UserID='S-1-5-18'/></System><EventData><Data Name='TotalSignatureCount'>1</Data><Data Name='Signature'>0</Data><Data Name='CacheState'>0</Data><Data Name='Hash Size'>32</Data><Data Name='Hash'>37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8</Data><Data Name='PageHash'>false</Data><Data Name='SignatureType'>1</Data><Data Name='ValidatedSigningLevel'>1</Data><Data Name='VerificationError'>7</Data><Data Name='Flags'>0</Data><Data Name='PolicyBits'>16</Data><Data Name='NotValidBefore'>2026-11-01T03:26:28.0000000Z</Data><Data Name='NotValidAfter'>2031-11-01T03:36:28.0000000Z</Data><Data Name='PublisherNameLength'>26</Data><Data Name='PublisherName'>ApexDrv S2 Leaf (QwenKern)</Data><Data Name='IssuerNameLength'>29</Data><Data Name='IssuerName'>ApexDrv S2 Root CA (QwenKern)</Data><Data Name='PublisherTBSHashSize'>32</Data><Data Name='PublisherTBSHash'>4E772A5D9878919CFE38A8293243E7EA754549518FADA439EFB78A30448C8D9E</Data><Data Name='IssuerTBSHashSize'>0</Data><Data Name='IssuerTBSHash'></Data><Data Name='OPUSInfoLength'>4</Data><Data Name='OPUSInfo'>None</Data><Data Name='EKUsSize'>10</Data><Data Name='EKUs'>01082B06010505070303</Data><Data Name='KnownRoot'>1</Data></EventData></Event>
+--- recent CI sel
+
+  Id TimeCreated            m                                                                                                                                                                                                
+  -- -----------            -                                                                                                                                                                                                
+3116 1/11/2026 3:59:40 pm   Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 1/11/2026 3:59:40 pm   Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 1/11/2026 3:59:40 pm   Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 1/11/2026 3:59:40 pm   Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 1/11/2026 3:59:40 pm   Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 1/11/2026 3:59:40 pm   Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 1/11/2026 3:59:40 pm   Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 1/11/2026 2:04:41 pm   Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 1/11/2026 2:04:41 pm   Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 1/11/2026 2:04:41 pm   Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 1/11/2026 2:04:41 pm   Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 1/11/2026 2:04:41 pm   Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 1/11/2026 2:04:41 pm   Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 1/11/2026 2:04:41 pm   Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 31/10/2026 2:12:25 pm  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 31/10/2026 2:12:25 pm  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 31/10/2026 2:12:25 pm  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 31/10/2026 2:12:25 pm  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 31/10/2026 2:12:25 pm  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 31/10/2026 2:12:25 pm  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 31/10/2026 2:12:25 pm  Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 28/10/2026 8:03:22 pm  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 28/10/2026 8:03:22 pm  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 28/10/2026 8:03:22 pm  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 28/10/2026 8:03:22 pm  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 28/10/2026 8:03:22 pm  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 28/10/2026 8:03:22 pm  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 28/10/2026 8:03:22 pm  Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 28/10/2026 6:55:15 am  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 28/10/2026 6:55:15 am  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 28/10/2026 6:55:15 am  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 28/10/2026 6:55:15 am  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 28/10/2026 6:55:15 am  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 28/10/2026 6:55:15 am  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 28/10/2026 6:55:15 am  Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 27/10/2026 11:50:24 pm Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 27/10/2026 11:50:24 pm Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 27/10/2026 11:50:24 pm Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 27/10/2026 11:50:24 pm Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 27/10/2026 11:50:24 pm Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 27/10/2026 11:50:24 pm Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 27/10/2026 11:50:24 pm Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 27/10/2026 10:26:02 pm Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 27/10/2026 10:26:02 pm Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 27/10/2026 10:26:02 pm Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 27/10/2026 10:26:02 pm Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 27/10/2026 10:26:02 pm Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 27/10/2026 10:26:02 pm Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 27/10/2026 10:26:02 pm Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 27/10/2026 10:14:29 pm Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 27/10/2026 10:14:29 pm Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 27/10/2026 10:14:29 pm Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 27/10/2026 10:14:29 pm Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 27/10/2026 10:14:29 pm Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 27/10/2026 10:14:29 pm Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3085 27/10/2026 10:14:29 pm Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.                                                                                                         
+3116 24/10/2026 10:56:45 pm Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 24/10/2026 10:56:45 pm Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 24/10/2026 10:56:45 pm Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 24/10/2026 10:56:45 pm Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 24/10/2026 10:56:45 pm Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 24/10/2026 10:56:45 pm Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3116 24/10/2026 3:17:38 pm  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 24/10/2026 3:17:38 pm  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 24/10/2026 3:17:38 pm  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 24/10/2026 3:17:38 pm  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 24/10/2026 3:17:38 pm  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 24/10/2026 3:17:38 pm  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3116 23/10/2026 6:08:03 pm  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 23/10/2026 6:08:03 pm  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 23/10/2026 6:08:03 pm  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 23/10/2026 6:08:03 pm  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 23/10/2026 6:08:03 pm  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 23/10/2026 6:08:03 pm  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3116 22/10/2026 6:18:39 pm  Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 22/10/2026 6:18:39 pm  Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+3116 22/10/2026 6:18:39 pm  Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.                                                                                                       
+3099 22/10/2026 6:18:39 pm  Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+3116 22/10/2026 6:18:39 pm  Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.                                                                                                       
+3099 22/10/2026 6:18:39 pm  Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0                                     
+3116 21/10/2026 12:13:38 pm Signature information for Code Integrity policy ID {a072029f-588b-4b5e-b7f9-05aad67df687}.                                                                                                       
+3099 21/10/2026 12:13:38 pm Refreshed and activated Code Integrity policy {a072029f-588b-4b5e-b7f9-05aad67df687} Microsoft Windows Virtualization Based Security Policy. id 10.0.29661.0. Status 0x0                         
+
+
+
+--- interesting certs (reg key lastwrite = install time)
+  [Root]  CN=DigiCert Trusted Root G4, OU=www.digicert.com, O=DigiCert Inc, C=US
+  [Root]  CN=ApexDrv S4 LeafCA (QwenKern)
+  [Root]  CN=ApexDrv Lab DSE CertSign (QwenKern)
+  [Root]  CN=ApexDrv Lab Root CA (QwenKern)
+  [Root]  CN=ApexDrv Probe v0 (QwenKern)
+  [Root]  CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+  [Root]  CN=ApexDrv S2 Leaf (QwenKern)
+  [Root]  CN=ApexDrv S3 LeafNoBC (QwenKern)
+  [Root]  CN=ApexDrv Dev (QwenKern Premium)
+  [Root]  CN=ApexDrv S1 SelfSigned CA (QwenKern)
+  [Root]  CN=ApexDrv S2 Root CA (QwenKern)
+-  [Root]  CN=Sectigo Public Server Authentication Root E46, O=Sectigo Limited, C=GB
+-  [Root]  CN=DigiCert Global Root G2, OU=www.digicert.com, O=DigiCert Inc, C=US
+-  [Root]  CN=GlobalSign, O=GlobalSign, OU=GlobalSign Root CA - R3
+-  [Root]  CN=Sectigo Public Code Signing Root R46, O=Sectigo Limited, C=GB
+-  [Root]  CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE
+-  [Root]  CN=Sectigo Public Server Authentication Root R46, O=Sectigo Limited, C=GB
+-  [Root]  CN=DigiCert Global Root CA, OU=www.digicert.com, O=DigiCert Inc, C=US
+-  [Root]  CN=DigiCert TLS RSA4096 Root G5, O="DigiCert, Inc.", C=US
+-  [Root]  CN=DigiCert CS ECC P384 Root G5, O="DigiCert, Inc.", C=US
+-  [Root]  CN=GlobalSign, O=GlobalSign, OU=GlobalSign Root CA - R6
+-  [Root]  CN=DigiCert Global Root G3, OU=www.digicert.com, O=DigiCert Inc, C=US
+-  [Root]  CN=DigiCert High Assurance EV Root CA, OU=www.digicert.com, O=DigiCert Inc, C=US
+-  [Root]  CN=DigiCert CS RSA4096 Root G5, O="DigiCert, Inc.", C=US
+-  [Root]  CN=GlobalSign Root R46, O=GlobalSign nv-sa, C=BE
+-  [Root]  CN=GlobalSign Code Signing Root R45, O=GlobalSign nv-sa, C=BE
+-  [Root]  CN=DigiCert Assured ID Root CA, OU=www.digicert.com, O=DigiCert Inc, C=US
+  [TrustedPublisher]  CN=ApexDrv Lab Code Signing (QwenKern)
+  [TrustedPublisher]  CN=DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1, O="DigiCert, Inc.", C=US
+  [TrustedPublisher]  CN=ApexDrv Lab DSE CertSign (QwenKern)
+  [TrustedPublisher]  CN=ApexDrv Probe v0 (QwenKern)
+  [TrustedPublisher]  CN=ApexDrv S5 SelfSigned NoEKU (QwenKern)
+  [TrustedPublisher]  CN=ApexDrv Dev (QwenKern Premium)
+  [TrustedPublisher]  CN=ApexDrv S1 SelfSigned CA (QwenKern)
+
+
+

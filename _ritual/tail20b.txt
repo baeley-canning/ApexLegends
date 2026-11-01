@@ -1,0 +1,12 @@
+     L36: if (-not $clean) { W 'driverless run still popped #95 => apexdrv is NOT the trigger; bisect machine config' }
+  -- p9_snap.txt hits=7
+     L5: 14:39:30 testsigning=True nointegrity=False dse_off_hint=False
+     L6: 14:39:30 cert CN=ApexDrv Dev present in Root = True
+     L7: 14:39:30 cert CN=ApexDrv Dev present in TrustedPublisher = True
+     L9: 14:39:30 ===== P1 - apex with NO apexdrv, dismiss every Javelin popup, keep watching 300s =====
+     L10: 14:39:30 kill EAAntiCheat.GameServiceLauncher (20528)
+     L16: 14:39:38 [p1] apexdrv registered = False
+     L19: 14:39:53 [p1] body: Security Violation | |
+  -- C:\Windows\INF\setupapi.dev.log hits=0
+-- full popup event (Application Popup id 15) raw XML:
+-- p20b END 01/11/2026 15:47:06 --

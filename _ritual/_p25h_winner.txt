@@ -1,0 +1,56 @@
+_p25h_winner.txt          2026-11-01
+STATUS: engine CERTIFIED / catalog question ANSWERED / driver LOAD still UNVERIFIED
+
+WINNER DRIVER IMAGE == C:\Windows\System32\drivers\apexdrv.sys
+  len=10192   cert table: off=0x2200 (8704) len=1488
+  signature = Valid   signer = CN=ApexDrv S2 Leaf (QwenKern)   (embedded sig, self-made chain)
+  sha1   = 23C73EF919F18ECF9855331CF2563D3A15AF52BC
+  sha256 = 37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+
+REFERENCE SIBLING (digest-identical, different cert length) == __thisdir__\_p25h_S6lan.sys
+  len=10384   cert table: off=0x2200 len=1680   signature = Valid   signer = CN=S6lan Leaf (QwenKern)
+  sha1/sha256 identical to apexdrv.sys  -> the cert table is EXCLUDED from the digest
+  => either file is the same catalog object 23C73EF9.../37647B46...
+
+ENGINE RULE (cateng.ps1) -- CERTIFIED, byte-for-byte equal to CryptCATAdminCalcHash*/Hash2:
+  digest = SHA1|SHA256 over the PE image with the certificate table removed and the
+           Security Directory (DataDirectory[4]) entry cleared.
+  proof 1: cateng_nocert.bin (8704 B = file minus cert) digests to the same values.
+  proof 2: cateng.ps1 -SelfTest => MATCH=26 MISMATCH=0 (13 files x sha1+sha256), no hang.
+  note: catdef.ps1's 32 brute variants (ck0/ck1 x sec0/sec1 x full/tocp/cp8dn/cp8up/zerocert)
+        reproduce the api hash on 0 variants for these files -> red herring, ignore them.
+  root-cause fixed: CE2.FindCatalog looped forever because CryptCATAdminEnumCatalogFromHash
+        never writes back *phPrevCatInfo (probe4: prevAfter=NULL, 501 api calls vs 1).
+
+CATALOG COVERAGE (authoritative, straight from the API):
+  tcpip.sys   -> FOUND  Microsoft-Windows-Network-Foundation-Package~31bf3856ad364e35~amd64~~10.0.26100.9711.cat  (sha1 AND sha256)
+  apexdrv.sys / _p25h_S6lan.sys -> NONE(err1168) in DRIVER_ACTION_VERIFY and WINDOWS_ACTION_VERIFY (4759 cats / 172 MB scanned)
+  => apexdrv is NOT a member of any installed .cat. Its trust can ONLY come from its EMBEDDED
+     signature (or from a self-made .cat that we install). No .cat member lookup will ever succeed.
+
+FIRST REAL BARRIER (this is the actual gate, not the hash):
+  signtool verify /kp gdrv3.sys   -> err "Signing Cert does not chain to a Microsoft Root Cert" (gdrv3 = legit GB driver, still 0 verified)
+  service kernprobe -> \??\C:\Windows\System32\drivers\apexdrv.sys, Start=Manual, STATE = Stopped
+  => the driver has never loaded. Everything else is bookkeeping.
+
+NEXT (p26):
+  A) run _ritual\p26_load.ps1 ELEVATED (one UAC): SecureBoot + bcdedit(testsigning/nointegritychecks/hypervisorlaunchtype),
+     QwenKern certs in LocalMachine\Root|CA|TrustedPublisher, sc start kernprobe + exit code, CodeIntegrity events,
+     device open probe (\\.\apexdrv).  exit 1275 / 0xC0000428 => self-signed chain rejected by DSE
+     => either `bcdedit /set testsigning on` (reboot) or install a self-made .cat into CatRoot.
+  B) _ritual\p26_player_probe.ps1 (unelevated): locate+open r5apex.exe, read module base, MZ + player struct -> p26_player.txt.
+
+P26 RESULTS (measured, 2026-11-01 18:18, elevated):
+  SecureBoot=False   bcd.testsigning=No   bcd.nointegritychecks=No
+  game target = r5apex_dx12.exe (pid 19684); EAAntiCheat.GameService live
+  service apexdrv created -> \??\...\QwenKernPremium\build\apexdrv.sys (len=10152, sig=Valid, CN=ApexDrv Dev (QwenKern Premium))
+  sc start apexdrv -> FAILED 577 "Windows cannot verify the digital signature for this file"; service STATE=STOPPED (577)
+  CodeIntegrity event 3004: "...unable to verify the image integrity of ...apexdrv.sys because file hash could not be found on the system"
+  cert ladder already installed: LocalMachine\Root 10, \CA 17, \TrustedPublisher 6 (S1..S9 + Lab + Probe) -> chain still not accepted by DSE
+  USER MODE READ: PEB reachable (peb=0x253000 via NtQueryInformationProcess) but ReadProcessMemory AND
+    NtReadVirtualMemory both return 0xC000000D for every handle mask (0x410/0x1010/0x10/0x400/0x1000/0x1008/0x1020/0x1F0FFF)
+    -> user-mode reads on the EAC-protected game are blocked; the kernel driver is MANDATORY.
+  RESOLUTION: bcdedit /set testsigning on  (+ reboot). SecureBoot is off, so testsigning works.
+    Alternative without reboot: build+install a self-made .cat (CatRoot) so CI finds the hash (this is where the
+    certified cateng CI-hash engine pays off: it reproduces CryptCATAdminCalcHash* exactly, 26/26).
+

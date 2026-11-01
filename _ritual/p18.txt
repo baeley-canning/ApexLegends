@@ -1,0 +1,30 @@
+=== p18 11/01/2026 15:32:09 admin=False ===
+15:32:09.751  pre exists(driver path)=False
+15:32:09.758  pre sc query eaanticheat
+15:32:09.765     
+15:32:09.765     SERVICE_NAME: eaanticheat 
+15:32:09.765             TYPE               : 2  FILE_SYSTEM_DRIVER  
+15:32:09.765             STATE              : 1  STOPPED 
+15:32:09.765             WIN32_EXIT_CODE    : 1077  (0x435)
+15:32:09.765             SERVICE_EXIT_CODE  : 0  (0x0)
+15:32:09.765             CHECKPOINT         : 0x0
+15:32:09.765             WAIT_HINT          : 0x0
+15:32:09.765  pre sc query EAAntiCheat
+15:32:09.772     
+15:32:09.779     SERVICE_NAME: EAAntiCheat 
+15:32:09.779             TYPE               : 2  FILE_SYSTEM_DRIVER  
+15:32:09.779             STATE              : 1  STOPPED 
+15:32:09.779             WIN32_EXIT_CODE    : 1077  (0x435)
+15:32:09.779             SERVICE_EXIT_CODE  : 0  (0x0)
+15:32:09.779             CHECKPOINT         : 0x0
+15:32:09.779             WAIT_HINT          : 0x0
+15:32:09.779  pre processes
+15:32:09.786  launching C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe
+15:32:09.814  launcher pid=21612
+15:32:10.085  t=0s drv=False procs=EAAntiCheat.GameServiceLauncher:21612
+15:32:15.171  t=5s drv=False procs=EAAntiCheat.GameService:12984,EAAntiCheat.GameServiceLauncher:21612
+15:32:20.279  t=10s drv=False procs=EAAntiCheat.GameServiceLauncher:21612,EAAntiCheat.Installer:26588
+15:32:25.372  t=15s drv=False procs=EAAntiCheat.GameServiceLauncher:21612,EAAntiCheat.Installer:26588
+15:32:30.455  t=20s drv=False procs=EAAntiCheat.GameServiceLauncher:21612,EAAntiCheat.Installer:13180
+15:32:35.594  t=25s drv=False procs=EAAntiCheat.GameServiceLauncher:21612
+15:32:40.697  t=30s drv=False procs=EAAntiCheat.GameServiceLauncher:21612

@@ -1,0 +1,92 @@
+﻿     SHA-256); ProgramData\Origin\Logs\baeleysgame_*_OnlineActivation_Log.html shows
+     it has been launched.  Our launcher knew only r5apex_dx12.exe / r5apex.exe and
+     would have said "not running yet" -> FIXED, see 8.4.
+
+8.2 WHAT THE GAME ACTUALLY IMPORTS (tools\pe_imports.ps1 - own PE-spec reader)
+  r5apex_dx12.exe has exactly ONE import descriptor:
+      Core/Activation64.dll   (2 imports)   <- a RELATIVE-path import
+  no delay imports.  Everything else is dynamic: the image carries "d3d12.dll",
+  "dxgi.dll", CreateDXGIFactory2, D3D12SerializeRootSignature, D3D12_* strings and
+  NO string containing "d3d11".
+  Core\Activation64.dll itself imports 24 modules (GDI32/USER32/CRYPT32/WINTRUST/
+  MSVCP140/gdiplus/KERNEL32/ole32/OLEAUT32/VCRUNTIME140/api-ms-win-crt-*) and is
+  EA-signed (Origin Client).
+  => PHASE 1.3 CONSEQUENCE: "is d3d11 loaded in Apex" is answered by the binary.
+     A clean DX12 game does not reference d3d11 at all, and d3d12/dxgi arrive via
+     LoadLibrary.  Our payload statically imports d3d11.dll, so loading it can PULL
+     d3d11.dll into a process that had none - a module diff the AC can see, and a
+     Present to hook only if the payload creates its own device/swapchain.
+
+8.3 JAVELIN AS INSTALLED HERE (registry + SCM + disk)
+  userspace root : C:\Program Files\EA\AC\  (EAAntiCheat.GameService.exe
+     193,572,600 B v1.0.16199215.0 signed; EAAntiCheat.GameService.dll 64 MB;
+     preloader_s.dll; EAAntiCheat.Installer.exe - rewritten today 16:32)
+  service        : EAAntiCheatService, LocalSystem, DEMAND_START, RUNNING as
+                   PID 23392 in session 0.
+  kernel part    : HKLM\SYSTEM\CurrentControlSet\Services\EAAntiCheat
+                   Type=2 (FILE_SYSTEM_DRIVER = MINIFILTER)
+                   Group="FSFilter Activity Monitor", Altitude 363250,
+                   DependOnService=FltMgr, Description "Electronic Arts
+                   AntiCheat Driver", ImagePath=system32\drivers\eaanticheat.sys
+                   sc query -> STATE=4 RUNNING, but the file
+                   C:\Windows\System32\drivers\eaanticheat.sys does NOT exist
+                   (dir ea* = File Not Found; not in DriverStore either), and
+                   Win32_SystemDriver does not list the service at all.
+  => The kernel presence is a FILE-ACTIVITY minifilter, not a memory-hooking
+     driver: it sees file I/O (DLL/driver images read from disk - exactly what a
+     loader or a mapper touches) at altitude 363250, and does not obstruct a plain
+     kernel driver of ours.  fltmc could not be read from this shell (needs
+     elevation) -> TODO: elevated `fltmc filters` + `fltmc instances -v`.
+  Also: the EAAntiCheat.GameService process (PID 23392, session 0) is just as
+     unreadable (Modules.Count = 0), so the blackout is not limited to the game.
+  Legacy leftovers: EasyAntiCheat_EOS service + its .sys still installed, stopped.
+
+8.4 CODE CHANGES THIS DATA FORCED
+  * launcher_main.cpp: discovery is now a table
+    { r5apex_dx12.exe, r5apex.exe, "baeleys game.exe" }, first match wins; the
+    MATCHED name is recorded and checked by the 1.3 integrity test
+    (IsKnownGameImageName); wait/menu/one-shot paths all use it; "not found" prints
+    the full looked-for list.  Smoke-tested: string present in the binary,
+    canonical still wins with both images running, EXIT unchanged.
+  * acg_probe.cpp + launcher: a zero module count now prints "unknown" instead of
+    "absent" (ModulePresenceText(loaded, moduleCount)) and I0 says "module list
+    UNREADABLE: presence is unknown, not absent".  Before this, the probe alleged
+    d3d11/dxgi/d3d12 "absent" while it was in fact blind.
+
+8.5 INDEPENDENT CROSS-CHECK OF THE IAT ALLOWLIST
+  tools\pe_imports.ps1 (PE-spec reader, no shared code with BuildGate):
+      apex_launcher.exe -> { ADVAPI32.dll, KERNEL32.dll }            2 modules
+      apexcheat.dll     -> { d3d11.dll, KERNEL32.dll, USER32.dll }   3 modules
+  identical to the allowlist the gate enforces.  GATE 0 re-run AFTER the 8.4 edits
+  (build\phase1_evidence\gate_after_edits.txt): PASS, 0 failures, IAT unchanged.
+
+--------------------------------------------------------------------------------
+9. NEW QUESTIONS + NEXT ACTIONS FROM THE LOCAL GROUND TRUTH
+--------------------------------------------------------------------------------
+Q11. The Javelin minifilter sits at altitude 363250 and watches file I/O: does
+     loading the payload from a random %TEMP% copy (--stage on) leave a different
+     trace than loading it from build\?  Does it observe our .sys read?
+Q12. eaanticheat.sys reports RUNNING while its image is GONE from
+     System32\drivers.  Is this box in a half-installed AC state, and does the
+     memory denial (Q7/Q8) change after a reboot, after a fresh
+     EAAntiCheat.Installer run, or with EAAntiCheatService stopped?
+Q13. fltmc filters / fltmc instances -v, elevated: confirm the filter, its
+     altitude and its frame.  A driver of ours must not collide on file ops.
+Q14. Does the DX12-only install change PHASE 4?  A d3d11-only payload adds a
+     module the game never had.  Two futures: (a) keep the d3d11 import (3-module
+     IAT stays; a Present hook then needs our own device/swapchain), or (b) resolve
+     d3d12/dxgi through LoadLibrary + GetProcAddress and shrink the static IAT to
+     { KERNEL32, USER32 } (needs a gate allowlist change).  A DECISION, not a bug.
+
+NEXT ACTIONS (updated, in order)
+  a) elevated `fltmc filters`, recorded; elevated re-run of probe + ladder so the
+     new "unknown" wording is captured against the live game;
+  b) re-run sections 3-4 at the MAIN MENU and after a clean reboot (the deleted
+     driver image says this box is half-installed);
+  c) build+sign apexdrv.sys (WDK still missing) so B3 stops SKIPping - and, per
+     8.3, note that the AC filter watches file reads, not memory;
+  d) decide D6 (static d3d11 import vs dynamic d3d12) before any PHASE 4 overlay
+     work; the game binary says the DX12 path is the only one installed here.
+
+--------------------------------------------------------------------------------
+10. 2026-10-27 â€” LADDER DEPTH: A7 MANUAL MAP + A4 HIJACK (control target)

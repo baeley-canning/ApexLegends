@@ -1,0 +1,89 @@
+===== signtool verify /kp /v gdrv3.sys =====
+
+
+Verifying: C:\Windows\System32\drivers\gdrv3.sys
+
+
+Signature Index: 0 (Primary Signature)
+Hash of file (sha256): 8BB3CEAB17A11A1FD7F5730B186DE382915A49D4EA4367B371802852969CD23D
+
+Signing Certificate Chain:
+    Issued to: GlobalSign Code Signing Root R45
+
+    Issued by: GlobalSign Code Signing Root R45
+
+    Expires:   Sat Mar 18 13:00:00 2045
+
+    SHA1 hash: 4EFC31460C619ECAE59C1BCE2C008036D94C84B8
+
+
+        Issued to: GlobalSign GCC R45 EV CodeSigning CA 2020
+
+        Issued by: GlobalSign Code Signing Root R45
+
+        Expires:   Sun Jul 28 13:00:00 2030
+
+        SHA1 hash: C10BB76AD4EE815242406A1E3E1117FFEC743D4F
+
+
+            Issued to: GIGA-BYTE TECHNOLOGY CO., LTD.
+
+            Issued by: GlobalSign GCC R45 EV CodeSigning CA 2020
+
+            Expires:   Sat Nov 23 22:20:39 2024
+
+            SHA1 hash: F6C6F0F9CF857EC921EE387EEA8A538E6CEA2BD2
+
+
+The signature is timestamped: Wed Sep 11 16:15:11 2024
+
+Timestamp Verified by:
+    Issued to: DigiCert Assured ID Root CA
+
+    Issued by: DigiCert Assured ID Root CA
+
+    Expires:   Mon Nov 10 13:00:00 2031
+
+    SHA1 hash: 0563B8630D62D75ABBC8AB1E4BDFB5A899B24D43
+
+
+        Issued to: DigiCert Trusted Root G4
+
+        Issued by: DigiCert Assured ID Root CA
+
+        Expires:   Mon Nov 10 12:59:59 2031
+
+        SHA1 hash: A99D5B79E9F1CDA59CDAB6373169D5353F5874C6
+
+
+            Issued to: DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA
+
+            Issued by: DigiCert Trusted Root G4
+
+            Expires:   Mon Mar 23 12:59:59 2037
+
+            SHA1 hash: B6C8AF834D4E53B673C76872AA8C950C7C54DF5F
+
+
+                Issued to: DigiCert Timestamp 2023
+
+                Issued by: DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA
+
+                Expires:   Sat Oct 14 12:59:59 2034
+
+                SHA1 hash: 66F02B32C2C2C90F825DCEAA8AC9C64F199CCF40
+
+
+
+Number of files successfully Verified: 0
+
+Number of warnings: 0
+
+Number of errors: 1
+
+SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+
+===== kp exit repeat (quiet) =====
+kp_exit=1
+
+===== pnputil gdrv / cat package =====

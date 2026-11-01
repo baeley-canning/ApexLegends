@@ -1,0 +1,15 @@
+﻿  probe enc-10001      cat=   382 sha256Lookup=NONE(err1168)  miss
+  probe enc-10002      cat=     0 sha256Lookup=NONE(err1168)  miss
+  probe hashalg-800c   makecat rc=1 -> no .cat
+  probe hashalg-8004   makecat rc=1 -> no .cat
+  probe hashalg-both   makecat rc=1 -> no .cat
+  probe hashalg-spaced makecat rc=1 -> no .cat
+  probe hashalg-name   makecat rc=1 -> no .cat
+  probe catver+800c    makecat rc=1 -> no .cat
+  probe literal-name   cat=   431 sha256Lookup=NONE(err1168)  miss
+  probe pscatalog-v2   cat=   806 sha256Lookup=p26pr_pscatalog.cat;  HIT
+  generator chosen = pscatalog-v2
+  5BCFD2349358F6C585AEC5F1B68C193E4F0176E6 CN=ApexDrv Probe v0 (QwenKern)  -> root: CN=ApexDrv Probe v0 (QwenKern) buildOk=True
+--- svc kernprobe image=\??\C:\Windows\System32\drivers\apexdrv.sys
+  state: SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  SCM 7000 11/01/2026 18:55:03 The ApexDrv kernprobe (p25h) service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a 

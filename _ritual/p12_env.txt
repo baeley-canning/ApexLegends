@@ -1,0 +1,608 @@
+﻿=== p12 env snapshot 2026-11-01 14:59:08 ===
+
+########## [1] drivers dir: 35 newest *.sys (spot third-party) ##########
+
+Name                                    Length LastWriteTime         
+----                                    ------ -------------         
+apexdrv.sys                              10152 1/11/2026 2:01:45 pm  
+VBoxUSBMon.sys                          204440 19/10/2026 1:23:18 pm 
+VBoxSup.sys                            1190416 19/10/2026 1:23:14 pm 
+VBoxNetLwf.sys                          264880 19/10/2026 1:23:12 pm 
+VBoxNetAdp6.sys                         254568 19/10/2026 1:23:12 pm 
+BthA2dp.sys                             663552 14/10/2026 12:48:25 pm
+BthHfEnum.sys                           212992 14/10/2026 12:48:25 pm
+BthHfAud.sys                            131072 14/10/2026 12:48:25 pm
+Microsoft.Bluetooth.AvrcpTransport.sys  126976 14/10/2026 12:48:25 pm
+fse.sys                                 240968 14/10/2026 12:48:22 pm
+ztdns.sys                               130424 14/10/2026 12:48:22 pm
+afd.sys                                 748896 14/10/2026 12:48:21 pm
+msquicprev.sys                          527704 14/10/2026 12:48:21 pm
+msquic.sys                              531776 14/10/2026 12:48:21 pm
+WifiCx.sys                             1216512 14/10/2026 12:48:21 pm
+wimmount.sys                             89408 14/10/2026 12:48:21 pm
+mrxdav.sys                              196608 14/10/2026 12:48:21 pm
+Wdf01000.sys                            998728 14/10/2026 12:48:21 pm
+WdfLdr.sys                              113984 14/10/2026 12:48:21 pm
+volsnap.sys                             560456 14/10/2026 12:48:21 pm
+nsiproxy.sys                             77824 14/10/2026 12:48:21 pm
+UCPD.sys                                220488 14/10/2026 12:48:21 pm
+UsbPmApi.sys                             98304 14/10/2026 12:48:21 pm
+UnionFS.sys                             511328 14/10/2026 12:48:21 pm
+udfs.sys                                409600 14/10/2026 12:48:20 pm
+Ucx01000.sys                            310648 14/10/2026 12:48:20 pm
+UcmUcsiCx.sys                           200704 14/10/2026 12:48:20 pm
+UcmCx.sys                               221184 14/10/2026 12:48:20 pm
+tbs.sys                                  85344 14/10/2026 12:48:20 pm
+tcpip.sys                              3493240 14/10/2026 12:48:20 pm
+tdx.sys                                 191864 14/10/2026 12:48:19 pm
+tcpipreg.sys                             86016 14/10/2026 12:48:19 pm
+FWPKCLNT.SYS                            589168 14/10/2026 12:48:19 pm
+storport.sys                           2620744 14/10/2026 12:48:19 pm
+srv2.sys                               1011712 14/10/2026 12:48:18 pm
+
+
+
+
+########## [2] drivers dir: name match anticheat|ea$|apex|cea|stream|npcap|gdrv|vbox|skyfall ##########
+
+Name              Length LastWriteTime         
+----              ------ -------------         
+apexdrv.sys        10152 1/11/2026 2:01:45 pm  
+CEA.sys           108016 9/09/2026 8:51:57 am  
+EhStorTcgDrv.sys  173528 9/09/2026 8:51:44 am  
+gdrv3.sys          52440 12/10/2025 10:19:43 pm
+npcap.sys          82592 12/09/2026 1:45:14 pm 
+stream.sys        118784 6/09/2024 4:03:24 pm  
+VBoxNetAdp6.sys   254568 19/10/2026 1:23:12 pm 
+VBoxNetLwf.sys    264880 19/10/2026 1:23:12 pm 
+VBoxSup.sys      1190416 19/10/2026 1:23:14 pm 
+VBoxUSBMon.sys    204440 19/10/2026 1:23:18 pm 
+
+
+
+
+########## [3] suspect driver identity + signature + whether service points at it ##########
+CEA.sys  | company=Microsoft Corporation | desc=Event Aggregation Kernel Mode Library | ver=10.0.26100.9444 (WinBuild.160101.0800) | sig=Valid | signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+stream.sys  | company=Microsoft Corporation | desc=WDM CODEC Class Device Driver 2.0 | ver=10.0.26100.1150 (WinBuild.160101.0800) | sig=Valid | signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+PEAuth.sys  | company=Microsoft Corporation | desc=Protected Environment Authentication and Authorization Export Driver | ver=10.0.26100.9711 (WinBuild.160101.0800) | sig=Valid | signer=CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+apexdrv.sys  | company= | desc= | ver= | sig=Valid | signer=CN=ApexDrv Dev (QwenKern Premium)
+eaanticheat.sys : ABSENT
+gdrv3.sys  | company=GIGA-BYTE TECHNOLOGY CO., LTD. | desc=GIGA-BYTE Nonpnp Driver | ver=1.2.0.1 | sig=Valid | signer=CN="GIGA-BYTE TECHNOLOGY CO., LTD.", O="GIGA-BYTE TECHNOLOGY CO., LTD.", STREET="5 F., No. 6, Baoqiang Rd., Xindian Dist.", L=New Taipei, S=New Taipei, C=TW, OID.1.3.6.1.4.1.311.60.2.1.3=TW, SERIALNUMBER=22044755, OID.2.5.4.15=Private Organization
+VBoxDrv.sys : ABSENT
+npcap.sys  | company=Nmap Software LLC | desc=npcap.sys (NT6 AMD64) Kernel Filter Driver | ver=1.89 | sig=Valid | signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+
+########## [4] Win32_SystemDriver relevant (state/path) ##########
+
+Name         State   StartMode PathName                                    
+----         -----   --------- --------                                    
+EhStorTcgDrv Stopped Manual    C:\WINDOWS\system32\drivers\EhStorTcgDrv.sys
+gdrv3        Running Manual    \??\C:\WINDOWS\System32\drivers\gdrv3.sys   
+npcap        Running System    C:\WINDOWS\system32\DRIVERS\npcap.sys       
+npcap_wifi   Stopped Disabled  C:\WINDOWS\system32\DRIVERS\npcap.sys       
+VBoxNetAdp   Running Manual    C:\WINDOWS\system32\DRIVERS\VBoxNetAdp6.sys 
+VBoxNetLwf   Running System    C:\WINDOWS\system32\DRIVERS\VBoxNetLwf.sys  
+VBoxSup      Running System    C:\WINDOWS\system32\DRIVERS\VBoxSup.sys     
+VBoxUSBMon   Running System    C:\WINDOWS\system32\DRIVERS\VBoxUSBMon.sys  
+
+
+
+
+########## [5] services matching anticheat|apexdrv|zzprobe|skyfall|javelin (reg) ##########
+DeviceAssociationBrokerSvc | Type=96 | Start=3 | ImagePath=C:\WINDOWS\system32\svchost.exe -k DevicesFlow -p
+DeviceAssociationBrokerSvc_1c4a05 | Type=224 | Start=3 | ImagePath=C:\WINDOWS\system32\svchost.exe -k DevicesFlow -p
+DeviceAssociationService | Type=32 | Start=2 | ImagePath=C:\WINDOWS\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+EAAntiCheat | Type=2 | Start=3 | ImagePath=system32\drivers\eaanticheat.sys
+EAAntiCheatService | Type=16 | Start=3 | ImagePath="C:\Program Files\EA\AC\eaanticheat.gameservice.exe"
+EasyAntiCheat_EOS | Type=16 | Start=3 | ImagePath="C:\Program Files (x86)\EasyAntiCheat_EOS\EasyAntiCheat_EOS.exe"
+
+
+########## [6] bcdedit current + full ##########
+The specified entry type is invalid.
+Run "bcdedit /?" for command line assistance.
+The parameter is incorrect.
+
+The boot configuration data store could not be opened.
+Access is denied.
+
+
+########## [7] DeviceGuard / VBS / CI policy state ##########
+
+
+AvailableSecurityProperties                  : {1, 5, 6, 7...}
+CodeIntegrityPolicyEnforcementStatus         : 2
+InstanceIdentifier                           : 4ff40742-2649-41b8-bdd1-e80fad1cce80
+RequiredSecurityProperties                   : {0}
+SecurityFeaturesEnabled                      : {0}
+SecurityServicesConfigured                   : {0}
+SecurityServicesRunning                      : {0}
+SmmIsolationLevel                            : 0
+UsermodeCodeIntegrityPolicyEnforcementStatus : 0
+Version                                      : 1.0
+VirtualizationBasedSecurityStatus            : 2
+VirtualMachineIsolation                      : False
+VirtualMachineIsolationProperties            : {0}
+PSComputerName                               : 
+CimClass                                     : root/Microsoft/Windows/DeviceGuard:Win32_DeviceGuard
+CimInstanceProperties                        : {AvailableSecurityProperties, CodeIntegrityPolicyEnforcementStatus, 
+                                               InstanceIdentifier, RequiredSecurityProperties...}
+CimSystemProperties                          : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+
+
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard
+    CachedDrtmAuthIndex    REG_DWORD    0x0
+    RequireMicrosoftSignedBootChain    REG_DWORD    0x1
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\KeyGuard
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\KeyGuard\Status
+    IsSecureKernelRunning    REG_DWORD    0x1
+    EncryptionKeyAvailable    REG_DWORD    0x1
+    EncryptionKeyPersistent    REG_DWORD    0x1
+    SecretsMode    REG_DWORD    0x1
+    IsTestConfig    REG_DWORD    0x0
+    KeyGuardEnabled    REG_DWORD    0x1
+    CredGuardEnabled    REG_DWORD    0x0
+    LsaIsoLaunchAttempted    REG_DWORD    0x1
+    LsaIsoLaunchError    REG_DWORD    0x0
+    ExecSystemProcessesError    REG_DWORD    0x0
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\VelocityScenarios
+
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy
+    EmodePolicyRequired    REG_DWORD    0x0
+    SkuPolicyRequired    REG_DWORD    0x0
+    VerifiedAndReputablePolicyState    REG_DWORD    0x0
+    SAC_EnforcementReason    REG_DWORD    0x0
+    SAC_PreviousState    REG_DWORD    0xffffffff
+
+
+
+########## [8] fltmc filters (loaded minifilters) ##########
+
+Filter listing failed with error: 0x80070005
+Access is denied.
+
+
+########## [9] DriverStore / packages matching anticheat|javelin|skyfall ##########
+
+
+
+########## [10] AC log / artefact hunt (recent) ##########
+---- C:\ProgramData ----
+
+FullName                                                                                Length LastWriteTime         
+--------                                                                                ------ -------------         
+C:\ProgramData\EA Desktop\Logs\IGO_EADesktop_14356.log                                    1525 1/11/2026 2:39:42 pm  
+C:\ProgramData\EA Desktop\Logs\EALauncher.log                                            19927 1/11/2026 2:39:38 pm  
+C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log                                     21760 1/11/2026 2:39:38 pm  
+C:\ProgramData\EA Desktop\Logs\cef.log                                                    2476 1/11/2026 2:39:30 pm  
+C:\ProgramData\Microsoft\EdgeUpdate\Log\MicrosoftEdgeUpdate.log                        8020058 1/11/2026 2:37:08 pm  
+C:\ProgramData\EA Desktop\Logs\EABackgroundService.log                                       0 1/11/2026 2:36:59 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\UXD\Log.nvcontainer.exe.log               1236626 1/11/2026 2:28:34 pm  
+C:\ProgramData\NVIDIA Corporation\ShadowPlay\CaptureCore.log                           6023648 1/11/2026 2:27:35 pm  
+C:\ProgramData\EA Desktop\Logs\IGOProxy_IGOProxy32.log                                    2665 1/11/2026 2:17:00 pm  
+C:\ProgramData\EA Desktop\Logs\IGOProxy_EADesktop.log                                     2138 1/11/2026 2:16:59 pm  
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvcVerbose.log                                     0 1/11/2026 2:16:57 pm  
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvc.log                                            0 1/11/2026 2:16:57 pm  
+C:\ProgramData\EA Desktop\Logs\EADesktop.log                                                 0 1/11/2026 2:16:54 pm  
+C:\ProgramData\EA Desktop\Logs\EADesktopVerbose.log                                          0 1/11/2026 2:16:54 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_5468.log                  0 1/11/2026 2:08:02 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_5348.log               2032 1/11/2026 2:08:02 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_11160.log                 0 1/11/2026 2:08:02 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerUser1.log                0 1/11/2026 2:08:02 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerAIUser1.log              0 1/11/2026 2:08:02 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_9804.log                  0 1/11/2026 2:04:51 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\SessionLogs\CxNative_Session1.log               0 1/11/2026 2:04:51 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerSession1.log             0 1/11/2026 2:04:51 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerWatchdog.log             0 1/11/2026 2:04:51 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_4640.log                  0 1/11/2026 2:04:51 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\CxNative_LocalSystem.log                        0 1/11/2026 2:04:51 pm  
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261101-1404496208.log       0 1/11/2026 2:04:49 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBusBroadcast.log           1033 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA Corporation\GameSessionTelemetry\telemetryPlugin.log                   0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA Corporation\NvProfileUpdaterPlugin\NvProfileUpdaterPlugin_1.log        0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA\NvcDispCorePlugin.log                                               1204 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA\DisplaySessionContainer1.log                                           0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerLocalSystem.log          0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA Corporation\nvtopps\nvtopps.log                                  2714994 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA\NVDisplayContainerWatchdog.log                                         0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA\NVDisplay.ContainerLocalSystem.log                                     0 1/11/2026 2:04:48 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\CxNative_LocalSystem.1.log                  13569 1/11/2026 2:04:16 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_4888.log               4378 1/11/2026 2:04:16 pm  
+C:\ProgramData\Claude\Logs\cowork-service.log                                           879167 1/11/2026 2:04:16 pm  
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261031-1412565192.log   13593 1/11/2026 2:04:16 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\SessionLogs\CxNative_Session1.1.log         16840 1/11/2026 2:04:09 pm  
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvDriverUpdateCheck.log                      5600 1/11/2026 3:00:08 am  
+C:\ProgramData\EA Desktop\Logs\EABackgroundServiceVerbose.log                           749370 31/10/2026 11:09:07 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_2364.log               2325 31/10/2026 5:17:37 pm 
+C:\ProgramData\Logi\GHUB\Logs\software_manager\lghub_10_31_2026.log                      18737 31/10/2026 3:39:47 pm 
+C:\ProgramData\Logi\GHUB\Logs\shared_installer\installer_shared_10_31_2026.log         1317175 31/10/2026 3:39:47 pm 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_10400.log              9537 31/10/2026 2:13:02 pm 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_10320.log              1179 31/10/2026 2:13:00 pm 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_10584.log              2348 31/10/2026 2:13:00 pm 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_9096.log               2406 31/10/2026 2:12:56 pm 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\Installer\Logs\LOG.RunDll32.EXE.log        503633 30/10/2026 8:49:11 am 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\Installer\Logs\LOG.setup.exe.log          9884477 30/10/2026 8:49:10 am 
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\UXD\Log.regsvr32.exe.log                    29725 30/10/2026 8:49:03 am 
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261028-2003333927.log   11912 28/10/2026 8:03:40 pm 
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261028-065522911.log    14630 28/10/2026 10:53:24 am
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261027-2350345788.log   13579 28/10/2026 3:30:34 am 
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261027-2226108187.log   11898 27/10/2026 10:26:17 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261027-2214381998.log   14623 27/10/2026 10:25:39 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261024-2256534806.log   19318 27/10/2026 10:12:37 pm
+C:\ProgramData\EA Desktop\Logs\EADestager.log                                            58234 26/10/2026 4:30:45 pm 
+C:\ProgramData\EA Desktop\Logs\EADestagerVerbose.log                                    103072 26/10/2026 4:30:45 pm 
+
+
+
+---- C:\Program Files\EA\AC ----
+
+FullName                                              Length LastWriteTime         
+--------                                              ------ -------------         
+C:\Program Files\EA\AC\EAAntiCheat.Installer.exe   282016504 26/10/2026 4:32:46 pm 
+C:\Program Files\EA\AC\EAAntiCheat.GameService.dll  64006392 22/10/2026 12:01:56 pm
+C:\Program Files\EA\AC\EAAntiCheat.GameService.exe 193572600 22/10/2026 12:01:56 pm
+
+
+
+---- C:\Program Files\EA Games\Apex ----
+
+FullName                                                               Length LastWriteTime         
+--------                                                               ------ -------------         
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b 53116664 22/10/2026 12:02:42 pm
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll   53116664 22/10/2026 12:02:42 pm
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b 20286712 22/10/2026 12:01:56 pm
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe   20286712 22/10/2026 12:01:56 pm
+
+
+
+---- C:\Users\New User\AppData\Local\CrashDumps ----
+
+---- C:\Users\New User\AppData\Local ----
+
+FullName                                                                                                                                              Length LastWriteTime         
+--------                                                                                                                                              ------ -------------         
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-11-01T01_46_21_652Z-debug-0.log                                                                    1095 1/11/2026 2:46:22 pm  
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-11-01T01_46_19_328Z-debug-0.log                                                                       0 1/11/2026 2:46:19 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olk_20261101_014545982.log                                                                         150949 1/11/2026 2:45:50 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-26088.log                                                                                                   0 1/11/2026 2:45:45 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALaunchHelperVerbose.log                                                            1852888 1/11/2026 2:39:41 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALaunchHelper.log                                                                    515770 1/11/2026 2:39:41 pm  
+C:\Users\New User\AppData\Local\Claude\Logs\chrome-native-host.log                                                                                    424271 1/11/2026 2:37:05 pm  
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGetCOM-2026-11-01-14-36-51.804.log     2100 1/11/2026 2:36:52 pm  
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGetCOM-2026-11-01-14-36-33.307.log     1520 1/11/2026 2:36:33 pm  
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGetCOM-2026-11-01-14-35-51.402.log     2280 1/11/2026 2:35:52 pm  
+C:\Users\New User\AppData\Local\Temp\cline\proceed-while-running-1793496550139-x1zn3ic.log                                                               421 1/11/2026 2:29:16 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olk_20261101_012448168.log                                                                         166842 1/11/2026 2:24:53 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-11632.log                                                                                                   0 1/11/2026 2:24:48 pm  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101141303.log                                                                              236 1/11/2026 2:13:03 pm  
+C:\Users\New User\AppData\Local\Temp\vscode-inno-updater-1793495332.log                                                                                 2180 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Local\NVIDIA Corporation\NVIDIA App\NvBackend\backend.log                                                                        0 1/11/2026 2:08:02 pm  
+C:\Users\New User\AppData\Local\NVIDIA Corporation\NVIDIA App\CxNative_LocalUser.log                                                                       0 1/11/2026 2:08:02 pm  
+C:\Users\New User\AppData\Local\NVIDIA Corporation\NVIDIA App\CxNative_AIUser.log                                                                          0 1/11/2026 2:08:02 pm  
+C:\Users\New User\AppData\Local\Microsoft\Windows\WebCache\V01.log                                                                                    524288 1/11/2026 2:04:13 pm  
+C:\Users\New User\AppData\Local\Claude\Logs\remote-control.log                                                                                        283666 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Local\Claude\Logs\main.log                                                                                                 8314355 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-10-31T23_31_36_750Z-debug-0.log                                                                    9071 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Local\NVIDIA Corporation\NVIDIA App\CxNative_LocalUser.1.log                                                                153682 1/11/2026 2:04:09 pm  
+C:\Users\New User\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\Local Storage\leveldb\000521.log                                                      57573 1/11/2026 2:03:57 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olk_20261101_002546020.log                                                                         159322 1/11/2026 1:25:56 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\EBWebView\Default\settings_diagnostic.log                                                               454859 1/11/2026 1:25:56 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\EBWebView\Default\favorites_diagnostic.log                                                              404179 1/11/2026 1:25:56 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-15788.log                                                                                                   0 1/11/2026 1:25:46 pm  
+C:\Users\New User\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\IndexedDB\https_claude.ai_0.indexeddb.leveldb\000033.log                            1412107 1/11/2026 1:21:33 pm  
+C:\Users\New User\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\Session Storage\000040.log                                                            30521 1/11/2026 1:15:32 pm  
+C:\Users\New User\AppData\Local\Claude\Logs\claude.ai-web.log                                                                                         343865 1/11/2026 1:13:52 pm  
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olk_20261101_001125668.log                                                                         174905 1/11/2026 1:11:35 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-16932.log                                                                                                   0 1/11/2026 1:11:25 pm  
+C:\Users\New User\AppData\Local\Packages\SpotifyAB.SpotifyMusic_zpdnekdrzrea0\LocalCache\Spotify\chrome_debug.log                                          0 1/11/2026 12:53:25 pm 
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-10-31T23_31_39_190Z-debug-0.log                                                                    1095 1/11/2026 12:31:40 pm 
+C:\Users\New User\AppData\Local\Temp\vscode-inno-updater-1793489443.log                                                                                 2749 1/11/2026 12:30:45 pm 
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-10-31T05_13_56_354Z-debug-0.log                                                                    1423 1/11/2026 12:30:37 pm 
+C:\Users\New User\AppData\Local\Microsoft\Windows\WebCache\V0100415.log                                                                               524288 1/11/2026 12:30:17 pm 
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olk_20261031_222100348.log                                                                         197032 1/11/2026 11:34:27 am 
+C:\Users\New User\AppData\Local\Microsoft\Olk\xpdApi.log                                                                                            22508924 1/11/2026 11:30:08 am 
+C:\Users\New User\AppData\Local\npm-cache\_logs\2026-10-31T22_23_00_234Z-debug-0.log                                                                    1221 1/11/2026 11:23:02 am 
+C:\Users\New User\AppData\Local\Claude\Logs\cowork_vm_node.log                                                                                        150980 1/11/2026 11:22:58 am 
+C:\Users\New User\AppData\Local\Claude\Logs\ssh.log                                                                                                     4181 1/11/2026 11:22:58 am 
+C:\Users\New User\AppData\Local\Temp\mat-debug-20580.log                                                                                                   0 1/11/2026 11:21:00 am 
+C:\Users\New User\AppData\Local\Microsoft\CLR_v4.0_32\ngen.log                                                                                         98824 1/11/2026 10:35:35 am 
+C:\Users\New User\AppData\Local\Microsoft\CLR_v4.0\ngen.log                                                                                           117511 1/11/2026 10:35:35 am 
+C:\Users\New User\AppData\Local\Microsoft\Olk\logs\olkPushNotificationBackgroundTask_20261031.log                                                       5292 1/11/2026 9:53:10 am  
+C:\Users\New User\AppData\Local\Temp\mat-debug-13940.log                                                                                                   0 1/11/2026 9:53:10 am  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101090134.log                                                                              236 1/11/2026 9:01:34 am  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101090133.log                                                                              236 1/11/2026 9:01:33 am  
+C:\Users\New User\AppData\Local\NVIDIA Corporation\NvDriverUpdateCheck\NvDriverUpdateCheck.log                                                          6825 1/11/2026 3:00:08 am  
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-25-43.496.log        4444 1/11/2026 12:25:44 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-24-50.003.log        2897 1/11/2026 12:24:52 am 
+C:\Users\New User\AppData\Local\Temp\dd_installer_20261101002352.log                                                                                    5851 1/11/2026 12:23:53 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-21-08.493.log        2868 1/11/2026 12:21:11 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-19-23.518.log        1013 1/11/2026 12:19:23 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-17-54.066.log        5784 1/11/2026 12:18:02 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGetCOM-2026-11-01-00-03-09.031.log   106930 1/11/2026 12:05:11 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGet-2026-11-01-00-02-58.879.log        4843 1/11/2026 12:03:32 am 
+C:\Users\New User\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\DiagOutputDir\WinGetCOM-2026-10-31-23-59-53.005.log     4264 31/10/2026 11:59:53 pm
+
+
+
+---- C:\Users\New User\AppData\Roaming ----
+
+FullName                                                                                                                       Length LastWriteTime         
+--------                                                                                                                       ------ -------------         
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\Site Characteristics Database\000003.log                 864255 1/11/2026 2:47:51 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\shared_proto_db\000031.log                               394149 1/11/2026 2:47:06 pm  
+C:\Users\New User\AppData\Roaming\Code\Local Storage\leveldb\000120.log                                                             0 1/11/2026 2:46:56 pm  
+C:\Users\New User\AppData\Roaming\LM Studio\logs\main.log                                                                      686325 1/11/2026 2:46:35 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\GCM Store\000013.log                                      54622 1/11/2026 2:37:47 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\Session Storage\005447.log                                10312 1/11/2026 2:37:05 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\Extension State\000058.log                              1014388 1/11/2026 2:36:44 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\Extension Scripts\000003.log                            3423316 1/11/2026 2:28:14 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\mcpServer.ms-python.vscode-pylancepylance mcp server.log        0 1/11/2026 2:08:54 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\editSessions.log                                                        0 1/11/2026 2:08:54 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\notebook.rendering.log                                          0 1/11/2026 2:08:54 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\textModelChanges.log                                            0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\ptyhost.log                                                             0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\userDataSync.log                                                        0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\network-shared.log                                                      0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\remoteTunnelService.log                                                 0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\telemetry.log                                                           0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\sharedprocess.log                                                       0 1/11/2026 2:08:53 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\agentHostTelemetry.log                                                  0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\agenthost.log                                                           0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\terminal.log                                                            0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\network.log                                                     0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\views.log                                                       0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\window1\renderer.log                                                    0 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\mcpGateway.log                                                          0 1/11/2026 2:08:51 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T140851\main.log                                                                0 1/11/2026 2:08:51 pm  
+C:\Users\New User\AppData\Roaming\Apple Computer\Logs\asl.140812_011126.log                                                       346 1/11/2026 2:08:12 pm  
+C:\Users\New User\AppData\Roaming\Code\Crashpad\reports\9b5211db-6f27-4f93-9950-21e9e8ea21c8.dmp                             34631792 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Roaming\Code\Crashpad\reports\b86df3c5-1b63-4155-9557-2b2905d15617.dmp                             34294176 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\agenthost.log                                                        8095 1/11/2026 2:04:10 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\main.log                                                             2786 1/11/2026 2:04:09 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\terminal.log                                                        35068 1/11/2026 2:03:34 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\userDataSync.log                                                    47823 1/11/2026 2:01:47 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\assistant.log                                                    224486 1/11/2026 1:44:08 pm  
+C:\Users\New User\AppData\Roaming\Apple Computer\Logs\asl.132750_011126.log                                                      1045 1/11/2026 1:28:00 pm  
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\textModelChanges.log                                            0 1/11/2026 1:26:36 pm  
+C:\Users\New User\AppData\Roaming\Opera Software\Opera Stable\Default\Extension Rules\000003.log                                 5985 1/11/2026 1:10:49 pm  
+C:\Users\New User\AppData\Roaming\Code\Session Storage\000008.log                                                               27286 1/11/2026 12:31:06 pm 
+C:\Users\New User\AppData\Roaming\Code\Service Worker\Database\000003.log                                                       25733 1/11/2026 12:31:00 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\renderer.log                                                 3752 1/11/2026 12:30:57 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\mcpServer.ms-python.vscode-pylancepylance mcp server.log        0 1/11/2026 12:30:49 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\editSessions.log                                                      132 1/11/2026 12:30:48 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\notebook.rendering.log                                          0 1/11/2026 12:30:47 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\sharedprocess.log                                                     278 1/11/2026 12:30:45 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\ptyhost.log                                                           372 1/11/2026 12:30:44 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\agentHostTelemetry.log                                                  0 1/11/2026 12:30:44 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\remoteTunnelService.log                                                 0 1/11/2026 12:30:44 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\telemetry.log                                                           0 1/11/2026 12:30:44 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\network-shared.log                                                      0 1/11/2026 12:30:44 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\network.log                                                     0 1/11/2026 12:30:43 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\window1\views.log                                                       0 1/11/2026 12:30:43 pm 
+C:\Users\New User\AppData\Roaming\Code\logs\20261101T123042\mcpGateway.log                                                         64 1/11/2026 12:30:42 pm 
+C:\Users\New User\AppData\Roaming\discord\module_data\crashlogs\10_9_2026__10_25_24_PM_GMT_13-0-events.log                      23965 1/11/2026 1:08:31 am  
+C:\Users\New User\AppData\Roaming\discord\Session Storage\000010.log                                                            34646 1/11/2026 1:08:30 am  
+C:\Users\New User\AppData\Roaming\discord\logs\Discord_updater_rCURRENT.log                                                    516813 1/11/2026 1:08:30 am  
+C:\Users\New User\AppData\Roaming\discord\logs\renderer_js.log                                                                2740150 1/11/2026 12:51:32 am 
+C:\Users\New User\AppData\Roaming\discord\Local Storage\leveldb\023570.log                                                        166 1/11/2026 12:19:04 am 
+C:\Users\New User\AppData\Roaming\Code\logs\20261031T155251\main.log                                                             2256 31/10/2026 11:14:58 pm
+C:\Users\New User\AppData\Roaming\Code\logs\20261031T155251\agenthost.log                                                       13543 31/10/2026 11:14:52 pm
+C:\Users\New User\AppData\Roaming\Code\logs\20261031T155251\mcpGateway.log                                                        170 31/10/2026 11:14:52 pm
+
+
+
+---- C:\Users\NEWUSE~1\AppData\Local\Temp ----
+
+FullName                                                                                                                                  Length LastWriteTime         
+--------                                                                                                                                  ------ -------------         
+C:\Users\New User\AppData\Local\Temp\mat-debug-26088.log                                                                                       0 1/11/2026 2:45:45 pm  
+C:\Users\New User\AppData\Local\Temp\cline\proceed-while-running-1793496550139-x1zn3ic.log                                                   421 1/11/2026 2:29:16 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-11632.log                                                                                       0 1/11/2026 2:24:48 pm  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101141303.log                                                                  236 1/11/2026 2:13:03 pm  
+C:\Users\New User\AppData\Local\Temp\vscode-inno-updater-1793495332.log                                                                     2180 1/11/2026 2:08:52 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-15788.log                                                                                       0 1/11/2026 1:25:46 pm  
+C:\Users\New User\AppData\Local\Temp\mat-debug-16932.log                                                                                       0 1/11/2026 1:11:25 pm  
+C:\Users\New User\AppData\Local\Temp\vscode-inno-updater-1793489443.log                                                                     2749 1/11/2026 12:30:45 pm 
+C:\Users\New User\AppData\Local\Temp\mat-debug-20580.log                                                                                       0 1/11/2026 11:21:00 am 
+C:\Users\New User\AppData\Local\Temp\mat-debug-13940.log                                                                                       0 1/11/2026 9:53:10 am  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101090134.log                                                                  236 1/11/2026 9:01:34 am  
+C:\Users\New User\AppData\Local\Temp\assistant_installer_20261101090133.log                                                                  236 1/11/2026 9:01:33 am  
+C:\Users\New User\AppData\Local\Temp\dd_installer_20261101002352.log                                                                        5851 1/11/2026 12:23:53 am 
+C:\Users\New User\AppData\Local\Temp\dd_bootstrapper_20261031235324.log                                                                     5242 31/10/2026 11:59:34 pm
+C:\Users\New User\AppData\Local\Temp\dd_installer_20261031235325.log                                                                       33828 31/10/2026 11:59:33 pm
+C:\Users\New User\AppData\Local\Temp\dd_installer_elevated_20261031235335.log                                                            4760494 31/10/2026 11:59:32 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235930.log                                                                            8865 31/10/2026 11:59:32 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235930_errors.log                                                                        0 31/10/2026 11:59:30 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336.log                                                                         4301817 31/10/2026 11:59:28 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_162_Microsoft.VisualStudio.VC.Vcpkg.log                                      146277 31/10/2026 11:59:25 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_161_Microsoft.VisualStudio.VC.Ide.Linux.ConnectionManager.log                 15051 31/10/2026 11:59:25 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_160_Microsoft.VisualStudio.VC.Ide.Linux.ConnectionManager.Resources.log        9639 31/10/2026 11:59:25 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_159_Microsoft.VisualStudio.TestTools.TestPlatform.IDE.log                    869499 31/10/2026 11:59:24 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_158_Microsoft.VisualStudio.VC.Ide.MDD.log                                     18435 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_157_Microsoft.VisualStudio.TestTools.TeamFoundationClient.log                 29145 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_156_Microsoft.VisualStudio.LiveShareApi.log                                    1113 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_155_Microsoft.VisualStudio.Community.VB.Neutral.log                            8739 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_154_Microsoft.VisualStudio.Community.CSharp.Neutral.log                       17151 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_153_Microsoft.VisualStudio.Community.ProductArch.Targeted.log                 22563 31/10/2026 11:59:22 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_152_Microsoft.VisualStudio.Community.ProductArch.NeutralExtra.log             11589 31/10/2026 11:59:21 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_151_Microsoft.VisualStudio.Community.VB.Resources.Targeted.log                 1749 31/10/2026 11:59:21 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_150_Microsoft.VisualStudio.Community.VB.Resources.Neutral.log                263127 31/10/2026 11:59:21 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_149_Microsoft.VisualStudio.Community.CSharp.Resources.Neutral.log             45885 31/10/2026 11:59:20 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_148_Microsoft.VisualStudio.Community.ProductArch.Resources.Targeted.log        7383 31/10/2026 11:59:20 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_147_Microsoft.VisualStudio.Community.ProductArch.Resources.NeutralExtra.log   33649 31/10/2026 11:59:20 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_146_Microsoft.VisualStudio.Community.ProductArch.Resources.Neutral.log        37791 31/10/2026 11:59:19 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_145_Microsoft.VisualStudio.Platform.CallHierarchy.log                         16101 31/10/2026 11:59:19 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_144_Microsoft.VisualStudio.Community.ProductArch.Neutral.log                 104355 31/10/2026 11:59:19 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_143_Microsoft.DiagnosticsHub.Runtime.log                                      87225 31/10/2026 11:59:19 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_142_Microsoft.DiagnosticsHub.Collection.log                                   12279 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_141_Microsoft.VisualStudio.TextMateGrammars.log                              266922 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_140_Microsoft.VisualStudio.Platform.Markdown.log                              28206 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_139_Microsoft.ServiceHub.Node.log                                              4221 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_138_Microsoft.ServiceHub.Managed.log                                          39981 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_137_Microsoft.VisualStudio.OpenFolder.VSIX.log                                77658 31/10/2026 11:59:18 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_136_Microsoft.VisualStudio.MinShell.Interop.log                               33483 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_135_Microsoft.VisualStudio.NgenRunner.log                                      1311 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_134_Microsoft.VisualStudio.Log.log                                             9039 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_133_Microsoft.VisualStudio.ErrorList.log                                      13485 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_132_Microsoft.VisualStudio.CoreEditor.UserProfiles.log                         4059 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_131_Microsoft.VisualStudio.Platform.NavigateTo.log                             4203 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_130_Microsoft.VisualStudio.Connected.log                                      20319 31/10/2026 11:59:17 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_129_Microsoft.VisualStudio.Identity.log                                      413478 31/10/2026 11:59:16 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_128_Microsoft.Developer.IdentityServiceGS.log                                 13227 31/10/2026 11:59:15 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_127_SQLitePCLRaw.log                                                           3039 31/10/2026 11:59:15 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_126_SQLitePCLRaw.Targeted.log                                                  1059 31/10/2026 11:59:14 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_125_Microsoft.VisualStudio.Connected.Auto.log                                  2955 31/10/2026 11:59:14 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_124_Microsoft.VisualStudio.Connected.Auto.Resources.log                        1131 31/10/2026 11:59:14 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_123_Microsoft.VisualStudio.Connected.Resources.log                              309 31/10/2026 11:59:14 pm
+C:\Users\New User\AppData\Local\Temp\dd_setup_20261031235336_122_Microsoft.VisualStudio.VC.Ide.Dskx.Resources.log                           1329 31/10/2026 11:59:14 pm
+
+
+
+---- C:\Windows\Temp ----
+
+
+########## [11] WER reports mentioning EAAntiCheat / skyfall / GameService ##########
+---- C:\ProgramData\Microsoft\Windows\WER\ReportArchive ----
+
+---- C:\ProgramData\Microsoft\Windows\WER\ReportQueue ----
+
+MISSING C:\Users\New User\AppData\Local\Microsoft\Windows\WER\ReportArchive
+
+########## [12] any file under C:\ProgramData modified in last 3 days (top 80) ##########
+
+FullName                                                                                                                     Length LastWriteTime       
+--------                                                                                                                     ------ -------------       
+C:\ProgramData\Apple\Lockdown\88352a03288ad542735b4b83d5e0a84892ba0740.plist                                                   9498 1/11/2026 2:51:54 pm
+C:\ProgramData\NVIDIA Corporation\Drs\nvAppTimestamps                                                                        101864 1/11/2026 2:45:46 pm
+C:\ProgramData\NVIDIA Corporation\nvtopps\nct\nvlog.nvlgstg                                                                   27008 1/11/2026 2:41:52 pm
+C:\ProgramData\Packer\bhcache.3e3e5da1af58ee15.bin                                                                             8040 1/11/2026 2:39:45 pm
+C:\ProgramData\Packer\bhcache.53b9ba773c48bf10.bin                                                                             7640 1/11/2026 2:39:45 pm
+C:\ProgramData\EA Desktop\Logs\IGO_EADesktop_14356.log                                                                         1525 1/11/2026 2:39:42 pm
+C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log                                                                          21760 1/11/2026 2:39:38 pm
+C:\ProgramData\EA Desktop\Logs\EALauncher.log                                                                                 19927 1/11/2026 2:39:38 pm
+C:\ProgramData\Origin\Logs\r5apex_dx12_194908_OnlineActivation_Log.html                                                      100444 1/11/2026 2:39:38 pm
+C:\ProgramData\EA Desktop\Logs\cef.log                                                                                         2476 1/11/2026 2:39:30 pm
+C:\ProgramData\USOPrivate\UpdateStore\store.db                                                                              1286144 1/11/2026 2:39:12 pm
+C:\ProgramData\Microsoft\EdgeUpdate\Log\MicrosoftEdgeUpdate.log                                                             8020058 1/11/2026 2:37:08 pm
+C:\ProgramData\EA Desktop\Logs\EABackgroundService.log                                                                            0 1/11/2026 2:36:59 pm
+C:\ProgramData\EA Desktop\Logs\EABackgroundService.bak                                                                      4194882 1/11/2026 2:36:59 pm
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk                                                        2474 1/11/2026 2:35:51 pm
+C:\ProgramData\regid.1991-06.com.microsoft\regid.1991-06.com.microsoft_Windows-10-Pro.swidtag                                   999 1/11/2026 2:34:49 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\UXD\Log.nvcontainer.exe.log                                                    1236626 1/11/2026 2:28:34 pm
+C:\ProgramData\NVIDIA Corporation\ShadowPlay\CaptureCore.log                                                                6023648 1/11/2026 2:27:35 pm
+C:\ProgramData\Packer\catcache4.bin                                                                                          966038 1/11/2026 2:17:28 pm
+C:\ProgramData\USOPrivate\UpdateStore\store.bak                                                                             1286144 1/11/2026 2:17:01 pm
+C:\ProgramData\EA Desktop\Logs\IGOProxy_IGOProxy32.log                                                                         2665 1/11/2026 2:17:00 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\CATS2                              45296 1/11/2026 2:17:00 pm
+C:\ProgramData\EA Desktop\80bdd6646affe9a2ffdd7e4d276a4274dea554b806dec6fb04be74957a787b11\NS                                  1040 1/11/2026 2:16:59 pm
+C:\ProgramData\EA Desktop\Logs\IGOProxy_EADesktop.log                                                                          2138 1/11/2026 2:16:59 pm
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvcVerbose.log                                                                          0 1/11/2026 2:16:57 pm
+C:\ProgramData\EA Desktop\Logs\EALocalHostSvc.log                                                                                 0 1/11/2026 2:16:57 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\IQ                                  1600 1/11/2026 2:16:56 pm
+C:\ProgramData\EA Desktop\backgroundservice.ini                                                                                  55 1/11/2026 2:16:56 pm
+C:\ProgramData\EA Desktop\530c11479fe252fc5aabc24935b9776d4900eb3ba58fdc271e0d6229413ad40e\CONF-production                    32992 1/11/2026 2:16:55 pm
+C:\ProgramData\EA Desktop\Logs\EADesktopVerbose.log                                                                               0 1/11/2026 2:16:54 pm
+C:\ProgramData\EA Desktop\Logs\EADesktop.log                                                                                      0 1/11/2026 2:16:54 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\UpdateFramework\status\nvapp\updatecheck.json                                       96 1/11/2026 2:11:02 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\UpdateFramework\status\nvapp\autoupdate.json                                       153 1/11/2026 2:11:02 pm
+C:\ProgramData\Microsoft\Windows Security Health\Logs\SHS-11012026-141006-7-1ff-26100.1.amd64fre.ge_release.240331-1435.etl       0 1/11/2026 2:10:06 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvDriverDiagnostics\state.json                                                      96 1/11/2026 2:08:22 pm
+C:\ProgramData\NVIDIA Corporation\Drs\nvdrssel.bin                                                                                1 1/11/2026 2:08:09 pm
+C:\ProgramData\NVIDIA Corporation\Drs\nvdrsdb0.bin                                                                          2612648 1/11/2026 2:08:09 pm
+C:\ProgramData\NVIDIA Corporation\Drs\nvdrsdb1.bin                                                                          2612648 1/11/2026 2:08:09 pm
+C:\ProgramData\Microsoft\XboxLive\Auth\31169e1ce649fb110a231e97624bd1a5                                                        3323 1/11/2026 2:08:04 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_5468.log                                                       0 1/11/2026 2:08:02 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_5348.log                                                    2032 1/11/2026 2:08:02 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_11160.log                                                      0 1/11/2026 2:08:02 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerUser1.log                                                     0 1/11/2026 2:08:02 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerAIUser1.log                                                   0 1/11/2026 2:08:02 pm
+C:\ProgramData\USOShared\Logs\System\MoUxCoreWorker.9d3ee983-b651-40f9-ad80-488bc7157061.1.etl                                    0 1/11/2026 2:07:00 pm
+C:\ProgramData\USOShared\Logs\System\UpdateSessionOrchestration.5644418e-71c8-49bd-a97a-d11cdd3ba66c.1.etl                        0 1/11/2026 2:07:00 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\PerformanceSettings.bin                                                      1688 1/11/2026 2:04:55 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Update.xml                                                                   2068 1/11/2026 2:04:55 pm
+C:\ProgramData\Intel\GCC\gcc_svc_lace_log_2026-11-01.txt                                                                        319 1/11/2026 2:04:52 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_9804.log                                                       0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\SessionLogs\CxNative_Session1.log                                                    0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerSession1.log                                                  0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerWatchdog.log                                                  0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_4640.log                                                       0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\CxNative_LocalSystem.log                                                             0 1/11/2026 2:04:51 pm
+C:\ProgramData\NVIDIA Corporation\nvtopps\nvtopps.db3                                                                        221184 1/11/2026 2:04:50 pm
+C:\ProgramData\Intel\GCC\gcc_svc_log_2026-11-01.txt                                                                             462 1/11/2026 2:04:50 pm
+C:\ProgramData\Microsoft\Windows\PowerGrid\Forecast.json                                                                         94 1/11/2026 2:04:50 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\AuxWatchdog                                                                     1 1/11/2026 2:04:50 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261101-1404496208.log                                            0 1/11/2026 2:04:49 pm
+C:\ProgramData\LGHUB\installation.json                                                                                        82944 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBusBroadcast.log                                                1033 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA Corporation\GameSessionTelemetry\telemetryPlugin.log                                                        0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA Corporation\NvProfileUpdaterPlugin\NvProfileUpdaterPlugin_1.log                                             0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA\NvcDispCorePlugin.log                                                                                    1204 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA\DisplaySessionContainer1.log                                                                                0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerLocalSystem.log                                               0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA Corporation\nvtopps\nvtopps.log                                                                       2714994 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA\NVDisplayContainerWatchdog.log                                                                              0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA\NVDisplay.ContainerLocalSystem.log                                                                          0 1/11/2026 2:04:48 pm
+C:\ProgramData\NVIDIA\NVDisplay.ContainerLocalSystem.log_backup1                                                              27793 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA\NVDisplayContainerWatchdog.log_backup1                                                                  18266 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerLocalSystem.log_backup1                                   24148 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\CxNative_LocalSystem.1.log                                                       13569 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBusBroadcast.log_backup                                        18368 1/11/2026 2:04:16 pm
+C:\ProgramData\Intel\GCC\gcc_svc_log_2026-10-31.txt                                                                              85 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\MessageBus\MessageBus_4888.log                                                    4378 1/11/2026 2:04:16 pm
+C:\ProgramData\NVIDIA Corporation\NVIDIA App\NvContainer\NvContainerWatchdog.log_backup1                                      54184 1/11/2026 2:04:16 pm
+C:\ProgramData\Claude\Logs\cowork-service.log                                                                                879167 1/11/2026 2:04:16 pm
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs\XtuCore.20261031-1412565192.log                                        13593 1/11/2026 2:04:16 pm
+
+
+
+
+########## [13] apexdrv.sys bytes + sig (our test driver, if present) ##########
+
+
+SignerCertificate      : [Subject]
+                           CN=ApexDrv Dev (QwenKern Premium)
+                         
+                         [Issuer]
+                           CN=ApexDrv Dev (QwenKern Premium)
+                         
+                         [Serial Number]
+                           5660C049648220A04244814763EB3B72
+                         
+                         [Not Before]
+                           26/10/2026 5:33:18 pm
+                         
+                         [Not After]
+                           26/10/2029 5:43:18 pm
+                         
+                         [Thumbprint]
+                           2707A8AFC25A4AF973A5FE134CD539B11B6FA4D6
+                         
+TimeStamperCertificate : 
+Status                 : Valid
+StatusMessage          : Signature verified.
+Path                   : C:\Windows\System32\drivers\apexdrv.sys
+SignatureType          : Authenticode
+IsOSBinary             : False
+
+
+
+
+
+
+Name          : apexdrv.sys
+Length        : 10152
+CreationTime  : 1/11/2026 2:10:29 pm
+LastWriteTime : 1/11/2026 2:01:45 pm
+
+
+
+
+
+=== p12 env DONE 2026-11-01 14:59:20 ===

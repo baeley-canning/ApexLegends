@@ -1,0 +1,43 @@
+== vrde 3390 loopback ==
+True
+== guestproperty ==
+== dhcp log.1 ==
+00:00:00.012146 VirtualBox DHCP Server 7.2.22 r175245 win.amd64 (Oct 19 2026 20:28:35) release log
+00:00:00.012147 Log opened 2026-10-31T21:00:17.767936000Z
+00:00:00.012148 Build Type: release
+00:00:00.012150 OS Product: Windows 11
+00:00:00.012329 OS Release: 10.0.26200.9711
+00:00:00.012330 OS Service Pack: 
+00:00:00.298275 DMI Product Name: B760I AORUS PRO DDR4
+00:00:00.312584 DMI Product Version: -CF
+00:00:00.312594 Firmware type: UEFI
+00:00:00.313012 Secure Boot: Disabled
+00:00:00.313020 Host RAM: 32538MB (31.7GB) total, 5645MB (5.5GB) available
+00:00:00.313024 Executable: C:\Program Files\Oracle\VirtualBox\VBoxNetDHCP.exe
+00:00:00.313025 Process ID: 8208
+00:00:00.313025 Package type: WINDOWS_64BITS_GENERIC
+00:00:00.313025 Windows Features:
+00:00:00.313026   Core Isolation (Memory Integrity): Not supported
+00:00:00.313176 --config:  HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+00:00:00.313186 --comment: HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+00:00:00.522107 IP address:   192.168.56.100/24
+00:00:00.522124 Address pool: 192.168.56.101 - 192.168.56.254
+00:00:00.522152 MAC address is not specified: will use generated MAC 08:00:27:e6:8f:e8
+00:00:00.522162 Db::i_enterFixedAddressAssignment: 08:00:27:e6:8f:e8: 192.168.56.100
+00:00:00.522166 loading leases from C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases
+00:00:00.522312 Runtime error opening 'C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases' for reading VERR_FILE_NOT_FOUND (File not found.)
+00:00:00.577656 SUP: Opened VMMR0.r0 (C:\Program Files\Oracle\VirtualBox\VMMR0.r0) at 0xXXXXXXXXXXXXXXXX loaded by the native ring-0 loader.
+00:00:00.577673 SUP: windbg> .reload /f C:\Program Files\Oracle\VirtualBox\VMMR0.r0=0xXXXXXXXXXXXXXXXX
+== dhcp config ==
+<?xml version="1.0"?>
+<DHCPServer networkName="HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter" trunkName="VirtualBox Host-Only Ethernet Adapter" trunkType="netadp" IPAddress="192.168.56.100" lowerIP="192.168.56.101" upperIP="192.168.56.254" leasesFilename="C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases" networkMask="255.255.255.0">
+  <Options>
+    <Option name="1" encoding="0" value="255.255.255.0"/>
+  </Options>
+</DHCPServer>
+== sweep 101-110 ==
+192.168.56.101 => False
+192.168.56.102 => False
+192.168.56.103 => False
+192.168.56.104 => False
+192.168.56.105 => False

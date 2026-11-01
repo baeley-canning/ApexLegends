@@ -1,0 +1,34 @@
+﻿=== _probe5 2026-11-01T19:13:40
+elevated=False
+signtool=C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe
+ctrl size=826
+driver signer thumb=4CB0B52D1A6F02DAE06C0B831542E4EF0DB4F91D
+   sign/sm: SignTool Error: No certificates were found that met all the given criteria.
+   (size unchanged -> retry without /sm)
+   sign: SignTool Error: No certificates were found that met all the given criteria.
+signed size=826 (unsigned was 826)
+signed status=NotSigned
+staged p29ref.cat (unsigned 806, historical HIT) / p29un.cat (unsigned) / p29sig2.cat (SIGNED) / apexdrv_p26.cat (signed, broken)
+--- poll loop ---
+[c1 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c1 drive] sha256 osCatalog=NONE(err1168)
+[c2 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c2 drive] sha256 osCatalog=NONE(err1168)
+[c3 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c3 drive] sha256 osCatalog=NONE(err1168)
+[c4 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c4 drive] sha256 osCatalog=NONE(err1168)
+[c4 pbin ] sha1 osCatalog=NONE(err1168)
+[c4 pbin ] sha256 osCatalog=NONE(err1168)
+[c5 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c5 drive] sha256 osCatalog=NONE(err1168)
+[c6 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c6 drive] sha256 osCatalog=NONE(err1168)
+[c7 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c7 drive] sha256 osCatalog=NONE(err1168)
+[c8 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c8 drive] sha256 osCatalog=NONE(err1168)
+[c8 pbin ] sha1 osCatalog=NONE(err1168)
+[c8 pbin ] sha256 osCatalog=NONE(err1168)
+[c9 drive] sha1 osCatalog=apexdrv_p26.cat;
+[c9 drive] sha256 osCatalog=NONE(err1168)

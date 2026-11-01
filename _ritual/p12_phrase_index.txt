@@ -1,0 +1,72 @@
+1: === p12 phrase scan START 2026-11-01 14:57:18 ===
+4: ================ C:\Program Files\EA\AC\EAAntiCheat.GameService.dll ================
+6: ### signature ['Signature' A] hits=1 at 123274
+10: ================ C:\Program Files\EA\AC\EAAntiCheat.GameService.exe ================
+12: ### attest ['attestation' A] hits=2 at 29309651,29309729
+15: ### conflict ['conflict' A] hits=3 at 22573992,22591152,22605416
+19: ### driver ['driver' W] hits=1 at 20397968
+22: ### driver ['driver' A] hits=1 at 22069278
+24: ### integrity ['integrity' A] hits=4 at 22622842,22623471,23006744,23007233
+29: ### kernel ['kernel' W] hits=3 at 23053832,23072720,23094456
+36: ### kernel ['kernel' A] hits=1 at 22960864
+38: ### please ['Please' A] hits=2 at 22088074,22958632
+41: ### POPUP-victim ['Security Violation' W] hits=1 at 17125050
+44: ### SessionID ['Session ID' W] hits=1 at 17125018
+47: ### SessionID ['Session ID' A] hits=3 at 22994552,22994940,22994961
+51: ### signature ['Signature' A] hits=6 at 22261328,22261366,22418112,22537584,22537607,22573267
+58: ### skyfall ['skyfall' W] hits=1 at 67243120
+61: ### skyfall ['skyfall' A] hits=3 at 25154090,25154160,25156213
+65: ### unacceptable-raw ['unacceptable' A] hits=1 at 22610072
+68: ================ C:\Program Files\EA\AC\EAAntiCheat.Installer.exe ================
+70: ### kernel ['kernel' W] hits=3 at 816520,828552,845512
+77: ### openservice ['OpenService' A] hits=2 at 968528,968646
+80: ### skyfall ['skyfall' W] hits=1 at 282001136
+84: ================ C:\Program Files\EA\AC\preloader_s.dll ================
+86: ### please ['Please' W] hits=6 at 19172,19480,20056,20456,21882,22348
+100: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.cfg ================
+103: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll ================
+105: ### signature ['Signature' A] hits=1 at 280616
+109: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll_b ================
+111: ### signature ['Signature' A] hits=1 at 280616
+115: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe ================
+117: ### conflict ['conflict' A] hits=3 at 11588696,11605856,11620120
+121: ### driver ['driver' A] hits=1 at 11084062
+123: ### integrity ['integrity' A] hits=2 at 11637546,11638175
+126: ### kernel ['kernel' W] hits=3 at 11967432,11978200,11996856
+133: ### please ['Please' A] hits=1 at 11102890
+135: ### signature ['Signature' A] hits=6 at 11276192,11276230,11432976,11552304,11552327,11587987
+142: ### skyfall ['skyfall' W] hits=1 at 13922184
+145: ### unacceptable-raw ['unacceptable' A] hits=1 at 11624776
+148: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe_b ================
+150: ### conflict ['conflict' A] hits=3 at 11588696,11605856,11620120
+154: ### driver ['driver' A] hits=1 at 11084062
+156: ### integrity ['integrity' A] hits=2 at 11637546,11638175
+159: ### kernel ['kernel' W] hits=3 at 11967432,11978200,11996856
+166: ### please ['Please' A] hits=1 at 11102890
+168: ### signature ['Signature' A] hits=6 at 11276192,11276230,11432976,11552304,11552327,11587987
+175: ### skyfall ['skyfall' W] hits=1 at 13922184
+178: ### unacceptable-raw ['unacceptable' A] hits=1 at 11624776
+181: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.Installer.exe ================
+183: ### kernel ['kernel' W] hits=3 at 673304,685352,702344
+190: ### openservice ['OpenService' A] hits=2 at 823304,823422
+193: ### skyfall ['skyfall' W] hits=1 at 271254728
+196: ### skyfall ['skyfall' A] hits=6 at 658470,658503,658552,658591,658619,658652
+204: ================ C:\Program Files\EA Games\Apex\EAAntiCheat.splash.png ================
+207: ================ C:\Program Files\EA Games\Apex\preloader_l.dll ================
+209: ### please ['Please' W] hits=6 at 19172,19480,20056,20456,21882,22348
+223: ================ C:\Program Files\EA Games\Apex\preloader_l.dll_b ================
+225: ### please ['Please' W] hits=6 at 19172,19480,20056,20456,21882,22348
+239: ================ C:\Program Files\EA Games\Apex\r5apex_dx12.exe ================
+241: ### conflict ['conflict' A] hits=6 at 46960466,46961985,46962073,46962113,46962153,47006178
+248: ### driver ['driver' W] hits=5 at 47137166,50327764,50327822,50472602,50472690
+259: ### driver ['driver' A] hits=6 at 49883430,50473304,50473830,50475346,50477443,50477948
+268: ### integrity ['integrity' A] hits=2 at 47240184,47240673
+271: ### kernel ['kernel' W] hits=4 at 49914352,49921248,49924694,49942360
+280: ### kernel ['kernel' A] hits=4 at 47234520,50479251,50514928,50517072
+285: ### openservice ['OpenService' A] hits=1 at 47137696
+288: ### please ['Please' W] hits=4 at 47137128,50331228,50332472,50332558
+297: ### please ['Please' A] hits=6 at 46949763,46958761,47203072,49906305,49906503,49907592
+304: ### SessionID ['Session ID' A] hits=3 at 47219128,47219532,47219553
+308: ### signature ['Signature' A] hits=6 at 47219889,47243440,47243467,47243632,47243651,47244282
+321: ================ C:\Windows\System32\drivers\apexdrv.sys ================
+324: === p12 phrase scan DONE 2026-11-01 14:59:01 ===

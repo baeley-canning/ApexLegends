@@ -1,0 +1,49 @@
+﻿=== RUNNING VMS ===
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+=== SNAPSHOTS ===
+SnapshotName="VRDP-ready"
+SnapshotUUID="e099b86b-9b0e-48b3-87ab-55c0827ec144"
+SnapshotDescription="Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x"
+SnapshotName-1="pre-baseline"
+SnapshotUUID-1="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotName="pre-baseline"
+CurrentSnapshotUUID="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotNode="SnapshotName-1"
+=== SECUREBOOT/EFI/GA ===
+
+firmware="EFI"
+SecureBoot="on"
+VMState="running"
+VMStateChangeTime="2
+026-10-31T22:36:34.7
+66000000"
+"SATA-1-0"="C:\\Prog
+ram Files\\Oracle\\V
+irtualBox\\VBoxGuest
+Additions.iso"
+nic1="nat"
+hostonlyadapter2="Vi
+rtualBox Host-Only 
+Ethernet Adapter"
+nic2="hostonly"
+clipboard="disabled"
+clipboard_file_trans
+fers="off"
+draganddrop="disable
+d"
+SessionName="headles
+s"
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+CurrentSnapshotName=
+"pre-baseline"
+CurrentSnapshotUUID=
+"70f20efd-0fa8-4a19-
+9ded-2facde7a7842"
+CurrentSnapshotNode=
+"SnapshotName-1"
+GuestAdditionsRunLev
+el=0
+
+

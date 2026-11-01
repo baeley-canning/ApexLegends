@@ -1,0 +1,6 @@
+== natpf ==
+<Forwarding name="rdp" proto="1" hostip="127.0.0.1" hostport="13389" guestport="3389"/>
+<Forwarding name="winrm" proto="1" hostip="127.0.0.1" hostport="15985" guestport="5985"/>
+127.0.0.1:13389 => True
+127.0.0.1:15985 => False
+127.0.0.1:3390 => True

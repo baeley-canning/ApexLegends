@@ -1,0 +1,31 @@
+﻿schtasks : ERROR: 
+The system cannot 
+find the file 
+specified.
+At line:1 char:303
++ ... 
+\_ritual\_ls.txt'; 
+schtasks /query /tn 
+p9run /v /fo list 
+2>&1 | Out-F ...
++                   
+     ~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (ERRO   
+ R: The syst...f    
+ile specified.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+
+
+Folder: \Microsoft\W
+indows\Kernel
+
+

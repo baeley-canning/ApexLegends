@@ -1,0 +1,116 @@
+14:35:58  
+14:35:58  ===== p8 start =====
+14:35:58  elevated : True
+14:35:58  
+14:35:58  ===== S0 - baseline =====
+14:35:58  apexdrv registered = False
+14:35:58    kill EACefSubProcess (3204)
+14:35:58    kill EACefSubProcess (5504)
+14:35:58    kill EACefSubProcess (10540)
+14:35:58    kill EACefSubProcess (10900)
+14:35:58    kill EACefSubProcess (18892)
+14:36:06  [s0] testsigning=True nointegrity=False
+14:36:06  [s0] apexdrv registered=False running=False
+14:36:06  [s0] r5apex=
+14:36:06  
+14:36:06  ===== S1 - launch apex with NO apexdrv loaded (watch 240s) =====
+14:36:06  [s1] apex launched (direct exe)
+14:36:26  [s1] POPUP pid=1320 proc=csrss class=#32770 title=Security Violation
+14:36:26  [s1]   body: Security Violation |  | Device Driver signing integrity checks must be enabled to start the game.
+14:36:26  [s1] POPUP first seen at t=20s
+14:36:26  S1 RESULT clean_driverless_pass=False
+14:36:26  [s1] testsigning=True nointegrity=False
+14:36:26  [s1] apexdrv registered=False running=False
+14:36:26  [s1] r5apex=
+14:36:26  
+14:36:26  ===== S2a - driverless popup => machine config. Blame test 1: TeamViewer =====
+14:36:26  [s2a] clicked OK (dialog 1574772)
+14:36:26    tv| 
+14:36:26    tv| SERVICE_NAME: TeamViewer 
+14:36:26    tv|         TYPE               : 10  WIN32_OWN_PROCESS  
+14:36:26    tv|         STATE              : 3  STOP_PENDING 
+14:36:26    tv|                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+14:36:26    tv|         WIN32_EXIT_CODE    : 0  (0x0)
+14:36:26    tv|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:36:26    tv|         CHECKPOINT         : 0x4
+14:36:26    tv|         WAIT_HINT          : 0x0
+14:36:26    kill TeamViewer (8728)
+14:36:26    kill tv_w32 (1208)
+14:36:26    kill tv_x64 (1328)
+14:36:26    kill EAAntiCheat.GameServiceLauncher (10092)
+14:36:26    kill EACefSubProcess (2856)
+14:36:26    kill EACefSubProcess (17120)
+14:36:26    kill EACefSubProcess (17520)
+14:36:26    kill EACefSubProcess (18868)
+14:36:26    kill EACefSubProcess (23288)
+14:36:34  [s2a] apex launched (direct exe)
+14:36:49  [s2a] POPUP pid=1320 proc=csrss class=#32770 title=Security Violation
+14:36:49  [s2a]   body: Security Violation |  | 
+EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game.
+
+Session ID: hSw9CHyx5rHxjNi8483KS/wBfKXq2sF3W16sHCDQ8PszBEtZ
+
+Press Ctrl+C to copy this information to your clipboard so you can share it with the EA support team when needed
+14:36:49  [s2a] POPUP first seen at t=15s
+14:36:49  S2a RESULT pass_after_stopping_TeamViewer=False
+14:36:49  
+14:36:49  ===== S2b - still popup. Blame test 2: gdrv3 (Gigabyte) + EasyTune (VBS ON this box) =====
+14:36:49  [s2b] clicked OK (dialog 198284)
+14:36:49    kill EasyTuneEngineService
+14:36:49    et| [SC] ControlService FAILED 109:
+14:36:49    et| 
+14:36:49    et| The pipe has been ended.
+14:36:49    et| 
+14:36:49    gdrv3| 
+14:36:49    gdrv3| SERVICE_NAME: gdrv3 
+14:36:49    gdrv3|         TYPE               : 1  KERNEL_DRIVER  
+14:36:49    gdrv3|         STATE              : 1  STOPPED 
+14:36:49    gdrv3|         WIN32_EXIT_CODE    : 0  (0x0)
+14:36:49    gdrv3|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:36:49    gdrv3|         CHECKPOINT         : 0x0
+14:36:49    gdrv3|         WAIT_HINT          : 0x0
+14:36:49    gdrv3 running now = False
+14:36:49    kill EACefSubProcess (11936)
+14:36:49    kill EACefSubProcess (17300)
+14:36:49    kill EACefSubProcess (19860)
+14:36:49    kill EACefSubProcess (24188)
+14:36:57  [s2b] apex launched (direct exe)
+14:37:17  [s2b] POPUP pid=1320 proc=csrss class=#32770 title=Security Violation
+14:37:17  [s2b]   body: Security Violation |  | Device Driver signing integrity checks must be enabled to start the game.
+14:37:17  [s2b] POPUP first seen at t=20s
+14:37:17  S2b RESULT pass_after_unloading_gdrv3=False
+14:37:17    gdrv3 re| 
+14:37:17    gdrv3 re| SERVICE_NAME: gdrv3 
+14:37:17    gdrv3 re|         TYPE               : 1  KERNEL_DRIVER  
+14:37:17    gdrv3 re|         STATE              : 4  RUNNING 
+14:37:17    gdrv3 re|                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+14:37:17    gdrv3 re|         WIN32_EXIT_CODE    : 0  (0x0)
+14:37:17    gdrv3 re|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:37:17    gdrv3 re|         CHECKPOINT         : 0x0
+14:37:17    gdrv3 re|         WAIT_HINT          : 0x0
+14:37:17    gdrv3 re|         PID                : 0
+14:37:17    gdrv3 re|         FLAGS              : 
+14:37:17    tv re| 
+14:37:17    tv re| SERVICE_NAME: TeamViewer 
+14:37:17    tv re|         TYPE               : 10  WIN32_OWN_PROCESS  
+14:37:17    tv re|         STATE              : 2  START_PENDING 
+14:37:17    tv re|                                 (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+14:37:17    tv re|         WIN32_EXIT_CODE    : 0  (0x0)
+14:37:17    tv re|         SERVICE_EXIT_CODE  : 0  (0x0)
+14:37:17    tv re|         CHECKPOINT         : 0x0
+14:37:17    tv re|         WAIT_HINT          : 0x7d0
+14:37:17    tv re|         PID                : 17760
+14:37:17    tv re|         FLAGS              : 
+14:37:17  S3 skipped - no live apex
+14:37:18  [end] testsigning=True nointegrity=False
+14:37:18  [end] apexdrv registered=False running=False
+14:37:18  [end] r5apex=
+14:37:18    delete| [SC] OpenService FAILED 1060:
+14:37:18    delete| 
+14:37:18    delete| The specified service does not exist as an installed service.
+14:37:18    delete| 
+14:37:18  
+14:37:18  ===== RESULT =====
+14:37:18  clean_driverless_pass = False
+14:37:18  driverless run still popped #95 => apexdrv is NOT the trigger; bisect machine config
+14:37:18  END

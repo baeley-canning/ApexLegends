@@ -1,0 +1,4 @@
+=== _p28run 21:02:43 admin=True ps=5.1.26100.9711 ===
+HOST EXCEPTION: System.Management.Automation.SessionStateUnauthorizedAccessException: Cannot overwrite variable Pid because it is read-only or constant.
+exit= p28_esp.txt=False game=False
+-- _p28run END 21:02:43 --

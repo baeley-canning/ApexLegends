@@ -1,0 +1,28 @@
+GIGABYTE Control Center 25.07.21.01
+GIGABYTE Performance Library
+GIGABYTE SSD Firmware Update Tool
+GIGABYTE Storage Library
+Logitech G HUB
+MSI Development Tools
+Oracle VirtualBox 7.2.22
+Voicemod
+vs_communitymsires
+vs_communitysharedmsi
+vs_communityx64msi
+vs_githubprotocolhandlermsi
+vs_minshellinteropmsi
+vs_minshellinteropsharedmsi
+vs_minshellmsi
+vs_minshellmsires
+vs_minshellsharedmsi
+vs_vswebprotocolselectormsi
+--- services named like offenders:
+SERVICE_NAME: EhStorTcgDrv
+SERVICE_NAME: gdrv3
+SERVICE_NAME: MSIO
+SERVICE_NAME: VBoxNetAdp
+SERVICE_NAME: VBoxNetLwf
+SERVICE_NAME: VBoxSup
+SERVICE_NAME: VBoxUSBMon
+SERVICE_NAME: voicemodvad
+SERVICE_NAME: Xvdd

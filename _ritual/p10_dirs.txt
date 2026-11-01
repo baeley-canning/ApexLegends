@@ -1,0 +1,18 @@
+=== services matching anticheat/apexdrv ===
+
+
+Name      : EasyAntiCheat_EOS
+State     : Stopped
+StartMode : Manual
+PathName  : "C:\Program Files (x86)\EasyAntiCheat_EOS\EasyAntiCheat_EOS.exe"
+
+
+
+
+=== candidate dirs ===
+C:\ProgramData\eaanticheat
+C:\ProgramData\Electronic Arts
+C:\Program Files\EA Games
+C:\Program Files\Electronic Arts
+C:\Program Files (x86)\EasyAntiCheat_EOS
+DONE 11/01/2026 14:42:29

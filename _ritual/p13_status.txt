@@ -1,0 +1,56 @@
+=== p13 status 11/01/2026 15:04:55 ===
+shellAdmin=False
+
+--- probe processes ---
+pid=7460 start=15:03:47 mb=925
+pid=11548 start=15:04:27 mb=72
+pid=11916 start=14:18:30 mb=20
+pid=17636 start=14:08:28 mb=10
+pid=19124 start=14:28:58 mb=20
+pid=19268 start=14:08:53 mb=32
+pid=21384 start=15:03:47 mb=1256
+pid=21800 start=14:29:20 mb=17
+pid=22124 start=14:28:17 mb=13
+pid=25740 start=15:04:40 mb=83
+
+--- p13 artefacts ---
+p13_boot.ps1	6703	15:02:54
+p13_boot.txt	105650	15:03:20
+p13_launch.txt	1676	15:03:47
+p13_status.ps1	1868	15:04:30
+p13_status.txt	432	15:04:55
+p13_str_gameservice.txt	94	15:03:20
+p13_str_gameservicedll.txt	1253	15:04:29
+p13_str_launcher.txt	110	15:03:20
+p13_str_launcherdll.txt	1132	15:04:18
+p13_strall_gameservicedll.txt	1019904	15:04:55
+p13_strall_launcherdll.txt	1695744	15:04:36
+p13_strings.ps1	1629	15:00:58
+
+--- string-phase progress ---
+launcher : strprobe=1 lines; tail=
+=== p13 strings C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe | 11/01/2026 15:03:20 ===
+launcher : fulldump=absent
+gameservice : strprobe=1 lines; tail=
+=== p13 strings C:\Program Files\EA\AC\EAAntiCheat.GameService.exe | 11/01/2026 15:03:20 ===
+gameservice : fulldump=absent
+launcherdll : strprobe=32 lines; tail=
+RCertificate Policies ||  || === DONE keyword phase 11/01/2026 15:04:18 ===
+launcherdll : fulldump=19021824 bytes
+gameservicedll : strprobe=39 lines; tail=
+Y?v???6??vBS ||  || === DONE keyword phase 11/01/2026 15:04:29 ===
+gameservicedll : fulldump=1019904 bytes
+
+--- EA Desktop launcher log cert/policy lines ---
+logsize=19927
+matches=10
+24: 3	[2026-10-26T04:21:17.201Z]	PID: 12724	TID:  2920	WARN    	(eax::services::httpUtils::isTrustCertificateAllowed)	Skipping blocked trust certificate [AAA Certificate Services (root)], SHA1[d1eb23a46d17d68fd92564c2f1f1601764d8e349]
+25: 4	[2026-10-26T04:21:17.202Z]	PID: 12724	TID:  2920	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+36: 3	[2026-10-27T00:12:47.820Z]	PID:  3500	TID: 11848	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+47: 3	[2026-11-01T01:17:24.303Z]	PID:  1184	TID: 14144	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+58: 3	[2026-11-01T01:28:29.292Z]	PID: 23484	TID: 23488	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+69: 3	[2026-11-01T01:30:39.816Z]	PID: 10116	TID: 22580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+80: 3	[2026-11-01T01:36:06.762Z]	PID: 18400	TID: 16428	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+91: 3	[2026-11-01T01:36:35.040Z]	PID: 12576	TID: 12580	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+102: 3	[2026-11-01T01:36:58.252Z]	PID: 10764	TID: 10048	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+113: 3	[2026-11-01T01:39:38.849Z]	PID: 24200	TID: 21000	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]

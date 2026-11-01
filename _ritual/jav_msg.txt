@@ -1,0 +1,86 @@
+=== Javelin message/check strings (ascii + utf16) ===
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe : ascii=94303 wide=410 hits=76 -----
+%*sSignature : 
+%*sSignature Algorithm: 
+%*sSignature Value:
+&|KVM
+\sIV:
+AcquireSRWLockExclusive
+aes_siv_get_ctx_params
+aes_siv_set_ctx_params
+AES-128-SIV
+AES-192-SIV
+aes-256-siv
+certificate signature failure
+ClientSignatureAlgorithms
+CRL signature failure
+crypto\evp\signature.c
+Digital Signature
+digitalSignature
+EA Javelin Anticheat
+error validating signature
+EVP_PKEY_CTX_get_signature_md
+evp_pkey_signature_init
+evp_signature_from_algorithm
+evp_signature_new
+i2o_SCT_signature
+indicator integrity failure
+invalid signature size
+Key type: 1=AT_KEYEXCHANGE (default), 2=AT_SIGNATURE
+key usage does not include digital signature
+kvMtw/
+missing key usage digitalsignature
+module integrity failure
+no matching signature
+no signatures on data
+O#KVm
+o2i_SCT_signature
+OCSP_SIGNATURE
+optionalSignature
+pkcs7 add signature error
+pkvM..
+providers\implementations\ciphers\cipher_aes_siv.c
+providers\implementations\signature\dsa_sig.c
+providers\implementations\signature\ecdsa_sig.c
+providers\implementations\signature\eddsa_sig.c
+providers\implementations\signature\mac_legacy_sig.c
+providers\implementations\signature\rsa_sig.c
+providers\implementations\signature\sm2_sig.c
+recursive directory include
+ReleaseSRWLockExclusive
+RFC9113: The initial value is 2^14 (16,384) octets. The value advertised by an endpoint MUST be between this initial value and the maximum allowed frame size (2^24)-1 or 16,777,215
+rsa_generate_signature_aid
+sct invalid signature
+SCT_set1_signature
+signature
+signature failure
+signatureAlgorithm
+SignatureAlgorithms
+siV&h
+siv_cipher
+siv_dupctx
+siv_init
+sm2sig_signature_init
+tlsivfixed
+tlsivgen
+tlsivinv
+TryAcquireSRWLockExclusive
+TSI_INTEGRITY_ONLY
+TSI_PRIVACY_AND_INTEGRITY
+unable to decrypt certificate's signature
+unable to decrypt CRL's signature
+unacceptable policy
+unknown signature algorithm
+unrecognized signature nid
+unsupported signature type
+wrong signature length
+wrong signature size
+wrong signature type
+----- C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.dll : ascii=175156 wide=124 hits=4 -----
+%sDigital Signature
+\kvMI
+~SiVAhp
+EA Javelin Anticheat
+----- C:\Program Files\EA Games\Apex\preloader_l.dll : ascii=214 wide=38 hits=1 -----
+EA Javelin Anticheat
+DONE 11/01/2026 14:45:13

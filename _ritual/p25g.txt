@@ -1,0 +1,83 @@
+=== p25g MSROOT-DISCRIMINATOR 01/11/2026 16:43:49 PS=5.1.26100.9711 ===
+########## 0: host / DSE state / baseline signature ##########
+  build: 26200.9711
+  bcd: description             Windows 11
+  bcd: nointegritychecks       No
+  bcd: testsigning             No
+  bcd: hypervisorlaunchtype    Auto
+  secureboot firmware = False
+  live driver sig = UnknownError
+  live signer     = CN=ApexDrv Lab DSE CertSign (QwenKern) [7AB907DC03E17A6A7375FEBF3ADA5624B4099444]
+  S2 root in Root = True
+  MS roots already in LocalMachine\Root:
+    CN=Microsoft Root Certificate Authority, DC=microsoft, DC=com
+    CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp.
+    CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+    CN=Microsoft Authenticode(tm) Root Authority, O=MSFT, C=US
+    CN=Microsoft Root Certificate Authority 2010, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+    CN=Microsoft ECC TS Root Certificate Authority 2018, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+    CN=Microsoft ECC Product Root Certificate Authority 2018, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+    CN=Microsoft Time Stamp Root Certificate Authority 2014, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+    CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microsoft Corporation, C=US
+    CN=Microsoft ECC Root Certificate Authority 2017, O=Microsoft Corporation, C=US
+    CN=Microsoft RSA Root Certificate Authority 2017, O=Microsoft Corporation, C=US
+
+########## 1: name-spoof family (Q1: name or key?) ##########
+      SignTool Error: A certificate chain processed, but terminated in a root
+      Signing Certificate Chain:
+      Issued to: S6lan Leaf (QwenKern)
+      Issued by: S6lan Leaf (QwenKern)
+      Number of errors: 1
+      SignTool Error: A certificate chain processed, but terminated in a root
+      SignTool Error: A certificate chain processed, but terminated in a root
+      Signing Certificate Chain:
+      Issued to: S7win Leaf (QwenKern)
+      Issued by: S7win Leaf (QwenKern)
+      Number of errors: 1
+      SignTool Error: A certificate chain processed, but terminated in a root
+      SignTool Error: A certificate chain processed, but terminated in a root
+      Signing Certificate Chain:
+      Issued to: S8old Leaf (QwenKern)
+      Issued by: S8old Leaf (QwenKern)
+      Number of errors: 1
+      SignTool Error: A certificate chain processed, but terminated in a root
+      SignTool Error: A certificate chain processed, but terminated in a root
+      Signing Certificate Chain:
+      Issued to: S9msf Leaf (QwenKern)
+      Issued by: S9msf Leaf (QwenKern)
+      Number of errors: 1
+      SignTool Error: A certificate chain processed, but terminated in a root
+  --- controls ---
+  S2ctl (real local root, MS-root absent) kp_errors=1 codes=[] SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  S2ctl /pa (authenticode policy, MS-root NOT required) errors=0
+
+########## 2/3: real DSE probes (testsigning stays OFF) ##########
+  --- probe S2 (local root, MS-root absent) : signer CN=ApexDrv S2 Leaf (QwenKern) ---
+  backup -> C:\Windows\System32\drivers\apexdrv.sys.bak_p25g
+  sign   : Successfully signed: C:\Windows\System32\drivers\apexdrv.sys | Number of files successfully Signed: 1 | Number of errors: 0
+  live /kp errors=1 codes=[] SignTool Error: Signing Cert does not chain to a Microsoft Root Cert.
+  stop   : [SC] ControlService FAILED 1062:  The service has not been started.
+  delete : [SC] DeleteService SUCCESS
+  create : [SC] CreateService SUCCESS
+  start  : [SC] StartService FAILED 577:  Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  query  : SERVICE_NAME: kernprobe TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  ===> S2 (local root, MS-root absent) load = REFUSED
+     SCM 16:43:54 id=7000 The ApexDrv kernprobe (p25g) service failed to start due to the following error: 
+     SCM 16:43:54 id=7045 A service was installed in the system.
+     CI  16:43:54 id=3089 Signature information for another event. Match using the Correlation Id.
+     CI  16:43:54 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+
+########## 4: VERDICT ##########
+  Q1 (/kp name vs key) -> NO - /kp matched by key/thumbprint: name spoofing alone did not satisfy the MS-root test.
+  Q2 (kernel enforces MS root?) -> NO - ci.dll refused every self-signed chain, so the kernel does enforce the Microsoft-root rule here.
+  NEXT fork if nothing loaded:
+    (A) keep gdrv3.sys (drop apexdrv entirely), or
+    (B) bcdedit /set testsigning on + reboot (self-signed then always loads; keep the S2 shape).
+  -- p25g leftovers: name-spoof certs are junk, sweep once a winner is locked --
+    S6lan  leaf=D997967F6246ECAD8851D468050258F0E0EA7DC4  root=
+    S7win  leaf=1FE95E1D0091F51BA9BC62B8D045BEDE212D4DEE  root=
+    S8old  leaf=8520C2310834196AA7463E421BA941F64B66505F  root=
+    S9msf  leaf=65A87229342C5FD077551C7FB885C39B27111DF7  root=
+  -- ROLLBACK driver: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p25g" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc.exe stop kernprobe ; sc.exe delete kernprobe
+  -- ROLLBACK spoof roots: certutil -delstore Root <root thumbprint above>
+=== p25g END 01/11/2026 16:43:56 ===

@@ -1,0 +1,30 @@
+EABackgroundService pid=23224 start=? path=
+EACefSubProcess pid=1660 start=20:36:01 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+EACefSubProcess pid=5320 start=20:36:01 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+EACefSubProcess pid=8848 start=20:36:01 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+EACefSubProcess pid=18544 start=20:36:06 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+EACefSubProcess pid=22376 start=20:36:17 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EACefSubProcess.exe
+EADesktop pid=23296 start=20:36:00 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EADesktop.exe
+EALocalHostSvc pid=22048 start=20:36:02 path=C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EALocalHostSvc.exe
+EasyTuneEngineService pid=2720 start=? path=
+OneApp.IGCC.WinService pid=4800 start=? path=
+SearchHost pid=5204 start=20:05:44 path=C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+SearchIndexer pid=3372 start=? path=
+SecurityHealthService pid=9128 start=? path=
+TeamViewer pid=6544 start=20:05:42 path=C:\Program Files\TeamViewer\TeamViewer.exe
+TeamViewer_Service pid=5112 start=? path=
+--- windows with Security Violation / Apex titles:
+Code :: cheating - Visual Studio Code
+--- p21.txt tail:
+Original Name:      xtucomponent.inf
+Provider Name:      Intel
+Class Name:         SoftwareComponent
+Class GUID:         {5c4c3332-344d-483c-8739-259e934c9cc8}
+Driver Version:     03/19/2024 7.14.1.12
+Signer Name:        Microsoft Windows Hardware Compatibility Publisher
+Attributes:         Declarative
+WHCP Version:       Unknown
+
+
+-- p21 END 01/11/2026 20:42:56 --
+NEXT: reboot, then run run22.cmd (post-reboot verification) and relaunch Apex.

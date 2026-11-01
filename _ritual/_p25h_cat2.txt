@@ -1,0 +1,32 @@
+### catlookup gdrv3.sys / apexdrv.sys / tcpip.sys (control) ###
+=== C:\WINDOWS\System32\drivers\gdrv3.sys
+-- cbHash=32
+AcquireContext FAILED err=5
+-- cbHash=20
+AcquireContext FAILED err=5
+=== C:\WINDOWS\System32\drivers\apexdrv.sys
+-- cbHash=32
+AcquireContext FAILED err=5
+-- cbHash=20
+AcquireContext FAILED err=5
+=== C:\WINDOWS\System32\drivers\tcpip.sys
+-- cbHash=32
+AcquireContext FAILED err=5
+-- cbHash=20
+AcquireContext FAILED err=5
+DONE
+### pnputil enum-drivers: gdrv/gigabyte ###
+Original Name:      hdx_gigabyteext_rtk.inf
+Original Name:      hdx_gigabyteext_rtk.inf
+Original Name:      hdxgigabyte.inf
+Original Name:      hdxgigabyte.inf
+### CatRoot cat count / newest entries ###
+cats=4759
+24/10/2026 10:37:00 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem125.cat
+19/10/2026 1:23:16 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem131.cat
+19/10/2026 1:23:16 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem130.cat
+19/10/2026 1:23:14 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem127.cat
+19/10/2026 1:23:12 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem129.cat
+19/10/2026 1:23:10 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem132.cat
+16/10/2026 9:26:26 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\oem128.cat
+14/10/2026 12:48:17 pm  C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\SbatLevel.cat

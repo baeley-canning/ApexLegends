@@ -1,0 +1,38 @@
+== p15c 11/01/2026 15:29:09 ==
+C:\Program Files\EA\AC\EAAntiCheat.GameService.exe bytes=193572600 ascii_eaa=-1 uni_eaa=-1
+C:\Program Files\EA\AC\EAAntiCheat.Installer.exe bytes=282016504 ascii_eaa=-1 uni_eaa=-1
+C:\Program Files\EA Games\Apex\EAAntiCheat.GameServiceLauncher.exe bytes=20286712 ascii_eaa=-1 uni_eaa=-1
+-- ProgramData\eaanticheat:
+   1 30/09/2026 9:14:48 am C:\ProgramData\eaanticheat\Crashdumps
+-- EA Desktop logs (newest 25):
+   1252725 1/11/2026 3:26:06 pm C:\ProgramData\EA Desktop\Logs\EABackgroundServiceVerbose.log
+   1417130 1/11/2026 3:25:50 pm C:\ProgramData\EA Desktop\Logs\EADesktopVerbose.log
+   10813 1/11/2026 3:17:06 pm C:\ProgramData\EA Desktop\Logs\EABackgroundService.log
+   293413 1/11/2026 3:02:54 pm C:\ProgramData\EA Desktop\Logs\EADesktop.log
+   11109 1/11/2026 2:39:53 pm C:\ProgramData\EA Desktop\Logs\EALocalHostSvc.log
+   36099 1/11/2026 2:39:53 pm C:\ProgramData\EA Desktop\Logs\EALocalHostSvcVerbose.log
+   1525 1/11/2026 2:39:42 pm C:\ProgramData\EA Desktop\Logs\IGO_EADesktop_14356.log
+   19927 1/11/2026 2:39:38 pm C:\ProgramData\EA Desktop\Logs\EALauncher.log
+   21760 1/11/2026 2:39:38 pm C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log
+   2476 1/11/2026 2:39:30 pm C:\ProgramData\EA Desktop\Logs\cef.log
+   4194882 1/11/2026 2:36:59 pm C:\ProgramData\EA Desktop\Logs\EABackgroundService.bak
+   2665 1/11/2026 2:17:00 pm C:\ProgramData\EA Desktop\Logs\IGOProxy_IGOProxy32.log
+   2138 1/11/2026 2:16:59 pm C:\ProgramData\EA Desktop\Logs\IGOProxy_EADesktop.log
+   12583009 31/10/2026 11:09:07 pm C:\ProgramData\EA Desktop\Logs\EABackgroundServiceVerbose.bak
+   58234 26/10/2026 4:30:45 pm C:\ProgramData\EA Desktop\Logs\EADestager.log
+   103072 26/10/2026 4:30:45 pm C:\ProgramData\EA Desktop\Logs\EADestagerVerbose.log
+   9208 9/08/2026 4:45:44 pm C:\ProgramData\EA Desktop\Logs\EAUninstall.log
+   14171 9/08/2026 4:45:44 pm C:\ProgramData\EA Desktop\Logs\EAUninstallVerbose.log
+-- Apex launcher bats:
+  [C:\Program Files\EA Games\Apex\launchBuildClient.bat]
+    echo off
+    setlocal EnableDelayedExpansion
+    
+    start start_protected_game.exe -anticheat_settings=Settings.json -noautopak +errorHud_enabled 0 -nop4 +net_showchoke 1 -shipsound -originForceupToDate
+    exit /b 0
+  [C:\Program Files\EA Games\Apex\uxr_client.bat]
+    setlocal EnableDelayedExpansion
+    
+    start r2_static_128_dx12.exe -fnf %* -noautopak +errorHud_enabled 0 -nop4 -shipsound -originForceupToDate
+    exit /b 0
+-- done 11/01/2026 15:29:25

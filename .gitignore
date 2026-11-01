@@ -5,3 +5,15 @@ Qwen Knowledge base/phase4_apex_cheat/apex_pack_monitor.log
 # Python caches
 __pycache__/
 *.py[cod]
+
+# _ritual evidence: regenerable multi-MB string dumps (every other _ritual file IS tracked)
+_ritual/p13_strall_*.txt
+
+# triage scratch written by probe runs while documenting (regenerable)
+_ritual/_inv.txt
+_ritual/_gitinfo.txt
+_ritual/_gitinfo2.txt
+_ritual/_tree.txt
+_ritual/_tracked.txt
+_ritual/_cred.txt
+_ritual/_state_now.txt

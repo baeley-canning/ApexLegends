@@ -1,0 +1,18 @@
+﻿FINAL 2026-11-01T20:19:12
+startopts= TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA
+lastboot=11/01/2026 19:49:02
+apexdrv = STATE              : 4  RUNNING
+apexdrv_cat = STATE              : 1  STOPPED
+kernprobe = STATE              : 1  STOPPED
+driverquery: apexdrv apexdrv apexdrv apexdrv_cat p26 cat kernprobe ApexDrv kernprobe
+bcd.testsigning=
+file _ioctl1.ps1 4715b
+file _coll2.ps1 2845b
+file _post1.cmd 648b
+file _post1.ps1 2074b
+file _fix1.ps1 5130b
+file p26_drv.ps1 8367b
+file apex_driver_ioctl.h 6546b
+file _index.txt 13162b
+pack pragma lines: 62:// brings in the WDM headers' #pragma pack(4); the user-mode TU (apex_launcher / the | 69:#pragma pack(push, 1) | 108:#pragma pack(pop)   // see the packing note above the structs
+probe offsets: 67,69

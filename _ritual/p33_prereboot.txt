@@ -1,0 +1,10 @@
+=== p33 PHASE A 01/11/2026 21:11:38 admin=True ===
+  SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  bcd now            : nointegritychecks       No / testsigning             No / debug                   No
+  driver staged already? False
+  staged -> C:\Windows\System32\drivers\apexdrv.sys  10152 bytes  sig=Valid
+  testsigning ON  : The operation completed successfully.
+  nointegrity OFF : The operation completed successfully.
+  after           : nointegritychecks       No / testsigning             Yes
+  RunOnce armed: QwenKern_FlagFlip -> run33.cmd (phase B self-elevates after logon)
+  >>> rebooting in 25 s

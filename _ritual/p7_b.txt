@@ -1,0 +1,95 @@
+== 14:30:27
+--- powershell procs ---
+
+
+ProcessId       : 17636
+ParentProcessId : 17496
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+ProcessId       : 19268
+ParentProcessId : 19104
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+ProcessId       : 11916
+ParentProcessId : 19104
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+ProcessId       : 22124
+ParentProcessId : 19476
+CommandLine     : 
+
+ProcessId       : 19124
+ParentProcessId : 19104
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+ProcessId       : 21800
+ParentProcessId : 19104
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+ProcessId       : 24132
+ParentProcessId : 19104
+CommandLine     : C:\WINDOWS\System32\WindowsPowe
+                  rShell\v1.0\powershell.exe
+
+
+
+
+--- apex / ac ---
+
+ProcessName                        Id
+-----------                        --
+EAAntiCheat.GameServiceLauncher 24464
+
+
+
+--- probe7 tail 45 ---
+14:28:17    win TeamViewer: TeamViewer Panel
+14:28:17    win TextInputHost: Windows Input Experience
+14:28:17    win WindowsTerminal: Windows PowerShell
+14:28:17  
+14:28:17  ===== PHASE 1 - NO apexdrv loaded, launch apex, wait for the AC =====
+14:28:25    stop| [SC] OpenService FAILED 1060:
+14:28:25    stop| 
+14:28:25    stop| The specified service does not exist as an installed service.
+14:28:25    stop| 
+14:28:25    delete| [SC] OpenService FAILED 1060:
+14:28:25    delete| 
+14:28:25    delete| The specified service does not exist as an installed service.
+14:28:25    delete| 
+14:28:28  [p1] testsigning=True  nointegrity=False
+14:28:28  [p1] apexdrv registered=False  running=False
+14:28:28  [p1] r5apex pid=  AC procs=EACefSubProcess
+14:28:28  [p1] apex launched (direct exe, no-wait)
+14:28:33  [p1] t=5s apex not up yet
+14:28:38  [p1] t=10s apex not up yet
+14:28:43  [p1] t=15s apex not up yet
+14:28:48  [p1] t=20s apex not up yet
+14:28:48  [p1] no Javelin/Apex window
+14:28:54  [p1] t=25s apex not up yet
+14:28:59  [p1] t=30s apex not up yet
+14:29:04  [p1] t=35s apex not up yet
+14:29:09  [p1] t=40s apex not up yet
+14:29:09  [p1] no Javelin/Apex window
+14:29:14  [p1] t=45s apex not up yet
+14:29:19  [p1] t=50s apex not up yet
+14:29:24  [p1] t=55s apex not up yet
+14:29:29  [p1] t=60s apex not up yet
+14:29:29  [p1] no Javelin/Apex window
+14:29:34  [p1] t=65s apex not up yet
+14:29:39  [p1] t=70s apex not up yet
+14:29:44  [p1] t=75s apex not up yet
+14:29:49  [p1] t=80s apex not up yet
+14:29:49  [p1] no Javelin/Apex window
+14:29:54  [p1] t=85s apex not up yet
+14:29:59  [p1] t=90s apex not up yet
+14:30:04  [p1] t=95s apex not up yet
+14:30:09  [p1] t=100s apex not up yet
+14:30:09  [p1] no Javelin/Apex window
+14:30:14  [p1] t=105s apex not up yet
+14:30:19  [p1] t=110s apex not up yet
+14:30:24  [p1] t=115s apex not up yet

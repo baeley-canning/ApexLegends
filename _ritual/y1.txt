@@ -1,0 +1,49 @@
+== running vms ==
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+== 127.0.0.1 ports ==
+127.0.0.1:3390 => True
+127.0.0.1:3389 => False
+127.0.0.1:5985 => False
+== dhcp files ==
+
+Name                                                                       Length LastWriteTime        
+----                                                                       ------ -------------        
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.config    504 1/11/2026 10:34:59 am
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.log         0 1/11/2026 10:35:01 am
+HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.log.1    1887 1/11/2026 10:00:18 am
+
+
+
+== dhcp current log ==
+00:00:00.011498 VirtualBox DHCP Server 7.2.22 r175245 win.amd64 (Oct 19 2026 20:28:35) release log
+00:00:00.011500 Log opened 2026-10-31T21:35:01.924594600Z
+00:00:00.011501 Build Type: release
+00:00:00.011503 OS Product: Windows 11
+00:00:00.011659 OS Release: 10.0.26200.9711
+00:00:00.011660 OS Service Pack: 
+00:00:00.275545 DMI Product Name: B760I AORUS PRO DDR4
+00:00:00.289190 DMI Product Version: -CF
+00:00:00.289190 Firmware type: UEFI
+00:00:00.289751 Secure Boot: Disabled
+00:00:00.289761 Host RAM: 32538MB (31.7GB) total, 3011MB (2.9GB) available
+00:00:00.289766 Executable: C:\Program Files\Oracle\VirtualBox\VBoxNetDHCP.exe
+00:00:00.289767 Process ID: 17020
+00:00:00.289767 Package type: WINDOWS_64BITS_GENERIC
+00:00:00.289768 Windows Features:
+00:00:00.289768   Core Isolation (Memory Integrity): Not supported
+00:00:00.289971 --config:  HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+00:00:00.289982 --comment: HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+00:00:00.522177 IP address:   192.168.56.100/24
+00:00:00.522198 Address pool: 192.168.56.101 - 192.168.56.254
+00:00:00.522230 MAC address is not specified: will use generated MAC 08:00:27:6e:07:4d
+00:00:00.522241 Db::i_enterFixedAddressAssignment: 08:00:27:6e:07:4d: 192.168.56.100
+00:00:00.522246 loading leases from C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases
+00:00:00.522390 Runtime error opening 'C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases' for reading VERR_FILE_NOT_FOUND (File not found.)
+00:00:00.574604 SUP: Opened VMMR0.r0 (C:\Program Files\Oracle\VirtualBox\VMMR0.r0) at 0xXXXXXXXXXXXXXXXX loaded by the native ring-0 loader.
+00:00:00.574620 SUP: windbg> .reload /f C:\Program Files\Oracle\VirtualBox\VMMR0.r0=0xXXXXXXXXXXXXXXXX
+== leases ==
+== arp 192.168.56 ==
+Interface: 192.168.56.1 --- 0x4
+192.168.56.100        08-00-27-6e-07-4d     dynamic
+192.168.56.255        ff-ff-ff-ff-ff-ff     static
+== rdp candidates ==

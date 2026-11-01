@@ -1,0 +1,32 @@
+== git log ==
+df4ec6d QwenKern Premium: Phase 2 kernel driver ??? build + VM deployment artifacts
+c6be71f first commit
+== stash ==
+== status non-build ==
+ M QwenKernPremium/driver/apexdrv.c
+ M QwenKernPremium/include/apex_driver_ioctl.h
+?? QwenKernPremium/driver/apexdrv.obj
+?? QwenKernPremium/driver/vc140.pdb
+?? _ritual/
+== binaries anywhere ==
+
+FullName                                                                      Length LastWriteTime         
+--------                                                                      ------ -------------         
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys  15984 1/11/2026 3:09:24 am  
+C:\Users\New User\OneDrive\Desktop\cheating\temp\drv\backup\apexdrv.sys         8616 27/10/2026 11:52:55 am
+
+
+
+== tools ==
+
+Name           
+----           
+BuildDriver.ps1
+BuildGate.ps1  
+pe_imports.ps1 
+
+
+
+== msbuild ==
+
+DONE-U2

@@ -1,0 +1,26 @@
+== .100:3390 ==
+192.168.56.100:3390 => False
+== vbox procs ==
+
+ProcessName     Id StartTime            
+-----------     -- ---------            
+VBoxHeadless  9040 1/11/2026 10:34:57 am
+VBoxHeadless 22188 1/11/2026 10:34:56 am
+VBoxHeadless 30756 1/11/2026 10:34:56 am
+VBoxNetDHCP  17020 1/11/2026 10:35:00 am
+VBoxNetDHCP  18420 1/11/2026 10:34:59 am
+VBoxNetDHCP  31144 1/11/2026 10:34:59 am
+VBoxSDS      27156                      
+VBoxSVC      20460 1/11/2026 10:34:56 am
+
+
+
+== hostonlyifs ==
+Name:            VirtualBox Host-Only Ethernet Adapter
+DHCP:            Disabled
+IPAddress:       192.168.56.1
+NetworkMask:     255.255.255.0
+IPV6NetworkMaskPrefixLength: 64
+Status:          Up
+VBoxNetworkName: HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter
+== arp sweep ==

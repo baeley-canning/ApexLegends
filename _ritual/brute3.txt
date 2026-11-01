@@ -1,0 +1,21 @@
+﻿brute3 2026-11-01T17:34:42  target(api sha256 of S6lan)=37647B4654AE7F7608D8012A4BAA5AA8FB843552F6F053C2549ECE167D4C6EE8
+=== structure of S6lan
+  lf=216 nsec=6 sizeOfOptionalHeader=240 sizeOfHeaders=1024
+  sec[0] .text     vsize=0xBAA va=0x1000 srsd=0xC00 prd=0x400
+  sec[1] .rdata    vsize=0x7A0 va=0x2000 srsd=0x800 prd=0x1000
+  sec[2] .data     vsize=0x21 va=0x3000 srsd=0x200 prd=0x1800
+  sec[3] .pdata    vsize=0x144 va=0x4000 srsd=0x200 prd=0x1A00
+  sec[4] INIT      vsize=0x33A va=0x5000 srsd=0x400 prd=0x1C00
+  sec[5] .reloc    vsize=0x24 va=0x6000 srsd=0x200 prd=0x2000
+
+  certSecEntry bytes = 00 22 00 00 90 06 00 00
+=== trusted plain-hash cross-checks
+  plain sha256(full)   = 49D44924B08C34922410D2EB75FD226CA06985813C99BB14A7958F525B45D0D4
+  plain sha1(full)     = 7F73E14F2CFFE834724D8CE7AB9757CE059022AA
+  api  sha256(full)    = CTXFAIL-2146893816
+=== experiment: api vs plain on derived files
+  prefix.bin    api=CTXFAIL-2146893816 plain=2082B573DFE461FC420CF0AF4D9F7D5E720E46698D62C081D862828F2883D880
+  suffix.bin    api=CTXFAIL-2146893816 plain=A039F96A05214A3CB068E469C5A2F74D594ABF894AA25915BF979290AE2FECB3
+  certmod.bin   api=CTXFAIL-2146893816 plain=FEDD3A7919BBC9A6335A4711DABC4DD1C21EF42F4CF05B9A1C084A9FA52D40E8
+  headmod.bin   api=CTXFAIL-2146893816 plain=0BC6BA7B5A4E6C3AF4CA9E7251C531597C2E1D4BD86B352C887D146B5E148E52
+DONE-part1

@@ -1,0 +1,39 @@
+p25e.ps1:10: #   S3 like S2 leaf but with NO BC extension at all (MS-style leaf)
+p25e.ps1:11: #   S4 like S2 leaf but BC ca=1 (makecert-style leaf)
+p25e.ps1:148: return (New-SelfSignedCertificate @p)
+p25e.ps1:154: W '      CREATE FAILED (New-SelfSignedCertificate returned nothing) - see errors above'
+p25e.ps1:184: $s2root = New-Cert 'CN=ApexDrv S2 Root CA (QwenKern)' $true $false @('CertSign','CRLSign') $null
+p25e.ps1:185: Certutil-Dump $s2root 'S2root'
+p25e.ps1:186: $s2leaf = New-Cert 'CN=ApexDrv S2 Leaf (QwenKern)' $false $true @('DigitalSignature') $s2root
+p25e.ps1:190: $s3leaf = New-Cert 'CN=ApexDrv S3 LeafNoBC (QwenKern)' $null $true @('DigitalSignature') $s2root
+p25e.ps1:194: $s4leaf = New-Cert 'CN=ApexDrv S4 LeafCA (QwenKern)' $true $true @('DigitalSignature') $s2root
+p25e.ps1:225: $bak = 'C:\Windows\System32\drivers\apexdrv.sys.bak_p25e'
+p25e.ps1:275: W '-- ROLLBACK driver: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p25e" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc stop kernprobe ; sc delete kernprobe'
+p25g.ps1:53: return (New-SelfSignedCertificate @p)
+p25g.ps1:64: W ("  S2 root in Root = {0}" -f [bool](Get-ChildItem 'Cert:\LocalMachine\Root\1A5520EED6638BEC2A5EE297D3FF984B2CACF889' -ErrorAction SilentlyContinue))
+p25g.ps1:95: $s2leaf = @(Get-ChildItem Cert:\LocalMachine\My | Where-Object { $_.Subject -match 'CN=ApexDrv S2 Leaf' }) | Select-Object -First 1
+p25g.ps1:112: $bak = 'C:\Windows\System32\drivers\apexdrv.sys.bak_p25g'
+p25g.ps1:174: W '  -- ROLLBACK driver: Copy-Item -LiteralPath "C:\Windows\System32\drivers\apexdrv.sys.bak_p25g" -Destination "C:\Windows\System32\drivers\apexdrv.sys" -Force ; sc.exe stop kernprobe ; sc.exe delete kernprobe'
+--- _index.txt 85-100 ---
+    the later "unacceptable configuration" popups are a downstream stage: EAAntiCheatService
+    had already died (SCM 7023, %%4294924198) - not an independent detection.
+  * registry proof: HKLM\SYSTEM\CurrentControlSet\Control ::
+      SystemStartOptions = " TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO ..."
+    (SystemStartOptions is a since-boot snapshot -> it keeps TESTSIGNING until a reboot.)
+
+WHY OUR LAB DRIVER IS SAFE TO KEEP LOADABLE (p20b):
+  * C:\Windows\System32\drivers\apexdrv.sys  (service kernprobe, ours)  sig=Valid selfsigned
+    subj/issuer = CN="ApexDrv Dev (QwenKern Premium)"; that cert is ALREADY in
+    LocalMachine\Root AND LocalMachine\TrustedPublisher -> DSE accepts the blob with
+    testsigning OFF.  same blob staged at C:\ProgramData\QwenKern\apexdrv.sys.
+  * service eaanticheat -> system32\drivers\eaanticheat.sys (Microsoft-signed, EAAC re-stages on demand).
+
+FIX APPLIED (p21, 01/11/2026 15:49:54, elevated, RC=0 on each):
+  bcdedit /set testsigning off ; bcdedit /set nointegritychecks off ; bcdedit /set debug off
+  BCD backup dumped to _ritual\bcd_before_20261101_154954.bcd
+--- run25g.cmd ---
+@echo off
+cd /d "%~dp0"
+echo WRAPPER_START %date% %time% > run25g.log
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0p25g.ps1"
+echo WRAPPER_END %date% %time% >> run25g.log

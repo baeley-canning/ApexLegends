@@ -1,0 +1,26 @@
+=== p25h.diag2 01/11/2026 16:47:08 PS=5.1.26100.9711 ===
+-- A: is $var::Static supported in this PS host? --
+   \System.Security.Cryptography.X509Certificates.X509KeyUsageFlags::KeyCertSign = KeyCertSign (type System.Security.Cryptography.X509Certificates.X509KeyUsageFlags)
+   KeyCertSign|CrlSign = CrlSign, KeyCertSign (int 6)
+-- B: parameter matrix (the p25g root call + isolates) --
+  V1-exact-p25g: THREW -> ParameterBindingException :: Cannot bind parameter 'KeyUsage'. Cannot convert value "CrlSign, KeyCertSign" to type "Microsoft.CertificateServices.Commands.KeyUsage" due to enumeration values that are not valid. Specify one of the following enumeration values and try again. The possible enumeration values are "None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly".
+  V2-bare-custom: OK thumb=92F721D05BC61223E637D2C777D5BB99CEBD1E4D subj='CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US' KU='Digital Signature, Key Encipherment (a0)' notAfter=2046-11-01
+  V3-ca1-only: OK thumb=3BEDF13CE31D9693AA3305BCC5778CEF0D6FA550 subj='CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US' KU='Digital Signature, Key Encipherment (a0)' notAfter=2046-11-01
+  V4-ku-strings: OK thumb=6743EED1473A2E39479A31DB1045AC586A296076 subj='CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US' KU='Certificate Signing, Off-line CRL Signing, CRL Signing (06)' notAfter=2046-11-01
+  V5-short-subject: THREW -> ParameterBindingException :: Cannot bind parameter 'KeyUsage'. Cannot convert value "CrlSign, KeyCertSign" to type "Microsoft.CertificateServices.Commands.KeyUsage" due to enumeration values that are not valid. Specify one of the following enumeration values and try again. The possible enumeration values are "None,EncipherOnly,CRLSign,CertSign,KeyAgreement,DataEncipherment,KeyEncipherment,NonRepudiation,DigitalSignature,DecipherOnly".
+  V6-no-S-token: OK thumb=75D7E412643151FEB1AC74D14DAB3C5AD327B358 subj='CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, C=US' KU='Certificate Signing, Off-line CRL Signing, CRL Signing (06)' notAfter=2046-11-01
+  V7-ou-copyright: OK thumb=B0D39C837BA92E2D95E60832345BB3DEB3E18C13 subj='CN=Microsoft Root Authority, OU=Microsoft Corporation, OU=Copyright (c) 1997 Microsoft Corp.' KU='Certificate Signing, Off-line CRL Signing, CRL Signing (06)' notAfter=2046-11-01
+-- C: extra subject-token isolates (find the offending RDN) --
+  V8-ooo-order: OK thumb=C4A05AD7C61915C66E37726FD37417FCD06B4DA1 subj='C=US, S=Washington, L=Redmond, O=Microsoft Corporation, CN=Microsoft Root Certificate Authority 2011' KU='Digital Signature, Key Encipherment (a0)' notAfter=2046-11-01
+  V9-just-S: OK thumb=88392A20936BDDE7E510F50A0FECF2C9990E95C3 subj='CN=S11s (QwenKern), S=Washington' KU='Digital Signature, Key Encipherment (a0)' notAfter=2046-11-01
+  V10-just-L: OK thumb=A96B3F911FBE07436F0DE5A4CC127AEEFB50FD0F subj='CN=S11l (QwenKern), L=Redmond' KU='Digital Signature, Key Encipherment (a0)' notAfter=2046-11-01
+-- D: cleanup --
+   removed 92F721D05BC61223E637D2C777D5BB99CEBD1E4D
+   removed 3BEDF13CE31D9693AA3305BCC5778CEF0D6FA550
+   removed 6743EED1473A2E39479A31DB1045AC586A296076
+   removed 75D7E412643151FEB1AC74D14DAB3C5AD327B358
+   removed B0D39C837BA92E2D95E60832345BB3DEB3E18C13
+   removed C4A05AD7C61915C66E37726FD37417FCD06B4DA1
+   removed 88392A20936BDDE7E510F50A0FECF2C9990E95C3
+   removed A96B3F911FBE07436F0DE5A4CC127AEEFB50FD0F
+-- done --

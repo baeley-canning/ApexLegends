@@ -1,0 +1,931 @@
+=== p13 boot/CI probe 11/01/2026 15:03:19 ===
+
+########## [1] elevation / OS / firmware / secure boot ##########
+user: DESKTOP-PPHFJBQ\New User | isAdmin: False
+os: Microsoft Windows 11 Pro | build 26200 | ver 10.0.26200
+bootdevice: \Device\HarddiskVolume1 | systemdrive C:
+SecureBootUEFI ERR: Unable to set proper privileges. Access was denied.
+PEFirmwareType ERR: Property PEFirmwareType does not exist at path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control.
+SystemStartOptions:  TESTSIGNING  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  FVEBOOT=2666496  NOVGA
+SystemBootDevice: multi(0)disk(0)rdisk(0)partition(3)
+
+########## [2] CI / boot reg trees ##########
+---- HKLM:\SYSTEM\CurrentControlSet\Control\CI
+
+
+DebugFlags   : 16
+PSPath       : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI
+PSParentPath : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName  : CI
+PSDrive      : HKLM
+PSProvider   : Microsoft.PowerShell.Core\Registry
+
+
+
+
+---- HKLM:\SYSTEM\CurrentControlSet\Control\CI\Policy
+
+
+EmodePolicyRequired             : 0
+SkuPolicyRequired               : 0
+VerifiedAndReputablePolicyState : 0
+SAC_EnforcementReason           : 0
+SAC_PreviousState               : 4294967295
+PSPath                          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy
+PSParentPath                    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI
+PSChildName                     : Policy
+PSDrive                         : HKLM
+PSProvider                      : Microsoft.PowerShell.Core\Registry
+
+
+
+
+---- HKLM:\SYSTEM\CurrentControlSet\Control\CI\State
+
+---- HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+
+
+ClearPageFileAtShutdown  : 0
+DisablePagingExecutive   : 0
+HotPatchTableSize        : 8192
+LargeSystemCache         : 0
+NonPagedPoolQuota        : 0
+NonPagedPoolSize         : 0
+PagedPoolQuota           : 0
+PagedPoolSize            : 0
+PagingFiles              : {?:\pagefile.sys}
+SecondLevelDataCache     : 0
+SessionPoolSize          : 4
+SessionViewSize          : 48
+SystemPages              : 0
+PhysicalAddressExtension : 1
+FeatureSettings          : 0
+PagefileUsage            : {36, 12, 0, 0...}
+ExistingPageFiles        : {\??\C:\pagefile.sys}
+PSPath                   : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+PSParentPath             : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
+PSChildName              : Memory Management
+PSDrive                  : HKLM
+PSProvider               : Microsoft.PowerShell.Core\Registry
+
+
+
+
+---- HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot
+
+
+AvailableUpdates : 0
+PSPath           : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot
+PSParentPath     : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
+PSChildName      : SecureBoot
+PSDrive          : HKLM
+PSProvider       : Microsoft.PowerShell.Core\Registry
+
+
+
+
+---- HKLM:\SYSTEM\CurrentControlSet\Control\WdBoot
+
+
+########## [3] CI policies via WMI ##########
+MSFT_CIPolicy ERR: Invalid class 
+MSFT_CIPolicyFile ERR: Invalid class 
+
+########## [4] CodeIntegrity policy files on disk ##########
+---- C:\Windows\System32\CodeIntegrity
+
+FullName                                              Length LastWriteTime         
+--------                                              ------ -------------         
+C:\Windows\System32\CodeIntegrity\CIPolicies                 16/04/2026 12:59:08 am
+C:\Windows\System32\CodeIntegrity\Tokens                     21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\Update                     21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\driver.stl          34555  14/10/2026 12:48:04 pm
+C:\Windows\System32\CodeIntegrity\driversipolicy.p7b  242130 15/04/2026 10:15:21 am
+C:\Windows\System32\CodeIntegrity\previous.driver.stl 34518  14/10/2026 12:48:04 pm
+C:\Windows\System32\CodeIntegrity\VbsSiPolicy.p7b     77872  14/10/2026 12:48:05 pm
+C:\Windows\System32\CodeIntegrity\CIPolicies\Active          14/10/2026 11:08:05 pm
+C:\Windows\System32\CodeIntegrity\CIPolicies\Reserved        14/10/2026 11:08:10 pm
+C:\Windows\System32\CodeIntegrity\CIPolicies\Staged          21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\Tokens\Active              21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\Tokens\Staged              21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\Update\Previous            21/09/2025 8:03:43 am 
+
+
+
+---- C:\Windows\System32\CodeIntegrity\CiPolicies
+
+FullName                                                                                         Length LastWriteTime         
+--------                                                                                         ------ -------------         
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active                                                     14/10/2026 11:08:05 pm
+C:\Windows\System32\CodeIntegrity\CiPolicies\Reserved                                                   14/10/2026 11:08:10 pm
+C:\Windows\System32\CodeIntegrity\CiPolicies\Staged                                                     21/09/2025 8:03:43 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{0283AC0F-FFF1-49AE-ADA1-8A933130CAD6}.cip   7079   1/04/2024 8:22:16 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{0939ED82-BFD5-4D32-B58E-D31D3C49715A}.cip   4893   1/04/2024 8:22:35 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1283AC0F-FFF1-49AE-ADA1-8A933130CAD6}.cip   79907  1/04/2024 8:22:42 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1678656C-05EF-481F-BC5B-EBD8C991502D}.cip   4655   30/08/2025 9:29:31 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1939ED82-BFD5-4D32-B58E-D31D3C49715A}.cip   4913   1/04/2024 8:22:43 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{2678656C-05EF-481F-BC5B-EBD8C991502D}.cip   4660   30/08/2025 9:29:31 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{60FD87F8-4593-44A0-91B0-2E0DA022F248}.cip   10853  14/10/2026 12:48:04 pm
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{784C4414-79F4-4C32-A6A5-F0FB42A51D0D}.cip   196506 15/07/2026 8:58:31 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Reserved\{1EAF45D6-2AF8-42F5-90A2-DD9E8E6B1D3C}.cip 4766   14/10/2026 12:48:04 pm
+C:\Windows\System32\CodeIntegrity\CiPolicies\Reserved\{8F9CB695-5D48-48D6-A329-7202B44607E3}.cip 196494 15/07/2026 8:58:31 am 
+
+
+
+---- C:\Windows\System32\CodeIntegrity\CiPolicies\Active
+
+FullName                                                                                       Length LastWriteTime         
+--------                                                                                       ------ -------------         
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{0283AC0F-FFF1-49AE-ADA1-8A933130CAD6}.cip   7079 1/04/2024 8:22:16 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{0939ED82-BFD5-4D32-B58E-D31D3C49715A}.cip   4893 1/04/2024 8:22:35 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1283AC0F-FFF1-49AE-ADA1-8A933130CAD6}.cip  79907 1/04/2024 8:22:42 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1678656C-05EF-481F-BC5B-EBD8C991502D}.cip   4655 30/08/2025 9:29:31 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{1939ED82-BFD5-4D32-B58E-D31D3C49715A}.cip   4913 1/04/2024 8:22:43 pm  
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{2678656C-05EF-481F-BC5B-EBD8C991502D}.cip   4660 30/08/2025 9:29:31 am 
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{60FD87F8-4593-44A0-91B0-2E0DA022F248}.cip  10853 14/10/2026 12:48:04 pm
+C:\Windows\System32\CodeIntegrity\CiPolicies\Active\{784C4414-79F4-4C32-A6A5-F0FB42A51D0D}.cip 196506 15/07/2026 8:58:31 am 
+
+
+
+
+########## [5] eaanticheat / skyfall / javelin file hunt ##########
+---- C:\Windows\System32\drivers
+
+FullName                                                                                Length   LastWriteTime         
+--------                                                                                ------   -------------         
+C:\Windows\System32\drivers\DriverData                                                           20/09/2025 12:10:41 pm
+C:\Windows\System32\drivers\en-US                                                                14/10/2026 11:08:10 pm
+C:\Windows\System32\drivers\etc                                                                  1/11/2025 1:57:10 am  
+C:\Windows\System32\drivers\mde                                                                  21/09/2025 8:05:13 am 
+C:\Windows\System32\drivers\NVIDIA Corporation                                                   13/04/2026 6:23:05 pm 
+C:\Windows\System32\drivers\UMDF                                                                 27/10/2026 8:41:22 pm 
+C:\Windows\System32\drivers\wd                                                                   7/11/2025 2:10:53 pm  
+C:\Windows\System32\drivers\1394ohci.sys                                                294912   6/09/2024 4:02:20 pm  
+C:\Windows\System32\drivers\3ware.sys                                                   108464   1/04/2024 8:22:27 pm  
+C:\Windows\System32\drivers\acpi.sys                                                    884056   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\AcpiDev.sys                                                 61440    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\acpiex.sys                                                  181760   9/09/2026 8:51:48 am  
+C:\Windows\System32\drivers\acpitime.sys                                                57344    6/09/2024 4:02:20 pm  
+C:\Windows\System32\drivers\Acx01000.sys                                                749568   14/10/2026 12:48:05 pm
+C:\Windows\System32\drivers\AcxHdAudio.sys                                              589824   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\adp80xx.sys                                                 1136544  1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\afd.sys                                                     748896   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\afunix.sys                                                  86016    12/08/2026 9:10:20 am 
+C:\Windows\System32\drivers\agilevpn.sys                                                147456   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\ahcache.sys                                                 380928   14/10/2026 12:48:05 pm
+C:\Windows\System32\drivers\amdgpio2.sys                                                18432    1/04/2024 8:22:18 pm  
+C:\Windows\System32\drivers\amdi2c.sys                                                  45568    1/04/2024 8:22:19 pm  
+C:\Windows\System32\drivers\amdk8.sys                                                   273736   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\amdppm.sys                                                  286024   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\amdsata.sys                                                 84400    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\amdsbs.sys                                                  260512   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\amdwps.sys                                                  67144    6/09/2024 4:02:20 pm  
+C:\Windows\System32\drivers\amdxata.sys                                                 28064    1/04/2024 8:22:38 pm  
+C:\Windows\System32\drivers\amdxe.sys                                                   63008    17/05/2024 7:58:23 am 
+C:\Windows\System32\drivers\apexdrv.sys                                                 10152    1/11/2026 2:01:45 pm  
+C:\Windows\System32\drivers\appid.sys                                                   263648   9/09/2026 8:51:48 am  
+C:\Windows\System32\drivers\AppleKmdfFilter.sys                                         39272    27/06/2023 6:51:50 pm 
+C:\Windows\System32\drivers\AppleLowerFilter.sys                                        55608    27/06/2023 6:51:52 pm 
+C:\Windows\System32\drivers\AppleSSD.sys                                                113456   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\applockerfltr.sys                                           61440    9/09/2026 8:51:48 am  
+C:\Windows\System32\drivers\AppVStrm.sys                                                177456   6/09/2024 4:02:28 pm  
+C:\Windows\System32\drivers\AppvVemgr.sys                                               218432   6/09/2024 4:02:28 pm  
+C:\Windows\System32\drivers\AppvVfs.sys                                                 189744   6/09/2024 4:02:28 pm  
+C:\Windows\System32\drivers\arcsas.sys                                                  133024   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\asyncmac.sys                                                61440    6/09/2024 4:03:03 pm  
+C:\Windows\System32\drivers\atapi.sys                                                   67072    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\ataport.sys                                                 284128   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\bam.sys                                                     134520   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\battc.sys                                                   150904   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\bcmfn2.sys                                                  9728     1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\beep.sys                                                    40960    1/04/2024 8:22:12 pm  
+C:\Windows\System32\drivers\bfs.sys                                                     187768   14/10/2026 12:48:17 pm
+C:\Windows\System32\drivers\bindflt.sys                                                 212312   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\bowser.sys                                                  172032   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\bridge.sys                                                  163840   12/08/2026 9:10:11 am 
+C:\Windows\System32\drivers\BtaMPM.sys                                                  86016    9/09/2026 8:52:22 am  
+C:\Windows\System32\drivers\BthA2dp.sys                                                 663552   14/10/2026 12:48:25 pm
+C:\Windows\System32\drivers\bthenum.sys                                                 147456   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\BthHfAud.sys                                                131072   14/10/2026 12:48:25 pm
+C:\Windows\System32\drivers\BthHfEnum.sys                                               212992   14/10/2026 12:48:25 pm
+C:\Windows\System32\drivers\BthMini.SYS                                                 90112    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\bthmodem.sys                                                114688   10/09/2025 11:19:45 am
+C:\Windows\System32\drivers\bthpan.sys                                                  167936   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\bthport.sys                                                 2342912  14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\BTHUSB.SYS                                                  143360   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\bttflt.sys                                                  79176    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\buttonconverter.sys                                         90112    30/08/2025 9:29:27 am 
+C:\Windows\System32\drivers\bxvbda.sys                                                  534944   1/04/2024 8:22:25 pm  
+C:\Windows\System32\drivers\CAD.sys                                                     103936   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\Ccx01000.sys                                                692224   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\cdfs.sys                                                    139264   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\cdrom.sys                                                   233472   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\CEA.sys                                                     108016   9/09/2026 8:51:57 am  
+C:\Windows\System32\drivers\cht4dx64.sys                                                145200   1/04/2024 8:22:38 pm  
+C:\Windows\System32\drivers\cht4sx64.sys                                                320944   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\cht4vfx.sys                                                 28672    1/04/2024 8:22:38 pm  
+C:\Windows\System32\drivers\cht4vx64.sys                                                1854880  1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\cimfs.sys                                                   302456   14/10/2026 12:48:06 pm
+C:\Windows\System32\drivers\circlass.sys                                                90112    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\Classpnp.sys                                                527712   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\cldflt.sys                                                  602112   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\clfs.sys                                                    585080   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\ClipSp.sys                                                  1162624  14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\CmBatt.sys                                                  98304    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\cmimcext.sys                                                83432    9/09/2026 8:51:52 am  
+C:\Windows\System32\drivers\cng.sys                                                     982840   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\cnghwassist.sys                                             75056    6/09/2024 4:02:33 pm  
+C:\Windows\System32\drivers\condrv.sys                                                  109920   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\crashdmp.sys                                                171384   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\csc.sys                                                     646472   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\CtiIo64.sys                                                 34920    12/10/2025 10:16:10 pm
+C:\Windows\System32\drivers\dam.sys                                                     136688   9/09/2026 8:51:54 am  
+C:\Windows\System32\drivers\devauthe.sys                                                86016    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\dfsc.sys                                                    220512   14/10/2026 12:48:09 pm
+C:\Windows\System32\drivers\disk.sys                                                    154968   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\Diskdump.sys                                                79312    12/08/2026 9:10:05 am 
+C:\Windows\System32\drivers\Dmpusbstor.sys                                              61440    9/09/2026 8:51:56 am  
+C:\Windows\System32\drivers\dmvsc.sys                                                   99744    10/09/2025 11:19:46 am
+C:\Windows\System32\drivers\drmk.sys                                                    131072   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\drmkaud.sys                                                 61688    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\Dumpata.sys                                                 79320    12/08/2026 9:10:05 am 
+C:\Windows\System32\drivers\dumpfve.sys                                                 170072   14/10/2026 12:48:17 pm
+C:\Windows\System32\drivers\dumpsd.sys                                                  234960   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\dumpsdport.sys                                              73728    6/09/2024 4:02:42 pm  
+C:\Windows\System32\drivers\Dumpstorport.sys                                            118112   14/10/2026 12:48:09 pm
+C:\Windows\System32\drivers\dxgkrnl.sys                                                 5320072  14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\dxgmms1.sys                                                 560504   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\dxgmms2.sys                                                 1232224  14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\EhStorClass.sys                                             179576   14/10/2026 12:48:10 pm
+C:\Windows\System32\drivers\EhStorTcgDrv.sys                                            173528   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\errdev.sys                                                  53248    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\evbd0a.sys                                                  3424160  1/04/2024 8:22:25 pm  
+C:\Windows\System32\drivers\evbda.sys                                                   3441568  1/04/2024 8:22:25 pm  
+C:\Windows\System32\drivers\ExecutionContext.sys                                        140776   12/08/2026 9:10:11 am 
+C:\Windows\System32\drivers\exfat.sys                                                   445792   14/10/2026 12:48:10 pm
+C:\Windows\System32\drivers\fastfat.sys                                                 453984   14/10/2026 12:48:10 pm
+C:\Windows\System32\drivers\fdc.sys                                                     69632    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\filecrypt.sys                                               98304    14/10/2026 12:48:10 pm
+C:\Windows\System32\drivers\fileinfo.sys                                                128432   6/09/2024 4:02:44 pm  
+C:\Windows\System32\drivers\filetrace.sys                                               81920    14/10/2026 12:48:10 pm
+C:\Windows\System32\drivers\flpydisk.sys                                                69632    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\fltMgr.sys                                                  632288   9/09/2026 8:51:57 am  
+C:\Windows\System32\drivers\fsdepends.sys                                               103856   30/08/2025 9:29:32 am 
+C:\Windows\System32\drivers\fse.sys                                                     240968   14/10/2026 12:48:22 pm
+C:\Windows\System32\drivers\fs_rec.sys                                                  71072    1/04/2024 8:22:15 pm  
+C:\Windows\System32\drivers\fvevol.sys                                                  986464   14/10/2026 12:48:17 pm
+C:\Windows\System32\drivers\FWPKCLNT.SYS                                                589168   14/10/2026 12:48:19 pm
+C:\Windows\System32\drivers\gdrv3.sys                                                   52440    12/10/2025 10:19:43 pm
+C:\Windows\System32\drivers\globmerger.sys                                              150880   14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\gm.dls                                                      3440660  1/04/2024 8:22:04 pm  
+C:\Windows\System32\drivers\gmreadme.txt                                                646      1/04/2024 8:22:30 pm  
+C:\Windows\System32\drivers\hdaudbus.sys                                                204800   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\HdAudio.sys                                                 544768   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\hidbatt.sys                                                 75168    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\hidbth.sys                                                  155648   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\hidclass.sys                                                323584   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\hidi2c.sys                                                  131072   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\hidinterrupt.sys                                            91456    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\hidir.sys                                                   81920    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\hidparse.sys                                                102400   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\hidspi.sys                                                  139264   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\HidSpiCx.sys                                                131072   12/08/2026 9:10:06 am 
+C:\Windows\System32\drivers\hidusb.sys                                                  81920    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\hnswfpdriver.sys                                            58824    30/08/2025 9:29:33 am 
+C:\Windows\System32\drivers\HpSAMD.sys                                                  65440    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\Hsp.sys                                                     124400   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\http.sys                                                    2198936  14/10/2026 12:48:11 pm
+C:\Windows\System32\drivers\hvcrash.sys                                                 75168    30/08/2025 9:29:27 am 
+C:\Windows\System32\drivers\hvservice.sys                                               99808    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\hvsocket.sys                                                194032   12/08/2026 9:10:28 am 
+C:\Windows\System32\drivers\hvsocketcontrol.sys                                         66992    1/11/2025 1:53:43 am  
+C:\Windows\System32\drivers\hwmonitor.sys                                               49656    27/11/2025 4:00:41 pm 
+C:\Windows\System32\drivers\hwpolicy.sys                                                79288    30/08/2025 9:29:33 am 
+C:\Windows\System32\drivers\hyperkbd.sys                                                62784    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\HyperVideo.sys                                              79160    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\i8042prt.sys                                                155648   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\iagpio.sys                                                  36352    1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iai2c.sys                                                   91136    1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_GPIO2.sys                                          79360    1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_GPIO2_BXT_P.sys                                    93184    1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_GPIO2_CNL.sys                                      112128   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_GPIO2_GLK.sys                                      96256    1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_I2C.sys                                            171520   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_I2C_BXT_P.sys                                      175104   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_I2C_CNL.sys                                        177152   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSS2i_I2C_GLK.sys                                        177664   1/04/2024 8:22:20 pm  
+C:\Windows\System32\drivers\iaLPSSi_GPIO.sys                                            38128    1/04/2024 8:22:25 pm  
+C:\Windows\System32\drivers\iaLPSSi_I2C.sys                                             113152   1/04/2024 8:22:21 pm  
+C:\Windows\System32\drivers\iaStorAVC.sys                                               885568   1/04/2024 8:22:29 pm  
+C:\Windows\System32\drivers\iaStorV.sys                                                 413088   1/04/2024 8:22:29 pm  
+C:\Windows\System32\drivers\ibbus.sys                                                   559920   1/04/2024 8:22:38 pm  
+C:\Windows\System32\drivers\ICCWDT.sys                                                  44120    20/03/2024 10:54:40 am
+C:\Windows\System32\drivers\IndirectKmd.sys                                             94208    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\intelide.sys                                                58856    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\IntelMEFWVer.dll                                            20016    19/06/2024 11:02:04 am
+C:\Windows\System32\drivers\intelpep.sys                                                657880   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\intelpmax.sys                                               65536    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\IntelPMT.sys                                                88520    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\intelppm.sys                                                310624   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\iocbios2.sys                                                55896    20/03/2024 10:54:50 am
+C:\Windows\System32\drivers\iorate.sys                                                  91624    13/05/2026 7:27:22 pm 
+C:\Windows\System32\drivers\ipfltdrv.sys                                                118784   12/08/2026 9:10:13 am 
+C:\Windows\System32\drivers\IPMIDrv.sys                                                 175424   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\ipnat.sys                                                   258048   9/09/2026 8:52:00 am  
+C:\Windows\System32\drivers\ipt.sys                                                     103936   9/09/2026 8:52:00 am  
+C:\Windows\System32\drivers\isapnp.sys                                                  58672    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\ItSas35i.sys                                                187200   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\kbdclass.sys                                                95696    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\kbdhid.sys                                                  81920    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\kbldfltr.sys                                                63344    6/09/2024 4:02:42 pm  
+C:\Windows\System32\drivers\kdnic.sys                                                   79336    10/06/2026 9:57:51 am 
+C:\Windows\System32\drivers\kdnic_legacy.sys                                            70976    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\Kerb3961Kernel.sys                                          167240   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\kmpdc.sys                                                   101728   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\KNetPwrDepBroker.sys                                        86016    9/09/2026 8:52:18 am  
+C:\Windows\System32\drivers\ks.sys                                                      552960   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\ksecdd.sys                                                  241016   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\ksecpkg.sys                                                 240960   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\KslD.sys                                                    333216   10/12/2025 10:40:57 am
+C:\Windows\System32\drivers\ksthunk.sys                                                 81920    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\l1vhlwf.sys                                                 155000   14/10/2026 12:48:11 pm
+C:\Windows\System32\drivers\l2bridge.sys                                                103928   12/08/2026 9:10:07 am 
+C:\Windows\System32\drivers\lltdio.sys                                                  106496   9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\logi_joy_bus_enum.x64.sys                                   45448    13/04/2026 3:06:22 pm 
+C:\Windows\System32\drivers\logi_joy_vir_hid.x64.sys                                    32648    13/04/2026 3:06:22 pm 
+C:\Windows\System32\drivers\logi_joy_xlcore.x64.sys                                     74632    13/04/2026 3:06:22 pm 
+C:\Windows\System32\drivers\lsi_sas.sys                                                 110000   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\lsi_sas2i.sys                                               125344   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\lsi_sas3i.sys                                               138560   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\luafv.sys                                                   208896   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\lxcore.sys                                                  1127912  9/09/2026 8:52:01 am  
+C:\Windows\System32\drivers\lxss.sys                                                    50480    1/11/2025 2:28:37 am  
+C:\Windows\System32\drivers\mausbhost.sys                                               570856   12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\mausbip.sys                                                 99824    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\MbbCx.sys                                                   491520   14/10/2026 12:48:13 pm
+C:\Windows\System32\drivers\mcd.sys                                                     61440    6/09/2024 4:03:32 pm  
+C:\Windows\System32\drivers\MegaSas2i.sys                                               81840    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\megasas35i.sys                                              101168   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\megasr.sys                                                  576944   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\Microsoft.Bluetooth.AvrcpTransport.sys                      126976   14/10/2026 12:48:25 pm
+C:\Windows\System32\drivers\Microsoft.Bluetooth.Legacy.LEEnumerator.sys                 159744   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\mlx4_bus.sys                                                1132336  1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\mmcss.sys                                                   90112    12/08/2026 9:10:10 am 
+C:\Windows\System32\drivers\modem.sys                                                   81920    30/08/2025 9:29:57 am 
+C:\Windows\System32\drivers\monitor.sys                                                 126976   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\mouclass.sys                                                95552    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\mouhid.sys                                                  69632    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\mountmgr.sys                                                163144   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\mpi3drvi.sys                                                90544    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\mpsdrv.sys                                                  118784   9/09/2026 8:52:22 am  
+C:\Windows\System32\drivers\mrxdav.sys                                                  196608   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\mrxsmb.sys                                                  941432   14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\mrxsmb20.sys                                                400800   14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\msfs.sys                                                    83416    12/08/2026 9:10:10 am 
+C:\Windows\System32\drivers\Msft_User_WpdFs_01_11_00.Wdf                                0        12/10/2025 11:25:26 pm
+C:\Windows\System32\drivers\Msft_User_WpdMtpDr_01_11_00.Wdf                             0        11/11/2025 2:54:34 pm 
+C:\Windows\System32\drivers\msgpioclx.sys                                               226776   12/08/2026 9:10:06 am 
+C:\Windows\System32\drivers\msgpiowin32.sys                                             95648    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\mshidkmdf.sys                                               49152    6/09/2024 4:02:55 pm  
+C:\Windows\System32\drivers\mshidumdf.sys                                               49152    6/09/2024 4:02:55 pm  
+C:\Windows\System32\drivers\mshwnclx.sys                                                61440    6/09/2024 4:02:25 pm  
+C:\Windows\System32\drivers\MsIo64.sys                                                  19672    12/10/2025 10:16:21 pm
+C:\Windows\System32\drivers\msisadrv.sys                                                58672    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\msiscsi.sys                                                 355680   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\mskssrv.sys                                                 81920    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\mslldp.sys                                                  110592   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\mspclock.sys                                                53248    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\mspqm.sys                                                   49152    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\msquic.sys                                                  531776   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\msquicprev.sys                                              527704   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\msrpc.sys                                                   433520   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\msseccore.sys                                               71144    9/09/2026 8:52:23 am  
+C:\Windows\System32\drivers\mssecflt.sys                                                394728   9/09/2026 8:52:23 am  
+C:\Windows\System32\drivers\mssecwfp.sys                                                50656    9/09/2026 8:52:24 am  
+C:\Windows\System32\drivers\mssmbios.sys                                                79152    1/04/2024 8:22:29 pm  
+C:\Windows\System32\drivers\mstee.sys                                                   57344    14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\MTConfig.sys                                                53248    6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\mup.sys                                                     195992   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\mvumis.sys                                                  64928    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\ndfltr.sys                                                  147248   1/04/2024 8:22:44 pm  
+C:\Windows\System32\drivers\ndis.sys                                                    1877472  9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\ndiscap.sys                                                 98304    9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\NdisImPlatform.sys                                          167936   9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\ndistapi.sys                                                65536    12/08/2026 9:10:13 am 
+C:\Windows\System32\drivers\ndisuio.sys                                                 102400   6/09/2024 4:02:56 pm  
+C:\Windows\System32\drivers\NdisVirtualBus.sys                                          57344    6/09/2024 4:02:56 pm  
+C:\Windows\System32\drivers\ndiswan.sys                                                 262144   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\NDKPerf.sys                                                 83448    15/07/2026 8:58:37 am 
+C:\Windows\System32\drivers\NDKPing.sys                                                 112112   12/08/2026 9:10:11 am 
+C:\Windows\System32\drivers\ndproxy.sys                                                 131072   12/08/2026 9:10:13 am 
+C:\Windows\System32\drivers\Ndu.sys                                                     188416   9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\netadaptercx.sys                                            390648   9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\netbios.sys                                                 118112   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\netbt.sys                                                   360448   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\netio.sys                                                   761184   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\netvsc.sys                                                  413048   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\npcap.sys                                                   82592    12/09/2026 1:45:14 pm 
+C:\Windows\System32\drivers\npfs.sys                                                    120264   30/08/2025 9:29:35 am 
+C:\Windows\System32\drivers\npsvctrig.sys                                               61440    6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\nsiproxy.sys                                                77824    14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\ntfs.sys                                                    3644792  14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\ntosext.sys                                                 62896    30/08/2025 9:29:35 am 
+C:\Windows\System32\drivers\null.sys                                                    53248    12/08/2026 9:10:12 am 
+C:\Windows\System32\drivers\nvdimm.sys                                                  210360   30/08/2025 9:29:27 am 
+C:\Windows\System32\drivers\nvhda64v.sys                                                137032   6/08/2026 10:04:46 am 
+C:\Windows\System32\drivers\nvmedisk.sys                                                128488   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\nvraid.sys                                                  151472   1/04/2024 8:22:38 pm  
+C:\Windows\System32\drivers\nvstor.sys                                                  167344   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\nvvad64v.sys                                                62696    31/08/2026 10:16:41 pm
+C:\Windows\System32\drivers\nwifi.sys                                                   995328   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\p9rdr.sys                                                   163144   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\pacer.sys                                                   220536   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\parport.sys                                                 155648   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\partmgr.sys                                                 241016   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\passthruparser.sys                                          71088    1/11/2025 1:53:43 am  
+C:\Windows\System32\drivers\pci.sys                                                     613760   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\pciide.sys                                                  54760    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\pciidex.sys                                                 91632    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\pcmcia.sys                                                  156992   6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\pcw.sys                                                     103896   12/08/2026 9:10:12 am 
+C:\Windows\System32\drivers\pdc.sys                                                     224632   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\PEAuth.sys                                                  872448   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\percsas2i.sys                                               59824    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\percsas3i.sys                                               69552    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\PktMon.sys                                                  232816   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\PktMonApi.sys                                               61440    12/08/2026 9:10:12 am 
+C:\Windows\System32\drivers\pmem.sys                                                    200032   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\pnpmem.sys                                                  53248    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\portcfg.sys                                                 61440    6/09/2024 4:03:02 pm  
+C:\Windows\System32\drivers\portcls.sys                                                 479232   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\processr.sys                                                286048   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\ProcLaunchMon.sys                                           79880    6/09/2024 4:03:27 pm  
+C:\Windows\System32\drivers\pvhdparser.sys                                              95664    1/11/2025 1:53:43 am  
+C:\Windows\System32\drivers\pvscsii.sys                                                 45488    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\qwavedrv.sys                                                90112    14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\ramdisk.sys                                                 75232    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\rasacd.sys                                                  57344    14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\rasl2tp.sys                                                 147456   9/09/2026 8:52:06 am  
+C:\Windows\System32\drivers\raspppoe.sys                                                122880   30/08/2025 9:29:36 am 
+C:\Windows\System32\drivers\raspptp.sys                                                 147456   13/05/2026 7:27:24 pm 
+C:\Windows\System32\drivers\rassstp.sys                                                 131072   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\rdbss.sys                                                   576888   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\rdpbus.sys                                                  65536    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\rdpdr.sys                                                   208896   9/09/2026 8:52:12 am  
+C:\Windows\System32\drivers\rdyboost.sys                                                335232   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\refs.sys                                                    3542368  14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\refsv1.sys                                                  1019208  14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\rfcomm.sys                                                  253952   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\rhproxy.sys                                                 143360   6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\rmcast.sys                                                  212992   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\RNDISMP.sys                                                 77824    14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\rootmdm.sys                                                 49152    15/07/2026 8:58:43 am 
+C:\Windows\System32\drivers\RoutePolicy.sys                                             118784   13/05/2026 7:27:17 pm 
+C:\Windows\System32\drivers\rspndr.sys                                                  114688   9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\RTAIODAT.DAT                                                61558126 20/02/2025 1:56:24 am 
+C:\Windows\System32\drivers\rteth.sys                                                   86016    6/09/2024 4:02:56 pm  
+C:\Windows\System32\drivers\RTKVHD64.sys                                                6687168  20/02/2025 2:08:36 am 
+C:\Windows\System32\drivers\RzCommon.sys                                                64880    26/09/2023 6:04:48 pm 
+C:\Windows\System32\drivers\RzDev_005c.sys                                              56136    23/03/2021 4:43:48 am 
+C:\Windows\System32\drivers\RzDev_0082.sys                                              49728    18/02/2020 4:27:12 am 
+C:\Windows\System32\drivers\RzDev_0083.sys                                              56168    23/03/2021 4:47:50 am 
+C:\Windows\System32\drivers\RzDev_02a2.sys                                              64680    18/08/2022 11:51:32 pm
+C:\Windows\System32\drivers\sbp2port.sys                                                167264   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\scfilter.sys                                                77824    15/04/2026 10:15:29 am
+C:\Windows\System32\drivers\scmbus.sys                                                  273784   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\scsiport.sys                                                234968   9/09/2026 8:52:21 am  
+C:\Windows\System32\drivers\sdbus.sys                                                   345560   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\sdport.sys                                                  140600   6/09/2024 4:03:05 pm  
+C:\Windows\System32\drivers\sdstor.sys                                                  150904   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\SerCx.sys                                                   120128   6/09/2024 4:03:21 pm  
+C:\Windows\System32\drivers\SerCx2.sys                                                  218544   6/09/2024 4:03:21 pm  
+C:\Windows\System32\drivers\serenum.sys                                                 65536    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\serial.sys                                                  122880   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\sermouse.sys                                                65536    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\sfloppy.sys                                                 57344    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\sisraid2.sys                                                45984    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\sisraid4.sys                                                82848    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\SmartSAMD.sys                                               210848   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\smbdirect.sys                                               274432   12/08/2026 9:10:17 am 
+C:\Windows\System32\drivers\smclib.sys                                                  65536    30/08/2025 9:29:59 am 
+C:\Windows\System32\drivers\spacedump.sys                                               318840   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\spaceparser.sys                                             86016    30/08/2025 9:29:55 am 
+C:\Windows\System32\drivers\spaceport.sys                                               1035592  14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\SpbCx.sys                                                   124392   12/08/2026 9:10:17 am 
+C:\Windows\System32\drivers\srv2.sys                                                    1011712  14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\srvnet.sys                                                  405504   14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\stexstor.sys                                                32176    1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\storahci.sys                                                234968   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\stornvme.sys                                                343368   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\storport.sys                                                2620744  14/10/2026 12:48:19 pm
+C:\Windows\System32\drivers\storqosflt.sys                                              124408   9/09/2026 8:52:10 am  
+C:\Windows\System32\drivers\storufs.sys                                                 167272   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\storvsc.sys                                                 95704    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\storvsp.sys                                                 322912   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\stream.sys                                                  118784   6/09/2024 4:03:24 pm  
+C:\Windows\System32\drivers\tape.sys                                                    69632    12/11/2025 12:10:42 pm
+C:\Windows\System32\drivers\tbs.sys                                                     85344    14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\tcpip.sys                                                   3493240  14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\tcpipreg.sys                                                86016    14/10/2026 12:48:19 pm
+C:\Windows\System32\drivers\tdi.sys                                                     79336    12/08/2026 9:10:19 am 
+C:\Windows\System32\drivers\tdx.sys                                                     191864   14/10/2026 12:48:19 pm
+C:\Windows\System32\drivers\terminpt.sys                                                75184    6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\tm.sys                                                      181720   12/08/2026 9:10:20 am 
+C:\Windows\System32\drivers\tpm.sys                                                     384352   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\TsUsbFlt.sys                                                98304    30/08/2025 9:29:56 am 
+C:\Windows\System32\drivers\TsUsbGD.sys                                                 77824    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\tsusbhub.sys                                                167936   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\tunnel.sys                                                  167936   30/08/2025 9:29:56 am 
+C:\Windows\System32\drivers\uaspstor.sys                                                134520   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UcmCx.sys                                                   221184   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\UcmTcpciCx.sys                                              221184   12/08/2026 9:10:20 am 
+C:\Windows\System32\drivers\UcmUcsiAcpiClient.sys                                       77824    12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\UcmUcsiCx.sys                                               200704   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\UCPD.sys                                                    220488   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\Ucx01000.sys                                                310648   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\Udecx.sys                                                   90112    12/08/2026 9:10:20 am 
+C:\Windows\System32\drivers\udfs.sys                                                    409600   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\UevAgentDriver.sys                                          75168    30/08/2025 9:29:29 am 
+C:\Windows\System32\drivers\ufx01000.sys                                                361776   6/09/2024 4:03:32 pm  
+C:\Windows\System32\drivers\ufxsynopsys.sys                                             198064   6/09/2024 4:02:22 pm  
+C:\Windows\System32\drivers\UnionFS.sys                                                 511328   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\urscx01000.sys                                              111936   30/08/2025 9:29:57 am 
+C:\Windows\System32\drivers\usb8023.sys                                                 69632    9/09/2026 8:52:06 am  
+C:\Windows\System32\drivers\USBAUDIO.sys                                                303104   15/09/2026 6:56:45 pm 
+C:\Windows\System32\drivers\usbaudio2.sys                                               409600   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\USBCAMD2.sys                                                81920    6/09/2024 4:03:29 pm  
+C:\Windows\System32\drivers\usbccgp.sys                                                 232824   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbcir.sys                                                  147456   6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\usbd.sys                                                    85360    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbehci.sys                                                 142688   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbhub.sys                                                  576864   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\USBHUB3.SYS                                                 752992   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbohci.sys                                                 69632    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UsbPmApi.sys                                                98304    14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\usbport.sys                                                 519520   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbprint.sys                                                118784   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbser.sys                                                  126976   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\USBSTOR.SYS                                                 206312   9/09/2026 8:51:44 am  
+C:\Windows\System32\drivers\usbuhci.sys                                                 73728    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\usbvideo.sys                                                441744   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\USBXHCI.SYS                                                 806256   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\VBoxNetAdp6.sys                                             254568   19/10/2026 1:23:12 pm 
+C:\Windows\System32\drivers\VBoxNetLwf.sys                                              264880   19/10/2026 1:23:12 pm 
+C:\Windows\System32\drivers\VBoxSup.sys                                                 1190416  19/10/2026 1:23:14 pm 
+C:\Windows\System32\drivers\VBoxUSBMon.sys                                              204440   19/10/2026 1:23:18 pm 
+C:\Windows\System32\drivers\vdrvroot.sys                                                124216   6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\VerifierExt.sys                                             271848   12/08/2026 9:10:05 am 
+C:\Windows\System32\drivers\vfpext.sys                                                  1675264  14/10/2026 12:48:11 pm
+C:\Windows\System32\drivers\vhdmp.sys                                                   1076600  14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\vhdparser.sys                                               87520    12/08/2026 9:09:58 am 
+C:\Windows\System32\drivers\vhf.sys                                                     90112    12/08/2026 9:09:56 am 
+C:\Windows\System32\drivers\Vid.sys                                                     920928   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\videoprt.sys                                                90112    6/09/2024 4:03:29 pm  
+C:\Windows\System32\drivers\vmbkmcl.sys                                                 179608   14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\vmbkmclr.sys                                                232792   14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\vmbus.sys                                                   210400   9/09/2026 8:51:45 am  
+C:\Windows\System32\drivers\VMBusHID.sys                                                71072    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\vmbusproxy.sys                                              98304    30/08/2025 9:29:28 am 
+C:\Windows\System32\drivers\vmbusr.sys                                                  331128   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\vmgencounter.sys                                            58672    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\vmgid.sys                                                   58784    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\vms3cap.sys                                                 58800    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\VmsProxy.sys                                                81216    14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\VmsProxyHNic.sys                                            85320    14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\vmstorfl.sys                                                87472    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\vmsvc.dll                                                   107552   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\vmsvcext.sys                                                50592    30/08/2025 9:29:28 am 
+C:\Windows\System32\drivers\vmswitch.sys                                                2579776  14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\volmgr.sys                                                  142712   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\volmgrx.sys                                                 441704   14/10/2026 12:48:09 pm
+C:\Windows\System32\drivers\volsnap.sys                                                 560456   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\volume.sys                                                  54672    10/09/2025 11:19:46 am
+C:\Windows\System32\drivers\vpci.sys                                                    169464   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\vpcivsp.sys                                                 255440   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\vsmraid.sys                                                 167840   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\VSTXRAID.SYS                                                306608   1/04/2024 8:22:28 pm  
+C:\Windows\System32\drivers\vwififlt.sys                                                122880   9/09/2026 8:52:15 am  
+C:\Windows\System32\drivers\wacompen.sys                                                65536    6/09/2024 4:02:21 pm  
+C:\Windows\System32\drivers\wanarp.sys                                                  131072   12/08/2026 9:10:13 am 
+C:\Windows\System32\drivers\watchdog.sys                                                140792   12/08/2026 9:10:21 am 
+C:\Windows\System32\drivers\wcifs.sys                                                   269720   14/10/2026 12:48:07 pm
+C:\Windows\System32\drivers\WdBoot.sys                                                  20880    10/12/2025 10:40:57 am
+C:\Windows\System32\drivers\WdDevFlt.sys                                                283016   10/12/2025 10:40:57 am
+C:\Windows\System32\drivers\Wdf01000.sys                                                998728   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\WdFilter.sys                                                627104   10/12/2025 10:40:57 am
+C:\Windows\System32\drivers\WdfLdr.sys                                                  113984   14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\WdiWiFi.sys                                                 1155072  14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\WdmCompanionFilter.sys                                      62896    30/08/2025 9:29:28 am 
+C:\Windows\System32\drivers\WdNisDrv.sys                                                102816   10/12/2025 10:40:57 am
+C:\Windows\System32\drivers\werkernel.sys                                               103896   12/08/2026 9:10:05 am 
+C:\Windows\System32\drivers\wfplwfs.sys                                                 257352   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\WifiCx.sys                                                  1216512  14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\wimmount.sys                                                89408    14/10/2026 12:48:21 pm
+C:\Windows\System32\drivers\WinAccel.sys                                                95536    6/09/2024 4:02:45 pm  
+C:\Windows\System32\drivers\WinAccelCx.sys                                              144704   6/09/2024 4:02:45 pm  
+C:\Windows\System32\drivers\WindowsTrustedRT.sys                                        109000   12/08/2026 9:10:20 am 
+C:\Windows\System32\drivers\WindowsTrustedRTProxy.sys                                   59800    30/08/2025 9:29:27 am 
+C:\Windows\System32\drivers\winhv.sys                                                   75248    12/08/2026 9:09:58 am 
+C:\Windows\System32\drivers\winhvr.sys                                                  163192   14/10/2026 12:48:04 pm
+C:\Windows\System32\drivers\winmad.sys                                                  37184    1/04/2024 8:22:43 pm  
+C:\Windows\System32\drivers\winnat.sys                                                  332112   9/09/2026 8:52:17 am  
+C:\Windows\System32\drivers\winusb.sys                                                  143360   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\winverbs.sys                                                74032    1/04/2024 8:22:41 pm  
+C:\Windows\System32\drivers\wmiacpi.sys                                                 57344    6/09/2024 4:02:23 pm  
+C:\Windows\System32\drivers\wmilib.sys                                                  62792    6/09/2024 4:03:31 pm  
+C:\Windows\System32\drivers\wof.sys                                                     302440   14/10/2026 12:48:15 pm
+C:\Windows\System32\drivers\WpdUpFltr.sys                                               71088    6/09/2024 4:03:31 pm  
+C:\Windows\System32\drivers\WppRecorder.sys                                             87528    12/08/2026 9:10:22 am 
+C:\Windows\System32\drivers\ws2ifsl.sys                                                 61440    12/08/2026 9:10:21 am 
+C:\Windows\System32\drivers\wtd.sys                                                     142688   14/10/2026 12:48:05 pm
+C:\Windows\System32\drivers\WUDFPf.sys                                                  183648   14/10/2026 12:48:09 pm
+C:\Windows\System32\drivers\WUDFRd.sys                                                  421216   14/10/2026 12:48:09 pm
+C:\Windows\System32\drivers\xboxgip.sys                                                 421888   12/08/2026 9:09:57 am 
+C:\Windows\System32\drivers\xinputhid.sys                                               131072   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\ztdns.sys                                                   130424   14/10/2026 12:48:22 pm
+C:\Windows\System32\drivers\en-US\acpi.sys.mui                                          10752    1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\afd.sys.mui                                           23552    11/03/2026 10:14:50 am
+C:\Windows\System32\drivers\en-US\agilevpn.sys.mui                                      4096     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\ataport.sys.mui                                       7680     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\bfs.sys.mui                                           2560     15/04/2026 10:15:28 am
+C:\Windows\System32\drivers\en-US\bthenum.sys.mui                                       2560     10/06/2026 9:57:50 am 
+C:\Windows\System32\drivers\en-US\bthport.sys.mui                                       19456    10/06/2026 9:57:50 am 
+C:\Windows\System32\drivers\en-US\BTHUSB.SYS.mui                                        3584     10/06/2026 9:57:50 am 
+C:\Windows\System32\drivers\en-US\CAD.sys.mui                                           2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\cdrom.sys.mui                                         3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\cmimcext.sys.mui                                      4096     15/04/2026 10:15:22 am
+C:\Windows\System32\drivers\en-US\disk.sys.mui                                          6144     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\dmvsc.sys.mui                                         6144     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\dumpsd.sys.mui                                        7168     12/08/2026 9:10:28 am 
+C:\Windows\System32\drivers\en-US\EhStorTcgDrv.sys.mui                                  9728     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\fltmgr.sys.mui                                        8704     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\fvevol.sys.mui                                        30208    9/09/2026 8:52:07 am  
+C:\Windows\System32\drivers\en-US\hidbatt.sys.mui                                       2560     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\hidbth.sys.mui                                        5120     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\hidclass.sys.mui                                      13824    11/03/2026 10:14:41 am
+C:\Windows\System32\drivers\en-US\hnswfpdriver.sys.mui                                  3072     13/05/2026 7:27:21 pm 
+C:\Windows\System32\drivers\en-US\http.sys.mui                                          49152    11/02/2026 12:16:28 pm
+C:\Windows\System32\drivers\en-US\HvService.sys.mui                                     3072     15/07/2026 8:58:28 am 
+C:\Windows\System32\drivers\en-US\i8042prt.sys.mui                                      10752    1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\IndirectKmd.sys.mui                                   3072     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\iorate.sys.mui                                        2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\IPMIDRV.sys.mui                                       7168     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\isapnp.sys.mui                                        4096     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\kbdclass.sys.mui                                      4608     1/04/2024 9:00:29 pm  
+C:\Windows\System32\drivers\en-US\kbdhid.sys.mui                                        3072     1/04/2024 9:00:28 pm  
+C:\Windows\System32\drivers\en-US\l1vhlwf.sys.mui                                       12800    13/05/2026 7:27:21 pm 
+C:\Windows\System32\drivers\en-US\l2bridge.sys.mui                                      3072     13/05/2026 7:27:22 pm 
+C:\Windows\System32\drivers\en-US\luafv.sys.mui                                         7168     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\Microsoft.Bluetooth.AvrcpTransport.sys.mui            3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\modem.sys.mui                                         4096     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\mouclass.sys.mui                                      4608     1/04/2024 9:00:29 pm  
+C:\Windows\System32\drivers\en-US\mouhid.sys.mui                                        3072     1/04/2024 9:00:28 pm  
+C:\Windows\System32\drivers\en-US\mountmgr.sys.mui                                      3072     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\mrxsmb.sys.mui                                        109056   30/08/2025 9:29:55 am 
+C:\Windows\System32\drivers\en-US\mshidumdf.sys.mui                                     3072     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\mslldp.sys.mui                                        8704     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\msseccore.sys.mui                                     3072     9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\en-US\mssecflt.sys.mui                                      12680    9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\en-US\mssecwfp.sys.mui                                      12720    9/09/2026 8:52:03 am  
+C:\Windows\System32\drivers\en-US\MTConfig.sys.mui                                      3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\mup.sys.mui                                           14336    1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\ndis.sys.mui                                          72192    10/06/2026 9:58:01 am 
+C:\Windows\System32\drivers\en-US\ndiscap.sys.mui                                       6656     13/05/2026 7:27:23 pm 
+C:\Windows\System32\drivers\en-US\NdisImPlatform.sys.mui                                11776    1/04/2024 9:00:28 pm  
+C:\Windows\System32\drivers\en-US\ndisuio.sys.mui                                       3584     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\NdisVirtualBus.sys.mui                                2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\netvsc.sys.mui                                        16384    1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\ntfs.sys.mui                                          223232   1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\nvdimm.sys.mui                                        21504    1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\nvmedisk.sys.mui                                      6144     10/06/2026 9:58:12 am 
+C:\Windows\System32\drivers\en-US\nwifi.sys.mui                                         17920    1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\pacer.sys.mui                                         17920    1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\parport.sys.mui                                       4096     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\partmgr.sys.mui                                       4096     30/08/2025 9:29:35 am 
+C:\Windows\System32\drivers\en-US\pci.sys.mui                                           8704     31/10/2025 5:29:24 pm 
+C:\Windows\System32\drivers\en-US\pcmcia.sys.mui                                        4608     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\pdc.sys.mui                                           2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\PktMon.sys.mui                                        41472    30/08/2025 9:29:36 am 
+C:\Windows\System32\drivers\en-US\pmem.sys.mui                                          17920    1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\pnpmem.sys.mui                                        3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\processr.sys.mui                                      14848    30/08/2025 9:29:27 am 
+C:\Windows\System32\drivers\en-US\qwavedrv.sys.mui                                      3072     1/04/2024 9:00:29 pm  
+C:\Windows\System32\drivers\en-US\rdbss.sys.mui                                         6144     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\rdpdr.sys.mui                                         3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\refs.sys.mui                                          129024   14/10/2026 12:48:16 pm
+C:\Windows\System32\drivers\en-US\refsv1.sys.mui                                        8704     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\scfilter.sys.mui                                      3072     30/08/2025 9:29:55 am 
+C:\Windows\System32\drivers\en-US\scmbus.sys.mui                                        8704     1/04/2024 9:00:27 pm  
+C:\Windows\System32\drivers\en-US\scsiport.sys.mui                                      3584     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\sdbus.sys.mui                                         7168     12/08/2026 9:10:28 am 
+C:\Windows\System32\drivers\en-US\sdstor.sys.mui                                        3584     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\serial.sys.mui                                        10752    1/04/2024 9:00:29 pm  
+C:\Windows\System32\drivers\en-US\sermouse.sys.mui                                      5632     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\spaceport.sys.mui                                     116736   10/09/2025 11:20:03 am
+C:\Windows\System32\drivers\en-US\srv2.sys.mui                                          133120   15/04/2026 10:15:29 am
+C:\Windows\System32\drivers\en-US\storqosflt.sys.mui                                    9216     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\sysmondrv.sys.mui                                     2560     10/06/2026 9:57:54 am 
+C:\Windows\System32\drivers\en-US\tcpip.sys.mui                                         263680   10/06/2026 9:58:05 am 
+C:\Windows\System32\drivers\en-US\tpm.sys.mui                                           10752    14/10/2026 12:48:25 pm
+C:\Windows\System32\drivers\en-US\tsusbflt.sys.mui                                      3584     30/08/2025 9:29:56 am 
+C:\Windows\System32\drivers\en-US\tsusbhub.sys.mui                                      4608     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\tunnel.sys.mui                                        8704     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\usbhub.sys.mui                                        14848    1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\USBHUB3.SYS.mui                                       26624    1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\usbport.sys.mui                                       26624    1/04/2024 9:00:28 pm  
+C:\Windows\System32\drivers\en-US\usbstor.sys.mui                                       3072     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\USBXHCI.SYS.mui                                       39936    12/08/2026 9:10:28 am 
+C:\Windows\System32\drivers\en-US\vdrvroot.sys.mui                                      22016    6/09/2024 4:03:38 pm  
+C:\Windows\System32\drivers\en-US\VerifierExt.sys.mui                                   3584     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\vfpext.sys.mui                                        220160   12/08/2026 9:10:06 am 
+C:\Windows\System32\drivers\en-US\vhdmp.sys.mui                                         37376    15/07/2026 8:58:50 am 
+C:\Windows\System32\drivers\en-US\vmbus.sys.mui                                         3072     30/08/2025 9:30:04 am 
+C:\Windows\System32\drivers\en-US\vmstorfl.sys.mui                                      6144     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\vmswitch.sys.mui                                      114176   13/05/2026 7:27:17 pm 
+C:\Windows\System32\drivers\en-US\volmgrx.sys.mui                                       3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\volsnap.sys.mui                                       58880    10/06/2026 9:58:07 am 
+C:\Windows\System32\drivers\en-US\wacompen.sys.mui                                      4608     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\wdf01000.sys.mui                                      3584     30/08/2025 9:29:57 am 
+C:\Windows\System32\drivers\en-US\wfplwfs.sys.mui                                       3584     30/08/2025 9:29:35 am 
+C:\Windows\System32\drivers\en-US\winnat.sys.mui                                        29696    9/09/2026 8:52:17 am  
+C:\Windows\System32\drivers\en-US\wof.sys.mui                                           5632     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\en-US\ws2ifsl.sys.mui                                       2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\en-US\wudfpf.sys.mui                                        3072     10/06/2026 9:57:57 am 
+C:\Windows\System32\drivers\en-US\ztdns.sys.mui                                         7168     12/08/2026 9:10:22 am 
+C:\Windows\System32\drivers\etc\hosts                                                   827      8/02/2026 1:22:44 am  
+C:\Windows\System32\drivers\etc\hosts.ics                                               513      31/10/2026 2:09:05 pm 
+C:\Windows\System32\drivers\etc\lmhosts.sam                                             3683     21/09/2025 8:03:02 am 
+C:\Windows\System32\drivers\etc\networks                                                407      21/09/2025 8:03:02 am 
+C:\Windows\System32\drivers\etc\protocol                                                1358     21/09/2025 8:03:02 am 
+C:\Windows\System32\drivers\etc\services                                                17635    21/09/2025 8:03:02 am 
+C:\Windows\System32\drivers\NVIDIA Corporation\Drs                                               16/09/2026 9:58:21 pm 
+C:\Windows\System32\drivers\NVIDIA Corporation\license.txt                              55339    18/03/2026 12:37:32 pm
+C:\Windows\System32\drivers\NVIDIA Corporation\Drs\dbInstaller.exe                      828136   6/08/2026 10:02:56 am 
+C:\Windows\System32\drivers\NVIDIA Corporation\Drs\nvdrsdb.bin                          2170640  6/08/2026 9:30:54 am  
+C:\Windows\System32\drivers\UMDF\en-US                                                           16/04/2026 12:59:08 am
+C:\Windows\System32\drivers\UMDF\AppleUsbFilter.dll                                     134464   27/06/2023 6:51:58 pm 
+C:\Windows\System32\drivers\UMDF\EhStorPwdDrv.dll                                       106496   10/09/2025 11:19:45 am
+C:\Windows\System32\drivers\UMDF\HidLampArray.dll                                       87424    10/09/2025 11:19:45 am
+C:\Windows\System32\drivers\UMDF\HidTelephony.dll                                       196608   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\IddCx.dll                                              458752   14/10/2026 12:48:12 pm
+C:\Windows\System32\drivers\UMDF\Microsoft.Bluetooth.Profiles.HidOverGatt.dll           233472   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\netadaptercxum.dll                                     270336   14/10/2026 12:48:14 pm
+C:\Windows\System32\drivers\UMDF\NfcCx.dll                                              790528   10/06/2026 9:58:02 am 
+C:\Windows\System32\drivers\UMDF\PosCx.dll                                              53248    6/09/2024 4:02:38 pm  
+C:\Windows\System32\drivers\UMDF\SecureUSBVideo.dll                                     90928    14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\SensorsCx.dll                                          307200   14/10/2026 12:48:18 pm
+C:\Windows\System32\drivers\UMDF\SMCCx.dll                                              73728    10/09/2025 11:19:59 am
+C:\Windows\System32\drivers\UMDF\UcmCx.dll                                              217088   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\UMDF\usbdr.dll                                              167936   14/10/2026 12:48:20 pm
+C:\Windows\System32\drivers\UMDF\UsbXhciCompanion.dll                                   195104   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\WpdFs.dll                                              307200   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\WpdMtpDr.dll                                           966656   14/10/2026 12:48:03 pm
+C:\Windows\System32\drivers\UMDF\en-US\hidscanner.dll.mui                               2560     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\UMDF\en-US\IddCx.dll.mui                                    5120     30/08/2025 9:29:33 am 
+C:\Windows\System32\drivers\UMDF\en-US\idtsec.dll.mui                                   10752    1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\UMDF\en-US\mgtdyn.dll.mui                                   10752    1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\UMDF\en-US\Microsoft.Bluetooth.Profiles.HidOverGatt.dll.mui 5120     1/04/2024 9:00:25 pm  
+C:\Windows\System32\drivers\UMDF\en-US\SensorsCx.dll.mui                                2560     15/04/2026 10:15:29 am
+C:\Windows\System32\drivers\UMDF\en-US\UsbccidDriver.dll.mui                            7168     30/08/2025 9:29:59 am 
+C:\Windows\System32\drivers\UMDF\en-US\wpdmtpdr.dll.mui                                 3072     1/04/2024 9:00:26 pm  
+C:\Windows\System32\drivers\UMDF\en-US\WUDFUsbccidDriver.dll.mui                        7168     30/08/2025 9:30:04 am 
+C:\Windows\System32\drivers\wd\KslD.sys                                                 333192   7/11/2025 2:10:51 pm  
+C:\Windows\System32\drivers\wd\WdBoot.sys                                               20864    7/11/2025 2:10:51 pm  
+C:\Windows\System32\drivers\wd\WdDevFlt.sys                                             283016   7/11/2025 2:10:51 pm  
+C:\Windows\System32\drivers\wd\WdFilter.sys                                             629128   7/11/2025 2:10:51 pm  
+C:\Windows\System32\drivers\wd\WdNisDrv.sys                                             102792   7/11/2025 2:10:51 pm  
+
+
+
+---- C:\Program Files\EA\AC
+
+FullName                                              Length LastWriteTime         
+--------                                              ------ -------------         
+C:\Program Files\EA\AC\EAAntiCheat.GameService.dll  64006392 22/10/2026 12:01:56 pm
+C:\Program Files\EA\AC\EAAntiCheat.GameService.exe 193572600 22/10/2026 12:01:56 pm
+C:\Program Files\EA\AC\EAAntiCheat.Installer.exe   282016504 26/10/2026 4:32:46 pm 
+C:\Program Files\EA\AC\preloader_s.dll                 46840 22/10/2026 12:02:42 pm
+
+
+
+---- C:\ProgramData\eaanticheat
+
+FullName                              Length LastWriteTime        
+--------                              ------ -------------        
+C:\ProgramData\eaanticheat\Crashdumps        30/09/2026 9:14:48 am
+
+
+
+---- C:\Windows\Temp
+
+---- C:\Users\New User\AppData\Local\Electronic Arts
+
+FullName                                                                                                                                           Length   LastWriteTime         
+--------                                                                                                                                           ------   -------------         
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop                                                                                                  1/11/2026 2:16:58 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2                                                                                              27/06/2026 2:39:56 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF                                                                                              8/08/2026 9:44:29 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync                                                                                        1/11/2026 2:39:53 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache                                                                                         16/10/2026 9:22:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs                                                                                             31/10/2026 7:09:04 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\OfflineCache                                                                                     27/06/2026 2:39:36 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\OTT                                                                                              27/06/2026 2:39:57 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SEC                                                                                              27/06/2026 3:39:47 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork                                                                                    26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\UIC                                                                                              31/10/2026 7:09:04 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cookie.ini                                                                              384      1/11/2026 2:16:58 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\telemetry.ini                                                                           52       27/06/2026 2:39:36 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\user_12342777894904493042.ini                                                           489      12/08/2026 3:52:29 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\user_6324283081715137738.ini                                                            507      1/11/2026 2:39:41 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\AC2\production                                                                                   8/08/2026 9:44:33 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\2                                                                                            8/08/2026 9:44:29 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\BrowserCache                                                                                 27/06/2026 2:39:36 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\Dictionaries                                                                                 27/06/2026 2:39:46 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\WidevineCdm                                                                                  27/06/2026 2:39:36 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\CEF\LocalPrefs.json                                                                     657      5/08/2026 9:04:16 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\185235_71530.back                                                             122      8/08/2026 9:44:38 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\185235_71530.lastsync                                                         444      8/08/2026 10:28:02 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\185235_71530.user                                                             34       8/08/2026 9:44:37 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\194908_194908.lastsync                                                        716      27/10/2026 10:15:29 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\194908_194908.user                                                            34       27/06/2026 3:39:18 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\198281_198281.lastsync                                                        382      12/08/2026 3:52:19 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\cloudsync\198281_198281.user                                                            34       12/08/2026 8:25:18 am 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_84DB91648F3A1D443E330B2C1FB69D85_06EF18DA30F3D43DC336A6D34AF7C161.igo     56       27/06/2026 3:00:41 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_84DB91648F3A1D443E330B2C1FB69D85_677F5DAF96328CA2F4CA1CC18CB62891.igo     56       2/09/2026 8:43:34 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_84DB91648F3A1D443E330B2C1FB69D85_879F11691F7D802C1A8D8974C6943B82.igo     56       14/10/2026 10:03:35 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_84DB91648F3A1D443E330B2C1FB69D85_8CD3C5A9C48A8C34814F3D0A8DE9D723.igo     56       1/11/2026 2:16:59 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_84DB91648F3A1D443E330B2C1FB69D85_EE5C3D344FF937FB13D668B6D9F81C90.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_C3092B77FCA2EB3D3A3F3759EDF08980_6D1CF995CF8BF65450285935EE826211.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_C3092B77FCA2EB3D3A3F3759EDF08980_B1F7EAC1031D8CFB6B8E080BAB4976D1.igo     56       2/09/2026 8:43:35 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_C3092B77FCA2EB3D3A3F3759EDF08980_D68B996A015CDCCA1D3106959C758EB4.igo     56       1/11/2026 2:17:00 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_C3092B77FCA2EB3D3A3F3759EDF08980_EF1DC965FBC7903CB66D68FD97AF35BE.igo     56       27/06/2026 3:00:42 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX10_C3092B77FCA2EB3D3A3F3759EDF08980_F7CA7701C2AB7E854ED507BE28117594.igo     56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_10E0AEB6C8D2B9263E14C99ECCFD6D70_06EF18DA30F3D43DC336A6D34AF7C161.igo     56       27/06/2026 3:00:41 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_5301822020F69E3AFC4B6DD4226E3974_EE5C3D344FF937FB13D668B6D9F81C90.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_5B9476F1E78F0BDF411DBEA81316C021_F7CA7701C2AB7E854ED507BE28117594.igo     56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_5E98A70D2AED08D0B68EDF28CEB5A893_EF1DC965FBC7903CB66D68FD97AF35BE.igo     56       27/06/2026 3:00:42 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_762CBF31CD6E775C1B431D9DE0B591DE_8CD3C5A9C48A8C34814F3D0A8DE9D723.igo     56       1/11/2026 2:16:59 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_83CABFBEEE0BA96926CB3320E6907F7D_879F11691F7D802C1A8D8974C6943B82.igo     56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_84821966C1FD5AF8BDB9000D9F5A77B3_677F5DAF96328CA2F4CA1CC18CB62891.igo     56       2/09/2026 8:43:34 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_C11411B46A6478DBA2E4462EDD75969F_D68B996A015CDCCA1D3106959C758EB4.igo     56       1/11/2026 2:17:00 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_C7059B2A475B7675529A3EA925D82388_6D1CF995CF8BF65450285935EE826211.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX11_CD67C5DA619BFF7DBBE9570DE06E508C_B1F7EAC1031D8CFB6B8E080BAB4976D1.igo     56       2/09/2026 8:43:35 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_0EDA6A1466D011402C66CB940B07F588_D68B996A015CDCCA1D3106959C758EB4.igo     56       1/11/2026 2:17:00 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_1982271E32949F9AE4176C1DF5DD5718_B1F7EAC1031D8CFB6B8E080BAB4976D1.igo     56       2/09/2026 8:43:35 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_2534FED575E65FCF062DA153D61A595C_F7CA7701C2AB7E854ED507BE28117594.igo     56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_49361FC8CBDFC6C7E10F92F38E8AC38E_6D1CF995CF8BF65450285935EE826211.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_49D1A61816C66B1E3B8466D6AFBAE06F_8CD3C5A9C48A8C34814F3D0A8DE9D723.igo     56       1/11/2026 2:16:59 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_5C256DDC8FF7A9CEABDAE78F8F975CF5_06EF18DA30F3D43DC336A6D34AF7C161.igo     56       27/06/2026 3:00:41 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_92A6121E003363D7BF66BF77A97FB8F9_879F11691F7D802C1A8D8974C6943B82.igo     56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_B6CFECA97C7DDF69AA5D3BDF6EE0FD4F_EF1DC965FBC7903CB66D68FD97AF35BE.igo     56       27/06/2026 3:00:42 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_C562537B3E8C9F056E0B09F4A253E7B4_EE5C3D344FF937FB13D668B6D9F81C90.igo     56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX12_EFE5FEC755FA3838C4B89376A431DD20_677F5DAF96328CA2F4CA1CC18CB62891.igo     56       2/09/2026 8:43:34 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX8_19B6DE2AE290BF22C492910E6CB280D4.igo                                       56       1/11/2026 2:16:59 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX8_31EF9F36CB6B6B31CC6F4F5DC1159AA6.igo                                       56       15/08/2026 1:09:17 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX8_E99DAC42021CCA4DB2B6C7D1D8A3122B.igo                                       56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_2A93AF0E0830AFD8DA4130A06EACADF9.igo                                       56       27/06/2026 3:00:41 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_3A3BB5760E32BEFA2BAA36D6783D9D4A.igo                                       56       2/09/2026 8:43:34 am  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_45CA3E76858A6EAB6F1A05149649ACE2.igo                                       56       27/06/2026 3:00:42 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_648E3DBE120559033DB3EFC87B52B263.igo                                       56       1/11/2026 2:17:00 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_865782EE99DA4E3F737389B7A4942C76.igo                                       56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_A1DB3F4AAF3E6A5BEFBAB5C6A5156EA7.igo                                       56       1/11/2026 2:16:59 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_F76A3B42460281F33FB7D23F444F590C.igo                                       56       14/10/2026 10:03:35 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_F9135FA5A1FF3AB3E46B58EF5AFF501B.igo                                       56       14/10/2026 10:03:36 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\IGOCache\DX9_FEE77F6CB21E8EF8F9269CDCDFCE1241.igo                                       56       12/08/2026 3:52:27 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\cef.log                                                                            44668    31/10/2026 7:11:00 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EAapp_OnlineActivation_Log.html                                                    21332    29/09/2026 9:10:55 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EADesktop.bak                                                                      4194414  13/10/2026 11:56:25 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EADesktop.exe.txt                                                                  30063    12/08/2026 8:31:04 am 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EADesktop.log                                                                      2713408  31/10/2026 11:25:56 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EADesktopVerbose.bak                                                               12583088 27/10/2026 7:35:00 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EADesktopVerbose.log                                                               4635893  31/10/2026 11:25:56 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALauncher.log                                                                     130283   31/10/2026 7:29:04 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALauncherVerbose.log                                                              144122   31/10/2026 7:29:04 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALaunchHelper.log                                                                 515770   1/11/2026 2:39:41 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALaunchHelperVerbose.log                                                          1852888  1/11/2026 2:39:41 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALocalHostSvc.log                                                                 232399   31/10/2026 11:25:39 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EALocalHostSvcVerbose.log                                                          806486   31/10/2026 11:25:39 pm
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EASteamProxy.log                                                                   110510   12/08/2026 3:53:31 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\EASteamProxyVerbose.log                                                            184393   12/08/2026 3:53:31 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\IGOProxy_EADesktop.log                                                             4037     31/10/2026 7:09:04 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\IGOProxy_IGOProxy32.log                                                            2713     31/10/2026 7:09:05 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\IGO_EADesktop_3136.log                                                             824      31/10/2026 7:09:00 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\Link2EA.log                                                                        105048   12/08/2026 3:52:29 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\Logs\Link2EAVerbose.log                                                                 300962   12/08/2026 3:52:29 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\OfflineCache\CDC                                                                                 27/06/2026 2:39:36 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\OfflineCache\Telemetry                                                                           1/11/2026 2:39:12 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\OTT\OTT                                                                                 176      1/11/2026 2:39:12 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SEC\production                                                                                   8/08/2026 9:44:49 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork\2125f16830e028f924539ec7e171ab2b104cef73c6611909b5f2bfaabfc76a7c-hero.jpg 342301   26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork\2125f16830e028f924539ec7e171ab2b104cef73c6611909b5f2bfaabfc76a7c.alias    64       26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork\3efe3d70ac226b3aebf1c30980795feaf7d11d2c30ef9fe6916bf90d1f174f2f.alias    64       26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork\a21c9a9e3744688270f2f9eab9a8dfb19ac6fc5309b706d296da01afbfd73773.alias    64       26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\SplashArtwork\e9b1c79c1e65c88253c4f137c59bd05018f2127d6b6b6fbcdff9859f8e2e344c.alias    64       26/10/2026 4:30:51 pm 
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\UIC\AI                                                                                  8724     1/11/2026 2:17:00 pm  
+C:\Users\New User\AppData\Local\Electronic Arts\EA Desktop\UIC\PI                                                                                  436      1/11/2026 2:17:00 pm  
+
+
+
+MISSING C:\Users\New User\AppData\Local\EAAntiCheat
+MISSING C:\Users\New User\AppData\Roaming\EAAntiCheat
+---- whole-drive eaanticheat* (depth 6)

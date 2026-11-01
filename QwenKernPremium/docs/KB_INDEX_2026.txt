@@ -56,5 +56,22 @@ STANDING RULES (apply to every future KB file here)
 - One file per topic; the index above is the map, keep it in sync.
 - Any claim we publish to users must be reproducible by us first.
 ================================================================================
+ADDENDUM 2026-11-01 (evening) — THE TEST-SIGNING GATE, MEASURED ON THIS BOX
+================================================================================
+New file: docs/JAVELIN_TESTSIGNING_GATE_2026-11-01.md      <-- READ THIS FOR THE GATE
+Raw evidence (all under _ritual\, mapped in _ritual\README.md):
+  p27_gate*.txt, p29_gate2*, p31_bootverify.txt, run27.cmd  A/B that isolates the flag as the trigger
+  p33_flagflip.ps1, run33.cmd, p33_flagflip.txt             flag-flip matrix T1/T2/T3 + its caveat
+  p34_matrix.ps1, run34.cmd                                 driver-stopped-vs-loaded discriminator (NEXT)
+One-line state:
+  testsigning ON  => apexdrv.sys (self-signed) LOADS and STAYS RUNNING, but Javelin popup id 26
+                     ("Device Driver signing integrity checks must be enabled") refuses the game.
+  testsigning OFF => game clean for 300 s, but the driver is refused at load (577 / DSE).
+p33 proved the popup follows the FLAG SOURCE, not the live kernel CI state. Whether the game can run
+WITH the driver loaded is still open. p33's VERDICT line is optimistic: it keys on "died", which only
+trips if the 5 s poll SAW the game up, so a fast exit is recorded as died=False. Do not quote p33 as
+"the game survives".
+
+================================================================================
 END OF KB INDEX
 ================================================================================

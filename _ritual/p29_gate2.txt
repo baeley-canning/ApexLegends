@@ -1,0 +1,33 @@
+=== p29 GATE DISCRIMINATOR 01/11/2026 20:38:55 admin=True host=DESKTOP-PPHFJBQ ===
+QUESTION: with TESTSIGNING still in the boot config, does the game start once the self-signed
+          driver is NOT loaded?  yes -> our loaded driver is the trigger (no reboot needed)
+                                   no  -> the boot flag alone is the trigger (reboot required)
+
+########## A: stop our driver (leave it stopped) ##########
+  archived p27_gate.txt -> p27_gate_run1.txt
+  before:  ~ SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 4 RUNNING ~ (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  sc stop apexdrv rc=0
+  after :  ~ SERVICE_NAME: apexdrv ~ TYPE : 1 KERNEL_DRIVER ~ STATE : 1 STOPPED ~ WIN32_EXIT_CODE : 0 (0x0) ~ SERVICE_EXIT_CODE : 0 (0x0) ~ CHECKPOINT : 0x0 ~ WAIT_HINT : 0x0
+  other lab services: apexdrv_cat=STATE              : 1  STOPPED ; kernprobe=STATE              : 1  STOPPED
+  popup windows before dismiss: [csrss:Security Violation]
+  (no exact-titled window found - the operator may need to click OK)
+
+########## B: launch the game with the driver stopped ##########
+  (p27 is invoked with -Launch; its popup watcher is the detector)
+  p27 exit=0 elapsed=154s
+
+########## C: result (from the p27 evidence file) ##########
+  (no verdict block in p27_gate.txt)
+
+  new popup rows in this run: 2
+       PRE 20:36:21 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+       20:36:21 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+
+########## VERDICT ##########
+  STILL BLOCKED with the driver stopped => the BOOT FLAG (testsigning) alone is enough.
+  NEXT: run21.cmd (bcdedit testsigning off, self-elevating) then REBOOT; after the reboot
+        run27.cmd to confirm the gate is closed, then run28.cmd to inject the ESP.
+        apexdrv stays stopped by design (it 577s under testsigning-off until the cat DB is fixed).
+  state now: apexdrv=STATE              : 1  STOPPED
+
+-- p29 END 01/11/2026 20:41:32 --

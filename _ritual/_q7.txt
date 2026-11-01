@@ -1,0 +1,16 @@
+apexdrv apexdrv apexdrv Kernel Manual Stopped OK FALSE FALSE 0 4,096 0 1/11/2026 2:32:25 am \??\C:\Users\New User\OneDrive\Desktop\cheating\ 4,096 
+apexdrv_cat p26 cat DSE test p26 cat DSE test Kernel Manual Stopped OK FALSE FALSE 0 4,096 0 1/11/2026 2:32:25 am \??\C:\p26cat\apexdrv_build.sys 4,096 
+EhStorTcgDrv Microsoft driver for s Microsoft driver for s Kernel Manual Stopped OK FALSE FALSE 8,192 86,016 0 C:\WINDOWS\system32\drivers\EhStorTcgDrv.sys 4,096 
+gdrv3 gdrv3 gdrv3 Kernel Manual Running OK TRUE FALSE 8,192 20,480 0 11/09/2024 3:09:58 pm \??\C:\WINDOWS\System32\drivers\gdrv3.sys 4,096 
+kernprobe ApexDrv kernprobe (p25 ApexDrv kernprobe (p25 Kernel Manual Stopped OK FALSE FALSE 0 4,096 0 1/11/2026 2:32:25 am \??\C:\Windows\System32\drivers\apexdrv.sys 4,096 
+MSIO MSIO MSIO Kernel System Running OK TRUE FALSE 0 4,096 0 11/12/2023 7:39:57 pm \??\C:\WINDOWS\system32\drivers\MsIo64.sys 4,096 
+VBoxNetAdp VirtualBox NDIS 6.0 Mi VirtualBox NDIS 6.0 Mi Kernel Manual Running OK TRUE FALSE 0 131,072 0 20/10/2026 7:31:47 am C:\WINDOWS\system32\DRIVERS\VBoxNetAdp6.sys 4,096 
+VBoxNetLwf VirtualBox NDIS6 Bridg VirtualBox NDIS6 Bridg Kernel System Running OK TRUE FALSE 0 135,168 0 20/10/2026 7:31:47 am C:\WINDOWS\system32\DRIVERS\VBoxNetLwf.sys 4,096 
+VBoxSup VirtualBox Service VirtualBox Service Kernel System Running OK TRUE FALSE 0 684,032 0 20/10/2026 7:34:28 am C:\WINDOWS\system32\DRIVERS\VBoxSup.sys 4,096 
+VBoxUSBMon VirtualBox USB Monitor VirtualBox USB Monitor Kernel System Running OK TRUE FALSE 0 118,784 0 20/10/2026 7:31:47 am C:\WINDOWS\system32\DRIVERS\VBoxUSBMon.sys 4,096 
+voicemodvad Voicemod Driver Voicemod Driver Kernel Manual Running OK TRUE FALSE 32,768 12,288 0 8/10/2025 8:51:14 pm C:\WINDOWS\system32\DriverStore\FileRepository\v 4,096 
+xinputhid XINPUT HID Filter Driv XINPUT HID Filter Driv Kernel Manual Stopped OK FALSE FALSE 8,192 77,824 0 C:\WINDOWS\system32\drivers\xinputhid.sys 4,096 
+Xvdd XVDD Port Driver XVDD Port Driver Kernel Manual Running OK TRUE FALSE 4,096 544,768 0 C:\WINDOWS\system32\DriverStore\FileRepository\x 4,096 
+
+Filter listing failed with error: 0x80070005
+Access is denied.

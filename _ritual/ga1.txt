@@ -1,0 +1,49 @@
+﻿VBoxManage.exe : 
+VBoxManage.exe: 
+error: Guest 
+Additions are not 
+installed or not 
+ready (yet)
+At line:1 char:134
++ ...  stat ==="; & 
+$vb guestcontrol 
+'Win11-Test2' stat 
+'C:\' --username vb 
+...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...n    
+ot ready (yet):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code VBOX_E_GSTCTL_G
+UEST_ERROR 
+(0x80bb000f), 
+component 
+GuestWrap, 
+interface IGuest, 
+callee IUnknown
+VBoxManage.exe: 
+error: Context: "Cre
+ateSession(Bstr(pCtx
+->strUsername).raw()
+, Bstr(pCtx->strPass
+word).raw(), Bstr(pC
+tx->strDomain).raw()
+, Bstr(pszSessionNam
+e).raw(), pCtx->pGue
+stSession.asOutParam
+())" at line 751 of 
+file VBoxManageGuest
+Ctrl.cpp
