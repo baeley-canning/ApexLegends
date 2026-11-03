@@ -1,0 +1,19 @@
+﻿now=10:40:27
+--- powershell processes ---
+pid=15124 ppid=11140 start=11/02/2026 10:32:06 cmd=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+pid=19964 ppid=18776 start=11/02/2026 10:32:15 cmd=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+pid=14764 ppid=18776 start=11/02/2026 10:40:12 cmd=C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+--- pwsh processes ---
+--- p36_write.txt tail ---
+
+  io: issued=1134 skipped_not_ram=230 lastPa=0x104f68
+########## VERDICT ##########
+  W1 \\Device\\PhysicalMemory phys R/W : no
+  W2 MsIo64 map (fallback)           : no
+  W3 gdrv3 map/copy                  : see above
+  X  ntoskrnl=False cr3=False cioptions=False
+  *** NO WRITE PRIMITIVE ***
+      => driver-loaded-on-a-normal-boot is unreachable until one of W1/W2 lands.
+      Next variable: MsIo64 struct shape from temp\drv\msio_1500.txt, or a
+      second provider (the box has gdrv3 + MsIo only).
+-- p36 END 02/11/2026 10:39:22 --

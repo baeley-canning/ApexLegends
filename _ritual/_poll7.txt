@@ -1,0 +1,13 @@
+﻿now=10:34:16
+PROCESS 22164 NOT FOUND
+--- io tail ---
+  [io] read pa=0x4300000 size=0x4
+  [io] read pa=0x4400000 size=0x4
+--- write tail ---
+  size 0x4000 ok (first=00)
+  size 0x10000 FAIL read pa=0x100000 size=0x10000 err=1450
+  size 0x20000 FAIL read pa=0x100000 size=0x20000 err=1450
+--- task ---
+Ready
+--- badpa raw ---
+55

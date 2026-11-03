@@ -1,0 +1,210 @@
+=== 1001/41/6008/1074/1076 (48h, full text) ===
+--- 11-01 21:11:38 id=1074 [User32]
+The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: 
+--- 11-01 21:12:12 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-01 21:54:39 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-01 21:54:45 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8046fe34b4a, 0xffff9c8e5551e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110126-9437-01.dmp. Report Id: bcb4f505-9b9d-4d89-9f9e-a4c094426969.
+--- 11-01 21:54:46 id=6008 [EventLog]
+The previous system shutdown at 9:53:48 PM on ?11/?1/?2026 was unexpected.
+--- 11-01 22:31:38 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-01 22:31:44 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80157c34b4a, 0xffffdd04d444e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110126-9718-01.dmp. Report Id: 3caeb360-7b80-4ace-8883-a732112c4fac.
+--- 11-01 22:31:45 id=6008 [EventLog]
+The previous system shutdown at 10:30:46 PM on ?11/?1/?2026 was unexpected.
+--- 11-01 23:55:04 id=1074 [User32]
+The process C:\Windows\System32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: QKP: reboot to activate Windows Hypervisor Platform (VM start fix)
+--- 11-01 23:55:59 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-02 00:00:24 id=1074 [User32]
+The process C:\Windows\System32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: QKP: reboot to activate Hyper-V Hypervisor for WHP
+--- 11-02 00:01:38 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-02 00:45:02 id=1074 [User32]
+The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: WHP fix test: VBS disabled, rebooting
+--- 11-02 00:45:56 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-02 01:20:21 id=1074 [User32]
+The process C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\StartMenuExperienceHost.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: Other (Unplanned)  Reason Code: 0x0  Shutdown Type: restart  Comment: 
+--- 11-02 01:20:34 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-02 01:23:44 id=1074 [User32]
+The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: Rebooting to verify the EA/VirtualBox boot fix. Save your work! Cancel: shutdown /a
+--- 11-02 01:25:49 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-02 02:00:46 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 02:00:52 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8035d274b4a, 0xfffffb81009de790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9265-01.dmp. Report Id: fedcbbb8-c244-4fef-b186-a8567811a2b3.
+--- 11-02 02:00:52 id=6008 [EventLog]
+The previous system shutdown at 2:00:15 AM on ?11/?2/?2026 was unexpected.
+--- 11-02 10:17:48 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 10:17:54 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff803720a4b4a, 0xffffb90523ef6790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9203-01.dmp. Report Id: 35d09b16-e6a9-4ad6-a566-36faf7b6e5aa.
+--- 11-02 10:17:54 id=6008 [EventLog]
+The previous system shutdown at 10:16:57 AM on ?11/?2/?2026 was unexpected.
+--- 11-02 10:29:49 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 10:29:55 id=6008 [EventLog]
+The previous system shutdown at 10:28:54 AM on ?11/?2/?2026 was unexpected.
+--- 11-02 10:29:56 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80353fc4b4a, 0xffff81097ff8e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10593-01.dmp. Report Id: 06195f3e-4085-416d-8dc2-562a4cc19714.
+--- 11-02 14:03:15 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 14:03:22 id=6008 [EventLog]
+The previous system shutdown at 2:01:57 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 14:03:23 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80631664b2f, 0xffff858af8c7e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10890-02.dmp. Report Id: 6a53e180-254e-4e8e-bc8b-6f3a16846863.
+--- 11-02 14:10:03 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 14:10:09 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80119632e81, 0xfffff6085f8de7a0, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9375-01.dmp. Report Id: c82ba694-2999-4686-b1bc-1f2be6f90d05.
+--- 11-02 14:10:10 id=6008 [EventLog]
+The previous system shutdown at 2:09:22 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 14:38:44 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 14:38:51 id=6008 [EventLog]
+The previous system shutdown at 2:38:10 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 14:38:51 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8006d1e4b92, 0xffff9987026be790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10171-01.dmp. Report Id: d541e7fd-9d1d-4383-941e-5315ebf1965b.
+--- 11-02 15:12:40 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 15:12:47 id=6008 [EventLog]
+The previous system shutdown at 3:11:51 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 15:12:47 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff801794f4b92, 0xffffb7088a7be790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10671-01.dmp. Report Id: c9ed3b51-67df-4123-a61b-aee250502e81.
+--- 11-02 15:33:51 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 15:33:57 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80646c34b92, 0xffff908ad2cb6790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9359-01.dmp. Report Id: 4e339b97-ce8f-4075-bf38-a1b9b617e7be.
+--- 11-02 15:33:58 id=6008 [EventLog]
+The previous system shutdown at 3:32:47 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 15:43:49 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 15:43:56 id=6008 [EventLog]
+The previous system shutdown at 3:42:58 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 15:43:57 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80635b34b92, 0xffff8686f1116790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10421-01.dmp. Report Id: 9a42aec4-5d5b-47b0-8f75-ad7e9712be4a.
+--- 11-02 15:54:08 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 15:54:14 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8073c004b92, 0xffffc389dcbde790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9312-01.dmp. Report Id: cd4e532f-578b-4013-8db4-dd9d850777e9.
+--- 11-02 15:54:15 id=6008 [EventLog]
+The previous system shutdown at 3:52:56 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 16:00:28 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 16:00:34 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80347e74b92, 0xffffd3075310e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9625-01.dmp. Report Id: e41f0093-c199-4d6f-ab7b-debaaed4c00e.
+--- 11-02 16:00:35 id=6008 [EventLog]
+The previous system shutdown at 3:59:15 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 18:19:36 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 18:19:43 id=6008 [EventLog]
+The previous system shutdown at 4:16:35 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 21:26:33 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 21:26:40 id=6008 [EventLog]
+The previous system shutdown at 9:25:43 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 21:26:41 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80360904b92, 0xfffff9838068e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10578-01.dmp. Report Id: 0a5dbd2c-83b7-45ab-9c0c-6ea244afea7a.
+--- 11-02 23:05:48 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-02 23:05:54 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x000000be (0xfffff80114532007, 0x8900000136a20121, 0xffff878f9186efe0, 0x000000000000000b). A dump was saved in: C:\WINDOWS\Minidump\110226-9531-01.dmp. Report Id: 87bfd7bb-b145-4c20-b80f-34e54c48bc8b.
+--- 11-02 23:05:55 id=6008 [EventLog]
+The previous system shutdown at 11:04:40 PM on ?11/?2/?2026 was unexpected.
+--- 11-02 23:37:26 id=1074 [User32]
+The process C:\WINDOWS\system32\shutdown.exe (DESKTOP-PPHFJBQ) has initiated the restart of computer DESKTOP-PPHFJBQ on behalf of user DESKTOP-PPHFJBQ\New User for the following reason: No title for this reason could be found  Reason Code: 0x800000ff  Shutdown Type: restart  Comment: h1z: hypervisor off, reboot for DSE retry
+--- 11-02 23:37:46 id=109 [Microsoft-Windows-Kernel-Power]
+The kernel power manager has initiated a shutdown transition.  Action: Power Action Reboot  Event Code: 0x0  Reason: Kernel API
+--- 11-03 03:05:05 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-03 03:05:11 id=6008 [EventLog]
+The previous system shutdown at 3:04:16 AM on ?11/?3/?2026 was unexpected.
+--- 11-03 03:05:12 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa3a023e44bd3b660, 0xb3b7306a9e5929ed, 0xfffff8007a302004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-10125-01.dmp. Report Id: 77e2b64b-5397-405a-879a-6f283cca04c5.
+--- 11-03 07:21:23 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-03 07:21:29 id=6008 [EventLog]
+The previous system shutdown at 7:20:14 AM on ?11/?3/?2026 was unexpected.
+--- 11-03 07:21:30 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa39fefe2ef29e744, 0xb3b6fc6941adda49, 0xfffff80366882004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-10140-01.dmp. Report Id: 07db1b8c-340c-46ee-a42a-51f8f218af3e.
+--- 11-03 19:24:06 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-03 19:24:12 id=6008 [EventLog]
+The previous system shutdown at 8:01:29 AM on ?11/?3/?2026 was unexpected.
+--- 11-03 20:37:52 id=41 [Microsoft-Windows-Kernel-Power]
+The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+--- 11-03 20:37:58 id=6008 [EventLog]
+The previous system shutdown at 8:37:12 PM on ?11/?3/?2026 was unexpected.
+--- 11-03 20:37:59 id=1001 [Microsoft-Windows-WER-SystemErrorReporting]
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa39fe6df8638da4b, 0xb3b6f365d8bccd50, 0xfffff80767242004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-9906-01.dmp. Report Id: 7d5959b8-78aa-4abe-91b0-0c01ca046ad7.
+=== DUMPS ===
+=== _ritual files touched tonight (after 19:00) ===
+19:57:34  _now.txt
+20:16:43  h2_prep.ps1
+20:17:00  h2_prep.txt
+20:17:43  _h1a_klist.txt
+20:17:43  _h1a.txt
+20:18:57  h1_host.txt
+20:20:32  h2_task.ps1
+20:21:35  _ea_pre.jpg
+20:21:35  _ocr_ea_pre.txt
+20:22:21  _ocr_ea_pre2.txt
+20:28:56  _sg1.txt
+20:28:58  _sg1.jpg
+20:29:30  _sg2.txt
+20:29:34  _sg2.jpg
+20:30:13  _sg3.jpg
+20:30:43  _sg4.txt
+20:30:48  _sg4.jpg
+20:31:22  _sg5.txt
+20:31:23  _sg5b.txt
+20:31:27  _sg5.jpg
+20:32:30  _sg6.jpg
+20:33:02  _sg7.txt
+20:33:07  _sg7.jpg
+20:35:46  _sg8.jpg
+20:36:55  sig.ps1
+20:37:24  _sig_err.txt
+20:37:24  _sg8.txt
+20:57:06  _post1.txt
+20:57:06  _post1.out.txt
+20:57:39  _p36_retry.log
+20:58:28  _crash1.txt
+20:58:59  _crash2.txt
+=== apexdrv now ===
+
+SERVICE_NAME: apexdrv 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 577  (0x241)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: apexdrv
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : \??\C:\Windows\System32\drivers\apexdrv.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : QwenKern apexdrv
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+
+=== driver file ===
+11-01 14:00  10152  9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+=== CEA/CI ===
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config
+    VulnerableDriverBlocklistEnable    REG_DWORD    0x0
+
+

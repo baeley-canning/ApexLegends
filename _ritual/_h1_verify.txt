@@ -1,0 +1,56 @@
+PARSE_ERRORS=0
+ 108         $od = $script:lastOut
+ 109         if($od -match 'revoked' -or $od -match '0xC0000603'){ W ('  prv ' + $id + ' DEAD cert-revoked'); continue }
+ 110         if($od -match 'Unable to load'){ W ('  prv ' + $id + ' DEAD load refused'); continue }
+ 111         if($od -match 'not available' -or $od -match 'Unknown provider'){ W ('  prv ' + $id + ' unavailable'); continue }
+ 112         if($od -match 'verification succeeded'){ W ('  prv ' + $id + ' DSE WRITE VERIFIED'); $winner = $id; $dseOpened = $true; break }
+ 113         W ('  prv ' + $id + ' no verdict (rc ignored by design)')
+ 114     }
+ 115     W ('WINNER=' + $winner)
+ 116     if($winner -lt 0){ W '=== VERDICT ==='; W 'RESULT: FAIL - no provider wrote DSE (blocklist / revocation)'; return }
+ 117 
+ 118     # ---- capture the boot value that was just overwritten -----------------------
+ 119     # PatchGuard hashed this dword at boot. Restoring a constant (6) leaves the byte different ->
+ 120     # 0x109 CRITICAL_STRUCTURE_CORRUPTION ~20 min later (param4=0 generic data region, param3=this VA).
+ 121     $null = $script:lastOut -match 'value:\s*(\d+)\s*,\s*new value to be written'
+ 122     if($Matches){ $preDse = [int]$Matches[1] }
+ 123     W ('  PRE-DSE=' + $preDse + ' (restore target, kdu-printed)')
+ 124 
+ 125     # ---- load ------------------------------------------------------------------
+ 126     W ''
+ 127     W '## STEP load: sc start apexdrv inside the open window'
+ 128     $rcLoad = Svc ('start ' + $svc) 8000
+ 129     Start-Sleep 2
+ 130     $loaded = DrvRunning
+ 131     W ('  start rc=' + $rcLoad + ' RUNNING=' + $loaded + ' :: ' + (((& sc.exe query $svc 2>&1) | Select-String 'STATE' | ForEach-Object { $_.ToString().Trim() }) -join ' '))
+ 132 
+ 133     # ---- restore ---------------------------------------------------------------
+ 134     W ''
+ 135     W ('## STEP restore: kdu -prv <winner> -dse ' + $preDse + ' (boot value, NOT a constant)')
+ 136     $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+ 137     $restored = ($script:lastOut -match 'verification succeeded')
+ 138     # second pass = read-back; kdu prints the current value before writing, so this both reads and is idempotent
+ 139     $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+ 140     $back = -1
+ 141     if($script:lastOut -match 'value:\s*(\d+)'){ $back = [int]$Matches[1] }
+ 142     $restored = ($restored -and ($back -eq $preDse))
+ 143     $dseOpened = -not $restored
+ 144     W ('  restore verified=' + $restored + ' readback=' + $back + ' expect=' + $preDse)
+ 145 
+ 146     W ''
+ 147     W '=== VERDICT ==='
+ 148     if($loaded -and $restored){ W ('RESULT: PASS via prv ' + $winner + ' - driver RUNNING, DSE restored to boot value ' + $preDse + ' (readback verified), left RUNNING for h2'); W 'NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min) IN THIS BOOT - crash horizon ~20 min if the value is wrong' }
+ 149     elseif($loaded){ W ('RESULT: PARTIAL via prv ' + $winner + ' - driver RUNNING but restore line missing; DSE may still be 0') }
+ 150     else { W ('RESULT: FAIL via prv ' + $winner + ' - DSE written, load rc=' + $rcLoad) }
+ 151 } catch { W ('UNCAUGHT ' + $_.Exception.Message) }
+ 152 finally {
+ 153     if($dseOpened -and $winner -ge 0 -and $preDse -ge 0){
+ 154         W ('  finally: DSE open/mismatched - forcing -dse ' + $preDse)
+ 155         $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+ 156         W ('  finally restore verified=' + ($script:lastOut -match 'verification succeeded') + ' readback=' + $(if($script:lastOut -match 'value:\s*(\d+)'){ $Matches[1] } else { '?' }))
+ 157     } elseif($dseOpened -and $winner -ge 0){
+ 158         W '  finally: pre-DSE unparsed - falling back to -dse 6 (0x109 risk stands)'
+ 159         $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', '6') 20000
+ 160         W ('  finally restore verified=' + ($script:lastOut -match 'verification succeeded'))
+ 161     }
+ 162     W ('-- h1 END ' + (Get-Date -f 'HH:mm:ss') + ' driver RUNNING=' + (DrvRunning) + ' --')

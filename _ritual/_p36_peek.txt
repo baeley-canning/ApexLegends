@@ -1,0 +1,52 @@
+--- tasklog ---
+01/11/2026 21:51:16 register-run admin=True target=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p36_write.ps1
+started, state=Ready
+--- p36_write.txt ---
+=== p36 BYOVD WRITE-PRIMITIVE PROBE 01/11/2026 21:51:16 ===
+  admin=True  pid=19196  host=DESKTOP-PPHFJBQ
+  os=Microsoft Windows 11 Pro build=26200.10.0.26200  cpu=Intel(R) Core(TM) i5-14400
+  SecureBoot=0
+  SystemStartOptions=[NOEXECUTE=OPTIN HYPERVISORLAUNCHTYPE=AUTO NODEBUG FVEBOOT=2666496 NOVGA]
+  bcdedit: nointegritychecks       No ; testsigning             No ; hypervisorlaunchtype    Auto
+  DeviceGuard: VBS=2 servicesRunning=0 codeIntegrityPolicy=2
+  svc gdrv3                STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc MsIo                 STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc apexdrv              STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc eaanticheat          STATE 1 STOPPED WIN32_EXIT_CODE : 31 (0x1f) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc EAAntiCheatService   STATE 1 STOPPED WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  [cs] p36_prov.cs compiled
+  ramTop=0x800000000 (32 GB)
+  G0 \\.\GIOV3 open ok handle=0xb60
+  G0 read phys 0x1000 = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  G0 read phys 0x2000 = ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  open: priv=NOT_ASSIGNED (absent from token) NtOpenSection=0xc0000022
+  W1 no section handle
+
+########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########
+  open \\.\MSIO ok handle=0xbd8
+  shape0 FAIL err=998 info=0
+  shape1 FAIL err=998 info=0
+  shape2 FAIL err=87 info=0
+  shape3 FAIL err=87 info=0
+
+########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########
+  0xC3502004 in{pa,size} pa=0x1000: FAIL err=87 info=0
+  0xC3502808 in{b,a,n} a=0x1000: FAIL err=1
+
+########## X discovery (read-only, gdrv3 read only) ##########
+  X2 no self-mapped PML4 found  FAIL
+
+########## VERDICT ##########
+  W1 \\Device\\PhysicalMemory phys R/W : no
+  W2 MsIo64 map (fallback)           : no
+  W3 gdrv3 map/copy                  : see above
+  X  ntoskrnl=False cr3=False cioptions=False
+  *** NO WRITE PRIMITIVE ***
+      => driver-loaded-on-a-normal-boot is unreachable until one of W1/W2 lands.
+      Next variable: MsIo64 struct shape from temp\drv\msio_1500.txt, or a
+      second provider (the box has gdrv3 + MsIo only).
+-- p36 END 01/11/2026 21:51:18 --
+--- task state ---
+Ready

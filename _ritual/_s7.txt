@@ -1,0 +1,20 @@
+lines=94 last=-- p36 END 02/11/2026 12:53:53 -- w3idx=57
+########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########
+
+########## X discovery (read-only, gdrv3 read only) ##########
+  ladder read 0x100000 okCount=6
+  size 0x40 ok (first=00)
+  size 0x100 ok (first=00)
+  size 0x800 ok (first=00)
+  size 0x1000 ok (first=00)
+  size 0x2000 ok (first=00)
+  size 0x4000 ok (first=00)
+  size 0x10000 FAIL read pa=0x100000 size=0x10000 err=1450
+  size 0x20000 FAIL read pa=0x100000 size=0x20000 err=1450
+  sweep 0x100000..0x40000000 step 0x100000 okCount=258
+  fail pa=0x1600000
+  fail pa=0x1700000
+  fail pa=0x1d00000
+  fail pa=0x1e00000
+  fail pa=0x1f00000
+  fail pa=0x2000000

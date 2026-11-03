@@ -1,0 +1,15 @@
+  svc MsIo                 STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  [cs] p36_prov.cs compiled
+  BADPA: 14 previously-learned range(s) loaded
+  ramTop=0x800000000 (32 GB)
+  G0 \\.\GIOV3 open ok handle=0xc7c
+  G0 read phys 0x1000 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  G0 read phys 0x2000 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  identity=NT AUTHORITY\SYSTEM isSystem=True
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=ok
+  alias \??\PhysicalMemory mask=0x6 st=0xc0000034 priv=ok
+  alias \??\PhysicalMemory mask=0x1 st=0xc0000034 priv=ok

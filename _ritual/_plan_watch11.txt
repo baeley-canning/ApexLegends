@@ -1,0 +1,30 @@
+now 21:16:11  vm=VMState="running"  k11log=True
+gets_cur=184
+posts=12
+pre=  prv 22 WROTE  PRE-DSE=6
+restore=STEP=restore -dse 6 (boot value, NOT 6) | RESTORE verified=True readback=6 expect=6
+hbs=2  last=HB 02 21:15:17 up=3m STATE              : 4  RUNNING
+--- guest tail ---
+--- minidumps ---
+
+===== POST /log 21:14:19
+## k11
+HB 01 21:14:17 up=2m STATE              : 4  RUNNING
+===== POST /log 21:15:05
+## k11
+=== k11 re-entry 21:15:03 ===
+lock age=2 min  uptime=2 min
+RESULT: PASS-so-far (previous run still inside its own window, no reboot)
+--- minidumps ---
+
+===== POST /log 21:15:19
+## k11
+HB 02 21:15:17 up=3m STATE              : 4  RUNNING
+===== POST /log 21:16:05
+## k11
+=== k11 re-entry 21:16:03 ===
+lock age=3 min  uptime=3 min
+RESULT: PASS-so-far (previous run still inside its own window, no reboot)
+--- minidumps ---
+
+-- end --

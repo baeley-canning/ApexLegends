@@ -1,0 +1,4 @@
+﻿21:43:22
+3167	[2026-11-02T08:43:15.028Z]	PID: 19144	TID: 18300	VERBOSE 	(Origin::SDK::Lsx::TcpSocket::writeMessage)	[Legacy] [DEBUG] (TCP 62144) Sending response: <LSX><Response id="1509385300" sender="EbisuSDK"><ErrorSuccess Code="0" Description=""/></Response></LSX>
+3208	[2026-11-02T08:43:20.112Z]	PID: 19144	TID: 18264	INFO    	(eax::components::gameLocalServices::GlsComponent::Impl::finalizeGameTermination)	OS Event Log result: errorTimestamp=[0] gameStartEpoch=[1793608058] faultingAppName=[] faultingAppPath=[] exceptionCode=[] eventId=[0]
+3297	[2026-11-02T08:43:20.887Z]	PID: 19144	TID: 19148	INFO    	(ui::ErrorDialogForward::show)	Forwarding EA Desktop error dialog to splash: dialogId=[1], errorCode=[10609], title=[Saving your progress to the cloudâ€¦], buttons=[1]

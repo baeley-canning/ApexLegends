@@ -1,0 +1,40 @@
+    000180001f36  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    000180001f3b  e880f2ffff               call     0x1800011c0
+    000180001f40  488bf8                   mov      rdi, rax
+    000180001f43  4883f8ff                 cmp      rax, -1
+    000180001f47  7505                     jne      0x180001f4e
+    000180001f49  8d4702                   lea      eax, [rdi + 2]
+    000180001f4c  eb6e                     jmp      0x180001fbc
+    000180001f4e  48c744243800000000       mov      qword ptr [rsp + 0x38], 0
+    000180001f57  488d442440               lea      rax, [rsp + 0x40]
+    000180001f5c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001f61  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001f66  488d442448               lea      rax, [rsp + 0x48]
+    000180001f6b  c744242820000000         mov      dword ptr [rsp + 0x28], 0x20
+    000180001f73  41b920000000             mov      r9d, 0x20
+    000180001f79  4889442420               mov      qword ptr [rsp + 0x20], rax
+    000180001f7e  ba842550c3               mov      edx, 0xc3502584
+    000180001f83  488bcf                   mov      rcx, rdi
+site 0x18000210E code=0xC3502014 owner=0x180001F00 b'MS_WriteMSR'
+    0001800020c2  ff15d0df0100             call     qword ptr [rip + 0x1dfd0]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    0001800020c8  e8f3f0ffff               call     0x1800011c0
+    0001800020cd  488bf8                   mov      rdi, rax
+    0001800020d0  4883f8ff                 cmp      rax, -1
+    0001800020d4  7447                     je       0x18000211d
+    0001800020d6  33c9                     xor      ecx, ecx
+    0001800020d8  4c896dc8                 mov      qword ptr [rbp - 0x38], r13
+    0001800020dc  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    0001800020e1  488d45e0                 lea      rax, [rbp - 0x20]
+    0001800020e5  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800020ea  4c8d45c8                 lea      r8, [rbp - 0x38]
+    0001800020ee  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800020f2  ba142050c3               mov      edx, 0xc3502014
+    0001800020f7  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    0001800020fc  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002100  488bcf                   mov      rcx, rdi
+    000180002103  c745d010000000           mov      dword ptr [rbp - 0x30], 0x10
+    00018000210a  48895dd8                 mov      qword ptr [rbp - 0x28], rbx
+site 0x1800021A2 code=0xC3502014 owner=0x180001F00 b'MS_WriteMSR'
+    00018000215a  ff1538df0100             call     qword ptr [rip + 0x1df38]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002160  e85bf0ffff               call     0x1800011c0
+    000180002165  488bf0                   mov      rsi, rax

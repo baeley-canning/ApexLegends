@@ -1,0 +1,38 @@
+
+temp\drv\annot_MsIo64.txt
+:65:000010aa  
+8b05a0200000           
+mov     eax, dword ptr 
+[rip + 0x20a0]
+temp\drv\annot_MsIo64.txt
+:542:00001862  
+c705e418000000000000   
+mov     dword ptr [rip + 
+0x18e4], 0
+temp\drv\annot_MsIo64.txt
+:553:0000188e  
+448905c3180000         
+mov     dword ptr [rip + 
+0x18c3], r8d
+temp\drv\annot_MsIo64.txt
+:555:00001898  
+890db6180000           
+mov     dword ptr [rip + 
+0x18b6], ecx
+temp\drv\annot_MsIo64.txt
+:567:000018c4  
+890586180000           
+mov     dword ptr [rip + 
+0x1886], eax
+temp\drv\annot_MsIo64.txt
+:571:000018d9  
+8b1575180000           
+mov     edx, dword ptr 
+[rip + 0x1875]
+temp\drv\annot_MsIo64.txt
+:574:000018eb  
+8b155f180000           
+mov     edx, dword ptr 
+[rip + 0x185f]
+
+

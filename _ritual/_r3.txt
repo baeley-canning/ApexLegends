@@ -1,0 +1,22 @@
+﻿window: "EA" 520x867
+Exception calling 
+"CopyFromScreen" with 
+"5" argument(s): "The 
+handle is invalid"
+At C:\Users\New User\OneD
+rive\Desktop\cheating\_ri
+tual\shot_win.ps1:56 
+char:1
++ 
+$g.CopyFromScreen($r.L, 
+$r.T, 0, 0, $bmp.Size)
++ ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (:) [], MethodInvoca   
+ tionException
+    + FullyQualifiedErro 
+   rId : Win32Exception
+ 
+captured -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ea2.png

@@ -1,0 +1,88 @@
+﻿00:00:05.094487 VirtualBox VM 7.2.22 r175245 win.amd64 (Oct 19 2026 20:31:00) release log
+00:00:05.094488 Log opened 2026-11-01T09:37:48.735966100Z
+00:00:05.094489 Build Type: release
+00:00:05.094493 OS Product: Windows 11
+00:00:05.107514 OS Release: 10.0.26200.9711
+00:00:05.107518 OS Service Pack: 
+00:00:05.200060 DMI Product Name: B760I AORUS PRO DDR4
+00:00:05.203727 DMI Product Version: -CF
+00:00:05.203736 Firmware type: UEFI
+00:00:05.204126 Secure Boot: Disabled
+00:00:05.204141 Host RAM: 32538MB (31.7GB) total, 21177MB (20.6GB) available
+00:00:05.204142 Executable: C:\Program Files\Oracle\VirtualBox\VirtualBoxVM.exe
+00:00:05.204143 Process ID: 3260
+00:00:05.204143 Package type: WINDOWS_64BITS_GENERIC
+00:00:05.204143 Windows Features:
+00:00:05.204144   Core Isolation (Memory Integrity): Not supported
+00:00:05.204773 Installed Extension Packs:
+00:00:05.204793   None installed!
+00:00:05.205619 Console: Machine state changed to 'Starting'
+00:00:05.207558 GUI: Qt version: 6.8.0
+00:00:05.207567 GUI: HID LEDs sync is enabled
+00:00:05.212330 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:05.236890 GUI: Cannot notify guest about VM window out-of-focus event
+00:00:05.265342 VRDP: Statistics created: [full], enabled: 0.
+00:00:05.265671 VRDP: VRDP: VD: Frames=10 MinMS=15 MaxMS=300 HistoryMS=2000 VideoMS=300
+00:00:05.265732 VRDP: Failed to query a property: 9, rc = VERR_NOT_SUPPORTED
+00:00:05.294057 VRDP: TCP server listening on port 3390 (IPv4 and IPv6).
+00:00:05.294567 VRDP: Audio: rate correction mode 0x3.
+00:00:05.294671 VRDE: loaded version 4 of the server.
+00:00:05.294701 VRDE: [IMAGE]
+00:00:05.294707 VRDE: [MOUSEPTR]
+00:00:05.294711 VRDE: [SCARD]
+00:00:05.294714 VRDE: [TSMFRAW]
+00:00:05.294718 VRDE: [VIDEOIN]
+00:00:05.294721 VRDE: [VRDE::INPUT]
+00:00:05.393460 SUP: seg #0: R   0x00000000 LB 0x00001000
+00:00:05.393477 SUP: seg #1: R X 0x00001000 LB 0x0022c000
+00:00:05.393482 SUP: seg #2: R   0x0022d000 LB 0x00054000
+00:00:05.393486 SUP: seg #3: RW  0x00281000 LB 0x00013000
+00:00:05.393489 SUP: seg #4: R   0x00294000 LB 0x00015000
+00:00:05.393493 SUP: seg #5: RW  0x002a9000 LB 0x00004000
+00:00:05.393496 SUP: seg #6: R   0x002ad000 LB 0x00007000
+--- hypervisor / cpu / firmware lines ---
+00:00:05.203736 Firmware type: UEFI
+00:00:05.397363 SUP: Loaded VMMR0.r0 (C:\Program Files\Oracle\VirtualBox/VMMR0.r0) at 0xXXXXXXXXXXXXXXXX - ModuleInit at XXXXXXXXXXXXXXXX and ModuleTerm at XXXXXXXXXXXXXXXX using the native ring-0 loader
+00:00:05.601075   NestedHWVirt       <integer> = 0x0000000000000000 (0)
+00:00:05.601112   IOAPIC              <integer> = 0x0000000000000001 (1)
+00:00:05.601165 [/Devices/apic/] (level 2)
+00:00:05.601166 [/Devices/apic/0/] (level 3)
+00:00:05.601168 [/Devices/apic/0/Config/] (level 4)
+00:00:05.601168   IOAPIC  <integer> = 0x0000000000000001 (1)
+00:00:05.601220   APIC            <integer> = 0x0000000000000001 (1)
+00:00:05.601222   IOAPIC          <integer> = 0x0000000000000001 (1)
+00:00:05.601296 [/Devices/ioapic/] (level 2)
+00:00:05.601297 [/Devices/ioapic/0/] (level 3)
+00:00:05.601299 [/Devices/ioapic/0/Config/] (level 4)
+00:00:05.601311   IOAPIC <integer> = 0x0000000000000001 (1)
+00:00:05.601390   EnableNestedPaging  <integer> = 0x0000000000000001 (1)
+00:00:05.601397   UseNEMInstead       <integer> = 0x0000000000000000 (0)
+00:00:05.601399 [/NEM/] (level 1)
+00:00:05.601587 HM: HMR3Init: Attempting fall back to NEM: VT-x is not available
+00:00:05.676075 NEM:  info: Found optional import WinHvPlatform.dll!WHvQueryGpaRangeDirtyBitmap.
+00:00:05.676100 NEM:  info: Found optional import WinHvPlatform.dll!WHvResumePartitionTime.
+00:00:05.676105 NEM:  info: Found optional import WinHvPlatform.dll!WHvSuspendPartitionTime.
+00:00:05.676109 NEM:  info: Found optional import WinHvPlatform.dll!WHvRequestInterrupt.
+00:00:05.676113 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorXsaveState.
+00:00:05.676117 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorXsaveState.
+00:00:05.676120 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorState.
+00:00:05.676124 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorState.
+00:00:05.676128 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorInterruptControllerState.
+00:00:05.676132 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorInterruptControllerState.
+00:00:05.676136 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorInterruptControllerState2.
+00:00:05.676139 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorInterruptControllerState2.
+00:00:05.676151 NEM:  info: Found optional import vid.dll!VidGetHvPartitionId.
+00:00:05.676156 NEM:  info: Found optional import vid.dll!VidGetPartitionProperty.
+00:00:05.676470 NEM: WHvCapabilityCodeHypervisorPresent is TRUE, so this might work...
+00:00:05.676483 NEM: WHvCapabilityCodeExtendedVmExits      = 0x0000000000007fff
+00:00:05.676492 NEM:                           X64CpuidExit: 1
+00:00:05.676496 NEM:                             X64MsrExit: 1
+00:00:05.676499 NEM:                          ExceptionExit: 1
+00:00:05.676502 NEM:                           X64RdtscExit: 1
+00:00:05.676505 NEM:                     X64ApicSmiExitTrap: 1
+00:00:05.676508 NEM:                          HypercallExit: 1
+00:00:05.676511 NEM:                X64ApicInitSipiExitTrap: 1
+00:00:05.676514 NEM:              X64ApicWriteLint0ExitTrap: 1
+00:00:05.676517 NEM:              X64ApicWriteLint1ExitTrap: 1
+00:00:05.676520 NEM:                X64ApicWriteSvrExitTrap: 1
+00:00:05.676523 NEM:                 UnknownSynicConnection: 1

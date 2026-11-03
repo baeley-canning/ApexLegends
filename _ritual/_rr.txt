@@ -1,0 +1,29 @@
+
+_ritual\p36_prov.cs:155: 
+   // value with 
+RegQueryValueEx and take 
+the CmResourceTypeMemory 
+(3) descriptors out
+_ritual\p36_prov.cs:163: 
+   static extern int 
+RegQueryValueEx(IntPtr 
+hk, string name, IntPtr 
+res, out int type, 
+byte[] data, ref int cb);
+_ritual\p36_prov.cs:167: 
+   public static string 
+RamRangesFromRegistry()
+_ritual\p36_prov.cs:177: 
+           st = 
+RegQueryValueEx(hk, 
+".Translated", 
+IntPtr.Zero, out type, 
+null, ref cb);
+_ritual\p36_prov.cs:180: 
+           st = 
+RegQueryValueEx(hk, 
+".Translated", 
+IntPtr.Zero, out type, 
+rb, ref cb);
+
+

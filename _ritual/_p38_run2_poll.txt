@@ -1,0 +1,41 @@
+﻿  cpu affinity = CPU0
+  G0 read phys 0x1000 = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  G0 read phys 0x100000 = 20 6d 65 74 68 6f 64 00 64 68 5f 70 75 62 5f 64
+  stage va=0x16000000 locked=True lastErr=0 issued=2 h1450=0
+  src page 0x10000000 (pattern carrier + CR3 tag validator)
+
+########## S1 whole-RAM PML4 self-map scan, ALL 512 entries (read-only) ##########
+  ladder  0x100000 OK on every probe PA
+  ladder: measured best 0x100000, clamped to the proven 0x10000
+  chunk = 0x10000
+  rej-nowalk pa=0x213854000 idx=0x5f present=199 head=2d e5 56 02 f4 d0 02 00 e5 07 00 00 89 1c 00 00 11 00 00 00 f5 07 00 00 00 00 00 00 00 00 00 00
+  rej-nopresent pa=0x404000000 idx=0x174
+  rej-nowalk pa=0x450cb0000 idx=0xa5 present=179 head=02 00 00 00 49 b2 06 01 e5 07 00 00 e5 07 00 00 00 ae 4d 00 19 60 4b 15 99 ff ca 50 f1 47 c0 01
+  rej-nowalk pa=0x450cb1000 idx=0x5 present=192 head=09 d9 06 01 e5 07 00 00 f1 0f cb 50 04 00 00 00 dd 05 00 00 02 00 00 00 fd ba 97 02 95 24 8d 19
+  rej-nowalk pa=0x450cb2000 idx=0x102 present=214 head=11 00 00 00 11 00 00 00 11 00 00 00 61 62 1a 00 ad ff ca 50 00 0e 00 00 dd 27 6d 01 71 f5 ca 50
+  rej-nowalk pa=0x450cb3000 idx=0xe present=198 head=0c 00 00 00 71 00 00 00 71 00 00 00 89 2f cb 50 71 00 00 00 71 00 00 00 31 30 cb 50 b9 b4 06 01
+  rej-nowalk pa=0x450cb5000 idx=0x3c present=217 head=11 00 00 00 71 dd 97 02 55 00 00 00 00 12 00 00 11 00 00 00 11 00 00 00 11 00 00 00 11 00 00 00
+  candidates=18 low_kernel=0 nowalk=18 tag_unread=0 tag_mismatch=0 tag_ok=0 nopresent=2
+  unread_pages=866529 split_recovered=996667 self_idx_hist=[]
+  S1 scanned=0x60dd63000 accepted= cr3=0x0 selfIdx=0xffffffff unread_pages=866529 split_recovered=996667 in 36.5s
+  S1 no CR3  FAIL
+  hint: if reads were clean, the bench (VM-B) is the place to iterate the predicate
+
+########## H handle rotation + canary before any write ##########
+  H reopen: ok handle=0xb48
+  H canary phys 0x1000: live  stage=0x16000000  issued_so_far=2444276
+
+########## S2 MSR reads via 0xC3502580 ##########
+  LSTAR=0x0  GSBASE=0x0
+  MSR write-back LSTAR: ok=False err=65535 info= (written value = value just read)
+
+########## S3 ntoskrnl locate ##########
+  S3 no ntoskrnl  FAIL
+
+########## S4 nt!g_CiOptions (C7 05 self-consistent sites) ##########
+  S4 skipped (no ntoskrnl)
+
+########## VERDICT ##########
+  cr3=False nt=False ci=False
+-- p38 END (read) --
+

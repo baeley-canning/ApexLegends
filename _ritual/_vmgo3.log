@@ -1,0 +1,11 @@
+--- whp state --- 
+State : Enabled
+--- headless attempt --- 
+Starting virtual machine: 
+Operation failed: E_FAIL
+Oracle VirtualBox Headless Interface 7.2.22
+Copyright (C) 2008-2026 Oracle and/or its affiliates
+
+Error: failed to start machine. Error message: Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5) (VERR_NEM_VM_CREATE_FAILED)
+hl_exit=0 
+--- end --- 

@@ -1,0 +1,48 @@
+exists=True
+
+Length
+------
+ 10343
+
+
+
+/*++
+
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Module Name:
+
+    WinHvPlatform.ext
+
+Abstract:
+
+    ApiSet contract for the Windows Hypervisor User-Mode Platform APIs.
+
+--*/
+
+#ifndef _WINHVAPI_H_
+#define _WINHVAPI_H_
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1200)
+#pragma once
+#endif
+
+#include <apiset.h>
+#include <apisetcconv.h>
+#include <minwindef.h>
+#include <winapifamily.h>
+
+#pragma region Desktop Family or OneCore Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP | WINAPI_PARTITION_SYSTEM)
+
+#include <WinHvPlatformDefs.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+//
+// Platform capabilities
+//
+
+HRESULT

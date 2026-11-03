@@ -1,0 +1,16 @@
+=== unstick 2026-11-03T22:46:42 ===
+pre  fg=65868 cap=0 cursor=1158,938 hit=197936()
+pre  btn L=0 R=0 M=32768
+pre  SHIFT=0 CTRL=0 ALT=0
+BlockInput(false) = False
+released L/R/M x2
+released modifiers + win keys
+cancelmode+lbup -> 65868 (
+cancelmode+lbup -> 262304 (
+nudge click sent
+no stale helper processes
+post cap=0 fg=65868 hit=197936()
+post btn L=0 R=0 M=32768
+post SHIFT=0 CTRL=0 ALT=0
+VERDICT: capture clear
+VERDICT: left button up

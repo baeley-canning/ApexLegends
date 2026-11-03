@@ -1,0 +1,152 @@
+now        = 01/11/2026 21:58:52   utc=08:58:52
+lastboot   = 11/01/2026 21:54:36   uptime=00:04:16.4984627
+elevated   = False
+startopts  =  NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA
+safe-mode? = 
+--- bcdedit raw ---
+
+--- artefacts (name/size/time) ---
+01/11 21:54:20        111  p36_write.txt
+01/11 21:54:20        113  p36_check2.txt
+01/11 21:53:55      17902  p36_write.ps1
+01/11 21:53:21      29925  p36_prov.cs
+01/11 21:52:11       2951  _p36_peek.txt
+01/11 21:51:19        140  _p36_task.log
+01/11 21:50:41         52  p36_check.txt
+01/11 21:49:57       2075  p36_task.ps1
+01/11 21:37:25       5399  p34_matrix.txt
+01/11 21:35:00       7292  p35_deregister.ps1
+01/11 21:32:22      10185  p34_matrix.ps1
+01/11 21:31:19        143  _p34_task.log
+01/11 21:30:52       1680  p34_task.ps1
+01/11 21:18:45       3226  p33_flagflip.txt
+01/11 21:17:26         91  _p33_sso.bak
+01/11 21:11:38        679  p33_prereboot.txt
+01/11 21:11:15       9575  p33_flagflip.ps1
+01/11 20:49:07       3138  p31_prereboot.txt
+01/11 20:48:44       4531  p31_reboot.ps1
+01/11 20:45:36       4204  p30.txt
+
+--- task csv ---
+
+
+Last Run Time : 1/11
+                /202
+                6 9:
+                54:2
+                0 pm
+Last Result   : 0
+Status        : Read
+                y
+Next Run Time : N/A
+
+
+
+
+
+--- p36_write.txt (full) ---
+=== p36 BYOVD WRITE-PRIMITIVE PROBE 01/11/2026 21:54:20 ===
+  admin=True  pid=23512  host=DESKTOP-PPHFJBQ
+
+--- p36_write.txt bytes ---
+len=111 first16=ef bb bf 3d 3d 3d 20 70 33 36 20 42 59 4f 56 44
+
+--- p36_check2.txt bytes ---
+len=113 first32=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+--- minidumps ---
+True
+
+--- WER reports (today) ---
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_4c76ec6d-3aea-453d-ba5f-a1b93f8df0ce
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_c656f441-b08b-4cfa-b6b1-32c1962dd45e
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_ed857552-c875-4f2d-8493-a499c66ade82
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\NonCritical_MicrosoftEdgeUpd_e6b63bdc79b9a6e34011c9e21493ccca4a84b7_00000000_0c5f4158-e729-4381-a310-ebf580eeee5e
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\NonCritical_MicrosoftEdgeUpd_e6b63bdc79b9a6e34011c9e21493ccca4a84b7_00000000_0e3b65f1-c7c7-40be-830b-67d43d0d9b53
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\NonCritical_MicrosoftEdgeUpd_e6b63bdc79b9a6e34011c9e21493ccca4a84b7_00000000_2c8b5aa1-a65b-4750-998b-aa99366d5652
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\NonCritical_MicrosoftEdgeUpd_e6b63bdc79b9a6e34011c9e21493ccca4a84b7_00000000_4a209871-9ff9-4560-ad72-db9c02d7c431
+C:\ProgramData\Microsoft\Windows\WER\ReportArchive\NonCritical_MicrosoftEdgeUpd_e6b63bdc79b9a6e34011c9e21493ccca4a84b7_00000000_83875dbe-46ca-491c-ab8a-acb498d6535e
+C:\ProgramData\Microsoft\Windows\WER\ReportQueue\Kernel_141_ee7b412488a64cc36a8d5b2c7d951c04d2eef67_00000000_18f0b995-8558-44a8-a2c9-8d755eb6e715
+C:\ProgramData\Microsoft\Windows\WER\ReportQueue\Kernel_141_ee7b412488a64cc36a8d5b2c7d951c04d2eef67_00000000_2d78f20b-d848-4ce0-83c3-236edc2ebbf8
+C:\ProgramData\Microsoft\Windows\WER\ReportQueue\Kernel_141_ee7b412488a64cc36a8d5b2c7d951c04d2eef67_00000000_4815fb5f-d5ef-4591-a99c-1c95947abe5b
+C:\ProgramData\Microsoft\Windows\WER\ReportQueue\Kernel_141_ee7b412488a64cc36a8d5b2c7d951c04d2eef67_00000000_5823a959-793f-46ec-9662-948048283814
+
+--- WER Report.wer hits for our report id ---
+== C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_4c76ec6d-3aea-453d-ba5f-a1b93f8df0ce\Report.wer
+ReportIdentifier=4c76ec6d-3aea-453d-ba5f-a1b93f8df0ce
+IntegratorReportIdentifier=7ef0c5e5-2891-4da1-9731-407aa8f7cd89
+NsAppName=powershell.exe
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[1].Name=Application Version
+Sig[1].Value=10.0.26100.9549
+Sig[2].Name=Application Timestamp
+Sig[2].Value=91d14fcc
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+== C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_c656f441-b08b-4cfa-b6b1-32c1962dd45e\Report.wer
+ReportIdentifier=c656f441-b08b-4cfa-b6b1-32c1962dd45e
+IntegratorReportIdentifier=aed5f212-9b76-4a73-bdda-ec467ef8224d
+NsAppName=powershell.exe
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[1].Name=Application Version
+Sig[1].Value=10.0.26100.9549
+Sig[2].Name=Application Timestamp
+Sig[2].Value=91d14fcc
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+== C:\ProgramData\Microsoft\Windows\WER\ReportArchive\AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_ed857552-c875-4f2d-8493-a499c66ade82\Report.wer
+ReportIdentifier=ed857552-c875-4f2d-8493-a499c66ade82
+IntegratorReportIdentifier=aef5b767-7340-4ec3-94ea-6315e70fad61
+NsAppName=powershell.exe
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[1].Name=Application Version
+Sig[1].Value=10.0.26100.9549
+Sig[2].Name=Application Timestamp
+Sig[2].Value=91d14fcc
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+
+--- debuggers on disk ---
+C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\kd.exe  True
+C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe  True
+C:\Program Files\Windows Kits\10\Debuggers\x64\kd.exe  False
+C:\Program Files\WindowsApps\Microsoft.WinDbg*\WinDbgX.exe  False
+
+--- VirtualBox install ---
+C:\Program Files\Oracle\VirtualBox\VBoxManage.exe  True
+C:\Program Files\Oracle\VirtualBox\VirtualBox.exe  True
+C:\Program Files\Oracle\VirtualBox\VBoxSVC.exe  True
+VBoxSup svc: Running
+user registry: True
+
+--- virtualbox VMs (registry xml) ---
+<MachineEntry uuid="{15e012c5-3c43-4b33-99e0-926e867cecef}" src="C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vbox"/>
+
+--- VirtualBox VMs on disk ---
+C:\Users\New User\.VirtualBox
+C:\Users\New User\VirtualBox VMs
+C:\Users\New User\VirtualBox VMs\Win11-Test\Win11-Test.vbox
+C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vbox
+
+--- vboxmanage list vms ---
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+
+--- vboxmanage list runningvms ---
+
+--- hyper-v side ---
+vmms svc: 
+vmcompute svc: Running
+C:\ProgramData\Microsoft\Windows\Hyper-V: True
+
+--- drivers we care about (state/path) ---
+apexdrv state=Stopped start=Manual path=\??\C:\Windows\System32\drivers\apexdrv.sys
+gdrv3 state=Running start=Manual path=\??\C:\WINDOWS\System32\drivers\gdrv3.sys
+MSIO state=Running start=System path=\??\C:\WINDOWS\system32\drivers\MsIo64.sys
+
+--- end ---

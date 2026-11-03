@@ -1,0 +1,151 @@
+
+# KDU Providers
+
+Note: Provider with Id 0 is assumed as default if no -prv command is specified.
+
+## Summary
+
+| Id     | Vendor         | Driver      | Software package                   | Version                      | MSFT blacklist*     |
+|--------|----------------|-------------|------------------------------------|-----------------------------|----------------------|
+| 0      | Intel          | IQVM64/Nal  | Network Adapter Diagnostic Driver  | 1.03.0.7                    | Cert                 |
+| 1      | MSI            | RTCore64    | MSI Afterburner                    | 4.6.2 build 15658 and below | Page hash            |
+| 2      | Gigabyte       | Gdrv        | Gigabyte TOOLS                     | Undefined                   | Name                 |
+| 3      | ASUSTeK        | ATSZIO64    | ASUSTeK WinFlash utility           | Undefined                   | Name                 |
+| 4      | Patriot        | MsIo64      | Patriot Viper RGB utility          | 1.0                         | Page hash            |
+| 5      | ASRock         | GLCKIO2     | ASRock Polychrome RGB              | 1.0.4                       | Page hash            |
+| 6      | G.SKILL        | EneIo64     | G.SKILL Trident Z Lighting Control | 1.00.08                     | Cert                 |
+| 7      | EVGA           | WinRing0x64 | EVGA Precision X1                  | 1.0.2.0                     | Name                 |
+| 8      | Thermaltake    | EneTechIo64 | Thermaltake TOUGHRAM software      | 1.0.3                       | Page hash            |
+| 9      | Huawei         | PhyMemx64   | Huawei MateBook Manager software   | Undefined                   | Name, Page hash      |
+| 10     | Realtek        | RtkIo64     | Realtek Dash Client Utility        | Various                     | Name                 |
+| 11     | MSI            | EneTechIo64 | MSI Dragon Center                  | Various                     |                      |
+| 12     | LG             | LHA         | LG Device Manager                  | 1.6.0.2                     | Name                 |
+| 13     | ASUSTeK        | AsIO2       | ASUS GPU Tweak                     | 2.1.7.1 and below           |                      |
+| 14     | PassMark       | DirectIo64  | PassMark Performance Test          | 10.1 and below              | Page hash            |
+| 15     | GMER           | GmerDrv     | Gmer "Antirootkit"                 | 2.2 and below               | Name, Page hash, Cert|
+| 16     | Dell           | DBUtil_2_3  | Dell BIOS Utility                  | 2.3 and below               | Page hash            |
+| 17     | Benjamin Delpy | Mimidrv     | Mimikatz                           | 2.2 and below               | Cert                 |
+| 18     | Wen Jia Liu    | KProcessHacker2  | Process Hacker                | 2.38 and below              | Name                 |
+| 19     | Microsoft      | ProcExp152  | Process Explorer                   | 1.5.2 and below             | Name, Cert           |
+| 20     | Dell           | DBUtilDrv2  | Dell BIOS Utility                  | 2.7 and below               |                      |
+| 21     | DarkByte       | Dbk64       | Cheat Engine                       | 7.4 and below               | Cert, Name           |
+| 22     | ASUSTeK        | AsIO3       | ASUS GPU TweakII                   | 2.3.0.3                     |                      |
+| 23     | Marvin         | Hw          | Marvin Hardware Access Driver      | 4.9 and below               | Name                 |
+| 24     | CODESYS        | SysDrv3S    | CODESYS SysDrv3S                   | 3.5.6 and below             | Cert                 |
+| 25     | Zemana         | amsdk       | WatchDog/MalwareFox/Zemana AM      | 3.0.0 and below             |                      |
+| 26     | HiRes Ent.     | inpoutx64   | Various                            | 1.2.0 and below             |                      |
+| 27     | PassMark       | DirectIo64  | PassMark OSForensics               | Any                         |                      |
+| 28     | ASRock         | AsrDrv106   | Phantom Gaming Tuning              | 1.0.6 and below             |                      |
+| 29     | Arthur Liberman| ALSysIO64   | Core Temp                          | 2.0.11 and below            |                      |
+| 30     | AMD            | AMDRyzenMasterDriver  | Multiple software packages | 2.0.0.0 and below           |                      |
+| 31     | Hilscher       | physmem     | Physical Memory Viewer for Windows | 1.0.0.0                     |  Cert, Name          |
+| 32     | Lenovo         | LDD         | Lenovo Diagnostics Driver for Windows 10 and later | 1.0.4.0 and below               |  Cert, Name          |
+| 33     | Dell           | pcdsrvc_x64 | Dell PC Doctor                     | 6.2.2.0                     |                      |
+| 34     | MSI            | winio       | MSI Foundation Service             | Undefined                   |                      |
+| 35     | HP             | EtdSupport  | ETDi Support Driver                | 18.0 and below              |  Cert                |
+| 36     | Pavel Yosifovich | KExplore  | Kernel Explorer                | Undefined              |                      |
+| 37     | Pavel Yosifovich | KObjExp  | Kernel Object Explorer          | Undefined              |                      |
+| 38     | Pavel Yosifovich | KRegExp  | Kernel Registry Explorer        | Undefined              |                      |
+| 39     | Inspect Element LTD | EchoDrv  | Echo AntiCheat (spyware)  | Undefined              |  Hash                   |
+| 40     | NVidia         | nvoclock  | NVidia System Utility Driver     | 7.0.0.32              |                      |
+| 41     | Binalyze       | IREC  | Binalyze DFIR    | 3.11.0  |                      |
+| 42     | DavidXXW       | PhyDMACC  | SLIC ToolKit     | 1.2.0  |  Page hash                    |
+| 43     | Razer          | rzpnk  | Razer Synapse     |  2.20.15.1104   |                      |
+| 44     | AMD            | PdFwKrnl  | AMD Radeon??? Software (Adrenalin Edition and PRO Edition) | 23.9.1 and below             |                      |
+| 45     | AMD            | AODDriver  | AMD OverDrive Driver     | 2.1.5 and below              |                      |
+| 46     | Wincor Nixdorf | wnBios64  | WinBios Driver     | 1.2.0 and below              |                      |
+| 47     | EVGA  | EleetX1| EVGA ELEET X1     | 1.0.16.0 and below              |                      |
+| 48     | ASRock         | AxtuDrv  | AsRock Extreme Tuner     | Undefined              |                      |
+| 49     | ASRock         | AppShopDrv103  | ASRock APP Shop    | 1.0.58 and below       |                      |
+| 50     | ASRock         | AsrDrv107n  | ASRock Motherboard Utility    | 3.0.498 and below       |                      |
+--- names ---
+| Id     | Vendor         | Driver      | Software package                   | Version                      | MSFT blacklist*     |
+|--------|----------------|-------------|------------------------------------|-----------------------------|----------------------|
+| 0      | Intel          | IQVM64/Nal  | Network Adapter Diagnostic Driver  | 1.03.0.7                    | Cert                 |
+| 1      | MSI            | RTCore64    | MSI Afterburner                    | 4.6.2 build 15658 and below | Page hash            |
+| 2      | Gigabyte       | Gdrv        | Gigabyte TOOLS                     | Undefined                   | Name                 |
+| 3      | ASUSTeK        | ATSZIO64    | ASUSTeK WinFlash utility           | Undefined                   | Name                 |
+| 4      | Patriot        | MsIo64      | Patriot Viper RGB utility          | 1.0                         | Page hash            |
+| 5      | ASRock         | GLCKIO2     | ASRock Polychrome RGB              | 1.0.4                       | Page hash            |
+| 6      | G.SKILL        | EneIo64     | G.SKILL Trident Z Lighting Control | 1.00.08                     | Cert                 |
+| 7      | EVGA           | WinRing0x64 | EVGA Precision X1                  | 1.0.2.0                     | Name                 |
+| 8      | Thermaltake    | EneTechIo64 | Thermaltake TOUGHRAM software      | 1.0.3                       | Page hash            |
+| 9      | Huawei         | PhyMemx64   | Huawei MateBook Manager software   | Undefined                   | Name, Page hash      |
+| 10     | Realtek        | RtkIo64     | Realtek Dash Client Utility        | Various                     | Name                 |
+| 11     | MSI            | EneTechIo64 | MSI Dragon Center                  | Various                     |                      |
+| 12     | LG             | LHA         | LG Device Manager                  | 1.6.0.2                     | Name                 |
+| 13     | ASUSTeK        | AsIO2       | ASUS GPU Tweak                     | 2.1.7.1 and below           |                      |
+| 14     | PassMark       | DirectIo64  | PassMark Performance Test          | 10.1 and below              | Page hash            |
+| 15     | GMER           | GmerDrv     | Gmer "Antirootkit"                 | 2.2 and below               | Name, Page hash, Cert|
+| 16     | Dell           | DBUtil_2_3  | Dell BIOS Utility                  | 2.3 and below               | Page hash            |
+| 17     | Benjamin Delpy | Mimidrv     | Mimikatz                           | 2.2 and below               | Cert                 |
+| 18     | Wen Jia Liu    | KProcessHacker2  | Process Hacker                | 2.38 and below              | Name                 |
+| 19     | Microsoft      | ProcExp152  | Process Explorer                   | 1.5.2 and below             | Name, Cert           |
+| 20     | Dell           | DBUtilDrv2  | Dell BIOS Utility                  | 2.7 and below               |                      |
+| 21     | DarkByte       | Dbk64       | Cheat Engine                       | 7.4 and below               | Cert, Name           |
+| 22     | ASUSTeK        | AsIO3       | ASUS GPU TweakII                   | 2.3.0.3                     |                      |
+| 23     | Marvin         | Hw          | Marvin Hardware Access Driver      | 4.9 and below               | Name                 |
+| 24     | CODESYS        | SysDrv3S    | CODESYS SysDrv3S                   | 3.5.6 and below             | Cert                 |
+| 25     | Zemana         | amsdk       | WatchDog/MalwareFox/Zemana AM      | 3.0.0 and below             |                      |
+| 26     | HiRes Ent.     | inpoutx64   | Various                            | 1.2.0 and below             |                      |
+| 27     | PassMark       | DirectIo64  | PassMark OSForensics               | Any                         |                      |
+| 28     | ASRock         | AsrDrv106   | Phantom Gaming Tuning              | 1.0.6 and below             |                      |
+| 29     | Arthur Liberman| ALSysIO64   | Core Temp                          | 2.0.11 and below            |                      |
+| 30     | AMD            | AMDRyzenMasterDriver  | Multiple software packages | 2.0.0.0 and below           |                      |
+| 31     | Hilscher       | physmem     | Physical Memory Viewer for Windows | 1.0.0.0                     |  Cert, Name          |
+| 32     | Lenovo         | LDD         | Lenovo Diagnostics Driver for Windows 10 and later | 1.0.4.0 and below               |  Cert, Name          |
+| 33     | Dell           | pcdsrvc_x64 | Dell PC Doctor                     | 6.2.2.0                     |                      |
+| 34     | MSI            | winio       | MSI Foundation Service             | Undefined                   |                      |
+| 35     | HP             | EtdSupport  | ETDi Support Driver                | 18.0 and below              |  Cert                |
+| 36     | Pavel Yosifovich | KExplore  | Kernel Explorer                | Undefined              |                      |
+| 37     | Pavel Yosifovich | KObjExp  | Kernel Object Explorer          | Undefined              |                      |
+| 38     | Pavel Yosifovich | KRegExp  | Kernel Registry Explorer        | Undefined              |                      |
+| 39     | Inspect Element LTD | EchoDrv  | Echo AntiCheat (spyware)  | Undefined              |  Hash                   |
+| 40     | NVidia         | nvoclock  | NVidia System Utility Driver     | 7.0.0.32              |                      |
+| 41     | Binalyze       | IREC  | Binalyze DFIR    | 3.11.0  |                      |
+| 42     | DavidXXW       | PhyDMACC  | SLIC ToolKit     | 1.2.0  |  Page hash                    |
+| 43     | Razer          | rzpnk  | Razer Synapse     |  2.20.15.1104   |                      |
+| 44     | AMD            | PdFwKrnl  | AMD Radeon™ Software (Adrenalin Edition and PRO Edition) | 23.9.1 and below             |                      |
+| 45     | AMD            | AODDriver  | AMD OverDrive Driver     | 2.1.5 and below              |                      |
+| 46     | Wincor Nixdorf | wnBios64  | WinBios Driver     | 1.2.0 and below              |                      |
+| 47     | EVGA  | EleetX1| EVGA ELEET X1     | 1.0.16.0 and below              |                      |
+| 48     | ASRock         | AxtuDrv  | AsRock Extreme Tuner     | Undefined              |                      |
+| 49     | ASRock         | AppShopDrv103  | ASRock APP Shop    | 1.0.58 and below       |                      |
+| 50     | ASRock         | AsrDrv107n  | ASRock Motherboard Utility    | 3.0.498 and below       |                      |
+| 51     | ASRock         | AsrDrv107  | ASRock Motherboard Utility    | 3.0.498 and below       |                      |
+| 52     | Intel          | PmxDrv  | Intel(R) Management Engine Tools Driver    | 1.0.0.1003 and below       |                      |
+| 53     | Jun Liu        | HwRwDrv  | Hardware read & write driver    | 1.0.0.6 and below       |                      |
+| 54     | NetEase        | NeacSafe64  | NeacSafe64 mini-filter driver    | 1.0.0.1 and below       |                      |
+| 55     | TechPowerUp    | ThrottleStop  | ThrottleStop                       | 3.0.0.0 and below             |                      |
+| 56     | Toshiba        | TPwSav        | Toshiba power saving driver for laptops | 2.0.0.2 and below             |                      |
+| 57     | Lenovo         | LnvMSRIO      | Lenovo filter driver | 3.1.0.35 and below             |                      |
+| 58     | Teledyne       | CorMem      | Sapera Memory Manager | 9.0.0 and below             |                      |
+| 59     | Digital Elect. Corp | Ipctype     | IPCType Device Driver | 1.0.2.0 and below             |                      |
+| 60     | Shangke        | WinHwDrv    | Undefined | Undefined             |                      |
+| 61     | AMD        | affdriver    | Undefined | 1.1.3.0 and below            |     
+| 62     | Matrox        | mtxC9CB    | Undefined | Undefined           |     
+| 63     | Point Grey Research        | PGRHostControl    | Development SDK | 2.7.0.0 and below           |     
+| 64     | LECO        | LECOMA    | Undefined | 2.3.1.0 and below           |     
+| 65     | Adlice        | RootLaser    | Adlice Protect | 3.4.1.0 and below           |   
+| 66     | Kontron AG        | KtAPI    | Undefined | Undefined           |   
+| 67     | HP        | hpwks    | HP Workstation Tools Driver | 1.5.0.0 and below           |   
+|ProviderId|ResourceId|DriverName             |DeviceName                            |Description                                           |AdvisoryId                    |SignerName                                        |SourceBase  |MinNtBuild|MaxNtBuild|Flags     |ShellcodeMask|ImageSize|FileSHA1                                |AuthenticodeSHA1                        |PageHashSHA1                            |PageHashSHA256                                                  |
+|----------|----------|-----------------------|--------------------------------------|------------------------------------------------------|------------------------------|--------------------------------------------------|------------|----------|----------|----------|-------------|---------|----------------------------------------|----------------------------------------|----------------------------------------|----------------------------------------------------------------|
+|0         |103       |NalDrv                 |Nal                                   |Intel NAL driver                                      |CVE-2015-2291                 |Intel Corporation                                 |None        |7601      |ANY       |0x00000100|0x00000007   |34568    |D04E5DB5B6C848A29732BFD52029001F23C3DA75|2CBFE4AD0E1231FF3E19C19CA9311D952CE170B7|55B90A6E4323FC1D7B71B23F81FC758F45740E02|FB14DC1657C0EDD18FA747005EB7125DBBD83595095D67906BB0B4D57222D4C1|
+|1         |105       |RTCore64               |RTCore64                              |MSI RTCore64 driver                                   |CVE-2019-16098                |MICRO-STAR INTERNATIONAL CO., LTD.                |None        |7601      |ANY       |0x00000000|0x00000007   |14024    |F6F11AD2CD2B0CF95ED42324876BEE1D83E01775|4A68C2D7A4C471E062A32C83A36EEDB45A619683|84152FA241C3808F8C7752964589C957E440403F|A807532037A3549AE3E046F183D782BCB78B6193163EA448098140563CF857CB|
+|2         |106       |Gdrv                   |GIO                                   |Gigabyte GDRV driver                                  |CVE-2018-19320                |Giga-Byte Technology                              |MapMem      |7601      |ANY       |0x00000020|0x00000007   |26192    |FE10018AF723986DB50701C8532DF5ED98B17C39|0F5034FCF5B34BE22A72D2ECC29E348E93B6F00F|DC02DA48DF2F9B558453847399A8DE47C5AD56CC|95406C37FDE1B08524FAB782200C8BECAEC98A40B020F41C5BA13032FE9522FA|
+|3         |107       |ATSZIO                 |ATSZIO                                |ASUSTeK WinFlash                                      |                              |ASUSTeK Computer Inc.                             |None        |7601      |ANY       |0x00000020|0x00000007   |20280    |490109FA6739F114651F4199196C5121D1C6BDF2|B66BF2B1B07F8F2BAB1418131AE66B0A55265F73|04384DE86A18CE8D17DB3BB33CB9DD06868D4C32|1871BE94AD775FD220F9A04C0F6B84C2C34CF898A4096E94359D9E5E269835DC|
+|4         |108       |MsIo64                 |MsIo                                  |MICSYS RGB driver                                     |CVE-2019-18845                |MICSYS Technology Co., Ltd.                       |WinIo       |7601      |ANY       |0x00000022|0x00000007   |25616    |E6305DDDD06490D7F87E3B06D09E9D4C1C643AF0|7E732ACB7CFAD9BA043A9350CDEFF25D742BECB8|CDE1A50E1DF7870F8E4AFD8631E45A847C714C0A|05736AB8B48DF84D81CB2CC0FBDC9D3DA34C22DB67A3E71C6F4B6B3923740DD5|
+|5         |109       |GLCKIo2                |GLCKIo2                               |ASRock Polychrome RGB                                 |                              |ASUSTeK Computer Inc.                             |WinIo       |7601      |ANY       |0x00000020|0x00000007   |19392    |CC51BE79AE56BC97211F6B73CC905C3492DA8F9D|D99B80B3269D735CAC43AF5E43483E64CA7961C3|51E0740AAEE5AE76B0095C92908C97B817DB8BEA|E7F011E9857C7DB5AACBD424612CD7E3D12C363FDC8F072DDFAF9E2E5C85F5F3|
+|6         |110       |EneIo64                |EneIo                                 |G.SKILL Trident Z Lighting Control                    |                              |Microsoft Windows Hardware Compatibility Publisher|WinIo       |7601      |ANY       |0x00000022|0x00000007   |17480    |B4D014B5EDD6E19CE0E8395A64FAEDF49688ECB5|651B953CB03928E41424AD59F21D4978D6F4952E|3727D824713E733558A20DE9876AABF1059D3158|88C83F618C8F4069DED87C409A8446C5A30E22A303E64AAFF1C5BE6302ADEDB4|
+|7         |111       |WinRing0x64            |WinRing0_1_2_0                        |EVGA Precision X1                                     |                              |EVGA                                              |WinRing0    |7601      |16299     |0x00000020|0x00000007   |14536    |012DB3A80FAF1F7F727B538CBE5D94064E7159DE|7AED8186977FCF7EE219DA493BAECDB95EC8040D|9AB2257AE97DB4B0617640C90DD45AB7F144FBB9|D48209A183CDFEAADBD8A644730BD76BBF89C759844890739F934F242C226305|
+|8         |112       |EneTechIo64            |EneTechIo                             |Thermaltake TOUGHRAM Software                         |                              |Microsoft Windows Hardware Compatibility Publisher|WinIo       |7601      |ANY       |0x00000022|0x00000007   |19968    |A87D6EAC2D70A3FBC04E59412326B28001C179DE|6B60825564B2DCCFF3A4F904B71541BFE94136C9|8911B97A3140C2523287E1039B08DE8EF4D7F9AB|85859FFD16396D0FE9897BAFBDCE94FF66474DCDEF7754FCDF2C9C7A8CE451DB|
+|9         |113       |phymemx64              |PhyMem                                |Huawei MateBook Manager                               |                              |Huawei Technologies Co., Ltd.                     |WinIo       |7601      |ANY       |0x00000022|0x00000007   |25512    |6ECFC7CCC4843812BFCCFB7E91594C018F0A0FF9|3C9F40AC72B0202CB40627FDEB7298079187193A|6E7D8ABF7F81A2433F27B052B3952EFC4B9CC0B1|B7113B9A68E17428E2107B19BA099571AAFFC854B8FB9CBCEB79EF9E3FD1CC62|
+|10        |114       |rtkio64                |rtkio                                 |Realtek Dash Client Utility                           |                              |Realtek Semiconductor Corp.                       |PhyMem      |7601      |16299     |0x00000022|0x00000007   |55048    |B21CBA198D721737AABD882ADA6C91295A5975ED|7593D46A73EC00E00AEF3E9D0031C2B21B74ECFB|D4B640263D2A6C9906D4032F252CC81D838E2116|77EC9BF2DBB106EF51D4DE49E70801D48001BF06146A370D0669E385B87C0826|
+|11        |115       |EneTechIo64            |EneTechIo                             |MSI Dragon Center                                     |                              |Microsoft Windows Hardware Compatibility Publisher|WinIo       |7601      |ANY       |0x00000022|0x00000007   |20992    |3CD037FBBA8AAE82C1B111C9F8755349C98BCB3C|CE280412DD778CAFBE6DBB05B8CAB42E98D3AE56|6CAFC03207391464AB7E69F47228CB82539BEBDE|3F88ABF8908108207DA38DBC9E8690B3D63DB7F856B16E9F0D3A3B389FC72561|
+|12        |116       |lha                    |{E8F2FF20-6AF7-4914-9398-CE2132FE170F}|LG LHA driver                                         |CVE-2019-8372                 |LG Electronics Inc.                               |None        |7601      |16299     |0x00000020|0x00000007   |22168    |3FD55927D5997D33F5449E9A355EB5C0452E0DE3|87C155D933CA3513E29D235562D96B88D3913CDE|B565361205846323911766F55E380D93C6A3AB02|4818AA3F52BCF3554131B56A3A0F0C2D8BBB5F6D18837F68D811EAD7917A2DE3|
+|13        |117       |AsIO2                  |Asusgio2                              |ASUS GPU Tweak                                        |                              |ASUSTeK Computer Inc.                             |WinIo       |7601      |ANY       |0x00000022|0x00000007   |33832    |AA2EA973BB248B18973E57339307CFB8D309F687|92FEE95E32A727D135F1F46CA98C201FFFBF6950|C5F1D135831851E9D7A06F9636E2A50B1D5C3A04|B4DCE5B50224C2461B49F1850C73EF84E65A64D89E2F32DD931A2F3C62D9D6BF|
+|14        |118       |DirectIo64             |DIRECTIO64                            |PassMark DirectIO                                     |                              |PassMark Software Pty Ltd                         |None        |7601      |ANY       |0x00000022|0x00000007   |42352    |2DB49BDF8029FDCDA0A2F722219AE744EAE918B0|F1BDD3236F43338A119D74ECA730F0D464DED973|A14331F63EC907BF3E472F1E0CB8F19DE06EF4E4|7F0A28CCF0AB76964D40E063F9D4B88193B77E4BADF66E8C8F87C97127885987|
+|15        |119       |gmerdrv                |gmerdrv                               |Gmer 'Antirootkit'                                    |                              |GMEREK Systemy Komputerowe Przemyslaw Gmerek      |None        |7601      |ANY       |0x00000008|0x00000007   |56584    |83506DE48BD0C50EA00C9E889FE980F56E6C6E1B|0BCA6C35159282FD64615ABC4D398399B061847B|0882AB6651CD17F3D7D696E9C48EB4934159AE4C|0F5DE6DE77D764E2370FA69D3CD8B2C0EC4DFC6F6736C7EDE97F3F75567ED47A|
+|16        |120       |DBUtil23               |DBUtil_2_3                            |Dell DBUtil 2.3 driver                                |CVE-2021-21551                |Dell Inc.                                         |None        |7601      |ANY       |0x00000010|0x00000007   |14840    |C948AE14761095E4D76B55D9DE86412258BE7AFD|E3C1DD569AA4758552566B0213EE4D1FE6382C4B|E09B5E80805B8FE853EA27D8773E31BFF262E3F7|7E2AD3D6D76F4FCD4583B865FFC12DE6C44FC16CBCBB81D480CB067F2A860422|
+|17        |121       |mimidrv                |mimidrv                               |Mimikatz mimidrv                                      |                              |Benjamin Delpy                                    |None        |7601      |ANY       |0x00000000|0x00000007   |36584    |A8DDB7565B61BC021CD2543A137E00627F999DCC|0E732D18A7D880F0505433A0DA0E100DA0E1C3A3|A1E322631A67DE6441A08C991352281CF7C83FD8|787AC1DB370421BD26915EAE797F67AD4C6E53775970DC18226ED5225B0B8A3B|

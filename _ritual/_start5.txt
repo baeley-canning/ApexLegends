@@ -1,0 +1,55 @@
+schtasks : WARNING: 
+Task may not run 
+because /ST is 
+earlier than 
+current time.
+At line:1 char:71
++ ... tart5.txt'; 
+schtasks /create 
+/tn QKP_VMSTART /tr 
+C:\Windows\Temp\qkp_
+ ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (WARN   
+ ING: Task m...n    
+ current time.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+ERROR: Access is 
+denied.
+
+schtasks : ERROR: 
+The system cannot 
+find the file 
+specified.
+At line:1 char:210
++ ... t-File $o 
+-Encoding ascii; 
+schtasks /run /tn 
+QKP_VMSTART 2>&1 | 
+Out-F ...
++                   
+             ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (ERRO   
+ R: The syst...f    
+ile specified.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+

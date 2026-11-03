@@ -1,0 +1,70 @@
+00001842  488d0d57060000         lea     rcx, [rip + 0x657]
+00001849  e8e6000000             call    0x1934
+0000184e  488b4c2440             mov     rcx, qword ptr [rsp + 0x40]
+00001853  ff152f080000           call    qword ptr [rip + 0x82f]         ; ntoskrnl!IoDeleteDevice
+00001859  b800000080             mov     eax, 0x80000000
+0000185e  66baf80c               mov     dx, 0xcf8
+00001862  c705e418000000000000   mov     dword ptr [rip + 0x18e4], 0
+0000186c  ef                     out     dx, eax
+0000186d  66bafc0c               mov     dx, 0xcfc
+00001871  66ed                   in      ax, dx
+00001873  66baf80c               mov     dx, 0xcf8
+00001877  440fb7c0               movzx   r8d, ax
+0000187b  b800280080             mov     eax, 0x80002800
+00001880  4181f886800000         cmp     r8d, 0x8086
+00001887  ef                     out     dx, eax
+00001888  66bafe0c               mov     dx, 0xcfe
+0000188c  66ed                   in      ax, dx
+0000188e  448905c3180000         mov     dword ptr [rip + 0x18c3], r8d
+00001895  0fb7c8                 movzx   ecx, ax
+00001898  890db6180000           mov     dword ptr [rip + 0x18b6], ecx
+0000189e  752a                   jne     0x18ca
+000018a0  81f9282f0000           cmp     ecx, 0x2f28
+000018a6  7408                   je      0x18b0
+000018a8  81f9286f0000           cmp     ecx, 0x6f28
+000018ae  751a                   jne     0x18ca
+000018b0  66baf80c               mov     dx, 0xcf8
+000018b4  b890280080             mov     eax, 0x80002890
+000018b9  ef                     out     dx, eax
+000018ba  66bafc0c               mov     dx, 0xcfc
+000018be  ed                     in      eax, dx
+000018bf  25000000fc             and     eax, 0xfc000000
+000018c4  890586180000           mov     dword ptr [rip + 0x1886], eax
+000018ca  488d0d9f050000         lea     rcx, [rip + 0x59f]
+000018d1  418bd0                 mov     edx, r8d
+000018d4  e85b000000             call    0x1934
+000018d9  8b1575180000           mov     edx, dword ptr [rip + 0x1875]
+000018df  488d0d5a050000         lea     rcx, [rip + 0x55a]
+000018e6  e849000000             call    0x1934
+000018eb  8b155f180000           mov     edx, dword ptr [rip + 0x185f]
+000018f1  488d0d18050000         lea     rcx, [rip + 0x518]
+000018f8  e837000000             call    0x1934
+000018fd  eb0c                   jmp     0x190b
+000018ff  488d0dea040000         lea     rcx, [rip + 0x4ea]
+00001906  e829000000             call    0x1934
+0000190b  488d0dae040000         lea     rcx, [rip + 0x4ae]
+00001912  e81d000000             call    0x1934
+00001917  488bbc2498000000       mov     rdi, qword ptr [rsp + 0x98]
+0000191f  8bc3                   mov     eax, ebx
+00001921  488b9c2490000000       mov     rbx, qword ptr [rsp + 0x90]
+00001929  4883c478               add     rsp, 0x78
+0000192d  c3                     ret
+0000192e  cc                     int3
+0000192f  cc                     int3
+00001930  cc                     int3
+00001931  cc                     int3
+00001932  cc                     int3
+00001933  cc                     int3
+00001934  ff25de060000           jmp     qword ptr [rip + 0x6de]         ; ntoskrnl!DbgPrint
+0000193a  cc                     int3
+0000193b  cc                     int3
+0000193c  cc                     int3
+0000193d  cc                     int3
+0000193e  cc                     int3
+0000193f  cc                     int3
+00001940  ff250a070000           jmp     qword ptr [rip + 0x70a]         ; ntoskrnl!__C_specific_handler
+00001946  cc                     int3
+00001947  cc                     int3
+00001948  cc                     int3
+00001949  cc                     int3
+0000194a  cc                     int3

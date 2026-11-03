@@ -1,0 +1,178 @@
+now = 01/11/2026 21:59:55
+--- minidump access ---
+  C:\Windows\Minidump\110126-9437-01.dmp  ERR Access is denied
+  C:\Windows\Minidump\102726-9484-01.dmp  ERR Access is denied
+  dir listing: 
+
+--- WER: powershell.exe user-mode crashes (today) ---
+== AppCrash_powershell.exe_782b7a89f92471c31ef8dd9c3df6594fa9d7add2_07f00a10_22417325-3a7c-4407-b7c6-7576f8331633  dirTime=10/27/2026 12:45:55
+EventTime=134375319516669935
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=ntdll.dll
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000005
+Sig[7].Name=Exception Offset
+Sig[7].Value=000000000002ab24
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_4be50d8f-cb73-4cbe-8771-d63423355a39  dirTime=10/27/2026 12:45:56
+EventTime=134375319531148400
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=ntdll.dll
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000005
+Sig[7].Name=Exception Offset
+Sig[7].Value=00000000000cd5e9
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_b13669b9-79be-4fcd-af96-fe5e37560497  dirTime=10/27/2026 12:43:53
+EventTime=134375318307258982
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=ntdll.dll
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000005
+Sig[7].Name=Exception Offset
+Sig[7].Value=00000000000cd5e9
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_b65b2dc6-ffb1-4122-9bd6-29baa7ae8858  dirTime=10/27/2026 12:44:56
+EventTime=134375318931511787
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=ntdll.dll
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000005
+Sig[7].Name=Exception Offset
+Sig[7].Value=00000000000cd5e9
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_91823170a005bdcaa1adfe4146323968660d994_07f00a10_fd2ec124-2848-4dbc-99f9-389a88deca38  dirTime=10/27/2026 12:47:36
+EventTime=134375320504092709
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=ntdll.dll
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000005
+Sig[7].Name=Exception Offset
+Sig[7].Value=00000000000cd5e9
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_4c76ec6d-3aea-453d-ba5f-a1b93f8df0ce  dirTime=11/01/2026 17:23:42
+EventTime=134379806192748062
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000374
+Sig[7].Name=Exception Offset
+Sig[7].Value=PCH_44_FROM_ntdll+0x00000000001628A4
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_c656f441-b08b-4cfa-b6b1-32c1962dd45e  dirTime=11/01/2026 17:27:53
+EventTime=134379808707500408
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000374
+Sig[7].Name=Exception Offset
+Sig[7].Value=PCH_44_FROM_ntdll+0x00000000001628A4
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+== AppCrash_powershell.exe_b2b8cad734cb8ce9c3527445d65195cb3bc9bf_07f00a10_ed857552-c875-4f2d-8493-a499c66ade82  dirTime=11/01/2026 17:26:37
+EventTime=134379807939157531
+Sig[0].Name=Application Name
+Sig[0].Value=powershell.exe
+Sig[3].Name=Fault Module Name
+Sig[3].Value=StackHash_79fd
+Sig[4].Name=Fault Module Version
+Sig[4].Value=10.0.26100.9711
+Sig[5].Name=Fault Module Timestamp
+Sig[5].Value=5fd39a05
+Sig[6].Name=Exception Code
+Sig[6].Value=c0000374
+Sig[7].Name=Exception Offset
+Sig[7].Value=PCH_44_FROM_ntdll+0x00000000001628A4
+DynamicSig[1].Name=OS Version
+DynamicSig[1].Value=10.0.26200.2.0.0.256.48
+
+--- kd !analyze -v on today 110126-9437-01.dmp ---
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Windows\Minidump\110126-9437-01.dmp]
+Could not open dump file [C:\Windows\Minidump\110126-9437-01.dmp], Win32 error 0n5
+    "Access is denied."
+Debuggee initialization failed, Win32 error 0n5
+Access is denied.
+
+--- end ---

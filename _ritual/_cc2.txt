@@ -1,0 +1,3 @@
+parse_errors=0
+_ritual\p36_prov.cs(893,16): error CS0136: A local variable named 'nm' cannot be declared in this scope because it would give a different meaning to 'nm', which is already used in a 'parent or current' scope to denote something else
+cs_exit=1

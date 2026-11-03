@@ -1,0 +1,40 @@
+                // start(8)+length(8), and the top region is CmResourceTypeMemoryLarge(7)
+                // with CM_RESOURCE_MEMORY_LARGE_40 flags 0x200 (length stored >> 8).
+                // The old 16-byte/4-byte walk read exactly one range (1000-9e000) and
+                // starved the whole X discovery (p36 run 1, 01:48:30).
+                for (uint d = 0; d < n && off + 20 <= cb && guard++ < 4096; d++)
+                {
+                    byte t = rb[off];
+                    ushort flags = BitConverter.ToUInt16(rb, off + 2);
+                    ulong s0 = BitConverter.ToUInt64(rb, off + 4);
+                    ulong ln = BitConverter.ToUInt64(rb, off + 12);
+                    off += 20;
+                    if (ln == 0) continue;
+                    if (t == 7)
+                    {
+                        if ((flags & 0x0200) != 0) ln <<= 8;        // CM_RESOURCE_MEMORY_LARGE_40
+                        else if ((flags & 0x0400) != 0) ln <<= 16; // CM_RESOURCE_MEMORY_LARGE_48
+                        else if ((flags & 0x0800) != 0) ln <<= 32; // CM_RESOURCE_MEMORY_LARGE_64
+                    }
+                    if (t == 3 || t == 7)
+                    {
+                        if (sb.Length > 0) sb.Append(',');
+                        sb.Append(s0.ToString("x")).Append('-').Append((s0 + ln).ToString("x"));
+                    }
+                }
+            }
+            return sb.Length > 0 ? sb.ToString() : "no-memory-descriptors cb=" + cb;
+        }
+        finally { RegCloseKey(hk); }
+    }
+
+    // PA ranges that are KNOWN to av gdrv3, learned from a previous crash's durable
+    // breadcrumb (p36_write.ps1 reads its own io tail and maintains p36_badpa.txt).
+    // Keeping them out of InRamSpan lets a re-run walk past the hole instead of dying
+    // on the same page every single time.
+    public static ulong[] BadStarts = new ulong[0];
+    public static ulong[] BadEnds   = new ulong[0];
+
+    public static void SetBadRanges(string csv)
+    {
+        if (string.IsNullOrEmpty(csv)) return;

@@ -1,0 +1,57 @@
+=== p34 DRIVER-PRESENCE DISCRIMINATOR 01/11/2026 21:32:44 admin=True ===
+  hypothesis: with the flag already off, the game dies BECAUSE apexdrv is loaded.
+  TA stops the driver, TB starts it; nothing else changes.
+
+  [pre] 21:32:44  testsigning/nic=nointegritychecks       No / testsigning             No
+  [pre] SystemStartOptions = [NOEXECUTE=OPTIN HYPERVISORLAUNCHTYPE=AUTO NODEBUG FVEBOOT=2666496 NOVGA]
+  [pre] apexdrv RUNNING = True   eaanticheat=STOPPED   EAAntiCheatService=STOPPED
+  [pre] leftovers: game=1  EADesktop=2
+
+########## TA: apexdrv STOPPED + flag off (vanilla comparison) ##########
+  sc stop apexdrv :  SERVICE_NAME: apexdrv          TYPE               : 1  KERNEL_DRIVER           STATE              : 1  STOPPED          WIN32_EXIT_CODE    : 0  (0x0)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0
+  apexdrv RUNNING now = False
+  [TA] launched r5apex_dx12 at 21:32:50  (sampling 1 s, window 120s)
+  [TA] t+3s GAME UP pid=5052 name=EAAntiCheat.GameServiceLauncher
+  [TA] t+3s window title = Splash Screen
+    TA EVT 21:32:59 Application id=1000 src=EA Javelin Anticheat :: ExitType: 0xC1C73E72028557A6 (0x2C56D92149E46F4C)
+  [TA] t+8s GAME DIED after ~4s uptime  exit=0x
+    TA EVT 21:33:04 System id=1 src=Microsoft-Windows-FilterManager :: File System Filter 'EAAntiCheat' (Version 10.0, ?2026?-?10?-?23T06:42:59.000000000Z) unloaded successfully.
+  [TA] t+10s  apexdrv=False eaanticheat=STOPPED svc=ABSENT game=False set=[]
+  [TA] t+20s  apexdrv=False eaanticheat=STOPPED svc=ABSENT game=False set=[]
+  [TA] (stopping 20 s after death)
+  [TA] RESULT alive=False died=True uptime=4s popups=0 name='EAAntiCheat.GameServiceLauncher'  apexdrv_RUNNING=False  eaanticheat=STOPPED
+
+########## TB: apexdrv RUNNING + flag off (the configuration under test) ##########
+  sc start apexdrv :  SERVICE_NAME: apexdrv          TYPE               : 1  KERNEL_DRIVER           STATE              : 4  RUNNING                                  (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)         WIN32_EXIT_CODE    : 0  (0x0)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0         PID                : 0         FLAGS              : 
+  apexdrv RUNNING now = True
+  [TB] launched r5apex_dx12 at 21:33:48  (sampling 1 s, window 120s)
+  [TB] t+3s GAME UP pid=13480 name=EAAntiCheat.GameServiceLauncher
+  [TB] t+3s window title = Splash Screen
+  [TB] t+10s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+20s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+30s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+40s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+50s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+60s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+70s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+  [TB] t+80s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=True set=[EAAntiCheat.GameServiceLauncher(13480)]
+    TB POPUP 21:36:35 System id=26 src=Application Popup :: Application popup: Security Violation : EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game. Session ID: 1Ho8AHzguuLx24G54c3KGRLo9xGh3IkD2bkW3m
+    TB POPUP 21:36:36 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+    TB POPUP 21:36:39 System id=26 src=Application Popup :: Application popup: Security Violation : EA Javelin Anticheat has detected an unacceptable configuration. Please ensure no cheat-related or tampering software is active and restart the game. Session ID: jS82UXXh67Txh4i+4c3KHrXMT/McJE7MGQj0ni
+    TB POPUP 21:36:40 System id=26 src=Application Popup :: Application popup: Security Violation : Device Driver signing integrity checks must be enabled to start the game.
+  [TB] t+89s GAME DIED after ~85s uptime  exit=0x
+  [TB] t+90s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=False set=[]
+  [TB] t+100s  apexdrv=True eaanticheat=STOPPED svc=STOPPED game=False set=[]
+  [TB] (stopping 20 s after death)
+  [TB] RESULT alive=False died=True uptime=85s popups=4 name='EAAntiCheat.GameServiceLauncher'  apexdrv_RUNNING=True  eaanticheat=STOPPED
+
+########## VERDICT ##########
+  TA driver-stopped : alive=False died=True uptime=4s popups=0
+  TB driver-running : alive=False died=True uptime=85s popups=4
+  *** RED: the box refuses the game even with our driver STOPPED and the flag strings clean.
+      => the refusal follows the LIVE kernel state (this boot is test mode), not the flag string.
+      Next: real chain (EV -> attestation signing) or BYOVD manual map; or ship external-only.
+      Confirm once on a normal reboot (testsigning off, never test mode) before spending on signing.
+
+-- p34 END 01/11/2026 21:37:25 --
+  (driver left running by default so an injector can attach)

@@ -1,0 +1,27 @@
+ping 14:31:31
+open ok
+stage va=0x16000000 locked=True
+A-low pa=0x1000 n=0x20: ok e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10
+A-64M pa=0x4000000 n=0x20: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+A-tsrc pa=0x12000000 n=0x20: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+B-big pa=0x4000000 n=0x20000: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+B-small-after-big pa=0x4000000 n=0x20: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+reopen: ok
+C-big-fresh pa=0x4000000 n=0x20000: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+C-small-fresh pa=0x4000000 n=0x20: ok 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+C-page-fresh pa=0x100000 n=0x1000: ok 48 89 02 33 c0 c3 cc 48 83 22 00 b8 05 40 00 80
+C-rep1 pa=0x100000 n=0x20: ok 48 89 02 33 c0 c3 cc 48 83 22 00 b8 05 40 00 80
+C-rep2 pa=0x100000 n=0x20: ok 48 89 02 33 c0 c3 cc 48 83 22 00 b8 05 40 00 80
+C-rep3 pa=0x100000 n=0x20: ok 48 89 02 33 c0 c3 cc 48 83 22 00 b8 05 40 00 80
+end
+x-codes handle ok
+xpg alloc 0x14000000 -> 0x14000000
+code 0x2019: ok=True err=183
+code 0x2800: ok=False err=1
+code 0x280c: ok=False err=1
+end
+reopen for second pass: ok
+code 0x2019: ok=True err=183
+code 0x2800: ok=False err=1
+code 0x280c: ok=False err=1
+end

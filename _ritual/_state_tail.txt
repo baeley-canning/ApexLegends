@@ -1,0 +1,458 @@
+﻿=== drv dirs ===
+MISSING: C:\Users\NEWUSE~1\AppData\Local\Temp\drv
+MISSING: C:\Windows\Temp\drv
+--- c:\Users\New User\OneDrive\Desktop\cheating\temp\drv ---
+
+Name                    Length LastWriteTime         
+----                    ------ -------------         
+apexr.c                   6112 27/10/2026 10:05:30 pm
+build.cmd                  913 27/10/2026 10:06:15 pm
+apexr.obj                 6981 27/10/2026 10:06:38 pm
+build.txt                   62 27/10/2026 10:06:38 pm
+install.cmd               1841 27/10/2026 10:06:50 pm
+apexr.cer                  766 27/10/2026 10:07:14 pm
+apexr.sys                 5488 27/10/2026 10:07:14 pm
+install.txt               2240 27/10/2026 10:07:14 pm
+enable_testsigning.bat     388 27/10/2026 10:12:03 pm
+state_and_set.bat         1221 27/10/2026 10:16:38 pm
+state.txt                 2878 27/10/2026 10:16:59 pm
+trust_cert.bat             723 27/10/2026 10:17:45 pm
+trust.txt                 1422 27/10/2026 10:18:22 pm
+try_start.bat              589 27/10/2026 10:19:13 pm
+try_start.txt              904 27/10/2026 10:19:33 pm
+after_reboot.bat          1471 27/10/2026 10:19:54 pm
+after_reboot.txt          1686 27/10/2026 10:20:16 pm
+README.txt                2239 27/10/2026 10:23:03 pm
+diag_eac.ps1              4267 27/10/2026 10:31:10 pm
+diag_eac.txt              2730 27/10/2026 10:31:32 pm
+svc_probe.ps1             2980 27/10/2026 10:32:06 pm
+svc_probe.txt             1398 27/10/2026 10:32:37 pm
+revert_testsigning.bat    2753 27/10/2026 10:34:09 pm
+backup                         27/10/2026 10:34:30 pm
+revert.txt                2379 27/10/2026 10:34:30 pm
+drv_strings.py            3503 27/10/2026 10:35:17 pm
+drv_strings.txt         171022 27/10/2026 10:35:37 pm
+drv_ioctl.py              3843 27/10/2026 10:36:15 pm
+drv_ioctl.txt              591 27/10/2026 10:36:36 pm
+drv_ioctl_console.txt     1184 27/10/2026 10:36:36 pm
+capstone_install.txt       946 27/10/2026 10:37:34 pm
+disasm_drv.py             1821 27/10/2026 10:37:50 pm
+disasm_MsIo64.txt        34002 27/10/2026 10:38:11 pm
+disasm_out.txt             362 27/10/2026 10:38:11 pm
+disasm_gdrv3.txt        240615 27/10/2026 10:38:11 pm
+msio_1400.txt             3621 27/10/2026 10:39:04 pm
+msio_1200.txt             3222 27/10/2026 10:39:04 pm
+msio_1500.txt            11156 27/10/2026 10:39:39 pm
+listing.txt               2223 27/10/2026 10:39:39 pm
+annotate.py               5087 27/10/2026 10:42:51 pm
+annot_MsIo64.txt         36853 27/10/2026 10:43:10 pm
+ann_run.txt                181 27/10/2026 10:43:11 pm
+annot_gdrv3.txt         251318 27/10/2026 10:43:11 pm
+ann_run2.txt               181 27/10/2026 10:43:11 pm
+grep_gdrv.txt             2597 27/10/2026 10:43:41 pm
+grep_msio.txt             1782 27/10/2026 10:43:41 pm
+g2.txt                     875 27/10/2026 10:44:14 pm
+g3.txt                    8027 27/10/2026 10:44:14 pm
+g4.txt                   11959 27/10/2026 10:44:58 pm
+g5.txt                    1381 27/10/2026 10:44:58 pm
+g6.txt                       0 27/10/2026 10:44:58 pm
+g7.txt                    4627 27/10/2026 10:46:02 pm
+g8.txt                    2459 27/10/2026 10:46:02 pm
+g9.txt                     675 27/10/2026 10:46:02 pm
+g10.txt                   4444 27/10/2026 10:46:44 pm
+g11.txt                   1005 27/10/2026 10:47:55 pm
+g12.txt                   4775 27/10/2026 10:47:55 pm
+paths.txt                  722 27/10/2026 10:49:05 pm
+paths2.txt                 213 27/10/2026 10:49:34 pm
+find_global.py            4824 27/10/2026 10:50:07 pm
+global_3150.txt           1556 27/10/2026 10:50:27 pm
+run_fg.txt                  88 27/10/2026 10:50:27 pm
+ctx.py                     911 27/10/2026 10:50:48 pm
+g13.txt                  14851 27/10/2026 10:51:08 pm
+g14.txt                   1302 27/10/2026 10:51:08 pm
+g15.txt                   1858 27/10/2026 10:51:52 pm
+g16.txt                     15 27/10/2026 10:51:52 pm
+g17.txt                    836 27/10/2026 10:51:52 pm
+find_str_xref.py          3180 27/10/2026 10:52:13 pm
+strxref.txt               2691 27/10/2026 10:52:32 pm
+run_sx.txt                  86 27/10/2026 10:52:32 pm
+find_xref.py              2749 27/10/2026 10:52:57 pm
+xref.txt                    52 27/10/2026 10:53:18 pm
+run_x1.txt                  81 27/10/2026 10:53:18 pm
+run_x2.txt                   0 27/10/2026 10:53:18 pm
+g18.txt                   1256 27/10/2026 10:53:18 pm
+annot_gdrv3_3000.txt     14063 27/10/2026 10:54:00 pm
+run_a1.txt                  96 27/10/2026 10:54:00 pm
+annot_gdrv3_3680.txt     10046 27/10/2026 10:54:00 pm
+run_a2.txt                  96 27/10/2026 10:54:00 pm
+run_a3.txt                  96 27/10/2026 10:54:00 pm
+annot_gdrv3_1b80.txt     11580 27/10/2026 10:54:00 pm
+seg1.txt                  3202 27/10/2026 10:54:44 pm
+annot_gdrv3_33a0.txt     11467 27/10/2026 10:55:17 pm
+run_a4.txt                  96 27/10/2026 10:55:17 pm
+seg2.txt                  6765 27/10/2026 10:55:17 pm
+seg3.txt                   548 27/10/2026 10:56:03 pm
+seg4.txt                   517 27/10/2026 10:56:03 pm
+pyok.txt                    10 27/10/2026 10:58:14 pm
+scan_giov3.py             4675 27/10/2026 10:59:41 pm
+giov3_scan.txt          202223 27/10/2026 11:00:09 pm
+scanout.txt                362 27/10/2026 11:00:09 pm
+libs.txt                    70 27/10/2026 11:01:19 pm
+dll_dis.py                5292 27/10/2026 11:02:32 pm
+YccDrvv3.dll.dis.txt   2134994 27/10/2026 11:02:54 pm
+dd_out.txt                 192 27/10/2026 11:02:54 pm
+ioctl_sites.py             847 27/10/2026 11:03:56 pm
+ioctl_sites.txt          52421 27/10/2026 11:04:25 pm
+show.py                    633 27/10/2026 11:05:02 pm
+sites_2400.txt           37240 27/10/2026 11:05:48 pm
+o1.txt                    1813 27/10/2026 11:13:54 pm
+o2.txt                      33 27/10/2026 11:14:32 pm
+map_ioctls.py             2375 27/10/2026 11:16:10 pm
+map_ioctls.txt           29144 27/10/2026 11:16:30 pm
+run_map.txt                626 27/10/2026 11:16:30 pm
+f_open.txt               18224 27/10/2026 11:17:44 pm
+f_prim.txt               48516 27/10/2026 11:17:44 pm
+svc.txt                   1079 27/10/2026 11:18:24 pm
+ls.txt                    3561 27/10/2026 11:19:11 pm
+h3680.txt                 3035 27/10/2026 11:19:59 pm
+pmem_probe.py             7601 27/10/2026 11:21:22 pm
+pmem_probe.txt             446 27/10/2026 11:21:44 pm
+run_probe.txt              449 27/10/2026 11:21:44 pm
+open_probe.py             4059 27/10/2026 11:22:52 pm
+open_probe.txt            2382 27/10/2026 11:23:17 pm
+run_open.txt              2942 27/10/2026 11:23:17 pm
+svc2.txt                  1411 27/10/2026 11:25:10 pm
+dbg_handles.py            3843 27/10/2026 11:26:21 pm
+run_dbg.txt                  0 27/10/2026 11:26:41 pm
+dbg_handles.txt            339 27/10/2026 11:26:42 pm
+run_holder.txt               0 27/10/2026 11:33:46 pm
+find_holder.py            8805 27/10/2026 11:36:46 pm
+find_holder.txt            868 27/10/2026 11:37:08 pm
+elev_probe.txt            3621 27/10/2026 11:43:06 pm
+_s2800.txt                2195 27/10/2026 11:44:43 pm
+_s2808.txt                2262 27/10/2026 11:44:43 pm
+read_probe.py             6422 27/10/2026 11:46:59 pm
+read_probe.txt            1553 27/10/2026 11:47:20 pm
+elev_probe.py            12726 27/10/2026 11:49:45 pm
+mem_scan.py               5731 27/10/2026 11:52:46 pm
+mem_scan.txt              1063 27/10/2026 11:53:07 pm
+verify.py                 4414 27/10/2026 11:54:00 pm
+verify.txt                 375 27/10/2026 11:54:20 pm
+probe_addr.py             3341 27/10/2026 11:55:20 pm
+probe_addr.txt            3616 27/10/2026 11:55:40 pm
+__pycache__                    27/10/2026 11:56:57 pm
+physread.py               4573 27/10/2026 11:58:24 pm
+physread.txt               166 27/10/2026 11:58:45 pm
+
+
+
+--- c:\Users\New User\OneDrive\Desktop\cheating\temp ---
+
+Name                    Length LastWriteTime         
+----                    ------ -------------         
+roots.txt                  228 27/10/2026 2:31:59 pm 
+apex_exe.txt               113 27/10/2026 2:32:01 pm 
+probe_pe.py               2105 27/10/2026 2:33:37 pm 
+probe_pe.txt              1561 27/10/2026 2:34:02 pm 
+exports.py                2606 27/10/2026 2:37:48 pm 
+_fix.py                    424 27/10/2026 2:43:38 pm 
+scan_offsets.py           8587 27/10/2026 2:43:58 pm 
+scan_offsets.txt          3070 27/10/2026 2:44:53 pm 
+offsets_probe.py         21624 27/10/2026 2:51:02 pm 
+probe_run.txt             2963 27/10/2026 2:51:28 pm 
+rtti_check.txt               7 27/10/2026 2:51:55 pm 
+offsets_static.txt        2753 27/10/2026 2:53:44 pm 
+datamaps.txt                39 27/10/2026 2:53:44 pm 
+probe_maps.txt            2834 27/10/2026 2:53:44 pm 
+dm_probe.py               3981 27/10/2026 2:54:39 pm 
+dm_probe.txt              3506 27/10/2026 2:55:06 pm 
+proc_dx12.txt              198 27/10/2026 2:56:08 pm 
+live_probe.py             9620 27/10/2026 2:57:09 pm 
+live_run.txt               495 27/10/2026 2:57:31 pm 
+handle_probe.py           1900 27/10/2026 2:57:59 pm 
+handle_probe.txt           491 27/10/2026 2:58:19 pm 
+treelist.txt           4623384 27/10/2026 2:59:01 pm 
+tree2.txt                52188 27/10/2026 2:59:31 pm 
+tree3.txt                 3872 27/10/2026 3:00:13 pm 
+ls_temp.txt               2718 27/10/2026 3:01:17 pm 
+sizes.txt                 6868 27/10/2026 3:02:23 pm 
+dm2_lines.txt                5 27/10/2026 3:07:46 pm 
+dm2_compile.txt             12 27/10/2026 3:08:10 pm 
+dm2.py                    8634 27/10/2026 3:10:19 pm 
+dm2.txt                  13640 27/10/2026 3:10:48 pm 
+dm2_run.txt                 39 27/10/2026 3:10:48 pm 
+dm2_done.txt                 6 27/10/2026 3:10:48 pm 
+dm2_mid.txt               6494 27/10/2026 3:11:31 pm 
+dm2_mid_ok.txt               4 27/10/2026 3:11:31 pm 
+dm3.py                    4880 27/10/2026 3:12:11 pm 
+dm3.txt                   3924 27/10/2026 3:13:10 pm 
+dm3_run.txt                 72 27/10/2026 3:13:10 pm 
+dm3_done.txt                14 27/10/2026 3:13:10 pm 
+dm4.py                    5355 27/10/2026 3:13:40 pm 
+dm4.txt                  11942 27/10/2026 3:14:02 pm 
+dm4_run.txt                 74 27/10/2026 3:14:02 pm 
+dm4_done.txt                14 27/10/2026 3:14:02 pm 
+dm5.py                    5021 27/10/2026 3:14:23 pm 
+dm5.txt                  12974 27/10/2026 3:15:25 pm 
+dm5_run.txt                 72 27/10/2026 3:15:25 pm 
+dm5_done.txt                14 27/10/2026 3:15:25 pm 
+dm6.py                    6705 27/10/2026 3:17:08 pm 
+dm6.txt                   4022 27/10/2026 3:17:40 pm 
+dm6_run.txt                 72 27/10/2026 3:17:40 pm 
+probe.txt                  254 27/10/2026 3:19:36 pm 
+pip.txt                   1014 27/10/2026 3:20:12 pm 
+pip2.txt                   357 27/10/2026 3:20:12 pm 
+dm7.py                    4009 27/10/2026 3:20:36 pm 
+dm7.txt                   8561 27/10/2026 3:21:03 pm 
+dm7_run.txt                 74 27/10/2026 3:21:03 pm 
+dm8_tail.txt                72 27/10/2026 3:22:53 pm 
+dm8_proc.txt               526 27/10/2026 3:23:36 pm 
+dm8_wait.txt                44 27/10/2026 3:24:47 pm 
+dm8_head.txt                 0 27/10/2026 3:25:56 pm 
+dm8_status.txt               4 27/10/2026 3:28:39 pm 
+dm8.py                    9586 27/10/2026 3:29:33 pm 
+dm8_err.txt                  0 27/10/2026 3:29:54 pm 
+dm8_pid.txt                 11 27/10/2026 3:29:54 pm 
+dm8.txt                  13029 27/10/2026 3:30:12 pm 
+dm8_prog.txt             13369 27/10/2026 3:30:12 pm 
+dm8_run.txt                 36 27/10/2026 3:30:12 pm 
+dm7_health.txt            5884 27/10/2026 3:31:23 pm 
+ls.txt                     776 27/10/2026 3:31:23 pm 
+dm9.py                    5361 27/10/2026 3:32:44 pm 
+dm9_err.txt                  0 27/10/2026 3:33:54 pm 
+dm9_pid.txt                  7 27/10/2026 3:33:54 pm 
+dm9_prog.txt               128 27/10/2026 3:33:54 pm 
+dm9.txt                 196991 27/10/2026 3:33:54 pm 
+dm9_run.txt                 37 27/10/2026 3:33:54 pm 
+dm10.py                  16761 27/10/2026 3:38:53 pm 
+dm10_err.txt                 0 27/10/2026 3:39:17 pm 
+pychk.txt                   94 27/10/2026 3:39:41 pm 
+dm10_fields.tsv             36 27/10/2026 3:40:24 pm 
+dm10.txt                 44310 27/10/2026 3:40:24 pm 
+dm10_prog.txt            44665 27/10/2026 3:40:24 pm 
+dm11_err.txt                 0 27/10/2026 3:47:49 pm 
+dm11_out.txt                 0 27/10/2026 3:47:49 pm 
+dm11_cache.pkl         5953298 27/10/2026 3:48:06 pm 
+dm11_fields.tsv          90845 27/10/2026 3:48:07 pm 
+dm11_prog.txt            80917 27/10/2026 3:48:07 pm 
+dm11.txt                 80562 27/10/2026 3:48:07 pm 
+dm12.py                   7135 27/10/2026 3:52:53 pm 
+dm12.txt                 22477 27/10/2026 3:53:14 pm 
+dm12_out.txt               154 27/10/2026 3:53:14 pm 
+dm13_keys.py               559 27/10/2026 3:58:35 pm 
+dm13_keys.txt              219 27/10/2026 3:58:55 pm 
+dm13_err.txt                 0 27/10/2026 4:07:37 pm 
+dm13_log.txt                75 27/10/2026 4:07:40 pm 
+dm15.py                   2626 27/10/2026 4:09:43 pm 
+dm15.txt                  3285 27/10/2026 4:10:05 pm 
+dm15_run.txt              6572 27/10/2026 4:10:05 pm 
+dm16.py                   2072 27/10/2026 4:10:41 pm 
+dm16.txt                  1228 27/10/2026 4:11:01 pm 
+dm16_run.txt              2458 27/10/2026 4:11:01 pm 
+dm13.py                   8534 27/10/2026 4:11:43 pm 
+dm13.txt               2559478 27/10/2026 4:12:11 pm 
+dm13_run.txt               158 27/10/2026 4:12:11 pm 
+dm17.py                   9604 27/10/2026 4:16:30 pm 
+dm17_err.txt                 0 27/10/2026 4:17:18 pm 
+dm17.txt                309057 27/10/2026 4:17:26 pm 
+dm17_run.txt                22 27/10/2026 4:17:26 pm 
+now.txt                     72 27/10/2026 4:18:48 pm 
+dm18.py                   2069 27/10/2026 4:20:07 pm 
+dm18_out.txt               178 27/10/2026 4:20:28 pm 
+dm18_secs.txt             1242 27/10/2026 4:20:55 pm 
+dm19.py                   1833 27/10/2026 4:21:10 pm 
+dm19_out.txt              4134 27/10/2026 4:21:30 pm 
+dm20.py                   6571 27/10/2026 4:23:23 pm 
+dm20_err.txt                 0 27/10/2026 4:23:44 pm 
+dm20.txt                  2419 27/10/2026 4:23:51 pm 
+dm20_run.txt                20 27/10/2026 4:23:51 pm 
+dm21.py                   6196 27/10/2026 4:25:41 pm 
+dm21_err.txt                 0 27/10/2026 4:26:02 pm 
+dm21_run.txt                20 27/10/2026 4:26:04 pm 
+dm21_err2.txt                0 27/10/2026 4:29:07 pm 
+dm21.txt                 13485 27/10/2026 4:29:07 pm 
+dm21_run2.txt               21 27/10/2026 4:29:07 pm 
+dm22_err.txt                 0 27/10/2026 4:32:10 pm 
+dm23.py                   4902 27/10/2026 4:33:56 pm 
+dm22.py                  11588 27/10/2026 4:34:11 pm 
+dm23.txt                 25616 27/10/2026 4:34:32 pm 
+dm23_run.txt                44 27/10/2026 4:34:32 pm 
+dm22.txt                 11848 27/10/2026 4:34:38 pm 
+dm22_run.txt                44 27/10/2026 4:34:38 pm 
+dm24.py                   9452 27/10/2026 4:51:27 pm 
+dm11.py                  20695 27/10/2026 4:51:39 pm 
+dm24_fields.tsv          35942 27/10/2026 4:52:05 pm 
+dm24_layout.txt           7296 27/10/2026 4:52:05 pm 
+dm25.py                   2980 27/10/2026 5:07:23 pm 
+dm25.txt                  2486 27/10/2026 5:08:49 pm 
+dm26.py                   4129 27/10/2026 5:09:31 pm 
+dm26.txt                 16378 27/10/2026 5:09:51 pm 
+dm27.py                   4471 27/10/2026 5:12:40 pm 
+dm27.txt                 41735 27/10/2026 5:13:20 pm 
+dm28.py                   6593 27/10/2026 5:18:50 pm 
+dm28.txt                109110 27/10/2026 5:19:12 pm 
+dm26.txt.u8              24567 27/10/2026 5:25:29 pm 
+dm25.txt.u8               1274 27/10/2026 5:25:29 pm 
+dm27.txt.u8              62604 27/10/2026 5:25:29 pm 
+dm28.txt.u8             163665 27/10/2026 5:25:29 pm 
+dm28_u8.txt             163430 27/10/2026 5:26:44 pm 
+dm29.py                   6148 27/10/2026 5:29:01 pm 
+dm29.txt                  5654 27/10/2026 5:29:27 pm 
+dm30.py                   6197 27/10/2026 5:32:38 pm 
+dm30.txt                 11919 27/10/2026 5:32:59 pm 
+dm30_stdout.txt          23896 27/10/2026 5:32:59 pm 
+dm31.py                   2386 27/10/2026 5:34:19 pm 
+dm31_1420d8e70.txt       35902 27/10/2026 5:34:39 pm 
+dm31_1420d98f0.txt      106291 27/10/2026 5:34:39 pm 
+dm31_grep.txt                8 27/10/2026 5:35:43 pm 
+dbg1.txt                  1082 27/10/2026 5:47:50 pm 
+peek.py                   2449 27/10/2026 5:54:37 pm 
+dm32.py                  33120 27/10/2026 8:21:55 pm 
+out32a.txt                 543 27/10/2026 8:24:17 pm 
+tail32.txt                 543 27/10/2026 8:24:46 pm 
+err32.txt                    0 27/10/2026 8:26:32 pm 
+p32.txt                    409 27/10/2026 8:27:59 pm 
+out32.txt                  543 27/10/2026 8:28:56 pm 
+dm32.txt                507724 27/10/2026 8:28:59 pm 
+dm32_fields.tsv         265466 27/10/2026 8:28:59 pm 
+st32.txt                  2761 27/10/2026 8:30:09 pm 
+dm32_stats.py             5300 27/10/2026 8:30:38 pm 
+st32b.txt                 1734 27/10/2026 8:30:59 pm 
+show32.py                  398 27/10/2026 8:31:14 pm 
+c1.txt                    6363 27/10/2026 8:31:36 pm 
+c2.txt                    5323 27/10/2026 8:31:36 pm 
+c3.txt                   17439 27/10/2026 8:31:36 pm 
+dm32_probe.py             1881 27/10/2026 8:34:06 pm 
+pr32.txt                  2721 27/10/2026 8:34:29 pm 
+dis32.py                  1146 27/10/2026 8:34:58 pm 
+d1.txt                    8765 27/10/2026 8:35:19 pm 
+h_access.py               4457 27/10/2026 8:44:14 pm 
+h_access.txt               591 27/10/2026 8:44:39 pm 
+globals.py               18142 27/10/2026 8:47:58 pm 
+globals.txt                 99 27/10/2026 8:48:20 pm 
+mods.py                   9853 27/10/2026 8:49:18 pm 
+mods.txt                   573 27/10/2026 8:49:44 pm 
+diag2.py                  7083 27/10/2026 8:50:32 pm 
+diag2.txt                 2464 27/10/2026 8:50:54 pm 
+diag3.py                  6796 27/10/2026 8:52:14 pm 
+diag3.txt                  654 27/10/2026 8:52:36 pm 
+diag4.py                 10558 27/10/2026 8:56:53 pm 
+diag4.txt                 3830 27/10/2026 8:57:37 pm 
+run_diag5.bat              377 27/10/2026 9:04:21 pm 
+diag5.py                 20791 27/10/2026 9:07:10 pm 
+diag5.txt                 2733 27/10/2026 9:07:33 pm 
+diag5_console.txt         2742 27/10/2026 9:07:33 pm 
+run_diag6.bat              375 27/10/2026 9:11:10 pm 
+c6.txt                      18 27/10/2026 9:13:16 pm 
+diag6.py                 13233 27/10/2026 9:16:30 pm 
+diag6.txt                 6008 27/10/2026 9:16:58 pm 
+diag6_console.txt         6083 27/10/2026 9:16:58 pm 
+run_namehunt.bat           389 27/10/2026 9:28:41 pm 
+nh_lines.txt                 8 27/10/2026 9:30:00 pm 
+nh_tail.txt                304 27/10/2026 9:30:00 pm 
+nh_compile.txt              15 27/10/2026 9:30:50 pm 
+dbg_pe.py                 1035 27/10/2026 9:32:03 pm 
+dbg_pe.txt                2784 27/10/2026 9:32:23 pm 
+dbg_pe2.txt                906 27/10/2026 9:33:02 pm 
+dbg_pe2a.txt               452 27/10/2026 9:33:02 pm 
+namehunt.txt               752 27/10/2026 9:33:43 pm 
+namehunt_console.txt         9 27/10/2026 9:33:43 pm 
+nh_run.txt                   8 27/10/2026 9:33:43 pm 
+namehunt.py              21867 27/10/2026 9:34:51 pm 
+run_readprobe.bat          392 27/10/2026 9:34:58 pm 
+readprobe.py              6114 27/10/2026 9:36:39 pm 
+readprobe.txt             1063 27/10/2026 9:37:01 pm 
+readprobe_console.txt        9 27/10/2026 9:37:01 pm 
+rp_run.txt                   8 27/10/2026 9:37:02 pm 
+run_readprobe2.bat         395 27/10/2026 9:37:59 pm 
+rp2_compile.txt              4 27/10/2026 9:38:22 pm 
+rp2_run.txt                  8 27/10/2026 9:39:46 pm 
+readprobe2.py            11609 27/10/2026 9:42:26 pm 
+readprobe2.txt            1298 27/10/2026 9:42:52 pm 
+readprobe2_console.txt       9 27/10/2026 9:42:52 pm 
+run_sysprobe.bat           389 27/10/2026 9:44:53 pm 
+sysprobe.py               4323 27/10/2026 9:44:58 pm 
+run_as_system.bat          488 27/10/2026 9:45:29 pm 
+sysprobe.txt               676 27/10/2026 9:45:50 pm 
+sysprobe_console.txt         9 27/10/2026 9:45:50 pm 
+env_inventory.txt          260 27/10/2026 9:50:06 pm 
+gdrv_strings.txt          2002 27/10/2026 9:50:56 pm 
+drvscan.py                1412 27/10/2026 9:51:16 pm 
+drvscan.txt                972 27/10/2026 9:51:36 pm 
+disasm_gdrv3_69f0.txt    10749 27/10/2026 9:52:50 pm 
+disasm_MsIo64_820.txt    15243 27/10/2026 9:52:50 pm 
+disasm_gdrv3_76f0.txt      102 27/10/2026 9:53:26 pm 
+disasm_gdrv3_6174.txt     4905 27/10/2026 9:54:44 pm 
+disasm_gdrv3_68b0.txt     5708 27/10/2026 9:54:45 pm 
+disasm_gdrv3_f048.txt       53 27/10/2026 9:54:45 pm 
+disasm_gdrv3_ebb0.txt       53 27/10/2026 9:54:45 pm 
+disasm_gdrv3_664c.txt     4999 27/10/2026 9:54:45 pm 
+disasm_gdrv3_64e0.txt     5098 27/10/2026 9:54:45 pm 
+disasm_gdrv3_6a20.txt       35 27/10/2026 9:55:56 pm 
+disasm_gdrv3_6a35.txt     6366 27/10/2026 9:56:27 pm 
+pedrv.py                  1443 27/10/2026 9:56:45 pm 
+drvdisasm.py              1412 27/10/2026 9:57:15 pm 
+disasm_gdrv3_b235.txt     5864 27/10/2026 9:58:04 pm 
+disasm_gdrv3_3848.txt     2228 27/10/2026 9:58:30 pm 
+disasm_gdrv3_33b0.txt     2228 27/10/2026 9:58:30 pm 
+disasm_MsIo64_1090.txt    2538 27/10/2026 10:00:28 pm
+disasm_MsIo64_1150.txt    4360 27/10/2026 10:01:02 pm
+run_msio.bat               377 27/10/2026 10:01:40 pm
+toolchain.txt              383 27/10/2026 10:04:52 pm
+msio.py                   7928 27/10/2026 10:09:26 pm
+msio.txt                 30248 27/10/2026 10:09:49 pm
+msio_console.txt         30257 27/10/2026 10:09:49 pm
+run_kx.bat                 371 27/10/2026 10:11:19 pm
+kx.txt                      86 27/10/2026 10:20:16 pm
+kx_console.txt              95 27/10/2026 10:20:16 pm
+kx.py                    10232 27/10/2026 10:22:07 pm
+test_image_info.py        1775 27/10/2026 10:22:27 pm
+__pycache__                    27/10/2026 10:22:48 pm
+_listing.txt             10227 27/10/2026 10:40:15 pm
+_listing_parent.txt        969 27/10/2026 10:40:15 pm
+_ls_now.txt               3952 27/10/2026 10:42:11 pm
+_mods_now.txt              121 27/10/2026 10:42:11 pm
+drv                            27/10/2026 11:58:45 pm
+
+
+
+=== msio locate ===
+
+FullName                                                           Length
+--------                                                           ------
+C:\Users\New User\OneDrive\Desktop\cheating\ext\msio_dispatch.txt    5694
+C:\Users\New User\OneDrive\Desktop\cheating\ext\msio_init.txt      224262
+C:\Users\New User\OneDrive\Desktop\cheating\temp\msio.py             7928
+C:\Users\New User\OneDrive\Desktop\cheating\temp\msio.txt           30248
+C:\Users\New User\OneDrive\Desktop\cheating\temp\msio_console.txt   30257
+C:\Users\New User\OneDrive\Desktop\cheating\temp\drv\msio_1200.txt   3222
+C:\Users\New User\OneDrive\Desktop\cheating\temp\drv\msio_1400.txt   3621
+C:\Users\New User\OneDrive\Desktop\cheating\temp\drv\msio_1500.txt  11156
+
+
+
+=== scheduled task ===
+\QwenKern_crash State=Ready
+\QwenKern_p34 State=Ready
+\QwenKern_p36 State=Ready
+LastRun=1/11/2026 10:01:10 pm Result=0 Next=
+LastRun=1/11/2026 9:32:44 pm Result=0 Next=
+LastRun=2/11/2026 10:39:19 am Result=0 Next=
+Action: powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\New User\OneDrive\Desktop\cheating\_ritual\crash_kd.ps1" WD=
+Principal: New User LogonType=Interactive RunLevel=Highest
+Action: powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p34_matrix.ps1" WD=
+Principal: New User LogonType=Interactive RunLevel=Highest
+Action: powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p36_retry.ps1" WD=
+Principal: New User LogonType=Interactive RunLevel=Highest
+=== badpa ===
+1000000000-1000001000
+800000-a00000
+2e00000-3000000
+4400000-4600000
+=== retry log tail ===
+02/11/2026 10:39:19 wrapper start pid=20808
+02/11/2026 10:39:19 badpa seeded/merged -> 1000000000-1000001000,800000-a00000,2e00000-3000000,4400000-4600000
+02/11/2026 10:39:19 attempt 1 launching p36_write.ps1
+02/11/2026 10:39:22 attempt 1 exited rc=0
+02/11/2026 10:39:22 END/ABORT marker seen - done
+DONE

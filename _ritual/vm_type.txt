@@ -1,0 +1,168 @@
+== vm_type 01/11/2026 22:15:54  seq=[space]
+  token 'space' = special
+  send 39 b9 ok
+== done
+== vm_type 01/11/2026 22:15:58  seq=[password | enter]
+  token 'password' = text
+  ?? unknown char 'p'
+  ?? unknown char 'a'
+  ?? unknown char 's'
+  ?? unknown char 's'
+  ?? unknown char 'w'
+  ?? unknown char 'o'
+  ?? unknown char 'r'
+  ?? unknown char 'd'
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 01/11/2026 22:16:02  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 01/11/2026 22:16:04  seq=[d:\vboxwindowsadditions.exe /s]
+  token 'd:\vboxwindowsadditions.exe /s' = text
+  ?? unknown char 'd'
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  ?? unknown char 'v'
+  ?? unknown char 'b'
+  ?? unknown char 'o'
+  ?? unknown char 'x'
+  ?? unknown char 'w'
+  ?? unknown char 'i'
+  ?? unknown char 'n'
+  ?? unknown char 'd'
+  ?? unknown char 'o'
+  ?? unknown char 'w'
+  ?? unknown char 's'
+  ?? unknown char 'a'
+  ?? unknown char 'd'
+  ?? unknown char 'd'
+  ?? unknown char 'i'
+  ?? unknown char 't'
+  ?? unknown char 'i'
+  ?? unknown char 'o'
+  ?? unknown char 'n'
+  ?? unknown char 's'
+  send 34 b4 ok
+  ?? unknown char 'e'
+  ?? unknown char 'x'
+  ?? unknown char 'e'
+  send 39 b9 ok
+  send 35 b5 ok
+  ?? unknown char 's'
+== done
+== vm_type 01/11/2026 22:16:07  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 01/11/2026 22:16:12  seq=[alty]
+  token 'alty' = special
+  send 38 15 95 b8 ok
+== done
+== vm_type 01/11/2026 22:16:33  seq=[esc | winr]
+  token 'esc' = special
+  send 01 81 ok
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 01/11/2026 22:16:35  seq=[d:\vboxwindowsadditions.exe /s]
+  token 'd:\vboxwindowsadditions.exe /s' = text
+  send 20 a0 ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 11 91 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 20 a0 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 1f 9f ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 1f 9f ok
+== done
+== vm_type 01/11/2026 22:16:41  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 01/11/2026 23:05:26  seq=[reg add HKLM\SYSTEM\Setup\LabConfig /v BypassCPUCheck /t REG_DWORD /d 1 /f]
+  token 'reg add HKLM\SYSTEM\Setup\LabConfig /v BypassCPUCheck /t REG_DWORD /d 1 /f' = text
+  send 13 93 ok
+  send 12 92 ok
+  send 22 a2 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 20 a0 ok
+  send 20 a0 ok
+  send 39 b9 ok
+  send 2a 23 a3 aa ok
+  send 2a 25 a5 aa ok
+  send 2a 26 a6 aa ok
+  send 2a 32 b2 aa ok
+  send 2b ab ok
+  send 2a 1f 9f aa ok
+  send 2a 15 95 aa ok
+  send 2a 1f 9f aa ok
+  send 2a 14 94 aa ok
+  send 2a 12 92 aa ok
+  send 2a 32 b2 aa ok
+  send 2b ab ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 16 96 ok
+  send 19 99 ok
+  send 2b ab ok
+  send 2a 26 a6 aa ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 2a 2e ae aa ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 21 a1 ok
+  send 17 97 ok
+  send 22 a2 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 2f af ok
+  send 39 b9 ok
+  send 2a 30 b0 aa ok
+  send 15 95 ok
+  send 19 99 ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 1f 9f ok
+  send 2a 2e ae aa ok
+  send 2a 19 99 aa ok
+  send 2a 16 96 aa ok
+  send 2a 2e ae aa ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 2e ae ok
+  send 25 a5 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 13 93 aa ok
+  send 2a 12 92 aa ok
+  send 2a 22 a2 aa ok
+  send 2a 0c 8c aa ok

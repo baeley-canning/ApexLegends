@@ -1,0 +1,14 @@
+--- integrity --- 
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288                                                                                                 
+--- gui attempt --- 
+VBoxManage.exe: error: Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5) (VERR_NEM_VM_CREATE_FAILED)
+VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
+Waiting for VM "Win11-Test2" to power on...
+gui_exit=1 
+--- headless attempt --- 
+VBoxManage.exe: error: The machine 'Win11-Test2' is already locked by a session (or being locked or unlocked)
+VBoxManage.exe: error: Details: code VBOX_E_INVALID_OBJECT_STATE (0x80bb0007), component MachineWrap, interface IMachine, callee IUnknown
+VBoxManage.exe: error: Context: "LaunchVMProcess(a->session, sessionType.raw(), ComSafeArrayAsInParam(aBstrEnv), progress.asOutParam())" at line 921 of file VBoxManageMisc.cpp
+hl_exit=1 
+--- end --- 
+

@@ -1,0 +1,68 @@
+=== h2 G1 COEXISTENCE GATE 03/11/2026 22:11:02 pid=21120 host=DESKTOP-PPHFJBQ win=1800s ===
+
+########## A: pre-flight (abort on any FAIL; nothing is launched until all pass) ##########
+  pass: apexdrv RUNNING
+  pass: binPath hash 9B119FD0C38740A2 = k9-proven build
+  pass: blocklist disabled
+  pass: no HVCI (HV present=False, SecurityServicesRunning=0)
+  info: SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=OFF  NODEBUG  FVEBOOT=2666496  NOVGA]  (must NOT contain TESTSIGNING)
+  pass: game exe present
+  pass: no game process alive
+  info: gdrv3=RUNNING  DBUtilDrv2=RUNNING
+  info: popup baseline (6 h) = 10
+
+########## B: launch ##########
+  EA app not running -> starting EADesktop
+  launched C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+
+########## C: watch (1 s poll, refusal capture, 10 s snapshots) ##########
+    SNAP t+10s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+50s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+80s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+110s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+140s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+170s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+190s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+200s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+210s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+220s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+230s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+250s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+270s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+290s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+300s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+310s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+320s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+330s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+340s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+350s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+360s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+370s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+380s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+390s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+400s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+410s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+430s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+460s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+480s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+500s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+530s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+550s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+560s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+570s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+580s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+590s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+600s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+  NO GAME after 600 s - aborting watch
+
+########## D: after ##########
+  alive=False died=False aliveSec=0 refusalEvents=0
+  procs=  apexdrv=RUNNING  eaac=STOPPED
+  codeintegrity events since launch: 0
+
+=== VERDICT ===
+RESULT: RED - game never appeared
+
+NEXT (manual, after reading this file): sc stop apexdrv  ->  sc start apexdrv  must give 577.
+  If it does, DSE is genuinely restored and the driver still loads only inside the open window.
+-- h2 END 22:21:18 --

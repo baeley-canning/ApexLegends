@@ -1,0 +1,55 @@
+    0001800020b6  ff15e4df0100             call     qword ptr [rip + 0x1dfe4]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+    0001800020bc  488bc8                   mov      rcx, rax
+    0001800020bf  498bd6                   mov      rdx, r14
+    0001800020c2  ff15d0df0100             call     qword ptr [rip + 0x1dfd0]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    0001800020c8  e8f3f0ffff               call     0x1800011c0
+    0001800020cd  488bf8                   mov      rdi, rax
+    0001800020d0  4883f8ff                 cmp      rax, -1
+    0001800020d4  7447                     je       0x18000211d
+    0001800020d6  33c9                     xor      ecx, ecx
+    0001800020d8  4c896dc8                 mov      qword ptr [rbp - 0x38], r13
+    0001800020dc  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    0001800020e1  488d45e0                 lea      rax, [rbp - 0x20]
+    0001800020e5  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800020ea  4c8d45c8                 lea      r8, [rbp - 0x38]
+    0001800020ee  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800020f2  ba142050c3               mov      edx, 0xc3502014
+    0001800020f7  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    0001800020fc  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002100  488bcf                   mov      rcx, rdi
+    000180002103  c745d010000000           mov      dword ptr [rbp - 0x30], 0x10
+    00018000210a  48895dd8                 mov      qword ptr [rbp - 0x28], rbx
+*   00018000210e  ff1594df0100             call     qword ptr [rip + 0x1df94]   ; KERNEL32.dll!DeviceIoControl .rdata+0xa8
+    000180002114  488bcf                   mov      rcx, rdi
+    000180002117  ff1593df0100             call     qword ptr [rip + 0x1df93]   ; KERNEL32.dll!CloseHandle .rdata+0xb0
+    00018000211d  4885db                   test     rbx, rbx
+    000180002120  0f84a3000000             je       0x1800021c9
+    000180002126  813b55454649             cmp      dword ptr [rbx], 0x49464555
+
+    00018000213c  e81b750000               call     0x18000965c
+    000180002141  8bcf                     mov      ecx, edi
+    000180002143  897dc0                   mov      dword ptr [rbp - 0x40], edi
+    000180002146  e809750000               call     0x180009654
+    00018000214b  488bd8                   mov      rbx, rax
+    00018000214e  ff154cdf0100             call     qword ptr [rip + 0x1df4c]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+    000180002154  488bc8                   mov      rcx, rax
+    000180002157  498bd6                   mov      rdx, r14
+    00018000215a  ff1538df0100             call     qword ptr [rip + 0x1df38]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002160  e85bf0ffff               call     0x1800011c0
+    000180002165  488bf0                   mov      rsi, rax
+    000180002168  4883f8ff                 cmp      rax, -1
+    00018000216c  7443                     je       0x1800021b1
+    00018000216e  33c9                     xor      ecx, ecx
+    000180002170  4c896dc8                 mov      qword ptr [rbp - 0x38], r13
+    000180002174  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002179  488d45e4                 lea      rax, [rbp - 0x1c]
+    00018000217d  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002182  4c8d45c8                 lea      r8, [rbp - 0x38]
+    000180002186  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    00018000218a  ba142050c3               mov      edx, 0xc3502014
+    00018000218f  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002194  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002198  488bce                   mov      rcx, rsi
+    00018000219b  897dd0                   mov      dword ptr [rbp - 0x30], edi
+    00018000219e  48895dd8                 mov      qword ptr [rbp - 0x28], rbx
+*   0001800021a2  ff1500df0100             call     qword ptr [rip + 0x1df00]   ; KERNEL32.dll!DeviceIoControl .rdata+0xa8

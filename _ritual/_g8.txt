@@ -1,0 +1,130 @@
+
+
+def installed_ram_bytes():
+    kb = ctypes.c_ulonglong(0)
+    if kernel32.GetPhysicallyInstalledSystemMemory(ctypes.byref(kb)):
+        return kb.value * 1024
+    return 0
+
+
+def alloc_locked(size):
+    p = kernel32.VirtualAlloc(None, size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE)
+    if not p:
+        raise OSError("VirtualAlloc failed err=%d" % ctypes.get_last_error())
+    kernel32.VirtualLock(p, size)
+    return p
+
+
+class Gio(object):
+    """One device handle + a scratch landing buffer for phys reads."""
+
+    def __init__(self, path=DEVICE, chunk=PAGE, map_cache_pages=64):
+        self.path = path
+        self.chunk = chunk
+        self.h = kernel32.CreateFileW(path, GENERIC_READ | GENERIC_WRITE, 0,
+                                      None, OPEN_EXISTING, 0, None)
+        if not self.h or self.h == INVALID_HANDLE:
+            raise OSError(ctypes.get_last_error(),
+                          "CreateFileW %s failed (need elevation)" % path)
+        self.dst = kernel32.VirtualAlloc(None, chunk, MEM_COMMIT | MEM_RESERVE,
+                                         PAGE_READWRITE)
+        if not self.dst:
+            raise OSError("VirtualAlloc scratch failed")
+        kernel32.VirtualLock(self.dst, chunk)
+        self.ram_top = installed_ram_bytes()
+        self.map_cache = {}          # page_pa -> (va, size)
+        self.map_cache_max = map_cache_pages
+        self.stats = {}              # ioctl -> [count, seconds]
+
+    # -- low level ---------------------------------------------------------
+    def _ioctl(self, code, in_buf, out_len, out_hint=64):
+        ib = ctypes.create_string_buffer(bytes(in_buf), max(len(in_buf), 1))
+        ob = ctypes.create_string_buffer(max(out_len, out_hint, 1))
+        got = wintypes.DWORD(0)
+        t0 = time.perf_counter()
+        ok = kernel32.DeviceIoControl(self.h, code, ib, len(in_buf), ob,
+                                      out_len, ctypes.byref(got), None)
+        dt = time.perf_counter() - t0
+        st = self.stats.setdefault(code, [0, 0.0])
+        st[0] += 1
+        st[1] += dt
+        if not ok:
+            return False, ctypes.get_last_error(), b"", got.value
+        return True, 0, ob.raw[:got.value], got.value
+
+    # -- read (verified primitive) ------------------------------------------
+    def read_phys(self, pa, size):
+        out = bytearray()
+        left = size
+        cur = pa
+        while left:
+            n = min(left, self.chunk)
+            ib = struct.pack("<QIIQ", cur & 0xFFFFFFFFFFFFFFFF, n, 0, self.dst)
+            ok, err, _, _ = self._ioctl(IOCTL_READ, ib, 0)
+            if not ok:
+                raise OSError(err, "phys read %#x+%#x failed" % (cur, n))
+            out += ctypes.string_at(self.dst, n)
+            cur += n
+            left -= n
+        return bytes(out)
+
+    def u16(self, pa):
+        return struct.unpack("<H", self.read_phys(pa, 2))[0]
+
+    def u32(self, pa):
+        return struct.unpack("<I", self.read_phys(pa, 4))[0]
+
+    def u64(self, pa):
+        return struct.unpack("<Q", self.read_phys(pa, 8))[0]
+
+    # -- map / unmap (write path candidate) ----------------------------------
+    def map_phys(self, pa, size):
+        ib = struct.pack("<QQ", pa, size)
+        ok, err, ob, got = self._ioctl(IOCTL_MAP_EX, ib, 0x10)
+        if not ok:
+            raise OSError(err, "map_phys %#x+%#x failed" % (pa, size))
+        if got < 8:
+            raise OSError("map_phys returned short info %d" % got)
+        va = struct.unpack_from("<QQ", ob)[0]
+        if not va:
+            raise OSError("map_phys %#x+%#x -> va=0" % (pa, size))
+        return va
+
+    def unmap(self, va, size):
+        ib = struct.pack("<QQ", va, size)
+        ok, err, _, _ = self._ioctl(IOCTL_UNMAP, ib, 0)
+        if not ok:
+            raise OSError(err, "unmap %#x failed" % va)
+
+    def map_page_cached(self, pa):
+        """Persistent mapping of one page, cached (the glow loop rewrites the
+        same highlight pages every frame; map/unmap per write would dominate)."""
+        page = pa & ~0xFFF
+        hit = self.map_cache.get(page)
+        if hit:
+            return hit[0] + (pa - page)
+        va = self.map_phys(page, PAGE)
+        self.map_cache[page] = (va, PAGE)
+        if len(self.map_cache) > self.map_cache_max:
+            old = next(iter(self.map_cache))     # FIFO eviction
+            ova, osz = self.map_cache.pop(old)
+            try:
+                self.unmap(ova, osz)
+            except OSError:
+                pass
+        return va + (pa - page)
+
+    # -- write via mapping ----------------------------------------------------
+    def write_phys(self, pa, data):
+        """Write bytes at a physical address by mapping the page user-mode and
+        memcpying.  Coherency must be proven by gate G6 before trusting this."""
+        data = bytes(data)
+        buf = (ctypes.c_ubyte * len(data)).from_buffer_copy(data)
+        off = 0
+        while off < len(data):
+            page = (pa + off) & ~0xFFF
+            within = (pa + off) - page
+            chunk = min(PAGE - within, len(data) - off)
+            va = self.map_page_cached(page)
+            ctypes.memmove(va + within, ctypes.byref(buf, off), chunk)
+            off += chunk

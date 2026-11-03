@@ -1,0 +1,8 @@
+﻿now=10:37:31
+--- task actions ---
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p36_write.ps1"
+--- triggers ---
+settings: ExecTimeLimit=PT30M MultipleInstances=IgnoreNew RestartCount=0 DisallowStartIfOnBatteries=True
+principal: New User logon=Interactive runlevel=Highest
+--- io tail ---
+  [io] read pa=0x4400000 size=0x4

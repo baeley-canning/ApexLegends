@@ -1,0 +1,8 @@
+=== h1c 23:36:06 prv=2 val=6 ===
+  rc=0
+  provider-relevant: [+] Selected provider: 2 ; [+] Provider: "Gigabyte GDRV driver", Name "Gdrv" ; [+] Vulnerable driver "Gdrv" loaded ; [+] Executing post-open callback for given provider ; [+] Vulnerable driver "Gdrv" unloaded
+  dse-line: [+] DSE flags (0xFFFFF80223BC2004) value: 4016, new value to be written: 6
+  error: [!] Error while writing to the kernel memory, GetLastError 3221225477
+  VERIFIED=False
+  apexdrv:  SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+=== end h1c ===

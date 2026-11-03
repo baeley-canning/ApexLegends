@@ -1,0 +1,41 @@
+--- vid svc --- 
+
+SERVICE_NAME: vid 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 4  RUNNING 
+                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: vid
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 1   SYSTEM_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : \SystemRoot\System32\drivers\Vid.sys
+        LOAD_ORDER_GROUP   : Extended Base
+        TAG                : 43
+        DISPLAY_NAME       : Vid
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+--- vid file --- 
+ Volume in drive C has no label.
+ Volume Serial Number is 562A-C0DF
+
+ Directory of C:\Windows\System32\drivers
+
+14/10/2026  12:48 pm           920,928 Vid.sys
+               1 File(s)        920,928 bytes
+               0 Dir(s)  97,832,714,240 bytes free
+--- features --- 
+[VirtualMachinePlatform] 
+State : Enabled
+[HypervisorPlatform] 
+State : Enabled
+[Microsoft-Hyper-V-Hypervisor] 
+State : Enabled
+[Microsoft-Hyper-V-All] 
+State : Enabled
+--- end --- 

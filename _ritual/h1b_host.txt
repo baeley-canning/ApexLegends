@@ -1,0 +1,18 @@
+=== h1b kdu base repair 03/11/2026 22:07:39 pid=13956 admin=True ===
+  target: restore DSE to hex 0x16 (= decimal 22); kdu prints hex, eats decimal
+  driver before: STATE              : 4  RUNNING
+$ kdu.exe -prv 22 -dse 22
+  | [+] DSE flags (0xFFFFF80331BC2004) value: 10, new value to be written: 16
+  | [+] Write result verification succeeded
+  | [+] Return value: 1. Bye-bye!
+$ kdu.exe -prv 22 -dse 22
+  | [+] DSE flags (0xFFFFF80331BC2004) value: 16, new value to be written: 16
+  | [~] Warning, current value is identical to what you want to write
+  | [+] Write result verification succeeded
+  | [+] Return value: 1. Bye-bye!
+  readback=0x16 expect=0x16 match=True
+  driver after: STATE              : 4  RUNNING
+
+=== VERDICT ===
+RESULT: PASS - g_CiOptions back to boot value 0x16 (readback verified), driver still RUNNING; h1 boot-4 PARTIAL is superseded
+-- h1b END 22:07:41 --

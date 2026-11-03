@@ -1,0 +1,17 @@
+﻿
+        STATE            
+  : 4  RUNNING 
+
+
+  | [+] DSE flags (0xFFFFF80366882004) value: 0, new value to be written: 6
+  | [+] Kernel memory write complete, verifying data
+  | [+] Write result verification succeeded
+  | [+] Vulnerable driver "AsIO3" unloaded
+  | [+] Vulnerable driver file removed
+  | [+] Return value: 1. Bye-bye!
+  restore verified=True
+
+=== VERDICT ===
+RESULT: PASS via prv 22 - driver RUNNING, DSE restored to 6, left RUNNING for h2
+NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min)
+-- h1 END 06:52:47 driver RUNNING=True --

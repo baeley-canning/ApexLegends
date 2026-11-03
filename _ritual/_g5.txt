@@ -1,0 +1,17 @@
+﻿126: 126|     public static ulong RamTopFallback;
+130: 130|     public static void SetRamRanges(string csv, ulong ramTopFallback)
+226: 226|     // breadcrumb (p36_write.ps1 reads its own io tail and maintains p36_badpa.txt).
+232: 232|     public static void SetBadRanges(string csv)
+259: 259|     public static bool InRam(ulong pa)
+274: 274|     public static bool InRamSpan(ulong pa, int size)
+283: 283|     public static bool InRam(ulong pa, ulong ramTop) { return InRam(pa); }
+301: 301|     public static byte[] GdrvReadOneRaw(IntPtr h, ulong pa, int size)
+327: 327|     public static byte[] GdrvReadOne(IntPtr h, ulong pa, int size)
+339: 339|     public static byte[] GdrvRead(IntPtr h, ulong pa, int size)
+356: 356|     public static string SizeLadder(IntPtr g, ulong pa, out string rep)
+375: 375|     public static string SweepRead(IntPtr g, ulong from, ulong to, ulong step, out string rep)
+395: 395|     public static ulong RdQ(IntPtr h, ulong pa) { return BitConverter.ToUInt64(GdrvRead(h, pa, 8), 0); }
+396: 396|     public static uint RdD(IntPtr h, ulong pa) { return BitConverter.ToUInt32(GdrvRead(h, pa, 4), 0); }
+554: 554|     public static ulong RamTop()
+563: 563|     public static string ScanNtoskrnl(IntPtr g, ulong ramTop, ulong limit, out string hits)
+628: 628|     public static string FindPml4(IntPtr g, ulong ramTop, ulong limit, out ulong cr3, out string notes)

@@ -1,0 +1,28 @@
+1033: 00:00:01.465076 VMSetError: Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5)
+1035: 00:00:01.646032 ERROR [COM]: aRC=E_FAIL (0x80004005) aIID={6ac83d89-6ee7-4e33-8ae6-b257b2e81be8} aComponent={ConsoleWrap} aText={Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5) (VERR_NEM_VM_CREATE_FAILED)}, preserve=false aResultDetail=-6805
+--- tail ---
+00:00:01.458827 CPUM: No hardware-virtualization capability detected
+00:00:01.458829 CPUM: fXStateHostMask=0x7; host XCR0=0x7
+00:00:01.460910 CPUM: Matched host CPU INTEL 0x6/0xb7/0x1 Intel_Atom_Unknown with CPU DB entry 'Intel Pentium N3530 2.16GHz' (INTEL 0x6/0x37/0x8 Intel_Atom_Silvermont)
+00:00:01.460944 CPUM: MXCSR_MASK=0xffff (host: 0xffff)
+00:00:01.460969 CPUM: Microcode revision 0x0000012F
+00:00:01.460996 CPUM: MSR/CPUID reconciliation insert: 0x0000010b IA32_FLUSH_CMD
+00:00:01.461000 CPUM: MSR/CPUID reconciliation insert: 0x0000010a IA32_ARCH_CAPABILITIES
+00:00:01.461004 CPUM: MSR fudge: 0x00000122 IA32_TSX_CTRL
+00:00:01.461007 CPUM: MSR fudge: 0x00000123 IA32_MCU_OPT_CTRL
+00:00:01.461015 CPUM: SetGuestCpuIdFeature: Enabled SYSENTER/EXIT
+00:00:01.461018 CPUM: SetGuestCpuIdFeature: Enabled SYSCALL/RET
+00:00:01.461020 CPUM: SetGuestCpuIdFeature: Enabled PAE
+00:00:01.461024 CPUM: SetGuestCpuIdFeature: Enabled LAHF/SAHF
+00:00:01.461026 CPUM: SetGuestCpuIdFeature: Enabled NX
+00:00:01.461029 CPUM: SetGuestCpuIdFeature: Enabled LONG MODE
+00:00:01.461032 CPUM: Enabled MTRR read-write support
+00:00:01.461037 CPUM: Enabled fixed-range MTRRs and 16 (virtualized) variable-range MTRRs
+00:00:01.465058 VMSetError: D:\tinderboxa\win-7.2\src\VBox\VMM\VMMR3\target-x86\NEMR3Native-win-x86.cpp(2278) int __cdecl nemR3NativeInitAfterCPUM(struct VM *); rc=VERR_NEM_VM_CREATE_FAILED
+00:00:01.465076 VMSetError: Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5)
+00:00:01.465121 NEM: Destroying partition 00000212638489b0 with its 0 VCpus...
+00:00:01.646032 ERROR [COM]: aRC=E_FAIL (0x80004005) aIID={6ac83d89-6ee7-4e33-8ae6-b257b2e81be8} aComponent={ConsoleWrap} aText={Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5) (VERR_NEM_VM_CREATE_FAILED)}, preserve=false aResultDetail=-6805
+00:00:01.646239 Console: Machine state changed to 'PoweredOff'
+00:00:01.649625 Power up failed (vrc=VERR_NEM_VM_CREATE_FAILED, hrc=E_FAIL (0X80004005))
+00:00:01.798779 VRDP: TCP server closed.
+00:00:01.805476 VBoxHeadless: exiting

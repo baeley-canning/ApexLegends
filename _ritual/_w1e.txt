@@ -1,0 +1,10 @@
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=ok
+  alias \??\PhysicalMemory mask=0x6 st=0xc0000034 priv=ok
+  alias \??\PhysicalMemory mask=0x1 st=0xc0000034 priv=ok
+  W1 no section handle
+  W1 \\Device\\PhysicalMemory phys R/W : no

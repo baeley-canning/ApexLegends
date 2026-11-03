@@ -1,0 +1,25 @@
+00001090  488bc4                 mov     rax, rsp
+00001093  4881ecf8000000         sub     rsp, 0xf8
+0000109a  488958f8               mov     qword ptr [rax - 8], rbx
+0000109e  488970e8               mov     qword ptr [rax - 0x18], rsi
+000010a2  4c8960d8               mov     qword ptr [rax - 0x28], r12
+000010a6  4c8968d0               mov     qword ptr [rax - 0x30], r13
+000010aa  8b05a0200000           mov     eax, dword ptr [rip + 0x20a0]
+000010b0  4533ed                 xor     r13d, r13d
+000010b3  85c0                   test    eax, eax
+000010b5  498bf1                 mov     rsi, r9
+000010b8  4d8be0                 mov     r12, r8
+000010bb  488bd9                 mov     rbx, rcx
+000010be  4c896c2458             mov     qword ptr [rsp + 0x58], r13     ; <- IRP_MJ_READ slot
+000010c3  740d                   je      0x10d2
+000010c5  3bc8                   cmp     ecx, eax
+000010c7  7209                   jb      0x10d2
+000010c9  0500000010             add     eax, 0x10000000
+000010ce  3bc8                   cmp     ecx, eax
+000010d0  760a                   jbe     0x10dc
+000010d2  b8220000c0             mov     eax, 0xc0000022
+000010d7  e974020000             jmp     0x1350
+000010dc  4889ac24e8000000       mov     qword ptr [rsp + 0xe8], rbp
+000010e4  4889bc24d8000000       mov     qword ptr [rsp + 0xd8], rdi
+000010ec  4c89b424c0000000       mov     qword ptr [rsp + 0xc0], r14
+000010f4  41be04000000           mov     r14d, 4

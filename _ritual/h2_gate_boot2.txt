@@ -1,0 +1,33 @@
+=== h2 G1 COEXISTENCE GATE 02/11/2026 23:50:15 pid=11976 host=DESKTOP-PPHFJBQ win=1800s ===
+
+########## A: pre-flight (abort on any FAIL; nothing is launched until all pass) ##########
+  pass: apexdrv RUNNING
+  pass: binPath hash 9B119FD0C38740A2 = k9-proven build
+  pass: blocklist disabled
+  pass: no HVCI (HV present=False, SecurityServicesRunning=0)
+  info: SystemStartOptions = [ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=OFF  NODEBUG  FVEBOOT=2666496  NOVGA]  (must NOT contain TESTSIGNING)
+  pass: game exe present
+  pass: no game process alive
+  info: gdrv3=RUNNING  DBUtilDrv2=RUNNING
+  info: popup baseline (6 h) = 20
+
+########## B: launch ##########
+  EA app not running -> starting EADesktop
+  launched C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+
+########## C: watch (1 s poll, refusal capture, 10 s snapshots) ##########
+    SNAP t+10s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+20s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+30s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+40s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+60s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+70s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+80s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+90s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+100s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+120s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+130s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+160s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+170s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+180s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED
+    SNAP t+200s proc=[] ws=0MB th=0 apexdrv=RUNNING eaac=STOPPED

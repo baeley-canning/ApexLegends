@@ -1,0 +1,32 @@
+﻿_kd_102726-9484-01.txt :: *                        Bugcheck Analysis                                    *
+_kd_102726-9484-01.txt :: Arg1: 00000000c0000005, Exception code that caused the BugCheck
+_kd_102726-9484-01.txt :: Arg2: fffff80186fe4b92, Address of the instruction which caused the BugCheck
+_kd_102726-9484-01.txt :: Arg3: ffffc98a16fb6790, Address of the context record for the exception that caused the BugCheck
+_kd_102726-9484-01.txt ::     Key  : Bugcheck.Code.LegacyAPI
+_kd_102726-9484-01.txt :: BUGCHECK_CODE:  3b
+_kd_102726-9484-01.txt :: BUGCHECK_P1: c0000005
+_kd_102726-9484-01.txt :: BUGCHECK_P2: fffff80186fe4b92
+_kd_102726-9484-01.txt :: BUGCHECK_P3: ffffc98a16fb6790
+_kd_102726-9484-01.txt :: BUGCHECK_P4: 0
+_kd_102726-9484-01.txt :: rax=000001e7a2de0000 rbx=fffff80186fe7028 rcx=000001e7a2de0000
+_kd_102726-9484-01.txt :: rdx=ffffeb9e6e8a0000 rsi=ffffed8611680000 rdi=0000000000000000
+_kd_102726-9484-01.txt :: rip=fffff80186fe4b92 rsp=ffffc98a16fb71b8 rbp=ffffa68a116dcdc0
+_kd_102726-9484-01.txt ::  r8=0000000000010000  r9=ffffed8611680000 r10=0000010000000000
+_kd_102726-9484-01.txt :: r11=ffffed8611690000 r12=0000000000000018 r13=0000000000000000
+_kd_102726-9484-01.txt :: fffff801`86fe4b92 0f100411        movups  xmm0,xmmword ptr [rcx+rdx] ds:002b:ffffed86`11680000=????????????????????????????????
+_kd2231.txt :: *                        Bugcheck Analysis                                    *
+_kd2231.txt :: Arg1: 00000000c0000005, Exception code that caused the BugCheck
+_kd2231.txt :: Arg2: fffff80157c34b4a, Address of the instruction which caused the BugCheck
+_kd2231.txt :: Arg3: ffffdd04d444e790, Address of the context record for the exception that caused the BugCheck
+_kd2231.txt ::     Key  : Bugcheck.Code.LegacyAPI
+_kd2231.txt :: BUGCHECK_CODE:  3b
+_kd2231.txt :: BUGCHECK_P1: c0000005
+_kd2231.txt :: BUGCHECK_P2: fffff80157c34b4a
+_kd2231.txt :: BUGCHECK_P3: ffffdd04d444e790
+_kd2231.txt :: BUGCHECK_P4: 0
+_kd2231.txt :: rax=000001f5db6c0000 rbx=fffff80157c37028 rcx=000001f5db6c0000
+_kd2231.txt :: rdx=ffff80996d34d000 rsi=ffff828f48a0d000 rdi=0000000000000000
+_kd2231.txt :: rip=fffff80157c34b4a rsp=ffffdd04d444f1b8 rbp=ffffde02eaac7db0
+_kd2231.txt ::  r8=0000000000000004  r9=ffff828f48a0d000 r10=0000010000000000
+_kd2231.txt :: r11=0000000000000000 r12=0000000000000018 r13=0000000000000000
+_kd2231.txt :: fffff801`57c34b4a 448a1c11        mov     r11b,byte ptr [rcx+rdx] ds:002b:ffff828f`48a0d000=??

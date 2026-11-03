@@ -1,0 +1,18 @@
+﻿2:   [io] read pa=0x1000 size=0x20
+3:   [io] read pa=0x2000 size=0x10
+4:   [io] read pa=0x100000 size=0x40   <<< NOT RAM-BACKED
+5:   [io] read pa=0x100000 size=0x100   <<< NOT RAM-BACKED
+6:   [io] read pa=0x100000 size=0x800   <<< NOT RAM-BACKED
+7:   [io] read pa=0x100000 size=0x1000   <<< NOT RAM-BACKED
+8:   [io] read pa=0x100000 size=0x2000   <<< NOT RAM-BACKED
+9:   [io] read pa=0x100000 size=0x4000   <<< NOT RAM-BACKED
+10:   [io] read pa=0x100000 size=0x10000   <<< NOT RAM-BACKED
+11:   [io] read pa=0x100000 size=0x20000   <<< NOT RAM-BACKED
+12:   [io] SKIP pa=0x100000 size=0x4 (hole/not RAM)
+15:   [io] SKIP pa=0x400000 size=0x4 (hole/not RAM)
+19:   [io] SKIP pa=0x800000 size=0x4 (hole/not RAM)
+267:   [io] SKIP pa=0x10000000 size=0x4 (hole/not RAM)
+1190:   [io] read pa=0x9cf68 size=0x8
+1191:   [io] read pa=0x9df68 size=0x8
+1347:   [io] read pa=0x9cf68 size=0x8
+1348:   [io] read pa=0x9df68 size=0x8

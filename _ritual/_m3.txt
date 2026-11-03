@@ -1,0 +1,486 @@
+
+  temp\drv\map_ioctls.txt
+:195:    000180001f2d  
+48c744244800000000       
+mov      qword ptr [rsp 
++ 0x48], 0
+  temp\drv\map_ioctls.txt
+:196:    000180001f36  
+48894c2450               
+mov      qword ptr [rsp 
++ 0x50], rcx
+  temp\drv\map_ioctls.txt
+:197:    000180001f3b  
+e880f2ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:198:    000180001f40  
+488bf8                   
+mov      rdi, rax
+  temp\drv\map_ioctls.txt
+:199:    000180001f43  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:200:    000180001f47  
+7505                     
+jne      0x180001f4e
+  temp\drv\map_ioctls.txt
+:201:    000180001f49  
+8d4702                   
+lea      eax, [rdi + 2]
+  temp\drv\map_ioctls.txt
+:202:    000180001f4c  
+eb6e                     
+jmp      0x180001fbc
+  temp\drv\map_ioctls.txt
+:203:    000180001f4e  
+48c744243800000000       
+mov      qword ptr [rsp 
++ 0x38], 0
+  temp\drv\map_ioctls.txt
+:204:    000180001f57  
+488d442440               
+lea      rax, [rsp + 
+0x40]
+  temp\drv\map_ioctls.txt
+:205:    000180001f5c  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:206:    000180001f61  
+4c8d442448               
+lea      r8, [rsp + 0x48]
+  temp\drv\map_ioctls.txt
+:207:    000180001f66  
+488d442448               
+lea      rax, [rsp + 
+0x48]
+  temp\drv\map_ioctls.txt
+:208:    000180001f6b  
+c744242820000000         
+mov      dword ptr [rsp 
++ 0x28], 0x20
+  temp\drv\map_ioctls.txt
+:209:    000180001f73  
+41b920000000             
+mov      r9d, 0x20
+  temp\drv\map_ioctls.txt
+:210:    000180001f79  
+4889442420               
+mov      qword ptr [rsp 
++ 0x20], rax
+  temp\drv\map_ioctls.txt
+:211:    000180001f7e  
+ba842550c3               
+mov      edx, 0xc3502584
+  temp\drv\map_ioctls.txt
+:212:    000180001f83  
+488bcf                   
+mov      rcx, rdi
+> temp\drv\map_ioctls.txt
+:213:site 0x18000210E 
+code=0xC3502014 
+owner=0x180001F00 
+b'MS_WriteMSR'
+  temp\drv\map_ioctls.txt
+:214:    0001800020c2  
+ff15d0df0100             
+call     qword ptr [rip 
++ 0x1dfd0]   ; KERNEL32.d
+ll!SetThreadAffinityMask 
+.rdata+0x98
+  temp\drv\map_ioctls.txt
+:215:    0001800020c8  
+e8f3f0ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:216:    0001800020cd  
+488bf8                   
+mov      rdi, rax
+  temp\drv\map_ioctls.txt
+:217:    0001800020d0  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:218:    0001800020d4  
+7447                     
+je       0x18000211d
+  temp\drv\map_ioctls.txt
+:219:    0001800020d6  
+33c9                     
+xor      ecx, ecx
+  temp\drv\map_ioctls.txt
+:220:    0001800020d8  
+4c896dc8                 
+mov      qword ptr [rbp 
+- 0x38], r13
+  temp\drv\map_ioctls.txt
+:221:    0001800020dc  
+48894c2438               
+mov      qword ptr [rsp 
++ 0x38], rcx
+  temp\drv\map_ioctls.txt
+:222:    0001800020e1  
+488d45e0                 
+lea      rax, [rbp - 
+0x20]
+  temp\drv\map_ioctls.txt
+:223:    0001800020e5  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:224:    0001800020ea  
+4c8d45c8                 
+lea      r8, [rbp - 0x38]
+  temp\drv\map_ioctls.txt
+:225:    0001800020ee  
+894c2428                 
+mov      dword ptr [rsp 
++ 0x28], ecx
+> temp\drv\map_ioctls.txt
+:226:    0001800020f2  
+ba142050c3               
+mov      edx, 0xc3502014
+  temp\drv\map_ioctls.txt
+:227:    0001800020f7  
+48894c2420               
+mov      qword ptr [rsp 
++ 0x20], rcx
+  temp\drv\map_ioctls.txt
+:228:    0001800020fc  
+448d4918                 
+lea      r9d, [rcx + 
+0x18]
+  temp\drv\map_ioctls.txt
+:229:    000180002100  
+488bcf                   
+mov      rcx, rdi
+  temp\drv\map_ioctls.txt
+:230:    000180002103  
+c745d010000000           
+mov      dword ptr [rbp 
+- 0x30], 0x10
+  temp\drv\map_ioctls.txt
+:231:    00018000210a  
+48895dd8                 
+mov      qword ptr [rbp 
+- 0x28], rbx
+> temp\drv\map_ioctls.txt
+:232:site 0x1800021A2 
+code=0xC3502014 
+owner=0x180001F00 
+b'MS_WriteMSR'
+  temp\drv\map_ioctls.txt
+:233:    00018000215a  
+ff1538df0100             
+call     qword ptr [rip 
++ 0x1df38]   ; KERNEL32.d
+ll!SetThreadAffinityMask 
+.rdata+0x98
+  temp\drv\map_ioctls.txt
+:234:    000180002160  
+e85bf0ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:235:    000180002165  
+488bf0                   
+mov      rsi, rax
+  temp\drv\map_ioctls.txt
+:236:    000180002168  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:237:    00018000216c  
+7443                     
+je       0x1800021b1
+  temp\drv\map_ioctls.txt
+:238:    00018000216e  
+33c9                     
+xor      ecx, ecx
+  temp\drv\map_ioctls.txt
+:239:    000180002170  
+4c896dc8                 
+mov      qword ptr [rbp 
+- 0x38], r13
+  temp\drv\map_ioctls.txt
+:240:    000180002174  
+48894c2438               
+mov      qword ptr [rsp 
++ 0x38], rcx
+  temp\drv\map_ioctls.txt
+:241:    000180002179  
+488d45e4                 
+lea      rax, [rbp - 
+0x1c]
+  temp\drv\map_ioctls.txt
+:242:    00018000217d  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:243:    000180002182  
+4c8d45c8                 
+lea      r8, [rbp - 0x38]
+  temp\drv\map_ioctls.txt
+:244:    000180002186  
+894c2428                 
+mov      dword ptr [rsp 
++ 0x28], ecx
+> temp\drv\map_ioctls.txt
+:245:    00018000218a  
+ba142050c3               
+mov      edx, 0xc3502014
+  temp\drv\map_ioctls.txt
+:246:    00018000218f  
+48894c2420               
+mov      qword ptr [rsp 
++ 0x20], rcx
+  temp\drv\map_ioctls.txt
+:247:    000180002194  
+448d4918                 
+lea      r9d, [rcx + 
+0x18]
+  temp\drv\map_ioctls.txt
+:328:    000180002862  
+ff1538d80100             
+call     qword ptr [rip 
++ 0x1d838]   ; KERNEL32.d
+ll!GetCurrentThread 
+.rdata+0xa0
+  temp\drv\map_ioctls.txt
+:329:    000180002868  
+488bc8                   
+mov      rcx, rax
+  temp\drv\map_ioctls.txt
+:330:    00018000286b  
+ba01000000               
+mov      edx, 1
+  temp\drv\map_ioctls.txt
+:331:    000180002870  
+ff1522d80100             
+call     qword ptr [rip 
++ 0x1d822]   ; KERNEL32.d
+ll!SetThreadAffinityMask 
+.rdata+0x98
+  temp\drv\map_ioctls.txt
+:332:    000180002876  
+e845e9ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:333:    00018000287b  
+488bd8                   
+mov      rbx, rax
+  temp\drv\map_ioctls.txt
+:334:    00018000287e  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:335:    000180002882  
+744b                     
+je       0x1800028cf
+  temp\drv\map_ioctls.txt
+:336:    000180002884  
+48c744243800000000       
+mov      qword ptr [rsp 
++ 0x38], 0
+  temp\drv\map_ioctls.txt
+:337:    00018000288d  
+488d442450               
+lea      rax, [rsp + 
+0x50]
+  temp\drv\map_ioctls.txt
+:338:    000180002892  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:339:    000180002897  
+4c8d442460               
+lea      r8, [rsp + 0x60]
+  temp\drv\map_ioctls.txt
+:340:    00018000289c  
+488d442468               
+lea      rax, [rsp + 
+0x68]
+  temp\drv\map_ioctls.txt
+:341:    0001800028a1  
+c744242808000000         
+mov      dword ptr [rsp 
++ 0x28], 8
+  temp\drv\map_ioctls.txt
+:342:    0001800028a9  
+41b908000000             
+mov      r9d, 8
+  temp\drv\map_ioctls.txt
+:343:    0001800028af  
+4889442420               
+mov      qword ptr [rsp 
++ 0x20], rax
+  temp\drv\map_ioctls.txt
+:344:    0001800028b4  
+ba0c2850c3               
+mov      edx, 0xc350280c
+  temp\drv\map_ioctls.txt
+:345:    0001800028b9  
+488bcb                   
+mov      rcx, rbx
+> temp\drv\map_ioctls.txt
+:346:site 0x18000297D 
+code=0xC3502014 
+owner=0x180002900 
+b'MapMem_Phys_To_Linear'
+  temp\drv\map_ioctls.txt
+:347:    000180002930  
+e88be8ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:348:    000180002935  
+488bd8                   
+mov      rbx, rax
+  temp\drv\map_ioctls.txt
+:349:    000180002938  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:350:    00018000293c  
+744e                     
+je       0x18000298c
+  temp\drv\map_ioctls.txt
+:351:    00018000293e  
+488b0f                   
+mov      rcx, qword ptr 
+[rdi]
+  temp\drv\map_ioctls.txt
+:352:    000180002941  
+488d842488000000         
+lea      rax, [rsp + 
+0x88]
+  temp\drv\map_ioctls.txt
+:353:    000180002949  
+48894c2450               
+mov      qword ptr [rsp 
++ 0x50], rcx
+  temp\drv\map_ioctls.txt
+:354:    00018000294e  
+4c8d442440               
+lea      r8, [rsp + 0x40]
+  temp\drv\map_ioctls.txt
+:355:    000180002953  
+33c9                     
+xor      ecx, ecx
+  temp\drv\map_ioctls.txt
+:356:    000180002955  
+48896c2440               
+mov      qword ptr [rsp 
++ 0x40], rbp
+  temp\drv\map_ioctls.txt
+:357:    00018000295a  
+48894c2438               
+mov      qword ptr [rsp 
++ 0x38], rcx
+> temp\drv\map_ioctls.txt
+:358:    00018000295f  
+ba142050c3               
+mov      edx, 0xc3502014
+  temp\drv\map_ioctls.txt
+:359:    000180002964  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:360:    000180002969  
+894c2428                 
+mov      dword ptr [rsp 
++ 0x28], ecx
+  temp\drv\map_ioctls.txt
+:361:    00018000296d  
+48894c2420               
+mov      qword ptr [rsp 
++ 0x20], rcx
+  temp\drv\map_ioctls.txt
+:362:    000180002972  
+448d4918                 
+lea      r9d, [rcx + 
+0x18]
+  temp\drv\map_ioctls.txt
+:363:    000180002976  
+488bcb                   
+mov      rcx, rbx
+  temp\drv\map_ioctls.txt
+:364:    000180002979  
+89742448                 
+mov      dword ptr [rsp 
++ 0x48], esi
+> temp\drv\map_ioctls.txt
+:365:site 0x180002A2D 
+code=0xC3502019 
+owner=0x1800029B0 
+b'MapMem_Phys_To_Linear2'
+  temp\drv\map_ioctls.txt
+:366:    0001800029e0  
+e8dbe7ffff               
+call     0x1800011c0
+  temp\drv\map_ioctls.txt
+:367:    0001800029e5  
+488bd8                   
+mov      rbx, rax
+  temp\drv\map_ioctls.txt
+:368:    0001800029e8  
+4883f8ff                 
+cmp      rax, -1
+  temp\drv\map_ioctls.txt
+:369:    0001800029ec  
+744e                     
+je       0x180002a3c
+  temp\drv\map_ioctls.txt
+:370:    0001800029ee  
+488b0f                   
+mov      rcx, qword ptr 
+[rdi]
+  temp\drv\map_ioctls.txt
+:371:    0001800029f1  
+488d842488000000         
+lea      rax, [rsp + 
+0x88]
+  temp\drv\map_ioctls.txt
+:372:    0001800029f9  
+48894c2450               
+mov      qword ptr [rsp 
++ 0x50], rcx
+  temp\drv\map_ioctls.txt
+:373:    0001800029fe  
+4c8d442440               
+lea      r8, [rsp + 0x40]
+  temp\drv\map_ioctls.txt
+:374:    000180002a03  
+33c9                     
+xor      ecx, ecx
+  temp\drv\map_ioctls.txt
+:375:    000180002a05  
+48896c2440               
+mov      qword ptr [rsp 
++ 0x40], rbp
+  temp\drv\map_ioctls.txt
+:376:    000180002a0a  
+48894c2438               
+mov      qword ptr [rsp 
++ 0x38], rcx
+> temp\drv\map_ioctls.txt
+:377:    000180002a0f  
+ba192050c3               
+mov      edx, 0xc3502019
+  temp\drv\map_ioctls.txt
+:378:    000180002a14  
+4889442430               
+mov      qword ptr [rsp 
++ 0x30], rax
+  temp\drv\map_ioctls.txt
+:379:    000180002a19  
+894c2428                 
+mov      dword ptr [rsp 
++ 0x28], ecx
+
+

@@ -1,0 +1,34 @@
+00:00:00.427530 Console: Machine state changed to 'Restoring'
+00:00:00.512907 SUP: Loaded VMMR0.r0 (C:\Program Files\Oracle\VirtualBox/VMMR0.r0) at 0xXXXXXXXXXXXXXXXX - ModuleInit at XXXXXXXXXXXXXXXX and ModuleTerm at XXXXXXXXXXXXXXXX using the native ring-0 loader
+00:00:00.909639 [/Devices/VMMDev/] (level 2)
+00:00:00.909639 [/Devices/VMMDev/0/] (level 3)
+00:00:00.909641 [/Devices/VMMDev/0/Config/] (level 4)
+00:00:00.909642 [/Devices/VMMDev/0/LUN#0/] (level 4)
+00:00:00.909643 [/Devices/VMMDev/0/LUN#0/Config/] (level 5)
+00:00:00.909644 [/Devices/VMMDev/0/LUN#999/] (level 4)
+00:00:00.909645 [/Devices/VMMDev/0/LUN#999/Config/] (level 5)
+00:00:00.909690   Driver <string>  = "NAT" (cb=4)
+00:00:00.909706   Network              <string>  = "HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter" (cb=62)
+00:00:00.909706   Trunk                <string>  = "VirtualBox Host-Only Ethernet Adapter" (cb=38)
+00:00:01.074085 TM:     cTSCTicksPerSecond=2 495 999 830 (0x94c5ef56) enmTSCMode=4 (NativeApi) TSCMultiplier=1
+00:00:01.346714 VMMDev: cbDefaultBudget: 1 073 741 824 (40000000)
+00:00:01.397972 IntNet#0: szNetwork={HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter} enmTrunkType=4 szTrunk={VirtualBox Host-Only Ethernet Adapter} fFlags=0x8000 cbRecv=325632 cbSend=196608 fIgnoreConnectFailure=true
+00:00:01.434838 Changing the VM state from 'CREATING' to 'CREATED'
+00:00:01.436136 NAT: DNS settings changed, triggering update
+00:00:01.436142 NAT DNS Update: Stored 17082560 as nameserver #0
+00:00:01.436144 NAT DNS Update: Stored 1 total nameservers
+00:00:01.436889 Changing the VM state from 'CREATED' to 'LOADING'
+00:00:01.437202 SSM: Saved state info:
+00:00:01.980053 TM: cTSCTicksPerSecond=0x94c5f126 (2 496 000 294) enmTSCMode=4 (NativeApi) (state load)
+00:00:01.981771 HGCM: Restoring [VBoxGuestPropSvc]
+00:00:01.981786 HGCM: Restoring [VBoxGuestControlSvc]
+00:00:01.981788 HGCM: Restoring [VBoxSharedFolders]
+00:00:01.981790 HGCM: Restoring [VBoxDragAndDropSvc]
+00:00:01.981792 HGCM: Restoring [VBoxSharedClipboard]
+00:00:01.990475 Changing the VM state from 'LOADING' to 'SUSPENDED'
+00:00:01.990544 Changing the VM state from 'SUSPENDED' to 'RESUMING'
+00:00:01.990750 Changing the VM state from 'RESUMING' to 'RUNNING'
+00:05:54.398980 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78
+00:05:54.432838 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78
+00:05:54.463760 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78
+00:05:54.496138 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78

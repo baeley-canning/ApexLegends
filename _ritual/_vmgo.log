@@ -1,0 +1,4 @@
+VBoxManage.exe: error: Call to WHvSetupPartition failed: E_ACCESSDENIED (Last=0xc0000022/5) (VERR_NEM_VM_CREATE_FAILED)
+VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
+Waiting for VM "Win11-Test2" to power on...
+exit=1 

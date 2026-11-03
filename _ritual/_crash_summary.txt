@@ -1,0 +1,22 @@
+########## 110126-9437-01.dmp  (9564455 bytes) ##########
+Loading Dump File [C:\Users\New User\OneDrive\Desktop\cheating\_ritual\dumps\110126-9437-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+Debug session time: Sun Nov  1 21:54:22.204 2026 (UTC + 13:00)
+    Key  : Failure.Bucket
+BUGCHECK_CODE:  3b
+BUGCHECK_P2: fffff8046fe34b4a
+PROCESS_NAME:  powershell.exe
+SYMBOL_NAME:  gdrv3+4b4a
+MODULE_NAME: gdrv3
+FAILURE_BUCKET_ID:  AV_gdrv3!unknown_function
+########## 102726-9484-01.dmp  (9660374 bytes) ##########
+Loading Dump File [C:\Users\New User\OneDrive\Desktop\cheating\_ritual\dumps\102726-9484-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+Debug session time: Tue Oct 27 23:50:06.152 2026 (UTC + 13:00)
+    Key  : Failure.Bucket
+BUGCHECK_CODE:  3b
+BUGCHECK_P2: fffff80186fe4b92
+PROCESS_NAME:  python.exe
+SYMBOL_NAME:  gdrv3+4b92
+MODULE_NAME: gdrv3
+FAILURE_BUCKET_ID:  AV_gdrv3!unknown_function

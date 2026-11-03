@@ -1,0 +1,23 @@
+== host pre-state 03/11 21:15:47 ==
+boot: 03/11 20:37:49
+uptime_min: 38
+svc: STATE              : 1  STOPPED
+last_exit: no service object
+minidumps: 0
+
+--- 1001 bugchecks (last 6) ---
+  03/11 20:37 The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa39fe6df8638da4b, 0xb3b6f365d8bccd50, 0xfffff80767242004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-9906-01.dmp. Report Id: 7d5959b8-78aa-4abe-91b0-0c01ca046ad7.
+  03/11 07:21 The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa39fefe2ef29e744, 0xb3b6fc6941adda49, 0xfffff80366882004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-10140-01.dmp. Report Id: 07db1b8c-340c-46ee-a42a-51f8f218af3e.
+  03/11 03:05 The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000109 (0xa3a023e44bd3b660, 0xb3b7306a9e5929ed, 0xfffff8007a302004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110326-10125-01.dmp. Report Id: 77e2b64b-5397-405a-879a-6f283cca04c5.
+  02/11 23:05 The computer has rebooted from a bugcheck.  The bugcheck was: 0x000000be (0xfffff80114532007, 0x8900000136a20121, 0xffff878f9186efe0, 0x000000000000000b). A dump was saved in: C:\WINDOWS\Minidump\110226-9531-01.dmp. Report Id: 87bfd7bb-b145-4c20-b80f-34e54c48bc8b.
+  02/11 21:26 The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80360904b92, 0xfffff9838068e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-10578-01.dmp. Report Id: 0a5dbd2c-83b7-45ab-9c0c-6ea244afea7a.
+  02/11 16:00 The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80347e74b92, 0xffffd3075310e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9625-01.dmp. Report Id: e41f0093-c199-4d6f-ab7b-debaaed4c00e.
+--- 6008 unexpected shutdowns (last 4) ---
+  03/11 20:37
+  03/11 19:24
+  03/11 07:21
+  03/11 03:05
+VBS: 0
+--- game / ea ---
+
+-- end --

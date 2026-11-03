@@ -1,0 +1,150 @@
+=== files 11-03 00:00 -> 19:00 ===
+00:00:59  click.ps1
+00:01:34  shot_ea.png
+00:01:40  raise.ps1
+00:02:14  mail_new.ps1
+00:02:36  mail.json
+00:04:09  _err.txt
+00:05:03  _probe.txt
+00:05:23  _t.txt
+00:05:47  _v.txt
+00:06:24  _e.txt
+00:06:39  _t2.txt
+00:07:26  _t3.txt
+00:08:34  s1.png
+00:08:34  _t4.txt
+00:09:07  _t5.txt
+00:10:35  s2.png
+00:11:45  s3.png
+00:11:46  _e2.txt
+00:11:59  cdp.ps1
+00:12:21  _f.txt
+00:13:12  _e3.txt
+00:13:13  s4.png
+00:13:57  _d.txt
+00:13:57  _e4.txt
+00:14:52  s5.png
+00:15:31  _mail.txt
+00:16:37  s6.png
+00:17:24  _ids.txt
+00:18:26  s7.png
+00:19:00  _raise.txt
+00:19:02  ea1.png
+00:19:02  _r2.txt
+00:19:31  ea2.png
+00:19:31  _r3.txt
+00:19:57  _lock.txt
+00:20:28  _ports.txt
+00:20:57  _auth.txt
+00:21:24  _auth2.txt
+00:21:52  _auth3.txt
+00:22:53  _path.txt
+00:23:24  _path2.txt
+00:24:24  _cdpapp.txt
+00:24:54  _cdp.txt
+00:26:16  _tg.txt
+00:26:16  _ee.txt
+00:26:16  _sess.txt
+00:26:46  _lg.txt
+00:27:01  shot_pw.ps1
+00:27:21  pw1.png
+00:27:21  _pw.txt
+06:49:39  _sh.txt
+06:49:39  _drv.txt
+06:50:02  _up.txt
+06:50:53  full1.png
+06:50:53  _fs.txt
+06:51:23  _kdu.txt
+06:51:50  _h1.txt
+06:52:16  _hv.txt
+06:52:47  h1_host_boot2.txt
+06:53:27  _h1r.txt
+06:54:33  ea5.png
+06:54:33  _s5.txt
+06:54:48  ea6.png
+06:55:18  _ea_fg.txt
+06:55:18  _c1.txt
+06:55:43  _find.txt
+06:56:13  _find2.txt
+06:56:44  _ea_fg2.txt
+06:56:44  _c2.txt
+06:57:05  ea8.png
+06:57:31  _ea_fg3.txt
+06:57:32  _c3.txt
+06:57:53  ea9.png
+06:58:21  _ea_fg4.txt
+06:58:21  _c4.txt
+06:58:53  ea10.png
+06:59:11  ea11.png
+06:59:41  _ea_fg5.txt
+06:59:42  _c5.txt
+06:59:42  _c6.txt
+07:00:03  ea12.png
+07:00:31  _c7.txt
+07:00:55  ea13.png
+07:01:31  ea14.jpg
+07:02:07  _c8.txt
+07:02:41  ea15.jpg
+07:03:21  _ea_fg6.txt
+07:03:21  _c9.txt
+07:03:22  _c10.txt
+07:03:54  ea16.jpg
+07:04:14  ea17.jpg
+07:04:45  _c11.txt
+07:05:16  ea18.jpg
+07:05:34  ea19.jpg
+07:06:06  _ap_fg.txt
+07:06:39  ea20.jpg
+07:07:14  _c12.txt
+07:07:40  ea21.jpg
+07:08:13  ea22.jpg
+07:09:10  ea23.jpg
+07:09:48  _ap_fg2.txt
+07:10:17  ea24.jpg
+07:10:53  _ap_fg3.txt
+07:10:53  _ap_fg3b.txt
+07:10:54  _c13.txt
+07:10:55  _c14.txt
+07:11:31  ea25.jpg
+07:12:03  ea26.jpg
+07:12:23  wfp.ps1
+07:12:46  _wfp.txt
+07:13:05  click_slow.ps1
+07:13:28  _slow.txt
+07:13:55  ea27.jpg
+07:14:33  shot_full.ps1
+07:14:55  c1.png
+07:15:29  c2.jpg
+07:16:00  _sz.txt
+07:16:31  ocr.ps1
+07:16:57  _ocr.txt
+07:17:17  pm_click.ps1
+07:17:39  _pm.txt
+07:18:05  c3.jpg
+07:18:06  _ocr3.txt
+07:18:27  sendinput.ps1
+07:18:51  _si.txt
+07:18:52  c4.jpg
+07:18:52  _ocr4.txt
+07:19:24  h1.jpg
+07:19:27  h2.jpg
+07:19:28  _hh.txt
+07:20:14  _il.txt
+07:20:38  sendkey.ps1
+=== boot markers today ===
+03:05:03 id=12 [Microsoft-Windows-Kernel-General]
+03:05:11 id=6005 [EventLog]
+03:05:11 id=12 [Microsoft-Windows-UserModePowerService]
+03:05:11 id=12 [Microsoft-Windows-UserModePowerService]
+07:21:21 id=12 [Microsoft-Windows-Kernel-General]
+07:21:29 id=6005 [EventLog]
+07:21:29 id=12 [Microsoft-Windows-UserModePowerService]
+07:21:29 id=12 [Microsoft-Windows-UserModePowerService]
+19:24:04 id=12 [Microsoft-Windows-Kernel-General]
+19:24:12 id=6005 [EventLog]
+19:24:12 id=12 [Microsoft-Windows-UserModePowerService]
+19:24:12 id=12 [Microsoft-Windows-UserModePowerService]
+20:37:50 id=12 [Microsoft-Windows-Kernel-General]
+20:37:58 id=6005 [EventLog]
+20:37:58 id=12 [Microsoft-Windows-UserModePowerService]
+20:37:58 id=12 [Microsoft-Windows-UserModePowerService]

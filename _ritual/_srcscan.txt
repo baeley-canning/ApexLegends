@@ -1,0 +1,62 @@
+===== launcher wmain/options =====
+69: bool            methodForced     = false;  // --method=<x> given: no ladder
+75: bool            runProbe         = false;   // --probe: measure, do not inject
+76: bool            runKernelProbe   = false;   // --kernel-probe: Q10, driver only
+219: printf("---------------------------------------------------------------\n");
+231: printf("---------------------------------------------------------------\n");
+307: while (end > begin && std::isspace(static_cast<unsigned char>(text[end - 1]))) --end;
+838: printf("[-] no target PID (pass --pid=<pid>)\n");
+867: printf("\n--- configuration ---------------------------------------------\n");
+878: printf("----------------------------------------------------------------\n");
+1010: printf("[*] No rung verified. Use [1] or --method= to force one.\n");
+1059: printf("  --inject                 run the LADDER once and exit (default)\n");
+1060: printf("  --method=nt|apc|crt|hijack|manual|kernel  force ONE rung (no ladder, no sticky)\n");
+1061: printf("  --probe                  AG measurement harness only, never injects\n");
+1062: printf("  --kernel-probe           ask the driver what KERNEL context can do (Q10)\n");
+1063: printf("  --dll=<path>             payload DLL (default: %s next to the exe)\n",
+1065: printf("  --driver=<path>          kernel driver for the B3 rung\n");
+1066: printf("  --pid=<pid>              target PID (otherwise auto-detected)\n");
+1067: printf("  --stage                  inject from a randomly named %%TEMP%% copy\n");
+1068: printf("  --random                 randomise the usermode method per run\n");
+1069: printf("  --timeout=<seconds>      wait-for-game timeout (default 120)\n");
+1070: printf("  --no-wait                fail immediately if the game is not running\n");
+1071: printf("  --no-sticky              do not read/write the per-machine rung\n");
+1072: printf("  --forget-sticky          delete the remembered rung and continue\n");
+1073: printf("  --help                   show this help\n\n");
+1080: ArgResult ParseArgs(int argc, char** argv, LauncherOptions& options, bool& runOnce) {
+1084: std::string arg = argv[i];
+1093: // Helper: value from "--opt=value" or from the next argv element.
+1096: if (i + 1 < argc)   { out = argv[++i]; return true; }
+1100: if (arg == "--help" || arg == "-h") {
+1104: if (arg == "--stage")   { options.stageDll = true;        continue; }
+1105: if (arg == "--random")  { options.randomizeMethod = true; continue; }
+1106: if (arg == "--no-wait") { options.waitForGame = false;    continue; }
+1107: if (arg == "--inject") { runOnce = true;                  continue; }
+1108: if (arg == "--probe")  { runOnce = true; options.runProbe = true; continue; }
+1109: if (arg == "--kernel-probe") { runOnce = true; options.runKernelProbe = true; continue; }
+1110: if (arg == "--no-sticky")     { options.allowSticky = false; continue; }
+1111: if (arg == "--forget-sticky") { options.forgetSticky = true; continue; }
+1113: if (arg == "--method") {
+1116: printf("[-] Bad --method value\n");
+1120: // method is a one-shot by definition, so it implies --inject;
+1121: // without this the documented "--method=kernel" opened the menu.
+1126: if (arg == "--dll") {
+1128: if (!takeValue(path)) { printf("[-] --dll needs a path\n"); return ArgResult::ExitError; }
+1132: if (arg == "--driver") {
+1134: if (!takeValue(path)) { printf("[-] --driver needs a path\n"); return ArgResult::ExitError; }
+1138: if (arg == "--pid") {
+1140: if (!takeValue(pidText)) { printf("[-] --pid needs a value\n"); return ArgResult::ExitError; }
+1144: if (arg == "--timeout") {
+1146: if (!takeValue(secondsText)) { printf("[-] --timeout needs a value\n"); return ArgResult::ExitError; }
+1151: printf("[-] Unknown option: %s (try --help)\n", arg.c_str());
+1160: int main(int argc, char** argv) {
+1166: const ArgResult parsed = ParseArgs(argc, argv, options, runOnce);
+1172: // --forget-sticky applies to every path (probe included) and runs before
+1185: // --kernel-probe answers Q10 (can kernel context do what user mode
+1191: // --probe never injects: it resolves the same target, but a missing
+===== menu/insert in src =====
+apex_injector.cpp:65: code.insert(code.end(), bytes.begin(), bytes.end());
+d3d12_overlay.cpp:540: // toggle, a resolution change from the menus).  Re-create the views when
+hooks.cpp:569: // INSERT toggles the ESP overlay without touching the render thread.
+hooks.cpp:570: if (uMsg == WM_KEYDOWN && wParam == VK_INSERT && g_pCheatFeatures) {
+manual_map.cpp:375: code.insert(code.end(), bytes.begin(), bytes.end());

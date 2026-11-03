@@ -1,0 +1,10 @@
+﻿adm=False
+t1=11/02/2026 10:25:14 last1=  [io] read pa=0x2e00000 size=0x4
+t2=11/02/2026 10:26:14 last2=  [io] read pa=0x2e00000 size=0x4
+--- log tail ---
+  size 0x800 ok (first=00)
+  size 0x1000 ok (first=00)
+  size 0x2000 ok (first=00)
+  size 0x4000 ok (first=00)
+  size 0x10000 FAIL read pa=0x100000 size=0x10000 err=1450
+  size 0x20000 FAIL read pa=0x100000 size=0x20000 err=1450

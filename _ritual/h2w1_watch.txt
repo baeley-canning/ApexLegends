@@ -1,0 +1,159 @@
+=== h2w1 WATCH-ONLY GATE CONTINUATION 03/11/2026 22:59:40 pid=26460 host=DESKTOP-PPHFJBQ win=1800s ===
+  h2_gate aborted 22:21:18 with "RED - game never appeared"; h1 loaded apexdrv 22:06:20 this boot.
+
+########## A: pre-state (nothing is mutated) ##########
+  lastboot=11/03/2026 20:37:49
+  apexdrv=RUNNING  eaac=RUNNING
+  bin sha256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+  blocklist=0
+  h1 restore line:   finally restore verified=True readback=10
+  popup id26 baseline (6 h) = 0
+  live game: r5apex_dx12 pid=9308 ws=6093MB started=22:54:50 preAlive=291s
+
+########## B: watch (1 s poll, refusal capture, 10 s snapshots) ##########
+  watching from t+0, window 1800 s (total with preAlive = 2091 s)
+    SNAP t+20s proc=[r5apex_dx12(9308)] ws=6077MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+30s proc=[r5apex_dx12(9308)] ws=6080MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+50s proc=[r5apex_dx12(9308)] ws=6090MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+60s proc=[r5apex_dx12(9308)] ws=6091MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+70s proc=[r5apex_dx12(9308)] ws=6091MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+80s proc=[r5apex_dx12(9308)] ws=6092MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+90s proc=[r5apex_dx12(9308)] ws=6096MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+100s proc=[r5apex_dx12(9308)] ws=6098MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+110s proc=[r5apex_dx12(9308)] ws=6116MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+120s proc=[r5apex_dx12(9308)] ws=6102MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+130s proc=[r5apex_dx12(9308)] ws=6102MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+140s proc=[r5apex_dx12(9308)] ws=6103MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+150s proc=[r5apex_dx12(9308)] ws=6103MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+170s proc=[r5apex_dx12(9308)] ws=6068MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+180s proc=[r5apex_dx12(9308)] ws=6077MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+200s proc=[r5apex_dx12(9308)] ws=6077MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+210s proc=[r5apex_dx12(9308)] ws=6077MB th=65 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+220s proc=[r5apex_dx12(9308)] ws=6077MB th=65 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+230s proc=[r5apex_dx12(9308)] ws=6077MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+240s proc=[r5apex_dx12(9308)] ws=6077MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+250s proc=[r5apex_dx12(9308)] ws=6077MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+270s proc=[r5apex_dx12(9308)] ws=6077MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+280s proc=[r5apex_dx12(9308)] ws=6077MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+310s proc=[r5apex_dx12(9308)] ws=6077MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+320s proc=[r5apex_dx12(9308)] ws=6078MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+340s proc=[r5apex_dx12(9308)] ws=6118MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+350s proc=[r5apex_dx12(9308)] ws=6114MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+360s proc=[r5apex_dx12(9308)] ws=6123MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+380s proc=[r5apex_dx12(9308)] ws=6123MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+390s proc=[r5apex_dx12(9308)] ws=6085MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+400s proc=[r5apex_dx12(9308)] ws=6085MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+410s proc=[r5apex_dx12(9308)] ws=6088MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+420s proc=[r5apex_dx12(9308)] ws=6099MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+430s proc=[r5apex_dx12(9308)] ws=6097MB th=68 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+450s proc=[r5apex_dx12(9308)] ws=6085MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+460s proc=[r5apex_dx12(9308)] ws=6091MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+470s proc=[r5apex_dx12(9308)] ws=6097MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+480s proc=[r5apex_dx12(9308)] ws=6099MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+500s proc=[r5apex_dx12(9308)] ws=6101MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+510s proc=[r5apex_dx12(9308)] ws=6118MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+520s proc=[r5apex_dx12(9308)] ws=6118MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+540s proc=[r5apex_dx12(9308)] ws=6102MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+550s proc=[r5apex_dx12(9308)] ws=6102MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+580s proc=[r5apex_dx12(9308)] ws=6103MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+590s proc=[r5apex_dx12(9308)] ws=6120MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+600s proc=[r5apex_dx12(9308)] ws=6105MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+610s proc=[r5apex_dx12(9308)] ws=6105MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+630s proc=[r5apex_dx12(9308)] ws=6120MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+640s proc=[r5apex_dx12(9308)] ws=6120MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+650s proc=[r5apex_dx12(9308)] ws=6104MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+660s proc=[r5apex_dx12(9308)] ws=6120MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+680s proc=[r5apex_dx12(9308)] ws=6120MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+690s proc=[r5apex_dx12(9308)] ws=6121MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+700s proc=[r5apex_dx12(9308)] ws=6122MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+710s proc=[r5apex_dx12(9308)] ws=6121MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+740s proc=[r5apex_dx12(9308)] ws=6106MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+750s proc=[r5apex_dx12(9308)] ws=6123MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+780s proc=[r5apex_dx12(9308)] ws=6126MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+790s proc=[r5apex_dx12(9308)] ws=6126MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+800s proc=[r5apex_dx12(9308)] ws=6126MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+810s proc=[r5apex_dx12(9308)] ws=6128MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+840s proc=[r5apex_dx12(9308)] ws=6131MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+850s proc=[r5apex_dx12(9308)] ws=6132MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+860s proc=[r5apex_dx12(9308)] ws=6132MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+880s proc=[r5apex_dx12(9308)] ws=6132MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+890s proc=[r5apex_dx12(9308)] ws=6133MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+910s proc=[r5apex_dx12(9308)] ws=6134MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+920s proc=[r5apex_dx12(9308)] ws=6134MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+930s proc=[r5apex_dx12(9308)] ws=6134MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+940s proc=[r5apex_dx12(9308)] ws=6134MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+960s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+990s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1000s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1010s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1020s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1030s proc=[r5apex_dx12(9308)] ws=6133MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1060s proc=[r5apex_dx12(9308)] ws=6137MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1070s proc=[r5apex_dx12(9308)] ws=6137MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1100s proc=[r5apex_dx12(9308)] ws=6138MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1110s proc=[r5apex_dx12(9308)] ws=6135MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1130s proc=[r5apex_dx12(9308)] ws=6135MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1140s proc=[r5apex_dx12(9308)] ws=6135MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1150s proc=[r5apex_dx12(9308)] ws=6135MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1170s proc=[r5apex_dx12(9308)] ws=6135MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1180s proc=[r5apex_dx12(9308)] ws=6136MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1190s proc=[r5apex_dx12(9308)] ws=6136MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1200s proc=[r5apex_dx12(9308)] ws=6137MB th=65 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1220s proc=[r5apex_dx12(9308)] ws=6125MB th=65 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1230s proc=[r5apex_dx12(9308)] ws=6125MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1240s proc=[r5apex_dx12(9308)] ws=6126MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1260s proc=[r5apex_dx12(9308)] ws=6126MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1290s proc=[r5apex_dx12(9308)] ws=6128MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1300s proc=[r5apex_dx12(9308)] ws=6128MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1330s proc=[r5apex_dx12(9308)] ws=6128MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1340s proc=[r5apex_dx12(9308)] ws=6128MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1360s proc=[r5apex_dx12(9308)] ws=6126MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1370s proc=[r5apex_dx12(9308)] ws=6125MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1380s proc=[r5apex_dx12(9308)] ws=6125MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1390s proc=[r5apex_dx12(9308)] ws=6126MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1410s proc=[r5apex_dx12(9308)] ws=6124MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1420s proc=[r5apex_dx12(9308)] ws=6124MB th=62 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1430s proc=[r5apex_dx12(9308)] ws=6125MB th=64 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1450s proc=[r5apex_dx12(9308)] ws=6126MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1460s proc=[r5apex_dx12(9308)] ws=6125MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1470s proc=[r5apex_dx12(9308)] ws=6126MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1490s proc=[r5apex_dx12(9308)] ws=6125MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1500s proc=[r5apex_dx12(9308)] ws=6125MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1510s proc=[r5apex_dx12(9308)] ws=6125MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1540s proc=[r5apex_dx12(9308)] ws=5105MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1570s proc=[r5apex_dx12(9308)] ws=5110MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1590s proc=[r5apex_dx12(9308)] ws=5110MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1600s proc=[r5apex_dx12(9308)] ws=5111MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1610s proc=[r5apex_dx12(9308)] ws=5111MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1630s proc=[r5apex_dx12(9308)] ws=5112MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1640s proc=[r5apex_dx12(9308)] ws=5111MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1660s proc=[r5apex_dx12(9308)] ws=5112MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1670s proc=[r5apex_dx12(9308)] ws=5113MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1680s proc=[r5apex_dx12(9308)] ws=5114MB th=66 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1700s proc=[r5apex_dx12(9308)] ws=5115MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1710s proc=[r5apex_dx12(9308)] ws=5116MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1720s proc=[r5apex_dx12(9308)] ws=5117MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1730s proc=[r5apex_dx12(9308)] ws=5118MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1750s proc=[r5apex_dx12(9308)] ws=5118MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1760s proc=[r5apex_dx12(9308)] ws=5118MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1770s proc=[r5apex_dx12(9308)] ws=5119MB th=67 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1790s proc=[r5apex_dx12(9308)] ws=5117MB th=63 apexdrv=RUNNING eaac=RUNNING
+    SNAP t+1800s proc=[r5apex_dx12(9308)] ws=5118MB th=63 apexdrv=RUNNING eaac=RUNNING
+  window complete: 1800 s alive
+
+########## C: after ##########
+  alive=True died=False aliveSec=1804 preAliveSec=291 refusalEvents=0
+  procs=r5apex_dx12(9308)  apexdrv=RUNNING  eaac=RUNNING
+  codeintegrity events since t0: 0
+
+=== VERDICT ===
+RESULT: GREEN - game alive 1804 s of 1800 s watched (plus 291 s before the watch), apexdrv resident, zero refusals. G1 COEXISTENCE GATE PASSED.
+
+CAVEAT carried in from h1: boot g_CiOptions was 0x16, kdu parses -dse as DECIMAL, so 16 -> 0x10 got
+  restored (readback 10, expect 16). 0x10 keeps the 0x10 bit that the old constant 6 destroyed - which is
+  why this boot cleared the 19-27 min 0x109 horizon. Fix before the next boot: pass the hex reading as is
+  (restore 0x16, i.e. 22 decimal) so the restore is byte-exact instead of accidentally-close.
+
+NEXT (manual, after reading this file): sc stop apexdrv  ->  sc start apexdrv  must give 577.
+  If it does, DSE is genuinely restored and the driver still loads only inside the open window.
+-- h2w1 END 23:29:45 --

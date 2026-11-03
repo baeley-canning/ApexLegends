@@ -1,0 +1,43 @@
+IMPORTS dir rva=0x506c
+IAT 0x2010  ntoskrnl.exe!RtlInitUnicodeString
+IAT 0x2018  ntoskrnl.exe!DbgPrint
+IAT 0x2020  ntoskrnl.exe!ZwClose
+IAT 0x2028  ntoskrnl.exe!ZwMapViewOfSection
+IAT 0x2030  ntoskrnl.exe!ObReferenceObjectByHandle
+IAT 0x2038  ntoskrnl.exe!ZwOpenSection
+IAT 0x2040  ntoskrnl.exe!ObfDereferenceObject
+IAT 0x2048  ntoskrnl.exe!IoDeleteSymbolicLink
+IAT 0x2050  ntoskrnl.exe!__C_specific_handler
+IAT 0x2058  ntoskrnl.exe!IofCompleteRequest
+IAT 0x2060  ntoskrnl.exe!ProbeForWrite
+IAT 0x2068  ntoskrnl.exe!ProbeForRead
+IAT 0x2070  ntoskrnl.exe!IoCreateSymbolicLink
+IAT 0x2078  ntoskrnl.exe!IoCreateDevice
+IAT 0x2080  ntoskrnl.exe!ZwUnmapViewOfSection
+IAT 0x2088  ntoskrnl.exe!IoDeleteDevice
+IAT 0x2000  HAL.dll!HalTranslateBusAddress
+--- UTF16 strings (file offsets) ---
+f0xde0 \DosDevices\MsIo
+f0xf9c \Device\PhysicalMemory
+f0x12f8 \Device\MsIo
+f0x2084 VS_VERSION_INFO
+f0x20de StringFileInfo
+f0x20f6 040904B0
+f0x2114 CompanyName
+f0x214c MICSYS Technology Co., LTd
+f0x2174 FileDescription
+f0x2198 MICSYS IO driver
+f0x21b8 FileVersion
+f0x21ec 1.3 x64 built by: WinDDK
+f0x220e InternalName
+f0x2224 MsIo64.sys
+f0x224a LegalCopyright
+f0x227e Copyright (c) 2021 MICSYS
+f0x22a6 OriginalFilename
+f0x22bc MsIo64.sys
+f0x22dc ProductName
+f0x2312 MsIo64 Driver Version 1.3
+f0x2336 ProductVersion
+f0x2364 VarFileInfo
+f0x2384 Translation
+f0x33f6 PCreative Technology Innovation Co., Ltd

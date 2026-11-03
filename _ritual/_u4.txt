@@ -1,0 +1,21 @@
+=== u4 2026-11-03T22:48:22 ===
+foreground     = 0
+consent.exe    = 0
+  Code pid=10896 responding=True mainwnd=0
+  Code pid=16748 responding=True mainwnd=262304
+  Code pid=16948 responding=True mainwnd=0
+  Code pid=17016 responding=True mainwnd=0
+  Code pid=17076 responding=True mainwnd=0
+  Code pid=17560 responding=True mainwnd=0
+  Code pid=17788 responding=True mainwnd=0
+  Code pid=18124 responding=True mainwnd=0
+  Code pid=18168 responding=True mainwnd=0
+  Code pid=18232 responding=True mainwnd=0
+  Code pid=18276 responding=True mainwnd=0
+  Code pid=19200 responding=True mainwnd=0
+  Code pid=19500 responding=True mainwnd=0
+  Code pid=20168 responding=True mainwnd=0
+  Code pid=20416 responding=True mainwnd=0
+no #32770-style dialogs
+--- EA child tree ---
+  67508 Qt5152QWindowIcon vis=False en=True  67510 CefBrowserWindow vis=False en=True  67512 Chrome_WidgetWin_0 vis=False en=True  67522 Intermediate D3D Window vis=False en=False

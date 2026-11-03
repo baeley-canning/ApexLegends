@@ -1,0 +1,30 @@
+
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  identity=NT AUTHORITY\SYSTEM isSystem=True
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  W1 no section handle
+
+########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########
+  open \\.\MSIO ok handle=0x98c
+  shape0 FAIL err=998 info=0
+  shape1 FAIL err=998 info=0
+  shape2 FAIL err=87 info=0
+  shape3 FAIL err=87 info=0
+  try3 pa=0x20000 ENTER
+  try3 FAIL err=5 pa=0x20000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x100000 ENTER
+  try3 FAIL err=5 pa=0x100000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x200000 ENTER
+  try3 FAIL err=5 pa=0x200000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x800000 ENTER
+  try3 FAIL err=5 pa=0x800000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x2000000 ENTER
+  try3 FAIL err=5 pa=0x2000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x8000000 ENTER
+  try3 FAIL err=5 pa=0x8000000  view=0x0 h=0x0 obj=0x0
+  try3 pa=0x10000000 ENTER
+  try3 FAIL err=5 pa=0x10000000  view=0x0 h=0x0 obj=0x0

@@ -1,0 +1,125 @@
+    Key  : Hypervisor.RootFlags.LivedumpEnlightened
+    Value: 1
+
+    Key  : Hypervisor.RootFlags.MapDeviceInterrupt
+    Value: 1
+
+    Key  : Hypervisor.RootFlags.MceEnlightened
+    Value: 1
+
+    Key  : Hypervisor.RootFlags.Nested
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.StartLogicalProcessor
+    Value: 1
+
+    Key  : Hypervisor.RootFlags.Value
+    Value: 1015
+
+    Key  : Hypervisor.RootFlags.ValueHex
+    Value: 3f7
+
+
+BUGCHECK_CODE:  3b
+
+BUGCHECK_P1: c0000005
+
+BUGCHECK_P2: fffff8046fe34b4a
+
+BUGCHECK_P3: ffff9c8e5551e790
+
+BUGCHECK_P4: 0
+
+FILE_IN_CAB:  110126-9437-01.dmp
+
+DUMP_FILE_ATTRIBUTES: 0x21808
+  Kernel Generated Triage Dump
+
+CONTEXT:  ffff9c8e5551e790 -- (.cxr 0xffff9c8e5551e790)
+rax=000001a17a820000 rbx=fffff8046fe37028 rcx=000001a17a820000
+rdx=ffffad65b41a2000 rsi=ffffaf072e9c2000 rdi=0000000000000000
+rip=fffff8046fe34b4a rsp=ffff9c8e5551f1b8 rbp=ffffb08a8f47eb30
+ r8=0000000000000004  r9=ffffaf072e9c2000 r10=0000010000000000
+r11=0000000000000000 r12=0000000000000018 r13=0000000000000000
+r14=ffff9c8e5551f268 r15=00000000c3502014
+iopl=0         nv up ei ng nz na po nc
+cs=0010  ss=0018  ds=002b  es=002b  fs=0053  gs=002b             efl=00050286
+gdrv3+0x4b4a:
+fffff804`6fe34b4a 448a1c11        mov     r11b,byte ptr [rcx+rdx] ds:002b:ffffaf07`2e9c2000=??
+Resetting default scope
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  powershell.exe
+
+STACK_TEXT:  
+ffff9c8e`5551f1b8 fffff804`6fe337df     : 00004f75`70ec8af8 ffffb08a`8f137500 ffff9c8e`5551f268 ffff8580`d0bd6000 : gdrv3+0x4b4a
+ffff9c8e`5551f1c0 00004f75`70ec8af8     : ffffb08a`8f137500 ffff9c8e`5551f268 ffff8580`d0bd6000 00000000`00000000 : gdrv3+0x37df
+ffff9c8e`5551f1c8 ffffb08a`8f137500     : ffff9c8e`5551f268 ffff8580`d0bd6000 00000000`00000000 ffffb08a`00000070 : 0x00004f75`70ec8af8
+ffff9c8e`5551f1d0 ffff9c8e`5551f268     : ffff8580`d0bd6000 00000000`00000000 ffffb08a`00000070 ffffb08a`a48d4900 : 0xffffb08a`8f137500
+ffff9c8e`5551f1d8 ffff8580`d0bd6000     : 00000000`00000000 ffffb08a`00000070 ffffb08a`a48d4900 ffffb08a`8fa06b80 : 0xffff9c8e`5551f268
+ffff9c8e`5551f1e0 00000000`00000000     : ffffb08a`00000070 ffffb08a`a48d4900 ffffb08a`8fa06b80 00004f75`70ec8af8 : 0xffff8580`d0bd6000
+
+
+SYMBOL_NAME:  gdrv3+4b4a
+
+MODULE_NAME: gdrv3
+
+IMAGE_NAME:  gdrv3.sys
+
+STACK_COMMAND:  .cxr 0xffff9c8e5551e790 ; kb
+
+BUCKET_ID_FUNC_OFFSET:  4b4a
+
+FAILURE_BUCKET_ID:  AV_gdrv3!unknown_function
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {15b56798-4c1f-9d7c-7bab-0723cdf23892}
+
+Followup:     MachineOwner
+---------
+
+start             end                 module name
+fffff804`6f000000 fffff804`6f217000   HTTP       (deferred)             
+fffff804`6f220000 fffff804`6f24a000   bowser     (deferred)             
+fffff804`6f250000 fffff804`6f26d000   mpsdrv     (deferred)             
+fffff804`6f280000 fffff804`6f362000   mrxsmb     (deferred)             
+fffff804`6f370000 fffff804`6f3cd000   mrxsmb20   (deferred)             
+fffff804`6f3e0000 fffff804`6f444000   srvnet     (deferred)             
+fffff804`6f450000 fffff804`6f466000   vwifimp    (deferred)             
+fffff804`6f480000 fffff804`6f4ae000   Ndu        (deferred)             
+fffff804`6f4c0000 fffff804`6f595000   peauth     (deferred)             
+fffff804`6f5a0000 fffff804`6f698000   srv2       (deferred)             
+fffff804`6f6a0000 fffff804`6f6b6000   tcpipreg   (deferred)             
+fffff804`6f6c0000 fffff804`6f6de000   wtd        (deferred)             
+fffff804`6f6f0000 fffff804`6f713000   p9rdr      (deferred)             
+fffff804`6f720000 fffff804`6f783000   WUDFRd     (deferred)             
+fffff804`6f790000 fffff804`6fa14000   vmswitch   (deferred)             
+fffff804`6fa20000 fffff804`6fa40000   wanarp     (deferred)             
+fffff804`6fa50000 fffff804`6fa69000   ndisuio    (deferred)             
+fffff804`6fa70000 fffff804`6fb64000   nwifi      (deferred)             
+fffff804`6fb70000 fffff804`6fb86000   mmcss      (deferred)             
+fffff804`6fbd0000 fffff804`6fbe6000   condrv     (deferred)             
+fffff804`6fc00000 fffff804`6fc41000   ndiswan    (deferred)             
+fffff804`6fc70000 fffff804`6fc77000   apexdrv    (deferred)             
+fffff804`6fd30000 fffff804`6fe2a000   xvdd       (deferred)             
+fffff804`6fe30000 fffff804`6fe3f000   gdrv3    T (no symbols)           
+fffff804`6fe50000 fffff804`6fe75000   gameflt    (deferred)             
+fffff804`6fe80000 fffff804`6fe96000   qwavedrv   (deferred)             
+fffff804`6feb0000 fffff804`6fed0000   rassstp    (deferred)             
+fffff804`6fee0000 fffff804`6ff00000   NDProxy    (deferred)             
+fffff804`6ff10000 fffff804`6ff39000   AgileVpn   (deferred)             

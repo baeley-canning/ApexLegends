@@ -1,0 +1,59 @@
+--- features --- 
+
+Deployment Image Servicing and Management tool
+Version: 10.0.26100.9549
+
+Image Version: 10.0.26200.9711
+
+Feature Information:
+
+Feature Name : HypervisorPlatform
+Display Name : Windows Hypervisor Platform
+Description : Enables virtualization software to run on the Windows hypervisor
+Restart Required : Possible
+State : Disabled
+
+Custom Properties:
+
+(No custom properties found)
+
+The operation completed successfully.
+
+Deployment Image Servicing and Management tool
+Version: 10.0.26100.9549
+
+Image Version: 10.0.26200.9711
+
+Feature Information:
+
+Feature Name : Microsoft-Hyper-V-Hypervisor
+Display Name : Hyper-V Hypervisor
+Description : Provides the Hyper-V Hypervisor.
+Restart Required : Possible
+State : Disabled
+
+Custom Properties:
+
+(No custom properties found)
+
+The operation completed successfully.
+
+Deployment Image Servicing and Management tool
+Version: 10.0.26100.9549
+
+Image Version: 10.0.26200.9711
+
+Feature Information:
+
+Feature Name : VirtualMachinePlatform
+Display Name : Virtual Machine Platform
+Description : Enables platform support for virtual machines
+Restart Required : Possible
+State : Enabled
+
+Custom Properties:
+
+(No custom properties found)
+
+The operation completed successfully.
+--- end --- 

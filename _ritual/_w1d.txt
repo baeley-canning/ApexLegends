@@ -1,0 +1,10 @@
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  identity=NT AUTHORITY\SYSTEM isSystem=True
+  privdump: SeLockMemoryPrivilege                     Lock pages in memory                                               Enabled | SeTcbPrivilege                            Act as part of the operating system                                Enabled | SeDebugPrivilege                          Debug programs                                                     Enabled
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=ok
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=ok
+  W1 no section handle
+  W1 \\Device\\PhysicalMemory phys R/W : no

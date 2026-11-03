@@ -1,0 +1,19 @@
+vm_net 01/11/2026 22:11:32
+--- host-only adapters ---
+--- dhcp lease for guest MAC 08:00:27:45:F5:96 ---
+VBoxManage.exe: error: Reading 'C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases' failed: VERR_FILE_NOT_FOUND - Runtime error opening 'C:\Users\New User\.VirtualBox\HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter-Dhcpd.leases' for reading VERR_FILE_NOT_FOUND (File not found.)
+VBoxManage.exe: error: Details: code VBOX_E_FILE_ERROR (0x80bb0004), component DHCPServerWrap, interface IDHCPServer, callee IUnknown
+VBoxManage.exe: error: Context: "FindLeaseByMAC(Bstr(szMac).raw(), 0 , bstrAddress.asOutParam(), bstrState.asOutParam(), &secIssued, &secExpire)" at line 1253 of file VBoxManageDHCPServer.cpp
+--- arp on 192.168.56.x ---
+Interface: 192.168.56.1 --- 0x4
+  192.168.56.255        ff-ff-ff-ff-ff-ff     static    
+--- guest net registers (VBox, GA-independent) ---
+
+--- port sweep on candidates (445 smb / 3389 rdp / 5985 winrm / 135 rpc) ---
+  192.168.56.101  445=False  3389=False  5985=False  135=False
+  192.168.56.102  445=False  3389=False  5985=False  135=False
+  192.168.56.103  445=False  3389=False  5985=False  135=False
+  192.168.56.10  445=False  3389=False  5985=False  135=False
+  192.168.56.11  445=False  3389=False  5985=False  135=False
+--- no host reached on 445 ---
+--- end ---

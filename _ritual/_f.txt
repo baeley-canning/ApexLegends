@@ -1,0 +1,45 @@
+﻿0|INPUT|type=text|id=back-form-verification|vis=1|val=|txt=
+1|A|type=|id=back|vis=1|val=|txt=BACK
+2|INPUT|type=hidden|id=backEvent|vis=0|val=back|txt=
+3|INPUT|type=hidden|id=|vis=0|val=1,1,1|txt=
+4|INPUT|type=hidden|id=back-form-pbd|vis=0|val=|txt=
+5|INPUT|type=hidden|id=back-form-pbdt|vis=0|val=|txt=
+6|INPUT|type=hidden|id=back-form-pbde|vis=0|val=UEJEIGluaXRpYWxpemF0aW9uIGNvbXBsZXRlZC4=|txt=
+7|INPUT|type=hidden|id=back-form-df|vis=0|val=eyJjZCI6MjQsInNyIjoiMTkyMHgxMDgwIiwidHoi|txt=
+8|INPUT|type=hidden|id=back-form-dft|vis=0|val=eyJvdmVyYWxsIjo3LjUsImNmdCI6Mi40MDAwMDAw|txt=
+9|INPUT|type=hidden|id=back-form-dfe|vis=0|val=|txt=
+10|INPUT|type=text|id=reg-form-verification|vis=1|val=|txt=
+11|INPUT|type=hidden|id=cid|vis=0|val=|txt=
+12|INPUT|type=hidden|id=regEvent|vis=0|val=submit|txt=
+13|INPUT|type=text|id=email|vis=1|val=kern30120@fldubai.com|txt=
+14|INPUT|type=text|id=parentEmail|vis=0|val=|txt=
+15|A|type=|id=|vis=0|val=|txt=sign in
+16|INPUT|type=hidden|id=|vis=0|val=on|txt=
+17|INPUT|type=checkbox|id=readAcceptUnderage|vis=0|val=on|txt=
+18|A|type=|id=|vis=0|val=|txt=User Agreement
+19|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P
+20|INPUT|type=hidden|id=|vis=0|val=on|txt=
+21|INPUT|type=checkbox|id=contactMe|vis=1|val=on|txt=
+22|A|type=|id=|vis=1|val=|txt=
+23|A|type=|id=|vis=1|val=|txt=
+24|A|type=|id=basicInfoNextBtn|vis=1|val=|txt=NEXT
+25|INPUT|type=hidden|id=|vis=0|val=on|txt=
+26|INPUT|type=checkbox|id=readAccept|vis=0|val=on|txt=
+27|A|type=|id=|vis=0|val=|txt=User Agreement
+28|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P
+29|INPUT|type=hidden|id=|vis=0|val=1,1,1|txt=
+30|INPUT|type=hidden|id=reg-form-pbd|vis=0|val=|txt=
+31|INPUT|type=hidden|id=reg-form-pbdt|vis=0|val=|txt=
+32|INPUT|type=hidden|id=reg-form-pbde|vis=0|val=UEJEIGluaXRpYWxpemF0aW9uIGNvbXBsZXRlZC4=|txt=
+33|INPUT|type=hidden|id=reg-form-df|vis=0|val=eyJjZCI6MjQsInNyIjoiMTkyMHgxMDgwIiwidHoi|txt=
+34|INPUT|type=hidden|id=reg-form-dft|vis=0|val=eyJvdmVyYWxsIjo0LjI5OTk5OTk5OTgxMzczNTUs|txt=
+35|INPUT|type=hidden|id=reg-form-dfe|vis=0|val=|txt=
+36|A|type=|id=|vis=0|val=|txt=Back
+37|A|type=|id=|vis=0|val=|txt=User Agreement
+38|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P
+39|A|type=|id=|vis=0|val=|txt=User Agreement
+40|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P
+41|A|type=|id=|vis=0|val=|txt=User Agreement
+42|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P
+43|A|type=|id=|vis=0|val=|txt=User Agreement
+44|A|type=|id=|vis=0|val=|txt=Privacy and Cookie P

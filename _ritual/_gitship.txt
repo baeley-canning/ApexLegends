@@ -1,0 +1,317 @@
+﻿P34 PARSE OK
+-- stage docs --
+git : warning: in 
+the working copy of 
+'README.md', LF 
+will be replaced by 
+CRLF the next time 
+Git touches it
+At line:1 char:414
++ ...  --'; 
+$r+=((git -C $repo 
+add README.md 
+.gitignore 
+QwenKernPremium/doc 
+...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (warn   
+ ing: in the...     
+Git touches it:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+warning: in the 
+working copy of '_ri
+tual/_devw.txt', LF 
+will be replaced by 
+CRLF the next time 
+Git touches it
+warning: in the 
+working copy of '_ri
+tual/_diag4.ps1', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_final.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_ioconst.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_p26_ground.txt
+', LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+warning: in the 
+working copy of '_ri
+tual/_p9diag2.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_p9diag3.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_pre_reboot.txt
+', LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+warning: in the 
+working copy of '_ri
+tual/_probe2.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_probe3.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_proj.txt', LF 
+will be replaced by 
+CRLF the next time 
+Git touches it
+warning: in the 
+working copy of '_ri
+tual/_pstest.ps1', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of 
+'_ritual/_q7.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon1.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon2.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon3.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon4.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon5.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon6.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_recon7.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/_state.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/guest.rdp', LF 
+will be replaced by 
+CRLF the next time 
+Git touches it
+warning: in the 
+working copy of '_ri
+tual/p13_dirs3.txt',
+ LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+warning: in the 
+working copy of '_ri
+tual/p13_dirs4.txt',
+ LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+warning: in the 
+working copy of 
+'_ritual/p21.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of 
+'_ritual/p23.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of 
+'_ritual/p24.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/p26_drv.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/p8_snap2.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/p9_snap.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/probe4.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of '_ri
+tual/probe4_child.ou
+t', LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+warning: in the 
+working copy of 
+'_ritual/st2.ps1', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+warning: in the 
+working copy of 
+'_ritual/st3.ps1', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+staged: 631
+ create mode 100644 _ritual/z_d3_mid.txt
+ create mode 100644 _ritual/z_list.txt
+ create mode 100644 _ritual/zztest.txt
+-- stage rest --
+git : warning: in 
+the working copy of 
+'QwenKernPremium/bui
+ld/apexdrv_probe.txt
+', LF will be 
+replaced by CRLF 
+the next time Git 
+touches it
+At line:1 char:761
++ ... st 3); 
+$r+='-- stage rest 
+--'; $r+=((git -C 
+$repo add -A 
+2>&1)); $r+= ...
++                   
+                    
+   ~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (warn   
+ ing: in the...     
+Git touches it:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+warning: in the 
+working copy of 
+'_catmemb_mid.txt', 
+LF will be replaced 
+by CRLF the next 
+time Git touches it
+staged2: 67
+ create mode 100644 _catmemb.txt
+ create mode 100644 _catmemb.txt.start
+ create mode 100644 _catmemb_mid.txt
+-- log --
+d0a5959 build: apexdrv/ioctl sources + rebuilt launcher/DLL/PDB artifacts, ritual evidence tree
+0e5c5bb docs: real README, Javelin/test-signing gate findings, KB index, ritual map, p34 discriminator
+df4ec6d QwenKern Premium: Phase 2 kernel driver ΓÇö build + VM deployment artifacts
+c6be71f first commit
+-- push --
+git : To https://git
+hub.com/baeley-canni
+ng/ApexLegends.git
+At line:1 char:1116
++ ... ); $r+='-- 
+push --'; $r+=((git 
+-C $repo push 
+origin main 2>&1) | 
+Sele ...
++                   
+             ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (To h   
+ ttps://gith...A    
+pexLegends.git:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+   df4ec6d..d0a5959 
+ main -> main
+-- status --
+## main...origin/main

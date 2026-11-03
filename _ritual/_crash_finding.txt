@@ -1,0 +1,53 @@
+=== CRASH FINDING 03/11/2026 21:0x - the host bugchecks are the DSE flip, not EA and not the input scripts ===
+Source: System log (ids 41/1001/6008/109/12), _crash1..4.txt, h1_host*.txt, _h1b*.txt, _h1c.txt, _h1r.txt.
+
+## 1. Chronology: what actually killed the box
+- 11-01 21:54, 22:31 and 11-02 02:00 .. 23:05: ~14 bugchecks, all 0x3B (0xC0000005) - kdu's DSE write
+  faulting on the EPT-fabricated CI page while VBS was on. Matches STATE "AV at 0xBE".
+- 11-03 03:05:12  0x109  param3=0xfffff8007a302004
+- 11-03 07:20:14  0x109  param3=0xfffff80366882004   (game had been alive 20 s)
+- 11-03 20:37:12  0x109  param3=0xfffff80767242004   (18 min after h1)
+- Zero 0x109 before the first DSE write ever landed (03/11 03:05 = first post-HV-off boot).
+
+## 2. The tie: param3 is ci!g_CiOptions, printed by our own probe
+kdu prints the address it patches - "DSE flags (0xFFFFF80767242004)" in h1_host.txt.
+Each crash carries exactly the address of the boot it happened in; only the KASLR base differs,
+the image RVA is the constant ...2004 in all of them:
+  h1_host_boot1.txt  0xFFFFF8007A302004  -> boot crashed 03:05:12
+  h1_host_boot2.txt  0xFFFFF80366882004  -> boot crashed 07:20:14
+  h1_host.txt        0xFFFFF80767242004  -> boot crashed 20:37:12
+0x109 = KPP/PatchGuard; param4=0x00000000 = "a generic data region" (MS doc table), i.e. data, not
+code - the flags dword, not a hook. 3 h1 runs, 3 crashes. Delay 19-27 min = the KPP scan horizon.
+
+## 3. Root defect: the "restore" never restores
+Pre-value read by kdu is 16 (0x10) on EVERY fresh boot (3/3; 4016 while VBS was live).
+h1_dse_host.ps1 writes 0, then hard-codes -dse 6 (lines 125, 132, 139). 6 is the DSE-disable mask,
+not this box's boot value. Byte content therefore never returns to what KPP hashed at boot ->
+0x109. "restore verified=True" in h1_host.txt is green over a modified structure: R3 read-back of
+the wrong quantity. STATE.md also blesses it ("6 = armed").
+
+## 4. Ruled out / not yet excluded
+- apexdrv at rest: boot 19:24 -> h1 20:18 = 54 min alive, driver STOPPED, DSE untouched, no crash.
+- EA Desktop, r5apex, pm_click/sig sendinput: 20:37 crash had no game and no successful click path.
+- NOT excluded: apexdrv has never been resident in a boot without a DSE write, so it cannot be
+  cleared alone; param3 only implicates the CI flags byte.
+
+## 5. Why VM-first did not save it (R1 followed in letter, broken in substance)
+a) The guest proof (k9) validated "driver loads" within seconds and the guest was reverted before
+   the 10-30 min KPP horizon. Load success is not coexistence.
+b) The host step ran inline in a live working session, no save point; two bugchecks ate in-session
+   state (account/login) at 07:20 and 20:37. R2 in practice: a bugcheck reboots for you.
+c) R4's contract itself is wrong ("DSE 0 -> back to 6"), so the script was correct to its spec.
+
+## 6. Consequence for the gate
+Gate needs 1800 s with the driver resident. Crash horizon is 19-27 min after the flip => the gate
+as designed cannot pass on the host today. Fix first, soak in the VM, then run h2 immediately after
+h1 in the same boot.
+
+## 7. Fix (one variable, VM first)
+1. Parse the pre-value: `-dse 0` output -> "DSE flags (...) value: N, new value to be written: 0".
+2. Restore N, not 6: `-dse <N>`. Read back with a second `-dse <N>` (it prints value before writing).
+3. Abort if the pre-value cannot be parsed - no blind constant.
+4. VM: run the patched h1, then idle the guest >=40 min WITHOUT reverting. Any 0x109 => still broken.
+5. Host: only after a clean VM soak, and start h2 in that same boot within a minute of h1.
+6. Rewrite STATE.md "6 = armed" -> "restore the recorded pre-value".

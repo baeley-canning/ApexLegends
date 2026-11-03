@@ -1,0 +1,8 @@
+﻿  VBoxManage controlvm <uuid | vmname> reset
+  VBoxManage controlvm <uuid | vmname> poweroff
+  VBoxManage controlvm <uuid | vmname> acpipowerbutton
+  VBoxManage controlvm <uuid | vmname> acpisleepbutton
+  VBoxManage controlvm <uuid | vmname> keyboardputscancode <hex> [hex...]
+  VBoxManage controlvm <uuid | vmname> keyboardputstring <string> [string...]
+  VBoxManage controlvm <uuid | vmname> keyboardputfile <filename>
+  VBoxManage controlvm <uuid | vmname> screenshotpng <filename> [display]

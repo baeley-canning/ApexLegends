@@ -33,21 +33,50 @@ if(-not $adm){
   exit
 }
 
+# single instance: a second p34 launched while the first is still alive makes both of them Clear-Game
+# each other's trials (this really happened on the first clean attempt) -> kill earlier instances.
+$dup = @(Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -EA SilentlyContinue | Where-Object { $_.CommandLine -match 'p34_matrix' -and $_.ProcessId -ne $PID })
+if($dup.Count){
+  foreach($d in $dup){ Stop-Process -Id $d.ProcessId -Force -EA SilentlyContinue }
+  Start-Sleep -Seconds 2
+}
+
 function W($t){ $t | Add-Content -LiteralPath $o }
 function DrvState { (((& sc.exe query apexdrv 2>&1) -join ' ') -match 'RUNNING') }
 function SvcState($n){ $s = ((& sc.exe query $n 2>&1) -join ' '); if($s -match 'STATE\s+:\s+\d+\s+(\w+)'){ $Matches[1] } else { 'ABSENT' } }
 function Msg240($m){ $c = ($m -replace '\s+',' ').Trim(); $c.Substring(0,[Math]::Min(240,$c.Length)) }
 
+# broad process match: the game itself is 'r5apex_dx12', but EAAntiCheat.GameServiceLauncher also lives in
+# the Apex folder, so prefer the game by name and only fall back to the folder path.
+function IsGame($p){
+  if($p.ProcessName -match 'r5apex|baeley'){ return $true }
+  $pt = ''
+  try { $pt = $p.Path } catch {}
+  return [bool]($pt -like 'C:\Program Files\EA Games\Apex\*')
+}
+function Get-Game {
+  $all = @(Get-Process -EA SilentlyContinue | Where-Object { IsGame $_ })
+  if(-not $all.Count){ return $null }
+  $g = @($all | Where-Object { $_.ProcessName -match 'r5apex|baeley' })
+  if($g.Count){ return $g[0] }
+  return $all[0]
+}
+function GameSet { (@(Get-Process -EA SilentlyContinue | Where-Object { IsGame $_ }) | ForEach-Object { $_.ProcessName + '(' + $_.Id + ')' }) -join ',' }
+
+# every Javelin refusal string we have seen, both families (popup-in-log and in-game panel)
+$RX = 'Security Violation|signing integrity checks must be enabled|must be disabled to start|unacceptable configuration|same time as the game'
+
+
 function SnapState($tag){
   W ("  [$tag] $(Get-Date -f 'HH:mm:ss')  testsigning/nic=" + (((& $bcd /enum '{current}' 2>&1) | Select-String 'testsigning|nointegritychecks') -join ' / '))
   W ("  [$tag] SystemStartOptions = [" + (Get-ItemProperty $reg -Name SystemStartOptions -EA SilentlyContinue).SystemStartOptions + ']')
   W ("  [$tag] apexdrv RUNNING = " + (DrvState) + '   eaanticheat=' + (SvcState 'eaanticheat') + '   EAAntiCheatService=' + (SvcState 'EAAntiCheatService'))
-  W ("  [$tag] leftovers: r5apex_dx12=" + ((Get-Process $proc -EA SilentlyContinue | Measure-Object).Count) + '  EADesktop=' + ((Get-Process EADesktop -EA SilentlyContinue | Measure-Object).Count))
+  W ("  [$tag] leftovers: game=" + ((Get-Game | Measure-Object).Count) + '  EADesktop=' + ((Get-Process EADesktop -EA SilentlyContinue | Measure-Object).Count))
 }
 
 function Clear-Game {
-  Get-Process $proc -EA SilentlyContinue | ForEach-Object { try { $_.Kill() } catch {} }
-  for($i=0; $i -lt 30; $i++){ if(-not (Get-Process $proc -EA SilentlyContinue)){ break }; Start-Sleep -Seconds 1 }
+  Get-Process -EA SilentlyContinue | Where-Object { IsGame $_ } | ForEach-Object { try { $_.Kill() } catch {} }
+  for($i=0; $i -lt 30; $i++){ if(-not (Get-Game)){ break }; Start-Sleep -Seconds 1 }
 }
 
 # ---- WATCH-GAME -----------------------------------------------------------
@@ -56,14 +85,18 @@ function Watch-Game($tag,$sec){
   $t0 = Get-Date
   $seen = @{}
   $pobj = $null
+  $popups = 0
   Start-Process -FilePath $exe | Out-Null
   W "  [$tag] launched $proc at $($t0.ToString('HH:mm:ss'))  (sampling 1 s, window ${sec}s)"
-  $firstSeen = 0; $lastSeen = 0; $died = $false; $up = 0
+  $firstSeen = 0; $lastSeen = 0; $died = $false; $up = 0; $pname = ''
   for($el=1; $el -le $sec; $el++){
     Start-Sleep -Seconds 1
-    $p = Get-Process $proc -EA SilentlyContinue
+    $p = Get-Game
     if($p){
-      if(-not $firstSeen){ $firstSeen = $el; $pobj = $p; W ("  [{0}] t+{1}s GAME UP pid={2}" -f $tag,$el,$p.Id) }
+      if(-not $firstSeen){
+        $firstSeen = $el; $pobj = $p; $pname = $p.ProcessName
+        W ("  [{0}] t+{1}s GAME UP pid={2} name={3}" -f $tag,$el,$p.Id,$p.ProcessName)
+      }
       $lastSeen = $el
       if($p.MainWindowTitle -and -not $seen['win']){ $seen['win']=1; W ("  [{0}] t+{1}s window title = {2}" -f $tag,$el,$p.MainWindowTitle) }
     } elseif($firstSeen -and -not $died){
@@ -73,23 +106,27 @@ function Watch-Game($tag,$sec){
       W ("  [{0}] t+{1}s GAME DIED after ~{2}s uptime  exit={3}" -f $tag,$el,$up,$code)
     }
     if(($el % 10) -eq 0){
-      W ("  [{0}] t+{1}s  apexdrv={2} eaanticheat={3} svc={4}" -f $tag,$el,(DrvState),(SvcState 'eaanticheat'),(SvcState 'EAAntiCheatService'))
+      W ("  [{0}] t+{1}s  apexdrv={2} eaanticheat={3} svc={4} game={5} set=[{6}]" -f $tag,$el,(DrvState),(SvcState 'eaanticheat'),(SvcState 'EAAntiCheatService'),[bool]$p,(GameSet))
     }
     foreach($lg in 'Application','System'){
       foreach($e in @(Get-WinEvent -FilterHashtable @{LogName=$lg; StartTime=(Get-Date).AddSeconds(-2)} -EA SilentlyContinue)){
-        if($e.ProviderName -match 'Kernel-PnP|Kernel-General|Winlogon|Service Control|Security-SPP|Defrag|Kernel-Power|Kernel-Boot|Time-Service'){ continue }
         $key = "$lg|$($e.RecordId)"
-        if(-not $seen[$key]){
-          $seen[$key] = 1
-          W ('    ' + $tag + ' EVT ' + $e.TimeCreated.ToString('HH:mm:ss') + ' ' + $lg + ' id=' + $e.Id + ' src=' + $e.ProviderName + ' :: ' + (Msg240 $e.Message))
+        if($seen[$key]){ continue }
+        $seen[$key] = 1
+        $isPop = [bool]($e.Message -match $RX)
+        if($isPop){ $popups++ }
+        if($isPop -or -not ($e.ProviderName -match 'Kernel-PnP|Kernel-General|Winlogon|Service Control|Security-SPP|Defrag|Kernel-Power|Kernel-Boot|Time-Service|EventLog|Application-Experience')){
+          $kind = ' EVT '
+          if($isPop){ $kind = ' POPUP ' }
+          W ('    ' + $tag + $kind + $e.TimeCreated.ToString('HH:mm:ss') + ' ' + $lg + ' id=' + $e.Id + ' src=' + $e.ProviderName + ' :: ' + (Msg240 $e.Message))
         }
       }
     }
     if($died -and $el -ge ($lastSeen + 20)){ W "  [$tag] (stopping 20 s after death)"; break }
   }
-  $alive = [bool](Get-Process $proc -EA SilentlyContinue)
-  W ("  [{0}] RESULT alive={1} died={2} uptime={3}s  apexdrv_RUNNING={4}  eaanticheat={5}" -f $tag,$alive,$died,$up,(DrvState),(SvcState 'eaanticheat'))
-  return [pscustomobject]@{ alive=$alive; died=$died; uptime=$up }
+  $alive = [bool](Get-Game)
+  W ("  [{0}] RESULT alive={1} died={2} uptime={3}s popups={4} name='{5}'  apexdrv_RUNNING={6}  eaanticheat={7}" -f $tag,$alive,$died,$up,$popups,$pname,(DrvState),(SvcState 'eaanticheat'))
+  return [pscustomobject]@{ alive=$alive; died=$died; uptime=$up; popups=$popups }
 }
 
 # ---- RUN ------------------------------------------------------------------
@@ -112,19 +149,24 @@ W ('  apexdrv RUNNING now = ' + (DrvState))
 $rb = Watch-Game 'TB' 120
 W ''
 W '########## VERDICT ##########'
-W ("  TA driver-stopped : alive={0} died={1} uptime={2}s" -f $ra.alive,$ra.died,$ra.uptime)
-W ("  TB driver-running : alive={0} died={1} uptime={2}s" -f $rb.alive,$rb.died,$rb.uptime)
+W ("  TA driver-stopped : alive={0} died={1} uptime={2}s popups={3}" -f $ra.alive,$ra.died,$ra.uptime,$ra.popups)
+W ("  TB driver-running : alive={0} died={1} uptime={2}s popups={3}" -f $rb.alive,$rb.died,$rb.uptime,$rb.popups)
 if($ra.alive -and $rb.alive){
   W '  *** GREEN: the game survives either way -> boot test mode + logon scrub SHIPS.'
   W '      Next: run28 / apex_launcher --method=kernel against a live game.'
+} elseif(-not $ra.alive -and -not $rb.alive -and $ra.popups -eq 0 -and $rb.popups -eq 0){
+  W '  *** INCONCLUSIVE: no Javelin refusal AND no game process seen in either trial.'
+  W '      Read the GAME UP / name lines: if a process name that is not the game matched Get-Game, fix the'
+  W '      match; if nothing launched at all, it is the EA handshake - relaunch EADesktop and retry.'
 } elseif($ra.alive -and -not $rb.alive){
   W "  *** AMBER: our driver's PRESENCE is the killer while the flag is off (not the signature, not CI)."
   W '      Next: vary the load, one variable at a time - load AFTER the game is up, unique service name,'
   W '      drop the MajorFunction overwrite, shared-memory comm, no unbacked system thread, device path.'
 } elseif(-not $ra.alive -and -not $rb.alive){
-  W '  *** RED: the game dies even with the driver STOPPED while the flag is off => LIVE CI state is fatal.'
+  W '  *** RED: the box refuses the game even with our driver STOPPED and the flag strings clean.'
+  W '      => the refusal follows the LIVE kernel state (this boot is test mode), not the flag string.'
   W '      Next: real chain (EV -> attestation signing) or BYOVD manual map; or ship external-only.'
-  W '      Also verify: does a REBOOT with testsigning off (never test mode) behave the same?'
+  W '      Confirm once on a normal reboot (testsigning off, never test mode) before spending on signing.'
 } else {
   W '  *** ODD: TA dead but TB alive - suspect residue from the stop/start (check EAAC service + device).'
 }

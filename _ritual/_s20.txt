@@ -1,0 +1,75 @@
+reg : ERROR: The 
+system was unable 
+to find the 
+specified registry 
+key or value.
+At line:1 char:68
++ ... \_s20.txt'; 
+reg query "HKLM\SYST
+EM\CurrentControlSet
+\Control\DeviceGu 
+...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (ERRO   
+ R: The syst...y    
+ key or value.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+
+
+reg : ERROR: The 
+system was unable 
+to find the 
+specified registry 
+key or value.
+At line:1 char:208
++ ... ding ascii; 
+reg query "HKLM\SYST
+EM\CurrentControlSet
+\Control\DeviceGu 
+...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (ERRO   
+ R: The syst...y    
+ key or value.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+
+
+HypervisorPresen : T
+                   r
+                   u
+                   e
+TotalPhysicalMem : 3
+                   4
+                   1
+                   1
+                   9
+                   5
+                   5
+                   3
+                   0
+                   2
+                   4
+
+
+
+

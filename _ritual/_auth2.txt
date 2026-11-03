@@ -1,0 +1,7 @@
+﻿2856573
+3373	[2026-11-02T08:43:21.838Z]	PID: 19144	TID: 19292	DEBUG   	(eax::services::dirtyHttp::DirtyRequestHandler::onResponseComplete)	conn[ce17e4e0] req[139] HttpRequest completed: url[https://ratt.juno.ea.com/ratt/telm] status[200/200] error[00000000] totalBytes[41] bitrate[1.9Mbps]
+3441	[2026-11-02T08:43:22.170Z]	PID: 19144	TID: 19292	DEBUG   	(eax::services::dirtyHttp::DirtyRequestHandler::onResponseComplete)	conn[ce17e4e0] req[141] HttpRequest completed: url[https://ratt.juno.ea.com/ratt/telm] status[200/200] error[00000000] totalBytes[41] bitrate[2.1Mbps]
+3445	[2026-11-02T08:43:22.508Z]	PID: 19144	TID: 19292	DEBUG   	(eax::services::dirtyHttp::DirtyRequestHandler::onResponseComplete)	conn[ce17e4e0] req[143] HttpRequest completed: url[https://ratt.juno.ea.com/ratt/telm] status[200/200] error[00000000] totalBytes[41] bitrate[1.7Mbps]
+3452	[2026-11-02T08:43:22.778Z]	PID: 19144	TID: 19148	DEBUG   	(eax::services::graphql::DirtyWebsocketSubsTransport::stop)	Disconnecting from graphql endpoint [wss://service-aggregation-layer-subs.juno.ea.com/graphql-ws]
+3455	[2026-11-02T08:43:22.778Z]	PID: 19144	TID: 19148	DEBUG   	(eax::services::graphql::DirtyWebsocketSubsTransport::stop)	Disconnecting from graphql endpoint [wss://service-aggregation-layer-subs.juno.ea.com/graphql-ws]
+3456	[2026-11-02T08:43:22.778Z]	PID: 19144	TID: 21064	DEBUG   	(eax::services::graphql::DirtyWebsocketSubsTransport::run)	Disconnected from graphql endpoint [wss://service-aggregation-layer-subs.juno.ea.com/graphql-ws]

@@ -1,0 +1,9 @@
+=== h1z HV OFF 02/11/2026 23:37:25 pid=10224 ===
+hv-present=True
+reg HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard :: CachedDrtmAuthIndex : 0 RequireMicrosoftSignedBootChain : 1 EnableVirtualizationBasedSecurity : 0
+reg HKLM:\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity :: Enabled : 0
+bcd-before :: hypervisorlaunchtype    Auto
+  The operation completed successfully.
+bcd-after  :: hypervisorlaunchtype    Off
+rebooting in 15s ...
+=== end h1z ===

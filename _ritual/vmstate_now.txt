@@ -1,0 +1,31 @@
+now: 11/01/2026 23:33:41
+
+name="Win11-Test2"
+VMState="running"
+VMStateChangeTime="2
+026-11-01T10:09:59.1
+26000000"
+"SATA-3-0"="C:\\Prog
+ram Files\\Oracle\\V
+irtualBox\\VBoxGuest
+Additions.iso"
+Forwarding(0)="rdp,t
+cp,127.0.0.1,13389,,
+3389"
+GuestAdditionsRunLev
+el=0
+
+
+--- guestprops ---
+
+/VirtualBox/GuestAdd
+/GuiOnFocus     = 
+'0'      @ 2026-11-0
+1T10:22:12.440Z 
+TRANSIENT, 
+RDONLYGUEST
+
+
+--- rdp 13389 ---
+rdp127: True
+ho56100: False

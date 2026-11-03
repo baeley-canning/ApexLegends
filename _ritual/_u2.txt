@@ -1,0 +1,26 @@
+=== u2 2026-11-03T22:47:13 ===
+screen 1920x1080
+clip [0,0 1920x1080]
+hit 100,100 -> 197936 [Chrome_RenderWidgetHostHWND]
+hit 960,400 -> 197936 [Chrome_RenderWidgetHostHWND]
+hit 1158,938 -> 197936 [Chrome_RenderWidgetHostHWND]
+hit 600,1050 -> 65882 [MSTaskSwWClass]
+--- top-level z-order (first 25 visible) ---
+4064336 pid=2844 ex=0x8280088 [0,0 1x1] ThumbnailDeviceHelperWnd :: 
+919372 pid=2844 ex=0x8280088 [0,0 1x1] ThumbnailDeviceHelperWnd :: 
+65868 pid=2844 ex=0x88 [0,1032 1920x48] Shell_TrayWnd :: 
+262304 pid=16748 ex=0x200100 [-8,-8 1936x1048] Chrome_WidgetWin_1 :: cheating - Visual Studio Code
+67524 pid=22316 ex=0x0 [700,83 520x867] Qt5152QWindowOwnDCIcon :: EA
+1312344 pid=2768 ex=0x200100 [160,66 1600x900] Chrome_WidgetWin_1 :: Michael Calfan - Resurrection - Axwell's Recut Radio Version
+198036 pid=6220 ex=0x200000 [0,1 886x659] Windows.UI.Core.CoreWindow :: Settings
+1507490 pid=11772 ex=0x200100 [88,278 902x668] ApplicationFrameWindow :: Settings
+66638 pid=15804 ex=0x8000080 [0,0 0x0] PseudoConsoleWindow :: 
+132096 pid=4472 ex=0x200100 [44,52 1129x635] CASCADIA_HOSTING_WINDOW_CLASS :: Windows PowerShell
+66676 pid=15456 ex=0x200000 [0,0 1920x1080] Windows.UI.Core.CoreWindow :: Windows Input Experience
+66048 pid=2844 ex=0x8200080 [0,0 0x0] DummyDWMListenerWindow :: 
+66042 pid=2844 ex=0x8200080 [15,0 1905x4] EdgeUiInputTopWndClass :: 
+66014 pid=2844 ex=0x8200080 [0,0 0x0] DummyDWMListenerWindow :: 
+66012 pid=2844 ex=0x8200080 [0,0 0x0] DummyDWMListenerWindow :: 
+66010 pid=2844 ex=0x8200080 [0,0 0x0] DummyDWMListenerWindow :: 
+66008 pid=2844 ex=0x8200080 [0,0 0x0] DummyDWMListenerWindow :: 
+65922 pid=2844 ex=0x200080 [0,0 1920x1080] Progman :: Program Manager

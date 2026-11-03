@@ -1,0 +1,22 @@
+﻿12: === import call sites ===
+25: === COPY LOOP around fault RIP 0x4b4a [0x4a80..0x4c40] ===
+204: === IOCTL DISPATCH (caller 0x37df) [0x3600..0x3a80] ===
+483: === around call to MmMapIoSpace!ntoskrnl [0x1bd6..0x1d16] ===
+569: === around call to MmMapIoSpace!ntoskrnl [0x1c1b..0x1d5b] ===
+656: === around call to MmMapIoSpace!ntoskrnl [0x2ce9..0x2e29] ===
+750: === around call to MmMapIoSpace!ntoskrnl [0x2e45..0x2f85] ===
+841: === around call to MmMapIoSpace!ntoskrnl [0x2fd4..0x3114] ===
+909: === around call to MmMapIoSpace!ntoskrnl [0x3085..0x31c5] ===
+978: === around call to MmMapIoSpace!ntoskrnl [0x3642..0x3782] ===
+1055: === around call to MmUnmapIoSpace!ntoskrnl [0x1c0c..0x1d4c] ===
+1142: === around call to MmUnmapIoSpace!ntoskrnl [0x1c49..0x1d89] ===
+1227: === around call to MmUnmapIoSpace!ntoskrnl [0x1cb1..0x1df1] ===
+1317: === around call to MmUnmapIoSpace!ntoskrnl [0x2dec..0x2f2c] ===
+1410: === around call to MmUnmapIoSpace!ntoskrnl [0x2ec2..0x3002] ===
+1499: === around call to MmUnmapIoSpace!ntoskrnl [0x2ef9..0x3039] ===
+1585: === around call to MmUnmapIoSpace!ntoskrnl [0x2f59..0x3099] ===
+1662: === around call to MmUnmapIoSpace!ntoskrnl [0x2fe3..0x3123] ===
+1726: === around call to MmUnmapIoSpace!ntoskrnl [0x3129..0x3269] ===
+1813: === around call to MmUnmapIoSpace!ntoskrnl [0x3164..0x32a4] ===
+1896: === around call to MmUnmapIoSpace!ntoskrnl [0x3220..0x3360] ===
+1979: === around call to MmUnmapIoSpace!ntoskrnl [0x36ea..0x382a] ===

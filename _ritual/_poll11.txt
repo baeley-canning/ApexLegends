@@ -1,0 +1,13 @@
+﻿now=10:42:40
+task lastRun=11/02/2026 10:39:19 result=0x0 nextRun=
+task state=Ready
+--- io head/tail ---
+# io breadcrumb 02/11/2026 10:39:21
+  [io] read pa=0x103f68 size=0x8
+  [io] read pa=0x104f68 size=0x8
+--- retry log ---
+02/11/2026 10:39:19 wrapper start pid=20808
+02/11/2026 10:39:19 badpa seeded/merged -> 1000000000-1000001000,800000-a00000,2e00000-3000000,4400000-4600000
+02/11/2026 10:39:19 attempt 1 launching p36_write.ps1
+02/11/2026 10:39:22 attempt 1 exited rc=0
+02/11/2026 10:39:22 END/ABORT marker seen - done

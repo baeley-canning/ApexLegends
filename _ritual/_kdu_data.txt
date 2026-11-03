@@ -1,0 +1,14 @@
+exists=True
+kdu.db 2072534
+--- gitattributes ---
+# Auto detect text files and perform LF normalization
+* text=auto
+--- DBPACK readme ---
+data 1
+drv 1
+dbmanifest.txt 1836
+DBPACK.cpp 7492
+DBPACK.slnx 168
+DBPACK.vcxproj 7307
+DBPACK.vcxproj.filters 958
+DBPACK.vcxproj.user 165

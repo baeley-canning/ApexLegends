@@ -1,0 +1,47 @@
+
+temp\drv\annot_MsIo64.txt
+:203:00001340  
+ff15da0c0000           
+call    qword ptr [rip + 
+0xcda]         ; 
+ntoskrnl!ZwClose
+temp\drv\annot_MsIo64.txt
+:227:000013a0  
+ff15da0c0000           
+call    qword ptr [rip + 
+0xcda]         ; ntoskrnl
+!ZwUnmapViewOfSection
+temp\drv\annot_MsIo64.txt
+:236:000013c0  
+ff157a0c0000           
+call    qword ptr [rip + 
+0xc7a]         ; ntoskrnl
+!ObfDereferenceObject
+temp\drv\annot_MsIo64.txt
+:238:000013c9  
+ff15510c0000           
+call    qword ptr [rip + 
+0xc51]         ; 
+ntoskrnl!ZwClose
+temp\drv\annot_MsIo64.txt
+:279:0000144b  
+0f841a010000           
+je      0x156b
+temp\drv\annot_MsIo64.txt
+:374:000015af  
+ff15b30a0000           
+call    qword ptr [rip + 
+0xab3]         ; 
+ntoskrnl!ProbeForRead
+temp\drv\annot_MsIo64.txt
+:379:000015c6  
+ff15940a0000           
+call    qword ptr [rip + 
+0xa94]         ; 
+ntoskrnl!ProbeForWrite
+temp\drv\annot_MsIo64.txt
+:384:000015dc  
+e89ffdffff             
+call    0x1380
+
+

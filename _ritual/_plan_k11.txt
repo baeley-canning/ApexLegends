@@ -1,0 +1,4 @@
+1: # k11_soak.ps1 - THE FIX TEST. Same chain as k9 (prv ladder, DSE 0, load apexdrv) but the restore
+14: $tag = 'k11'
+34:     L ('=== k11 re-entry ' + (Get-Date -f 'HH:mm:ss') + ' ===')
+81:     L ('=== k11 soak ' + (Get-Date -f 'HH:mm:ss') + ' pid=' + $PID + ' ===')

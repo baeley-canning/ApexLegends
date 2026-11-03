@@ -1,0 +1,184 @@
+--- procs ---
+
+--- deviceguard ---
+
+
+VirtualizationBa : 2
+SecurityServices : {
+                   0
+                   }
+SecurityServices : {
+                   0
+                   }
+CodeIntegrityPol : 2
+
+
+
+
+--- hv events ---
+
+
+TimeCreated      : 2/11/2026 12:02:02 am
+Id               : 155
+LevelDisplayName : Information
+Message          : Host processor features mask: 
+                   
+                   Host xsave features mask: 0x4058381F
+                   
+                   Host cache line flush size: 64 bytes
+
+TimeCreated      : 2/11/2026 12:01:59 am
+Id               : 156
+LevelDisplayName : Information
+Message          : Hypervisor initial page allocation NUMA policy: Proportional NUMA distribution
+
+TimeCreated      : 2/11/2026 12:01:59 am
+Id               : 39
+LevelDisplayName : Information
+Message          : Hypervisor Load Options -  IGNOREMEMPART=1 .
+
+TimeCreated      : 1/11/2026 11:56:18 pm
+Id               : 155
+LevelDisplayName : Information
+Message          : Host processor features mask: 
+                   
+                   Host xsave features mask: 0x4058381F
+                   
+                   Host cache line flush size: 64 bytes
+
+TimeCreated      : 1/11/2026 11:56:15 pm
+Id               : 156
+LevelDisplayName : Information
+Message          : Hypervisor initial page allocation NUMA policy: Proportional NUMA distribution
+
+TimeCreated      : 1/11/2026 11:56:15 pm
+Id               : 39
+LevelDisplayName : Information
+Message          : Hypervisor Load Options -  IGNOREMEMPART=1 .
+
+TimeCreated      : 1/11/2026 10:31:39 pm
+Id               : 155
+LevelDisplayName : Information
+Message          : Host processor features mask: 
+                   
+                   Host xsave features mask: 0x4058381F
+                   
+                   Host cache line flush size: 64 bytes
+
+TimeCreated      : 1/11/2026 10:31:36 pm
+Id               : 156
+LevelDisplayName : Information
+Message          : Hypervisor initial page allocation NUMA policy: Proportional NUMA distribution
+
+TimeCreated      : 1/11/2026 10:31:36 pm
+Id               : 39
+LevelDisplayName : Information
+Message          : Hypervisor Load Options -  IGNOREMEMPART=1 .
+
+TimeCreated      : 1/11/2026 9:54:40 pm
+Id               : 155
+LevelDisplayName : Information
+Message          : Host processor features mask: 
+                   
+                   Host xsave features mask: 0x4058381F
+                   
+                   Host cache line flush size: 64 bytes
+
+TimeCreated      : 1/11/2026 9:54:37 pm
+Id               : 156
+LevelDisplayName : Information
+Message          : Hypervisor initial page allocation NUMA policy: Proportional NUMA distribution
+
+TimeCreated      : 1/11/2026 9:54:37 pm
+Id               : 39
+LevelDisplayName : Information
+Message          : Hypervisor Load Options -  IGNOREMEMPART=1 .
+
+TimeCreated      : 1/11/2026 9:12:42 pm
+Id               : 155
+LevelDisplayName : Information
+Message          : Host processor features mask: 
+                   
+                   Host xsave features mask: 0x4058381F
+                   
+                   Host cache line flush size: 64 bytes
+
+TimeCreated      : 1/11/2026 9:12:39 pm
+Id               : 156
+LevelDisplayName : Information
+Message          : Hypervisor initial page allocation NUMA policy: Proportional NUMA distribution
+
+TimeCreated      : 1/11/2026 9:12:39 pm
+Id               : 39
+LevelDisplayName : Information
+Message          : Hypervisor Load Options -  IGNOREMEMPART=1 .
+
+
+
+
+--- worker events ---
+
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 18508
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD' was shut down by the guest operating system. (Virtual machine ID 0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33104
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': A virtual PCI device was successfully revoked from the virtual machine: 'Bus {C4B741F5-5582-4C98-8F8B-2E082933C396} Slot 0'. (Virtual 
+                   machine ID 0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33108
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': The guest operating system powered off a virtual PCI device: 'Bus {C4B741F5-5582-4C98-8F8B-2E082933C396} Slot 0'. (Virtual machine ID 
+                   0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33104
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': A virtual PCI device was successfully revoked from the virtual machine: 'Bus {88A417D7-5AEA-4ED0-AAE5-619E5387FC21} Slot 0'. (Virtual 
+                   machine ID 0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33108
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': The guest operating system powered off a virtual PCI device: 'Bus {88A417D7-5AEA-4ED0-AAE5-619E5387FC21} Slot 0'. (Virtual machine ID 
+                   0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33104
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': A virtual PCI device was successfully revoked from the virtual machine: 'Bus {57E04327-46A4-4B15-A85E-7FA15EE0B6E9} Slot 0'. (Virtual 
+                   machine ID 0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33108
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': The guest operating system powered off a virtual PCI device: 'Bus {57E04327-46A4-4B15-A85E-7FA15EE0B6E9} Slot 0'. (Virtual machine ID 
+                   0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33104
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': A virtual PCI device was successfully revoked from the virtual machine: 'Bus {8BCECC59-7730-4296-A3F2-9B3D4200A3D8} Slot 0'. (Virtual 
+                   machine ID 0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:28:27 pm
+Id               : 33108
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': The guest operating system powered off a virtual PCI device: 'Bus {8BCECC59-7730-4296-A3F2-9B3D4200A3D8} Slot 0'. (Virtual machine ID 
+                   0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+TimeCreated      : 1/11/2026 8:27:11 pm
+Id               : 33107
+LevelDisplayName : Information
+Message          : '0D92180F-745E-4E3A-ABEC-2923654B3EFD': The guest operating system powered on a virtual PCI device: 'Bus {8BCECC59-7730-4296-A3F2-9B3D4200A3D8} Slot 0'. (Virtual machine ID 
+                   0D92180F-745E-4E3A-ABEC-2923654B3EFD)
+
+
+
+
+--- end ---

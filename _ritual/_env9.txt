@@ -1,0 +1,9 @@
+file .gitattributes
+dir .github
+file .gitignore
+file CHANGELOG.txt
+dir Help
+file LICENSE.txt
+file README.md
+dir Source
+file appveyor.yml

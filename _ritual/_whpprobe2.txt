@@ -1,0 +1,16 @@
+=== run 2026-11-02T00:20:32.5703429+13:00 ===
+admin=False
+user=DESKTOP-PPHFJBQ\New User
+session=1
+compile=ok
+cap.hypervisorPresent=1 hr=0x00000000
+  bare create=0x00000000 handle=1718812019312
+  bare setup=0x80370304
+  bare setupAgain=0x80370304
+  bare delete=0x00000000
+  count create=0x00000000 handle=1718812024752
+  count setProcessorCount=0x00000000
+  count setup=0x80070005
+  count setupAgain=0x80070005
+  count delete=0x00000000
+=== end ===

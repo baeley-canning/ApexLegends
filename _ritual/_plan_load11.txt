@@ -1,0 +1,28 @@
+6: STEP=init
+19: bin apexdrv.sys len=10152
+20: STEP=list
+39:   | [+] Drivers database "drv64.dll" loaded at 0x00007FFBB51C0000
+65: STEP=baseline
+66: $ sc.exe stop apexdrv
+70: $ sc.exe delete apexdrv
+74: $ sc.exe create apexdrv type= kernel start= demand binPath= C:\Users\Public\p37\apexdrv.sys error= normal
+77: $ sc.exe start apexdrv
+88: STEP=prv22
+104:   | [+] Drivers database "drv64.dll" loaded at 0x00007FFBB51C0000
+109:   | [+] Vulnerable driver "AsIO3" loaded
+114:   | [+] Module "CI.dll" loaded for pattern search
+118:   | [+] Vulnerable driver "AsIO3" unloaded
+124: $ sc.exe start apexdrv
+126:   | SERVICE_NAME: apexdrv
+128:   |         STATE              : 4  RUNNING
+136: LOAD start rc=0 :: STATE              : 4  RUNNING
+139: STEP=restore -dse 6 (boot value, NOT 6)
+155:   | [+] Drivers database "drv64.dll" loaded at 0x00007FFBB1170000
+160:   | [+] Vulnerable driver "AsIO3" loaded
+165:   | [+] Module "CI.dll" loaded for pattern search
+169:   | [+] Vulnerable driver "AsIO3" unloaded
+187:   | [+] Drivers database "drv64.dll" loaded at 0x00007FFBB1170000
+192:   | [+] Vulnerable driver "AsIO3" loaded
+197:   | [+] Module "CI.dll" loaded for pattern search
+202:   | [+] Vulnerable driver "AsIO3" unloaded
+208: STEP=soak 45 min, heartbeat 60 s, driver left RUNNING

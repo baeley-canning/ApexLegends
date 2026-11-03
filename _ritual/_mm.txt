@@ -1,0 +1,45 @@
+    00018000193c  c744242804000000         mov      dword ptr [rsp + 0x28], 4
+    000180001944  488bcb                   mov      rcx, rbx
+    000180001947  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001A09 code=0xC3502400 owner=0x180001980 b'gb_inpd'
+    0001800019c0  7504                     jne      0x1800019c6
+    0001800019c2  33c0                     xor      eax, eax
+    0001800019c4  eb56                     jmp      0x180001a1c
+    0001800019c6  33c0                     xor      eax, eax
+    0001800019c8  c744244804000100         mov      dword ptr [rsp + 0x48], 0x10004
+    0001800019d0  4889442438               mov      qword ptr [rsp + 0x38], rax
+    0001800019d5  4c8d442448               lea      r8, [rsp + 0x48]
+    0001800019da  89442450                 mov      dword ptr [rsp + 0x50], eax
+    0001800019de  ba002450c3               mov      edx, 0xc3502400
+    0001800019e3  897c244c                 mov      dword ptr [rsp + 0x4c], edi
+    0001800019e7  8d4804                   lea      ecx, [rax + 4]
+    0001800019ea  488d442444               lea      rax, [rsp + 0x44]
+    0001800019ef  4889442430               mov      qword ptr [rsp + 0x30], rax
+    0001800019f4  448d4908                 lea      r9d, [rcx + 8]
+    0001800019f8  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    0001800019fc  488d442440               lea      rax, [rsp + 0x40]
+    000180001a01  488bcb                   mov      rcx, rbx
+    000180001a04  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001B7A code=0xC3502004 owner=0x180001AF0 b'MapMemEx'
+    000180001b2c  e88ff6ffff               call     0x1800011c0
+    000180001b31  488bf8                   mov      rdi, rax
+    000180001b34  4883f8ff                 cmp      rax, -1
+    000180001b38  7504                     jne      0x180001b3e
+    000180001b3a  33c0                     xor      eax, eax
+    000180001b3c  eb60                     jmp      0x180001b9e
+    000180001b3e  488d442440               lea      rax, [rsp + 0x40]
+    000180001b43  4889b42480000000         mov      qword ptr [rsp + 0x80], rsi
+    000180001b4b  33f6                     xor      esi, esi
+    000180001b4d  4c8d442448               lea      r8, [rsp + 0x48]
+    000180001b52  4889742438               mov      qword ptr [rsp + 0x38], rsi
+    000180001b57  ba042050c3               mov      edx, 0xc3502004
+    000180001b5c  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180001b61  488bcf                   mov      rcx, rdi
+    000180001b64  488d442448               lea      rax, [rsp + 0x48]
+    000180001b69  c744242810000000         mov      dword ptr [rsp + 0x28], 0x10
+    000180001b71  448d4e10                 lea      r9d, [rsi + 0x10]
+    000180001b75  4889442420               mov      qword ptr [rsp + 0x20], rax
+site 0x180001CA7 code=0xC3502580 owner=0x180001C20 b'ReadMSR64'
+    000180001c4a  48c744245800000000       mov      qword ptr [rsp + 0x58], 0
+    000180001c53  48c744246000000000       mov      qword ptr [rsp + 0x60], 0
+    000180001c5c  e85ff5ffff               call     0x1800011c0

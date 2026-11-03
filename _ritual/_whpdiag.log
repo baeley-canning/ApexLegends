@@ -1,0 +1,45 @@
+--- groups --- 
+Everyone                                                      Well-known group S-1-1-0                                       Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\Local account and member of Administrators group Well-known group S-1-5-114                                     Mandatory group, Enabled by default, Enabled group             
+DESKTOP-PPHFJBQ\docker-users                                  Alias            S-1-5-21-3365457474-3514149710-894840898-1002 Mandatory group, Enabled by default, Enabled group             
+BUILTIN\Administrators                                        Alias            S-1-5-32-544                                  Mandatory group, Enabled by default, Enabled group, Group owner
+BUILTIN\Hyper-V Administrators                                Alias            S-1-5-32-578                                  Mandatory group, Enabled by default, Enabled group             
+BUILTIN\Users                                                 Alias            S-1-5-32-545                                  Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\INTERACTIVE                                      Well-known group S-1-5-4                                       Mandatory group, Enabled by default, Enabled group             
+CONSOLE LOGON                                                 Well-known group S-1-2-1                                       Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\Authenticated Users                              Well-known group S-1-5-11                                      Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\This Organization                                Well-known group S-1-5-15                                      Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\Local account                                    Well-known group S-1-5-113                                     Mandatory group, Enabled by default, Enabled group             
+LOCAL                                                         Well-known group S-1-2-0                                       Mandatory group, Enabled by default, Enabled group             
+NT AUTHORITY\NTLM Authentication                              Well-known group S-1-5-64-10                                   Mandatory group, Enabled by default, Enabled group             
+Mandatory Label\High Mandatory Level                          Label            S-1-16-12288                                                                                                 
+--- privs --- 
+SeCreateGlobalPrivilege                   Create global objects                                              Enabled 
+--- bcd --- 
+hypervisorlaunchtype    Auto
+--- drivers --- 
+"hvservice","Microsoft Hypervisor Service Driver","Kernel ",""
+"vmbus","Virtual Machine Bus","Kernel ",""
+"VMBusHID","VMBusHID","Kernel ",""
+"vmbusproxy","vmbusproxy","Kernel ",""
+"vmbusr","Virtual Machine Bus Provider","Kernel ",""
+--- hvhost --- 
+
+SERVICE_NAME: HvHost 
+        TYPE               : 30  WIN32  
+        STATE              : 4  RUNNING 
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+--- dll --- 
+ Volume in drive C has no label.
+ Volume Serial Number is 562A-C0DF
+
+ Directory of C:\Windows\System32
+
+14/10/2026  12:48 pm           393,216 WinHvPlatform.dll
+               1 File(s)        393,216 bytes
+               0 Dir(s)  98,103,734,272 bytes free
+--- end --- 

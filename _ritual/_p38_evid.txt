@@ -1,0 +1,19 @@
+﻿p37_write.txt:24: stage va=0x16000000 locked=True lastErr=0 issued=2 h1450=0
+p37_write.txt:27: ########## S1 whole-RAM PML4 self-map scan (read-only) ##########
+p37_write.txt:31: candidates=0 rejected_foreign=0
+p37_write.txt:32: S1 scanned=0x6e1644000 candidates= cr3=0x0 in 11.7s
+p37_write.txt:33: S1 no CR3  FAIL
+p37_write.txt:52: perm 0: FAIL err=1450 info=0 back=<read-fail/1450>
+p37_write.txt:53: perm 1: FAIL err=1450 info=0 back=<read-fail/1450>
+p37_write.txt:54: perm 2: FAIL err=1450 info=0 back=<read-fail/1450>
+p37_write.txt:55: perm 3: FAIL err=1450 info=0 back=<read-fail/1450>
+p37_write.txt:56: perm 4: FAIL err=1450 info=0 back=<read-fail/1450>
+p37_write.txt:60: mapK pa=0x12000000 ok=False err=1450 info=0 q0after=0x12000000 q3after=0x14000000
+p37_write.txt:70: S1 cr3            : FAIL
+p37_write_prev.txt:22: stage va=0x16000000 locked=True lastErr=0 issued=2 h1450=0
+p37_write_prev.txt:25: ########## S1 whole-RAM PML4 self-map scan (read-only) ##########
+--- p38 io lines=
+15858
+  [io] read pa=0x7f1800000 size=0x10000
+  [io] read pa=0x7f1a00000 size=0x10000
+  [io] read pa=0x1000 size=0x10

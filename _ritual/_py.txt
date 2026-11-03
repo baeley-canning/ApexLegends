@@ -1,0 +1,22 @@
+reg : ERROR: The system 
+was unable to find the 
+specified registry key 
+or value.
+At line:1 char:1
++ reg export 'HKLM\HARDWA
+RE\RESOURCEMAP\Hardware\A
+CPI\PNP0A08' 'C:\User ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (ERROR: The syst...y   
+  key or value.:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+done

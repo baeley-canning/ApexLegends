@@ -1,0 +1,21 @@
+﻿== stamps ==
+p36_write.ps1 : 2026-11-02 01:59:27
+p36_prov.cs : 2026-11-02 01:59:26
+p36_badpa.txt : 2026-11-02 01:48:27
+p36_write.txt : 2026-11-02 02:00:25
+p36_io.txt : 2026-11-02 02:00:26
+_post1.out.txt : 2026-11-02 06:46:01
+== Minidump ==
+C:\Windows\Minidump : 
+C:\Windows\MEMORY.DMP : none
+== BugCheck 1001 ==
+2026-11-02 02:00:52 :: The computer has rebooted from a bugcheck. The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8035d274b4a, 0xfffffb81009de790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110226-9265-01.dmp. Report Id: fedcbbb8-c244-4fef-b186-a8567811a2b3.
+2026-11-01 22:31:44 :: The computer has rebooted from a bugcheck. The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80157c34b4a, 0xffffdd04d444e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110126-9718-01.dmp. Report Id: 3caeb360-7b80-4ace-8883-a732112c4fac.
+2026-11-01 21:54:45 :: The computer has rebooted from a bugcheck. The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8046fe34b4a, 0xffff9c8e5551e790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110126-9437-01.dmp. Report Id: bcb4f505-9b9d-4d89-9f9e-a4c094426969.
+2026-10-27 23:50:31 :: The computer has rebooted from a bugcheck. The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80186fe4b92, 0xffffc98a16fb6790, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\102726-9484-01.dmp. Report Id: 369bee69-3277-4b71-9094-7d3532c3e799.
+== KP41 ==
+2026-11-02 02:00:46 KP41
+2026-11-01 22:31:38 KP41
+2026-11-01 21:54:39 KP41
+2026-10-31 14:12:26 KP41
+2026-10-27 23:50:25 KP41

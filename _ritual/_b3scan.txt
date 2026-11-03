@@ -1,0 +1,45 @@
+
+  QwenKernPremium\launcher\launcher_main.cpp:84:    printf("  usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT\n");
+> QwenKernPremium\launcher\launcher_main.cpp:85:    printf("  kernel rung    : B3 (apexdrv.sys)\n");
+  QwenKernPremium\launcher\launcher_main.cpp:86:    printf("===============================================================\n");
+  QwenKernPremium\launcher\launcher_main.cpp:589:
+> QwenKernPremium\launcher\launcher_main.cpp:590:    // A B3 rung without a staged driver (or without elevation) is a guaranteed
+  QwenKernPremium\launcher\launcher_main.cpp:591:    // SKIP - surface that in the plan, before the first rung runs.
+  QwenKernPremium\launcher\launcher_main.cpp:592:    if (!FileExists(options.driverPath)) {
+> QwenKernPremium\launcher\launcher_main.cpp:593:        printf("[i] B3 (kernel) will SKIP: driver not staged (%s)\n",
+  QwenKernPremium\launcher\launcher_main.cpp:594:               options.driverPath.c_str());
+  QwenKernPremium\launcher\launcher_main.cpp:595:    } else if (!IsElevated()) {
+> QwenKernPremium\launcher\launcher_main.cpp:596:        printf("[i] B3 (kernel) will SKIP: launcher is not elevated\n");
+  QwenKernPremium\launcher\launcher_main.cpp:597:    }
+  QwenKernPremium\launcher\launcher_main.cpp:1064:           kDefaultDllName);
+> QwenKernPremium\launcher\launcher_main.cpp:1065:    printf("  --driver=<path>          kernel driver for the B3 rung\n");
+  QwenKernPremium\launcher\launcher_main.cpp:1066:    printf("  --pid=<pid>              target PID (otherwise auto-detected)\n");
+  QwenKernPremium\launcher\launcher_main.cpp:1074:    printf("Without any of the above the launcher opens its interactive menu.\n");
+> QwenKernPremium\launcher\launcher_main.cpp:1075:    printf("Ladder order: sticky rung, A8 (SKIP), A7, A4, A3, A2, A1, B3.  A rung\n");
+  QwenKernPremium\launcher\launcher_main.cpp:1076:    printf("counts when the payload is in the target's module list - except A7/A8,\n");
+  QwenKernPremium\src\acg_probe.cpp:550:// which mask survives is what decides whether the usermode ladder can run at
+> QwenKernPremium\src\acg_probe.cpp:551:// all, or whether the driver (B3) has to do the work.  Measured, not assumed.
+  QwenKernPremium\src\acg_probe.cpp:552:std::string OpenProcessRightsMatrix(DWORD pid) {
+  QwenKernPremium\src\acg_probe.cpp:1064:        text += "no remote ALLOCATION primitive works => the user-mode ladder (A1/A2/A3) cannot "
+> QwenKernPremium\src\acg_probe.cpp:1065:                "run as written; put B3 (driver maps from kernel context) first and treat A7/A8 "
+  QwenKernPremium\src\acg_probe.cpp:1066:                "as gated until the allocation path opens. ";
+  QwenKernPremium\src\apex_injector.cpp:386:        case InjectionMethod::ApcQueue:           return "A3 APC Queue (IMPERSONATE)";
+> QwenKernPremium\src\apex_injector.cpp:387:        case InjectionMethod::KernelDriver:       return "B3 Kernel Driver (KERNEL)";
+  QwenKernPremium\src\apex_injector.cpp:388:        case InjectionMethod::CreateRemoteThread: return "A1 CreateRemoteThread + LoadLibraryA";
+  QwenKernPremium\src\apex_injector.cpp:399:        case InjectionMethod::ApcQueue:           return "A3";
+> QwenKernPremium\src\apex_injector.cpp:400:        case InjectionMethod::KernelDriver:       return "B3";
+  QwenKernPremium\src\apex_injector.cpp:401:        case InjectionMethod::CreateRemoteThread: return "A1";
+  QwenKernPremium\src\kernel_injector.cpp:358:        report += readOk
+> QwenKernPremium\src\kernel_injector.cpp:359:            ? "         => kernel context is NOT blocked: B3 is the viable rung and\n"
+  QwenKernPremium\src\kernel_injector.cpp:360:              "            the user-mode refusal is a user-mode-layer effect.\n"
+  QwenKernPremium\docs\JAVELIN_TESTSIGNING_GATE_2026-11-01.md:160:  [B] EV code-signing certificate -> Microsoft attestation signing (dev portal). No HLK needed, gives an
+> QwenKernPremium\docs\JAVELIN_TESTSIGNING_GATE_2026-11-01.md:161:      MS-root chain, driver loads with DSE on. This is option B3 in INJECTION_MENU_AND_RISK_MATRIX.txt
+  QwenKernPremium\docs\JAVELIN_TESTSIGNING_GATE_2026-11-01.md:162:      and the clean long-term answer. Cost: certificate + portal submissions per revision.
+  QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:124:| 7 | A1 CreateRemoteThread + LoadLibraryA | module list |
+> QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:125:| 8 | B3 kernel driver | module list (SKIP without an elevated launcher / staged `.sys`) |
+  QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:126:
+  QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:193:
+> QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:194:The kernel rung stays last: B3 needs the driver to load, which is the
+  QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md:195:TESTSIGNING/Secure Boot problem tracked separately from this usermode work.
+
+

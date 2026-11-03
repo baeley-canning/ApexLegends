@@ -1,0 +1,40 @@
+1: # h1 - HOST milestone 1a: open DSE with kdu, load apexdrv, restore DSE, LEAVE THE DRIVER RUNNING.
+4: #   baseline 577 -> kdu -prv 22 -dse 0 (verify) -> sc start apexdrv (rc 0, STATE 4 RUNNING)
+5: #   -> kdu -prv 22 -dse <pre-value> (verify + readback) -> driver left RUNNING for the G1 gate run (h2).
+6: #   Restore target is the value kdu printed BEFORE the flip (16 on this box), not the constant 6:
+12: # after DSE was opened, the finally block still restores the recorded pre-value.
+28: $dup = @(Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -EA SilentlyContinue | Where-Object { $_.CommandLine -match 'h1_dse_host' -and $_.ProcessId -ne $PID })
+63: $dseOpened = $false
+66: $preDse = -1        # the boot-time value kdu reports = the ONLY correct restore target
+68:     "=== h1 HOST DSE FLIP $(Get-Date -f 'dd/MM/yyyy HH:mm:ss') pid=$PID admin=$adm host=$env:COMPUTERNAME ===" | Set-Content -LiteralPath $o
+78:     if($qs -match '577'){ W '  pass: last exit 577 = DSE armed, the baseline to reproduce' } else { W ('  ? last exit not 577 - baseline start must show 577; full: ' + $qs) }
+95:     W '## STEP baseline: sc start (expect 577 = DSE armed before we touch anything)'
+97:     if($rcBase -eq 577){ W '  BASELINE OK: 577, DSE armed' }
+98:     elseif($rcBase -eq 0){ W '  WARN: started anyway (0) - DSE was already open; continue, restore will still fire' }
+104:     W '## STEP ladder: kdu -prv <id> -dse 0 (gate on "verification succeeded")'
+107:         $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$id", '-dse', '0') 20000
+112:         if($od -match 'verification succeeded'){ W ('  prv ' + $id + ' DSE WRITE VERIFIED'); $winner = $id; $dseOpened = $true; break }
+116:     if($winner -lt 0){ W '=== VERDICT ==='; W 'RESULT: FAIL - no provider wrote DSE (blocklist / revocation)'; return }
+121:     $null = $script:lastOut -match 'value:\s*(\d+)\s*,\s*new value to be written'
+122:     if($Matches){ $preDse = [int]$Matches[1] }
+123:     W ('  PRE-DSE=' + $preDse + ' (restore target, kdu-printed)')
+133:     # ---- restore ---------------------------------------------------------------
+135:     W ('## STEP restore: kdu -prv <winner> -dse ' + $preDse + ' (boot value, NOT a constant)')
+136:     $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+137:     $restored = ($script:lastOut -match 'verification succeeded')
+139:     $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+141:     if($script:lastOut -match 'value:\s*(\d+)'){ $back = [int]$Matches[1] }
+142:     $restored = ($restored -and ($back -eq $preDse))
+143:     $dseOpened = -not $restored
+144:     W ('  restore verified=' + $restored + ' readback=' + $back + ' expect=' + $preDse)
+148:     if($loaded -and $restored){ W ('RESULT: PASS via prv ' + $winner + ' - driver RUNNING, DSE restored to boot value ' + $preDse + ' (readback verified), left RUNNING for h2'); W 'NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min) IN THIS BOOT - crash horizon ~20 min if the value is wrong' }
+149:     elseif($loaded){ W ('RESULT: PARTIAL via prv ' + $winner + ' - driver RUNNING but restore line missing; DSE may still be 0') }
+150:     else { W ('RESULT: FAIL via prv ' + $winner + ' - DSE written, load rc=' + $rcLoad) }
+153:     if($dseOpened -and $winner -ge 0 -and $preDse -ge 0){
+154:         W ('  finally: DSE open/mismatched - forcing -dse ' + $preDse)
+155:         $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', "$preDse") 20000
+156:         W ('  finally restore verified=' + ($script:lastOut -match 'verification succeeded') + ' readback=' + $(if($script:lastOut -match 'value:\s*(\d+)'){ $Matches[1] } else { '?' }))
+157:     } elseif($dseOpened -and $winner -ge 0){
+158:         W '  finally: pre-DSE unparsed - falling back to -dse 6 (0x109 risk stands)'
+159:         $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', '6') 20000
+160:         W ('  finally restore verified=' + ($script:lastOut -match 'verification succeeded'))

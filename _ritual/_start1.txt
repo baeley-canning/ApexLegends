@@ -1,0 +1,37 @@
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: Call to 
+WHvSetupPartition 
+failed: 
+E_ACCESSDENIED 
+(Last=0xc0000022/5) 
+(VERR_NEM_VM_CREATE_
+FAILED)
+At line:1 char:1
++ & 'C:\Program File
+s\Oracle\VirtualBox\
+VBoxManage.exe' 
+startvm Win11-T ...
++ ~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:..._    
+CREATE_FAILED):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_FAIL 
+(0x80004005), 
+component 
+ConsoleWrap, 
+interface IConsole
+Waiting for VM "Win11-Test2" to power on...

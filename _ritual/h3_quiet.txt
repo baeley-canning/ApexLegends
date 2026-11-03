@@ -1,0 +1,15 @@
+=== h3_quiet 03/11/2026 23:32:48 pid=18120 admin=True ===
+
+## pre-state
+  alive=[EAAntiCheat.GameService(9724),EADesktop(11636),EADesktop(15520),r5apex_dx12(9308)]  apexdrv=STOPPED
+  close requested on 1 process(es)
+  after 20 s grace=[EADesktop(11636)]
+  kill EADesktop(11636)
+
+## post-state (readback = verdict)
+  alive=[]  apexdrv=STOPPED
+  EAAntiCheatService=Stopped
+
+=== VERDICT ===
+RESULT: QUIET - no r5apex/EAAC/EADesktop process, driver STOPPED. h1 pre-flight condition met.
+-- h3_quiet END 23:33:12 --

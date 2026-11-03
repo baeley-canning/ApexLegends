@@ -1,0 +1,993 @@
+	Signer: "Intel Corporation"
+	Signer: "MICRO-STAR INTERNATIONAL CO., LTD."
+	Signer: "Giga-Byte Technology"
+	Signer: "ASUSTeK Computer Inc."
+	Signer: "MICSYS Technology Co., Ltd."
+	Signer: "ASUSTeK Computer Inc."
+[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+[#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+[#] Supported x64 OS : Windows 7 and above
+[*] CPU vendor string: GenuineIntel
+[*] Windows version: 10.0 build 26200
+[*] SecureBoot is disabled on this machine
+[*] Virtualization-based security: Not configured
+[*] Hypervisor enforced Code Integrity running: Not configured
+[+] MSFT Driver block list is disabled
+[+] Drivers database "drv64.dll" loaded at 0x00007FFF84A90000
+[+] Database KDUEXT version is OK
+Provider # 0, ResourceId # 103
+	Intel NAL driver, DriverName "NalDrv", DeviceName "Nal"
+	Advisory: "CVE-2015-2291"
+	Image size: 34568 bytes
+	File hash (SHA1): D04E5DB5B6C848A29732BFD52029001F23C3DA75
+	Authenticode hash (SHA1): 2CBFE4AD0E1231FF3E19C19CA9311D952CE170B7
+	Page hash (SHA1): 55B90A6E4323FC1D7B71B23F81FC758F45740E02
+	Page hash (SHA256): FB14DC1657C0EDD18FA747005EB7125DBBD83595095D67906BB0B4D57222D4C1
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Physical memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 1, ResourceId # 105
+	MSI RTCore64 driver, DriverName "RTCore64", DeviceName "RTCore64"
+	Advisory: "CVE-2019-16098"
+	Image size: 14024 bytes
+	File hash (SHA1): F6F11AD2CD2B0CF95ED42324876BEE1D83E01775
+	Authenticode hash (SHA1): 4A68C2D7A4C471E062A32C83A36EEDB45A619683
+	Page hash (SHA1): 84152FA241C3808F8C7752964589C957E440403F
+	Page hash (SHA256): A807532037A3549AE3E046F183D782BCB78B6193163EA448098140563CF857CB
+	Shellcode support mask: 0x00000007
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 2, ResourceId # 106
+	Gigabyte GDRV driver, DriverName "Gdrv", DeviceName "GIO"
+	Advisory: "CVE-2018-19320"
+	Image size: 26192 bytes
+	File hash (SHA1): FE10018AF723986DB50701C8532DF5ED98B17C39
+	Authenticode hash (SHA1): 0F5034FCF5B34BE22A72D2ECC29E348E93B6F00F
+	Page hash (SHA1): DC02DA48DF2F9B558453847399A8DE47C5AD56CC
+	Page hash (SHA256): 95406C37FDE1B08524FAB782200C8BECAEC98A40B020F41C5BA13032FE9522FA
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: MapMem from NTDDK 3.51
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 3, ResourceId # 107
+	ASUSTeK WinFlash, DriverName "ATSZIO", DeviceName "ATSZIO"
+	Image size: 20280 bytes
+	File hash (SHA1): 490109FA6739F114651F4199196C5121D1C6BDF2
+	Authenticode hash (SHA1): B66BF2B1B07F8F2BAB1418131AE66B0A55265F73
+	Page hash (SHA1): 04384DE86A18CE8D17DB3BB33CB9DD06868D4C32
+	Page hash (SHA256): 1871BE94AD775FD220F9A04C0F6B84C2C34CF898A4096E94359D9E5E269835DC
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 4, ResourceId # 108
+	MICSYS RGB driver, DriverName "MsIo64", DeviceName "MsIo"
+	Advisory: "CVE-2019-18845"
+	Image size: 25616 bytes
+	File hash (SHA1): E6305DDDD06490D7F87E3B06D09E9D4C1C643AF0
+	Authenticode hash (SHA1): 7E732ACB7CFAD9BA043A9350CDEFF25D742BECB8
+	Page hash (SHA1): CDE1A50E1DF7870F8E4AFD8631E45A847C714C0A
+	Page hash (SHA256): 05736AB8B48DF84D81CB2CC0FBDC9D3DA34C22DB67A3E71C6F4B6B3923740DD5
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 5, ResourceId # 109
+	ASRock Polychrome RGB, DriverName "GLCKIo2", DeviceName "GLCKIo2"
+	Image size: 19392 bytes
+	File hash (SHA1): CC51BE79AE56BC97211F6B73CC905C3492DA8F9D
+	Authenticode hash (SHA1): D99B80B3269D735CAC43AF5E43483E64CA7961C3
+	Page hash (SHA1): 51E0740AAEE5AE76B0095C92908C97B817D	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "EVGA"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "Huawei Technologies Co., Ltd."
+	Signer: "Realtek Semiconductor Corp."
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+B8BEA
+	Page hash (SHA256): E7F011E9857C7DB5AACBD424612CD7E3D12C363FDC8F072DDFAF9E2E5C85F5F3
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 6, ResourceId # 110
+	G.SKILL Trident Z Lighting Control, DriverName "EneIo64", DeviceName "EneIo"
+	Image size: 17480 bytes
+	File hash (SHA1): B4D014B5EDD6E19CE0E8395A64FAEDF49688ECB5
+	Authenticode hash (SHA1): 651B953CB03928E41424AD59F21D4978D6F4952E
+	Page hash (SHA1): 3727D824713E733558A20DE9876AABF1059D3158
+	Page hash (SHA256): 88C83F618C8F4069DED87C409A8446C5A30E22A303E64AAFF1C5BE6302ADEDB4
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 7, ResourceId # 111
+	EVGA Precision X1, DriverName "WinRing0x64", DeviceName "WinRing0_1_2_0"
+	Image size: 14536 bytes
+	File hash (SHA1): 012DB3A80FAF1F7F727B538CBE5D94064E7159DE
+	Authenticode hash (SHA1): 7AED8186977FCF7EE219DA493BAECDB95EC8040D
+	Page hash (SHA1): 9AB2257AE97DB4B0617640C90DD45AB7F144FBB9
+	Page hash (SHA256): D48209A183CDFEAADBD8A644730BD76BBF89C759844890739F934F242C226305
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinRing0 by Noriyuki Miyazaki
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 16299
+Provider # 8, ResourceId # 112
+	Thermaltake TOUGHRAM Software, DriverName "EneTechIo64", DeviceName "EneTechIo"
+	Image size: 19968 bytes
+	File hash (SHA1): A87D6EAC2D70A3FBC04E59412326B28001C179DE
+	Authenticode hash (SHA1): 6B60825564B2DCCFF3A4F904B71541BFE94136C9
+	Page hash (SHA1): 8911B97A3140C2523287E1039B08DE8EF4D7F9AB
+	Page hash (SHA256): 85859FFD16396D0FE9897BAFBDCE94FF66474DCDEF7754FCDF2C9C7A8CE451DB
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 9, ResourceId # 113
+	Huawei MateBook Manager, DriverName "phymemx64", DeviceName "PhyMem"
+	Image size: 25512 bytes
+	File hash (SHA1): 6ECFC7CCC4843812BFCCFB7E91594C018F0A0FF9
+	Authenticode hash (SHA1): 3C9F40AC72B0202CB40627FDEB7298079187193A
+	Page hash (SHA1): 6E7D8ABF7F81A2433F27B052B3952EFC4B9CC0B1
+	Page hash (SHA256): B7113B9A68E17428E2107B19BA099571AAFFC854B8FB9CBCEB79EF9E3FD1CC62
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 10, ResourceId # 114
+	Realtek Dash Client Utility, DriverName "rtkio64", DeviceName "rtkio"
+	Image size: 55048 bytes
+	File hash (SHA1): B21CBA198D721737AABD882ADA6C91295A5975ED
+	Authenticode hash (SHA1): 7593D46A73EC00E00AEF3E9D0031C2B21B74ECFB
+	Page hash (SHA1): D4B640263D2A6C9906D4032F252CC81D838E2116
+	Page hash (SHA256): 77EC9BF2DBB106EF51D4DE49E70801D48001BF06146A370D0669E385B87C0826
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: PhyMem by akui
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 16299
+Provider # 11, ResourceId # 115
+	MSI Dragon Center, DriverName "EneTechIo64", DeviceName "EneTechIo"
+	Image size: 20992 bytes
+	File hash (SHA1): 3CD037FBBA8AAE82C1B111C9F8755349C98BCB3C
+	Authenticode hash (SHA1): CE280412DD778CAFBE6DBB05B8CAB4	Signer: "LG Electronics Inc."
+	Signer: "ASUSTeK Computer Inc."
+	Signer: "PassMark Software Pty Ltd"
+	Signer: "GMEREK Systemy Komputerowe Przemyslaw Gmerek"
+	Signer: "Dell Inc."
+	Signer: "Benjamin Delpy"
+2E98D3AE56
+	Page hash (SHA1): 6CAFC03207391464AB7E69F47228CB82539BEBDE
+	Page hash (SHA256): 3F88ABF8908108207DA38DBC9E8690B3D63DB7F856B16E9F0D3A3B389FC72561
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 12, ResourceId # 116
+	LG LHA driver, DriverName "lha", DeviceName "{E8F2FF20-6AF7-4914-9398-CE2132FE170F}"
+	Advisory: "CVE-2019-8372"
+	Image size: 22168 bytes
+	File hash (SHA1): 3FD55927D5997D33F5449E9A355EB5C0452E0DE3
+	Authenticode hash (SHA1): 87C155D933CA3513E29D235562D96B88D3913CDE
+	Page hash (SHA1): B565361205846323911766F55E380D93C6A3AB02
+	Page hash (SHA256): 4818AA3F52BCF3554131B56A3A0F0C2D8BBB5F6D18837F68D811EAD7917A2DE3
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 16299
+Provider # 13, ResourceId # 117
+	ASUS GPU Tweak, DriverName "AsIO2", DeviceName "Asusgio2"
+	Image size: 33832 bytes
+	File hash (SHA1): AA2EA973BB248B18973E57339307CFB8D309F687
+	Authenticode hash (SHA1): 92FEE95E32A727D135F1F46CA98C201FFFBF6950
+	Page hash (SHA1): C5F1D135831851E9D7A06F9636E2A50B1D5C3A04
+	Page hash (SHA256): B4DCE5B50224C2461B49F1850C73EF84E65A64D89E2F32DD931A2F3C62D9D6BF
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 14, ResourceId # 118
+	PassMark DirectIO, DriverName "DirectIo64", DeviceName "DIRECTIO64"
+	Image size: 42352 bytes
+	File hash (SHA1): 2DB49BDF8029FDCDA0A2F722219AE744EAE918B0
+	Authenticode hash (SHA1): F1BDD3236F43338A119D74ECA730F0D464DED973
+	Page hash (SHA1): A14331F63EC907BF3E472F1E0CB8F19DE06EF4E4
+	Page hash (SHA256): 7F0A28CCF0AB76964D40E063F9D4B88193B77E4BADF66E8C8F87C97127885987
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 15, ResourceId # 119
+	Gmer 'Antirootkit', DriverName "gmerdrv", DeviceName "gmerdrv"
+	Image size: 56584 bytes
+	File hash (SHA1): 83506DE48BD0C50EA00C9E889FE980F56E6C6E1B
+	Authenticode hash (SHA1): 0BCA6C35159282FD64615ABC4D398399B061847B
+	Page hash (SHA1): 0882AB6651CD17F3D7D696E9C48EB4934159AE4C
+	Page hash (SHA256): 0F5DE6DE77D764E2370FA69D3CD8B2C0EC4DFC6F6736C7EDE97F3F75567ED47A
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 16, ResourceId # 120
+	Dell DBUtil 2.3 driver, DriverName "DBUtil23", DeviceName "DBUtil_2_3"
+	Advisory: "CVE-2021-21551"
+	Image size: 14840 bytes
+	File hash (SHA1): C948AE14761095E4D76B55D9DE86412258BE7AFD
+	Authenticode hash (SHA1): E3C1DD569AA4758552566B0213EE4D1FE6382C4B
+	Page hash (SHA1): E09B5E80805B8FE853EA27D8773E31BFF262E3F7
+	Page hash (SHA256): 7E2AD3D6D76F4FCD4583B865FFC12DE6C44FC16CBCBB81D480CB067F2A860422
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver does not support unload procedure.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 17, ResourceId # 121
+	Mimikatz mimidrv, DriverName "mimidrv", DeviceName "mimidrv"
+	Image size: 36584 bytes
+	File hash (SHA1): A8DDB7565B61BC021CD2543A137E00627F999DCC
+	Authenticode hash (SHA1): 0E732D18A7D880F0505433A0DA0E100DA0E1C3A3
+	Page hash (SHA1): A1E322631A67DE6441A08C991352281CF7C83FD8
+	Page hash (SHA256): 787AC1DB370421BD26915EAE797F67AD4C6E53775970DC18226ED5225B0B8A3B
+	Shellcode	Signer: "Wen Jia Liu"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "Cheat Engine"
+	Signer: "ASUSTeK Computer Inc."
+	Signer: "Marvin Test Solutions, Inc."
+ support mask: 0x00000007
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 18, ResourceId # 122
+	KProcessHacker driver, DriverName "KProcessHacker", DeviceName "KProcessHacker2"
+	Image size: 40088 bytes
+	File hash (SHA1): D8498707F295082F6A95FD9D32C9782951F5A082
+	Authenticode hash (SHA1): 61B55BB7C111F93BD3EA9AC71591E1A6B89FEEE1
+	Page hash (SHA1): 15FA18C40598FFD05C7F99DB81EEEA1336FC4213
+	Page hash (SHA256): B6033C16527F2ADBC9E8E5C7678F649E55009319B8612765686ACB1A1C82FDDA
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 19044
+Provider # 19, ResourceId # 2000
+	Process Explorer v16, DriverName "PROCEXP152", DeviceName "PROCEXP152"
+	Image size: 36192 bytes
+	File hash (SHA1): 3296844D22C87DD5EBA3AA378A8242B41D59DB7A
+	Authenticode hash (SHA1): EDC10781EB6D1E3BDF9D15CFEBDDBE1A1FB804D9
+	Page hash (SHA1): AF2B5A3F4DBCE417295FB2CECD8DF91C5A679D44
+	Page hash (SHA256): 2C22F27671EE4C530C16821CEE2A9F48C19F99B873E36D94C4AAA0194D52B8CB
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->No victim required.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 19044
+Provider # 20, ResourceId # 123
+	Dell DBUtil 2.5 driver, DriverName "DBUtilDrv2", DeviceName "DBUtil_2_5"
+	Advisory: "CVE-2021-36276"
+	Image size: 24952 bytes
+	File hash (SHA1): 90A76945FD2FA45FAB2B7BCFDAF6563595F94891
+	Authenticode hash (SHA1): 6BC2AB0F03D7A58685A165B519E8FEE6937526A6
+	Page hash (SHA1): 66B2E2438725B576428CBEAE3E481148B4B5FD8C
+	Page hash (SHA256): C60578FAD95216EF74BCD9661A562C0DDC2C8697D64B546F59A7EF85F71D3814
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+	Minimum supported Windows build: 10240
+	Maximum Windows build undefined, no restrictions
+Provider # 21, ResourceId # 124
+	Cheat Engine Dbk64, DriverName "CEDRIVER73", DeviceName "CEDRIVER73"
+	Image size: 118016 bytes
+	File hash (SHA1): A54AE1793E9D77E61416E0D9FB81269A4BC8F8A2
+	Authenticode hash (SHA1): 1BE4BA36BA9CE5B10D90137C08CC21F823379841
+	Page hash (SHA1): 2EF1502DDE6A1CB120AC379F8C7155EB96E4BA02
+	Page hash (SHA256): F7443FBAC813EAF0AA94C73265C3BE7E723A5BF64BEF1D80E8FF57D7573FC53C
+	Shellcode support mask: 0x00000008
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->No victim required.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 22, ResourceId # 125
+	ASUS GPU Tweak II, DriverName "AsIO3", DeviceName "Asusgio3"
+	Image size: 43920 bytes
+	File hash (SHA1): CFA85A19D9A2F7F687B0DECDC4A5480B6E30CB8C
+	Authenticode hash (SHA1): 4BFC51E23494F7EAF27560F92CD6FBCED2FFA4F6
+	Page hash (SHA1): 09C0DC0C0440F9362BD29960236CD716B3E21453
+	Page hash (SHA256): 209D5B95C83B4923C825DF9F3DE5F5EFCEFA0C2F82FD77D9BB38FE41E81B3D02
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 23, ResourceId # 126
+	Marvin Hardware Access Driver for Windows, DriverName "hw64", DeviceName "hw"
+	Image size: 42976 bytes
+	File hash (SHA1): 4E56E0B1D12664C05615C69697A2F5C5D893058A
+	Authenticode hash (SHA1): 6E87CD3B027A07A810164D618E3F2FCE61EB6EC4
+	Page hash (SHA1): 45F1309E10159325BA1DFAE4CAE214BD07B355F1
+	Page hash (SHA256): EF15F8CE1C905139AC64C15C2E91E808054421D2B95E2F531EFC6FC5D9D2A471
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical addre	Signer: "3S-Smart Software Solutions GmbH"
+	Signer: "WATCHDOGDEVELOPMENT.COM, LLC"
+	Signer: "Red Fox UK Limited"
+	Signer: "PassMark Software Pty Ltd"
+	Signer: "ASROCK INC."
+	Signer: "ALCPU (Arthur Liberman)"
+ss translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 24, ResourceId # 127
+	CODESYS SysDrv3S driver, DriverName "SysDrv3S", DeviceName "SysDrv3S"
+	Advisory: "CVE-2022-22516"
+	Image size: 33168 bytes
+	File hash (SHA1): E1069365CB580E3525090F2FA28EFD4127223588
+	Authenticode hash (SHA1): 432B5809D84935D15574DE8D64B22E06682FF715
+	Page hash (SHA1): 13EA5846AFE3B9141C712FAFBA9F1B95B26087E5
+	Page hash (SHA256): 6E0C60A5AA46C6CCE7EB4EFA8D36D6D343C0D26694D8A9E194F254988603FC26
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver does not support unload procedure.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: MapMem from NTDDK 3.51
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 25, ResourceId # 128
+	Zemana AntiMalware driver, DriverName "ZemanaAntimalware", DeviceName "amsdk"
+	Advisory: "CVE-2021-31728, CVE-2022-42045"
+	Image size: 226464 bytes
+	File hash (SHA1): 290D6376658CF0F8182DE0FAE40B503098FA09FD
+	Authenticode hash (SHA1): 084553447BDBC056BBE49BAD8ACFAF25EB83462A
+	Page hash (SHA1): 760DE62D6AF5F8CD46E2B2074CDF7B0805B58484
+	Page hash (SHA256): 8BFEE3E7582C0432CD02A8D75D00B8CBA9CD9A2525E3E61E0D0C8AAAC2FCFEEB
+	Shellcode support mask: 0x00000008
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 9600
+	Maximum Windows build undefined, no restrictions
+Provider # 26, ResourceId # 129
+	inpoutx64 Driver Version 1.2, DriverName "inpoutx64", DeviceName "inpoutx64"
+	Image size: 15008 bytes
+	File hash (SHA1): 6AFC6B04CF73DD461E4A4956365F25C1F1162387
+	Authenticode hash (SHA1): 8E1F51761F21148F68AC925CC5F9E9C78F3D5EC4
+	Page hash (SHA1): 83714FAAF1643DBA7ABF28A4AC287A43FDEBDE81
+	Page hash (SHA256): 1D665C5DDA5E49B5C7F5231327D4A41D83201107CF428800EF24FDBB1CC505F7
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 27, ResourceId # 130
+	PassMark OSForensics DirectIO, DriverName "DirectIo64", DeviceName "DIRECTIO64"
+	Image size: 43216 bytes
+	File hash (SHA1): 01B95AE502AA09AABC69A0482FCC8198F7765950
+	Authenticode hash (SHA1): 4AEA4FBB9A732D57643F61F1BF3B82CEBB18AB72
+	Page hash (SHA1): 981F8CC044C6E21E2A4746B47EBEBAEEF49B9114
+	Page hash (SHA256): 50F9C8874653A6C25179C33EAEB19A6EC4C21BCB1EB14429DD0746C338766911
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 28, ResourceId # 131
+	ASRock IO Driver, DriverName "AsrDrv106", DeviceName "AsrDrv106"
+	Image size: 49984 bytes
+	File hash (SHA1): B0032B8D8E6F4BD19A31619CE38D8E010F29A816
+	Authenticode hash (SHA1): F621633290173DAAC18BB14CA3F52BC027CD2721
+	Page hash (SHA1): 32F6424734185AF58281EA4C66805A8238E61427
+	Page hash (SHA256): 281D8225E91591F799F93BF448F78F3F50B9AA7D6F1ADD3E2AC58D6BA0DE1473
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Based on: RWEverything by ckimchan.tw
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 29, ResourceId # 132
+	Core Temp, DriverName "ALSysIO64", DeviceName "ALSysIO"
+	Image size: 47240 bytes
+	File hash (SHA1): 256D285347ACD715ED8920E41E5EC928AE9201A8
+	Authenticode hash (SHA1): 530DD2863A09DC57801D62551C48EB9E48476FE8
+	Page hash (SHA1): 845EE7617D94A6A13016419B94CFC2D15D9BB71A
+	Page hash (SHA256): C13FDB8225E21B899A340506DB055B949C941A33D8C2D73C81E46BF5C4DDFF47
+	Shellcode support mask: 0x00000007
+	Provider c	Signer: "Advanced Micro Devices Inc."
+	Signer: "Hilscher Gesellschaft fuer Systemautomation mbH"
+	Signer: "Lenovo"
+	Signer: "PC-Doctor, Inc."
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "HP Inc."
+apabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 30, ResourceId # 133
+	AMD Ryzen Master Service Driver, DriverName "AMDRyzenMasterDriver", DeviceName "AMDRyzenMasterDriverV20"
+	Image size: 48328 bytes
+	File hash (SHA1): CEC887F20AB468CAA1C99FCBE7FBDFAB25FADF39
+	Authenticode hash (SHA1): E37C6AA2630FA3CCB3EE7D219A7332CCE95FA11F
+	Page hash (SHA1): 70A164E25FD351CEDFEDEB3D89871A1D487D0379
+	Page hash (SHA256): E47556832FA7CF286FFD7F7A0646FA8015AF651D5C968F20353F6B7CFF18A1DC
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 31, ResourceId # 134
+	Physical Memory Access Driver, DriverName "physmem", DeviceName "PHYSMEMVIEWER"
+	Image size: 26192 bytes
+	File hash (SHA1): 17614FDEE3B89272E99758983B99111CBB1B312C
+	Authenticode hash (SHA1): FD0CB3EA1DEB4FDB22536A7C15669EB53315E5C8
+	Page hash (SHA1): 0D03AC1B15AE10BB40A7660F25F3A68E1330024E
+	Page hash (SHA256): CB27AD883FCF265B8E2C8D393C0B403914C1911A935A5D248B4C37B4D99CD7BE
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 32, ResourceId # 135
+	Lenovo Diagnostics Driver for Windows 10 and later, DriverName "LenovoDiagnosticsDriver", DeviceName "LenovoDiagnosticsDriver"
+	Advisory: "CVE-2022-3699"
+	Image size: 40472 bytes
+	File hash (SHA1): B89A8EEF5AEAE806AF5BA212A8068845CAFDAB6F
+	Authenticode hash (SHA1): 6D9543725ACA0C9C8F403425952692CCC1D2D7F2
+	Page hash (SHA1): B40A38E4D3BFB567F313A190A30F3AA9189EC1A0
+	Page hash (SHA256): 4273E0BE1A21142DE6BA672EFDAC0AC1FADC7AF0D0DAACA4E4D330D02C8F4CC8
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Physical memory access is preferred.
+		->MS symbols are required to query internal information.
+	Minimum supported Windows build: 17134
+	Maximum Windows build undefined, no restrictions
+Provider # 33, ResourceId # 136
+	PC-Doctor driver, DriverName "pcdsrvc_x64", DeviceName "pcdsrvc_x64"
+	Advisory: "CVE-2019-12280"
+	Image size: 25584 bytes
+	File hash (SHA1): D0A228ED8AF190DEC0C1A812E212F5E68EE3B43E
+	Authenticode hash (SHA1): 85D493F5636B46F6C4F8B1028F8E8659F31DC562
+	Page hash (SHA1): A48431302A6C5053D178FCEC3390FBC1CACCB893
+	Page hash (SHA256): 08AFD2489CB6A093E3F588B1D13D20468AE3E27A2F0AEC9E43C41D20FFB2F6EE
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 34, ResourceId # 137
+	MSI Foundation Service, DriverName "WinIo", DeviceName "WinIo"
+	Image size: 18688 bytes
+	File hash (SHA1): 9745D77E3C27437BBCCF39E074F7D57A99FE83B1
+	Authenticode hash (SHA1): 1419392FC1EC6EF497442FEE3F7553A68B78A03D
+	Page hash (SHA1): 863F4AFE82D791D655B2DCE5C893B37422364230
+	Page hash (SHA256): F3165AFC15FA99745D7151501E1E2A738AD04DA5A4E76E5CE135B8E247AE0D1D
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 35, ResourceId # 138
+	ETDi Support Driver, DriverName "EtdSupport", DeviceName "EtdSupport_18.0"
+	Image size: 30856 bytes
+	File hash (SHA1): A57EEFA0C653B49BD60B6F46D7C441A78063B682
+	Authenticode hash (SHA1): 96FAA975FEB28588372A98A1E77D98AF7FC90E41
+	Page hash (SHA1): 197859EEFBCF17BE48A3C49818B35F263701755F
+	Page hash (SHA256): 5C8C0FC9B3B7C6C7E6BDD83A8D3ED44E075D9C3B42463E1CC5EE28049517488E
+	Shellcode support mask: 0x00000007
+	Provider capabil	Signer: "Pavel Yosifovich"
+	Signer: "Pavel Yosifovich"
+	Signer: "Pavel Yosifovich"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "NVIDIA Corporation"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+ities: 
+		->Driver is WHQL signed.
+		->Virtual memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 36, ResourceId # 139
+	Kernel Explorer Driver, DriverName "KExplore", DeviceName "KExplore"
+	Image size: 16424 bytes
+	File hash (SHA1): 090A4FC285D4F47B1E6A1011353A329C1F4C8E09
+	Authenticode hash (SHA1): C77403CFFCD15438EA3DDDF0763AB0A70A9100CB
+	Page hash (SHA1): DCCA45C770E93BCF9FC7A9ADFC4653AE744C798C
+	Page hash (SHA256): DE88E584BC88C463F479CAA5A6F4C166B8180E2AEAC62A54879875D374704631
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 37, ResourceId # 140
+	Kernel Object Explorer Driver, DriverName "KObjExp", DeviceName "KObjExp"
+	Image size: 15456 bytes
+	File hash (SHA1): 3303BA52A334DA58A4992C4F9FBA7272E294B7AF
+	Authenticode hash (SHA1): 43239D3355CED44FB56C4127BF96EF2ED1BE2780
+	Page hash (SHA1): 6ECDAAECEB20B8D037FD4508A4B1DCE1ADCD2203
+	Page hash (SHA256): 6DA94C767419BAFB993B39913CD99146EB80FC13B5A6D5DE96829E084D4CFC83
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->Physical memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 19045
+Provider # 38, ResourceId # 141
+	Kernel Registry Explorer Driver, DriverName "KRegExp", DeviceName "KRegExp"
+	Image size: 25088 bytes
+	File hash (SHA1): F3383FE0FF00BDEA1AA9E68BCAAD8B83885E306D
+	Authenticode hash (SHA1): D889E03CE654903A5113F49F49A1C23F3317E7D0
+	Page hash (SHA1): 0773B431922B3208DB0C4A4E02F9CE7297AAE774
+	Page hash (SHA256): AE38ADF8B97188675D8F6396F2DC0801C60CBFD546CAEDE915B73E9332DF6C8C
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->Physical memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum supported Windows build: 19045
+Provider # 39, ResourceId # 143
+	Echo AntiCheat, DriverName "EchoDrv", DeviceName "EchoDrv"
+	Image size: 23560 bytes
+	File hash (SHA1): A93197C8C1897A95C4FB0367D7451019AE9F3054
+	Authenticode hash (SHA1): 678620A9CC9E7FFE179BC5CDA0A2DD0597E231EE
+	Page hash (SHA1): 832832028D40A3CFD08D364554FCE0B4F37317FF
+	Page hash (SHA256): 49ED19D5E1E122936035A48EA99FFD68CA4915578107888D5C2B0BB9E30E67C0
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual memory access is preferred.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 40, ResourceId # 144
+	NVidia System Utility Driver, DriverName "nvoclock", DeviceName "NVR0Internal"
+	Image size: 44136 bytes
+	File hash (SHA1): BDA102AFBC60F3F3C5BCBD5390FFBBBB89170B9C
+	Authenticode hash (SHA1): 0FB1D0EF14AB73FCB4C62043859064CC5F9F88C2
+	Page hash (SHA1): B754B2C62796004560E2ADF5178099B98F111C25
+	Page hash (SHA256): 83D2A9535CDB68A8D6EAE5582DB7A70E01A520151448CEB572D96566A2AECB82
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 41, ResourceId # 145
+	Binalyze driver, DriverName "IREC", DeviceName "IREC"
+	Advisory: "CVE-2023-41444"
+	Image size: 108024 bytes
+	File hash (SHA1): D2FB46277C36498E87D0F47415B7980440D40E3D
+	Authenticode hash (SHA1): 719F659300BA463EFEEAB5916F0378C64FC1AD4A
+	Page hash (SHA1): F7FEA2BE8FF65DBB89BAF39EF8E0D80DAB81CB8E
+	Page hash (SHA256): 5FEB045C2452FD280BA1CAD5FC9B4F0DE7FC95EABDCE19FA2CD1F632891F3B1A
+	Shellcode support mask: 0x00000000
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->No victim required.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+		Signer: "Suzhou Ind. Park ShiSuanKeJi Co., Ltd."
+	Signer: "Razer Inc."
+	Signer: "Advanced Micro Devices Inc."
+	Signer: "Advanced Micro Devices, Inc."
+	Signer: "Wincor Nixdorf International GmbH"
+	Signer: "EVGA Corp."
+Maximum Windows build undefined, no restrictions
+Provider # 42, ResourceId # 142
+	SLIC ToolKit, DriverName "PhyDMACC", DeviceName "PhyDMACC_1_2_0"
+	Image size: 14024 bytes
+	File hash (SHA1): 177B541412A45646177B2352FA2D9E89E0EEFE5A
+	Authenticode hash (SHA1): 200ABD07303234FC114360D9DABC38DA1F1F2A22
+	Page hash (SHA1): 84B91B1AED8F83DE14323089148BE2577FDC826C
+	Page hash (SHA256): B8502DB6B8947E5D852102166D0BEF8252EA3431D582E968EF44C35E56609C91
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Based on: WinRing0 by Noriyuki Miyazaki
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 43, ResourceId # 104
+	Razer Overlay Support driver, DriverName "rzpnk", DeviceName "47CD78C9-64C3-47C2-B80F-677B887CF095"
+	Advisory: "CVE-2017-9769"
+	Image size: 137840 bytes
+	File hash (SHA1): F999709E5B00A68A0F4FA912619FE6548AD0C42D
+	Authenticode hash (SHA1): 1AC31466261A6DA69FBEB8E99D0B7B772071AC7F
+	Page hash (SHA1): 4EC299E9A539F6BC194BD3D436B24A565BD32EF4
+	Page hash (SHA256): C8CE0EE4FF58779A292B5626D9953888A1A04799E18924CB7A075095C25042E8
+	Shellcode support mask: 0x00000000
+	Provider capabilities: 
+		->No victim required.
+		->Driver can be used to open a handle for the specified process.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 44, ResourceId # 146
+	AMD USB-C Power Delivery Firmware Update Utility, DriverName "PdFwKrnl", DeviceName "PdFwKrnl"
+	Advisory: "CVE-2023-20598"
+	Image size: 30144 bytes
+	File hash (SHA1): A24840E32071E0F64E1DFF8CA540604896811587
+	Authenticode hash (SHA1): 661A1A28950CEC3F2C3D0E72AB2A05D4A173CF9A
+	Page hash (SHA1): 869BED04EB66492AC532E36C3C6171AB34DA1A00
+	Page hash (SHA256): E5DC6305227951B05997CD147C59795991F7EDE52461D069EFE1D568DD25C580
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 45, ResourceId # 147
+	AMD OverDrive Driver, DriverName "AODDriver", DeviceName "AODDriver"
+	Advisory: "CVE-2020-12928"
+	Image size: 14904 bytes
+	File hash (SHA1): 17D28A90EF4D3DBB083371F99943FF938F3B39F6
+	Authenticode hash (SHA1): 9A329362E340FC8363E67FB5F23A8391CB83BF00
+	Page hash (SHA1): 0BC84A62ABD3CA20305FB834592928C2317439D6
+	Page hash (SHA256): 76C7A12CDE2FDC80A6AF0A58E7698FC1F5EC8746EFB461FB07155B7065480715
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 46, ResourceId # 148
+	WnBios Driver, DriverName "wnBios64", DeviceName "WNBIOS"
+	Image size: 23352 bytes
+	File hash (SHA1): AEC96520E85330594D3165C86CB92EAC34C1E095
+	Authenticode hash (SHA1): A7179D7CF5EE58276C3C42A16195A0B733F31B53
+	Page hash (SHA1): AF7FED1C68BB2D459F7778EC6D20459618CF3D26
+	Page hash (SHA256): 490B1FFC374F9CDEC57BBCE9DAD93251516DE93C7A7F3475D8AC55A6DCBB958E
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 47, ResourceId # 149
+	EVGA Low Level Driver, DriverName "EleetX1", DeviceName "EleetX1"
+	Image size: 39856 bytes
+	File hash (SHA1): DA66B66DCA5EA8689DB903EC23E98F2C881DE6F8
+	Authenticode hash (SHA1): A8D16FED8999033126D60C656A3BA359DFAA559F
+	Page hash (SHA1): 082FBFF03465F78276D5A2066398A9D3C73DB9AB
+	Page hash (SHA256): F677A9447400EAEE6E12A88F59AAADCF6DDF8F16EC8F7612BF50AB378A9B9012
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Prov	Signer: "ASROCK Incorporation"
+	Signer: "ASROCK Incorporation"
+	Signer: "ASROCK INC."
+	Signer: "ASROCK INC."
+	Signer: "Intel(R) Embedded Subsystems and IP Blocks Group"
+	Signer: "Open Source Developer, Jun Liu"
+ider # 48, ResourceId # 150
+	RW-Everything Read & Write Driver, DriverName "AxtuDrv", DeviceName "AxtuDrv"
+	Image size: 21768 bytes
+	File hash (SHA1): 3F6A997B04D2299BA0E9F505803E8D60D0755F44
+	Authenticode hash (SHA1): E7FAC017B371A43276E03BF5F71D437E8D377930
+	Page hash (SHA1): EE9A5A98C257F2D50030B7F3AB6D7DA805FCC150
+	Page hash (SHA256): D159D969E05C83F27F446BCC5F171A0043CC3DF0B518962CEE7ACBE30BCC02F8
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Based on: RWEverything by ckimchan.tw
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 49, ResourceId # 151
+	AppShopDrv103 Driver, DriverName "AppShopDrv103", DeviceName "AppShopDrv103"
+	Image size: 34568 bytes
+	File hash (SHA1): 6074C2360F5DC74738873A525DFBD67EB6625986
+	Authenticode hash (SHA1): 03C523F31603C460076AD549F985DD9533734E95
+	Page hash (SHA1): 85B6FC43E943C9EB9B3DE1FF82A56870620CC1CF
+	Page hash (SHA256): A3AF7747FAC60B814FA6717B174F1199B9D163081B55AE40CEDD9983B6D033F5
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Based on: RWEverything by ckimchan.tw
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 50, ResourceId # 152
+	ASRock IO Driver, DriverName "AsrDrv107n", DeviceName "AsrDrv107n"
+	Image size: 49528 bytes
+	File hash (SHA1): 11D7E0D29AB17292FD43BDD5CCB7DA0403E50E52
+	Authenticode hash (SHA1): CA06D9FD91F7B681204B35975D5C069D0DABE276
+	Page hash (SHA1): B7693E1170B01F24A824892607C2258CA653805A
+	Page hash (SHA256): B8776F6889CF3D8252F0912DD9745F8EFF4513292DF2B2B1D484CDBC68FBAE4C
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Based on: RWEverything by ckimchan.tw
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 51, ResourceId # 153
+	ASRock IO Driver, DriverName "AsrDrv107", DeviceName "AsrDrv107"
+	Image size: 51032 bytes
+	File hash (SHA1): B1FAD5DA173C6A603FFFE20E0CB5F0BDCA823BD5
+	Authenticode hash (SHA1): 268073AD0B17E2161C1A2A6C5B1BDEBB7B3011B4
+	Page hash (SHA1): 0B48F35DAF8B8BC9BA4E413EF222415EAB791AE0
+	Page hash (SHA256): B073907634013A8EB65E4C8AA42535BAD08101E58B7B1489AEE395B7BE9C69E2
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Provider supports only physical memory brute-force.
+	Based on: RWEverything by ckimchan.tw
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 52, ResourceId # 154
+	Intel(R) Management Engine Tools Driver, DriverName "PMxDrv", DeviceName "Pmxdrv"
+	Image size: 43632 bytes
+	File hash (SHA1): 9E5FCAEA33C9A181C56F7D0E4D9C42F8EDEAD252
+	Authenticode hash (SHA1): 7919108CB1278503EC4A78DD25694C6770EAA989
+	Page hash (SHA1): E1CE5A5E2CEB0AAD9CB588A900BF471462FAC42B
+	Page hash (SHA256): 6991344C8771FC717F878F9A6B0C258BC81FB3BF1F7F3CBED3EF8F86541B253F
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 53, ResourceId # 155
+	Hardware read & write driver, DriverName "HwRwDrv.x64", DeviceName "HwRwDrv"
+	Image size: 31680 bytes
+	File hash (SHA1): DB8BCB8693DDF715552F85B8E2628F060070F920
+	Authenticode hash (SHA1): 8C40A82DF3D606A87DF243C787283C26CE9B0458
+	Page hash (SHA1): F7362528C0118F895D4D51588102C51A09B1691C
+	Page hash (SHA256): 2A8B9C786DEA17F00E105BFEF82B723E2578150E814DD9A94ED007275C96AC25
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Provider supports only physical memory brute-force.
+	Based on: WinRing0 by Noriyuki Miyazaki
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 54, ResourceId # 156
+	NeacSafe64 m	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+	Signer: "TechPowerUp LLC"
+	Signer: "Compal electronic ,inc"
+	Signer: "Lenovo"
+	Signer: "Teledyne Digital Imaging Inc."
+	Signer: "Digital Electronics Corporation"
+ini-filter driver, DriverName "NeacSafe64", DeviceName "OWNeacSafePort"
+	Advisory: "CVE-2025-45737"
+	Image size: 2518232 bytes
+	File hash (SHA1): 7E6DD5F1363C3070C59378EC8B23B6EC7B5671B4
+	Authenticode hash (SHA1): 5C41FA80052C332F7D6323C91E84E1204BA1C1C7
+	Page hash (SHA1): 5670C9130CC8997FBA6BD1C615F0DA97DC1FD43C
+	Page hash (SHA256): 34B6E417ABA41F5C7D7EE260AF1F56D9A74519F64B8E15BB510A295D2F9ED464
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Driver is file system filter.
+	Minimum supported Windows build: 10240
+	Maximum Windows build undefined, no restrictions
+Provider # 55, ResourceId # 157
+	TechPowerUp ThrottleStop, DriverName "ThrottleStop", DeviceName "ThrottleStop"
+	Advisory: "CVE-2025-7771"
+	Image size: 50216 bytes
+	File hash (SHA1): 82ED942A52CDCF120A8919730E00BA37619661A3
+	Authenticode hash (SHA1): 77BADFEEBC7F448E6B8A52DCF15F48506A0E9A58
+	Page hash (SHA1): 42E937C9E56931AFDE500D68CDA682F8A5997CAF
+	Page hash (SHA256): 05E896E9337F2F6119571B31F3E5C279B357631C439912172E07526A4B5C23A5
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 56, ResourceId # 158
+	Toshiba power saving driver for laptops, DriverName "TPwSav", DeviceName "EBIoDispatch"
+	Image size: 23896 bytes
+	File hash (SHA1): C1130E09831C7A2E0CC8BA7335E702910B25F526
+	Authenticode hash (SHA1): 8057487B702996C56D4CBB96A0C63A6ED82271B5
+	Page hash (SHA1): 7A1F9284A89B31BF572487F3021415AA0B583F18
+	Page hash (SHA256): 8E141BAB9656CB687407C0BDF8488FCD80631DA8EDE60C12EDF5DDC6D76AF1EC
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 57, ResourceId # 159
+	Lenovo MSR I/O Driver, DriverName "LnvMSRIO", DeviceName "WinMsrDev"
+	Advisory: "CVE-2025-8061"
+	Image size: 50216 bytes
+	File hash (SHA1): 0186912447648A5E4B9C9C31D718F605D5E5C925
+	Authenticode hash (SHA1): 68969B2B53412322917BE77774B3175155F28B71
+	Page hash (SHA1): 5285DC2862551EF8C3458E48B46552A912C6D4B2
+	Page hash (SHA256): 1B04665721DEDC651B75B2C1F33613E5332FA9077FEA9BD22B7D24573F615D38
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Based on: WinRing0 by Noriyuki Miyazaki
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 58, ResourceId # 160
+	Sapera Memory Manager, DriverName "CORMEM", DeviceName "CORMEM"
+	Image size: 77616 bytes
+	File hash (SHA1): BCEAE6DC87C9C6C33555A4A9008BE14C66FD1E20
+	Authenticode hash (SHA1): 505B7C56888009AB3B9531CAEEE6FA9A9B88916A
+	Page hash (SHA1): 893BDCE0398C15B4549D060DC552799CEAF39802
+	Page hash (SHA256): 1568C603C299383A7F36B8EDA6BC656748737778787B9987F27BB6AD3A718A8F
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->Physical memory access is preferred.
+	Based on: MapMem from NTDDK 3.51
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 59, ResourceId # 161
+	IPCType Device Driver for 64bit, DriverName "IPCType", DeviceName "IPCType"
+	Image size: 14096 bytes
+	File hash (SHA1): 96611A3D59EA7DF9453E194FB7C19D0F944BCEFC
+	Authenticode hash (SHA1): 5FE6C6CDE2DC32666EFC70A4008D9F987DDF4A63
+	Page hash (SHA1): BF1AE9D0981F4E5868CE8037C8F17FAF8A68F76A
+	Page hash (SHA256): 8171DCA918DE3A9E0AF0F9FE90AFCAA91E245A425BA38D8A11754ACD3CF3FEE2
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows	Signer: "广州商科信息科技有限公司"
+	Signer: "Advanced Micro Devices Inc."
+	Signer: "Matrox Graphics Inc."
+	Signer: "FLIR Integrated Imaging Solutions, Inc."
+	Signer: "LECO Corporation"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+ build undefined, no restrictions
+Provider # 60, ResourceId # 162
+	Guangzhou Shangke Information Technology giveio driver, DriverName "WinHwDriver", DeviceName "WinHwDriver"
+	Image size: 56088 bytes
+	File hash (SHA1): B980DEC0BDF7B0925240D002626E56876AFEEC72
+	Authenticode hash (SHA1): 96C3B210C05511481B8490535828D4EF2EE73A09
+	Page hash (SHA1): A759E2A83CA0D54779DC3FB484549CBEFE6F8B59
+	Page hash (SHA256): FE3123D84B41F372D3A05CED25AE1CD5FF3E09A701610BB4DEC197B5EBB43621
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Based on: WinRing0 by Noriyuki Miyazaki
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 61, ResourceId # 163
+	AMD BIOS Flash Utility driver, DriverName "affdriver", DeviceName "BiosToolCommonDriver"
+	Image size: 48352 bytes
+	File hash (SHA1): D4C584732FA9ABD7D7EB83E169686764C500F2E0
+	Authenticode hash (SHA1): 129F2F059513AE62D0F63E3644CBFA7B671B938B
+	Page hash (SHA1): DD5BCF7C1F992314B0CC95035408D87DAEE385CB
+	Page hash (SHA256): 7E1AFF6BED0E2478655C3E0B69CD614743715E986C52A079FD8B3B8F9979D1A2
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 62, ResourceId # 164
+	Matrox Graphics driver, DriverName "mtxC9CB", DeviceName "MtxVxd"
+	Image size: 20744 bytes
+	File hash (SHA1): F0F325DC9B15FEF3781D01B6B14022A89C68CA46
+	Authenticode hash (SHA1): A64EE7F9111BECDF289F3460DE1DD10BD0D739A6
+	Page hash (SHA1): 584AB91AC1714D418A14C2326921A282BC13F29D
+	Page hash (SHA256): 407A90A525270F64708BCF3C53E2062119B874566B2C57B49A0457F7606C04F0
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 63, ResourceId # 165
+	PGRHostControl driver, DriverName "PGRHostControl", DeviceName "PGRHostControl"
+	Image size: 24824 bytes
+	File hash (SHA1): 8D733095AC1CFCD799F58BE3B8A25800F31E6FE2
+	Authenticode hash (SHA1): 671F7A5E44856B3A785AD7824812435F43A1B73F
+	Page hash (SHA1): 05E5E9F806933932CC2EE733F8D4A59F0D9FC99A
+	Page hash (SHA256): 2007A5BC8617AFBB207E9FB98CC4A99DA533C6E4F059BB91D5A3B9626A87AFBD
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Virtual to physical address translation requires CR3 query from low stub.
+		->Physical memory access is preferred.
+	Based on: WinIo by Yariv Kaplan
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 64, ResourceId # 166
+	LECO(R) LECOMA Device Driver, DriverName "LECOMAx", DeviceName "LECOMA64_2"
+	Image size: 18192 bytes
+	File hash (SHA1): EB817E8AF016F6A3ECE2B7CF421EC6D96970E285
+	Authenticode hash (SHA1): 8F21CD62CC6881811C1563930A13E7E98CE558D8
+	Page hash (SHA1): 995BA4F995F0D362EEFA5AAAA81426378F12D034
+	Page hash (SHA256): 22D2AA641E7E828E08E8FBA08A3DE10670C7F4134612AEA18B42FB1298EE9A5B
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 65, ResourceId # 167
+	Adlice RootLaser, DriverName "RootLaser", DeviceName "RootLaser"
+	Image size: 43192 bytes
+	File hash (SHA1): 2E70E73B9A700336EEA20E92B916817E00F053D1
+	Authenticode hash (SHA1): 6A90728AFB865D1E791C00690E7C5B3B5EF92975
+	Page hash (SHA1): 10B3D478043639D6CCCE5A4623900B961AC4F299
+	Page hash (SHA256): 8C0FFDABD2BAB44CB59BD50A2509F267CD744800457B9EE5E24AE0923A0DAF02
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Dr	Signer: "Kontron AG"
+	Signer: "Microsoft Windows Hardware Compatibility Publisher"
+iver is WHQL signed.
+		->Virtual memory access is preferred.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 66, ResourceId # 168
+	Kontron AG, DriverName "ktapi", DeviceName "ktapi"
+	Image size: 14728 bytes
+	File hash (SHA1): 8B5CF43FBA2C2226E6146EE065490DAD17ACC820
+	Authenticode hash (SHA1): DA72619DB2843AA91E5BA8B3467386E194F93C18
+	Page hash (SHA1): E7347EF98A98B39801C46001584CDE147DC1A142
+	Page hash (SHA256): BABFFB978EB6D993E1F6856844BB241B04F5666E7A5E6BCC91648CCC29901863
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Based on: MapMem from NTDDK 3.51
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+Provider # 67, ResourceId # 169
+	HP SW TOOLS DRIVER, DriverName "hpwks", DeviceName "HP_WKS_SWTOOLS_DRIVER"
+	Image size: 19128 bytes
+	File hash (SHA1): 528C24F0B3424598843937C10F97EE37DBB07109
+	Authenticode hash (SHA1): EAA3F5E371F710B9823E297EAFCBD95EE6254433
+	Page hash (SHA1): 3B449115B57DED92C0F0E54BE7B0C58A88D2D95A
+	Page hash (SHA256): 46415446468ABF48D1D9B9A7DFA5783486A2AF79AC24F23CECF4F60D97807A39
+	Shellcode support mask: 0x00000007
+	Provider capabilities: 
+		->Driver is WHQL signed.
+		->Physical memory access is preferred.
+		->Driver can be used with Superfetch for memory translation.
+	Minimum supported Windows build: 7601
+	Maximum Windows build undefined, no restrictions
+[+] Return value: 1. Bye-bye!

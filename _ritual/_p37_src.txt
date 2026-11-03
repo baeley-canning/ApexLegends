@@ -1,0 +1,4 @@
+L290: public static int Issued;
+L291: public static ulong LastIssuedPa;
+L317: LastIssuedPa = pa; Issued++;
+COMPILE OK

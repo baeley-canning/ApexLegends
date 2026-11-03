@@ -1,0 +1,34 @@
+== vmstat 03/11 21:06:32 ==
+--- vms ---
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+"VM-A" {a6bfab28-2ea3-4447-8f81-c86726a3df53}
+"VM-B" {9aeaf942-1838-4731-88d8-9c36820569bb}
+"VM-C" {dfb6892b-3da8-42f2-bd7a-208fad30b092}
+--- running ---
+
+Win11-Test2 : state=poweroff snapshots= Name: VRDP-ready (UUID: e099b86b-9b0e-48b3-87ab-55c0827ec144) | Description: Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x | Name: pre-baseline (UUID: 70f20efd-0fa8-4a19-9ded-2facde7a7842) | Name: baseline-clean (UUID: d39a314a-1df1-414e-816f-f64357dda9c4) | Description: P37 VM bring-up rollback point | Name: p37-ready (UUID: 567109ad-d161-4dc7-8e93-2c7627c46f0a) * | Description: gdrv3 installed+running, SYSTEM tick p37tick (60s) + p37logon, harness in C:\Users\Public\p37, HTTP payload 10.0.2.2:8080
+VM-A : state=poweroff snapshots=This machine does not have any snapshots
+VM-B : state=poweroff snapshots= Name: probed (UUID: baa85bb1-b113-411e-b82b-9cd5563b6b7b) * | Description: after probeA/E/F runs; predicate silent, 0x2019 err=1450, 0x2014 write err=203
+VM-C : state=poweroff snapshots=This machine does not have any snapshots
+--- server 8080 ---
+listen=0
+5524 C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+13944 "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File "C:\Users\New User\OneDrive\Desktop\cheating\_ritual\_plan_vmstat.ps1"
+15804 C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+18972 C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+--- guest log tail ---
+  |         WAIT_HINT          : 0x0
+$ sc.exe start apexdrv
+  exit=577
+  | [SC] StartService FAILED 577:
+  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+RESTORE-CHECK reload rc=577 STATE              : 1  STOPPED
+$ sc.exe stop apexdrv
+  exit=1062
+  | [SC] ControlService FAILED 1062:
+  | The service has not been started.
+=== VERDICT ===
+RESULT: PASS via prv 22 (DSE off -> loads, DSE back -> 577)
+--- host game/eac ---
+
+-- end --

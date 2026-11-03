@@ -1,0 +1,43 @@
+    000180002969  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    00018000296d  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002972  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002976  488bcb                   mov      rcx, rbx
+    000180002979  89742448                 mov      dword ptr [rsp + 0x48], esi
+site 0x180002A2D code=0xC3502019 owner=0x1800029B0 b'MapMem_Phys_To_Linear2'
+    0001800029e0  e8dbe7ffff               call     0x1800011c0
+    0001800029e5  488bd8                   mov      rbx, rax
+    0001800029e8  4883f8ff                 cmp      rax, -1
+    0001800029ec  744e                     je       0x180002a3c
+    0001800029ee  488b0f                   mov      rcx, qword ptr [rdi]
+    0001800029f1  488d842488000000         lea      rax, [rsp + 0x88]
+    0001800029f9  48894c2450               mov      qword ptr [rsp + 0x50], rcx
+    0001800029fe  4c8d442440               lea      r8, [rsp + 0x40]
+    000180002a03  33c9                     xor      ecx, ecx
+    000180002a05  48896c2440               mov      qword ptr [rsp + 0x40], rbp
+    000180002a0a  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002a0f  ba192050c3               mov      edx, 0xc3502019
+    000180002a14  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002a19  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    000180002a1d  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002a22  448d4918                 lea      r9d, [rcx + 0x18]
+    000180002a26  488bcb                   mov      rcx, rbx
+    000180002a29  89742448                 mov      dword ptr [rsp + 0x48], esi
+site 0x180002AD5 code=0xC3502008 owner=0x180002A60 b'UnMapMem'
+    000180002a87  ba01000000               mov      edx, 1
+    000180002a8c  ff1506d60100             call     qword ptr [rip + 0x1d606]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+    000180002a92  48895c2448               mov      qword ptr [rsp + 0x48], rbx
+    000180002a97  48897c2450               mov      qword ptr [rsp + 0x50], rdi
+    000180002a9c  e81fe7ffff               call     0x1800011c0
+    000180002aa1  488bd8                   mov      rbx, rax
+    000180002aa4  4883f8ff                 cmp      rax, -1
+    000180002aa8  743a                     je       0x180002ae4
+    000180002aaa  33c9                     xor      ecx, ecx
+    000180002aac  488d442440               lea      rax, [rsp + 0x40]
+    000180002ab1  48894c2438               mov      qword ptr [rsp + 0x38], rcx
+    000180002ab6  4c8d442448               lea      r8, [rsp + 0x48]
+    000180002abb  4889442430               mov      qword ptr [rsp + 0x30], rax
+    000180002ac0  ba082050c3               mov      edx, 0xc3502008
+    000180002ac5  894c2428                 mov      dword ptr [rsp + 0x28], ecx
+    000180002ac9  48894c2420               mov      qword ptr [rsp + 0x20], rcx
+    000180002ace  448d4910                 lea      r9d, [rcx + 0x10]
+    000180002ad2  488bcb                   mov      rcx, rbx

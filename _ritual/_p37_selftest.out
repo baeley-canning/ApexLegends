@@ -1,0 +1,24 @@
+﻿compiled OK
+bulk span 0x1000/1M cross-end (want False) = False
+probe 0x1000/32 in-range (want True) = True
+bulk 0x200000/64K in blacklist (want False) = False
+probe 0x200000/64K bypass (want True) = True
+bulk 0x400000/64K clean (want True) = True
+bulk 0x3ff000/64K straddles bad end (want False) = False
+InRam 0x1000 blacklisted (want False) = False
+--- notify records (expect 2: 0x400000 then 0x600000, same block deduped):
+  [io] read pa=0x400000 size=0x40
+  [io] read pa=0x600000 size=0x40
+
+inverted pair kept (want 1)        = 1
+start as written 0x127c00000       = 127c00000
+end rebuilt to 0x140000000         = 140000000
+repaired count (want 1)            = 1
+IsBad 0x128000000/64K (want True)  = True
+IsBad last page 0x13ffff000/4K (want True) = True
+IsBad at end 0x140000000/4K (want False) = False
+bytes of repaired span (want 406847488) = 406847488
+rejected (junk + degenerate; want 2) = 2
+sorted first start 0x500000        = 500000
+sorted second start 0x800000       = 800000
+bytes 0x500000-0x900000 2x1M (want 2097152) = 2097152

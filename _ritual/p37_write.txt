@@ -1,0 +1,82 @@
+﻿=== p37 RAM-WRITE PROVER + g_CiOptions 02/11/2026 16:10:57 ===
+  admin=True  pid=9512  host=DESKTOP-PPHFJBQ
+  ... env: registry baseline
+  os=Windows 10 Pro build=26200.9711  cpu=Intel(R) Core(TM) i5-14400
+  ... env: SecureBoot / testsigning / HVCI
+  SecureBoot=0  bcdedit=[testsigning             No]  DeviceGuard VBS=0 HVCI=0
+  ... env: driver services (sc.exe)
+  svc gdrv3                STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc MsIo                 STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc apexdrv              STATE 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc eaanticheat          STATE 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc EAAntiCheatService   STATE 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  ... env: done
+  [cs] p37_prov.cs compiled
+  BADPA: previous run died, blacklisting a window around it: 127000000-129200000
+  BADPA: 24 range(s) offered (p36 seed + p37 learned)
+  BADPA: 24 range(s) active, 1060 MB blacklisted
+  ramTop=0x7f1af1000 (31.8 GB)
+  ramRanges = 1000-9e000,9f000-a0000,100000-31f52000,35fff000-36000000,100000000-8bfc00000
+  G0 \\.\GIOV3 open handle=0xadc
+  cpu affinity = CPU0
+  G0 read phys 0x1000 = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  G0 read phys 0x100000 = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  stage va=0x16000000 locked=True lastErr=0 issued=2 h1450=0
+  src page 0x10000000 (pattern carrier + CR3 tag validator)
+
+########## S1 whole-RAM PML4 self-map scan (read-only) ##########
+  ladder  0x100000 OK on every probe PA
+  ladder: measured best 0x100000, clamped to the proven 0x10000
+  chunk = 0x10000
+  candidates=0 rejected_foreign=0
+  S1 scanned=0x6e1644000 candidates= cr3=0x0 in 11.7s
+  S1 no CR3  FAIL
+
+########## S2 MSR reads via 0xC3502580 ##########
+  LSTAR=0x0  GSBASE=0x0
+  MSR write-back LSTAR: ok=False err=65535 info= (written value = value just read)
+
+########## S3 ntoskrnl locate ##########
+  S3 no ntoskrnl  FAIL
+
+########## S4 nt!g_CiOptions (C7 05 self-consistent sites) ##########
+  S4 skipped (no ntoskrnl)
+
+########## H handle rotation + canary before any write ##########
+  H reopen: ok handle=0xadc
+  H canary phys 0x1000: live  stage=0x16000000  issued_so_far=450924
+
+########## S5 0x2014 role matrix (5 perms, exact 0x18, out=NULL) ##########
+  src 0x10000000 (pattern)  ctl 0x12000000 alias 0x12000000 (target)  kva dst 0x14000000
+  coincidence mode: targetPa = 0x12000000 (low RAM, assumed free)
+  perm 0: FAIL err=1450 info=0 back=<read-fail/1450>
+  perm 1: FAIL err=1450 info=0 back=<read-fail/1450>
+  perm 2: FAIL err=1450 info=0 back=<read-fail/1450>
+  perm 3: FAIL err=1450 info=0 back=<read-fail/1450>
+  perm 4: FAIL err=1450 info=0 back=<read-fail/1450>
+  no permutation wrote  FAIL
+
+########## S6 0xC3502019 exact contract (result slots + dst captured) ##########
+  mapK pa=0x12000000 ok=False err=1450 info=0 q0after=0x12000000 q3after=0x14000000
+  dst buffer = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  S6 kernel mapping = 0x12000000  PASS
+
+########## S7 0x2800 alloc / 0x2808 copy / 0x2804 free ##########
+  2800 alloc 0x1000: ok=False err=1 info=0 va=0x0 pa=0x0
+  S7 alloc FAIL / no kernel VA returned
+
+  io: issued=450945 skipped_not_ram=0 lastPa=0x1000
+########## VERDICT ##########
+  S1 cr3            : FAIL
+  S2 msr read       : FAIL
+  S3 ntoskrnl       : FAIL
+  S4 g_CiOptions    : FAIL
+  S5/S7 RAM write   : FAIL
+  S6 mapK kva       : PASS
+  S7 kernel alloc   : FAIL
+  winning contract  : none
+  *** NO RAM WRITE ***
+      => 2014 stays read-only; next leads: 0x2808 without 0x2800 handshake done (S7),
+         then 0x2440 SMI or apexr.sys loader.
+  STATE.md appended: C:\Users\New User\OneDrive\Desktop\cheating\STATE.md
+-- p37 END 02/11/2026 16:11:09 --

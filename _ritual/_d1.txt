@@ -1,0 +1,41 @@
+0000b1d0  48895c2408               mov qword ptr [rsp + 8], rbx
+0000b1d5  57                       push rdi
+0000b1d6  4883ec30                 sub rsp, 0x30
+0000b1da  488364245800             and qword ptr [rsp + 0x58], 0
+0000b1e0  498bc1                   mov rax, r9
+0000b1e3  4d8bd0                   mov r10, r8
+0000b1e6  488bfa                   mov rdi, rdx
+0000b1e9  4d85c9                   test r9, r9
+0000b1ec  753f                     jne 0xb22d
+0000b1ee  488b0d33beffff           mov rcx, qword ptr [rip - 0x41cd]
+0000b1f5  488d052cbeffff           lea rax, [rip - 0x41d4]
+0000b1fc  483bc8                   cmp rcx, rax
+0000b1ff  7421                     je 0xb222
+0000b201  8b412c                   mov eax, dword ptr [rcx + 0x2c]
+0000b204  a808                     test al, 8
+0000b206  741a                     je 0xb222
+0000b208  80792902                 cmp byte ptr [rcx + 0x29], 2
+0000b20c  7214                     jb 0xb222
+0000b20e  488b4918                 mov rcx, qword ptr [rcx + 0x18]
+0000b212  418d510a                 lea edx, [r9 + 0xa]
+0000b216  4c8d0573afffff           lea r8, [rip - 0x508d]
+0000b21d  e8e678ffff               call 0x2b08
+0000b222  41b80d0000c0             mov r8d, 0xc000000d
+0000b228  e9b6000000               jmp 0xb2e3
+0000b22d  448b4c2460               mov r9d, dword ptr [rsp + 0x60]
+0000b232  4181f9002050c3           cmp r9d, 0xc3502000
+0000b239  0f847b010000             je 0xb3ba
+0000b23f  4181f9042050c3           cmp r9d, 0xc3502004
+0000b246  0f8457010000             je 0xb3a3
+0000b24c  4181f9082050c3           cmp r9d, 0xc3502008
+0000b253  0f8433010000             je 0xb38c
+0000b259  4181f9142050c3           cmp r9d, 0xc3502014
+0000b260  0f8411010000             je 0xb377
+0000b266  4181f9192050c3           cmp r9d, 0xc3502019
+0000b26d  0f84ef000000             je 0xb362
+0000b273  4181f9002450c3           cmp r9d, 0xc3502400
+0000b27a  0f84cd000000             je 0xb34d
+0000b280  4181f9402450c3           cmp r9d, 0xc3502440
+0000b287  0f84a8000000             je 0xb335
+0000b28d  4181f9802550c3           cmp r9d, 0xc3502580
+0000b294  0f8483000000             je 0xb31d

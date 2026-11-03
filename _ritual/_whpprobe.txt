@@ -1,0 +1,11 @@
+=== run 2026-11-02T00:16:06.1907212+13:00 ===
+admin=False
+user=DESKTOP-PPHFJBQ\New User
+compile=ok
+cap.hvPresent hr=0x00000000 present=1
+  bare create hr=0x00000000 handle=2159494854128
+  bare setup hr=0x80370304
+  withCount create hr=0x00000000 handle=2159494854128
+  withCount setCount hr=0x80370302
+  withCount setup hr=0x80370304
+=== end ===

@@ -1,0 +1,41 @@
+n=930
+  000180001af0  48895c2420               mov      qword ptr [rsp + 0x20], rbx
+  000180001af5  57                       push     rdi
+  000180001af6  4883ec60                 sub      rsp, 0x60
+  000180001afa  488b0507a50200           mov      rax, qword ptr [rip + 0x2a507]   ; .data+0x8
+  000180001b01  4833c4                   xor      rax, rsp
+  000180001b04  4889442458               mov      qword ptr [rsp + 0x58], rax
+  000180001b09  8bfa                     mov      edi, edx
+  000180001b0b  488bd9                   mov      rbx, rcx
+  000180001b0e  ff158ce50100             call     qword ptr [rip + 0x1e58c]   ; KERNEL32.dll!GetCurrentThread .rdata+0xa0
+  000180001b14  488bc8                   mov      rcx, rax
+  000180001b17  ba01000000               mov      edx, 1
+  000180001b1c  ff1576e50100             call     qword ptr [rip + 0x1e576]   ; KERNEL32.dll!SetThreadAffinityMask .rdata+0x98
+  000180001b22  48895c2448               mov      qword ptr [rsp + 0x48], rbx
+  000180001b27  48897c2450               mov      qword ptr [rsp + 0x50], rdi
+  000180001b2c  e88ff6ffff               call     0x1800011c0
+  000180001b31  488bf8                   mov      rdi, rax
+  000180001b34  4883f8ff                 cmp      rax, -1
+  000180001b38  7504                     jne      0x180001b3e
+  000180001b3a  33c0                     xor      eax, eax
+  000180001b3c  eb60                     jmp      0x180001b9e
+  000180001b3e  488d442440               lea      rax, [rsp + 0x40]
+  000180001b43  4889b42480000000         mov      qword ptr [rsp + 0x80], rsi
+  000180001b4b  33f6                     xor      esi, esi
+  000180001b4d  4c8d442448               lea      r8, [rsp + 0x48]
+  000180001b52  4889742438               mov      qword ptr [rsp + 0x38], rsi
+  000180001b57  ba042050c3               mov      edx, 0xc3502004
+  000180001b5c  4889442430               mov      qword ptr [rsp + 0x30], rax
+  000180001b61  488bcf                   mov      rcx, rdi
+  000180001b64  488d442448               lea      rax, [rsp + 0x48]
+  000180001b69  c744242810000000         mov      dword ptr [rsp + 0x28], 0x10
+  000180001b71  448d4e10                 lea      r9d, [rsi + 0x10]
+  000180001b75  4889442420               mov      qword ptr [rsp + 0x20], rax
+  000180001b7a  ff1528e50100             call     qword ptr [rip + 0x1e528]   ; KERNEL32.dll!DeviceIoControl .rdata+0xa8
+  000180001b80  488bcf                   mov      rcx, rdi
+  000180001b83  8bd8                     mov      ebx, eax
+  000180001b85  ff1525e50100             call     qword ptr [rip + 0x1e525]   ; KERNEL32.dll!CloseHandle .rdata+0xb0
+  000180001b8b  488b442448               mov      rax, qword ptr [rsp + 0x48]
+  000180001b90  85db                     test     ebx, ebx
+  000180001b92  480f44c6                 cmove    rax, rsi
+  000180001b96  488bb42480000000         mov      rsi, qword ptr [rsp + 0x80]

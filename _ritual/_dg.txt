@@ -1,0 +1,8 @@
+len=4469
+; gdrv3.sys .text rva 0x1000..0x5200
+00001000  50                       push rax
+00001001  53                       push rbx
+00001002  51                       push rcx
+00001003  52                       push rdx
+00001004  488b0d15700000           mov rcx, qword ptr [rip + 0x7015]
+

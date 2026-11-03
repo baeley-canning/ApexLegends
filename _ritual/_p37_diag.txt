@@ -1,0 +1,9 @@
+diag start 12:14:40
+cs loaded
+  pre-log check pa=0x20000 ra=[] reg=0x20000
+  try3 FAIL err=6 pa=0x20000  view=0x0 h=0x0 obj=0x0
+  pre-log check pa=0x100000 ra=[] reg=0x100000
+  try3 FAIL err=6 pa=0x100000  view=0x0 h=0x0 obj=0x0
+  pre-log check pa=0x200000 ra=[] reg=0x200000
+  try3 FAIL err=6 pa=0x200000  view=0x0 h=0x0 obj=0x0
+loop done

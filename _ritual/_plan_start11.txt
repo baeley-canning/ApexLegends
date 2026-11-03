@@ -1,0 +1,12 @@
+== start11 03/11 21:11:51 ==
+state before: 
+--- revert to pre-k10 ---
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Restoring snapshot 'pre-k10' (04b45028-a6a2-4988-94d6-69d1828a8f24)
+state after revert: 
+snapshots:  Name: pre-k10 (UUID: 04b45028-a6a2-4988-94d6-69d1828a8f24) * Description: before the k10 boot-value soak
+--- payload swap ---
+cur.ps1 sha=641E42DFD9BF4752 len=10716 active=k11
+listen8080=1
+--- boot ---

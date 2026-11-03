@@ -1,0 +1,2060 @@
+sec .text    va=0x1000   vs=0x41ac   raw=0x400    rs=0x4200
+sec .rdata   va=0x6000   vs=0xa7c    raw=0x4600   rs=0xc00
+sec .data    va=0x7000   vs=0x1084   raw=0x5200   rs=0x200
+sec .pdata   va=0x9000   vs=0x2f4    raw=0x5400   rs=0x400
+sec PAGE     va=0xa000   vs=0x16b8   raw=0x5800   rs=0x1800
+sec INIT     va=0xc000   vs=0x582    raw=0x7000   rs=0x600
+sec .rsrc    va=0xd000   vs=0x368    raw=0x7600   rs=0x400
+sec .reloc   va=0xe000   vs=0x2c     raw=0x7a00   rs=0x200
+import dir rva=0xc224 sz=0x3c
+IAT entries: 26
+instructions: 4874
+=== import call sites ===
+!WDFLDR                                       0x4a80 0x4a90 0x4aa0 0x4ab0
+!ntoskrnl                                     0x157e 0x1742 0x1869 0x18fa 0x1c1e 0x1c51 0x1c8b 0x1dbf 0x1e3b 0x1ee8 0x1f58 0x1fc2 0x202c 0x2096 0x2176 0x2257 0x2310 0x24f6 0x25d1 0x2736 0x27a2 0x280e 0x2878 0x28e2 0x294c 0x29b6 0x2a20 0x2a8a
+KeBugCheckEx!ntoskrnl                         0x4a60
+MmMapIoSpace!ntoskrnl                         0x1cd6 0x1d1b 0x2de9 0x2f45 0x30d4 0x3185 0x3742
+MmUnmapIoSpace!ntoskrnl                       0x1d0c 0x1d49 0x1db1 0x2eec 0x2fc2 0x2ff9 0x3059 0x30e3 0x3229 0x3264 0x3320 0x37ea
+RtlCompareMemory!ntoskrnl                     0x1cf1 0x1d32
+RtlCopyUnicodeString!ntoskrnl                 0x117c
+RtlInitUnicodeString!ntoskrnl                 0x1617 0x19a5
+RtlUnicodeToMultiByteN!ntoskrnl               0x4a6d
+ZwClose!ntoskrnl                              0x1b00
+ZwCreateFile!ntoskrnl                         0x1a0b
+ZwWriteFile!ntoskrnl                          0x1a79 0x1aed
+=== COPY LOOP around fault RIP 0x4b4a [0x4a80..0x4c40] ===
+00004a80  jmp      qword ptr [rip + 0x1582]                        ; !WDFLDR
+00004a86  int3                                                   
+00004a87  int3                                                   
+00004a88  int3                                                   
+00004a89  int3                                                   
+00004a8a  int3                                                   
+00004a8b  int3                                                   
+00004a8c  int3                                                   
+00004a8d  int3                                                   
+00004a8e  int3                                                   
+00004a8f  int3                                                   
+00004a90  jmp      qword ptr [rip + 0x156a]                        ; !WDFLDR
+00004a96  int3                                                   
+00004a97  int3                                                   
+00004a98  int3                                                   
+00004a99  int3                                                   
+00004a9a  int3                                                   
+00004a9b  int3                                                   
+00004a9c  int3                                                   
+00004a9d  int3                                                   
+00004a9e  int3                                                   
+00004a9f  int3                                                   
+00004aa0  jmp      qword ptr [rip + 0x1572]                        ; !WDFLDR
+00004aa6  int3                                                   
+00004aa7  int3                                                   
+00004aa8  int3                                                   
+00004aa9  int3                                                   
+00004aaa  int3                                                   
+00004aab  int3                                                   
+00004aac  int3                                                   
+00004aad  int3                                                   
+00004aae  int3                                                   
+00004aaf  int3                                                   
+00004ab0  jmp      qword ptr [rip + 0x155a]                        ; !WDFLDR
+00004ab6  int3                                                   
+00004ab7  int3                                                   
+00004ab8  int3                                                   
+00004ab9  int3                                                   
+00004aba  int3                                                   
+00004abb  int3                                                   
+00004abc  int3                                                   
+00004abd  int3                                                   
+00004abe  int3                                                   
+00004abf  int3                                                   
+00004ac0  int3                                                   
+00004ac1  int3                                                   
+00004ac2  int3                                                   
+00004ac3  int3                                                   
+00004ac4  int3                                                   
+00004ac5  int3                                                   
+00004ac6  nop      word ptr [rax + rax]                          
+00004ad0  jmp      rax                                           
+00004ad2  int3                                                   
+00004ad3  int3                                                   
+00004ad4  int3                                                   
+00004ad5  int3                                                   
+00004ad6  int3                                                   
+00004ad7  int3                                                   
+00004ad8  int3                                                   
+00004ad9  int3                                                   
+00004ada  int3                                                   
+00004adb  int3                                                   
+00004adc  int3                                                   
+00004add  int3                                                   
+00004ade  int3                                                   
+00004adf  int3                                                   
+00004ae0  int3                                                   
+00004ae1  int3                                                   
+00004ae2  int3                                                   
+00004ae3  int3                                                   
+00004ae4  int3                                                   
+00004ae5  int3                                                   
+00004ae6  int3                                                   
+00004ae7  int3                                                   
+00004ae8  int3                                                   
+00004ae9  int3                                                   
+00004aea  int3                                                   
+00004aeb  int3                                                   
+00004aec  int3                                                   
+00004aed  int3                                                   
+00004aee  int3                                                   
+00004aef  int3                                                   
+00004af0  int3                                                   
+00004af1  int3                                                   
+00004af2  int3                                                   
+00004af3  int3                                                   
+00004af4  int3                                                   
+00004af5  int3                                                   
+00004af6  int3                                                   
+00004af7  int3                                                   
+00004af8  int3                                                   
+00004af9  int3                                                   
+00004afa  int3                                                   
+00004afb  int3                                                   
+00004afc  int3                                                   
+00004afd  int3                                                   
+00004afe  int3                                                   
+00004aff  int3                                                   
+00004b00  mov      rax, rcx                                      
+00004b03  cmp      r8, 8                                         
+00004b07  jb       0x4b40                                        
+00004b09  cmp      r8, 0x10                                      
+00004b0d  ja       0x4b20                                        
+00004b0f  mov      r11, qword ptr [rdx]                          
+00004b12  mov      rdx, qword ptr [rdx + r8 - 8]                 
+00004b17  mov      qword ptr [rcx], r11                          
+00004b1a  mov      qword ptr [rcx + r8 - 8], rdx                 
+00004b1f  ret                                                    
+00004b20  cmp      r8, 0x20                                      
+00004b24  ja       0x4b80                                        
+00004b26  movups   xmm0, xmmword ptr [rdx]                       
+00004b29  movups   xmm1, xmmword ptr [rdx + r8 - 0x10]           
+00004b2f  movups   xmmword ptr [rcx], xmm0                       
+00004b32  movups   xmmword ptr [rcx + r8 - 0x10], xmm1           
+00004b38  ret                                                    
+00004b39  nop      dword ptr [rax]                               
+00004b40  test     r8, r8                                        
+00004b43  je       0x4b5a                                        
+00004b45  sub      rdx, rcx                                      
+00004b48  jb       0x4b60                                        
+00004b4a  mov      r11b, byte ptr [rcx + rdx]                    
+00004b4e  inc      rcx                                           
+00004b51  dec      r8                                            
+00004b54  mov      byte ptr [rcx - 1], r11b                      
+00004b58  jne      0x4b4a                                        
+00004b5a  ret                                                    
+00004b5b  nop      dword ptr [rax + rax]                         
+00004b60  add      rcx, r8                                       
+00004b63  mov      r11b, byte ptr [rcx + rdx - 1]                
+00004b68  dec      rcx                                           
+00004b6b  dec      r8                                            
+00004b6e  mov      byte ptr [rcx], r11b                          
+00004b71  jne      0x4b63                                        
+00004b73  ret                                                    
+00004b74  nop      word ptr [rax + rax]                          
+00004b80  lea      r11, [rdx + r8]                               
+00004b84  sub      rdx, rcx                                      
+00004b87  jae      0x4b92                                        
+00004b89  cmp      r11, rcx                                      
+00004b8c  ja       0x4d00                                        
+00004b92  movups   xmm0, xmmword ptr [rcx + rdx]                 
+00004b96  add      rcx, 0x10                                     
+00004b9a  test     cl, 0xf                                       
+00004b9d  je       0x4bb1                                        
+00004b9f  and      rcx, 0xfffffffffffffff0                       
+00004ba3  movups   xmm1, xmmword ptr [rcx + rdx]                 
+00004ba7  movups   xmmword ptr [rax], xmm0                       
+00004baa  movaps   xmm0, xmm1                                    
+00004bad  add      rcx, 0x10                                     
+00004bb1  add      r8, rax                                       
+00004bb4  sub      r8, rcx                                       
+00004bb7  mov      r9, r8                                        
+00004bba  shr      r9, 6                                         
+00004bbe  je       0x4c2f                                        
+00004bc0  cmp      r9, 0x1000                                    
+00004bc7  ja       0x4c80                                        
+00004bcd  and      r8, 0x3f                                      
+00004bd1  jmp      0x4c00                                        
+00004bd3  nop      word ptr [rax + rax]                          
+00004be2  nop      word ptr [rax + rax]                          
+00004bf1  nop      word ptr [rax + rax]                          
+00004c00  movups   xmm1, xmmword ptr [rcx + rdx]                 
+00004c04  movups   xmm2, xmmword ptr [rcx + rdx + 0x10]          
+00004c09  movups   xmm3, xmmword ptr [rcx + rdx + 0x20]          
+00004c0e  movups   xmm4, xmmword ptr [rcx + rdx + 0x30]          
+00004c13  movaps   xmmword ptr [rcx - 0x10], xmm0                
+00004c17  add      rcx, 0x40                                     
+00004c1b  dec      r9                                            
+00004c1e  movaps   xmmword ptr [rcx - 0x40], xmm1                
+00004c22  movaps   xmmword ptr [rcx - 0x30], xmm2                
+00004c26  movaps   xmmword ptr [rcx - 0x20], xmm3                
+00004c2a  movaps   xmm0, xmm4                                    
+00004c2d  jne      0x4c00                                        
+00004c2f  mov      r9, r8                                        
+00004c32  shr      r9, 4                                         
+00004c36  je       0x4c51                                        
+00004c38  nop      dword ptr [rax + rax]                         
+00004c40  movaps   xmmword ptr [rcx - 0x10], xmm0                
+=== IOCTL DISPATCH (caller 0x37df) [0x3600..0x3a80] ===
+00003600  pop      rdi                                           
+00003601  ret                                                    
+00003602  int3                                                   
+00003603  int3                                                   
+00003604  mov      r11, rsp                                      
+00003607  mov      qword ptr [r11 + 8], rbx                      
+0000360b  mov      qword ptr [r11 + 0x10], rsi                   
+0000360f  mov      qword ptr [r11 + 0x18], rdi                   
+00003613  push     r14                                           
+00003615  sub      rsp, 0x40                                     
+00003619  mov      rax, qword ptr [rip + 0x4378]                 
+00003620  mov      r14, r9                                       
+00003623  and      qword ptr [r11 - 0x28], 0                     
+00003628  lea      r9, [r11 - 0x18]                              
+0000362c  mov      rsi, r8                                       
+0000362f  mov      rdx, rcx                                      
+00003632  mov      rcx, qword ptr [rip + 0x477f]                 
+00003639  mov      r8d, 0x18                                     
+0000363f  call     qword ptr [rip + 0x2aa3]                      
+00003645  mov      edi, eax                                      
+00003647  test     eax, eax                                      
+00003649  jns      0x3696                                        
+0000364b  mov      rcx, qword ptr [rip + 0x39d6]                 
+00003652  lea      rbx, [rip + 0x39cf]                           
+00003659  cmp      rcx, rbx                                      
+0000365c  je       0x382e                                        
+00003662  mov      edx, dword ptr [rcx + 0x2c]                   
+00003665  test     dl, 8                                         
+00003668  je       0x382e                                        
+0000366e  cmp      byte ptr [rcx + 0x29], 2                      
+00003672  jb       0x382e                                        
+00003678  mov      rcx, qword ptr [rcx + 0x18]                   
+0000367c  lea      r8, [rip + 0x2b0d]                            
+00003683  mov      edx, 0x14                                     
+00003688  lea      r9d, [rdx + 4]                                
+0000368c  call     0x2b30                                        
+00003691  jmp      0x382e                                        
+00003696  cmp      rsi, 0x18                                     
+0000369a  jae      0x36e6                                        
+0000369c  mov      rcx, qword ptr [rip + 0x3985]                 
+000036a3  lea      rbx, [rip + 0x397e]                           
+000036aa  cmp      rcx, rbx                                      
+000036ad  je       0x36dc                                        
+000036af  mov      eax, dword ptr [rcx + 0x2c]                   
+000036b2  test     al, 8                                         
+000036b4  je       0x36dc                                        
+000036b6  cmp      byte ptr [rcx + 0x29], 2                      
+000036ba  jb       0x36dc                                        
+000036bc  mov      rcx, qword ptr [rcx + 0x18]                   
+000036c0  lea      r8, [rip + 0x2ac9]                            
+000036c7  mov      edx, 0x15                                     
+000036cc  mov      dword ptr [rsp + 0x20], 0x18                  
+000036d4  mov      r9d, esi                                      
+000036d7  call     0x2b6c                                        
+000036dc  mov      edi, 0xc000009a                               
+000036e1  jmp      0x382e                                        
+000036e6  mov      rcx, qword ptr [rip + 0x393b]                 
+000036ed  lea      rbx, [rip + 0x3934]                           
+000036f4  cmp      rcx, rbx                                      
+000036f7  je       0x3734                                        
+000036f9  mov      eax, dword ptr [rcx + 0x2c]                   
+000036fc  test     al, 8                                         
+000036fe  je       0x3734                                        
+00003700  cmp      byte ptr [rcx + 0x29], 4                      
+00003704  jb       0x3734                                        
+00003706  mov      r9, qword ptr [rsp + 0x30]                    
+0000370b  lea      r8, [rip + 0x2a7e]                            
+00003712  mov      rcx, qword ptr [rcx + 0x18]                   
+00003716  mov      edx, 0x16                                     
+0000371b  mov      rax, qword ptr [r9 + 0x10]                    
+0000371f  mov      qword ptr [rsp + 0x28], rax                   
+00003724  mov      eax, dword ptr [r9 + 8]                       
+00003728  mov      r9, qword ptr [r9]                            
+0000372b  mov      dword ptr [rsp + 0x20], eax                   
+0000372f  call     0x3c6c                                        
+00003734  mov      rcx, qword ptr [rsp + 0x30]                   
+00003739  xor      r8d, r8d                                      
+0000373c  mov      edx, dword ptr [rcx + 8]                      
+0000373f  mov      rcx, qword ptr [rcx]                          
+00003742  call     qword ptr [rip + 0x28e8]                        ; MmMapIoSpace!ntoskrnl
+00003748  mov      rsi, rax                                      
+0000374b  test     rax, rax                                      
+0000374e  jne      0x3789                                        
+00003750  mov      rcx, qword ptr [rip + 0x38d1]                 
+00003757  cmp      rcx, rbx                                      
+0000375a  je       0x36dc                                        
+0000375c  mov      eax, dword ptr [rcx + 0x2c]                   
+0000375f  test     al, 8                                         
+00003761  je       0x36dc                                        
+00003767  cmp      byte ptr [rcx + 0x29], 2                      
+0000376b  jb       0x36dc                                        
+00003771  mov      rcx, qword ptr [rcx + 0x18]                   
+00003775  lea      edx, [rsi + 0x17]                             
+00003778  lea      r8, [rip + 0x2a11]                            
+0000377f  call     0x2b08                                        
+00003784  jmp      0x36dc                                        
+00003789  mov      rcx, qword ptr [rip + 0x3898]                 
+00003790  cmp      rcx, rbx                                      
+00003793  je       0x37ca                                        
+00003795  mov      eax, dword ptr [rcx + 0x2c]                   
+00003798  test     al, 8                                         
+0000379a  je       0x37ca                                        
+0000379c  cmp      byte ptr [rcx + 0x29], 4                      
+000037a0  jb       0x37ca                                        
+000037a2  mov      rax, qword ptr [rsp + 0x30]                   
+000037a7  mov      edx, 0x18                                     
+000037ac  mov      r9d, dword ptr [rsi]                          
+000037af  mov      rcx, qword ptr [rcx + 0x18]                   
+000037b3  mov      r8, qword ptr [rax + 0x10]                    
+000037b7  mov      eax, dword ptr [r8]                           
+000037ba  lea      r8, [rip + 0x29cf]                            
+000037c1  mov      dword ptr [rsp + 0x20], eax                   
+000037c5  call     0x2b6c                                        
+000037ca  mov      rcx, qword ptr [rsp + 0x30]                   
+000037cf  mov      rdx, rsi                                      
+000037d2  mov      r8d, dword ptr [rcx + 8]                      
+000037d6  mov      rcx, qword ptr [rcx + 0x10]                   
+000037da  call     0x4b00                                        
+000037df  mov      rax, qword ptr [rsp + 0x30]                   
+000037e4  mov      rcx, rsi                                      
+000037e7  mov      edx, dword ptr [rax + 8]                      
+000037ea  call     qword ptr [rip + 0x2848]                        ; MmUnmapIoSpace!ntoskrnl
+000037f0  mov      rcx, qword ptr [rip + 0x3831]                 
+000037f7  cmp      rcx, rbx                                      
+000037fa  je       0x382a                                        
+000037fc  mov      eax, dword ptr [rcx + 0x2c]                   
+000037ff  test     al, 8                                         
+00003801  je       0x382a                                        
+00003803  cmp      byte ptr [rcx + 0x29], 4                      
+00003807  jb       0x382a                                        
+00003809  mov      rax, qword ptr [rsp + 0x30]                   
+0000380e  mov      edx, 0x19                                     
+00003813  mov      rcx, qword ptr [rcx + 0x18]                   
+00003817  mov      r8, qword ptr [rax + 0x10]                    
+0000381b  mov      r9d, dword ptr [r8]                           
+0000381e  lea      r8, [rip + 0x296b]                            
+00003825  call     0x2b30                                        
+0000382a  and      qword ptr [r14], 0                            
+0000382e  mov      rbx, qword ptr [rsp + 0x50]                   
+00003833  mov      eax, edi                                      
+00003835  mov      rdi, qword ptr [rsp + 0x60]                   
+0000383a  mov      rsi, qword ptr [rsp + 0x58]                   
+0000383f  add      rsp, 0x40                                     
+00003843  pop      r14                                           
+00003845  ret                                                    
+00003846  int3                                                   
+00003847  int3                                                   
+00003848  mov      r11, rsp                                      
+0000384b  mov      qword ptr [r11 + 8], rbx                      
+0000384f  mov      qword ptr [r11 + 0x10], rbp                   
+00003853  mov      qword ptr [r11 + 0x18], rsi                   
+00003857  push     rdi                                           
+00003858  push     r12                                           
+0000385a  push     r14                                           
+0000385c  sub      rsp, 0x40                                     
+00003860  mov      rax, qword ptr [rip + 0x4131]                 
+00003867  mov      rbx, rdx                                      
+0000386a  and      qword ptr [r11 - 0x38], 0                     
+0000386f  mov      rdx, rcx                                      
+00003872  mov      r14, r9                                       
+00003875  mov      rsi, r8                                       
+00003878  mov      rbp, rcx                                      
+0000387b  lea      r9, [r11 - 0x28]                              
+0000387f  mov      rcx, qword ptr [rip + 0x4532]                 
+00003886  mov      r12d, 0x20                                    
+0000388c  mov      r8d, r12d                                     
+0000388f  call     qword ptr [rip + 0x2853]                      
+00003895  mov      edi, eax                                      
+00003897  test     eax, eax                                      
+00003899  jns      0x38e2                                        
+0000389b  mov      rax, qword ptr [rip + 0x3786]                 
+000038a2  lea      rcx, [rip + 0x377f]                           
+000038a9  cmp      rax, rcx                                      
+000038ac  je       0x3a83                                        
+000038b2  mov      edx, dword ptr [rax + 0x2c]                   
+000038b5  test     dl, 8                                         
+000038b8  je       0x3a83                                        
+000038be  cmp      byte ptr [rax + 0x29], 2                      
+000038c2  jb       0x3a83                                        
+000038c8  mov      rcx, qword ptr [rax + 0x18]                   
+000038cc  lea      edx, [r12 - 6]                                
+000038d1  lea      r8, [rip + 0x28b8]                            
+000038d8  call     0x2b08                                        
+000038dd  jmp      0x3a83                                        
+000038e2  lfence                                                 
+000038e5  mov      rax, qword ptr [rip + 0x40b4]                 
+000038ec  lea      r9, [rsp + 0x38]                              
+000038f1  mov      rcx, qword ptr [rip + 0x44c0]                 
+000038f8  mov      r8, r12                                       
+000038fb  and      qword ptr [rsp + 0x20], 0                     
+00003901  mov      rdx, rbp                                      
+00003904  call     qword ptr [rip + 0x27de]                      
+0000390a  mov      edi, eax                                      
+0000390c  test     eax, eax                                      
+0000390e  jns      0x3949                                        
+00003910  mov      r9, qword ptr [rip + 0x3711]                  
+00003917  lea      rcx, [rip + 0x370a]                           
+0000391e  cmp      r9, rcx                                       
+00003921  je       0x3a83                                        
+00003927  mov      eax, dword ptr [r9 + 0x2c]                    
+0000392b  test     al, 8                                         
+0000392d  je       0x3a83                                        
+00003933  cmp      byte ptr [r9 + 0x29], 2                       
+00003938  jb       0x3a83                                        
+0000393e  mov      rcx, qword ptr [r9 + 0x18]                    
+00003942  mov      edx, 0x1b                                     
+00003947  jmp      0x38d1                                        
+00003949  cmp      rsi, r12                                      
+0000394c  jne      0x3a47                                        
+00003952  cmp      rbx, r12                                      
+00003955  jne      0x3a47                                        
+0000395b  mov      rbx, qword ptr [rsp + 0x30]                   
+00003960  mov      r10, qword ptr [rip + 0x36c1]                 
+00003967  lea      rcx, [rip + 0x36ba]                           
+0000396e  cmp      r10, rcx                                      
+00003971  je       0x39a1                                        
+00003973  mov      eax, dword ptr [r10 + 0x2c]                   
+00003977  test     al, 8                                         
+00003979  je       0x39a1                                        
+0000397b  cmp      byte ptr [r10 + 0x29], 4                      
+00003980  jb       0x39a1                                        
+00003982  mov      eax, dword ptr [rbx + 8]                      
+00003985  lea      r8, [rip + 0x2804]                            
+0000398c  mov      r9d, dword ptr [rbx]                          
+0000398f  mov      edx, 0x1d                                     
+00003994  mov      rcx, qword ptr [r10 + 0x18]                   
+00003998  mov      dword ptr [rsp + 0x20], eax                   
+0000399c  call     0x2b6c                                        
+000039a1  mov      rcx, qword ptr [rbx + 8]                      
+000039a5  and      qword ptr [rip + 0x4663], 0                   
+000039ad  and      qword ptr [rip + 0x4663], 0                   
+000039b5  mov      qword ptr [rip + 0x4664], rcx                 
+000039bc  mov      rax, qword ptr [rbx]                          
+000039bf  test     rax, rax                                      
+000039c2  je       0x39fe                                        
+000039c4  cmp      rax, 1                                        
+000039c8  jne      0x3a7e                                        
+000039ce  call     0x1000                                        
+000039d3  mov      rax, qword ptr [rip + 0x463e]                 
+000039da  mov      qword ptr [rbx + 0x10], rax                   
+000039de  mov      rax, qword ptr [rip + 0x462b]                 
+000039e5  mov      qword ptr [rbx + 0x18], rax                   
+000039e9  mov      rax, qword ptr [rsp + 0x38]                   
+000039ee  movups   xmm0, xmmword ptr [rbx]                       
+000039f1  movups   xmmword ptr [rax], xmm0                       
+000039f4  movups   xmm1, xmmword ptr [rbx + 0x10]                
+000039f8  movups   xmmword ptr [rax + 0x10], xmm1                
+000039fc  jmp      0x3a42                                        
+000039fe  cmp      rcx, 0x174                                    
+00003a05  je       0x3a42                                        
+00003a07  lea      rax, [rcx - 0x175]                            
+00003a0e  cmp      rax, 1                                        
+00003a12  jbe      0x3a42                                        
+00003a14  movabs   rax, 0xffffffff3fffff7f                       
+00003a1e  add      rax, rcx                                      
+00003a21  cmp      rax, 2                                        
+00003a25  jbe      0x3a42                                        
+00003a27  mov      rax, qword ptr [rbx + 0x10]                   
+00003a2b  mov      qword ptr [rip + 0x45e6], rax                 
+00003a32  mov      rax, qword ptr [rbx + 0x18]                   
+00003a36  mov      qword ptr [rip + 0x45d3], rax                 
+00003a3d  call     0x1020                                        
+00003a42  mov      qword ptr [r14], r12                          
+00003a45  jmp      0x3a83                                        
+00003a47  mov      r9, qword ptr [rip + 0x35da]                  
+00003a4e  lea      rcx, [rip + 0x35d3]                           
+00003a55  cmp      r9, rcx                                       
+00003a58  je       0x3a7e                                        
+00003a5a  mov      eax, dword ptr [r9 + 0x2c]                    
+00003a5e  test     al, 8                                         
+00003a60  je       0x3a7e                                        
+00003a62  cmp      byte ptr [r9 + 0x29], 2                       
+00003a67  jb       0x3a7e                                        
+00003a69  mov      rcx, qword ptr [r9 + 0x18]                    
+00003a6d  lea      r8, [rip + 0x271c]                            
+00003a74  mov      edx, 0x1c                                     
+00003a79  call     0x2b08                                        
+00003a7e  mov      edi, 0xc000000d                               
+=== around call to MmMapIoSpace!ntoskrnl [0x1bd6..0x1d16] ===
+00001bd7  call     0xb50c                                        
+00001bdc  test     eax, eax                                      
+00001bde  jne      0x1dc5                                        
+00001be4  lea      rax, [rbp - 0x20]                             
+00001be8  mov      r12d, 0x4746434d                              
+00001bee  mov      r15d, 0x41435049                              
+00001bf4  mov      qword ptr [rsp + 0x20], rax                   
+00001bf9  mov      edx, r12d                                     
+00001bfc  mov      ecx, r15d                                     
+00001bff  xor      r9d, r9d                                      
+00001c02  xor      r8d, r8d                                      
+00001c05  call     0xb400                                        
+00001c0a  lea      edx, [rdi + 0x3c]                             
+00001c0d  mov      r14d, 0x6754794d                              
+00001c13  cmp      dword ptr [rbp - 0x20], edx                   
+00001c16  jne      0x1c57                                        
+00001c18  mov      r8d, r14d                                     
+00001c1b  lea      ecx, [rdi + 1]                                
+00001c1e  call     qword ptr [rip + 0x449c]                        ; !ntoskrnl
+00001c24  mov      rbx, rax                                      
+00001c27  test     rax, rax                                      
+00001c2a  je       0x1c57                                        
+00001c2c  mov      r9d, dword ptr [rbp - 0x20]                   
+00001c30  mov      r8, rax                                       
+00001c33  mov      edx, r12d                                     
+00001c36  mov      qword ptr [rsp + 0x20], rdi                   
+00001c3b  mov      ecx, r15d                                     
+00001c3e  call     0xb400                                        
+00001c43  test     eax, eax                                      
+00001c45  jne      0x1c4c                                        
+00001c47  mov      ecx, dword ptr [rbx + 0x2c]                   
+00001c4a  mov      dword ptr [rsi], ecx                          
+00001c4c  xor      edx, edx                                      
+00001c4e  mov      rcx, rbx                                      
+00001c51  call     qword ptr [rip + 0x4431]                        ; !ntoskrnl
+00001c57  lea      rax, [rbp - 0x20]                             
+00001c5b  mov      ebx, 0x54445358                               
+00001c60  mov      edx, ebx                                      
+00001c62  mov      qword ptr [rsp + 0x20], rax                   
+00001c67  xor      r9d, r9d                                      
+00001c6a  xor      r8d, r8d                                      
+00001c6d  mov      ecx, r15d                                     
+00001c70  call     0xb400                                        
+00001c75  cmp      eax, 0xc0000023                               
+00001c7a  jne      0x1dc5                                        
+00001c80  mov      edx, dword ptr [rbp - 0x20]                   
+00001c83  mov      r8d, r14d                                     
+00001c86  mov      ecx, 1                                        
+00001c8b  call     qword ptr [rip + 0x442f]                        ; !ntoskrnl
+00001c91  mov      r14, rax                                      
+00001c94  test     rax, rax                                      
+00001c97  je       0x1dc5                                        
+00001c9d  mov      r9d, dword ptr [rbp - 0x20]                   
+00001ca1  mov      r8, rax                                       
+00001ca4  mov      edx, ebx                                      
+00001ca6  mov      qword ptr [rsp + 0x20], rdi                   
+00001cab  mov      ecx, r15d                                     
+00001cae  call     0xb400                                        
+00001cb3  test     eax, eax                                      
+00001cb5  jne      0x1db7                                        
+00001cbb  mov      esi, dword ptr [rbp - 0x20]                   
+00001cbe  lea      r12, [r14 + 0x24]                             
+00001cc2  add      esi, -0x24                                    
+00001cc5  shr      esi, 3                                        
+00001cc8  mov      rbx, qword ptr [r12]                          
+00001ccc  xor      r8d, r8d                                      
+00001ccf  mov      rcx, rbx                                      
+00001cd2  lea      edx, [r8 + 0x10]                              
+00001cd6  call     qword ptr [rip + 0x4354]                        ; MmMapIoSpace!ntoskrnl
+00001cdc  mov      r15, rax                                      
+00001cdf  test     rax, rax                                      
+00001ce2  je       0x1d4f                                        
+00001ce4  mov      r8d, 4                                        
+00001cea  lea      rdx, [rbp - 0x1c]                             
+00001cee  mov      rcx, rax                                      
+00001cf1  call     qword ptr [rip + 0x43d1]                        ; RtlCompareMemory!ntoskrnl
+00001cf7  mov      edx, 0x10                                     
+00001cfc  cmp      rax, 4                                        
+00001d00  jne      0x1d46                                        
+00001d02  mov      ecx, dword ptr [r15 + 4]                      
+00001d06  mov      dword ptr [rbp - 0x20], ecx                   
+00001d09  mov      rcx, r15                                      
+00001d0c  call     qword ptr [rip + 0x4326]                        ; MmUnmapIoSpace!ntoskrnl
+00001d12  mov      edx, dword ptr [rbp - 0x20]                   
+00001d15  xor      r8d, r8d                                      
+=== around call to MmMapIoSpace!ntoskrnl [0x1c1b..0x1d5b] ===
+00001c1b  lea      ecx, [rdi + 1]                                
+00001c1e  call     qword ptr [rip + 0x449c]                        ; !ntoskrnl
+00001c24  mov      rbx, rax                                      
+00001c27  test     rax, rax                                      
+00001c2a  je       0x1c57                                        
+00001c2c  mov      r9d, dword ptr [rbp - 0x20]                   
+00001c30  mov      r8, rax                                       
+00001c33  mov      edx, r12d                                     
+00001c36  mov      qword ptr [rsp + 0x20], rdi                   
+00001c3b  mov      ecx, r15d                                     
+00001c3e  call     0xb400                                        
+00001c43  test     eax, eax                                      
+00001c45  jne      0x1c4c                                        
+00001c47  mov      ecx, dword ptr [rbx + 0x2c]                   
+00001c4a  mov      dword ptr [rsi], ecx                          
+00001c4c  xor      edx, edx                                      
+00001c4e  mov      rcx, rbx                                      
+00001c51  call     qword ptr [rip + 0x4431]                        ; !ntoskrnl
+00001c57  lea      rax, [rbp - 0x20]                             
+00001c5b  mov      ebx, 0x54445358                               
+00001c60  mov      edx, ebx                                      
+00001c62  mov      qword ptr [rsp + 0x20], rax                   
+00001c67  xor      r9d, r9d                                      
+00001c6a  xor      r8d, r8d                                      
+00001c6d  mov      ecx, r15d                                     
+00001c70  call     0xb400                                        
+00001c75  cmp      eax, 0xc0000023                               
+00001c7a  jne      0x1dc5                                        
+00001c80  mov      edx, dword ptr [rbp - 0x20]                   
+00001c83  mov      r8d, r14d                                     
+00001c86  mov      ecx, 1                                        
+00001c8b  call     qword ptr [rip + 0x442f]                        ; !ntoskrnl
+00001c91  mov      r14, rax                                      
+00001c94  test     rax, rax                                      
+00001c97  je       0x1dc5                                        
+00001c9d  mov      r9d, dword ptr [rbp - 0x20]                   
+00001ca1  mov      r8, rax                                       
+00001ca4  mov      edx, ebx                                      
+00001ca6  mov      qword ptr [rsp + 0x20], rdi                   
+00001cab  mov      ecx, r15d                                     
+00001cae  call     0xb400                                        
+00001cb3  test     eax, eax                                      
+00001cb5  jne      0x1db7                                        
+00001cbb  mov      esi, dword ptr [rbp - 0x20]                   
+00001cbe  lea      r12, [r14 + 0x24]                             
+00001cc2  add      esi, -0x24                                    
+00001cc5  shr      esi, 3                                        
+00001cc8  mov      rbx, qword ptr [r12]                          
+00001ccc  xor      r8d, r8d                                      
+00001ccf  mov      rcx, rbx                                      
+00001cd2  lea      edx, [r8 + 0x10]                              
+00001cd6  call     qword ptr [rip + 0x4354]                        ; MmMapIoSpace!ntoskrnl
+00001cdc  mov      r15, rax                                      
+00001cdf  test     rax, rax                                      
+00001ce2  je       0x1d4f                                        
+00001ce4  mov      r8d, 4                                        
+00001cea  lea      rdx, [rbp - 0x1c]                             
+00001cee  mov      rcx, rax                                      
+00001cf1  call     qword ptr [rip + 0x43d1]                        ; RtlCompareMemory!ntoskrnl
+00001cf7  mov      edx, 0x10                                     
+00001cfc  cmp      rax, 4                                        
+00001d00  jne      0x1d46                                        
+00001d02  mov      ecx, dword ptr [r15 + 4]                      
+00001d06  mov      dword ptr [rbp - 0x20], ecx                   
+00001d09  mov      rcx, r15                                      
+00001d0c  call     qword ptr [rip + 0x4326]                        ; MmUnmapIoSpace!ntoskrnl
+00001d12  mov      edx, dword ptr [rbp - 0x20]                   
+00001d15  xor      r8d, r8d                                      
+00001d18  mov      rcx, rbx                                      
+00001d1b  call     qword ptr [rip + 0x430f]                        ; MmMapIoSpace!ntoskrnl
+00001d21  mov      r8d, 0x10                                     
+00001d27  lea      rdx, [rbp - 0x18]                             
+00001d2b  mov      rbx, rax                                      
+00001d2e  lea      rcx, [rax + 0x24]                             
+00001d32  call     qword ptr [rip + 0x4390]                        ; RtlCompareMemory!ntoskrnl
+00001d38  cmp      rax, 0x10                                     
+00001d3c  je       0x1d5d                                        
+00001d3e  mov      edx, dword ptr [rbp - 0x20]                   
+00001d41  mov      rcx, rbx                                      
+00001d44  jmp      0x1d49                                        
+00001d46  mov      rcx, r15                                      
+00001d49  call     qword ptr [rip + 0x42e9]                        ; MmUnmapIoSpace!ntoskrnl
+00001d4f  add      r12, 8                                        
+00001d53  add      esi, -1                                       
+00001d56  je       0x1db7                                        
+00001d58  jmp      0x1cc8                                        
+=== around call to MmMapIoSpace!ntoskrnl [0x2ce9..0x2e29] ===
+00002ce9  je       0x2d00                                        
+00002ceb  mov      eax, dword ptr [r8 + 4]                       
+00002cef  mov      dword ptr [r9 + 0x2c], eax                    
+00002cf3  mov      al, byte ptr [r8 + 2]                         
+00002cf7  mov      byte ptr [r9 + 0x29], al                      
+00002cfb  mov      rax, qword ptr [r8]                           
+00002cfe  jmp      0x2d08                                        
+00002d00  mov      byte ptr [r9 + 0x29], al                      
+00002d04  mov      dword ptr [r9 + 0x2c], eax                    
+00002d08  mov      qword ptr [r9 + 0x18], rax                    
+00002d0c  ret                                                    
+00002d0d  int3                                                   
+00002d0e  int3                                                   
+00002d0f  int3                                                   
+00002d10  ret      0                                             
+00002d13  int3                                                   
+00002d14  push     rbx                                           
+00002d16  sub      rsp, 0x20                                     
+00002d1a  mov      r9, qword ptr [rcx + 0x20]                    
+00002d1e  mov      ebx, 0xc0000001                               
+00002d23  test     r9, r9                                        
+00002d26  je       0x2d7c                                        
+00002d28  mov      rax, qword ptr [r9 + 0x10]                    
+00002d2c  cmp      rax, rdx                                      
+00002d2f  ja       0x2d41                                        
+00002d31  mov      ecx, dword ptr [r9 + 0x18]                    
+00002d35  add      rcx, rax                                      
+00002d38  lea      rax, [rdx + r8]                               
+00002d3c  cmp      rcx, rax                                      
+00002d3f  jae      0x2d46                                        
+00002d41  mov      r9, qword ptr [r9]                            
+00002d44  jmp      0x2d23                                        
+00002d46  xor      ebx, ebx                                      
+00002d48  mov      rcx, qword ptr [rip + 0x42d9]                 
+00002d4f  lea      rax, [rip + 0x42d2]                           
+00002d56  cmp      rcx, rax                                      
+00002d59  je       0x2d7c                                        
+00002d5b  mov      edx, dword ptr [rcx + 0x2c]                   
+00002d5e  test     dl, 8                                         
+00002d61  je       0x2d7c                                        
+00002d63  cmp      byte ptr [rcx + 0x29], 4                      
+00002d67  jb       0x2d7c                                        
+00002d69  mov      rcx, qword ptr [rcx + 0x18]                   
+00002d6d  lea      edx, [rbx + 0x47]                             
+00002d70  lea      r8, [rip + 0x3419]                            
+00002d77  call     0x2b08                                        
+00002d7c  mov      eax, ebx                                      
+00002d7e  add      rsp, 0x20                                     
+00002d82  pop      rbx                                           
+00002d83  ret                                                    
+00002d84  mov      r11, rsp                                      
+00002d87  mov      qword ptr [r11 + 8], rbx                      
+00002d8b  mov      qword ptr [r11 + 0x10], rsi                   
+00002d8f  mov      qword ptr [r11 + 0x18], rdi                   
+00002d93  mov      qword ptr [r11 + 0x20], r14                   
+00002d97  push     r15                                           
+00002d99  sub      rsp, 0x40                                     
+00002d9d  mov      rax, qword ptr [rip + 0x4bf4]                 
+00002da4  lea      rdx, [r11 - 0x10]                             
+00002da8  and      qword ptr [r11 - 0x18], 0                     
+00002dad  mov      r15, r9                                       
+00002db0  mov      qword ptr [r11 - 0x28], rdx                   
+00002db4  lea      r9, [r11 - 0x18]                              
+00002db8  mov      rdx, rcx                                      
+00002dbb  xor      r8d, r8d                                      
+00002dbe  mov      rcx, qword ptr [rip + 0x4ff3]                 
+00002dc5  call     qword ptr [rip + 0x331d]                      
+00002dcb  mov      ebx, eax                                      
+00002dcd  test     eax, eax                                      
+00002dcf  jns      0x2ddb                                        
+00002dd1  mov      ebx, 0xc000009a                               
+00002dd6  jmp      0x2ef6                                        
+00002ddb  mov      rdi, qword ptr [rsp + 0x30]                   
+00002de0  xor      r8d, r8d                                      
+00002de3  mov      edx, dword ptr [rdi + 8]                      
+00002de6  mov      rcx, qword ptr [rdi]                          
+00002de9  call     qword ptr [rip + 0x3241]                        ; MmMapIoSpace!ntoskrnl
+00002def  mov      rsi, rax                                      
+00002df2  test     rax, rax                                      
+00002df5  jne      0x2e2c                                        
+00002df7  mov      rcx, qword ptr [rip + 0x422a]                 
+00002dfe  lea      rax, [rip + 0x4223]                           
+00002e05  cmp      rcx, rax                                      
+00002e08  je       0x2dd1                                        
+00002e0a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002e0d  test     al, 8                                         
+00002e0f  je       0x2dd1                                        
+00002e11  cmp      byte ptr [rcx + 0x29], 2                      
+00002e15  jb       0x2dd1                                        
+00002e17  mov      rcx, qword ptr [rcx + 0x18]                   
+00002e1b  lea      edx, [rsi + 0x48]                             
+00002e1e  lea      r8, [rip + 0x336b]                            
+00002e25  call     0x2b08                                        
+=== around call to MmMapIoSpace!ntoskrnl [0x2e45..0x2f85] ===
+00002e46  mov      ecx, edx                                      
+00002e48  cmp      r9, rax                                       
+00002e4b  je       0x2e74                                        
+00002e4d  mov      eax, dword ptr [r9 + 0x2c]                    
+00002e51  test     al, 8                                         
+00002e53  je       0x2e74                                        
+00002e55  cmp      byte ptr [r9 + 0x29], 4                       
+00002e5a  jb       0x2e74                                        
+00002e5c  mov      rcx, qword ptr [r9 + 0x18]                    
+00002e60  lea      r8, [rip + 0x3329]                            
+00002e67  mov      edx, 0x4b                                     
+00002e6c  call     0x2b08                                        
+00002e71  mov      ecx, dword ptr [rdi + 8]                      
+00002e74  xor      edx, edx                                      
+00002e76  test     ecx, 0xfffffffc                               
+00002e7c  jbe      0x2ee7                                        
+00002e7e  mov      eax, dword ptr [rsi + rdx*4]                  
+00002e81  mov      dword ptr [r14 + rdx*4], eax                  
+00002e85  inc      edx                                           
+00002e87  mov      ecx, dword ptr [rdi + 8]                      
+00002e8a  mov      eax, ecx                                      
+00002e8c  shr      eax, 2                                        
+00002e8f  cmp      edx, eax                                      
+00002e91  jb       0x2e7e                                        
+00002e93  jmp      0x2ee7                                        
+00002e95  mov      r9, qword ptr [rip + 0x418c]                  
+00002e9c  lea      rax, [rip + 0x4185]                           
+00002ea3  mov      ecx, edx                                      
+00002ea5  cmp      r9, rax                                       
+00002ea8  je       0x2ed1                                        
+00002eaa  mov      eax, dword ptr [r9 + 0x2c]                    
+00002eae  test     al, 8                                         
+00002eb0  je       0x2ed1                                        
+00002eb2  cmp      byte ptr [r9 + 0x29], 4                       
+00002eb7  jb       0x2ed1                                        
+00002eb9  mov      rcx, qword ptr [r9 + 0x18]                    
+00002ebd  lea      r8, [rip + 0x32cc]                            
+00002ec4  mov      edx, 0x4c                                     
+00002ec9  call     0x2b08                                        
+00002ece  mov      ecx, dword ptr [rdi + 8]                      
+00002ed1  xor      edx, edx                                      
+00002ed3  test     ecx, ecx                                      
+00002ed5  je       0x2ee7                                        
+00002ed7  mov      al, byte ptr [rdx + rsi]                      
+00002eda  mov      byte ptr [rdx + r14], al                      
+00002ede  inc      edx                                           
+00002ee0  mov      ecx, dword ptr [rdi + 8]                      
+00002ee3  cmp      edx, ecx                                      
+00002ee5  jb       0x2ed7                                        
+00002ee7  mov      edx, ecx                                      
+00002ee9  mov      rcx, rsi                                      
+00002eec  call     qword ptr [rip + 0x3146]                        ; MmUnmapIoSpace!ntoskrnl
+00002ef2  and      qword ptr [r15], 0                            
+00002ef6  mov      rsi, qword ptr [rsp + 0x58]                   
+00002efb  mov      eax, ebx                                      
+00002efd  mov      rbx, qword ptr [rsp + 0x50]                   
+00002f02  mov      rdi, qword ptr [rsp + 0x60]                   
+00002f07  mov      r14, qword ptr [rsp + 0x68]                   
+00002f0c  add      rsp, 0x40                                     
+00002f10  pop      r15                                           
+00002f12  ret                                                    
+00002f13  int3                                                   
+00002f14  mov      qword ptr [rsp + 0x10], rbx                   
+00002f19  mov      qword ptr [rsp + 0x18], rbp                   
+00002f1e  push     rsi                                           
+00002f1f  sub      rsp, 0x20                                     
+00002f23  and      qword ptr [rdx], 0                            
+00002f27  mov      rsi, rdx                                      
+00002f2a  cmp      qword ptr [rcx + 0x28], 0                     
+00002f2f  mov      rbx, rcx                                      
+00002f32  je       0x3064                                        
+00002f38  mov      rcx, qword ptr [rcx + 0x28]                   
+00002f3c  xor      r8d, r8d                                      
+00002f3f  lea      ebp, [r8 + 0x50]                              
+00002f43  mov      edx, ebp                                      
+00002f45  call     qword ptr [rip + 0x30e5]                        ; MmMapIoSpace!ntoskrnl
+00002f4b  mov      rcx, rax                                      
+00002f4e  test     rax, rax                                      
+00002f51  jne      0x2f87                                        
+00002f53  mov      rcx, qword ptr [rip + 0x40ce]                 
+00002f5a  lea      rax, [rip + 0x40c7]                           
+00002f61  cmp      rcx, rax                                      
+00002f64  je       0x3034                                        
+00002f6a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002f6d  test     al, 8                                         
+00002f6f  je       0x3034                                        
+00002f75  cmp      byte ptr [rcx + 0x29], 2                      
+00002f79  jb       0x3034                                        
+00002f7f  lea      edx, [rbp - 0xc]                              
+00002f82  jmp      0x3024                                        
+=== around call to MmMapIoSpace!ntoskrnl [0x2fd4..0x3114] ===
+00002fd6  cmp      rcx, rax                                      
+00002fd9  je       0x3034                                        
+00002fdb  mov      eax, dword ptr [rcx + 0x2c]                   
+00002fde  test     al, 8                                         
+00002fe0  je       0x3034                                        
+00002fe2  cmp      byte ptr [rcx + 0x29], 2                      
+00002fe6  jb       0x3034                                        
+00002fe8  mov      edx, 0x45                                     
+00002fed  jmp      0x3024                                        
+00002fef  mov      eax, dword ptr [rcx + 0x1c]                   
+00002ff2  test     al, 1                                         
+00002ff4  jne      0x303e                                        
+00002ff6  mov      rdx, rbp                                      
+00002ff9  call     qword ptr [rip + 0x3039]                        ; MmUnmapIoSpace!ntoskrnl
+00002fff  mov      rcx, qword ptr [rip + 0x4022]                 
+00003006  lea      rax, [rip + 0x401b]                           
+0000300d  cmp      rcx, rax                                      
+00003010  je       0x3034                                        
+00003012  mov      eax, dword ptr [rcx + 0x2c]                   
+00003015  test     al, 8                                         
+00003017  je       0x3034                                        
+00003019  cmp      byte ptr [rcx + 0x29], 2                      
+0000301d  jb       0x3034                                        
+0000301f  mov      edx, 0x46                                     
+00003024  mov      rcx, qword ptr [rcx + 0x18]                   
+00003028  lea      r8, [rip + 0x3161]                            
+0000302f  call     0x2b08                                        
+00003034  mov      eax, 0xc0000229                               
+00003039  jmp      0x3135                                        
+0000303e  mov      rax, qword ptr [rcx + 8]                      
+00003042  mov      qword ptr [rsi], rax                          
+00003045  mov      eax, 0xc0000002                               
+0000304a  mov      dword ptr [rcx + 0x10], eax                   
+0000304d  mov      al, byte ptr [rbx + 0x38]                     
+00003050  mov      edx, 0xb2                                     
+00003055  out      dx, al                                        
+00003056  mov      rdx, rbp                                      
+00003059  call     qword ptr [rip + 0x2fd9]                        ; MmUnmapIoSpace!ntoskrnl
+0000305f  jmp      0x3133                                        
+00003064  and      qword ptr [rip + 0x4f94], 0                   
+0000306c  mov      r8d, 0xc0000001                               
+00003072  and      qword ptr [rip + 0x4f5e], 0                   
+0000307a  mov      qword ptr [rip + 0x4f77], r8                  
+00003081  mov      qword ptr [rip + 0x4f7c], 0xd9                
+0000308c  mov      qword ptr [rip + 0x4f59], 0xb2                
+00003097  mov      qword ptr [rip + 0x4f46], 0x1000              
+000030a2  mov      qword ptr [rip + 0x4f33], 1                   
+000030ad  call     0x1040                                        
+000030b2  mov      eax, dword ptr [rip + 0x4f30]                 
+000030b8  xor      r8d, r8d                                      
+000030bb  mov      dword ptr [rsp + 0x30], eax                   
+000030bf  mov      eax, dword ptr [rip + 0x4f1b]                 
+000030c5  mov      dword ptr [rsp + 0x34], eax                   
+000030c9  mov      rcx, qword ptr [rsp + 0x30]                   
+000030ce  lea      ebp, [r8 + 0x20]                              
+000030d2  mov      edx, ebp                                      
+000030d4  call     qword ptr [rip + 0x2f56]                        ; MmMapIoSpace!ntoskrnl
+000030da  mov      edx, ebp                                      
+000030dc  mov      rcx, rax                                      
+000030df  mov      rbx, qword ptr [rax + 8]                      
+000030e3  call     qword ptr [rip + 0x2f4f]                        ; MmUnmapIoSpace!ntoskrnl
+000030e9  and      qword ptr [rip + 0x4f0f], 0                   
+000030f1  mov      eax, 0xc0000002                               
+000030f6  and      qword ptr [rip + 0x4eea], 0                   
+000030fe  and      qword ptr [rip + 0x4eda], 0                   
+00003106  and      qword ptr [rip + 0x4eca], 0                   
+0000310e  mov      qword ptr [rip + 0x4ee3], rax                 
+=== around call to MmMapIoSpace!ntoskrnl [0x3085..0x31c5] ===
+0000308c  mov      qword ptr [rip + 0x4f59], 0xb2                
+00003097  mov      qword ptr [rip + 0x4f46], 0x1000              
+000030a2  mov      qword ptr [rip + 0x4f33], 1                   
+000030ad  call     0x1040                                        
+000030b2  mov      eax, dword ptr [rip + 0x4f30]                 
+000030b8  xor      r8d, r8d                                      
+000030bb  mov      dword ptr [rsp + 0x30], eax                   
+000030bf  mov      eax, dword ptr [rip + 0x4f1b]                 
+000030c5  mov      dword ptr [rsp + 0x34], eax                   
+000030c9  mov      rcx, qword ptr [rsp + 0x30]                   
+000030ce  lea      ebp, [r8 + 0x20]                              
+000030d2  mov      edx, ebp                                      
+000030d4  call     qword ptr [rip + 0x2f56]                        ; MmMapIoSpace!ntoskrnl
+000030da  mov      edx, ebp                                      
+000030dc  mov      rcx, rax                                      
+000030df  mov      rbx, qword ptr [rax + 8]                      
+000030e3  call     qword ptr [rip + 0x2f4f]                        ; MmUnmapIoSpace!ntoskrnl
+000030e9  and      qword ptr [rip + 0x4f0f], 0                   
+000030f1  mov      eax, 0xc0000002                               
+000030f6  and      qword ptr [rip + 0x4eea], 0                   
+000030fe  and      qword ptr [rip + 0x4eda], 0                   
+00003106  and      qword ptr [rip + 0x4eca], 0                   
+0000310e  mov      qword ptr [rip + 0x4ee3], rax                 
+00003115  mov      qword ptr [rip + 0x4ee8], 0xd9                
+00003120  mov      qword ptr [rip + 0x4ec5], 0xb2                
+0000312b  call     0x1040                                        
+00003130  mov      qword ptr [rsi], rbx                          
+00003133  xor      eax, eax                                      
+00003135  mov      rbx, qword ptr [rsp + 0x38]                   
+0000313a  mov      rbp, qword ptr [rsp + 0x40]                   
+0000313f  add      rsp, 0x20                                     
+00003143  pop      rsi                                           
+00003144  ret                                                    
+00003145  int3                                                   
+00003146  int3                                                   
+00003147  int3                                                   
+00003148  mov      qword ptr [rsp + 8], rbx                      
+0000314d  mov      qword ptr [rsp + 0x10], rbp                   
+00003152  mov      qword ptr [rsp + 0x18], rsi                   
+00003157  push     rdi                                           
+00003158  push     r12                                           
+0000315a  push     r14                                           
+0000315c  sub      rsp, 0x20                                     
+00003160  cmp      qword ptr [rcx + 0x28], 0                     
+00003165  mov      rsi, r9                                       
+00003168  mov      r14, r8                                       
+0000316b  mov      rdi, rdx                                      
+0000316e  mov      rbx, rcx                                      
+00003171  je       0x3328                                        
+00003177  mov      rcx, qword ptr [rcx + 0x28]                   
+0000317b  xor      r8d, r8d                                      
+0000317e  lea      r12d, [r8 + 0x50]                             
+00003182  mov      edx, r12d                                     
+00003185  call     qword ptr [rip + 0x2ea5]                        ; MmMapIoSpace!ntoskrnl
+0000318b  mov      r9, rax                                       
+0000318e  test     rax, rax                                      
+00003191  jne      0x31c9                                        
+00003193  mov      rcx, qword ptr [rip + 0x3e8e]                 
+0000319a  lea      rax, [rip + 0x3e87]                           
+000031a1  cmp      rcx, rax                                      
+000031a4  je       0x329f                                        
+000031aa  mov      eax, dword ptr [rcx + 0x2c]                   
+000031ad  test     al, 8                                         
+000031af  je       0x329f                                        
+000031b5  cmp      byte ptr [rcx + 0x29], 2                      
+000031b9  jb       0x329f                                        
+000031bf  lea      edx, [r12 - 0xf]                              
+000031c4  jmp      0x328f                                        
+=== around call to MmMapIoSpace!ntoskrnl [0x3642..0x3782] ===
+00003645  mov      edi, eax                                      
+00003647  test     eax, eax                                      
+00003649  jns      0x3696                                        
+0000364b  mov      rcx, qword ptr [rip + 0x39d6]                 
+00003652  lea      rbx, [rip + 0x39cf]                           
+00003659  cmp      rcx, rbx                                      
+0000365c  je       0x382e                                        
+00003662  mov      edx, dword ptr [rcx + 0x2c]                   
+00003665  test     dl, 8                                         
+00003668  je       0x382e                                        
+0000366e  cmp      byte ptr [rcx + 0x29], 2                      
+00003672  jb       0x382e                                        
+00003678  mov      rcx, qword ptr [rcx + 0x18]                   
+0000367c  lea      r8, [rip + 0x2b0d]                            
+00003683  mov      edx, 0x14                                     
+00003688  lea      r9d, [rdx + 4]                                
+0000368c  call     0x2b30                                        
+00003691  jmp      0x382e                                        
+00003696  cmp      rsi, 0x18                                     
+0000369a  jae      0x36e6                                        
+0000369c  mov      rcx, qword ptr [rip + 0x3985]                 
+000036a3  lea      rbx, [rip + 0x397e]                           
+000036aa  cmp      rcx, rbx                                      
+000036ad  je       0x36dc                                        
+000036af  mov      eax, dword ptr [rcx + 0x2c]                   
+000036b2  test     al, 8                                         
+000036b4  je       0x36dc                                        
+000036b6  cmp      byte ptr [rcx + 0x29], 2                      
+000036ba  jb       0x36dc                                        
+000036bc  mov      rcx, qword ptr [rcx + 0x18]                   
+000036c0  lea      r8, [rip + 0x2ac9]                            
+000036c7  mov      edx, 0x15                                     
+000036cc  mov      dword ptr [rsp + 0x20], 0x18                  
+000036d4  mov      r9d, esi                                      
+000036d7  call     0x2b6c                                        
+000036dc  mov      edi, 0xc000009a                               
+000036e1  jmp      0x382e                                        
+000036e6  mov      rcx, qword ptr [rip + 0x393b]                 
+000036ed  lea      rbx, [rip + 0x3934]                           
+000036f4  cmp      rcx, rbx                                      
+000036f7  je       0x3734                                        
+000036f9  mov      eax, dword ptr [rcx + 0x2c]                   
+000036fc  test     al, 8                                         
+000036fe  je       0x3734                                        
+00003700  cmp      byte ptr [rcx + 0x29], 4                      
+00003704  jb       0x3734                                        
+00003706  mov      r9, qword ptr [rsp + 0x30]                    
+0000370b  lea      r8, [rip + 0x2a7e]                            
+00003712  mov      rcx, qword ptr [rcx + 0x18]                   
+00003716  mov      edx, 0x16                                     
+0000371b  mov      rax, qword ptr [r9 + 0x10]                    
+0000371f  mov      qword ptr [rsp + 0x28], rax                   
+00003724  mov      eax, dword ptr [r9 + 8]                       
+00003728  mov      r9, qword ptr [r9]                            
+0000372b  mov      dword ptr [rsp + 0x20], eax                   
+0000372f  call     0x3c6c                                        
+00003734  mov      rcx, qword ptr [rsp + 0x30]                   
+00003739  xor      r8d, r8d                                      
+0000373c  mov      edx, dword ptr [rcx + 8]                      
+0000373f  mov      rcx, qword ptr [rcx]                          
+00003742  call     qword ptr [rip + 0x28e8]                        ; MmMapIoSpace!ntoskrnl
+00003748  mov      rsi, rax                                      
+0000374b  test     rax, rax                                      
+0000374e  jne      0x3789                                        
+00003750  mov      rcx, qword ptr [rip + 0x38d1]                 
+00003757  cmp      rcx, rbx                                      
+0000375a  je       0x36dc                                        
+0000375c  mov      eax, dword ptr [rcx + 0x2c]                   
+0000375f  test     al, 8                                         
+00003761  je       0x36dc                                        
+00003767  cmp      byte ptr [rcx + 0x29], 2                      
+0000376b  jb       0x36dc                                        
+00003771  mov      rcx, qword ptr [rcx + 0x18]                   
+00003775  lea      edx, [rsi + 0x17]                             
+00003778  lea      r8, [rip + 0x2a11]                            
+0000377f  call     0x2b08                                        
+=== around call to MmUnmapIoSpace!ntoskrnl [0x1c0c..0x1d4c] ===
+00001c0d  mov      r14d, 0x6754794d                              
+00001c13  cmp      dword ptr [rbp - 0x20], edx                   
+00001c16  jne      0x1c57                                        
+00001c18  mov      r8d, r14d                                     
+00001c1b  lea      ecx, [rdi + 1]                                
+00001c1e  call     qword ptr [rip + 0x449c]                        ; !ntoskrnl
+00001c24  mov      rbx, rax                                      
+00001c27  test     rax, rax                                      
+00001c2a  je       0x1c57                                        
+00001c2c  mov      r9d, dword ptr [rbp - 0x20]                   
+00001c30  mov      r8, rax                                       
+00001c33  mov      edx, r12d                                     
+00001c36  mov      qword ptr [rsp + 0x20], rdi                   
+00001c3b  mov      ecx, r15d                                     
+00001c3e  call     0xb400                                        
+00001c43  test     eax, eax                                      
+00001c45  jne      0x1c4c                                        
+00001c47  mov      ecx, dword ptr [rbx + 0x2c]                   
+00001c4a  mov      dword ptr [rsi], ecx                          
+00001c4c  xor      edx, edx                                      
+00001c4e  mov      rcx, rbx                                      
+00001c51  call     qword ptr [rip + 0x4431]                        ; !ntoskrnl
+00001c57  lea      rax, [rbp - 0x20]                             
+00001c5b  mov      ebx, 0x54445358                               
+00001c60  mov      edx, ebx                                      
+00001c62  mov      qword ptr [rsp + 0x20], rax                   
+00001c67  xor      r9d, r9d                                      
+00001c6a  xor      r8d, r8d                                      
+00001c6d  mov      ecx, r15d                                     
+00001c70  call     0xb400                                        
+00001c75  cmp      eax, 0xc0000023                               
+00001c7a  jne      0x1dc5                                        
+00001c80  mov      edx, dword ptr [rbp - 0x20]                   
+00001c83  mov      r8d, r14d                                     
+00001c86  mov      ecx, 1                                        
+00001c8b  call     qword ptr [rip + 0x442f]                        ; !ntoskrnl
+00001c91  mov      r14, rax                                      
+00001c94  test     rax, rax                                      
+00001c97  je       0x1dc5                                        
+00001c9d  mov      r9d, dword ptr [rbp - 0x20]                   
+00001ca1  mov      r8, rax                                       
+00001ca4  mov      edx, ebx                                      
+00001ca6  mov      qword ptr [rsp + 0x20], rdi                   
+00001cab  mov      ecx, r15d                                     
+00001cae  call     0xb400                                        
+00001cb3  test     eax, eax                                      
+00001cb5  jne      0x1db7                                        
+00001cbb  mov      esi, dword ptr [rbp - 0x20]                   
+00001cbe  lea      r12, [r14 + 0x24]                             
+00001cc2  add      esi, -0x24                                    
+00001cc5  shr      esi, 3                                        
+00001cc8  mov      rbx, qword ptr [r12]                          
+00001ccc  xor      r8d, r8d                                      
+00001ccf  mov      rcx, rbx                                      
+00001cd2  lea      edx, [r8 + 0x10]                              
+00001cd6  call     qword ptr [rip + 0x4354]                        ; MmMapIoSpace!ntoskrnl
+00001cdc  mov      r15, rax                                      
+00001cdf  test     rax, rax                                      
+00001ce2  je       0x1d4f                                        
+00001ce4  mov      r8d, 4                                        
+00001cea  lea      rdx, [rbp - 0x1c]                             
+00001cee  mov      rcx, rax                                      
+00001cf1  call     qword ptr [rip + 0x43d1]                        ; RtlCompareMemory!ntoskrnl
+00001cf7  mov      edx, 0x10                                     
+00001cfc  cmp      rax, 4                                        
+00001d00  jne      0x1d46                                        
+00001d02  mov      ecx, dword ptr [r15 + 4]                      
+00001d06  mov      dword ptr [rbp - 0x20], ecx                   
+00001d09  mov      rcx, r15                                      
+00001d0c  call     qword ptr [rip + 0x4326]                        ; MmUnmapIoSpace!ntoskrnl
+00001d12  mov      edx, dword ptr [rbp - 0x20]                   
+00001d15  xor      r8d, r8d                                      
+00001d18  mov      rcx, rbx                                      
+00001d1b  call     qword ptr [rip + 0x430f]                        ; MmMapIoSpace!ntoskrnl
+00001d21  mov      r8d, 0x10                                     
+00001d27  lea      rdx, [rbp - 0x18]                             
+00001d2b  mov      rbx, rax                                      
+00001d2e  lea      rcx, [rax + 0x24]                             
+00001d32  call     qword ptr [rip + 0x4390]                        ; RtlCompareMemory!ntoskrnl
+00001d38  cmp      rax, 0x10                                     
+00001d3c  je       0x1d5d                                        
+00001d3e  mov      edx, dword ptr [rbp - 0x20]                   
+00001d41  mov      rcx, rbx                                      
+00001d44  jmp      0x1d49                                        
+00001d46  mov      rcx, r15                                      
+00001d49  call     qword ptr [rip + 0x42e9]                        ; MmUnmapIoSpace!ntoskrnl
+=== around call to MmUnmapIoSpace!ntoskrnl [0x1c49..0x1d89] ===
+00001c4a  mov      dword ptr [rsi], ecx                          
+00001c4c  xor      edx, edx                                      
+00001c4e  mov      rcx, rbx                                      
+00001c51  call     qword ptr [rip + 0x4431]                        ; !ntoskrnl
+00001c57  lea      rax, [rbp - 0x20]                             
+00001c5b  mov      ebx, 0x54445358                               
+00001c60  mov      edx, ebx                                      
+00001c62  mov      qword ptr [rsp + 0x20], rax                   
+00001c67  xor      r9d, r9d                                      
+00001c6a  xor      r8d, r8d                                      
+00001c6d  mov      ecx, r15d                                     
+00001c70  call     0xb400                                        
+00001c75  cmp      eax, 0xc0000023                               
+00001c7a  jne      0x1dc5                                        
+00001c80  mov      edx, dword ptr [rbp - 0x20]                   
+00001c83  mov      r8d, r14d                                     
+00001c86  mov      ecx, 1                                        
+00001c8b  call     qword ptr [rip + 0x442f]                        ; !ntoskrnl
+00001c91  mov      r14, rax                                      
+00001c94  test     rax, rax                                      
+00001c97  je       0x1dc5                                        
+00001c9d  mov      r9d, dword ptr [rbp - 0x20]                   
+00001ca1  mov      r8, rax                                       
+00001ca4  mov      edx, ebx                                      
+00001ca6  mov      qword ptr [rsp + 0x20], rdi                   
+00001cab  mov      ecx, r15d                                     
+00001cae  call     0xb400                                        
+00001cb3  test     eax, eax                                      
+00001cb5  jne      0x1db7                                        
+00001cbb  mov      esi, dword ptr [rbp - 0x20]                   
+00001cbe  lea      r12, [r14 + 0x24]                             
+00001cc2  add      esi, -0x24                                    
+00001cc5  shr      esi, 3                                        
+00001cc8  mov      rbx, qword ptr [r12]                          
+00001ccc  xor      r8d, r8d                                      
+00001ccf  mov      rcx, rbx                                      
+00001cd2  lea      edx, [r8 + 0x10]                              
+00001cd6  call     qword ptr [rip + 0x4354]                        ; MmMapIoSpace!ntoskrnl
+00001cdc  mov      r15, rax                                      
+00001cdf  test     rax, rax                                      
+00001ce2  je       0x1d4f                                        
+00001ce4  mov      r8d, 4                                        
+00001cea  lea      rdx, [rbp - 0x1c]                             
+00001cee  mov      rcx, rax                                      
+00001cf1  call     qword ptr [rip + 0x43d1]                        ; RtlCompareMemory!ntoskrnl
+00001cf7  mov      edx, 0x10                                     
+00001cfc  cmp      rax, 4                                        
+00001d00  jne      0x1d46                                        
+00001d02  mov      ecx, dword ptr [r15 + 4]                      
+00001d06  mov      dword ptr [rbp - 0x20], ecx                   
+00001d09  mov      rcx, r15                                      
+00001d0c  call     qword ptr [rip + 0x4326]                        ; MmUnmapIoSpace!ntoskrnl
+00001d12  mov      edx, dword ptr [rbp - 0x20]                   
+00001d15  xor      r8d, r8d                                      
+00001d18  mov      rcx, rbx                                      
+00001d1b  call     qword ptr [rip + 0x430f]                        ; MmMapIoSpace!ntoskrnl
+00001d21  mov      r8d, 0x10                                     
+00001d27  lea      rdx, [rbp - 0x18]                             
+00001d2b  mov      rbx, rax                                      
+00001d2e  lea      rcx, [rax + 0x24]                             
+00001d32  call     qword ptr [rip + 0x4390]                        ; RtlCompareMemory!ntoskrnl
+00001d38  cmp      rax, 0x10                                     
+00001d3c  je       0x1d5d                                        
+00001d3e  mov      edx, dword ptr [rbp - 0x20]                   
+00001d41  mov      rcx, rbx                                      
+00001d44  jmp      0x1d49                                        
+00001d46  mov      rcx, r15                                      
+00001d49  call     qword ptr [rip + 0x42e9]                        ; MmUnmapIoSpace!ntoskrnl
+00001d4f  add      r12, 8                                        
+00001d53  add      esi, -1                                       
+00001d56  je       0x1db7                                        
+00001d58  jmp      0x1cc8                                        
+00001d5d  movzx    eax, word ptr [rbx + 0x34]                    
+00001d61  movzx    edx, byte ptr [rbx + 0x40]                    
+00001d65  mov      rdi, qword ptr [rax + rbx + 2]                
+00001d6a  mov      byte ptr [r13], dl                            
+00001d6e  mov      rcx, qword ptr [rip + 0x52b3]                 
+00001d75  lea      rax, [rip + 0x52ac]                           
+00001d7c  cmp      rcx, rax                                      
+00001d7f  je       0x1dab                                        
+00001d81  mov      eax, dword ptr [rcx + 0x2c]                   
+00001d84  test     al, 2                                         
+00001d86  je       0x1dab                                        
+00001d88  cmp      byte ptr [rcx + 0x29], 5                      
+=== around call to MmUnmapIoSpace!ntoskrnl [0x1cb1..0x1df1] ===
+00001cb3  test     eax, eax                                      
+00001cb5  jne      0x1db7                                        
+00001cbb  mov      esi, dword ptr [rbp - 0x20]                   
+00001cbe  lea      r12, [r14 + 0x24]                             
+00001cc2  add      esi, -0x24                                    
+00001cc5  shr      esi, 3                                        
+00001cc8  mov      rbx, qword ptr [r12]                          
+00001ccc  xor      r8d, r8d                                      
+00001ccf  mov      rcx, rbx                                      
+00001cd2  lea      edx, [r8 + 0x10]                              
+00001cd6  call     qword ptr [rip + 0x4354]                        ; MmMapIoSpace!ntoskrnl
+00001cdc  mov      r15, rax                                      
+00001cdf  test     rax, rax                                      
+00001ce2  je       0x1d4f                                        
+00001ce4  mov      r8d, 4                                        
+00001cea  lea      rdx, [rbp - 0x1c]                             
+00001cee  mov      rcx, rax                                      
+00001cf1  call     qword ptr [rip + 0x43d1]                        ; RtlCompareMemory!ntoskrnl
+00001cf7  mov      edx, 0x10                                     
+00001cfc  cmp      rax, 4                                        
+00001d00  jne      0x1d46                                        
+00001d02  mov      ecx, dword ptr [r15 + 4]                      
+00001d06  mov      dword ptr [rbp - 0x20], ecx                   
+00001d09  mov      rcx, r15                                      
+00001d0c  call     qword ptr [rip + 0x4326]                        ; MmUnmapIoSpace!ntoskrnl
+00001d12  mov      edx, dword ptr [rbp - 0x20]                   
+00001d15  xor      r8d, r8d                                      
+00001d18  mov      rcx, rbx                                      
+00001d1b  call     qword ptr [rip + 0x430f]                        ; MmMapIoSpace!ntoskrnl
+00001d21  mov      r8d, 0x10                                     
+00001d27  lea      rdx, [rbp - 0x18]                             
+00001d2b  mov      rbx, rax                                      
+00001d2e  lea      rcx, [rax + 0x24]                             
+00001d32  call     qword ptr [rip + 0x4390]                        ; RtlCompareMemory!ntoskrnl
+00001d38  cmp      rax, 0x10                                     
+00001d3c  je       0x1d5d                                        
+00001d3e  mov      edx, dword ptr [rbp - 0x20]                   
+00001d41  mov      rcx, rbx                                      
+00001d44  jmp      0x1d49                                        
+00001d46  mov      rcx, r15                                      
+00001d49  call     qword ptr [rip + 0x42e9]                        ; MmUnmapIoSpace!ntoskrnl
+00001d4f  add      r12, 8                                        
+00001d53  add      esi, -1                                       
+00001d56  je       0x1db7                                        
+00001d58  jmp      0x1cc8                                        
+00001d5d  movzx    eax, word ptr [rbx + 0x34]                    
+00001d61  movzx    edx, byte ptr [rbx + 0x40]                    
+00001d65  mov      rdi, qword ptr [rax + rbx + 2]                
+00001d6a  mov      byte ptr [r13], dl                            
+00001d6e  mov      rcx, qword ptr [rip + 0x52b3]                 
+00001d75  lea      rax, [rip + 0x52ac]                           
+00001d7c  cmp      rcx, rax                                      
+00001d7f  je       0x1dab                                        
+00001d81  mov      eax, dword ptr [rcx + 0x2c]                   
+00001d84  test     al, 2                                         
+00001d86  je       0x1dab                                        
+00001d88  cmp      byte ptr [rcx + 0x29], 5                      
+00001d8c  jb       0x1dab                                        
+00001d8e  mov      rcx, qword ptr [rcx + 0x18]                   
+00001d92  lea      r8, [rip + 0x43e7]                            
+00001d99  mov      r9d, edx                                      
+00001d9c  mov      qword ptr [rsp + 0x20], rdi                   
+00001da1  mov      edx, 0x1b                                     
+00001da6  call     0x2bb4                                        
+00001dab  mov      edx, dword ptr [rbp - 0x20]                   
+00001dae  mov      rcx, rbx                                      
+00001db1  call     qword ptr [rip + 0x4281]                        ; MmUnmapIoSpace!ntoskrnl
+00001db7  mov      edx, 0x6754794d                               
+00001dbc  mov      rcx, r14                                      
+00001dbf  call     qword ptr [rip + 0x42c3]                        ; !ntoskrnl
+00001dc5  mov      rax, rdi                                      
+00001dc8  mov      rcx, qword ptr [rbp - 8]                      
+00001dcc  xor      rcx, rsp                                      
+00001dcf  call     0x4a20                                        
+00001dd4  mov      rbx, qword ptr [rsp + 0xa0]                   
+00001ddc  add      rsp, 0x50                                     
+00001de0  pop      r15                                           
+00001de2  pop      r14                                           
+00001de4  pop      r13                                           
+00001de6  pop      r12                                           
+00001de8  pop      rdi                                           
+00001de9  pop      rsi                                           
+00001dea  pop      rbp                                           
+00001deb  ret                                                    
+00001dec  push     rbp                                           
+00001dee  push     rbx                                           
+00001def  push     rsi                                           
+00001df0  push     rdi                                           
+00001df1  push     r12                                           
+=== around call to MmUnmapIoSpace!ntoskrnl [0x2dec..0x2f2c] ===
+00002def  mov      rsi, rax                                      
+00002df2  test     rax, rax                                      
+00002df5  jne      0x2e2c                                        
+00002df7  mov      rcx, qword ptr [rip + 0x422a]                 
+00002dfe  lea      rax, [rip + 0x4223]                           
+00002e05  cmp      rcx, rax                                      
+00002e08  je       0x2dd1                                        
+00002e0a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002e0d  test     al, 8                                         
+00002e0f  je       0x2dd1                                        
+00002e11  cmp      byte ptr [rcx + 0x29], 2                      
+00002e15  jb       0x2dd1                                        
+00002e17  mov      rcx, qword ptr [rcx + 0x18]                   
+00002e1b  lea      edx, [rsi + 0x48]                             
+00002e1e  lea      r8, [rip + 0x336b]                            
+00002e25  call     0x2b08                                        
+00002e2a  jmp      0x2dd1                                        
+00002e2c  mov      edx, dword ptr [rdi + 8]                      
+00002e2f  mov      r14, qword ptr [rdi + 0x10]                   
+00002e33  test     dl, 3                                         
+00002e36  jne      0x2e95                                        
+00002e38  mov      r9, qword ptr [rip + 0x41e9]                  
+00002e3f  lea      rax, [rip + 0x41e2]                           
+00002e46  mov      ecx, edx                                      
+00002e48  cmp      r9, rax                                       
+00002e4b  je       0x2e74                                        
+00002e4d  mov      eax, dword ptr [r9 + 0x2c]                    
+00002e51  test     al, 8                                         
+00002e53  je       0x2e74                                        
+00002e55  cmp      byte ptr [r9 + 0x29], 4                       
+00002e5a  jb       0x2e74                                        
+00002e5c  mov      rcx, qword ptr [r9 + 0x18]                    
+00002e60  lea      r8, [rip + 0x3329]                            
+00002e67  mov      edx, 0x4b                                     
+00002e6c  call     0x2b08                                        
+00002e71  mov      ecx, dword ptr [rdi + 8]                      
+00002e74  xor      edx, edx                                      
+00002e76  test     ecx, 0xfffffffc                               
+00002e7c  jbe      0x2ee7                                        
+00002e7e  mov      eax, dword ptr [rsi + rdx*4]                  
+00002e81  mov      dword ptr [r14 + rdx*4], eax                  
+00002e85  inc      edx                                           
+00002e87  mov      ecx, dword ptr [rdi + 8]                      
+00002e8a  mov      eax, ecx                                      
+00002e8c  shr      eax, 2                                        
+00002e8f  cmp      edx, eax                                      
+00002e91  jb       0x2e7e                                        
+00002e93  jmp      0x2ee7                                        
+00002e95  mov      r9, qword ptr [rip + 0x418c]                  
+00002e9c  lea      rax, [rip + 0x4185]                           
+00002ea3  mov      ecx, edx                                      
+00002ea5  cmp      r9, rax                                       
+00002ea8  je       0x2ed1                                        
+00002eaa  mov      eax, dword ptr [r9 + 0x2c]                    
+00002eae  test     al, 8                                         
+00002eb0  je       0x2ed1                                        
+00002eb2  cmp      byte ptr [r9 + 0x29], 4                       
+00002eb7  jb       0x2ed1                                        
+00002eb9  mov      rcx, qword ptr [r9 + 0x18]                    
+00002ebd  lea      r8, [rip + 0x32cc]                            
+00002ec4  mov      edx, 0x4c                                     
+00002ec9  call     0x2b08                                        
+00002ece  mov      ecx, dword ptr [rdi + 8]                      
+00002ed1  xor      edx, edx                                      
+00002ed3  test     ecx, ecx                                      
+00002ed5  je       0x2ee7                                        
+00002ed7  mov      al, byte ptr [rdx + rsi]                      
+00002eda  mov      byte ptr [rdx + r14], al                      
+00002ede  inc      edx                                           
+00002ee0  mov      ecx, dword ptr [rdi + 8]                      
+00002ee3  cmp      edx, ecx                                      
+00002ee5  jb       0x2ed7                                        
+00002ee7  mov      edx, ecx                                      
+00002ee9  mov      rcx, rsi                                      
+00002eec  call     qword ptr [rip + 0x3146]                        ; MmUnmapIoSpace!ntoskrnl
+00002ef2  and      qword ptr [r15], 0                            
+00002ef6  mov      rsi, qword ptr [rsp + 0x58]                   
+00002efb  mov      eax, ebx                                      
+00002efd  mov      rbx, qword ptr [rsp + 0x50]                   
+00002f02  mov      rdi, qword ptr [rsp + 0x60]                   
+00002f07  mov      r14, qword ptr [rsp + 0x68]                   
+00002f0c  add      rsp, 0x40                                     
+00002f10  pop      r15                                           
+00002f12  ret                                                    
+00002f13  int3                                                   
+00002f14  mov      qword ptr [rsp + 0x10], rbx                   
+00002f19  mov      qword ptr [rsp + 0x18], rbp                   
+00002f1e  push     rsi                                           
+00002f1f  sub      rsp, 0x20                                     
+00002f23  and      qword ptr [rdx], 0                            
+00002f27  mov      rsi, rdx                                      
+00002f2a  cmp      qword ptr [rcx + 0x28], 0                     
+=== around call to MmUnmapIoSpace!ntoskrnl [0x2ec2..0x3002] ===
+00002ec4  mov      edx, 0x4c                                     
+00002ec9  call     0x2b08                                        
+00002ece  mov      ecx, dword ptr [rdi + 8]                      
+00002ed1  xor      edx, edx                                      
+00002ed3  test     ecx, ecx                                      
+00002ed5  je       0x2ee7                                        
+00002ed7  mov      al, byte ptr [rdx + rsi]                      
+00002eda  mov      byte ptr [rdx + r14], al                      
+00002ede  inc      edx                                           
+00002ee0  mov      ecx, dword ptr [rdi + 8]                      
+00002ee3  cmp      edx, ecx                                      
+00002ee5  jb       0x2ed7                                        
+00002ee7  mov      edx, ecx                                      
+00002ee9  mov      rcx, rsi                                      
+00002eec  call     qword ptr [rip + 0x3146]                        ; MmUnmapIoSpace!ntoskrnl
+00002ef2  and      qword ptr [r15], 0                            
+00002ef6  mov      rsi, qword ptr [rsp + 0x58]                   
+00002efb  mov      eax, ebx                                      
+00002efd  mov      rbx, qword ptr [rsp + 0x50]                   
+00002f02  mov      rdi, qword ptr [rsp + 0x60]                   
+00002f07  mov      r14, qword ptr [rsp + 0x68]                   
+00002f0c  add      rsp, 0x40                                     
+00002f10  pop      r15                                           
+00002f12  ret                                                    
+00002f13  int3                                                   
+00002f14  mov      qword ptr [rsp + 0x10], rbx                   
+00002f19  mov      qword ptr [rsp + 0x18], rbp                   
+00002f1e  push     rsi                                           
+00002f1f  sub      rsp, 0x20                                     
+00002f23  and      qword ptr [rdx], 0                            
+00002f27  mov      rsi, rdx                                      
+00002f2a  cmp      qword ptr [rcx + 0x28], 0                     
+00002f2f  mov      rbx, rcx                                      
+00002f32  je       0x3064                                        
+00002f38  mov      rcx, qword ptr [rcx + 0x28]                   
+00002f3c  xor      r8d, r8d                                      
+00002f3f  lea      ebp, [r8 + 0x50]                              
+00002f43  mov      edx, ebp                                      
+00002f45  call     qword ptr [rip + 0x30e5]                        ; MmMapIoSpace!ntoskrnl
+00002f4b  mov      rcx, rax                                      
+00002f4e  test     rax, rax                                      
+00002f51  jne      0x2f87                                        
+00002f53  mov      rcx, qword ptr [rip + 0x40ce]                 
+00002f5a  lea      rax, [rip + 0x40c7]                           
+00002f61  cmp      rcx, rax                                      
+00002f64  je       0x3034                                        
+00002f6a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002f6d  test     al, 8                                         
+00002f6f  je       0x3034                                        
+00002f75  cmp      byte ptr [rcx + 0x29], 2                      
+00002f79  jb       0x3034                                        
+00002f7f  lea      edx, [rbp - 0xc]                              
+00002f82  jmp      0x3024                                        
+00002f87  and      dword ptr [rax + 0x1c], 0                     
+00002f8b  mov      r8d, 0xc0000001                               
+00002f91  mov      dword ptr [rax + 0x10], r8d                   
+00002f95  mov      dword ptr [rax + 0x18], ebp                   
+00002f98  mov      al, byte ptr [rbx + 0x38]                     
+00002f9b  mov      edx, 0xb2                                     
+00002fa0  out      dx, al                                        
+00002fa1  cmp      dword ptr [rcx + 0x10], 0                     
+00002fa5  je       0x2fef                                        
+00002fa7  mov      dword ptr [rcx + 0x10], r8d                   
+00002fab  mov      dword ptr [rcx + 0x18], ebp                   
+00002fae  mov      dword ptr [rcx + 0x1c], 1                     
+00002fb5  mov      al, byte ptr [rbx + 0x38]                     
+00002fb8  out      dx, al                                        
+00002fb9  cmp      dword ptr [rcx + 0x10], 0                     
+00002fbd  je       0x2fef                                        
+00002fbf  mov      rdx, rbp                                      
+00002fc2  call     qword ptr [rip + 0x3070]                        ; MmUnmapIoSpace!ntoskrnl
+00002fc8  mov      rcx, qword ptr [rip + 0x4059]                 
+00002fcf  lea      rax, [rip + 0x4052]                           
+00002fd6  cmp      rcx, rax                                      
+00002fd9  je       0x3034                                        
+00002fdb  mov      eax, dword ptr [rcx + 0x2c]                   
+00002fde  test     al, 8                                         
+00002fe0  je       0x3034                                        
+00002fe2  cmp      byte ptr [rcx + 0x29], 2                      
+00002fe6  jb       0x3034                                        
+00002fe8  mov      edx, 0x45                                     
+00002fed  jmp      0x3024                                        
+00002fef  mov      eax, dword ptr [rcx + 0x1c]                   
+00002ff2  test     al, 1                                         
+00002ff4  jne      0x303e                                        
+00002ff6  mov      rdx, rbp                                      
+00002ff9  call     qword ptr [rip + 0x3039]                        ; MmUnmapIoSpace!ntoskrnl
+00002fff  mov      rcx, qword ptr [rip + 0x4022]                 
+=== around call to MmUnmapIoSpace!ntoskrnl [0x2ef9..0x3039] ===
+00002efb  mov      eax, ebx                                      
+00002efd  mov      rbx, qword ptr [rsp + 0x50]                   
+00002f02  mov      rdi, qword ptr [rsp + 0x60]                   
+00002f07  mov      r14, qword ptr [rsp + 0x68]                   
+00002f0c  add      rsp, 0x40                                     
+00002f10  pop      r15                                           
+00002f12  ret                                                    
+00002f13  int3                                                   
+00002f14  mov      qword ptr [rsp + 0x10], rbx                   
+00002f19  mov      qword ptr [rsp + 0x18], rbp                   
+00002f1e  push     rsi                                           
+00002f1f  sub      rsp, 0x20                                     
+00002f23  and      qword ptr [rdx], 0                            
+00002f27  mov      rsi, rdx                                      
+00002f2a  cmp      qword ptr [rcx + 0x28], 0                     
+00002f2f  mov      rbx, rcx                                      
+00002f32  je       0x3064                                        
+00002f38  mov      rcx, qword ptr [rcx + 0x28]                   
+00002f3c  xor      r8d, r8d                                      
+00002f3f  lea      ebp, [r8 + 0x50]                              
+00002f43  mov      edx, ebp                                      
+00002f45  call     qword ptr [rip + 0x30e5]                        ; MmMapIoSpace!ntoskrnl
+00002f4b  mov      rcx, rax                                      
+00002f4e  test     rax, rax                                      
+00002f51  jne      0x2f87                                        
+00002f53  mov      rcx, qword ptr [rip + 0x40ce]                 
+00002f5a  lea      rax, [rip + 0x40c7]                           
+00002f61  cmp      rcx, rax                                      
+00002f64  je       0x3034                                        
+00002f6a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002f6d  test     al, 8                                         
+00002f6f  je       0x3034                                        
+00002f75  cmp      byte ptr [rcx + 0x29], 2                      
+00002f79  jb       0x3034                                        
+00002f7f  lea      edx, [rbp - 0xc]                              
+00002f82  jmp      0x3024                                        
+00002f87  and      dword ptr [rax + 0x1c], 0                     
+00002f8b  mov      r8d, 0xc0000001                               
+00002f91  mov      dword ptr [rax + 0x10], r8d                   
+00002f95  mov      dword ptr [rax + 0x18], ebp                   
+00002f98  mov      al, byte ptr [rbx + 0x38]                     
+00002f9b  mov      edx, 0xb2                                     
+00002fa0  out      dx, al                                        
+00002fa1  cmp      dword ptr [rcx + 0x10], 0                     
+00002fa5  je       0x2fef                                        
+00002fa7  mov      dword ptr [rcx + 0x10], r8d                   
+00002fab  mov      dword ptr [rcx + 0x18], ebp                   
+00002fae  mov      dword ptr [rcx + 0x1c], 1                     
+00002fb5  mov      al, byte ptr [rbx + 0x38]                     
+00002fb8  out      dx, al                                        
+00002fb9  cmp      dword ptr [rcx + 0x10], 0                     
+00002fbd  je       0x2fef                                        
+00002fbf  mov      rdx, rbp                                      
+00002fc2  call     qword ptr [rip + 0x3070]                        ; MmUnmapIoSpace!ntoskrnl
+00002fc8  mov      rcx, qword ptr [rip + 0x4059]                 
+00002fcf  lea      rax, [rip + 0x4052]                           
+00002fd6  cmp      rcx, rax                                      
+00002fd9  je       0x3034                                        
+00002fdb  mov      eax, dword ptr [rcx + 0x2c]                   
+00002fde  test     al, 8                                         
+00002fe0  je       0x3034                                        
+00002fe2  cmp      byte ptr [rcx + 0x29], 2                      
+00002fe6  jb       0x3034                                        
+00002fe8  mov      edx, 0x45                                     
+00002fed  jmp      0x3024                                        
+00002fef  mov      eax, dword ptr [rcx + 0x1c]                   
+00002ff2  test     al, 1                                         
+00002ff4  jne      0x303e                                        
+00002ff6  mov      rdx, rbp                                      
+00002ff9  call     qword ptr [rip + 0x3039]                        ; MmUnmapIoSpace!ntoskrnl
+00002fff  mov      rcx, qword ptr [rip + 0x4022]                 
+00003006  lea      rax, [rip + 0x401b]                           
+0000300d  cmp      rcx, rax                                      
+00003010  je       0x3034                                        
+00003012  mov      eax, dword ptr [rcx + 0x2c]                   
+00003015  test     al, 8                                         
+00003017  je       0x3034                                        
+00003019  cmp      byte ptr [rcx + 0x29], 2                      
+0000301d  jb       0x3034                                        
+0000301f  mov      edx, 0x46                                     
+00003024  mov      rcx, qword ptr [rcx + 0x18]                   
+00003028  lea      r8, [rip + 0x3161]                            
+0000302f  call     0x2b08                                        
+00003034  mov      eax, 0xc0000229                               
+00003039  jmp      0x3135                                        
+=== around call to MmUnmapIoSpace!ntoskrnl [0x2f59..0x3099] ===
+00002f5a  lea      rax, [rip + 0x40c7]                           
+00002f61  cmp      rcx, rax                                      
+00002f64  je       0x3034                                        
+00002f6a  mov      eax, dword ptr [rcx + 0x2c]                   
+00002f6d  test     al, 8                                         
+00002f6f  je       0x3034                                        
+00002f75  cmp      byte ptr [rcx + 0x29], 2                      
+00002f79  jb       0x3034                                        
+00002f7f  lea      edx, [rbp - 0xc]                              
+00002f82  jmp      0x3024                                        
+00002f87  and      dword ptr [rax + 0x1c], 0                     
+00002f8b  mov      r8d, 0xc0000001                               
+00002f91  mov      dword ptr [rax + 0x10], r8d                   
+00002f95  mov      dword ptr [rax + 0x18], ebp                   
+00002f98  mov      al, byte ptr [rbx + 0x38]                     
+00002f9b  mov      edx, 0xb2                                     
+00002fa0  out      dx, al                                        
+00002fa1  cmp      dword ptr [rcx + 0x10], 0                     
+00002fa5  je       0x2fef                                        
+00002fa7  mov      dword ptr [rcx + 0x10], r8d                   
+00002fab  mov      dword ptr [rcx + 0x18], ebp                   
+00002fae  mov      dword ptr [rcx + 0x1c], 1                     
+00002fb5  mov      al, byte ptr [rbx + 0x38]                     
+00002fb8  out      dx, al                                        
+00002fb9  cmp      dword ptr [rcx + 0x10], 0                     
+00002fbd  je       0x2fef                                        
+00002fbf  mov      rdx, rbp                                      
+00002fc2  call     qword ptr [rip + 0x3070]                        ; MmUnmapIoSpace!ntoskrnl
+00002fc8  mov      rcx, qword ptr [rip + 0x4059]                 
+00002fcf  lea      rax, [rip + 0x4052]                           
+00002fd6  cmp      rcx, rax                                      
+00002fd9  je       0x3034                                        
+00002fdb  mov      eax, dword ptr [rcx + 0x2c]                   
+00002fde  test     al, 8                                         
+00002fe0  je       0x3034                                        
+00002fe2  cmp      byte ptr [rcx + 0x29], 2                      
+00002fe6  jb       0x3034                                        
+00002fe8  mov      edx, 0x45                                     
+00002fed  jmp      0x3024                                        
+00002fef  mov      eax, dword ptr [rcx + 0x1c]                   
+00002ff2  test     al, 1                                         
+00002ff4  jne      0x303e                                        
+00002ff6  mov      rdx, rbp                                      
+00002ff9  call     qword ptr [rip + 0x3039]                        ; MmUnmapIoSpace!ntoskrnl
+00002fff  mov      rcx, qword ptr [rip + 0x4022]                 
+00003006  lea      rax, [rip + 0x401b]                           
+0000300d  cmp      rcx, rax                                      
+00003010  je       0x3034                                        
+00003012  mov      eax, dword ptr [rcx + 0x2c]                   
+00003015  test     al, 8                                         
+00003017  je       0x3034                                        
+00003019  cmp      byte ptr [rcx + 0x29], 2                      
+0000301d  jb       0x3034                                        
+0000301f  mov      edx, 0x46                                     
+00003024  mov      rcx, qword ptr [rcx + 0x18]                   
+00003028  lea      r8, [rip + 0x3161]                            
+0000302f  call     0x2b08                                        
+00003034  mov      eax, 0xc0000229                               
+00003039  jmp      0x3135                                        
+0000303e  mov      rax, qword ptr [rcx + 8]                      
+00003042  mov      qword ptr [rsi], rax                          
+00003045  mov      eax, 0xc0000002                               
+0000304a  mov      dword ptr [rcx + 0x10], eax                   
+0000304d  mov      al, byte ptr [rbx + 0x38]                     
+00003050  mov      edx, 0xb2                                     
+00003055  out      dx, al                                        
+00003056  mov      rdx, rbp                                      
+00003059  call     qword ptr [rip + 0x2fd9]                        ; MmUnmapIoSpace!ntoskrnl
+0000305f  jmp      0x3133                                        
+00003064  and      qword ptr [rip + 0x4f94], 0                   
+0000306c  mov      r8d, 0xc0000001                               
+00003072  and      qword ptr [rip + 0x4f5e], 0                   
+0000307a  mov      qword ptr [rip + 0x4f77], r8                  
+00003081  mov      qword ptr [rip + 0x4f7c], 0xd9                
+0000308c  mov      qword ptr [rip + 0x4f59], 0xb2                
+00003097  mov      qword ptr [rip + 0x4f46], 0x1000              
+=== around call to MmUnmapIoSpace!ntoskrnl [0x2fe3..0x3123] ===
+00002fe6  jb       0x3034                                        
+00002fe8  mov      edx, 0x45                                     
+00002fed  jmp      0x3024                                        
+00002fef  mov      eax, dword ptr [rcx + 0x1c]                   
+00002ff2  test     al, 1                                         
+00002ff4  jne      0x303e                                        
+00002ff6  mov      rdx, rbp                                      
+00002ff9  call     qword ptr [rip + 0x3039]                        ; MmUnmapIoSpace!ntoskrnl
+00002fff  mov      rcx, qword ptr [rip + 0x4022]                 
+00003006  lea      rax, [rip + 0x401b]                           
+0000300d  cmp      rcx, rax                                      
+00003010  je       0x3034                                        
+00003012  mov      eax, dword ptr [rcx + 0x2c]                   
+00003015  test     al, 8                                         
+00003017  je       0x3034                                        
+00003019  cmp      byte ptr [rcx + 0x29], 2                      
+0000301d  jb       0x3034                                        
+0000301f  mov      edx, 0x46                                     
+00003024  mov      rcx, qword ptr [rcx + 0x18]                   
+00003028  lea      r8, [rip + 0x3161]                            
+0000302f  call     0x2b08                                        
+00003034  mov      eax, 0xc0000229                               
+00003039  jmp      0x3135                                        
+0000303e  mov      rax, qword ptr [rcx + 8]                      
+00003042  mov      qword ptr [rsi], rax                          
+00003045  mov      eax, 0xc0000002                               
+0000304a  mov      dword ptr [rcx + 0x10], eax                   
+0000304d  mov      al, byte ptr [rbx + 0x38]                     
+00003050  mov      edx, 0xb2                                     
+00003055  out      dx, al                                        
+00003056  mov      rdx, rbp                                      
+00003059  call     qword ptr [rip + 0x2fd9]                        ; MmUnmapIoSpace!ntoskrnl
+0000305f  jmp      0x3133                                        
+00003064  and      qword ptr [rip + 0x4f94], 0                   
+0000306c  mov      r8d, 0xc0000001                               
+00003072  and      qword ptr [rip + 0x4f5e], 0                   
+0000307a  mov      qword ptr [rip + 0x4f77], r8                  
+00003081  mov      qword ptr [rip + 0x4f7c], 0xd9                
+0000308c  mov      qword ptr [rip + 0x4f59], 0xb2                
+00003097  mov      qword ptr [rip + 0x4f46], 0x1000              
+000030a2  mov      qword ptr [rip + 0x4f33], 1                   
+000030ad  call     0x1040                                        
+000030b2  mov      eax, dword ptr [rip + 0x4f30]                 
+000030b8  xor      r8d, r8d                                      
+000030bb  mov      dword ptr [rsp + 0x30], eax                   
+000030bf  mov      eax, dword ptr [rip + 0x4f1b]                 
+000030c5  mov      dword ptr [rsp + 0x34], eax                   
+000030c9  mov      rcx, qword ptr [rsp + 0x30]                   
+000030ce  lea      ebp, [r8 + 0x20]                              
+000030d2  mov      edx, ebp                                      
+000030d4  call     qword ptr [rip + 0x2f56]                        ; MmMapIoSpace!ntoskrnl
+000030da  mov      edx, ebp                                      
+000030dc  mov      rcx, rax                                      
+000030df  mov      rbx, qword ptr [rax + 8]                      
+000030e3  call     qword ptr [rip + 0x2f4f]                        ; MmUnmapIoSpace!ntoskrnl
+000030e9  and      qword ptr [rip + 0x4f0f], 0                   
+000030f1  mov      eax, 0xc0000002                               
+000030f6  and      qword ptr [rip + 0x4eea], 0                   
+000030fe  and      qword ptr [rip + 0x4eda], 0                   
+00003106  and      qword ptr [rip + 0x4eca], 0                   
+0000310e  mov      qword ptr [rip + 0x4ee3], rax                 
+00003115  mov      qword ptr [rip + 0x4ee8], 0xd9                
+00003120  mov      qword ptr [rip + 0x4ec5], 0xb2                
+=== around call to MmUnmapIoSpace!ntoskrnl [0x3129..0x3269] ===
+0000312b  call     0x1040                                        
+00003130  mov      qword ptr [rsi], rbx                          
+00003133  xor      eax, eax                                      
+00003135  mov      rbx, qword ptr [rsp + 0x38]                   
+0000313a  mov      rbp, qword ptr [rsp + 0x40]                   
+0000313f  add      rsp, 0x20                                     
+00003143  pop      rsi                                           
+00003144  ret                                                    
+00003145  int3                                                   
+00003146  int3                                                   
+00003147  int3                                                   
+00003148  mov      qword ptr [rsp + 8], rbx                      
+0000314d  mov      qword ptr [rsp + 0x10], rbp                   
+00003152  mov      qword ptr [rsp + 0x18], rsi                   
+00003157  push     rdi                                           
+00003158  push     r12                                           
+0000315a  push     r14                                           
+0000315c  sub      rsp, 0x20                                     
+00003160  cmp      qword ptr [rcx + 0x28], 0                     
+00003165  mov      rsi, r9                                       
+00003168  mov      r14, r8                                       
+0000316b  mov      rdi, rdx                                      
+0000316e  mov      rbx, rcx                                      
+00003171  je       0x3328                                        
+00003177  mov      rcx, qword ptr [rcx + 0x28]                   
+0000317b  xor      r8d, r8d                                      
+0000317e  lea      r12d, [r8 + 0x50]                             
+00003182  mov      edx, r12d                                     
+00003185  call     qword ptr [rip + 0x2ea5]                        ; MmMapIoSpace!ntoskrnl
+0000318b  mov      r9, rax                                       
+0000318e  test     rax, rax                                      
+00003191  jne      0x31c9                                        
+00003193  mov      rcx, qword ptr [rip + 0x3e8e]                 
+0000319a  lea      rax, [rip + 0x3e87]                           
+000031a1  cmp      rcx, rax                                      
+000031a4  je       0x329f                                        
+000031aa  mov      eax, dword ptr [rcx + 0x2c]                   
+000031ad  test     al, 8                                         
+000031af  je       0x329f                                        
+000031b5  cmp      byte ptr [rcx + 0x29], 2                      
+000031b9  jb       0x329f                                        
+000031bf  lea      edx, [r12 - 0xf]                              
+000031c4  jmp      0x328f                                        
+000031c9  and      dword ptr [rax + 0x1c], 0                     
+000031cd  mov      r8, qword ptr [rsp + 0x60]                    
+000031d2  mov      dword ptr [rax + 0x10], 0xc0000001            
+000031d9  mov      dword ptr [rax + 0x18], r12d                  
+000031dd  mov      al, byte ptr [rbx + 0x38]                     
+000031e0  mov      rdx, qword ptr [r8]                           
+000031e3  out      dx, al                                        
+000031e4  cmp      dword ptr [r9 + 0x10], 0                      
+000031e9  mov      r10, qword ptr [r9]                           
+000031ec  mov      r11d, dword ptr [r9 + 0x14]                   
+000031f0  mov      rbp, qword ptr [r9 + 8]                       
+000031f4  je       0x3256                                        
+000031f6  mov      dword ptr [r9 + 0x10], 0xc0000001             
+000031fe  mov      dword ptr [r9 + 0x18], r12d                   
+00003202  mov      dword ptr [r9 + 0x1c], 1                      
+0000320a  mov      al, byte ptr [rbx + 0x38]                     
+0000320d  mov      rdx, qword ptr [r8]                           
+00003210  out      dx, al                                        
+00003211  cmp      dword ptr [r9 + 0x10], 0                      
+00003216  mov      r10, qword ptr [r9]                           
+00003219  mov      r11d, dword ptr [r9 + 0x14]                   
+0000321d  mov      rbp, qword ptr [r9 + 8]                       
+00003221  je       0x3256                                        
+00003223  mov      rdx, r12                                      
+00003226  mov      rcx, r9                                       
+00003229  call     qword ptr [rip + 0x2e09]                        ; MmUnmapIoSpace!ntoskrnl
+0000322f  mov      rcx, qword ptr [rip + 0x3df2]                 
+00003236  lea      rax, [rip + 0x3deb]                           
+0000323d  cmp      rcx, rax                                      
+00003240  je       0x329f                                        
+00003242  mov      eax, dword ptr [rcx + 0x2c]                   
+00003245  test     al, 8                                         
+00003247  je       0x329f                                        
+00003249  cmp      byte ptr [rcx + 0x29], 2                      
+0000324d  jb       0x329f                                        
+0000324f  mov      edx, 0x42                                     
+00003254  jmp      0x328f                                        
+00003256  mov      eax, dword ptr [r9 + 0x1c]                    
+0000325a  test     al, 1                                         
+0000325c  jne      0x32a9                                        
+0000325e  mov      rdx, r12                                      
+00003261  mov      rcx, r9                                       
+00003264  call     qword ptr [rip + 0x2dce]                        ; MmUnmapIoSpace!ntoskrnl
+=== around call to MmUnmapIoSpace!ntoskrnl [0x3164..0x32a4] ===
+00003165  mov      rsi, r9                                       
+00003168  mov      r14, r8                                       
+0000316b  mov      rdi, rdx                                      
+0000316e  mov      rbx, rcx                                      
+00003171  je       0x3328                                        
+00003177  mov      rcx, qword ptr [rcx + 0x28]                   
+0000317b  xor      r8d, r8d                                      
+0000317e  lea      r12d, [r8 + 0x50]                             
+00003182  mov      edx, r12d                                     
+00003185  call     qword ptr [rip + 0x2ea5]                        ; MmMapIoSpace!ntoskrnl
+0000318b  mov      r9, rax                                       
+0000318e  test     rax, rax                                      
+00003191  jne      0x31c9                                        
+00003193  mov      rcx, qword ptr [rip + 0x3e8e]                 
+0000319a  lea      rax, [rip + 0x3e87]                           
+000031a1  cmp      rcx, rax                                      
+000031a4  je       0x329f                                        
+000031aa  mov      eax, dword ptr [rcx + 0x2c]                   
+000031ad  test     al, 8                                         
+000031af  je       0x329f                                        
+000031b5  cmp      byte ptr [rcx + 0x29], 2                      
+000031b9  jb       0x329f                                        
+000031bf  lea      edx, [r12 - 0xf]                              
+000031c4  jmp      0x328f                                        
+000031c9  and      dword ptr [rax + 0x1c], 0                     
+000031cd  mov      r8, qword ptr [rsp + 0x60]                    
+000031d2  mov      dword ptr [rax + 0x10], 0xc0000001            
+000031d9  mov      dword ptr [rax + 0x18], r12d                  
+000031dd  mov      al, byte ptr [rbx + 0x38]                     
+000031e0  mov      rdx, qword ptr [r8]                           
+000031e3  out      dx, al                                        
+000031e4  cmp      dword ptr [r9 + 0x10], 0                      
+000031e9  mov      r10, qword ptr [r9]                           
+000031ec  mov      r11d, dword ptr [r9 + 0x14]                   
+000031f0  mov      rbp, qword ptr [r9 + 8]                       
+000031f4  je       0x3256                                        
+000031f6  mov      dword ptr [r9 + 0x10], 0xc0000001             
+000031fe  mov      dword ptr [r9 + 0x18], r12d                   
+00003202  mov      dword ptr [r9 + 0x1c], 1                      
+0000320a  mov      al, byte ptr [rbx + 0x38]                     
+0000320d  mov      rdx, qword ptr [r8]                           
+00003210  out      dx, al                                        
+00003211  cmp      dword ptr [r9 + 0x10], 0                      
+00003216  mov      r10, qword ptr [r9]                           
+00003219  mov      r11d, dword ptr [r9 + 0x14]                   
+0000321d  mov      rbp, qword ptr [r9 + 8]                       
+00003221  je       0x3256                                        
+00003223  mov      rdx, r12                                      
+00003226  mov      rcx, r9                                       
+00003229  call     qword ptr [rip + 0x2e09]                        ; MmUnmapIoSpace!ntoskrnl
+0000322f  mov      rcx, qword ptr [rip + 0x3df2]                 
+00003236  lea      rax, [rip + 0x3deb]                           
+0000323d  cmp      rcx, rax                                      
+00003240  je       0x329f                                        
+00003242  mov      eax, dword ptr [rcx + 0x2c]                   
+00003245  test     al, 8                                         
+00003247  je       0x329f                                        
+00003249  cmp      byte ptr [rcx + 0x29], 2                      
+0000324d  jb       0x329f                                        
+0000324f  mov      edx, 0x42                                     
+00003254  jmp      0x328f                                        
+00003256  mov      eax, dword ptr [r9 + 0x1c]                    
+0000325a  test     al, 1                                         
+0000325c  jne      0x32a9                                        
+0000325e  mov      rdx, r12                                      
+00003261  mov      rcx, r9                                       
+00003264  call     qword ptr [rip + 0x2dce]                        ; MmUnmapIoSpace!ntoskrnl
+0000326a  mov      rcx, qword ptr [rip + 0x3db7]                 
+00003271  lea      rax, [rip + 0x3db0]                           
+00003278  cmp      rcx, rax                                      
+0000327b  je       0x329f                                        
+0000327d  mov      eax, dword ptr [rcx + 0x2c]                   
+00003280  test     al, 8                                         
+00003282  je       0x329f                                        
+00003284  cmp      byte ptr [rcx + 0x29], 2                      
+00003288  jb       0x329f                                        
+0000328a  mov      edx, 0x43                                     
+0000328f  mov      rcx, qword ptr [rcx + 0x18]                   
+00003293  lea      r8, [rip + 0x2ef6]                            
+0000329a  call     0x2b08                                        
+0000329f  mov      eax, 0xc0000229                               
+000032a4  jmp      0x3394                                        
+=== around call to MmUnmapIoSpace!ntoskrnl [0x3220..0x3360] ===
+00003221  je       0x3256                                        
+00003223  mov      rdx, r12                                      
+00003226  mov      rcx, r9                                       
+00003229  call     qword ptr [rip + 0x2e09]                        ; MmUnmapIoSpace!ntoskrnl
+0000322f  mov      rcx, qword ptr [rip + 0x3df2]                 
+00003236  lea      rax, [rip + 0x3deb]                           
+0000323d  cmp      rcx, rax                                      
+00003240  je       0x329f                                        
+00003242  mov      eax, dword ptr [rcx + 0x2c]                   
+00003245  test     al, 8                                         
+00003247  je       0x329f                                        
+00003249  cmp      byte ptr [rcx + 0x29], 2                      
+0000324d  jb       0x329f                                        
+0000324f  mov      edx, 0x42                                     
+00003254  jmp      0x328f                                        
+00003256  mov      eax, dword ptr [r9 + 0x1c]                    
+0000325a  test     al, 1                                         
+0000325c  jne      0x32a9                                        
+0000325e  mov      rdx, r12                                      
+00003261  mov      rcx, r9                                       
+00003264  call     qword ptr [rip + 0x2dce]                        ; MmUnmapIoSpace!ntoskrnl
+0000326a  mov      rcx, qword ptr [rip + 0x3db7]                 
+00003271  lea      rax, [rip + 0x3db0]                           
+00003278  cmp      rcx, rax                                      
+0000327b  je       0x329f                                        
+0000327d  mov      eax, dword ptr [rcx + 0x2c]                   
+00003280  test     al, 8                                         
+00003282  je       0x329f                                        
+00003284  cmp      byte ptr [rcx + 0x29], 2                      
+00003288  jb       0x329f                                        
+0000328a  mov      edx, 0x43                                     
+0000328f  mov      rcx, qword ptr [rcx + 0x18]                   
+00003293  lea      r8, [rip + 0x2ef6]                            
+0000329a  call     0x2b08                                        
+0000329f  mov      eax, 0xc0000229                               
+000032a4  jmp      0x3394                                        
+000032a9  mov      dword ptr [r9 + 0x10], 0xc0000004             
+000032b1  movzx    eax, byte ptr [rdi]                           
+000032b4  mov      dword ptr [r9 + 0x18], eax                    
+000032b8  mov      rax, qword ptr [rdi]                          
+000032bb  mov      qword ptr [r9 + 0x20], rax                    
+000032bf  mov      rax, qword ptr [r14]                          
+000032c2  mov      qword ptr [r9 + 0x28], rax                    
+000032c6  mov      rax, qword ptr [rsi]                          
+000032c9  mov      qword ptr [r9 + 0x30], rax                    
+000032cd  mov      rax, qword ptr [r8]                           
+000032d0  and      qword ptr [r9 + 0x40], 0                      
+000032d5  and      qword ptr [r9 + 0x48], 0                      
+000032da  mov      qword ptr [r9 + 0x38], rax                    
+000032de  mov      al, byte ptr [rdi]                            
+000032e0  mov      rdx, qword ptr [r8]                           
+000032e3  out      dx, al                                        
+000032e4  mov      rax, qword ptr [r9 + 0x20]                    
+000032e8  mov      qword ptr [rdi], rax                          
+000032eb  mov      rax, qword ptr [r9 + 0x28]                    
+000032ef  mov      qword ptr [r14], rax                          
+000032f2  mov      rax, qword ptr [r9 + 0x30]                    
+000032f6  mov      qword ptr [rsi], rax                          
+000032f9  mov      rax, qword ptr [r9 + 0x38]                    
+000032fd  mov      qword ptr [r8], rax                           
+00003300  mov      dword ptr [r9 + 0x10], 0xc0000002             
+00003308  mov      qword ptr [r9], r10                           
+0000330b  mov      qword ptr [r9 + 8], rbp                       
+0000330f  mov      dword ptr [r9 + 0x14], r11d                   
+00003313  mov      al, byte ptr [rbx + 0x38]                     
+00003316  mov      rdx, qword ptr [r8]                           
+00003319  out      dx, al                                        
+0000331a  mov      rdx, r12                                      
+0000331d  mov      rcx, r9                                       
+00003320  call     qword ptr [rip + 0x2d12]                        ; MmUnmapIoSpace!ntoskrnl
+00003326  jmp      0x3392                                        
+00003328  mov      rax, qword ptr [rdx]                          
+0000332b  mov      rbx, qword ptr [rsp + 0x60]                   
+00003330  mov      qword ptr [rip + 0x4cd1], rax                 
+00003337  mov      rax, qword ptr [r8]                           
+0000333a  mov      qword ptr [rip + 0x4cbf], rax                 
+00003341  mov      rax, qword ptr [r9]                           
+00003344  mov      qword ptr [rip + 0x4cad], rax                 
+0000334b  mov      rax, qword ptr [rbx]                          
+0000334e  and      qword ptr [rip + 0x4c92], 0                   
+00003356  and      qword ptr [rip + 0x4c82], 0                   
+0000335e  mov      qword ptr [rip + 0x4c8b], rax                 
+=== around call to MmUnmapIoSpace!ntoskrnl [0x36ea..0x382a] ===
+000036ed  lea      rbx, [rip + 0x3934]                           
+000036f4  cmp      rcx, rbx                                      
+000036f7  je       0x3734                                        
+000036f9  mov      eax, dword ptr [rcx + 0x2c]                   
+000036fc  test     al, 8                                         
+000036fe  je       0x3734                                        
+00003700  cmp      byte ptr [rcx + 0x29], 4                      
+00003704  jb       0x3734                                        
+00003706  mov      r9, qword ptr [rsp + 0x30]                    
+0000370b  lea      r8, [rip + 0x2a7e]                            
+00003712  mov      rcx, qword ptr [rcx + 0x18]                   
+00003716  mov      edx, 0x16                                     
+0000371b  mov      rax, qword ptr [r9 + 0x10]                    
+0000371f  mov      qword ptr [rsp + 0x28], rax                   
+00003724  mov      eax, dword ptr [r9 + 8]                       
+00003728  mov      r9, qword ptr [r9]                            
+0000372b  mov      dword ptr [rsp + 0x20], eax                   
+0000372f  call     0x3c6c                                        
+00003734  mov      rcx, qword ptr [rsp + 0x30]                   
+00003739  xor      r8d, r8d                                      
+0000373c  mov      edx, dword ptr [rcx + 8]                      
+0000373f  mov      rcx, qword ptr [rcx]                          
+00003742  call     qword ptr [rip + 0x28e8]                        ; MmMapIoSpace!ntoskrnl
+00003748  mov      rsi, rax                                      
+0000374b  test     rax, rax                                      
+0000374e  jne      0x3789                                        
+00003750  mov      rcx, qword ptr [rip + 0x38d1]                 
+00003757  cmp      rcx, rbx                                      
+0000375a  je       0x36dc                                        
+0000375c  mov      eax, dword ptr [rcx + 0x2c]                   
+0000375f  test     al, 8                                         
+00003761  je       0x36dc                                        
+00003767  cmp      byte ptr [rcx + 0x29], 2                      
+0000376b  jb       0x36dc                                        
+00003771  mov      rcx, qword ptr [rcx + 0x18]                   
+00003775  lea      edx, [rsi + 0x17]                             
+00003778  lea      r8, [rip + 0x2a11]                            
+0000377f  call     0x2b08                                        
+00003784  jmp      0x36dc                                        
+00003789  mov      rcx, qword ptr [rip + 0x3898]                 
+00003790  cmp      rcx, rbx                                      
+00003793  je       0x37ca                                        
+00003795  mov      eax, dword ptr [rcx + 0x2c]                   
+00003798  test     al, 8                                         
+0000379a  je       0x37ca                                        
+0000379c  cmp      byte ptr [rcx + 0x29], 4                      
+000037a0  jb       0x37ca                                        
+000037a2  mov      rax, qword ptr [rsp + 0x30]                   
+000037a7  mov      edx, 0x18                                     
+000037ac  mov      r9d, dword ptr [rsi]                          
+000037af  mov      rcx, qword ptr [rcx + 0x18]                   
+000037b3  mov      r8, qword ptr [rax + 0x10]                    
+000037b7  mov      eax, dword ptr [r8]                           
+000037ba  lea      r8, [rip + 0x29cf]                            
+000037c1  mov      dword ptr [rsp + 0x20], eax                   
+000037c5  call     0x2b6c                                        
+000037ca  mov      rcx, qword ptr [rsp + 0x30]                   
+000037cf  mov      rdx, rsi                                      
+000037d2  mov      r8d, dword ptr [rcx + 8]                      
+000037d6  mov      rcx, qword ptr [rcx + 0x10]                   
+000037da  call     0x4b00                                        
+000037df  mov      rax, qword ptr [rsp + 0x30]                   
+000037e4  mov      rcx, rsi                                      
+000037e7  mov      edx, dword ptr [rax + 8]                      
+000037ea  call     qword ptr [rip + 0x2848]                        ; MmUnmapIoSpace!ntoskrnl
+000037f0  mov      rcx, qword ptr [rip + 0x3831]                 
+000037f7  cmp      rcx, rbx                                      
+000037fa  je       0x382a                                        
+000037fc  mov      eax, dword ptr [rcx + 0x2c]                   
+000037ff  test     al, 8                                         
+00003801  je       0x382a                                        
+00003803  cmp      byte ptr [rcx + 0x29], 4                      
+00003807  jb       0x382a                                        
+00003809  mov      rax, qword ptr [rsp + 0x30]                   
+0000380e  mov      edx, 0x19                                     
+00003813  mov      rcx, qword ptr [rcx + 0x18]                   
+00003817  mov      r8, qword ptr [rax + 0x10]                    
+0000381b  mov      r9d, dword ptr [r8]                           
+0000381e  lea      r8, [rip + 0x296b]                            
+00003825  call     0x2b30                                        
+0000382a  and      qword ptr [r14], 0                            

@@ -1,0 +1,12 @@
+=== h2_prep 03/11/2026 22:10:40 ===
+keep skipped (exists): h1_host_boot2.txt
+keep skipped (exists): h2_gate_boot1.txt
+keep: source missing h2_gate.summary.txt
+
+## pre-state
+lastboot=11/03/2026 20:37:49
+proc r5apex/EADesktop: 
+apexdrv: STATE              : 4  RUNNING
+blocklist=0
+bin sha256=9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+=== end prep ===

@@ -1,0 +1,8 @@
+10: function VBX([string[]]$a) { (& $VB @a 2>&1) -join "`r`n" }
+13: W ('runningvms: ' + (VBX @('list', 'runningvms')))
+17:     W ((VBX @('unregistervm', $VM, '--delete')))
+20: W ((VBX @('clonevm', $SRC, '--snapshot', $SNAP, '--options', 'link', '--name', $VM, '--register')))
+22: W ((VBX @('snapshot', $VM, 'take', 'pre-k10', '--description', 'before the k10 boot-value soak') ))
+23: W ('snapshots now: ' + (((VBX @('snapshot', $VM, 'list')) -replace '\s+', ' ')))
+35: W ((VBX @('startvm', $VM, '--type', 'headless')))
+37: W ('state: ' + (((VBX @('showvminfo', $VM, '--machinereadable')) | Select-String '^VMState').Line))

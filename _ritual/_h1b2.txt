@@ -1,0 +1,31 @@
+[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+[#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+[#] Supported x64 OS : Windows 7 and above
+[*] CPU vendor string: GenuineIntel
+[*] Windows version: 10.0 build 26200
+[*] SecureBoot is disabled on this machine
+[*] Virtualization-based security: Not configured
+[*] Hypervisor enforced Code Integrity running: Not configured
+[+] MSFT Driver block list is disabled
+[+] Selected provider: 22
+[+] Hypervisor present, vendor could not be determined
+[+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+[+] Drivers database "drv64.dll" loaded at 0x00007FFA4B3B0000
+[+] Database KDUEXT version is OK
+[+] Firmware type (FirmwareTypeUefi)
+[+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
+[+] Extracting vulnerable driver as "C:\Windows\System32\AsIO3.sys"
+[+] Vulnerable driver "AsIO3" loaded
+[+] Executing pre-open callback for given provider
+[+] Driver device "Asusgio3" has been opened successfully
+[+] Executing post-open callback for given provider
+[+] Driver device security descriptor set successfully
+[!] Cannot load symsrv.dll, make sure it is in program directory, GetLastError 126: The specified module could not be found.
+[+] Module "CI.dll" loaded for pattern search
+[+] DSE flags (0xFFFFF8007A302004) value: 6, new value to be written: 0
+[+] Kernel memory write complete, verifying data
+[+] Write result verification succeeded
+[+] Vulnerable driver "AsIO3" unloaded
+[+] Vulnerable driver file removed
+[+] Return value: 1. Bye-bye!
+rc=1

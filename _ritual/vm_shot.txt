@@ -1,0 +1,31 @@
+vm_shot 01/11/2026 22:12:26
+rdp-forward 127.0.0.1:13389 = True
+vrdp       127.0.0.1:3390  = True
+--- adapters ---
+  Ethernet | Disconnected | 74-56-95-7B-87-DC
+  Wi-Fi | Up | F4-3B-D8-48-3F-B9
+  Ethernet 2 | Up | 0A-00-27-00-00-04
+--- ipv4 ---
+  Ethernet 2 | 192.168.56.1/24 | Preferred
+  Local Area Connection* 10 | 169.254.171.47/16 | Tentative
+  Local Area Connection* 1 | 169.254.156.76/16 | Tentative
+  Ethernet | 192.168.137.1/24 | Tentative
+  Ethernet | 192.168.100.1/24 | Tentative
+  Ethernet | 169.254.125.143/16 | Tentative
+  Ethernet | 169.254.100.1/16 | Tentative
+  Wi-Fi | 192.168.4.177/22 | Preferred
+  Loopback Pseudo-Interface 1 | 127.0.0.1/8 | Preferred
+--- vm info state ---
+memory=4096
+cpus=2
+VMState="running"
+VMStateChangeTime="2026-11-01T09:04:32.855000000"
+GuestMemoryBalloon=0
+--- screenshot ---
+VBoxManage.exe: error: Unsupported resolution for screen shot: 0x0 (screen 0)
+VBoxManage.exe: error: Details: code E_INVALIDARG (0x80070057), component DisplayWrap, interface IDisplay, callee IUnknown
+VBoxManage.exe: error: Context: "TakeScreenShotToArray(iScreen, width, height, BitmapFormat_PNG, ComSafeArrayAsOutParam(saScreenshot))" at line 1775 of file VBoxManageControlVM.cpp
+png exists = False  size=0
+--- guest login / autologon state in vbox config ---
+
+--- end ---

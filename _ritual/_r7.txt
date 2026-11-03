@@ -1,0 +1,150 @@
+                                         out IntPtr viewSize, uint inherit, uint allocType,
+                                         uint protect);
+    [DllImport("ntdll.dll")]
+    static extern int NtUnmapViewOfSection(IntPtr proc, IntPtr baseAddr);
+    [DllImport("ntdll.dll")]
+    static extern int NtClose(IntPtr h);
+
+    // x64 packing: native LUID sits at offset 4 (4-byte aligned), Attributes at 12,
+    // struct size 16.  With "long Luid" the CLR pads the LUID to offset 8 and
+    // AdjustTokenPrivileges then reads a garbage LUID -> ERROR_NOT_ALL_ASSIGNED
+    // (1300) even when the privilege IS present and enabled.  Explicit LUID struct.
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    struct LUID { public uint Low; public int High; }
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    struct TOKEN_PRIVILEGES { public uint Count; public LUID Luid; public uint Attr; }
+    [StructLayout(LayoutKind.Sequential)]
+    struct UNICODE_STRING { public ushort Length, MaxLen; public IntPtr Buffer; }
+    [StructLayout(LayoutKind.Sequential)]
+    struct OBJECT_ATTRIBUTES
+    {
+        public uint Length; public IntPtr Root; public IntPtr Name;
+        public uint Attributes; public IntPtr Sd; public IntPtr Sqos;
+    }
+    static IntPtr g_Stage;
+    static int g_StageLen;
+
+    public static string EnablePriv(string name)
+    {
+        IntPtr tok; LUID luid;
+        if (!OpenProcessToken(new IntPtr(-1), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, out tok))
+            return "OpenProcessToken err=" + Marshal.GetLastWin32Error();
+        if (!LookupPrivilegeValueW(null, name, out luid))
+            return "LookupPrivilegeValue err=" + Marshal.GetLastWin32Error();
+        TOKEN_PRIVILEGES tp = new TOKEN_PRIVILEGES();
+        tp.Count = 1; tp.Luid = luid; tp.Attr = SE_PRIVILEGE_ENABLED;
+        bool ok = AdjustTokenPrivileges(tok, false, ref tp, 0, IntPtr.Zero, IntPtr.Zero);
+        int err = Marshal.GetLastWin32Error();
+        CloseHandle(tok);
+        if (!ok) return "AdjustTokenPrivileges err=" + err;
+        if (err == 1300) return "NOT_ASSIGNED (absent from token)";
+        return "ok";
+    }
+
+    static IntPtr Stage(int size)
+    {
+        if (g_Stage != IntPtr.Zero && g_StageLen < size)
+        {
+            VirtualUnlock(g_Stage, new IntPtr(g_StageLen));
+            VirtualFree(g_Stage, IntPtr.Zero, MEM_RELEASE);
+            g_Stage = IntPtr.Zero;
+        }
+        if (g_Stage == IntPtr.Zero)
+        {
+            g_Stage = VirtualAlloc(IntPtr.Zero, new IntPtr(size), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+            if (g_Stage == IntPtr.Zero) throw new Exception("VirtualAlloc err=" + Marshal.GetLastWin32Error());
+            if (!VirtualLock(g_Stage, new IntPtr(size))) throw new Exception("VirtualLock err=" + Marshal.GetLastWin32Error());
+            g_StageLen = size;
+        }
+        return g_Stage;
+    }
+
+    // ---- RAM truth table -----------------------------------------------------
+    // gdrv3 maps the PA with no RAM validation -> a PA in a hole bugchecks the
+    // box.  "pa < ramTop" is NOT a RAM test: on a 32 GB box the PCI/MMIO hole
+    // sits BELOW ramTop.  Proven 01/11 21:54:22 - 0x3B, AV_gdrv3!unknown_function,
+    // rip=gdrv3+0x4b4a, r15=0xC3502014 (our read IOCTL), PROCESS=powershell.exe;
+    // the same bucket hit 27/10 23:50:06 with PROCESS=python.exe.
+    // So the valid set is the real range list from
+    // HKLM\HARDWARE\RESOURCEMAP\System Resources\Physical Memory\.Translated.
+    public static ulong[] RamStarts = new ulong[0];
+    public static ulong[] RamEnds   = new ulong[0];
+    public static ulong RamTopFallback;
+    public delegate void Note(string s);
+    public static Note Notify;
+
+    public static void SetRamRanges(string csv, ulong ramTopFallback)
+    {
+        RamTopFallback = ramTopFallback;
+        if (string.IsNullOrEmpty(csv)) return;
+        string[] p = csv.Split(',');
+        ulong[] s = new ulong[p.Length];
+        ulong[] e = new ulong[p.Length];
+        int n = 0;
+        for (int i = 0; i < p.Length; i++)
+        {
+            int d = p[i].IndexOf('-');
+            if (d <= 0) continue;
+            s[n] = Convert.ToUInt64(p[i].Substring(0, d), 16);
+            e[n] = Convert.ToUInt64(p[i].Substring(d + 1), 16);
+            if (e[n] > s[n]) n++;
+        }
+        RamStarts = new ulong[n]; RamEnds = new ulong[n];
+        Array.Copy(s, RamStarts, n); Array.Copy(e, RamEnds, n);
+    }
+
+    // ---- the RAM truth table, from a source that actually works ----------------
+    // .NET's RegistryKey cannot read REG_RESOURCE_LIST: GetValue(".Translated") returns
+    // NULL and GetValueKind says "Unknown" (verified on this box 01/11).  That is why
+    // the caller's PowerShell parse came out EMPTY and the hole filter silently
+    // degenerated to "pa < ramTop" - i.e. straight into the PCI/MMIO hole.  Read the raw
+    // value with RegQueryValueEx and take the CmResourceTypeMemory (3) descriptors out
+    // of the CM_RESOURCE_LIST.
+    const int HKEY_LOCAL_MACHINE = unchecked((int)0x80000002);
+    const int KEY_READ = 0x20019;
+
+    [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern int RegOpenKeyEx(IntPtr root, string sub, int opt, int sam, out IntPtr hk);
+    [DllImport("advapi32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern int RegQueryValueEx(IntPtr hk, string name, IntPtr res, out int type, byte[] data, ref int cb);
+    [DllImport("advapi32.dll")]
+    static extern int RegCloseKey(IntPtr hk);
+
+    public static string RamRangesFromRegistry()
+    {
+        IntPtr hk;
+        int st = RegOpenKeyEx(new IntPtr(HKEY_LOCAL_MACHINE),
+                              @"HARDWARE\RESOURCEMAP\System Resources\Physical Memory",
+                              0, KEY_READ, out hk);
+        if (st != 0) return "open=0x" + st.ToString("x");
+        try
+        {
+            int type = 0, cb = 0;
+            st = RegQueryValueEx(hk, ".Translated", IntPtr.Zero, out type, null, ref cb);
+            if (st != 0 || cb <= 0) return "query=0x" + st.ToString("x") + " cb=" + cb;
+            byte[] rb = new byte[cb];
+            st = RegQueryValueEx(hk, ".Translated", IntPtr.Zero, out type, rb, ref cb);
+            if (st != 0) return "read=0x" + st.ToString("x") + " type=" + type;
+            if (cb < 16) return "short cb=" + cb + " type=" + type;
+
+            int off = 4;
+            uint cnt = BitConverter.ToUInt32(rb, 0);
+            StringBuilder sb = new StringBuilder();
+            int guard = 0;
+            for (uint l = 0; l < cnt && off + 16 <= cb; l++)
+            {
+                off += 12;                                     // CM_RESOURCE_LIST header
+                if (off + 4 > cb) break;
+                uint n = BitConverter.ToUInt32(rb, off); off += 4;
+                // FIXED 02/11: the live .Translated dump (_ritual\_ramhex.txt, list rev 5,
+                // 5 descriptors) shows 20-BYTE descriptors: type(1)+share(1)+flags(2)+
+                // start(8)+length(8), and the top region is CmResourceTypeMemoryLarge(7)
+                // with CM_RESOURCE_MEMORY_LARGE_40 flags 0x200 (length stored >> 8).
+                // The old 16-byte/4-byte walk read exactly one range (1000-9e000) and
+                // starved the whole X discovery (p36 run 1, 01:48:30).
+                for (uint d = 0; d < n && off + 20 <= cb && guard++ < 4096; d++)
+                {
+                    byte t = rb[off];
+                    ushort flags = BitConverter.ToUInt16(rb, off + 2);
+                    ulong s0 = BitConverter.ToUInt64(rb, off + 4);
+                    ulong ln = BitConverter.ToUInt64(rb, off + 12);

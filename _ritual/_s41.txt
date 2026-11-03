@@ -1,0 +1,32 @@
+schtasks : ERROR: 
+Access is denied.
+At line:1 char:69
++ ... eating\_ritual
+\_s41.txt'; 
+(schtasks /query 
+/tn QKPBootVM 2>&1 
+| Out-S ...
++                   
+             ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (ERRO   
+ R: Access is de    
+nied.:String) [    
+], RemoteExcept    
+ion
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+
+
+
+Error: 740
+
+Elevated permissions are required to run DISM. 
+Use an elevated command prompt to complete these tasks.
+
+

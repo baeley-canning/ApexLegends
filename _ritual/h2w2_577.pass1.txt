@@ -1,0 +1,32 @@
+=== h2w2 DSE-RESTORED PROOF 03/11/2026 23:30:28 pid=20568 admin=True ===
+  premise: h1b_host.txt restored g_CiOptions to the boot value 0x16 with readback match=True.
+
+## pre-state
+  driver=RUNNING  lastExit=0
+  game=ALIVE pid=9308 up=36min
+  h1b proof: readback=0x16 expect=0x16 match=True
+  blocklist=0
+
+## step 1: sc stop (expect 0)
+  | 
+  | SERVICE_NAME: apexdrv 
+  |         TYPE               : 1  KERNEL_DRIVER  
+  |         STATE              : 1  STOPPED 
+  |         WIN32_EXIT_CODE    : 0  (0x0)
+  |         SERVICE_EXIT_CODE  : 0  (0x0)
+  |         CHECKPOINT         : 0x0
+  |         WAIT_HINT          : 0x0
+  state after stop=STOPPED
+
+## step 2: sc start (expect 577 = DSE armed)
+  | [SC] StartService FAILED 577:
+  | 
+  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  | 
+  start rc=577
+  state after start=STOPPED  lastExit=0
+
+=== VERDICT ===
+RESULT: PASS - stop rc 0, start rc 577. DSE is genuinely restored; apexdrv only loads inside the open window (h1) and h1b's 0x16 readback is confirmed. Milestone 1 gate closed.
+  end state: driver=STOPPED (expected STOPPED)  game=alive
+-- h2w2 END 23:30:32 --

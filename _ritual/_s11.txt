@@ -1,0 +1,22 @@
+reg : ERROR: The system 
+was unable to find the 
+specified registry key 
+or value.
+At line:1 char:135
++ ... ding ascii; reg 
+query 'HKLM\HARDWARE\RESO
+URCEMAP\Hardware' 2>&1 | 
+Out ...
++                 ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (ERROR: The syst...y   
+  key or value.:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 

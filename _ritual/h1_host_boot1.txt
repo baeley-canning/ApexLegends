@@ -1,0 +1,108 @@
+=== h1 HOST DSE FLIP 02/11/2026 23:45:08 pid=17404 admin=True host=DESKTOP-PPHFJBQ ===
+  pre-flight gates - abort on any FAIL, nothing is mutated before they all pass.
+  pass: service apexdrv staged
+  pass: service is STOPPED
+  pass: last exit 577 = DSE armed, the baseline to reproduce
+  pass: binPath hash 9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B = k9-proven build
+  pass: VulnerableDriverBlocklistEnable = 0 (live)
+  pass: HVCI not running (SecurityServicesRunning=0)
+  pass: no game/EA process alive
+  info: gdrv3 = Running (stays running; independent of AsIO3)
+  defender exclusion: Operation failed with the following error: 0x800106ba. Operation: MpPreference. Target: ConfigListExtension.
+
+## STEP baseline: sc start (expect 577 = DSE armed before we touch anything)
+$ sc.exe start apexdrv
+  exit=577
+  | [SC] StartService FAILED 577:
+  | Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+  BASELINE OK: 577, DSE armed
+
+## STEP ladder: kdu -prv <id> -dse 0 (gate on "verification succeeded")
+STEP=prv22
+$ kdu.exe -prv 22 -dse 0
+  exit=1
+  | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+  | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+  | [#] Supported x64 OS : Windows 7 and above
+  | [*] CPU vendor string: GenuineIntel
+  | [*] Windows version: 10.0 build 26200
+  | [*] SecureBoot is disabled on this machine
+  | [*] Virtualization-based security: Not configured
+  | [*] Hypervisor enforced Code Integrity running: Not configured
+  | [+] MSFT Driver block list is disabled
+  | [+] Selected provider: 22
+  | [+] Hypervisor present, vendor could not be determined
+  | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFA4D830000
+  | [+] Database KDUEXT version is OK
+  | [+] Firmware type (FirmwareTypeUefi)
+  | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
+  | [+] Extracting vulnerable driver as "C:\p37vm\payload\AsIO3.sys"
+  | [+] Vulnerable driver "AsIO3" loaded
+  | [+] Executing pre-open callback for given provider
+  | [+] Driver device "Asusgio3" has been opened successfully
+  | [+] Executing post-open callback for given provider
+  | [+] Driver device security descriptor set successfully
+  | [+] Module "CI.dll" loaded for pattern search
+  | [+] DSE flags (0xFFFFF8007A302004) value: 16, new value to be written: 0
+  | [+] Kernel memory write complete, verifying data
+  | [+] Write result verification succeeded
+  | [+] Vulnerable driver "AsIO3" unloaded
+  | [+] Vulnerable driver file removed
+  | [+] Return value: 1. Bye-bye!
+  prv 22 DSE WRITE VERIFIED
+WINNER=22
+
+## STEP load: sc start apexdrv inside the open window
+$ sc.exe start apexdrv
+  exit=0
+  | SERVICE_NAME: apexdrv
+  |         TYPE               : 1  KERNEL_DRIVER
+  |         STATE              : 4  RUNNING
+  |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+  |         WIN32_EXIT_CODE    : 0  (0x0)
+  |         SERVICE_EXIT_CODE  : 0  (0x0)
+  |         CHECKPOINT         : 0x0
+  |         WAIT_HINT          : 0x0
+  |         PID                : 0
+  |         FLAGS              :
+  start rc=0 RUNNING=True :: STATE              : 4  RUNNING
+
+## STEP restore: kdu -prv <winner> -dse 6
+$ kdu.exe -prv 22 -dse 6
+  exit=1
+  | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+  | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+  | [#] Supported x64 OS : Windows 7 and above
+  | [*] CPU vendor string: GenuineIntel
+  | [*] Windows version: 10.0 build 26200
+  | [*] SecureBoot is disabled on this machine
+  | [*] Virtualization-based security: Not configured
+  | [*] Hypervisor enforced Code Integrity running: Not configured
+  | [+] MSFT Driver block list is disabled
+  | [+] Selected provider: 22
+  | [+] Hypervisor present, vendor could not be determined
+  | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFA4D830000
+  | [+] Database KDUEXT version is OK
+  | [+] Firmware type (FirmwareTypeUefi)
+  | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
+  | [+] Extracting vulnerable driver as "C:\p37vm\payload\AsIO3.sys"
+  | [+] Vulnerable driver "AsIO3" loaded
+  | [+] Executing pre-open callback for given provider
+  | [+] Driver device "Asusgio3" has been opened successfully
+  | [+] Executing post-open callback for given provider
+  | [+] Driver device security descriptor set successfully
+  | [+] Module "CI.dll" loaded for pattern search
+  | [+] DSE flags (0xFFFFF8007A302004) value: 0, new value to be written: 6
+  | [+] Kernel memory write complete, verifying data
+  | [+] Write result verification succeeded
+  | [+] Vulnerable driver "AsIO3" unloaded
+  | [+] Vulnerable driver file removed
+  | [+] Return value: 1. Bye-bye!
+  restore verified=True
+
+=== VERDICT ===
+RESULT: PASS via prv 22 - driver RUNNING, DSE restored to 6, left RUNNING for h2
+NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min)
+-- h1 END 23:45:13 driver RUNNING=True --

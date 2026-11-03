@@ -1,0 +1,119 @@
+--- metrics ---
+Object          Metric                                   Values
+--------------- ---------------------------------------- --------------------------------------------
+Win11-Test2     CPU/Load/User                            
+Win11-Test2     CPU/Load/User:avg                        
+Win11-Test2     CPU/Load/User:min                        
+Win11-Test2     CPU/Load/User:max                        
+Win11-Test2     CPU/Load/Kernel                          
+Win11-Test2     CPU/Load/Kernel:avg                      
+Win11-Test2     CPU/Load/Kernel:min                      
+Win11-Test2     CPU/Load/Kernel:max                      
+Win11-Test2     RAM/Usage/Used                           
+Win11-Test2     RAM/Usage/Used:avg                       
+Win11-Test2     RAM/Usage/Used:min                       
+Win11-Test2     RAM/Usage/Used:max                       
+Win11-Test2     Disk/Usage/Used                          
+Win11-Test2     Disk/Usage/Used:avg                      
+Win11-Test2     Disk/Usage/Used:min                      
+Win11-Test2     Disk/Usage/Used:max                      
+Win11-Test2     Net/Rate/Rx                              
+Win11-Test2     Net/Rate/Rx:avg                          
+Win11-Test2     Net/Rate/Rx:min                          
+Win11-Test2     Net/Rate/Rx:max                          
+Win11-Test2     Net/Rate/Tx                              
+Win11-Test2     Net/Rate/Tx:avg                          
+Win11-Test2     Net/Rate/Tx:min                          
+Win11-Test2     Net/Rate/Tx:max                          
+Win11-Test2     Guest/CPU/Load/User                      
+Win11-Test2     Guest/CPU/Load/User:avg                  
+Win11-Test2     Guest/CPU/Load/User:min                  
+Win11-Test2     Guest/CPU/Load/User:max                  
+Win11-Test2     Guest/CPU/Load/Kernel                    
+Win11-Test2     Guest/CPU/Load/Kernel:avg                
+Win11-Test2     Guest/CPU/Load/Kernel:min                
+Win11-Test2     Guest/CPU/Load/Kernel:max                
+Win11-Test2     Guest/CPU/Load/Idle                      
+Win11-Test2     Guest/CPU/Load/Idle:avg                  
+Win11-Test2     Guest/CPU/Load/Idle:min                  
+Win11-Test2     Guest/CPU/Load/Idle:max                  
+Win11-Test2     Guest/RAM/Usage/Total                    
+Win11-Test2     Guest/RAM/Usage/Total:avg                
+Win11-Test2     Guest/RAM/Usage/Total:min                
+Win11-Test2     Guest/RAM/Usage/Total:max                
+Win11-Test2     Guest/RAM/Usage/Free                     
+Win11-Test2     Guest/RAM/Usage/Free:avg                 
+Win11-Test2     Guest/RAM/Usage/Free:min                 
+Win11-Test2     Guest/RAM/Usage/Free:max                 
+Win11-Test2     Guest/RAM/Usage/Balloon                  
+Win11-Test2     Guest/RAM/Usage/Balloon:avg              
+Win11-Test2     Guest/RAM/Usage/Balloon:min              
+Win11-Test2     Guest/RAM/Usage/Balloon:max              
+Win11-Test2     Guest/RAM/Usage/Shared                   
+Win11-Test2     Guest/RAM/Usage/Shared:avg               
+Win11-Test2     Guest/RAM/Usage/Shared:min               
+Win11-Test2     Guest/RAM/Usage/Shared:max               
+Win11-Test2     Guest/RAM/Usage/Cache                    
+Win11-Test2     Guest/RAM/Usage/Cache:avg                
+Win11-Test2     Guest/RAM/Usage/Cache:min                
+Win11-Test2     Guest/RAM/Usage/Cache:max                
+Win11-Test2     Guest/Pagefile/Usage/Total               
+Win11-Test2     Guest/Pagefile/Usage/Total:avg           
+Win11-Test2     Guest/Pagefile/Usage/Total:min           
+Win11-Test2     Guest/Pagefile/Usage/Total:max           
+--- state ---
+
+VMState="running"
+VMStateChangeTime="2
+026-11-01T09:04:32.8
+55000000"
+
+
+--- screenshot retry ---
+VBoxManage.exe : 
+VBoxManage.exe: 
+error: Unsupported 
+resolution for 
+screen shot: 0x0 
+(screen 0)
+At line:1 char:681
++ ... ng' -EA 0; (& 
+$VB controlvm 
+'Win11-Test2' 
+screenshotpng 
+(Join-Path (G ...
++                 ~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (VBox   
+ Manage.exe:...     
+0x0 (screen 0):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+VBoxManage.exe: 
+error: Details: 
+code E_INVALIDARG 
+(0x80070057), 
+component 
+DisplayWrap, 
+interface IDisplay, 
+callee IUnknown
+VBoxManage.exe: 
+error: Context: "Tak
+eScreenShotToArray(i
+Screen, width, 
+height, 
+BitmapFormat_PNG, Co
+mSafeArrayAsOutParam
+(saScreenshot))" at 
+line 1775 of file VB
+oxManageControlVM.cp
+p
+png=False

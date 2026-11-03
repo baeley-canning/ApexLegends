@@ -1,0 +1,60 @@
+46: 00:00:00.898431 fHMForced=true - No raw-mode support in this build!
+64: 00:00:01.367827   HMEnabled         <integer> = 0x0000000000000001 (1)
+126: 00:00:01.367872   HasMediumAttachments <integer> = 0x0000000000000000 (0)
+282: 00:00:01.367982   HasMediumAttachments <integer> = 0x0000000000000001 (1)
+339: 00:00:01.368009   HasMediumAttachments <integer> = 0x0000000000000000 (0)
+370: 00:00:01.368024   HasMediumAttachments <integer> = 0x0000000000000000 (0)
+568: 00:00:01.368109   HasMediumAttachments <integer> = 0x0000000000000000 (0)
+606: 00:00:01.368126   HasMediumAttachments <integer> = 0x0000000000000000 (0)
+618: 00:00:01.368130   Provider <string>  = "HyperV" (cb=7)
+620: 00:00:01.368131 [/HM/] (level 1)
+627: 00:00:01.368134   HMForced            <integer> = 0x0000000000000001 (1)
+636: 00:00:01.368138   UseNEMInstead       <integer> = 0x0000000000000000 (0)
+641: 00:00:01.368139 [/NEM/] (level 1)
+698: 00:00:01.368399 HM: HMR3Init: Attempting fall back to NEM: VT-x is not available
+699: 00:00:01.455921 NEM:  info: Found optional import WinHvPlatform.dll!WHvQueryGpaRangeDirtyBitmap.
+700: 00:00:01.455937 NEM:  info: Found optional import WinHvPlatform.dll!WHvResumePartitionTime.
+701: 00:00:01.455940 NEM:  info: Found optional import WinHvPlatform.dll!WHvSuspendPartitionTime.
+702: 00:00:01.455942 NEM:  info: Found optional import WinHvPlatform.dll!WHvRequestInterrupt.
+703: 00:00:01.455945 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorXsaveState.
+704: 00:00:01.455948 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorXsaveState.
+705: 00:00:01.455950 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorState.
+706: 00:00:01.455953 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorState.
+707: 00:00:01.455956 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorInterruptControllerState.
+708: 00:00:01.455958 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorInterruptControllerState.
+709: 00:00:01.455960 NEM:  info: Found optional import WinHvPlatform.dll!WHvGetVirtualProcessorInterruptControllerState2.
+710: 00:00:01.455963 NEM:  info: Found optional import WinHvPlatform.dll!WHvSetVirtualProcessorInterruptControllerState2.
+711: 00:00:01.455968 NEM:  info: Found optional import vid.dll!VidGetHvPartitionId.
+712: 00:00:01.455970 NEM:  info: Found optional import vid.dll!VidGetPartitionProperty.
+713: 00:00:01.456139 NEM: WHvCapabilityCodeHypervisorPresent is TRUE, so this might work...
+714: 00:00:01.456145 NEM: WHvCapabilityCodeExtendedVmExits      = 0x0000000000007fff
+715: 00:00:01.456149 NEM:                           X64CpuidExit: 1
+716: 00:00:01.456152 NEM:                             X64MsrExit: 1
+717: 00:00:01.456154 NEM:                          ExceptionExit: 1
+718: 00:00:01.456156 NEM:                           X64RdtscExit: 1
+719: 00:00:01.456159 NEM:                     X64ApicSmiExitTrap: 1
+720: 00:00:01.456161 NEM:                          HypercallExit: 1
+721: 00:00:01.456164 NEM:                X64ApicInitSipiExitTrap: 1
+722: 00:00:01.456166 NEM:              X64ApicWriteLint0ExitTrap: 1
+723: 00:00:01.456168 NEM:              X64ApicWriteLint1ExitTrap: 1
+724: 00:00:01.456170 NEM:                X64ApicWriteSvrExitTrap: 1
+725: 00:00:01.456173 NEM:                 UnknownSynicConnection: 1
+726: 00:00:01.456175 NEM:              RetargetUnknownVpciDevice: 1
+727: 00:00:01.456177 NEM:                X64ApicWriteLdrExitTrap: 1
+728: 00:00:01.456179 NEM:                X64ApicWriteDfrExitTrap: 1
+729: 00:00:01.456181 NEM:                     GpaAccessFaultExit: 1
+730: 00:00:01.456187 NEM: WHvCapabilityCodeFeatures             = 0x00000000000002ff
+731: 00:00:01.456190 NEM:                           PartialUnmap: 1
+732: 00:00:01.456192 NEM:                     LocalApicEmulation: 1
+733: 00:00:01.456194 NEM:                                  Xsave: 1
+734: 00:00:01.456196 NEM:                      DirtyPageTracking: 1
+735: 00:00:01.456198 NEM:                     SpeculationControl: 1
+736: 00:00:01.456201 NEM:                         ApicRemoteRead: 1
+737: 00:00:01.456203 NEM:                            IdleSuspend: 1
+738: 00:00:01.456205 NEM:                VirtualPciDeviceSupport: 1
+739: 00:00:01.456207 NEM:                           IommuSupport: 0
+740: 00:00:01.456209 NEM:                         VpHotAddRemove: 1
+741: 00:00:01.456212 NEM: WHvCapabilityCodeExceptionExitBitmap  = 0x00000000000f7dfb
+742: 00:00:01.456214 NEM: WHvCapabilityCodeX64MsrExitBitmap     = 0x000000000000003f
+743: 00:00:01.456216 NEM:                          UnhandledMsrs: 1
+744: 00:00:01.456219 NEM:                            TscMsrWrite: 1

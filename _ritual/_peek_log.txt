@@ -1,0 +1,84 @@
+﻿=== p36 BYOVD WRITE-PRIMITIVE PROBE 02/11/2026 10:39:20 ===
+  admin=True  pid=15256  host=DESKTOP-PPHFJBQ
+  ... env: registry baseline
+  os=Windows 10 Pro build=26200.9711  cpu=Intel(R) Core(TM) i5-14400
+  ... env: SecureBoot
+  SecureBoot=0
+  ... env: SystemStartOptions
+  SystemStartOptions=[ NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=AUTO  NODEBUG  FVEBOOT=2666496  NOVGA]
+  ... env: bcdedit.exe
+  bcdedit: nointegritychecks       No ; testsigning             No ; hypervisorlaunchtype    Auto
+  ... env: DeviceGuard (registry)
+  DeviceGuard(reg): VBS=0 servicesRunning= HVCI=0 lock=
+  ... env: CIM (bounded job, 20s deadline)
+  cim: os=Microsoft Windows 11 Pro build=26200.10.0.26200 cpu=Intel(R) Core(TM) i5-14400 VBS=2 services=0
+  ... env: driver services (sc.exe)
+  svc gdrv3                STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc MsIo                 STATE 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc apexdrv              STATE 1 STOPPED WIN32_EXIT_CODE : 577 (0x241) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc eaanticheat          STATE 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  svc EAAntiCheatService   STATE 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+  ... env: done
+  [cs] p36_prov.cs compiled
+  BADPA: 4 previously-learned range(s) loaded
+  ramTop=0x800000000 (32 GB)
+  ramRanges(native RegQueryValueEx) = 1000-9e000,9f000-a0000,100000-31f52000,35fff000-36000000,100000000-8bfc00000
+  ramRanges = 1000-9e000,9f000-a0000,100000-31f52000,35fff000-36000000,100000000-8bfc00000
+  G0 \\.\GIOV3 open ok handle=0x9c0
+  G0 read phys 0x1000 = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  G0 read phys 0x2000 = ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff
+
+########## W1 \Device\PhysicalMemory (native, elevated, SeLockMemoryPrivilege) ##########
+  mask=0xf001f st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x6 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x4 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x2 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  mask=0x1 st=0xc0000022   SeLockMemoryPrivilege=NOT_ASSIGNED (absent from token)
+  W1 no section handle
+
+########## W2 MsIo64 0x80102040 (fallback driver-mediated view) ##########
+  open \\.\MSIO ok handle=0x8e4
+  shape0 FAIL err=998 info=0
+  shape1 FAIL err=998 info=0
+  shape2 FAIL err=87 info=0
+  shape3 FAIL err=87 info=0
+
+########## W3 gdrv3 0xC3502004 map / 0xC3502808 copy-user->phys ##########
+  0xC3502004 in{pa,size} pa=0x1000: FAIL err=87 info=0
+  0xC3502808 in{b,a,n} a=0x1000: FAIL err=1
+
+########## X discovery (read-only, gdrv3 read only) ##########
+  ladder read 0x100000 okCount=6
+  size 0x40 ok (first=00)
+  size 0x100 ok (first=00)
+  size 0x800 ok (first=00)
+  size 0x1000 ok (first=00)
+  size 0x2000 ok (first=00)
+  size 0x4000 ok (first=00)
+  size 0x10000 FAIL read pa=0x100000 size=0x10000 err=1450
+  size 0x20000 FAIL read pa=0x100000 size=0x20000 err=1450
+  sweep 0x100000..0x40000000 step 0x100000 okCount=241
+  fail pa=0x200000
+  fail pa=0x300000
+  fail pa=0x400000
+  fail pa=0x500000
+  fail pa=0x600000
+  fail pa=0x700000
+  ok=241 fail=782 firstFail=0x200000 lastOk=0x3ff00000 lastFail=0x31d00000
+  X1 EXCEPTION: Exception calling "ScanNtoskrnl" with "4" argument(s): "read pa=0x104000 size=0x1000 err=1450"
+  X1 no validated ntoskrnl below 1 GB
+  X2 EXCEPTION (lim=0x40000000): Exception calling "FindPml4" with "5" argument(s): "read pa=0x104f68 size=0x8 err=1450"
+  X2 EXCEPTION (lim=0x100000000): Exception calling "FindPml4" with "5" argument(s): "read pa=0x104f68 size=0x8 err=1450"
+  X2 no self-mapped PML4 found  FAIL
+
+  io: issued=1134 skipped_not_ram=230 lastPa=0x104f68
+########## VERDICT ##########
+  W1 \\Device\\PhysicalMemory phys R/W : no
+  W2 MsIo64 map (fallback)           : no
+  W3 gdrv3 map/copy                  : see above
+  X  ntoskrnl=False cr3=False cioptions=False
+  *** NO WRITE PRIMITIVE ***
+      => driver-loaded-on-a-normal-boot is unreachable until one of W1/W2 lands.
+      Next variable: MsIo64 struct shape from temp\drv\msio_1500.txt, or a
+      second provider (the box has gdrv3 + MsIo only).
+-- p36 END 02/11/2026 10:39:22 --

@@ -1,0 +1,66 @@
+﻿=== p38 CHUNK-INTEGRITY CHECK 02/11/2026 21:15:54 ===
+  cs compiled
+  ramTop=0x7f1af1000 ranges=1000-9e000,9f000-a0000,100000-31f52000,35fff000-36000000,100000000-8bfc00000
+  G0 handle=0x9b8
+  canary 0x1000 = e9 4d 06 00 01 00 00 00 01 00 00 00 3f 00 18 10
+
+## per-offset integrity (mism=0 on every offset keeps 64 KiB chunks legal) ##
+  pa=0x100000 64K read ok nz=0/65536 (0%)
+    off 0x0 mism=1893/4096  page[0..15]=20 6d 65 74 68 6f 64 00 64 68 5f 70 75 62 5f 64
+    off 0x4000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0xc000 mism=1770/4096  page[0..15]=00 80 00 00 d4 f7 ff ff 0c 00 00 00 00 00 00 00
+    repeat dif=0/65536 lastErr=1450 h1450=3
+  pa=0x2000000 64K read ok nz=0/65536 (0%)
+    off 0x0 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0x4000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0xc000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    repeat dif=0/65536 lastErr=1450 h1450=8
+  pa=0x10000000 64K read ok nz=0/65536 (0%)
+    off 0x0 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0x4000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0xc000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    repeat dif=0/65536 lastErr=1450 h1450=13
+  pa=0x40000000 SKIP not-RAM
+  pa=0x80000000 SKIP not-RAM
+  pa=0x200000000 64K read ok nz=32768/65536 (50%)
+    off 0x0 mism=0/4096  page[0..15]=6a 00 73 00 22 00 7d 00 5d 00 7d 00 2c 00 62 00
+    off 0x4000 mism=0/4096  page[0..15]=5a 00 61 00 2d 00 7a 00 30 00 2d 00 39 00 22 00
+    off 0xc000 mism=0/4096  page[0..15]=69 00 6e 00 63 00 6c 00 75 00 64 00 65 00 3a 00
+    repeat dif=0/65536 lastErr=0 h1450=13
+  pa=0x400000000 64K read ok nz=17959/65536 (27%)
+    off 0x0 mism=0/4096  page[0..15]=02 00 00 00 00 00 00 00 60 6c 1e 01 84 37 00 00
+    off 0x4000 mism=0/4096  page[0..15]=00 c0 df 5e 0f a3 ff ff 00 40 b5 5d 0f a3 ff ff
+    off 0xc000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 06 00
+    repeat dif=0/65536 lastErr=0 h1450=13
+  pa=0x600000000 64K read ok nz=0/65536 (0%)
+    off 0x0 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0x4000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    off 0xc000 mism=0/4096  page[0..15]=00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    repeat dif=0/65536 lastErr=1450 h1450=18
+  pa=0x780000000 64K read ok nz=0/65536 (0%)
+    off 0x0 mism=3027/4096  page[0..15]=03 00 00 00 95 0e 00 00 95 0e 00 00 95 0e 00 00
+    off 0x4000 mism=3590/4096  page[0..15]=10 48 8b 45 68 48 c7 00 fe ff ff ff e9 4e 01 00
+    off 0xc000 mism=763/4096  page[0..15]=f9 30 00 52 42 6d 00 00 fa 30 00 52 46 6d 00 00
+    repeat dif=0/65536 lastErr=1450 h1450=20
+  pa=0x7ea8ed400 64K read ok nz=49518/65536 (76%)
+    off 0x0 mism=0/4096  page[0..15]=48 8b 55 c8 33 db e8 75 21 d5 28 48 89 45 c8 33
+    off 0x4000 mism=0/4096  page[0..15]=44 ab 47 05 c6 6c 6f 00 ec 6c 6f 00 3c 1f 3c 05
+    off 0xc000 mism=0/4096  page[0..15]=a0 f2 c9 76 15 17 c8 98 9c f9 65 ed b8 42 75 94
+    repeat dif=0/65536 lastErr=0 h1450=20
+
+## zero-ratio samples (all-zero chunks in a 16 MB run) ##
+  start=0x20000000 chunks=64 ok=64 allzero=64 exc=0 h1450=64
+  issued=105 lastErr=1450 h1450=84
+
+## 1450 taxonomy - handle A ##
+  pa=0x20100000 size=0x10000 step=0x10000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  pa=0x10100000 size=0x10000 step=0x10000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  pa=0x20100000 size=0x1000 step=0x1000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  A totals: issued=165 h1450=114
+## fresh handle B: 0x9b8 ##
+  pa=0x20100000 size=0x10000 step=0x10000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  pa=0x10100000 size=0x10000 step=0x10000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  pa=0x20100000 size=0x1000 step=0x1000 n=10 ok=0 e1450=10 other=0 canary_ok=10
+  start=0x20000000 chunks=64 ok=64 allzero=64 exc=0 h1450=64
+  B totals: issued=289 h1450=208
+-- p38_chk END --

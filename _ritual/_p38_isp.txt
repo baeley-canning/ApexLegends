@@ -1,0 +1,24 @@
+﻿ranges=5/5
+pa=0x100000 inRam16=True inRam4k=True
+pa=0x2000000 inRam16=True inRam4k=True
+pa=0x10000000 inRam16=True inRam4k=True
+pa=0x40000000 inRam16=False inRam4k=False
+pa=0x80000000 inRam16=False inRam4k=False
+pa=0x200000000 inRam16=True inRam4k=True
+pa=0x400000000 inRam16=True inRam4k=True
+pa=0x600000000 inRam16=True inRam4k=True
+pa=0x780000000 inRam16=True inRam4k=True
+pa=0x7ea8ed400 inRam16=True inRam4k=True
+pas type=System.UInt64[] count=10
+integrity returned type=String len=608
+  pa=0x100000 64K read EXC read pa=0x100000 size=0x10000 err=6
+  pa=0x2000000 64K read EXC read pa=0x2000000 size=0x10000 err=6
+  pa=0x10000000 64K read EXC read pa=0x10000000 size=0x10000 err=6
+  pa=0x40000000 SKIP not-RAM
+  pa=0x80000000 SKIP not-RAM
+  pa=0x200000000 64K read EXC read pa=0x200000000 size=0x10000 err=6
+  pa=0x400000000 64K read EXC read pa=0x400000000 size=0x10000 err=6
+  pa=0x600000000 64K read EXC read pa=0x600000000 size=0x10000 err=6
+  pa=0x780000000 64K read EXC read pa=0x780000000 size=0x10000 err=6
+  pa=0x7ea8ed400 64K read EXC read pa=0x7ea8ed400 size=0x10000 err=6
+

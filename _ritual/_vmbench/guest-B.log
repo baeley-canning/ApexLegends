@@ -1,0 +1,175 @@
+===== POST /log 20:16:04
+
+===== POST /log 20:17:35
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=0 prefilter_pass=0 self_referencing=0 in 0.0s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:18:07
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=0 prefilter_pass=0 self_referencing=0 in 0.0s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:18:23
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=0 prefilter_pass=0 self_referencing=0 in 0.0s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:19:08
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=0 prefilter_pass=0 self_referencing=0 in 0.0s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:19:26
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=0 prefilter_pass=0 self_referencing=0 in 0.0s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:20:07
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=16128 prefilter_pass=275 self_referencing=0 in 0.3s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:21:07
+## probeC
+open=
+sweep 1M-64M + 1G-3G pages=16128 prefilter_pass=279 self_referencing=0 in 0.4s
+VERDICT: still silent over whole RAM span
+===== POST /log 20:22:07
+## probeD
+open=
+size=0x1000 ok ms=9 got=4096
+size=0x10000 ok ms=0 got=65536
+size=0x20000 ok ms=0 got=131072
+size=0x40000 ok ms=0 got=262144
+size=0x100000 ok ms=0 got=1048576
+===== POST /log 20:23:07
+## probeD
+open=
+size=0x1000 ok ms=9 got=4096
+size=0x10000 ok ms=0 got=65536
+size=0x20000 ok ms=0 got=131072
+size=0x40000 ok ms=0 got=262144
+size=0x100000 ok ms=0 got=1048576
+===== POST /log 20:24:06
+## probeD
+open=
+size=0x1000 ok ms=7 got=4096
+size=0x10000 ok ms=0 got=65536
+size=0x20000 ok ms=0 got=131072
+size=0x40000 ok ms=0 got=262144
+size=0x100000 ok ms=0 got=1048576
+===== POST /log 20:25:09
+## probeD
+open=
+size=0x1000 ok ms=9 got=4096
+size=0x10000 ok ms=0 got=65536
+size=0x20000 ok ms=0 got=131072
+size=0x40000 ok ms=0 got=262144
+size=0x100000 ok ms=0 got=1048576
+===== POST /log 20:26:07
+## probeD
+open=
+size=0x1000 ok ms=9 got=4096
+size=0x10000 ok ms=0 got=65536
+size=0x20000 ok ms=0 got=131072
+size=0x40000 ok ms=0 got=262144
+size=0x100000 ok ms=0 got=1048576
+===== POST /log 20:27:07
+## probeD
+open=
+pa=0x1000 ok nz=725 ms=30 head=e8 d0 d7 de 00 00 00 00
+pa=0x100000 ok nz=2535 ms=0 head=68 62 69 6e 00 60 06 00
+pa=0x4000000 ok nz=3784 ms=0 head=24 50 48 8b 74 24 58 48
+pa=0x8000000 ok nz=4083 ms=0 head=c5 bf d1 c9 dc 27 d3 f0
+pa=0x10000000 ok nz=3696 ms=0 head=f0 24 00 00 52 0f 6c 40
+pa=0x20000000 ok nz=2559 ms=0 head=90 00 da 27 14 00 00 00
+pa=0x30000000 ok nz=4085 ms=1 head=bc 1f b7 ea 67 b0 1b 2b
+pa=0x3ff00000 ok nz=4084 ms=0 head=e3 ac 66 52 a6 65 d4 8b
+pa=0x40000000 ok nz=3907 ms=0 head=0f bd f6 8d 34 f6 83 c6
+pa=0x40001000 ok nz=3877 ms=0 head=01 00 00 0f 18 89 00 02
+pa=0x50000000 ok nz=1243 ms=0 head=0a 00 00 00 00 00 00 00
+pa=0x60000000 ok nz=3742 ms=0 head=00 00 00 48 83 65 f0 00
+===== POST /log 20:28:06
+## probeD
+open=
+pa=0x1000 ok nz=725 ms=27 head=e8 d0 d7 de 00 00 00 00
+pa=0x100000 ok nz=2535 ms=5 head=68 62 69 6e 00 60 06 00
+pa=0x4000000 ok nz=3784 ms=0 head=24 50 48 8b 74 24 58 48
+pa=0x8000000 ok nz=4083 ms=0 head=c5 bf d1 c9 dc 27 d3 f0
+pa=0x10000000 ok nz=3696 ms=0 head=f0 24 00 00 52 0f 6c 40
+pa=0x20000000 ok nz=2559 ms=0 head=90 00 da 27 14 00 00 00
+pa=0x30000000 ok nz=4085 ms=0 head=bc 1f b7 ea 67 b0 1b 2b
+pa=0x3ff00000 ok nz=4084 ms=0 head=e3 ac 66 52 a6 65 d4 8b
+pa=0x40000000 ok nz=3907 ms=0 head=0f bd f6 8d 34 f6 83 c6
+pa=0x40001000 ok nz=3877 ms=0 head=01 00 00 0f 18 89 00 02
+pa=0x50000000 ok nz=1243 ms=0 head=0a 00 00 00 00 00 00 00
+pa=0x60000000 ok nz=3742 ms=0 head=00 00 00 48 83 65 f0 00
+===== POST /log 20:29:13
+## probeE
+open=
+sweep 0x4000000-0x60000000 read_ok_blocks=23552 read_err=0 pages=376832 prefilter=20823 self_ref=0 ms=6791.8799
+VERDICT: silent
+===== POST /log 20:30:10
+## probeE
+open=
+sweep 0x4000000-0x60000000 read_ok_blocks=23552 read_err=0 pages=376832 prefilter=22449 self_ref=0 ms=3294.7406
+VERDICT: silent
+===== POST /log 20:31:10
+## probeE
+open=
+sweep 0x4000000-0x60000000 read_ok_blocks=23552 read_err=0 pages=376832 prefilter=22892 self_ref=0 ms=3819.3182
+VERDICT: silent
+===== POST /log 20:32:13
+## probeE
+open=
+sweep 0x4000000-0x60000000 read_ok_blocks=23552 read_err=0 pages=376832 prefilter=22907 self_ref=0 ms=5688.3377
+VERDICT: silent
+===== POST /log 20:33:07
+## probeF
+open=
+pg=0x14000000 src=0x15000000 target=0x1f000000
+before nz=3937 head=98 0e 36 db 00 64 00 50
+perm 0: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 1: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 2: got=0 err=203 resv=OK err=203 marker_hits_in_64=1
+perm 3: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 4: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+WINNER=-1
+VERDICT: no 0x2014 perm wrote
+===== POST /log 20:34:06
+## probeF
+open=
+pg=0x14000000 src=0x15000000 target=0x1f000000
+before nz=3937 head=98 0e 36 db 00 64 00 50
+perm 0: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 1: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 2: got=0 err=203 resv=OK err=203 marker_hits_in_64=1
+perm 3: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 4: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+WINNER=-1
+VERDICT: no 0x2014 perm wrote
+===== POST /log 20:35:06
+## probeF
+open=
+pg=0x14000000 src=0x15000000 target=0x1f000000
+before nz=3937 head=98 0e 36 db 00 64 00 50
+perm 0: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 1: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 2: got=0 err=203 resv=OK err=203 marker_hits_in_64=1
+perm 3: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 4: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+WINNER=-1
+VERDICT: no 0x2014 perm wrote
+===== POST /log 20:36:07
+## probeF
+open=
+pg=0x14000000 src=0x15000000 target=0x1f000000
+before nz=3937 head=98 0e 36 db 00 64 00 50
+perm 0: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 1: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 2: got=0 err=203 resv=OK err=203 marker_hits_in_64=1
+perm 3: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+perm 4: got=0 err=203 resv=OK err=203 marker_hits_in_64=0
+WINNER=-1
+VERDICT: no 0x2014 perm wrote

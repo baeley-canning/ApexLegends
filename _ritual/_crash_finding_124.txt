@@ -1,0 +1,46 @@
+# fold-in #4 (new number, R5): 04/11 00:45:39 host bugcheck = 0x124 WHEA, not the DSE recipe
+RESULT: bugcheck 0x124 (WHEA_UNCORRECTABLE_ERROR) at 2026-11-04T00:45:39 local (UTC+13), dump 110426-10656-01.dmp
+VERDICT: hardware machine check (CPU cache hierarchy), NOT a driver/DSE/kernel-state fault.
+
+## Provenance
+- 6008 (unexpected shutdown) stamps 00:44:58, but the dump header is authoritative: **debug session time 00:45:39.524 (UTC+13)**,
+  kernel 10.0.26100 MP x64, **system uptime 4:07:50** -> the boot that died was the one after the 20:37 0x109. 6008 lags ~40 s.
+- 41 (Kernel-Power 00:46:01) and 1001 (BugCheck 00:46:08) are written by the *next* boot at first log start (6005 00:46:07).
+- Bugcheck code 0x124, params: 0, 0xffffb30e0d59f028 (WHEA_ERROR_RECORD ptr), 0xfe000000, 0x0000000080113a.
+- WHEA-Logger ID 18 at 00:46:08.187Z:
+    Reported by component: Processor Core
+    Error Source: Machine Check Exception
+    Error Type:    Cache Hierarchy Error
+    Processor APIC ID: 54
+- Only 18/19/47 in the whole log is this one event -> first machine check on this box.
+- CPU: Intel Core i5-14400 (Raptor Lake Refresh, 6P+4E). Board B760I AORUS PRO DDR4, BIOS F14 2025-06-19.
+- Separate, older: WHEA-Logger ID 17 AER (PCIe corrected) x4 at 21:58:05/21:58:07/21:59:38/21:59:47 on 03/11 - predates the dumper.
+- Minidump kept: `temp\110426-10656-01.dmp`, 9,523,263 B, sha256 E42A3189719442827D4FEB484BE65FEE1C5CBA9404703B42F2ED9335D234D830
+  (source `C:\WINDOWS\Minidump\110426-10656-01.dmp`, mtime 00:46:05; copied elevated, read-only w.r.t. the original).
+
+## Second independent source: the dump itself
+- `dumpchk.exe` on the copy prints: `BugCheckCode 00000124`, params identical to 1001
+  (`0 0xffffb30e0d59f028 0xfe000000 0x80113a`), kernel base 0xfffff803`9f600000, 16 procs.
+- dumpchk then stalled in `srv*` symbol download at ~33 KB (no `_NT_SYMBOL_PATH` pre-seeded). Code and params are
+  already decoded from the dump, so `!analyze -v` is optional polish, not a blocker.
+- Verdict is not resting on log text alone: event 18 (WHEA) + dump header agree on 0x124 / processor core / cache hierarchy.
+
+## What was running - CORRECTION: the scan never started
+- `temp\p40d_console.txt` mtime 00:43:37 and its last line is `ShellExecuteExW failed err=5`, `p40d_err.txt` is 0 B,
+  no `temp\r5apex_live_*.bin`, no OUT. So the elevated dumplive child failed re-elevation and *exited*; the 63 GB
+  MmMapIoSpace read loop was not in flight. `elev_test.txt` (00:45:14) is the only activity at the crash minute.
+- dumplive is user-mode, pure read: gdrv3 device open + reads. No driver load, no sc create/start, no gdioptions write,
+  no bcdedit. apexdrv stayed STOPPED (state 1, WIN32_EXIT_CODE 577 = expected post-restore residue). DSE untouched.
+
+## Interpretation
+- 0x124 is firmware/CPU-reported. With the dump path dead before the crash, this is an **idle-ish load** machine check -
+  a stronger hardware signal than a scan-load one. Raptor Lake core instability shows exactly this shape (0x124,
+  cache hierarchy, low load).
+- Different family from the 0x109 (PatchGuard/ci!g_CiOptions) crashes of 03/11, which need a DSE write. This boot has
+  DSE untouched, so a repeat 0x109 here would be a NEW signature - watch for it.
+- R1 status: host execution of dumplive is inside the rule (no kernel/driver/CI change). It cost the session anyway.
+
+## Consequences / next
+- Minidump is kept (copy + sha256 above); `!analyze -v` optional when a symbol path is seeded.
+- Re-run dumplive only from a boot with >=20 min stable uptime, and record uptime at launch in the OUT file.
+- If a second 0x124 lands, even at idle, the CPU is suspect -> BIOS/microcode check, then RMA track.

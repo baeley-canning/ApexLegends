@@ -1,0 +1,348 @@
+vmprobe 01/11/2026 22:01:09
+--- list vms ---
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+
+--- list hostinfo (cpu/ram/vtx) ---
+
+Host time: 2026-11-0
+1T09:01:09.844000000
+Z
+Processor online 
+count: 16
+Processor count: 16
+Processor online 
+core count: 10
+Processor core 
+count: 10
+Processor supports 
+HW virtualization: 
+yes
+Processor supports 
+PAE: yes
+Processor supports 
+long mode: yes
+Processor supports 
+nested paging: yes
+Processor supports 
+unrestricted guest: 
+no
+Processor supports 
+nested HW 
+virtualization: no
+Processor supports 
+virt. 
+vmsave/vmload: no
+Processor#0 speed: 
+unknown
+Processor#0 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#1 speed: 
+unknown
+Processor#1 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#2 speed: 
+unknown
+Processor#2 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#3 speed: 
+unknown
+Processor#3 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#4 speed: 
+unknown
+Processor#4 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#5 speed: 
+unknown
+Processor#5 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#6 speed: 
+unknown
+Processor#6 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#7 speed: 
+unknown
+Processor#7 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#8 speed: 
+unknown
+Processor#8 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#9 speed: 
+unknown
+Processor#9 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#10 speed: 
+unknown
+Processor#10 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#11 speed: 
+unknown
+Processor#11 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#12 speed: 
+unknown
+Processor#12 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#13 speed: 
+unknown
+Processor#13 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#14 speed: 
+unknown
+Processor#14 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Processor#15 speed: 
+unknown
+Processor#15 
+description: 
+Intel(R) Core(TM) 
+i5-14400
+Memory size: 32538 
+MByte
+
+
+
+--- list hdds ---
+UUID:           a94494d0-7bf5-488c-9d09-373eeab10cfb
+Parent UUID:    base
+State:          created
+Type:           normal (base)
+Location:       C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vdi
+Storage format: VDI
+Capacity:       81920 MBytes
+Encryption:     disabled
+
+UUID:           bd4ec7bd-ba2c-4568-b248-b2d607247294
+Parent UUID:    a94494d0-7bf5-488c-9d09-373eeab10cfb
+State:          created
+Type:           normal (differencing)
+Location:       C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots/{bd4ec7bd-ba2c-4568-b248-b2d607247294}.vdi
+Storage format: VDI
+Capacity:       81920 MBytes
+Encryption:     disabled
+
+UUID:           1b5a385b-4395-4acb-b43a-61e20b610cf6
+Parent UUID:    bd4ec7bd-ba2c-4568-b248-b2d607247294
+State:          created
+Type:           normal (differencing)
+Location:       C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots/{1b5a385b-4395-4acb-b43a-61e20b610cf6}.vdi
+Storage format: VDI
+Capacity:       81920 MBytes
+Encryption:     disabled
+
+
+--- snapshots Win11-Test2 ---
+SnapshotName="VRDP-ready"
+SnapshotUUID="e099b86b-9b0e-48b3-87ab-55c0827ec144"
+SnapshotDescription="Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x"
+SnapshotName-1="pre-baseline"
+SnapshotUUID-1="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotName="pre-baseline"
+CurrentSnapshotUUID="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+CurrentSnapshotNode="SnapshotName-1"
+
+--- showvminfo Win11-Test2 (key fields) ---
+
+name="Win11-Test2"
+ostype="Windows 11 
+(64-bit)"
+memory=4096
+cpu-profile="host"
+firmware="EFI"
+cpus=2
+hpet="off"
+nestedpaging="on"
+paravirtprovider="de
+fault"
+VMState="saved"
+VMStateChangeTime="2
+026-11-01T01:03:12.0
+00000000"
+VMStateFile="C:\User
+s\New 
+User\VirtualBox VMs\
+Win11-Test2\Snapshot
+s\2026-11-01T01-03-0
+9-744229900Z.sav"
+graphicscontroller="
+vboxsvga"
+accelerate3d="off"
+macaddress1="0800274
+5F596"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+macaddress2="0800275
+4DF67"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+vrde="on"
+vrdeport=-1
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="of
+f"
+vrdeproperty[TCP/Por
+ts]="3390"
+vrdeproperty[TCP/Add
+ress]=<not set>
+vrdeproperty[VideoCh
+annel/Enabled]=<not 
+set>
+vrdeproperty[VideoCh
+annel/Quality]=<not 
+set>
+vrdeproperty[VideoCh
+annel/DownscaleProte
+ction]=<not set>
+vrdeproperty[Client/
+DisableDisplay]=<not
+ set>
+vrdeproperty[Client/
+DisableInput]=<not 
+set>
+vrdeproperty[Client/
+DisableAudio]=<not 
+set>
+vrdeproperty[Client/
+DisableUSB]=<not 
+set>
+vrdeproperty[Client/
+DisableClipboard]=<n
+ot set>
+vrdeproperty[Client/
+DisableUpstreamAudio
+]=<not set>
+vrdeproperty[Client/
+DisableRDPDR]=<not 
+set>
+vrdeproperty[H3DRedi
+rect/Enabled]=<not 
+set>
+vrdeproperty[Securit
+y/Method]="RDP"
+vrdeproperty[Securit
+y/ServerCertificate]
+="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedCert.pem"
+vrdeproperty[Securit
+y/ServerPrivateKey]=
+"C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\VRDEAuto
+GeneratedPrivateKey.
+pem"
+vrdeproperty[Securit
+y/CACertificate]=<no
+t set>
+vrdeproperty[Audio/R
+ateCorrectionMode]=<
+not set>
+vrdeproperty[Audio/L
+ogPath]=<not set>
+GuestMemoryBalloon=0
+
+
+
+--- vm folder contents ---
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test2
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test\Snapshots
+      543232  C:\Users\New User\VirtualBox VMs\Win11-Test\Win11-Test.nvram
+        6480  C:\Users\New User\VirtualBox VMs\Win11-Test\Win11-Test.vbox
+        7037  C:\Users\New User\VirtualBox VMs\Win11-Test\Win11-Test.vbox-prev
+      232468  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBox.log
+      234145  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBox.log.1
+      228362  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBox.log.2
+      325545  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBox.log.3
+      321511  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBoxHardening.log
+        3311  C:\Users\New User\VirtualBox VMs\Win11-Test\Logs\VBoxUI.log
+    18555352  C:\Users\New User\VirtualBox VMs\Win11-Test\Snapshots\2026-10-30T02-50-36-097180100Z.sav
+      543232  C:\Users\New User\VirtualBox VMs\Win11-Test\Snapshots\2026-10-30T02-50-36-810135500Z.nvram
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs
+           1  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots
+       12962  C:\Users\New User\VirtualBox VMs\Win11-Test2\Unattended-15e012c5-3c43-4b33-99e0-926e867cecef-autounattend.xml
+        1171  C:\Users\New User\VirtualBox VMs\Win11-Test2\Unattended-15e012c5-3c43-4b33-99e0-926e867cecef-aux-iso.viso
+        4264  C:\Users\New User\VirtualBox VMs\Win11-Test2\Unattended-15e012c5-3c43-4b33-99e0-926e867cecef-VBOXPOST.CMD
+         977  C:\Users\New User\VirtualBox VMs\Win11-Test2\VRDEAutoGeneratedCert.pem
+        1704  C:\Users\New User\VirtualBox VMs\Win11-Test2\VRDEAutoGeneratedPrivateKey.pem
+      543232  C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.nvram
+       13993  C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vbox
+       13936  C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vbox-prev
+     2097152  C:\Users\New User\VirtualBox VMs\Win11-Test2\Win11-Test2.vdi
+      280694  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs\VBox.log
+      238309  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs\VBox.log.1
+      225796  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs\VBox.log.2
+      231585  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs\VBox.log.3
+      315590  C:\Users\New User\VirtualBox VMs\Win11-Test2\Logs\VBoxHardening.log
+    18557655  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\2026-10-31T21-36-23-878030900Z.sav
+      543232  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\2026-10-31T21-36-25-756454600Z.nvram
+    18557655  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\2026-10-31T22-36-33-194162500Z.sav
+      543232  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\2026-10-31T22-36-34-758867600Z.nvram
+    18557718  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\2026-11-01T01-03-09-744229900Z.sav
+     2097152  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\{1b5a385b-4395-4acb-b43a-61e20b610cf6}.vdi
+     2097152  C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\{bd4ec7bd-ba2c-4568-b248-b2d607247294}.vdi
+
+--- guest additions iso ---
+True
+
+--- Win11-Test registered? ---
+
+C:\Users\New User\.V
+irtualBox\VirtualBox
+.xml:28:      
+<MachineEntry uuid="
+{15e012c5-3c43-4b33-
+99e0-926e867cecef}" 
+src="C:\Users\New 
+User\VirtualBox VMs\
+Win11-Test2\Win11-Te
+st2.vbox"/>
+
+
+
+--- end ---
