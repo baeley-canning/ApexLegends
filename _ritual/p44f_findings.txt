@@ -1,0 +1,64 @@
+p44f findings -- 2026-11-04, boot 13:19, no game running
+=========================================================
+
+WHAT WAS ASKED
+---------------
+Does the rewritten basehunt find the linear-map base B without hammering
+physical RAM?  (Prior "hunt in physical RAM" runs died to 0x124 WHEA.)
+
+MEASURED, in order
+------------------
+1. `--dry` on the old code: 60 s reached only pa 0x27b90000, tried=176,
+   9582 FAULT windows, 153312 BADPAGE lines, shapes=0.
+   -> one dead page cost 17 ioctls and the loop had no way to leave a hole.
+
+2. Transport smoke (c11, elevated, read-only):
+   pa=0x1000 OK | 0x100000 4K OK, 64K ERR | 0x11000000/0x12000000/0x20000000/
+   0x27b90000 = Errno 1450 | 0x1b25a5000 OK | 0x80000000 OK | 0x100000000 OK.
+   -> the low ~600 MB answers ERROR_NO_SYSTEM_RESOURCES page after page; the
+      driver and the high range are fine.  Dead spans, not a broken transport.
+
+3. Declared map (c10, registry only): 5 descriptors; the "usable" plan after
+   the 24 p38 BADPA entries still covers 0x6efb53000 bytes, so the map alone
+   cannot predict the 1450 zone.
+
+4. Layout, measured off a live svchost EPROCESS (c29, base 0x15A849080):
+   byte 0x80 = 3 (dispatcher type) | +0x1D0 pid 0xDA8 | +0x1D8 flink
+   0xFFFF9186828CB258 | +0x1E0 blink 0xFFFF9186801DD258 | +0x338 "svchost.exe".
+   -> object phase 0x80, LIST_ENTRY pair at +0x1D8, and BOTH values end 0x258:
+      in a circular LIST_ENTRY the Blink points at the previous node's Flink
+      field, so the value lane is phase+pair for both, never pair+8.
+      The "0x258" in the symbol table is a value lane, not a field offset.
+
+5. shape_at unit test on that exact page (c45): (3496, fl, bl) after the
+   NUL-padding fix; the name field is NUL padded ("svchost.exe\x00\x00\x00\x00")
+   so an "all bytes printable" check rejected every object.
+
+6. Full pass, current code: 1801888 candidate pages, tried=678972, shapes=22,
+   8.8 s, NO_BASE.  Shapes were OpenConsole, svchost x2, ShellExperience,
+   SystemSettings, git, powershell -- all real objects, all reciprocity-failed.
+
+7. Decoy pages (c49): 0x2481D6000 now holds ASCII text (" my websites in"),
+   0x62BC6E000 holds code, 0x7DE10FB000 is 0xFF fill.
+   -> EAC unloaded with the game: the decoy chain is freed, so no B can be
+      confirmed until Apex runs again.  NO_BASE here is the expected verdict,
+      not a defect.
+
+CODE STATE (ext/basehunt.py, 394 lines, py_compile clean)
+---------------------------------------------------------
+* 64 KiB window reads, dead-span skip in 2 MiB strides, --dry / --from /
+  --max-s resume, CKPT heartbeat, page-level rescue for partial faults.
+* shape_at validates type/pid/pair/name; two layouts (0x80+0x1D8 measured,
+  0x00+0x258 kept as the page-aligned variant); both nodes tried per shape.
+* hop derives the base from the node offset minus the pair offset for either
+  lane, so a decoy mid-ring is stepped over instead of ending the walk.
+* off-by-one fixed: pa_max is a valid candidate and the plan bound sits one
+  page above it; the window is bounded by the higher of the two node VAs, so
+  the blink target at 0x1b7ea0000 is reachable.
+
+NEXT, with the game up
+----------------------
+Run ext/basehunt.py --max-s=40 (or via C:\Windows\Temp\p44f_run.ps1 --pid=N).
+Expect a `shape` on 0x1b25a5000 and/or 0x1b7ea0000, an ACCEPT with the decoy
+pair intact, then the walk and the dump.  If those two pages do not shape,
+re-read them with --dry and check the pair still ends 0x258/0x260.

@@ -484,3 +484,25 @@ a grandchild (WerFault on a crashing provider) inherits the pipe - bound it with
 
 
 
+
+## 2026-11-04 14:0x - p44f: basehunt rewritten (chunked + dead-span skip), geometry now measured
+
+- **New method is fast and stable in shape:** 1801888 candidate pages covered in **8.8 s** (previous per-page
+  hunt managed ~10 MB/s and 0.3 % of that window in 60 s). 64 KiB windows, one ioctl per 16 pages, page-level
+  rescue only for a partially faulted window, 2 MiB dead-span skip, `--dry` / `--from` / `--max-s` resume,
+  CKPT heartbeat. Two `--dry` runs on this boot did not destabilise the box.
+- **The low ~600 MB is dead, not broken.** Elevated smoke: `Errno 1450 ERROR_NO_SYSTEM_RESOURCES` page after
+  page across 0x11000000-0x27b90000, while 0x80000000 / 0x100000000 / 0x1b25a5000 read fine. 153312 dead
+  pages cost 365 probes to cross. See `_ritual\p44f_findings.txt` for the full ordered evidence.
+- **EPROCESS geometry is measured, not inferred** (c29, live svchost base 0x15A849080): type byte at phase
+  0x80, pid +0x1D0, LIST_ENTRY **+0x1D8**, name +0x338, and **both** values end 0x258 - the Blink points at the
+  previous node's Flink field, so 0x258 is a *value* lane, never a field offset. The old "all 15 name bytes
+  printable" test also rejected every NUL-padded name.
+- **blocker: the game is closed.** EAC unloaded, so the decoy pages are freed and reused (0x2481D6000 now holds
+  ASCII text, 0x7DE10FB000 is 0xFF fill) and no B can pass reciprocity. Current verdict on a full pass is
+  NO_BASE with 22 real shapes - correct for a dead chain, not a defect.
+- 0x124 forensics unchanged: 3 bugchecks today, all WHEA/machine-check, none from the reader. Stability still
+  outranks dumping, hence 40 s budgets per run.
+- Next: game up, then `ext\basehunt.py --max-s=40` - expect a shape on 0x1b25a5000 / 0x1b7ea0000, an ACCEPT
+  with the decoy pair intact, the walk to pid 0x1570, then the dump.
+
