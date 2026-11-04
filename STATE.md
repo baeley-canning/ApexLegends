@@ -388,3 +388,99 @@ a grandchild (WerFault on a crashing provider) inherits the pipe - bound it with
 - Next: game is not running (reboot). Before retrying dumplive, consider BIOS/microcode update; if a second 0x124
   lands, stop host scans and treat the CPU as degraded.
 
+## 04/11 09:14 - p40 patch-stall forensics + dumplive wrapper fix (evidence `temp\p40u.txt`, `p40x.txt`, `p40y.txt`, `p40z_why.txt`, `p40za.txt`, `_ritual\p40zb_raise.txt`, `p40zc.txt`, `p40zd.txt`, `p40ze.txt`, `p40zf.txt`, `p40zg.txt`, `temp\p40zh.txt`)
+
+- **The Apex patch was real and then stopped on its own.** Streaming had been steady 08:18-08:54:47
+  (`*_DiP_Staged` landing ~1/s); from 08:54:47 to 09:10:20 nothing was written, while EADesktop sat at
+  0.8 s CPU / 30 s (`p40y` VERDICT STALLED, 7111 staged files, 66.37 GB flat, 52.5 GB free).
+  At the stall instant the updater wrote only `localKvpStreamPatchmap.eacrc` (208 kB) in
+  `C:\ProgramData\EA Desktop\InstallData\Apex\base-Origin.SFT.50.0000848\` - a new patchmap, then idle.
+- **Two bytes-oracles were wrong before the right one was found.** (a) the sum of all `*_DiP_Staged`
+  under the whole tree includes ~44 GB of idle leftovers, so it cannot track a 22.4 GB patch;
+  (b) the files that matter are **pre-allocated to final size**, so `Length` never changes - only
+  `LastWriteTime` moves. `temp\p40zh.txt` (mtime + NIC rx per 10 s) is the only trustworthy watch.
+  The live target is `paks\Win64\pc_all.opt.starpak_DiP_Staged`, 31.65 GB, not the root
+  `pc_all.starpak_DiP_Staged` (7.36 GB, idle since 08:54:47) that `p40u` kept reporting as "newest".
+- **UI ground truth** (`_ritual\p40zc.png`): "Updating 70%", 17.9 GB / 22.4 GB, pause tile, cancel X,
+  "Experiencing download issues? Get help". So the patch is 22.4 GB; auto-update is disabled.
+- **The EA window was minimized *and* cloaked on another virtual desktop** (rect -32000,-32000,
+  `DwmGetWindowAttribute(14)`=1). A taskbar-button click alone did **not** restore it
+  (`_ritual\p40zb_raise.txt`: foreground stayed `Code`, still iconic) - `ShowWindow(SW_RESTORE)` +
+  `SetForegroundWindow` did. Keep both steps; taskbar buttons are findable by UIA name
+  (`EA - 1 running window`, id `ElectronicArts.EADesktop`) rather than by guessing pixels.
+- **EA is Qt Quick (`eax::services::windowing::QmlView`), so UIA exposes only min/max/close** - no
+  content buttons, no text (`_ritual\p40zd.txt`). Content clicks must go through `click_hi` with
+  screenshot-derived coordinates: pause tile (1015,330), cancel X (1070,330), verified by tooltip.
+- **Recovery that worked:** pause -> resume at those coords (`p40ze`: row `Paused 18.3/22.4 GB`,
+  tile flips to a download arrow, progress gained 17.9->18.3 GB). 20 s after resume there were still
+  0 bytes, but `p40zf` then showed 3 live EABackgroundService TLS sockets (203.96.220.8:443 Akamai,
+  44.215.225.148:443) and `p40zh` rx of 100-123 MB per 10 s against a file mtime refreshing every
+  second - **traffic restored without a relaunch and without re-firing `origin2://`**.
+- **`ext/dumplive.py` was fixed for the wrapper path.** `p40f` died `child exit=-1` in 7 ms because
+  `Start-Process -ArgumentList $pa` re-quotes a pre-quoted element (`""C:\Users\New User\..""`) - same
+  defect as the 04/11 01:10 side find. New `--inplace` runs `elevated_main` with no second runas hop
+  (kept `--elevated` as alias, warns loudly if the token is not elevated), and a child that dies
+  before `_finish` now leaves `VERDICT: ELEV_FAIL` in `p40d_livedump.txt` instead of nothing.
+  Smoke-tested against a dead pid: warning fired, `FATAL no transport`, no relaunch; that verdict is
+  archived at `_ritual\p40d_livedump.smoke.txt` so OUT-absent keeps meaning "not yet run".
+- **New wrapper `C:\Windows\Temp\p40w_run.ps1` replaces `p40g_run.ps1`** (which hand-quoted the path,
+  duplicated its own header, and `--pid` never bound). `p40w` takes `--pid=N`, builds one verbatim
+  argument string, verifies Admin instead of assuming it, archives the previous OUT to
+  `.prev.txt`, logs console and stderr tails, and exits 0 only on `DUMP_OK`.
+- Monitors: `p40u` (15 s, screenshots every 4th tick, `helpers=` needle list matches nothing on this
+  box) and `p40x` (correct needles `EADesktop|EABackgroundService|EALocalHostSvc|EACefSubProcess`,
+  staged bytes, free space, staged low-space and updater-gone RESULT lines) both still running.
+- Next: let it finish (70% + ~10 MB/s), verify `build.txt`/`gameversion.txt` rewrite and that the
+  updater exits, then launch via a staged wrapper and run `p40w`. Do not touch kernel/driver state
+  during the patch; nothing of ours is resident this boot.
+
+## 04/11 10:04 - **SECOND 0x124 (stop rule tripped); four corrections; scan hardened to declared RAM** (evidence `temp\p43_svc.txt`, `temp\p43d_blocklist.txt`, `temp\p43a_dumpchk.txt`, `temp\p43a_whea2.txt`, `temp\p43_whea_evt.txt`, `temp\p43b_ranges.txt`, `temp\p43b2_ranges.txt`, `temp\p43b3_ranges.txt`, `temp\p43e_verify.txt`, `temp\p43d_start.txt`, `temp\p42h.txt`)
+
+- **Stop rule tripped: second 0x124 in 33 h.** Bugcheck 09:29:13, WHEA-Logger 18 at 09:29:53.544Z: Processor
+  Core / Machine Check Exception / **Cache Hierarchy Error** / **APIC 50** (the 00:45 one was APIC 54 - a
+  *different core*, same error type). Three 18 records surround it (09:29:44.084, 09:29:53.544, 09:29:55.306;
+  only the middle one decodes in text rendering), plus the 19 latch-timer pair - this is a multi-record MCE
+  burst, not a single blip. Dump `110426-11437-01.dmp`, 9,597,623 B, sha256 `AED4F79A...693E396F`,
+  debug session 09:29:24.611, uptime 8:05:26, params `0 ffff98064b444028 fe000000 80113a` (P3/P4 identical to
+  00:45). `dumpchk`: `MODULE_NAME: GenuineIntel`, `IMAGE_NAME: GenuineIntel.sys`,
+  `FAILURE_BUCKET_ID: 0x124_0_GenuineIntel__UNKNOWN`, `PROCESS_NAME: r5apex_dx12.ex` - the game's thread was
+  current on the faulting core. `pshed` types are not in the local symbol cache, so `!analyze` printed the
+  record raw; the event log carries APIC/error type instead.
+- **The scan itself was fast and died at the end of the first RAM region.** `p40d_progress` `START 09:29:22`,
+  dump session 09:29:24.611 -> the bugcheck hit ~2.5 s in with 768 MiB already scanned (~300 MB/s at 0x10000
+  chunks) and 4 HIT lines (`0x150720dc`, `0x199d80dc`, `0x206760dc`, `0x2aa103b0`, all inside declared RAM).
+  The last 2 MiB before death are a 24-fault burst `0x2fe40000` -> `0x319f0000`, ending ~2 MiB short of the
+  `0x31f52000` region top: **that burst is MCE onset, not a range error** - the same read primitive had run
+  fault-free for 766 MiB. A 300 MB/s whole-RAM pass is ~2 min, so the exposure is short either way.
+- **Correction 1 - the dump is not apexdrv, and never was.** `ext\gio.py` docstring: *"No own driver is used:
+  apexdrv/apexr never passed test-signing, and this device is the only live transport on this box"*;
+  `DEVICE = r"\\.\GIOV3"`, and `dumplive.py` talks only to `gio`. apexdrv stays STOPPED at 577 the whole time.
+  The M1 gate is about apexdrv; the *dump* is gdrv3-only (gdrv3 `STATE 4 RUNNING`, `temp\p43_svc.txt`).
+- **Correction 2 - a FAULT is a skip, not a failure.** `name_hits` catches `OSError` per chunk, counts it,
+  advances one chunk and carries on (`dumplive.py`). The 672/12288 faults in `p42h` were skipped chunks; the
+  gate is whether an EPROCESS candidate survives the pid + PE checks, not the fault count.
+- **Correction 3 - dumplive's "NOT elevated" warning was a ctypes bug, not a fact.** `GetCurrentProcess`
+  had no `restype`, so the -1 pseudo-handle was truncated to 32-bit and `OpenProcessToken` failed; the
+  function always returned 0. p41j proves `Start-Process -Verb RunAs` elevation works (`A_rc=0`, `B_pid=12136`).
+  Fixed with explicit `restype`/`argtypes` + call-result gates.
+- **Correction 4 - the blocklist was already 0.** `VulnerableDriverBlocklistEnable` reads `REG_DWORD 0x0`
+  (`temp\p43d_blocklist.txt`) with gdrv3 RUNNING, so DSE 577 never gated the dump. h1a's set-to-0 is
+  idempotent; nothing to change there.
+- **09:41 stream-cache error was post-crash game state, not new hardware:** no WHEA after 09:32:31, paks
+  complete (the 22.4 GB EA patch finished 09:17:24), SMART Healthy. Fix is EA Repair + a clean relaunch.
+- **Hardening, one variable (R5) = the scanned PA set.** `dumplive.py` now intersects the scan with OS-declared
+  usable RAM from `HKLM\HARDWARE\RESOURCEMAP\System Resources\Physical Memory\.Translated` (20-byte descriptors,
+  type 3/7, `MEMORY_LARGE_40` `0x200` length shift, verified byte-for-byte against `_ritual\_ramhex.txt`) and
+  subtracts `_ritual\p38_badpa.txt` (24 ranges, learned by p36/p38). Dry runs: full plan = 5 ranges / 30.74 GiB
+  clamped at `ram_top 0x7f1af1000` -> 27.52 GiB; with a `--lo 0x2000000 --hi 0x100000000` window -> 4 ranges /
+  763 MiB. The old HOLES map (which still walked the 3-4 GiB PCI hole) survives only as a loud fallback.
+  `--print-ranges`/`--ram-top` exist for dry checks; `py_compile` rc=0.
+- **Residual risk, explicitly:** the 00:45 0x124 fired with no scan running, so narrower ranges are mitigation,
+  not a fix. A third bugcheck ends the dump track and makes CPU stability the milestone (BIOS/microcode, XMP off,
+  then RMA track - user's hardware call).
+- Next: EA Repair + clean relaunch (user), verify read-only, gate 10 min stable, then the single `p40w` run;
+  wrap-up = `click_hi` sweep + `push.ps1`. apexdrv/DSE stays deferred to M2. Dump copy script is
+  `temp\dmpcopy2.ps1` (read-only w.r.t. the source dump, local symbol cache only).
+
+
+

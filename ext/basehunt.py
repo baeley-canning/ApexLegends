@@ -1,21 +1,27 @@
 """basehunt.py -- brute-force the kernel linear-map base B for the decoy flink.
 
-paperobe3/4 showed the decoys carry a LIST_ENTRY pair at +0x1d8 whose two values
-are system-region VAs on lane 0x258.  chainprobe's physical fingerprint at page
-offset 0x080 found nothing, so the neighbours are not on that page phase; the
-only assumption left is a linear map  PA = VA - B  with B random per boot.
+p44d settled the geometry against real bytes: a decoy sits at page offset 0xC0,
+types 3 at its base, and carries its fake LIST_ENTRY at decoy+0x1d8.  Those two
+values end on lane 0x258, i.e. they point at *real* neighbours whose base is
+page aligned and whose live ActiveProcessLinks entry is at base+0x258.  p44c
+proves the phase matters: with the guessed B, pa = flink - 0x1d8 reads type 255
+and pa = flink - 0x258 is the neighbour.  chainprobe's +0x080 fingerprint and
+basehunt's old -0x1d8 hop both used the wrong lane; both are corrected here.
 
+The only assumption is a linear map  PA = VA - B  with B random per boot.
 B is constrained: PA must stay below RAM top, so B lies in (VA - ram_top, VA).
 Every page-aligned B in that window is tried; a candidate is accepted only when
 all of these hold on the mapped page:
 
-  * byte +0x080 == 3, pid +0x250 in range, printable ImageFileName +0x3b8,
+  * byte +0x000 == 3, pid +0x1d0 in range, printable ImageFileName +0x338,
   * a KVA pair on lanes 0x258/0x260,
   * reciprocal proof: the decoy's own VA under the same B must still read as a
     live EPROCESS whose +0x1d8/+0x1e0 equal the two pointers.
 
-Accepted B -> walk the list both ways for a live pid 0x1570 and dump the image.
-READ-ONLY.
+RAM is read in 64 KiB windows (one ioctl per 16 pages instead of 16) with a
+heartbeat, a checkpoint line and --from / --max-s resume, because this host
+bugchecks (0x124) when a probe runs long.  Accepted B -> walk the list both ways
+for a live pid 0x1570 and dump the image.  READ-ONLY, nothing to restore.
 """
 import os
 import struct
