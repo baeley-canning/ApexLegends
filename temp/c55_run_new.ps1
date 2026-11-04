@@ -82,6 +82,9 @@ while ($attempt -lt [int]$tries) {
     W (("child exit=$rc wall={0:N1}s total={1:N1}s" -f ((Get-Date).Subtract($t0).TotalSeconds,
         (Get-Date).Subtract($t0).TotalSeconds)))
     $v = (Select-String -LiteralPath $out -Pattern '^VERDICT: (.+)$' -EA 0 | Select-Object -Last 1).Matches[0].Groups[1].Value
+    # -RedirectStandardOutput leaves Process.ExitCode empty; the verdict is the
+    # verdict (R3), so derive rc from it instead of logging a -1.
+    $rc = if ($v -like 'DUMP_OK*' -or $v -like 'DRY_*') { 0 } else { 1 }
     W ('attempt ' + $attempt + ' verdict=' + $v)
     if ($v -like 'PARTIAL*') {
         $m = [regex]::Match($v, 'resume_pa=(0x[0-9a-fA-F]+)')

@@ -386,8 +386,8 @@ def main():
             import hashlib
             h = hashlib.sha256(bytes(buf)).hexdigest()
             log("   dump %s sha256=%s" % (path, h))
-            return wr(0, "DUMP_OK pid=0x1570 base=%#x dtb=%#x va=%#x sha256=%s"
-                      % (base, dtb, mva, h))
+            return wr(0, "DUMP_OK pid=%#x base=%#x dtb=%#x va=%#x sha256=%s"
+                      % (PID, base, dtb, mva, h))
         return wr(1, "NO_LIVE_OBJECT fl=%d bl=%d" % (len(fl), len(bl)))
     finally:
         g.close()
