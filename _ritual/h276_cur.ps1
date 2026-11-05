@@ -130,10 +130,10 @@ function Fetch([string]$name, [string]$to, [int]$minLen) {
 $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apexcheat.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
 $driverAbi = 5
 $wantPath  = 'apexcheat.dll'      # what the launcher sends when --dll is absent - unchanged from h275
-# ABI v5 image. The v5 .sys is not in the tree yet, so the pin is left empty on purpose: the
-# hash is recorded and the ABI handshake is the hard gate (a stale v4 image refuses inside the
-# launcher, see the abi check after the inject). Fill $finger from this run's sha to re-pin.
-$finger = ''
+# ABI v5 image. Pinned to the build that passed GATE 0 at 12:42 (11264 bytes, 0 build errors);
+# a stale v4 image would also refuse inside the launcher, but the pin makes the fetch itself
+# the check so a half-copied payload cannot look like a loader result.
+$finger = '97F5A05A2C52CACC07EE36728442FFC462AAD270BFF208426D42D4A868D85E00'
 $pinned = ($finger.Length -eq 64)
 $missing = @()
 if (-not (Fetch 'kdu.exe' $kdu 400000)) { $missing += 'kdu' }
