@@ -116,9 +116,9 @@ cheat failure.
 
 Root scratch is in `_ritual\_root_scratch\`; `.png` pairs with a `.txt` twin are deleted; 82 one-off
 scripts/logs moved to `QwenKernPremium\build\_scratch\` (`_ritual\_clean4.txt`); `session_backup_*`,
-`temp2\`, `dump\` removed (`_clean5/6.txt`). The working tree therefore shows **144 deletions, 3
-modified, 20 untracked** — that is the move, not damage. Run `git add -A` and commit **before** any
-further deletion.
+`temp2\`, `dump\` removed (`_clean5/6.txt`). That move showed as 144 deletions / 20 untracked and is
+now **committed and clean** (`a26caa4`, then `fb435a9`) — the tree is not in a broken state, and
+`git add -A` before any further deletion keeps it that way.
 
 Still to do, cheap: delete uncited PNGs and `p268`/`p269`, but only once their conclusions are in
 `STATE.md`. `temp\` (2113 files, 176 MB) is the last bulk and is greppable — leave it.
