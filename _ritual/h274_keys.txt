@@ -1,0 +1,21 @@
+﻿147 12:02:07.284   | [SC] StartService FAILED 2:
+158 12:02:07.343   | [SC] StartService FAILED 2:
+215 12:02:07.284   | [SC] StartService FAILED 2:
+226 12:02:07.343   | [SC] StartService FAILED 2:
+307 12:02:07.284   | [SC] StartService FAILED 2:
+318 12:02:07.343   | [SC] StartService FAILED 2:
+345 12:02:07.494 STEP=inject-kernel
+358 12:02:07.518   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+414 12:02:07.284   | [SC] StartService FAILED 2:
+425 12:02:07.343   | [SC] StartService FAILED 2:
+452 12:02:07.494 STEP=inject-kernel
+465 12:02:07.518   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+467 12:02:09.671 post notepad alive=True inject rc=3
+470 12:02:09.708 VERDICT: UNKNOWN - lastError=2
+525 12:02:07.284   | [SC] StartService FAILED 2:
+536 12:02:07.343   | [SC] StartService FAILED 2:
+563 12:02:07.494 STEP=inject-kernel
+576 12:02:07.518   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+578 12:02:09.671 post notepad alive=True inject rc=3
+581 12:02:09.708 VERDICT: UNKNOWN - lastError=2
+608 12:02:09.845 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0

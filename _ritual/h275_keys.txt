@@ -1,0 +1,27 @@
+﻿141 12:11:13.470 STEP=release
+156 12:11:13.539   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+205 12:11:13.470 STEP=release
+220 12:11:13.539   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+293 12:11:13.470 STEP=release
+308 12:11:13.539   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+333 12:11:13.775 STEP=inject-kernel
+345 12:11:14.131   | [*] targetinfo: modules=37 kernelbase=0x7FF986350000 self=0x7FF986350000 differ=0 target LoadLibraryW=0x7FF98644C5B0 (rva 0xfc5b0, ours 0x7FF986FBEE30) lastError=0
+346 12:11:14.131   | [*] delivery: tid=3824 resolve_path=1 bases_differ=0 LoadLibraryW=0x7FF98644C5B0 lastError=87 (read status 0x0)
+347 12:11:14.131   | [*] modules: before=37 after=37 (no module appeared)
+401 12:11:13.470 STEP=release
+416 12:11:13.539   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+441 12:11:13.775 STEP=inject-kernel
+453 12:11:14.131   | [*] targetinfo: modules=37 kernelbase=0x7FF986350000 self=0x7FF986350000 differ=0 target LoadLibraryW=0x7FF98644C5B0 (rva 0xfc5b0, ours 0x7FF986FBEE30) lastError=0
+454 12:11:14.131   | [*] delivery: tid=3824 resolve_path=1 bases_differ=0 LoadLibraryW=0x7FF98644C5B0 lastError=87 (read status 0x0)
+455 12:11:14.131   | [*] modules: before=37 after=37 (no module appeared)
+461 12:11:16.772 post notepad alive=True inject rc=3
+464 12:11:16.870 VERDICT: FAIL - no module (37->37)
+513 12:11:13.470 STEP=release
+528 12:11:13.539   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+553 12:11:13.775 STEP=inject-kernel
+565 12:11:14.131   | [*] targetinfo: modules=37 kernelbase=0x7FF986350000 self=0x7FF986350000 differ=0 target LoadLibraryW=0x7FF98644C5B0 (rva 0xfc5b0, ours 0x7FF986FBEE30) lastError=0
+566 12:11:14.131   | [*] delivery: tid=3824 resolve_path=1 bases_differ=0 LoadLibraryW=0x7FF98644C5B0 lastError=87 (read status 0x0)
+567 12:11:14.131   | [*] modules: before=37 after=37 (no module appeared)
+573 12:11:16.772 post notepad alive=True inject rc=3
+576 12:11:16.870 VERDICT: FAIL - no module (37->37)
+598 12:11:17.049 RESULT: FAIL - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0

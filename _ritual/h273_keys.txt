@@ -1,0 +1,23 @@
+﻿189 11:55:07.282 STEP=svcform
+197 11:55:07.321   form A (NT prefix): rc=2 running=False
+208 11:55:07.365   form B (plain path): rc=2 running=False
+273 11:55:07.282 STEP=svcform
+281 11:55:07.321   form A (NT prefix): rc=2 running=False
+292 11:55:07.365   form B (plain path): rc=2 running=False
+381 11:55:07.282 STEP=svcform
+389 11:55:07.321   form A (NT prefix): rc=2 running=False
+400 11:55:07.365   form B (plain path): rc=2 running=False
+425 11:55:07.465 STEP=inject-kernel
+504 11:55:07.282 STEP=svcform
+512 11:55:07.321   form A (NT prefix): rc=2 running=False
+523 11:55:07.365   form B (plain path): rc=2 running=False
+548 11:55:07.465 STEP=inject-kernel
+563 11:55:09.141 post notepad alive=True inject rc=3
+566 11:55:09.161 VERDICT: UNKNOWN - lastError=2
+631 11:55:07.282 STEP=svcform
+639 11:55:07.321   form A (NT prefix): rc=2 running=False
+650 11:55:07.365   form B (plain path): rc=2 running=False
+675 11:55:07.465 STEP=inject-kernel
+690 11:55:09.141 post notepad alive=True inject rc=3
+693 11:55:09.161 VERDICT: UNKNOWN - lastError=2
+720 11:55:09.260 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 1

@@ -1,0 +1,30 @@
+﻿12:11:13.765   | environment:
+12:11:13.765   | pid=1128 image=notepad.exe base=0x7FF73EC20000 modules=37
+12:11:13.765   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+12:11:13.765   | d3d11=absent dxgi=absent d3d12=absent d3d9=absent d3dcompiler=absent
+12:11:13.765   | probes:
+12:11:13.765   | ...
+12:11:13.775 STEP=inject-kernel
+12:11:13.775 $ apex_launcher.exe --inject --method=kernel --pid 1128 --driver C:\Users\Public\p37\zapexdrv.sys --no-sticky
+12:11:14.126   exit=3
+12:11:14.126   | ===============================================================
+12:11:14.126   |   QwenKern Premium - Apex Legends launcher
+12:11:14.126   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+12:11:14.126   |   kernel rung    : B3 (apexdrv.sys)
+12:11:14.131   | ===============================================================
+12:11:14.131   | [*] Target PID 1128, payload apexcheat.dll
+12:11:14.131   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+12:11:14.131   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+12:11:14.131   | [*] driver ABI v4
+12:11:14.131   | [*] targetinfo: modules=37 kernelbase=0x7FF986350000 self=0x7FF986350000 differ=0 target LoadLibraryW=0x7FF98644C5B0 (rva 0xfc5b0, ours 0x7FF986FBEE30) lastError=0
+12:11:14.131   | [*] delivery: tid=3824 resolve_path=1 bases_differ=0 LoadLibraryW=0x7FF98644C5B0 lastError=87 (read status 0x0)
+12:11:14.131   | [*] modules: before=37 after=37 (no module appeared)
+12:11:14.131   | [-] delivered, but LoadLibraryW left no module (LastError 87): ERROR_INVALID_PARAMETER - target-side address is not a code address
+12:11:14.131   | ---------------------------------------------------------------
+12:11:14.134   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+12:11:14.134   |     reason: delivered, but LoadLibraryW left no module (LastError 87): ERROR_INVALID_PARAMETER - target-side address is not a code address
+12:11:14.134   | ---------------------------------------------------------------
+===== POST /log 12:11:16
+## h275
+12:11:04.369 alive
+12:11:04.553 bench build 26300 boot=06/11 11:52 pid=4724
