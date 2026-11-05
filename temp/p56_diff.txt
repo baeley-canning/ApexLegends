@@ -1,0 +1,8 @@
+# p56_diff 2026-11-04 17:50:51 olds=2 pages=2
+old slots in window: 3
+RENAMED pa=0x626ea2c64 "'ironfist2000'" -> b'\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00'
+RENAMED pa=0x626ea2ce4 "'76561198060599900'" -> b'\x00\x00\x00\x00\xf0\x19t\x12\x00\x00\x00\x00\x06\x00\x00\x00\x08'
+RENAMED pa=0x626ea2d24 "'1000158796547'" -> b'\x00\x00\x00\x00\xa0\xc1\x85\x17\x00\x00\x00\x00\x02'
+
+slots=3 changed=3 same=0 lanes=0
+VERDICT: NO_CHANGE

@@ -1,0 +1,303 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.000 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269_dumps\110526-10890-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (4 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Kernel base = 0xfffff804`c5600000 PsLoadedModuleList = 0xfffff804`c64f54c0
+Debug session time: Thu Nov  5 23:30:21.261 2026 (UTC + 13:00)
+System Uptime: 0 days 0:02:03.958
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 0000007e`d0f73018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.............
+For analysis of this file, run !analyze -v
+3: kd> kd: Reading initial command 'lmv; .echo ENDLM; q'
+start             end                 module name
+fffff804`51e00000 fffff804`51e64000   srvnet     (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\srvnet.sys\4C929D0E64000\srvnet.sys
+    Image path: \SystemRoot\System32\DRIVERS\srvnet.sys
+    Image name: srvnet.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        4C929D0E (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         00067FCA
+    ImageSize:        00064000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.6 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     SRVNET.SYS
+        OriginalFilename: SRVNET.SYS
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  Server Network driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`51e70000 fffff804`51f68000   srv2       (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\srv2.sys\E94ED8B5f8000\srv2.sys
+    Image path: \SystemRoot\System32\DRIVERS\srv2.sys
+    Image name: srv2.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        E94ED8B5 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         000F7D88
+    ImageSize:        000F8000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.6 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     SRV2.SYS
+        OriginalFilename: SRV2.SYS
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  Smb 2.0 Server driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`51f70000 fffff804`51f86000   mmcss      (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\mmcss.sys\94B89CD316000\mmcss.sys
+    Image path: \SystemRoot\system32\drivers\mmcss.sys
+    Image name: mmcss.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        94B89CD3 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         0001E2CC
+    ImageSize:        00016000
+    File version:     10.0.26100.8972
+    Product version:  10.0.26100.8972
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.7 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     mmcss.sys
+        OriginalFilename: mmcss.sys
+        ProductVersion:   10.0.26100.8972
+        FileVersion:      10.0.26100.8972 (WinBuild.160101.0800)
+        FileDescription:  MMCSS Driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`51f90000 fffff804`51fbe000   Ndu        (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\Ndu.sys\33F532522e000\Ndu.sys
+    Image path: \SystemRoot\system32\drivers\Ndu.sys
+    Image name: Ndu.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        33F53252 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         00039786
+    ImageSize:        0002E000
+    File version:     10.0.26100.9278
+    Product version:  10.0.26100.9278
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.6 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     ndu.sys
+        OriginalFilename: ndu.sys
+        ProductVersion:   10.0.26100.9278
+        FileVersion:      10.0.26100.9278 (WinBuild.160101.0800)
+        FileDescription:  Windows Network Data Usage Monitoring Driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`52000000 fffff804`520d5000   peauth     (deferred)             
+    Image path: \SystemRoot\system32\drivers\peauth.sys
+    Image name: peauth.sys
+    Browse all global symbols  functions  data
+    Timestamp:        ***** Invalid (A7623FFA)
+    CheckSum:         000D89CD
+    ImageSize:        000D5000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`520e0000 fffff804`520f6000   tcpipreg   (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\tcpipreg.sys\B578B9E516000\tcpipreg.sys
+    Image path: \SystemRoot\System32\drivers\tcpipreg.sys
+    Image name: tcpipreg.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        B578B9E5 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         000176E0
+    ImageSize:        00016000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        1.0 App
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     tcpipreg.sys
+        OriginalFilename: tcpipreg.sys
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  TCP/IP Registry Compatibility Driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`52100000 fffff804`5211e000   wtd        (deferred)             
+    Image path: \SystemRoot\System32\drivers\wtd.sys
+    Image name: wtd.sys
+    Browse all global symbols  functions  data
+    Timestamp:        ***** Invalid (CFED016F)
+    CheckSum:         00024A26
+    ImageSize:        0001E000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`52130000 fffff804`52146000   condrv     (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\condrv.sys\9909D0E516000\condrv.sys
+    Image path: \SystemRoot\System32\drivers\condrv.sys
+    Image name: condrv.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        9909D0E5 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         0002A695
+    ImageSize:        00016000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.7 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     condrv.sys
+        OriginalFilename: condrv.sys
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  Console Driver
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`52150000 fffff804`52168000   KslD       (deferred)             
+    Image path: \SystemRoot\system32\drivers\wd\KslD.sys
+    Image name: KslD.sys
+    Browse all global symbols  functions  data
+    Timestamp:        ***** Invalid (F62E839B)
+    CheckSum:         0001D45F
+    ImageSize:        00018000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`52170000 fffff804`52195000   WdNisDrv   (deferred)             
+    Image path: \SystemRoot\system32\drivers\wd\WdNisDrv.sys
+    Image name: WdNisDrv.sys
+    Browse all global symbols  functions  data
+    Timestamp:        Mon Jul  8 15:26:15 1991 (2877DB57)
+    CheckSum:         0002DA55
+    ImageSize:        00025000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`521b0000 fffff804`521b6000   zapexdrv   (deferred)             
+    Image path: \??\C:\Users\Public\p37\zapexdrv.sys
+    Image name: zapexdrv.sys
+    Browse all global symbols  functions  data
+    Timestamp:        Thu Nov  5 15:49:33 2026 (6AEBEEBD)
+    CheckSum:         0000A943
+    ImageSize:        00006000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`52220000 fffff804`52227000   WinRing0x64   (deferred)             
+    Image path: \??\C:\Users\Public\p37\WinRing0x64.sys
+    Image name: WinRing0x64.sys
+    Browse all global symbols  functions  data
+    Timestamp:        Thu May  2 14:19:47 2013 (5181CD43)
+    CheckSum:         0000AF61
+    ImageSize:        00007000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+fffff804`52680000 fffff804`52762000   mrxsmb     (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\mrxsmb.sys\08B698DBe2000\mrxsmb.sys
+    Image path: \SystemRoot\system32\DRIVERS\mrxsmb.sys
+    Image name: mrxsmb.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        08B698DB (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         000F4D2C
+    ImageSize:        000E2000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.7 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     MRxSmb.sys
+        OriginalFilename: MRXSMB.Sys
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  Windows NT SMB Minirdr
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.
+fffff804`52770000 fffff804`527cd000   mrxsmb20   (deferred)             
+    Mapped memory image file: C:\ProgramData\dbg\sym\mrxsmb20.sys\CC819D235d000\mrxsmb20.sys
+    Image path: \SystemRoot\system32\DRIVERS\mrxsmb20.sys
+    Image name: mrxsmb20.sys
+    Browse all global symbols  functions  data
+    Image was built with /Brepro flag.
+    Timestamp:        CC819D23 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         00065FD1
+    ImageSize:        0005D000
+    File version:     10.0.26100.9711
+    Product version:  10.0.26100.9711
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        3.7 Driver
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft« Windows« Operating System
+        InternalName:     MRxSmb20.sys
+        OriginalFilename: MRXSMB20.Sys
+        ProductVersion:   10.0.26100.9711
+        FileVersion:      10.0.26100.9711 (WinBuild.160101.0800)
+        FileDescription:  Longhorn SMB 2.0 Redirector
+        LegalCopyright:   ¬ Microsoft Corporation. All rights reserved.

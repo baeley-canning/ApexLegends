@@ -1,0 +1,10 @@
+1: # h269_cur.ps1 - p269. ONE VARIABLE vs h268: single-run enforcement.
+2: # h268's ladder PASSES on every tick (rc=0, STATE 4 RUNNING, imagePath recorded) but the
+6: # hard 0x3B (SYSTEM_SERVICE_EXCEPTION, c0000005) ~minutes into every cycle with h268.out
+13: # Ladder, dse-cycle, payload bytes, oracle and cleanup text are byte-identical to h268.
+15: # --- h268 header follows, still true ---
+16: # h268_cur.ps1 - p268. ONE VARIABLE vs h267: the driver image name/signature
+36: $tag  = 'h269'
+47: # --- single-run gate (the h269 variable) -----------------------------------------
+134: # not there, listing the candidate causes in the log is the p268 deliverable.
+458: W ('  ladder/winner/dse-cycle unchanged from h268: same image, same rungs; winner=' + $winner)

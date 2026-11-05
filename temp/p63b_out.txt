@@ -1,0 +1,4 @@
+# p61_live 2026-11-04 19:07:43 needle=b'kern30120'
+window cold -> full band
+SCAN 0x400000000-0x780000000 hits=1301 faults=60481 secs=47.1
+ANCHOR hits=29 cluster=0x4d0060000 first=0x4d006a119

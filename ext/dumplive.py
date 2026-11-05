@@ -50,6 +50,29 @@ PROC_NAME = "r5apex_dx12"
 
 SCAN_LO = 0x100000
 SCAN_CHUNK = 0x10000            # ioctl dst is allocated for this; dump lowers it
+# Hop budget: consecutive physical pages a walk may lose before it declares the
+# device dead.  0x200000 is a *pinned* fault (p104: err 1450 on 3/3 tries, three
+# separate runs, three different landing buffers, control read 0x100000 ok=1
+# throughout) - it will never come back, so a walk must step over it instead of
+# stalling.  Unbounded hopping is useless though: with the device gone every page
+# faults and a 4 GiB scan would crawl.  64 pages = 256 KiB of fully dead map is
+# far past one pin and far short of a dead device.
+HOP_MAX = int(os.environ.get("GIO_HOP_MAX", "64"))
+# Hop *stride* in pages, used only while a page is already lost: the p106w run
+# crossed 0x10000000->0x1400f000 (64 MiB) without a single readable page, so the
+# p104 "pinned" fault is not a pin, it is a contiguous pocket and a 1-page hop
+# spends 16k faults to learn where it ends.  With stride N the walk probes every
+# Nth page *until one reads*, then drops back to 1 page so the edge is exact and
+# the good RAM behind it gets full coverage.  The fast path is SCAN_CHUNK (16
+# pages) wide, so strides below 16 are indistinguishable from 1.
+HOP_STRIDE = int(os.environ.get("GIO_HOP_STRIDE", "1"))
+# Set by pid_scan when the hop budget trips: the device, not the address, is the
+# suspect and the tail of the map was never read.
+SCAN_STOPPED = False
+# Last lost page and first page that read again -- the pocket's two edges, kept
+# on the module because pid_scan's return tuple is already spoken for.
+HOP_LAST = 0
+FIRST_GOOD = 0
 CKPT_BYTES = 0x10000000         # progress checkpoint every 256 MiB scanned
 HOLES = [(0x000A0000, 0x00100000),      # VGA/ROM
          (0xC0000000, 0x100000000)]     # PCI/MMIO space
@@ -235,6 +258,31 @@ def load_bad(path=BADPA_FILE):
     except OSError:
         pass
     return bad
+
+
+_BAD = None
+
+
+def bad_intervals():
+    """load_bad() read once per run (the file is durable and can be long)."""
+    global _BAD
+    if _BAD is None:
+        _BAD = load_bad()
+    return _BAD
+
+
+def in_bad(pa, bad=None):
+    """True if `pa` is in a PA range a previous run already lost.
+
+    A pinned-fault page (p104: 0x200000, err 1450 three times over three runs and
+    three landing buffers) reads exactly like a dead device from the per-page
+    path.  The pin list is what tells the two apart, so the walker can hop over
+    the hole without spending three retries on it or eating its hop budget.
+    """
+    for lo, hi in (bad_intervals() if bad is None else bad):
+        if lo <= pa < hi:
+            return True
+    return False
 
 
 def ram_map():

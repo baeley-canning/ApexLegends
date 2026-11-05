@@ -1,0 +1,12 @@
+09:18:28 START
+09:18:28 proc VBoxHeadless id=17924 cpu=0.28125
+09:18:28 proc VBoxHeadless id=19040 cpu=0.28125
+09:18:28 proc VBoxHeadless id=20916 cpu=3714.796875
+09:18:28 cpu1=3714.859375 ws=113065984
+09:18:34 cpu2=3738.765625 delta=23.91
+09:18:34 threads=40
+09:18:34 state=running
+09:18:34 ga=3
+09:18:36 shots
+09:18:36 VERDICT: delta near 0 s in 6 s = stalled, delta >= 5 s = spinning
+09:18:36 END

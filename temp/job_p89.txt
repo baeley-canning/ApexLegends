@@ -1,0 +1,1 @@
+& python -u temp\p88_refresh_sweep.py *> temp\p88_console.txt; "P88_EXIT=$LASTEXITCODE" | Out-File temp\p88_arm.txt

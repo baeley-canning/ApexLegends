@@ -1,0 +1,5 @@
+﻿13 $tag  = 'h271'
+39 function Done { Remove-Item -LiteralPath $lock -Force -EA 0 }
+92 if ($missing -or $h -ne $finger) { W ('RESULT: FAIL fetch ' + ($missing -join ',')); Post; Done; exit 1 }
+122     Post; Done; exit 1
+183 Done

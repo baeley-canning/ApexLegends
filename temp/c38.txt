@@ -1,0 +1,27 @@
+﻿ 386|            return wr(0, "DUMP_OK pid=0x1570 base=%#x dtb=%#x va=%#x sha256=%s"
+ 387|                      % (base, dtb, mva, h))
+ 388|        return wr(1, "NO_LIVE_OBJECT fl=%d bl=%d" % (len(fl), len(bl)))
+ 389|    finally:
+ 390|        g.close()
+ 391|
+ 392|
+ 393|if __name__ == "__main__":
+ 394|    sys.exit(main())
+ 395|
+ 396|            break
+ 397|        pid, base, fl, bl, nm = h
+ 398|        out.append((pid, base, nm))
+ 399|        prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+ 400|        nxt = fl if tag == "FL" else bl
+ 401|        if nxt == start_va:
+ 402|            out.append(("ring", nxt))
+ 403|            break
+ 404|        va = nxt
+ 405|    return out
+ 406|
+ 407|                if lost:
+ 408|                    prog("BADPAGE %#x of %#x dead at %#x"
+ 409|                         % (lost, n // 0x1000, pa))
+ 410|            else:
+ 411|                pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]
+411

@@ -1,0 +1,13 @@
+pages=488 text=270 binary=25 mixed=193 zeroed=0
+--- binary pages with >=2 needles (lp / pa / cross-needle deltas) ---
+page=0x29ff29000 hits=3 lp=0 ascii=27% pa=0x29ff29d8c,0x29ff29f4c,0x29ff29fac d=0x1c0,0x60
+page=0x32e396000 hits=2 lp=0 ascii=32% pa=0x32e396061,0x32e3960a1 d=0x40
+page=0x177c17000 hits=2 lp=0 ascii=43% pa=0x177c17001,0x177c17181 d=0x180
+page=0x1f3769000 hits=3 lp=0 ascii=43% pa=0x1f37690ac,0x1f376992c,0x1f3769e2c d=0x880,0x500
+page=0x78d47d000 hits=2 lp=0 ascii=47% pa=0x78d47d021,0x78d47d081 d=0x60
+page=0x70711d000 hits=2 lp=0 ascii=18% pa=0x70711db40,0x70711ddc0 d=0x280
+page=0x79999d000 hits=2 lp=0 ascii=29% pa=0x79999d421,0x79999d461 d=0x40
+page=0x2d7bf1000 hits=2 lp=0 ascii=43% pa=0x2d7bf1001,0x2d7bf14d1 d=0x4d0
+page=0x5a06eb000 hits=2 lp=0 ascii=48% pa=0x5a06eb021,0x5a06eb081 d=0x60
+page=0x79f792000 hits=2 lp=0 ascii=34% pa=0x79f792351,0x79f792491 d=0x140
+page=0x52fecd000 hits=3 lp=0 ascii=24% pa=0x52fecd830,0x52fecd860,0x52fecd920 d=0x30,0xc0

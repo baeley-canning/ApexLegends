@@ -1,0 +1,8 @@
+   Name: VRDP-ready (UUID: e099b86b-9b0e-48b3-87ab-55c0827ec144)
+   Description: Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x
+      Name: pre-baseline (UUID: 70f20efd-0fa8-4a19-9ded-2facde7a7842)
+         Name: baseline-clean (UUID: d39a314a-1df1-414e-816f-f64357dda9c4)
+         Description: P37 VM bring-up rollback point
+            Name: p37-ready (UUID: 567109ad-d161-4dc7-8e93-2c7627c46f0a)
+            Description: gdrv3 installed+running, SYSTEM tick p37tick (60s) + p37logon, harness in C:\Users\Public\p37, HTTP payload 10.0.2.2:8080
+               Name: pre-h268 (UUID: 4ea0dd5e-11c6-4f15-8fd7-458ddd0c94d2) *

@@ -1,0 +1,22 @@
+# p53_padump 2026-11-04 16:52:52 label=p77d704000 pa=0x77d6fc000 pages=17 hits=2
+ram_top=0x800000000
+PAGE  pa=0x77d6fc000 hits=0
+PAGE  pa=0x77d6fd000 hits=0
+PAGE  pa=0x77d6fe000 hits=0
+PAGE  pa=0x77d6ff000 hits=0
+PAGE  pa=0x77d700000 hits=0
+PAGE  pa=0x77d701000 hits=0
+PAGE  pa=0x77d702000 hits=0
+PAGE  pa=0x77d703000 hits=0
+PAGE  pa=0x77d704000 hits=2
+FAULT pa=0x77d705000 err=[Errno 1450] phys read 0x77d705000+0x1000 failed
+PAGE  pa=0x77d706000 hits=0
+PAGE  pa=0x77d707000 hits=0
+PAGE  pa=0x77d708000 hits=0
+PAGE  pa=0x77d709000 hits=0
+PAGE  pa=0x77d70a000 hits=0
+PAGE  pa=0x77d70b000 hits=0
+PAGE  pa=0x77d70c000 hits=0
+
+readback 17 pages ok=16 fault=1 hits_marked=2/2 0.02s
+VERDICT: PADUMP ok=16 fault=1 hits=2/2 lo=0x77d6fc000 hi=0x77d70d000 0.02s

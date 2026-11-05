@@ -1,0 +1,25 @@
+gc 23:59:36
+C:\Users\New User\OneDriv
+e\Desktop\cheating\_ritua
+l\p37_gc.ps1 : Cannot 
+validate argument on 
+parameter 'Mode'. The 
+argument "status" does 
+not belong to the set "di
+ag,disarm,serve,deploy,ve
+r,arm,tick,pull,all" 
+specified by the 
+ValidateSet attribute. 
+Supply an argument that 
+is in the set and then 
+try the command again.
+    + CategoryInfo       
+       : InvalidData: (  
+  :) [p37_gc.ps1], Par   
+ entContainsErrorReco    
+rdException
+    + FullyQualifiedErro 
+   rId : ParameterArgum  
+  entValidationError,p   
+ 37_gc.ps1
+ 

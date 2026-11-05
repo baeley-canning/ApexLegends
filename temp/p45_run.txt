@@ -1,0 +1,9 @@
+﻿15:26:45.812  elevated=True
+15:26:45.892  py_compile: compiled
+15:26:45.895  run: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" --needle=drivers --lo=0x1000000 --hi=0x4000000 --dir=asc --ctx=64 --max-hits=6 --max-s=60
+15:26:46.927  rc=0 verdict=NO_HIT needles=1 scanned=30 MiB stopped=covered
+15:26:46.928    RAMMAP map=5 bad=24 top=0x800000000 ranges=2 total=30 MiB
+15:26:46.928    PAs 0 hits over 0 pages, 30 MiB scanned in 0.2s bad4k=7522 rescued=30 stopped=covered
+15:26:46.934  ctx sample: 
+15:26:46.939  RESULT: variable=needle_pipeline hits=0 verdict=NO_HIT needles=1 scanned=30 MiB stopped=covered
+15:26:46.939  --- end ---

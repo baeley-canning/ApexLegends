@@ -1,0 +1,9 @@
+now=09:33:21
+SERVICE_NAME: apexdrv 
+        STATE              : 1  STOPPED 
+grp=BUILTIN\Hyper-V Administrators
+uac=0
+enablelua=1
+sudo=1
+dev=no
+drv=Stopped

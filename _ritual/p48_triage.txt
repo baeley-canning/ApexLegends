@@ -1,0 +1,45 @@
+enttriage 2026-11-04 17:39:05 hits=C:\Users\New User\OneDrive\Desktop\cheating\temp\p54_ctx.txt
+COOC pages=2 full_house=0 cap=12
+
+PAGE 0x626ea2000 hits=1
+  hit n=5 pa=0x626ea2c64 oc=0x2c64
+    -040 c735fde000000000     \x00\x00\x00\x00\xe0\xfd5\xc7
+    -038 000005ad00000001 hu  \x01\x00\x00\x00\xad\x05\x00\x00
+    -030 00000000800005ad u   \xad\x05\x00\x80\x00\x00\x00\x00
+    -028 5d7fb588114d0000     \x00\x00M\x11\x88\xb5\x7f]
+    -020 0000000000007ff7     \xf7\x7f\x00\x00\x00\x00\x00\x00
+    -018 0000000100000000 hu  \x00\x00\x00\x00\x01\x00\x00\x00
+    -010 749313a000000002 h   \x02\x00\x00\x00\xa0\x13\x93t
+    -008 0000000c74736966 hu  fist\x0c\x00\x00\x00
+    +000 747369666e6f7269 a   ironfist
+    +008 0000000030303032 au  2000\x00\x00\x00\x00
+    +010 0000000000000000     \x00\x00\x00\x00\x00\x00\x00\x00
+    +018 5d7fada0114d0000     \x00\x00M\x11\xa0\xad\x7f]
+    +020 0000000000007ff7     \xf7\x7f\x00\x00\x00\x00\x00\x00
+    +028 0000000100000000 hu  \x00\x00\x00\x00\x01\x00\x00\x00
+    +030 148f07e000000001 h   \x01\x00\x00\x00\xe0\x07\x8f\x14
+    +038 040b630000000000     \x00\x00\x00\x00\x00c\x0b\x04
+    +040 03be0d2000000000     \x00\x00\x00\x00 \r\xbe\x03
+
+PAGE 0x739ae2000 hits=1
+  hit n=2 pa=0x739ae2664 oc=0x2664
+    -040 656d616700007ff7     \xf7\x7f\x00\x00game
+    -038 70722e65726f635f a   _core.rp
+    -030 0000000000006b61 a   ak\x00\x00\x00\x00\x00\x00
+    -028 5d7fb5880e0f0000     \x00\x00\x0f\x0e\x88\xb5\x7f]
+    -020 0000000000007ff7     \xf7\x7f\x00\x00\x00\x00\x00\x00
+    -018 0000000100000000 hu  \x00\x00\x00\x00\x01\x00\x00\x00
+    -010 f12cff6800000002 h   \x02\x00\x00\x00h\xff,\xf1
+    -008 0000000e79626d72 hu  rmby\x0e\x00\x00\x00
+    +000 79626d6d61726353 a   Scrammby
+    +008 0000746f6c69502e au  .Pilot\x00\x00
+    +010 0000000040000000 afu \x00\x00\x00@\x00\x00\x00\x00
+    +018 5d7fada0114d0000     \x00\x00M\x11\xa0\xad\x7f]
+    +020 0000000000007ff7     \xf7\x7f\x00\x00\x00\x00\x00\x00
+    +028 0000000100000000 hu  \x00\x00\x00\x00\x01\x00\x00\x00
+    +030 1764968000000002 h   \x02\x00\x00\x00\x80\x96d\x17
+    +038 16ff0a8000000000     \x00\x00\x00\x00\x80\n\xff\x16
+    +040 c5fd190000000000 f   \x00\x00\x00\x00\x00\x19\xfd\xc5
+
+delta histogram (cross-needle):
+VERDICT: COOC_ONLY pages=2 no repeating delta

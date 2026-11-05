@@ -1,0 +1,43 @@
+Comparing files C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\h269_cur.ps1 and C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\H270_CUR.PS1
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\h269_cur.ps1
+    1:  # h269_cur.ps1 - p269. ONE VARIABLE vs h268: single-run enforcement.
+    2:  # h268's ladder PASSES on every tick (rc=0, STATE 4 RUNNING, imagePath recorded) but the
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\H270_CUR.PS1
+    1:  # h270_cur.ps1 - p270. ONE VARIABLE vs h269: provider order (22 demoted from rung 1).
+    2:  # p269 never got a verdict because every tick armed a driver that bugchecks: five 0x3B dumps,
+    3:  # byte-identical bucket, one call site - WinRing0x64.sys (prv 22) +0x15b8, "rep movsb" with
+    4:  # rsi=NULL, cr2=0. MmMapIoSpace(0x2000) returns NULL (guest is out of the low pages it can map)
+    5:  # and the driver copies 0x1000 bytes from NULL without a guard; fault lands in ntoskrnl, which is
+    6:  # why the first stack walk blamed nt. prv 22 stays in the list LAST - it usually still lands the
+    7:  # DSE flip before the box dies - but no tick starts with it any more.
+    8:  # The single-run lock, ladder mechanics, dse-cycle, payload bytes, oracle and cleanup text are
+    9:  # byte-identical to h269.
+   10:  #
+   11:  # --- h269 header follows, still true ---
+   12:  # h268's ladder PASSES on every tick (rc=0, STATE 4 RUNNING, imagePath recorded) but the
+*****
+
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\h269_cur.ps1
+   35:  $d    = $PSScriptRoot
+   36:  $tag  = 'h269'
+   37:  $L    = New-Object System.Collections.ArrayList
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\H270_CUR.PS1
+   45:  $d    = $PSScriptRoot
+   46:  $tag  = 'h270'
+   47:  $L    = New-Object System.Collections.ArrayList
+*****
+
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\h269_cur.ps1
+  264:  # rest in db order, then a hard cap (each attempt costs a create+start cycle).
+  265:  $pref = @(22, 30, 32, 33, 38, 39, 40, 41, 13, 4)
+  266:  $ordered = @()
+***** C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\_RITUAL\H270_CUR.PS1
+  274:  # rest in db order, then a hard cap (each attempt costs a create+start cycle).
+  275:  # 22 = WinRing0x64.sys is broken on this build (see header: NULL deref at +0x15b8) - it is
+  276:  # kept because it still flips DSE before the 0x3B lands, but demoted so a tick can finish
+  277:  # on a surviving provider instead of opening with a bugcheck.
+  278:  $pref = @(30, 32, 33, 38, 39, 40, 41, 13, 4, 22)
+  279:  $ordered = @()
+*****
+
+

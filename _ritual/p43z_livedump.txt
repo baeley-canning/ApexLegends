@@ -1,0 +1,16 @@
+dtbprobe  2026-11-04 12:54:08  pa=0x7ec76d000 base=0x2481d60c0
+ram_top=0x800000000 is_ram(pa)=True
+object reread ok: type=3 name=b'r5apex_dx12.ex\x00\x02' pid@1d0=0x1570 flink=0x0 blink=0x0
+  try  1 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  2 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  3 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  4 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  5 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  6 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  7 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  8 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try  9 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try 10 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try 11 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+  try 12 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed
+VERDICT: DTB_UNREADABLE

@@ -1,0 +1,33 @@
+22:05:35 start
+22:05:35 pre VMState="running"
+22:05:37 typed: exit<enter>
+22:05:40 shot p271_1
+22:05:43 shot p271_2
+22:05:53 poll 1 VMState="running"
+22:05:54 shot p271_3
+22:06:04 poll 2 VMState="running"
+22:06:06 shot p271_4
+22:06:16 poll 3 VMState="running"
+22:06:17 shot p271_5
+22:06:27 poll 4 VMState="running"
+22:06:28 shot p271_6
+22:06:28 navigate: esc esc enter
+22:06:32 shot p271_b1
+22:06:32 entered
+22:06:37 shot p271_b2
+22:06:47 watch 1 VMState="running"
+22:06:48 shot p271_w1
+22:06:58 watch 2 VMState="running"
+22:07:00 shot p271_w2
+22:07:10 watch 3 VMState="running"
+22:07:11 shot p271_w3
+22:07:21 watch 4 VMState="running"
+22:07:22 shot p271_w4
+22:07:32 watch 5 VMState="running"
+22:07:34 shot p271_w5
+22:07:44 watch 6 VMState="running"
+22:07:45 shot p271_w6
+22:07:45 after-watch VMState="running"
+22:07:45 still running -> liveness check via shot only; if boot is stuck a reset is the next tick, not taken here
+22:07:49 shot p271_final
+22:07:49 EXIT-PHASE done

@@ -1,0 +1,7 @@
+﻿start 16:21:40
+HIT RuntimeException: Method invocation failed because [System.String] does not contain a method named 'Add'.
+line=24 text=[$out.Add(('pages={0} text={1} binary={2} mixed={3}' -f $pg.Count, $text.Count, $bin.Count, ($pg.Count - $text.Count - $bin.Count)))
+]
+stack=at <ScriptBlock>, C:\Windows\Temp\p53_class.ps1: line 24 <- at <ScriptBlock>, C:\Users\New User\OneDrive\Desktop\cheating\temp\p53_dbg3.ps1: line 10
+target=
+out_exists=False end 16:21:44

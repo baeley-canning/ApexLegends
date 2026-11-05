@@ -1,0 +1,10 @@
+p72 map  2026-11-04 21:47:03
+pure-read: device open only, no load / DSE / service touch
+pid=12092 alive=True target=0x420b0a000
+target ram=yes (installed=32768 MiB)
+fingerprint empty -> pid front
+PID RAMMAP map=5 bad=24 ranges=1 window=0x100000000..0x800000000
+PID scan: 4000 occurrences fault=443338 38.3 s
+  pid@0x7ceac1250 base=0x7ceac1080 type=3 name=b'r5apex_dx12.ex' dtb=0x57e88c000 readable=False
+elapsed 38.4 s
+VERDICT: NO_BASE pid=12092

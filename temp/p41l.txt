@@ -1,0 +1,3197 @@
+--- sys providers ---
+.\deepseekharness 1
+.\dump 1
+.\ext 1
+.\generated_cheats 1
+.\harness 1
+.\Qwen General Knowledge 1
+.\Qwen Knowledge base 1
+.\QwenKern 1
+.\QwenKernPremium 1
+.\Sentinel 1
+.\temp 1
+.\_ritual 1
+.\.gitignore 568
+.\060A2B060104018237020101 10842
+.\AGENTS.md 3143
+.\ai_apex_external_aimbot_architecture.md 4457
+.\allfiles.txt 27154
+.\apexcheat.ini 0
+.\apexdrv.obj 43312
+.\apexr - run after reboot.lnk 1177
+.\build_all.py 1768
+.\build_debug.txt 11300
+.\build_harness.py 430
+.\build_log.txt 76430
+.\build_output.txt 5240
+.\build_output2.txt 13156
+.\build_output3.txt 13156
+.\build_output4.txt 9978
+.\build_output5.txt 46866
+.\build_output6.txt 11004
+.\build_output7.txt 7852
+.\build_output8.txt 7852
+.\build_output9.txt 11516
+.\build_output_debug.txt 10116
+.\build_quick_test.py 1766
+.\dep_dll.txt 312
+.\dep_launcher.txt 316
+.\dirs.txt 696
+.\dirs_rel.txt 4299
+.\ea7.png 463478
+.\example.py 6346
+.\files.txt 1048
+.\find_dumpbin.txt 297
+.\ft_a.txt 2098
+.\gate3.txt 1926
+.\gate_run.txt 1848
+.\gate_run2.txt 1926
+.\hk_a.txt 12047
+.\hk_b.txt 9385
+.\hk_c.txt 2286
+.\inj_a.txt 7143
+.\kb2.txt 789
+.\kb_listing.txt 2469
+.\kern2.txt 339
+.\kern_listing.txt 1235
+.\list.ps1 455
+.\listing.txt 0
+.\listing2.txt 156
+.\list_phase5.ps1 494
+.\lm_a.txt 6541
+.\lm_b.txt 12307
+.\lm_c.txt 5256
+.\M2_KERNEL_CHEAT_HANDOFF_PROMPT.md 24740
+.\mh.txt 564
+.\names.txt 0
+.\p1.log 42798
+.\p1_summary.txt 11366
+.\p2.log 1818
+.\p2_summary.txt 0
+.\p2_tail.txt 626
+.\p5.txt 360
+.\p5_dirs.txt 622
+.\p5_files.txt 2184
+.\p5_listing.txt 1114
+.\phase5_all.txt 718
+.\phase5_files.txt 350
+.\phase5_tree.txt 634
+.\qc 20
+.\quick_test2.py 2565
+.\qw_listing.txt 10864
+.\README.md 7219
+.\SPC_SP_OPUS_INFO_OBJID 10842
+.\STATE.md 39430
+.\System.Net.Sockets.Socket 0
+.\test_harness.py 4090
+.\tree.txt 2855
+.\vc140.pdb 184320
+.\w4.log 1750
+.\w4_ctx.txt 1074
+.\w4_summary.txt 11
+.\wt_list.txt 2923
+.\_catmemb.ps1 3577
+.\_catmemb.term.txt 0
+.\_catmemb.txt 11007
+.\_catmemb.txt.start 24
+.\_catmemb_mid.txt 3734
+.\_dirs.txt 383
+.\_explore.ps1 948
+.\_gc.txt 3765
+.\_gc1.txt 426
+.\_listing_top.txt 929
+.\_ls.h1.txt 594
+.\_ls.md.txt 20891
+.\_ls.ritual.txt 88421
+.\_ls.tail.txt 1861
+.\_out.txt 565
+.\_p5.txt 2734
+.\_p5b.txt 2062
+.\_p5tree.txt 5514
+.\_rdpout.txt 140
+.\_rdpprobe.ps1 423
+.\_rdpset.txt 275
+.\_rdpusage.txt 303
+.\_src.txt 0
+.\_st_chunk.txt 11336
+.\_st_count.txt 8
+.\_test2.obj 618
+.\_tools.txt 0
+.\_top.txt 291
+.\_v1.txt 275
+.\_v3.txt 275
+.\_vresults.txt 2
+.\_v_one.txt 275
+.\deepseekharness\sessions 1
+.\deepseekharness\__pycache__ 1
+.\deepseekharness\.env.example 440
+.\deepseekharness\.gitignore 28
+.\deepseekharness\cli.py 10677
+.\deepseekharness\client.py 4036
+.\deepseekharness\config.py 1751
+.\deepseekharness\ds.cmd 39
+.\deepseekharness\mcp_server.py 6547
+.\deepseekharness\prompts.py 3408
+.\deepseekharness\README.md 3114
+.\deepseekharness\session.py 10343
+.\deepseekharness\__init__.py 382
+.\deepseekharness\__main__.py 304
+.\deepseekharness\__pycache__\cli.cpython-312.pyc 18073
+.\deepseekharness\__pycache__\client.cpython-312.pyc 5389
+.\deepseekharness\__pycache__\config.cpython-312.pyc 2942
+.\deepseekharness\__pycache__\mcp_server.cpython-312.pyc 9008
+.\deepseekharness\__pycache__\prompts.cpython-312.pyc 4022
+.\deepseekharness\__pycache__\session.cpython-312.pyc 17467
+.\deepseekharness\__pycache__\__init__.cpython-312.pyc 595
+.\deepseekharness\__pycache__\__main__.cpython-312.pyc 645
+.\ext\__pycache__ 1
+.\ext\dumplive.py 23606
+.\ext\gio.py 12467
+.\ext\msio_dispatch.txt 5694
+.\ext\msio_init.txt 224262
+.\ext\out_g0.txt 1208
+.\ext\out_g1.txt 175
+.\ext\out_g1.txt.tasklog 175
+.\ext\out_msio.txt 372
+.\ext\out_msio.txt.tasklog 372
+.\ext\out_pm.txt 328
+.\ext\out_pm.txt.tasklog 328
+.\ext\page_handlers.txt 5594
+.\ext\page_workers.txt 1901798
+.\ext\physmem.py 7239
+.\ext\run1.txt 457
+.\ext\run_msio.txt 851
+.\ext\run_pm.txt 763
+.\ext\run_task.ps1 1815
+.\ext\sec_dump.py 2489
+.\ext\sec_dump2.py 2519
+.\ext\t_g0.py 10230
+.\ext\t_g1.py 7696
+.\ext\t_msio.py 3549
+.\ext\t_pm.py 2324
+.\ext\__pycache__\dumplive.cpython-312.pyc 33478
+.\ext\__pycache__\gio.cpython-312.pyc 17700
+.\ext\__pycache__\physmem.cpython-312.pyc 11975
+.\ext\__pycache__\t_g0.cpython-312.pyc 15037
+.\ext\__pycache__\t_g1.cpython-312.pyc 13169
+.\ext\__pycache__\t_msio.cpython-312.pyc 6423
+.\generated_cheats\comparison_test 1
+.\generated_cheats\comparison_test_v2 1
+.\generated_cheats\final_test 1
+.\generated_cheats\full_system 1
+.\generated_cheats\full_system_v2 1
+.\generated_cheats\aimbot.py 2856
+.\generated_cheats\aimbot_fictional.py 2034
+.\generated_cheats\aimbot_flash.py 3514
+.\generated_cheats\aimbot_singleplayer.py 4266
+.\generated_cheats\aimbot_v2.py 0
+.\generated_cheats\aimbot_v3.py 0
+.\generated_cheats\coordtransform.py 9813
+.\generated_cheats\debug.log 9905
+.\generated_cheats\esp_overlay.py 4739
+.\generated_cheats\esp_reasoner.py 3726
+.\generated_cheats\memreader.py 9669
+.\generated_cheats\radar_minimap.py 3686
+.\generated_cheats\comparison_test\coordinate_transformer_full.py 5574
+.\generated_cheats\comparison_test\coordinate_transformer_minimal.py 5127
+.\generated_cheats\comparison_test\memory_reader_full.py 4494
+.\generated_cheats\comparison_test\memory_reader_minimal.py 3524
+.\generated_cheats\comparison_test_v2\coordinate_transformer_full.py 3568
+.\generated_cheats\comparison_test_v2\coordinate_transformer_minimal.py 4192
+.\generated_cheats\comparison_test_v2\memory_reader_full.py 3836
+.\generated_cheats\comparison_test_v2\memory_reader_minimal.py 4116
+.\generated_cheats\final_test\coordinate_transformer.py 3654
+.\generated_cheats\final_test\entity_parser.py 4540
+.\generated_cheats\final_test\memory_reader.py 4604
+.\generated_cheats\full_system\bone_resolver.py 5157
+.\generated_cheats\full_system\cheat_system.py 29639
+.\generated_cheats\full_system\coordinate_transformer.py 6058
+.\generated_cheats\full_system\data_provider.py 4157
+.\generated_cheats\full_system\entity_parser.py 4171
+.\generated_cheats\full_system\memory_reader.py 5145
+.\generated_cheats\full_system\team_classifier.py 4183
+.\generated_cheats\full_system_v2\bone_resolver.py 3605
+.\generated_cheats\full_system_v2\cheat_system.py 25345
+.\generated_cheats\full_system_v2\coordinate_transformer.py 4306
+.\generated_cheats\full_system_v2\data_provider.py 4223
+.\generated_cheats\full_system_v2\entity_parser.py 4457
+.\generated_cheats\full_system_v2\memory_reader.py 4307
+.\generated_cheats\full_system_v2\team_classifier.py 3679
+.\harness\__pycache__ 1
+.\harness\AI_USAGE_GUIDE.md 9144
+.\harness\harness.py 17761
+.\harness\models.py 776
+.\harness\__init__.py 147
+.\harness\__pycache__\harness.cpython-312.pyc 18191
+.\harness\__pycache__\models.cpython-312.pyc 1475
+.\harness\__pycache__\__init__.cpython-312.pyc 314
+.\Qwen General Knowledge\01_Python_Engineering.txt 5064
+.\Qwen General Knowledge\02_Running_Local_LLMs.txt 4678
+.\Qwen General Knowledge\03_Writing_Effective_Knowledge_Bases.txt 3439
+.\Qwen General Knowledge\04_Git_Basics.txt 3375
+.\Qwen General Knowledge\05_Secrets_and_Security_Hygiene.txt 2813
+.\Qwen Knowledge base\Javelin Research Agents 1
+.\Qwen Knowledge base\phase2_kernel_driver 1
+.\Qwen Knowledge base\phase3_javelin_research 1
+.\Qwen Knowledge base\phase4_apex_cheat 1
+.\Qwen Knowledge base\phase4_apex_cheat_package 1
+.\Qwen Knowledge base\phase5_cpp_ImGui 1
+.\Qwen Knowledge base\_duplicates 1
+.\Qwen Knowledge base\01_Orientation_How_to_Read_This_Series.txt 5337
+.\Qwen Knowledge base\02_Computing_Hardware_and_Execution_Foundations.txt 4810
+.\Qwen Knowledge base\03_Mathematics_for_Perception_and_Control.txt 4298
+.\Qwen Knowledge base\04_Data_Representation_and_Formats.txt 4133
+.\Qwen Knowledge base\05_Camera_Geometry_and_3D_Vision.txt 3008
+.\Qwen Knowledge base\06_Tracking_Data_Association_and_State_Estimation.txt 4048
+.\Qwen Knowledge base\07_Control_Theory_and_System_Identification.txt 3300
+.\Qwen Knowledge base\08_Neural_Networks_Training_and_Evaluation.txt 3661
+.\Qwen Knowledge base\09_Screen_Capture_Protection_and_External_Overlays.txt 9772
+.\Qwen Knowledge base\10_Windows_Windowing_and_Desktop_Composition.txt 8976
+.\Qwen Knowledge base\11_Capture_Pipelines_and_Frame_Acquisition.txt 7789
+.\Qwen Knowledge base\12_Latency_Budgets_and_Real_Time_Pipelines.txt 6719
+.\Qwen Knowledge base\13_Input_Path_and_Interaction_Model.txt 6568
+.\Qwen Knowledge base\14_OS_Internals_and_Process_Memory.txt 7883
+.\Qwen Knowledge base\15_Kernel_Mode_and_Anti_Cheat_Drivers.txt 6664
+.\Qwen Knowledge base\16_Statistics_and_Experimental_Design.txt 6637
+.\Qwen Knowledge base\17_Reverse_Engineering_Methodology.txt 6515
+.\Qwen Knowledge base\18_Signal_Processing_and_Filtering.txt 6014
+.\Qwen Knowledge base\19_Real_Time_Systems_Engineering.txt 5733
+.\Qwen Knowledge base\20_Observability_Logging_and_Diagnostics.txt 5415
+.\Qwen Knowledge base\21_Software_Architecture_and_Design.txt 5196
+.\Qwen Knowledge base\AdaptiveCheatingRedTeamandEvolvingSystems.txt 11935
+.\Qwen Knowledge base\AdversarialAIandCheatDetection.txt 11025
+.\Qwen Knowledge base\AI_Aimbot_Knowledge.txt 29744
+.\Qwen Knowledge base\AntiCheatArchitecture.txt 15611
+.\Qwen Knowledge base\AntiCheat_Products_and_Systems.txt 17965
+.\Qwen Knowledge base\Anti_Cheat_Threat_Modeling.txt 5154
+.\Qwen Knowledge base\Apex_Legends_Anti_Cheat_and_Provider_Change.txt 10972
+.\Qwen Knowledge base\ARCHIVE_PHASE4_LEGACY.md 2484
+.\Qwen Knowledge base\Ban_Governance_and_Identity_Integrity.txt 7254
+.\Qwen Knowledge base\Cheating_History_Taxonomy_and_Detection.txt 21083
+.\Qwen Knowledge base\Cheat_Economics_and_the_Underground_Market.txt 6337
+.\Qwen Knowledge base\Client_Integrity_Anti_Tamper_and_Attestation.txt 6474
+.\Qwen Knowledge base\Console_and_Closed_Platform_Integrity.txt 6097
+.\Qwen Knowledge base\deepseek.env 35
+.\Qwen Knowledge base\deepseek_handler.py 11024
+.\Qwen Knowledge base\Esports_and_Competitive_Integrity.txt 5472
+.\Qwen Knowledge base\Evading_Anti_Cheat_Categories_and_Countermeasures.txt 7791
+.\Qwen Knowledge base\GPUcomputeInference.txt 13414
+.\Qwen Knowledge base\Hardware_DMA_and_Below_Kernel_Threats.txt 8800
+.\Qwen Knowledge base\How_Anti_Cheats_Work_Vanguard_BattlEye_EAC_and_Javelin.txt 15963
+.\Qwen Knowledge base\Input_Integrity_and_Device_Fraud.txt 6789
+.\Qwen Knowledge base\Javelin Anti-Cheat Research 2026.txt 8864
+.\Qwen Knowledge base\Javelin Behavioral Biometrics & Humanizer Pipeline.txt 7860
+.\Qwen Knowledge base\Javelin Detection Categories & Evasion.txt 8581
+.\Qwen Knowledge base\Matchmaking_and_Account_Economy_Integrity.txt 5786
+.\Qwen Knowledge base\Measuring_Anti_Cheat_Effectiveness.txt 5296
+.\Qwen Knowledge base\Mobile_and_Cross_Platform_AntiCheat.txt 7539
+.\Qwen Knowledge base\Network_and_Lag_Manipulation.txt 6050
+.\Qwen Knowledge base\PHASE4_CHEAT_CLEANUP.md 3717
+.\Qwen Knowledge base\PreviousModelsLearnings.txt 5773
+.\Qwen Knowledge base\README_START_HERE.txt 7007
+.\Qwen Knowledge base\redaction_list.txt 392
+.\Qwen Knowledge base\request.json 93
+.\Qwen Knowledge base\Server_Authoritative_Architecture_and_Trust_Boundaries.txt 7807
+.\Qwen Knowledge base\Spoofing_and_Ban_Evasion.txt 6831
+.\Qwen Knowledge base\Telemetry_Privacy_and_Player_Data_Ethics.txt 8119
+.\Qwen Knowledge base\Virtualization_Cloud_Gaming_and_Anti_Cheat.txt 5623
+.\Qwen Knowledge base\Javelin Research Agents\Detection_Patterns_Research.txt 10332
+.\Qwen Knowledge base\Javelin Research Agents\Griffin_VM_Research.txt 6122
+.\Qwen Knowledge base\Javelin Research Agents\KDMapper_Research.txt 4578
+.\Qwen Knowledge base\Javelin Research Agents\Low-Level_Detection_Cheat_Architecture.txt 11330
+.\Qwen Knowledge base\Javelin Research Agents\Telemetry_EASPEAR_Research.txt 16035
+.\Qwen Knowledge base\phase2_kernel_driver\include 1
+.\Qwen Knowledge base\phase2_kernel_driver\src 1
+.\Qwen Knowledge base\phase2_kernel_driver\tests 1
+.\Qwen Knowledge base\phase2_kernel_driver\IMPLEMENTATION_SUMMARY.md 8222
+.\Qwen Knowledge base\phase2_kernel_driver\VERIFICATION_REPORT.md 8265
+.\Qwen Knowledge base\phase2_kernel_driver\include\common.h 7893
+.\Qwen Knowledge base\phase2_kernel_driver\include\griffin.h 7987
+.\Qwen Knowledge base\phase2_kernel_driver\include\hooks.h 8082
+.\Qwen Knowledge base\phase2_kernel_driver\include\obfuscation.h 8347
+.\Qwen Knowledge base\phase2_kernel_driver\include\phase2.h 4698
+.\Qwen Knowledge base\phase2_kernel_driver\src\drivers 1
+.\Qwen Knowledge base\phase2_kernel_driver\src\hooks 1
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation 1
+.\Qwen Knowledge base\phase2_kernel_driver\src\drivers\injection.c 7476
+.\Qwen Knowledge base\phase2_kernel_driver\src\drivers\main.c 10227
+.\Qwen Knowledge base\phase2_kernel_driver\src\drivers\telemetry.c 9646
+.\Qwen Knowledge base\phase2_kernel_driver\src\hooks\griffin.c 5712
+.\Qwen Knowledge base\phase2_kernel_driver\src\hooks\hooks.c 11922
+.\Qwen Knowledge base\phase2_kernel_driver\src\hooks\memory.c 6288
+.\Qwen Knowledge base\phase2_kernel_driver\src\hooks\process.c 5440
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\griffin.c 12650
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\handle.c 5413
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\memory.c 3934
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\module.c 4265
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\timing.c 11753
+.\Qwen Knowledge base\phase2_kernel_driver\src\obfuscation\xor.c 5437
+.\Qwen Knowledge base\phase2_kernel_driver\tests\integration 1
+.\Qwen Knowledge base\phase2_kernel_driver\tests\performance 1
+.\Qwen Knowledge base\phase2_kernel_driver\tests\unit 1
+.\Qwen Knowledge base\phase2_kernel_driver\tests\README.md 8518
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_easpear_telemetry.c 10853
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_griffin_integration.c 10774
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_griffin_obfuscation.c 11652
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_handle_management.c 9367
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_mba_folding.c 13461
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_ring0_overhead.c 13955
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_telemetry_batching.c 9305
+.\Qwen Knowledge base\phase2_kernel_driver\tests\test_telemetry_latency.c 12143
+.\Qwen Knowledge base\phase2_kernel_driver\tests\integration\test_kdmapper_injection.c 11081
+.\Qwen Knowledge base\phase2_kernel_driver\tests\unit\test_griffin_vm_context.c 13699
+.\Qwen Knowledge base\phase2_kernel_driver\tests\unit\test_handle_refresh.c 11753
+.\Qwen Knowledge base\phase2_kernel_driver\tests\unit\test_timing_evasion.c 14838
+.\Qwen Knowledge base\phase2_kernel_driver\tests\unit\test_xor_encryption.c 11992
+.\Qwen Knowledge base\phase3_javelin_research\detection_categories 1
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports 1
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\behavioral_analysis_report.md 5200
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\EVASION_OPPORTUNITY_MATRIX.md 7680
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\hardware_fingerprinting_report.md 3947
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\heuristic_detection_report.md 4252
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\kernel_mode_scanning_report.md 4073
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\ml_detection_report.md 5235
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\server_side_validation_report.md 5991
+.\Qwen Knowledge base\phase3_javelin_research\detection_category_reports\signature_scanning_report.md 4517
+.\Qwen Knowledge base\phase4_apex_cheat\archive 1
+.\Qwen Knowledge base\phase4_apex_cheat\tests 1
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__ 1
+.\Qwen Knowledge base\phase4_apex_cheat\README.md 3111
+.\Qwen Knowledge base\phase4_apex_cheat\requirements.txt 149
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core 1
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_011647.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_011647.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012040.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012040.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012313.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012313.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012641.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012641.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012707.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012707.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012802.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012802.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013231.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013231.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013345.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013345.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013440.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013440.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013549.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013549.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013839.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013839.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_implementation_guide.md 14697
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_methods_research.md 7352
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_summary.md 6746
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplicator.py 13952
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_092253.json 251
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_092328.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_093256.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_100346.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\cheat_menu.py 6179
+.\Qwen Knowledge base\phase4_apex_cheat\archive\check_windows.py 1581
+.\Qwen Knowledge base\phase4_apex_cheat\archive\d3d_internal_overlay.py 3871
+.\Qwen Knowledge base\phase4_apex_cheat\archive\DPG_CRASH_DIAGNOSIS.md 3889
+.\Qwen Knowledge base\phase4_apex_cheat\archive\DPG_FIX.md 3882
+.\Qwen Knowledge base\phase4_apex_cheat\archive\esp_overlay.py 8334
+.\Qwen Knowledge base\phase4_apex_cheat\archive\FEATURE_RESEARCH.md 10439
+.\Qwen Knowledge base\phase4_apex_cheat\archive\LAUNCH_GUIDE.md 2151
+.\Qwen Knowledge base\phase4_apex_cheat\archive\launch_stable.py 3304
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_apex_pack_dupe.py 17327
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_apex_pack_network.py 17976
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_dpg_subprocess.py 10885
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_external_menu.py 10964
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_imgui_menu.py 7819
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_launcher.py 4381
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_launch_phase4.py 5159
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_launch_subprocess.py 8442
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_main.py 10688
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_minimal_menu.py 5764
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_test_memory_hooks.py 11686
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_test_pack_duplication.py 4585
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_vm_deploy.py 8628
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_vm_exclude.txt 463
+.\Qwen Knowledge base\phase4_apex_cheat\archive\MENU_COMPARISON.md 7925
+.\Qwen Knowledge base\phase4_apex_cheat\archive\README.md 5628
+.\Qwen Knowledge base\phase4_apex_cheat\archive\simple_overlay.py 5357
+.\Qwen Knowledge base\phase4_apex_cheat\archive\subprocess_launcher.py 4020
+.\Qwen Knowledge base\phase4_apex_cheat\archive\test_minimal_dpg.py 2434
+.\Qwen Knowledge base\phase4_apex_cheat\archive\validate_human_baseline.py 6772
+.\Qwen Knowledge base\phase4_apex_cheat\archive\vm_setup.py 8870
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack 1
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\__pycache__ 1
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\inventory_snapshot.py 14502
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\memory_hooks.py 21552
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\__init__.py 969
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\__pycache__\inventory_snapshot.cpython-312.pyc 19582
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\__pycache__\memory_hooks.cpython-312.pyc 27492
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack\__pycache__\__init__.cpython-312.pyc 968
+.\Qwen Knowledge base\phase4_apex_cheat\tests\__pycache__ 1
+.\Qwen Knowledge base\phase4_apex_cheat\tests\test_esp_overlay.py 4372
+.\Qwen Knowledge base\phase4_apex_cheat\tests\test_menu_integration.py 3666
+.\Qwen Knowledge base\phase4_apex_cheat\tests\test_runner.py 1777
+.\Qwen Knowledge base\phase4_apex_cheat\tests\__pycache__\test_esp_overlay.cpython-312.pyc 6129
+.\Qwen Knowledge base\phase4_apex_cheat\tests\__pycache__\test_menu_integration.cpython-312.pyc 5206
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__\apex_pack_duplicator.cpython-312.pyc 18137
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__\cheat_menu.cpython-312.pyc 8393
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__\esp_overlay.cpython-312.pyc 10990
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__\main.cpython-312.pyc 10468
+.\Qwen Knowledge base\phase4_apex_cheat_package\source 1
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests 1
+.\Qwen Knowledge base\phase4_apex_cheat_package\__pycache__ 1
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.dll 41984
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.exp 4331
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.lib 7846
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.pdb 1593344
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat_py.py 16239
+.\Qwen Knowledge base\phase4_apex_cheat_package\cheat_menu.py 6571
+.\Qwen Knowledge base\phase4_apex_cheat_package\launcher.py 8509
+.\Qwen Knowledge base\phase4_apex_cheat_package\PHASE4_COMPLETION_REPORT.md 10210
+.\Qwen Knowledge base\phase4_apex_cheat_package\README.md 4256
+.\Qwen Knowledge base\phase4_apex_cheat_package\requirements.txt 58
+.\Qwen Knowledge base\phase4_apex_cheat_package\test_proofs.py 3099
+.\Qwen Knowledge base\phase4_apex_cheat_package\TODO.md 4292
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\apex_cheat.h 6844
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\apex_cheat_main.cpp 19388
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\d3d11_renderer.cpp 22684
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\d3d11_renderer.h 5113
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\__pycache__ 1
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\esp_overlay.py 3616
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_dpg_menu_window.py 2875
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_esp_overlay.py 4738
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_menu_integration.py 3666
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_minimal.py 4353
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_runner.py 1777
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\test_subprocess_runner.py 9450
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\__pycache__\esp_overlay.cpython-312.pyc 5062
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\__pycache__\test_esp_overlay.cpython-312.pyc 6129
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\__pycache__\test_menu_integration.cpython-312.pyc 5206
+.\Qwen Knowledge base\phase4_apex_cheat_package\tests\__pycache__\test_minimal.cpython-312.pyc 6522
+.\Qwen Knowledge base\phase4_apex_cheat_package\__pycache__\cheat_menu.cpython-312.pyc 8847
+.\Qwen Knowledge base\phase5_cpp_ImGui\include 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\python_wrapper 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\src 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\apex_cheat.sln 1229
+.\Qwen Knowledge base\phase5_cpp_ImGui\apex_cheat.vcxproj 4035
+.\Qwen Knowledge base\phase5_cpp_ImGui\BUILD_GUIDE.md 3045
+.\Qwen Knowledge base\phase5_cpp_ImGui\BUILD_READINESS.md 5527
+.\Qwen Knowledge base\phase5_cpp_ImGui\CODE_AUDIT.md 8090
+.\Qwen Knowledge base\phase5_cpp_ImGui\COMPLETION_REPORT.md 5291
+.\Qwen Knowledge base\phase5_cpp_ImGui\FINAL_REPORT.md 6934
+.\Qwen Knowledge base\phase5_cpp_ImGui\IMPLEMENTATION_SUMMARY.md 5466
+.\Qwen Knowledge base\phase5_cpp_ImGui\launcher.py 4377
+.\Qwen Knowledge base\phase5_cpp_ImGui\PHASE5_COMPLETE.md 6647
+.\Qwen Knowledge base\phase5_cpp_ImGui\QUICK_REFERENCE.md 3032
+.\Qwen Knowledge base\phase5_cpp_ImGui\README.md 5939
+.\Qwen Knowledge base\phase5_cpp_ImGui\todo.md 2085
+.\Qwen Knowledge base\phase5_cpp_ImGui\include\apex_cheat.h 4222
+.\Qwen Knowledge base\phase5_cpp_ImGui\include\d3d11_renderer.h 3949
+.\Qwen Knowledge base\phase5_cpp_ImGui\python_wrapper\apex_cheat_py.py 9361
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\d3d 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\esp 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\menu 1
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\apex_cheat_main.cpp 11701
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\d3d\d3d11_renderer.cpp 13567
+.\Qwen Knowledge base\_duplicates\06_Tracking_Data_Association_and_State_Estimation (1).txt 4048
+.\QwenKern\dist_phase4 1
+.\QwenKern\external 1
+.\QwenKern\javelin_research_agents 1
+.\QwenKern\knowledge_base 1
+.\QwenKern\knowledge_store 1
+.\QwenKern\phase3_javelin_reports 1
+.\QwenKern\phase3_menu_system 1
+.\QwenKern\phase4_esp_overlay 1
+.\QwenKern\phase5 1
+.\QwenKern\phase5_cpp_imgui 1
+.\QwenKern\.last_call 18
+.\QwenKern\01_RESEARCH_SUMMARY.md 7319
+.\QwenKern\02_ARCHITECTURE_PLAN.md 12323
+.\QwenKern\03_IMPLEMENTATION_GUIDE.md 14909
+.\QwenKern\04_DESIGN_DOCUMENT.md 19768
+.\QwenKern\05_MASTER_PLAN.md 18430
+.\QwenKern\06_FINAL_SUMMARY.md 17955
+.\QwenKern\07_COMPLETE_STATUS.md 18579
+.\QwenKern\ApexLegendsCheats.md 2432
+.\QwenKern\apex_legends_cheats_guide.md 2761
+.\QwenKern\ARCHIVE_PHASE4_LEGACY.md 2484
+.\QwenKern\build_menu.bat 1344
+.\QwenKern\build_phase4.py 8078
+.\QwenKern\cheat-launch-sequence.md 2644
+.\QwenKern\CHEAT_LAUNCH_SUMMARY.md 3484
+.\QwenKern\CHEAT_VISIBILITY_PROOF.md 3209
+.\QwenKern\check_overlay.py 3626
+.\QwenKern\CLAUDE_DELEGATION_PROMPT.md 6562
+.\QwenKern\deepseek.env 35
+.\QwenKern\deepseek_audit.log 3257
+.\QwenKern\deepseek_handler.py 11024
+.\QwenKern\deepseek_req.json 2901
+.\QwenKern\diag2.py 6537
+.\QwenKern\diag3.py 5143
+.\QwenKern\diag_arch.py 5609
+.\QwenKern\diag_esp_init.py 6152
+.\QwenKern\eac_apex_legends_analysis.md 4121
+.\QwenKern\esp_debug.log 538109
+.\QwenKern\ESP_MENU_REVIEW.md 8589
+.\QwenKern\filelist.txt 7692
+.\QwenKern\GOALS.md 7371
+.\QwenKern\IMPLEMENTATION_SUMMARY.md 8222
+.\QwenKern\INJECTION_STRATEGY.md 11138
+.\QwenKern\Javelin Anti-Cheat Research 2026.txt 8864
+.\QwenKern\Javelin Behavioral Biometrics & Humanizer Pipeline.txt 7860
+.\QwenKern\JAVELIN_RESEARCH_COMPLETE.md 5667
+.\QwenKern\kdmapper_example.bat 568
+.\QwenKern\launcher.py 6557
+.\QwenKern\ONBOARDING.md 6625
+.\QwenKern\PHASE3_FIX_REPORT.md 10555
+.\QwenKern\PHASE4_CHEAT_CLEANUP.md 3717
+.\QwenKern\PHASE4_TEST_REPORT.md 3458
+.\QwenKern\PROJECT_INFO.md 932
+.\QwenKern\README.md 703
+.\QwenKern\README_JAVELIN_AND_CHEAT_RESEARCH.md 6089
+.\QwenKern\SESSION_SUMMARY.md 8123
+.\QwenKern\test.txt 4
+.\QwenKern\test_cheat.py 10767
+.\QwenKern\VERIFICATION_REPORT.md 8265
+.\QwenKern\verify_cheat_visibility.py 6123
+.\QwenKern\external\awesome-reverse-engineering 1
+.\QwenKern\external\awesome-reverse-engineering\.github 1
+.\QwenKern\external\awesome-reverse-engineering\docs 1
+.\QwenKern\external\awesome-reverse-engineering\examples 1
+.\QwenKern\external\awesome-reverse-engineering\.gitignore 34
+.\QwenKern\external\awesome-reverse-engineering\CONTRIBUTING.md 2300
+.\QwenKern\external\awesome-reverse-engineering\LICENSE 7169
+.\QwenKern\external\awesome-reverse-engineering\lychee.toml 790
+.\QwenKern\external\awesome-reverse-engineering\README.md 32333
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art 1
+.\QwenKern\external\awesome-reverse-engineering\.github\workflows 1
+.\QwenKern\external\awesome-reverse-engineering\.github\CODEOWNERS 84
+.\QwenKern\external\awesome-reverse-engineering\.github\pull_request_template.md 573
+.\QwenKern\external\awesome-reverse-engineering\.github\rea-social-preview.png 876912
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\ai-analysis.png 22190
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\apps-protocols.png 24450
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\binary-analysis.png 25205
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\contributing.png 19721
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\debugging.png 17107
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\diffing.png 22004
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\file-formats.png 29164
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\file-triage.png 21907
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\firmware-hardware.png 20146
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\learning.png 23965
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\license.png 24678
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\practice.png 21098
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\related-lists.png 19572
+.\QwenKern\external\awesome-reverse-engineering\.github\section-art\web-protocols.png 12896
+.\QwenKern\external\awesome-reverse-engineering\.github\workflows\links.yml 850
+.\QwenKern\external\awesome-reverse-engineering\.github\workflows\resource-examples.yml 1574
+.\QwenKern\external\awesome-reverse-engineering\docs\browser-tools-review.md 7720
+.\QwenKern\external\awesome-reverse-engineering\docs\list-review-data.json 50211
+.\QwenKern\external\awesome-reverse-engineering\docs\list-review.md 16644
+.\QwenKern\external\awesome-reverse-engineering\docs\priority-candidates.json 42155
+.\QwenKern\external\awesome-reverse-engineering\docs\priority-candidates.md 19549
+.\QwenKern\external\awesome-reverse-engineering\examples\browser-tools 1
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake 1
+.\QwenKern\external\awesome-reverse-engineering\examples\browser-tools\probe.c 252
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\BranchDemo.java 403
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\Probe.java 217
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\README.md 2734
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\requirements.txt 50
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\verified.json 1915
+.\QwenKern\external\awesome-reverse-engineering\examples\resource-intake\verify.py 6538
+.\QwenKern\javelin_research_agents\Detection_Patterns_Research.txt 10332
+.\QwenKern\javelin_research_agents\Griffin_VM_Research.txt 6122
+.\QwenKern\javelin_research_agents\KDMapper_Research.txt 4578
+.\QwenKern\javelin_research_agents\Low-Level_Detection_Cheat_Architecture.txt 11330
+.\QwenKern\javelin_research_agents\Telemetry_EASPEAR_Research.txt 16035
+.\QwenKern\knowledge_base\phase5-research-apex-season30.md 11446
+.\QwenKern\knowledge_base\README.md 8085
+.\QwenKern\knowledge_base\reverse-engineering-apex-and-javelin.md 7460
+.\QwenKern\knowledge_base\similar-cheats-reference.md 7420
+.\QwenKern\knowledge_store\facts.md 1724
+.\QwenKern\knowledge_store\howto.md 1211
+.\QwenKern\knowledge_store\lessons.md 1333
+.\QwenKern\knowledge_store\log.md 1400
+.\QwenKern\phase3_javelin_reports\behavioral_analysis_report.md 5200
+.\QwenKern\phase3_javelin_reports\EVASION_OPPORTUNITY_MATRIX.md 7680
+.\QwenKern\phase3_javelin_reports\hardware_fingerprinting_report.md 3947
+.\QwenKern\phase3_javelin_reports\heuristic_detection_report.md 4252
+.\QwenKern\phase3_javelin_reports\kernel_mode_scanning_report.md 4073
+.\QwenKern\phase3_javelin_reports\ml_detection_report.md 5235
+.\QwenKern\phase3_javelin_reports\server_side_validation_report.md 5991
+.\QwenKern\phase3_javelin_reports\signature_scanning_report.md 4517
+.\QwenKern\phase3_menu_system\build 1
+.\QwenKern\phase3_menu_system\imgui_integration 1
+.\QwenKern\phase3_menu_system\python_wrapper 1
+.\QwenKern\phase3_menu_system\tests 1
+.\QwenKern\phase3_menu_system\BUILD_GUIDE.md 7818
+.\QwenKern\phase3_menu_system\README.md 2847
+.\QwenKern\phase3_menu_system\imgui_integration\Release 1
+.\QwenKern\phase3_menu_system\imgui_integration\esp_gdi.cpp 10090
+.\QwenKern\phase3_menu_system\imgui_integration\esp_gdi.hpp 1131
+.\QwenKern\phase3_menu_system\imgui_integration\main.cpp 2579
+.\QwenKern\phase3_menu_system\imgui_integration\menu_config.hpp 2943
+.\QwenKern\phase3_menu_system\imgui_integration\menu_core.cpp 29119
+.\QwenKern\phase3_menu_system\imgui_integration\menu_core.hpp 986
+.\QwenKern\phase3_menu_system\imgui_integration\menu_renderer.hpp 987
+.\QwenKern\phase3_menu_system\imgui_integration\shared_memory.hpp 2848
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.exe 47616
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.exp 1193
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.lib 2688
+.\QwenKern\phase3_menu_system\imgui_integration\Release\entity_extractor.obj 202846
+.\QwenKern\phase3_menu_system\imgui_integration\Release\esp_gdi.obj 68007
+.\QwenKern\phase3_menu_system\imgui_integration\Release\main.obj 4655
+.\QwenKern\phase3_menu_system\imgui_integration\Release\menu_core.obj 92713
+.\QwenKern\phase3_menu_system\python_wrapper\config_templates 1
+.\QwenKern\phase3_menu_system\python_wrapper\menu_interface.py 11086
+.\QwenKern\phase3_menu_system\python_wrapper\config_templates\menu_config.json 1875
+.\QwenKern\phase3_menu_system\tests\test_esp.cpp 5503
+.\QwenKern\phase3_menu_system\tests\test_menu.cpp 4621
+.\QwenKern\phase4_esp_overlay\build 1
+.\QwenKern\phase4_esp_overlay\entity_extractor 1
+.\QwenKern\phase4_esp_overlay\esp_renderer 1
+.\QwenKern\phase4_esp_overlay\tests 1
+.\QwenKern\phase4_esp_overlay\BUILD_GUIDE.md 7126
+.\QwenKern\phase4_esp_overlay\entity_extractor.cpp 21324
+.\QwenKern\phase4_esp_overlay\entity_extractor.hpp 5677
+.\QwenKern\phase4_esp_overlay\esp_manager.cpp 18552
+.\QwenKern\phase4_esp_overlay\esp_manager.hpp 4168
+.\QwenKern\phase4_esp_overlay\esp_renderer.cpp 39699
+.\QwenKern\phase4_esp_overlay\esp_renderer.hpp 8626
+.\QwenKern\phase4_esp_overlay\ESP_VISIBILITY_FIX.md 5364
+.\QwenKern\phase4_esp_overlay\RESEARCH_AND_IMPROVEMENTS.md 21963
+.\QwenKern\phase4_esp_overlay\vc140.pdb 559872
+.\QwenKern\phase4_esp_overlay\tests\test_entity_extractor.cpp 9975
+.\QwenKern\phase4_esp_overlay\tests\test_entity_extractor.hpp 1432
+.\QwenKern\phase4_esp_overlay\tests\test_esp_manager.cpp 8659
+.\QwenKern\phase4_esp_overlay\tests\test_esp_manager.hpp 1212
+.\QwenKern\phase4_esp_overlay\tests\test_esp_renderer.cpp 11667
+.\QwenKern\phase4_esp_overlay\tests\test_esp_renderer.hpp 1390
+.\QwenKern\phase4_esp_overlay\tests\test_main.cpp 9401
+.\QwenKern\phase5\include 1
+.\QwenKern\phase5\include\d3d11_renderer.h 5616
+.\QwenKern\phase5_cpp_imgui\include 1
+.\QwenKern\phase5_cpp_imgui\python_wrapper 1
+.\QwenKern\phase5_cpp_imgui\src 1
+.\QwenKern\phase5_cpp_imgui\BUILD_GUIDE.md 3045
+.\QwenKern\phase5_cpp_imgui\COMPLETION_REPORT.md 5291
+.\QwenKern\phase5_cpp_imgui\FINAL_REPORT.md 6934
+.\QwenKern\phase5_cpp_imgui\IMPLEMENTATION_SUMMARY.md 5466
+.\QwenKern\phase5_cpp_imgui\PHASE5_COMPLETE.md 6647
+.\QwenKern\phase5_cpp_imgui\QUICK_REFERENCE.md 3032
+.\QwenKern\phase5_cpp_imgui\README.md 5939
+.\QwenKern\phase5_cpp_imgui\todo.md 2085
+.\QwenKern\phase5_cpp_imgui\src\d3d 1
+.\QwenKern\phase5_cpp_imgui\src\esp 1
+.\QwenKern\phase5_cpp_imgui\src\menu 1
+.\QwenKernPremium\build 1
+.\QwenKernPremium\docs 1
+.\QwenKernPremium\driver 1
+.\QwenKernPremium\include 1
+.\QwenKernPremium\launcher 1
+.\QwenKernPremium\lib 1
+.\QwenKernPremium\src 1
+.\QwenKernPremium\tools 1
+.\QwenKernPremium\apexcheat.ini 0
+.\QwenKernPremium\apex_cheat.sln 1391
+.\QwenKernPremium\apex_cheat.vcxproj 8824
+.\QwenKernPremium\apex_launcher.vcxproj 4310
+.\QwenKernPremium\build\build 1
+.\QwenKernPremium\build\gate 1
+.\QwenKernPremium\build\obj 1
+.\QwenKernPremium\build\phase1_evidence 1
+.\QwenKernPremium\build\apexcheat.dll 318976
+.\QwenKernPremium\build\apexcheat.ini 94
+.\QwenKernPremium\build\apexcheat.launcher.ini 203
+.\QwenKernPremium\build\apexcheat.pdb 6836224
+.\QwenKernPremium\build\apexdrv.obj 43376
+.\QwenKernPremium\build\apexdrv.sys 10152
+.\QwenKernPremium\build\apexdrv_dev.cer 806
+.\QwenKernPremium\build\apexdrv_probe.txt 640
+.\QwenKernPremium\build\apex_launcher.exe 428544
+.\QwenKernPremium\build\apex_launcher.pdb 6647808
+.\QwenKernPremium\build\build_driver.cmd 1958
+.\QwenKernPremium\build\diag_ci_state.ps1 5610
+.\QwenKernPremium\build\diag_driver_imagepath.ps1 2475
+.\QwenKernPremium\build\diag_driver_load.ps1 3517
+.\QwenKernPremium\build\diag_driver_path.ps1 2909
+.\QwenKernPremium\build\diag_driver_path2.ps1 2953
+.\QwenKernPremium\build\driver_build.log 396
+.\QwenKernPremium\build\drv_build_msbuild.txt 1170
+.\QwenKernPremium\build\drv_build_out.txt 11864
+.\QwenKernPremium\build\drv_head.txt 5466
+.\QwenKernPremium\build\drv_inject.txt 5351
+.\QwenKernPremium\build\drv_mid.txt 3182
+.\QwenKernPremium\build\drv_result.txt 17
+.\QwenKernPremium\build\ea_state.txt 285
+.\QwenKernPremium\build\elevated_check.ps1 1269
+.\QwenKernPremium\build\elevated_phase1.ps1 4077
+.\QwenKernPremium\build\elevated_with_game.ps1 2831
+.\QwenKernPremium\build\enable_testsigning.ps1 8139
+.\QwenKernPremium\build\env_scan.txt 853
+.\QwenKernPremium\build\game_boot.txt 241
+.\QwenKernPremium\build\game_boot_and_measure.ps1 2398
+.\QwenKernPremium\build\gate_b.txt 5366
+.\QwenKernPremium\build\hooks_a.txt 11711
+.\QwenKernPremium\build\hooks_b.txt 4576
+.\QwenKernPremium\build\hooks_c.txt 5719
+.\QwenKernPremium\build\import_cert_and_enable_testsign.cmd 1075
+.\QwenKernPremium\build\install_wdk.ps1 2290
+.\QwenKernPremium\build\ioctl_check.txt 586
+.\QwenKernPremium\build\ki_mid.txt 2777
+.\QwenKernPremium\build\km_check.txt 646
+.\QwenKernPremium\build\km_ctlcode.txt 809
+.\QwenKernPremium\build\km_findstr.txt 57
+.\QwenKernPremium\build\km_findstr2.txt 574
+.\QwenKernPremium\build\km_findstr3.txt 57
+.\QwenKernPremium\build\km_lib.txt 1037
+.\QwenKernPremium\build\km_lib2.txt 663
+.\QwenKernPremium\build\km_peb.txt 314
+.\QwenKernPremium\build\km_rights.txt 173
+.\QwenKernPremium\build\km_rights2.txt 350
+.\QwenKernPremium\build\km_syms.txt 828
+.\QwenKernPremium\build\km_syms2.txt 972
+.\QwenKernPremium\build\launcher_map.txt 10261
+.\QwenKernPremium\build\live_state.txt 211
+.\QwenKernPremium\build\lm_main.txt 3347
+.\QwenKernPremium\build\lm_opts.txt 827
+.\QwenKernPremium\build\lm_usage.txt 5322
+.\QwenKernPremium\build\mod_check.ps1 913
+.\QwenKernPremium\build\probe_cmd.txt 3688
+.\QwenKernPremium\build\render_refs.txt 14735
+.\QwenKernPremium\build\setup_driver_vm.cmd 1930
+.\QwenKernPremium\build\sign_and_test_driver.ps1 7216
+.\QwenKernPremium\build\svc_check.txt 756
+.\QwenKernPremium\build\tree.txt 3523
+.\QwenKernPremium\build\vc140.pdb 184320
+.\QwenKernPremium\build\warnflags.txt 3978
+.\QwenKernPremium\build\wdk_layout.txt 8054
+.\QwenKernPremium\build\Win11-Test2-VRDP.rdp 176
+.\QwenKernPremium\build\Win11-Test2.rdp 365
+.\QwenKernPremium\build\winget_wdk.txt 931
+.\QwenKernPremium\build\_check_syntax.ps1 953
+.\QwenKernPremium\build\_dxgiexp2.txt 3324
+.\QwenKernPremium\build\_elev_canary.ps1 2313
+.\QwenKernPremium\build\_elev_canary.txt 394
+.\QwenKernPremium\build\_elev_diag.ps1 2905
+.\QwenKernPremium\build\_elev_diag.txt 255
+.\QwenKernPremium\build\_elev_test.ps1 504
+.\QwenKernPremium\build\_find_game_path.ps1 1642
+.\QwenKernPremium\build\_probe_bcd.ps1 3163
+.\QwenKernPremium\build\_probe_kernel_state.ps1 1171
+.\QwenKernPremium\build\_resume_after_testsigning.ps1 6464
+.\QwenKernPremium\build\_run_a4_test.ps1 1763
+.\QwenKernPremium\build\_run_ladder_test.ps1 2075
+.\QwenKernPremium\build\_run_live_ladder.ps1 2236
+.\QwenKernPremium\build\_run_live_probe.ps1 2441
+.\QwenKernPremium\build\_set_ts.ps1 2687
+.\QwenKernPremium\build\_std_inj_build.txt 440
+.\QwenKernPremium\build\_std_inj_build2.txt 1138
+.\QwenKernPremium\build\_std_inj_build3.txt 506
+.\QwenKernPremium\build\_std_inj_build4.txt 786
+.\QwenKernPremium\build\_std_inj_ladder.txt 2944
+.\QwenKernPremium\build\_target_pid.txt 6
+.\QwenKernPremium\build\_verify_testsigning.ps1 2374
+.\QwenKernPremium\build\_vs.txt 38
+.\QwenKernPremium\build\gate\build.log 1940
+.\QwenKernPremium\build\gate\gate_report.txt 1327
+.\QwenKernPremium\build\obj\apexdrv 1
+.\QwenKernPremium\build\obj\launcher 1
+.\QwenKernPremium\build\obj\Release 1
+.\QwenKernPremium\build\obj\apexdrv\Release 1
+.\QwenKernPremium\build\obj\apexdrv\Release\apexdrv.obj 15880
+.\QwenKernPremium\build\obj\launcher\Release 1
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog 1
+.\QwenKernPremium\build\obj\launcher\Release\acg_probe.obj 730899
+.\QwenKernPremium\build\obj\launcher\Release\apex_injector.obj 1230168
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.Build.CppClean.log 2233
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.exe.recipe 326
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.iobj 2866334
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.ipdb 1974160
+.\QwenKernPremium\build\obj\launcher\Release\kernel_injector.obj 1161451
+.\QwenKernPremium\build\obj\launcher\Release\launcher_main.obj 1418653
+.\QwenKernPremium\build\obj\launcher\Release\manual_map.obj 690105
+.\QwenKernPremium\build\obj\launcher\Release\memory.obj 575616
+.\QwenKernPremium\build\obj\launcher\Release\vc143.pdb 651264
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\apex_launcher.lastbuildstate 191
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.command.1.tlog 7582
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\Cl.items.tlog 1109
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.read.1.tlog 217922
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\CL.write.1.tlog 4590
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.command.1.tlog 4010
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.read.1.tlog 5958
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.secondary.1.tlog 834
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\link.write.1.tlog 1582
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog 1
+.\QwenKernPremium\build\obj\Release\acg_probe.obj 730874
+.\QwenKernPremium\build\obj\Release\apexcheat.Build.CppClean.log 2669
+.\QwenKernPremium\build\obj\Release\apexcheat.dll.recipe 322
+.\QwenKernPremium\build\obj\Release\apexcheat.iobj 2405167
+.\QwenKernPremium\build\obj\Release\apexcheat.ipdb 1040768
+.\QwenKernPremium\build\obj\Release\apex_injector.obj 1230138
+.\QwenKernPremium\build\obj\Release\application.obj 590248
+.\QwenKernPremium\build\obj\Release\config.obj 1086191
+.\QwenKernPremium\build\obj\Release\d3d12_overlay.obj 348997
+.\QwenKernPremium\build\obj\Release\features.obj 452358
+.\QwenKernPremium\build\obj\Release\hooks.obj 721703
+.\QwenKernPremium\build\obj\Release\kernel_injector.obj 1161421
+.\QwenKernPremium\build\obj\Release\log.obj 266356
+.\QwenKernPremium\build\obj\Release\main.obj 151655
+.\QwenKernPremium\build\obj\Release\manual_map.obj 690584
+.\QwenKernPremium\build\obj\Release\memory.obj 575586
+.\QwenKernPremium\build\obj\Release\offset_validator.obj 677720
+.\QwenKernPremium\build\obj\Release\vc143.pdb 1232896
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\apex_cheat.lastbuildstate 191
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.command.1.tlog 17248
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\Cl.items.tlog 2227
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.read.1.tlog 418768
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\CL.write.1.tlog 9036
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.command.1.tlog 6328
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.read.1.tlog 8446
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.secondary.1.tlog 1388
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\link.write.1.tlog 2726
+.\QwenKernPremium\build\phase1_evidence\a4_sleep_v2.done 29
+.\QwenKernPremium\build\phase1_evidence\a4_sleep_v2.txt 2691
+.\QwenKernPremium\build\phase1_evidence\a4_spin_v2.done 42
+.\QwenKernPremium\build\phase1_evidence\a4_spin_v2.txt 2447
+.\QwenKernPremium\build\phase1_evidence\a7_forced.txt 1154
+.\QwenKernPremium\build\phase1_evidence\apex_ac.txt 669
+.\QwenKernPremium\build\phase1_evidence\apex_ac2.txt 7148
+.\QwenKernPremium\build\phase1_evidence\apex_ac3.txt 9599
+.\QwenKernPremium\build\phase1_evidence\apex_install.txt 76118
+.\QwenKernPremium\build\phase1_evidence\b3_ladder.txt 850
+.\QwenKernPremium\build\phase1_evidence\ci_state.txt 7968
+.\QwenKernPremium\build\phase1_evidence\diag_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\driver_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\driver_hunt.txt 1526
+.\QwenKernPremium\build\phase1_evidence\driver_imagepath_diag.txt 1603
+.\QwenKernPremium\build\phase1_evidence\driver_load_diag.txt 3649
+.\QwenKernPremium\build\phase1_evidence\driver_path_diag.txt 1499
+.\QwenKernPremium\build\phase1_evidence\driver_path_diag2.txt 1538
+.\QwenKernPremium\build\phase1_evidence\driver_sign_load.txt 2371
+.\QwenKernPremium\build\phase1_evidence\e1_probe.txt 4621
+.\QwenKernPremium\build\phase1_evidence\e2_ladder.txt 1230
+.\QwenKernPremium\build\phase1_evidence\e3_sticky.txt 12
+.\QwenKernPremium\build\phase1_evidence\elev2_apex.txt 17
+.\QwenKernPremium\build\phase1_evidence\elev2_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\elev2_drivers.txt 51
+.\QwenKernPremium\build\phase1_evidence\elev2_fltmc_filters.txt 1119
+.\QwenKernPremium\build\phase1_evidence\elev2_fltmc_instances.txt 5787
+.\QwenKernPremium\build\phase1_evidence\elev2_fltmc_volumes.txt 1116
+.\QwenKernPremium\build\phase1_evidence\elev2_ladder.txt 1228
+.\QwenKernPremium\build\phase1_evidence\elev2_mod_check.txt 90
+.\QwenKernPremium\build\phase1_evidence\elev2_probe.txt 4756
+.\QwenKernPremium\build\phase1_evidence\elevated_flag.txt 18
+.\QwenKernPremium\build\phase1_evidence\elev_apex.txt 14
+.\QwenKernPremium\build\phase1_evidence\elev_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\elev_fltmc_filters.txt 1052
+.\QwenKernPremium\build\phase1_evidence\elev_fltmc_instances.txt 571
+.\QwenKernPremium\build\phase1_evidence\elev_fltmc_volumes.txt 1115
+.\QwenKernPremium\build\phase1_evidence\elev_identity.txt 3006
+.\QwenKernPremium\build\phase1_evidence\elev_probe.txt 21
+.\QwenKernPremium\build\phase1_evidence\elev_services.txt 54544
+.\QwenKernPremium\build\phase1_evidence\e_apex.txt 14
+.\QwenKernPremium\build\phase1_evidence\final_ladder.txt 1204
+.\QwenKernPremium\build\phase1_evidence\final_probe_self.txt 3227
+.\QwenKernPremium\build\phase1_evidence\final_sticky.txt 206
+.\QwenKernPremium\build\phase1_evidence\game_core.txt 2851
+.\QwenKernPremium\build\phase1_evidence\game_ready.txt 10
+.\QwenKernPremium\build\phase1_evidence\gate2.txt 3043
+.\QwenKernPremium\build\phase1_evidence\gate_after_edits.txt 382
+.\QwenKernPremium\build\phase1_evidence\gate_d6.txt 2025
+.\QwenKernPremium\build\phase1_evidence\gate_final.txt 404
+.\QwenKernPremium\build\phase1_evidence\gate_for_driver.txt 1120
+.\QwenKernPremium\build\phase1_evidence\gate_std_injection.txt 1119
+.\QwenKernPremium\build\phase1_evidence\gate_with_driver.txt 2229
+.\QwenKernPremium\build\phase1_evidence\imagepath_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\javelin_driver2.txt 2522
+.\QwenKernPremium\build\phase1_evidence\javelin_driver3.txt 14827
+.\QwenKernPremium\build\phase1_evidence\javelin_driver4.txt 1619
+.\QwenKernPremium\build\phase1_evidence\javelin_driver5.txt 217
+.\QwenKernPremium\build\phase1_evidence\javelin_driver6.txt 1885
+.\QwenKernPremium\build\phase1_evidence\javelin_files.txt 2214
+.\QwenKernPremium\build\phase1_evidence\javelin_live.txt 82251
+.\QwenKernPremium\build\phase1_evidence\javelin_logs.txt 92
+.\QwenKernPremium\build\phase1_evidence\javelin_root.txt 1163
+.\QwenKernPremium\build\phase1_evidence\kernel_probe.txt 711
+.\QwenKernPremium\build\phase1_evidence\ladder_final.done 243
+.\QwenKernPremium\build\phase1_evidence\ladder_final.txt 1614
+.\QwenKernPremium\build\phase1_evidence\ladder_sleep.done 242
+.\QwenKernPremium\build\phase1_evidence\ladder_sleep.txt 1543
+.\QwenKernPremium\build\phase1_evidence\live_ladder_menu.done 285
+.\QwenKernPremium\build\phase1_evidence\live_ladder_menu.txt 1832
+.\QwenKernPremium\build\phase1_evidence\live_probe_menu.done 262
+.\QwenKernPremium\build\phase1_evidence\live_probe_menu.txt 4678
+.\QwenKernPremium\build\phase1_evidence\nonelev_ladder.txt 1320
+.\QwenKernPremium\build\phase1_evidence\nonelev_probe.txt 3377
+.\QwenKernPremium\build\phase1_evidence\p0.txt 1099
+.\QwenKernPremium\build\phase1_evidence\p1.txt 1641
+.\QwenKernPremium\build\phase1_evidence\p2.txt 1526
+.\QwenKernPremium\build\phase1_evidence\p3.txt 0
+.\QwenKernPremium\build\phase1_evidence\p4.txt 1069
+.\QwenKernPremium\build\phase1_evidence\pathdiag2_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\pathdiag_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\pe_game.txt 1733
+.\QwenKernPremium\build\phase1_evidence\pe_imports.txt 1046
+.\QwenKernPremium\build\phase1_evidence\post_reboot.txt 1153
+.\QwenKernPremium\build\phase1_evidence\probe_blind.txt 3251
+.\QwenKernPremium\build\phase1_evidence\probe_blind_final.txt 1099
+.\QwenKernPremium\build\phase1_evidence\q1.txt 1187
+.\QwenKernPremium\build\phase1_evidence\r1.txt 33
+.\QwenKernPremium\build\phase1_evidence\r2.txt 1356
+.\QwenKernPremium\build\phase1_evidence\r3.txt 206
+.\QwenKernPremium\build\phase1_evidence\sanity_unprotected.done 243
+.\QwenKernPremium\build\phase1_evidence\sanity_unprotected.txt 1614
+.\QwenKernPremium\build\phase1_evidence\smoke_thirdname.txt 1269
+.\QwenKernPremium\build\phase1_evidence\t.txt 10
+.\QwenKernPremium\build\phase1_evidence\testsigning.txt 491
+.\QwenKernPremium\build\phase1_evidence\v1.txt 1216
+.\QwenKernPremium\build\phase1_evidence\v2.txt 206
+.\QwenKernPremium\build\phase1_evidence\v3.txt 1117
+.\QwenKernPremium\build\phase1_evidence\v4.txt 4267
+.\QwenKernPremium\build\phase1_evidence\v5.txt 1082
+.\QwenKernPremium\build\phase1_evidence\w0.txt 14
+.\QwenKernPremium\build\phase1_evidence\w1.txt 2683
+.\QwenKernPremium\build\phase1_evidence\wdk_done.txt 9
+.\QwenKernPremium\build\phase1_evidence\wdk_install.txt 844
+.\QwenKernPremium\build\phase1_evidence\_bcdtest.txt 822
+.\QwenKernPremium\build\phase1_evidence\_grep_launcher.txt 1140
+.\QwenKernPremium\build\phase1_evidence\_n.txt 7
+.\QwenKernPremium\build\phase1_evidence\_probe_stdout.txt 1602
+.\QwenKernPremium\build\phase1_evidence\_set_ts.txt 595
+.\QwenKernPremium\build\phase1_evidence\_syntax.txt 384
+.\QwenKernPremium\build\phase1_evidence\_tail.txt 191
+.\QwenKernPremium\build\phase1_evidence\_verify_ts.txt 2266
+.\QwenKernPremium\docs\APEX_OFFSETS_AND_DUMPING_METHODS.txt 4782
+.\QwenKernPremium\docs\INJECTION_MENU_AND_RISK_MATRIX.txt 9736
+.\QwenKernPremium\docs\INJECTION_STRATEGY_AGAINST_JAVELIN_R5AC.txt 7373
+.\QwenKernPremium\docs\JAVELIN_2026_DETECTION_AND_INJECTION_REALITY.txt 10389
+.\QwenKernPremium\docs\JAVELIN_REVERSE_ENGINEERING.txt 8765
+.\QwenKernPremium\docs\JAVELIN_TESTSIGNING_GATE_2026-11-01.md 15384
+.\QwenKernPremium\docs\KB_INDEX_2026.txt 5038
+.\QwenKernPremium\docs\KB_SOURCES_AND_RELIABILITY.txt 4665
+.\QwenKernPremium\docs\LAUNCHER_AND_INJECTION_METHODS.md 10104
+.\QwenKernPremium\docs\PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt 21025
+.\QwenKernPremium\docs\PREMIUM_MARKET_TEARDOWN_2026.txt 8813
+.\QwenKernPremium\docs\R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt 4822
+.\QwenKernPremium\docs\ROADMAP_TO_PREMIUM_PRODUCT.txt 13050
+.\QwenKernPremium\driver\build 1
+.\QwenKernPremium\driver\apexdrv.c 18385
+.\QwenKernPremium\driver\apexdrv.obj 43376
+.\QwenKernPremium\driver\apexdrv.vcxproj 3636
+.\QwenKernPremium\driver\vc140.pdb 184320
+.\QwenKernPremium\driver\build\obj 1
+.\QwenKernPremium\driver\build\obj\apexdrv 1
+.\QwenKernPremium\driver\build\obj\apexdrv\Release 1
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog 1
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.Build.CppClean.log 832
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.obj 37238
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.sys.recipe 327
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\vc143.pdb 184320
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\apexdrv.lastbuildstate 198
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.command.1.tlog 1570
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\Cl.items.tlog 183
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.read.1.tlog 7070
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\CL.write.1.tlog 580
+.\QwenKernPremium\include\acg_probe.h 5099
+.\QwenKernPremium\include\apex_driver_ioctl.h 6546
+.\QwenKernPremium\include\application.h 842
+.\QwenKernPremium\include\config.h 1074
+.\QwenKernPremium\include\d3d12_overlay.h 2610
+.\QwenKernPremium\include\features.h 1858
+.\QwenKernPremium\include\hooks.h 6284
+.\QwenKernPremium\include\injector.h 9989
+.\QwenKernPremium\include\log.h 1678
+.\QwenKernPremium\include\main.h 1472
+.\QwenKernPremium\include\manual_map.h 2599
+.\QwenKernPremium\include\memory.h 3141
+.\QwenKernPremium\include\offset_validator.h 1323
+.\QwenKernPremium\launcher\launcher_main.cpp 51079
+.\QwenKernPremium\src\acg_probe.cpp 52830
+.\QwenKernPremium\src\apex_injector.cpp 32905
+.\QwenKernPremium\src\application.cpp 7464
+.\QwenKernPremium\src\application.h 841
+.\QwenKernPremium\src\config.cpp 4266
+.\QwenKernPremium\src\d3d12_overlay.cpp 30285
+.\QwenKernPremium\src\features.cpp 9211
+.\QwenKernPremium\src\hooks.cpp 31783
+.\QwenKernPremium\src\kernel_injector.cpp 16483
+.\QwenKernPremium\src\log.cpp 3307
+.\QwenKernPremium\src\main.cpp 2055
+.\QwenKernPremium\src\manual_map.cpp 25270
+.\QwenKernPremium\src\memory.cpp 2686
+.\QwenKernPremium\src\offset_validator.cpp 10649
+.\QwenKernPremium\tools\BuildDriver.ps1 5305
+.\QwenKernPremium\tools\BuildGate.ps1 15848
+.\QwenKernPremium\tools\pe_imports.ps1 5586
+.\Sentinel\docs 1
+.\Sentinel\README.md 1250
+.\Sentinel\ROADMAP.md 7567
+.\Sentinel\docs\ANALYSIS-TO-DETECTION.md 3099
+.\Sentinel\docs\PROJECT-01-sentinel.md 2986
+.\temp\drv 1
+.\temp\__pycache__ 1
+.\temp\110426-10656-01.dmp 9523263
+.\temp\apex_exe.txt 113
+.\temp\appev.txt 8508
+.\temp\big.txt 367
+.\temp\bootnow.txt 180
+.\temp\c1.txt 32
+.\temp\c2.txt 32
+.\temp\c3.txt 32
+.\temp\c4.txt 32
+.\temp\c5.txt 34
+.\temp\c6.txt 36
+.\temp\c7.txt 32
+.\temp\chk.txt 34
+.\temp\cl.txt 51
+.\temp\crash.txt 2005
+.\temp\crash_diag.ps1 2666
+.\temp\crash_diag2.ps1 2180
+.\temp\crash_diag3.ps1 2841
+.\temp\crash_diag3.txt 4913
+.\temp\d1.txt 8765
+.\temp\datamaps.txt 39
+.\temp\dbg1.txt 1082
+.\temp\dbg_pe.py 1035
+.\temp\dbg_pe.txt 2784
+.\temp\dbg_pe2.txt 906
+.\temp\dbg_pe2a.txt 452
+.\temp\ddiff.txt 8277
+.\temp\diag2.py 7083
+.\temp\diag2.txt 2464
+.\temp\diag3.py 6796
+.\temp\diag3.txt 654
+.\temp\diag4.py 10558
+.\temp\diag4.txt 3830
+.\temp\diag5.py 20791
+.\temp\diag5.txt 2733
+.\temp\diag5_console.txt 2742
+.\temp\diag6.py 13233
+.\temp\diag6.txt 6008
+.\temp\diag6_console.txt 6083
+.\temp\dis32.py 1146
+.\temp\disasm_gdrv3_33b0.txt 2228
+.\temp\disasm_gdrv3_3848.txt 2228
+.\temp\disasm_gdrv3_6174.txt 4905
+.\temp\disasm_gdrv3_64e0.txt 5098
+.\temp\disasm_gdrv3_664c.txt 4999
+.\temp\disasm_gdrv3_68b0.txt 5708
+.\temp\disasm_gdrv3_69f0.txt 10749
+.\temp\disasm_gdrv3_6a20.txt 35
+.\temp\disasm_gdrv3_6a35.txt 6366
+.\temp\disasm_gdrv3_76f0.txt 102
+.\temp\disasm_gdrv3_b235.txt 5864
+.\temp\disasm_gdrv3_ebb0.txt 53
+.\temp\disasm_gdrv3_f048.txt 53
+.\temp\disasm_MsIo64_1090.txt 2538
+.\temp\disasm_MsIo64_1150.txt 4360
+.\temp\disasm_MsIo64_820.txt 15243
+.\temp\dl.txt 115
+.\temp\dl2.txt 1526
+.\temp\dl3.txt 1892
+.\temp\dm10.py 16761
+.\temp\dm10.txt 44310
+.\temp\dm10_err.txt 0
+.\temp\dm10_fields.tsv 36
+.\temp\dm10_prog.txt 44665
+.\temp\dm11.py 20695
+.\temp\dm11.txt 80562
+.\temp\dm11_cache.pkl 5953298
+.\temp\dm11_err.txt 0
+.\temp\dm11_fields.tsv 90845
+.\temp\dm11_out.txt 0
+.\temp\dm11_prog.txt 80917
+.\temp\dm12.py 7135
+.\temp\dm12.txt 22477
+.\temp\dm12_out.txt 154
+.\temp\dm13.py 8534
+.\temp\dm13.txt 2559478
+.\temp\dm13_err.txt 0
+.\temp\dm13_keys.py 559
+.\temp\dm13_keys.txt 219
+.\temp\dm13_log.txt 75
+.\temp\dm13_run.txt 158
+.\temp\dm15.py 2626
+.\temp\dm15.txt 3285
+.\temp\dm15_run.txt 6572
+.\temp\dm16.py 2072
+.\temp\dm16.txt 1228
+.\temp\dm16_run.txt 2458
+.\temp\dm17.py 9604
+.\temp\dm17.txt 309057
+.\temp\dm17_err.txt 0
+.\temp\dm17_run.txt 22
+.\temp\dm18.py 2069
+.\temp\dm18_out.txt 178
+.\temp\dm18_secs.txt 1242
+.\temp\dm19.py 1833
+.\temp\dm19_out.txt 4134
+.\temp\dm2.py 8634
+.\temp\dm2.txt 13640
+.\temp\dm20.py 6571
+.\temp\dm20.txt 2419
+.\temp\dm20_err.txt 0
+.\temp\dm20_run.txt 20
+.\temp\dm21.py 6196
+.\temp\dm21.txt 13485
+.\temp\dm21_err.txt 0
+.\temp\dm21_err2.txt 0
+.\temp\dm21_run.txt 20
+.\temp\dm21_run2.txt 21
+.\temp\dm22.py 11588
+.\temp\dm22.txt 11848
+.\temp\dm22_err.txt 0
+.\temp\dm22_run.txt 44
+.\temp\dm23.py 4902
+.\temp\dm23.txt 25616
+.\temp\dm23_run.txt 44
+.\temp\dm24.py 9452
+.\temp\dm24_fields.tsv 35942
+.\temp\dm24_layout.txt 7296
+.\temp\dm25.py 2980
+.\temp\dm25.txt 2486
+.\temp\dm25.txt.u8 1274
+.\temp\dm26.py 4129
+.\temp\dm26.txt 16378
+.\temp\dm26.txt.u8 24567
+.\temp\dm27.py 4471
+.\temp\dm27.txt 41735
+.\temp\dm27.txt.u8 62604
+.\temp\dm28.py 6593
+.\temp\dm28.txt 109110
+.\temp\dm28.txt.u8 163665
+.\temp\dm28_u8.txt 163430
+.\temp\dm29.py 6148
+.\temp\dm29.txt 5654
+.\temp\dm2_compile.txt 12
+.\temp\dm2_done.txt 6
+.\temp\dm2_lines.txt 5
+.\temp\dm2_mid.txt 6494
+.\temp\dm2_mid_ok.txt 4
+.\temp\dm2_run.txt 39
+.\temp\dm3.py 4880
+.\temp\dm3.txt 3924
+.\temp\dm30.py 6197
+.\temp\dm30.txt 11919
+.\temp\dm30_stdout.txt 23896
+.\temp\dm31.py 2386
+.\temp\dm31_1420d8e70.txt 35902
+.\temp\dm31_1420d98f0.txt 106291
+.\temp\dm31_grep.txt 8
+.\temp\dm32.py 33120
+.\temp\dm32.txt 507724
+.\temp\dm32_fields.tsv 265466
+.\temp\dm32_probe.py 1881
+.\temp\dm32_stats.py 5300
+.\temp\dm3_done.txt 14
+.\temp\dm3_run.txt 72
+.\temp\dm4.py 5355
+.\temp\dm4.txt 11942
+.\temp\dm4_done.txt 14
+.\temp\dm4_run.txt 74
+.\temp\dm5.py 5021
+.\temp\dm5.txt 12974
+.\temp\dm5_done.txt 14
+.\temp\dm5_run.txt 72
+.\temp\dm6.py 6705
+.\temp\dm6.txt 4022
+.\temp\dm6_run.txt 72
+.\temp\dm7.py 4009
+.\temp\dm7.txt 8561
+.\temp\dm7_health.txt 5884
+.\temp\dm7_run.txt 74
+.\temp\dm8.py 9586
+.\temp\dm8.txt 13029
+.\temp\dm8_err.txt 0
+.\temp\dm8_head.txt 0
+.\temp\dm8_pid.txt 11
+.\temp\dm8_proc.txt 526
+.\temp\dm8_prog.txt 13369
+.\temp\dm8_run.txt 36
+.\temp\dm8_status.txt 4
+.\temp\dm8_tail.txt 72
+.\temp\dm8_wait.txt 44
+.\temp\dm9.py 5361
+.\temp\dm9.txt 196991
+.\temp\dm9_err.txt 0
+.\temp\dm9_pid.txt 7
+.\temp\dm9_prog.txt 128
+.\temp\dm9_run.txt 37
+.\temp\dmpchk.txt 41518
+.\temp\dmpchk_rc.txt 7
+.\temp\dmpcopy.ps1 1032
+.\temp\dmpcopy.txt 186
+.\temp\dm_probe.py 3981
+.\temp\dm_probe.txt 3506
+.\temp\drvdisasm.py 1412
+.\temp\drvscan.py 1412
+.\temp\drvscan.txt 972
+.\temp\dstat.txt 133
+.\temp\ea2.txt 32
+.\temp\ealog.txt 3470
+.\temp\ea_show.txt 582
+.\temp\el2.txt 6735
+.\temp\elev_test.txt 3082
+.\temp\env_inventory.txt 260
+.\temp\err32.txt 0
+.\temp\exports.py 2606
+.\temp\game_now.txt 27
+.\temp\gdrv_strings.txt 2002
+.\temp\globals.py 18142
+.\temp\globals.txt 99
+.\temp\gs.txt 18937
+.\temp\gu.txt 17497
+.\temp\gx.txt 28
+.\temp\h1.txt 166
+.\temp\h2.txt 207
+.\temp\h3.txt 170
+.\temp\h4.txt 207
+.\temp\h5.txt 301
+.\temp\h6.txt 3833
+.\temp\handle_probe.py 1900
+.\temp\handle_probe.txt 491
+.\temp\hi.txt 0
+.\temp\hi2.txt 11
+.\temp\hi3.txt 0
+.\temp\hi4.txt 0
+.\temp\hi6.txt 0
+.\temp\hi7.txt 0
+.\temp\hi8.txt 0
+.\temp\hi9.txt 0
+.\temp\hv.txt 5263
+.\temp\h_access.py 4457
+.\temp\h_access.txt 591
+.\temp\ik.txt 201
+.\temp\inp.txt 48
+.\temp\kx.py 10232
+.\temp\kx.txt 86
+.\temp\kx_console.txt 95
+.\temp\l3.txt 541
+.\temp\l5.txt 541
+.\temp\l6.txt 577
+.\temp\l7.txt 99
+.\temp\l8.txt 187
+.\temp\launchfiles.txt 733
+.\temp\live_probe.py 9620
+.\temp\live_run.txt 495
+.\temp\ls.txt 776
+.\temp\lsr.txt 61
+.\temp\lsr2.txt 109
+.\temp\lsr3.txt 1331
+.\temp\ls_temp.txt 2718
+.\temp\mods.py 9853
+.\temp\mods.txt 573
+.\temp\msio.py 7928
+.\temp\msio.txt 30248
+.\temp\msio_console.txt 30257
+.\temp\namehunt.py 21867
+.\temp\namehunt.txt 752
+.\temp\namehunt_console.txt 9
+.\temp\nh_compile.txt 15
+.\temp\nh_lines.txt 8
+.\temp\nh_run.txt 8
+.\temp\nh_tail.txt 304
+.\temp\now.txt 132
+.\temp\ocr6.txt 0
+.\temp\offsets_probe.py 21624
+.\temp\offsets_static.txt 2753
+.\temp\out32.txt 543
+.\temp\out32a.txt 543
+.\temp\p32.txt 409
+.\temp\p40d_console.txt 295
+.\temp\p40d_err.txt 0
+.\temp\p40e_launch.txt 353
+.\temp\p40f_dump.txt 840
+.\temp\p40i.txt 132
+.\temp\p40i_console.txt 5888
+.\temp\p40j.txt 211
+.\temp\p40j_console.txt 0
+.\temp\p40k.txt 92
+.\temp\p40k_con.txt 0
+.\temp\p40l.txt 50
+.\temp\p40ls.txt 126
+.\temp\p40l_con.txt 0
+.\temp\p40m.txt 263
+.\temp\p40m_con.txt 0
+.\temp\p40n.txt 239
+.\temp\p40o.txt 96
+.\temp\p40o_con.txt 9216
+.\temp\p40p.txt 164
+.\temp\p40q.txt 671
+.\temp\p40r_base.txt 435
+.\temp\p40s_path.txt 429
+.\temp\p40t_find.txt 31
+.\temp\p40u.txt 40927
+.\temp\p40v_run.txt 778
+.\temp\p40w_cleanup.txt 21
+.\temp\p40w_run.txt 402
+.\temp\p40w_smoke.txt 337
+.\temp\p40w_state.txt 600
+.\temp\p40w_valid.txt 139
+.\temp\p40w_valid2.txt 52
+.\temp\p40x.txt 35493
+.\temp\p40x_alive.txt 71
+.\temp\p40x_probe.txt 3787
+.\temp\p40x_tail.txt 2504
+.\temp\p40x_tail2.txt 1878
+.\temp\p40y.txt 350
+.\temp\p40za.txt 825
+.\temp\p40zh.txt 2404
+.\temp\p40zi.txt 273
+.\temp\p40zj.txt 237
+.\temp\p40z_why.txt 1596
+.\temp\p41a.txt 1538
+.\temp\p41b.txt 388
+.\temp\p41b_elev.ps1 1536
+.\temp\p41c.txt 866
+.\temp\p41d.txt 108
+.\temp\p41e.txt 165
+.\temp\p41f.txt 488
+.\temp\p41g.txt 19
+.\temp\p41h.txt 808
+.\temp\p41i.txt 307
+.\temp\p41j.txt 301
+.\temp\p41k.txt 234
+.\temp\p41m.txt 2078
+.\temp\p41_elev.txt 453
+.\temp\p41_start.txt 1499
+.\temp\p41_task.ps1 3031
+.\temp\p6.txt 17
+.\temp\p7.txt 117
+.\temp\p8.txt 127
+.\temp\p9.txt 105
+.\temp\pedrv.py 1443
+.\temp\peek.py 2449
+.\temp\pip.txt 1014
+.\temp\pip2.txt 357
+.\temp\pngs.txt 114
+.\temp\pr32.txt 2721
+.\temp\probe.txt 254
+.\temp\probe_maps.txt 2834
+.\temp\probe_pe.py 2105
+.\temp\probe_pe.txt 1561
+.\temp\probe_run.txt 2963
+.\temp\procs.txt 125
+.\temp\proc_dx12.txt 198
+.\temp\push.txt 933
+.\temp\push_rc.txt 14
+.\temp\pychk.txt 94
+.\temp\pys.txt 111
+.\temp\raise.txt 109
+.\temp\readprobe.py 6114
+.\temp\readprobe.txt 1063
+.\temp\readprobe2.py 11609
+.\temp\readprobe2.txt 1298
+.\temp\readprobe2_console.txt 9
+.\temp\readprobe_console.txt 9
+.\temp\roots.txt 228
+.\temp\rp2_compile.txt 4
+.\temp\rp2_run.txt 8
+.\temp\rp_run.txt 8
+.\temp\rtti_check.txt 7
+.\temp\run_as_system.bat 488
+.\temp\run_diag5.bat 377
+.\temp\run_diag6.bat 375
+.\temp\run_kx.bat 371
+.\temp\run_msio.bat 377
+.\temp\run_namehunt.bat 389
+.\temp\run_readprobe.bat 392
+.\temp\run_readprobe2.bat 395
+.\temp\run_sysprobe.bat 389
+.\temp\scan_offsets.py 8587
+.\temp\scan_offsets.txt 3070
+.\temp\shot.txt 304
+.\temp\show32.py 398
+.\temp\sizes.txt 6868
+.\temp\st32.txt 2761
+.\temp\st32b.txt 1734
+.\temp\sysprobe.py 4323
+.\temp\sysprobe.txt 676
+.\temp\sysprobe_console.txt 9
+.\temp\t1.ps1 4
+.\temp\tail32.txt 543
+.\temp\tb.txt 2
+.\temp\test_image_info.py 1775
+.\temp\toolchain.txt 383
+.\temp\tree2.txt 52188
+.\temp\tree3.txt 3872
+.\temp\treelist.txt 4623384
+.\temp\ts.txt 21
+.\temp\vis.txt 228
+.\temp\watch_con.txt 0
+.\temp\whea.txt 3517
+.\temp\wq.txt 68
+.\temp\_fix.py 424
+.\temp\_listing.txt 10227
+.\temp\_listing_parent.txt 969
+.\temp\_ls_now.txt 3952
+.\temp\_mods_now.txt 121
+.\temp\drv\backup 1
+.\temp\drv\__pycache__ 1
+.\temp\drv\after_reboot.bat 1471
+.\temp\drv\after_reboot.txt 1686
+.\temp\drv\annotate.py 5087
+.\temp\drv\annot_gdrv3.txt 251318
+.\temp\drv\annot_gdrv3_1b80.txt 11580
+.\temp\drv\annot_gdrv3_3000.txt 14063
+.\temp\drv\annot_gdrv3_33a0.txt 11467
+.\temp\drv\annot_gdrv3_3680.txt 10046
+.\temp\drv\annot_MsIo64.txt 36853
+.\temp\drv\ann_run.txt 181
+.\temp\drv\ann_run2.txt 181
+.\temp\drv\apexr.c 6112
+.\temp\drv\apexr.cer 766
+.\temp\drv\apexr.obj 6981
+.\temp\drv\apexr.sys 5488
+.\temp\drv\build.cmd 913
+.\temp\drv\build.txt 62
+.\temp\drv\capstone_install.txt 946
+.\temp\drv\ctx.py 911
+.\temp\drv\dbg_handles.py 3843
+.\temp\drv\dbg_handles.txt 339
+.\temp\drv\dd_out.txt 192
+.\temp\drv\diag_eac.ps1 4267
+.\temp\drv\diag_eac.txt 2730
+.\temp\drv\disasm_at.py 1589
+.\temp\drv\disasm_at.txt 3689
+.\temp\drv\disasm_drv.py 1821
+.\temp\drv\disasm_gdrv3.txt 240615
+.\temp\drv\disasm_gdrv3_old.txt 240615
+.\temp\drv\disasm_MsIo64.txt 34002
+.\temp\drv\disasm_out.txt 362
+.\temp\drv\dll_dis.py 5292
+.\temp\drv\drv_ioctl.py 3843
+.\temp\drv\drv_ioctl.txt 591
+.\temp\drv\drv_ioctl_console.txt 1184
+.\temp\drv\drv_strings.py 3503
+.\temp\drv\drv_strings.txt 171022
+.\temp\drv\elev_probe.py 12726
+.\temp\drv\elev_probe.txt 3621
+.\temp\drv\enable_testsigning.bat 388
+.\temp\drv\find_global.py 4824
+.\temp\drv\find_holder.py 8805
+.\temp\drv\find_holder.txt 868
+.\temp\drv\find_str_xref.py 3180
+.\temp\drv\find_xref.py 2749
+.\temp\drv\f_open.txt 18224
+.\temp\drv\f_prim.txt 48516
+.\temp\drv\g10.txt 4444
+.\temp\drv\g11.txt 1005
+.\temp\drv\g12.txt 4775
+.\temp\drv\g13.txt 14851
+.\temp\drv\g14.txt 1302
+.\temp\drv\g15.txt 1858
+.\temp\drv\g16.txt 15
+.\temp\drv\g17.txt 836
+.\temp\drv\g18.txt 1256
+.\temp\drv\g2.txt 875
+.\temp\drv\g3.txt 8027
+.\temp\drv\g4.txt 11959
+.\temp\drv\g5.txt 1381
+.\temp\drv\g6.txt 0
+.\temp\drv\g7.txt 4627
+.\temp\drv\g8.txt 2459
+.\temp\drv\g9.txt 675
+.\temp\drv\giov3_scan.txt 202223
+.\temp\drv\global_3150.txt 1556
+.\temp\drv\grep_gdrv.txt 2597
+.\temp\drv\grep_msio.txt 1782
+.\temp\drv\h3680.txt 3035
+.\temp\drv\install.cmd 1841
+.\temp\drv\install.txt 2240
+.\temp\drv\ioctl_sites.py 847
+.\temp\drv\ioctl_sites.txt 52421
+.\temp\drv\libs.txt 70
+.\temp\drv\listing.txt 2223
+.\temp\drv\ls.txt 3561
+.\temp\drv\map_ioctls.py 2375
+.\temp\drv\map_ioctls.txt 29144
+.\temp\drv\mem_scan.py 5731
+.\temp\drv\mem_scan.txt 1063
+.\temp\drv\msio_1200.txt 3222
+.\temp\drv\msio_1400.txt 3621
+.\temp\drv\msio_1500.txt 11156
+.\temp\drv\o1.txt 1813
+.\temp\drv\o2.txt 33
+.\temp\drv\open_probe.py 4059
+.\temp\drv\open_probe.txt 2382
+.\temp\drv\paths.txt 722
+.\temp\drv\paths2.txt 213
+.\temp\drv\physread.py 4573
+.\temp\drv\physread.txt 166
+.\temp\drv\pmem_probe.py 7601
+.\temp\drv\pmem_probe.txt 446
+.\temp\drv\probe_addr.py 3341
+.\temp\drv\probe_addr.txt 3616
+.\temp\drv\pyok.txt 10
+.\temp\drv\README.txt 2239
+.\temp\drv\read_probe.py 6422
+.\temp\drv\read_probe.txt 1553
+.\temp\drv\revert.txt 2379
+.\temp\drv\revert_testsigning.bat 2753
+.\temp\drv\run_a1.txt 96
+.\temp\drv\run_a2.txt 96
+.\temp\drv\run_a3.txt 96
+.\temp\drv\run_a4.txt 96
+.\temp\drv\run_dbg.txt 0
+.\temp\drv\run_fg.txt 88
+.\temp\drv\run_holder.txt 0
+.\temp\drv\run_map.txt 626
+.\temp\drv\run_open.txt 2942
+.\temp\drv\run_probe.txt 449
+.\temp\drv\run_sx.txt 86
+.\temp\drv\run_x1.txt 81
+.\temp\drv\run_x2.txt 0
+.\temp\drv\scanout.txt 362
+.\temp\drv\scan_giov3.py 4675
+.\temp\drv\seg1.txt 3202
+.\temp\drv\seg2.txt 6765
+.\temp\drv\seg3.txt 548
+.\temp\drv\seg4.txt 517
+.\temp\drv\show.py 633
+.\temp\drv\sites_2400.txt 37240
+.\temp\drv\state.txt 2878
+.\temp\drv\state_and_set.bat 1221
+.\temp\drv\strxref.txt 2691
+.\temp\drv\svc.txt 1079
+.\temp\drv\svc2.txt 1411
+.\temp\drv\svc_probe.ps1 2980
+.\temp\drv\svc_probe.txt 1398
+.\temp\drv\trust.txt 1422
+.\temp\drv\trust_cert.bat 723
+.\temp\drv\try_start.bat 589
+.\temp\drv\try_start.txt 904
+.\temp\drv\verify.py 4414
+.\temp\drv\verify.txt 375
+.\temp\drv\xref.txt 52
+.\temp\drv\YccDrvv3.dll.dis.txt 2134994
+.\temp\drv\_s2800.txt 2195
+.\temp\drv\_s2808.txt 2262
+.\temp\drv\backup\apexdrv.sys 8616
+.\temp\drv\backup\apexr.sys 5488
+.\temp\drv\__pycache__\elev_probe.cpython-312.pyc 18403
+.\temp\drv\__pycache__\physread.cpython-312.pyc 6913
+.\temp\__pycache__\diag2.cpython-312.pyc 11555
+.\temp\__pycache__\diag3.cpython-312.pyc 11995
+.\temp\__pycache__\diag4.cpython-312.pyc 18490
+.\temp\__pycache__\diag5.cpython-312.pyc 33647
+.\temp\__pycache__\diag6.cpython-312.pyc 21308
+.\temp\__pycache__\dm11.cpython-312.pyc 29847
+.\temp\__pycache__\dm2.cpython-312.pyc 11995
+.\temp\__pycache__\dm32.cpython-312.pyc 46658
+.\temp\__pycache__\globals.cpython-312.pyc 25698
+.\temp\__pycache__\kx.cpython-312.pyc 15536
+.\temp\__pycache__\mods.cpython-312.pyc 16319
+.\temp\__pycache__\namehunt.cpython-312.pyc 34959
+.\temp\__pycache__\pedrv.cpython-312.pyc 2753
+.\temp\__pycache__\readprobe2.cpython-312.pyc 18978
+.\_ritual\dumps 1
+.\_ritual\eaac_capture 1
+.\_ritual\ev 1
+.\_ritual\js 1
+.\_ritual\_dumps 1
+.\_ritual\_psctest 1
+.\_ritual\_vmbench 1
+.\_ritual\act.txt 17
+.\_ritual\agentfind.txt 73
+.\_ritual\agentfind2.txt 0
+.\_ritual\apexdrv_lab_dse.cer 815
+.\_ritual\apexdrv_lab_leaf.cer 858
+.\_ritual\apexdrv_lab_oneshot.cer 833
+.\_ritual\apexdrv_lab_root.cer 802
+.\_ritual\arp3.txt 932
+.\_ritual\art.txt 17802
+.\_ritual\arts.txt 2153
+.\_ritual\B1.done 11
+.\_ritual\B2.done 7
+.\_ritual\B3.done 7
+.\_ritual\bcd_before_20261101_154954.bcd 28672
+.\_ritual\bcd_before_20261101_204255.bcd 28672
+.\_ritual\boot.txt 2630
+.\_ritual\boot3.ps1 2723
+.\_ritual\brute2.ps1 5062
+.\_ritual\brute2.txt 839
+.\_ritual\brute3.ps1 5409
+.\_ritual\brute3.txt 1384
+.\_ritual\brute4.ps1 6092
+.\_ritual\brute5.ps1 6866
+.\_ritual\brute5.txt 2829
+.\_ritual\brute5_tmp.bin 1024
+.\_ritual\brute6.ps1 5711
+.\_ritual\brute6.txt 1966
+.\_ritual\brute7.ps1 4982
+.\_ritual\brute7.txt 770
+.\_ritual\brute7_tmp.bin 8692
+.\_ritual\bscripts.txt 1470
+.\_ritual\build.txt 1462
+.\_ritual\c1.png 149372
+.\_ritual\c2.jpg 15607
+.\_ritual\c3.jpg 15304
+.\_ritual\c4.jpg 15471
+.\_ritual\canary.ps1 1213
+.\_ritual\canary.txt 174
+.\_ritual\catdef.ps1 7481
+.\_ritual\catdef.txt 15553
+.\_ritual\cateng.ps1 12277
+.\_ritual\cateng.txt 439
+.\_ritual\cateng_lookup.txt 1653
+.\_ritual\cateng_lookup2.txt 1007
+.\_ritual\cateng_nocert.bin 8704
+.\_ritual\cateng_probe.ps1 1804
+.\_ritual\cateng_probe2.ps1 8710
+.\_ritual\cateng_probe3.ps1 5027
+.\_ritual\cateng_probe4.ps1 8481
+.\_ritual\cateng_run.ps1 568
+.\_ritual\cateng_run2.txt 806
+.\_ritual\cateng_scan.txt 1414
+.\_ritual\cateng_selftest.txt 6679
+.\_ritual\catfind.ps1 3184
+.\_ritual\catfind2.ps1 5379
+.\_ritual\cathash.ps1 9751
+.\_ritual\catlookup.ps1 4182
+.\_ritual\catlookup2.ps1 10288
+.\_ritual\catlookup2_fix.log 14228
+.\_ritual\catlookup2_fix2.log 959
+.\_ritual\catlookup2_fix3.log 959
+.\_ritual\catlookup2_fix4.log 105
+.\_ritual\cdp.ps1 4485
+.\_ritual\ci_ev.txt 20683
+.\_ritual\click.ps1 1763
+.\_ritual\click_hi.ps1 757
+.\_ritual\click_slow.ps1 1081
+.\_ritual\crashparse.ps1 1912
+.\_ritual\crashparse.txt 6559
+.\_ritual\crashparse2.txt 59099
+.\_ritual\crash_kd.ps1 2081
+.\_ritual\crash_task.ps1 1635
+.\_ritual\credmap.txt 1321
+.\_ritual\creds_grep.txt 112339
+.\_ritual\ctrlhelp.txt 9972
+.\_ritual\d22.txt 282
+.\_ritual\desk_small.png 1296921
+.\_ritual\diag1.txt 24114
+.\_ritual\diag2.txt 28924
+.\_ritual\diag3.txt 37
+.\_ritual\diag4.txt 31
+.\_ritual\dirty.diff 643299
+.\_ritual\disasm2.py 4256
+.\_ritual\disasm_gdrv.py 1769
+.\_ritual\dllmsg.ps1 1407
+.\_ritual\docs.txt 2586
+.\_ritual\docs_list.txt 809
+.\_ritual\done.txt 14
+.\_ritual\drvsig.txt 588
+.\_ritual\d_small.png 218499
+.\_ritual\ea1.png 1102161
+.\_ritual\ea10.png 1034274
+.\_ritual\ea11.png 1052953
+.\_ritual\ea12.png 1568713
+.\_ritual\ea13.png 1699007
+.\_ritual\ea14.jpg 177662
+.\_ritual\ea15.jpg 177916
+.\_ritual\ea16.jpg 296485
+.\_ritual\ea17.jpg 295208
+.\_ritual\ea18.jpg 182720
+.\_ritual\ea19.jpg 182345
+.\_ritual\ea2.png 1014969
+.\_ritual\ea20.jpg 295309
+.\_ritual\ea21.jpg 297358
+.\_ritual\ea22.jpg 240645
+.\_ritual\ea23.jpg 77254
+.\_ritual\ea24.jpg 76656
+.\_ritual\ea25.jpg 78002
+.\_ritual\ea26.jpg 53105
+.\_ritual\ea27.jpg 53105
+.\_ritual\ea2s.png 712756
+.\_ritual\ea5.png 465076
+.\_ritual\ea6.png 463200
+.\_ritual\ea8.png 464790
+.\_ritual\ea9.png 465036
+.\_ritual\eaac_tree.txt 7737
+.\_ritual\ea_0117.txt 4251
+.\_ritual\ea_now.png 275348
+.\_ritual\ea_post.ps1 4337
+.\_ritual\ea_post.txt 399
+.\_ritual\ea_show.ps1 1925
+.\_ritual\ea_signin.ps1 3845
+.\_ritual\ea_signin.txt 172
+.\_ritual\ea_type.ps1 5079
+.\_ritual\ea_type.txt 132
+.\_ritual\ea_uia.ps1 3471
+.\_ritual\ea_uia.txt 52
+.\_ritual\ea_unstick.ps1 5393
+.\_ritual\env2.txt 3022
+.\_ritual\env_byovd.txt 19665
+.\_ritual\ev_list2.txt 5
+.\_ritual\ext_tree.txt 17448
+.\_ritual\fact2.txt 695
+.\_ritual\find_bin.txt 125740
+.\_ritual\find_jav.ps1 3773
+.\_ritual\find_jav.txt 2947068
+.\_ritual\fix4.ps1 3936
+.\_ritual\fix5.ps1 3003
+.\_ritual\fix5_lookup1.txt 289
+.\_ritual\fix5_lookup2.txt 305
+.\_ritual\fix5_lookup3.txt 457
+.\_ritual\fix5_selftest.txt 4703
+.\_ritual\full1.png 469096
+.\_ritual\fw.txt 60
+.\_ritual\ga1.txt 927
+.\_ritual\gaiso.txt 6
+.\_ritual\gc1.txt 1850
+.\_ritual\gchelp.txt 64782
+.\_ritual\git2.txt 107
+.\_ritual\gitlog.txt 216
+.\_ritual\gitls.md.txt 12592
+.\_ritual\gitnow.txt 469
+.\_ritual\gitstat.txt 282
+.\_ritual\gitstate.txt 21
+.\_ritual\gl.txt 113
+.\_ritual\gprop.txt 776
+.\_ritual\gprop_view.txt 776
+.\_ritual\grepq.txt 2681
+.\_ritual\gs.txt 13607
+.\_ritual\gscr1.png 20589
+.\_ritual\gscr2.png 20404
+.\_ritual\gscr2b.png 20436
+.\_ritual\guest.rdp 313
+.\_ritual\guest3390.rdp 331
+.\_ritual\guest3390_rdpsec.rdp 331
+.\_ritual\guest_recon.ps1 2692
+.\_ritual\h1.jpg 33940
+.\_ritual\h1a_bl.ps1 1252
+.\_ritual\h1b2_dse_read.ps1 714
+.\_ritual\h1b3_dse_set.ps1 696
+.\_ritual\h1b_host.txt 902
+.\_ritual\h1b_host_boot4.txt 902
+.\_ritual\h1b_probe.ps1 1666
+.\_ritual\h1b_restore16.ps1 3241
+.\_ritual\h1c_try.ps1 1709
+.\_ritual\h1z_hvoff.ps1 1770
+.\_ritual\h1_dse_host.ps1 12436
+.\_ritual\h1_host.txt 7524
+.\_ritual\h1_host_boot1.txt 5344
+.\_ritual\h1_host_boot2.txt 5344
+.\_ritual\h1_host_boot3.txt 5344
+.\_ritual\h1_host_boot4.txt 8859
+.\_ritual\h2.jpg 33915
+.\_ritual\h2w1_task.ps1 2655
+.\_ritual\h2w1_watch.ps1 9233
+.\_ritual\h2w1_watch.summary.txt 102
+.\_ritual\h2w1_watch.txt 12864
+.\_ritual\h2w2_577.pass1.summary.txt 74
+.\_ritual\h2w2_577.pass1.txt 1331
+.\_ritual\h2w2_577.ps1 3918
+.\_ritual\h2w2_577.summary.txt 74
+.\_ritual\h2w2_577.txt 1332
+.\_ritual\h2_gate.ps1 10493
+.\_ritual\h2_gate.summary.txt 86
+.\_ritual\h2_gate.txt 9662
+.\_ritual\h2_gate_abort1.summary.txt 82
+.\_ritual\h2_gate_abort1.txt 3770
+.\_ritual\h2_gate_boot1.txt 1834
+.\_ritual\h2_gate_boot2.txt 1834
+.\_ritual\h2_prep.ps1 1954
+.\_ritual\h2_prep.txt 384
+.\_ritual\h2_task.ps1 1516
+.\_ritual\h3_quiet.ps1 3374
+.\_ritual\h3_quiet.summary.txt 130
+.\_ritual\h3_quiet.txt 526
+.\_ritual\head_evidence.txt 21903
+.\_ritual\host2.txt 1020
+.\_ritual\host3.txt 29270
+.\_ritual\host4.txt 29310
+.\_ritual\host5.txt 2076
+.\_ritual\hostscreen.png 304920
+.\_ritual\host_110226.dmp 9668371
+.\_ritual\hscr2.png 293901
+.\_ritual\jav_hits.txt 1613
+.\_ritual\jav_msg.txt 2488
+.\_ritual\jav_phrases.txt 8675
+.\_ritual\jav_strings_narrow.txt 989
+.\_ritual\launch21.txt 286
+.\_ritual\leases.txt 0
+.\_ritual\list2.txt 757
+.\_ritual\listing.txt 603
+.\_ritual\lookup_console.txt 5816
+.\_ritual\lsnow.txt 1262
+.\_ritual\mail.json 505
+.\_ritual\mail_new.ps1 1355
+.\_ritual\mdroot.txt 97
+.\_ritual\md_list.txt 10364
+.\_ritual\mstsc.txt 1222
+.\_ritual\net.txt 743
+.\_ritual\net3.txt 1491
+.\_ritual\net9.txt 7055
+.\_ritual\netA.txt 2537
+.\_ritual\now.txt 810
+.\_ritual\ocr.ps1 1707
+.\_ritual\p10_dirs.txt 420
+.\_ritual\p10_state.txt 5253
+.\_ritual\p11_logs.ps1 5935
+.\_ritual\p11_logs.txt 2358450
+.\_ritual\p11_phrase.ps1 2219
+.\_ritual\p11_phrase.txt 1433
+.\_ritual\p12_env.ps1 5648
+.\_ritual\p12_env.txt 64249
+.\_ritual\p12_phrase.ps1 4530
+.\_ritual\p12_phrase.txt 273107
+.\_ritual\p12_phrase_index.txt 5209
+.\_ritual\p12_phrase_status.txt 2029
+.\_ritual\p13_boot.ps1 6703
+.\_ritual\p13_boot.txt 105650
+.\_ritual\p13_detached.txt 43
+.\_ritual\p13_dirs.ps1 3869
+.\_ritual\p13_dirs.txt 385024
+.\_ritual\p13_dirs2.ps1 5101
+.\_ritual\p13_dirs2.txt 14899
+.\_ritual\p13_dirs3.ps1 4778
+.\_ritual\p13_dirs3.txt 43670
+.\_ritual\p13_dirs4.ps1 13333
+.\_ritual\p13_dirs4.txt 89541
+.\_ritual\p13_grep.ps1 1532
+.\_ritual\p13_grep.txt 653
+.\_ritual\p13_launch.txt 1676
+.\_ritual\p13_popup.ps1 1868
+.\_ritual\p13_popup.txt 144216
+.\_ritual\p13_popup2.ps1 2144
+.\_ritual\p13_status.ps1 1868
+.\_ritual\p13_status.txt 3464
+.\_ritual\p13_strall_gameservice.txt 149709788
+.\_ritual\p13_strall_gameservicedll.txt 29028952
+.\_ritual\p13_strall_launcher.txt 15716416
+.\_ritual\p13_strall_launcherdll.txt 21301845
+.\_ritual\p13_strings.ps1 1629
+.\_ritual\p13_str_gameservice.txt 11446
+.\_ritual\p13_str_gameservicedll.txt 1297
+.\_ritual\p13_str_launcher.txt 7711
+.\_ritual\p13_str_launcherdll.txt 1176
+.\_ritual\p14.ps1 7738
+.\_ritual\p14.txt 15120
+.\_ritual\p15b.ps1 7005
+.\_ritual\p15b.txt 13913
+.\_ritual\p15b_slA.txt 13899
+.\_ritual\p15c.txt 2516
+.\_ritual\p15_search.txt 1918
+.\_ritual\p16.txt 51573
+.\_ritual\p16_sl.txt 19188
+.\_ritual\p17.txt 53155
+.\_ritual\p17_slA.txt 41188
+.\_ritual\p17_slB.txt 8188
+.\_ritual\p18.ps1 3329
+.\_ritual\p18.txt 1788
+.\_ritual\p19.txt 9295
+.\_ritual\p20.ps1 10818
+.\_ritual\p20.txt 1758
+.\_ritual\p20b.ps1 13819
+.\_ritual\p20b.txt 111124
+.\_ritual\p21.ps1 6454
+.\_ritual\p21.txt 59056
+.\_ritual\p22.ps1 9362
+.\_ritual\p22.txt 19556
+.\_ritual\p23.ps1 4504
+.\_ritual\p23.txt 4226
+.\_ritual\p24.ps1 9354
+.\_ritual\p24.txt 8334
+.\_ritual\p25.ps1 13990
+.\_ritual\p25.txt 6743
+.\_ritual\p25b.ps1 11242
+.\_ritual\p25b.txt 3962
+.\_ritual\p25c.ps1 12123
+.\_ritual\p25c.txt 3968
+.\_ritual\p25d.ps1 10313
+.\_ritual\p25d.txt 6537
+.\_ritual\p25e.ps1 17129
+.\_ritual\p25e.txt 41531
+.\_ritual\p25f.ps1 9552
+.\_ritual\p25f.txt 9575
+.\_ritual\p25g.ps1 12218
+.\_ritual\p25g.txt 5969
+.\_ritual\p25h.diag.txt 2771
+.\_ritual\p25h.diag2.ps1 3804
+.\_ritual\p25h.diag2.txt 3659
+.\_ritual\p25h.diag3.ps1 3946
+.\_ritual\p25h.diag3.txt 2900
+.\_ritual\p25h.ps1 15947
+.\_ritual\p25h.txt 12109
+.\_ritual\p26_cat.ps1 28421
+.\_ritual\p26_cat.txt 20327
+.\_ritual\p26_cat_prev.txt 20001
+.\_ritual\p26_cat_run1.txt 6275
+.\_ritual\p26_cat_run2.txt 17725
+.\_ritual\p26_cov.txt 500
+.\_ritual\p26_drv.ps1 8367
+.\_ritual\p26_drv.txt 10164
+.\_ritual\p26_elev.ps1 812
+.\_ritual\p26_player.txt 1101
+.\_ritual\p26_player_probe.ps1 11597
+.\_ritual\p26_status.ps1 1664
+.\_ritual\p26_testsign.ps1 1573
+.\_ritual\p26_testsign.txt 572
+.\_ritual\p27_gate.ps1 8748
+.\_ritual\p27_gate.txt 11539
+.\_ritual\p27_gate_run1.txt 10488
+.\_ritual\p28_esp.ps1 9714
+.\_ritual\p28_esp.txt 10261
+.\_ritual\p28_launcher_apc.txt 1340
+.\_ritual\p28_launcher_crt.txt 1380
+.\_ritual\p28_launcher_hijack.txt 1404
+.\_ritual\p28_launcher_manual.txt 1360
+.\_ritual\p28_launcher_nt.txt 1340
+.\_ritual\p28_launcher_probe.txt 9352
+.\_ritual\p29_gate2.ps1 5485
+.\_ritual\p29_gate2.txt 2270
+.\_ritual\p29_p27_out.txt 0
+.\_ritual\p30.txt 4204
+.\_ritual\p30_prep.ps1 5129
+.\_ritual\p31_prereboot.txt 3138
+.\_ritual\p31_reboot.ps1 4531
+.\_ritual\p33_flagflip.ps1 9575
+.\_ritual\p33_flagflip.txt 3226
+.\_ritual\p33_prereboot.txt 679
+.\_ritual\p34_matrix.ps1 10185
+.\_ritual\p34_matrix.txt 5399
+.\_ritual\p34_task.ps1 1680
+.\_ritual\p35_deregister.ps1 7292
+.\_ritual\p36_badpa.txt 309
+.\_ritual\p36_check.txt 52
+.\_ritual\p36_check2.txt 113
+.\_ritual\p36_cscheck.txt 0
+.\_ritual\p36_fix_task.ps1 2999
+.\_ritual\p36_grant_lock.ps1 4201
+.\_ritual\p36_io.txt 21563419
+.\_ritual\p36_io_prev.txt 41119
+.\_ritual\p36_prov.cs 46443
+.\_ritual\p36_retry.ps1 3182
+.\_ritual\p36_task.ps1 2075
+.\_ritual\p36_write.ps1 34924
+.\_ritual\p36_write.txt 6367
+.\_ritual\p36_write_2231.txt 639
+.\_ritual\p36_write_prev.txt 3468
+.\_ritual\p37_badpa.txt 414
+.\_ritual\p37_io.txt 654755
+.\_ritual\p37_io_prev.txt 31162
+.\_ritual\p37_prov.cs 46602
+.\_ritual\p37_task.ps1 1971
+.\_ritual\p37_write.ps1 33170
+.\_ritual\p37_write.txt 4269
+.\_ritual\p37_write_prev.txt 1926
+.\_ritual\p38_badpa.txt 414
+.\_ritual\p38_chk.ps1 4013
+.\_ritual\p38_chk.txt 4131
+.\_ritual\p38_chk_task.ps1 1540
+.\_ritual\p38_io.txt 485720
+.\_ritual\p38_io_prev.txt 657118
+.\_ritual\p38_prov.cs 57044
+.\_ritual\p38_read.ps1 21000
+.\_ritual\p38_read.txt 2078
+.\_ritual\p38_read_prev.txt 3904
+.\_ritual\p38_task.ps1 1936
+.\_ritual\p40d_livedump.smoke.txt 328
+.\_ritual\p40d_progress.txt 28545
+.\_ritual\p40zb.png 253145
+.\_ritual\p40zb.png.size.txt 11
+.\_ritual\p40zb_raise.txt 4000
+.\_ritual\p40zc.png 265592
+.\_ritual\p40zc.png.size.txt 11
+.\_ritual\p40zc.txt 368
+.\_ritual\p40zd.txt 631
+.\_ritual\p40ze.txt 405
+.\_ritual\p40ze_before.png 266179
+.\_ritual\p40ze_before.png.size.txt 11
+.\_ritual\p40ze_paused.png 267083
+.\_ritual\p40ze_paused.png.size.txt 11
+.\_ritual\p40ze_resumed.png 268765
+.\_ritual\p40ze_resumed.png.size.txt 11
+.\_ritual\p40zf.txt 925
+.\_ritual\p40zg.txt 579
+.\_ritual\p7facts.ps1 2544
+.\_ritual\p7_a.txt 10743
+.\_ritual\p7_b.txt 3066
+.\_ritual\p7_c.txt 5567
+.\_ritual\p7_d.txt 9453
+.\_ritual\p7_e.txt 2200
+.\_ritual\p8.ps1 10077
+.\_ritual\p8_ran.txt 10077
+.\_ritual\p8_snap.txt 2105
+.\_ritual\p8_snap2.txt 5776
+.\_ritual\p8_syn.txt 11
+.\_ritual\p8_tail.txt 2014
+.\_ritual\p9.ps1 9345
+.\_ritual\p9_snap.txt 1258
+.\_ritual\p9_syn.txt 11
+.\_ritual\parse25g.txt 68
+.\_ritual\part1.out 26
+.\_ritual\ph1_a.txt 6282
+.\_ritual\ph1_b.txt 7639
+.\_ritual\ph1_chk.txt 114
+.\_ritual\ph1_mid.txt 7739
+.\_ritual\ph1_mid2.txt 6263
+.\_ritual\ph1_split.txt 11
+.\_ritual\pm_click.ps1 1602
+.\_ritual\ports3.txt 195
+.\_ritual\prep3.ps1 2927
+.\_ritual\probe.png 568084
+.\_ritual\probe.txt 1764
+.\_ritual\probe2.txt 4554
+.\_ritual\probe2_complete.txt 20
+.\_ritual\probe3.txt 8040
+.\_ritual\probe3_complete.txt 20
+.\_ritual\probe3_err.txt 1670
+.\_ritual\probe3_out.txt 62
+.\_ritual\probe4.txt 856
+.\_ritual\probe4_child.err 0
+.\_ritual\probe4_child.out 29
+.\_ritual\probe4_complete.txt 20
+.\_ritual\probe6.ps1 4206
+.\_ritual\probe7.ps1 11399
+.\_ritual\probe_complete.txt 19
+.\_ritual\procs.txt 996
+.\_ritual\pw1.png 1878
+.\_ritual\pyv.txt 140
+.\_ritual\q97.txt 1156
+.\_ritual\qkp_all.txt 7508
+.\_ritual\qkp_files.txt 5698
+.\_ritual\qkroot.txt 264
+.\_ritual\qp_tree.txt 14197
+.\_ritual\raise.ps1 2641
+.\_ritual\rdp.txt 135
+.\_ritual\rdp2.txt 415
+.\_ritual\README.md 3127
+.\_ritual\repo.txt 3878
+.\_ritual\resmap.ps1 2945
+.\_ritual\resmap.txt 329
+.\_ritual\ritual.txt 2360
+.\_ritual\ritual_list.txt 973
+.\_ritual\root.txt 91593
+.\_ritual\root_now.txt 6006
+.\_ritual\run14.cmd 266
+.\_ritual\run14.log 91
+.\_ritual\run20.cmd 266
+.\_ritual\run20.log 45
+.\_ritual\run20b.cmd 270
+.\_ritual\run20b.log 594
+.\_ritual\run21.cmd 185
+.\_ritual\run21.log 232
+.\_ritual\run22.cmd 185
+.\_ritual\run22.log 181
+.\_ritual\run23.cmd 183
+.\_ritual\run23.log 84
+.\_ritual\run24.cmd 185
+.\_ritual\run24.log 181
+.\_ritual\run25.cmd 185
+.\_ritual\run25.log 181
+.\_ritual\run25b.cmd 188
+.\_ritual\run25b.log 184
+.\_ritual\run25c.cmd 188
+.\_ritual\run25c.log 214
+.\_ritual\run25d.cmd 188
+.\_ritual\run25d.log 210
+.\_ritual\run25e.cmd 188
+.\_ritual\run25e.log 215
+.\_ritual\run25f.cmd 188
+.\_ritual\run25f.log 215
+.\_ritual\run25g.cmd 188
+.\_ritual\run25g.log 212
+.\_ritual\run25h.cmd 188
+.\_ritual\run25h.log 228
+.\_ritual\run27.cmd 198
+.\_ritual\run27.log 84
+.\_ritual\run28.cmd 192
+.\_ritual\run28.log 84
+.\_ritual\run29.cmd 194
+.\_ritual\run29.log 84
+.\_ritual\run3.ps1 1148
+.\_ritual\run3.state 28871
+.\_ritual\run30.cmd 238
+.\_ritual\run30.log 630
+.\_ritual\run33.cmd 204
+.\_ritual\run33.log 84
+.\_ritual\run34.cmd 192
+.\_ritual\run34.log 84
+.\_ritual\run4.cmd 269
+.\_ritual\run4.log 96
+.\_ritual\runner.ps1 840
+.\_ritual\running.txt 54
+.\_ritual\runvms.txt 57
+.\_ritual\run_complete.txt 17
+.\_ritual\run_err.txt 1626
+.\_ritual\run_h2.cmd 191
+.\_ritual\run_h2.log 84
+.\_ritual\s1.png 37252
+.\_ritual\s1.txt 60252
+.\_ritual\s2.png 32646
+.\_ritual\s3.png 32646
+.\_ritual\s3.txt 20251
+.\_ritual\s3b.txt 28430
+.\_ritual\s4.png 37927
+.\_ritual\s4.txt 318
+.\_ritual\s5.png 30642
+.\_ritual\s6.png 40345
+.\_ritual\s7.png 732016
+.\_ritual\sc5.ps1 3116
+.\_ritual\scr.txt 11
+.\_ritual\selftest_console.txt 14636
+.\_ritual\sendinput.ps1 1951
+.\_ritual\sendkey.ps1 1480
+.\_ritual\shot1.txt 858
+.\_ritual\shot1c.txt 858
+.\_ritual\shot2.txt 0
+.\_ritual\shot_desk.png 243227
+.\_ritual\shot_desk.ps1 482
+.\_ritual\shot_ea.png 211954
+.\_ritual\shot_full.ps1 1664
+.\_ritual\shot_hi.ps1 791
+.\_ritual\shot_now.png 1231863
+.\_ritual\shot_now.png.size.txt 11
+.\_ritual\shot_pw.ps1 2033
+.\_ritual\shot_win.ps1 3159
+.\_ritual\sig.ps1 4883
+.\_ritual\sig2.ps1 3947
+.\_ritual\sig2.txt 13760
+.\_ritual\small_shot.ps1 920
+.\_ritual\snap25g.txt 6202
+.\_ritual\snaps.txt 490
+.\_ritual\snaps2.txt 247
+.\_ritual\src.diff 11488
+.\_ritual\srcdiff.txt 18
+.\_ritual\src_utf8.diff 5749
+.\_ritual\st2.ps1 1896
+.\_ritual\st2.txt 5790
+.\_ritual\st3.ps1 2375
+.\_ritual\st3.txt 2238
+.\_ritual\state2.txt 1759
+.\_ritual\status.txt 27210
+.\_ritual\syn21.txt 79
+.\_ritual\syn22.txt 70
+.\_ritual\syn22b.txt 18
+.\_ritual\syn23.txt 98
+.\_ritual\t1.txt 1696
+.\_ritual\t2.txt 1042
+.\_ritual\t3.txt 5975
+.\_ritual\tail20b.txt 769
+.\_ritual\toolchain.txt 322
+.\_ritual\tree2.txt 0
+.\_ritual\tree3.txt 3199
+.\_ritual\tscripts.txt 100
+.\_ritual\u1.txt 7865
+.\_ritual\u2.txt 934
+.\_ritual\u7_input_reset.ps1 1488
+.\_ritual\v1.txt 7548
+.\_ritual\vm2.txt 478
+.\_ritual\vm3.txt 1152
+.\_ritual\vmcheck.ps1 3885
+.\_ritual\vmcheck.txt 5176
+.\_ritual\vmcheck2.ps1 5341
+.\_ritual\vmcheck2.txt 7014
+.\_ritual\vmcreds.txt 6263
+.\_ritual\vmi2.txt 11164
+.\_ritual\vminfo2.txt 2663
+.\_ritual\vminfo_now.txt 2962
+.\_ritual\vmi_hits.txt 1717
+.\_ritual\vmmac.txt 1728
+.\_ritual\vmnet.txt 603
+.\_ritual\vmprobe.ps1 1526
+.\_ritual\vmprobe.txt 9116
+.\_ritual\vms.txt 110
+.\_ritual\vms3.txt 57
+.\_ritual\vmscreen.png 302748
+.\_ritual\vmstate.txt 2234
+.\_ritual\vmstate_now.txt 470
+.\_ritual\vm_check.txt 57
+.\_ritual\vm_coldboot.ps1 1595
+.\_ritual\vm_coldboot.txt 1128
+.\_ritual\vm_ga.ps1 1496
+.\_ritual\vm_ga.txt 149
+.\_ritual\vm_gate1.ps1 1555
+.\_ritual\vm_gate1.txt 1594
+.\_ritual\vm_gate1_probe.ps1 3146
+.\_ritual\vm_net.ps1 2900
+.\_ritual\vm_net.txt 1399
+.\_ritual\vm_now.txt 12660
+.\_ritual\vm_recon.ps1 2108
+.\_ritual\vm_recon.txt 347545
+.\_ritual\vm_recon2.ps1 1982
+.\_ritual\vm_recon2.txt 2122
+.\_ritual\vm_shot.ps1 1836
+.\_ritual\vm_shot.txt 1326
+.\_ritual\vm_start.txt 148
+.\_ritual\vm_state_now.txt 229
+.\_ritual\vm_type.ps1 3725
+.\_ritual\vm_type.txt 3794
+.\_ritual\w1.txt 2633
+.\_ritual\w2.txt 19462
+.\_ritual\wake.txt 122
+.\_ritual\watch.png 4284091
+.\_ritual\watch.png.size.txt 11
+.\_ritual\wfp.ps1 1604
+.\_ritual\wins.txt 230
+.\_ritual\x1.txt 809
+.\_ritual\y1.txt 2829
+.\_ritual\z1.txt 3974
+.\_ritual\z2.txt 1674
+.\_ritual\z2a.txt 1748
+.\_ritual\z2b.txt 14387
+.\_ritual\z2c.txt 5180
+.\_ritual\z3.txt 4549
+.\_ritual\z3a.txt 7511
+.\_ritual\z4.txt 268
+.\_ritual\z5.txt 491
+.\_ritual\z7.txt 6804
+.\_ritual\zztest.txt 10
+.\_ritual\z_d2_mid.txt 8805
+.\_ritual\z_d3_mid.txt 22105
+.\_ritual\z_list.txt 26856
+.\_ritual\_acct.txt 494
+.\_ritual\_adm1.txt 675
+.\_ritual\_annot.txt 1011
+.\_ritual\_annot_copy.txt 251318
+.\_ritual\_apexdrv_find.txt 102
+.\_ritual\_ap_fg.txt 46
+.\_ritual\_ap_fg2.txt 46
+.\_ritual\_ap_fg3.txt 46
+.\_ritual\_ap_fg3b.txt 94
+.\_ritual\_auth.txt 639
+.\_ritual\_auth2.txt 1525
+.\_ritual\_auth3.txt 0
+.\_ritual\_b3scan.txt 4938
+.\_ritual\_boot1.txt 657
+.\_ritual\_boot_prep.txt 128
+.\_ritual\_build2.txt 497
+.\_ritual\_buildarts.txt 226
+.\_ritual\_build_p38.log 20
+.\_ritual\_build_p38.ps1 3300
+.\_ritual\_c1.txt 18
+.\_ritual\_c10.txt 19
+.\_ritual\_c11.txt 18
+.\_ritual\_c12.txt 18
+.\_ritual\_c13.txt 18
+.\_ritual\_c14.txt 18
+.\_ritual\_c2.txt 18
+.\_ritual\_c3.txt 18
+.\_ritual\_c4.txt 18
+.\_ritual\_c5.txt 18
+.\_ritual\_c6.txt 20
+.\_ritual\_c7.txt 18
+.\_ritual\_c8.txt 19
+.\_ritual\_c9.txt 19
+.\_ritual\_catscan.ps1 6527
+.\_ritual\_catscan.txt 324578
+.\_ritual\_catwalk.ps1 4054
+.\_ritual\_catwalk.txt 455
+.\_ritual\_catwalk_ctrl.txt 5759
+.\_ritual\_catwalk_ms_sha1.txt 1408
+.\_ritual\_catwalk_ms_sha256.txt 1408
+.\_ritual\_catwalk_now.txt 13897
+.\_ritual\_catwalk_ours.txt 10857
+.\_ritual\_catwalk_probe.txt 1516
+.\_ritual\_catwalk_probe12.txt 3402
+.\_ritual\_cc.txt 7
+.\_ritual\_cc2.txt 261
+.\_ritual\_cc3.txt 11
+.\_ritual\_cc4.txt 16
+.\_ritual\_cc5.txt 27
+.\_ritual\_cc6.txt 27
+.\_ritual\_cc7.txt 16
+.\_ritual\_cc8.txt 6
+.\_ritual\_cc9.txt 6
+.\_ritual\_cca.txt 6
+.\_ritual\_ccb.txt 6
+.\_ritual\_ccc.txt 17
+.\_ritual\_cdp.txt 28
+.\_ritual\_cdpapp.txt 51
+.\_ritual\_check.ps1 1675
+.\_ritual\_check1.txt 1700
+.\_ritual\_check2.ps1 652
+.\_ritual\_check3.ps1 455
+.\_ritual\_check4.ps1 612
+.\_ritual\_chk.txt 31
+.\_ritual\_codes.txt 1468
+.\_ritual\_code_peek.txt 23143
+.\_ritual\_code_peek2.txt 4441
+.\_ritual\_code_peek3.txt 5445
+.\_ritual\_coll2.txt 3141
+.\_ritual\_crash.txt 4716
+.\_ritual\_crash1.txt 40083
+.\_ritual\_crash2.txt 18504
+.\_ritual\_crash3.txt 8978
+.\_ritual\_crash4.txt 3502
+.\_ritual\_crash_finding.txt 3715
+.\_ritual\_crash_finding_124.txt 3727
+.\_ritual\_crash_summary.txt 980
+.\_ritual\_crash_task.log 130
+.\_ritual\_cred.txt 823
+.\_ritual\_csmap.txt 6821
+.\_ritual\_cs_mid.txt 7195
+.\_ritual\_d.txt 417
+.\_ritual\_d1.txt 2181
+.\_ritual\_d2.txt 12238
+.\_ritual\_d3.ps1 2742
+.\_ritual\_d3.txt 5462
+.\_ritual\_d4.txt 4602
+.\_ritual\_deploy.txt 476
+.\_ritual\_deploy2.txt 87
+.\_ritual\_deps.txt 210
+.\_ritual\_devw.txt 455
+.\_ritual\_dg.txt 300
+.\_ritual\_diag.ps1 1897
+.\_ritual\_diag.txt 658
+.\_ritual\_diag1.ps1 5432
+.\_ritual\_diag2.out.txt 1586
+.\_ritual\_diag2.ps1 5287
+.\_ritual\_diag2.txt 13708
+.\_ritual\_diag3.ps1 3955
+.\_ritual\_diag3.txt 28753
+.\_ritual\_diag3_ran.txt 12
+.\_ritual\_diag4.ps1 1779
+.\_ritual\_diag4.txt 2946
+.\_ritual\_dir.txt 22740
+.\_ritual\_disasm2.txt 139901
+.\_ritual\_disasm2b.txt 139901
+.\_ritual\_disp.txt 9652
+.\_ritual\_dmp.txt 238
+.\_ritual\_dmpget.txt 414
+.\_ritual\_drv.txt 56
+.\_ritual\_drv2.txt 642
+.\_ritual\_drvfind.txt 3646
+.\_ritual\_dumpget.ps1 1052
+.\_ritual\_dumpsdir.txt 392
+.\_ritual\_e.txt 138
+.\_ritual\_e2.txt 6
+.\_ritual\_e3.txt 0
+.\_ritual\_e4.txt 9
+.\_ritual\_ea.txt 332
+.\_ritual\_ea_fg.txt 38
+.\_ritual\_ea_fg2.txt 38
+.\_ritual\_ea_fg3.txt 38
+.\_ritual\_ea_fg4.txt 38
+.\_ritual\_ea_fg5.txt 38
+.\_ritual\_ea_fg6.txt 10
+.\_ritual\_ea_pre.jpg 125020
+.\_ritual\_ee.txt 0
+.\_ritual\_elev.txt 843
+.\_ritual\_elevprobe.ps1 492
+.\_ritual\_elevprobe.txt 116
+.\_ritual\_env1.txt 42
+.\_ritual\_env10.txt 74
+.\_ritual\_env11.txt 0
+.\_ritual\_env12.txt 7
+.\_ritual\_env13.txt 108
+.\_ritual\_env14.txt 147
+.\_ritual\_env15.txt 215
+.\_ritual\_env2.txt 341
+.\_ritual\_env4.txt 16
+.\_ritual\_env5.txt 160
+.\_ritual\_env6.txt 113
+.\_ritual\_env7.txt 324
+.\_ritual\_env8.txt 138
+.\_ritual\_env9.txt 146
+.\_ritual\_enwhp.txt 3441
+.\_ritual\_err.txt 1946
+.\_ritual\_extdir.txt 708
+.\_ritual\_f.txt 2461
+.\_ritual\_feat.txt 1294
+.\_ritual\_fin.txt 136
+.\_ritual\_final.txt 802
+.\_ritual\_find.txt 90
+.\_ritual\_find2.txt 56
+.\_ritual\_fire34.txt 64
+.\_ritual\_fire34b.txt 41
+.\_ritual\_fire34c.txt 79
+.\_ritual\_fire36.txt 282
+.\_ritual\_fire36b.txt 0
+.\_ritual\_fix1.out.txt 6106
+.\_ritual\_fix1.ps1 5130
+.\_ritual\_fix1.txt 26069
+.\_ritual\_fs.txt 17
+.\_ritual\_g1.png 366101
+.\_ritual\_g1.txt 0
+.\_ritual\_g1_ocr.txt 97
+.\_ritual\_g2.png 1511838
+.\_ritual\_g2.txt 0
+.\_ritual\_g2_ocr.txt 144
+.\_ritual\_g3.png 955979
+.\_ritual\_g3.txt 2482
+.\_ritual\_g3_ocr.txt 90
+.\_ritual\_g4.txt 934
+.\_ritual\_g4b.txt 9
+.\_ritual\_g5.txt 1406
+.\_ritual\_g8.txt 5313
+.\_ritual\_gate_final.txt 2483
+.\_ritual\_gate_verdict.txt 1523
+.\_ritual\_ga_poll.txt 91
+.\_ritual\_gdrvcs.txt 15775
+.\_ritual\_gitinfo2.txt 3980
+.\_ritual\_gitship.txt 6546
+.\_ritual\_gitship2.txt 403
+.\_ritual\_glob.txt 773
+.\_ritual\_go.txt 4
+.\_ritual\_gpu.txt 2096
+.\_ritual\_gref.txt 2386
+.\_ritual\_h1.txt 4309
+.\_ritual\_h1a.txt 856
+.\_ritual\_h1a_klist.txt 50232
+.\_ritual\_h1b.txt 1856
+.\_ritual\_h1b2.txt 1622
+.\_ritual\_h1b3.txt 1622
+.\_ritual\_h1c.txt 643
+.\_ritual\_h1r.txt 570
+.\_ritual\_h1z.txt 504
+.\_ritual\_h1_verify.txt 4209
+.\_ritual\_h2050.txt 3307
+.\_ritual\_h2w1_task.log 169
+.\_ritual\_h2_task.log 140
+.\_ritual\_h30.txt 0
+.\_ritual\_h31.txt 0
+.\_ritual\_h32.txt 0
+.\_ritual\_h33.txt 34
+.\_ritual\_h34.txt 44
+.\_ritual\_h35.txt 218
+.\_ritual\_h36.txt 6074
+.\_ritual\_hh.txt 136
+.\_ritual\_hits.txt 391
+.\_ritual\_hv.txt 38
+.\_ritual\_hyperv.txt 5173
+.\_ritual\_id.txt 3755
+.\_ritual\_ids.txt 1497
+.\_ritual\_il.txt 202
+.\_ritual\_imp.txt 1020
+.\_ritual\_index.txt 21947
+.\_ritual\_inv.txt 426
+.\_ritual\_ioconst.txt 513
+.\_ritual\_ioctl1.out.txt 7
+.\_ritual\_ioctl1.txt 913
+.\_ritual\_kb.txt 506
+.\_ritual\_kd1.txt 29597
+.\_ritual\_kd2231.txt 21048
+.\_ritual\_kd9437.txt 11830
+.\_ritual\_kd9437b.txt 11821
+.\_ritual\_kd9437c.txt 4926
+.\_ritual\_kdu.txt 0
+.\_ritual\_kdu_data.txt 287
+.\_ritual\_kdu_fetch.txt 429
+.\_ritual\_kdu_host2.txt 14
+.\_ritual\_kdu_hostlist.txt 34
+.\_ritual\_kdu_stage.txt 35
+.\_ritual\_kdu_tree.txt 2902
+.\_ritual\_kdu_unz.txt 21
+.\_ritual\_kd_102726-9484-01.txt 10893
+.\_ritual\_kd_110126-9437-01.txt 10716
+.\_ritual\_kd_stack.txt 5727
+.\_ritual\_last12.txt 314
+.\_ritual\_launch.txt 101
+.\_ritual\_launch2.txt 145
+.\_ritual\_launch3.txt 126
+.\_ritual\_launch4.txt 44
+.\_ritual\_launch6.txt 93
+.\_ritual\_launch7.txt 90
+.\_ritual\_launchfix.txt 83
+.\_ritual\_lg.txt 791
+.\_ritual\_line39.txt 114
+.\_ritual\_lists.txt 2034
+.\_ritual\_ln.txt 10
+.\_ritual\_ln2.txt 2267
+.\_ritual\_lock.txt 186
+.\_ritual\_log_1039.txt 4676
+.\_ritual\_ls.txt 41276
+.\_ritual\_m1.txt 0
+.\_ritual\_m2.txt 1612
+.\_ritual\_m3.txt 11619
+.\_ritual\_m4.txt 0
+.\_ritual\_m5.txt 3151
+.\_ritual\_m6.txt 3902
+.\_ritual\_m7.txt 2943
+.\_ritual\_m8.txt 8912
+.\_ritual\_m9.txt 3173
+.\_ritual\_machine.txt 206
+.\_ritual\_mail.txt 2226
+.\_ritual\_map.txt 7765
+.\_ritual\_mm.txt 3203
+.\_ritual\_mma.txt 2948
+.\_ritual\_mscatdump.txt 3396
+.\_ritual\_msok.txt 10
+.\_ritual\_mspath.txt 669
+.\_ritual\_next_steps.md 5401
+.\_ritual\_now.txt 338
+.\_ritual\_ocr.txt 34
+.\_ritual\_ocr3.txt 34
+.\_ritual\_ocr4.txt 34
+.\_ritual\_ocr6.txt 90
+.\_ritual\_ocr_ea_pre.txt 90
+.\_ritual\_ocr_ea_pre2.txt 90
+.\_ritual\_p25e_76589C69.cer 802
+.\_ritual\_p25e_7AB907DC.cer 833
+.\_ritual\_p25e_C8919A54.cer 811
+.\_ritual\_p25e_DB248C94.cer 811
+.\_ritual\_p25e_L1A5520.sys 10112
+.\_ritual\_p25e_L1E7309.sys 10184
+.\_ritual\_p25e_L5937CA.sys 10144
+.\_ritual\_p25e_L76589C.sys 10120
+.\_ritual\_p25e_L7AB907.sys 10184
+.\_ritual\_p25e_LC8919A.sys 10152
+.\_ritual\_p25e_LDB248C.sys 10152
+.\_ritual\_p25e_pub_1E73093E.cer 833
+.\_ritual\_p25e_pub_5937CA21.cer 818
+.\_ritual\_p25e_root_1E73093E.cer 833
+.\_ritual\_p25e_root_3BEBB1C2.cer 838
+.\_ritual\_p25e_root_4CB0B52D.cer 848
+.\_ritual\_p25e_root_5937CA21.cer 818
+.\_ritual\_p25e_root_A7569298.cer 853
+.\_ritual\_p25e_S1.cer 833
+.\_ritual\_p25e_S1.sys 10184
+.\_ritual\_p25e_S2.cer 848
+.\_ritual\_p25e_S2.sys 10192
+.\_ritual\_p25e_S2root.cer 800
+.\_ritual\_p25e_S2tp.sys 10192
+.\_ritual\_p25e_S3.cer 838
+.\_ritual\_p25e_S3.sys 10184
+.\_ritual\_p25e_S3tp.sys 10184
+.\_ritual\_p25e_S4.cer 853
+.\_ritual\_p25e_S4.sys 10200
+.\_ritual\_p25e_S4tp.sys 10200
+.\_ritual\_p25e_S5.cer 818
+.\_ritual\_p25e_S5.sys 10144
+.\_ritual\_p25g_S2ctl.sys 10192
+.\_ritual\_p25g_S6lan.sys 10136
+.\_ritual\_p25g_S7win.sys 10136
+.\_ritual\_p25g_S8old.sys 10136
+.\_ritual\_p25g_S9msf.sys 10136
+.\_ritual\_p25h_api.txt 4810
+.\_ritual\_p25h_cat.txt 769
+.\_ritual\_p25h_cat2.txt 1545
+.\_ritual\_p25h_cat3.txt 978
+.\_ritual\_p25h_cat4.txt 2122
+.\_ritual\_p25h_cat5.txt 706645
+.\_ritual\_p25h_const.txt 3127
+.\_ritual\_p25h_ev.txt 709
+.\_ritual\_p25h_ev2.txt 13262
+.\_ritual\_p25h_ev3.txt 1490
+.\_ritual\_p25h_host.txt 896
+.\_ritual\_p25h_kp.txt 2199
+.\_ritual\_p25h_launch.txt 254
+.\_ritual\_p25h_parse.txt 8
+.\_ritual\_p25h_parse2.txt 8
+.\_ritual\_p25h_S13pad.cer 994
+.\_ritual\_p25h_S13pad.sys 10384
+.\_ritual\_p25h_S14cn.cer 824
+.\_ritual\_p25h_S14cn.sys 10216
+.\_ritual\_p25h_S2ctl.sys 10192
+.\_ritual\_p25h_S6lan.cer 994
+.\_ritual\_p25h_S6lan.sys 10384
+.\_ritual\_p25h_S7win.cer 986
+.\_ritual\_p25h_S7win.sys 10376
+.\_ritual\_p25h_S8old.cer 994
+.\_ritual\_p25h_S8old.sys 10384
+.\_ritual\_p25h_S9msf.cer 944
+.\_ritual\_p25h_S9msf.sys 10336
+.\_ritual\_p25h_where.txt 253
+.\_ritual\_p25h_winner.txt 4453
+.\_ritual\_p26_ground.txt 5841
+.\_ritual\_p28run.ps1 969
+.\_ritual\_p28_err.txt 273
+.\_ritual\_p33_sso.bak 91
+.\_ritual\_p34list.txt 648
+.\_ritual\_p34_task.log 143
+.\_ritual\_p36_copy.txt 20185
+.\_ritual\_p36_fix.log 130
+.\_ritual\_p36_grant.log 223
+.\_ritual\_p36_mid.txt 18184
+.\_ritual\_p36_peek.txt 2951
+.\_ritual\_p36_prov_check.dll 19456
+.\_ritual\_p36_ps1_now.txt 26875
+.\_ritual\_p36_retry.log 7708
+.\_ritual\_p36_stderr.txt 0
+.\_ritual\_p36_task.log 118
+.\_ritual\_p37_cs.dll 21504
+.\_ritual\_p37_cs.txt 0
+.\_ritual\_p37_cs2.txt 0
+.\_ritual\_p37_cs3.txt 0
+.\_ritual\_p37_diag.ps1 1617
+.\_ritual\_p37_diag.txt 349
+.\_ritual\_p37_grant_verify.txt 138
+.\_ritual\_p37_ping.ps1 4133
+.\_ritual\_p37_ping.txt 1251
+.\_ritual\_p37_ping_task.log 124
+.\_ritual\_p37_ping_task.ps1 1208
+.\_ritual\_p37_ping_task2.ps1 1474
+.\_ritual\_p37_probe.ps1 2427
+.\_ritual\_p37_selftest.out 1069
+.\_ritual\_p37_selftest.ps1 2453
+.\_ritual\_p37_src.txt 122
+.\_ritual\_p37_state.txt 156
+.\_ritual\_p37_task.log 167
+.\_ritual\_p37_task.out 0
+.\_ritual\_p37_verify_grant.ps1 1550
+.\_ritual\_p38.txt 436
+.\_ritual\_p38b.ps1 1485
+.\_ritual\_p38_chk_task.log 122
+.\_ritual\_p38_cscheck.txt 28
+.\_ritual\_p38_cscheck2.txt 28
+.\_ritual\_p38_cscheck3.txt 28
+.\_ritual\_p38_cscheck4.txt 28
+.\_ritual\_p38_cscheck5.txt 17
+.\_ritual\_p38_evid.txt 1132
+.\_ritual\_p38_isp.ps1 1144
+.\_ritual\_p38_isp.txt 1116
+.\_ritual\_p38_poll.txt 3429
+.\_ritual\_p38_poll3.txt 1927
+.\_ritual\_p38_readchk.ps1 1469
+.\_ritual\_p38_run2_poll.txt 2462
+.\_ritual\_p38_task.log 166
+.\_ritual\_p6.ps1 3476
+.\_ritual\_p6.txt 7753
+.\_ritual\_p8.ps1 9018
+.\_ritual\_p8.txt 2532
+.\_ritual\_p9.ps1 19081
+.\_ritual\_p9.txt 8031
+.\_ritual\_p9diag.txt 206
+.\_ritual\_p9diag2.txt 1186
+.\_ritual\_p9diag3.txt 1671
+.\_ritual\_p9diag4.txt 231
+.\_ritual\_parse_check.txt 15
+.\_ritual\_pat2.txt 0
+.\_ritual\_pat3.txt 8
+.\_ritual\_path.txt 13
+.\_ritual\_path2.txt 231
+.\_ritual\_payloadhash.txt 320
+.\_ritual\_peek_annot_11cd.txt 1477
+.\_ritual\_peek_annot_mid.txt 8990
+.\_ritual\_peek_annot_umap.txt 7843
+.\_ritual\_peek_annot_uworker.txt 8387
+.\_ritual\_peek_check.txt 2914
+.\_ritual\_peek_cs_a.txt 17738
+.\_ritual\_peek_cs_b.txt 16834
+.\_ritual\_peek_cs_head.txt 3620
+.\_ritual\_peek_cs_maptry3.txt 3111
+.\_ritual\_peek_cs_mid2.txt 22619
+.\_ritual\_peek_cs_tail.txt 31187
+.\_ritual\_peek_imp.txt 1427
+.\_ritual\_peek_log.txt 4676
+.\_ritual\_peek_log2.txt 4676
+.\_ritual\_peek_msio44.txt 4337
+.\_ritual\_peek_msio_map.txt 3674
+.\_ritual\_peek_msio_mid.txt 4486
+.\_ritual\_peek_msio_tail.txt 3219
+.\_ritual\_peek_msio_wh.txt 10680
+.\_ritual\_peek_ps1tail.txt 6884
+.\_ritual\_peek_ps1_mid.txt 21355
+.\_ritual\_peek_ps1_mid3.txt 5962
+.\_ritual\_peek_ps1_tail3.txt 6983
+.\_ritual\_peek_ps1_try3.txt 4687
+.\_ritual\_peek_ps1_try3b.txt 3638
+.\_ritual\_peek_ps1_w1tail.txt 2641
+.\_ritual\_peek_ps1_w1w2.txt 10507
+.\_ritual\_peek_ps1_w2.txt 12659
+.\_ritual\_peek_retry.txt 2935
+.\_ritual\_peek_str170.txt 444
+.\_ritual\_peek_w1w2.txt 14575
+.\_ritual\_pid34.txt 76
+.\_ritual\_plan_boot11.ps1 773
+.\_ritual\_plan_boot11.txt 171
+.\_ritual\_plan_env.txt 1076
+.\_ritual\_plan_env2.txt 6176
+.\_ritual\_plan_grep.txt 631
+.\_ritual\_plan_h1fix.txt 4095
+.\_ritual\_plan_hostpost.ps1 2054
+.\_ritual\_plan_hostpost.txt 535
+.\_ritual\_plan_hostpre.ps1 2143
+.\_ritual\_plan_hostpre.txt 2019
+.\_ritual\_plan_k11.txt 271
+.\_ritual\_plan_k11watch.txt 1783
+.\_ritual\_plan_load11.txt 1307
+.\_ritual\_plan_parse.ps1 453
+.\_ritual\_plan_parse.txt 55
+.\_ritual\_plan_schk11.txt 74
+.\_ritual\_plan_schtask11.txt 72
+.\_ritual\_plan_sig11.ps1 723
+.\_ritual\_plan_sig11.txt 834
+.\_ritual\_plan_sigcheck11.txt 40
+.\_ritual\_plan_sigcheck11b.txt 25
+.\_ritual\_plan_sigloop11.ps1 386
+.\_ritual\_plan_sp11.txt 69
+.\_ritual\_plan_start10.ps1 2327
+.\_ritual\_plan_start10.txt 749
+.\_ritual\_plan_start11.ps1 1720
+.\_ritual\_plan_start11.txt 513
+.\_ritual\_plan_vmstat.ps1 1447
+.\_ritual\_plan_vmstat.txt 2233
+.\_ritual\_plan_watch10.ps1 868
+.\_ritual\_plan_watch10.txt 1805
+.\_ritual\_plan_watch11.ps1 1122
+.\_ritual\_plan_watch11.txt 873
+.\_ritual\_pm.txt 43
+.\_ritual\_pn2231.txt 347
+.\_ritual\_pn9437.txt 347
+.\_ritual\_poll.txt 395
+.\_ritual\_poll10.txt 981
+.\_ritual\_poll11.txt 540
+.\_ritual\_poll2.txt 187
+.\_ritual\_poll3.txt 1793
+.\_ritual\_poll5.txt 84
+.\_ritual\_poll7.txt 342
+.\_ritual\_poll8.txt 3492
+.\_ritual\_poll9.txt 396
+.\_ritual\_ports.txt 62
+.\_ritual\_post1.out.txt 7
+.\_ritual\_post1.ps1 2074
+.\_ritual\_post1.txt 4403
+.\_ritual\_pre_reboot.txt 5188
+.\_ritual\_prlines.txt 1201
+.\_ritual\_probe.sys 10184
+.\_ritual\_probe.txt 107
+.\_ritual\_probe2.ps1 3223
+.\_ritual\_probe2.txt 1152
+.\_ritual\_probe3.ps1 5851
+.\_ritual\_probe3.txt 36272
+.\_ritual\_probe4.ps1 5165
+.\_ritual\_probe4.txt 1286
+.\_ritual\_probe5.ps1 4517
+.\_ritual\_probe5.txt 1591
+.\_ritual\_probe6.ps1 3318
+.\_ritual\_probe_v0.cer 817
+.\_ritual\_proj.txt 2128
+.\_ritual\_provtable.txt 25368
+.\_ritual\_ps1_mid.txt 21358
+.\_ritual\_pscdump.txt 8450
+.\_ritual\_psctest.ps1 2934
+.\_ritual\_psctest.txt 1136
+.\_ritual\_pstest.ps1 204
+.\_ritual\_ps_peek.txt 8643
+.\_ritual\_pw.txt 24
+.\_ritual\_py.txt 472
+.\_ritual\_q.txt 88
+.\_ritual\_q1.txt 1276
+.\_ritual\_q3.txt 416
+.\_ritual\_q4.txt 549
+.\_ritual\_q6.txt 204
+.\_ritual\_q7.txt 2162
+.\_ritual\_q8.txt 2050
+.\_ritual\_q9.txt 613
+.\_ritual\_qa.txt 4858
+.\_ritual\_qb.txt 686
+.\_ritual\_r1.txt 2082
+.\_ritual\_r2.txt 160
+.\_ritual\_r3.txt 529
+.\_ritual\_r4.txt 9509
+.\_ritual\_r5.txt 8534
+.\_ritual\_r6.txt 4892
+.\_ritual\_r7.txt 7797
+.\_ritual\_r8.txt 5104
+.\_ritual\_r9.txt 5711
+.\_ritual\_ra.txt 21
+.\_ritual\_raise.txt 60
+.\_ritual\_ramhex.txt 361
+.\_ritual\_ramraw.txt 722
+.\_ritual\_reboot.log 56
+.\_ritual\_recon1.txt 9896
+.\_ritual\_recon2.txt 1560
+.\_ritual\_recon3.txt 17225
+.\_ritual\_recon4.txt 3265
+.\_ritual\_recon5.txt 6799
+.\_ritual\_recon6.txt 825
+.\_ritual\_recon7.txt 1358
+.\_ritual\_RESUME_VMSTART.md 3355
+.\_ritual\_rr.txt 602
+.\_ritual\_rt.txt 3633
+.\_ritual\_running.txt 81
+.\_ritual\_s10.txt 181
+.\_ritual\_s11.txt 472
+.\_ritual\_s12.txt 66
+.\_ritual\_s13.txt 37
+.\_ritual\_s14.txt 4
+.\_ritual\_s15.txt 26
+.\_ritual\_s16.txt 230
+.\_ritual\_s17.txt 448
+.\_ritual\_s18.txt 5
+.\_ritual\_s19.txt 994
+.\_ritual\_s20.txt 1325
+.\_ritual\_s2004.txt 3983
+.\_ritual\_s2014.txt 4184
+.\_ritual\_s21.txt 95
+.\_ritual\_s22.txt 7
+.\_ritual\_s23.txt 32
+.\_ritual\_s24.txt 13
+.\_ritual\_s25.txt 82
+.\_ritual\_s26.txt 14
+.\_ritual\_s27.txt 116
+.\_ritual\_s29.txt 64
+.\_ritual\_s30.txt 96
+.\_ritual\_s31.txt 7
+.\_ritual\_s32.txt 7
+.\_ritual\_s33.txt 83
+.\_ritual\_s34.txt 173
+.\_ritual\_s35.txt 14
+.\_ritual\_s36.txt 14
+.\_ritual\_s39.txt 31
+.\_ritual\_s4.txt 203
+.\_ritual\_s40.txt 2
+.\_ritual\_s41.txt 552
+.\_ritual\_s43.txt 73
+.\_ritual\_s45.txt 117
+.\_ritual\_s46.txt 196
+.\_ritual\_s47.txt 4
+.\_ritual\_s5.txt 17
+.\_ritual\_s50.txt 4504
+.\_ritual\_s51.txt 4795
+.\_ritual\_s52.txt 4531
+.\_ritual\_s53.txt 2473
+.\_ritual\_s55.txt 4
+.\_ritual\_s56.txt 129
+.\_ritual\_s57.ps1 1269
+.\_ritual\_s57.txt 7137
+.\_ritual\_s57done.txt 8
+.\_ritual\_s59.txt 107
+.\_ritual\_s6.txt 946
+.\_ritual\_s60.txt 82
+.\_ritual\_s61.txt 0
+.\_ritual\_s62.txt 722
+.\_ritual\_s63.txt 4
+.\_ritual\_s64.txt 4
+.\_ritual\_s65.txt 4
+.\_ritual\_s66.txt 106
+.\_ritual\_s67.txt 4
+.\_ritual\_s7.txt 706
+.\_ritual\_s8.txt 9
+.\_ritual\_s9.txt 453
+.\_ritual\_sample_k11.ps1 750
+.\_ritual\_se.txt 505
+.\_ritual\_sess.txt 49
+.\_ritual\_sg1.jpg 130921
+.\_ritual\_sg1.txt 44
+.\_ritual\_sg2.jpg 119220
+.\_ritual\_sg2.txt 44
+.\_ritual\_sg3.jpg 117747
+.\_ritual\_sg4.jpg 116064
+.\_ritual\_sg4.txt 45
+.\_ritual\_sg5.jpg 122203
+.\_ritual\_sg5.txt 45
+.\_ritual\_sg5b.txt 45
+.\_ritual\_sg6.jpg 120376
+.\_ritual\_sg7.jpg 118127
+.\_ritual\_sg7.txt 44
+.\_ritual\_sg8.jpg 110547
+.\_ritual\_sg8.txt 30
+.\_ritual\_sh.txt 32
+.\_ritual\_shot2.txt 900
+.\_ritual\_si.txt 50
+.\_ritual\_sig_err.txt 10992
+.\_ritual\_sites.txt 35
+.\_ritual\_sk.txt 21
+.\_ritual\_slow.txt 48
+.\_ritual\_srcscan.txt 4629
+.\_ritual\_st1.txt 5243
+.\_ritual\_start1.txt 701
+.\_ritual\_start2.txt 710
+.\_ritual\_start3.ps1 893
+.\_ritual\_start3.txt 997
+.\_ritual\_start4.txt 1007
+.\_ritual\_start5.txt 981
+.\_ritual\_state.txt 88644
+.\_ritual\_state1.txt 26
+.\_ritual\_state2.txt 1250
+.\_ritual\_state3.txt 27
+.\_ritual\_state4.txt 1097
+.\_ritual\_state5.txt 591
+.\_ritual\_state_now.txt 492
+.\_ritual\_state_tail.txt 24549
+.\_ritual\_status.ps1 1229
+.\_ritual\_sum.txt 115
+.\_ritual\_svc1.txt 0
+.\_ritual\_svcs.txt 203
+.\_ritual\_sz.txt 111
+.\_ritual\_t.txt 17
+.\_ritual\_t2.txt 21
+.\_ritual\_t3.txt 9
+.\_ritual\_t4.txt 9
+.\_ritual\_t5.txt 9
+.\_ritual\_tab.txt 16
+.\_ritual\_task.txt 509
+.\_ritual\_tg.txt 1922
+.\_ritual\_thr.txt 224
+.\_ritual\_tmp_cs.txt 46969
+.\_ritual\_tmp_get.txt 1620
+.\_ritual\_tmp_io1tail.txt 14211
+.\_ritual\_tmp_w2.txt 1983
+.\_ritual\_toolsets.txt 31
+.\_ritual\_tracked.txt 4006
+.\_ritual\_tree.txt 9670
+.\_ritual\_u2.ps1 2990
+.\_ritual\_u2.txt 1715
+.\_ritual\_u3.ps1 2024
+.\_ritual\_u3.txt 309
+.\_ritual\_u4.ps1 3483
+.\_ritual\_u4.txt 966
+.\_ritual\_u5.ps1 2486
+.\_ritual\_u5.txt 233
+.\_ritual\_u6.txt 88
+.\_ritual\_u6_fix.ps1 3971
+.\_ritual\_u7_input_reset.txt 302
+.\_ritual\_unstick.txt 455
+.\_ritual\_up.txt 188
+.\_ritual\_v.txt 460
+.\_ritual\_vboxlog_hits.txt 3222
+.\_ritual\_vboxlog_tail.txt 7437
+.\_ritual\_viddiag.log 1277
+.\_ritual\_vm10.txt 2396
+.\_ritual\_vm11.txt 1918
+.\_ritual\_vm12.txt 1372
+.\_ritual\_vm13.txt 2002
+.\_ritual\_vm14.txt 868
+.\_ritual\_vm15.txt 2720
+.\_ritual\_vm16.txt 3744
+.\_ritual\_vm17.txt 3080
+.\_ritual\_vm18.txt 3164
+.\_ritual\_vm19.txt 2052
+.\_ritual\_vm2.txt 6634
+.\_ritual\_vm20.txt 2996
+.\_ritual\_vm21.txt 820
+.\_ritual\_vm22.txt 886
+.\_ritual\_vm23.txt 1448
+.\_ritual\_vm24.txt 866
+.\_ritual\_vm26.txt 160
+.\_ritual\_vm3.txt 5036
+.\_ritual\_vm5.txt 2508
+.\_ritual\_vm6.txt 5773
+.\_ritual\_vm7.txt 6182
+.\_ritual\_vm8.txt 1618
+.\_ritual\_vm9.txt 4248
+.\_ritual\_vmgo.log 276
+.\_ritual\_vmgo2.log 974
+.\_ritual\_vmgo3.log 390
+.\_ritual\_vmgo4.log 1855
+.\_ritual\_vmgo_boot.log 0
+.\_ritual\_vmstate.txt 434
+.\_ritual\_vm_alive.txt 4704
+.\_ritual\_vm_boot.txt 204
+.\_ritual\_vm_boot2.txt 328
+.\_ritual\_vm_probe_net.ps1 663
+.\_ritual\_vm_screen.png 24221
+.\_ritual\_vols.txt 1505
+.\_ritual\_vs.txt 28
+.\_ritual\_vsbuild_install.log 619
+.\_ritual\_vsbuild_install.log.err 0
+.\_ritual\_w1.txt 6940
+.\_ritual\_w1090.txt 5525
+.\_ritual\_w1380.txt 11695
+.\_ritual\_w1b.txt 1384
+.\_ritual\_w1c.txt 993
+.\_ritual\_w1d.txt 843
+.\_ritual\_w1e.txt 547
+.\_ritual\_w2.txt 7518
+.\_ritual\_w2sec.txt 3035
+.\_ritual\_watch_k11.ps1 1012
+.\_ritual\_wfp.txt 127
+.\_ritual\_whpdiag.log 3755
+.\_ritual\_whpprobe.ps1 2655
+.\_ritual\_whpprobe.txt 357
+.\_ritual\_whpprobe2.ps1 3619
+.\_ritual\_whpprobe2.txt 464
+.\_ritual\_whpscan.ps1 1676
+.\_ritual\_whpscan.txt 495
+.\_ritual\_whv1.txt 223
+.\_ritual\_winidx.txt 1488
+.\_ritual\dumps\102726-9484-01.dmp 9660374
+.\_ritual\dumps\110126-9437-01.dmp 9564455
+.\_ritual\ev\e_apex.txt 14
+.\_ritual\ev\final_ladder.txt 1204
+.\_ritual\ev\game_ready.txt 10
+.\_ritual\ev\live_ladder_menu.txt 1832
+.\_ritual\ev\live_probe_menu.txt 4678
+.\_ritual\ev\q1.txt 1187
+.\_ritual\ev\testsigning.txt 491
+.\_ritual\ev\v1.txt 1216
+.\_ritual\js\code.js 981
+.\_ritual\js\code2.js 803
+.\_ritual\js\create.js 981
+.\_ritual\js\dbg.js 799
+.\_ritual\js\dump.js 592
+.\_ritual\js\findnext.js 582
+.\_ritual\js\form.js 349
+.\_ritual\js\ids.js 317
+.\_ritual\js\next.js 312
+.\_ritual\js\nudge.js 486
+.\_ritual\js\step1.js 861
+.\_ritual\js\submit.js 139
+.\_ritual\_dumps\102726-9484-01.dmp 9660374
+.\_ritual\_dumps\110126-9437-01.dmp 9564455
+.\_ritual\_dumps\110126-9718-01.dmp 9349590
+.\_ritual\_psctest\src 1
+.\_ritual\_psctest\psc.cat 806
+.\_ritual\_psctest\src\apexdrv_build.sys 10152
+.\_ritual\_psctest\src\p26probe.bin 52
+.\_ritual\_vmbench\active.txt 3
+.\_ritual\_vmbench\boot.cmd 476
+.\_ritual\_vmbench\cur.ps1 2225
+.\_ritual\_vmbench\go.cmd 411
+.\_ritual\_vmbench\go2.cmd 252
+.\_ritual\_vmbench\guest-B.log 6306
+.\_ritual\_vmbench\loop.cmd 279
+.\_ritual\_vmbench\once.cmd 385
+.\_ritual\_vmbench\probeA.ps1 2483
+.\_ritual\_vmbench\probeB.ps1 2722
+.\_ritual\_vmbench\probeC.ps1 2536
+.\_ritual\_vmbench\probeD.ps1 1595
+.\_ritual\_vmbench\probeE.ps1 2356
+.\_ritual\_vmbench\probeF.ps1 2225
+.\_ritual\_vmbench\run.cmd 300
+.\_ritual\_vmbench\server.ps1 3791
+.\_ritual\_vmbench\stage2.ps1 2721
+.\_ritual\_vmbench\stage3.ps1 1778
+.\_ritual\_vmbench\tick.ps1 706
+.\_ritual\_vmbench\type.ps1 1690
+.\_ritual\_vmbench\upgrade.ps1 1059
+.\_ritual\_vmbench\upgrade2.ps1 1016
+.\_ritual\_vmbench\upgrade3.ps1 935
+.\_ritual\_vmbench\_p37_ping.ps1 4133
+--- exe loaders ---
+.\ai_apex_external_aimbot_architecture.md 4457
+.\apexcheat.ini 0
+.\apexdrv.obj 43312
+.\apexr - run after reboot.lnk 1177
+.\generated_cheats\full_system\data_provider.py 4157
+.\generated_cheats\full_system_v2\data_provider.py 4223
+.\Qwen Knowledge base\phase4_apex_cheat 1
+.\Qwen Knowledge base\phase4_apex_cheat_package 1
+.\Qwen Knowledge base\Apex_Legends_Anti_Cheat_and_Provider_Change.txt 10972
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_011647.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_011647.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012040.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012040.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012313.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012313.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012641.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012641.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012707.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012707.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012802.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_012802.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013231.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013231.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013345.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013345.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013440.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013440.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013549.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013549.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013839.json 2
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_capture_20261014_013839.pcap 24
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_implementation_guide.md 14697
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_methods_research.md 7352
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplication_summary.md 6746
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_duplicator.py 13952
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_092253.json 251
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_092328.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_093256.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\apex_pack_hybrid_dupe_20261014_100346.json 12338
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_apex_pack_dupe.py 17327
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_apex_pack_network.py 17976
+.\Qwen Knowledge base\phase4_apex_cheat\archive\legacy_cheat_core\apex_pack 1
+.\Qwen Knowledge base\phase4_apex_cheat\__pycache__\apex_pack_duplicator.cpython-312.pyc 18137
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.dll 41984
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.exp 4331
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.lib 7846
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat.pdb 1593344
+.\Qwen Knowledge base\phase4_apex_cheat_package\apex_cheat_py.py 16239
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\apex_cheat.h 6844
+.\Qwen Knowledge base\phase4_apex_cheat_package\source\apex_cheat_main.cpp 19388
+.\Qwen Knowledge base\phase5_cpp_ImGui\apex_cheat.sln 1229
+.\Qwen Knowledge base\phase5_cpp_ImGui\apex_cheat.vcxproj 4035
+.\Qwen Knowledge base\phase5_cpp_ImGui\include\apex_cheat.h 4222
+.\Qwen Knowledge base\phase5_cpp_ImGui\python_wrapper\apex_cheat_py.py 9361
+.\Qwen Knowledge base\phase5_cpp_ImGui\src\apex_cheat_main.cpp 11701
+.\QwenKern\ApexLegendsCheats.md 2432
+.\QwenKern\apex_legends_cheats_guide.md 2761
+.\QwenKern\eac_apex_legends_analysis.md 4121
+.\QwenKern\knowledge_base\phase5-research-apex-season30.md 11446
+.\QwenKern\knowledge_base\reverse-engineering-apex-and-javelin.md 7460
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.exe 47616
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.exp 1193
+.\QwenKern\phase3_menu_system\imgui_integration\Release\ApexCheatMenu.lib 2688
+.\QwenKern\phase4_esp_overlay\RESEARCH_AND_IMPROVEMENTS.md 21963
+.\QwenKernPremium\apexcheat.ini 0
+.\QwenKernPremium\apex_cheat.sln 1391
+.\QwenKernPremium\apex_cheat.vcxproj 8824
+.\QwenKernPremium\apex_launcher.vcxproj 4310
+.\QwenKernPremium\build\apexcheat.dll 318976
+.\QwenKernPremium\build\apexcheat.ini 94
+.\QwenKernPremium\build\apexcheat.launcher.ini 203
+.\QwenKernPremium\build\apexcheat.pdb 6836224
+.\QwenKernPremium\build\apexdrv.obj 43376
+.\QwenKernPremium\build\apexdrv.sys 10152
+.\QwenKernPremium\build\apexdrv_dev.cer 806
+.\QwenKernPremium\build\apexdrv_probe.txt 640
+.\QwenKernPremium\build\apex_launcher.exe 428544
+.\QwenKernPremium\build\apex_launcher.pdb 6647808
+.\QwenKernPremium\build\diag_driver_load.ps1 3517
+.\QwenKernPremium\build\obj\apexdrv 1
+.\QwenKernPremium\build\obj\apexdrv\Release\apexdrv.obj 15880
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog 1
+.\QwenKernPremium\build\obj\launcher\Release\apex_injector.obj 1230168
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.Build.CppClean.log 2233
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.exe.recipe 326
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.iobj 2866334
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.ipdb 1974160
+.\QwenKernPremium\build\obj\launcher\Release\apex_launcher.tlog\apex_launcher.lastbuildstate 191
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog 1
+.\QwenKernPremium\build\obj\Release\apexcheat.Build.CppClean.log 2669
+.\QwenKernPremium\build\obj\Release\apexcheat.dll.recipe 322
+.\QwenKernPremium\build\obj\Release\apexcheat.iobj 2405167
+.\QwenKernPremium\build\obj\Release\apexcheat.ipdb 1040768
+.\QwenKernPremium\build\obj\Release\apex_injector.obj 1230138
+.\QwenKernPremium\build\obj\Release\apex_cheat.tlog\apex_cheat.lastbuildstate 191
+.\QwenKernPremium\build\phase1_evidence\apex_ac.txt 669
+.\QwenKernPremium\build\phase1_evidence\apex_ac2.txt 7148
+.\QwenKernPremium\build\phase1_evidence\apex_ac3.txt 9599
+.\QwenKernPremium\build\phase1_evidence\apex_install.txt 76118
+.\QwenKernPremium\build\phase1_evidence\b3_ladder.txt 850
+.\QwenKernPremium\build\phase1_evidence\driver_load_diag.txt 3649
+.\QwenKernPremium\build\phase1_evidence\driver_sign_load.txt 2371
+.\QwenKernPremium\build\phase1_evidence\elev2_apex.txt 17
+.\QwenKernPremium\build\phase1_evidence\elev_apex.txt 14
+.\QwenKernPremium\build\phase1_evidence\e_apex.txt 14
+.\QwenKernPremium\docs\APEX_OFFSETS_AND_DUMPING_METHODS.txt 4782
+.\QwenKernPremium\docs\R5AC_APEX_ANTI_CHEAT_ANALYSIS.txt 4822
+.\QwenKernPremium\driver\apexdrv.c 18385
+.\QwenKernPremium\driver\apexdrv.obj 43376
+.\QwenKernPremium\driver\apexdrv.vcxproj 3636
+.\QwenKernPremium\driver\build\obj\apexdrv 1
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog 1
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.Build.CppClean.log 832
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.obj 37238
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.sys.recipe 327
+.\QwenKernPremium\driver\build\obj\apexdrv\Release\apexdrv.tlog\apexdrv.lastbuildstate 198
+.\QwenKernPremium\include\apex_driver_ioctl.h 6546
+.\QwenKernPremium\src\apex_injector.cpp 32905
+.\temp\apex_exe.txt 113
+.\temp\drv\apexr.c 6112
+.\temp\drv\apexr.cer 766
+.\temp\drv\apexr.obj 6981
+.\temp\drv\apexr.sys 5488
+.\temp\drv\backup\apexdrv.sys 8616
+.\temp\drv\backup\apexr.sys 5488
+.\_ritual\apexdrv_lab_dse.cer 815
+.\_ritual\apexdrv_lab_leaf.cer 858
+.\_ritual\apexdrv_lab_oneshot.cer 833
+.\_ritual\apexdrv_lab_root.cer 802
+.\_ritual\B3.done 7
+.\_ritual\h1b3_dse_set.ps1 696
+.\_ritual\p36_prov.cs 46443
+.\_ritual\p37_prov.cs 46602
+.\_ritual\p38_prov.cs 57044
+.\_ritual\_apexdrv_find.txt 102
+.\_ritual\_b3scan.txt 4938
+.\_ritual\_h1b3.txt 1622
+.\_ritual\_kdu.txt 0
+.\_ritual\_kdu_data.txt 287
+.\_ritual\_kdu_fetch.txt 429
+.\_ritual\_kdu_host2.txt 14
+.\_ritual\_kdu_hostlist.txt 34
+.\_ritual\_kdu_stage.txt 35
+.\_ritual\_kdu_tree.txt 2902
+.\_ritual\_kdu_unz.txt 21
+.\_ritual\_p36_prov_check.dll 19456
+.\_ritual\_payloadhash.txt 320
+.\_ritual\_plan_load11.txt 1307
+.\_ritual\_provtable.txt 25368
+.\_ritual\ev\e_apex.txt 14
+.\_ritual\_psctest\src\apexdrv_build.sys 10152

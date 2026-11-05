@@ -1,0 +1,16 @@
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: apexdrv
+        TYPE               : 1  KERNEL_DRIVER 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : \??\C:\Windows\System32\drivers\apexdrv.sys
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : QwenKern apexdrv
+        DEPENDENCIES       : 
+        SERVICE_START_NAME : 
+sig=Valid
+ts=11/01/2026 14:00:47
+kdu=
+cii=0

@@ -1,0 +1,98 @@
+basehunt  2026-11-04 14:02:02  dry=3 from=None max-s=60
+RAMTOP 0x800000000 map=5 bad=24 ranges=5
+window B=0xffffa40000000000..0xffffa401b7ea0000  pa_max=0x1b7ea0000  -4503574929506656 pages  dry=3
+range 0x2000000..0x2e00000 done 0.0s
+  ... pa=0x31f0000 tried=4078 shapes=0 0.0s
+  dead 0x3d10000..0x3d10000 skipped (1 probes)
+  ... pa=0x41f0000 tried=8150 shapes=0 0.0s
+range 0x3000000..0x4400000 done 0.0s
+  dead 0x4f00000..0x5100000 skipped (2 probes)
+  ... pa=0x55f0000 tried=12228 shapes=0 0.0s
+  ... pa=0x65f0000 tried=16321 shapes=0 0.1s
+  ... pa=0x75f0000 tried=20417 shapes=0 0.1s
+  ... pa=0x85f0000 tried=24513 shapes=0 0.1s
+  ... pa=0x95f0000 tried=28607 shapes=0 0.1s
+  ... pa=0xa5f0000 tried=32697 shapes=0 0.2s
+  ... pa=0xb5f0000 tried=36786 shapes=0 0.2s
+  ... pa=0xc5f0000 tried=40878 shapes=0 0.2s
+  ... pa=0xd5f0000 tried=44970 shapes=0 0.3s
+  ... pa=0xe5f0000 tried=49063 shapes=0 0.3s
+  ... pa=0xf5f0000 tried=53155 shapes=0 0.3s
+  ... pa=0x105f0000 tried=57248 shapes=0 0.4s
+  ... pa=0x115f0000 tried=61343 shapes=0 0.4s
+  ... pa=0x125f0000 tried=65437 shapes=0 0.4s
+  ... pa=0x135f0000 tried=69532 shapes=0 0.4s
+  ... pa=0x145f0000 tried=73622 shapes=0 0.4s
+  ... pa=0x155f0000 tried=77716 shapes=0 0.5s
+  ... pa=0x165f0000 tried=81803 shapes=0 0.5s
+  ... pa=0x175f0000 tried=85887 shapes=0 0.5s
+  ... pa=0x185f0000 tried=89969 shapes=0 0.5s
+  ... pa=0x195f0000 tried=94057 shapes=0 0.6s
+  ... pa=0x1a5f0000 tried=98149 shapes=0 0.6s
+  ... pa=0x1b5f0000 tried=102238 shapes=0 0.6s
+  ... pa=0x1c5f0000 tried=106329 shapes=0 0.6s
+  ... pa=0x1d5f0000 tried=110423 shapes=0 0.6s
+  ... pa=0x1e5f0000 tried=114507 shapes=0 0.7s
+  ... pa=0x1f5f0000 tried=118600 shapes=0 0.7s
+  ... pa=0x205f0000 tried=122694 shapes=0 0.7s
+  ... pa=0x215f0000 tried=126788 shapes=0 0.7s
+  ... pa=0x225f0000 tried=130875 shapes=0 0.7s
+  ... pa=0x235f0000 tried=134963 shapes=0 0.7s
+  ... pa=0x245f0000 tried=139057 shapes=0 0.8s
+  ... pa=0x255f0000 tried=143145 shapes=0 0.8s
+  ... pa=0x265f0000 tried=147236 shapes=0 0.8s
+  ... pa=0x275f0000 tried=151332 shapes=0 0.8s
+  ... pa=0x285f0000 tried=155426 shapes=0 0.8s
+  ... pa=0x295f0000 tried=159518 shapes=0 0.8s
+  ... pa=0x2a5f0000 tried=163608 shapes=0 0.9s
+  ... pa=0x2b5f0000 tried=167693 shapes=0 0.9s
+  ... pa=0x2c5f0000 tried=171785 shapes=0 0.9s
+  ... pa=0x2d5f0000 tried=175855 shapes=0 0.9s
+  ... pa=0x2e5f0000 tried=179946 shapes=0 0.9s
+  ... pa=0x2f5f0000 tried=184036 shapes=0 1.0s
+  ... pa=0x305f0000 tried=188130 shapes=0 1.0s
+  ... pa=0x315f0000 tried=192225 shapes=0 1.0s
+range 0x4600000..0x31f52000 done 1.0s
+range 0x35fff000..0x36000000 done 0.0s
+  ... pa=0x140680000 tried=196278 shapes=0 1.0s
+  ... pa=0x141680000 tried=200296 shapes=0 1.1s
+  ... pa=0x142680000 tried=204332 shapes=0 1.1s
+  dead 0x143480000..0x143480000 skipped (1 probes)
+  ... pa=0x143680000 tried=208351 shapes=0 1.2s
+  dead 0x143760000..0x143760000 skipped (1 probes)
+  dead 0x143790000..0x143990000 skipped (2 probes)
+  ... pa=0x144880000 tried=212326 shapes=0 1.2s
+  ... pa=0x145880000 tried=216328 shapes=0 1.3s
+  dead 0x145c70000..0x145c70000 skipped (1 probes)
+  dead 0x145e50000..0x145e50000 skipped (1 probes)
+  ... pa=0x146880000 tried=220219 shapes=0 1.4s
+  ... pa=0x147880000 tried=224190 shapes=0 1.5s
+  ... pa=0x148880000 tried=228190 shapes=0 1.6s
+  ... pa=0x149880000 tried=232192 shapes=0 1.6s
+  ... pa=0x14a880000 tried=236222 shapes=0 1.7s
+  ... pa=0x14b880000 tried=240261 shapes=0 1.7s
+  ... pa=0x14c880000 tried=244294 shapes=0 1.8s
+  ... pa=0x14d880000 tried=248329 shapes=0 1.9s
+  ... pa=0x14e880000 tried=252358 shapes=0 1.9s
+  ... pa=0x14f880000 tried=256375 shapes=0 2.0s
+  ... pa=0x150880000 tried=260375 shapes=0 2.1s
+  ... pa=0x151880000 tried=264430 shapes=0 2.1s
+  ... pa=0x152880000 tried=268476 shapes=0 2.1s
+shape pa=0x153570000 o=0x80 pid=0x4cb8 name=b'codex.exe\x00\x00\x00\x00\x00\x00'
+  b=0xffffa4005f035000 (FL) reciprocity failed
+  b=0xffffa40064930000 (BL) reciprocity failed
+  ... pa=0x153880000 tried=272512 shapes=1 2.2s
+  ... pa=0x154880000 tried=276555 shapes=1 2.2s
+  ... pa=0x155880000 tried=280600 shapes=1 2.3s
+  ... pa=0x156880000 tried=284646 shapes=1 2.3s
+  ... pa=0x157880000 tried=288702 shapes=1 2.4s
+  ... pa=0x158880000 tried=292759 shapes=1 2.4s
+  ... pa=0x159880000 tried=296840 shapes=1 2.4s
+shape pa=0x15a843000 o=0x80 pid=0x5b74 name=b'OpenConsole.ex\x00'
+  b=0xffffa40057d62000 (FL) reciprocity failed
+  b=0xffffa4005d65d000 (BL) reciprocity failed
+shape pa=0x15a849000 o=0x80 pid=0xda8 name=b'svchost.exe\x00\x00\x00\x00'
+  b=0xffffa40057d5c000 (FL) reciprocity failed
+  b=0xffffa4005d657000 (BL) reciprocity failed
+dry: 3 shapes, stopping
+VERDICT: DRY_OK stopped_after_shapes resume_pa=0x15a849000

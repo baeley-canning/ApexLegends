@@ -1,0 +1,77 @@
+# p64_pairs 2026-11-04 23:57:17 band=full win=0x100 min=3
+SEED 2 clusters from p64_seed9.txt
+CUES  880Hz short = countdown nade before GO
+      1400Hz x3   = GO, the run starts
+      500Hz x2    = THROW one frag at your feet NOW
+      a THROW with no shot number = the cue fired itself, shield is 0
+      no beep     = stand still, do not throw
+READY wait=12s (drink up so armour is FULL, 2 nades, cues = low double beeps)
+STABLE 2 of 2
+NADE NOW 1  <- THROW a frag at your feet
+GO  <- last nade thrown, now STAND STILL and do not throw
+PRE 0x6c6af0864 100/100/100/100
+PRE 0x6607b9f78 100/100/0
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 1 [RECOVER] clusters=2 chg=2 t=0.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 2 [RECOVER] clusters=2 chg=0 t=1.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 3 [RECOVER] clusters=2 chg=0 t=2.1s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 4 [RECOVER] clusters=2 chg=0 t=2.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 5 [RECOVER] clusters=2 chg=0 t=3.5s
+NADE 2 NOW  <- THROW a frag at your feet, then stand still
+shot 6 [THROW] clusters=2 chg=0 t=4.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 7 [RECOVER] clusters=2 chg=0 t=5.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 8 [RECOVER] clusters=2 chg=0 t=6.1s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health)
+shot 9 [THROW] clusters=2 chg=0 t=7.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 10 [RECOVER] clusters=2 chg=0 t=7.9s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 11 [RECOVER] clusters=2 chg=0 t=8.6s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 12 [RECOVER] clusters=2 chg=0 t=9.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 13 [RECOVER] clusters=2 chg=0 t=10.0s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 14 [RECOVER] clusters=2 chg=0 t=10.7s
+shot 15 [STILL] clusters=2 chg=0 t=11.4s
+shot 16 [STILL] clusters=2 chg=0 t=12.1s
+shot 17 [STILL] clusters=2 chg=0 t=12.8s
+shot 18 [STILL] clusters=2 chg=0 t=13.5s
+shot 19 [STILL] clusters=2 chg=0 t=14.2s
+shot 20 [STILL] clusters=2 chg=0 t=14.9s
+shot 21 [STILL] clusters=2 chg=0 t=15.6s
+shot 22 [STILL] clusters=2 chg=0 t=16.3s
+shot 23 [STILL] clusters=2 chg=0 t=17.0s
+shot 24 [STILL] clusters=2 chg=0 t=17.7s
+shot 25 [STILL] clusters=2 chg=0 t=18.4s
+shot 26 [STILL] clusters=2 chg=0 t=19.1s
+shot 27 [STILL] clusters=2 chg=0 t=19.8s
+shot 28 [STILL] clusters=2 chg=0 t=20.5s
+shot 29 [STILL] clusters=2 chg=0 t=21.2s
+shot 30 [STILL] clusters=2 chg=0 t=21.9s
+shot 31 [STILL] clusters=2 chg=0 t=22.6s
+shot 32 [STILL] clusters=2 chg=0 t=23.3s
+shot 33 [STILL] clusters=2 chg=0 t=24.0s
+shot 34 [STILL] clusters=2 chg=0 t=24.7s
+shot 35 [STILL] clusters=2 chg=0 t=25.4s
+shot 36 [STILL] clusters=2 chg=0 t=26.1s
+shot 37 [STILL] clusters=2 chg=0 t=26.8s
+shot 38 [STILL] clusters=2 chg=0 t=27.5s
+shot 39 [STILL] clusters=2 chg=0 t=28.2s
+MOVED 2 of 2
+MOVE 0x6c6af0864 amp=1120403456.0 0x0:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x28:100/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0 0x50:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x78:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100
+MOVE 0x6607b9f78 amp=1120403456.0 0x0:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x40:100/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0 0x50:0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+CANDIDATES 2
+CAND base=0x6c6af0864 health=0x6c6af088c drop=100.0 at shot1 offs=0x0,0x28,0x50,0x78
+CAND base=0x6607b9f78 health=0x6607b9fb8 drop=100.0 at shot1 offs=0x0,0x40,0x50
+TRACE 0x6c6af0864 0x0:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x28:100/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0 0x50:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x78:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100
+TRACE 0x6607b9f78 0x0:100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100/100 0x40:100/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0 0x50:0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+VERDICT cluster
+SEEDOUT p64_seed10.txt n=2

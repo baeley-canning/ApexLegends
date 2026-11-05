@@ -1,0 +1,20 @@
+﻿class rows=11 (expect 11)
+class sum=pages=488 text=270 binary=25 mixed=193
+windows=11
+  w lo=0x177c0f000 pages=17 hits=2
+  w lo=0x1f3761000 pages=17 hits=3
+  w lo=0x29ff21000 pages=17 hits=3
+  w lo=0x2d7be9000 pages=17 hits=2
+  w lo=0x32e38e000 pages=17 hits=2
+  w lo=0x52fec5000 pages=17 hits=3
+  w lo=0x5a06e3000 pages=17 hits=2
+  w lo=0x707115000 pages=17 hits=2
+  w lo=0x78d475000 pages=17 hits=2
+  w lo=0x799995000 pages=17 hits=2
+  w lo=0x79f78a000 pages=17 hits=2
+pages_total=187 MiB=0.73
+fdb_window=1 covers_fdb_hits=True
+P53_SELFTEST_OK
+argv: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\p53_padump.py" --pa=0x707115000 --pages=17 --label=p70711d000 "--out=C:\Users\New User\OneDrive\Desktop\cheating\temp\p53_dump_X.txt" --hit=0x70711db40 --hit=0x70711ddc0
+argv: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\p53_padump.py" --pa=0x177c0f000 --pages=17 --label=p177c17000 "--out=C:\Users\New User\OneDrive\Desktop\cheating\temp\p53_dump_X.txt" --hit=0x177c17001 --hit=0x177c17181
+

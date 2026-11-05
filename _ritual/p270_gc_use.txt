@@ -1,0 +1,12 @@
+h260_vm_apc.ps1:5: $VB  = 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
+h260_vm_apc.ps1:35: Say ($f + ': ' + (Run @('guestcontrol', $VM, '--username', $U, '--password', $P,
+h260_vm_apc.ps1:42: Say (Run @('guestcontrol', $VM, '--username', $U, '--password', $P,
+h260_vm_apc.ps1:46: Say (Run @('guestcontrol', $VM, '--username', $U, '--password', $P,
+h260_vm_apc.ps1:53: Say (Run @('guestcontrol', $VM, '--username', $U, '--password', $P,
+p268_probe.ps1:1: # p268_probe.ps1 - isolate WHY guestcontrol run/copyfrom return nothing while copyto works.
+p268_probe.ps1:3: $VB = 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
+p268_probe.ps1:13: Cap 'run'   @('guestcontrol', $VM, '--username', $U, '--password', $P, 'run', '--exe', 'C:\Windows\System32\cmd.exe', '--wait-stdout', '--wait-stderr', '--timeout', '60000', '--', 'cmd.exe', '/c', ('echo HELLO> ' + $g + '\t1.txt & dir /b ' + $g + ' > ' + $g + '\t2.txt & echo RAN'))
+p268_probe.ps1:14: Cap 'copyfrom' @('guestcontrol', $VM, '--username', $U, '--password', $P, 'copyfrom', ($g + '\t2.txt'), (Join-Path $b 'p268x_t2.txt'))
+p268_probe.ps1:15: Cap 'copyfrom2' @('guestcontrol', $VM, '--username', $U, '--password', $P, 'copyfrom', ($g + '\diag.out'), (Join-Path $b 'p268x_diag.txt'))
+p269aq_type.ps1:2: # Terminal churn reaps long one-liners and mangles multi-VBoxManage chains, so the sequence lives here.
+p269aq_type.ps1:9: $vb = 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'

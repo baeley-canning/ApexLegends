@@ -1,0 +1,46 @@
+﻿python : Sorry: 
+IndentationError: 
+unexpected indent 
+(c33_basehunt.py, 
+line 248)
+At line:1 char:51
++ ... 
+top\cheating'; 
+python -m 
+py_compile temp\c33_
+basehunt.py 2>&1 | 
+Out-F ...
++                   
+ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (Sorr   
+ y: Indentat...t    
+.py, line 248):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+rc=1
+393
+L43 OBJ_PAIR = 0x1D8                        # LIST_ENTRY pair (c29, measured)
+L45 OBJ_PID = 0x1D0
+L46 OBJ_NAME = 0x338
+L47 LANE_FL = 0x258                         # value lanes: target phase + pair offset
+L48 LANE_BL = 0x260
+L49 NODE_FL = 0xFFFFA401B25A5258            # decoy flink target, a real neighbour
+L50 NODE_BL = 0xFFFFA401B7EA0258            # decoy blink target
+L56 def log(s):
+L61 def prog(s):
+L71 def shape_at(p, o, pair):
+L93 def wr(code, verdict):
+L99 def decoy_read(g, b, pa):
+L120 def skip_dead(g, pa, rhi, step=0x200000):
+L138 def hunt(g, ranges, va, ram_top, dry=0, start=None, budget=None):
+L249 def hop(g, b, va, seen):
+L283 def walk(g, b, start_va, seen, tag):
+L291 def main():

@@ -1,0 +1,18 @@
+﻿15:44:00.533  elevated=True
+15:44:00.544  triage: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\enttriage.py" "--hits=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p50_hits.txt" --needles=3 --cap=32
+15:44:01.566  rc=0 verdict=STRIDE cand=9 x7 pages=40
+15:44:01.571    COOC pages=40 full_house=11 cap=32
+15:44:01.571      0x9 x7  <= STRIDE CANDIDATE
+15:44:01.572      0x2bd x4  <= STRIDE CANDIDATE
+15:44:01.573      0x12f x3  <= STRIDE CANDIDATE
+15:44:01.574      0x1f8 x2  <= STRIDE CANDIDATE
+15:44:01.574      0x800 x2  <= STRIDE CANDIDATE
+15:44:01.575      0x2be x2  <= STRIDE CANDIDATE
+15:44:01.575      0x400 x1
+15:44:01.576      0x500 x1
+15:44:01.577      0x630 x1
+15:44:01.577      0xae8 x1
+15:44:01.577      0xc00 x1
+15:44:01.589      0xc x1
+15:44:01.598  RESULT: variable=verdict_ranking verdict=STRIDE cand=9 x7 pages=40 game_alive_post=True
+15:44:01.599  --- end ---

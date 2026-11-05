@@ -1,0 +1,30 @@
+﻿=> PID = int(os.environ.get("DUMP_PID", "0x1570"), 0)   # target pid (moves per launch)
+=>     # Both values end on the same lane: Blink points at the previous node's
+=>     # Flink field, so it is the same offset in the neighbour (c29 measured it).
+=>     if (fl & 0xFFF) != o + pair or (bl & 0xFFF) != o + pair:
+=>     nm = p[o + OBJ_NAME:o + OBJ_NAME + 15].split(b"\x00", 1)[0]
+=>     if not (1 <= len(nm) <= 15) or not all(0x20 <= c < 0x7F for c in nm):
+=>     if pid != PID or not nm.startswith(b"r5apex"):
+=>         % (lo, hi_page, pa_max, pa_max // 0x1000, dry))
+=>                 for node in (NODE_FL, NODE_BL):
+=>                     b = (node - (o + pair)) - ppa
+=>         if (fl & 0xFFF) != o + pair or (bl & 0xFFF) != o + pair:
+=>         targets = [x for x in fl + bl if isinstance(x[0], int) and x[0] == PID]
+=>         log("pid %#x hops: %d" % (PID, len(targets)))
+<=     if (fl & 0xFFF) != o + pair or (bl & 0xFFF) != o + pair + 8:
+<=     nm = p[o + OBJ_NAME:o + OBJ_NAME + 15]
+<=     if nm == b"\x00" * 15 or not all(0x20 <= c < 0x7F for c in nm):
+<=     if pid != 0x1570 or not nm.startswith(b"r5apex"):
+<=         % (lo, hi_page, pa_max, (pa_max - lo) // 0x1000, dry))
+<=                 for node, idx in ((NODE_FL, 0), (NODE_BL, 8)):
+<=                     b = (node - (o + pair + idx)) - ppa
+<=         if (fl & 0xFFF) != o + pair or (bl & 0xFFF) != o + pair + 8:
+<=         targets = [x for x in fl + bl if isinstance(x[0], int) and x[0] == 0x1570]
+<=         log("pid 0x1570 hops: %d" % len(targets))
+count=23
+shape_at\(=3
+skip_dead=3
+PAIR_ALT=3
+--max-s=2
+dst_ok=0
+runas=0

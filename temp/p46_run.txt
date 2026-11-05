@@ -1,0 +1,18 @@
+﻿15:27:40.495  elevated=True
+15:27:40.507  game alive=True
+15:27:40.511  run: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" --needle=r5apex --dir=desc --page-cap=1 --ctx=80 --max-hits=4 --max-s=30
+15:27:41.538  rc=0 verdict=HITS=4 pages=4 cooc=0 scanned=210 MiB stopped=max_hits first_n=0 first_pa=0x7ff3d91df
+15:27:41.541    RAMMAP map=5 bad=24 top=0x800000000 ranges=5 total=28411 MiB
+15:27:41.541    HIT n=0 pa=0x7ff3d91df page=0x7ff3d9000 'r5apex'
+15:27:41.542    HIT n=0 pa=0x7f964e457 page=0x7f964e000 'r5apex'
+15:27:41.544    HIT n=0 pa=0x7f88ff68e page=0x7f88ff000 'r5apex'
+15:27:41.544    HIT n=0 pa=0x7f2e0a361 page=0x7f2e0a000 'r5apex'
+15:27:41.545    PAs 4 hits over 4 pages, 210 MiB scanned in 0.4s bad4k=448 rescued=4944 stopped=max_hits
+15:27:41.565    ctx     000000  75 6e 3a 20 2d 75 20 22 43 3a 5c 55 73 65 72 73  |un: -u "C:\Users|
+15:27:41.566    ctx     000010  5c 4e 65 77 20 55 73 65 72 5c 4f 6e 65 44 72 69  |\New User\OneDri|
+15:27:41.566    ctx     000020  76 65 5c 44 65 73 6b 74 6f 70 5c 63 68 65 61 74  |ve\Desktop\cheat|
+15:27:41.566    ctx     000030  69 6e 67 5c 65 78 74 5c 70 6c 61 79 65 72 73 63  |ing\ext\playersc|
+15:27:41.567    ctx     000040  61 6e 2e 70 79 22 20 2d 2d 6e 65 65 64 6c 65 3d  |an.py" --needle=|
+15:27:41.567    ctx     000050  72 35 61 70 65 78 20 2d 2d 64 69 72 3d 64 65 73  |r5apex --dir=des|
+15:27:41.573  RESULT: variable=needle_value verdict=HITS=4 pages=4 cooc=0 scanned=210 MiB stopped=max_hits first_n=0 first_pa=0x7ff3d91df game_alive_post=True
+15:27:41.574  --- end ---

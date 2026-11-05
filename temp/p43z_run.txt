@@ -1,0 +1,13 @@
+﻿=== p43z 2026-11-04T12:54:07.8956415+13:00 ===
+12:54:07.901  ELEVATED start pid_arg=5488 lo= hi= hex=1 why=1
+12:54:07.913  elevated=True
+12:54:07.918  game alive=True
+12:54:07.923  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\dtbprobe.py" --inplace --pid=5488 --hex --why
+12:54:07.934  child pid=16696 started 12:54:07.933
+12:54:14.053  child exit= wall=6.1s
+12:54:14.057  OUT exists=True size=1010
+12:54:14.060  console tail:   try  2 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  3 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  4 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  5 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  6 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  7 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  8 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try  9 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try 10 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try 11 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   try 12 rc=ERR [Errno 1450] phys read 0x7ec76d000+0x1000 failed | VERDICT: DTB_UNREADABLE
+12:54:14.061  err tail: 
+12:54:14.068  RESULT: verdict=DTB_UNREADABLE
+12:54:14.073  post game alive=True
+12:54:14.073  --- end ---

@@ -1,0 +1,35 @@
+﻿22:10:51 start
+22:10:51 pre GA version: No value set!
+22:10:51 pre runlevel: name="Win11-Test2"
+22:10:52 shot p272_0 (pre)
+22:11:00 shot p272_1 (after wake/unlock attempt)
+22:11:04 shot p272_2 (run dialog)
+22:11:20 shot p272_3 (post-enter, expect consent/UAC)
+22:11:20 alty sent (UAC accept)
+22:11:25   t+5s GA=No value set! name="Win11-Test2"
+22:11:30   t+10s GA=No value set! name="Win11-Test2"
+22:11:36   t+15s GA=No value set! name="Win11-Test2"
+22:11:41   t+20s GA=No value set! name="Win11-Test2"
+22:11:42 shot p272_4
+22:11:47   t+25s GA=No value set! name="Win11-Test2"
+22:11:52   t+30s GA=No value set! name="Win11-Test2"
+22:11:57   t+35s GA=No value set! name="Win11-Test2"
+22:12:02   t+40s GA=No value set! name="Win11-Test2"
+22:12:07   t+45s GA=No value set! name="Win11-Test2"
+22:12:12   t+50s GA=No value set! name="Win11-Test2"
+22:12:17   t+55s GA=No value set! name="Win11-Test2"
+22:12:22   t+60s GA=No value set! name="Win11-Test2"
+22:12:23 shot p272_5
+22:12:28   t+65s GA=No value set! name="Win11-Test2"
+22:12:33   t+70s GA=No value set! name="Win11-Test2"
+22:12:38   t+75s GA=No value set! name="Win11-Test2"
+22:12:44   t+80s GA=No value set! name="Win11-Test2"
+22:12:49   t+85s GA=No value set! name="Win11-Test2"
+22:12:54   t+90s GA=No value set! name="Win11-Test2"
+22:12:59   t+95s GA=No value set! name="Win11-Test2"
+22:13:04   t+100s GA=No value set! name="Win11-Test2"
+22:13:09   t+105s GA=No value set! name="Win11-Test2"
+22:13:14   t+110s GA=No value set! name="Win11-Test2"
+22:13:19   t+115s GA=No value set! name="Win11-Test2"
+22:13:24   t+120s GA=No value set! name="Win11-Test2"
+22:13:29   t+125s GA=No value set! name="Win11-Test2"

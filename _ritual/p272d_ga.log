@@ -1,0 +1,49 @@
+22:24:47 start
+22:24:48 pre GA version: No value set!
+22:24:48 pre runlevel: GuestAdditionsRunLevel=0
+22:24:49 shot p272d_0
+22:24:49 type F:\vboxwindowsadditions.exe /s into the focused cmd
+22:24:59 shot p272d_1
+22:24:59 alty sent (UAC accept)
+22:25:12 shot p272d_2
+22:25:17   t+22s GA=No value set! GuestAdditionsRunLevel=0
+22:25:23   t+27s GA=No value set! GuestAdditionsRunLevel=0
+22:25:28   t+32s GA=No value set! GuestAdditionsRunLevel=0
+22:25:33   t+37s GA=No value set! GuestAdditionsRunLevel=0
+22:25:38   t+42s GA=No value set! GuestAdditionsRunLevel=0
+22:25:43   t+47s GA=No value set! GuestAdditionsRunLevel=0
+22:25:44 shot p272d_3
+22:25:49   t+52s GA=No value set! GuestAdditionsRunLevel=0
+22:25:54   t+57s GA=No value set! GuestAdditionsRunLevel=0
+22:25:59   t+62s GA=No value set! GuestAdditionsRunLevel=0
+22:26:04   t+67s GA=No value set! GuestAdditionsRunLevel=0
+22:26:09   t+72s GA=No value set! GuestAdditionsRunLevel=0
+22:26:15   t+77s GA=No value set! GuestAdditionsRunLevel=0
+22:26:20   t+82s GA=No value set! GuestAdditionsRunLevel=0
+22:26:25   t+87s GA=No value set! GuestAdditionsRunLevel=0
+22:26:30   t+92s GA=No value set! GuestAdditionsRunLevel=0
+22:26:31 shot p272d_4
+22:26:36   t+97s GA=No value set! GuestAdditionsRunLevel=0
+22:26:41   t+102s GA=No value set! GuestAdditionsRunLevel=0
+22:26:46   t+107s GA=No value set! GuestAdditionsRunLevel=0
+22:26:51   t+112s GA=No value set! GuestAdditionsRunLevel=1
+22:26:56   t+117s GA=No value set! GuestAdditionsRunLevel=1
+22:27:01   t+122s GA=No value set! GuestAdditionsRunLevel=1
+22:27:06   t+127s GA=No value set! GuestAdditionsRunLevel=1
+22:27:11   t+132s GA=No value set! GuestAdditionsRunLevel=1
+22:27:16   t+137s GA=No value set! GuestAdditionsRunLevel=1
+22:27:21   t+142s GA=No value set! GuestAdditionsRunLevel=1
+22:27:27   t+147s GA=No value set! GuestAdditionsRunLevel=1
+22:27:32   t+152s GA=No value set! GuestAdditionsRunLevel=1
+22:27:33 shot p272d_5
+22:27:38   t+157s GA=No value set! GuestAdditionsRunLevel=1
+22:27:43   t+162s GA=No value set! GuestAdditionsRunLevel=1
+22:27:48   t+167s GA=No value set! GuestAdditionsRunLevel=1
+22:27:53   t+172s GA=No value set! GuestAdditionsRunLevel=1
+22:27:58   t+177s GA=No value set! GuestAdditionsRunLevel=1
+22:28:03   t+182s GA=No value set! GuestAdditionsRunLevel=1
+22:28:08   t+187s GA=No value set! GuestAdditionsRunLevel=1
+22:28:09 shot p272d_6
+22:28:09 GA published = False
+22:28:09 VERDICT p272d: FAIL - GA still not published
+22:28:09 RESULT p272d: read p272d_0..p272d_6; check for a UAC window or an installer error page.

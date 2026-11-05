@@ -1,0 +1,25 @@
+elev=1
+open ok ram_top=0x800000000 chunk=0x1000
+  pa=0x1000 n=0x1000 OK b'\xe9M\x06\x00\x01\x00\x00\x00'
+  pa=0x1000 n=0x10000 OK b'\xe9M\x06\x00\x01\x00\x00\x00'
+  pa=0x100000 n=0x1000 OK b'\x00\x00\x00\x00\x00\x00\x00\x00'
+  pa=0x100000 n=0x10000 ERR [Errno 1450] phys read 0x104000+0x1000 failed
+  pa=0x11000000 n=0x1000 ERR [Errno 1450] phys read 0x11000000+0x1000 failed
+  pa=0x11000000 n=0x10000 ERR [Errno 1450] phys read 0x11000000+0x1000 failed
+  pa=0x11050000 n=0x1000 ERR [Errno 1450] phys read 0x11050000+0x1000 failed
+  pa=0x11050000 n=0x10000 ERR [Errno 1450] phys read 0x11050000+0x1000 failed
+  pa=0x11060000 n=0x1000 ERR [Errno 1450] phys read 0x11060000+0x1000 failed
+  pa=0x11060000 n=0x10000 ERR [Errno 1450] phys read 0x11060000+0x1000 failed
+  pa=0x12000000 n=0x1000 ERR [Errno 1450] phys read 0x12000000+0x1000 failed
+  pa=0x12000000 n=0x10000 ERR [Errno 1450] phys read 0x12000000+0x1000 failed
+  pa=0x1b25a5000 n=0x1000 OK b'=-1){let'
+  pa=0x1b25a5000 n=0x10000 OK b'=-1){let'
+  pa=0x20000000 n=0x1000 ERR [Errno 1450] phys read 0x20000000+0x1000 failed
+  pa=0x20000000 n=0x10000 ERR [Errno 1450] phys read 0x20000000+0x1000 failed
+  pa=0x27b90000 n=0x1000 ERR [Errno 1450] phys read 0x27b90000+0x1000 failed
+  pa=0x27b90000 n=0x10000 ERR [Errno 1450] phys read 0x27b90000+0x1000 failed
+  pa=0x80000000 n=0x1000 OK b'\xff\xff\xff\xff\xff\xff\xff\xff'
+  pa=0x80000000 n=0x10000 OK b'\xff\xff\xff\xff\xff\xff\xff\xff'
+  pa=0x100000000 n=0x1000 OK b'\x01\x00\x00\x00\x00\x00\x00\x00'
+  pa=0x100000000 n=0x10000 OK b'\x01\x00\x00\x00\x00\x00\x00\x00'
+window 0x11060000 good=0 bad=16

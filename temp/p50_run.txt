@@ -1,0 +1,28 @@
+﻿15:41:03.672  elevated=True
+15:41:03.700  game alive=True pid=24132 eac=0
+15:41:03.710  needles=3 [r5apex | enttriage | playerscan]
+15:41:03.785  py_compile: compiled
+15:41:03.790  scan: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=r5apex" "--needle=enttriage" "--needle=playerscan" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=2000 --ctx=64 --max-hits=6000 --max-s=180
+15:42:38.614  scan rc=0 verdict=HITS=6000 pages=3985 cooc=1460 scanned=27354 MiB stopped=covered sat=0:2000,1:2000,2:2000 first_n=0 first_pa=0x7ed89331e
+15:42:38.643    n=0 r5apex = 2000
+15:42:38.674    n=1 enttriage = 2000
+15:42:38.706    n=2 playerscan = 2000
+15:42:38.743    PAs 6000 hits over 3985 pages, 27354 MiB scanned in 94.1s bad4k=538158 rescued=440338 stopped=covered
+15:42:38.744    COOC 1460 pages carry 2+ needles
+15:42:38.753  triage: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\enttriage.py" "--hits=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p50_hits.txt" --needles=3 --cap=32
+15:42:39.771  triage rc=0 verdict=STRIDE cand=2048 pages=40
+15:42:39.774    COOC pages=40 full_house=11 cap=32
+15:42:39.776      0x9 x7  <= STRIDE CANDIDATE
+15:42:39.777      0x2bd x4  <= STRIDE CANDIDATE
+15:42:39.777      0x12f x3  <= STRIDE CANDIDATE
+15:42:39.778      0x800 x2  <= STRIDE CANDIDATE
+15:42:39.778      0x1f8 x2  <= STRIDE CANDIDATE
+15:42:39.780      0x2be x2  <= STRIDE CANDIDATE
+15:42:39.781      0x82 x1
+15:42:39.781      0x882 x1
+15:42:39.782      0x93a x1
+15:42:39.783      0x742 x1
+15:42:39.784      0x3ed x1
+15:42:39.784      0x22 x1
+15:42:39.791  RESULT: variable=match_names verdict=STRIDE cand=2048 pages=40 scan=HITS=6000 pages=3985 cooc=1460 scanned=27354 MiB stopped=covered sat=0:2000,1:2000,2:2000 first_n=0 first_pa=0x7ed89331e game_alive_post=True
+15:42:39.792  --- end ---

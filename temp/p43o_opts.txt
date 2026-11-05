@@ -1,0 +1,33 @@
+﻿391|    """--hex: dump fixed windows around every solo page hit.
+715|        g = gio.Gio(chunk=OPT["chunk"])
+721|        % ("-" if OPT["lo"] is None else "%#x" % OPT["lo"],
+722|           "-" if OPT["hi"] is None else "%#x" % OPT["hi"], OPT["chunk"]))
+724|         % (pid, pid_alive(pid), OPT["lo"], OPT["hi"], OPT["chunk"]))
+725|    ranges, note = usable_ranges(g.ram_top, OPT["lo"], OPT["hi"])
+736|    hits, skipped, chunks = name_hits(g, ranges, chunk=OPT["chunk"])
+738|        % (len(hits), skipped, chunks, OPT["chunk"], time.perf_counter() - _T0))
+742|        OPT["chunk"] = PAGE
+755|    if OPT["hex"] or not cands:
+829|    top = OPT["ram_top"] or (max(b for _, b in good) if good else 0x100000000)
+831|    ranges, plnote = usable_ranges(top, OPT["lo"], OPT["hi"], bad=bad)
+848|def main():
+850|    for a in sys.argv:
+854|            OPT["lo"] = int(a.split("=", 1)[1], 0)
+856|            OPT["hi"] = int(a.split("=", 1)[1], 0)
+858|            OPT["chunk"] = int(a.split("=", 1)[1], 0)
+860|            OPT["ram_top"] = int(a.split("=", 1)[1], 0)
+862|            OPT["inplace"] = True
+863|        elif a == "--hex":
+864|            OPT["hex"] = True
+865|    if "--print-ranges" in sys.argv:
+867|    rest = [a for a in sys.argv[1:] if not a.startswith("--")]
+878|    if OPT["inplace"] or elevation() == 1 or "--elevated" in sys.argv:
+883|    args = [sys.executable, os.path.abspath(sys.argv[0]), "--elevated",
+885|    if OPT["hex"]:
+886|        args.append("--hex")
+887|    if OPT["lo"] is not None:
+888|        args.append("--lo=%#x" % OPT["lo"])
+889|    if OPT["hi"] is not None:
+890|        args.append("--hi=%#x" % OPT["hi"])
+891|    if OPT["chunk"] != SCAN_CHUNK:
+892|        args.append("--chunk=%#x" % OPT["chunk"])

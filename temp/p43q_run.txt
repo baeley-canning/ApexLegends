@@ -1,0 +1,12 @@
+﻿=== p43q 2026-11-04T11:42:31.7039131+13:00 ===
+11:42:31.710  ELEVATED start pid_arg=5488 lo= hi= hex=1 why=1
+11:42:31.719  elevated=True
+11:42:31.722  game alive=True
+11:42:31.728  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\dumplive.py" --inplace --pid=5488 --hex --why
+11:42:31.739  child pid=9420 started 11:42:31.738
+11:43:26.482  child exit= wall=54.7s
+11:43:26.487  OUT exists=True size=1419513
+11:43:26.489  console tail:     0x7e26c8688 rel=+0x028 0000000048dfb2d0  |     0x7e26c8690 rel=+0x030 0000000048dfb320  |     0x7e26c8698 rel=+0x038 0000000000000001  |     0x7e26c86a0 rel=+0x040 0000000080289470  |   eprocess=0x312861cb8 dtb=0x544a998c0 score=4 |   eprocess=0x6efa68628 dtb=0x48dfb2b8 score=4 |   walk dtb=0x544a998c0 -> no PE |   why  dtb=0x544a998c0 pml4[0]=4bb702ec7e3b1114 not-ram/absent |   walk dtb=0x48dfb2b8 -> no PE |   why  dtb=0x48dfb2b8 pml4[0]=ffffffffffffffff pdpt not-ram | elapsed 54.6 s | VERDICT: NO_MZ
+11:43:26.490  err tail: 
+11:43:26.502  RESULT: verdict=NO_MZ
+11:43:26.503  --- end ---

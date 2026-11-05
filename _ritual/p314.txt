@@ -1,0 +1,42 @@
+09:36:57 START
+09:36:57 pre_state=running
+VBoxManage.exe : 0%...10%
+...20%...30%...40%...50%.
+..60%...70%...80%...90%..
+.100%
+At C:\Users\New User\OneD
+rive\Desktop\cheating\_ri
+tual\p314_gui.ps1:28 
+char:1
++ & $v controlvm $VM 
+savestate 2>&1 | 
+Out-File -FilePath $out 
+-Encoding ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (0%...10%...20%....0   
+ %...90%...100%:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+09:37:15 post_stop_state=saved
+09:37:27 post_start_state=restoring
+4261322 :: [Win11-Test2: Restoring virtual machine] :: 281x151 at 963,472
+83099918 :: [Win11-Test2 (ga-armed) [Restoring] - Oracle VirtualBox] :: 1040x861 at 584,117
+--- runningvms ---
+09:37:27 console_windows=2
+09:37:30 w01 mean=142
+09:37:33 w02 mean=142
+09:37:33 desktop_up at w2
+click guest 613,744 -> host 1205,919 (client 1024x822 at 592,148)
+click guest 520,134 -> host 1112,309 (client 1024x822 at 592,148)
+09:37:49 shell attempted
+09:38:11 reset done
+09:38:13 gc_after rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+09:38:13 ga=
+09:38:13 END

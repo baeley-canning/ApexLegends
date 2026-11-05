@@ -1,0 +1,24 @@
+VBoxManage.exe : 0%...10%
+...20%...30%...40%...50%.
+..60%...70%...80%...90%..
+.100%
+At line:1 char:137
++ ... -Seconds 4; (& $vb 
+snapshot Win11-Test2 
+restore pre-h268 2>&1 | 
+Out-S ...
++                  ~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (0%...10%...20%....0   
+ %...90%...100%:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+Restoring snapshot 'pre-h268' (4ea0dd5e-11c6-4f15-8fd7-458ddd0c94d2)
+

@@ -1,0 +1,15 @@
+p72 chain  2026-11-04 21:12:20
+pure-read: device open only
+map: pid=12092 target=0x420b0a000 base=0x7ff600000000 dtb=0x570000000 sec=.data va=0x1000 take=0x2000
+map written test, pid_start=6c5f531aba4b8387
+target page 0x420b0a000 read ok, head: 00000000 +00000000 +00000000 +00000000 +00000000 +00000000
+SEEDS canon=1 of 1024 qwords (0.1%)
+LEVEL 1 frontier=1 nodes=1 hits=0 next=1
+LEVEL 2 frontier=1 nodes=2 hits=1 next=0
+BFS done: nodes=2 hits=1 stopped=covered
+top hits: 1 (verifying 1)
+RESULT d=2 seed=+0x100 hops=-0xe0 landing=0x500 dist=0x500 ok=1 
+CHAIN d=2 seed=+0x100 hops=-0xe0 va=0x410000500
+landing +0x500 floats: 42f70000~123.500 +00000000 +00000000 +00000000 +00000000 +00000000
+elapsed 0.0 s
+VERDICT: CHAIN hits=1 verified=1 depth=2 r5apex_dx12+0x1100 -> -0xe0 landing=0x500 dist=0x500 stopped=covered

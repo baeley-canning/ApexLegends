@@ -1,0 +1,30 @@
+﻿11:48:06.904 STEP=inject-kernel
+11:48:06.904 $ apex_launcher.exe --inject --method=kernel --pid 4168 --driver C:\Users\Public\p37\zapexdrv.sys --no-sticky
+11:48:06.932   exit=3
+11:48:06.932   | ===============================================================
+11:48:06.932   |   QwenKern Premium - Apex Legends launcher
+11:48:06.932   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+11:48:06.932   |   kernel rung    : B3 (apexdrv.sys)
+11:48:06.942   | ===============================================================
+11:48:06.942   | [*] Target PID 4168, payload apexcheat.dll
+11:48:06.942   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+11:48:06.942   | [*] Kernel service already registered, reusing it
+11:48:06.942   | ---------------------------------------------------------------
+11:48:06.942   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+11:48:06.942   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+11:48:06.942   | ---------------------------------------------------------------
+===== POST /log 11:48:09
+## h272
+11:48:02.640 alive
+11:48:02.698 bench build 26300 boot=06/11 11:43 pid=1296
+11:48:02.721 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+11:48:02.733 pre minidumps=5 notepad=0
+11:48:04.109 sha=EC366FD76C8A382E MATCH
+11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+11:48:04.178 STEP=dse
+11:48:04.188 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+11:48:04.549   exit=1
+11:48:04.552   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+11:48:04.552   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+11:48:04.552   | [#] Supported x64 OS : Windows 7 and above
+11:48:04.555   | ...

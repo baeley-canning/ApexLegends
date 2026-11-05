@@ -1,0 +1,79 @@
+# p53 verdict #2 -- the lp-ranked rerun (16:52:04..16:52:54, game pid 24132) + crash #5
+# New number, p53_verdict.txt (16:35 run) is left intact (R5). Written after the reboot,
+# from files on disk only. Nothing here is re-derived from memory.
+
+## WHAT THIS RUN CHANGED vs the 16:35 run
+Exactly one variable: the ranking/shape filter from p53_verdict.txt "FIXES APPLIED" --
+class.ps1 now counts a per-hit u32-length prefix (`lp=`), win.ps1 requires lp>=1 and ranks
+by (lp desc, hits desc, lo), run.ps1 drops the budget (400/needle, max-hits 2000, 60 s).
+Scan finished covered, 27354 MiB, 2000 hits, 998 pages, game alive after.
+
+## RESULT: variable=win-selector+lp verdict=ARRAY_SHAPE_REPEATED pitch=NOT_0x280
+The lp filter did its job: instead of 12 low-address junk pages, the three windows that won
+are the only three pages on the box that carry >=2 needles on a binary page (class: 998
+pages = 848 text, 6 binary, 144 mixed; only 3 binary pages have >=2 needles).
+
+## PRE-COMMITTED CRITERION still unmeet
+ARRAY required >=3 deltas that are exact multiples of 0x280 AND >=4 slots sharing the name
+offset. Measured deltas: 0x90/0x30/0x90/0xf0 (0x7abc3d000), 0x140 (0x77d704000), 0x80
+(0x7b6bcf000). **Zero multiples of 0x280 in any page.** 0x280 is not promoted; it was the
+pitch of the p52 FDB page only.
+
+## POSITIVE FINDING: the record shape repeated, the pitch is a page property
+0x7abc3d000, 5 hits, **lp=5 (all five)** -- every hit carries an exact u32 length prefix of
+its own name length, the discriminator verdict1 introduced. Deltas 0x90/0x30/0x90/0xf0 are
+all multiples of 0x30, and the dumped page independently shows a 0x30-pitch slot cadence:
+
+  slot+0x00  pointer 0x7ffcc2943368 (identical across slots)
+  slot+0x08  u32 small (0x20 0x35 0x33 0x36 0x66 ...)
+  slot+0x18  pointer 0x7ffcc293cf88 (identical across slots)
+  slot+0x1c  u32 length      <- where the names were
+  slot+0x20  name bytes
+
+Compare verdict1's page 0x2c690a000: identical intra-record offset (length at rec+0x1c,
+name at rec+0x20, constant module pointer at rec+0x00) but pitch 0x40 with 16 slots between
+hits. So the record shape is confirmed twice and **pitch differs per page (0x40 vs 0x30)**.
+Phase D must derive the pitch from the length cadence per page, never from a constant.
+
+## NEGATIVE FINDING: every dump byte is stale, the class lp counts are the only evidence
+All three windows read ZERO at every marked hit offset (dump_0 0x800/0x890/0x8c0/0x950/0xa40,
+dump_1 0x120/0x260, dump_2 0x558/0x5d8), while non-hit offsets in the same pages still hold
+live pointers. The scan-to-dump gap was 44 s here (118 s in the 16:35 run). A post-sweep
+padump of hit PAs is therefore not evidence; only lp/ascii/delta counts taken from the sweep
+buffer are. p53_hitctx.py already reads out of the buffer for this reason.
+
+## TEXT POLLUTION IS STILL THE DOMINANT SIGNAL -- proven, not assumed
+The 17:01 hitctx run returned 8 hits, 5 of them `self=True`, and the quoted prose at
+0x79bd9947d is verbatim from **temp\p53_verdict.txt itself** ("then 4 bytes that run into
+the value", "rec+0x20 0c 00 00 00", "u32 length, then NUL-terminated name"). Our own verdict
+file, cached by the OS, is now the loudest needle source on the box. A run without --sig and
+without a text drop ranks its own paper trail above the game.
+
+## CRASH #5 OF THE DAY, MID-RUN -- 17:06:34, while the second hitctx was in flight
+- 0x124 (0, ffffc10d2759f028, bf800000, 200401); WHEA 18 "Internal Unclassified Error",
+  APIC 33 (00:46 = 54, 09:29 = 50, 13:19/14:34 = the other pair -- five distinct cores now).
+  P3/P4 bf800000/200401 is the *second* signature family (13:19 and 17:06); fe000000/80113a
+  is the first (00:46, 09:29, 14:34). MCi_STATUS bit 61 UC=1, MCA code 0x0401.
+- `PROCESS_NAME: python.exe` -- this is the first bugcheck where OUR reader's thread was
+  current (09:29 had r5apex_dx12). gdrv3.sys is in the module list ("Unable to verify
+  timestamp" only). p53_hitctx writes its output at the end, and p53_hitctx.txt is still the
+  17:01 file, so the run died before writing: corpus lost, only the earlier 17:01 hits exist.
+- Dump copied and hashed (read-only): temp\110426-10531-01.dmp, 9,711,073 B, mtime 17:06:41,
+  sha256 3B678AAF915BACFECA62AB1109E8F178B29B3DCEF0250AD7A13D135839594F04, dumpchk log
+  temp\p53d_dumpchk.txt. All five dumps of the day are present in C:\Windows\Minidump.
+- The WHEA record body still does not decode (pshed types absent from the local cache), so
+  only the event-log APIC/error-type text exists. Same limit as the previous two.
+
+## PROCESS DEFECT FOUND THIS RUN
+padump names output p53_dump_<n>.txt per *run index*, so the 16:52 run overwrote the 16:35
+run's dump_0/1/2. **The raw page 0x2c690a000 from verdict1 is gone** -- only the transcribed
+excerpt in p53_verdict.txt survives. Filenames need a run id.
+
+## NEXT (game up, in-match)
+`p53_hitctx.py --sig --max_s=45 --out=temp\p54_ctx.txt` as the only capture path, lp+term
+mandatory, text pages >0.5 printable dropped; expect the 0x1C/0x20 pair and measure the
+cadence per page. Phase C (p54_dscan, EPROCESS->DTB->VA anchor) stays blocked behind the
+crash rate, not behind the layout question.
+
+VERDICT: p53#2 = ARRAY shape confirmed twice (lp=5/5), pitch 0x40 and 0x30, **0x280 dead**;
+dump bytes unusable (stale); crash #5 stops the track -> CPU stability outranks dumping.

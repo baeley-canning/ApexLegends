@@ -1,0 +1,67 @@
+now=22:45:28 pid=6676 as=WIN11-TEST2\vboxuser
+os=Microsoft Windows 11 Enterprise Evaluation build=26300
+dir exists=True
+  file gdrv3.sys.bak 52440B 11-02 19:17:40
+  file p37_prov.cs 46602B 11-02 19:17:40
+  file run.cmd.bak 378B 11-02 19:17:40
+  file stage3.log 672B 11-02 19:17:41
+  file tick.log 63667B 11-02 19:29:57
+  file cur.out 156B 11-02 19:32:14
+  file apexcheat.ini 0B 11-05 19:10:54
+  file apexdrv_v3.sys.bak 6656B 11-05 19:18:04
+  file h267v3.lock 10B 11-05 19:20:02
+  file h267v3.out 3729B 11-05 19:20:05
+  file WinRing0x64.sys.bak 14536B 11-05 21:15:10
+  file cur.ps1.bak 23816B 11-05 21:17:02
+  file h268.lock 10B 11-05 21:17:02
+  file h268_applocker.xml 33B 11-05 21:17:05
+  file kdu.exe.bak 422912B 11-05 21:17:05
+  file drv64.dll 2086400B 11-05 21:17:05
+  file zapexdrv.sys.bak 8336B 11-05 21:17:05
+  file apex_launcher.exe 431104B 11-05 21:17:05
+  file apexcheat.dll 318976B 11-05 21:17:05
+  file zapexcheat.dll 318976B 11-05 21:17:05
+  file bench_v3.cer 778B 11-05 21:17:05
+  file kdu_list.csv 23091B 11-05 21:17:08
+  file h268.out 5221B 11-05 21:17:10
+  file p37_diag.ps1 2269B 11-05 22:45:28
+  file diag.err 0B 11-05 22:45:28
+--- task ---
+schtasks rc=1
+--- service ---
+ SERVICE_NAME: apexdrv          TYPE               : 1  KERNEL_DRIVER           STATE              : 1  STOPPED          WIN32_EXIT_CODE    : 1077  (0x435)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0
+svc regkey=True
+svc imagepath=[\??\C:\Users\Public\p37\zapexdrv.sys]
+--- boot ---
+
+--- who is listening / agent ---
+explorer pid=5708
+--- newest outs ---
+  tail h268.out
+    | 21:17:10.140   exit=0
+    | 21:17:10.142   | SERVICE_NAME: apexdrv
+    | 21:17:10.142   |         TYPE               : 1  KERNEL_DRIVER
+    | 21:17:10.142   |         STATE              : 4  RUNNING
+    | 21:17:10.142   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+    | 21:17:10.142   |         WIN32_EXIT_CODE    : 0  (0x0)
+    | 21:17:10.142   |         SERVICE_EXIT_CODE  : 0  (0x0)
+    | 21:17:10.142   |         CHECKPOINT         : 0x0
+    | 21:17:10.142   | ...
+    | 21:17:10.142   start rc=0
+    | 21:17:10.142 WINNER=22
+    | 21:17:10.145 imagePath=[\??\C:\Users\Public\p37\zapexdrv.sys] start ok via prv 22
+  tail h267v3.out
+    | 19:20:05.724   | [*] WHQL enforcement ENABLED
+    | 19:20:05.726   | [+] MSFT Driver block list is enabled
+    | 19:20:05.726   | [+] Drivers database "drv64.dll" loaded at 0x00007FFA796C0000
+    | 19:20:05.726   | [+] Database KDUEXT version is OK
+    | 19:20:05.729   | [+] CSV file C:\Users\Public\p37\kdu_list.csv generated
+    | 19:20:05.729   | [+] Return value: 1. Bye-bye!
+    | 19:20:05.747 list rows=69
+    | 19:20:05.753   csv| ProviderId,ResourceId,DriverName,DeviceName,Description,AdvisoryId,SignerName,SourceBase,MinNtBuild,MaxNtBuild,Flags,ShellcodeMask,ImageSize,FileSHA1,AuthenticodeSHA1,PageHashSHA1,PageHashSHA256
+    | 19:20:05.753   csv| 0,103,"NalDrv","Nal","Intel NAL driver","CVE-2015-2291","Intel Corporation","None",7601,ANY,0x00000100,0x00000007,34568,"D04E5DB5B6C848A29732BFD52029001F23C3DA75","2CBFE4AD0E1231FF3E19C19CA9311D952CE170B7","55B90A6E4323FC1D7B71B23F81FC758F45740E02","FB14DC1657C0EDD18FA747005EB7125DBBD83595095D67906BB0B4D57222D4C1"
+    | 19:20:05.757   csv| 1,105,"RTCore64","RTCore64","MSI RTCore64 driver","CVE-2019-16098","MICRO-STAR INTERNATIONAL CO., LTD.","None",7601,ANY,0x00000000,0x00000007,14024,"F6F11AD2CD2B0CF95ED42324876BEE1D83E01775","4A68C2D7A4C471E062A32C83A36EEDB45A619683","84152FA241C3808F8C7752964589C957E440403F","A807532037A3549AE3E046F183D782BCB78B6193163EA448098140563CF857CB"
+    | 19:20:05.757   csv| 2,106,"Gdrv","GIO","Gigabyte GDRV driver","CVE-2018-19320","Giga-Byte Technology","MapMem",7601,ANY,0x00000020,0x00000007,26192,"FE10018AF723986DB50701C8532DF5ED98B17C39","0F5034FCF5B34BE22A72D2ECC29E348E93B6F00F","DC02DA48DF2F9B558453847399A8DE47C5AD56CC","95406C37FDE1B08524FAB782200C8BECAEC98A40B020F41C5BA13032FE9522FA"
+    | 19:20:05.767 ids=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67
+--- guest log tail ---
+  no guest.log

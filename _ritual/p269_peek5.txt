@@ -1,0 +1,3 @@
+20:29:51 try 12 state=VMState="running" GuestAdditionsRunLevel=0 rc=1
+20:30:01  sh rc=1 out=VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) | VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown | VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCtx->strPass
+proc=6

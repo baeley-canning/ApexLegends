@@ -1,0 +1,17 @@
+﻿now 2026-11-04T12:28:15
+GAME alive pid=5488 ws=5157MB
+const NAME = b"r5apex_dx12.exe"        # 15 bytes: UCHAR[15] is full, no NUL (p43u)
+const OFF_NAME = 0x338                          # 26200 ImageFileName (was 0x4c8)
+const PC_OFF = OFF_NAME + len(NAME)             # 0x347 PriorityClass: the real 16th
+const NAME_DELTAS = range(-0x360, -0x310, 8)    # 0x338 +/- build drift
+const PID_OFFS = range(0x1a0, 0x200, 4)         # 0x1d0 +/- 0x30
+const LINK_OFF = 0x1d8                          # ActiveProcessLinks flink (score only)
+const MIN_SCORE = 6                             # below this a "shape" is noise
+const HIT_CAP = 20000
+const HEX_WIN = ((0x3a0, 0x40),)   # (back, fwd): type..pc, one window on the base
+rescue-loop=True
+ret4=True
+dumplive sha256=754F2241E522AA0549D60E2BD45BF7523393A11D640ED804117127E1EC0CF5BD
+drv(gio)=EhStorTcgDrv:Stopped:False,gdrv3:Running:True
+prev p43v dump=False
+LAUNCHED pid=11584 at 12:28:15

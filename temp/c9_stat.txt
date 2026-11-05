@@ -1,0 +1,16 @@
+﻿
+Name     Count
+----     -----
+FAULT     9582
+BADPAGE 153312
+CKPT       149
+BUDGET       1
+
+
+L157702 13:41:41  CKPT next=0x26800000 tried=176 shapes=0 58s
+L158791 13:41:42  CKPT next=0x26c00000 tried=176 shapes=0 59s
+L159880 13:41:42  CKPT next=0x27000000 tried=176 shapes=0 59s
+L160969 13:41:42  CKPT next=0x27400000 tried=176 shapes=0 59s
+L162058 13:41:43  CKPT next=0x27800000 tried=176 shapes=0 60s
+L163045 13:41:43  BUDGET next=0x27b90000 tried=176 shapes=0
+163045

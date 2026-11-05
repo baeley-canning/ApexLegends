@@ -1,0 +1,7 @@
+﻿now 2026-11-04T15:26:44
+GAME alive pid=24132
+eac procs=0
+drv=EhStorTcgDrv:Stopped:False,gdrv3:Running:True
+variable=needle_pipeline needle=drivers window=0x1000000..0x4000000 dir=asc max_hits=6
+playerscan sha256=E6476263A284C8A9BB864C5A8776A9F26B434E16B2E286105130E25A678228FC
+LAUNCHED pid=4012 at 15:26:45

@@ -1,0 +1,4 @@
+﻿22:14:25   t+180s GA=No value set! name="Win11-Test2"
+22:14:26 GA published = False
+22:14:26 VERDICT p272: FAIL - GA never published a version; the guest stayed GA-less
+22:14:26 RESULT p272: no guestcontrol. Next: read p272_3..p272_6, then snapshot restore pre-h268.

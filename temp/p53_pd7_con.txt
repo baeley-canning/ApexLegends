@@ -1,0 +1,22 @@
+# p53_padump 2026-11-04 16:35:43 label=p7b37f4000 pa=0x7b37ec000 pages=17 hits=2
+ram_top=0x800000000
+PAGE  pa=0x7b37ec000 hits=0
+PAGE  pa=0x7b37ed000 hits=0
+PAGE  pa=0x7b37ee000 hits=0
+PAGE  pa=0x7b37ef000 hits=0
+PAGE  pa=0x7b37f0000 hits=0
+PAGE  pa=0x7b37f1000 hits=0
+PAGE  pa=0x7b37f2000 hits=0
+PAGE  pa=0x7b37f3000 hits=0
+PAGE  pa=0x7b37f4000 hits=2
+PAGE  pa=0x7b37f5000 hits=0
+PAGE  pa=0x7b37f6000 hits=0
+PAGE  pa=0x7b37f7000 hits=0
+PAGE  pa=0x7b37f8000 hits=0
+PAGE  pa=0x7b37f9000 hits=0
+PAGE  pa=0x7b37fa000 hits=0
+PAGE  pa=0x7b37fb000 hits=0
+PAGE  pa=0x7b37fc000 hits=0
+
+readback 17 pages ok=17 fault=0 hits_marked=2/2 0.03s
+VERDICT: PADUMP ok=17 fault=0 hits=2/2 lo=0x7b37ec000 hi=0x7b37fd000 0.03s

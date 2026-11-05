@@ -1,0 +1,11 @@
+p40d dumplive  2026-11-04 16:07:58
+pure-read probe: device open only; no load/DSE/service touch
+pid=24132 alive=True
+PRE ram_top=0x800000000 installed=32768 MiB
+window lo=0x70711c000 hi=0x70711f000 chunk=0x10000
+LAYOUT win26200 name=15B off_name=0x338 pc=0x347 deltas=-0x360..-0x310 pid_offs=0x1a0..0x200 link=0x258 min_score=6
+RAMMAP map=5 bad=24 ranges=1 total=0 MiB
+  scan 0x70711c000-0x70711f000 (0.0 MiB)
+scan: 0 hits, 0/1 chunks faulted, 0 pages rescued at 0x10000, 0.0 s
+elapsed 0.0 s
+VERDICT: NO_HITS

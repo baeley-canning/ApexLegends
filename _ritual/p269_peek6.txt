@@ -1,0 +1,2 @@
+20:31:42  sh rc=1 out=VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) | VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERR
+20:31:42 try 23 state=VMState="running" GuestAdditionsRunLevel=0 rc=1

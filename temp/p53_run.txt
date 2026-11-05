@@ -1,0 +1,44 @@
+﻿16:33:38.738  p53 start elevated=True
+16:33:38.771  game alive=True pid=24132 eac=0
+16:33:38.783  needles=5 [Kern30120 | Arcticsun186 | RedSoxNation072 | Moneezy2846 | Turtle D Crew]
+16:33:38.859  py_compile: compiled
+16:33:41.821  classifier selfcheck on p52 fixture: rows=11 (expect 11)
+16:33:41.832  scan: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=Kern30120" "--needle=Arcticsun186" "--needle=RedSoxNation072" "--needle=Moneezy2846" "--needle=Turtle D Crew" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=1200 --ctx=64 --max-hits=6000 --max-s=180
+16:35:22.652  scan rc=0 verdict=HITS=4460 pages=2013 cooc=881 scanned=27354 MiB stopped=covered sat=0:1200 first_n=0 first_pa=0x7ed1f3901
+16:35:22.674    n=0 Kern30120 = 1200
+16:35:22.695    n=1 Arcticsun186 = 811
+16:35:22.716    n=2 RedSoxNation072 = 728
+16:35:22.735    n=3 Moneezy2846 = 789
+16:35:22.755    n=4 Turtle D Crew = 932
+16:35:36.031  class: pages=2013 text=1631 binary=25 mixed=357
+16:35:36.113  dump windows=9
+16:35:37.136    dump 0 page=0x2c690a000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x2c6902000 hi=0x2c6913000 0.03s
+16:35:38.151    dump 1 page=0x44d9c3000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x44d9bb000 hi=0x44d9cc000 0.04s
+16:35:39.175    dump 2 page=0x48aedc000 rc=0 PADUMP ok=17 fault=0 hits=3/3 lo=0x48aed4000 hi=0x48aee5000 0.04s
+16:35:40.193    dump 3 page=0x4e32f7000 rc=0 PADUMP ok=17 fault=0 hits=4/4 lo=0x4e32ef000 hi=0x4e3300000 0.04s
+16:35:41.213    dump 4 page=0x5e0d85000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x5e0d7d000 hi=0x5e0d8e000 0.03s
+16:35:42.225    dump 5 page=0x71b692000 rc=0 PADUMP ok=16 fault=1 hits=2/2 lo=0x71b68a000 hi=0x71b69b000 0.03s
+16:35:43.233    dump 6 page=0x78bee4000 rc=0 PADUMP ok=17 fault=0 hits=4/4 lo=0x78bedc000 hi=0x78beed000 0.03s
+16:35:44.253    dump 7 page=0x7b37f4000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x7b37ec000 hi=0x7b37fd000 0.03s
+16:35:45.274    dump 8 page=0x7d9518000 rc=0 PADUMP ok=17 fault=0 hits=5/5 lo=0x7d9510000 hi=0x7d9521000 0.03s
+16:35:45.286  RESULT: variable=match_names verdict=DUMPED windows=9 ok=9 pages=153 MiB=0.6 scan=HITS=4460 pages=2013 cooc=881 scanned=27354 MiB stopped=covered sat=0:1200 first_n=0 first_pa=0x7ed1f3901 class=pages=2013 text=1631 binary=25 mixed=357 game_alive_post=True
+16:35:45.286  --- end ---
+16:52:04.579  p53 start elevated=True
+16:52:04.604  game alive=True pid=24132 eac=0
+16:52:04.614  needles=5 [Kern30120 | Arcticsun186 | RedSoxNation072 | Moneezy2846 | Turtle D Crew]
+16:52:04.690  py_compile: compiled
+16:52:07.547  classifier selfcheck on p52 fixture: rows=11 (expect 11)
+16:52:07.554  scan: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=Kern30120" "--needle=Arcticsun186" "--needle=RedSoxNation072" "--needle=Moneezy2846" "--needle=Turtle D Crew" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=400 --ctx=64 --max-hits=2000 --max-s=60
+16:52:47.971  scan rc=0 verdict=HITS=2000 pages=998 cooc=479 scanned=27354 MiB stopped=covered sat=0:400,1:400,2:400,3:400,4:400 first_n=2 first_pa=0x7ed761181
+16:52:47.978    n=0 Kern30120 = 400
+16:52:47.997    n=1 Arcticsun186 = 400
+16:52:48.003    n=2 RedSoxNation072 = 400
+16:52:48.009    n=3 Moneezy2846 = 400
+16:52:48.014    n=4 Turtle D Crew = 400
+16:52:51.132  class: pages=998 text=848 binary=6 mixed=144 zeroed=0
+16:52:51.196  dump windows=3
+16:52:52.216    dump 0 page=0x7abc3d000 rc=0 PADUMP ok=17 fault=0 hits=5/5 lo=0x7abc35000 hi=0x7abc46000 0.02s
+16:52:53.229    dump 1 page=0x77d704000 rc=0 PADUMP ok=16 fault=1 hits=2/2 lo=0x77d6fc000 hi=0x77d70d000 0.02s
+16:52:54.239    dump 2 page=0x7b6bcf000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x7b6bc7000 hi=0x7b6bd8000 0.02s
+16:52:54.247  RESULT: variable=match_names verdict=DUMPED windows=3 ok=3 pages=51 MiB=0.2 scan=HITS=2000 pages=998 cooc=479 scanned=27354 MiB stopped=covered sat=0:400,1:400,2:400,3:400,4:400 first_n=2 first_pa=0x7ed761181 class=pages=998 text=848 binary=6 mixed=144 zeroed=0 game_alive_post=True
+16:52:54.248  --- end ---

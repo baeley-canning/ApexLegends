@@ -1,0 +1,31 @@
+﻿now 2026-11-04T10:27:01
+GAME pid=5488 ws=6706MB cpu=2890.6s start=2026-11-04T10:09:03 responding=True title='Apex Legends'
+proc EADesktop = alive
+proc EABackgroundService = alive
+proc EAAntiCheat.GameService = alive
+proc EAAntiCheatService = absent
+svc EAAntiCheatService : STATE              : 4  RUNNING
+svc eaanticheat : STATE              : 4  RUNNING
+svc gdrv3 : STATE              : 4  RUNNING
+--- last 6 WHEA 18/19/47 (newest first) ---
+  Date: 2026-11-04T09:29:55.3060000Z
+  Event ID: 18
+  Date: 2026-11-04T09:29:53.5440000Z
+  Event ID: 18
+  Error Type: Cache Hierarchy Error
+  Processor APIC ID: 50
+  Date: 2026-11-04T09:29:52.1630000Z
+  Event ID: 19
+  New latch timer waiting for system update completion: false
+  Date: 2026-11-04T09:29:44.0840000Z
+  Event ID: 18
+  Date: 2026-11-04T01:24:09.2650000Z
+  Event ID: 18
+  Date: 2026-11-04T01:24:05.8160000Z
+  Event ID: 19
+  New latch timer waiting for system update completion: false
+--- capacity / dumps ---
+free C: = 63.7 GB
+minidumps (elevated list needed for detail); newest 3 by name: 
+--- last logged verdict ---
+

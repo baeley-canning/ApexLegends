@@ -1,0 +1,116 @@
+﻿23:09:47 MODE=disarm
+23:09:47 vmstate=VMState="running" 
+23:09:48 dis-arm p37logon: ERROR: The specified task name "p37logon" does not exist in the system. rc=0
+23:09:49 dis-arm p37tick: ERROR: The specified task name "p37tick" does not exist in the system. rc=0
+23:09:50 killed: KILLED
+23:14:34 MODE=serve
+23:14:34 vmstate=VMState="running" 
+23:14:34 served 26159B sha=2714F9D8C140798F
+23:14:34 want 26159B sha=2714F9D8C140798F
+23:14:34 SERVE: MATCH
+23:14:41 server: At line:1 char:5 + (try{(New-Object Net.WebClient).DownloadString('http://10.0.2.2:8080/ ... + ~ Missing closing '}' in statement block or type definition. At line:1 char:87 + ... ient).DownloadString('http://10.0.2.2:8080/cur.ps1')).Length}catch{'D ... + ~ Unexpected token '}' in expression...[435]
+23:14:41 END
+23:15:25 MODE=serve
+23:15:25 vmstate=VMState="running" 
+23:15:25 served 26159B sha=2714F9D8C140798F
+23:15:25 want 26159B sha=2714F9D8C140798F
+23:15:25 SERVE: MATCH
+23:15:25 server: VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown VBoxManage.exe: error: Context: "WaitForArray(ComS...[409]
+23:15:25 END
+23:18:50 MODE=deploy
+23:18:50 vmstate=VMState="running" 
+23:18:50 clean: CLEANED
+23:18:50 cur.ps1 push rc=0
+23:18:50 rename: RENAMED
+23:18:51 run.cmd rc=0
+23:18:51 once.cmd rc=0
+23:18:51 tick.ps1 rc=0
+23:18:51 verify: yes tick.ps1 yes run.cmd yes once.cmd yes cur.ps1
+23:18:51 cur.ps1 size: 26159 bytes
+23:18:51 h269_cur.ps1 left: NO
+23:18:51 DEPLOY: OK
+23:18:52 ls: apexcheat.dll apexcheat.ini apexdrv_v3.sys.bak apex_launcher.exe bench_v3.cer cur.out cur.ps1 cur.ps1.bak diag.err diag.out drv64.dll gdrv3.sys.bak h267v3.lock h267v3.out h268.lock h268.out h268_applocker.xml h269.lock h269.out h269.prev.out h269_applocker.xml kdu.exe kdu.exe.bak kdu_list.csv ls...[475]
+23:18:52 END
+23:18:52 MODE=ver
+23:18:52 vmstate=VMState="running" 
+23:18:52 copyfrom cur.ps1: 
+23:18:52 deployed 26159B sha=2714F9D8C140798F
+23:18:52 reviewed 26159B sha=2714F9D8C140798F
+23:18:52 VER: MATCH
+23:18:52 END
+23:18:52 MODE=arm
+23:18:52 vmstate=VMState="running" 
+23:18:56 arm: OK
+23:18:56 tasks: ERROR: Access is denied. System.Management.Automation.RemoteException FINDSTR: Cannot open Status FINDSTR: Cannot open Next FINDSTR: Cannot open Last
+23:18:56 END
+23:21:08 MODE=serve
+23:21:08 vmstate=VMState="running" 
+23:21:08 served 26197B sha=E1C30CAA957AF905
+23:21:08 want 26197B sha=E1C30CAA957AF905
+23:21:08 SERVE: MATCH
+23:21:08 server: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(p...[460]
+23:21:08 END
+23:21:08 MODE=deploy
+23:21:08 vmstate=VMState="running" 
+23:21:08 clean: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pC...[459]
+23:21:08 cur.ps1 push rc=1
+23:21:08 rename: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(p...[460]
+23:21:08 run.cmd rc=1
+23:21:08 once.cmd rc=1
+23:21:08 tick.ps1 rc=1
+23:21:08 verify: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(p...[460]
+23:21:08 cur.ps1 size: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), ...[466]
+23:21:08 h269_cur.ps1 left: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).ra...[471]
+23:21:08 DEPLOY: FAIL
+23:21:08 ls: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCtx-...[456]
+23:21:08 END
+23:21:08 MODE=arm
+23:21:08 vmstate=VMState="running" 
+23:21:08 arm: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCtx...[457]
+23:21:08 tasks: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pC...[459]
+23:21:08 END
+23:21:08 MODE=pull
+23:21:08 vmstate=VMState="running" 
+23:21:08 pull h269.out: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(),...[467]
+23:21:08 (no h269.out)
+23:21:08 pull h269.prev.out: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).r...[472]
+23:21:08 hist count=0
+23:21:08 lock: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCt...[458]
+23:21:08 guest.log tail: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw()...[468]
+23:21:08 END
+23:22:22 MODE=serve
+23:22:23 vmstate=VMState="running" 
+23:48:22 MODE=pull
+23:48:22 vmstate=VMState="running" 
+23:51:36 MODE=pull
+23:51:36 vmstate=VMState="running" 
+23:52:51 MODE=pull
+23:52:51 vmstate=VMState="running" 
+23:52:51 ga=READY
+23:52:51 pull h269.out: 
+23:52:51 h269.out 3989B - read it next
+23:52:51 pull h269.prev.out: 
+23:52:51 h269.prev.out 6945B - crashed-run tail
+23:52:51 hist count=13
+23:52:51 hist h269.hist.1105-232812.out: 
+23:52:52 hist h269.hist.1105-233005.out: 
+23:52:52 hist h269.hist.1105-233016.out: 
+23:52:52 hist h269.hist.1105-233024.out: 
+23:52:52 hist h269.hist.1105-233207.out: 
+23:52:52 hist h269.hist.1105-234721.out: 
+23:52:53 hist h269.hist.1105-234907.out: 
+23:52:53 hist h269.hist.1105-234919.out: 
+23:52:53 hist h269.hist.1105-235002.out: 
+23:52:53 hist h269.hist.1105-235027.out: 
+23:52:53 hist h269.hist.1105-235210.out: 
+23:52:53 hist h269.hist.1105-235221.out: 
+23:52:54 hist h269.hist.1105-235229.out: 
+23:52:54 lock: 23:52:29|639295195275000000
+23:52:54 dump count=5
+23:52:54 dump 110526-10890-01.dmp: 
+23:52:54 dump 110526-13843-01.dmp: 
+23:52:55 dump 110526-8671-01.dmp: 
+23:52:55 dump 110526-9234-01.dmp: 
+23:52:55 dump 110526-9843-01.dmp: 
+23:52:56 guest.log tail: 
+23:52:56 END

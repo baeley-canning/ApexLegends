@@ -1,0 +1,14 @@
+﻿16:52:07.554  scan: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=Kern30120" "--needle=Arcticsun186" "--needle=RedSoxNation072" "--needle=Moneezy2846" "--needle=Turtle D Crew" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=400 --ctx=64 --max-hits=2000 --max-s=60
+16:52:47.971  scan rc=0 verdict=HITS=2000 pages=998 cooc=479 scanned=27354 MiB stopped=covered sat=0:400,1:400,2:400,3:400,4:400 first_n=2 first_pa=0x7ed761181
+16:52:47.978    n=0 Kern30120 = 400
+16:52:47.997    n=1 Arcticsun186 = 400
+16:52:48.003    n=2 RedSoxNation072 = 400
+16:52:48.009    n=3 Moneezy2846 = 400
+16:52:48.014    n=4 Turtle D Crew = 400
+16:52:51.132  class: pages=998 text=848 binary=6 mixed=144 zeroed=0
+16:52:51.196  dump windows=3
+16:52:52.216    dump 0 page=0x7abc3d000 rc=0 PADUMP ok=17 fault=0 hits=5/5 lo=0x7abc35000 hi=0x7abc46000 0.02s
+16:52:53.229    dump 1 page=0x77d704000 rc=0 PADUMP ok=16 fault=1 hits=2/2 lo=0x77d6fc000 hi=0x77d70d000 0.02s
+16:52:54.239    dump 2 page=0x7b6bcf000 rc=0 PADUMP ok=17 fault=0 hits=2/2 lo=0x7b6bc7000 hi=0x7b6bd8000 0.02s
+16:52:54.247  RESULT: variable=match_names verdict=DUMPED windows=3 ok=3 pages=51 MiB=0.2 scan=HITS=2000 pages=998 cooc=479 scanned=27354 MiB stopped=covered sat=0:400,1:400,2:400,3:400,4:400 first_n=2 first_pa=0x7ed761181 class=pages=998 text=848 binary=6 mixed=144 zeroed=0 game_alive_post=True
+16:52:54.248  --- end ---

@@ -1,0 +1,68 @@
+2026-11-05 20:25:19 host now
+active.txt 5 11-05 16:09
+apexcheat.dll 318976 11-05 15:55
+apexdrv.sys 6656 11-05 18:51
+apexdrv_v2_backup.sys 10152 11-01 14:00
+apexdrv_v3_signed.sys 8336 11-05 17:36
+apex_launcher.exe 431104 11-05 18:24
+bench_v3.cer 778 11-05 17:17
+boot.cmd 476 11-02 18:46
+boot2.ps1 1292 11-05 16:25
+cur.ps1 23816 11-05 20:16
+cur_h267v3_bak.ps1 12314 11-05 19:16
+cur_h267v3_bak2.ps1 12314 11-05 19:16
+cur_probeF_prev.ps1 610 11-05 11:28
+dbutildrv2.cat 10065 11-02 23:05
+dbutildrv2.inf 2204 11-02 23:05
+DBUtilDrv2.sys 24952 11-02 23:05
+drv64.dll 2086400 11-02 22:07
+gdrv3.sys 52440 10-12 22:19
+go.cmd 411 11-02 18:53
+go2.cmd 252 11-02 19:01
+k0_env.ps1 2455 11-02 21:56
+k10_soak.ps1 9988 11-03 21:07
+k11_soak.ps1 10716 11-03 21:11
+k1b_kdu.ps1 3619 11-02 22:08
+k1_kdu.ps1 3441 11-02 22:04
+k2_diag.ps1 2171 11-02 22:10
+k3_kdu.ps1 3679 11-02 22:12
+k4b_kdu.ps1 4491 11-02 22:15
+k4_kdu.ps1 4419 11-02 22:15
+k5_kdu.ps1 6668 11-02 22:33
+k6_kdu.ps1 6937 11-02 22:35
+k7_kdu.ps1 6939 11-02 22:36
+k8_kdu.ps1 6825 11-02 22:38
+k9_kdu.ps1 7261 11-02 22:40
+kdu.exe 422912 11-02 22:06
+loop.cmd 279 11-02 19:47
+once.cmd 385 11-02 20:07
+p37_prov.cs 46602 11-02 16:09
+p97b.ps1 5628 11-05 12:32
+p97_guest.ps1 10701 11-05 11:24
+probeA.ps1 2483 11-02 19:41
+probeB.ps1 2722 11-02 20:04
+probeC.ps1 2536 11-02 20:19
+probeD.ps1 1595 11-02 20:26
+probeE.ps1 2356 11-02 20:28
+probeF.ps1 2225 11-02 20:32
+run.cmd 300 11-02 20:07
+stage2.ps1 2721 11-02 18:54
+stage3.ps1 1778 11-02 19:13
+tick.ps1 706 11-02 19:27
+upgrade.ps1 1059 11-02 19:47
+upgrade2.ps1 1016 11-02 19:59
+upgrade3.ps1 935 11-02 20:08
+zapexcheat.dll 318976 11-05 15:55
+zapexdrv.sys 8336 11-05 17:36
+_h1b_diag.txt 39899 11-02 23:33
+_h1b_dse6.txt 1595 11-02 23:33
+_h1c_prv2_6.txt 1535 11-02 23:36
+_kdu_help.txt 0 11-02 23:25
+_p37_ping.ps1 4133 11-02 14:29
+cur: # (apexdrv_v3_signed.sys -> zapexdrv.sys, "z" prefix = class-5.4.26 KDU provider id 22/30,
+cur: #  NOTE: payload\apexdrv.sys (18:51) is NOT signed (HWID-match only, hash 3C37D4B0...) and
+cur: # SHA-256 of the SIGNED bench-v3 image (build\apexdrv_v3_signed.sys). The earlier
+cur: $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apexcheat.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
+cur: if (-not (Fetch 'zapexdrv.sys' $sys 4000)) { $missing += 'sys' }
+cur: } elseif ((Get-ItemProperty $key -EA 0).ImagePath -notmatch [regex]::Escape('zapexdrv')) {
+cur: W ('VERDICT: variable=driver image name/signature (zapexdrv.sys) result=' + $verdict)

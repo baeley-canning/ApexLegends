@@ -1,0 +1,80 @@
+total=68
+id=4 drv=MsIo64 min=7601 max=ANY flags=0x0x00000022
+id=13 drv=AsIO2 min=7601 max=ANY flags=0x0x00000022
+id=22 drv=AsIO3 min=7601 max=ANY flags=0x0x00000022
+id=30 drv=AMDRyzenMasterDriver min=7601 max=ANY flags=0x0x00000082
+id=32 drv=LenovoDiagnosticsDriver min=17134 max=ANY flags=0x0x00000902
+id=33 drv=pcdsrvc_x64 min=7601 max=ANY flags=0x0x00000080
+id=38 drv=KRegExp min=7601 max=19045 flags=0x0x00000128
+id=39 drv=EchoDrv min=7601 max=ANY flags=0x0x00001202
+id=40 drv=nvoclock min=7601 max=ANY flags=0x0x00000080
+id=41 drv=IREC min=7601 max=ANY flags=0x0x00001042
+--- all ids/names ---
+0 NalDrv
+1 RTCore64
+2 Gdrv
+3 ATSZIO
+4 MsIo64
+5 GLCKIo2
+6 EneIo64
+7 WinRing0x64
+8 EneTechIo64
+9 phymemx64
+10 rtkio64
+11 EneTechIo64
+12 lha
+13 AsIO2
+14 DirectIo64
+15 gmerdrv
+16 DBUtil23
+17 mimidrv
+18 KProcessHacker
+19 PROCEXP152
+20 DBUtilDrv2
+21 CEDRIVER73
+22 AsIO3
+23 hw64
+24 SysDrv3S
+25 ZemanaAntimalware
+26 inpoutx64
+27 DirectIo64
+28 AsrDrv106
+29 ALSysIO64
+30 AMDRyzenMasterDriver
+31 physmem
+32 LenovoDiagnosticsDriver
+33 pcdsrvc_x64
+34 WinIo
+35 EtdSupport
+36 KExplore
+37 KObjExp
+38 KRegExp
+39 EchoDrv
+40 nvoclock
+41 IREC
+42 PhyDMACC
+43 rzpnk
+44 PdFwKrnl
+45 AODDriver
+46 wnBios64
+47 EleetX1
+48 AxtuDrv
+49 AppShopDrv103
+50 AsrDrv107n
+51 AsrDrv107
+52 PMxDrv
+53 HwRwDrv.x64
+54 NeacSafe64
+55 ThrottleStop
+56 TPwSav
+57 LnvMSRIO
+58 CORMEM
+59 IPCType
+60 WinHwDriver
+61 affdriver
+62 mtxC9CB
+63 PGRHostControl
+64 LECOMAx
+65 RootLaser
+66 ktapi
+67 hpwks

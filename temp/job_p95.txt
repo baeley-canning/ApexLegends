@@ -1,0 +1,1 @@
+& python -u temp\p95_refresh.py *> temp\p95_console.txt; "P95_EXIT=$LASTEXITCODE" | Out-File temp\p95_arm.txt

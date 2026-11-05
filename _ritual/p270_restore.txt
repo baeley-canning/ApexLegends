@@ -1,0 +1,78 @@
+VBoxManage.exe : 
+VBoxManage.exe: error: 
+Cannot delete the 
+current state of the 
+running machine (machine 
+state: Running)
+At line:1 char:1
++ & 'C:\Program Files\Ora
+cle\VirtualBox\VBoxManage
+.exe' snapshot Win11- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (VBoxManage.exe:...s   
+ tate: Running):Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+VBoxManage.exe: error: 
+Details: code 
+VBOX_E_INVALID_VM_STATE 
+(0x80bb0002), component 
+SessionMachine, 
+interface IMachine, 
+callee IUnknown
+VBoxManage.exe: error: 
+Context: "RestoreSnapshot
+(pSnapshot, 
+pProgress.asOutParam())" 
+at line 560 of file 
+VBoxManageSnapshot.cpp
+Restoring snapshot 'pre-h268' (4ea0dd5e-11c6-4f15-8fd7-458ddd0c94d2)
+
+VBoxManage.exe : 
+VBoxManage.exe: error: 
+The machine 
+'Win11-Test2' is already 
+locked by a session (or 
+being locked or unlocked)
+At line:1 char:153
++ ... store.txt'; & 
+'C:\Program Files\Oracle\
+VirtualBox\VBoxManage.exe
+' sta ...
++                 ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (VBoxManage.exe:...e   
+ d or unlocked):Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+VBoxManage.exe: error: 
+Details: code VBOX_E_INVA
+LID_OBJECT_STATE 
+(0x80bb0007), component 
+MachineWrap, interface 
+IMachine, callee IUnknown
+VBoxManage.exe: error: 
+Context: "LaunchVMProcess
+(a->session, 
+sessionType.raw(), ComSaf
+eArrayAsInParam(aBstrEnv)
+, 
+progress.asOutParam())" 
+at line 921 of file 
+VBoxManageMisc.cpp
+

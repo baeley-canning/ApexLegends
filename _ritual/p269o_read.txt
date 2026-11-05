@@ -1,0 +1,43 @@
+153: W 'STEP=policy'
+209: W 'STEP=trust'
+226: if ($sigAfter -notmatch 'Valid') { W ('  SIG GATE: chain still ' + $sigAfter + ' - image is unsigned-in-effect, verdict below is name-only') }
+233: W 'STEP=local-load'
+241: # a self-signed root is not enough for kernel mode; testsigning relaxes that and needs one reboot
+242: W 'STEP=kdu-list'
+262: W 'STEP=ladder'
+264: $winner = -1
+273:     W ('  start rc=' + $rcS)
+274:     if ($rcS -eq 0) { $winner = $id; break }
+276: W ('WINNER=' + $winner)
+277: if ($winner -lt 0) {
+287: W ('imagePath=[' + (Get-ItemProperty $key).ImagePath + '] start ok via prv ' + $winner)
+290: RunExe "$env:SystemRoot\system32\bcdedit.exe" @('/enum', '{current}') 10000 30 | Out-Null
+291: $ts = [string]($script:lastOut -split "`n" | Select-String 'testsigning')
+292: W ('testsigning line=[' + ($ts -replace '\s+', ' ').Trim() + ']')
+294:     $rcT = RunExe "$env:SystemRoot\system32\bcdedit.exe" @('/set', 'testsigning', 'on') 10000 5
+296:         W 'RESULT: PENDING testsigning enabled - reboot required before the load test'
+303:     W ('testsigning refused by Secure Boot policy (rc=' + $rcT + ') - trying nointegritychecks')
+304:     $rcN = RunExe "$env:SystemRoot\system32\bcdedit.exe" @('/set', 'nointegritychecks', 'on') 10000 5
+306:         W 'RESULT: PENDING nointegritychecks on - reboot required before the load test'
+313:     W ('nointegritychecks refused too (rc=' + $rcN + ') - continuing with DSE on')
+317: W 'STEP=verify'
+328: W 'STEP=dse-cycle (6 then 0: proves the write path still works, leaves DSE off for the load)'
+336: W 'STEP=oracle-before'
+363: W 'STEP=abi-gate (--probe: version + kernel-context measurement, no inject)'
+370: # so this gate is the one place a stale ABI can be caught before it eats the verdict.
+382:     W ('  re-arm start rc=' + $rcR)
+386:     W ('  re-point start rc=' + (Svc 'start apexdrv' 20000))
+390: W 'STEP=launcher-kernel-shadow (apexcheat.dll)'
+402:     W 'STEP=launcher-kernel-z (zapexcheat.dll - same bytes, 5.4.26-style name)'
+413:     W 'STEP=launcher-userapc (notepad fallback)'
+418: W 'STEP=oracle-after (the error code and the failure point live here)'
+423: W 'STEP=ls'
+428: $verdict = if (-not $llA -and -not $llB) { 'FAIL local control itself failed (own-process LoadLibrary) => image/build, not target context' }
+433: if (-not $abiOk) { $verdict += ' [abi-gate failed: ' + $abiLine + ']' }
+434: if ($sigAfter -notmatch 'Valid') { $verdict += ' [image not trust-valid (' + $sigAfter + '): name-only test]' }
+435: W ('RESULT: ' + $verdict)
+440: W 'STEP=cleanup'
+448: RunExe "$env:SystemRoot\system32\bcdedit.exe" @('/enum', '{current}') 10000 30 | Out-Null
+449: $tsl = [string]($script:lastOut -split "`n" | Select-String 'testsigning|nointegritychecks')
+451: W ('VERDICT: variable=single-run enforcement (6 min boot-stamped lock) result=' + $verdict)
+452: W ('  ladder/winner/dse-cycle unchanged from h268: same image, same rungs; winner=' + $winner)

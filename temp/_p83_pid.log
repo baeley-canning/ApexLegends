@@ -1,0 +1,10 @@
+candidates=15
+  pid=18592 ws=185MiB title='Welcome_-_cheating_-_Visual_Studio_Code'
+  pid=18836 ws=35MiB title=''
+  pid=18920 ws=162MiB title=''
+  pid=18948 ws=58MiB title=''
+  pid=19132 ws=639MiB title=''
+  pid=18480 ws=187MiB title=''
+chosen pid=18592 start=06:59:55
+alive=True
+VERDICT: use pid=18592 (earliest Code.exe, root process)

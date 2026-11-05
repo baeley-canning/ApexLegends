@@ -1,0 +1,26 @@
+﻿6: every PA with 96 bytes of context.  Two or three needles are the point -- a
+71:     for base in range(lo, hi, 16):
+72:         cut = blk[base:base + 16]
+75:         lines.append("    %06x  %-47s  |%s|" % (base - lo, hx, tx))
+151:     hits = []                       # (needle_idx, pa, page)
+163:     def take(blk, base, blen):
+177:                 pa = base + i
+178:                 key = (pa & ~(PAGE - 1), ni)
+184:                 hits.append((ni, pa, key[0]))
+185:                 log("HIT n=%d pa=%#x page=%#x %r" % (ni, pa, key[0], names[ni]))
+188:                 prog("HIT n=%d pa=%#x" % (ni, pa))
+193:         pa = min(al_hi, top) - CH if desc else al_lo
+194:         while (pa >= al_lo) if desc else (pa < al_hi):
+196:                 if (desc and pa > start) or (not desc and pa + CH <= start):
+197:                     pa += -CH if desc else CH
+199:             n = min(CH, al_hi - pa)
+201:                 blk = g.read_phys(pa, n)
+206:                         sblk = g.read_phys(pa + sub, sn)
+211:                     take(sblk, pa + sub, sn)
+213:                 prog("FAULT pa=%#x bad4k=%d hits=%d" % (pa, bad, len(hits)))
+215:                 take(blk, pa, n)
+221:                 prog("CKPT pa=%#x scanned=%d MiB hits=%d bad=%d %.1fs"
+222:                      % (pa, scanned >> 20, len(hits), bad,
+228:             pa += -CH if desc else CH
+233:     for ni, pa, page in hits:
+249:     return wr(0, "HITS=%d pages=%d cooc=%d scanned=%d MiB stopped=%s sat=%s first_n=%d first_pa=%#x"

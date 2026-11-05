@@ -1,0 +1,51 @@
+﻿191 11:44:13.944   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+202 11:44:13.946   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+272 11:44:13.944   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+283 11:44:13.946   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+300 11:44:13.985   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+368 11:44:13.944   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+379 11:44:13.946   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+396 11:44:13.985   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+400 11:44:16.900 oracle hits=0
+401 11:44:16.900 VERDICT: UNKNOWN - lastError=2
+468 11:44:13.944   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+479 11:44:13.946   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+496 11:44:13.985   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+500 11:44:16.900 oracle hits=0
+501 11:44:16.900 VERDICT: UNKNOWN - lastError=2
+522 11:44:17.021 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26300 [*] SecureBoot is enabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [*] WHQL enforcement ENABLED [+] MSFT Driver block list is enabled [+] Hypervisor present: "Oracle VirtualBox" (VBoxVBoxVBox) [+] Environment diagnostics: VirtualBox Guest, VBoxGuest service, Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFD24900000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [!] Unable to load vulnerable driver, NTSTATUS (0xC0000603): Windows cannot verify the digital signature for this file. The signing certificate for this file has been revoked. [+] Return value: 0. Bye-bye!]
+524 11:44:17.057 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 1
+667 11:45:14.250   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+678 11:45:14.252   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+732 11:45:14.250   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+743 11:45:14.252   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+760 11:45:14.299   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+812 11:45:14.250   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+823 11:45:14.252   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+840 11:45:14.299   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+844 11:45:16.438 oracle hits=0
+845 11:45:16.438 VERDICT: UNKNOWN - lastError=2
+896 11:45:14.250   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+907 11:45:14.252   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+924 11:45:14.299   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+928 11:45:16.438 oracle hits=0
+929 11:45:16.438 VERDICT: UNKNOWN - lastError=2
+950 11:45:16.525 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26300 [*] SecureBoot is enabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [*] WHQL enforcement ENABLED [+] MSFT Driver block list is enabled [+] Hypervisor present: "Oracle VirtualBox" (VBoxVBoxVBox) [+] Environment diagnostics: VirtualBox Guest, VBoxGuest service, Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFD24CE0000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [!] Unable to load vulnerable driver, NTSTATUS (0xC0000603): Windows cannot verify the digital signature for this file. The signing certificate for this file has been revoked. [+] Return value: 0. Bye-bye!]
+952 11:45:16.544 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0
+1095 11:46:07.019   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1106 11:46:07.022   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1160 11:46:07.019   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1171 11:46:07.022   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1188 11:46:07.055   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+1240 11:46:07.019   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1251 11:46:07.022   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1268 11:46:07.055   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+1272 11:46:09.167 oracle hits=0
+1273 11:46:09.167 VERDICT: UNKNOWN - lastError=2
+1324 11:46:07.019   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1335 11:46:07.022   | os=10.0 build 26300 hvci=unknown (key absent) cpu=GenuineIntel (hypervisor bit set) advapi32=already loaded (probe added no module)
+1352 11:46:07.055   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+1356 11:46:09.167 oracle hits=0
+1357 11:46:09.167 VERDICT: UNKNOWN - lastError=2
+1378 11:46:09.258 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26300 [*] SecureBoot is enabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [*] WHQL enforcement ENABLED [+] MSFT Driver block list is enabled [+] Hypervisor present: "Oracle VirtualBox" (VBoxVBoxVBox) [+] Environment diagnostics: VirtualBox Guest, VBoxGuest service, Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFD21130000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [!] Unable to load vulnerable driver, NTSTATUS (0xC0000603): Windows cannot verify the digital signature for this file. The signing certificate for this file has been revoked. [+] Return value: 0. Bye-bye!]
+1380 11:46:09.275 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0

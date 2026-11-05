@@ -1,0 +1,75 @@
+﻿    if pid != 0x1570 or not nm.startswith(b"r5apex"):
+        return None
+    return struct.unpack_from("<QQ", page, o + 0x1D8)
+
+
+def hunt(g, va, ram_top):
+    page = va & ~0xFFF
+    lo = page - ram_top
+    if lo < 0xFFFFA40000000000:
+        lo = 0xFFFFA40000000000
+    lo = (lo + 0xFFF) & ~0xFFF
+    n = (page - lo) // 0x1000
+    log("window B=%#x..%#x  %d candidates" % (lo, page, n))
+    t0 = time.perf_counter()
+    tried = 0
+    for b in range(lo, page, 0x1000):
+        pa = page - b
+        if not g.is_ram(pa):
+            continue
+        try:
+            p = g.read_phys(pa, 0x1000)
+        except OSError:
+            continue
+        tried += 1
+        s = shape(p)
+        if not s:
+            continue
+        pid, fl, bl = s
+        log("shape B=%#x pa=%#x pid=%#x name=%r" % (b, pa, pid, p[0x3B8:0x3C7]))
+        r = decoy_read(g, b, LINK)
+        if not r:
+            log("  reciprocity failed")
+            continue
+        log("  ACCEPT B=%#x decoy flink=%#x blink=%#x" % (b, r[0], r[1]))
+        if r[0] != va:
+            log("  WARN decoy flink %#x != %#x" % (r[0], va))
+        prog("ACCEPT b=%#x" % b)
+        log("  tried=%d %.1fs" % (tried, time.perf_counter() - t0))
+        return b
+    log("no candidate  tried=%d %.1fs" % (tried, time.perf_counter() - t0))
+
+
+def hop(g, b, va, seen):
+    """VA -> (pid, base_pa, fl, bl, name) for a list node, or None."""
+    pa = va - b
+    base = (pa - 0x1D8) & ~0x0F
+    if base in seen or not g.is_ram(base) or (base & 0xFFF) > 0xFF0:
+        return None
+    seen.add(base)
+    try:
+        p = g.read_phys(base, 0x1000)
+    except OSError:
+        return None
+    if p[0] != 3:
+        return None
+    pid = struct.unpack_from("<I", p, 0x1D0)[0]
+    fl, bl = struct.unpack_from("<QQ", p, 0x1D8)
+    return pid, base, fl, bl, p[0x338:0x347]
+
+
+def walk(g, b, start_va, seen, tag):
+    """Follow one direction; collect (pid, base, name) until HOP_CAP or a repeat."""
+    va = start_va
+    out = []
+    for i in range(HOP_CAP):
+        h = hop(g, b, va, seen)
+        if not h:
+            out.append(("dead", va))
+            break
+        pid, base, fl, bl, nm = h
+        out.append((pid, base, nm))
+        prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+        nxt = fl if tag == "FL" else bl
+        if nxt == start_va:
+            out.append(("ring", nxt))

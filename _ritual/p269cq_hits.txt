@@ -1,0 +1,16 @@
+﻿1: ##### 110526-10890-01 p2=0xFFFFF804522215B8 rip=0xFFFFF804C5AFD660
+49: 3: kd> kd: Reading initial command 'ln fffff804522215b8; ln fffff804c5afd660; .echo ===KV; kv; .echo ===AN; !analyze -v; q'
+60: ===KV
+71: ===AN
+295: SYMBOL_NAME:  WinRing0x64+15b8
+297: MODULE_NAME: WinRing0x64
+299: IMAGE_NAME:  WinRing0x64.sys
+305: FAILURE_BUCKET_ID:  AV_WinRing0x64!unknown_function
+334: ##### 110526-13843-01 p2=0xFFFFF801149815B8 rip=0xFFFFF80187EFD660
+382: 0: kd> kd: Reading initial command 'ln fffff801149815b8; ln fffff80187efd660; .echo ===KV; kv; .echo ===AN; !analyze -v; q'
+393: ===KV
+404: ===AN
+628: SYMBOL_NAME:  WinRing0x64+15b8
+630: MODULE_NAME: WinRing0x64
+632: IMAGE_NAME:  WinRing0x64.sys
+638: FAILURE_BUCKET_ID:  AV_WinRing0x64!unknown_function

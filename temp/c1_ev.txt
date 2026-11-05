@@ -1,0 +1,80 @@
+﻿### p44a_progress.txt
+=== run pid=5488 hex= why=
+### p44b_pa.txt
+sweep pages=129 bad=35 offs=-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,+0,+3,+4,+5,+6,+7,+8,+9
+copy 0x2000     0x7ec76d000 ERR [Errno 1450] phys read 0x7ec76d000+0x2000 failed
+copy unaligned  0x7ec76d800 ERR [Errno 1450] phys read 0x7ec76d800+0x1000 failed
+map_phys ERR [Errno 31] map_phys 0x7ec76d000+0x1000 failed
+### p44b_progress.txt
+=== run pid=5488 hex= why=
+### p44c_progress.txt
+=== run pid=5488 hex= why=
+### p44c_va.txt
+base=0xffffa40100000000 -> pa=0xb25a5258 is_ram=True
+  pa=0xb25a5080 lane=0x1d8 type=255 pid@1d0=0xffffffff name=b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+  pa=0xb25a5000 lane=0x258 type=255 pid@1d0=0xffffffff name=b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+base=0xffffa40000000000 -> pa=0x1b25a5258 is_ram=True
+  pa=0x1b25a5080 lane=0x1d8 type=0 pid@1d0=0x0 name=b'\x92\x07?\xd1\x94\x0f\x00\x80'
+  pa=0x1b25a5000 lane=0x258 type=0 pid@1d0=0x0 name=b'`SD\xff\x02'
+### p44d_link.txt
+base=0x2481d60c0 type=3 pid=0x1570
+   +0x1c8 0000000000000000
+   +0x1d8 ffffa401b25a5258  <kva
+   +0x1e0 ffffa401b7ea0258  <kva
+   +0x1e8 0000000000000000
+   +0x250 0000000000000000
+   +0x258 0000000000000000
+   +0x260 0000000000000000
+   +0x268 0000000000000000
+base=0x62bc6e190 ERR [Errno 1450] phys read 0x62bc6e000+0x2000 failed
+base=0x7de10fbf0 type=97 pid=0x0
+   +0x1c8 0000000000000000
+   +0x1d8 0000000000000000
+   +0x1e0 0000000000000000
+   +0x1e8 0000000000000000
+   +0x250 0000000000000018
+   +0x258 802b3f6400000000
+   +0x260 0000000000000000
+   +0x268 00002c5c0080c000
+### p44d_progress.txt
+=== run pid=5488 hex= why=
+### p44e_livedump.txt
+chainprobe  2026-11-04 13:11:38
+RAMMAP map=5 bad=24 ranges=5
+fingerprint pages: 0  68.7s
+VERDICT: NO_FINGERPRINT
+### p44e_progress.txt
+=== run pid=5488 hex= why=
+13:11:38  FAULT pa=0x2000000 hits=0
+13:11:38  FAULT pa=0x2040000 hits=0
+13:11:38  FAULT pa=0x20f0000 hits=0
+13:11:38  FAULT pa=0x2120000 hits=0
+13:11:38  FAULT pa=0x2140000 hits=0
+13:11:38  FAULT pa=0x2220000 hits=0
+13:11:38  FAULT pa=0x22c0000 hits=0
+13:11:38  FAULT pa=0x2340000 hits=0
+13:11:38  FAULT pa=0x2430000 hits=0
+13:11:38  FAULT pa=0x24b0000 hits=0
+13:11:38  FAULT pa=0x2500000 hits=0
+13:11:38  FAULT pa=0x26f0000 hits=0
+13:11:38  FAULT pa=0x2950000 hits=0
+13:11:38  FAULT pa=0x2a20000 hits=0
+13:11:38  FAULT pa=0x2a50000 hits=0
+13:11:38  FAULT pa=0x2a60000 hits=0
+13:11:38  FAULT pa=0x2ac0000 hits=0
+13:11:38  FAULT pa=0x2bb0000 hits=0
+13:11:38  FAULT pa=0x2bd0000 hits=0
+13:11:38  FAULT pa=0x2ca0000 hits=0
+13:11:38  FAULT pa=0x3020000 hits=0
+13:11:38  FAULT pa=0x3070000 hits=0
+13:11:38  FAULT pa=0x30f0000 hits=0
+13:11:38  FAULT pa=0x3110000 hits=0
+### p44f_progress.txt
+=== run pid=5488 hex= why=
+
+Lines Words Characte
+            rs      
+----- ----- --------
+   73               
+
+

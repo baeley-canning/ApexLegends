@@ -1,0 +1,13 @@
+﻿=== p43x 2026-11-04T12:38:56.0370133+13:00 ===
+12:38:56.044  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+12:38:56.054  elevated=True
+12:38:56.059  game alive=True
+12:38:56.065  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\pidscan.py" --inplace --pid=5488
+12:38:56.076  child pid=23884 started 12:38:56.074
+12:40:51.032  child exit= wall=114.9s
+12:40:51.040  OUT exists=True size=1174471
+12:40:51.042  console tail:       20 base=0x2481d60c0 pid@0x1d0 dtb=0x7ec76d000 name='r5apex_dx12.ex\x00\x02' |       20 base=0x62bc6e190 pid@0x1d0 dtb=0x7ec76d000 name='r5apex_dx12.ex\x00\x02' |       20 base=0x7de10fbf0 pid@0x1d0 dtb=0x7ec76d000 name='r5apex_dx12.ex\x00\x02' |       10 base=0x2b1198868 pid@0x1d0 dtb=0x80070a90 name='\x000\x01\x00\x03\x00\x00\x00\x004\x01\x00\x03' |       10 base=0x5592c4f64 pid@0x1d0 dtb=0x300000105 name='(Åf \x19\x0c\x88sÓpù\x13ö\x10\x92¿' |       10 base=0x7bf538518 pid@0x1d0 dtb=0x80070a90 name='\x000\x01\x00\x03\x00\x00\x00\x004\x01\x00\x03' |       10 base=0x7f5979ce8 pid@0x1d0 dtb=0x8dc09840 name='@\x9bÀ\x8d\x00\x00\x00\x001\x07\x00\x00\x02' |        8 base=0x1f000ed4 pid@0x1d0 dtb=0x400000018 name='?\x15\x00\x00²\x16\x00\x00±\x16\x00\x00°\x16' |   walk base=0x2481d60c0 dtb=0x7ec76d000 fault [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   walk base=0x62bc6e190 dtb=0x7ec76d000 fault [Errno 1450] phys read 0x7ec76d000+0x1000 failed |   walk base=0x7de10fbf0 dtb=0x7ec76d000 fault [Errno 1450] phys read 0x7ec76d000+0x1000 failed | VERDICT: NO_MZ
+12:40:51.044  err tail: 
+12:40:51.057  RESULT: verdict=NO_MZ
+12:40:51.062  post game alive=True
+12:40:51.062  --- end ---

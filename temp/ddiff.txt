@@ -1,0 +1,222 @@
+diff --git a/ext/dumplive.py b/ext/dumplive.py
+index 3d262a0..3f6cb0d 100644
+--- a/ext/dumplive.py
++++ b/ext/dumplive.py
+@@ -27,6 +27,7 @@ import ctypes
+ import hashlib
+ import os
+ import struct
++import subprocess
+ import sys
+ import time
+ from ctypes import wintypes
+@@ -37,11 +38,13 @@ import gio  # noqa: E402
+ 
+ ROOT = os.path.dirname(HERE)
+ OUT = os.path.join(ROOT, "_ritual", "p40d_livedump.txt")
++PROG = os.path.join(ROOT, "_ritual", "p40d_progress.txt")   # append-only, survives a hang
+ NAME = b"r5apex_dx12.exe\x00"
+ PROC_NAME = "r5apex_dx12"
+ 
+ SCAN_LO = 0x100000
+ SCAN_CHUNK = 0x10000            # ioctl dst is allocated for this; dump lowers it
++CKPT_BYTES = 0x10000000         # progress checkpoint every 256 MiB scanned
+ HOLES = [(0x000A0000, 0x00100000),      # VGA/ROM
+          (0xC0000000, 0x100000000)]     # PCI/MMIO space
+ HIT_CAP = 96
+@@ -53,6 +56,8 @@ MASK = 0x000FFFFFFFFFF000
+ MIN_IMAGE = 0x4000000
+ MAX_IMAGE = 0xC0000000
+ 
++OPT = {"lo": None, "hi": None, "chunk": SCAN_CHUNK}
++
+ LOG = []
+ 
+ 
+@@ -61,6 +66,18 @@ def log(s):
+     print(s)
+ 
+ 
++def prog(s):
++    """Append-only, flushed, one line.  The scan can hard-hang the box, so the
++    progress file -- not the captured console -- is the only durable state."""
++    try:
++        with open(PROG, "a", encoding="utf-8") as f:
++            f.write("%s  %s\n" % (time.strftime("%H:%M:%S"), s))
++            f.flush()
++            os.fsync(f.fileno())
++    except OSError:
++        pass
++
++
+ kernel32 = gio.kernel32
+ shell32 = ctypes.WinDLL("shell32", use_last_error=True)
+ advapi32 = ctypes.WinDLL("advapi32", use_last_error=True)
+@@ -136,56 +153,79 @@ def find_pid():
+ 
+ 
+ # ---------------------------------------------------------------- ram scan
+-def scan_ranges(ram_top):
++def scan_ranges(ram_top, lo=None, hi=None):
+     top = min(ram_top, 0x4000000000) if ram_top else 0x100000000
+     ranges = []
+     cur = SCAN_LO
+-    for lo, hi in sorted(HOLES):
+-        if hi <= cur:
++    for rlo, rhi in sorted(HOLES):
++        if rhi <= cur:
+             continue
+-        if lo >= top:
++        if rlo >= top:
+             break
+-        if lo > cur:
+-            ranges.append((cur, min(lo, top)))
+-        cur = max(cur, hi)
++        if rlo > cur:
++            ranges.append((cur, min(rlo, top)))
++        cur = max(cur, rhi)
+         if cur >= top:
+             break
+     if cur < top:
+         ranges.append((cur, top))
++    if lo is not None or hi is not None:
++        lo = SCAN_LO if lo is None else lo
++        hi = top if hi is None else min(hi, top)
++        clipped = []
++        for rlo, rhi in ranges:
++            a, b = max(rlo, lo), min(rhi, hi)
++            if b > a:
++                clipped.append((a, b))
++        ranges = clipped
+     return ranges
+ 
+ 
+-def name_hits(g, ram_top, chunk=SCAN_CHUNK, cap=HIT_CAP):
++def name_hits(g, ram_top, chunk=SCAN_CHUNK, cap=HIT_CAP, lo=None, hi=None):
+     """Physical addresses of the NAME string; faults skip one chunk.
+-    A 15-byte carry covers hits straddling chunk boundaries."""
++    A 15-byte carry covers hits straddling chunk boundaries.  Every hit and a
++    periodic checkpoint go straight to PROG, so a box hang keeps the evidence."""
+     hits = []
+     skipped = 0
+     chunks = 0
+-    for lo, hi in scan_ranges(ram_top):
+-        pa = lo
++    scanned = 0
++    nxt_ck = CKPT_BYTES
++    for rlo, rhi in scan_ranges(ram_top, lo, hi):
++        pa = rlo
+         carry = b""
+-        while pa < hi and len(hits) < cap:
+-            n = min(chunk, hi - pa)
++        while pa < rhi and len(hits) < cap:
++            n = min(chunk, rhi - pa)
+             try:
+                 blk = g.read_phys(pa, n)
+             except OSError:
+                 skipped += 1
+                 chunks += 1
++                prog("FAULT pa=%#x n=%#x" % (pa, n))
+                 pa += chunk
+                 carry = b""
+-                continue
+-            chunks += 1
+-            buf2 = carry + blk
+-            base = pa - len(carry)
+-            off = 0
+-            while len(hits) < cap:
+-                i = buf2.find(NAME, off)
+-                if i < 0:
+-                    break
+-                hits.append(base + i)
+-                off = i + 1
+-            carry = blk[-15:]
+-            pa += n
++            else:
++                chunks += 1
++                buf2 = carry + blk
++                base = pa - len(carry)
++                off = 0
++                while len(hits) < cap:
++                    i = buf2.find(NAME, off)
++                    if i < 0:
++                        break
++                    hits.append(base + i)
++                    prog("HIT pa=%#x (%d)" % (base + i, len(hits)))
++                    off = i + 1
++                carry = blk[-15:]
++                pa += n
++            scanned += n
++            if scanned >= nxt_ck:
++                prog("CKPT pa=%#x scanned=%d MiB chunks=%d hits=%d fault=%d %.1fs"
++                     % (pa, scanned >> 20, chunks, len(hits), skipped,
++                        time.perf_counter() - _T0))
++                nxt_ck += CKPT_BYTES
++    prog("SCANEND scanned=%d MiB chunks=%d hits=%d fault=%d %.1fs"
++         % (scanned >> 20, chunks, len(hits), skipped,
++            time.perf_counter() - _T0))
+     return hits, skipped, chunks
+ 
+ 
+@@ -440,18 +480,26 @@ def elevated_main(pid):
+     log("pure-read probe: device open only; no load/DSE/service touch")
+     log("pid=%d alive=%s" % (pid, pid_alive(pid)))
+     try:
+-        g = gio.Gio(chunk=SCAN_CHUNK)
++        g = gio.Gio(chunk=OPT["chunk"])
+     except OSError as e:
+         log("FATAL: %s" % e)
+         return _finish(1, "FATAL no transport")
+     log("PRE ram_top=%#x installed=%d MiB" % (g.ram_top, g.ram_top // 0x100000))
+-
+-    hits, skipped, chunks = name_hits(g, g.ram_top)
++    log("window lo=%s hi=%s chunk=%#x"
++        % ("-" if OPT["lo"] is None else "%#x" % OPT["lo"],
++           "-" if OPT["hi"] is None else "%#x" % OPT["hi"], OPT["chunk"]))
++    prog("START pid=%d alive=%s lo=%s hi=%s chunk=%#x"
++         % (pid, pid_alive(pid), OPT["lo"], OPT["hi"], OPT["chunk"]))
++
++    hits, skipped, chunks = name_hits(g, g.ram_top, chunk=OPT["chunk"],
++                                      lo=OPT["lo"], hi=OPT["hi"])
+     log("scan: %d hits, %d/%d chunks faulted at %#x, %.1f s"
+-        % (len(hits), skipped, chunks, SCAN_CHUNK, time.perf_counter() - _T0))
+-    if not hits and skipped:
++        % (len(hits), skipped, chunks, OPT["chunk"], time.perf_counter() - _T0))
++    if not hits and skipped and OPT["lo"] is None and OPT["hi"] is None:
+         log("retry scan at %#x chunks" % PAGE)
+         g.chunk = PAGE
++        OPT["chunk"] = PAGE
++        prog("RETRY at %#x chunks" % PAGE)
+         hits, skipped, chunks = name_hits(g, g.ram_top, chunk=PAGE)
+         log("retry: %d hits, %d/%d chunks faulted, %.1f s"
+             % (len(hits), skipped, chunks, time.perf_counter() - _T0))
+@@ -537,6 +585,12 @@ def main():
+     for a in sys.argv:
+         if a.startswith("--pid="):
+             pid = int(a.split("=", 1)[1])
++        elif a.startswith("--lo="):
++            OPT["lo"] = int(a.split("=", 1)[1], 0)
++        elif a.startswith("--hi="):
++            OPT["hi"] = int(a.split("=", 1)[1], 0)
++        elif a.startswith("--chunk="):
++            OPT["chunk"] = int(a.split("=", 1)[1], 0)
+     rest = [a for a in sys.argv[1:] if not a.startswith("--")]
+     if pid is None and rest:
+         try:
+@@ -550,7 +604,15 @@ def main():
+         return 2
+     if elevation() == 1 or "--elevated" in sys.argv:
+         return elevated_main(pid)
+-    params = '"%s" --elevated --pid=%d' % (os.path.abspath(sys.argv[0]), pid)
++    args = [sys.executable, os.path.abspath(sys.argv[0]), "--elevated",
++            "--pid=%d" % pid]
++    if OPT["lo"] is not None:
++        args.append("--lo=%#x" % OPT["lo"])
++    if OPT["hi"] is not None:
++        args.append("--hi=%#x" % OPT["hi"])
++    if OPT["chunk"] != SCAN_CHUNK:
++        args.append("--chunk=%#x" % OPT["chunk"])
++    params = subprocess.list2cmdline(args)
+     try:
+         os.remove(OUT)
+     except OSError:

@@ -1,0 +1,42 @@
+﻿ 283|            continue
+ 284|        seen.add(base)
+ 285|        return pid, base, fl, bl, p[o + OBJ_NAME:o + OBJ_NAME + 15]
+ 286|    return None
+ 287|
+ 288|
+ 289|def walk(g, b, start_va, seen, tag):
+ 290|    """Follow one direction; collect (pid, base, name) until HOP_CAP or a repeat."""
+ 291|    va = start_va
+ 292|    out = []
+ 293|    for i in range(HOP_CAP):
+ 294|        h = hop(g, b, va, seen)
+ 295|        if not h:
+ 296|            out.append(("dead", va))
+ 297|def main():
+ 298|    sys.argv = ["basehunt"] + sys.argv[1:]
+ 299|    dry = 0
+ 300|    start = None
+ 376|        return wr(1, "NO_LIVE_OBJECT fl=%d bl=%d" % (len(fl), len(bl)))
+ 377|    finally:
+ 378|        g.close()
+ 379|
+ 380|
+ 381|if __name__ == "__main__":
+ 382|    sys.exit(main())
+ 383|
+ 384|            break
+ 385|        pid, base, fl, bl, nm = h
+ 386|        out.append((pid, base, nm))
+ 387|        prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+ 388|        nxt = fl if tag == "FL" else bl
+ 389|        if nxt == start_va:
+ 390|            out.append(("ring", nxt))
+ 391|            break
+ 392|        va = nxt
+ 393|    return out
+ 394|
+ 395|                if lost:
+ 396|                    prog("BADPAGE %#x of %#x dead at %#x"
+ 397|                         % (lost, n // 0x1000, pa))
+ 398|            else:
+ 399|                pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]

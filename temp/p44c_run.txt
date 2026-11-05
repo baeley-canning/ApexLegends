@@ -1,0 +1,13 @@
+﻿=== p44c 2026-11-04T13:02:39.0788767+13:00 ===
+13:02:39.085  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+13:02:39.098  elevated=True
+13:02:39.104  game alive=True
+13:02:39.110  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\paprobe3.py" --inplace --pid=5488
+13:02:39.123  child pid=11756 started 13:02:39.122
+13:02:39.212  child exit= wall=0.1s
+13:02:39.217  OUT exists=False size=0
+13:02:39.220  console tail: base=0xffffa40100000000 -> pa=0xb25a5258 is_ram=True |   pa=0xb25a5080 lane=0x1d8 type=255 pid@1d0=0xffffffff name=b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff' |   pa=0xb25a5000 lane=0x258 type=255 pid@1d0=0xffffffff name=b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff' | base=0xffffa40000000000 -> pa=0x1b25a5258 is_ram=True |   pa=0x1b25a5080 lane=0x1d8 type=0 pid@1d0=0x0 name=b'\x92\x07?\xd1\x94\x0f\x00\x80' |   pa=0x1b25a5000 lane=0x258 type=0 pid@1d0=0x0 name=b'`SD\xff\x02' | VERDICT: PAPROBE3_DONE
+13:02:39.221  err tail: 
+13:02:39.263  RESULT: verdict=
+13:02:39.269  post game alive=True
+13:02:39.269  --- end ---

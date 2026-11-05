@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cwchar>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 #pragma comment(lib, "advapi32.lib")
 
@@ -25,6 +27,9 @@
 // ============================================================================
 
 namespace {
+
+// NTSTATUS STATUS_PENDING: the loader APC was queued but not yet delivered.
+constexpr LONG kStatusPending = 0x00000103L;
 
 std::string LastErrorText(DWORD error) {
     char buffer[64] = { 0 };
@@ -181,17 +186,29 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
         return result;
     }
 
-    // The driver calls ZwCreateThreadEx with this user-mode entry point, so it
-    // needs the LoadLibraryW address as seen inside the target.  kernel32.dll
-    // is mapped at the same base across processes of a session, and the
-    // export RVA is identical for the same build, so resolving it locally is
-    // the standard approach.
+    // The driver no longer trusts this address: since ABI v4 it resolves
+    // kernel32!LoadLibraryW inside the target itself (PEB -> Ldr -> kernelbase
+    // export table) and reports ResolvePath/BasesDiffer.  The local value is
+    // still sent as a cross-check datum, and is what a v3 driver would use.
     const ULONG64 loadLibraryAddress = reinterpret_cast<ULONG64>(
         GetProcAddress(GetModuleHandleA("kernel32.dll"), "LoadLibraryW"));
-    if (loadLibraryAddress == 0) {
-        result.errorMessage = "kernel32!LoadLibraryW could not be resolved";
+
+    // The driver delivers the loader as a user-mode APC, so it needs a thread of
+    // the target to queue onto (v3 - ZwCreateThreadEx is not exported on 26100).
+    // EnumerateThreads() yields Toolhelp order, i.e. creation order, so index 0
+    // is the MAIN thread - the one that spends its life in the loader lock.  The
+    // list is rotated by one to try a worker first and keep the main thread as
+    // the last resort instead of the first choice.
+    std::vector<DWORD> targetThreads = EnumerateThreads(targetPid);
+    if (targetThreads.empty()) {
+        result.errorMessage = "no thread found in PID " + std::to_string(targetPid) +
+                              " - nothing to queue the loader APC on";
         CloseServiceHandle(scm);
         return result;
+    }
+    if (targetThreads.size() > 1) {
+        std::rotate(targetThreads.begin(), targetThreads.begin() + 1,
+                    targetThreads.end());
     }
 
     const std::wstring ntDriverPath = ToNtPath(WidenAscii(driverPath));
@@ -220,38 +237,178 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
         return result;
     }
 
+    // Refuse a driver older than this launcher: v3 moved the inject rung to an
+    // APC and put ThreadId in the request, so a v2 driver would misread it.
+    {
+        APEXDRV_VERSION_INFO versionInfo{};
+        DWORD versionBytes = 0;
+        if (!DeviceIoControl(hDevice, IOCTL_APEXDRV_VERSION, &versionInfo, sizeof(versionInfo),
+                             &versionInfo, sizeof(versionInfo), &versionBytes, nullptr)) {
+            result.errorMessage = "IOCTL_APEXDRV_VERSION failed" + LastErrorText(GetLastError());
+            CloseHandle(hDevice);
+            StopAndDeleteKernelService(scm);
+            CloseServiceHandle(scm);
+            return result;
+        }
+        if (versionInfo.Version < APEXDRV_VERSION) {
+            char versionBuffer[160];
+            sprintf_s(versionBuffer, sizeof(versionBuffer),
+                      "driver ABI v%lu < v%d - rebuild and reload apexdrv.sys",
+                      static_cast<unsigned long>(versionInfo.Version),
+                      static_cast<int>(APEXDRV_VERSION));
+            result.errorMessage = versionBuffer;
+            CloseHandle(hDevice);
+            StopAndDeleteKernelService(scm);
+            CloseServiceHandle(scm);
+            return result;
+        }
+        std::cout << "[*] driver ABI v" << versionInfo.Version << std::endl;
+    }
+
+    // Control read before the mutation (R3): the target's current loader state and
+    // its OWN kernelbase base.  No allocation, no thread, no APC - the inject below
+    // is the only mutation this function performs.
+    {
+        APEXDRV_TARGETINFO_REQUEST info{};
+        info.ProcessId  = targetPid;
+        info.ThreadId   = targetThreads.front();
+        DWORD infoBytes = 0;
+        if (DeviceIoControl(hDevice, IOCTL_APEXDRV_TARGETINFO, &info, sizeof(info),
+                            &info, sizeof(info), &infoBytes, nullptr)) {
+            std::cout << "[*] targetinfo: modules=" << info.ModuleCount
+                      << " kernelbase=0x" << Hex64(info.KernelBaseBase)
+                      << " self=0x" << Hex64(info.SelfKernelBaseBase)
+                      << " differ=" << info.BasesDiffer
+                      << " target LoadLibraryW=0x" << Hex64(info.ResolvedLoadLibrary)
+                      << " (rva 0x" << std::hex << info.LoadLibraryRva << std::dec
+                      << ", ours 0x" << Hex64(loadLibraryAddress) << ")"
+                      << " lastError=" << info.LastErrorValue << std::endl;
+            if (info.BasesDiffer != 0) {
+                std::cout << "[!] kernelbase is NOT at the same base in target and "
+                             "launcher - the locally resolved LoadLibraryW points "
+                             "at nothing in the target" << std::endl;
+            }
+            if (info.KernelBaseBase == 0) {
+                std::cout << "[!] target has no kernelbase.dll in its module list"
+                          << std::endl;
+            }
+        } else {
+            std::cout << "[~] IOCTL_APEXDRV_TARGETINFO failed"
+                      << LastErrorText(GetLastError()) << std::endl;
+        }
+    }
+
     APEXDRV_INJECT_REQUEST request{};
     request.ProcessId          = targetPid;
-    request.Flags              = APEXDRV_FLAG_NONE;
+    request.Flags              = APEXDRV_FLAG_RESOLVE_IN_TARGET;
+    request.ThreadId           = targetThreads.front();
     request.LoadLibraryAddress = loadLibraryAddress;
     {
         const std::wstring wideDll = WidenAscii(dllPath);
         wcsncpy_s(request.DllPath, APEXDRV_MAX_PATH_CHARS, wideDll.c_str(), _TRUNCATE);
     }
 
+    // A user-mode APC only runs when its thread next returns to user mode alertably.
+    // EnumerateThreads() order is arbitrary and session-0/Win32 worker threads often
+    // sit in non-alertable kernel waits forever, so ONE thread is not enough: try them
+    // in order until one delivers (status 0) and only fall back to PENDING when the
+    // whole short list was queued without a confirmed delivery.
     DWORD bytesReturned = 0;
-    const BOOL ioctlOk = DeviceIoControl(hDevice, IOCTL_APEXDRV_INJECT,
-                                         &request, sizeof(request),
-                                         &request, sizeof(request),
-                                         &bytesReturned, nullptr);
+    BOOL  ioctlOk       = FALSE;
+    const size_t kMaxThreadTries = targetThreads.size() < 6 ? targetThreads.size() : 6;
+
+    for (size_t attempt = 0; attempt < kMaxThreadTries; ++attempt) {
+        request.ThreadId     = targetThreads[attempt];
+        request.ResultStatus = 0;
+        bytesReturned        = 0;
+        ioctlOk = DeviceIoControl(hDevice, IOCTL_APEXDRV_INJECT,
+                                  &request, sizeof(request),
+                                  &request, sizeof(request),
+                                  &bytesReturned, nullptr);
+        if (!ioctlOk) break;
+        if (request.ResultStatus == 0) break;                        // delivered
+        if (request.ResultStatus == kStatusPending) continue;        // next thread
+        break;   // hard NTSTATUS - stop, no point burning the other threads
+    }
 
     if (!ioctlOk) {
         result.errorMessage = "DeviceIoControl(IOCTL_APEXDRV_INJECT) failed" +
                               LastErrorText(GetLastError());
-    } else if (request.ResultStatus != 0) {
-        char statusBuffer[32] = { 0 };
-        sprintf_s(statusBuffer, sizeof(statusBuffer), "0x%08lX",
-                  static_cast<unsigned long>(request.ResultStatus));
-        result.errorMessage = std::string("Driver reported NTSTATUS ") + statusBuffer;
     } else {
-        result.success = true;
-        result.threadId = request.ThreadId;
-        result.dllBaseAddress = reinterpret_cast<HMODULE>(
-            static_cast<ULONG_PTR>(request.RemoteBase));
+        // Everything below is the v4 verdict block: the driver reports what the
+        // call DID, not that it was queued.  Module count is the primary signal -
+        // LastError only explains a failure, and 0 with no new module means the
+        // resolver address was wrong (the call ran into nothing).
+        const bool loaded = (request.ModuleCountAfter > request.ModuleCountBefore);
 
-        std::cout << "[+] Kernel injection SUCCESS - Thread ID: " << result.threadId
-                  << ", module base: 0x" << std::hex << request.RemoteBase
-                  << std::dec << std::endl;
+        std::cout << "[*] delivery: tid=" << request.ThreadId
+                  << " resolve_path=" << request.ResolvePath
+                  << " bases_differ=" << request.BasesDiffer
+                  << " LoadLibraryW=0x" << Hex64(request.ResolvedLoadLibrary)
+                  << " lastError=" << request.LoadLibraryLastError
+                  << " (read status 0x" << std::hex
+                  << static_cast<unsigned long>(request.StatusReadResult) << std::dec
+                  << ")" << std::endl;
+        std::cout << "[*] modules: before=" << request.ModuleCountBefore
+                  << " after=" << request.ModuleCountAfter;
+
+        if (loaded) {
+            std::wcout << L" new module: " << request.NewModuleName
+                       << L" @ 0x" << std::hex << request.NewModuleBase << std::dec
+                       << std::endl;
+        } else {
+            std::cout << " (no module appeared)" << std::endl;
+        }
+
+        if (loaded) {
+            result.success       = true;
+            result.threadId      = request.ThreadId;
+            result.dllBaseAddress = reinterpret_cast<HMODULE>(
+                static_cast<ULONG_PTR>(request.NewModuleBase));
+
+            std::cout << "[+] Kernel injection SUCCESS - " << request.ModuleCountAfter
+                      << " modules in target, apexcheat.dll at 0x"
+                      << std::hex << request.NewModuleBase << std::dec << std::endl;
+        } else if (request.ResultStatus == kStatusPending) {
+            // Queued, no thread returned inside the driver's window.  The APCs are
+            // still armed, so this is not a failure - but it is not proof either.
+            result.threadId = request.ThreadId;
+            result.errorMessage = "loader APC queued on " +
+                std::to_string(kMaxThreadTries) +
+                " thread(s), none delivered inside the driver window (STATUS_PENDING)";
+            std::cout << "[~] " << result.errorMessage << std::endl;
+        } else if (request.ResultStatus != 0) {
+            char statusBuffer[32] = { 0 };
+            sprintf_s(statusBuffer, sizeof(statusBuffer), "0x%08lX",
+                      static_cast<unsigned long>(request.ResultStatus));
+            result.errorMessage = std::string("Driver reported NTSTATUS ") + statusBuffer;
+            std::cout << "[-] " << result.errorMessage << std::endl;
+        } else {
+            // The APC fired, LoadLibraryW ran and no module appeared: read the
+            // reason off LastError instead of inventing one.
+            const LONG loaderError = request.LoadLibraryLastError;
+            const char* reason = "unknown - LastError 0 with no module means the "
+                                 "resolved address did not enter LoadLibraryW";
+            if (loaderError == 126) {
+                reason = "ERROR_MOD_NOT_FOUND - the target cannot see the DLL path "
+                         "(CWD / redirection / 32-bit view)";
+            } else if (loaderError == 193) {
+                reason = "ERROR_BAD_EXE_FORMAT - the target rejected the image";
+            } else if (loaderError == 998) {
+                reason = "ERROR_NOACCESS - the loader faulted on the path buffer or "
+                         "the image (manual map is next)";
+            } else if (loaderError == 1114) {
+                reason = "ERROR_DLL_INIT_FAILED - DllMain returned FALSE";
+            } else if (loaderError == 87) {
+                reason = "ERROR_INVALID_PARAMETER - target-side address is not a "
+                         "code address";
+            }
+            result.threadId = request.ThreadId;
+            result.errorMessage = std::string("delivered, but LoadLibraryW left no "
+                                              "module (LastError ") +
+                                  std::to_string(loaderError) + "): " + reason;
+            std::cout << "[-] " << result.errorMessage << std::endl;
+        }
     }
 
     CloseHandle(hDevice);

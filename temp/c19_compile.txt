@@ -1,0 +1,7 @@
+rc=0
+AST OK
+L121 def skip_dead(g, pa, rhi, step=0x200000):
+L124     p44f smoke: the low ~600 MB answers Errno 1450 (ERROR_NO_SYSTEM_RESOURCES)
+L230                 nxt, probes = skip_dead(g, pa, rhi)
+L231                 prog("SKIP %#x..%#x %#x probes=%d"
+L233                 log("  dead %#x..%#x skipped (%d probes)" % (here, nxt, probes))

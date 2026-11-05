@@ -1,3 +1,10 @@
+# click.ps1 - DPI-blind click / key sender.  Coordinates are *unaware* pixels: if the
+# desktop scale is not 100%, use click_hi.ps1 for clicking (it forces DPI awareness, same
+# as shot_hi) and keep this one only for -Key, which click_hi does not implement.
+# -Raise uses WScript.AppActivate, which raises but does NOT un-cloak a window parked on
+# another virtual desktop (04/11: it left EA iconic at -32000 and the foreground on Code);
+# for that use the taskbar-button click + SW_RESTORE + SetForegroundWindow in
+# C:\Windows\Temp\p40zb_raise.ps1 / p40zc_state.ps1.
 param([int]$X, [int]$Y, [string]$Key = '', [string]$Raise = '')
 Add-Type @'
 using System; using System.Runtime.InteropServices;

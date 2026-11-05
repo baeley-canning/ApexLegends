@@ -1,0 +1,5 @@
+pages=1 text=0 binary=1 mixed=0 zeroed=0
+--- binary pages with >=2 needles (lp / pa / cross-needle deltas) ---
+page=0x2c690a000 hits=2 lp=2 ascii=27% pa=0x2c690aba4,0x2c690afa4 d=0x400
+DBG page=2c690a000 keystored=144 hit0=0x2c690aba4 probe=90aba3:0:1 90aba2:0:2 90aba1:0:3 90aba0:12:4 90ab9f:117:5 90ab9e:115:6 90ab9d:99:7 90ab9c:105:8 
+DBG2 lencount=5 hit0n=1 want0=12 lp=2 why=

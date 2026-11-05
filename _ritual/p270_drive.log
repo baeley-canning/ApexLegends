@@ -1,0 +1,16 @@
+21:53:19 start
+21:53:20 type: reg add HKLM\T\ControlSet001\Services\apexdrv /v Start /t REG_DWORD /d 4 /f
+21:53:30 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_91.png
+21:53:31 type: reg add HKLM\T\ControlSet001\Services\gdrv3 /v Start /t REG_DWORD /d 4 /f
+21:53:41 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_92.png
+21:53:41 type: ren C:\Users\Public\p37\WinRing0x64.sys WinRing0x64.sys.bak
+21:53:50 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_93.png
+21:53:50 type: ren C:\Users\Public\p37\zapexdrv.sys zapexdrv.sys.bak
+21:53:58 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_94.png
+21:53:58 type: ren C:\Users\Public\p37\grdev3.sys grdev3.sys.bak
+21:54:06 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_95.png
+21:54:06 type: ren C:\Users\vboxuser\AppData\Local\Temp\p37vm\gdrv3.sys gdrv3.sys.bak
+21:54:16 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_96.png
+21:54:16 type: dir C:\Users\Public\p37\*.bak
+21:54:22 shot: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p270_97.png
+21:54:23 PART1 done

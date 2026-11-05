@@ -1,0 +1,15 @@
+﻿=== p44g_watch 2026-11-04T15:06:46.1340860+13:00 ===
+15:06:46  watcher pid=10060 elevated=False
+15:06:46  GAME pid=17584 start=15:04:17
+15:06:46  EAC EAAntiCheat.GameService:8148 EACefSubProcess:268 EACefSubProcess:4940 EACefSubProcess:7140 EACefSubProcess:10472 EACefSubProcess:13300 EACefSubProcess:18468
+15:06:46  pre-state gdrv3: STATE              : 4  RUNNING; last WHEA: 14:34:01
+15:06:46  game_pid=17584 eac_procs=7 settle_s=0
+15:06:51  game_pid=17584 eac_procs=7 settle_s=5
+15:07:16  game_pid=17584 eac_procs=7 settle_s=30
+15:07:21  game_pid=17584 eac_procs=7 settle_s=35
+15:07:46  game_pid=17584 eac_procs=7 settle_s=60
+15:07:51  game_pid=17584 eac_procs=7 settle_s=65
+15:08:16  game_pid=17584 eac_procs=7 settle_s=90
+15:08:21  game_pid=17584 eac_procs=7 settle_s=95
+15:08:46  SETTLED settle_s=121 game_pid=17584
+15:08:46  watch end

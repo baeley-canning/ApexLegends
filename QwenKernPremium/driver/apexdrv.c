@@ -84,15 +84,407 @@ static NTSTATUS ApexdrvWriteProcessMemory(PEPROCESS process, PVOID baseAddress,
     return status;
 }
 
-static PFN_ZwCreateThreadEx ApexdrvResolveCreateThreadEx(void) {
-    static PFN_ZwCreateThreadEx cached = NULL;
-    UNICODE_STRING name;
+// The APC delivery pair used by the inject rung.  WDK 10.0.26100 declares
+// neither the two functions nor the routine typedefs, nor KAPC_ENVIRONMENT /
+// OriginalApcEnvironment, while ntoskrnl.lib DOES carry KeInitializeApc and
+// KeInsertQueueApc - so the prototypes are pinned here exactly like the two
+// above.  The typedefs are APEXDRV_-prefixed to stay clear of a kit that later
+// starts declaring the documented names.
+#define APEXDRV_TAG                 'vpxA'   // 'Apxv' (little-endian)
 
-    if (cached != NULL) return cached;
+typedef VOID (NTAPI *APEXDRV_KNORMAL_ROUTINE)(PVOID NormalContext,
+                                              PVOID SystemArgument1,
+                                              PVOID SystemArgument2);
 
-    RtlInitUnicodeString(&name, L"ZwCreateThreadEx");
-    cached = (PFN_ZwCreateThreadEx)MmGetSystemRoutineAddress(&name);
+typedef VOID (NTAPI *APEXDRV_KKERNEL_ROUTINE)(PRKAPC Apc,
+                                              APEXDRV_KNORMAL_ROUTINE* NormalRoutine,
+                                              PVOID* NormalContext,
+                                              PVOID* SystemArgument1,
+                                              PVOID* SystemArgument2);
+
+typedef VOID (NTAPI *APEXDRV_KRUNDOWN_ROUTINE)(PRKAPC Apc);
+
+typedef enum _APEXDRV_KAPC_ENVIRONMENT {
+    OriginalApcEnvironment,
+    AttachedApcEnvironment,
+    CurrentApcEnvironment,
+    InsertApcEnvironment
+} APEXDRV_KAPC_ENVIRONMENT;
+
+NTKERNELAPI VOID NTAPI KeInitializeApc(PRKAPC Apc, PRKTHREAD Thread,
+                                       APEXDRV_KAPC_ENVIRONMENT Environment,
+                                       APEXDRV_KKERNEL_ROUTINE KernelRoutine,
+                                       APEXDRV_KRUNDOWN_ROUTINE RundownRoutine,
+                                       APEXDRV_KNORMAL_ROUTINE NormalRoutine,
+                                       KPROCESSOR_MODE ApcMode,
+                                       PVOID NormalContext);
+
+NTKERNELAPI BOOLEAN NTAPI KeInsertQueueApc(PRKAPC Apc, PVOID SystemArgument1,
+                                           PVOID SystemArgument2,
+                                           KPRIORITY Increment);
+
+// ----------------------------------------------------------------------------
+// Loader delivery: user-mode APC on an existing thread.
+//
+// The obvious route - ZwCreateThreadEx resolved with MmGetSystemRoutineAddress -
+// is DEAD on 26100: neither ZwCreateThreadEx nor ZwCreateThread nor
+// NtCreateThread appears in ntoskrnl's export table (measured), so
+// MmGetSystemRoutineAddress returns NULL and the ioctl used to fail with
+// STATUS_PROCEDURE_NOT_FOUND, which user mode sees as GetLastError 127.
+//
+// What IS exported: PsLookupThreadByThreadId, KeInitializeApc, KeInsertQueueApc.
+// A user-mode APC whose NormalRoutine is kernel32!LoadLibraryW delivers it with
+// RCX = NormalContext, so passing the remote path as NormalContext is exactly
+// the LoadLibraryW(path) call the thread-creation route made - without needing a
+// syscall at all.  The APC fires as soon as the target thread next returns to
+// user mode, which a running game does immediately.
+//
+// The request therefore carries a ThreadId (v3).  The APC object must outlive
+// KeInsertQueueApc, so it lives in a pool context that the ioctl frees only
+// after the kernel routine has run; if delivery never happens the context is
+// left allocated rather than freed under a pending APC.
+// ----------------------------------------------------------------------------
+typedef struct _APEXDRV_APC_CONTEXT {
+    KAPC      Apc;
+    PVOID     RemotePath;      // pool-free candidate once Fired is set
+    volatile LONG Fired;       // set by the kernel routine
+} APEXDRV_APC_CONTEXT, *PAPEXDRV_APC_CONTEXT;
+
+static VOID ApexdrvApcKernelRoutine(PKAPC apc, APEXDRV_KNORMAL_ROUTINE* normalRoutine,
+                                    PVOID* normalContext, PVOID* systemArgument1,
+                                    PVOID* systemArgument2) {
+    PAPEXDRV_APC_CONTEXT context = CONTAINING_RECORD(apc, APEXDRV_APC_CONTEXT, Apc);
+
+    UNREFERENCED_PARAMETER(normalRoutine);
+    UNREFERENCED_PARAMETER(normalContext);
+    UNREFERENCED_PARAMETER(systemArgument1);
+    UNREFERENCED_PARAMETER(systemArgument2);
+
+    InterlockedExchange(&context->Fired, 1);
+}
+
+// Queues LoadLibraryW(remotePath) in `process` on thread `threadId`.
+// Returns immediately after the APC is queued; *contextOut owns the APC object
+// and the caller is responsible for freeing it (see the delay in the caller).
+static NTSTATUS ApexdrvQueueLoaderApc(PEPROCESS process, ULONG threadId,
+                                      PVOID remotePath, ULONG_PTR loadLibrary,
+                                      PAPEXDRV_APC_CONTEXT* contextOut) {
+    PETHREAD            thread = NULL;
+    PAPEXDRV_APC_CONTEXT context;
+    NTSTATUS            status;
+
+    *contextOut = NULL;
+
+    if (threadId == 0) return STATUS_INVALID_PARAMETER;
+
+    status = PsLookupThreadByThreadId(ULongToHandle(threadId), &thread);
+    if (!NT_SUCCESS(status)) return status;
+
+    // A TID from another process would make the APC land in the wrong address
+    // space (the LoadLibrary address and the path buffer are per-process).
+    if (IoThreadToProcess(thread) != process) {
+        ObDereferenceObject(thread);
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    context = (PAPEXDRV_APC_CONTEXT)ExAllocatePoolWithTag(NonPagedPoolNx,
+                                                          sizeof(*context),
+                                                          APEXDRV_TAG);
+    if (context == NULL) {
+        ObDereferenceObject(thread);
+        return STATUS_INSUFFICIENT_RESOURCES;
+    }
+    RtlZeroMemory(context, sizeof(*context));
+    context->RemotePath = remotePath;
+
+    KeInitializeApc(&context->Apc,
+                    thread,
+                    OriginalApcEnvironment,
+                    ApexdrvApcKernelRoutine,
+                    (APEXDRV_KRUNDOWN_ROUTINE)NULL,         // rundown routine
+                    (APEXDRV_KNORMAL_ROUTINE)loadLibrary,   // user-mode entry
+                    UserMode,
+                    remotePath);                            // RCX at delivery
+
+    if (!KeInsertQueueApc(&context->Apc, NULL, NULL, 0)) {
+        ExFreePoolWithTag(context, APEXDRV_TAG);
+        ObDereferenceObject(thread);
+        return STATUS_UNSUCCESSFUL;
+    }
+
+    ObDereferenceObject(thread);   // the queued APC holds its own reference
+    *contextOut = context;
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
+// v4 loader instrumentation: read-only views into the target's loader state.
+//
+// Every offset below is the stable public x64 structure layout (PEB->Ldr at 0x18,
+// LDR_DATA_TABLE_ENTRY.InLoadOrderLinks 0x00 / DllBase 0x30 / BaseDllName 0x58,
+// TEB.LastErrorValue 0x68, PE32+ data directory 0x70).  All reads happen under
+// KeStackAttachProcess inside __try/__except, so a target that unloads a module
+// mid-walk costs one exception, never a bugcheck.
+// ----------------------------------------------------------------------------
+#define APEXDRV_PEB_LDR_OFFSET          0x18
+#define APEXDRV_LDR_LIST_OFFSET         0x10
+#define APEXDRV_LDR_DLLBASE_OFFSET      0x30
+#define APEXDRV_LDR_BASENAME_OFFSET     0x58
+#define APEXDRV_TEB_LASTERROR_OFFSET    0x68
+#define APEXDRV_MAX_MODULES             1024
+#define APEXDRV_MAX_EXPORT_NAMES        0x8000
+
+typedef struct _APEXDRV_LDR_INFO {
+    ULONG   Count;
+    ULONG64 Kernel32Base;
+    ULONG64 KernelBaseBase;
+    ULONG64 LastBase;
+    WCHAR   LastName[APEXDRV_MAX_MODULE_NAME_CHARS];
+} APEXDRV_LDR_INFO, *PAPEXDRV_LDR_INFO;
+
+// Caller must already be attached to the owner of `name`.
+static BOOLEAN ApexdrvNameEquals(PCUNICODE_STRING name, const WCHAR* literal,
+                                 SIZE_T literalChars) {
+    WCHAR  buffer[APEXDRV_MAX_MODULE_NAME_CHARS];
+    SIZE_T chars;
+    SIZE_T index;
+
+    if (name == NULL || name->Buffer == NULL || name->Length < 2) return FALSE;
+    chars = name->Length / sizeof(WCHAR);
+    if (chars >= APEXDRV_MAX_MODULE_NAME_CHARS) chars = APEXDRV_MAX_MODULE_NAME_CHARS - 1;
+    for (index = 0; index < chars; ++index) buffer[index] = name->Buffer[index];
+    buffer[chars] = L'\0';
+
+    if (chars != literalChars) return FALSE;
+    for (index = 0; index < chars; ++index) {
+        WCHAR a = buffer[index];
+        WCHAR b = literal[index];
+        if (a >= L'A' && a <= L'Z') a = (WCHAR)(a + 32);
+        if (b >= L'A' && b <= L'Z') b = (WCHAR)(b + 32);
+        if (a != b) return FALSE;
+    }
+    return TRUE;
+}
+
+// Caller must already be attached to the owner of `text`.
+static BOOLEAN ApexdrvAsciiEquals(const char* text, const char* wanted) {
+    SIZE_T index;
+
+    if (text == NULL || wanted == NULL) return FALSE;
+    for (index = 0; index < 64; ++index) {
+        if (text[index] != wanted[index]) return FALSE;
+        if (wanted[index] == '\0') return TRUE;
+    }
+    return FALSE;
+}
+
+// Walks the target's InLoadOrder module list: reports the count, the two bases the
+// resolver needs, and the last entry's base/name (the newest load in the list).
+static NTSTATUS ApexdrvWalkModules(PEPROCESS process, PAPEXDRV_LDR_INFO info) {
+    KAPC_STATE  apcState;
+    NTSTATUS    status = STATUS_SUCCESS;
+    PPEB        peb;
+    PLIST_ENTRY head;
+    PLIST_ENTRY entry;
+    ULONG       guard = 0;
+
+    RtlZeroMemory(info, sizeof(*info));
+
+    peb = PsGetProcessPeb(process);
+    if (peb == NULL) return STATUS_NOT_FOUND;
+
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        PVOID ldr = *(PVOID*)((PUCHAR)peb + APEXDRV_PEB_LDR_OFFSET);
+        if (ldr == NULL) {
+            status = STATUS_NOT_FOUND;
+        } else {
+            head  = (PLIST_ENTRY)((PUCHAR)ldr + APEXDRV_LDR_LIST_OFFSET);
+            entry = head->Flink;
+            while (entry != head && guard < APEXDRV_MAX_MODULES) {
+                ULONG64          base = *(ULONG64*)((PUCHAR)entry + APEXDRV_LDR_DLLBASE_OFFSET);
+                PCUNICODE_STRING name =
+                    (PCUNICODE_STRING)((PUCHAR)entry + APEXDRV_LDR_BASENAME_OFFSET);
+                PLIST_ENTRY      next = entry->Flink;
+                ULONG            copy;
+                ULONG            index;
+
+                info->Count++;
+                if (base != 0) {
+                    // Reported as the newest entry: used to name the module that a
+                    // successful LoadLibraryW appended.
+                    info->LastBase = base;
+                    if (name != NULL && name->Buffer != NULL && name->Length >= 2) {
+                        copy = name->Length / sizeof(WCHAR);
+                        if (copy >= APEXDRV_MAX_MODULE_NAME_CHARS) {
+                            copy = APEXDRV_MAX_MODULE_NAME_CHARS - 1;
+                        }
+                        for (index = 0; index < copy; ++index) {
+                            info->LastName[index] = name->Buffer[index];
+                        }
+                        info->LastName[copy] = L'\0';
+                    }
+                    if (ApexdrvNameEquals(name, L"kernel32.dll", 12)) {
+                        info->Kernel32Base = base;
+                    } else if (ApexdrvNameEquals(name, L"kernelbase.dll", 14)) {
+                        info->KernelBaseBase = base;
+                    }
+                }
+                entry = next;                   // cached before the next target read
+                guard++;
+            }
+        }
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    return status;
+}
+
+// Resolves `exportName` inside `imageBase` as mapped in `process` and returns its
+// RVA.  kernelbase is used, not kernel32: kernel32 re-exports almost everything as
+// forwarder strings, which would need a second parse for no benefit.
+static NTSTATUS ApexdrvResolveExportRva(PEPROCESS process, ULONG64 imageBase,
+                                        const char* exportName, PULONG rvaOut) {
+    KAPC_STATE apcState;
+    NTSTATUS   status = STATUS_NOT_FOUND;
+
+    if (imageBase == 0 || exportName == NULL || rvaOut == NULL) {
+        return STATUS_INVALID_PARAMETER;
+    }
+    *rvaOut = 0;
+
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        ULONG lfanew;
+        ULONG directoryRva;
+        ULONG directorySize;
+        ULONG numberOfFunctions;
+        ULONG numberOfNames;
+        ULONG functionsRva;
+        ULONG namesRva;
+        ULONG ordinalsRva;
+        ULONG index;
+        PVOID   optionalHeader;
+
+        if (*(USHORT*)((PUCHAR)imageBase) != 0x5A4D) {                   // 'MZ'
+            status = STATUS_INVALID_IMAGE_FORMAT;
+        } else {
+            lfanew = *(ULONG*)((PUCHAR)imageBase + 0x3C);
+            if (*(ULONG*)((PUCHAR)imageBase + lfanew) != 0x00004550) {  // 'PE\0\0'
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else {
+                optionalHeader = (PUCHAR)imageBase + lfanew + 0x18;
+                if (*(USHORT*)optionalHeader != 0x020B) {                // PE32+ only
+                    status = STATUS_INVALID_IMAGE_FORMAT;
+                } else {
+                    directoryRva  = *(ULONG*)((PUCHAR)optionalHeader + 0x70);
+                    directorySize = *(ULONG*)((PUCHAR)optionalHeader + 0x74);
+                    if (directoryRva == 0 || directorySize == 0) {
+                        status = STATUS_NOT_FOUND;
+                    } else {
+                        numberOfFunctions = *(ULONG*)((PUCHAR)imageBase + directoryRva + 0x14);
+                        numberOfNames     = *(ULONG*)((PUCHAR)imageBase + directoryRva + 0x18);
+                        functionsRva      = *(ULONG*)((PUCHAR)imageBase + directoryRva + 0x1C);
+                        namesRva          = *(ULONG*)((PUCHAR)imageBase + directoryRva + 0x20);
+                        ordinalsRva       = *(ULONG*)((PUCHAR)imageBase + directoryRva + 0x24);
+
+                        if (numberOfNames > APEXDRV_MAX_EXPORT_NAMES) {
+                            status = STATUS_INVALID_IMAGE_FORMAT;
+                        } else {
+                            for (index = 0; index < numberOfNames; ++index) {
+                                ULONG     nameRva =
+                                    *(ULONG*)((PUCHAR)imageBase + namesRva + index * 4);
+                                const char* text =
+                                    (const char*)((PUCHAR)imageBase + nameRva);
+
+                                if (ApexdrvAsciiEquals(text, exportName)) {
+                                    USHORT ordinal =
+                                        *(USHORT*)((PUCHAR)imageBase + ordinalsRva + index * 2);
+                                    if ((ULONG)ordinal < numberOfFunctions) {
+                                        *rvaOut = *(ULONG*)((PUCHAR)imageBase +
+                                                              functionsRva +
+                                                              (ULONG)ordinal * 4);
+                                        status = STATUS_SUCCESS;
+                                    } else {
+                                        status = STATUS_INVALID_IMAGE_FORMAT;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    return status;
+}
+
+typedef PVOID (NTAPI *APEXDRV_PFN_GET_THREAD_TEB)(PETHREAD Thread);
+
+// PsGetThreadTeb is documented but not always in the import library, so it is
+// resolved once - the same treatment the other optional exports here get.
+static APEXDRV_PFN_GET_THREAD_TEB ApexdrvGetThreadTebRoutine(VOID) {
+    static APEXDRV_PFN_GET_THREAD_TEB cached   = NULL;
+    static BOOLEAN                    resolved = FALSE;
+
+    if (!resolved) {
+        UNICODE_STRING routineName;
+
+        RtlInitUnicodeString(&routineName, L"PsGetThreadTeb");
+        cached = (APEXDRV_PFN_GET_THREAD_TEB)MmGetSystemRoutineAddress(&routineName);
+        resolved = TRUE;
+    }
     return cached;
+}
+
+// Reads TEB->LastErrorValue of `threadId`.  When the call ran and left no module
+// behind, this is the only thing that says WHY (126 path, 193 image, 998, 1114).
+static NTSTATUS ApexdrvReadThreadLastError(PEPROCESS process, ULONG threadId,
+                                           PLONG valueOut) {
+    KAPC_STATE                 apcState;
+    PETHREAD                   thread = NULL;
+    APEXDRV_PFN_GET_THREAD_TEB getTeb;
+    PVOID                      teb;
+    NTSTATUS                   status;
+
+    if (threadId == 0 || valueOut == NULL) return STATUS_INVALID_PARAMETER;
+    *valueOut = 0;
+
+    getTeb = ApexdrvGetThreadTebRoutine();
+    if (getTeb == NULL) return STATUS_PROCEDURE_NOT_FOUND;
+
+    status = PsLookupThreadByThreadId(ULongToHandle(threadId), &thread);
+    if (!NT_SUCCESS(status)) return status;
+
+    if (IoThreadToProcess(thread) != process) {
+        ObDereferenceObject(thread);
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    teb = getTeb(thread);
+    if (teb == NULL) {
+        ObDereferenceObject(thread);
+        return STATUS_NOT_FOUND;
+    }
+
+    status = STATUS_SUCCESS;
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        *valueOut = *(LONG*)((PUCHAR)teb + APEXDRV_TEB_LASTERROR_OFFSET);
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    ObDereferenceObject(thread);
+    return status;
 }
 
 // The process/thread access masks are the stable NT ABI values.  wdm.h only
@@ -119,7 +511,6 @@ static PFN_ZwCreateThreadEx ApexdrvResolveCreateThreadEx(void) {
 #define THREAD_QUERY_INFORMATION    (0x0040)
 #endif
 
-#define APEXDRV_TAG                 'vpxA'   // 'Apxv' (little-endian)
 #define APEXDRV_MAX_THREAD_WAIT_MS  5000
 
 // Tagged working buffer — proves APEXDRV_TAG is a real pool tag, not dead code.
@@ -168,29 +559,81 @@ static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle,
 static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     HANDLE    processHandle = NULL;
     PEPROCESS process       = NULL;
-    HANDLE    threadHandle  = NULL;
     PVOID     remoteBuffer  = NULL;
     SIZE_T    regionSize    = 0;
     SIZE_T    pathBytes     = 0;
     NTSTATUS  status;
-    PFN_ZwCreateThreadEx createThread;
+    ULONG     i;
+    LONG      fired         = 0;
+    LARGE_INTEGER delay;
+    PAPEXDRV_APC_CONTEXT apcContext = NULL;
+    APEXDRV_LDR_INFO    targetInfo;
+    APEXDRV_LDR_INFO    selfInfo;
+    ULONG               exportRva   = 0;
+    ULONG64             loadLibrary = request->LoadLibraryAddress;
 
-    if (request->ProcessId == 0)          return STATUS_INVALID_PARAMETER;
-    if (request->LoadLibraryAddress == 0)  return STATUS_INVALID_PARAMETER;
+    if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
+    if (request->ThreadId == 0)  return STATUS_INVALID_PARAMETER;
+    if (request->LoadLibraryAddress == 0 &&
+        (request->Flags & APEXDRV_FLAG_RESOLVE_IN_TARGET) == 0) {
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    request->ResultStatus         = STATUS_SUCCESS;   // overwritten on every failure
+    request->ResolvedLoadLibrary  = 0;
+    request->ResolvePath          = 0;
+    request->BasesDiffer          = 0;
+    request->ModuleCountBefore    = 0;
+    request->ModuleCountAfter     = 0;
+    request->NewModuleBase        = 0;
+    request->NewModuleName[0]     = L'\0';
+    request->LoadLibraryLastError = 0;
+    request->StatusReadResult     = 0;
 
     // Ensure the wide path is NUL terminated inside the supplied buffer.
     request->DllPath[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
     pathBytes = (wcslen(request->DllPath) + 1) * sizeof(WCHAR);
     if (pathBytes <= sizeof(WCHAR)) return STATUS_INVALID_PARAMETER;
 
-    createThread = ApexdrvResolveCreateThreadEx();
-    if (createThread == NULL) return STATUS_PROCEDURE_NOT_FOUND;
-
     status = ApexdrvOpenProcess(request->ProcessId, &processHandle, &process);
     if (!NT_SUCCESS(status)) {
         request->ResultStatus = status;
         return status;
     }
+
+    // v4: the address the launcher resolved in ITS OWN address space is only a
+    // guess - kernel32/kernelbase are ASLR-placed and a per-process difference
+    // makes LoadLibraryW land in the middle of something.  Resolve it in the
+    // target and measure the premise while doing so (BasesDiffer).
+    status = ApexdrvWalkModules(process, &targetInfo);
+    if (!NT_SUCCESS(status)) {
+        request->ResultStatus = status;
+        ZwClose(processHandle);
+        ObDereferenceObject(process);
+        return status;
+    }
+    request->ModuleCountBefore = targetInfo.Count;
+
+    status = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+    if (NT_SUCCESS(status) && targetInfo.KernelBaseBase != 0 &&
+        selfInfo.KernelBaseBase != 0 &&
+        targetInfo.KernelBaseBase != selfInfo.KernelBaseBase) {
+        request->BasesDiffer = 1;
+    }
+
+    if (request->Flags & APEXDRV_FLAG_RESOLVE_IN_TARGET) {
+        status = ApexdrvResolveExportRva(process, targetInfo.KernelBaseBase,
+                                         "LoadLibraryW", &exportRva);
+        if (!NT_SUCCESS(status)) {
+            request->ResultStatus = status;
+            ZwClose(processHandle);
+            ObDereferenceObject(process);
+            return status;
+        }
+        loadLibrary = targetInfo.KernelBaseBase + exportRva;
+        request->ResolvePath = 1;
+    }
+    request->ResolvedLoadLibrary = loadLibrary;
 
     regionSize = pathBytes;
     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
@@ -212,10 +655,11 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         return status;
     }
 
-    // User-mode thread running kernel32!LoadLibraryW(remotePath).
-    status = createThread(&threadHandle, THREAD_ALL_ACCESS, NULL, processHandle,
-                          (PVOID)(ULONG_PTR)request->LoadLibraryAddress,
-                          remoteBuffer, 0, 0, 0, 0, NULL);
+    // Queue LoadLibraryW(remotePath) on the caller's thread instead of creating
+    // one: see the block comment above ApexdrvQueueLoaderApc for why.
+    status = ApexdrvQueueLoaderApc(process, request->ThreadId, remoteBuffer,
+                                   (ULONG_PTR)loadLibrary,
+                                   &apcContext);
     if (!NT_SUCCESS(status)) {
         request->ResultStatus = status;
         ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
@@ -224,32 +668,62 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         return status;
     }
 
-    // Mark success early so every exit path has a defined ResultStatus.
-    request->ResultStatus = STATUS_SUCCESS;
+    // The APC only fires when the thread next returns to user mode, which takes
+    // it out of a wait / syscall.  Poll the kernel routine's flag so the path
+    // buffer and the APC context are not freed under a pending APC.
+    delay.QuadPart = -10 * 10000;                  // 10 ms
+    for (i = 0; i < 300; i++) {                    // 3 s cap
+        fired = InterlockedCompareExchange(&apcContext->Fired, 0, 0);
+        if (fired != 0) break;
+        KeDelayExecutionThread(KernelMode, FALSE, &delay);
+    }
 
-    {
-        PETHREAD threadObject = NULL;
-        if (NT_SUCCESS(ObReferenceObjectByHandle(threadHandle,
-                                                 THREAD_QUERY_INFORMATION,
-                                                 *PsThreadType, KernelMode,
-                                                 (PVOID*)&threadObject, NULL))) {
-            request->ThreadId = (ULONG)(ULONG_PTR)PsGetThreadId(threadObject);
-            ObDereferenceObject(threadObject);
+    request->RemoteBase = (ULONG64)(ULONG_PTR)remoteBuffer;
+
+    if (fired == 0) {
+        // Still queued: keep the context AND the path buffer, they are in use.
+        request->ResultStatus = STATUS_PENDING;
+        ZwClose(processHandle);
+        ObDereferenceObject(process);
+        return STATUS_SUCCESS;
+    }
+
+    // The kernel routine has run; the user-mode entry still needs a moment to
+    // read the path before it is released.
+    delay.QuadPart = -200 * 10000;                 // 200 ms
+    KeDelayExecutionThread(KernelMode, FALSE, &delay);
+
+    // v4 verdict data: did the loader actually append a module, and if not, what
+    // did the call leave in LastError?  `Fired` alone only says "the APC ran".
+    request->StatusReadResult =
+        ApexdrvReadThreadLastError(process, request->ThreadId,
+                                   &request->LoadLibraryLastError);
+
+    status = ApexdrvWalkModules(process, &targetInfo);
+    if (NT_SUCCESS(status)) {
+        request->ModuleCountAfter = targetInfo.Count;
+        if (targetInfo.Count > request->ModuleCountBefore) {
+            // RtlStringCchCopyW would need ntstrsafe.h; the source is already
+            // bounded and NUL-terminated by the walk, so a plain copy is enough.
+            ULONG nameIndex;
+            for (nameIndex = 0;
+                 nameIndex < APEXDRV_MAX_MODULE_NAME_CHARS - 1 &&
+                 targetInfo.LastName[nameIndex] != L'\0';
+                 ++nameIndex) {
+                request->NewModuleName[nameIndex] = targetInfo.LastName[nameIndex];
+            }
+            request->NewModuleName[nameIndex] = L'\0';
+            request->NewModuleBase = targetInfo.LastBase;
         }
     }
 
-    // Wait for the loader so the path buffer can safely be released.
-    {
-        LARGE_INTEGER timeout;
-        timeout.QuadPart = -((LONGLONG)APEXDRV_MAX_THREAD_WAIT_MS * 10000);
-        KeWaitForSingleObject(threadHandle, Executive, KernelMode, FALSE, &timeout);
-    }
-
-    request->RemoteBase   = (ULONG64)(ULONG_PTR)remoteBuffer;
     request->ResultStatus = STATUS_SUCCESS;
 
-    ZwClose(threadHandle);
-    ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize, MEM_RELEASE);
+    ExFreePoolWithTag(apcContext, APEXDRV_TAG);
+    // The path buffer is NOT freed here: the kernel routine runs at delivery,
+    // the user routine (LoadLibraryW) runs later on the thread's return to user
+    // mode and would then read freed memory.  ~260 bytes per injection is cheap
+    // insurance, and the address is reported back as RemoteBase either way.
     ZwClose(processHandle);
     ObDereferenceObject(process);
 
@@ -281,8 +755,15 @@ static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
 
     if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
 
-    // Zero the entire output buffer so no field leaks stale/garbage data.
-    RtlZeroMemory(request, sizeof(*request));
+    // Zero the entire output buffer so no field leaks stale/garbage data.  The
+    // buffer IS the request, so ProcessId has to be saved: zeroing it first made
+    // every probe answer PsLookupProcessByProcessId(0) = STATUS_INVALID_PARAMETER
+    // and looked exactly like a kernel-side refusal.
+    {
+        ULONG processId = request->ProcessId;
+        RtlZeroMemory(request, sizeof(*request));
+        request->ProcessId = processId;
+    }
 
     status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
     request->StatusLookup = status;
@@ -324,6 +805,68 @@ static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
         request->BytesCopied = (ULONG)bytesCopied;
     } else {
         request->StatusCopyVirtual = STATUS_INVALID_PARAMETER;
+    }
+
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
+// IOCTL_APEXDRV_TARGETINFO (v4) — read-only loader facts about one target.
+//
+// Nothing is allocated or written in the target.  The two walks run under
+// KeStackAttachProcess in the requesting thread's context (PASSIVE_LEVEL), and
+// every output field that could not be measured keeps its zero.
+// ----------------------------------------------------------------------------
+static NTSTATUS ApexdrvTargetInfo(PAPEXDRV_TARGETINFO_REQUEST request) {
+    PEPROCESS        process = NULL;
+    APEXDRV_LDR_INFO targetInfo;
+    APEXDRV_LDR_INFO selfInfo;
+    ULONG            processId;
+    ULONG            threadId;
+    ULONG            rva = 0;
+    NTSTATUS         status;
+
+    // The output buffer IS the request buffer, so the two in-fields are saved
+    // before the zeroing that clears stale data (the probe handler originally
+    // lost ProcessId this way and always answered STATUS_INVALID_PARAMETER).
+    processId = request->ProcessId;
+    threadId  = request->ThreadId;
+    if (processId == 0) return STATUS_INVALID_PARAMETER;
+
+    RtlZeroMemory(request, sizeof(*request));
+    request->ProcessId = processId;
+    request->ThreadId  = threadId;
+
+    status = PsLookupProcessByProcessId(ULongToHandle(processId), &process);
+    request->StatusLookup = status;
+    if (!NT_SUCCESS(status)) return STATUS_SUCCESS;
+
+    request->StatusWalk     = ApexdrvWalkModules(process, &targetInfo);
+    request->StatusSelfWalk = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+
+    request->ModuleCount       = targetInfo.Count;
+    request->SelfModuleCount   = selfInfo.Count;
+    request->Kernel32Base      = targetInfo.Kernel32Base;
+    request->KernelBaseBase    = targetInfo.KernelBaseBase;
+    request->SelfKernel32Base  = selfInfo.Kernel32Base;
+    request->SelfKernelBaseBase = selfInfo.KernelBaseBase;
+
+    if (targetInfo.KernelBaseBase != 0 && selfInfo.KernelBaseBase != 0 &&
+        targetInfo.KernelBaseBase != selfInfo.KernelBaseBase) {
+        request->BasesDiffer = 1;
+    }
+
+    request->StatusResolve = ApexdrvResolveExportRva(
+        process, targetInfo.KernelBaseBase, "LoadLibraryW", &rva);
+    if (NT_SUCCESS(request->StatusResolve)) {
+        request->LoadLibraryRva      = rva;
+        request->ResolvedLoadLibrary = targetInfo.KernelBaseBase + rva;
+    }
+
+    if (threadId != 0) {
+        request->StatusReadResult =
+            ApexdrvReadThreadLastError(process, threadId, &request->LastErrorValue);
     }
 
     ObDereferenceObject(process);
@@ -387,6 +930,17 @@ static NTSTATUS ApexdrvDeviceControl(PDEVICE_OBJECT deviceObject, PIRP irp) {
                 status = ApexdrvProbeProcess(
                     (PAPEXDRV_PROBE_REQUEST)irp->AssociatedIrp.SystemBuffer);
                 information = sizeof(APEXDRV_PROBE_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_TARGETINFO:
+            if (inputLength >= sizeof(APEXDRV_TARGETINFO_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvTargetInfo(
+                    (PAPEXDRV_TARGETINFO_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_TARGETINFO_REQUEST);
             } else {
                 status = STATUS_BUFFER_TOO_SMALL;
             }

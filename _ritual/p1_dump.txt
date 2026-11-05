@@ -1,0 +1,25 @@
+p40d dumplive  2026-11-04 14:11:44
+pure-read probe: device open only; no load/DSE/service touch
+pid=23684 alive=True
+PRE ram_top=0x800000000 installed=32768 MiB
+window lo=- hi=- chunk=0x10000
+LAYOUT win26200 name=15B off_name=0x338 pc=0x347 deltas=-0x360..-0x310 pid_offs=0x1a0..0x200 link=0x258 min_score=6
+RAMMAP map=5 bad=24 ranges=5 total=28411 MiB
+  scan 0x2000000-0x2e00000 (14.0 MiB)
+  scan 0x3000000-0x4400000 (20.0 MiB)
+  scan 0x4600000-0x31f52000 (729.3 MiB)
+  scan 0x35fff000-0x36000000 (0.0 MiB)
+  scan 0x140000000-0x800000000 (27648.0 MiB)
+scan: 7 hits, 316895/454583 chunks faulted, 806897 pages rescued at 0x10000, 67.8 s
+  hit 0x1fb5cd460
+  hit 0x1fb5cda60
+  hit 0x2302faef0
+  hit 0x3e886d3b8
+  hit 0x549abdd58
+  hit 0x660dccff2
+  hit 0x7fd48e308
+candidates: 1
+  eprocess=0x3e886d080 dtb=0x7db475000 score=14
+  walk dtb=0x7db475000 fault [Errno 1450] phys read 0x7db475000+0x1000 failed
+elapsed 67.9 s
+VERDICT: NO_MZ

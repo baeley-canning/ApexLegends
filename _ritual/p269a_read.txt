@@ -1,0 +1,5 @@
+23:09:47 MODE=disarm
+23:09:47 vmstate=VMState="running" 
+23:09:48 dis-arm p37logon: ERROR: The specified task name "p37logon" does not exist in the system. rc=0
+23:09:49 dis-arm p37tick: ERROR: The specified task name "p37tick" does not exist in the system. rc=0
+23:09:50 killed: KILLED

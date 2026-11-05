@@ -1,0 +1,65 @@
+--- svc now ---
+[gdrv3] rc=0
+  
+  SERVICE_NAME: gdrv3 
+          TYPE               : 1  KERNEL_DRIVER  
+          STATE              : 4  RUNNING 
+                                  (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+          WIN32_EXIT_CODE    : 0  (0x0)
+          SERVICE_EXIT_CODE  : 0  (0x0)
+          CHECKPOINT         : 0x0
+          WAIT_HINT          : 0x0
+[MsIo] rc=0
+  
+  SERVICE_NAME: MsIo 
+          TYPE               : 1  KERNEL_DRIVER  
+          STATE              : 4  RUNNING 
+                                  (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+          WIN32_EXIT_CODE    : 0  (0x0)
+          SERVICE_EXIT_CODE  : 0  (0x0)
+          CHECKPOINT         : 0x0
+          WAIT_HINT          : 0x0
+[apexdrv] rc=0
+  
+  SERVICE_NAME: apexdrv 
+          TYPE               : 1  KERNEL_DRIVER  
+          STATE              : 1  STOPPED 
+          WIN32_EXIT_CODE    : 577  (0x241)
+          SERVICE_EXIT_CODE  : 0  (0x0)
+          CHECKPOINT         : 0x0
+          WAIT_HINT          : 0x0
+[eaanticheat] rc=0
+  
+  SERVICE_NAME: eaanticheat 
+          TYPE               : 2  FILE_SYSTEM_DRIVER  
+          STATE              : 1  STOPPED 
+          WIN32_EXIT_CODE    : 31  (0x1f)
+          SERVICE_EXIT_CODE  : 0  (0x0)
+          CHECKPOINT         : 0x0
+          WAIT_HINT          : 0x0
+--- gdrv3 qc ---
+  [SC] QueryServiceConfig SUCCESS
+  
+  SERVICE_NAME: gdrv3
+          TYPE               : 1  KERNEL_DRIVER 
+          START_TYPE         : 3   DEMAND_START
+          ERROR_CONTROL      : 1   NORMAL
+          BINARY_PATH_NAME   : \??\C:\WINDOWS\System32\drivers\gdrv3.sys
+          LOAD_ORDER_GROUP   : 
+          TAG                : 0
+          DISPLAY_NAME       : gdrv3
+          DEPENDENCIES       : 
+          SERVICE_START_NAME : 
+--- Win64 paks top by size ---
+pc_roots(01).opt.starpak 21503103224 11-04 09:17:23
+pc_all.opt.starpak 20784576488 11-04 09:17:23
+pc_all.starpak 6723081192 11-04 09:17:24
+pc_roots(01).starpak 3612271112 11-04 09:17:23
+common.rpak 667631026 11-04 09:17:23
+mp_rr_olympus_mu3_uh_winter_client_perm.rpak 174308828 11-04 08:42:29
+mp_rr_tropic_island_mu2_hopscotch.rpak 168446635 11-04 08:44:35
+mp_rr_divided_moon_mu1_uh.rpak 168014035 11-04 09:17:23
+mp_rr_olympus_mu3_client_perm.rpak 167191357 11-04 08:42:05
+mp_rr_tropic_island_mu2_landscape.rpak 165451002 11-04 09:17:24
+mp_rr_divided_moon_mu1.rpak 164039437 11-04 09:17:23
+mp_rr_district_mu1_uh_client_perm.rpak 160381892 11-04 09:17:21

@@ -1,0 +1,8 @@
+21:42:39  FRONT fingerprint fallback
+21:42:39  FPCKPT pa=0x7b0030000 hits=0 fault=24247 t=0s
+21:42:40  FPCKPT pa=0x7c0030000 hits=0 fault=46983 t=0s
+21:42:40  FP 0x7ceac1000 (1)
+21:42:40  FPCKPT pa=0x7d0030000 hits=1 fault=65473 t=1s
+21:42:40  FPCKPT pa=0x7e0030000 hits=1 fault=79629 t=1s
+21:42:40  FPCKPT pa=0x7f0030000 hits=1 fault=94097 t=1s
+21:42:40  FPSCANEND hits=1 fault=108027

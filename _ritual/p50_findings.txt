@@ -1,0 +1,54 @@
+p50/p51 -- per-needle budget, full-window completion, scan+triage chain
+=======================================================================
+Date: 2026-11-04 15:35-15:44   Game: alive pid=24132 (dry needles, not in match)
+
+p49 problem, restated
+---------------------
+max_hits was GLOBAL. `max_hits=2000` stopped the sweep at 10410 MiB (38 % of the
+27354 MiB window); `6000` stopped it at 12247 MiB. A busy needle therefore decided
+where the scan ended, and every COOC verdict was a verdict about a fragment.
+
+Fix (p50)
+---------
+--per-needle=N caps each needle on its own (nhit[]) and `full` is armed whenever
+that cap is set: `if len(hits) >= max_hits and not full: break` no longer fires,
+inner find-loop breaks per needle at its own cap, and max_hits is auto-raised to
+N*needles+16 so the global budget can never bind first. `stopped` now reports
+`covered` on a completed sweep, and the verdict carries `sat=i:count` so a
+saturated needle is visible instead of implicit. Docstring documents all of it.
+
+Result (p49 re-run as p50 scan stage)
+-------------------------------------
+STOPPED=COVERED, 27354 MiB, 94.1 s (291 MB/s), bad4k=538158 rescued=440338,
+sat=0:2000 1:2000 2:2000, 6000 hits / 3985 pages / 1460 COOC, game alive after.
+Same window, same needles, only the budget variable changed: 38 % -> 100 %.
+Fault rescue held at 440k pages without a single fatal read.
+
+Chain (p50 stage 2)
+-------------------
+Gating on COOC and then calling enttriage inside the same elevated process works:
+scan rc=0 -> cooc=1460 -> triage rc=0, no stderr from either stage. If COOC is 0
+the run verdicts NO_COOC and skips triage (rc=6) rather than emitting an empty
+triage. Triage now sorts COOC pages by needle multiplicity (full_house first), so
+a page carrying all N names is read before arbitrary two-needle noise.
+
+p51: verdict ranking bug, found and fixed
+-----------------------------------------
+p50's triage verdict said cand=2048 while its own log ranked 0x9 x7 first: rep[0]
+came from dict insertion order, the log from a count sort. The verdict now ranks
+the same way the log does, with alignment (d % 8 == 0, 0x20..0x4000) only as a
+tie-break above coincidence-shaped deltas.
+Replay on the identical p50 hit file: verdict STRIDE cand=9 x7 pages=40, matching
+the log line for line. NO_STRIDE on dry needles was never the ranking's fault --
+0x9 x7 is a real but content-free delta.
+
+Interpretation, dry needles
+---------------------------
+cand=9 x7, then 0x2bd x4, 0x12f x3, 0x1f8/0x800/0x2be x2. A 9-byte stride is a
+coincidence, not a record stride; 0x800 is page-boundary arithmetic. full_house=11
+of 40 triaged pages. This confirms the plumbing, nothing about Apex layout.
+
+Next
+----
+Replace temp\p50_needles.txt with 3-5 distinct in-match scoreboard names and run
+temp\p50_pre.ps1. Expect full_house to rise and one aligned delta to dominate.

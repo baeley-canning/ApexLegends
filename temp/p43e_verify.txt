@@ -1,0 +1,14 @@
+final_compile_rc=0
+map note=ok ranges=5 top=0x7f1af1000
+  map 0x1000-0x9e000 (0.6 MiB)
+  map 0x9f000-0xa0000 (0.0 MiB)
+  map 0x100000-0x31f52000 (798.3 MiB)
+  map 0x35fff000-0x36000000 (0.0 MiB)
+  map 0x100000000-0x8bfc00000 (31740.0 MiB)
+badpa 24 from C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p38_badpa.txt
+plan map=5 bad=24 ranges=4
+  scan 0x2000000-0x2e00000 (14.0 MiB)
+  scan 0x3000000-0x4400000 (20.0 MiB)
+  scan 0x4600000-0x31f52000 (729.3 MiB)
+  scan 0x35fff000-0x36000000 (0.0 MiB)
+total 763 MiB (0.75 GiB) over 4 range(s)

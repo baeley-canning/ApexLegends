@@ -1,0 +1,105 @@
+
+Name               Length
+----               ------
+p269de_csv.txt      10197
+p269de_verify.txt    2420
+p269de_verify.ps1    1758
+p269de_len.txt          7
+p269de_num.txt        775
+p269de_gc_cut.txt     250
+p269dd_str.txt        161
+p269dd_str.ps1        838
+p269dc_ok.txt           4
+p269dc_cut.txt       5902
+p269dc_cr2.txt        572
+p269dc_rc.txt           6
+p269dc_caller.txt   13801
+p269dc_caller.ps1     425
+p269db_rc.txt           6
+p269db_all.txt       1325
+p269db_all5.ps1       796
+p269da_dir.txt       1961
+p269cx_dir.txt          2
+p269cw_cut.txt        943
+p269cw_rc.txt           6
+p269cw_req.txt       6348
+p269cw_req.ps1        412
+p269cv_cut.txt       4525
+p269cv_rc.txt           8
+p269cv_pro.txt      10006
+p269cv_pro.ps1        406
+p269cu_len3.txt         6
+p269cu_ps2.txt          2
+p269cu_n.txt           10
+p269cu_b.txt            0
+p269cu_exports.txt   4096
+p269cu_exports.ps1    492
+p269cs_disasm.txt    9927
+p269ct_all5.ps1       658
+p269cs_disasm.ps1     674
+p269cr_lm.txt         468
+p269cq_hits.txt       774
+p269cq_len.txt          7
+p269cq_ps.txt           0
+
+
+  `CloseHandle`, not a DPC.
+- capstone on `gdrv3.sys` (v1.2.0.1, sha256 `20840DE7...35AC7`, 52,440 B) resolves +0x2e81:
+  `mov eax,[rsi+rdx*4]` / **`mov [r14+rdx*4],eax`** -- a dword memcpy, count from the request's size
+  field, and the *destination* is what faults. Disassembly tool: `temp\p90_disasm.py` (read-only,
+  maps RVA->file offset through the section table; `.text` rva 0x2e81 -> off 0x2281).
+- Only one buffer can be a copy destination at close time: `gio.Gio.dst`, the scratch landing page the
+  read/map requests hand the driver. `gio.close()` released it (`VirtualFree MEM_RELEASE`) **before**
+  `CloseHandle`, so a copy deferred to IRP_MJ_CLOSE ran into decommitted VA.
+- Fix (p91, flag-gated, default order preserved): `GIO_DST_LAST=1` -> close the handle first, free the
+  dst after it returns. p91 10:38:47 and repeat p92 10:43:19 both **survived**: `CLOSED` -> `EXITING
+  rc=` -> parent logged `P91_EXIT` / `P92_EXIT`, uptime unbroken (2/2, no reboot). The mitigation is
+  in `ext\gio.py`, not in a probe.
+- Consequence: `p90`'s `os._exit` is still in place and p84's hardening stands, but neither is what
+  fixed it; the bugcheck was close ordering, so **p84 never had to crash at all** -- its 10:24:49 run
+  was killed mid second IOCTL by the reboot, not by the IOCTL itself.
+- New blocker, unrelated: p91/p92 both returned `NO_SHAPE`, good=0 over 976 / 1117 read pages, for a
+  process proven alive before and after (pid 18364 reformatted latest-start Code.exe, deterministic
+  across both runs). `RAMMAP map=5 bad=24 ranges=5 total=28411 MiB` is identical to the 10:24 TARGETS_OK
+  run, so the RAM map is not the difference -- the gate is: `shape()` needs 0x350 bytes in one page and
+  the lane filter threw away every hit with base+0x350 past the page end *before* reading it, so an
+  EPROCESS parked in the last 0x350 of a page is unreachable by construction. p93 admits the full lane
+  window and reads two pages when the head crosses (`span`/`widen` prog lines, `short` fallback at the
+  RAM top). Artefacts: `artefacts\p91\`, `artefacts\p92\` (build-scoped, copied before any reboot).
+
+
+## 2026-11-05 12:09 - p99: READ is address-faithful, and that is now settled in the VM
+
+- `p99` (guest, VM-D) landed the fidelity test p97b-v8 could not: six targets `0x0, 0x100000, 0x0,
+  0x1000, 0x200000, 0x100000` in **one open**, one `VirtualAlloc` page each (so the deferred
+  close-time copy can never collide), canary before, close **first**, diff/free after.
+- `VERDICT: READ_FAITHFUL` 12:09:09. `pa=0x0` -> all zeros (`diff=4080`, only canary bytes 00..0f
+  coincide) = IVT shape; `pa=0x1000` -> `e8 d0 d7 de 00 00 00 00 93` = a rel32 call in the low stub;
+  `pa=0x100000` in slots 1 **and** 5 -> byte-identical 4 KiB, `diff=4081` both; distinct PAs -> distinct
+  content (`repeatable=True distinct=True`). The addresses are honoured, not a fixed stub.
+- `pa=0x200000` was the only failure: `ok=0 err=1450` and **`diff=0`** -- nothing written into the
+  landing page on a failed read. A failed READ is free, which is what makes a blind page walk viable.
+- Method note that made this readable at all: canary is a 0x00..0xFF ramp, so the *diff count* is the
+  signal; a 4 KiB page of raw bytes says little on its own.
+- Deploy route confirmed while blocked earlier: the `?vm=p100` query only names the host log
+  (`C:\p37vm\guest-$vm.log`), and the guest `cur.ps1` always re-pulls `payload\p97b.ps1`, so probing
+  is "overwrite `p97b.ps1`", no `active.txt` edit needed. Pollers must be started through `schtasks
+  /run` -- `Start-Process` children die with the VS Code terminal (already noted at p64, reconfirmed).
+- Guest also survived 6 alloc + 6 lock + close-first + 6 free cycles with no bugcheck, consistent
+  with p91/p92: the 0x3B at `gdrv3+0x2e81` is close-order only, not an IOCTL-count limit.
+
+## 2026-11-05 12:11 - p100: the 1450 is per-page, not a range limit; whole RAM is reachable
+
+- `p99`'s single failure sat at `pa=0x200000`, which is exactly where p96 died (`BADEPICK`, same
+  1450), so p100 swept `0x100000 .. 0x40000000` one PA per open/close cycle.
+- `RESULT ok=12 bad=1 last_ok=0x40000000 first_bad=0x200000` -> `READ_SCATTERED_FAULTS`. 12 of 13
+  PAs read clean, including 256 MiB and 1 GiB, so `0x200000` is **not** the start of a dead window:
+  it is one page that faults while its neighbours (0x100000, 0x300000, 0x400000) read fine.
+- Content at high addresses is real (0x8000000 `02d0c4c0f0ffff7fb766...`, 0x10000000 `00ff5168af34...`),
+  and `0x300000`/`0x400000` return genuine structure, so the aperture covers the box.
+- Consequence for the EPROCESS hunt: p96's abort on the first 1450 was the wrong policy. A walk must
+  **hop the bad page and continue**, with a hop budget, instead of stopping at the first fault.
+- Next: p101 probes whether 1450 tracks the source PA or the destination buffer (own locked page's
+  PFN via `QueryWorkingSetEx`, then the same PA into a second buffer). If it tracks the PA, reads of
+  kernel pages are unaffected and only the hop policy is needed.
+

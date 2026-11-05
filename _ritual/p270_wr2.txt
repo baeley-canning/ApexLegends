@@ -1,0 +1,40 @@
+p269dc_cut.txt:34: fffff804`522213c3 7507            jne     WinRing0x64+0x13cc (fffff804`522213cc)
+p269dc_cut.txt:36: fffff804`522213ca eb09            jmp     WinRing0x64+0x13d5 (fffff804`522213d5)
+p269dc_cut.txt:38: fffff804`522213ce 740a            je      WinRing0x64+0x13da (fffff804`522213da)
+p269dc_cut.txt:41: fffff804`522213d8 eb48            jmp     WinRing0x64+0x1422 (fffff804`52221422)
+p269dc_cut.txt:43: fffff804`522213dc eb42            jmp     WinRing0x64+0x1420 (fffff804`52221420)
+p269dc_cut.txt:49: fffff804`522213f1 e83a010000      call    WinRing0x64+0x1530 (fffff804`52221530)
+p269dc_cut.txt:51: fffff804`522213f8 eb28            jmp     WinRing0x64+0x1422 (fffff804`52221422)
+p269dc_cut.txt:52: fffff804`522213fa 8b05101d0000    mov     eax,dword ptr [WinRing0x64+0x3110 (fffff804`52223110)]
+p269dc_cut.txt:55: fffff804`52221405 7419            je      WinRing0x64+0x1420 (fffff804`52221420)
+p269dc_cut.txt:57: fffff804`52221409 eb0f            jmp     WinRing0x64+0x141a (fffff804`5222141a)
+p269dc_cut.txt:58: fffff804`5222140b 8b05ff1c0000    mov     eax,dword ptr [WinRing0x64+0x3110 (fffff804`52223110)]
+p269dc_cut.txt:61: fffff804`52221416 7408            je      WinRing0x64+0x1420 (fffff804`52221420)
+p269dc_cut.txt:63: fffff804`5222141a 8905f01c0000    mov     dword ptr [WinRing0x64+0x3110 (fffff804`52223110)],eax
+p269dc_cut.txt:68: fffff804`5222142a ff15f80b0000    call    qword ptr [WinRing0x64+0x2028 (fffff804`52222028)]
+p269dc_cut.txt:88: fffff804`5222145a 488d15ff020000  lea     rdx,[WinRing0x64+0x1760 (fffff804`52221760)]
+p269dc_cut.txt:90: fffff804`52221466 ff15dc0b0000    call    qword ptr [WinRing0x64+0x2048 (fffff804`52222048)]
+p269dc_cut.txt:92: fffff804`52221471 ff15e10b0000    call    qword ptr [WinRing0x64+0x2058 (fffff804`52222058)]
+p269dc_cut.txt:94: fffff804`5222147a 7409            je      WinRing0x64+0x1485 (fffff804`52221485)
+p269dc_cut.txt:96: fffff804`5222147f ff15ab0b0000    call    qword ptr [WinRing0x64+0x2030 (fffff804`52222030)]
+p269dd_str.txt:3: WinRing0x64.sys          n=0 at=
+p269de_verify.txt:6: => # byte-identical bucket, one call site - WinRing0x64.sys (prv 22) +0x15b8, "rep movsb" with
+p269de_verify.txt:16: => # 22 = WinRing0x64.sys is broken on this build (see header: NULL deref at +0x15b8) - it is
+p269_up.txt:116: 20:52 BSOD #2: SYSTEM_SERVICE_EXCEPTION (0x3B), What failed: WinRing0x64.sys  -> identical to the original crash
+p270_ids.txt:20: 7 WinRing0x64
+p270_wr.txt:1: 3: # byte-identical bucket, one call site - WinRing0x64.sys (prv 22) +0x15b8, "rep movsb" with
+p270_wr.txt:9: 263: # 22 = WinRing0x64.sys is broken on this build (see header: NULL deref at +0x15b8) - it is
+p7_e.txt:45:   WinRing0x64 => absent
+vm_type.txt:552: == vm_type 05/11/2026 21:53:41  seq=[ren C:\Users\Public\p37\WinRing0x64.sys WinRing0x64.sys.bak]
+vm_type.txt:553:   token 'ren C:\Users\Public\p37\WinRing0x64.sys WinRing0x64.sys.bak' = text
+vm_type.txt:1952: == vm_type 05/11/2026 21:58:16  seq=[echo FILES RENAMED TO ^*.bak in C:\Users\Public\p37 : run.cmd WinRing0x64.sys zapexdrv.sys kdu.exe >> %F%]
+vm_type.txt:1953:   token 'echo FILES RENAMED TO ^*.bak in C:\Users\Public\p37 : run.cmd WinRing0x64.sys zapexdrv.sys kdu.exe >> %F%' = text
+_h1a_klist.txt:221: 	EVGA Precision X1, DriverName "WinRing0x64", DeviceName "WinRing0_1_2_0"
+_h1a_klist.txt:239: 	Based on: WinRing0 by Noriyuki Miyazaki
+_h1a_klist.txt:1205: 	Based on: WinRing0 by Noriyuki Miyazaki
+_h1a_klist.txt:1507: 	Based on: WinRing0 by Noriyuki Miyazaki
+_h1a_klist.txt:1627: 	Based on: WinRing0 by Noriyuki Miyazaki
+_h1a_klist.txt:1717: 	Based on: WinRing0 by Noriyuki Miyazaki
+_provtable.txt:17: | 7      | EVGA           | WinRing0x64 | EVGA Precision X1                  | 1.0.2.0                     | Name                 |
+_provtable.txt:71: | 7      | EVGA           | WinRing0x64 | EVGA Precision X1                  | 1.0.2.0                     | Name                 |
+_provtable.txt:141: |7         |111       |WinRing0x64            |WinRing0_1_2_0                        |EVGA Precision X1                                     |                              |EVGA                                            

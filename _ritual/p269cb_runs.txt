@@ -1,0 +1,403 @@
+p269cb 00:12:34
+[0] @0x020E8 RTCore64.sys
+[1] @0x02120 AsIO2.sys
+[2] @0x02158 KRegExp.sys
+[3] @0x02190 AsIO3.sys
+[4] @0x021C8 KRegExp.sys
+[5] @0x02200 AsIO3.sys
+[6] @0x02238 AsIO3.sys
+[7] @0x02270 NetworkPriva
+[8] @0x022E0 KMPDC.sys
+[9] @0x02318 uiomap.sys
+[10] @0x02350 WdBoot.sys
+[11] @0x02388 hwpolicy.sys
+[12] @0x11930 WinRing0_1_2_0
+[13] @0x18644 \SystemRoot\system32\ntoskrnl.exe
+[14] @0x1868C \SystemRoot\system32\hal.dll
+[15] @0x186CC \SystemRoot\system32\kd.dll
+[16] @0x1870C \SystemRoot\system32\mcupdate_GenuineIntel.dll
+[17] @0x18774 \SystemRoot\system32\symcryptk.dll
+[18] @0x187C4 \SystemRoot\System32\drivers\cng.sys
+[19] @0x18814 \SystemRoot\System32\drivers\CLFS.SYS
+[20] @0x18864 \SystemRoot\System32\drivers\tm.sys
+[21] @0x188B4 \SystemRoot\System32\drivers\winaccel.sys
+[22] @0x1890C \SystemRoot\system32\PSHED.dll
+[23] @0x18954 \SystemRoot\system32\BOOTVID.dll
+[24] @0x1899C \SystemRoot\System32\drivers\FLTMGR.SYS
+[25] @0x189F4 \SystemRoot\System32\drivers\msrpc.sys
+[26] @0x18A4C \SystemRoot\System32\drivers\ksecdd.sys
+[27] @0x18AA4 \SystemRoot\System32\drivers\clipsp.sys
+[28] @0x18AFC \SystemRoot\System32\drivers\cmimcext.sys
+[29] @0x18B54 \SystemRoot\System32\drivers\werkernel.sys
+[30] @0x18BB4 \SystemRoot\System32\drivers\ntosext.sys
+[31] @0x18C0C \SystemRoot\System32\drivers\watchdog.sys
+[32] @0x18C64 \SystemRoot\System32\drivers\WMILIB.SYS
+[33] @0x18CBC \SystemRoot\System32\drivers\dxgkrnl.sys
+[34] @0x18D14 \SystemRoot\System32\win32k.sys
+[35] @0x18D5C \SystemRoot\system32\CI.dll
+[36] @0x18D9C \SystemRoot\System32\drivers\globmerger.sys
+[37] @0x18DFC \SystemRoot\system32\drivers\Wdf01000.sys
+[38] @0x18E54 \SystemRoot\system32\drivers\WppRecorder.sys
+[39] @0x18EB4 \SystemRoot\system32\drivers\WDFLDR.SYS
+[40] @0x18F0C \SystemRoot\System32\DriverStore\FileRepository\prm.inf_amd64_7c38475757a1f016\PRM.sys
+[41] @0x18FC4 \SystemRoot\System32\Drivers\acpiex.sys
+[42] @0x1901C \SystemRoot\system32\drivers\msseccore.sys
+[43] @0x1907C \SystemRoot\System32\drivers\ACPI.sys
+[44] @0x190CC \SystemRoot\System32\drivers\msisadrv.sys
+[45] @0x19124 \SystemRoot\System32\drivers\pci.sys
+[46] @0x19174 \SystemRoot\System32\drivers\tpm.sys
+[47] @0x191C4 \SystemRoot\System32\drivers\amdwps.sys
+[48] @0x1921C \SystemRoot\system32\drivers\WindowsTrustedRT.sys
+[49] @0x19284 \SystemRoot\System32\drivers\intelpep.sys
+[50] @0x192DC \SystemRoot\System32\drivers\WindowsTrustedRTProxy.sys
+[51] @0x19354 \SystemRoot\System32\drivers\IntelPMT.sys
+[52] @0x193AC \SystemRoot\System32\drivers\pcw.sys
+[53] @0x193FC \SystemRoot\System32\drivers\vdrvroot.sys
+[54] @0x19454 \SystemRoot\system32\drivers\pdc.sys
+[55] @0x194A4 \SystemRoot\system32\drivers\CEA.sys
+[56] @0x194F4 \SystemRoot\System32\drivers\partmgr.sys
+[57] @0x1954C \SystemRoot\System32\drivers\spaceport.sys
+[58] @0x195AC \SystemRoot\System32\drivers\volmgr.sys
+[59] @0x19604 \SystemRoot\System32\drivers\volmgrx.sys
+[60] @0x1965C \SystemRoot\System32\drivers\mountmgr.sys
+[61] @0x196B4 \SystemRoot\System32\drivers\storahci.sys
+[62] @0x1970C \SystemRoot\System32\drivers\storport.sys
+[63] @0x19764 \SystemRoot\System32\drivers\EhStorClass.sys
+[64] @0x197C4 \SystemRoot\System32\drivers\fileinfo.sys
+[65] @0x1981C \SystemRoot\System32\Drivers\Wof.sys
+[66] @0x1986C \SystemRoot\system32\drivers\wd\WdFilter.sys
+[67] @0x198CC \SystemRoot\System32\Drivers\Ntfs.sys
+[68] @0x1991C \SystemRoot\system32\DRIVERS\VBoxGuest.sys
+[69] @0x1997C \SystemRoot\System32\Drivers\Fs_Rec.sys
+[70] @0x199D4 \SystemRoot\system32\drivers\ndis.sys
+[71] @0x19A24 \SystemRoot\system32\drivers\NETIO.SYS
+[72] @0x19A7C \SystemRoot\System32\Drivers\ksecpkg.sys
+[73] @0x19AD4 \SystemRoot\System32\Drivers\Kerb3961Kernel.sys
+[74] @0x19B3C \SystemRoot\System32\drivers\tcpip.sys
+[75] @0x19B94 \SystemRoot\System32\drivers\fwpkclnt.sys
+[76] @0x19BEC \SystemRoot\System32\drivers\wfplwfs.sys
+[77] @0x19C44 \SystemRoot\System32\DRIVERS\fvevol.sys
+[78] @0x19C9C \SystemRoot\System32\drivers\volume.sys
+[79] @0x19CF4 \SystemRoot\System32\drivers\volsnap.sys
+[80] @0x19D4C \SystemRoot\System32\drivers\rdyboost.sys
+[81] @0x19DA4 \SystemRoot\System32\drivers\nvmedisk.sys
+[82] @0x19DFC \SystemRoot\System32\Drivers\mup.sys
+[83] @0x19E4C \SystemRoot\system32\drivers\iorate.sys
+[84] @0x19EA4 \SystemRoot\System32\drivers\disk.sys
+[85] @0x19EF4 \SystemRoot\System32\drivers\CLASSPNP.SYS
+[86] @0x19F4C \SystemRoot\System32\Drivers\crashdmp.sys
+[87] @0x19FA4 \SystemRoot\System32\drivers\cdrom.sys
+[88] @0x19FFC \SystemRoot\system32\drivers\filecrypt.sys
+[89] @0x1A05C \SystemRoot\system32\drivers\tbs.sys
+[90] @0x1A0AC \SystemRoot\system32\drivers\UCPD.sys
+[91] @0x1A0FC \SystemRoot\System32\Drivers\Null.SYS
+[92] @0x1A14C \SystemRoot\System32\Drivers\Beep.SYS
+[93] @0x1A19C \SystemRoot\System32\DriverStore\FileRepository\basicdisplay.inf_amd64_9f34636ebdd89def\BasicDisplay.sys
+[94] @0x1A274 \SystemRoot\System32\DriverStore\FileRepository\basicrender.inf_amd64_a779d7425d822522\BasicRender.sys
+[95] @0x1A34C \SystemRoot\System32\Drivers\Npfs.SYS
+[96] @0x1A39C \SystemRoot\System32\Drivers\Msfs.SYS
+[97] @0x1A3EC \SystemRoot\System32\Drivers\CimFS.SYS
+[98] @0x1A444 \SystemRoot\system32\DRIVERS\tdx.sys
+[99] @0x1A494 \SystemRoot\system32\DRIVERS\TDI.SYS
+[100] @0x1A4E4 \SystemRoot\System32\DRIVERS\netbt.sys
+[101] @0x1A53C \SystemRoot\system32\drivers\afunix.sys
+[102] @0x1A594 \SystemRoot\system32\drivers\afd.sys
+[103] @0x1A5E4 \SystemRoot\System32\drivers\vwififlt.sys
+[104] @0x1A63C \SystemRoot\System32\drivers\pacer.sys
+[105] @0x1A694 \SystemRoot\System32\drivers\ndiscap.sys
+[106] @0x1A6EC \SystemRoot\system32\drivers\netbios.sys
+[107] @0x1A744 \SystemRoot\System32\drivers\VBoxSF.sys
+[108] @0x1A79C \SystemRoot\System32\drivers\Vid.sys
+[109] @0x1A7EC \SystemRoot\System32\drivers\winhvr.sys
+[110] @0x1A844 \SystemRoot\system32\DRIVERS\rdbss.sys
+[111] @0x1A89C \SystemRoot\system32\drivers\csc.sys
+[112] @0x1A8EC \SystemRoot\system32\drivers\nsiproxy.sys
+[113] @0x1A944 \SystemRoot\System32\drivers\npsvctrig.sys
+[114] @0x1A9A4 \SystemRoot\System32\drivers\mssmbios.sys
+[115] @0x1A9FC \SystemRoot\System32\Drivers\dfsc.sys
+[116] @0x1AA4C \SystemRoot\system32\drivers\bam.sys
+[117] @0x1AA9C \SystemRoot\system32\DRIVERS\ahcache.sys
+[118] @0x1AAF4 \SystemRoot\System32\DriverStore\FileRepository\compositebus.inf_amd64_8cf6fa9d3afdfa25\CompositeBus.sys
+[119] @0x1ABCC \SystemRoot\System32\drivers\kdnic.sys
+[120] @0x1AC24 \SystemRoot\System32\DriverStore\FileRepository\umbus.inf_amd64_914dd46b4b013b1b\umbus.sys
+[121] @0x1ACE4 \SystemRoot\System32\drivers\i8042prt.sys
+[122] @0x1AD3C \SystemRoot\System32\drivers\kbdclass.sys
+[123] @0x1AD94 \SystemRoot\system32\DRIVERS\VBoxMouse.sys
+[124] @0x1ADF4 \SystemRoot\System32\drivers\mouclass.sys
+[125] @0x1AE4C \SystemRoot\System32\drivers\VBoxWddm.sys
+[126] @0x1AEA4 \SystemRoot\System32\drivers\E1G6032E.sys
+[127] @0x1AEFC \SystemRoot\System32\drivers\HDAudBus.sys
+[128] @0x1AF54 \SystemRoot\System32\drivers\portcls.sys
+[129] @0x1AFAC \SystemRoot\System32\drivers\drmk.sys
+[130] @0x1AFFC \SystemRoot\System32\drivers\ks.sys
+[131] @0x1B04C \SystemRoot\System32\drivers\USBXHCI.SYS
+[132] @0x1B0A4 \SystemRoot\system32\drivers\ucx01000.sys
+[133] @0x1B0FC \SystemRoot\System32\drivers\CmBatt.sys
+[134] @0x1B154 \SystemRoot\System32\drivers\BATTC.SYS
+[135] @0x1B1AC \SystemRoot\System32\drivers\intelppm.sys
+[136] @0x1B204 \SystemRoot\System32\drivers\NdisVirtualBus.sys
+[137] @0x1B26C \SystemRoot\System32\DriverStore\FileRepository\swenum.inf_amd64_8b9dd76f362e3ec6\swenum.sys
+[138] @0x1B32C \SystemRoot\System32\drivers\rdpbus.sys
+[139] @0x1B384 \SystemRoot\System32\Drivers\fastfat.SYS
+[140] @0x1B3DC \SystemRoot\System32\drivers\HdAudio.sys
+[141] @0x1B434 \SystemRoot\system32\drivers\ksthunk.sys
+[142] @0x1B48C \SystemRoot\System32\drivers\UsbHub3.sys
+[143] @0x1B4E4 \SystemRoot\System32\drivers\USBD.SYS
+[144] @0x1B534 \SystemRoot\system32\DRIVERS\udfs.sys
+[145] @0x1B584 \SystemRoot\System32\win32kbase.sys
+[146] @0x1B5D4 \SystemRoot\System32\drivers\HIDPARSE.SYS
+[147] @0x1B62C \SystemRoot\system32\DRIVERS\cdfs.sys
+[148] @0x1B67C \SystemRoot\System32\drivers\hidusb.sys
+[149] @0x1B6D4 \SystemRoot\System32\drivers\HIDCLASS.SYS
+[150] @0x1B72C \SystemRoot\System32\drivers\mouhid.sys
+[151] @0x1B784 \SystemRoot\System32\win32kfull.sys
+[152] @0x1B7D4 \SystemRoot\System32\Drivers\dump_diskdump.sys
+[153] @0x1B83C \SystemRoot\System32\drivers\dump_storahci.sys
+[154] @0x1B8A4 \SystemRoot\System32\win32kbase_rs.sys
+[155] @0x1B8FC \SystemRoot\System32\Drivers\dump_dumpfve.sys
+[156] @0x1B95C \SystemRoot\System32\drivers\monitor.sys
+[157] @0x1B9B4 \SystemRoot\System32\drivers\dxgmms2.sys
+[158] @0x1BA0C \SystemRoot\System32\cdd.dll
+[159] @0x1BA4C \SystemRoot\system32\drivers\appid.sys
+[160] @0x1BAA4 \SystemRoot\system32\drivers\applockerfltr.sys
+[161] @0x1BB0C \SystemRoot\system32\drivers\bfs.sys
+[162] @0x1BB5C \SystemRoot\system32\drivers\luafv.sys
+[163] @0x1BBB4 \SystemRoot\system32\drivers\wcifs.sys
+[164] @0x1BC0C \SystemRoot\system32\drivers\cldflt.sys
+[165] @0x1BC64 \SystemRoot\system32\drivers\UnionFS.sys
+[166] @0x1BCBC \SystemRoot\system32\drivers\storqosflt.sys
+[167] @0x1BD1C \SystemRoot\system32\drivers\bindflt.sys
+[168] @0x1BD74 \SystemRoot\system32\drivers\lltdio.sys
+[169] @0x1BDCC \SystemRoot\system32\drivers\mslldp.sys
+[170] @0x1BE24 \SystemRoot\system32\drivers\rspndr.sys
+[171] @0x1BE7C \SystemRoot\system32\drivers\HTTP.sys
+[172] @0x1BECC \SystemRoot\system32\DRIVERS\bowser.sys
+[173] @0x1BF24 \SystemRoot\System32\drivers\mpsdrv.sys
+[174] @0x1BF7C \SystemRoot\system32\DRIVERS\mrxsmb.sys
+[175] @0x1BFD4 \SystemRoot\system32\DRIVERS\mrxsmb20.sys
+[176] @0x1C02C \SystemRoot\System32\DRIVERS\srvnet.sys
+[177] @0x1C084 \SystemRoot\System32\DRIVERS\srv2.sys
+[178] @0x1C0D4 \SystemRoot\system32\drivers\mmcss.sys
+[179] @0x1C12C \SystemRoot\system32\drivers\Ndu.sys
+[180] @0x1C17C \SystemRoot\system32\drivers\peauth.sys
+[181] @0x1C1D4 \SystemRoot\System32\drivers\tcpipreg.sys
+[182] @0x1C22C \SystemRoot\System32\drivers\wtd.sys
+[183] @0x1C27C \SystemRoot\System32\drivers\condrv.sys
+[184] @0x1C2D4 \SystemRoot\system32\drivers\wd\KslD.sys
+[185] @0x1C32C \SystemRoot\system32\drivers\wd\WdNisDrv.sys
+[186] @0x1C38C \??\C:\Users\Public\p37\zapexdrv.sys
+[187] @0x1C3DC \??\C:\Users\Public\p37\WinRing0x64.sys
+[188] @0x30BB8 \Users\Public\p37\apexcheat.dll
+[189] @0x30C3C Users\Public\p37
+[190] @0x30C98 Users\Public\p37
+[191] @0x30CD8 Users\Public\p37\apexcheat.dll
+[192] @0x30D8C C:\Users\Public\p37\apexcheat.dll
+[193] @0x30DE8 C:\Users\Public\p37\apexcheat.dll
+[194] @0x30E70 Microsoft.PowerShell.Core\FileSystem
+[195] @0x30F60 apexcheat.dll
+[196] @0x30FF0 C:\Users\Public\p37
+[197] @0x310A8 C:\Users\Public
+[198] @0x31148 C:\Users
+[199] @0x4509C SModulePath=WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+[200] @0x451A4 PUBLIC=C:\Users\Public
+[201] @0x451D2 SystemDrive=C:
+[202] @0x451F0 SystemRoot=C:\WINDOWS
+[203] @0x4521C TEMP=C:\WINDOWS\TEMP
+[204] @0x45246 TMP=C:\WINDOWS\TEMP
+[205] @0x4526E USERDOMAIN=WORKGROUP
+[206] @0x45298 USERNAME=WIN11-TEST2$
+[207] @0x452C4 USERPROFILE=C:\WINDOWS\system32\config\systemprofile
+[208] @0x4532E windir=C:\WINDOWS
+[209] @0x473C0 ! "!#"$#%$&%'&(')(*)+*,+-,.-/.0/102132435465768798:9;:<;=<>=?>@?A@EAIBMCQDUEYF]GaHeIiJmKqLuMyN}O
+[210] @0x4809C MP=C:\WINDOWS\TEMP
+[211] @0x480C2 TMP=C:\WINDOWS\TEMP
+[212] @0x480EA USERDOMAIN=WORKGROUP
+[213] @0x48114 USERNAME=WIN11-TEST2$
+[214] @0x48140 USERPROFILE=C:\WINDOWS\system32\config\systemprofile
+[215] @0x481AA windir=C:\WINDOWS
+[216] @0x57A54 pid:1208
+[217] @0x57AA4 38348221
+[218] @0x57EF4 gotiations since IPsec was last started.
+[219] @0x57F52 Failed Extended Mode Negotiations per Second is the rate of failed extended mode negotiations.
+[220] @0x5801C Extended Mode SAs That Used Impersonation is the number of extended mode security associations completed using impersonation since IPsec was last started.
+[221] @0x5815E IPsec IKEv2 IPv6 is the set of Internet Protocol security (IPsec) Internet Key Exchange version 2 (IKEv2) counters that apply to traffic and connections over Internet Protocol version 6.
+[222] @0x582E0 Active Main Mode SAs is the number of currently active main mode security associations.
+[223] @0x5839C Pending Main Mode Negotiations is the number of pending main mode negotiations.
+[224] @0x58448 Main Mode Negotiations is the number of main mode negotiations attempted since IPsec was last started.
+[225] @0x58522 Main Mode Negotiations per Second is the rate at which main mode negotiations are being attempted.
+[226] @0x585F4 Successful Main Mode Negotiations is the number of main mode negotiations completed since IPsec was last started.
+[227] @0x586E4 Successful Main Mode Negotiations per Second is the rate of main mode negotiations completed.
+[228] @0x587AC Failed Main Mode Negotiations is the number of failed main mode negotiations since IPsec was last started.
+[229] @0x5888E Failed Main Mode Negotiations per Second is the rate of failed main mode negotiations.
+[230] @0x58948 Main Mode Negotiation Requests Received is the number of main mode negotiations initiated by a peer since IPsec was last started.
+[231] @0x58A58 Main Mode Negotiation Requests Received per Second is the rate of main mode negotiations initiated by a peer.
+[232] @0x58B40 Active Quick Mode SAs is the number of currently active quick mode security associations.
+[233] @0x58C00 Pending Quick Mode Negotiations is the number of pending quick mode negotiations.
+[234] @0x58CB0 Quick Mode Negotiations is the number of quick mode negotiations attempted since IPsec was last started.
+[235] @0x58D8E Quick Mode Negotiations per Second is the rate at which quick mode negotiations are being attempted.
+[236] @0x58E64 Successful Quick Mode Negotiations is the number of quick mode negotiati
+[237] @0x58F02 The total number of large memory pages which are from a local NUMA node.
+[238] @0x58FA0 The total number of large memory pages which are from a non-local NUMA node.
+[239] @0x59046 The total number of medium (64KB) memory pages which are from a local NUMA node.
+[240] @0x590F4 The total number of medium (64KB) memory pages which are from a non-local NUMA node.
+[241] @0x591AA The total number of non-large memory pages which are from a local NUMA node.
+[242] @0x59250 The total number of non-large memory pages that are from a non-local NUMA node.
+[243] @0x592FC Number of currently ballooned pages.
+[244] @0x59352 Number of hot added pages.
+[245] @0x59394 Number of currently reserved pages.
+[246] @0x593E8 Number of ballooon operations.
+[247] @0x59432 Number of hot add operations.
+[248] @0x5947A Number of hot add undo operation.
+[249] @0x594CA Number of unballooon operations.
+[250] @0x59518 Number of MBP demand back operations
+[251] @0x5956E Number of MBP page in operations
+[252] @0x595BC Number of MBP page in operations resulting in synced pages
+[253] @0x5963E Number of MBP page out operations
+[254] @0x5968E Number of MBP page out operations skipped due to targeting synced pages
+[255] @0x5972A Number of synced pages
+[256] @0x59764 Number of unbacked pages
+[257] @0x597A2 Number of unbacked deferred pages
+[258] @0x597F2 Number of working set pages
+[259] @0x59836 SLP I/O read rate
+[260] @0x59866 SLP I/O write rate
+[261] @0x59898 SLP read rate in pages
+[262] @0x598D2 SLP write rate in pages
+[263] @0x5990E SLP fault rate on behalf of memory access reads
+[264] @0x5997A SLP fault rate on behalf of memory access writes
+[265] @0x599E8 The number zeroed ranges found.
+[266] @0x59A34 The number zeroed ranges found that are not reported since their size is smaller than the threshold.
+[267] @0x59B0A The total ammount of pages in the zeroed ranges found.
+[268] @0x59B84 The total ammount of zeroed pages that were not reported because their range is smaller than the threshold.
+[269] @0x59C68 GPA mapping WinHv (hypervisor) call count
+[270] @0x59CC8 GPA mapping WinHv (hypervisor) call time in microseconds
+[271] @0x59D46 GPA mapping page count
+[272] @0x59D80 Memory transfer operations - receive MDL complete
+[273] @0x59DF0 Memory transfer operations - receive MDL complete failed
+[274] @0x59E6E Memory transfer operations - receive MDL prepare
+[275] @0x59EDC Memory trans61
+[276] @0x59EFA The total number of IO space memory allocation requests which returned partial result.
+[277] @0x59FB4 The total number of IO space memory allocation requests.
+[278] @0x5A032 The total time spent allocating IO space memory pages in microseconds.
+[279] @0x5A0CC The total number of IO space memory allocation requests.
+[280] @0x5A14A The total time spent allocating IO space memory pages in microseconds.
+[281] @0x5A1E4 The number of GPA ranges that are backed by memory blocks in this partition.
+[282] @0x5A28A The number of GPA pages that are backed by memory blocks in this partition.
+[283] @0x5A32E The number of ROM GPA pages that are backed by memory blocks in this partition.
+[284] @0x5A3DA The number of GPA ranges that are backed by MMIO regions in this partition.
+[285] @0x5A47E The number of GPA pages that are backed by MMIO regions in this partition.
+[286] @0x5A520 The number of active parent partition mappings for this partition.
+[287] @0x5A5B2 The number of direct created parent partition mappings for this partition.
+[288] @0x5A654 The number of memory block notifications installed for this partition.
+[289] @0x5A6EE The number of memory block pages read from user mode for this partition.
+[290] @0x5A78C The number of memory block pages written from user mode for this partition.
+[291] @0x5A830 The number of memory block read notifications sent to user mode for this partition.
+[292] @0x5A8E4 The number of memory block write notifications sent to user mode for this partition.
+[293] @0x5A99A The number of VTL modifications for this partition.
+[294] @0x5AA0E The number of VTL MBPs that failed modify attempt for this partition.
+[295] @0x5AAA6 The number of VTL MBPs that are protected for this partition.
+[296] @0x5AB2E The total bytes of allocated memory for this partition (not including memory block allocations).
+[297] @0x5ABFC The preferred NUMA node mask associated with this partition.
+[298] @0x5AC82 The total number of huge memory pages which are from a local NUMA node.
+[299] @0x5AD1E The total number of huge memory pages which are from a non-local NUMA node.
+[300] @0x5AE64  total n
+[301] @0x5AED0 n-local NU
+[302] @0x5AF04 ge handlers registered on this partition.
+[303] @0x5AF64 The tota
+[304] @0x5B07C this partition.
+[305] @0x5B0A8 The total number of MSR message handlers registere
+[306] @0x5B114  this partition.
+[307] @0x5B3A4 unt defe
+[308] @0x5DA64 %%%%%%%%
+[309] @0x5DA94 \winring
+[310] @0x6D284 WinRing0_1_2_0
+[311] @0x734FC tcpip.sysTCPIP
+[312] @0x735B0 tcpip.sysTCPIP6
+[313] @0x73666 TCPIPTUNNEL
+[314] @0x73714 TCPIP6TUNNEL
+[315] @0x737E4 {B70D6460-3635-4D42-B866-B8AB1A24454C}WFP 802.3 MAC Layer LightWeight Filterwfplwfs
+[316] @0x73982 {3BFD7820-D65C-4C1B-9FEA-983A019639EA}WFP Native MAC Layer LightWeight Filterwfplwfs
+[317] @0x73B22 {E7C3B2F0-F3C5-48DF-AF2B-10FED6D72E7A}WFP vSwitch Layers LightWeight Filterwfplwfs
+[318] @0x73D42 \Device\HarddiskVolume4\Users\Public\p37\kdu.exe
+[319] @0x73E4E \Device\HarddiskVolume4\Windows\System32\setupapi.dll
+[320] @0x73F36 \Device\HarddiskVolume4\Windows\System32\cryptsp.dll
+[321] @0x73FFE \Device\HarddiskVolume4\Windows\System32\cfgmgr32.dll
+[322] @0x7410E \Device\HarddiskVolume4\Users\Public\p37\drv64.dll
+[323] @0x7442E \Device\HarddiskVolume4\Windows\System32\directmanipulation.dll
+[324] @0x7454E \Device\HarddiskVolume4\Windows\System32\ci.dll
+[325] @0x745BE lic\p37\ATSZIO.sys failed to load
+[326] @0x74696 4\Device\HarddiskVolume4\Users\Public\p37\GLCKIo2.sys
+[327] @0x747C0 ASUSTeK Computer Inc.,DigiCert SHA2 High Assurance Code Signing CA 
+[328] @0x74916 4\Device\HarddiskVolume4\Users\Public\p37\GLCKIo2.sys
+[329] @0x74A1A Microsoft Windows Driver Policy
+[330] @0x74A5A 10.0.29520.0 
+[331] @0x74B68 ASUSTeK Computer Inc.,DigiCert SHA2 High Assurance Code Signing CA 
+[332] @0x74CB4 Application Popup
+[333] @0x74CDE \??\C:\Users\Public\p37\GLCKIo2.sys failed to load
+[334] @0x74DDE 4\Device\HarddiskVolume4\Users\Public\p37\EneIo64.sys
+[335] @0x74F12 2Microsoft Windows Hardware Compatibility Publisher/Microsoft Windows Third Party Component CA 2014 
+[336] @0x75022 ENE Technology Inc.!
+[337] @0x750DE 4\Device\HarddiskVolume4\Users\Public\p37\EneIo64.sys
+[338] @0x751E2 Microsoft Windows Driver Policy
+[339] @0x75222 10.0.29520.0 
+[340] @0x7533A 2Microsoft Windows Hardware Compatibility Publisher/Microsoft Windows Third Party Component CA 2014 
+[341] @0x7544A ENE Technology Inc.!
+[342] @0x754FC Application Popup
+[343] @0x75526 \??\C:\Users\Public\p37\EneIo64.sys failed to load
+[344] @0x75660 C:\WINDOWS
+[345] @0x87B16 {5CBF81BF-5055-47CD-9055-A76B2B4E3698}Virtual WiFi Filter Drivervwififlt
+[346] @0x87C9E {B5F4D659-7DAA-4565-8E41-BE220ED60542}QoS Packet SchedulerPsched
+[347] @0x87EE8 E1G6032E.sys
+[348] @0x87F94 \??\PCI#VEN_8086&DEV_100E&SUBSYS_001E8086&REV_02#3&267a616a&0&18#{ad498944-762f-11d0-8dcb-00c04fc3358c}\{CDC0CCEF-F7CE-4158-8BBE-57BADB099921}
+[349] @0x88E7C Intel(R) PRO/1000 MT Desktop Adapter
+[350] @0x89288 HIntel(R) PRO/1000 MT Desktop Adapter
+[351] @0x894D6 Ethernet
+[352] @0x89BBE Intel(R) PRO/1000 MT Desktop Adapter #2-QoS Packet Scheduler-0000
+[353] @0x89C50 {CDC0CCEF-F7CE-4158-8BBE-57BADB099921}-{B5F4D659-7DAA-4565-8E41-BE220ED60542}-0000
+[354] @0x8A3D0 Intel(R) PRO/1000 MT Desktop Adapter-WFP Native MAC Layer LightWeight Filter-0000
+[355] @0x8A482 {45F5D8B6-B96E-4015-B838-B055EE7DDD37}-{3BFD7820-D65C-4C1B-9FEA-983A019639EA}-0000
+[356] @0x8A8C8 Intel(R) PRO/1000 MT Desktop Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000
+[357] @0x8A978 {45F5D8B6-B96E-4015-B838-B055EE7DDD37}-{B70D6460-3635-4D42-B866-B8AB1A24454C}-0000
+[358] @0x8ADC4 lltdio.sysLLTDIO
+[359] @0x8AE7C mslldp.sysMSLLDP
+[360] @0x8AF34 rspndr.sysRSPNDR
+[361] @0x8B8F8 \REGISTRY\MACHINE\SYSTEM\ControlSet001\Services\KslDsystem32\drivers\wd\KslD.sys1.1.26090.64070\Device\HarddiskVolume4\ProgramData\Microsoft\Windows Defender\Platform\4.18.26100.4-0\MsMpEng.exe
+[362] @0x8BA7E \Device\KslD\DosDevices\KslD
+[363] @0x8C1E6 \Device\WinRing0_1_2_0
+[364] @0x8C216 \DosDevices\WinRing0_1_2_0
+[365] @0x979DE \Users\Public\p37\kdu.exe
+[366] @0x99FC6 TSA://ProcUnique
+[367] @0x99FF6 \REGISTRY\MACHINE\SYSTEM\Control
+[368] @0x9A196 Set001\Control\Nls\Sorting\Versions
+[369] @0x9AA12 Registry
+[370] @0x9B4B6 \System32\msdelta.dllFamilyID
+[371] @0x9B556 \Windows\System32\find.exe
+[372] @0x9B6B6 TSA://ProcUnique
+[373] @0x9B756 TSA://ProcUnique
+[374] @0x9B7DE :WofCompressedData
+[375] @0x9B8CE TSA://ProcUnique
+[376] @0x9BE86 StagedDelete_sysMerge.sdb
+[377] @0x9C20E \??\C:\WINDOWS\system32\CI.dll
+[378] @0x9C2AE TSA://ProcUnique
+[379] @0x9C31E DfsClient
+[380] @0x9E89C \Device\HarddiskVolume4\??\Volume{9dc3ff71-f80d-40f1-93e6-ec7439c825d8}
+[381] @0x9EA6A Mailslot
+[382] @0x9EACA \Ntfs\FileSystem\Ntfs
+[383] @0x9EBD4 NameResTrk
+[384] @0x9ECF4 \Users\Public\p37\WinRing0x64.sys
+[385] @0x9ED84 \Windows\System32\hspapi.dll
+[386] @0x9EE4E WinRing0x64.sys
+[387] @0x9F52C \Users\vboxuser\AppData\
+[388] @0xA3B08 :WofCompressedData
+[389] @0xA3B58 \Windows\System32\imm32.dll
+[390] @0xA3BA8 :WofComp
+[391] @0xB2A20 WIN://SYSAPPID
+[392] @0xB2B00 WIN://SYSAPPID
+[393] @0xB2C20 WIN://SYSAPPID
+[394] @0xB3520 WIN://SYSAPPID
+[395] @0xB3B20 WIN://SYSAPPID
+[396] @0xB3D38 WIN://SYSAPPID
+[397] @0xB4600 WIN://SYSAPPID
+[398] @0xB4920 WIN://SYSAPPID
+[399] @0xB4C20 WIN://SYSAPPID
+RUNS=400
+END

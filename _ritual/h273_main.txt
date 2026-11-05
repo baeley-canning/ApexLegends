@@ -1,0 +1,14 @@
+﻿"\SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000\SoftLandingCreativeManagementTask","11/6/2026 5:36:24 AM","Ready"
+"\SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000\SoftLandingCreativeManagementTask","11/6/2026 5:36:24 AM","Ready"
+"\SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000\SoftLandingCreativeManagementTask","11/6/2026 5:36:24 AM","Ready"
+"\SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000\SoftLandingDeferralTask-{ad0f4b53-0a7f-43a5-b39f-4372a8ead16e}","11/5/2026 11:24:00 PM","Ready"
+"\SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000\SoftLandingTriggerTask-128000000001615609-render-{b9e835c0-3bcb-4884-b6cf-9f4cb766d8f2}","N/A","Disabled"
+schtasks.exe : ERROR: Access is denied.
+At C:\Users\Public\p37\tick.ps1:10 char:1
++ & schtasks.exe /run /tn p37tick *>> $log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Access is denied.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+਍

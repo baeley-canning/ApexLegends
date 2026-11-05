@@ -1,0 +1,28 @@
+PROC EABackgroundService 7504
+PROC EACefSubProcess 6572
+PROC EACefSubProcess 10004
+PROC EACefSubProcess 16844
+PROC EACefSubProcess 21312
+PROC EACefSubProcess 21760
+PROC EADesktop 18732
+PROC EALocalHostSvc 20592
+PROC EasyTuneEngineService 5556
+PROC OneApp.IGCC.WinService 4904
+PROC SearchHost 11612
+PROC SearchIndexer 2848
+PROC SecurityHealthService 11020
+PROC TeamViewer 6576
+PROC TeamViewer_Service 5344
+07:48:10
+    20	[2026-11-03T18:45:41.104Z]	PID: 17992	TID:  1008	INFO    	(eax::services::telemetry::TelemetryManagerV2::processEvent)	Telemetry Event [dci.prot.info]: [{"appUptime":0.7557134,"authenticated":false,"criticalOffline":false,"criticality":false,"disableCulling":false,"enabled":true,"offline":false,"optional":false,"params":{"act":"GameLaunch","cmd":"game/launch/","cprm":"","id_list":"194908","raw":"origin2://game/launch/?offerIds=194908&title=Apex%u0020Legends%u2122&authCode=&cmdParams="},"systemUptime":22902.4950064,"taxonomy":"dci.prot.info","throttleCount":0,"timeSinceSystemResume":22902.5057125,"timestamp":17937315411047515,"weight":1.0}]
+    21	[2026-11-03T18:45:41.141Z]	PID: 17992	TID:  6432	INFO    	(eax::services::windowing::createQmlView)	Creating Qml view [LaunchHelper]
+    22	[2026-11-03T18:45:41.141Z]	PID: 17992	TID: 16064	INFO    	(eax::services::telemetry::TelemetryManagerV2::processEvent)	Telemetry Event [statsig::gate_exposure]: [{"appUptime":0.7920287,"authenticated":false,"criticalOffline":false,"criticality":false,"disableCulling":false,"enabled":true,"offline":false,"optional":false,"params":{"gate":"rtp_shared_splash","gateValue":"false","time":"1793731541000"},"systemUptime":22902.5313216,"taxonomy":"statsig::gate_exposure","throttleCount":0,"timeSinceSystemResume":22902.5420279,"timestamp":17937315411410665,"weight":1.0}]
+    23	[2026-11-03T18:45:41.501Z]	PID: 17992	TID: 16300	INFO    	(eax::services::ipc::IpcClient::Impl::establishLocked)	IPC client [EALaunchHelper.exe], target: [localhost:57313]
+    24	[2026-11-03T18:45:41.520Z]	PID: 17992	TID: 16300	INFO    	(eax::services::ipc::IpcClient::Impl::establishLocked)	IPC client [EALaunchHelper.exe], connected to [localhost:57313]
+    25	[2026-11-03T18:45:41.591Z]	PID: 17992	TID:  4560	INFO    	(eax::MainFlow::Impl::processEndingActions)	processEndingActions() called
+    26	[2026-11-03T18:45:41.591Z]	PID: 17992	TID:  4560	INFO    	(eax::apps::CommandProtocolController::handleStartupFlowCompleted)	Startup flow completed
+    27	[2026-11-03T18:45:41.591Z]	PID: 17992	TID: 22512	INFO    	(eax::services::telemetry::TelemetryManagerV2::processEvent)	Telemetry Event [game.launch.strt]: [{"appUptime":1.2421322,"authenticated":false,"criticalOffline":true,"criticality":false,"disableCulling":false,"enabled":true,"offline":false,"optional":false,"params":{"id_list":"194908","request_owner":"EA","request_source":"RTP","title_launch_source":"rtp_launch"},"systemUptime":22902.9814251,"taxonomy":"game.launch.strt","throttleCount":0,"timeSinceSystemResume":22902.9921314,"timestamp":17937315415911698,"weight":1.0}]
+    28	[2026-11-03T18:45:42.508Z]	PID: 17992	TID:  6432	INFO    	(eax::apps::AppMain)	Closing app, starting teardown
+    29	[2026-11-03T18:45:42.508Z]	PID: 17992	TID: 16064	INFO    	(eax::services::telemetry::TelemetryManagerV2::processEvent)	Telemetry Event [boot.sess.stop]: [{"appUptime":2.1592522,"authenticated":false,"criticalOffline":true,"criticality":false,"disableCulling":false,"enabled":true,"offline":false,"optional":false,"params":{"app":"EALaunchHelper.exe"},"systemUptime":22903.8985452,"taxonomy":"boot.sess.stop","throttleCount":0,"timeSinceSystemResume":22903.9092514,"timestamp":17937315425082900,"weight":1.0}]
+    30	[2026-11-03T18:45:42.746Z]	PID: 17992	TID:  6432	INFO    	(eax::services::telemetry::PinTelemetrySenderV2::flush)	PinV2 flushing requests
+goodbye

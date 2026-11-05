@@ -1,0 +1,26 @@
+--- p44d files ---
+p44d_link.txt  601  11/04/2026 13:06:16
+p44d_progress.txt  31  11/04/2026 13:06:16
+--- procs ---
+r5apex_dx12 pid=17584
+eac: 0
+--- p44f prog tail ---
+15:10:27  FAULT pa=0x7fff80000 n=0x10000 [Errno 1450] phys read 0x7fff80000+0x10000 failed
+15:10:27  BADPAGE 0x1 of 0x10 dead at 0x7fff80000
+15:10:27  FAULT pa=0x7fff90000 n=0x10000 [Errno 1450] phys read 0x7fff90000+0x10000 failed
+15:10:27  BADPAGE 0x3 of 0x10 dead at 0x7fff90000
+15:10:27  FAULT pa=0x7fffb0000 n=0x10000 [Errno 1450] phys read 0x7fffb0000+0x10000 failed
+15:10:27  BADPAGE 0x2 of 0x10 dead at 0x7fffb0000
+15:10:27  FAULT pa=0x7ffff0000 n=0x10000 [Errno 1450] phys read 0x7ffff0000+0x10000 failed
+15:10:27  BADPAGE 0x1 of 0x10 dead at 0x7ffff0000
+--- p44g watch tail ---
+15:06:46  game_pid=17584 eac_procs=7 settle_s=0
+15:06:51  game_pid=17584 eac_procs=7 settle_s=5
+15:07:16  game_pid=17584 eac_procs=7 settle_s=30
+15:07:21  game_pid=17584 eac_procs=7 settle_s=35
+15:07:46  game_pid=17584 eac_procs=7 settle_s=60
+15:07:51  game_pid=17584 eac_procs=7 settle_s=65
+15:08:16  game_pid=17584 eac_procs=7 settle_s=90
+15:08:21  game_pid=17584 eac_procs=7 settle_s=95
+15:08:46  SETTLED settle_s=121 game_pid=17584
+15:08:46  watch end

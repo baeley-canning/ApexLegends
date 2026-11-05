@@ -1,0 +1,2 @@
+3: # byte-identical bucket, one call site - WinRing0x64.sys (prv 22) +0x15b8, "rep movsb" with
+263: # 22 = WinRing0x64.sys is broken on this build (see header: NULL deref at +0x15b8) - it is

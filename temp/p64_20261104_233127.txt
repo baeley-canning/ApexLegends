@@ -1,0 +1,27 @@
+# p64_pairs 2026-11-04 23:31:27 band=full win=0x100
+COLLECT 0x400000000-0x780000000 aligned100=40910 faults=38869 secs=55.3
+CLUSTERS 4136 (min_mem=3 span=0x100)
+READY wait=15s (stand clear, full armour)
+STABLE 3950 of 4136
+NADE NOW 12
+NADE NOW 11
+NADE NOW 10
+NADE NOW 9
+NADE NOW 8
+NADE NOW 7
+NADE NOW 6
+NADE NOW 5
+NADE NOW 4
+NADE NOW 3
+NADE NOW 2
+NADE NOW 1
+GO
+shot 1 clusters=3950 t=2.5s
+shot 2 clusters=3950 t=5.1s
+shot 3 clusters=3950 t=7.6s
+shot 4 clusters=3950 t=10.1s
+shot 5 clusters=3950 t=12.7s
+shot 6 clusters=3950 t=15.2s
+shot 7 clusters=3950 t=17.8s
+CANDIDATES 0
+VERDICT no-cluster

@@ -1,0 +1,42 @@
+﻿82: def installed_ram_bytes():
+89: def alloc_locked(size):
+100:     def __init__(self, path=DEVICE, chunk=PAGE, map_cache_pages=64):
+102:         self.chunk = chunk
+108:         self.dst = kernel32.VirtualAlloc(None, chunk, MEM_COMMIT | MEM_RESERVE,
+112:         kernel32.VirtualLock(self.dst, chunk)
+114:         self.map_cache = {}          # page_pa -> (va, size)
+115:         self.map_cache_max = map_cache_pages
+119:     def _ioctl(self, code, in_buf, out_len, out_hint=64):
+135:     def read_phys(self, pa, size):
+140:             n = min(left, self.chunk)
+150:     def u16(self, pa):
+153:     def u32(self, pa):
+156:     def u64(self, pa):
+160:     def map_phys(self, pa, size):
+172:     def unmap(self, va, size):
+178:     def map_page_cached(self, pa):
+179:         """Persistent mapping of one page, cached (the glow loop rewrites the
+182:         hit = self.map_cache.get(page)
+186:         self.map_cache[page] = (va, PAGE)
+187:         if len(self.map_cache) > self.map_cache_max:
+188:             old = next(iter(self.map_cache))     # FIFO eviction
+189:             ova, osz = self.map_cache.pop(old)
+197:     def write_phys(self, pa, data):
+206:             chunk = min(PAGE - within, len(data) - off)
+207:             va = self.map_page_cached(page)
+208:             ctypes.memmove(va + within, ctypes.byref(buf, off), chunk)
+209:             off += chunk
+212:     def translate(self, va):
+222:     def kernel_alloc(self, size):
+233:     def kernel_free(self, a, b=0):
+238:     def copy_user_to_phys(self, a, b, size):
+246:     def map_kernel(self, pa, size, dst_va):
+257:     def is_ram(self, pa):
+268:     def read_phys_checked(self, pa, size):
+274:     def close(self):
+275:         for page in list(self.map_cache):
+276:             va, size = self.map_cache.pop(page)
+282:             kernel32.VirtualUnlock(self.dst, self.chunk)
+289:     def __enter__(self):
+292:     def __exit__(self, *exc):
+295:     def stat_line(self, code):

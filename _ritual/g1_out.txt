@@ -1,0 +1,6 @@
+g1 2026-11-04 14:24:44 pid=23684
+object=0x3e886d080 dtb=0x7db475000
+  warm eprocess 0x3e886d000 ok (0x636f725002e02000 0x0 0x0)
+  warm dtb      0x7db475000 FAIL [Errno 1450] phys read 0x7db475000+0x1000 failed
+elapsed 4.6 s
+VERDICT: DTB_DEAD

@@ -1,0 +1,9 @@
+152: # (our apexcheat.dll is, it carries a loader-written manifest) is refused.
+312: # boot flags LAST: under Secure Boot both writes are refused on this build, and running
+327: W ('testsigning refused by Secure Boot policy (rc=' + $rcT + ') - trying nointegritychecks')
+328: $rcN = RunExe "$env:SystemRoot\system32\bcdedit.exe" @('/set', 'nointegritychecks', 'on') 10000 5
+330: W 'RESULT: PENDING nointegritychecks on - reboot required before the load test'
+337: W ('nointegritychecks refused too (rc=' + $rcN + ') - continuing with DSE on')
+436: elseif ($hitZ) { 'PARTIAL zapexcheat mapped, shadow name refused => name or signature driven' }
+437: elseif ($afterAll -gt $beforeAll) { 'PARTIAL new oracle file but no module => DllMain ran, then refused/unmapped' }
+455: $tsl = [string]($script:lastOut -split "`n" | Select-String 'testsigning|nointegritychecks')

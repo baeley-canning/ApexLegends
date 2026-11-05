@@ -1,0 +1,76 @@
+23:50:27.669 alive
+23:50:27.728 secureBoot=1
+23:50:27.927 bench v3 build 26300 up=0min pid=8016
+23:50:29.418 STEP=policy
+23:50:29.918 sessionid=0
+23:50:30.121 applocker xml 31 chars -> h269_applocker.xml
+23:50:30.132   applocker mentions DynamicCodeTrust x0
+23:50:30.132   applocker mentions ManagedInstaller x0
+23:50:30.132   applocker mentions Appx x0
+23:50:30.135   applocker mentions DLL x0
+23:50:30.156   reg HKLM:\SOFTWARE\Policies\Microsoft\Windows\Appx MdmHosts=^(?:[^\/]*)\.MANAGE[^\.]*\.(MICROSOFT\.(COM|US)|MICROSOFTONLINE\.CN)$
+23:50:30.165   reg HKLM:\SOFTWARE\Policies\Microsoft\Windows\Appx\AppxAllUserStore absent
+23:50:31.370 sha=CCD6DFD6C1639229 MATCH
+23:50:31.382 dll bytes identical shadow-vs-z = True (867C84B8F2EC449C)
+23:50:31.388 STEP=trust
+23:50:31.470 sig before=Valid
+23:50:32.200 imported Root
+23:50:32.204 imported TrustedPublisher
+23:50:32.215 sig after=Valid
+23:50:32.255 sig dll=NotSigned (informational: unsigned is expected, DSE=0 covers user mode)
+23:50:32.262 STEP=local-load
+23:50:32.328   loadtest p37/apexcheat h=0x7FFD54EA0000 err=0 (The operation completed successfully)
+23:50:32.355   loadtest p37/zapexcheat h=0x7FFDA2620000 err=0 (The operation completed successfully)
+23:50:32.374   loadtest Public/apexcheat h=0x7FFDA2570000 err=0 (The operation completed successfully)
+23:50:32.396   loadtest Public/zapexcheat h=0x7FFDA2570000 err=0 (The operation completed successfully)
+23:50:32.405 local-load p37/norm=True p37/z=True pub/norm=True pub/z=True
+23:50:32.452 STEP=kdu-list
+23:50:32.472 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+23:50:33.866   exit=1
+23:50:33.879   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+23:50:33.882   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+23:50:33.882   | [#] Supported x64 OS : Windows 7 and above
+23:50:33.885   | [*] CPU vendor string: GenuineIntel
+23:50:33.887   | [*] Windows version: 10.0 build 26300
+23:50:33.887   | [*] SecureBoot is enabled on this machine
+23:50:33.890   | [*] Virtualization-based security: Not configured
+23:50:33.890   | [*] Hypervisor enforced Code Integrity running: Not configured
+23:50:33.893   | [*] WHQL enforcement ENABLED
+23:50:33.893   | [+] MSFT Driver block list is enabled
+23:50:33.895   | [+] Drivers database "drv64.dll" loaded at 0x00007FFD54A90000
+23:50:33.898   | [+] Database KDUEXT version is OK
+23:50:33.901   | [+] CSV file C:\Users\Public\p37\kdu_list.csv generated
+23:50:33.901   | [+] Return value: 1. Bye-bye!
+23:50:33.922 list rows=69
+23:50:33.931   csv| ProviderId,ResourceId,DriverName,DeviceName,Description,AdvisoryId,SignerName,SourceBase,MinNtBuild,MaxNtBuild,Flags,ShellcodeMask,ImageSize,FileSHA1,AuthenticodeSHA1,PageHashSHA1,PageHashSHA256
+23:50:33.934   csv| 0,103,"NalDrv","Nal","Intel NAL driver","CVE-2015-2291","Intel Corporation","None",7601,ANY,0x00000100,0x00000007,34568,"D04E5DB5B6C848A29732BFD52029001F23C3DA75","2CBFE4AD0E1231FF3E19C19CA9311D952CE170B7","55B90A6E4323FC1D7B71B23F81FC758F45740E02","FB14DC1657C0EDD18FA747005EB7125DBBD83595095D67906BB0B4D57222D4C1"
+23:50:33.934   csv| 1,105,"RTCore64","RTCore64","MSI RTCore64 driver","CVE-2019-16098","MICRO-STAR INTERNATIONAL CO., LTD.","None",7601,ANY,0x00000000,0x00000007,14024,"F6F11AD2CD2B0CF95ED42324876BEE1D83E01775","4A68C2D7A4C471E062A32C83A36EEDB45A619683","84152FA241C3808F8C7752964589C957E440403F","A807532037A3549AE3E046F183D782BCB78B6193163EA448098140563CF857CB"
+23:50:33.936   csv| 2,106,"Gdrv","GIO","Gigabyte GDRV driver","CVE-2018-19320","Giga-Byte Technology","MapMem",7601,ANY,0x00000020,0x00000007,26192,"FE10018AF723986DB50701C8532DF5ED98B17C39","0F5034FCF5B34BE22A72D2ECC29E348E93B6F00F","DC02DA48DF2F9B558453847399A8DE47C5AD56CC","95406C37FDE1B08524FAB782200C8BECAEC98A40B020F41C5BA13032FE9522FA"
+23:50:33.981 ids db=68 try=40 [22,30,32,33,38,39,40,41,13,4,1,2,3,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,23,24,25,26,27,28,29,31,34,35,36]
+23:50:34.001 STEP=ladder
+23:50:34.001 --- prv 22
+23:50:34.006 $ kdu.exe -prv 22 -dse 0
+23:50:35.414   exit=1
+23:50:35.414   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+23:50:35.417   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+23:50:35.417   | ...
+23:50:35.425 $ sc.exe delete apexdrv
+23:50:35.443   exit=1060
+23:50:35.446   | [SC] OpenService FAILED 1060:
+23:50:35.446   | The specified service does not exist as an installed service.
+23:50:35.449 $ sc.exe create apexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+23:50:35.479   exit=0
+23:50:35.482   | [SC] CreateService SUCCESS
+23:50:35.493 $ sc.exe start apexdrv
+23:50:35.521   exit=0
+23:50:35.521   | SERVICE_NAME: apexdrv
+23:50:35.521   |         TYPE               : 1  KERNEL_DRIVER
+23:50:35.521   |         STATE              : 4  RUNNING
+23:50:35.521   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+23:50:35.521   |         WIN32_EXIT_CODE    : 0  (0x0)
+23:50:35.521   |         SERVICE_EXIT_CODE  : 0  (0x0)
+23:50:35.521   |         CHECKPOINT         : 0x0
+23:50:35.521   | ...
+23:50:35.525   start rc=0
+23:50:35.525 WINNER=22
+23:50:35.529 imagePath=[\??\C:\Users\Public\p37\zapexdrv.sys] start ok via prv 22

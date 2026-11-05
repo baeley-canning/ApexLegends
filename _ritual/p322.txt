@@ -1,0 +1,7 @@
+10:43:45 START
+10:43:45 state=running
+10:43:45 locked_gc rc=0 o=win11-test2\vboxuser
+10:43:45 locked_svc rc=0 o= STATE : 4 RUNNING 
+10:43:46 sessions rc=33 o= SESSIONNAME USERNAME ID STATE TYPE DEVICE >services 0 Disc console 1 Conn 
+10:43:46 VERDICT: locked_gc rc=0 means the channel is independent of the interactive session (keyboard path redundant)
+10:43:46 END

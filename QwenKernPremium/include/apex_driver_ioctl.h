@@ -44,14 +44,42 @@
 #define IOCTL_APEXDRV_PROBE \
     ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x802, METHOD_BUFFERED, FILE_ANY_ACCESS))
 
+// Read-only diagnostics against one target process (no injection, no mutation):
+// the loader-side facts the inject rung needs and user mode cannot obtain on the
+// live game (RPM is refused there).  Fills in the kernel32/kernelbase bases, the
+// module count, the *target-side* resolved address of kernel32!LoadLibraryW and
+// the TEB LastErrorValue of a chosen thread.  Safe to run at any time.
+#define IOCTL_APEXDRV_TARGETINFO \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x803, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
 // Flags for APEXDRV_INJECT_REQUEST::Flags
 #define APEXDRV_FLAG_NONE       0x00000000
 #define APEXDRV_FLAG_APC_ONLY   0x00000001  // queue an APC instead of creating a thread
 
+// v4: resolve kernel32!LoadLibraryW INSIDE the target (PEB->Ldr walk + kernelbase
+// export table) instead of trusting the address the launcher resolved in its own
+// address space, and report what the call actually did (module count delta, the
+// module that appeared, TEB LastErrorValue).  The premise "kernel32 is mapped at
+// the same base in every process of the session" is now measured per run instead
+// of assumed - see ResolvePath/BasesDiffer in APEXDRV_TARGETINFO_REQUEST.
+#define APEXDRV_FLAG_RESOLVE_IN_TARGET  0x00000002
+
 #define APEXDRV_MAX_PATH_CHARS  260
+// Long enough for any real BaseDllName; the Ldr walk copies at most this much and
+// always NUL-terminates, so a hostile/oversized name cannot overrun the report.
+#define APEXDRV_MAX_MODULE_NAME_CHARS 64
 // 2 = added IOCTL_APEXDRV_PROBE (Q10).  A driver older than the launcher simply
 //     fails the probe IOCTL instead of misreading a length.
-#define APEXDRV_VERSION         2
+// 3 = inject rung switched from ZwCreateThreadEx (NOT an export of ntoskrnl on
+//     26100, MmGetSystemRoutineAddress returns NULL -> STATUS_PROC_NOT_FOUND) to
+//     a user-mode APC queued on a caller-supplied thread.  The request grew the
+//     ThreadId field; a v2 driver reads a v3 request only if the launcher checks
+//     this value first, which it does.
+// 4 = added IOCTL_APEXDRV_TARGETINFO plus the inject result fields (module count
+//     before/after, the module that appeared, TEB LastErrorValue, ResolvePath,
+//     BasesDiffer).  v4 is a diagnostic-only superset: a v4 launcher against a v3
+//     driver is refused by the version check instead of reading past the struct.
+#define APEXDRV_VERSION         4
 
 // Bytes of the target PEB copied out for inspection.  The PEB's first fields
 // (ImageBaseAddress at +0x10 on x64, Ldr at +0x18) are what the user-mode
@@ -71,19 +99,69 @@
 typedef struct _APEXDRV_INJECT_REQUEST {
     ULONG   ProcessId;                          // [in]
     ULONG   Flags;                              // [in]  APEXDRV_FLAG_*
+    ULONG   ThreadId;                           // [in]  existing thread of ProcessId the
+                                                //       loader APC is queued on (v3: required -
+                                                //       ZwCreateThreadEx is NOT an export on
+                                                //       26100, see ApexdrvQueueLoaderApc);
+                                                //       [out] the thread actually used
     ULONG64 LoadLibraryAddress;                 // [in]  address of kernel32!LoadLibraryW
                                                 //       valid inside the target process
                                                 //       (same build => same export RVA)
     WCHAR   DllPath[APEXDRV_MAX_PATH_CHARS];    // [in]  full path of apexcheat.dll
     LONG    ResultStatus;                       // [out] NTSTATUS of the operation
-    ULONG   ThreadId;                           // [out]
     ULONG64 RemoteBase;                         // [out] remote path buffer address
+    // --- v4 result block: what the *user-mode* call did, not merely that it ran ---
+    ULONG64 ResolvedLoadLibrary;                // [out] address actually used
+    ULONG   ResolvePath;                        // [out] 0=caller-supplied 1=target export
+    ULONG   BasesDiffer;                        // [out] 1 when the target's kernelbase base
+                                                //       differs from the launcher's (premise test)
+    ULONG   ModuleCountBefore;                  // [out] modules in the target before delivery
+    ULONG   ModuleCountAfter;                   // [out] modules after the settle window
+    ULONG64 NewModuleBase;                      // [out] DllBase of the module that appeared
+    WCHAR   NewModuleName[APEXDRV_MAX_MODULE_NAME_CHARS]; // [out] its BaseDllName
+    LONG    LoadLibraryLastError;               // [out] TEB LastErrorValue after delivery
+    LONG    StatusReadResult;                   // [out] status of that read (data, not verdict)
 } APEXDRV_INJECT_REQUEST, *PAPEXDRV_INJECT_REQUEST;
 
 typedef struct _APEXDRV_VERSION_INFO {
     ULONG Version;
     ULONG Reserved;
 } APEXDRV_VERSION_INFO, *PAPEXDRV_VERSION_INFO;
+
+// One request/response for IOCTL_APEXDRV_TARGETINFO (v4).  Read-only: nothing in
+// the target is allocated, written or freed.
+//
+// Why it exists: the inject rung handed the driver an address resolved in the
+// *launcher's* address space and the driver reported "delivered" without ever
+// learning whether the call worked.  This IOCTL measures both halves:
+//   * ResolvedLoadLibrary / KernelBaseBase  -> the address the target itself would
+//     use, so a per-process base difference (or an address pointing at nothing)
+//     stops being invisible;
+//   * ModuleCount / LastErrorValue          -> the state that decides PASS/FAIL.
+// BasesDiffer is filled by comparing against the *driver's own* process, so the
+// comparison happens in one place and never depends on user-mode RPM.
+typedef struct _APEXDRV_TARGETINFO_REQUEST {
+    ULONG   ProcessId;                      // [in]
+    ULONG   Flags;                          // [in] reserved, 0
+    ULONG   ThreadId;                       // [in] optional: read this thread's
+                                            //      LastErrorValue; 0 = skip
+    LONG    StatusLookup;                   // [out] PsLookupProcessByProcessId
+    LONG    StatusWalk;                     // [out] target PEB->Ldr walk
+    LONG    StatusSelfWalk;                 // [out] the same walk on ourselves
+    LONG    StatusResolve;                  // [out] kernelbase!LoadLibraryW lookup
+    LONG    StatusReadResult;               // [out] TEB read below
+    ULONG   ModuleCount;                    // [out] modules visible in the target
+    ULONG   SelfModuleCount;                // [out] modules visible in us
+    ULONG   BasesDiffer;                    // [out] 1 when the two kernelbase bases differ
+    ULONG   LoadLibraryRva;                 // [out] RVA inside kernelbase (same build =>
+                                            //       identical, so a mismatch is proof)
+    ULONG64 Kernel32Base;                   // [out]
+    ULONG64 KernelBaseBase;                 // [out]
+    ULONG64 SelfKernel32Base;               // [out]
+    ULONG64 SelfKernelBaseBase;             // [out]
+    ULONG64 ResolvedLoadLibrary;            // [out] KernelBaseBase + LoadLibraryRva
+    LONG    LastErrorValue;                 // [out] TEB+0x68 of ThreadId
+} APEXDRV_TARGETINFO_REQUEST, *PAPEXDRV_TARGETINFO_REQUEST;
 
 // One request/response for IOCTL_APEXDRV_PROBE.  Every Status* field carries an
 // NTSTATUS value typed as LONG so the header stays valid in user mode, where

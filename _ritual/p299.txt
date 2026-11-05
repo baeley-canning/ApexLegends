@@ -1,0 +1,18 @@
+08:55:54 START
+08:56:03 shot pre
+08:56:08 after_poweroff state=poweroff
+08:56:18 after_startvm state=running
+08:56:28 f1 state=running bytes=335353 ga=2
+08:56:39 f2 state=running bytes=498069 ga=3
+08:56:49 f3 state=running bytes=498632 ga=3
+08:56:59 f4 state=running bytes=498632 ga=3
+08:57:10 f5 state=running bytes=396366 ga=3
+08:57:20 f6 state=running bytes=396366 ga=3
+08:57:30 f7 state=running bytes=396366 ga=3
+08:57:40 f8 state=running bytes=396366 ga=3
+08:57:50 f9 state=running bytes=396366 ga=3
+08:58:01 f10 state=running bytes=396366 ga=3
+08:58:11 f11 state=running bytes=330786 ga=3
+08:58:21 f12 state=running bytes=330786 ga=3
+08:58:21 VERDICT: pass if state stays running, ga>=1 and the last frames show a desktop without the Safe Mode corner text
+08:58:21 END

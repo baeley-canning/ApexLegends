@@ -1,0 +1,97 @@
+3: kd> .cxr ffffa381ff4bbbb0; .echo ===CR2; r cr2; .echo ===CALLER; u WinRing0x64+0x1390 L80; .echo ===DONE; q
+Unable to load image \??\C:\Users\Public\p37\WinRing0x64.sys, Win32 error 0n2
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+rax=0000000000000000 rbx=0000000000001000 rcx=0000000000001000
+rdx=ffffa886a484b000 rsi=0000000000000000 rdi=ffffa886adfad000
+rip=fffff804522215b8 rsp=ffffa381ff4bc5d0 rbp=0000000000000000
+ r8=0000000000000002  r9=ffffca8000000000 r10=fffff804c6435e80
+r11=0000000000000000 r12=0000000000001000 r13=0000000000000000
+r14=ffffa886ae0c4e10 r15=ffffa886ae0c4e10
+iopl=0         nv up ei pl zr na po nc
+cs=0010  ss=0018  ds=002b  es=002b  fs=0053  gs=002b             efl=00010246
+WinRing0x64+0x15b8:
+fffff804`522215b8 f3a4            rep movs byte ptr [rdi],byte ptr [rsi]
+===CR2
+Last set context:
+cr2=0000000000000000
+===CALLER
+WinRing0x64+0x1390:
+fffff804`52221390 83e007          and     eax,7
+fffff804`52221393 0fb6d1          movzx   edx,cl
+fffff804`52221396 4183e01f        and     r8d,1Fh
+fffff804`5222139a c1e005          shl     eax,5
+fffff804`5222139d b904000000      mov     ecx,4
+fffff804`522213a2 440bc0          or      r8d,eax
+fffff804`522213a5 4489542420      mov     dword ptr [rsp+20h],r10d
+fffff804`522213aa ff15580c0000    call    qword ptr [WinRing0x64+0x2008 (fffff804`52222008)]
+fffff804`522213b0 85c0            test    eax,eax
+fffff804`522213b2 7507            jne     WinRing0x64+0x13bb (fffff804`522213bb)
+fffff804`522213b4 bb010000e0      mov     ebx,0E0000001h
+fffff804`522213b9 eb1a            jmp     WinRing0x64+0x13d5 (fffff804`522213d5)
+fffff804`522213bb 83fd02          cmp     ebp,2
+fffff804`522213be 740c            je      WinRing0x64+0x13cc (fffff804`522213cc)
+fffff804`522213c0 83f802          cmp     eax,2
+fffff804`522213c3 7507            jne     WinRing0x64+0x13cc (fffff804`522213cc)
+fffff804`522213c5 bb020000e0      mov     ebx,0E0000002h
+fffff804`522213ca eb09            jmp     WinRing0x64+0x13d5 (fffff804`522213d5)
+fffff804`522213cc 3be8            cmp     ebp,eax
+fffff804`522213ce 740a            je      WinRing0x64+0x13da (fffff804`522213da)
+fffff804`522213d0 bb040000e0      mov     ebx,0E0000004h
+fffff804`522213d5 832600          and     dword ptr [rsi],0
+fffff804`522213d8 eb48            jmp     WinRing0x64+0x1422 (fffff804`52221422)
+fffff804`522213da 892e            mov     dword ptr [rsi],ebp
+fffff804`522213dc eb42            jmp     WinRing0x64+0x1420 (fffff804`52221420)
+fffff804`522213de 488b4f18        mov     rcx,qword ptr [rdi+18h]
+fffff804`522213e2 448b4a08        mov     r9d,dword ptr [rdx+8]
+fffff804`522213e6 8b5210          mov     edx,dword ptr [rdx+10h]
+fffff804`522213e9 4c8bc1          mov     r8,rcx
+fffff804`522213ec 4889742420      mov     qword ptr [rsp+20h],rsi
+fffff804`522213f1 e83a010000      call    WinRing0x64+0x1530 (fffff804`52221530)
+fffff804`522213f6 8bd8            mov     ebx,eax
+fffff804`522213f8 eb28            jmp     WinRing0x64+0x1422 (fffff804`52221422)
+fffff804`522213fa 8b05101d0000    mov     eax,dword ptr [WinRing0x64+0x3110 (fffff804`52223110)]
+fffff804`52221400 83c9ff          or      ecx,0FFFFFFFFh
+fffff804`52221403 3bc1            cmp     eax,ecx
+fffff804`52221405 7419            je      WinRing0x64+0x1420 (fffff804`52221420)
+fffff804`52221407 03c1            add     eax,ecx
+fffff804`52221409 eb0f            jmp     WinRing0x64+0x141a (fffff804`5222141a)
+fffff804`5222140b 8b05ff1c0000    mov     eax,dword ptr [WinRing0x64+0x3110 (fffff804`52223110)]
+fffff804`52221411 83c9ff          or      ecx,0FFFFFFFFh
+fffff804`52221414 3bc1            cmp     eax,ecx
+fffff804`52221416 7408            je      WinRing0x64+0x1420 (fffff804`52221420)
+fffff804`52221418 ffc0            inc     eax
+fffff804`5222141a 8905f01c0000    mov     dword ptr [WinRing0x64+0x3110 (fffff804`52223110)],eax
+fffff804`52221420 33db            xor     ebx,ebx
+fffff804`52221422 33d2            xor     edx,edx
+fffff804`52221424 488bcf          mov     rcx,rdi
+fffff804`52221427 895f30          mov     dword ptr [rdi+30h],ebx
+fffff804`5222142a ff15f80b0000    call    qword ptr [WinRing0x64+0x2028 (fffff804`52222028)]
+fffff804`52221430 488b6c2448      mov     rbp,qword ptr [rsp+48h]
+fffff804`52221435 488b742450      mov     rsi,qword ptr [rsp+50h]
+fffff804`5222143a 8bc3            mov     eax,ebx
+fffff804`5222143c 488b5c2440      mov     rbx,qword ptr [rsp+40h]
+fffff804`52221441 4883c430        add     rsp,30h
+fffff804`52221445 5f              pop     rdi
+fffff804`52221446 c3              ret
+fffff804`52221447 cc              int     3
+fffff804`52221448 cc              int     3
+fffff804`52221449 cc              int     3
+fffff804`5222144a cc              int     3
+fffff804`5222144b cc              int     3
+fffff804`5222144c cc              int     3
+fffff804`5222144d cc              int     3
+fffff804`5222144e cc              int     3
+fffff804`5222144f cc              int     3
+fffff804`52221450 4053            push    rbx
+fffff804`52221452 4883ec30        sub     rsp,30h
+fffff804`52221456 488b5908        mov     rbx,qword ptr [rcx+8]
+fffff804`5222145a 488d15ff020000  lea     rdx,[WinRing0x64+0x1760 (fffff804`52221760)]
+fffff804`52221461 488d4c2420      lea     rcx,[rsp+20h]
+fffff804`52221466 ff15dc0b0000    call    qword ptr [WinRing0x64+0x2048 (fffff804`52222048)]
+fffff804`5222146c 488d4c2420      lea     rcx,[rsp+20h]
+fffff804`52221471 ff15e10b0000    call    qword ptr [WinRing0x64+0x2058 (fffff804`52222058)]
+fffff804`52221477 4885db          test    rbx,rbx
+fffff804`5222147a 7409            je      WinRing0x64+0x1485 (fffff804`52221485)
+fffff804`5222147c 488bcb          mov     rcx,rbx
+fffff804`5222147f ff15ab0b0000    call    qword ptr [WinRing0x64+0x2030 (fffff804`52222030)]
+fffff804`52221485 4883c430        add     rsp,30h

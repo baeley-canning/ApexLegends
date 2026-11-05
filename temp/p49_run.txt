@@ -1,0 +1,165 @@
+﻿15:32:25.126  elevated=True
+15:32:25.157  game alive=True pid=24132 eac=0
+15:32:25.168  needles=3 [r5apex | enttriage | playerscan]
+15:32:25.224  py_compile: compiled
+15:32:25.228  run: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=r5apex" "--needle=enttriage" "--needle=playerscan" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --ctx=64 --max-hits=2000 --max-s=150
+15:32:58.472  rc=0 verdict=HITS=2000 pages=1250 cooc=502 scanned=10410 MiB stopped=max_hits first_n=0 first_pa=0x7ed9e7f58
+15:32:58.472  per-needle hit counts:
+15:32:58.504    n=0 r5apex = 939
+15:32:58.513    n=1 enttriage = 444
+15:32:58.522    n=2 playerscan = 617
+15:32:58.536    RAMMAP map=5 bad=24 top=0x800000000 ranges=1 total=27354 MiB
+15:32:58.537    PAs 2000 hits over 1250 pages, 10410 MiB scanned in 32.8s bad4k=23257 rescued=106055 stopped=max_hits
+15:32:58.539    COOC 502 pages carry 2+ needles
+15:32:58.540      COOC page=0x562fe6000 needles=0,1,2
+15:32:58.540      COOC page=0x5632f2000 needles=0,2
+15:32:58.541      COOC page=0x5632f3000 needles=0,2
+15:32:58.542      COOC page=0x5632f7000 needles=0,2
+15:32:58.542      COOC page=0x5632f8000 needles=0,2
+15:32:58.543      COOC page=0x5632f9000 needles=0,2
+15:32:58.544      COOC page=0x5632fc000 needles=0,2
+15:32:58.544      COOC page=0x5632fd000 needles=0,2
+15:32:58.545      COOC page=0x5632fe000 needles=0,2
+15:32:58.546      COOC page=0x5632ff000 needles=0,2
+15:32:58.546      COOC page=0x563361000 needles=0,2
+15:32:58.547      COOC page=0x5634da000 needles=0,1,2
+15:32:58.547      COOC page=0x563770000 needles=0,1,2
+15:32:58.548      COOC page=0x5637df000 needles=0,2
+15:32:58.550      COOC page=0x5638a4000 needles=0,1
+15:32:58.551      COOC page=0x564062000 needles=0,1,2
+15:32:58.552      COOC page=0x56406e000 needles=0,1,2
+15:32:58.552      COOC page=0x5641ee000 needles=0,1,2
+15:32:58.553      COOC page=0x564320000 needles=0,2
+15:32:58.554      COOC page=0x56432b000 needles=0,2
+15:32:58.554      COOC page=0x56432c000 needles=0,2
+15:32:58.555      COOC page=0x564bda000 needles=0,1,2
+15:32:58.555      COOC page=0x564cf8000 needles=0,2
+15:32:58.556      COOC page=0x565a1b000 needles=0,1,2
+15:32:58.558      COOC page=0x566559000 needles=0,1,2
+15:32:58.559      COOC page=0x566899000 needles=0,2
+15:32:58.559      COOC page=0x56723c000 needles=0,1
+15:32:58.560      COOC page=0x56723f000 needles=0,1
+15:32:58.560      COOC page=0x567438000 needles=0,1,2
+15:32:58.561      COOC page=0x567593000 needles=0,2
+15:32:58.562      COOC page=0x5679eb000 needles=0,1
+15:32:58.562      COOC page=0x567b46000 needles=0,1,2
+15:32:58.563      COOC page=0x567dcd000 needles=0,1,2
+15:32:58.565      COOC page=0x567ec3000 needles=0,1,2
+15:32:58.566      COOC page=0x567fef000 needles=0,1,2
+15:32:58.566      COOC page=0x5682b6000 needles=0,2
+15:32:58.567      COOC page=0x5684b4000 needles=0,2
+15:32:58.568      COOC page=0x5685b1000 needles=1,2
+15:32:58.568      COOC page=0x5685b7000 needles=0,1
+15:32:58.568      COOC page=0x5685b8000 needles=0,1
+15:32:58.580  RESULT: variable=match_needle_set verdict=HITS=2000 pages=1250 cooc=502 scanned=10410 MiB stopped=max_hits first_n=0 first_pa=0x7ed9e7f58 game_alive_post=True
+15:32:58.580  --- end ---
+15:33:30.826  elevated=True
+15:33:30.851  game alive=True pid=24132 eac=0
+15:33:30.861  needles=3 [r5apex | enttriage | playerscan]
+15:33:30.916  py_compile: compiled
+15:33:30.920  run: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=r5apex" "--needle=enttriage" "--needle=playerscan" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --ctx=64 --max-hits=6000 --max-s=180
+15:34:23.387  rc=0 verdict=HITS=6000 pages=3251 cooc=1803 scanned=12247 MiB stopped=max_hits first_n=0 first_pa=0x7ed55cd51
+15:34:23.388  per-needle hit counts:
+15:34:23.418    n=0 r5apex = 2449
+15:34:23.446    n=1 enttriage = 1411
+15:34:23.475    n=2 playerscan = 2140
+15:34:23.515    RAMMAP map=5 bad=24 top=0x800000000 ranges=1 total=27354 MiB
+15:34:23.516    PAs 6000 hits over 3251 pages, 12247 MiB scanned in 51.7s bad4k=115104 rescued=126432 stopped=max_hits
+15:34:23.516    COOC 1803 pages carry 2+ needles
+15:34:23.517      COOC page=0x4f031f000 needles=0,1,2
+15:34:23.517      COOC page=0x4f03b8000 needles=0,1,2
+15:34:23.517      COOC page=0x4f0618000 needles=0,2
+15:34:23.519      COOC page=0x4f061d000 needles=0,2
+15:34:23.519      COOC page=0x4f061f000 needles=0,2
+15:34:23.520      COOC page=0x4f0620000 needles=0,1,2
+15:34:23.521      COOC page=0x4f0693000 needles=0,1,2
+15:34:23.522      COOC page=0x4f0726000 needles=0,2
+15:34:23.522      COOC page=0x4f0727000 needles=0,2
+15:34:23.524      COOC page=0x4f0728000 needles=0,2
+15:34:23.524      COOC page=0x4f0729000 needles=0,2
+15:34:23.525      COOC page=0x4f072a000 needles=1,2
+15:34:23.526      COOC page=0x4f072d000 needles=0,1
+15:34:23.527      COOC page=0x4f072e000 needles=0,1,2
+15:34:23.528      COOC page=0x4f072f000 needles=0,2
+15:34:23.528      COOC page=0x4f0752000 needles=0,1,2
+15:34:23.529      COOC page=0x4f07a6000 needles=0,1,2
+15:34:23.529      COOC page=0x4f07b0000 needles=0,1,2
+15:34:23.530      COOC page=0x4f07bf000 needles=1,2
+15:34:23.531      COOC page=0x4f1523000 needles=0,1,2
+15:34:23.531      COOC page=0x4f1536000 needles=0,1,2
+15:34:23.532      COOC page=0x4f154d000 needles=0,1,2
+15:34:23.534      COOC page=0x4f15dc000 needles=0,1,2
+15:34:23.534      COOC page=0x4f3f57000 needles=0,1,2
+15:34:23.547      COOC page=0x4f4000000 needles=0,1,2
+15:34:23.548      COOC page=0x4f4001000 needles=0,1,2
+15:34:23.549      COOC page=0x4f4004000 needles=0,1
+15:34:23.549      COOC page=0x4f4006000 needles=1,2
+15:34:23.550      COOC page=0x4f4009000 needles=0,1,2
+15:34:23.551      COOC page=0x4f400a000 needles=0,1,2
+15:34:23.551      COOC page=0x4f400b000 needles=0,1,2
+15:34:23.552      COOC page=0x4f400c000 needles=0,1,2
+15:34:23.552      COOC page=0x4f400d000 needles=0,1,2
+15:34:23.553      COOC page=0x4f400e000 needles=0,1,2
+15:34:23.555      COOC page=0x4f400f000 needles=0,1,2
+15:34:23.555      COOC page=0x4f4071000 needles=0,1,2
+15:34:23.556      COOC page=0x4f407a000 needles=0,1,2
+15:34:23.557      COOC page=0x4f407c000 needles=0,1,2
+15:34:23.557      COOC page=0x4f407e000 needles=0,1,2
+15:34:23.558      COOC page=0x4f40c6000 needles=0,1,2
+15:34:23.567  RESULT: variable=match_needle_set verdict=HITS=6000 pages=3251 cooc=1803 scanned=12247 MiB stopped=max_hits first_n=0 first_pa=0x7ed55cd51 game_alive_post=True
+15:34:23.569  --- end ---
+15:35:57.035  elevated=True
+15:35:57.061  game alive=True pid=24132 eac=0
+15:35:57.071  needles=3 [r5apex | enttriage | playerscan]
+15:35:57.128  py_compile: compiled
+15:35:57.132  run: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=r5apex" "--needle=enttriage" "--needle=playerscan" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=1200 --ctx=64 --max-hits=6000 --max-s=180
+15:37:26.795  rc=0 verdict=HITS=3600 pages=2470 cooc=796 scanned=27354 MiB stopped=covered sat=0:1200,1:1200,2:1200 first_n=0 first_pa=0x7ed55cd51
+15:37:26.796  per-needle hit counts:
+15:37:26.810    n=0 r5apex = 1200
+15:37:26.826    n=1 enttriage = 1200
+15:37:26.841    n=2 playerscan = 1200
+15:37:26.867    RAMMAP map=5 bad=24 top=0x800000000 ranges=1 total=27354 MiB
+15:37:26.867    PAs 3600 hits over 2470 pages, 27354 MiB scanned in 88.9s bad4k=718134 rescued=401658 stopped=covered
+15:37:26.869    COOC 796 pages carry 2+ needles
+15:37:26.870      COOC page=0x53e517000 needles=1,2
+15:37:26.870      COOC page=0x53e5a7000 needles=1,2
+15:37:26.871      COOC page=0x53eb4a000 needles=1,2
+15:37:26.872      COOC page=0x53edd9000 needles=1,2
+15:37:26.873      COOC page=0x53f1a6000 needles=1,2
+15:37:26.874      COOC page=0x53f1b2000 needles=1,2
+15:37:26.875      COOC page=0x53f1dc000 needles=1,2
+15:37:26.875      COOC page=0x53f37d000 needles=1,2
+15:37:26.876      COOC page=0x53f5a7000 needles=1,2
+15:37:26.877      COOC page=0x53f5a9000 needles=1,2
+15:37:26.877      COOC page=0x53fc8a000 needles=1,2
+15:37:26.878      COOC page=0x53fce0000 needles=1,2
+15:37:26.880      COOC page=0x53fce2000 needles=1,2
+15:37:26.881      COOC page=0x53ff92000 needles=1,2
+15:37:26.881      COOC page=0x541728000 needles=1,2
+15:37:26.882      COOC page=0x541ec9000 needles=1,2
+15:37:26.882      COOC page=0x541ef1000 needles=1,2
+15:37:26.883      COOC page=0x541ef2000 needles=1,2
+15:37:26.884      COOC page=0x542871000 needles=1,2
+15:37:26.885      COOC page=0x544089000 needles=1,2
+15:37:26.886      COOC page=0x544222000 needles=1,2
+15:37:26.886      COOC page=0x544ba5000 needles=1,2
+15:37:26.888      COOC page=0x544e5a000 needles=1,2
+15:37:26.889      COOC page=0x5459a6000 needles=1,2
+15:37:26.889      COOC page=0x5459a7000 needles=1,2
+15:37:26.890      COOC page=0x545a0d000 needles=1,2
+15:37:26.891      COOC page=0x545ec0000 needles=1,2
+15:37:26.891      COOC page=0x5474f3000 needles=1,2
+15:37:26.892      COOC page=0x547685000 needles=1,2
+15:37:26.893      COOC page=0x547845000 needles=1,2
+15:37:26.894      COOC page=0x547e41000 needles=1,2
+15:37:26.895      COOC page=0x547eb7000 needles=1,2
+15:37:26.895      COOC page=0x54841e000 needles=1,2
+15:37:26.896      COOC page=0x548553000 needles=1,2
+15:37:26.897      COOC page=0x5486b1000 needles=1,2
+15:37:26.897      COOC page=0x548e43000 needles=1,2
+15:37:26.900      COOC page=0x549a75000 needles=1,2
+15:37:26.900      COOC page=0x549c3e000 needles=1,2
+15:37:26.901      COOC page=0x54a718000 needles=1,2
+15:37:26.902      COOC page=0x54af06000 needles=0,1
+15:37:26.913  RESULT: variable=match_needle_set verdict=HITS=3600 pages=2470 cooc=796 scanned=27354 MiB stopped=covered sat=0:1200,1:1200,2:1200 first_n=0 first_pa=0x7ed55cd51 game_alive_post=True
+15:37:26.914  --- end ---

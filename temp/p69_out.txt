@@ -1,0 +1,23 @@
+# p61_live 2026-11-04 20:04:57 needle=b'kern30120'
+window=0x4cf06a000-0x4d106a000 (from p64_seed.txt)
+SCAN 0x4cf06a000-0x4d106a000 hits=2 faults=92 secs=0.1
+window weak (2) -> full band too
+SCAN 0x400000000-0x780000000 hits=786 faults=25442 secs=58.0
+ANCHOR hits=80 cluster=0x4c4230000 first=0x4c423017f
+READY wait=20s (land, then get to a safe spot)
+PRE values=14667
+NADE NOW 3
+NADE NOW 2
+NADE NOW 1
+GO
+shot 1 values=14667
+shot 2 values=14667
+shot 3 values=14667
+shot 4 values=14667
+shot 5 values=14667
+shot 6 values=14667
+shot 7 values=14667
+shot 8 values=14667
+CHANGED 0
+CANDIDATES 0
+VERDICT no-drop

@@ -1,0 +1,155 @@
+Opened log file 'c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269cv_pro.txt'
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.000 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269_dumps\110526-10890-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+Symbol search path is: srv*
+Executable search path is: 
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Kernel.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+NatVis script successfully loaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Usb4Kd.natvis'
+Windows 10 Kernel Version 26100 MP (4 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Kernel base = 0xfffff804`c5600000 PsLoadedModuleList = 0xfffff804`c64f54c0
+Debug session time: Thu Nov  5 23:30:21.261 2026 (UTC + 13:00)
+System Uptime: 0 days 0:02:03.958
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 0000007e`d0f73018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.............
+For analysis of this file, run !analyze -v
+3: kd> u WinRing0x64+0x1505 L42; .echo ===IMPORTS; dq WinRing0x64+0x2000 L10; .echo ===DONE; q
+Unable to load image \??\C:\Users\Public\p37\WinRing0x64.sys, Win32 error 0n2
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+WinRing0x64+0x1505:
+fffff804`52221505 0bc2            or      eax,edx
+fffff804`52221507 498900          mov     qword ptr [r8],rax
+fffff804`5222150a 488b442428      mov     rax,qword ptr [rsp+28h]
+fffff804`5222150f c70008000000    mov     dword ptr [rax],8
+fffff804`52221515 33c0            xor     eax,eax
+fffff804`52221517 eb0d            jmp     WinRing0x64+0x1526 (fffff804`52221526)
+fffff804`52221519 488b442428      mov     rax,qword ptr [rsp+28h]
+fffff804`5222151e 832000          and     dword ptr [rax],0
+fffff804`52221521 b8010000c0      mov     eax,0C0000001h
+fffff804`52221526 c3              ret
+fffff804`52221527 cc              int     3
+fffff804`52221528 cc              int     3
+fffff804`52221529 cc              int     3
+fffff804`5222152a cc              int     3
+fffff804`5222152b cc              int     3
+fffff804`5222152c cc              int     3
+fffff804`5222152d cc              int     3
+fffff804`5222152e cc              int     3
+fffff804`5222152f cc              int     3
+fffff804`52221530 488bc4          mov     rax,rsp
+fffff804`52221533 48895808        mov     qword ptr [rax+8],rbx
+fffff804`52221537 48896810        mov     qword ptr [rax+10h],rbp
+fffff804`5222153b 48897018        mov     qword ptr [rax+18h],rsi
+fffff804`5222153f 48897820        mov     qword ptr [rax+20h],rdi
+fffff804`52221543 4154            push    r12
+fffff804`52221545 4883ec20        sub     rsp,20h
+fffff804`52221549 418bd9          mov     ebx,r9d
+fffff804`5222154c 498bf0          mov     rsi,r8
+fffff804`5222154f 488bf9          mov     rdi,rcx
+fffff804`52221552 83fa10          cmp     edx,10h
+fffff804`52221555 7407            je      WinRing0x64+0x155e (fffff804`5222155e)
+fffff804`52221557 b80d0000c0      mov     eax,0C000000Dh
+fffff804`5222155c eb76            jmp     WinRing0x64+0x15d4 (fffff804`522215d4)
+fffff804`5222155e 8b4108          mov     eax,dword ptr [rcx+8]
+fffff804`52221561 0faf410c        imul    eax,dword ptr [rcx+0Ch]
+fffff804`52221565 3bd8            cmp     ebx,eax
+fffff804`52221567 72ee            jb      WinRing0x64+0x1557 (fffff804`52221557)
+fffff804`52221569 488b09          mov     rcx,qword ptr [rcx]
+fffff804`5222156c 4533c0          xor     r8d,r8d
+fffff804`5222156f 8bd0            mov     edx,eax
+fffff804`52221571 448be0          mov     r12d,eax
+fffff804`52221574 ff15a60a0000    call    qword ptr [WinRing0x64+0x2020 (fffff804`52222020)]
+fffff804`5222157a 8b4f08          mov     ecx,dword ptr [rdi+8]
+fffff804`5222157d 4032ed          xor     bpl,bpl
+fffff804`52221580 83e901          sub     ecx,1
+fffff804`52221583 742a            je      WinRing0x64+0x15af (fffff804`522215af)
+fffff804`52221585 83e901          sub     ecx,1
+fffff804`52221588 7417            je      WinRing0x64+0x15a1 (fffff804`522215a1)
+fffff804`5222158a 83f902          cmp     ecx,2
+fffff804`5222158d 7405            je      WinRing0x64+0x1594 (fffff804`52221594)
+fffff804`5222158f 40b501          mov     bpl,1
+fffff804`52221592 eb26            jmp     WinRing0x64+0x15ba (fffff804`522215ba)
+fffff804`52221594 8b4f0c          mov     ecx,dword ptr [rdi+0Ch]
+fffff804`52221597 488bfe          mov     rdi,rsi
+fffff804`5222159a 488bf0          mov     rsi,rax
+fffff804`5222159d f3a5            rep movs dword ptr [rdi],dword ptr [rsi]
+fffff804`5222159f eb19            jmp     WinRing0x64+0x15ba (fffff804`522215ba)
+fffff804`522215a1 8b4f0c          mov     ecx,dword ptr [rdi+0Ch]
+fffff804`522215a4 488bfe          mov     rdi,rsi
+fffff804`522215a7 488bf0          mov     rsi,rax
+fffff804`522215aa 66f3a5          rep movs word ptr [rdi],word ptr [rsi]
+fffff804`522215ad eb0b            jmp     WinRing0x64+0x15ba (fffff804`522215ba)
+fffff804`522215af 8b4f0c          mov     ecx,dword ptr [rdi+0Ch]
+fffff804`522215b2 488bfe          mov     rdi,rsi
+fffff804`522215b5 488bf0          mov     rsi,rax
+fffff804`522215b8 f3a4            rep movs byte ptr [rdi],byte ptr [rsi]
+===IMPORTS
+fffff804`52222000  ????????`???????? ????????`????????
+fffff804`52222010  ????????`???????? ????????`????????
+fffff804`52222020  ????????`???????? ????????`????????
+fffff804`52222030  ????????`???????? ????????`????????
+fffff804`52222040  ????????`???????? ????????`????????
+fffff804`52222050  ????????`???????? ????????`????????
+fffff804`52222060  ????????`???????? ????????`????????
+fffff804`52222070  ????????`???????? ????????`????????
+===DONE
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Kernel.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Usb4Kd.natvis'

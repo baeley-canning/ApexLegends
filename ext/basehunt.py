@@ -23,7 +23,7 @@ heartbeat, a checkpoint line and --from / --max-s resume, because this host
 bugchecks (0x124) when a probe runs long.  Dead spans answer Errno 1450 page
 after page (p44f smoke: the low ~600 MB) and are hopped over in 2 MiB strides
 instead of being retried per page.  Accepted B -> walk the list both ways for a
-live pid 0x1570 and dump the image.  READ-ONLY, nothing to restore.
+live pid (--pid, else DUMP_PID) and dump the image.  READ-ONLY, nothing to restore.
 """
 import os
 import struct
@@ -39,15 +39,15 @@ ROOT = os.path.dirname(HERE)
 OUT = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_OUT", "p44f_base.txt"))
 PROG = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_PROG", "p44f_progress.txt"))
 DECOY = [0x2481D60C0, 0x62BC6E190, 0x7DE10FBF0]
-LINK = 0x2481D60C0                      # decoy PA; its page offset is 0xC0
+LINK = int(os.environ.get("DUMP_LINK", "0x2481D60C0"), 0)   # decoy PA; page offset 0xC0
 OBJ_PAIR = 0x1D8                        # LIST_ENTRY pair (c29, measured)
 PAIR_ALT = 0x258                        # same field on a page-aligned object
 OBJ_PID = 0x1D0
 OBJ_NAME = 0x338
 LANE_FL = 0x258                         # value lanes: target phase + pair offset
 LANE_BL = 0x260
-NODE_FL = 0xFFFFA401B25A5258            # decoy flink target, a real neighbour
-NODE_BL = 0xFFFFA401B7EA0258            # decoy blink target
+NODE_FL = int(os.environ.get("DUMP_FL", "0xFFFFA401B25A5258"), 0)  # decoy flink target
+NODE_BL = int(os.environ.get("DUMP_BL", "0xFFFFA401B7EA0258"), 0)  # decoy blink target
 WIN = 0x10000                           # 64 KiB: one ioctl per 16 pages
 PID = int(os.environ.get("DUMP_PID", "0x1570"), 0)   # target pid (moves per launch)
 HOP_CAP = 400
@@ -216,8 +216,9 @@ def hunt(g, ranges, va, ram_top, dry=0, start=None, budget=None):
                     continue
                 o, pair, s = hit
                 shapes += 1
-                log("shape pa=%#x o=%#x pid=%#x name=%r"
-                    % (ppa, o, s[0], p[o + OBJ_NAME:o + OBJ_NAME + 15]))
+                log("shape pa=%#x o=%#x pid=%#x fl=%#x bl=%#x name=%r"
+                    % (ppa, o, s[0], s[1], s[2],
+                       p[o + OBJ_NAME:o + OBJ_NAME + 15]))
                 for node in (NODE_FL, NODE_BL):
                     b = (node - (o + pair)) - ppa
                     tag = "FL" if node == NODE_FL else "BL"
@@ -311,6 +312,7 @@ def walk(g, b, start_va, seen, tag):
 
 def main():
     sys.argv = ["basehunt"] + sys.argv[1:]
+    global PID   # --pid must reach decoy_read(), which compares against PID
     dry = 0
     start = None
     budget = 25.0
@@ -319,14 +321,17 @@ def main():
             dry = 1
         elif a.startswith("--dry="):
             dry = int(a.split("=", 1)[1], 0)
+        elif a.startswith("--pid="):
+            PID = int(a.split("=", 1)[1], 0)
         elif a.startswith("--from="):
             start = int(a.split("=", 1)[1], 0)
         elif a.startswith("--max-s="):
             budget = float(a.split("=", 1)[1])
     if not dl.elevation():
         return wr(3, "NOT_ELEVATED")
-    log("basehunt  %s  dry=%d from=%s max-s=%.0f"
-        % (time.strftime("%Y-%m-%d %H:%M:%S"), dry, start, budget))
+    log("basehunt  %s  dry=%d from=%s max-s=%.0f pid=%#x link=%#x fl=%#x bl=%#x"
+        % (time.strftime("%Y-%m-%d %H:%M:%S"), dry, start, budget,
+           PID, LINK, NODE_FL, NODE_BL))
     try:
         g = gio.Gio(chunk=dl.SCAN_CHUNK)
     except OSError as e:

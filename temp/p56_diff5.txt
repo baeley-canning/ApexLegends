@@ -1,0 +1,13 @@
+# p56_diff 2026-11-04 17:55:38 olds=2 pages=0x626ea2000 0x739ae2000 regions=0x626d00000-0x62700000 0x739800000-0x73a000000
+old file p56_cap1_a.txt: 3 slot(s)
+old file p56_cap1_b.txt: 3 slot(s)
+old slots: 6
+MISS "'ironfist2000'" (slot 0x626ea2c64, header no hit in window)
+MISS "'76561198060599900'" (slot 0x626ea2ce4, header no hit in window)
+MISS "'1000158796547'" (slot 0x626ea2d24, header no hit in window)
+MISS "'1014002451115'" (slot 0x739ae2324, header no hit in window)
+MISS "'Scrammby.Pilot'" (slot 0x739ae2664, header no hit in window)
+MISS "'debuff1Icon'" (slot 0x739ae2fe4, header no hit in window)
+
+slots=6 changed=0 same=0 moved=0 missing=6 lanes=0
+VERDICT: NO_CHANGE

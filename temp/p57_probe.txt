@@ -1,0 +1,7 @@
+# p53_padump 2026-11-04 18:24:47 label=- pa=0x627000000 pages=2 hits=0
+ram_top=0x800000000
+FAULT pa=0x627000000 err=[Errno 1450] phys read 0x627000000+0x1000 failed
+FAULT pa=0x627001000 err=[Errno 1450] phys read 0x627001000+0x1000 failed
+
+readback 2 pages ok=0 fault=2 hits_marked=0/0 0.00s
+VERDICT: PADUMP ok=0 fault=2 hits=0/0 lo=0x627000000 hi=0x627002000 0.00s

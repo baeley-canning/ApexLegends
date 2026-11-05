@@ -22,3 +22,5 @@ e00000-1000000
 127c00000-127e00000
 127e00000-128000000
 1000000000-1000001000
+# p104 PINNED_FAULT: err 1450 on 3/3 tries, 3 runs (v2-v4), 3 landing buffers, control read 0x100000 ok=1 throughout; already bracketed by the 2 MiB grid entries above, kept explicit so a normalise/merge cannot silently drop it
+200000-201000

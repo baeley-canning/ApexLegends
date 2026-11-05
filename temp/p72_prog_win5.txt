@@ -1,0 +1,19 @@
+21:44:54  FRONT fingerprint fallback
+21:44:54  FPCKPT pa=0x2f0000000 hits=0 fault=756 t=0s
+21:44:54  FPCKPT pa=0x300010000 hits=0 fault=2152 t=0s
+21:44:55  FPCKPT pa=0x310010000 hits=0 fault=3514 t=1s
+21:44:55  FPCKPT pa=0x320010000 hits=0 fault=4279 t=1s
+21:44:55  FPCKPT pa=0x330010000 hits=0 fault=5782 t=1s
+21:44:55  FPCKPT pa=0x340010000 hits=0 fault=6118 t=1s
+21:44:55  FPCKPT pa=0x350010000 hits=0 fault=9073 t=1s
+21:44:55  FPCKPT pa=0x360020000 hits=0 fault=10686 t=1s
+21:44:55  FPCKPT pa=0x370020000 hits=0 fault=12933 t=2s
+21:44:56  FPCKPT pa=0x380020000 hits=0 fault=14759 t=2s
+21:44:56  FPCKPT pa=0x390020000 hits=0 fault=15864 t=2s
+21:44:56  FPCKPT pa=0x3a0020000 hits=0 fault=16902 t=2s
+21:44:56  FPCKPT pa=0x3b0020000 hits=0 fault=18166 t=2s
+21:44:56  FPCKPT pa=0x3c0040000 hits=0 fault=19930 t=2s
+21:44:57  FPCKPT pa=0x3d0040000 hits=0 fault=21053 t=3s
+21:44:57  FPCKPT pa=0x3e0040000 hits=0 fault=22026 t=3s
+21:44:57  FPCKPT pa=0x3f0040000 hits=0 fault=22988 t=3s
+21:44:57  FPSCANEND hits=0 fault=23782

@@ -1,0 +1,7 @@
+08:28:57 START
+08:28:57 ga_before=0
+08:30:15 ga_after=1
+08:30:41 ga_final=1
+08:30:41 shot=True
+08:30:41 VERDICT: install PASS only if VBoxService is 4 RUNNING on the last query AND ga_final >= 1
+08:30:41 END

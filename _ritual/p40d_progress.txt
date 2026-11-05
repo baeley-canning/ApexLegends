@@ -1,0 +1,5 @@
+16:07:58  LAYOUT win26200 name_len=15 off_name=0x338 pc_off=0x347 delta_lo=-0x360 delta_hi=-0x310 pid_lo=0x1a0 pid_hi=0x200 link=0x258 min_score=6
+16:07:58  START pid=24132 alive=True lo=30183374848 hi=30183387136 chunk=0x10000
+16:07:58  RAMMAP map=5 bad=24 ranges=1 total=0 MiB
+16:07:58  RANGE 0x70711c000-0x70711f000
+16:07:58  SCANEND scanned=0 MiB chunks=1 hits=0 fault=0 rescued=0 0.0s

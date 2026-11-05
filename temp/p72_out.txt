@@ -1,0 +1,20 @@
+p72 map  2026-11-05 07:12:15
+pure-read: device open only, no load / DSE / service touch
+pid=18592 alive=True target=0x6c6af0000
+target ram=yes (installed=32768 MiB)
+fingerprint empty -> pid front
+PID RAMMAP map=5 bad=24 ranges=5 window=-..-
+PID scan: 2506 occurrences fault=4190870 78.4 s
+  pid@0x1985f7348 base=0x1985f7178 type=3 name=b'\xb4\xc4\x04\x00\x00\x00\x00\x00\xc4\x05\xacM\x86l\xdd' dtb=0xca2e
+  pid@0x1a696c438 base=0x1a696c268 type=3 name=b'appingStrings\x00\x01' dtb=0x6975000000161000
+  pid@0x58b1fe330 base=0x58b1fe160 type=3 name=b'\xff\xff\xff\xff' dtb=0x1
+  pid@0x6611756ae base=0x6611754de type=3 name=b'\x00\x00\x13\x00\x00\x00get onMou' dtb=0x48990000
+  pid@0x6611756ae base=0x6611754de type=3 name=b'\x00\x00\x13\x00\x00\x00get onMou' dtb=0x48990000 readable=True
+  pid@0x67ff17656 base=0x67ff17486 type=3 name=b'\x00\x00\x13\x00\x00\x00get onMou' dtb=0x48990000
+  pid@0x67ff17656 base=0x67ff17486 type=3 name=b'\x00\x00\x13\x00\x00\x00get onMou' dtb=0x48990000 readable=True
+  pid@0x6d98a1250 base=0x6d98a1080 type=3 name=b'Code.exe' dtb=0x6f04bf000
+  pid@0x6d98a1250 base=0x6d98a1080 type=3 name=b'Code.exe' dtb=0x6f04bf000 readable=False
+  walk dtb=0x48990000 -> no PE (pml4[0]=ffffffffffffffff pdpt not-ram alt_pml4=511)
+  walk dtb=0x48990000 -> no PE (pml4[0]=ffffffffffffffff pdpt not-ram alt_pml4=511)
+elapsed 78.5 s
+VERDICT: NO_BASE pid=18592

@@ -27,6 +27,7 @@ Hard rules carried over from temp/drv/physread.py:
     is_ram() or came out of a successful translate/alloc/page-walk.
 """
 import ctypes
+import os
 import struct
 import time
 from ctypes import wintypes
@@ -271,20 +272,33 @@ class Gio(object):
         return self.read_phys(pa, size)
 
     # -- lifetime --------------------------------------------------------------
+    def _free_dst(self):
+        kernel32.VirtualUnlock(self.dst, self.chunk)
+        kernel32.VirtualFree(self.dst, 0, MEM_RELEASE)
+        self.dst = None
+
     def close(self):
+        # p91: with GIO_DST_LAST=1 the handle is closed BEFORE the scratch dst is
+        # released.  Bugcheck 0x3B/0xC0000005 at gdrv3+0x2e81 is a `mov [r14+rdx*4],
+        # eax` dword memcpy, count taken from the request's size field: the
+        # *destination* is what faults, repeatedly, right after CLOSED.  The only
+        # buffer a copy deferred to IRP_MJ_CLOSE can target is self.dst, and this
+        # method used to free it (VirtualFree MEM_RELEASE) before CloseHandle, so
+        # the deferred copy ran into decommitted VA.  Handle first, dst second.
+        dst_last = os.environ.get("GIO_DST_LAST") == "1"
         for page in list(self.map_cache):
             va, size = self.map_cache.pop(page)
             try:
                 self.unmap(va, size)
             except OSError:
                 pass
-        if self.dst:
-            kernel32.VirtualUnlock(self.dst, self.chunk)
-            kernel32.VirtualFree(self.dst, 0, MEM_RELEASE)
-            self.dst = None
+        if self.dst and not dst_last:
+            self._free_dst()
         if self.h:
             kernel32.CloseHandle(self.h)
             self.h = None
+        if self.dst:
+            self._free_dst()
 
     def __enter__(self):
         return self

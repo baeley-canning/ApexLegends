@@ -1,0 +1,3 @@
+8: # Fix, and nothing else: the guard window is 6 min instead of 1, the lock is stamped with
+54: if ($lb -eq $bootId -and (((Get-Date) - (Get-Item "$d\$tag.lock").LastWriteTime).TotalMinutes -lt 6)) { exit }
+446: W ('VERDICT: variable=single-run enforcement (6 min boot-stamped lock) result=' + $verdict)

@@ -1,0 +1,9 @@
+blocks=142
+
+layout A lane -0x4a0: present=142 frame_like=1 zero=62 kva=6
+  sample: 0xd4ec8090@0x587c08d5f
+layout B lane -0x580: present=142 frame_like=2 zero=56 kva=2
+  sample: 0x100007ffd@0x58392a0dc, 0x4800000110249c8b@0x71eade490
+
+only A=1 only B=2 both=0
+candidate blocks: 0x58392a0dc, 0x587c08d5f, 0x71eade490

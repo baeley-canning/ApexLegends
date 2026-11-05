@@ -1,0 +1,25 @@
+p92 refresh (dst-last close, repeat)  2026-11-05 10:57:34
+pure-read: device open + close, no writes
+  cand pid=18364 start=10:31:24
+  cand pid=17728 start=10:31:25
+  cand pid=1572 start=10:31:25
+  cand pid=10404 start=10:31:25
+  cand pid=4616 start=10:31:25
+  cand pid=9384 start=10:31:25
+  cand pid=18492 start=10:31:26
+  cand pid=18520 start=10:31:26
+  cand pid=18824 start=10:31:26
+  cand pid=19400 start=10:31:27
+  cand pid=18792 start=10:31:30
+  cand pid=19776 start=10:31:31
+  cand pid=1268 start=10:31:40
+  cand pid=13232 start=10:36:41
+  cand pid=13444 start=10:36:51
+chosen pid=18364 (earliest of 15)
+RAMMAP map=5 bad=24 ranges=5 total=28411 MiB
+pid scan: 6066 occurrences fault=4078166 89.0 s
+control page 0x155204000 base 0x155204080 read1=0300000000000000 read2=0300000000000000 stable=True
+dtb=0x18d9be000 valid_cr3=True
+dtb refuses ([Errno 1450] phys read 0x18d9be000+0x8 failed) -> BAD
+TARGETS pid=18364 base=0x155204080 ctl=0x155204000 dtb=0x18d9be000 bad=0x18d9be000 (dtb_refuses err=1450)
+VERDICT: TARGETS_OK

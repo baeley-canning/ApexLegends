@@ -1,0 +1,72 @@
+﻿ 195|                        pages.append((pa + k, g.read_phys(pa + k, 0x1000)))
+ 196|                    except OSError:
+ 197|                        pass
+ 198|                lost = n // 0x1000 - len(pages)
+ 199|                if lost:
+ 200|                    prog("BADPAGE %#x of %#x dead at %#x"
+ 201|                         % (lost, n // 0x1000, pa))
+ 202|            else:
+ 203|                pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]
+ 204|            for ppa, p in pages:
+ 205|                tried += 1
+ 206|                if len(p) < 0x400:                  # short/torn page read
+ 207|                    continue
+ 208|                s = shape(p)
+ 209|                if not s:
+ 210|                    continue
+ 211|                shapes += 1
+ 212|                log("shape pa=%#x pid=%#x name=%r"
+ 213|                    % (ppa, s[0], p[OBJ_NAME:OBJ_NAME + 15]))
+ 214|                for b in (page - ppa, (NODE_BL & ~0xFFF) - ppa):
+ 215|                    tag = "FL" if b == page - ppa else "BL"
+ 216|                    r = decoy_read(g, b, LINK)
+ 217|                    if not r:
+ 218|                        log("  b=%#x (%s) reciprocity failed" % (b, tag))
+ 219|                        continue
+ 220|                    if r[0] != NODE_FL or r[1] != NODE_BL:
+ 221|                        log("  b=%#x (%s) WARN decoy pair %#x/%#x != %#x/%#x"
+ 222|                            % (b, tag, r[0], r[1], NODE_FL, NODE_BL))
+ 223|                        if r[0] != NODE_FL and r[1] != NODE_BL:
+ 224|                            log("  neither half matches, rejected")
+ 225|                        continue
+ 226|                    log("  ACCEPT B=%#x via %s pa=%#x decoy pair intact"
+ 227|                        % (b, tag, ppa))
+ 228|                    prog("ACCEPT b=%#x via=%s shapes=%d" % (b, tag, shapes))
+ 229|                    log("  tried=%d shapes=%d %.1fs"
+ 230|                        % (tried, shapes, time.perf_counter() - t0))
+ 231|                    return b, None, "ok"
+ 232|                if dry and shapes >= dry:
+ 233|                    log("dry: %d shapes, stopping" % shapes)
+ 234|                    prog("DRY stop at pa=%#x shapes=%d" % (ppa, shapes))
+ 235|                    return None, ppa, "dry"
+ 236|            pa += n
+ 237|            if len(pages) * 2 < n // 0x1000:        # mostly-dead window -> hop over
+ 238|                here = pa
+ 239|                nxt, probes = skip_dead(g, pa, rhi)
+ 240|                prog("SKIP %#x..%#x %#x probes=%d"
+ 241|                     % (here, nxt, nxt - here, probes))
+ 242|                log("  dead %#x..%#x skipped (%d probes)" % (here, nxt, probes))
+ 243|                pa = nxt
+ 244|        log("range %#x..%#x done %.1fs" % (rlo, rhi, time.perf_counter() - rt))
+ 245|    log("no candidate  tried=%d shapes=%d %.1fs"
+ 246|        % (tried, shapes, time.perf_counter() - t0))
+ 247|    return None, None, "none"
+ 248|
+ 249|
+ 250|def hop(g, b, va, seen):
+ 251|    """VA -> (pid, base_pa, fl, bl, name) for a list node, or None.
+ 252|
+ 253|    p44d: the node VA is base+0x258, so the object starts at pa-0x258 -- NOT the
+ 254|    -0x1d8 lane the decoy's fake LINK_ENTRY sits on.
+ 255|    """
+ 256|    base = va - b - OBJ_LINK
+ 257|    o = base & 0xFFF
+ 258|    if base in seen or not g.is_ram(base) or o > 0xCA0:
+ 259|        return None
+ 260|    seen.add(base)
+ 261|    try:
+ 262|        p = g.read_phys(base - o, 0x1000)
+ 263|    except OSError:
+ 264|        return None
+ 265|    if p[o] != 3:
+393

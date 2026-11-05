@@ -1,0 +1,13 @@
+﻿=== p43w 2026-11-04T12:35:59.3948773+13:00 ===
+12:35:59.401  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+12:35:59.410  elevated=True
+12:35:59.414  game alive=True
+12:35:59.420  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\pidscan.py" --inplace --pid=5488
+12:35:59.429  child pid=5604 started 12:35:59.427
+12:37:29.888  child exit= wall=90.5s
+12:37:29.892  OUT exists=False size=0
+12:37:29.894  console tail:   shape base=0x7ffb43cc4 pid@0x1d0 dtb=0x4743a900 score=4 type=0 |   shape base=0x7ffb43d04 pid@0x1d0 dtb=0x47462500 score=4 type=0 |   shape base=0x7ffb43d44 pid@0x1d0 dtb=0x474d3d00 score=4 type=0 |   shape base=0x7ffb43d84 pid@0x1d0 dtb=0x474eed00 score=4 type=0 |   shape base=0x7ffb43dc4 pid@0x1d0 dtb=0x4749f800 score=4 type=0 |   shape base=0x7ffb43e04 pid@0x1d0 dtb=0x4748f800 score=4 type=0 | shaped candidates: 17023 of 31393 hits |   base=0x2481d60c0 pid@0x1d0 pc=0x2 name='r5apex_dx12.ex\x00\x02' hit_name=False flink=ffffa401b25a5258 token=ffff8f8be926f069 peb=000000000020a000 score=20 |   base=0x583f13310 pid@0x1d0 pc=0x2 name='r5apex_dx12.ex\x00\x02' hit_name=False flink=ffffa401b25a5258 token=ffff8f8be926f065 peb=000000000020a000 score=20 |   base=0x776493230 pid@0x1d0 pc=0x2 name='r5apex_dx12.ex\x00\x02' hit_name=False flink=ffffa401b25a5258 token=ffff8f8be926f065 peb=000000000020a000 score=20 |   base=0x2b1198868 pid@0x1d0 pc=0x0 name='\x000\x01\x00\x03\x00\x00\x00\x004\x01\x00\x03' hit_name=False flink=fffffffffffffff0 token=000000030000b000 peb=0000000300010000 score=10 |   base=0x64d85e518 pid@0x1d0 pc=0x0 name='\x000\x01\x00\x03\x00\x00\x00\x004\x01\x00\x03' hit_name=False flink=fffffffffffffff0 token=000000030000b000 peb=0000000300010000 score=10
+12:37:29.895  err tail:     sys.exit(main()) |              ^^^^^^ |   File "C:\Users\New User\OneDrive\Desktop\cheating\ext\pidscan.py", line 195, in main |     % (base, off, p[b + 0x347], txt, hit_name, fl, tok, peb, score)) |                   ~^^^^^^^^^^^ | IndexError: index out of range
+12:37:29.934  RESULT: verdict=
+12:37:29.938  post game alive=True
+12:37:29.938  --- end ---

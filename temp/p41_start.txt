@@ -1,0 +1,16 @@
+﻿=== p41_start 2026-11-04T09:39:04.1798254+13:00 ===
+09:39:04.195  elevated=True pid=11456
+09:39:04.200  -- pre --
+09:39:04.213  svc:  / SERVICE_NAME: apexdrv  /         TYPE               : 1  KERNEL_DRIVER   /         STATE              : 1  STOPPED  /         WIN32_EXIT_CODE    : 577  (0x241) /         SERVICE_EXIT_CODE  : 0  (0x0) /         CHECKPOINT         : 0x0 /         WAIT_HINT          : 0x0
+09:39:04.223  binPath:         BINARY_PATH_NAME   : \??\C:\Windows\System32\drivers\apexdrv.sys
+09:39:04.286  binSha256: 9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B
+09:39:04.330  sig: Valid
+09:39:04.335  blocklist: 0
+09:39:04.350  ci_state: 
+09:39:04.357  game: 22784
+09:39:04.359  dev_before: False
+09:39:04.384  sc start rc=577 out=[SC] StartService FAILED 577: /  / Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source. /  wall=0.02s
+09:39:05.196  svc_after:  / SERVICE_NAME: apexdrv  /         TYPE               : 1  KERNEL_DRIVER   /         STATE              : 1  STOPPED  /         WIN32_EXIT_CODE    : 577  (0x241) /         SERVICE_EXIT_CODE  : 0  (0x0) /         CHECKPOINT         : 0x0 /         WAIT_HINT          : 0x0
+09:39:05.197  dev_after: False
+09:39:05.200  game_after: 22784
+09:39:05.205  VERDICT: DRV_DSE_577 (signature not accepted under DSE - loader needed)

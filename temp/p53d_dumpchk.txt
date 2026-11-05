@@ -1,0 +1,629 @@
+﻿now 2026-11-04T17:15:28
+elevated=True
+--- minidump dir (elevated) ---
+110426-10312-01.dmp 9594873 2026-11-04T13:19:16
+110426-10531-01.dmp 9711073 2026-11-04T17:06:41
+110426-10625-01.dmp 9377311 2026-11-04T14:33:58
+110426-10656-01.dmp 9523263 2026-11-04T00:46:05
+110426-11437-01.dmp 9597623 2026-11-04T09:29:50
+src size=9711073 mtime=2026-11-04T17:06:41
+copied=True size=9711073
+sha256=3B678AAF915BACFECA62AB1109E8F178B29B3DCEF0250AD7A13D135839594F04
+--- WHEA 18 records since 17:06 (raw, first line each) ---
+2026-11-04T17:06:44 id=18 :: A fatal hardware error has occurred.  Reported by component: Processor Core Error Source: Machine Check Exception Error Type: Internal Unclassified Error Processor APIC ID: 33  The details view of this entry contains further information.
+2026-11-04T16:49:18 id=17 :: A corrected hardware error has occurred.  Component: PCI Express Root Port Error Source: Advanced Error Reporting (PCI Express)  Primary Bus:Device:Function: 0x0:0x1:0x0 Secondary Bus:Device:Function: 0x0:0x0:0x0 Primary Device Name:PCI\VEN_8086&DEV_A70D&SUBSYS_50001458&REV_01 Secondary Device Name:
+--- dumpchk (120 s cap) ---
+exit=
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.032 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\New User\OneDrive\Desktop\cheating\temp\110426-10531-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+WARNING: TriageDumpDataExtArray.HeaderSize is 0
+WARNING: Failed to read dump data exension data
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\Symbols
+Symbol search path is: C:\Symbols
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (16 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Kernel base = 0xfffff801`ebc00000 PsLoadedModuleList = 0xfffff801`ecaf54c0
+Debug session time: Wed Nov  4 17:06:15.817 2026 (UTC + 13:00)
+System Uptime: 0 days 1:43:58.508
+Loading Kernel Symbols
+...............................................................
+................................................................
+................................................................
+................................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 000000ec`0d98c018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+...........
+For analysis of this file, run !analyze -v
+----- 64 bit Kernel Mini Dump Analysis
+
+DUMP_HEADER64:
+MajorVersion        0000000f
+MinorVersion        000065f4
+KdSecondaryVersion  00000002
+DirectoryTableBase  00000001`842ef000
+PfnDataBase         ffffd380`00000000
+PsLoadedModuleList  fffff801`ecaf54c0
+PsActiveProcessHead fffff801`ecb067c0
+MachineImageType    00008664
+NumberProcessors    00000010
+BugCheckCode        00000124
+BugCheckParameter1  00000000`00000000
+BugCheckParameter2  ffffc10d`2759f028
+BugCheckParameter3  00000000`bf800000
+BugCheckParameter4  00000000`00200401
+KdDebuggerDataBlock fffff801`eca01060
+SecondaryDataState  00000000
+ProductType         00000001
+SuiteMask           00000110
+Attributes          00001008
+MiniDumpFields      00000dff 
+
+TRIAGE_DUMP64:
+ServicePackBuild      00000000 
+SizeOfDump            0003bc00 
+ValidOffset           0003bbfc 
+ContextOffset         00000348 
+ExceptionOffset       00000f00 
+MmOffset              00002080 
+UnloadedDriversOffset 00017348 
+PrcbOffset            000020d0 
+ProcessOffset         0000efd0 
+ThreadOffset          0000f810 
+CallStackOffset       0000ffa8 
+SizeOfCallStack       00007000 
+DriverListOffset      00017e40 
+DriverCount           000000f0 
+StringPoolOffset      00020540 
+StringPoolSize        00002330 
+BrokenDriverOffset    00000000 
+TriageOptions         00000041 
+TopOfStack            ffffba02`22991000 
+BStoreOffset          00000000 
+SizeOfBStore          00000000 
+LimitOfBStore         00000000`00000000 
+DebuggerDataOffset    00016fa8 
+DebuggerDataSize      000003a0 
+DataBlocksOffset      00022870 
+DataBlocksCount       0000002b 
+  fffff801`ecaff040 - fffff801`ecaff05f at offset 00022b20
+  fffff801`ecb0ce80 - fffff801`ecb0ce8f at offset 00022b40
+  ffffc10d`2759f000 - ffffc10d`2759ffff at offset 00022b50
+  ffffc10d`4279ce60 - ffffc10d`4279cf11 at offset 00023b50
+  fffff801`eca667e0 - fffff801`eca667e7 at offset 00023c02
+  fffff801`eca667f0 - fffff801`eca667f3 at offset 00023c0a
+  ffffc10d`24e84000 - ffffc10d`24e84cff at offset 00023c0e
+  fffff801`ecb47550 - fffff801`ecb47557 at offset 0002490e
+  fffff801`ecb47558 - fffff801`ecb4755f at offset 00024916
+  fffff801`eca66c80 - fffff801`eca66cdf at offset 0002491e
+  fffff801`ece01841 - fffff801`ece01841 at offset 0002497e
+  fffff801`ece01843 - fffff801`ece01843 at offset 0002497f
+  fffff780`00000000 - fffff780`000003d7 at offset 00024980
+  fffff801`eca2cb40 - fffff801`eca38cff at offset 00024d58
+  fffff801`eca38d00 - fffff801`eca3ea3f at offset 00030f18
+  ffffbbdd`eee00000 - ffffbbdd`eee00007 at offset 00036c58
+  ffffbbdd`eef77000 - ffffbbdd`eef77007 at offset 00036c60
+  ffffbbdd`f04349d0 - ffffbbdd`f04349d7 at offset 00036c68
+  ffffbbdd`eef821a0 - ffffbbdd`eef821a7 at offset 00036c70
+  ffffbbdd`eef77c10 - ffffbbdd`eef77c17 at offset 00036c78
+  ffffbbdd`eee00010 - ffffbbdd`eee00017 at offset 00036c80
+  ffffbbdd`fe007b00 - ffffbbdd`fe007b07 at offset 00036c88
+  ffffbbdd`eeff0038 - ffffbbdd`eeff003f at offset 00036c90
+  ffffbbdd`eef77f80 - ffffbbdd`eef77f87 at offset 00036c98
+  ffffbbdd`f0434a88 - ffffbbdd`f0434a8f at offset 00036ca0
+  ffffbbd5`0025b5a8 - ffffbbd5`0025b5af at offset 00036ca8
+  ffffbbdd`ea8012d8 - ffffbbdd`ea8012df at offset 00036cb0
+  ffffbbdd`eef54008 - ffffbbdd`eef5400f at offset 00036cb8
+  ffffbbdd`eef77aa0 - ffffbbdd`eef77aa7 at offset 00036cc0
+  ffffbbdd`f0434928 - ffffbbdd`f043492f at offset 00036cc8
+  fffff801`ecaf50e0 - fffff801`ecaf511f at offset 00036cd0
+  ffffc10d`24bc4d00 - ffffc10d`24bc4fff at offset 00036d10
+  ffffc10d`277f48a0 - ffffc10d`277f4cbf at offset 00037010
+  ffffc10d`276c78a0 - ffffc10d`276c7cbf at offset 00037430
+  ffffbbfc`00c93758 - ffffbbfc`00c9375f at offset 00037850
+  ffffbbdd`fe006498 - ffffbbdd`fe00649f at offset 00037858
+  ffffbbdd`eeff0030 - ffffbbdd`eeff0037 at offset 00037860
+  ffffbbfc`00c936a0 - ffffbbfc`00c936a7 at offset 00037868
+  fffff801`ec0fd560 - fffff801`ec0fd75f at offset 00037870
+  fffff801`ec0fd000 - fffff801`ec0fdfff at offset 00037a70
+  ffffc10d`2a34e000 - ffffc10d`2a34efff at offset 00038a70
+  ffffaa00`4b6b5000 - ffffaa00`4b6b5fff at offset 00039a70
+  ffffc10d`24be7000 - ffffc10d`24be7fff at offset 0003aa70
+  Max offset 3ba70, 907371 from end of file
+WARNING: TriageDumpDataExtArray.HeaderSize is 0
+
+
+Windows 10 Kernel Version 26100 MP (16 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Kernel base = 0xfffff801`ebc00000 PsLoadedModuleList = 0xfffff801`ecaf54c0
+Debug session time: Wed Nov  4 17:06:15.817 2026 (UTC + 13:00)
+System Uptime: 0 days 1:43:58.508
+start             end                 module name
+fffff801`79200000 fffff801`79417000   HTTP      ***** Invalid (AC6B1965)
+fffff801`79420000 fffff801`79436000   mmcss     ***** Invalid (94B89CD3)
+fffff801`79440000 fffff801`7946a000   bowser    Sun Jun 13 09:21:37 2010 (4C13FA61)
+fffff801`79470000 fffff801`79552000   mrxsmb    Tue Aug 20 10:46:51 1974 (08B698DB)
+fffff801`79560000 fffff801`795bd000   mrxsmb20  ***** Invalid (CC819D23)
+fffff801`795d0000 fffff801`79634000   srvnet    Fri Sep 17 10:41:18 2010 (4C929D0E)
+fffff801`79640000 fffff801`7966e000   Ndu       Sat Aug 16 16:53:38 1997 (33F53252)
+fffff801`796b0000 fffff801`797a8000   srv2      ***** Invalid (E94ED8B5)
+fffff801`797b0000 fffff801`79885000   peauth    ***** Invalid (A7623FFA)
+fffff801`79890000 fffff801`798a6000   tcpipreg  ***** Invalid (B578B9E5)
+fffff801`798b0000 fffff801`798ce000   wtd       ***** Invalid (CFED016F)
+fffff801`798e0000 fffff801`79903000   p9rdr     Fri Sep 15 21:53:15 1995 (30594D0B)
+fffff801`79910000 fffff801`79973000   WUDFRd    Fri Jan 21 02:12:55 2000 (388709D7)
+fffff801`799c0000 fffff801`799d6000   vwifimp   34279E23 (This is a reproducible build file hash, not a timestamp)
+fffff801`79a70000 fffff801`79b64000   nwifi     ***** Invalid (98C24262)
+fffff801`79b70000 fffff801`79b8d000   mpsdrv    ***** Invalid (8D5F4BF8)
+fffff801`7a5c0000 fffff801`7a6ba000   xvdd      Thu Jan 27 14:50:45 2000 (388FA475)
+fffff801`7a6c0000 fffff801`7a6cf000   gdrv3     Wed Sep 11 15:09:58 2024 (66E10A06)
+fffff801`7a6e0000 fffff801`7a705000   gameflt   ***** Invalid (91ACD89F)
+fffff801`7a710000 fffff801`7a75e000   winnat    ***** Invalid (8F96DB79)
+fffff801`7b110000 fffff801`7b482000   mcupdate  Fri Feb  2 10:57:52 2024 (65BC13E0)
+fffff801`7d490000 fffff801`7d49b000   kdcom     Sun Jan 27 17:36:17 2036 (7C46E6C1)
+fffff801`7d4a0000 fffff801`7d4ad000   symcryptk  98293ECD (This is a reproducible build file hash, not a timestamp)
+fffff801`7d4c0000 fffff801`7d4ea000   tm        Sun Jul 25 21:12:00 2021 (60FD2AE0)
+fffff801`7d4f0000 fffff801`7d57d000   CLFS      ***** Invalid (9A56643B)
+fffff801`7d590000 fffff801`7d679000   cng       Wed Aug 13 23:55:46 1975 (0A8F4AC2)
+fffff801`7d680000 fffff801`7d695000   winaccel  ***** Invalid (FF85D401)
+fffff801`7d6a0000 fffff801`7d6bd000   PSHED     D5240205 (This is a reproducible build file hash, not a timestamp)
+fffff801`7d6d0000 fffff801`7d6dd000   BOOTVID   6E4A77D6 (This is a reproducible build file hash, not a timestamp)
+fffff801`7d6f0000 fffff801`7d808000   clipsp    Sat Oct 10 21:07:21 2026 (6AC9F239)
+fffff801`7d810000 fffff801`7d8aa000   FLTMGR    Thu Jan  8 06:54:04 2015 (54AD72BC)
+fffff801`7d8b0000 fffff801`7d8e6000   ksecdd    ***** Invalid (B8EF9A42)
+fffff801`7d8f0000 fffff801`7d955000   msrpc     Thu Apr 29 06:01:56 1971 (027C7094)
+fffff801`7d960000 fffff801`7d972000   cmimcext  ***** Invalid (A419E7AB)
+fffff801`7d980000 fffff801`7d997000   werkernel  ***** Invalid (A6EDF41C)
+fffff801`7d9a0000 fffff801`7d9ad000   ntosext   Tue Aug 19 07:58:41 1997 (33F8A971)
+fffff801`7d9c0000 fffff801`7da87000   win32k    0EF46532 (This is a reproducible build file hash, not a timestamp)
+fffff801`7da90000 fffff801`7dab0000   watchdog  ***** Invalid (F3C582F0)
+fffff801`7dac0000 fffff801`7dfd1000   dxgkrnl   Tue Dec 20 03:26:08 2033 (78519F80)
+fffff801`7dfe0000 fffff801`7dfed000   WMILIB    ***** Invalid (BF8195C9)
+fffff801`7e000000 fffff801`7e11b000   CI        18DC3FE0 (This is a reproducible build file hash, not a timestamp)
+fffff801`7e120000 fffff801`7e140000   globmerger  Sat Sep  2 07:27:52 2000 (39B00338)
+fffff801`7e150000 fffff801`7e240000   Wdf01000  Wed Nov 13 15:20:22 1996 (32893066)
+fffff801`7e250000 fffff801`7e267000   WDFLDR    Tue Dec  3 15:21:39 2030 (7296F1B3)
+fffff801`7e270000 fffff801`7e283000   WppRecorder  ***** Invalid (E3C6511C)
+fffff801`7e290000 fffff801`7e29f000   PRM       Mon Mar 25 14:38:08 2013 (514FAA80)
+fffff801`7e2b0000 fffff801`7e2da000   acpiex    ***** Invalid (FFB0E915)
+fffff801`7e2e0000 fffff801`7e2ef000   msseccore  Tue Nov 28 06:38:55 2006 (456B22AF)
+fffff801`7e300000 fffff801`7e30a000   lxss      ***** Invalid (B1DB15EE)
+fffff801`7e310000 fffff801`7e421000   LXCORE    ***** Invalid (AE311BA3)
+fffff801`7e430000 fffff801`7e506000   ACPI      Sat Oct 14 09:41:33 1989 (2536487D)
+fffff801`7e510000 fffff801`7e51c000   msisadrv  ***** Invalid (C0CACEA5)
+fffff801`7e530000 fffff801`7e5c2000   pci       ***** Invalid (E7D55220)
+fffff801`7e5d0000 fffff801`7e62a000   tpm       ***** Invalid (82D3D21F)
+fffff801`7e630000 fffff801`7e63e000   amdwps    Sun Nov  3 05:34:27 2002 (3DC3FE93)
+fffff801`7e650000 fffff801`7e668000   WindowsTrustedRT  Mon Dec 12 18:22:55 2033 (7847E5AF)
+fffff801`7e670000 fffff801`7e70f000   intelpep  ***** Invalid (ACCCA7DA)
+fffff801`7e720000 fffff801`7e72c000   WindowsTrustedRTProxy  Fri Nov 28 20:04:01 2036 (7DDA7461)
+fffff801`7e740000 fffff801`7e753000   IntelPMT  ***** Invalid (9C2CA217)
+fffff801`7e760000 fffff801`7e777000   pcw       Fri Nov  9 11:43:59 2018 (5BE4BC2F)
+fffff801`7e780000 fffff801`7e79c000   vdrvroot  ***** Invalid (87DB0809)
+fffff801`7e7b0000 fffff801`7e7e5000   pdc       Tue Jan 30 19:55:18 1990 (25C53A56)
+fffff801`7e7f0000 fffff801`7e808000   CEA       ***** Invalid (B7693342)
+fffff801`7e810000 fffff801`7e846000   partmgr   ***** Invalid (D498C927)
+fffff801`7e850000 fffff801`7e948000   spaceport  Sun Feb 24 22:35:45 1991 (27C788F1)
+fffff801`7e950000 fffff801`7e96e000   volmgr    Mon Dec 19 18:00:03 2022 (639FEFD3)
+fffff801`7e980000 fffff801`7e9e7000   volmgrx   ***** Invalid (A844399A)
+fffff801`7e9f0000 fffff801`7ea13000   mountmgr  Mon May 23 10:16:08 2005 (429104A8)
+fffff801`7ea20000 fffff801`7ea57000   storahci  Wed Jul 31 00:53:22 2024 (66A8E242)
+fffff801`7ea60000 fffff801`7ecdc000   storport  Mon Jul  9 22:39:55 2018 (5B433B7B)
+fffff801`7ecf0000 fffff801`7ed3f000   stornvme  ***** Invalid (FDAA5EFB)
+fffff801`7ed50000 fffff801`7ed78000   EhStorClass  ***** Invalid (DF47D69C)
+fffff801`7ed80000 fffff801`7ed9d000   fileinfo  ***** Invalid (E7D4AA87)
+fffff801`7edb0000 fffff801`7edf7000   Wof       ***** Invalid (EF0B09C1)
+fffff801`7ee00000 fffff801`7f17d000   Ntfs      Mon Sep 21 13:44:07 1981 (160BFDE7)
+fffff801`7f190000 fffff801`7f19f000   Fs_Rec    Mon Dec  7 21:12:09 1981 (1671DC59)
+fffff801`7f1b0000 fffff801`7f37a000   ndis      Fri Dec 25 18:47:24 1987 (21D1FBEC)
+fffff801`7f380000 fffff801`7f437000   NETIO     ***** Invalid (ECCE13D7)
+fffff801`7f440000 fffff801`7f476000   fse       ***** Invalid (E979CBDE)
+fffff801`7f480000 fffff801`7f50b000   fwpkclnt  Tue Nov 28 15:09:40 2017 (5A1CC564)
+fffff801`7f510000 fffff801`7f548000   ksecpkg   ***** Invalid (DB1E195F)
+fffff801`7f550000 fffff801`7f574000   Kerb3961Kernel  ***** Invalid (AD464BD2)
+fffff801`7f580000 fffff801`7f8da000   tcpip     ***** Invalid (D26770CA)
+fffff801`7f8e0000 fffff801`7f91b000   wfplwfs   ***** Invalid (ADDD4E0F)
+fffff801`7f920000 fffff801`7f92f000   VmsProxy  Sat Oct 28 08:16:08 1978 (10977E78)
+fffff801`7f940000 fffff801`7f950000   VmsProxyHNic  Mon Jan 29 08:53:52 2018 (5A6E2A50)
+fffff801`7f960000 fffff801`7fa4c000   fvevol    ***** Invalid (B2E492E1)
+fffff801`7fa60000 fffff801`7fa6b000   volume    ***** Invalid (B2729186)
+fffff801`7fa70000 fffff801`7faf4000   volsnap   Fri Feb 11 16:04:11 1983 (18A9CAAB)
+fffff801`7fb00000 fffff801`7fb50000   rdyboost  ***** Invalid (C00F97D7)
+fffff801`7fb60000 fffff801`7fb7d000   nvmedisk  ***** Invalid (8698A9EE)
+fffff801`7fb90000 fffff801`7fbbb000   mup       Thu Dec 17 22:29:44 2026 (6B23AB88)
+fffff801`7fbc0000 fffff801`7fbd4000   iorate    ***** Invalid (9A1CFEC2)
+fffff801`7fc00000 fffff801`7fc21000   disk      Wed Jul 26 19:04:27 1989 (24CD627B)
+fffff801`7fc30000 fffff801`7fcac000   CLASSPNP  ***** Invalid (F6DBC2AD)
+fffff801`91e60000 fffff801`91e99000   cdrom     ***** Invalid (B5763501)
+fffff801`91ea0000 fffff801`91eb8000   filecrypt  ***** Invalid (CFBA6C6B)
+fffff801`91ec0000 fffff801`91ed0000   tbs       Fri May 12 14:23:35 2023 (645DA327)
+fffff801`91ee0000 fffff801`91f11000   UCPD      Thu Sep  6 12:10:43 1984 (1B9D0D83)
+fffff801`91f20000 fffff801`91f2d000   Null      ***** Invalid (B4E46DA9)
+fffff801`91f40000 fffff801`91f4a000   Beep      Thu Jun  8 20:05:06 2017 (59390532)
+fffff801`91f70000 fffff801`91f8a000   BasicDisplay  ***** Invalid (B0DDBE8B)
+fffff801`91f90000 fffff801`91fa3000   BasicRender  Fri Feb  3 10:48:07 2017 (5893A917)
+fffff801`91fb0000 fffff801`91fcc000   Npfs      ***** Invalid (D2E1F0D0)
+fffff801`91fe0000 fffff801`91ff3000   Msfs      Thu Aug  1 04:32:00 2013 (51F93C00)
+fffff801`92000000 fffff801`92045000   CimFS     ***** Invalid (A326D105)
+fffff801`92050000 fffff801`9207a000   tdx       Sun Feb 15 02:20:34 1987 (20346F22)
+fffff801`92080000 fffff801`92091000   TDI       Wed Apr  7 03:00:24 1999 (370A2188)
+fffff801`920a0000 fffff801`920f9000   netbt     ***** Invalid (85CF9EB7)
+fffff801`92100000 fffff801`92115000   afunix    Mon Nov 28 22:30:24 1983 (1A287830)
+fffff801`92120000 fffff801`921d3000   afd       ***** Invalid (D929C8A9)
+fffff801`921e0000 fffff801`921f4000   npcap     Sat Sep 12 10:11:55 2026 (6AA47CAB)
+fffff801`92200000 fffff801`9225b000   VBoxNetLwf  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff801`92260000 fffff801`9227e000   vwififlt  Thu Dec 31 18:12:49 2015 (5684B951)
+fffff801`92290000 fffff801`92432000   vfpext    ***** Invalid (DCA5B9B2)
+fffff801`92440000 fffff801`92471000   pacer     Wed Jun 11 17:42:10 1980 (13A48932)
+fffff801`92480000 fffff801`92498000   ndiscap   Mon Jun 12 18:48:28 1972 (0499AB3C)
+fffff801`924a0000 fffff801`924b8000   netbios   ***** Invalid (D71A4964)
+fffff801`924c0000 fffff801`9259c000   Vid       ***** Invalid (D2E40B4A)
+fffff801`925b0000 fffff801`925d9000   winhvr    Thu Feb  6 00:13:17 2014 (52F21CCD)
+fffff801`925e0000 fffff801`9266e000   rdbss     Sat Dec 18 05:41:27 1976 (0D182FB7)
+fffff801`92680000 fffff801`9269c000   rspndr    ***** Invalid (F0D5A75F)
+fffff801`926d0000 fffff801`926f8000   crashdmp  ***** Invalid (CFC962B2)
+fffff801`92700000 fffff801`92720000   wanarp    6559C2E3 (This is a reproducible build file hash, not a timestamp)
+fffff801`92730000 fffff801`92749000   ndisuio   ***** Invalid (8A5115DF)
+fffff801`92800000 fffff801`9294c000   VBoxSup   Tue Oct 20 07:34:28 2026 (6AD662B4)
+fffff801`92960000 fffff801`92973000   nsiproxy  Sat May 18 12:19:33 2024 (6647F415)
+fffff801`92980000 fffff801`9298f000   npsvctrig  Sun May 14 21:13:30 1978 (0FBC183A)
+fffff801`929a0000 fffff801`929b1000   mssmbios  C7C306A0 (This is a reproducible build file hash, not a timestamp)
+fffff801`929c0000 fffff801`929c7000   MsIo64    Mon Dec 11 19:39:57 2023 (6576AEBD)
+fffff801`929d0000 fffff801`929de000   hvsocketcontrol  Sat Sep 30 10:57:06 2000 (39D51032)
+fffff801`929f0000 fffff801`92a1d000   hvsocket  Thu Jun 10 06:19:04 1999 (375EB018)
+fffff801`92a30000 fffff801`92a61000   dfsc      ***** Invalid (DC77C9A1)
+fffff801`92a70000 fffff801`92a9f000   bindflt   Mon Aug 31 22:05:17 2020 (5F4CCB5D)
+fffff801`92ac0000 fffff801`92acb000   CtiIo64   Tue Jul  9 14:39:19 2024 (668CA2D7)
+fffff801`92ad0000 fffff801`92aec000   bam       ***** Invalid (DC9A409A)
+fffff801`92b00000 fffff801`92b5d000   ahcache   Fri May 30 01:29:55 2003 (3ED60B53)
+fffff801`92b70000 fffff801`92bc0000   vmbusr    Mon Nov  2 11:31:22 2020 (5F9F373A)
+fffff801`92bd0000 fffff801`92c04000   vmbkmclr  ***** Invalid (F44F3F20)
+fffff801`92c10000 fffff801`92c1f000   amdxe     Wed Apr  3 11:52:01 2024 (660C8C11)
+fffff801`92c30000 fffff801`92c8c000   amdfendr  Tue Jan 28 10:28:39 2025 (6797FA87)
+fffff801`92ca0000 fffff801`92cb6000   hvservice  Fri Oct 24 11:47:47 2025 (68FAB093)
+fffff801`92cc0000 fffff801`92f44000   vmswitch  ***** Invalid (E86AE79B)
+fffff801`92f50000 fffff801`92fa9000   VBoxNetAdp6  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff801`92fb0000 fffff801`92fc4000   CompositeBus  ***** Invalid (ACD7DA51)
+fffff801`92fd0000 fffff801`92fe1000   kdnic     ***** Invalid (C95CF3EB)
+fffff801`92ff0000 fffff801`92ff9000   DBUtilDrv2  Wed Nov 20 07:14:20 2019 (5DD430FC)
+fffff801`93000000 fffff801`93016000   umbus     Sun Nov 30 16:53:22 2031 (74744632)
+fffff801`93020000 fffff801`93036000   buttonconverter  ***** Invalid (D8A09F5E)
+fffff801`93040000 fffff801`930f3000   UsbHub3   ***** Invalid (D506DBF3)
+fffff801`93100000 fffff801`93110000   USBD      Sun Dec 14 09:16:50 1980 (14993BB2)
+fffff801`93120000 fffff801`9312f000   iocbios2  Sat Jun 17 10:05:53 2023 (648CDCC1)
+fffff801`93140000 fffff801`93163000   rhproxy   Fri Jan 19 03:23:12 1990 (25B5D150)
+fffff801`93170000 fffff801`9318f000   nvhda64v  Tue Dec  2 04:26:50 2025 (692DB3BA)
+fffff801`931a0000 fffff801`93234000   cldflt    ***** Invalid (D66E7692)
+fffff801`93240000 fffff801`9325b000   mslldp    Wed Jan 17 03:33:37 1979 (110205C1)
+fffff801`93270000 fffff801`9330a000   csc       ***** Invalid (D58AFEB8)
+fffff801`93310000 fffff801`9334c000   VBoxUSBMon  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff801`93360000 fffff801`933d8000   UnionFS   Fri Apr 19 09:04:22 1974 (08145856)
+fffff801`933e0000 fffff801`933fa000   lltdio    ***** Invalid (F9A04930)
+fffff801`93400000 fffff801`93487000   ks        Thu Dec 10 17:47:05 2020 (5FD1A849)
+fffff801`93490000 fffff801`93551000   USBXHCI   Fri Oct 29 06:12:28 2004 (4181287C)
+fffff801`93560000 fffff801`93b38000   Netwtw14  Tue Sep  2 02:47:11 2025 (68B5B1EF)
+fffff801`93b40000 fffff801`93c5a000   wdiwifi   ***** Invalid (8C36C3A0)
+fffff801`93c60000 fffff801`93c70000   vwifibus  Tue Mar 19 17:10:22 2019 (5C906BAE)
+fffff801`93c80000 fffff801`93cb4000   iaLPSS2_I2C_ADL  Wed Apr 24 19:18:04 2024 (6628B22C)
+fffff801`93cc0000 fffff801`93cdc000   SpbCx     ***** Invalid (D486583C)
+fffff801`93cf0000 fffff801`93d3f000   TeeDriverW10x64  Mon Feb 12 02:27:20 2024 (65C8CB38)
+fffff801`93d50000 fffff801`93eb6000   e2fn      Thu Sep  4 03:14:27 2025 (68B85B53)
+fffff801`93ec0000 fffff801`93f1e000   netadaptercx  Wed Apr 26 06:37:35 2000 (3905E5EF)
+fffff801`93f30000 fffff801`93f50000   ExecutionContext  ***** Invalid (9455B40E)
+fffff801`93f60000 fffff801`93f6c000   ICCWDT    Tue Feb 13 23:17:58 2024 (65CB41D6)
+fffff801`93f80000 fffff801`93f8e000   acpitime  ***** Invalid (812D906C)
+fffff801`93fa0000 fffff801`93fc2000   iaLPSS2_GPIO2_ADL  Wed Apr 24 19:18:38 2024 (6628B24E)
+fffff801`93fd0000 fffff801`94005000   msgpioclx  Fri Oct 15 07:12:49 2027 (6CB0F9A1)
+fffff801`94010000 fffff801`94060000   intelppm  Mon Feb 26 01:34:30 1996 (31305756)
+fffff801`94070000 fffff801`9407c000   acpipagr  Wed Dec  9 07:22:27 1987 (21BC4363)
+fffff801`94090000 fffff801`9409e000   wmiacpi   ***** Invalid (B2BC77AC)
+fffff801`940b0000 fffff801`940c7000   HidEventFilter  Thu Apr 25 22:58:00 2024 (662A3738)
+fffff801`940d0000 fffff801`940dc000   mshidkmdf  Sat Feb 13 10:47:08 1982 (16CAEFDC)
+fffff801`940f0000 fffff801`9413f000   HIDCLASS  ***** Invalid (EB8CB1C9)
+fffff801`94150000 fffff801`94169000   HIDPARSE  Tue Jan 10 05:46:20 2012 (4F0B19DC)
+fffff801`94170000 fffff801`94183000   UEFI      Sat Oct  5 11:32:47 2019 (5D97C88F)
+fffff801`94190000 fffff801`941cc000   vpcivsp   Fri Aug  4 07:02:42 2017 (59837352)
+fffff801`941e0000 fffff801`9422b000   storvsp   ***** Invalid (BB02EBDD)
+fffff801`94230000 fffff801`9423f000   nvvad64v  Tue Aug  4 22:00:55 2026 (6A71B857)
+fffff801`94250000 fffff801`94264000   ksthunk   Fri Sep 24 20:59:45 2032 (75FEBE81)
+fffff801`94270000 fffff801`9427e000   NdisVirtualBus  ***** Invalid (9CF5D8E6)
+fffff801`94290000 fffff801`9429c000   swenum    ***** Invalid (8DBCE1D4)
+fffff801`942b0000 fffff801`942bc000   logi_joy_bus_enum_x64  Fri Feb  6 02:30:40 2026 (69849B80)
+fffff801`942d0000 fffff801`942e4000   logi_joy_xlcore_x64  Fri Feb  6 02:30:38 2026 (69849B7E)
+fffff801`942f0000 fffff801`94300000   rdpbus    Sun Apr 14 23:22:02 1991 (28083B5A)
+fffff801`94320000 fffff801`9b695000   nvlddmkm  Wed Jul 22 13:44:26 2026 (6A60207A)
+fffff801`9b6a0000 fffff801`9b6d2000   HDAudBus  Sun Nov  8 03:39:34 1970 (01997F26)
+fffff801`9b6e0000 fffff801`9b755000   portcls   ***** Invalid (BB88A76C)
+fffff801`9b760000 fffff801`9b780000   drmk      ***** Invalid (E47EF1DA)
+fffff801`9b790000 fffff801`9b7a5000   voicemodvad  Wed Oct  8 20:51:14 2025 (68E617F2)
+fffff801`9b7b0000 fffff801`9b7c4000   kbdhid    ***** Invalid (FE1410E2)
+fffff801`9b7d0000 fffff801`9b7e5000   kbdclass  Thu Apr 27 00:39:24 2017 (590094FC)
+fffff801`9b800000 fffff801`9b848000   ucx01000  ***** Invalid (95C88791)
+fffff801`9b850000 fffff801`9b85a000   amdfendrmgr  Tue Jan 28 10:28:53 2025 (6797FA95)
+fffff801`9b860000 fffff801`9ebde000   igdkmdn64  Sat Oct 19 08:04:11 2024 (6712B12B)
+fffff801`9ec00000 fffff801`9ed28000   dxgmms2   Sat Jun 22 03:15:25 1996 (31CABC8D)
+fffff801`9ed30000 fffff801`9ed4f000   monitor   ***** Invalid (8F066C32)
+fffff801`9ed60000 fffff801`9edb2000   cdd       7984AA38 (This is a reproducible build file hash, not a timestamp)
+fffff801`9edc0000 fffff801`9ede9000   bfs       ***** Invalid (AB9A34E2)
+fffff801`9edf0000 fffff801`9ee24000   luafv     Thu Dec 11 06:24:13 2025 (6939ACBD)
+fffff801`9ee40000 fffff801`9f4b9000   RTKVHD64  Tue Aug 26 21:26:03 2025 (68AD7DAB)
+fffff801`9f4c0000 fffff801`9f4d4000   hidusb    ***** Invalid (B48E391A)
+fffff801`9f4e0000 fffff801`9f52f000   dump_stornvme  ***** Invalid (FDAA5EFB)
+fffff801`9f540000 fffff801`9f564000   dump_dumpfve  ***** Invalid (EE97515A)
+fffff801`9f570000 fffff801`9f5ad000   wcifs     ***** Invalid (F2630CF6)
+fffff801`9f5c0000 fffff801`9f5dc000   storqosflt  Wed Mar 29 00:25:35 1989 (242F6BAF)
+fffff801`9f600000 fffff801`9f623000   BTHUSB    ***** Invalid (F6A1D6B9)
+fffff801`9f630000 fffff801`9f86d000   BTHport   Fri Mar  7 02:23:20 1980 (132513C8)
+fffff801`9f880000 fffff801`9f8b4000   usbccgp   ***** Invalid (DEB69F35)
+fffff801`9f8c0000 fffff801`9f8d6000   vhf       ***** Invalid (94DDEBA1)
+fffff801`9f8e0000 fffff801`9f8f5000   logi_lamparray_AMD64  Thu Jun 18 07:55:31 2026 (6A32FBB3)
+fffff801`9f900000 fffff801`9f94a000   usbaudio  ***** Invalid (BB3431A5)
+fffff801`9f950000 fffff801`9f95e000   logi_audio_surround  Fri Aug 16 09:54:25 2024 (66BE7911)
+fffff801`9f970000 fffff801`9f981000   mouhid    Sat Jul 31 21:24:56 1993 (2C5A3A68)
+fffff801`9f990000 fffff801`9f9a5000   mouclass  Tue Feb 20 03:36:48 2007 (45D9B600)
+fffff801`9f9b0000 fffff801`9fa1b000   fastfat   Mon Aug 27 23:01:26 2012 (503B5386)
+fffff801`9fa20000 fffff801`9fd65000   win32kbase  AB1DFC97 (This is a reproducible build file hash, not a timestamp)
+fffff801`9fd70000 fffff801`a01a4000   win32kfull  B0926ADB (This is a reproducible build file hash, not a timestamp)
+fffff801`a01b0000 fffff801`a01d6000   win32kbase_rs  C008834F (This is a reproducible build file hash, not a timestamp)
+fffff801`a0200000 fffff801`a0218000   dump_storport  Thu Jan 13 23:04:03 2011 (4D2ECE13)
+fffff801`a02b0000 fffff801`a11d3000   ibtusb    Sat Sep 13 07:19:20 2025 (68C47238)
+fffff801`a11e0000 fffff801`a11f6000   condrv    9909D0E5 (This is a reproducible build file hash, not a timestamp)
+fffff801`a1a90000 fffff801`a6e60000   eaanticheat  Fri Oct 23 06:42:59 2026 (6ADA4B23)
+fffff801`a6e70000 fffff801`a6e90000   rassstp   04ECB8D1 (This is a reproducible build file hash, not a timestamp)
+fffff801`a6ea0000 fffff801`a6ec0000   NDProxy   ***** Invalid (F32EB6A9)
+fffff801`a6ed0000 fffff801`a6ef9000   AgileVpn  ***** Invalid (F6473FD3)
+fffff801`a6f00000 fffff801`a6f24000   rasl2tp   ***** Invalid (AC13985B)
+fffff801`a6f30000 fffff801`a6f54000   raspptp   Wed Apr 23 01:08:20 1975 (09FA6244)
+fffff801`a6f60000 fffff801`a6f7e000   raspppoe  ***** Invalid (DA52FE17)
+fffff801`a6f90000 fffff801`a6fa0000   ndistapi  Mon Mar  1 09:53:07 1982 (16DFFB33)
+fffff801`a6fb0000 fffff801`a6ff1000   ndiswan   ***** Invalid (AD2EBE17)
+fffff801`ebc00000 fffff801`ed050000   nt        AFF6531F (This is a reproducible build file hash, not a timestamp)
+fffff801`ed400000 fffff801`ed406000   hal       EB9DEAA9 (This is a reproducible build file hash, not a timestamp)
+
+Unloaded modules:
+fffff801`799a0000 fffff801`799b4000   WSDScan.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00014000
+fffff801`79980000 fffff801`79993000   WSDPrint.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00013000
+fffff801`79680000 fffff801`796a3000   NetworkPriva
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00023000
+fffff801`93240000 fffff801`93266000   l1vhlwf.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00026000
+fffff801`92720000 fffff801`9273d000   dump_storpor
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0001D000
+fffff801`927a0000 fffff801`927f4000   dump_stornvm
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00054000
+fffff801`91e30000 fffff801`91e59000   dump_dumpfve
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00029000
+fffff801`92a70000 fffff801`92a95000   dam.sys 
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00025000
+fffff801`92aa0000 fffff801`92ab9000   KMPDC.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00019000
+fffff801`91f50000 fffff801`91f66000   uiomap.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00016000
+fffff801`7fbe0000 fffff801`7fbf6000   hwpolicy.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00016000
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+WHEA_UNCORRECTABLE_ERROR (124)
+A fatal hardware error has occurred. Parameter 1 identifies the type of error
+source that reported the error. Parameter 2 holds the address of the
+nt!_WHEA_ERROR_RECORD structure that describes the error condition. Try !errrec Address of the nt!_WHEA_ERROR_RECORD structure to get more details.
+Arguments:
+Arg1: 0000000000000000, Machine Check Exception
+Arg2: ffffc10d2759f028, Address of the nt!_WHEA_ERROR_RECORD structure.
+Arg3: 00000000bf800000, High order 32-bits of the MCi_STATUS value.
+Arg4: 0000000000200401, Low order 32-bits of the MCi_STATUS value.
+
+Debugging Details:
+------------------
+
+*** WARNING: Unable to verify timestamp for gdrv3.sys
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Either you specified an unqualified symbol, or your debugger   ***
+***    doesn't have full symbol information.  Unqualified symbol      ***
+***    resolution is turned off by default. Please either specify a   ***
+***    fully qualified symbol module!symbolname, or enable resolution ***
+***    of unqualified symbols by typing ".symopt- 100". Note that     ***
+***    enabling unqualified symbol resolution with network symbol     ***
+***    server shares in the symbol path may cause the debugger to     ***
+***    appear to hang for long periods of time when an incorrect      ***
+***    symbol name is typed or the network symbol server is down.     ***
+***                                                                   ***
+***    For some commands to work properly, your symbol path           ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: pshed!_WHEA_ERROR_RECORD_HEADER                ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Either you specified an unqualified symbol, or your debugger   ***
+***    doesn't have full symbol information.  Unqualified symbol      ***
+***    resolution is turned off by default. Please either specify a   ***
+***    fully qualified symbol module!symbolname, or enable resolution ***
+***    of unqualified symbols by typing ".symopt- 100". Note that     ***
+***    enabling unqualified symbol resolution with network symbol     ***
+***    server shares in the symbol path may cause the debugger to     ***
+***    appear to hang for long periods of time when an incorrect      ***
+***    symbol name is typed or the network symbol server is down.     ***
+***                                                                   ***
+***    For some commands to work properly, your symbol path           ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: pshed!_WHEA_ERROR_RECORD_SECTION_DESCRIPTOR                ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Either you specified an unqualified symbol, or your debugger   ***
+***    doesn't have full symbol information.  Unqualified symbol      ***
+***    resolution is turned off by default. Please either specify a   ***
+***    fully qualified symbol module!symbolname, or enable resolution ***
+***    of unqualified symbols by typing ".symopt- 100". Note that     ***
+***    enabling unqualified symbol resolution with network symbol     ***
+***    server shares in the symbol path may cause the debugger to     ***
+***    appear to hang for long periods of time when an incorrect      ***
+***    symbol name is typed or the network symbol server is down.     ***
+***                                                                   ***
+***    For some commands to work properly, your symbol path           ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: pshed!_WHEA_ERROR_RECORD_HEADER                ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Either you specified an unqualified symbol, or your debugger   ***
+***    doesn't have full symbol information.  Unqualified symbol      ***
+***    resolution is turned off by default. Please either specify a   ***
+***    fully qualified symbol module!symbolname, or enable resolution ***
+***    of unqualified symbols by typing ".symopt- 100". Note that     ***
+***    enabling unqualified symbol resolution with network symbol     ***
+***    server shares in the symbol path may cause the debugger to     ***
+***    appear to hang for long periods of time when an incorrect      ***
+***    symbol name is typed or the network symbol server is down.     ***
+***                                                                   ***
+***    For some commands to work properly, your symbol path           ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: pshed!_WHEA_ERROR_RECORD_HEADER                ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Either you specified an unqualified symbol, or your debugger   ***
+***    doesn't have full symbol information.  Unqualified symbol      ***
+***    resolution is turned off by default. Please either specify a   ***
+***    fully qualified symbol module!symbolname, or enable resolution ***
+***    of unqualified symbols by typing ".symopt- 100". Note that     ***
+***    enabling unqualified symbol resolution with network symbol     ***
+***    server shares in the symbol path may cause the debugger to     ***
+***    appear to hang for long periods of time when an incorrect      ***
+***    symbol name is typed or the network symbol server is down.     ***
+***                                                                   ***
+***    For some commands to work properly, your symbol path           ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: pshed!_WHEA_ERROR_RECORD_HEADER                ***
+***                                                                   ***
+*************************************************************************
+
+BUGCHECK_CODE:  124
+
+BUGCHECK_P1: 0
+
+BUGCHECK_P2: ffffc10d2759f028
+
+BUGCHECK_P3: bf800000
+
+BUGCHECK_P4: 200401
+
+PROCESS_NAME:  python.exe
+
+MODULE_NAME: GenuineIntel
+
+IMAGE_NAME:  GenuineIntel.sys
+
+FAILURE_BUCKET_ID:  0x124_0_GenuineIntel__UNKNOWN_IMAGE_GenuineIntel.sys
+
+FAILURE_ID_HASH:  {3fcb9ba4-4151-054d-a420-874ecf0a1f94}
+
+Followup:     MachineOwner
+---------
+
+Finished dump check
+
+--- stderr ---
+Loading dump file C:\Users\New User\OneDrive\Desktop\cheating\temp\110426-10531-01.dmp
+
+--- end ---

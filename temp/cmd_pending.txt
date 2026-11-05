@@ -1,0 +1,6 @@
+"P72_MK4 post-reboot transport" | Out-File -Encoding ascii temp\p72_mk4_done.txt
+python -u ext\p72_rd.py 0x40000000,0x80000000,0x100000000 --head=16 > temp\p72_mk4_rd.txt 2>&1; "RD_EXIT=$LASTEXITCODE" >> temp\p72_mk4_done.txt
+sc query gdrv3 | findstr /i "STATE" >> temp\p72_mk4_done.txt
+sc qc gdrv3 | findstr /i "BINARY_PATH START_TYPE" >> temp\p72_mk4_done.txt
+(Get-FileHash C:\Windows\System32\drivers\gdrv3.sys -Algorithm SHA256).Hash >> temp\p72_mk4_done.txt
+"mk4 done" >> temp\p72_mk4_done.txt

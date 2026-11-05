@@ -1,0 +1,8 @@
+3: kd> .cxr ffffa381ff4bbbb0; .echo ===CR2; r cr2; .echo ===CALLER; u WinRing0x64+0x1390 L80; .echo ===DONE; q
+Unable to load image \??\C:\Users\Public\p37\WinRing0x64.sys, Win32 error 0n2
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+rax=0000000000000000 rbx=0000000000001000 rcx=0000000000001000
+rdx=ffffa886a484b000 rsi=0000000000000000 rdi=ffffa886adfad000
+rip=fffff804522215b8 rsp=ffffa381ff4bc5d0 rbp=0000000000000000
+ r8=0000000000000002  r9=ffffca8000000000 r10=fffff804c6435e80
+r11=0000000000000000 r12=0000000000001000 r13=0000000000000000

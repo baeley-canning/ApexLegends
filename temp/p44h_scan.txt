@@ -1,0 +1,33 @@
+﻿15:15:36.842  elevated=True pid=17584 lo= hi= down=0x100000000 want=3 max_s=240
+15:15:37.237  drv gdrv3=
+15:15:37.245  game alive=True
+15:15:37.280  range from usable RAM top: lo=0x6eda00000 hi=0x7eda00000
+15:15:37.284  range lo=29756489728 hi=34051457024
+15:15:37.292  running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\decoyscan.py" --pid=17584 --lo=29756489728 --hi=34051457024 --want=3
+15:15:37.304  child pid=16172 started 15:15:37.303
+15:15:52.276  wall=15.0s
+15:15:52.287  console tail: decoyscan 2026-11-04 15:15:37 pid=0x44b0 0x6eda00000..0x7eda00000 | 0 decoys, 4096 MiB, 14.9s | VERDICT: NO_DECOY
+15:15:52.289  err tail: 
+15:15:52.289  RESULT: variable=scan_range verdict=NO_DECOY lo=29756489728 hi=34051457024
+15:15:52.292  post game alive=True
+15:15:52.293  --- end ---
+15:16:30.255  elevated=True pid=17584 lo=0x2eda00000 hi=0x6eda00000 down= want=3 max_s=240
+15:16:30.615  drv gdrv3=
+15:16:30.622  game alive=True
+15:16:30.624  range lo=0x2eda00000 hi=0x6eda00000
+15:16:30.630  archived previous OUT to C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p44h_decoys.prev.txt
+15:16:30.637  running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\decoyscan.py" --pid=17584 --lo=0x2eda00000 --hi=0x6eda00000 --want=3
+15:16:30.647  child pid=13488 started 15:16:30.646
+15:17:35.685  wall=65.0s
+15:17:35.701  console tail: decoyscan 2026-11-04 15:16:30 pid=0x44b0 0x2eda00000..0x6eda00000 | 0 decoys, 16384 MiB, 64.9s | VERDICT: NO_DECOY
+15:17:35.703  err tail: 
+15:17:35.703  RESULT: variable=scan_range verdict=NO_DECOY lo=0x2eda00000 hi=0x6eda00000
+15:17:35.708  post game alive=True
+15:17:35.709  --- end ---
+15:18:37.633  elevated=True pid=17584 lo=0x0eda00000 hi=0x2eda00000 down= want=3 max_s=240
+15:18:37.993  drv gdrv3=
+15:18:38.001  game alive=True
+15:18:38.003  range lo=0x0eda00000 hi=0x2eda00000
+15:18:38.009  archived previous OUT to C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p44h_decoys.prev.txt
+15:18:38.015  running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\decoyscan.py" --pid=17584 --lo=0x0eda00000 --hi=0x2eda00000 --want=3
+15:18:38.025  child pid=8496 started 15:18:38.024

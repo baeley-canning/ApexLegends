@@ -1,0 +1,15 @@
+﻿p41_task 09:36:25 pid=22868
+09:36:25 admin=False
+09:36:25 user=DESKTOP-PPHFJBQ\New User
+09:36:25 wp=C:\WINDOWS\Temp probe_file=True
+09:36:25 tempdir_err=Attempted to perform an unauthorized operation.
+09:36:26 A_ERR=Access is denied.
+
+09:36:31 A_state_err=No MSFT_ScheduledTask objects found with property 'TaskName' equal to 'p41x_elevprobe'.  Verify the value of the property and retry.
+09:36:31 A_res=
+09:36:31 probe_err=Access is denied
+09:36:31 probe_read_err=Access is denied
+09:36:31 B_create=WARNING: Task may not run because /ST is earlier than current time. / ERROR: Access is denied. / System.Management.Automation.RemoteException
+09:36:31 B_run=ERROR: The system cannot find the file specified. / System.Management.Automation.RemoteException
+09:36:37 probe_line2=
+09:36:37 done

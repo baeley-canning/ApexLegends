@@ -1,0 +1,7 @@
+playerscan 2026-11-04 15:26:45 needles=1 enc16=False dir=asc window=0x1000000..0x4000000 max_s=60.0
+  n=0 'drivers' -> 7 bytes
+RAMMAP map=5 bad=24 top=0x800000000 ranges=2 total=30 MiB
+
+PAs 0 hits over 0 pages, 30 MiB scanned in 0.2s bad4k=7522 rescued=30 stopped=covered
+COOC 0 pages carry 2+ needles
+VERDICT: NO_HIT needles=1 scanned=30 MiB stopped=covered

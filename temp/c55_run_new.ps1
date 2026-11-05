@@ -5,7 +5,9 @@
 # reported as a failure.  The runner only checks prerequisites and archives --
 # it never touches the device itself.
 # Usage: powershell -File C:\Windows\Temp\p44f_run.ps1 --pid=<n> [--dry[=N]]
-#        [--max-s=N] [--from=0xPA]
+#        [--max-s=N] [--from=0xPA] [--link=0xPA --fl=0xKVA --bl=0xKVA]
+# The decoy trio (--link/--fl/--bl) is per-launch; it travels via DUMP_* env to
+# basehunt so the accept run needs no code edit after a discovery pass.
 $ErrorActionPreference = 'Continue'
 $repo = 'C:\Users\New User\OneDrive\Desktop\cheating'
 $log  = Join-Path $repo 'temp\p44f_run.txt'
@@ -17,7 +19,7 @@ $err  = Join-Path $repo 'temp\p44f_err.txt'
 function W($t) { ('{0}  {1}' -f (Get-Date -f 'HH:mm:ss.fff'), $t) | Out-File -Append -Encoding utf8 $log }
 
 $Pid2 = ''; $lo = ''; $hi = ''; $chunk = ''; $hex = ''; $why = ''
-$dry = ''; $maxs = ''; $from = ''; $tries = ''
+$dry = ''; $maxs = ''; $from = ''; $tries = ''; $lnk = ''; $fl = ''; $bl = ''
 for ($i = 0; $i -lt $args.Count; $i++) {
     $a = [string]$args[$i]
     if     ($a -like '--pid=*')    { $Pid2  = $a.Substring(6) }
@@ -28,6 +30,9 @@ for ($i = 0; $i -lt $args.Count; $i++) {
     elseif ($a -like '--from=*')   { $from  = $a.Substring(7) }
     elseif ($a -like '--dry=*')    { $dry   = $a.Substring(6) }
     elseif ($a -like '--tries=*')  { $tries = $a.Substring(8) }
+    elseif ($a -like '--link=*')   { $lnk   = $a.Substring(7) }
+    elseif ($a -like '--fl=*')     { $fl    = $a.Substring(5) }
+    elseif ($a -like '--bl=*')     { $bl    = $a.Substring(5) }
     elseif ($a -eq '--dry')   { $dry   = '1' }
     elseif ($a -eq '--hex')   { $hex   = '1' }
     elseif ($a -eq '--why')   { $why   = '1' }
@@ -35,7 +40,7 @@ for ($i = 0; $i -lt $args.Count; $i++) {
 if (-not $Pid2) { W 'RESULT: no --pid'; exit 4 }
 if (-not $tries) { $tries = '40' }
 "=== p44f $(Get-Date -f o) ===" | Set-Content -Encoding utf8 $log
-W "ELEVATED start pid_arg=$Pid2 lo=$lo hi=$hi hex=$hex why=$why dry=$dry max_s=$maxs from=$from"
+W "ELEVATED start pid_arg=$Pid2 lo=$lo hi=$hi hex=$hex why=$why dry=$dry max_s=$maxs from=$from link=$lnk fl=$fl bl=$bl"
 ('=== run pid=' + $Pid2 + ' dry=' + $dry + ' from=' + $from) | Out-File -Append -Encoding utf8 $prg
 
 $elev = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -54,6 +59,11 @@ $py  = 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe'
 $src = Join-Path $repo 'ext\basehunt.py'
 $env:DUMP_OUT  = 'p44f_livedump.txt'
 $env:DUMP_PROG = 'p44f_progress.txt'
+$env:DUMP_PID  = $Pid2
+if ($lnk) { $env:DUMP_LINK = $lnk }
+if ($fl)  { $env:DUMP_FL   = $fl }
+if ($bl)  { $env:DUMP_BL   = $bl }
+W ("env DUMP_PID=$($env:DUMP_PID) DUMP_LINK=$($env:DUMP_LINK) DUMP_FL=$($env:DUMP_FL) DUMP_BL=$($env:DUMP_BL)")
 $t0 = Get-Date
 $v = ''
 $attempt = 0

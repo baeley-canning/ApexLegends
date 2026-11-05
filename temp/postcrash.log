@@ -1,0 +1,26 @@
+﻿=== postcrash 2026-11-04T22:19:05.6779932+13:00 ===
+boot=11/04/2026 22:17:23
+now=11/04/2026 22:19:05
+uptime_min=2
+ram_total_gb=31.78
+physmem_smBIOS_gb=31.78
+dimm_sum_gb=32
+power41:
+  11/04/2026 22:17:26 | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  11/04/2026 22:00:39 | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  11/04/2026 21:50:32 | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  11/04/2026 18:00:05 | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  11/04/2026 17:06:37 | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+bugcheck1001:
+  11/04/2026 22:17:34 | The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000124 (0x0000000000000000, 0xffff908b3759f028, 0x00000000fe000000, 0x000000000080113a). A dump was saved in: C:\WINDOWS\Minidump\110426-10765-01.dmp. Report Id: 0267f607-1bb1-40bf-9659-8bbf013183f2.
+  11/04/2026 22:00:46 | The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff80522922e81, 0xfffffe06018b67a0, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110426-10203-01.dmp. Report Id: 159805cb-7ff8-42f1-b00e-e710b9e8f9d1.
+  11/04/2026 21:50:39 | The computer has rebooted from a bugcheck.  The bugcheck was: 0x0000003b (0x00000000c0000005, 0xfffff8035e692e81, 0xfffff180fe5ae7a0, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110426-10546-02.dmp. Report Id: 15ce4a28-519e-4301-b6d4-936f45a76907.
+  11/04/2026 18:00:13 | The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000124 (0x0000000000000000, 0xffffd00a8459f028, 0x00000000bf800000, 0x0000000000200401). A dump was saved in: C:\WINDOWS\Minidump\110426-11531-01.dmp. Report Id: 0f308096-e72f-46b0-aab2-6e80f1b77700.
+  11/04/2026 17:06:44 | The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000124 (0x0000000000000000, 0xffffc10d2759f028, 0x00000000bf800000, 0x0000000000200401). A dump was saved in: C:\WINDOWS\Minidump\110426-10531-01.dmp. Report Id: 854f5d6f-19ff-4f2e-81c7-151e9273e4cd.
+minidumps:
+memory_dmp:
+listener_procs:
+svc:
+game:
+  
+end

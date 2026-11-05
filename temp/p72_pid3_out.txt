@@ -1,0 +1,92 @@
+p72 map  2026-11-04 21:48:28
+pure-read: device open only, no load / DSE / service touch
+pid=12092 alive=True target=0x420b0a000
+target ram=yes (installed=32768 MiB)
+fingerprint empty -> pid front
+PID RAMMAP map=5 bad=24 ranges=1 window=0x100000000..0x800000000
+PID scan: 3935 occurrences fault=442006 43.8 s
+  pid@0x1630e7370 base=0x1630e71a0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x1630e73c0 base=0x1630e71f0 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x1630e7460 base=0x1630e7290 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00\xb4\xc4\x04' dtb=0x1dd6c1df9b406f9
+  pid@0x16be76940 base=0x16be76770 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x16be76990 base=0x16be767c0 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x16be76a30 base=0x16be76860 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00\xb4\xc4\x04' dtb=0x1dd6c1df9b406f9
+  pid@0x176a27210 base=0x176a27040 type=3 name=b'\xec`!\x00\x00\x00\x00\x00\xa4\x93\xd6' dtb=0x1dd6c1df9b2cb9b
+  pid@0x176a27260 base=0x176a27090 type=3 name=b'' dtb=0x1dd6c1df9b406f9
+  pid@0x176a27710 base=0x176a27540 type=3 name=b'\x00\xf6\x0b\x1d\x01\x00\x00\x00\x00\xb0\xcf\x04' dtb=0x1dd6c1dfa26152e
+  pid@0x177f0fa80 base=0x177f0f8b0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x177f0fad0 base=0x177f0f900 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x177f0fb70 base=0x177f0f9a0 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00\xb4\xc4\x04' dtb=0x1dd6c1df9b406f9
+  pid@0x2dc6cb7f0 base=0x2dc6cb620 type=3 name=b'\x03D\x00\x00\x00\x00\x00\x00\x80\xf8\x9c\x07\xb2\x01' dtb=0x4
+  pid@0x3908a5a18 base=0x3908a5848 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x3908a5a68 base=0x3908a5898 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x3908a5b08 base=0x3908a5938 type=3 name=b"Zb\x02\x00\x00\x00\x00\x00\x0e'\x07" dtb=0x1dd6c1df9b406f9
+  pid@0x3a72bf930 base=0x3a72bf760 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x3a72bf980 base=0x3a72bf7b0 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x3a72bf9d0 base=0x3a72bf800 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x3a72bfa20 base=0x3a72bf850 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x3c999f490 base=0x3c999f2c0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x3c999f4e0 base=0x3c999f310 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x3c999f580 base=0x3c999f3b0 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00\xb4\xc4\x04' dtb=0x1dd6c1df9b406f9
+  pid@0x3f30a7410 base=0x3f30a7240 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x3f30a7460 base=0x3f30a7290 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x3f30a7500 base=0x3f30a7330 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00\xb4\xc4\x04' dtb=0x1dd6c1df9b406f9
+  pid@0x3fd2a9400 base=0x3fd2a9230 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x3fd2a9450 base=0x3fd2a9280 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x3fd2a94a0 base=0x3fd2a92d0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x3fd2a94f0 base=0x3fd2a9320 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x47834c890 base=0x47834c6c0 type=3 name=b'\x03D\x00\x00\xff\xff\xff\xff\x00\x0b(\x08\xb2\x01' dtb=0x2f3c
+  pid@0x4c0fa6bc0 base=0x4c0fa69f0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x4c0fa6c10 base=0x4c0fa6a40 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x4c0fa6c60 base=0x4c0fa6a90 type=3 name=b'\xec`!\x00\x00\x00\x00\x00\xa4\x93\xd6' dtb=0x1dd6c1df9b2cb9b
+  pid@0x4c0fa6cb0 base=0x4c0fa6ae0 type=3 name=b'\x00\x00\x00\x00\x00\x00\x00\x00Zb\x02' dtb=0x1dd6c1df9b406f9
+  pid@0x4ca0791f0 base=0x4ca079020 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x4f8079420 base=0x4f8079250 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x4f8079470 base=0x4f80792a0 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x4f80794c0 base=0x4f80792f0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x4f8079510 base=0x4f8079340 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x554c742c8 base=0x554c740f8 type=3 name=b'DD\x00\x00\x00\x00\x00\x00\x80\xd4\xf6\x07\xb2\x01' dtb=0x1
+  pid@0x5ae292cb0 base=0x5ae292ae0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x5ae292d00 base=0x5ae292b30 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x5ae292da0 base=0x5ae292bd0 type=3 name=b'h\x89\t\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x5ae293250 base=0x5ae293080 type=3 name=b'' dtb=0x1dd6c1dfa26152e
+  pid@0x5e7948be8 base=0x5e7948a18 type=3 name=b'\x10\x00\x00\x00\x00\x00\x00\x00\xc0\x1e\x08\x08\xb2\x01' dtb=0x1
+  pid@0x5ecfc49d0 base=0x5ecfc4800 type=3 name=b'DD\x00\x00\x00\x00\x00\x00\xb0\xcb\xfb\x07\xb2\x01' dtb=0x2
+  pid@0x5ecfc4ba8 base=0x5ecfc49d8 type=3 name=b'\x03D\x00\x00\xfe\xff\xff\xff\x00\xa0\xf7\x07\xb2\x01' dtb=0x1
+  pid@0x6c55f44c0 base=0x6c55f42f0 type=3 name=b'\x00F\xa0c\x01\x00\x00\x00\x00@\xc4\n' dtb=0x1dd6c1dfa26152e
+  pid@0x6e8669490 base=0x6e86692c0 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x6e86694e0 base=0x6e8669310 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x6e8669580 base=0x6e86693b0 type=3 name=b'Zb\x02\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x6e8669a30 base=0x6e8669860 type=3 name=b'' dtb=0x1dd6c1dfa26152e
+  pid@0x6edda3260 base=0x6edda3090 type=3 name=b'\xb4\xc4\x04\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x6edda3710 base=0x6edda3540 type=3 name=b'' dtb=0x1dd6c1dfa26152e
+  pid@0x6f44bfd10 base=0x6f44bfb40 type=3 name=b'\xfa\x87(\x00\x00\x00\x00\x00\xee\x97y' dtb=0x1dd6c1df9b2c2f7
+  pid@0x6f44bfd60 base=0x6f44bfb90 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00J1\xd4' dtb=0x1dd6c1df9b2c813
+  pid@0x6f44bfe00 base=0x6f44bfc30 type=3 name=b'\xb4\xc4\x04\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x7a68d98b0 base=0x7a68d96e0 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7a68d9900 base=0x7a68d9730 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7a68d9950 base=0x7a68d9780 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x7a68d99a0 base=0x7a68d97d0 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x7b3c72b00 base=0x7b3c72930 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7b3c72b50 base=0x7b3c72980 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7b3c72ba0 base=0x7b3c729d0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x7b3c72bf0 base=0x7b3c72a20 type=3 name=b'*u\x15\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x7ba9056e0 base=0x7ba905510 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7ba905730 base=0x7ba905560 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7ba905780 base=0x7ba9055b0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x7ba9057d0 base=0x7ba905600 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+  pid@0x7c7703df0 base=0x7c7703c20 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7c7703e40 base=0x7c7703c70 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7ceac1250 base=0x7ceac1080 type=3 name=b'r5apex_dx12.ex' dtb=0x57e88c000
+  pid@0x7ceac1250 base=0x7ceac1080 type=3 name=b'r5apex_dx12.ex' dtb=0x57e88c000 readable=False
+  pid@0x7d11d5710 base=0x7d11d5540 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7d11d5760 base=0x7d11d5590 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7d11d57b0 base=0x7d11d55e0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x7d11d5800 base=0x7d11d5630 type=3 name=b'\xd0\x12\x13\x00\x00\x00\x00\x00h\x89\t' dtb=0x1dd6c1df9b406f9
+  pid@0x7d11d5cb0 base=0x7d11d5ae0 type=3 name=b'' dtb=0x1dd6c1dfa26152e
+  pid@0x7ea6346e0 base=0x7ea634510 type=3 name=b'\x08\xaf/\x00\x00\x00\x00\x00\xaa\x0b\xae' dtb=0x1dd6c1df9b2c2f7
+  pid@0x7ea634730 base=0x7ea634560 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00n.\x12\x01' dtb=0x1dd6c1df9b2c813
+  pid@0x7ea634780 base=0x7ea6345b0 type=3 name=b'F\xc3#\x00\x00\x00\x00\x00|U\x19\x01' dtb=0x1dd6c1df9b2cb9b
+  pid@0x7ea6347d0 base=0x7ea634600 type=3 name=b'8\x9c\x1c\x00\x00\x00\x00\x00\xc2\xeb\x0b' dtb=0x1dd6c1df9b406f9
+elapsed 44.0 s
+VERDICT: NO_BASE pid=12092

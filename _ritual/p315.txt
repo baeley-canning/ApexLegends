@@ -1,0 +1,23 @@
+09:54:47 START
+no window for 'Win11-Test2'
+09:56:19 START
+09:56:27 state=saved
+09:56:27 window up after 3x2s
+click guest 600,600 -> host 1192,775 (client 1024x822 at 592,148)
+09:57:57 START
+09:57:57 window already present
+09:58:00 w01 mean=162
+09:58:04 w02 mean=162
+09:58:07 w03 mean=162
+09:58:07 desktop_up after w3
+click guest 600,600 -> host 1192,775 (client 1024x822 at 592,148)
+10:02:48 START
+10:02:48 window already present
+10:02:52 w01 mean=142
+10:02:55 w02 mean=142
+10:02:58 w03 mean=142
+10:02:58 desktop_up after w3
+click guest 600,600 -> host 1192,775 (client 1024x822 at 592,148)
+10:03:41 reset attempted
+10:03:43 gc_after rc=0 o=AFTERRESET
+10:03:43 END

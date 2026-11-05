@@ -1,0 +1,31 @@
+﻿  `DEVICE = r"\\.\GIOV3"`, and `dumplive.py` talks only to `gio`. apexdrv stays STOPPED at 577 the whole time.
+  The M1 gate is about apexdrv; the *dump* is gdrv3-only (gdrv3 `STATE 4 RUNNING`, `temp\p43_svc.txt`).
+- **Correction 2 - a FAULT is a skip, not a failure.** `name_hits` catches `OSError` per chunk, counts it,
+  advances one chunk and carries on (`dumplive.py`). The 672/12288 faults in `p42h` were skipped chunks; the
+  gate is whether an EPROCESS candidate survives the pid + PE checks, not the fault count.
+- **Correction 3 - dumplive's "NOT elevated" warning was a ctypes bug, not a fact.** `GetCurrentProcess`
+  had no `restype`, so the -1 pseudo-handle was truncated to 32-bit and `OpenProcessToken` failed; the
+  function always returned 0. p41j proves `Start-Process -Verb RunAs` elevation works (`A_rc=0`, `B_pid=12136`).
+  Fixed with explicit `restype`/`argtypes` + call-result gates.
+- **Correction 4 - the blocklist was already 0.** `VulnerableDriverBlocklistEnable` reads `REG_DWORD 0x0`
+  (`temp\p43d_blocklist.txt`) with gdrv3 RUNNING, so DSE 577 never gated the dump. h1a's set-to-0 is
+  idempotent; nothing to change there.
+- **09:41 stream-cache error was post-crash game state, not new hardware:** no WHEA after 09:32:31, paks
+  complete (the 22.4 GB EA patch finished 09:17:24), SMART Healthy. Fix is EA Repair + a clean relaunch.
+- **Hardening, one variable (R5) = the scanned PA set.** `dumplive.py` now intersects the scan with OS-declared
+  usable RAM from `HKLM\HARDWARE\RESOURCEMAP\System Resources\Physical Memory\.Translated` (20-byte descriptors,
+  type 3/7, `MEMORY_LARGE_40` `0x200` length shift, verified byte-for-byte against `_ritual\_ramhex.txt`) and
+  subtracts `_ritual\p38_badpa.txt` (24 ranges, learned by p36/p38). Dry runs: full plan = 5 ranges / 30.74 GiB
+  clamped at `ram_top 0x7f1af1000` -> 27.52 GiB; with a `--lo 0x2000000 --hi 0x100000000` window -> 4 ranges /
+  763 MiB. The old HOLES map (which still walked the 3-4 GiB PCI hole) survives only as a loud fallback.
+  `--print-ranges`/`--ram-top` exist for dry checks; `py_compile` rc=0.
+- **Residual risk, explicitly:** the 00:45 0x124 fired with no scan running, so narrower ranges are mitigation,
+  not a fix. A third bugcheck ends the dump track and makes CPU stability the milestone (BIOS/microcode, XMP off,
+  then RMA track - user's hardware call).
+- Next: EA Repair + clean relaunch (user), verify read-only, gate 10 min stable, then the single `p40w` run;
+  wrap-up = `click_hi` sweep + `push.ps1`. apexdrv/DSE stays deferred to M2. Dump copy script is
+  `temp\dmpcopy2.ps1` (read-only w.r.t. the source dump, local symbol cache only).
+
+
+
+486

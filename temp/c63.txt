@@ -1,0 +1,23 @@
+﻿L16   * type 3 at the object base, pid +0x1D0 in range, printable name +0x338,
+L26 live pid 0x1570 and dump the image.  READ-ONLY, nothing to restore.
+L45 OBJ_PID = 0x1D0
+L52 PID = int(os.environ.get("DUMP_PID", "0x1570"), 0)   # target pid (moves per launch)
+L73     """Neighbour-shaped EPROCESS at page offset `o` -> (pid, fl, bl) or None.
+L81     pid = struct.unpack_from("<I", p, o + OBJ_PID)[0]
+L82     if not (0 < pid <= 0x100000):
+L94     return pid, fl, bl
+L116     pid = struct.unpack_from("<I", page, o + OBJ_PID)[0]
+L118     if pid != PID or not nm.startswith(b"r5apex"):
+L219                 log("shape pa=%#x o=%#x pid=%#x name=%r"
+L259     """VA (a link node) -> (pid, base_pa, fl, bl, name) for an EPROCESS, or None.
+L281         pid = struct.unpack_from("<I", p, o + OBJ_PID)[0]
+L282         if not (0 < pid <= 0x100000):
+L288         return pid, base, fl, bl, p[o + OBJ_NAME:o + OBJ_NAME + 15]
+L293     """Follow one direction; collect (pid, base, name) until HOP_CAP or a repeat."""
+L301         pid, base, fl, bl, nm = h
+L302         out.append((pid, base, nm))
+L303         prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+L352         targets = [x for x in fl + bl if isinstance(x[0], int) and x[0] == PID]
+L353         log("pid %#x hops: %d" % (PID, len(targets)))
+L357         for pid, base, nm in targets:
+L389             return wr(0, "DUMP_OK pid=0x1570 base=%#x dtb=%#x va=%#x sha256=%s"

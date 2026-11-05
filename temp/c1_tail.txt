@@ -1,0 +1,229 @@
+﻿        % (tried, shapes, time.perf_counter() - t0))
+    return None, None, "none"
+
+
+def consider(g, buf, off, b, va, pa):
+    """Judge one mapped neighbour page; return b when the decoy agrees."""
+    p = bytes(buf[off:off + 0x1000])
+    s = shape(p)
+    if not s:
+        return None
+    pid, fl, bl = s
+    log("shape B=%#x pa=%#x pid=%#x name=%r" % (b, pa, pid, p[OBJ_NAME:OBJ_NAME + 15]))
+    if fl != NODE_FL:
+        log("  neighbour flink %#x != decoy %#x" % (fl, NODE_FL))
+    r = decoy_read(g, b, LINK)
+    if not r:
+        log("  reciprocity failed")
+        return None
+    log("  ACCEPT B=%#x decoy flink=%#x blink=%#x" % (b, r[0], r[1]))
+    if r[0] != va:
+        log("  WARN decoy flink %#x != %#x" % (r[0], va))
+    prog("ACCEPT b=%#x" % b)
+    return b
+
+
+def hunt(g, va, ram_top, start=None, budget=0.0):
+    """Try every page-aligned B in the window; first accepted B wins.
+
+    B ascends while PA descends, so ONE 64 KiB read at pa_hi-0xf000 serves the
+    16 candidates ending at pa_hi; the window is consumed back to front to keep
+    B ascending.  A heartbeat keeps the log alive and a ckpt line records the
+    last B tried so --from can resume after a bugcheck.  budget>0 stops early.
+    """
+    page = va & ~0xFFF
+    lo = page - ram_top
+    if lo < 0xFFFFA40000000000:
+        lo = 0xFFFFA40000000000
+    lo = (lo + 0xFFF) & ~0xFFF
+    if start and start > lo:
+        lo = (start + 0xFFF) & ~0xFFF
+        log("resume from B=%#x" % lo)
+    total = (page - lo) // 0x1000
+    log("window B=%#x..%#x  %d candidates" % (lo, page, total))
+    t0 = last = time.perf_counter()
+    tried = 0
+    per = WIN // 0x1000
+    i = 0
+    while i < total:
+        b = lo + i * 0x1000
+        now = time.perf_counter()
+        el = now - t0
+        if budget and el > budget:
+            log("budget %.0fs spent  tried=%d" % (budget, tried))
+            prog("ckpt b=%#x tried=%d budget" % (b, tried))
+            return None
+        if now - last >= 5.0:
+            log("  hb %.0fs tried=%d %.0f pg/s" % (el, tried, tried / el if el else 0))
+            prog("ckpt b=%#x tried=%d %.0fs" % (b, tried, el))
+            last = now
+        j = min(i + per, total)                 # exclusive
+        cnt = j - i
+        base = page - b - (cnt - 1) * 0x1000    # lowest PA in the chunk
+        buf = None
+        if cnt == per and base >= dl.SCAN_LO and g.is_ram(base):
+            try:
+                buf = g.read_phys(base, WIN)
+            except OSError as e:
+                log("  chunk %#x short: %s" % (base, e))
+        if buf is None:                         # last/partial chunk or bad read
+            for k in range(cnt):
+                pa = page - b - k * 0x1000
+                if not g.is_ram(pa):
+                    continue
+                tried += 1
+                try:
+                    p = g.read_phys(pa, 0x1000)
+                except OSError:
+                    continue
+                h = consider(g, p, 0, b + k * 0x1000, va, pa)
+                if h:
+                    log("  tried=%d %.1fs" % (tried, time.perf_counter() - t0))
+                    return h
+        else:
+            for k in range(cnt - 1, -1, -1):    # newest PA first == lowest B
+                pa = base + k * 0x1000
+                if not g.is_ram(pa):
+                    continue
+                tried += 1
+                h = consider(g, buf, k * 0x1000, b + k * 0x1000, va, pa)
+                if h:
+                    log("  tried=%d %.1fs" % (tried, time.perf_counter() - t0))
+                    return h
+        i = j
+    log("no candidate  tried=%d %.1fs" % (tried, time.perf_counter() - t0))
+    prog("ckpt b=%#x exhausted tried=%d" % (page, tried))
+
+
+def hop(g, b, va, seen):
+    """VA -> (pid, base_pa, fl, bl, name) for a list node, or None.
+
+    p44d: the node VA is base+0x258, so the object starts at pa-0x258 -- NOT the
+    -0x1d8 lane the decoy's fake LINK_ENTRY sits on.
+    """
+    base = va - b - OBJ_LINK
+    o = base & 0xFFF
+    if base in seen or not g.is_ram(base) or o > 0xCA0:
+        return None
+    seen.add(base)
+    try:
+        p = g.read_phys(base - o, 0x1000)
+    except OSError:
+        return None
+    if p[o] != 3:
+        return None
+    pid = struct.unpack_from("<I", p, o + OBJ_PID)[0]
+    fl, bl = struct.unpack_from("<QQ", p, o + OBJ_LINK)
+    return pid, base, fl, bl, p[o + OBJ_NAME:o + OBJ_NAME + 15]
+
+
+def walk(g, b, start_va, seen, tag):
+    """Follow one direction; collect (pid, base, name) until HOP_CAP or a repeat."""
+    va = start_va
+    out = []
+    for i in range(HOP_CAP):
+        h = hop(g, b, va, seen)
+        if not h:
+            out.append(("dead", va))
+            break
+        pid, base, fl, bl, nm = h
+        out.append((pid, base, nm))
+        prog("%s hop%d pid=%#x base=%#x name=%r" % (tag, i, pid, base, nm))
+        nxt = fl if tag == "FL" else bl
+        if nxt == start_va:
+            out.append(("ring", nxt))
+            break
+        va = nxt
+    return out
+
+
+def main():
+    sys.argv = ["basehunt"] + sys.argv[1:]
+    dry = "--dry" in sys.argv
+    start = None
+    budget = 0.0
+    for a in sys.argv[1:]:
+        if a.startswith("--from="):
+            start = int(a.split("=", 1)[1], 0)
+        elif a.startswith("--max-s="):
+            budget = float(a.split("=", 1)[1])
+    if not dl.elevation():
+        return wr(3, "NOT_ELEVATED")
+    log("basehunt  %s%s" % (time.strftime("%Y-%m-%d %H:%M:%S"), "  DRY" if dry else ""))
+    try:
+        g = gio.Gio(chunk=dl.SCAN_CHUNK)
+    except OSError as e:
+        log("FATAL: %s" % e)
+        return wr(2, "FATAL no transport")
+    try:
+        ranges, note = dl.usable_ranges(g.ram_top, None, None)
+        log("RAMTOP %#x %s ranges=%d" % (g.ram_top, note, len(ranges)))
+        b = hunt(g, NODE_FL, g.ram_top, start, budget)
+        if b is None:
+            return wr(1, "NO_BASE")
+        if dry:
+            return wr(0, "DRY_ACCEPT b=%#x" % b)
+        seen = set()
+        fl = walk(g, b, NODE_FL, seen, "FL")
+        bl = walk(g, b, NODE_BL, seen, "BL")
+        log("FL %d hops, BL %d hops" % (len(fl), len(bl)))
+        targets = [x for x in fl + bl if isinstance(x[0], int) and x[0] == 0x1570]
+        log("pid 0x1570 hops: %d" % len(targets))
+        import ctypes
+        buf = ctypes.create_string_buffer(0x2000000)
+        st = dl.Stats()
+        for pid, base, nm in targets:
+            try:
+                p = g.read_phys(base, 0x1000)
+            except OSError:
+                log("  base %#x unreadable" % base)
+                continue
+            dtb = struct.unpack_from("<Q", p, 0x28)[0] & dl.MASK
+            log("  target base=%#x dtb=%#x name=%r" % (base, dtb, nm))
+            if not g.is_ram(dtb):
+                log("   dtb outside RAM")
+                continue
+            why = dl.probe_dtb(g, dtb)
+            log("   probe: %s" % why)
+            if "pdpt ram" not in why:
+                log("   dtb does not page")
+                continue
+            mz = dl.find_mz(g, dtb)
+            if not mz:
+                log("   no MZ")
+                continue
+            mva, meta = mz
+            log("   MZ va=%#x size=%#x secs=%d" % (mva, meta["size"], len(meta["secs"])))
+            w = dl.Walk(g, dtb)
+            for name, sva, vsize in meta["secs"]:
+                log("   sec %-8s va=%#x size=%#x" % (name, sva, vsize))
+                dl.dump_range(g, w, buf, mva, sva, min(vsize, 0x2000000), st)
+            log("   read=%#x zero=%#x fail=%#x" % (st.read, st.zero, st.fail))
+            path = os.path.join(ROOT, "_ritual", "p44f_image.bin")
+            open(path, "wb").write(bytes(buf))
+            import hashlib
+            h = hashlib.sha256(bytes(buf)).hexdigest()
+            log("   dump %s sha256=%s" % (path, h))
+            return wr(0, "DUMP_OK pid=0x1570 base=%#x dtb=%#x va=%#x sha256=%s"
+                      % (base, dtb, mva, h))
+        return wr(1, "NO_LIVE_OBJECT fl=%d bl=%d" % (len(fl), len(bl)))
+    finally:
+        g.close()
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+416
+[main fb7e1b1] state: basehunt on gio transport, pre-chunk rewrite baseline (p44f)
+ 2 files changed, 966 insertions(+), 166 deletions(-)
+ create mode 100644 ext/basehunt.py
+fb7e1b1 state: basehunt on gio transport, pre-chunk rewrite baseline (p44f)
+?? ext/chainprobe.py
+?? ext/dtbprobe.py
+?? ext/paprobe.py
+?? ext/paprobe2.py
+?? ext/paprobe3.py
+?? ext/paprobe4.py
+?? ext/pidscan.py
+

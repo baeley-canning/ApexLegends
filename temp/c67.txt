@@ -1,0 +1,23 @@
+py_compile_rc=0
+ M ext/__pycache__/gio.cpython-312.pyc
+?? ext/chainprobe.py
+?? ext/dtbprobe.py
+?? ext/paprobe.py
+?? ext/paprobe2.py
+?? ext/paprobe3.py
+?? ext/paprobe4.py
+?? ext/pidscan.py
+clean_if_empty_above
+e4e8de7 p44f: verdict-derived runner rc, DUMP_OK names the pid actually dumped
+e394b73 p44f: chunked hunt with dead-span skip, measured EPROCESS geometry, resume runner
+59799b6 p44h: chunked resumable hunt (64 KiB windows, per-page fault retry, CKPT/--from, --max-s, --dry) + hop() at +0x258 + self-elevate shims
+@{Id=25564; StartTime=4/11/2026 2:11:44 pm}
+397
+L44
+L52
+L72
+L123
+L141
+L210
+L258
+L274

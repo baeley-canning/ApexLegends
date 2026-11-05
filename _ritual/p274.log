@@ -1,0 +1,8 @@
+08:02:55 start
+08:02:55 pre VMState=running
+08:03:01 bcdedit quoted-brace sent
+08:03:28 locate done
+08:03:42 event query done
+08:03:42 RESULT: state=running shots=3
+08:03:42 VERDICT: read p274_bcd.png (safeboot), p274_loc.png (GA path), p274_ev.png (crash cause)
+08:03:42 done

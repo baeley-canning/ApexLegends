@@ -1,0 +1,7 @@
+﻿now 2026-11-04T15:31:03
+GAME alive pid=24132
+p47: HITS=200 pages=171 cooc=29 scanned=4265 MiB stopped=max_hits (cap too low for full sweep)
+p47 all-noise control -> COOC pages must be our console/JSON buffers, not entities
+variable=triage_lanes source=_ritual/p47_hits.txt cap=8
+enttriage sha256=6F1104C53452639B98E0E8AA9FA69062E7F28207F03E9F24412F5BDEB56D0252
+LAUNCHED pid=24376 at 15:31:03

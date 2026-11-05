@@ -1,0 +1,199 @@
+﻿   1| """basehunt.py -- brute-force the kernel linear-map base B for the decoy flink.
+   2| 
+   3| p44d settled the geometry against real bytes: a decoy sits at page offset 0xC0,
+   4| types 3 at its base, and carries its fake LIST_ENTRY at decoy+0x1d8.  Those two
+   5| values end on lane 0x258, i.e. they point at *real* neighbours whose base is
+   6| page aligned and whose live ActiveProcessLinks entry is at base+0x258.  p44c
+   7| proves the phase matters: with the guessed B, pa = flink - 0x1d8 reads type 255
+   8| and pa = flink - 0x258 is the neighbour.  chainprobe's +0x080 fingerprint and
+   9| basehunt's old -0x1d8 hop both used the wrong lane; both are corrected here.
+  10| 
+  11| The only assumption is a linear map  PA = VA - B  with B random per boot.
+  12| B is constrained: PA must stay below RAM top, so B lies in (VA - ram_top, VA).
+  13| Every page-aligned B in that window is tried; a candidate is accepted only when
+  14| all of these hold on the mapped page:
+  15| 
+  16|   * byte +0x000 == 3, pid +0x1d0 in range, printable ImageFileName +0x338,
+  17|   * a KVA pair on lanes 0x258/0x260,
+  18|   * reciprocal proof: the decoy's own VA under the same B must still read as a
+  19|     live EPROCESS whose +0x1d8/+0x1e0 equal the two pointers.
+  20| 
+  21| RAM is read in 64 KiB windows (one ioctl per 16 pages instead of 16) with a
+  22| heartbeat, a checkpoint line and --from / --max-s resume, because this host
+  23| bugchecks (0x124) when a probe runs long.  Accepted B -> walk the list both ways
+  24| for a live pid 0x1570 and dump the image.  READ-ONLY, nothing to restore.
+  25| """
+  26| import os
+  27| import struct
+  28| import sys
+  29| import time
+  30| 
+  31| HERE = os.path.dirname(os.path.abspath(__file__))
+  32| sys.path.insert(0, HERE)
+  33| import gio  # noqa: E402
+  34| import dumplive as dl  # noqa: E402
+  35| 
+  36| ROOT = os.path.dirname(HERE)
+  37| OUT = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_OUT", "p44f_base.txt"))
+  38| PROG = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_PROG", "p44f_progress.txt"))
+  39| DECOY = [0x2481D60C0, 0x62BC6E190, 0x7DE10FBF0]
+  40| LINK = 0x2481D60C0                      # decoy PA; its page offset is 0xC0
+  41| DECOY_LANE = 0x1D8                      # fake LIST_ENTRY inside the decoy
+  42| OBJ_LINK = 0x258                        # live ActiveProcessLinks entry (p44d)
+  43| OBJ_PID = 0x1D0
+  44| OBJ_NAME = 0x338
+  45| NODE_FL = 0xFFFFA401B25A5258            # decoy flink target, a real neighbour
+  46| NODE_BL = 0xFFFFA401B7EA0258            # decoy blink target
+  47| WIN = 0x10000                           # 64 KiB: one ioctl per 16 pages
+  48| HOP_CAP = 400
+  49| LOG = []
+  50| 
+  51| 
+  52| def log(s):
+  53|     LOG.append(s)
+  54|     print(s)
+  55| 
+  56| 
+  57| def prog(s):
+  58|     try:
+  59|         with open(PROG, "a", encoding="utf-8") as f:
+  60|             f.write("%s  %s\n" % (time.strftime("%H:%M:%S"), s))
+  61|             f.flush()
+  62|             os.fsync(f.fileno())
+  63|     except OSError:
+  64|         pass
+  65| 
+  66| 
+  67| def shape(p):
+  68|     """Real neighbour EPROCESS at page offset 0 -> (pid, fl, bl) or None.
+  69| 
+  70|     p44d: the base is page aligned and the live links are at +0x258, so the
+  71|     object starts at p[0].  The 0x080 phase chainprobe guessed is measured
+  72|     against the decoy itself (offset 0xC0), not against the neighbours.
+  73|     """
+  74|     if p[0] != 3:
+  75|         return None
+  76|     pid = struct.unpack_from("<I", p, OBJ_PID)[0]
+  77|     if not (0 < pid <= 0x100000):
+  78|         return None
+  79|     fl, bl = struct.unpack_from("<QQ", p, OBJ_LINK)
+  80|     if fl >> 48 != 0xFFFF or bl >> 48 != 0xFFFF:
+  81|         return None
+  82|     if (fl & 0xFFF) != OBJ_LINK or (bl & 0xFFF) != OBJ_LINK + 8:
+  83|         return None
+  84|     nm = p[OBJ_NAME:OBJ_NAME + 15]
+  85|     if nm == b"\x00" * 15 or not all(0x20 <= c < 0x7F for c in nm):
+  86|         return None
+  87|     return pid, fl, bl
+  88| 
+  89| 
+  90| def wr(code, verdict):
+  91|     log("VERDICT: %s" % verdict)
+  92|     open(OUT, "w", encoding="utf-8").write("\n".join(LOG) + "\n")
+  93|     return code
+  94| 
+  95| 
+  96| def decoy_read(g, b, pa):
+  97|     """Read the decoy through candidate B and verify reciprocity.
+  98| 
+  99|     The decoy is validated at its *own* phase 0xC0 (p44d), and the two values
+ 100|     it returns are compared against the walk starts p44d recorded.
+ 101|     """
+ 102|     va = b + pa
+ 103|     try:
+ 104|         page = g.read_phys(va & ~0xFFF, 0x1000)
+ 105|     except OSError:
+ 106|         return None
+ 107|     o = va & 0xFFF
+ 108|     if page[o] != 3:
+ 109|         return None
+ 110|     pid = struct.unpack_from("<I", page, o + OBJ_PID)[0]
+ 111|     nm = page[o + OBJ_NAME:o + OBJ_NAME + 15]
+ 112|     if pid != 0x1570 or not nm.startswith(b"r5apex"):
+ 113|         return None
+ 114|     return struct.unpack_from("<QQ", page, o + DECOY_LANE)
+ 115| 
+ 116| 
+ 117| def hunt(g, ranges, va, ram_top, dry=0, start=None, budget=None):
+ 118|     """Try every page-aligned B in the window -> (B, resume_pa, why).
+ 119| 
+ 120|     `why` is ok / dry / budget / none.  WIN bytes per ioctl: 16 candidate pages
+ 121|     for one call, shape() rejects them without any further read, and only a
+ 122|     shape hit pays for the decoy reciprocity.  A faulted window is retried page
+ 123|     by page so one poisoned page cannot cost its 15 neighbours.  Every 64
+ 124|     windows a durable CKPT line names the next PA, so a 0x124 reboot resumes
+ 125|     with start=<pa> instead of from zero.
+ 126|     """
+ 127|     page = va & ~0xFFF
+ 128|     lo = page - ram_top
+ 129|     if lo < 0xFFFFA40000000000:
+ 130|         lo = 0xFFFFA40000000000
+ 131|     lo = (lo + 0xFFF) & ~0xFFF
+ 132|     pa_max = page - lo
+ 133|     log("window B=%#x..%#x  pa_max=%#x  %d pages  dry=%d"
+ 134|         % (lo, page, pa_max, (page - lo) // 0x1000, dry))
+ 135|     plan = [(a, min(b, pa_max)) for a, b in ranges if a < pa_max]
+ 136|     t0 = time.perf_counter()
+ 137|     tried = shapes = wins = 0
+ 138|     for rlo, rhi in plan:
+ 139|         rt = time.perf_counter()
+ 140|         pa = rlo
+ 141|         while pa < rhi:
+ 142|             if start is not None and pa < start:
+ 143|                 pa += WIN
+ 144|                 continue
+ 145|             n = min(WIN, rhi - pa)
+ 146|             wins += 1
+ 147|             if wins % 64 == 0:
+ 148|                 prog("CKPT next=%#x tried=%d shapes=%d %.0fs"
+ 149|                      % (pa + n, tried, shapes, time.perf_counter() - t0))
+ 150|                 if wins % 256 == 0:
+ 151|                     log("  ... pa=%#x tried=%d shapes=%d %.1fs"
+ 152|                         % (pa, tried, shapes, time.perf_counter() - t0))
+ 153|             if budget and time.perf_counter() - t0 > budget:
+ 154|                 prog("BUDGET next=%#x tried=%d shapes=%d" % (pa, tried, shapes))
+ 155|                 log("budget %.1fs, stop at pa=%#x" % (time.perf_counter() - t0, pa))
+ 156|                 return None, pa, "budget"
+ 157|             try:
+ 158|                 buf = g.read_phys(pa, n)
+ 159|             except OSError:
+ 160|                 prog("FAULT pa=%#x n=%#x" % (pa, n))
+ 161|                 buf = None
+ 162|             if buf is None:
+ 163|                 pages = []
+ 164|                 for k in range(0, n, 0x1000):
+ 165|                     try:
+ 166|                         pages.append((pa + k, g.read_phys(pa + k, 0x1000)))
+ 167|                     except OSError:
+ 168|                         prog("BADPAGE pa=%#x" % (pa + k))
+ 169|             else:
+ 170|                 pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]
+ 171|             for ppa, p in pages:
+ 172|                 tried += 1
+ 173|                 s = shape(p)
+ 174|                 if not s:
+ 175|                     continue
+ 176|                 shapes += 1
+ 177|                 b = page - ppa
+ 178|                 log("shape B=%#x pa=%#x pid=%#x name=%r"
+ 179|                     % (b, ppa, s[0], p[OBJ_NAME:OBJ_NAME + 15]))
+ 180|                 r = decoy_read(g, b, LINK)
+ 181|                 if not r:
+ 182|                     log("  reciprocity failed")
+ 183|                 elif r[0] == NODE_FL and r[1] == NODE_BL:
+ 184|                     log("  ACCEPT B=%#x decoy flink=%#x blink=%#x" % (b, r[0], r[1]))
+ 185|                     prog("ACCEPT b=%#x shapes=%d" % (b, shapes))
+ 186|                     log("  tried=%d shapes=%d %.1fs"
+ 187|                         % (tried, shapes, time.perf_counter() - t0))
+ 188|                     return b, None, "ok"
+ 189|                 else:
+ 190|                     log("  WARN decoy pair %#x/%#x != %#x/%#x"
+ 191|                         % (r[0], r[1], NODE_FL, NODE_BL))
+ 192|                     if r[0] != NODE_FL and r[1] != NODE_BL:
+ 193|                         log("  neither half matches, rejected")
+ 194|                 if dry and shapes >= dry:
+ 195|                     log("dry: %d shapes, stopping" % shapes)
+ 196|                     prog("DRY stop at pa=%#x shapes=%d" % (ppa, shapes))
+ 197|                     return None, ppa, "dry"
+ 198|             pa += n
+ 199|         log("range %#x..%#x done %.1fs" % (rlo, rhi, time.perf_counter() - rt))

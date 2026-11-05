@@ -1,0 +1,7 @@
+10:40:04 START
+10:40:04 enum_active rc=33 o=The boot configuration data store could not be opened. Access is denied.
+10:40:04 enum_current rc=33 o=The specified entry type is invalid. Run "bcdedit /?" for command line assistance. The parameter is incorrect.
+10:40:04 vboot_read rc=33 o=FINDSTR: Cannot open identifier
+10:40:05 set_test rc=33 o=The boot configuration data store could not be opened. Access is denied.
+10:40:05 VERDICT: enum_active rc=0 means boot config is readable at medium IL; set_test rc!=0 means writes need elevation
+10:40:05 END

@@ -1,0 +1,11 @@
+PID=12092
+TARGET=0x420b0a000
+BASE=0x7ff600000000
+DTB=0x570000000
+SEC=.data
+SEC_VA=0x1000
+SEC_SIZE=0x2000
+TAKE=0x2000
+FILE=C:\Users\New User\OneDrive\Desktop\cheating\temp\p72_test_data.bin
+SHA=6c5f531aba4b8387084a521bed5018cb4d88c4f750ce6e0c3f2a3f8ef060f6cc
+PID_START=test

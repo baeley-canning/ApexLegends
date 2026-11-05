@@ -1,0 +1,12 @@
+﻿14:10:48.548  attempt 1 running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\basehunt.py" --inplace --pid=11520 --dry=8 --max-s=40
+14:10:52.086  child exit=-1 wall=3.5s total=3.5s
+14:10:52.094  attempt 1 verdict=DRY_OK stopped_after_shapes resume_pa=0x16ea39000
+14:10:52.101  console tail:   ... pa=0x16b680000 tried=369733 shapes=6 3.3s |   ... pa=0x16c680000 tried=373786 shapes=6 3.3s |   ... pa=0x16d680000 tried=377857 shapes=6 3.4s |   ... pa=0x16e680000 tried=381915 shapes=6 3.4s | shape pa=0x16ea38000 o=0x80 pid=0x19ec name=b'python.exe\x00\x00\x00\x00\x00' |   b=0xffffa40043b6d000 (FL) reciprocity failed |   b=0xffffa40049468000 (BL) reciprocity failed | shape pa=0x16ea39000 o=0x80 pid=0x3640 name=b'git.exe\x00\x00\x00\x00\x00\x00\x00\x00' |   b=0xffffa40043b6c000 (FL) reciprocity failed |   b=0xffffa40049467000 (BL) reciprocity failed | dry: 8 shapes, stopping | VERDICT: DRY_OK stopped_after_shapes resume_pa=0x16ea39000
+14:10:52.104  RESULT: verdict=DRY_OK stopped_after_shapes resume_pa=0x16ea39000 attempts=1
+OUTlines=150
+  ... pa=0x16d680000 tried=377857 shapes=6 3.4s
+  ... pa=0x16e680000 tried=381915 shapes=6 3.4s
+shape pa=0x16ea38000 o=0x80 pid=0x19ec name=b'python.exe\x00\x00\x00\x00\x00'
+shape pa=0x16ea39000 o=0x80 pid=0x3640 name=b'git.exe\x00\x00\x00\x00\x00\x00\x00\x00'
+dry: 8 shapes, stopping
+VERDICT: DRY_OK stopped_after_shapes resume_pa=0x16ea39000

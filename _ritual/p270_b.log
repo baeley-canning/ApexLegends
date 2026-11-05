@@ -1,0 +1,62 @@
+21:55:19 start
+21:55:19 type: dir C:\Users\Public\p37 dir C:\Users\vboxuser\AppData\Local\Temp\p37vm ren C:\Users\Public\p37\kdu.exe kdu.exe.bak set F=C:\wr_revert.txt echo p269 driver kill - Win11-Test2 - 2026-11-05 > %F% echo. >> %F% echo KILLED BY RENAME (durable switch): >> %F% echo   C:\Users\Public\p37\run.cmd  ^(task p37tick action, task still enabled^) >> %F%
+21:55:54 shot p270b_1
+21:55:55 PART2 done
+21:56:27 count=28
+21:56:27 type: dir C:\Users\Public\p37
+21:56:32 shot p270b_1
+21:56:32 type: dir C:\Users\vboxuser\AppData\Local\Temp\p37vm
+21:56:40 shot p270b_2
+21:56:40 type: ren C:\Users\Public\p37\kdu.exe kdu.exe.bak
+21:56:47 shot p270b_3
+21:56:47 type: set F=C:\wr_revert.txt
+21:56:52 shot p270b_4
+21:56:52 type: echo p269 driver kill - Win11-Test2 - 2026-11-05 > %F%
+21:57:00 shot p270b_5
+21:57:01 type: echo. >> %F%
+21:57:05 shot p270b_6
+21:57:05 type: echo KILLED BY RENAME (durable switch): >> %F%
+21:57:13 shot p270b_7
+21:57:13 type: echo   C:\Users\Public\p37\run.cmd  ^(task p37tick action; task itself still enabled^) >> %F%
+21:57:25 shot p270b_8
+21:57:25 type: echo   loader is 2-stage: run.cmd -> cur.ps1 re-fetches every payload by hash >> %F%
+21:57:36 shot p270b_9
+21:57:36 type: echo. >> %F%
+21:57:40 shot p270b_10
+21:57:41 type: echo SERVICES SET TO START 0x4 BY US ^(was 0x3^): >> %F%
+21:57:49 shot p270b_11
+21:57:50 type: echo   apexdrv  ImagePath \??\C:\Users\Public\p37\zapexdrv.sys >> %F%
+21:57:59 shot p270b_12
+21:57:59 type: echo   gdrv3    ImagePath \??\C:\Users\vboxuser\AppData\Local\Temp\p37vm\gdrv3.sys >> %F%
+21:58:11 shot p270b_13
+21:58:11 type: echo. >> %F%
+21:58:15 shot p270b_14
+21:58:16 type: echo FILES RENAMED TO ^*.bak in C:\Users\Public\p37 : run.cmd WinRing0x64.sys zapexdrv.sys kdu.exe >> %F%
+21:58:29 shot p270b_15
+21:58:29 type: echo FILES RENAMED TO ^*.bak in C:\Users\vboxuser\AppData\Local\Temp\p37vm : gdrv3.sys >> %F%
+21:58:41 shot p270b_16
+21:58:41 type: echo NOTE: grdev3.sys was NOT present in p37 at kill time. >> %F%
+21:58:50 shot p270b_17
+21:58:51 type: echo. >> %F%
+21:58:55 shot p270b_18
+21:58:55 type: echo RESTORE: rename each ^*.bak back, then set Start back to 3: >> %F%
+21:59:05 shot p270b_19
+21:59:05 type: echo   reg add HKLM\T\ControlSet001\Services\apexdrv /v Start /t REG_DWORD /d 3 /f >> %F%
+21:59:17 shot p270b_20
+21:59:17 type: echo   reg add HKLM\T\ControlSet001\Services\gdrv3 /v Start /t REG_DWORD /d 3 /f >> %F%
+21:59:28 shot p270b_21
+21:59:29 type: echo. >> %F%
+21:59:33 shot p270b_22
+21:59:33 type: echo Unload hive before exit: reg unload HKLM\T >> %F%
+21:59:41 shot p270b_23
+21:59:41 type: type %F%
+21:59:45 shot p270b_24
+21:59:45 type: reg query HKLM\T\ControlSet001\Services\apexdrv
+21:59:53 shot p270b_25
+21:59:53 type: reg query HKLM\T\ControlSet001\Services\gdrv3
+22:00:00 shot p270b_26
+22:00:01 type: dir C:\Users\Public\p37\*.bak
+22:00:06 shot p270b_27
+22:00:07 type: dir C:\Users\vboxuser\AppData\Local\Temp\p37vm\*.bak
+22:00:14 shot p270b_28
+22:00:15 PART2 done

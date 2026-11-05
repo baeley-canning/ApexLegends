@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "session_id": "1793608499807_8pu59",
+  "source": "vscode",
+  "pid": 20544,
+  "started_at": "2026-11-04T01:34:44.053Z",
+  "exit_code": null,
+  "status": "running",
+  "interactive": true,
+  "provider": "openai-compatible",
+  "model": "deepseek-v4-1-flash-1017-uncensored",
+  "cwd": "c:\\Users\\New User\\OneDrive\\Desktop\\cheating",
+  "workspace_root": "c:\\Users\\New User\\OneDrive\\Desktop\\cheating",
+  "enable_tools": true,
+  "enable_spawn": false,
+  "enable_teams": false,
+  "prompt": "Trying to make a copyu of bnuuy, an apex legends cheat. so i can sell it and use it. undetected.",
+  "metadata": {
+    "title": "Trying to make a copyu of bnuuy, an apex legends cheat. so i can sell it and use it. undetected.",
+    "isFavorited": false,
+    "size": 9922,
+    "totalCost": 0,
+    "tokensIn": 13146175,
+    "tokensOut": 720323,
+    "cacheWrites": 0,
+    "cacheReads": 191385792,
+    "modelId": "deepseek-v4-1-flash-1017-uncensored",
+    "legacyTask": false,
+    "sessionHistoryOrigin": {
+      "mode": "user",
+      "version": "4.1.26"
+    },
+    "git": {
+      "url": "https://github.com/baeley-canning/ApexLegends.git",
+      "branch": "main"
+    },
+    "checkpoint": {
+      "latest": {
+        "ref": "46b6ef676007d1cc43337813af2f05fa8ef4a335",
+        "createdAt": 1793756414299,
+        "runCount": 2,
+        "kind": "stash"
+      },
+      "history": [
+        {
+          "ref": "d998187233f58ecc52e0fb8056af2d3069426367",
+          "createdAt": 1793756085468,
+          "runCount": 1,
+          "kind": "stash"
+        },
+        {
+          "ref": "46b6ef676007d1cc43337813af2f05fa8ef4a335",
+          "createdAt": 1793756414299,
+          "runCount": 2,
+          "kind": "stash"
+        }
+      ]
+    },
+    "aggregatedAgentsCost": 0,
+    "usage": {
+      "inputTokens": 739492,
+      "outputTokens": 5359,
+      "cacheReadTokens": 629632,
+      "cacheWriteTokens": 0,
+      "totalCost": 0
+    },
+    "aggregateUsage": {
+      "inputTokens": 739492,
+      "outputTokens": 5359,
+      "cacheReadTokens": 629632,
+      "cacheWriteTokens": 0,
+      "totalCost": 0
+    },
+    "terminal_marker": "failed_external_process_exit",
+    "terminal_marker_at": "2026-11-04T01:50:10.403Z",
+    "terminal_marker_pid": 20544,
+    "terminal_marker_source": "stale_session_reconciler"
+  },
+  "messages_path": "C:\\Users\\New User\\.cline\\data\\sessions\\1793608499807_8pu59\\1793608499807_8pu59.messages.json"
+}

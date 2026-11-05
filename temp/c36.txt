@@ -1,0 +1,54 @@
+﻿python : Sorry: 
+IndentationError: 
+unexpected indent 
+(c33_basehunt.py, 
+line 384)
+At line:1 char:51
++ ... 
+top\cheating'; 
+python -m 
+py_compile temp\c33_
+basehunt.py 2>&1 | 
+Out-F ...
++                   
+ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (Sorr   
+ y: Indentat...t    
+.py, line 384):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+rc=1
+ 180|            if budget and time.perf_counter() - t0 > budget:
+ 181|                prog("BUDGET next=%#x tried=%d shapes=%d" % (pa, tried, shapes))
+ 182|                log("budget %.1fs, stop at pa=%#x" % (time.perf_counter() - t0, pa))
+ 183|                return None, pa, "budget"
+ 184|            try:
+ 185|                buf = g.read_phys(pa, n)
+ 186|            except OSError as e:
+ 187|                prog("FAULT pa=%#x n=%#x %s" % (pa, n, e))
+ 188|                buf = None
+ 189|            pages = []
+ 190|            if buf is None:
+ 191|                for k in range(0, n, 0x1000):
+ 192|                    try:
+ 193|                        pages.append((pa + k, g.read_phys(pa + k, 0x1000)))
+ 194|                    except OSError:
+ 195|                        pass
+ 196|                lost = n // 0x1000 - len(pages)
+ 197|                if lost:
+ 198|                    prog("BADPAGE %#x of %#x dead at %#x"
+ 199|                         % (lost, n // 0x1000, pa))
+ 200|            else:
+ 201|                pages = [(pa + k, buf[k:k + 0x1000]) for k in range(0, n, 0x1000)]
+ 202|            for ppa, p in pages:
+ 203|                tried += 1
+ 204|                if len(p) < 0x400:                  # short/torn page read
+ 205|                    continue

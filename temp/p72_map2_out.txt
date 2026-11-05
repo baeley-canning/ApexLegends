@@ -1,0 +1,11 @@
+p72 map  2026-11-04 20:46:46
+pure-read: device open only, no load / DSE / service touch
+pid=12092 alive=True target=0x420b0a000
+target ram=yes (installed=32768 MiB)
+RAMMAP map=5 bad=24 ranges=5 total=28411 MiB
+scan: 6 hits, 227618/454583 chunks faulted, 610222 pages rescued, 71.6 s
+candidates: 1
+  eprocess=0x7ceac1080 dtb=0x57e88c000 score=14
+  walk dtb=0x57e88c000 fault [Errno 1450] phys read 0x57e88c000+0x1000 failed
+elapsed 71.7 s
+VERDICT: NO_BASE pid=12092

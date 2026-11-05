@@ -1,0 +1,58 @@
+# p53 verdict -- match_names, 2026-11-04 16:33:38..16:35:45, game pid 24132
+# Captured live, game_alive_post=True. Match ended before analysis; bytes on disk are the evidence.
+
+## RESULT
+RESULT: variable=match_names verdict=DUMPED windows=9 ok=9 pages=153 MiB=0.6
+scan=HITS=4460 pages=2013 cooc=881 scanned=27354 MiB stopped=covered sat=0:1200 game_alive_post=True
+
+## PRE-COMMITTED CRITERION (temp\p53_layout.txt)
+ARRAY needs >=3 cross-slot deltas that are exact multiples of 0x280 AND >=4 slots sharing
+name offset + non-zero field offsets, on a dumped page. ARRAY is the only outcome that
+promotes 0x280 into the Phase D spec.
+
+## VERDICT: 0x280 = NOT CONFIRMED. Criterion not met, and not in the way the spec allowed.
+Only one dumped page (0x2c690a000) holds real game records. No dumped page contains an
+FDB magic and no dumped page is the 0x70711d000-family page from p52. 0x280 must not be
+promoted on this evidence.
+
+## WINDOW QUALITY: 3 of 9 pages were junk, 6 were off-target
+- 0x48aedc000 (3 hits) and 0x78bee4000 (4 hits) dumped as 4096/4096 ZERO bytes. Hits read
+  0x120/0x1a0/0x260 and 0x5a0/0x5e0/0x620/0x660 -- spaced 0x80/0xc0, no relation to 0x280.
+  The scan predates the dump by ~118 s, so those PAs were freed and re-zeroed mid-run.
+  This is a staleness effect, not a match.
+- 0x4e32f7000 (4 hits): UTF-16 PowerShell history (`Set-ExecutionPolicy`, `Get-Content ...
+  AI_USAGE_GUIDE.md`). Hits land on single bytes of 2-byte text. Console, not game.
+- 0x5e0d85000 / 0x71b692000 (2 each): pointer-ish `.. 7c 79 00 00` + `e8 a8 de 3f` rows.
+  0x7b37f4000: single hit at 0xa30. None cadenced.
+
+## THE ONE REAL STRUCTURE -- 0x40 pitch, length-prefixed, in dump 0
+page 0x2c690a000, hits at 0xbac->0xba4 and 0xfac->0xfa4, i.e. delta 0x400 = 16 slots of 0x40:
+
+  rec+0x00  88 b5 4c 57 f6 7f 00 00   pointer 0x7ff6574cb588, IDENTICAL in every record
+  rec+0x08  00 *8                     filler
+  rec+0x10  01 00 00 00               flag, constant
+  rec+0x14  01 a0 51 c6 / 01 40 27 c6 per-record dword
+  rec+0x18  f0 01 49 82 / 12 0c 6f 7d 4 bytes, then 4 bytes that run into the value
+  rec+0x20  0c 00 00 00 "Arcticsun186" 00      <- u32 length, then NUL-terminated name
+  rec+0x20  15 00 00 00 "016045689978229849344" 21-digit numeric id, len 0x15 is exact
+
+- lengths are exact (0x0c = len("Arcticsun186"), 0x0f = len("RedSoxNation072")): the u32 is
+  a length, not a hash. That makes a length-prefix test a free discriminator.
+- pointer is in module range (0x7ff6...), so this is live heap, not console text.
+- the two hits are 16 slots apart, so the array has >=16 live slots -- 14 dumped slots between
+  them hold other values. This is the strongest player-enumeration anchor found so far.
+
+## WHAT FAILED, MECHANICALLY
+1. Get-P53Windows sorts spans by address ASCENDING, not by hit count. With 881 cooc pages the
+   12 lowest addresses won the slots. That is why 3 junk pages and 2 console pages were dumped
+   while page 0x2c690a000 (32% printable, real records) was reached only by luck of being low.
+2. scan-to-dump latency was 118 s. dumps 2 and 6 paid for it.
+3. no shape test on a hit, so console echoes and UTF-16 pages ranked equal to records.
+4. n=0 saturated (1200 cap) on the echoed argv, so needle 0 proves nothing on this run.
+
+## FIXES APPLIED BEFORE THE NEXT RUN
+- class.ps1: per-hit LENGTH-PREFIX test -- looks for u32 LE == len(needle) in the 8 bytes
+  before the match, emits `lp=N` per page (console echoes and UTF-16 have no such dword).
+- win.ps1: require lp>=1, rank by (lp desc, hits desc, lo) instead of lo.
+- run.ps1: scan budget 180->60 s, per-needle 1200->400, max-hits 6000->2000 so the dump
+  starts inside the match instead of after it.

@@ -1,0 +1,21 @@
+﻿=== p44f 2026-11-04T15:09:13.2376985+13:00 ===
+15:09:13.242  ELEVATED start pid_arg=17584 lo= hi= hex= why= dry= max_s=40 from= link=0x1b25f4080 fl=0xffffb286ed8f7258 bl=0xffffb286ed62e258
+15:09:13.254  elevated=True
+15:09:13.258  game alive=True dry=
+15:09:13.264  archived previous OUT to C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p44f_livedump.prev.txt
+15:09:13.271  env DUMP_PID=17584 DUMP_LINK=0x1b25f4080 DUMP_FL=0xffffb286ed8f7258 DUMP_BL=0xffffb286ed62e258
+15:09:13.277  attempt 1 running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\basehunt.py" --inplace --pid=17584 --max-s=40
+15:09:13.287  child pid=2392 started 15:09:13.286
+15:09:53.404  child exit=-1 wall=40.1s total=40.1s
+15:09:53.417  attempt 1 verdict=PARTIAL resume_pa=0x544390000
+15:09:53.421  budget spent, resume at 0x544390000
+15:09:55.436  attempt 2 running: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\basehunt.py" --inplace --pid=17584 --max-s=40 --from=0x544390000
+15:09:55.442  child pid=4976 started 15:09:55.442
+15:10:27.057  child exit=-1 wall=73.8s total=73.8s
+15:10:27.059  attempt 2 verdict=NO_BASE
+15:10:27.067  OUT exists=True size=82408
+15:10:27.071  console tail:   b=0xffffb27ef4721000 (FL) reciprocity failed |   b=0xffffb27ef4458000 (BL) reciprocity failed |   ... pa=0x7fa180000 tried=2753227 shapes=74 31.1s |   ... pa=0x7fb180000 tried=2757295 shapes=74 31.1s |   ... pa=0x7fc180000 tried=2761353 shapes=74 31.2s |   ... pa=0x7fd180000 tried=2765347 shapes=74 31.3s |   dead 0x7fe180000..0x7fe380000 skipped (2 probes) |   ... pa=0x7fe380000 tried=2769350 shapes=74 31.4s |   ... pa=0x7ff380000 tried=2773377 shapes=74 31.4s | range 0x140000000..0x800000000 done 31.5s | no candidate  tried=2776517 shapes=74 31.5s | VERDICT: NO_BASE
+15:10:27.074  err tail: 
+15:10:27.076  RESULT: verdict=NO_BASE attempts=2
+15:10:27.082  post game alive=True
+15:10:27.084  --- end ---

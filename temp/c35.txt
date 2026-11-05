@@ -1,0 +1,47 @@
+﻿python : Sorry: 
+IndentationError: 
+unexpected indent 
+(c33_basehunt.py, 
+line 254)
+At line:1 char:51
++ ... 
+top\cheating'; 
+python -m 
+py_compile temp\c33_
+basehunt.py 2>&1 | 
+Out-F ...
++                   
+ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (Sorr   
+ y: Indentat...t    
+.py, line 254):    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+rc=1
+ 238|                    log("dry: %d shapes, stopping" % shapes)
+ 239|                    prog("DRY stop at pa=%#x shapes=%d" % (ppa, shapes))
+ 240|                    return None, ppa, "dry"
+ 241|            pa += n
+ 242|            if len(pages) * 2 < n // 0x1000:        # mostly-dead window -> hop over
+ 243|                here = pa
+ 244|                nxt, probes = skip_dead(g, pa, rhi)
+ 245|                prog("SKIP %#x..%#x %#x probes=%d"
+ 246|                     % (here, nxt, nxt - here, probes))
+ 247|                log("  dead %#x..%#x skipped (%d probes)" % (here, nxt, probes))
+ 248|                pa = nxt
+ 249|        log("range %#x..%#x done %.1fs" % (rlo, rhi, time.perf_counter() - rt))
+ 250|    log("no candidate  tried=%d shapes=%d %.1fs"
+ 251|        % (tried, shapes, time.perf_counter() - t0))
+ 252|    return None, None, "none"
+ 253|
+ 254|                lost = n // 0x1000 - len(pages)
+ 255|def hop(g, b, va, seen):
+ 256|    """VA (a link node) -> (pid, base_pa, fl, bl, name) for an EPROCESS, or None.

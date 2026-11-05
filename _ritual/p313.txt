@@ -1,0 +1,8 @@
+09:27:55 START
+09:27:59 w01 mean=142
+09:28:02 w02 mean=142
+09:28:02 desktop_up at w2
+09:28:16 shell attempted
+09:28:38 reset done
+09:28:40 gc_after rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+09:28:40 END

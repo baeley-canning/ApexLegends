@@ -1,0 +1,6 @@
+dir 'C:\Program Files\Oracle\VirtualBox Guest Additions' | ft -a Name,Length
+sc.exe query vboxguest
+sc.exe query vboxservice
+sc.exe query vboxsf
+reg query hklm\system\currentcontrolset\services\vboxguest
+dir c:\windows\system32\drivers\vbox*.sys | ft -a Name

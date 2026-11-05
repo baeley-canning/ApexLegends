@@ -1,0 +1,35 @@
+﻿=== p40zb 2026-11-04T09:07:10.8652007+13:00 click=True match=^EA ===
+09:07:11  taskbar buttons=25
+09:07:11    btn name="Widgets 16°C Mostly cloudy" id="WidgetsButton" class="ToggleButton" rect=6,1,032,152,48
+09:07:11    btn name="Start" id="StartButton" class="ToggleButton" rect=496,1,032,45,48
+09:07:11    btn name="Search" id="SearchButton" class="ToggleButton" rect=543,1,040,220,32
+09:07:11    btn name="Task View" id="TaskViewButton" class="ToggleButton" rect=765,1,032,44,48
+09:07:11    btn name="Copilot pinned" id="Appid: Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe!Microsoft.MicrosoftOfficeHub" class="Taskbar.TaskListButtonAutomationPeer" rect=809,1,032,44,48
+09:07:11    btn name="File Explorer pinned" id="Appid: Microsoft.Windows.Explorer" class="Taskbar.TaskListButtonAutomationPeer" rect=853,1,032,44,48
+09:07:11    btn name="Microsoft Store pinned" id="Appid: Microsoft.WindowsStore_8wekyb3d8bbwe!App" class="Taskbar.TaskListButtonAutomationPeer" rect=897,1,032,44,48
+09:07:11    btn name="Phone Link pinned" id="Appid: Microsoft.YourPhone_8wekyb3d8bbwe!App" class="Taskbar.TaskListButtonAutomationPeer" rect=941,1,032,44,48
+09:07:11    btn name="Outlook pinned" id="Appid: Microsoft.OutlookforWindows_8wekyb3d8bbwe!Microsoft.OutlookforWindows" class="Taskbar.TaskListButtonAutomationPeer" rect=985,1,032,44,48
+09:07:11    btn name="LGHUB pinned" id="Appid: {6D809377-6AF0-444B-8957-A3773F02200E}\LGHUB\lghub.exe" class="Taskbar.TaskListButtonAutomationPeer" rect=1,029,1,032,44,48
+09:07:11    btn name="Discord pinned" id="Appid: com.squirrel.Discord.Discord" class="Taskbar.TaskListButtonAutomationPeer" rect=1,073,1,032,44,48
+09:07:11    btn name="Steam pinned" id="Appid: Valve.Steam.Client" class="Taskbar.TaskListButtonAutomationPeer" rect=1,117,1,032,44,48
+09:07:11    btn name="Opera Browser pinned" id="Appid: OperaSoftware.OperaWebBrowser.1761882718" class="Taskbar.TaskListButtonAutomationPeer" rect=1,161,1,032,44,48
+09:07:11    btn name="PDFLauncher pinned" id="Appid: 578ab678-3bcf-4410-8b82-675d5d214865" class="Taskbar.TaskListButtonAutomationPeer" rect=1,205,1,032,44,48
+09:07:11    btn name="Terminal - 1 running window" id="Appid: Microsoft.WindowsTerminal_8wekyb3d8bbwe!App" class="Taskbar.TaskListButtonAutomationPeer" rect=1,249,1,032,44,48
+09:07:11    btn name="Visual Studio Code - 1 running window" id="Appid: Microsoft.VisualStudioCode" class="Taskbar.TaskListButtonAutomationPeer" rect=1,293,1,032,44,48
+09:07:11    btn name="TeamViewer - 2 running windows" id="Appid: TeamViewer.TeamViewer" class="Taskbar.TaskListButtonAutomationPeer" rect=1,337,1,032,44,48
+09:07:11    btn name="EA - 1 running window" id="Appid: ElectronicArts.EADesktop" class="Taskbar.TaskListButtonAutomationPeer" rect=1,381,1,032,44,48
+09:07:11    btn name="Show Hidden Icons" id="SystemTrayIcon" class="SystemTray.NormalButton" rect=1,669,1,032,32,48
+09:07:11    btn name="Get the latest features and security improvements with the newest feature update." id="NotifyItemIcon" class="SystemTray.NormalButton" rect=1,701,1,032,32,48
+09:07:11    btn name="Tray Input Indicator English (New Zealand)
+NZ Aotearoa
+
+To switch input methods, press Windows key + space." id="SystemTrayIcon" class="SystemTray.NormalButton" rect=1,733,1,032,44,48
+09:07:11    btn name="Network Lord Artius
+Internet access" id="SystemTrayIcon" class="SystemTray.AccentButton" rect=1,781,1,032,24,48
+09:07:11    btn name="Volume Speakers (Logitech G733 Gaming Headset): 100%" id="SystemTrayIcon" class="SystemTray.OmniButtonRight" rect=1,809,1,032,24,48
+09:07:11    btn name="Clock 9:07 am
+‎4/‎11/‎2026" id="SystemTrayIcon" class="SystemTray.OmniButton" rect=1,841,1,032,63,48
+09:07:11    btn name="Show Desktop" id="SystemTrayIcon" class="SystemTray.ShowDesktopButton" rect=1,908,1,032,12,48
+09:07:11  chosen name="EA - 1 running window" at 1403,1056
+09:07:12  after click: fore=131442 ea_hwnd=655596 visible=True cloaked=0
+09:07:12  RESULT: CLICKED + shot p40zb.png

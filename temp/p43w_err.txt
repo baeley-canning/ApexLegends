@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\New User\OneDrive\Desktop\cheating\ext\pidscan.py", line 231, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\New User\OneDrive\Desktop\cheating\ext\pidscan.py", line 195, in main
+    % (base, off, p[b + 0x347], txt, hit_name, fl, tok, peb, score))
+                  ~^^^^^^^^^^^
+IndexError: index out of range

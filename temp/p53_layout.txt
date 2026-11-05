@@ -1,0 +1,63 @@
+# p53 layout spec -- written offline, BEFORE any live run. Phase A.
+# Source data: _ritual/p52_hits.txt (ctx=64) rows for page 0x70711d000,
+# reproduced verbatim in the block below. Nothing here is re-derived from memory.
+
+## OBSERVED, page 0x70711d000 (the only page with a fixed inline name offset)
+hit pa=0x70711ddc0 'A Succulent Chinese Meal'   (needle 0)
+hit pa=0x70711db40 'ttvDivineBurger'            (needle 3)
+delta between hits = 0x280, both directions consistent, nothing else on the page.
+
+window at 0x70711ddc0 (name at window +0x40):
+  +0x30  00 00 00 00 00 00 00 28 00 00 00 00 00 00 09 12
+  +0x40  'A Succulent Chinese Meal' 00
+window at 0x70711db40 (name at window +0x40):
+  +0x30  00 00 00 00 00 00 00 40 00 00 00 00 00 00 11 0f
+  +0x40  'ttvDivineBurger' 00
+
+Both windows are byte-identical outside the fields below. Zero filler runs
+from name end to the next window's +0x30 (= next name -0x10).
+
+## DERIVED LAYOUT (record-relative, name-relative is stable under any shift)
+  name - 0x40 .. name - 0x0A .. - 0x03   zero filler (0x37 bytes)
+  name - 0x09   u8    0x40 / 0x28         differs per record, NOT the length
+                                         (name is 15 / 24 bytes, +1 NUL)
+  name - 0x02   u16   0x0f11 / 0x1209     differs per record; the '09 12'
+                                         byte pair also appears inline before
+                                         other strings on 0x71ac3b000 and
+                                         0x6f9e5d000 (GameUIButtons, red_02)
+  name + 0x00   char[N] NUL-terminated
+Pitch between the two known records: 0x280. FDB magic 'FDB\0' sits at page +0x0.
+Page 0x70711d000 is 18% printable, i.e. a mostly-zero binary page.
+
+## HYPOTHESES
+H1 (array): 0x280 is the record pitch of a live record array. Predicts, on the
+   full page: >=4 complete 0x280 cadence slots; the name field at a fixed
+   absolute offset in every slot; other non-zero fields at fixed offsets that
+   vary per record (id/handle/flag); a zero slot terminates or separates the run.
+H2 (cached-name DB): entries are allocated per name, pitch is incidental. Predicts:
+   cadence breaks after 2 slots, no repeating offsets other than the name, and
+   neighbours are not player-shaped.
+H3 (coincidence): survives only if the full page shows neither cadence nor
+   neighbour names.
+
+## DECISION CRITERION (fixed before the run, so the dump cannot be read to fit)
+- ARRAY if a full-page window shows >=3 cross-needle/slot deltas that are exact
+  multiples of 0x280 AND >=4 slots share the name offset + non-zero field offsets.
+- CACHE if cadence stops at the 2 known hits and neighbours are not record-like.
+- AMBIGUOUS if the page faults or the run lands after match rollover.
+Only ARRAY promotes 0x280 into the Phase D spec.
+
+## WHAT PHASE B MUST CAPTURE (padump, ±8 pages, whole pages)
+1. page start: 'FDB' magic, any length/count dword, pointer candidates (>0xffff...)
+2. every slot: name offset, u8 at -0x09, u16 at -0x02, first differing field
+3. run terminator and slot count observed vs the count field at page head
+4. whether the run crosses the page boundary (0x70711db40 is 0x1240 from page
+   end; two more slots already leave the page), so ±pages is mandatory
+5. page 0x52fecd000 (3 hits, d=0x30/0xc0) is the control: a tight cluster must
+   come out NOT cadenced at 0x280 or the criterion is worthless.
+
+## KNOWN LIMITS
+- 2 needles only (kern30120, lilhanse-xo): the 2-hit evidence cannot by itself
+  satisfy ">=3 needles"; the full page has to supply the extra slots.
+- Names are ASCII; a UTF-16-only copy of the same array is out of scope.
+- PA only. No VA anchor until Phase C (EPROCESS -> DTB -> page walk).

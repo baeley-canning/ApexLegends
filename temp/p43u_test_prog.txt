@@ -1,0 +1,5 @@
+12:50:11  HIT pa=0x102000 (1)
+12:50:11  HIT pa=0x102ffe (2)
+12:50:11  FAULT pa=0x100000 n=0x8000 bad4k=1 rescued=7
+12:50:11  FAULT pa=0x108000 n=0x8000 bad4k=8 rescued=0
+12:50:11  SCANEND scanned=0 MiB chunks=2 hits=2 fault=9 rescued=7 0.0s

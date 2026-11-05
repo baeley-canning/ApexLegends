@@ -1,0 +1,10 @@
+p72 map  2026-11-04 21:41:27
+pure-read: device open only, no load / DSE / service touch
+pid=12092 alive=True target=0x420b0a000
+target ram=yes (installed=32768 MiB)
+name route empty -> fingerprint front
+FP RAMMAP map=5 bad=24 ranges=1 window=0x7ce000000..0x7d0000000
+FP scan: 1 pages pid=12092 fault=263 0.1 s
+  fp 0x7ceac1000 type=3 dtb=0x57e88c000 readable=False links=0xffffd9819154d298/0xffffd9818d28a258
+elapsed 0.2 s
+VERDICT: NO_BASE pid=12092

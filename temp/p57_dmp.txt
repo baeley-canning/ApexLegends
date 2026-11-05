@@ -1,0 +1,35 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261104182030
+Username: DESKTOP-PPHFJBQ\New User
+RunAs User: DESKTOP-PPHFJBQ\New User
+Configuration Name: 
+Machine: DESKTOP-PPHFJBQ (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -File C:\Users\New User\OneDrive\Desktop\cheating\ext\p57_dmps.ps1
+Process ID: 14412
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+# p57_dmps 2026-11-04 18:20:30
+
+Name                 Length LastWriteTime
+----                 ------ -------------
+110426-11531-01.dmp 9125373 4/11/2026 6:00:09 pm
+110426-10531-01.dmp 9711073 4/11/2026 5:06:41 pm
+110426-10625-01.dmp 9377311 4/11/2026 2:33:58 pm
+
+
+---- 11/04/2026 18:00:13
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000124 (0x0000000000000000, 0xffffd00a8459f028, 0x00000000bf800000, 0x0000000000200401). A dump was saved in: C:\WINDOWS\Minidump\110426-11531-01.dmp. Report Id: 0f308096-e72f-46b0-aab2-6e80f1b77700.
+---- 11/04/2026 17:06:44
+The computer has rebooted from a bugcheck.  The bugcheck was: 0x00000124 (0x0000000000000000, 0xffffc10d2759f028, 0x00000000bf800000, 0x0000000000200401). A dump was saved in: C:\WINDOWS\Minidump\110426-10531-01.dmp. Report Id: 854f5d6f-19ff-4f2e-81c7-151e9273e4cd.
+**********************
+Windows PowerShell transcript end
+End time: 20261104182030
+**********************

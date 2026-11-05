@@ -1,0 +1,5 @@
+len=0x1000 type@80=3 pid@250=0xda8 fl=0xffff9186828cb258 bl=0xffff9186801dd258 name=b'svchost.exe\x00\x00\x00\x00'
+phase0x80: (3496, 18446622605634744920, 18446622605593924184)
+phase0x00: None
+  o=0x80 pair=0x1d8 p[o]=3 lane_want=0x258
+  o=0x0 pair=0x258 p[o]=0 lane_want=0x258

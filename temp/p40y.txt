@@ -1,0 +1,6 @@
+﻿=== p40y start 09:03:23 ===
+09:03:23 t0 cpu=216.7 write_MB=21.5 read_MB=53.9 n=7111 GB=66.37 free_GB=52.4
+09:03:54 t1 cpu=217.5 write_MB=21.6 read_MB=54.0 n=7111 GB=66.37 free_GB=52.4
+09:03:54 delta cpu=0.81s write_MiB=0.1 staged_dn=0
+09:03:54 VERDICT: STALLED (no bytes, no CPU) -- raise the EA window, do not relaunch
+09:03:54 --- end ---

@@ -1,0 +1,10 @@
+   314	[2026-11-03T18:51:04.637Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::allocEvent)	DesktopFSM[authenticated]: enqueue event 'EventRetrieveExternalActions'
+   315	[2026-11-03T18:51:04.642Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchQueued)	DesktopFSM[authenticated]: dequeue event 'EventRetrieveExternalActions'
+   316	[2026-11-03T18:51:04.642Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]: dispatch event 'EventRetrieveExternalActions'
+   317	[2026-11-03T18:51:04.642Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]:     accepted (isContentReady == true)
+   318	[2026-11-03T18:51:04.645Z]	PID: 18732	TID: 21576	INFO    	(eax::apps::DesktopCoordinator::FsmHost::onPoppedExternalActions)	Received external action, type:[None], slug:[], platform:[EA], has-auth:[false]
+   319	[2026-11-03T18:51:04.645Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::allocEvent)	DesktopFSM[authenticated]: enqueue event 'EventExternalActionReceived'
+   320	[2026-11-03T18:51:04.662Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchQueued)	DesktopFSM[authenticated]: dequeue event 'EventExternalActionReceived'
+   321	[2026-11-03T18:51:04.662Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]: dispatch event 'EventExternalActionReceived'
+   322	[2026-11-03T18:51:04.662Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]:     accepted (isUserSwapOrSpaRefreshRequired == true)
+   323	[2026-11-03T18:51:04.662Z]	PID: 18732	TID: 21576	WARN    	(eax::apps::ExternalActionData::squashActions::<lambda_1>::operator ())	Dropping invalid external action

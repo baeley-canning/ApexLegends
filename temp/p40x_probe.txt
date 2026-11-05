@@ -1,0 +1,27 @@
+ead_cpu_s=214.140625 thr=159 ws_MB=423 io_read_MB=0
+--- p40u last 4 ---
+09:00:58 ea_alive=True helpers=[] gv='@11/04/2026 08:18:22' build_m=4/11/2026 8:18:21 am newest='pc_all.starpak_DiP_Staged'@11/04/2026 08:54:47 dump=False
+09:01:14 ea_alive=True helpers=[] gv='@11/04/2026 08:18:22' build_m=4/11/2026 8:18:21 am newest='pc_all.starpak_DiP_Staged'@11/04/2026 08:54:47 dump=False
+09:01:30 ea_alive=True helpers=[] gv='@11/04/2026 08:18:22' build_m=4/11/2026 8:18:21 am newest='pc_all.starpak_DiP_Staged'@11/04/2026 08:54:47 dump=False
+09:01:45 ea_alive=True helpers=[] gv='@11/04/2026 08:18:22' build_m=4/11/2026 8:18:21 am newest='pc_all.starpak_DiP_Staged'@11/04/2026 08:54:47 dump=False
+--- newest logs ---
+C:\ProgramData\EA Desktop\Logs\EALauncher.log @11/04/2026 07:45:40
+C:\ProgramData\EA Desktop\Logs\EALauncherVerbose.log @11/04/2026 07:45:40
+== EALauncher.log
+     3	[2026-11-03T09:17:03.163Z]	PID:  8784	TID: 10576	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T09:23:08.943Z]	PID: 24064	TID: 23692	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T10:35:03.458Z]	PID: 24624	TID: 16172	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T12:21:28.317Z]	PID:  4436	TID: 20168	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:26:25.196Z]	PID: 11400	TID: 22308	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:33:25.670Z]	PID: 17136	TID: 21748	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:43:50.927Z]	PID: 16988	TID: 16992	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:45:40.309Z]	PID: 20512	TID: 17116	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+== EALauncherVerbose.log
+     3	[2026-11-03T09:17:03.163Z]	PID:  8784	TID: 10576	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T09:23:08.943Z]	PID: 24064	TID: 23692	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T10:35:03.458Z]	PID: 24624	TID: 16172	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T12:21:28.317Z]	PID:  4436	TID: 20168	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:26:25.196Z]	PID: 11400	TID: 22308	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:33:25.670Z]	PID: 17136	TID: 21748	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:43:50.927Z]	PID: 16988	TID: 16992	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]
+     3	[2026-11-03T18:45:40.309Z]	PID: 20512	TID: 17116	ERROR   	(eax::apps::configureDirtySdk)	Skipping invalid trust certificate: Failed to decode trust certificate, result[-7]

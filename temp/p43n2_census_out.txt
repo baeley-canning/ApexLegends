@@ -1,0 +1,18 @@
+bytes=628768 lines=13746 nul=0 crlf=13746
+== hit=    count=142
+HEX        count=1
+rel=       count=13041
+walk       count=1
+PRE        count=1
+no PE      count=1
+VERDICT    count=1
+cand       count=241
+ram_top    count=1
+eprocess   count=1
+--- first hit= lines ---
+  557|   == hit=0x18d7db20
+  650|   == hit=0x21b2a0dc
+  743|   == hit=0x141cd6ef8
+  836|   == hit=0x147e7a818
+  929|   == hit=0x17b607a9b
+ 1022|   == hit=0x1a26d80dc

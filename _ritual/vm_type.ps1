@@ -2,7 +2,7 @@ param([string[]]$Seq = @())
 # vm_type.ps1 - type into the VM console via VBoxManage keyboardputscancode.
 # Works on a headless VM with NO guest additions.  -Seq is a list of tokens: any
 # token matching a special name sends that key, any other token is typed literally.
-#   specials: space enter tab esc winr win cad alty alt ctrl shift del
+#   specials: space enter tab esc winr win cad alty alt ctrl shift del back
 $VB  = 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe'
 $VM  = 'Win11-Test2'
 $log = 'C:\Users\New User\OneDrive\Desktop\cheating\_ritual\vm_type.txt'
@@ -78,8 +78,10 @@ $specials = @{
     'space' = @('39', 'b9'); 'enter' = @('1c', '9c'); 'tab' = @('0f', '8f'); 'esc' = @('01', '81')
     'winr'  = @('e0', '5b', 'e0', 'db', '13', '93')
     'win'   = @('e0', '5b', 'e0', 'db')
+    'winx'  = @('e0', '5b', '2d', 'ad', 'e0', 'db')
     'cad'   = @('1d', '38', '53', 'd3', 'b8', '9d')
     'alty'  = @('38', '15', '95', 'b8')
+    'back'  = @('0e', '8e')
     'alt'   = @('38', 'b8'); 'ctrl' = @('1d', '9d'); 'shift' = @('2a', 'aa'); 'del' = @('e0', '53', 'e0', 'd3')
 }
 

@@ -1,0 +1,20 @@
+22:01:06 count=9
+22:01:06 type: dir C:\Users\Public\p37\*.sys
+22:01:12 shot p270c_1
+22:01:12 type: ren C:\Users\Public\p37\gdrv3.sys gdrv3.sys.bak
+22:01:19 shot p270c_2
+22:01:20 type: ren C:\Users\Public\p37\apexdrv_v3.sys apexdrv_v3.sys.bak
+22:01:28 shot p270c_3
+22:01:28 type: ren C:\Users\Public\p37\cur.ps1 cur.ps1.bak
+22:01:35 shot p270c_4
+22:01:36 type: echo ALSO RENAMED ^(stage-2 payloads; not referenced by any service ImagePath^): p37\gdrv3.sys apexdrv_v3.sys cur.ps1 >> C:\wr_revert.txt
+22:01:51 shot p270c_5
+22:01:52 type: type C:\wr_revert.txt
+22:01:57 shot p270c_6
+22:01:57 type: dir C:\Users\Public\p37\*.bak
+22:02:03 shot p270c_7
+22:02:03 type: reg unload HKLM\T
+22:02:07 shot p270c_8
+22:02:08 type: reg query HKLM\T
+22:02:12 shot p270c_9
+22:02:13 PART3 done

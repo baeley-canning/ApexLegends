@@ -1,0 +1,18 @@
+17: # (apexdrv_v3_signed.sys -> zapexdrv.sys, "z" prefix = class-5.4.26 KDU provider id 22/30,
+99: $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apexcheat.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
+184: # kdu.exe + drv64.dll must keep their names: drv64.dll is the KDUEXT provider database (Defender ate it before)
+185: if (-not (Fetch 'kdu.exe' $kdu 400000)) { $missing += 'kdu' }
+242: W 'STEP=kdu-list'
+243: RunExe $kdu @('-listcsv', "$d\kdu_list.csv") 20000 22 | Out-Null
+245: if (Test-Path "$d\kdu_list.csv") { $csv = Get-Content "$d\kdu_list.csv" -EA 0 }
+253: $pref = @(22, 30, 32, 33, 38, 39, 40, 41, 13, 4)
+255: foreach ($p in $pref) { if ($ids -contains $p) { $ordered += $p } }
+259: if ($ordered.Count -lt 1) { W 'RESULT: FAIL provider db empty (drv64.dll beside kdu.exe?)'; Post; Unlock; exit 1 }
+266: W ('--- prv ' + $id)
+267: RunExe $kdu @('-prv', "$id", '-dse', '0') 15000 2 | Out-Null
+282: RunExe $kdu @('-dse', '6') 15000 3 | Out-Null
+287: W ('imagePath=[' + (Get-ItemProperty $key).ImagePath + '] start ok via prv ' + $winner)
+300: RunExe $kdu @('-dse', '6') 15000 3 | Out-Null
+306: RunExe $kdu @('-dse', '6') 15000 3 | Out-Null
+308: RunExe $kdu @('-dse', '0') 15000 3 | Out-Null
+451: RunExe $kdu @('-dse', '6') 15000 4 | Out-Null

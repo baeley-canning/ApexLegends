@@ -1,0 +1,4 @@
+23:15:25 want 26159B sha=2714F9D8C140798F
+23:15:25 SERVE: MATCH
+23:15:25 server: VBoxManage.exe: error: Waiting for guest process failed: The guest execution service is not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown VBoxManage.exe: error: Context: "WaitForArray(ComS...[409]
+23:15:25 END

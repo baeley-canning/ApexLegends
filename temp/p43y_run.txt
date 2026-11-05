@@ -1,0 +1,13 @@
+﻿=== p43y 2026-11-04T12:51:00.1078797+13:00 ===
+12:51:00.114  ELEVATED start pid_arg=5488 lo= hi= hex=1 why=1
+12:51:00.124  elevated=True
+12:51:00.128  game alive=True
+12:51:00.134  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\dumplive.py" --inplace --pid=5488 --hex --why
+12:51:00.144  child pid=21436 started 12:51:00.144
+12:52:14.235  child exit= wall=74.1s
+12:52:14.243  OUT exists=True size=12648
+12:52:14.247  console tail:     0x4f9b33318 rel=+0x010 0000000000000000  |     0x4f9b33320 rel=+0x018 ffff98066dca1040  |     0x4f9b33328 rel=+0x020 ffff98065c340088  |     0x4f9b33330 rel=+0x028 ffff98065fdd2418  |     0x4f9b33338 rel=+0x030 00007fffffff0000  |     0x4f9b33340 rel=+0x038 ffff98066a0ba638  |     0x4f9b33348 rel=+0x040 ffff980669ac65f8  |   0x781bd0000 fault [Errno 1450] phys read 0x781bcf000+0x2000 failed |   eprocess=0x2481d60c0 dtb=0x7ec76d000 score=14 |   walk dtb=0x7ec76d000 fault [Errno 1450] phys read 0x7ec76d000+0x1000 failed | elapsed 74.0 s | VERDICT: NO_MZ
+12:52:14.249  err tail: 
+12:52:14.263  RESULT: verdict=NO_MZ
+12:52:14.270  post game alive=True
+12:52:14.271  --- end ---

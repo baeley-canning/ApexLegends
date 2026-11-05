@@ -1,0 +1,116 @@
+﻿13 11:48:04.109 sha=EC366FD76C8A382E MATCH
+14 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+21 11:48:04.109 sha=EC366FD76C8A382E MATCH
+22 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+23 11:48:04.178 STEP=dse
+37 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+52 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+59 11:48:04.109 sha=EC366FD76C8A382E MATCH
+60 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+61 11:48:04.178 STEP=dse
+75 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+90 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+91 11:48:04.710 STEP=target
+99 11:48:04.109 sha=EC366FD76C8A382E MATCH
+100 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+101 11:48:04.178 STEP=dse
+115 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+130 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+131 11:48:04.710 STEP=target
+133 11:48:06.778 STEP=probe-kernel
+164 11:48:04.109 sha=EC366FD76C8A382E MATCH
+165 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+166 11:48:04.178 STEP=dse
+180 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+195 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+196 11:48:04.710 STEP=target
+198 11:48:06.778 STEP=probe-kernel
+223 11:48:06.904 STEP=inject-kernel
+236 11:48:06.942   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+244 11:48:04.109 sha=EC366FD76C8A382E MATCH
+245 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+246 11:48:04.178 STEP=dse
+260 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+275 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+276 11:48:04.710 STEP=target
+278 11:48:06.778 STEP=probe-kernel
+303 11:48:06.904 STEP=inject-kernel
+316 11:48:06.942   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+318 11:48:09.042 post notepad alive=True inject rc=3
+319 11:48:09.060 post svc: STATE              : 4  RUNNING
+320 11:48:09.070 oracle hits=0
+321 11:48:09.070 VERDICT: UNKNOWN - lastError=2
+328 11:48:04.109 sha=EC366FD76C8A382E MATCH
+329 11:48:04.118 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+330 11:48:04.178 STEP=dse
+344 11:48:04.618 $ kdu.exe -prv 0 -dse 0
+359 11:48:04.703   prv 0 -> DSE off, driver RUNNING
+360 11:48:04.710 STEP=target
+362 11:48:06.778 STEP=probe-kernel
+387 11:48:06.904 STEP=inject-kernel
+400 11:48:06.942   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+402 11:48:09.042 post notepad alive=True inject rc=3
+403 11:48:09.060 post svc: STATE              : 4  RUNNING
+404 11:48:09.070 oracle hits=0
+405 11:48:09.070 VERDICT: UNKNOWN - lastError=2
+406 11:48:09.077 STEP=restore
+426 11:48:09.182 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26300 [*] SecureBoot is enabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [*] WHQL enforcement ENABLED [+] MSFT Driver block list is enabled [+] Hypervisor present: "Oracle VirtualBox" (VBoxVBoxVBox) [+] Environment diagnostics: VirtualBox Guest, VBoxGuest service, Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFD1F2D0000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [!] Unable to load vulnerable driver, NTSTATUS (0xC0000603): Windows cannot verify the digital signature for this file. The signing certificate for this file has been revoked. [+] Return value: 0. Bye-bye!]
+428 11:48:09.213 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0
+441 11:49:04.233 sha=EC366FD76C8A382E MATCH
+442 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+449 11:49:04.233 sha=EC366FD76C8A382E MATCH
+450 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+451 11:49:04.254 STEP=dse
+465 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+480 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+487 11:49:04.233 sha=EC366FD76C8A382E MATCH
+488 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+489 11:49:04.254 STEP=dse
+503 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+518 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+519 11:49:04.763 STEP=target
+527 11:49:04.233 sha=EC366FD76C8A382E MATCH
+528 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+529 11:49:04.254 STEP=dse
+543 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+558 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+559 11:49:04.763 STEP=target
+561 11:49:06.822 STEP=probe-kernel
+598 11:49:04.233 sha=EC366FD76C8A382E MATCH
+599 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+600 11:49:04.254 STEP=dse
+614 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+629 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+630 11:49:04.763 STEP=target
+632 11:49:06.822 STEP=probe-kernel
+663 11:49:06.970 STEP=inject-kernel
+676 11:49:07.007   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+684 11:49:04.233 sha=EC366FD76C8A382E MATCH
+685 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+686 11:49:04.254 STEP=dse
+700 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+715 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+716 11:49:04.763 STEP=target
+718 11:49:06.822 STEP=probe-kernel
+749 11:49:06.970 STEP=inject-kernel
+762 11:49:07.007   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+764 11:49:09.112 post notepad alive=True inject rc=3
+765 11:49:09.129 post svc: STATE              : 4  RUNNING
+766 11:49:09.140 oracle hits=0
+767 11:49:09.142 VERDICT: UNKNOWN - lastError=2
+774 11:49:04.233 sha=EC366FD76C8A382E MATCH
+775 11:49:04.247 launcher sha=0D32186F72B757EC dll=39984C3AD181849C
+776 11:49:04.254 STEP=dse
+790 11:49:04.665 $ kdu.exe -prv 0 -dse 0
+805 11:49:04.756   prv 0 -> DSE off, driver RUNNING
+806 11:49:04.763 STEP=target
+808 11:49:06.822 STEP=probe-kernel
+839 11:49:06.970 STEP=inject-kernel
+852 11:49:07.007   |     reason: StartService(apexdrv) failed (GetLastError=2) - unsigned drivers need test-signing or a BYOVD loader
+854 11:49:09.112 post notepad alive=True inject rc=3
+855 11:49:09.129 post svc: STATE              : 4  RUNNING
+856 11:49:09.140 oracle hits=0
+857 11:49:09.142 VERDICT: UNKNOWN - lastError=2
+858 11:49:09.147 STEP=restore
+882 11:49:09.249 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26300 [*] SecureBoot is enabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [*] WHQL enforcement ENABLED [+] MSFT Driver block list is enabled [+] Hypervisor present: "Oracle VirtualBox" (VBoxVBoxVBox) [+] Environment diagnostics: VirtualBox Guest, VBoxGuest service, Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFD1F2D0000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [!] Unable to load vulnerable driver, NTSTATUS (0xC0000603): Windows cannot verify the digital signature for this file. The signing certificate for this file has been revoked. [+] Return value: 0. Bye-bye!]
+884 11:49:09.274 RESULT: UNKNOWN - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv 0

@@ -1,0 +1,23 @@
+now=09:31:52
+uptime_s=0
+-- console --
+WARNING: --inplace/--elevated but token is NOT elevated; device open will likely fail with err=5
+p40d dumplive  2026-11-04 09:29:22
+pure-read probe: device open only; no load/DSE/service touch
+pid=15232 alive=True
+PRE ram_top=0x800000000 installed=32768 MiB
+window lo=- hi=- chunk=0x10000
+-- progress tail --
+09:29:23  FAULT pa=0x30e00000 n=0x10000
+09:29:23  FAULT pa=0x30f20000 n=0x10000
+09:29:23  FAULT pa=0x30f50000 n=0x10000
+09:29:23  FAULT pa=0x30ff0000 n=0x10000
+09:29:23  FAULT pa=0x311f0000 n=0x10000
+09:29:23  FAULT pa=0x312c0000 n=0x10000
+09:29:23  FAULT pa=0x31400000 n=0x10000
+09:29:23  FAULT pa=0x314b0000 n=0x10000
+09:29:23  FAULT pa=0x31640000 n=0x10000
+09:29:23  FAULT pa=0x316f0000 n=0x10000
+09:29:23  FAULT pa=0x318a0000 n=0x10000
+09:29:23  FAULT pa=0x319f0000 n=0x10000
+-- minidumps --

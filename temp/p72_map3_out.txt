@@ -1,0 +1,14 @@
+p72 map  2026-11-04 20:49:10
+pure-read: device open only, no load / DSE / service touch
+pid=12092 alive=True target=0x420b0a000
+target ram=yes (installed=32768 MiB)
+REUSE dtb=0x57e88c000 (scan skipped, gated by valid_cr3)
+candidates: 1
+  eprocess=0x0 dtb=0x57e88c000 score=99
+  walk dtb=0x57e88c000 fault try=1 [Errno 1450] phys read 0x57e88c000+0x1000 failed
+  walk dtb=0x57e88c000 fault try=2 [Errno 1450] phys read 0x57e88c000+0x1000 failed
+  walk dtb=0x57e88c000 fault try=3 [Errno 1450] phys read 0x57e88c000+0x1000 failed
+  walk dtb=0x57e88c000 fault try=4 [Errno 1450] phys read 0x57e88c000+0x1000 failed
+  walk dtb=0x57e88c000 -> gave up after 4 faulted attempts
+elapsed 2.9 s
+VERDICT: NO_BASE pid=12092

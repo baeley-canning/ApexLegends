@@ -1,0 +1,667 @@
+##### 110526-10890-01 p2=0xFFFFF804522215B8 rip=0xFFFFF804C5AFD660
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.000 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269_dumps\110526-10890-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (4 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Kernel base = 0xfffff804`c5600000 PsLoadedModuleList = 0xfffff804`c64f54c0
+Debug session time: Thu Nov  5 23:30:21.261 2026 (UTC + 13:00)
+System Uptime: 0 days 0:02:03.958
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 0000007e`d0f73018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.............
+For analysis of this file, run !analyze -v
+3: kd> kd: Reading initial command 'ln fffff804522215b8; ln fffff804c5afd660; .echo ===KV; kv; .echo ===AN; !analyze -v; q'
+Browse module
+Set bu breakpoint
+
+Unable to load image \??\C:\Users\Public\p37\WinRing0x64.sys, Win32 error 0n2
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+Browse module
+Set bu breakpoint
+
+(fffff804`c5afd660)   nt!KeBugCheckEx   |  (fffff804`c5afd790)   nt!KeContextToKframes
+Exact matches:
+===KV
+ # Child-SP          RetAddr               : Args to Child                                                           : Call Site
+00 ffffa381`ff4bb258 fffff804`c5cc58e9     : 00000000`0000003b 00000000`c0000005 fffff804`522215b8 ffffa381`ff4bbbb0 : nt!KeBugCheckEx
+01 ffffa381`ff4bb260 fffff804`c5cc493c     : ffffa381`00000001 fffff804`00000001 fffff804`c5686c10 fffff804`c5cc48c0 : nt!KiBugCheckDispatch+0x69
+02 ffffa381`ff4bb3a0 fffff804`c5cbafaf     : ffffa381`ff4bbbb0 ffffa381`ff4bc398 fffff804`c5600000 ffffa381`ff4bb470 : nt!KiSystemServiceHandler+0x7c
+03 ffffa381`ff4bb3e0 fffff804`c58f25e7     : fffff804`c5600000 fffff804`c5600000 fffff804`c5cc4f55 fffff804`c57199d0 : nt!RtlpExecuteHandlerForException+0xf
+04 ffffa381`ff4bb410 fffff804`c59d79c2     : ffffffff`ffffffff ffffa381`ff4bbbb0 ffffa381`ff4bbbb0 00000000`00000000 : nt!RtlDispatchException+0x347
+05 ffffa381`ff4bbb80 fffff804`c5cc5a45     : 00000000`c0000005 00000000`c0000005 000000f1`99a5019c 000000f1`99a4019c : nt!KiDispatchException+0x372
+06 ffffa381`ff4bc260 fffff804`c5cc0b82     : ffffcad3`078ccd28 fffff804`c6435e80 ffffa886`adfad000 fffff804`c5927a2b : nt!KiExceptionDispatch+0x145
+07 ffffa381`ff4bc440 fffff804`522215b8     : 00000000`00000000 00007fff`ffff0000 00000000`00000001 00000000`00000001 : nt!KiPageFault+0x442 (TrapFrame @ ffffa381`ff4bc440)
+08 ffffa381`ff4bc5d0 00000000`00000000     : 00007fff`ffff0000 00000000`00000001 00000000`00000001 00000000`00000001 : WinRing0x64+0x15b8
+===AN
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+SYSTEM_SERVICE_EXCEPTION (3b)
+An exception happened while executing a system service routine.
+Arguments:
+Arg1: 00000000c0000005, Exception code that caused the BugCheck
+Arg2: fffff804522215b8, Address of the instruction which caused the BugCheck
+Arg3: ffffa381ff4bbbb0, Address of the context record for the exception that caused the BugCheck
+Arg4: 0000000000000000, zero.
+
+Debugging Details:
+------------------
+
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 1593
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 1623
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 280
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 1612
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 87
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0x3b
+
+    Key  : Failure.Bucket
+    Value: AV_WinRing0x64!unknown_function
+
+    Key  : Failure.Hash
+    Value: {030b713c-9635-82f8-8b53-0214e8663bd8}
+
+    Key  : Hypervisor.Enlightenments.Value
+    Value: 8480
+
+    Key  : Hypervisor.Enlightenments.ValueHex
+    Value: 2120
+
+    Key  : Hypervisor.Flags.AnyHypervisorPresent
+    Value: 1
+
+    Key  : Hypervisor.Flags.ApicEnlightened
+    Value: 0
+
+    Key  : Hypervisor.Flags.ApicVirtualizationAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.AsyncMemoryHint
+    Value: 0
+
+    Key  : Hypervisor.Flags.CoreSchedulerRequested
+    Value: 0
+
+    Key  : Hypervisor.Flags.CpuManager
+    Value: 0
+
+    Key  : Hypervisor.Flags.DeprecateAutoEoi
+    Value: 0
+
+    Key  : Hypervisor.Flags.DynamicCpuDisabled
+    Value: 1
+
+    Key  : Hypervisor.Flags.Epf
+    Value: 0
+
+    Key  : Hypervisor.Flags.ExtendedProcessorMasks
+    Value: 0
+
+    Key  : Hypervisor.Flags.HardwareMbecAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.MaxBankNumber
+    Value: 0
+
+    Key  : Hypervisor.Flags.MemoryZeroingControl
+    Value: 0
+
+    Key  : Hypervisor.Flags.NoExtendedRangeFlush
+    Value: 1
+
+    Key  : Hypervisor.Flags.NoNonArchCoreSharing
+    Value: 0
+
+    Key  : Hypervisor.Flags.Phase0InitDone
+    Value: 1
+
+    Key  : Hypervisor.Flags.PowerSchedulerQos
+    Value: 0
+
+    Key  : Hypervisor.Flags.RootScheduler
+    Value: 0
+
+    Key  : Hypervisor.Flags.SynicAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.UseQpcBias
+    Value: 0
+
+    Key  : Hypervisor.Flags.Value
+    Value: 536588
+
+    Key  : Hypervisor.Flags.ValueHex
+    Value: 8300c
+
+    Key  : Hypervisor.Flags.VpAssistPage
+    Value: 1
+
+    Key  : Hypervisor.Flags.VsmAvailable
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.AccessStats
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.CrashdumpEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.CreateVirtualProcessor
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.DisableHyperthreading
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.HostTimelineSync
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.HypervisorDebuggingEnabled
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.IsHyperV
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.LivedumpEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.MapDeviceInterrupt
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.MceEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.Nested
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.StartLogicalProcessor
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.Value
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.ValueHex
+    Value: 0
+
+    Key  : WER.OS.Branch
+    Value: ge_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.26100.1
+
+
+BUGCHECK_CODE:  3b
+
+BUGCHECK_P1: c0000005
+
+BUGCHECK_P2: fffff804522215b8
+
+BUGCHECK_P3: ffffa381ff4bbbb0
+
+BUGCHECK_P4: 0
+
+FILE_IN_CAB:  110526-10890-01.dmp
+
+VIRTUAL_MACHINE:  VirtualBox
+
+CONTEXT:  ffffa381ff4bbbb0 -- (.cxr 0xffffa381ff4bbbb0)
+rax=0000000000000000 rbx=0000000000001000 rcx=0000000000001000
+rdx=ffffa886a484b000 rsi=0000000000000000 rdi=ffffa886adfad000
+rip=fffff804522215b8 rsp=ffffa381ff4bc5d0 rbp=0000000000000000
+ r8=0000000000000002  r9=ffffca8000000000 r10=fffff804c6435e80
+r11=0000000000000000 r12=0000000000001000 r13=0000000000000000
+r14=ffffa886ae0c4e10 r15=ffffa886ae0c4e10
+iopl=0         nv up ei pl zr na po nc
+cs=0010  ss=0018  ds=002b  es=002b  fs=0053  gs=002b             efl=00010246
+WinRing0x64+0x15b8:
+fffff804`522215b8 f3a4            rep movs byte ptr [rdi],byte ptr [rsi]
+Resetting default scope
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  kdu.exe
+
+STACK_TEXT:  
+ffffa381`ff4bc5d0 00000000`00000000     : 00007fff`ffff0000 00000000`00000001 00000000`00000001 00000000`00000001 : WinRing0x64+0x15b8
+
+
+SYMBOL_NAME:  WinRing0x64+15b8
+
+MODULE_NAME: WinRing0x64
+
+IMAGE_NAME:  WinRing0x64.sys
+
+STACK_COMMAND:  .cxr 0xffffa381ff4bbbb0 ; kb
+
+BUCKET_ID_FUNC_OFFSET:  15b8
+
+FAILURE_BUCKET_ID:  AV_WinRing0x64!unknown_function
+
+OS_VERSION:  10.0.26100.1
+
+BUILDLAB_STR:  ge_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {030b713c-9635-82f8-8b53-0214e8663bd8}
+
+Followup:     MachineOwner
+---------
+
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Kernel.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Usb4Kd.natvis'
+##### 110526-13843-01 p2=0xFFFFF801149815B8 rip=0xFFFFF80187EFD660
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269_dumps\110526-13843-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (4 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Kernel base = 0xfffff801`87a00000 PsLoadedModuleList = 0xfffff801`888f54c0
+Debug session time: Thu Nov  5 23:17:22.610 2026 (UTC + 13:00)
+System Uptime: 0 days 0:01:51.318
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 000000b1`7406c018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+................
+For analysis of this file, run !analyze -v
+0: kd> kd: Reading initial command 'ln fffff801149815b8; ln fffff80187efd660; .echo ===KV; kv; .echo ===AN; !analyze -v; q'
+Browse module
+Set bu breakpoint
+
+Unable to load image \??\C:\Users\Public\p37\WinRing0x64.sys, Win32 error 0n2
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+Browse module
+Set bu breakpoint
+
+(fffff801`87efd660)   nt!KeBugCheckEx   |  (fffff801`87efd790)   nt!KeContextToKframes
+Exact matches:
+===KV
+ # Child-SP          RetAddr               : Args to Child                                                           : Call Site
+00 ffff808c`e9a83258 fffff801`880c58e9     : 00000000`0000003b 00000000`c0000005 fffff801`149815b8 ffff808c`e9a83bb0 : nt!KeBugCheckEx
+01 ffff808c`e9a83260 fffff801`880c493c     : ffff808c`00000001 fffff801`00000001 fffff801`87a86c10 fffff801`880c48c0 : nt!KiBugCheckDispatch+0x69
+02 ffff808c`e9a833a0 fffff801`880bafaf     : ffff808c`e9a83bb0 ffff808c`e9a84398 fffff801`87a00000 ffff808c`e9a83470 : nt!KiSystemServiceHandler+0x7c
+03 ffff808c`e9a833e0 fffff801`87cf25e7     : fffff801`87a00000 fffff801`87a00000 fffff801`880c4f55 fffff801`87b199d0 : nt!RtlpExecuteHandlerForException+0xf
+04 ffff808c`e9a83410 fffff801`87dd79c2     : ffffffff`ffffffff ffff808c`e9a83bb0 ffff808c`e9a83bb0 00000000`00000000 : nt!RtlDispatchException+0x347
+05 ffff808c`e9a83b80 fffff801`880c5a45     : 00000000`c0000005 00000000`c0000005 0000001b`c9a501a0 0000001b`c9a401a0 : nt!KiDispatchException+0x372
+06 ffff808c`e9a84260 fffff801`880c0b82     : ffffd0e8`80de4d28 fffff801`88835e80 ffff8384`8664d000 fffff801`87d27a2b : nt!KiExceptionDispatch+0x145
+07 ffff808c`e9a84440 fffff801`149815b8     : 00000000`00000000 00007fff`ffff0000 00000000`00000001 00000000`00000001 : nt!KiPageFault+0x442 (TrapFrame @ ffff808c`e9a84440)
+08 ffff808c`e9a845d0 00000000`00000000     : 00007fff`ffff0000 00000000`00000001 00000000`00000001 00000000`00000001 : WinRing0x64+0x15b8
+===AN
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+SYSTEM_SERVICE_EXCEPTION (3b)
+An exception happened while executing a system service routine.
+Arguments:
+Arg1: 00000000c0000005, Exception code that caused the BugCheck
+Arg2: fffff801149815b8, Address of the instruction which caused the BugCheck
+Arg3: ffff808ce9a83bb0, Address of the context record for the exception that caused the BugCheck
+Arg4: 0000000000000000, zero.
+
+Debugging Details:
+------------------
+
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 1593
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 1586
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 249
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 1515
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 86
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0x3b
+
+    Key  : Failure.Bucket
+    Value: AV_WinRing0x64!unknown_function
+
+    Key  : Failure.Hash
+    Value: {030b713c-9635-82f8-8b53-0214e8663bd8}
+
+    Key  : Hypervisor.Enlightenments.Value
+    Value: 8480
+
+    Key  : Hypervisor.Enlightenments.ValueHex
+    Value: 2120
+
+    Key  : Hypervisor.Flags.AnyHypervisorPresent
+    Value: 1
+
+    Key  : Hypervisor.Flags.ApicEnlightened
+    Value: 0
+
+    Key  : Hypervisor.Flags.ApicVirtualizationAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.AsyncMemoryHint
+    Value: 0
+
+    Key  : Hypervisor.Flags.CoreSchedulerRequested
+    Value: 0
+
+    Key  : Hypervisor.Flags.CpuManager
+    Value: 0
+
+    Key  : Hypervisor.Flags.DeprecateAutoEoi
+    Value: 0
+
+    Key  : Hypervisor.Flags.DynamicCpuDisabled
+    Value: 1
+
+    Key  : Hypervisor.Flags.Epf
+    Value: 0
+
+    Key  : Hypervisor.Flags.ExtendedProcessorMasks
+    Value: 0
+
+    Key  : Hypervisor.Flags.HardwareMbecAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.MaxBankNumber
+    Value: 0
+
+    Key  : Hypervisor.Flags.MemoryZeroingControl
+    Value: 0
+
+    Key  : Hypervisor.Flags.NoExtendedRangeFlush
+    Value: 1
+
+    Key  : Hypervisor.Flags.NoNonArchCoreSharing
+    Value: 0
+
+    Key  : Hypervisor.Flags.Phase0InitDone
+    Value: 1
+
+    Key  : Hypervisor.Flags.PowerSchedulerQos
+    Value: 0
+
+    Key  : Hypervisor.Flags.RootScheduler
+    Value: 0
+
+    Key  : Hypervisor.Flags.SynicAvailable
+    Value: 0
+
+    Key  : Hypervisor.Flags.UseQpcBias
+    Value: 0
+
+    Key  : Hypervisor.Flags.Value
+    Value: 536588
+
+    Key  : Hypervisor.Flags.ValueHex
+    Value: 8300c
+
+    Key  : Hypervisor.Flags.VpAssistPage
+    Value: 1
+
+    Key  : Hypervisor.Flags.VsmAvailable
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.AccessStats
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.CrashdumpEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.CreateVirtualProcessor
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.DisableHyperthreading
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.HostTimelineSync
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.HypervisorDebuggingEnabled
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.IsHyperV
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.LivedumpEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.MapDeviceInterrupt
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.MceEnlightened
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.Nested
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.StartLogicalProcessor
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.Value
+    Value: 0
+
+    Key  : Hypervisor.RootFlags.ValueHex
+    Value: 0
+
+    Key  : WER.OS.Branch
+    Value: ge_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.26100.1
+
+
+BUGCHECK_CODE:  3b
+
+BUGCHECK_P1: c0000005
+
+BUGCHECK_P2: fffff801149815b8
+
+BUGCHECK_P3: ffff808ce9a83bb0
+
+BUGCHECK_P4: 0
+
+FILE_IN_CAB:  110526-13843-01.dmp
+
+VIRTUAL_MACHINE:  VirtualBox
+
+CONTEXT:  ffff808ce9a83bb0 -- (.cxr 0xffff808ce9a83bb0)
+rax=0000000000000000 rbx=0000000000001000 rcx=0000000000001000
+rdx=ffff83847f654000 rsi=0000000000000000 rdi=ffff83848664d000
+rip=fffff801149815b8 rsp=ffff808ce9a845d0 rbp=0000000000000000
+ r8=0000000000000002  r9=ffffd08000000000 r10=fffff80188835e80
+r11=0000000000000000 r12=0000000000001000 r13=0000000000000000
+r14=ffff838489f77e10 r15=ffff838489f77e10
+iopl=0         nv up ei pl zr na po nc
+cs=0010  ss=0018  ds=002b  es=002b  fs=0053  gs=002b             efl=00010246
+WinRing0x64+0x15b8:
+fffff801`149815b8 f3a4            rep movs byte ptr [rdi],byte ptr [rsi]
+Resetting default scope
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  kdu.exe
+
+STACK_TEXT:  
+ffff808c`e9a845d0 00000000`00000000     : 00007fff`ffff0000 00000000`00000001 00000000`00000001 00000000`00000001 : WinRing0x64+0x15b8
+
+
+SYMBOL_NAME:  WinRing0x64+15b8
+
+MODULE_NAME: WinRing0x64
+
+IMAGE_NAME:  WinRing0x64.sys
+
+STACK_COMMAND:  .cxr 0xffff808ce9a83bb0 ; kb
+
+BUCKET_ID_FUNC_OFFSET:  15b8
+
+FAILURE_BUCKET_ID:  AV_WinRing0x64!unknown_function
+
+OS_VERSION:  10.0.26100.1
+
+BUILDLAB_STR:  ge_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {030b713c-9635-82f8-8b53-0214e8663bd8}
+
+Followup:     MachineOwner
+---------
+
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Kernel.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Usb4Kd.natvis'
+###DONE

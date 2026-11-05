@@ -1,0 +1,46 @@
+﻿    std::string narrow(static_cast<size_t>(needed), '\0');
+    WideCharToMultiByte(CP_ACP, 0, text.c_str(), -1, &narrow[0], needed, nullptr, nullptr);
+    narrow.resize(static_cast<size_t>(needed - 1));
+    return narrow;
+}
+
+// CreateService/NtLoadDriver expect an NT path ("\??\C:\...\apexdrv.sys").
+std::wstring ToNtPath(const std::wstring& path) {
+    if (path.empty()) return path;
+    if (path.rfind(L"\\??\\", 0) == 0) return path;
+    if (path.rfind(L"\\\\?\\", 0) == 0) return L"\\??\\" + path.substr(4);
+    return L"\\??\\" + path;
+}
+
+bool StartKernelService(SC_HANDLE scm, const std::wstring& ntDriverPath, std::string& error) {
+    SC_HANDLE service = OpenServiceW(scm, APEXDRV_SERVICE_NAME,
+                                     SERVICE_START | SERVICE_QUERY_STATUS |
+                                     SERVICE_STOP | DELETE);
+    if (!service) {
+        service = CreateServiceW(scm, APEXDRV_SERVICE_NAME, APEXDRV_SERVICE_NAME,
+                                 SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP | DELETE,
+                                 SERVICE_KERNEL_DRIVER, SERVICE_DEMAND_START,
+                                 SERVICE_ERROR_NORMAL, ntDriverPath.c_str(),
+                                 nullptr, nullptr, nullptr, nullptr, nullptr);
+        if (!service) {
+            error = "CreateService(apexdrv) failed" + LastErrorText(GetLastError()) +
+                    " - launcher must run elevated";
+            return false;
+        }
+        std::cout << "[+] Kernel service created (driver: "
+                  << NarrowAscii(ntDriverPath) << ")" << std::endl;
+    } else {
+        std::cout << "[*] Kernel service already registered, reusing it" << std::endl;
+    }
+
+    if (!StartServiceW(service, 0, nullptr)) {
+        const DWORD lastError = GetLastError();
+        if (lastError != ERROR_SERVICE_ALREADY_RUNNING) {
+            error = "StartService(apexdrv) failed" + LastErrorText(lastError) +
+                    " - unsigned drivers need test-signing or a BYOVD loader";
+            CloseServiceHandle(service);
+            return false;
+        }
+    }
+
+    CloseServiceHandle(service);

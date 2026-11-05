@@ -1,0 +1,15 @@
+cdp.ps1:79: foreach ($t in @('mouseMoved', 'mousePressed', 'mouseReleased')) {
+click.ps1:12: [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+click.ps1:31: [void][M]::SetCursorPos($X, $Y); Start-Sleep -Milliseconds 120
+click_hi.ps1:1: # click_hi: DPI-aware click.  WinForms makes the process DPI-aware so SetCursorPos
+click_hi.ps1:9: [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+click_hi.ps1:13: [void][MH]::SetCursorPos($X, $Y)
+click_slow.ps1:5: [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+click_slow.ps1:17: [void][MS]::SetCursorPos($nx, $ny)
+ea_post.ps1:2: # render widget. Injected SendInput never lands on this CEF surface, posted messages do.
+ea_post.ps1:33: PostMessage(h, 0x0200, IntPtr.Zero, lp);            // WM_MOUSEMOVE
+ea_signin.ps1:12: [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+ea_signin.ps1:20: SetCursorPos(x, y); System.Threading.Thread.Sleep(120);
+ea_type.ps1:1: # ea_type - focus EA's CEF render widget and type with unicode SendInput (no shift-state guessing).
+ea_type.ps1:25: [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
+ea_type.ps1:32: [DllImport("user32.dll", SetLastError=true)] public static extern uint SendInput(uint n, INPUT[] a, int size);

@@ -1,0 +1,13 @@
+﻿=== p44a 2026-11-04T12:57:30.9293022+13:00 ===
+12:57:30.936  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+12:57:30.950  elevated=True
+12:57:30.956  game alive=True
+12:57:30.962  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\paprobe.py" --inplace --pid=5488
+12:57:30.976  child pid=13996 started 12:57:30.974
+12:57:32.878  child exit= wall=1.9s
+12:57:32.883  OUT exists=False size=0
+12:57:32.884  console tail: ram_top=0x800000000 | object    0x2481d6000 is_ram=True tries=ok head=00100300000000000030010000000000 | dtb       0x7ec76d000 is_ram=True tries=ERR1450,ERR1450,ERR1450,ERR1450,ERR1450,ERR1450 head= | scan-hit  0x7e26c8000 is_ram=True tries=ok head=00266888000000001000000002000000 | low-pool  0x312862000 is_ram=True tries=ok head=00000000000000000f00000000000000 | VERDICT: PAPROBE_DONE
+12:57:32.886  err tail: 
+12:57:32.924  RESULT: verdict=
+12:57:32.929  post game alive=True
+12:57:32.930  --- end ---

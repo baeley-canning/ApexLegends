@@ -1,0 +1,22 @@
+08:01:09 start
+08:01:09 pre VMState=running ga=0
+08:01:09 pre shot size=127463
+08:01:09 RESULT: not on a desktop right now
+08:01:09 VERDICT: ABORT
+08:01:54 start
+08:01:54 pre VMState=running ga=0
+08:01:54 pre shot size=127433
+08:01:54 opening elevated shell: winx -> a -> alt-y
+08:02:02 elevation keyed
+08:02:06 bcdedit done
+08:02:17 register done
+08:02:21 post-arm ga=0
+08:02:24 tick 1 state=running ga=0
+08:02:27 tick 2 state=running ga=0
+08:02:30 tick 3 state=running ga=0
+08:02:33 tick 4 state=running ga=0
+08:02:37 tick 5 state=running ga=0
+08:02:40 tick 6 state=running ga=0
+08:02:40 RESULT: ga_max_at_readback_end=0; elevated=True
+08:02:40 VERDICT: ga>0 => GA armed; screenshots p273_bcd/p273_reg/p273_out are the evidence
+08:02:40 done

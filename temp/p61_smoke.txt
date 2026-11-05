@@ -1,0 +1,11 @@
+# p61_live 2026-11-04 18:51:11 needle=b'kern30120'
+window cold -> full band
+SCAN 0x400000000-0x780000000 hits=1055 faults=647155 secs=33.4
+ANCHOR hits=1055 first=0x4001445e0
+PRE values=51288
+NADE NOW 4
+NADE NOW 3
+NADE NOW 2
+NADE NOW 1
+CANDIDATES 0
+VERDICT no-drop

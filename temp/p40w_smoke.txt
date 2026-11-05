@@ -1,0 +1,8 @@
+﻿WARNING: --inplace/--elevated but token is NOT elevated; device open will likely fail with err=5
+p40d dumplive  2026-11-04 08:58:02
+pure-read probe: device open only; no load/DSE/service touch
+pid=999999 alive=False
+FATAL: [Errno 5] CreateFileW \\.\GIOV3 failed (need elevation)
+elapsed 0.0 s
+VERDICT: FATAL no transport
+RC=1

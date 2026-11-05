@@ -1,0 +1,45 @@
+10:08:57 START
+10:08:57 pre_state=running
+10:08:57 pre_gc rc=0 o=win11-test2\vboxuser
+10:09:03 post_poweroff=poweroff
+10:09:09 post_start=poweroff
+10:09:12 w01 mean=0
+10:09:15 w02 mean=4
+10:09:18 w03 mean=3
+10:09:21 w04 mean=3
+10:09:24 w05 mean=0
+10:09:27 w06 mean=0
+10:09:30 w07 mean=63
+10:09:33 w08 mean=63
+10:09:37 w09 mean=63
+10:09:40 w10 mean=63
+10:09:43 w11 mean=63
+10:09:46 w12 mean=63
+10:09:49 w13 mean=-1
+10:09:52 w14 mean=-1
+10:09:56 w15 mean=-1
+10:09:59 w16 mean=-1
+10:10:02 w17 mean=-1
+10:10:05 w18 mean=-1
+10:10:08 w19 mean=-1
+10:10:11 w20 mean=-1
+10:10:15 w21 mean=-1
+10:10:18 w22 mean=-1
+10:10:21 w23 mean=-1
+10:10:24 w24 mean=-1
+10:10:27 w25 mean=-1
+10:10:30 w26 mean=-1
+10:10:40 w29 mean=-1
+10:10:43 w30 mean=-1
+10:10:46 w31 mean=-1
+10:10:49 w32 mean=-1
+10:10:52 w33 mean=-1
+10:10:56 w34 mean=-1
+10:10:59 w35 mean=-1
+10:11:02 w36 mean=-1
+10:11:05 w37 mean=-1
+10:11:08 w38 mean=-1
+10:11:11 w39 mean=-1
+10:11:15 w40 mean=-1
+10:11:15 VERDICT: no desktop after reboot
+10:11:15 END

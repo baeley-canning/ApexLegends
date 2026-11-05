@@ -1,0 +1,13 @@
+﻿=== p43v 2026-11-04T12:28:16.0460824+13:00 ===
+12:28:16.053  ELEVATED start pid_arg=5488 lo= hi= hex=1 why=1
+12:28:16.066  elevated=True
+12:28:16.072  game alive=True
+12:28:16.077  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\dumplive.py" --inplace --pid=5488 --hex --why
+12:28:16.091  child pid=10472 started 12:28:16.090
+12:31:45.440  child exit= wall=209.3s
+12:31:45.446  OUT exists=True size=26419400
+12:31:45.450  console tail:     0x7ff24ae9e rel=-0x008 0000000000000000  |     0x7ff24aea6 rel=+0x000 0000000000000000 << name |     0x7ff24aeae rel=+0x008 0000000000000000  |     0x7ff24aeb6 rel=+0x010 0000000000000000  |     0x7ff24aebe rel=+0x018 0000000000000000  |     0x7ff24aec6 rel=+0x020 0000000000000000  |     0x7ff24aece rel=+0x028 0000000000000000  |     0x7ff24aed6 rel=+0x030 0000000000000000  |     0x7ff24aede rel=+0x038 0000000000000000  |     0x7ff24aee6 rel=+0x040 0000000000000000  | elapsed 209.1 s | VERDICT: NO_CR3
+12:31:45.452  err tail: 
+12:31:45.636  RESULT: verdict=NO_CR3
+12:31:45.646  post game alive=True
+12:31:45.647  --- end ---

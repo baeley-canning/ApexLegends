@@ -1,0 +1,11 @@
+# p56_diff 2026-11-04 17:51:46 olds=2 pages=2
+old file p56_cap1_a.txt: 3 slot(s) in window
+old file p56_cap1_b.txt: 0 slot(s) in window
+old slots in window: 3
+FAULT page=0x31032483000 refusing non-RAM PA 0x31032483000
+MISS "'ironfist2000'" (slot 0x626ea2c64 gone from window)
+MISS "'76561198060599900'" (slot 0x626ea2ce4 gone from window)
+MISS "'1000158796547'" (slot 0x626ea2d24 gone from window)
+
+slots=3 changed=0 same=0 moved=0 missing=3 lanes=0
+VERDICT: NO_CHANGE

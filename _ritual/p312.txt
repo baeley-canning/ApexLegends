@@ -1,0 +1,7 @@
+09:27:01 START
+09:27:01 u_pw rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWr
+09:27:01 u_blank rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWr
+09:27:01 u_wg rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWr
+09:27:01 admin_pw rc=1 o=VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWr
+09:27:01 ga=3
+09:27:01 END

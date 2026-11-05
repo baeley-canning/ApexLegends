@@ -1,0 +1,17 @@
+﻿now 2026-11-04T12:54:06
+GAME alive pid=5488 ws=5216MB
+const NAME = b"r5apex_dx12.ex\x00"     # 14 chars + NUL: ImageFileName[15] keeps the
+const OFF_NAME = 0x338                          # 26200 ImageFileName (was 0x4c8)
+const PC_OFF = OFF_NAME + len(NAME)             # 0x347 PriorityClass: the 16th byte
+const NAME_DELTAS = range(-0x360, -0x310, 8)    # 0x338 +/- build drift
+const PID_OFFS = range(0x1a0, 0x200, 4)         # 0x1d0 +/- 0x30
+const LINK_OFF = 0x258                          # ActiveProcessLinks flink (score only)
+const MIN_SCORE = 6                             # below this a "shape" is noise
+const HIT_CAP = 20000
+const HEX_WIN = ((0x3a0, 0x40),)   # (back, fwd): type..pc, one window on the base
+rescue-loop=True
+ret4=True
+dumplive sha256=CFAC8FA9CEEBF3807606F468C778F061BAC7679FBC933221C6E9A373A1D60298
+drv(gio)=EhStorTcgDrv:Stopped:False,gdrv3:Running:True
+prev p43z dump=False
+LAUNCHED pid=23484 at 12:54:07

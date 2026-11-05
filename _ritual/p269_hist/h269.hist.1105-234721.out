@@ -1,0 +1,49 @@
+23:32:07.589 alive
+23:32:07.648 secureBoot=1
+23:32:07.811 bench v3 build 26300 up=2min pid=10084
+23:32:08.854 STEP=policy
+23:32:09.154 sessionid=0
+23:32:09.267 applocker xml 31 chars -> h269_applocker.xml
+23:32:09.280   applocker mentions DynamicCodeTrust x0
+23:32:09.280   applocker mentions ManagedInstaller x0
+23:32:09.280   applocker mentions Appx x0
+23:32:09.280   applocker mentions DLL x0
+23:32:09.296   reg HKLM:\SOFTWARE\Policies\Microsoft\Windows\Appx MdmHosts=^(?:[^\/]*)\.MANAGE[^\.]*\.(MICROSOFT\.(COM|US)|MICROSOFTONLINE\.CN)$
+23:32:09.305   reg HKLM:\SOFTWARE\Policies\Microsoft\Windows\Appx\AppxAllUserStore absent
+23:32:10.142 sha=CCD6DFD6C1639229 MATCH
+23:32:10.153 dll bytes identical shadow-vs-z = True (867C84B8F2EC449C)
+23:32:10.160 STEP=trust
+23:32:10.195 sig before=Valid
+23:32:10.710 imported Root
+23:32:10.715 imported TrustedPublisher
+23:32:10.721 sig after=Valid
+23:32:10.733 sig dll=NotSigned (informational: unsigned is expected, DSE=0 covers user mode)
+23:32:10.736 STEP=local-load
+23:32:10.766   loadtest p37/apexcheat h=0x7FFB8D560000 err=0 (The operation completed successfully)
+23:32:10.789   loadtest p37/zapexcheat h=0x7FFB8D560000 err=0 (The operation completed successfully)
+23:32:10.808   loadtest Public/apexcheat h=0x7FFB8D560000 err=0 (The operation completed successfully)
+23:32:10.829   loadtest Public/zapexcheat h=0x7FFB8D560000 err=0 (The operation completed successfully)
+23:32:10.836 local-load p37/norm=True p37/z=True pub/norm=True pub/z=True
+23:32:10.858 STEP=kdu-list
+23:32:10.902 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+23:32:11.767   exit=1
+23:32:11.773   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+23:32:11.773   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+23:32:11.773   | [#] Supported x64 OS : Windows 7 and above
+23:32:11.775   | [*] CPU vendor string: GenuineIntel
+23:32:11.775   | [*] Windows version: 10.0 build 26300
+23:32:11.777   | [*] SecureBoot is enabled on this machine
+23:32:11.777   | [*] Virtualization-based security: Not configured
+23:32:11.780   | [*] Hypervisor enforced Code Integrity running: Not configured
+23:32:11.781   | [*] WHQL enforcement ENABLED
+23:32:11.781   | [+] MSFT Driver block list is enabled
+23:32:11.781   | [+] Drivers database "drv64.dll" loaded at 0x00007FFB890C0000
+23:32:11.784   | [+] Database KDUEXT version is OK
+23:32:11.784   | [+] CSV file C:\Users\Public\p37\kdu_list.csv generated
+23:32:11.786   | [+] Return value: 1. Bye-bye!
+23:32:11.797 list rows=69
+23:32:11.930   csv| ProviderId,ResourceId,DriverName,DeviceName,Description,AdvisoryId,SignerName,SourceBase,MinNtBuild,MaxNtBuild,Flags,ShellcodeMask,ImageSize,FileSHA1,AuthenticodeSHA1,PageHashSHA1,PageHashSHA256
+23:32:11.930   csv| 0,103,"NalDrv","Nal","Intel NAL driver","CVE-2015-2291","Intel Corporation","None",7601,ANY,0x00000100,0x00000007,34568,"D04E5DB5B6C848A29732BFD52029001F23C3DA75","2CBFE4AD0E1231FF3E19C19CA9311D952CE170B7","55B90A6E4323FC1D7B71B23F81FC758F45740E02","FB14DC1657C0EDD18FA747005EB7125DBBD83595095D67906BB0B4D57222D4C1"
+23:32:11.930   csv| 1,105,"RTCore64","RTCore64","MSI RTCore64 driver","CVE-2019-16098","MICRO-STAR INTERNATIONAL CO., LTD.","None",7601,ANY,0x00000000,0x00000007,14024,"F6F11AD2CD2B0CF95ED42324876BEE1D83E01775","4A68C2D7A4C471E062A32C83A36EEDB45A619683","84152FA241C3808F8C7752964589C957E440403F","A807532037A3549AE3E046F183D782BCB78B6193163EA448098140563CF857CB"
+23:32:11.932   csv| 2,106,"Gdrv","GIO","Gigabyte GDRV driver","CVE-2018-19320","Giga-Byte Technology","MapMem",7601,ANY,0x00000020,0x00000007,26192,"FE10018AF723986DB50701C8532DF5ED98B17C39","0F5034FCF5B34BE22A72D2ECC29E348E93B6F00F","DC02DA48DF2F9B558453847399A8DE47C5AD56CC","95406C37FDE1B08524FAB782200C8BECAEC98A40B020F41C5BA13032FE9522FA"
+23:32:12.012 ids db=68 try=40 [22,30,32,33,38,39,40,41,13,4,1,2,3,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,23,24,25,26,27,28,29,31,34,35,36]

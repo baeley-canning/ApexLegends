@@ -1,0 +1,8 @@
+09:12:25 START
+09:12:25 ga=3
+09:12:55 warm1 rc=1 o=VBoxManage.exe: error: Error starting guest session (current status is: starting)
+09:13:30 warm2 rc=1 o=VBoxManage.exe: error: Error starting guest session (current status is: starting)
+09:14:05 warm3 rc=1 o=VBoxManage.exe: error: Error starting guest session (current status is: starting)
+09:14:10 warm_ok=False
+09:14:10 VERDICT: guestcontrol still cannot open a session - fall back to the screenshot route
+09:14:10 END

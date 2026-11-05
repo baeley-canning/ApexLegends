@@ -1,0 +1,7 @@
+﻿now 2026-11-04T15:27:39
+GAME alive pid=24132 ws=8072MB
+drv=EhStorTcgDrv:Stopped:False,gdrv3:Running:True
+p45 result: pipeline ran, window 0x1000000..0x4000000 dead (bad4k=7522/7680) -> needs populated window
+variable=needle_value needle=r5apex dir=desc max_s=30 max_hits=4
+playerscan sha256=E6476263A284C8A9BB864C5A8776A9F26B434E16B2E286105130E25A678228FC
+LAUNCHED pid=18280 at 15:27:40

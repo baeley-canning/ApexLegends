@@ -1,0 +1,12 @@
+p270_prep.ps1 parse_errors=1
+  : 
+h270_cur.ps1 parse_errors=1
+  : 
+p270_gc.ps1 parse_errors=1
+  : 
+p270_prep.ps1 parse_errors=0
+h270_cur.ps1 parse_errors=0
+p270_gc.ps1 parse_errors=0
+boot parse_errors=0
+ga parse_errors=0
+watch parse_errors=0

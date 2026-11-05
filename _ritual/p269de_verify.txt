@@ -1,0 +1,40 @@
+h269_cur.ps1 parse_errors=0 len=26663
+h270_cur.ps1 parse_errors=0 len=27648
+--- diff (only the intended lines) ---
+=> # h270_cur.ps1 - p270. ONE VARIABLE vs h269: provider order (22 demoted from rung 1).
+=> # p269 never got a verdict because every tick armed a driver that bugchecks: five 0x3B dumps,
+=> # byte-identical bucket, one call site - WinRing0x64.sys (prv 22) +0x15b8, "rep movsb" with
+=> # rsi=NULL, cr2=0. MmMapIoSpace(0x2000) returns NULL (guest is out of the low pages it can map)
+=> # and the driver copies 0x1000 bytes from NULL without a guard; fault lands in ntoskrnl, which is
+=> # why the first stack walk blamed nt. prv 22 stays in the list LAST - it usually still lands the
+=> # DSE flip before the box dies - but no tick starts with it any more.
+=> # The single-run lock, ladder mechanics, dse-cycle, payload bytes, oracle and cleanup text are
+=> # byte-identical to h269.
+=> # --- h269 header follows, still true ---
+=> #
+=> $tag  = 'h270'
+=> # 22 = WinRing0x64.sys is broken on this build (see header: NULL deref at +0x15b8) - it is
+=> # kept because it still flips DSE before the 0x3B lands, but demoted so a tick can finish
+=> # on a surviving provider instead of opening with a bugcheck.
+=> $pref = @(30, 32, 33, 38, 39, 40, 41, 13, 4, 22)
+<= # h269_cur.ps1 - p269. ONE VARIABLE vs h268: single-run enforcement.
+<= $tag  = 'h269'
+<= $pref = @(22, 30, 32, 33, 38, 39, 40, 41, 13, 4)
+--- h269 refs left in h270 ---
+1: # h270_cur.ps1 - p270. ONE VARIABLE vs h269: provider order (22 demoted from rung 1).
+9: # byte-identical to h269.
+11: # --- h269 header follows, still true ---
+12: # h268's ladder PASSES on every tick (rc=0, STATE 4 RUNNING, imagePath recorded) but the
+16: # hard 0x3B (SYSTEM_SERVICE_EXCEPTION, c0000005) ~minutes into every cycle with h268.out
+23: # Ladder, dse-cycle, payload bytes, oracle and cleanup text are byte-identical to h268.
+25: # --- h268 header follows, still true ---
+26: # h268_cur.ps1 - p268. ONE VARIABLE vs h267: the driver image name/signature
+57: # --- single-run gate (the h269 variable) -----------------------------------------
+471: W ('  ladder/winner/dse-cycle unchanged from h268: same image, same rungs; winner=' + $winner)
+--- functional lines ---
+46: $tag  = 'h270'
+266: $pref = @(30, 32, 33, 38, 39, 40, 41, 13, 4, 22)
+TAG_SET: h270 OK
+PREF: 30, 32, 33, 38, 39, 40, 41, 13, 4, 22
+PREF_22_LAST: YES
+done

@@ -1,0 +1,19 @@
+﻿[main e394b73] p44f: chunked hunt with dead-span skip, measured EPROCESS geometry, resume runner
+ 9 files changed, 577 insertions(+), 109 deletions(-)
+ create mode 100644 _ritual/p44f_findings.txt
+ create mode 100644 temp/c10_ranges.py
+ create mode 100644 temp/c11_smoke.py
+ create mode 100644 temp/c29_layout.py
+ create mode 100644 temp/c45_unit.py
+ create mode 100644 temp/c49_decoy.py
+ create mode 100644 temp/c55_run_new.ps1
+e394b73 p44f: chunked hunt with dead-span skip, measured EPROCESS geometry, resume runner
+59799b6 p44h: chunked resumable hunt (64 KiB windows, per-page fault retry, CKPT/--from, --max-s, --dry) + hop() at +0x258 + self-elevate shims
+ M ext/__pycache__/gio.cpython-312.pyc
+?? ext/chainprobe.py
+?? ext/dtbprobe.py
+?? ext/paprobe.py
+?? ext/paprobe2.py
+?? ext/paprobe3.py
+?? ext/paprobe4.py
+?? ext/pidscan.py

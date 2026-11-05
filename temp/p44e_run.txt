@@ -1,0 +1,13 @@
+﻿=== p44e 2026-11-04T13:11:38.1083211+13:00 ===
+13:11:38.116  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+13:11:38.129  elevated=True
+13:11:38.133  game alive=True
+13:11:38.139  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\chainprobe.py" --inplace --pid=5488
+13:11:38.151  child pid=15012 started 13:11:38.150
+13:12:46.989  child exit= wall=68.8s
+13:12:46.995  OUT exists=True size=117
+13:12:46.997  console tail: chainprobe  2026-11-04 13:11:38 | RAMMAP map=5 bad=24 ranges=5 | fingerprint pages: 0  68.7s | VERDICT: NO_FINGERPRINT
+13:12:47.000  err tail: 
+13:12:47.010  RESULT: verdict=NO_FINGERPRINT
+13:12:47.017  post game alive=True
+13:12:47.018  --- end ---

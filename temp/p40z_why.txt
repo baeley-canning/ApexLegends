@@ -1,0 +1,21 @@
+﻿=== p40z 2026-11-04T09:04:45.8290931+13:00 ===
+09:04:45  --- files touched in last 20 min (EA roots) ---
+09:04:45  root C:\Users\New User\AppData\Local\EADesktop  hits=0
+09:04:47  root C:\Users\New User\AppData\Local\Temp  hits=13
+09:04:47    09:04:45  0  C:\Users\New User\AppData\Local\Temp\4c1641c6-ed8e-4b27-a0a1-701fb1a172ec.tmp
+09:04:47    09:04:42  0  C:\Users\New User\AppData\Local\Temp\941007d0-461a-4bb6-9b56-137db2d6b5e9.tmp
+09:04:47    09:04:41  0  C:\Users\New User\AppData\Local\Temp\31f98f37-34f0-4a72-a69e-bfe903d8a05e.tmp
+09:04:47    09:04:39  0  C:\Users\New User\AppData\Local\Temp\1bcf4b5e-d851-4184-b8b7-518fb6737ec4.tmp
+09:04:47    09:04:39  0  C:\Users\New User\AppData\Local\Temp\8a414b89-28b8-4d62-b515-c0e49547baff.tmp
+09:04:47    09:04:39  0  C:\Users\New User\AppData\Local\Temp\3f5639da-115d-4334-9a83-ed9a4cd44f14.tmp
+09:04:47  root C:\ProgramData\EA Desktop  hits=1
+09:04:47    08:54:47  208193  C:\ProgramData\EA Desktop\InstallData\Apex\base-Origin.SFT.50.0000848\localKvpStreamPatchmap.eacrc
+09:04:47  root C:\ProgramData\Origin  hits=0
+09:05:02  root C:\Users\New User\AppData\Roaming\EA Desktop  hits=0
+09:05:02  --- last-written staged file vs installed twin ---
+09:05:02  staged=pc_all.starpak_DiP_Staged size=7355424968 @08:54:47
+09:05:02  twin=C:\Program Files\EA Games\Apex\paks\Win64\pc_all.starpak size=0
+09:05:02  delta_bytes=7355424968 pct=735542496800
+09:05:02  VERDICT: staged megapak OVERSIZE (already had bytes, may be whole-file re-stage)
+09:05:02  --- partial temp downloads (.dtmp/.tmp/.part) ---
+09:05:03  --- end ---

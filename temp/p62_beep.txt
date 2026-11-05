@@ -1,0 +1,25 @@
+# p61_live 2026-11-04 19:01:05 needle=b'kern30120'
+window cold -> full band
+SCAN 0x400000000-0x780000000 hits=1945 faults=424126 secs=50.1
+ANCHOR hits=1945 first=0x4001445e0
+READY wait=6s (land, then get to a safe spot)
+PRE values=48694
+NADE NOW 8
+NADE NOW 7
+NADE NOW 6
+NADE NOW 5
+NADE NOW 4
+NADE NOW 3
+NADE NOW 2
+NADE NOW 1
+GO
+shot 1 values=48694
+shot 2 values=48694
+shot 3 values=48694
+shot 4 values=48694
+shot 5 values=48694
+shot 6 values=48694
+shot 7 values=48694
+shot 8 values=48694
+CANDIDATES 0
+VERDICT no-drop

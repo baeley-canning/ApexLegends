@@ -1,0 +1,20 @@
+AGENTS.md:34: - Before mutating: record pre-state (service state, last exit code, `binPath` hash, blocklist, CI
+M2_KERNEL_CHEAT_HANDOFF_PROMPT.md:343: lines, the loaded-module blocklist, the process list, `Get-ChildItem C:\Windows\Minidump`. After
+STATE.md:29: - **DRIVER LOADED 15:21:48, `RESULT: PASS` (`_ritual\h1_host.txt`, previous file kept as `h1_host_0311f.txt`):** all pre-flight gates green (staged+STOPPED+577, SHA `9B119FD0...F52B` = pin, blocklist 0, HVCI down, no EA process) -> baseline 577 -> `kdu -prv 22 -dse 0` (`value: 16 -> 0`, verification succeeded) -> `sc start` rc 0, `STATE: 4 RUNNING` -> restore `-dse 22` (`0 -> 16`), readback `0x16` = boot value, hex compare true -> driver **left RUNNING**. Independent readback 15:22 `STATE: 4 RUNNING`, exit 0, uptime 59 min. Defender exclusion call failed 0x800106ba (cosmetic, no gate depends on it).
+STATE.md:311: / `h1b_host_boot4.txt` / `h2_gate_boot2.txt`; pre-state re-recorded (`driver RUNNING`, blocklist 0,
+STATE.md:358: - Host blocklist (`VulnerableDriverBlocklistEnable=0`) was missing after the reboot and had to be
+STATE.md:359: re-set (`_ritual\h1a_bl.ps1`); kdu then reported `MSFT Driver block list is disabled`. It is a
+STATE.md:503: A: **yes, once `HKLM\SYSTEM\CurrentControlSet\Control\CI\Config\VulnerableDriverBlocklistEnable=0` is set
+STATE.md:504: live** - cert revocation (0xC0000603) is no longer applied to the blocklisted providers KDU ships.
+STATE.md:508: - Default provider 0 (NalDrv) dies `0xC0000603` with blocklist ON. kdu prints blocklist state per run,
+STATE.md:511: `[+] MSFT Driver block list is disabled`, and provider 22 (`AsIO3`) then loads.
+STATE.md:523: Host consequence: the blocker was never "find a lucky provider", it is the guest's blocklist policy.
+STATE.md:524: Host recipe becomes `reg add ...\CI\Config /v VulnerableDriverBlocklistEnable /t REG_DWORD /d 0 /f`
+STATE.md:551: blocklist currently 0 (re-confirmed via h1a anyway - per-boot suspect).
+STATE.md:558: `h2_gate_boot1.txt`) -> `h1a_bl.ps1` (blocklist 0 + `kdu -list` proof) -> `h1_dse_host.ps1`
+STATE.md:652: ## 04/11 10:04 - **SECOND 0x124 (stop rule tripped); four corrections; scan hardened to declared RAM** (evidence `temp\p43_svc.txt`, `temp\p43d_blocklist.txt`, `temp\p43a_dumpchk.txt`, `temp\p43a_whea2.txt`, `temp\p43_whea_evt.txt`, `temp\p43b_ranges.txt`, `temp\p43b2_ranges.txt`, `temp\p43b3_ranges.txt`, `temp\p43e_verify.txt`, `temp\p43d_start.txt`, `temp\p42h.txt`)
+STATE.md:681: - **Correction 4 - the blocklist was already 0.** `VulnerableDriverBlocklistEnable` reads `REG_DWORD 0x0`
+STATE.md:682: (`temp\p43d_blocklist.txt`) with gdrv3 RUNNING, so DSE 577 never gated the dump. h1a's set-to-0 is
+h1a_bl.ps1:1: # h1a - set the kdu blocklist bypass live (guest-proven recipe) and prove kdu reads it as disabled.
+h1a_bl.ps1:9: & reg.exe add $key /v VulnerableDriverBlocklistEnable /t REG_DWORD /d 0 /f 2>&1 | ForEach-Object { W ('  ' + $_) }
+h1a_bl.ps1:10: W ('  readback=' + (Get-ItemProperty -LiteralPath ('Registry::' + $key)).VulnerableDriverBlocklistEnable)

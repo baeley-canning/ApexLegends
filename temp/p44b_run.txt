@@ -1,0 +1,13 @@
+﻿=== p44b 2026-11-04T12:59:46.3930020+13:00 ===
+12:59:46.398  ELEVATED start pid_arg=5488 lo= hi= hex= why=
+12:59:46.410  elevated=True
+12:59:46.415  game alive=True
+12:59:46.420  running: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\paprobe2.py" --inplace --pid=5488
+12:59:46.430  child pid=8876 started 12:59:46.428
+12:59:46.501  child exit= wall=0.1s
+12:59:46.505  OUT exists=False size=0
+12:59:46.507  console tail: sweep pages=129 bad=35 offs=-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,+0,+3,+4,+5,+6,+7,+8,+9 | copy 0x2000     0x7ec76d000 ERR [Errno 1450] phys read 0x7ec76d000+0x2000 failed | copy unaligned  0x7ec76d800 ERR [Errno 1450] phys read 0x7ec76d800+0x1000 failed | map_phys ERR [Errno 31] map_phys 0x7ec76d000+0x1000 failed | VERDICT: PAPROBE2_DONE
+12:59:46.508  err tail: 
+12:59:46.548  RESULT: verdict=
+12:59:46.552  post game alive=True
+12:59:46.553  --- end ---

@@ -1,0 +1,14 @@
+07:59:51 start
+07:59:51 pre VMState=running ga=0
+07:59:57 detect 1 state=running size=376424
+07:59:57 desktop detected at detect#1 - firing now
+08:00:06 bcdedit typed
+08:00:10 post-arm ga=0
+08:00:13 tick 1 state=running ga=0
+08:00:16 tick 2 state=running ga=0
+08:00:19 tick 3 state=running ga=0
+08:00:22 tick 4 state=running ga=0
+08:00:25 tick 5 state=running ga=0
+08:00:25 RESULT: safeboot typed=True; ga ticks>=1: 0/5
+08:00:25 VERDICT: see p272_bcd.png / p272_sc.png (safe-mode persist is judged on the NEXT boot)
+08:00:25 done

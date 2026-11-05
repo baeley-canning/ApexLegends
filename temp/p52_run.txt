@@ -1,0 +1,29 @@
+﻿15:59:50.726  elevated=True
+15:59:50.753  game alive=True pid=24132 eac=0
+15:59:50.766  needles=4 [A Succulent Chinese Meal | Kern30120 | JONNY BOY | ttvDivineBurger]
+15:59:50.848  py_compile: compiled
+15:59:50.853  scan: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\playerscan.py" "--needle=A Succulent Chinese Meal" "--needle=Kern30120" "--needle=JONNY BOY" "--needle=ttvDivineBurger" --lo=0x0eda00000 --hi=0x7eda00000 --dir=desc --page-cap=1 --per-needle=1500 --ctx=64 --max-hits=6000 --max-s=180
+16:01:25.574  scan rc=0 verdict=HITS=1685 pages=488 cooc=461 scanned=27354 MiB stopped=covered sat=- first_n=0 first_pa=0x7e95502df
+16:01:25.597    n=0 A Succulent Chinese Meal = 339
+16:01:25.604    n=1 Kern30120 = 444
+16:01:25.610    n=2 JONNY BOY = 453
+16:01:25.616    n=3 ttvDivineBurger = 449
+16:01:25.625    PAs 1685 hits over 488 pages, 27354 MiB scanned in 94.3s bad4k=202329 rescued=470471 stopped=covered
+16:01:25.625    COOC 461 pages carry 2+ needles
+16:01:25.631  triage: -u "C:\Users\New User\OneDrive\Desktop\cheating\ext\enttriage.py" "--hits=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\p52_hits.txt" --needles=4 --cap=32
+16:01:26.644  triage rc=0 verdict=STRIDE cand=26 x42 pages=40
+16:01:26.647    COOC pages=40 full_house=37 cap=32
+16:01:26.648      0x1a x42  <= STRIDE CANDIDATE
+16:01:26.648      0x34 x21  <= STRIDE CANDIDATE
+16:01:26.649      0xc x16  <= STRIDE CANDIDATE
+16:01:26.649      0x109 x14  <= STRIDE CANDIDATE
+16:01:26.650      0x123 x14  <= STRIDE CANDIDATE
+16:01:26.650      0x13d x14  <= STRIDE CANDIDATE
+16:01:26.652      0x18 x8  <= STRIDE CANDIDATE
+16:01:26.652      0x1b x8  <= STRIDE CANDIDATE
+16:01:26.652      0x27 x8  <= STRIDE CANDIDATE
+16:01:26.653      0x33 x8  <= STRIDE CANDIDATE
+16:01:26.654      0x18b x3  <= STRIDE CANDIDATE
+16:01:26.655      0x1a5 x3  <= STRIDE CANDIDATE
+16:01:26.659  RESULT: variable=match_names verdict=STRIDE cand=26 x42 pages=40 scan=HITS=1685 pages=488 cooc=461 scanned=27354 MiB stopped=covered sat=- first_n=0 first_pa=0x7e95502df game_alive_post=True
+16:01:26.661  --- end ---

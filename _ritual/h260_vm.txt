@@ -1,0 +1,6 @@
+﻿15:56:39 START - bench of apexdrv v3 (APC inject) on Win11-Test2
+15:56:39 restore: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Restoring snapshot 'p37-ready' (567109ad-d161-4dc7-8e93-2c7627c46f0a)
+15:56:43 start: Waiting for VM "Win11-Test2" to power on...
+VM "Win11-Test2" has been successfully started.
+16:01:45 RESULT: FAIL guest additions never came up

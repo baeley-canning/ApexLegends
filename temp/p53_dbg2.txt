@@ -1,0 +1,6 @@
+﻿probe_type=System.Collections.ArrayList count=1
+list_type=System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+script=C:\Windows\Temp\p52_class.ps1 errs=0 first=-
+  out_exists=False con=pages=488 text=270 binary=25 mixed=193 | --- binary pages with >=2 needles (pa / cross-needle deltas) --- | page=0x29ff29000 hits=3 ascii=27% pa=0x29ff29d8c,0x29ff29f4c,0x29ff29fac d=0x1c0,0x60 | page=0x32e396000 hits=2 ascii=32% pa=0x32e396061,0x32e3960a1 d=0x40
+script=C:\Windows\Temp\p53_class.ps1 errs=1 first=At C:\Windows\Temp\p53_class.ps1:24 char:1 + $out.Add(('pages={0} text={1} binary={2} mixed={3}' -f $pg.Count, $te ... + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  out_exists=False con=

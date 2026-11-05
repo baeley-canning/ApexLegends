@@ -1,0 +1,4 @@
+﻿=== VERDICT ===
+RESULT: PASS via prv 22 - driver RUNNING, DSE restored to boot value 0x16 (readback verified), left RUNNING for h2
+NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min) IN THIS BOOT - crash horizon ~20 min if the value is wrong
+-- h1 END 15:31:53 driver RUNNING=True --

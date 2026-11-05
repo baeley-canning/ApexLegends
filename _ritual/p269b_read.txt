@@ -1,0 +1,417 @@
+--- showvminfo state ---
+VMState="running"
+GuestAdditionsRunLevel=3
+--- schtasks ---
+
+Folder: \
+OneDrive Reporting Task-S-1-5-21-1957909 11/6/2026 7:08:25 PM   Ready          
+OneDrive Standalone Update Task-S-1-5-21 11/6/2026 6:21:01 PM   Ready          
+OneDrive Startup Task-S-1-5-21-195790935 N/A                    Ready          
+
+Folder: \Microsoft
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\OneCore
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\.NET Framework
+.NET Framework NGEN v4.0.30319           N/A                    Ready          
+.NET Framework NGEN v4.0.30319 64        N/A                    Ready          
+.NET Framework NGEN v4.0.30319 64 Critic N/A                    Disabled       
+.NET Framework NGEN v4.0.30319 Critical  N/A                    Disabled       
+
+Folder: \Microsoft\Windows\AccountHealth
+RecoverabilityToastTask                  N/A                    Ready          
+
+Folder: \Microsoft\Windows\Active Directory Rights Management Services Client
+AD RMS Rights Policy Template Management N/A                    Disabled       
+AD RMS Rights Policy Template Management N/A                    Ready          
+
+Folder: \Microsoft\Windows\AppID
+PolicyConverter                          N/A                    Ready          
+VerifiedPublisherCertStoreCheck          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Application Experience
+MareBackup                               N/A                    Ready          
+Microsoft Compatibility Appraiser Exp    N/A                    Ready          
+PcaPatchDbTask                           11/6/2026 3:45:12 AM   Ready          
+SdbinstMergeDbTask                       N/A                    Ready          
+StartupAppTask                           N/A                    Ready          
+
+Folder: \Microsoft\Windows\ApplicationData
+appuriverifierdaily                      N/A                    Ready          
+appuriverifierinstall                    N/A                    Ready          
+CleanupTemporaryState                    N/A                    Ready          
+DsSvcCleanup                             N/A                    Ready          
+
+Folder: \Microsoft\Windows\AppListBackup
+Backup                                   N/A                    Ready          
+BackupNonMaintenance                     11/14/2026 1:14:45 AM  Ready          
+
+Folder: \Microsoft\Windows\AppxDeploymentClient
+Pre-staged app cleanup                   N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Autochk
+Proxy                                    N/A                    Ready          
+
+Folder: \Microsoft\Windows\BitLocker
+BitLocker Encrypt All Drives             N/A                    Ready          
+BitLocker MDM policy Refresh             N/A                    Ready          
+
+Folder: \Microsoft\Windows\Bluetooth
+UninstallDeviceTask                      N/A                    Ready          
+
+Folder: \Microsoft\Windows\BrokerInfrastructure
+BgTaskRegistrationMaintenanceTask        N/A                    Ready          
+
+Folder: \Microsoft\Windows\capabilityaccessmanager
+maintenancetasks                         N/A                    Ready          
+
+Folder: \Microsoft\Windows\CertificateServicesClient
+UserTask                                 N/A                    Ready          
+UserTask-Roam                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Chkdsk
+ProactiveScan                            N/A                    Ready          
+SyspartRepair                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\CloudExperienceHost
+CreateObjectTask                         N/A                    Ready          
+
+Folder: \Microsoft\Windows\CloudRestore
+Backup                                   11/7/2026 12:20:06 AM  Ready          
+Restore                                  N/A                    Ready          
+
+Folder: \Microsoft\Windows\ConsentUX
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\ConsentUX\UnifiedConsent
+UnifiedConsentSyncTask                   11/6/2026 12:19:16 PM  Ready          
+
+Folder: \Microsoft\Windows\Containers
+CmCleanup                                N/A                    Ready          
+
+Folder: \Microsoft\Windows\Customer Experience Improvement Program
+Consolidator                             11/6/2026 12:00:00 AM  Ready          
+UsbCeip                                  N/A                    Ready          
+
+Folder: \Microsoft\Windows\Data Integrity Scan
+Data Integrity Check And Scan            11/6/2026 11:30:20 PM  Ready          
+Data Integrity Scan                      N/A                    Ready          
+Data Integrity Scan for Crash Recovery   N/A                    Ready          
+
+Folder: \Microsoft\Windows\Defrag
+ScheduledDefrag                          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Device Information
+Device                                   11/6/2026 4:08:48 AM   Ready          
+Device User                              N/A                    Ready          
+
+Folder: \Microsoft\Windows\Device Setup
+Driver Recovery on Reboot                N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Diagnosis
+RecommendedTroubleshootingScanner        N/A                    Ready          
+Scheduled                                N/A                    Ready          
+UnexpectedCodepath                       N/A                    Ready          
+
+Folder: \Microsoft\Windows\DirectX
+DirectXDatabaseUpdater                   N/A                    Ready          
+DXGIAdapterCache                         N/A                    Ready          
+
+Folder: \Microsoft\Windows\DiskCleanup
+SilentCleanup                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\DiskDiagnostic
+Microsoft-Windows-DiskDiagnosticDataColl N/A                    Ready          
+Microsoft-Windows-DiskDiagnosticResolver N/A                    Disabled       
+
+Folder: \Microsoft\Windows\DiskFootprint
+Diagnostics                              N/A                    Ready          
+StorageSense                             N/A                    Ready          
+
+Folder: \Microsoft\Windows\DUSM
+dusmtask                                 N/A                    Ready          
+
+Folder: \Microsoft\Windows\EDP
+EDP App Launch Task                      N/A                    Ready          
+EDP Auth Task                            N/A                    Ready          
+EDP Inaccessible Credentials Task        N/A                    Ready          
+StorageCardEncryption Task               N/A                    Ready          
+
+Folder: \Microsoft\Windows\ExploitGuard
+ExploitGuard MDM policy Refresh          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Feedback
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Feedback\Siuf
+DmClient                                 N/A                    Ready          
+DmClientOnScenarioDownload               N/A                    Ready          
+
+Folder: \Microsoft\Windows\File Classification Infrastructure
+Property Definition Sync                 N/A                    Disabled       
+
+Folder: \Microsoft\Windows\FileHistory
+File History (maintenance mode)          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Flighting
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Flighting\FeatureConfig
+BootstrapUsageDataReporting              N/A                    Disabled       
+GovernedFeatureUsageProcessing           N/A                    Ready          
+ReconcileConfigs                         N/A                    Ready          
+ReconcileFeatures                        N/A                    Ready          
+SafeguardsReconciliation                 N/A                    Ready          
+UsageDataFlushing                        N/A                    Ready          
+UsageDataReceiver                        N/A                    Ready          
+UsageDataReporting                       N/A                    Ready          
+
+Folder: \Microsoft\Windows\Flighting\OneSettings
+RefreshCache                             11/6/2026 3:46:51 AM   Ready          
+
+Folder: \Microsoft\Windows\Hotpatch
+Monitoring                               11/6/2026 3:13:28 AM   Ready          
+
+Folder: \Microsoft\Windows\input
+InputSettingsRestoreDataAvailable        N/A                    Ready          
+LocalUserSyncDataAvailable               N/A                    Ready          
+MouseSyncDataAvailable                   N/A                    Ready          
+PenSyncDataAvailable                     N/A                    Ready          
+RemoteMouseSyncDataAvailable             N/A                    Ready          
+RemotePenSyncDataAvailable               N/A                    Ready          
+RemoteTouchpadSyncDataAvailable          N/A                    Ready          
+syncpensettings                          N/A                    Ready          
+TouchpadSyncDataAvailable                N/A                    Ready          
+
+Folder: \Microsoft\Windows\InstallService
+RestoreDevice                            N/A                    Ready          
+ScanForUpdates                           11/7/2026 9:42:32 AM   Ready          
+ScanForUpdatesAsUser                     N/A                    Ready          
+WakeUpAndContinueUpdates                 N/A                    Disabled       
+WakeUpAndScanForUpdates                  N/A                    Disabled       
+
+Folder: \Microsoft\Windows\International
+Synchronize Language Settings            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Kernel
+La57Cleanup                              N/A                    Ready          
+
+Folder: \Microsoft\Windows\LanguageComponentsInstaller
+Installation                             N/A                    Ready          
+ReconcileLanguageResources               N/A                    Ready          
+
+Folder: \Microsoft\Windows\Live
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Location
+WindowsActionDialog                      N/A                    Ready          
+
+Folder: \Microsoft\Windows\Maintenance
+WinSAT                                   N/A                    Ready          
+
+Folder: \Microsoft\Windows\Management
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Management\Autopilot
+DetectHardwareChange                     N/A                    Disabled       
+RemediateHardwareChange                  N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Management\Provisioning
+Cellular                                 N/A                    Ready          
+Logon                                    N/A                    Ready          
+MdmDiagnosticsCleanup                    N/A                    Disabled       
+Retry                                    N/A                    Disabled       
+RunOnReboot                              N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Maps
+MapsToastTask                            N/A                    Ready          
+MapsUpdateTask                           N/A                    Disabled       
+
+Folder: \Microsoft\Windows\MemoryDiagnostic
+AutomaticOfflineMemoryDiagnostic         N/A                    Ready          
+ProcessMemoryDiagnosticEvents            N/A                    Ready          
+RunFullMemoryDiagnostic                  N/A                    Disabled       
+
+Folder: \Microsoft\Windows\MUI
+LPRemove                                 N/A                    Ready          
+
+Folder: \Microsoft\Windows\Multimedia
+SystemSoundsService                      N/A                    Running        
+
+Folder: \Microsoft\Windows\Network Connectivity Status Indicator
+NcsiIdentifyUserProxies                  N/A                    Ready          
+
+Folder: \Microsoft\Windows\NlaSvc
+WiFiTask                                 N/A                    Ready          
+
+Folder: \Microsoft\Windows\Offline Files
+Background Synchronization               N/A                    Disabled       
+Logon Synchronization                    N/A                    Disabled       
+
+Folder: \Microsoft\Windows\PCRPF
+PCR Prediction Framework Firmware Update N/A                    Ready          
+
+Folder: \Microsoft\Windows\PerformanceTrace
+ShowFeedbackToast                        N/A                    Ready          
+WhesvcToast                              N/A                    Ready          
+
+Folder: \Microsoft\Windows\PLA
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Plug and Play
+Device Install Group Policy              N/A                    Ready          
+Device Install Reboot Required           N/A                    Ready          
+Sysprep Generalize Drivers               N/A                    Ready          
+
+Folder: \Microsoft\Windows\Power Efficiency Diagnostics
+AnalyzeSystem                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Printing
+EduPrintProv                             N/A                    Ready          
+PrinterCleanupTask                       11/25/2026 12:00:00 PM Ready          
+PrintJobCleanupTask                      11/6/2026 12:00:00 PM  Ready          
+
+Folder: \Microsoft\Windows\RecoveryEnvironment
+VerifyWinRE                              N/A                    Ready          
+
+Folder: \Microsoft\Windows\ReFsDedupSvc
+Initialization                           N/A                    Ready          
+
+Folder: \Microsoft\Windows\Registry
+RegIdleBackup                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Security
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\Servicing
+OOBEFodSetup                             N/A                    Disabled       
+StartComponentCleanup                    N/A                    Ready          
+
+Folder: \Microsoft\Windows\Setup
+PITRTask                                 N/A                    Ready          
+SetupRecoveryDataTask                    11/12/2026 6:12:08 PM  Ready          
+
+Folder: \Microsoft\Windows\SharedPC
+Account Cleanup                          N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Shell
+CreateObjectTask                         N/A                    Ready          
+FamilySafetyMonitor                      N/A                    Ready          
+FamilySafetyRefreshTask                  N/A                    Ready          
+IndexerAutomaticMaintenance              N/A                    Ready          
+ThemesSyncedImageDownload                N/A                    Ready          
+
+Folder: \Microsoft\Windows\SoftwareProtectionPlatform
+SvcRestartTaskLogon                      N/A                    Disabled       
+
+Folder: \Microsoft\Windows\SpacePort
+SpaceAgentTask                           N/A                    Ready          
+SpaceManagerTask                         N/A                    Ready          
+
+Folder: \Microsoft\Windows\StateRepository
+MaintenanceTasks                         N/A                    Ready          
+
+Folder: \Microsoft\Windows\Storage Tiers Management
+Storage Tiers Management Initialization  N/A                    Ready          
+Storage Tiers Optimization               N/A                    Disabled       
+
+Folder: \Microsoft\Windows\Sustainability
+PowerGridForecastTask                    11/6/2026 12:46:22 PM  Ready          
+SustainabilityTelemetry                  N/A                    Ready          
+
+Folder: \Microsoft\Windows\Sysmain
+HybridDriveCachePrepopulate              N/A                    Disabled       
+HybridDriveCacheRebalance                N/A                    Disabled       
+ResPriStaticDbSync                       N/A                    Ready          
+WsSwapAssessmentTask                     N/A                    Ready          
+
+Folder: \Microsoft\Windows\SystemRestore
+SR                                       N/A                    Ready          
+
+Folder: \Microsoft\Windows\Task Manager
+Interactive                              N/A                    Ready          
+
+Folder: \Microsoft\Windows\TextServicesFramework
+MsCtfMonitor                             N/A                    Ready          
+
+Folder: \Microsoft\Windows\Time Synchronization
+ForceSynchronizeTime                     N/A                    Ready          
+SynchronizeTime                          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Time Zone
+SynchronizeTimeZone                      N/A                    Ready          
+
+Folder: \Microsoft\Windows\UPnP
+UPnPHostConfig                           N/A                    Ready          
+
+Folder: \Microsoft\Windows\USB
+Usb-Notifications                        N/A                    Ready          
+
+Folder: \Microsoft\Windows\WCM
+WiFiTask                                 N/A                    Ready          
+
+Folder: \Microsoft\Windows\WDI
+ResolutionHost                           N/A                    Ready          
+
+Folder: \Microsoft\Windows\Windows Defender
+Windows Defender Cache Maintenance       N/A                    Ready          
+Windows Defender Cleanup                 N/A                    Ready          
+Windows Defender Scheduled Scan          N/A                    Ready          
+Windows Defender Verification            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Windows Error Reporting
+QueueReporting                           11/6/2026 1:16:44 AM   Ready          
+
+Folder: \Microsoft\Windows\Windows Filtering Platform
+BfeOnServiceStartTypeChange              N/A                    Ready          
+
+Folder: \Microsoft\Windows\Windows Media Sharing
+UpdateLibrary                            N/A                    Ready          
+
+Folder: \Microsoft\Windows\WindowsAI
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \Microsoft\Windows\WindowsColorSystem
+Calibration Loader                       N/A                    Ready          
+
+Folder: \Microsoft\Windows\WindowsUpdate
+Scheduled Start                          N/A                    Ready          
+
+Folder: \Microsoft\Windows\Wininet
+CacheTask                                N/A                    Running        
+
+Folder: \Microsoft\Windows\WlanSvc
+CDSSync                                  N/A                    Running        
+MoProfileManagement                      N/A                    Ready          
+
+Folder: \Microsoft\Windows\Work Folders
+Work Folders Logon Synchronization       N/A                    Ready          
+Work Folders Maintenance Work            N/A                    Ready          
+
+Folder: \Microsoft\Windows\Workplace Join
+Automatic-Device-Join                    N/A                    Disabled       
+Device-Sync                              N/A                    Disabled       
+Recovery-Check                           N/A                    Disabled       
+
+Folder: \Microsoft\Windows\WwanSvc
+NotificationTask                         N/A                    Ready          
+OobeDiscovery                            N/A                    Ready          
+
+Folder: \Microsoft\XblGameSave
+XblGameSaveTask                          N/A                    Ready          
+
+Folder: \SoftLanding
+INFO: There are no scheduled tasks presently available at your access level.
+
+Folder: \SoftLanding\S-1-5-21-1957909355-363273533-3916154183-1000
+SoftLandingCreativeManagementTask        11/6/2026 5:36:24 AM   Ready          
+SoftLandingDeferralTask-{ad0f4b53-0a7f-4 11/5/2026 11:24:00 PM  Ready          
+SoftLandingTriggerTask-12800000000161560 N/A                    Disabled       
+--- 
+ERROR: Invalid argument/option - 'eq'.
+Type "TASKLIST /?" for usage.

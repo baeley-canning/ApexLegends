@@ -1,0 +1,21 @@
+23:21:08 ls: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCtx-...[456]
+23:21:08 END
+23:21:08 MODE=arm
+23:21:08 vmstate=VMState="running" 
+23:21:08 arm: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCtx...[457]
+23:21:08 tasks: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pC...[459]
+23:21:08 END
+23:21:08 MODE=pull
+23:21:08 vmstate=VMState="running" 
+23:21:08 pull h269.out: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(),...[467]
+23:21:08 (no h269.out)
+23:21:08 pull h269.prev.out: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).r...[472]
+23:21:08 hist count=0
+23:21:08 lock: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw(), Bstr(pCt...[458]
+23:21:08 guest.log tail: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe: error: Details: code VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f), component GuestWrap, interface IGuest, callee IUnknown VBoxManage.exe: error: Context: "CreateSession(Bstr(pCtx->strUsername).raw()...[468]
+23:21:08 END
+23:22:22 MODE=serve
+23:22:23 vmstate=VMState="running" 
+23:48:22 MODE=pull
+23:48:22 vmstate=VMState="running" 
+hist=0

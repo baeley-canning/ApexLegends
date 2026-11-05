@@ -1,0 +1,85 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [c:\Users\New User\OneDrive\Desktop\cheating\_ritual\p269_dumps\110526-10890-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (4 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Kernel base = 0xfffff804`c5600000 PsLoadedModuleList = 0xfffff804`c64f54c0
+Debug session time: Thu Nov  5 23:30:21.261 2026 (UTC + 13:00)
+System Uptime: 0 days 0:02:03.958
+Loading Kernel Symbols
+...............................................................
+................................................................
+...............................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 0000007e`d0f73018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.............
+For analysis of this file, run !analyze -v
+3: kd> kd: Reading initial command 'x WinRing0x64!*; .echo ===UPRE; u WinRing0x64+0x14c0 L48; .echo ===IMP; dq WinRing0x64+0x2000 L6; u /c 1 WinRing0x64+0x2020 L1; .echo ===END; q'
+*** WARNING: Unable to verify timestamp for WinRing0x64.sys
+===UPRE
+WinRing0x64+0x14c0:
+fffff804`522214c0 cc              int     3
+fffff804`522214c1 cc              int     3
+fffff804`522214c2 cc              int     3
+fffff804`522214c3 cc              int     3
+fffff804`522214c4 cc              int     3
+fffff804`522214c5 cc              int     3
+fffff804`522214c6 cc              int     3
+fffff804`522214c7 cc              int     3
+fffff804`522214c8 488bc1          mov     rax,rcx
+fffff804`522214cb 488b5104        mov     rdx,qword ptr [rcx+4]
+fffff804`522214cf 48c1ea20        shr     rdx,20h
+fffff804`522214d3 8b09            mov     ecx,dword ptr [rcx]
+fffff804`522214d5 8b4004          mov     eax,dword ptr [rax+4]
+fffff804`522214d8 0f30            wrmsr
+fffff804`522214da 488b442428      mov     rax,qword ptr [rsp+28h]
+fffff804`522214df 832000          and     dword ptr [rax],0
+fffff804`522214e2 33c0            xor     eax,eax
+fffff804`522214e4 eb0d            jmp     WinRing0x64+0x14f3 (fffff804`522214f3)
+fffff804`522214e6 488b442428      mov     rax,qword ptr [rsp+28h]
+fffff804`522214eb 832000          and     dword ptr [rax],0
+fffff804`522214ee b8010000c0      mov     eax,0C0000001h
+fffff804`522214f3 c3              ret
+fffff804`522214f4 cc              int     3
+fffff804`522214f5 cc              int     3
+fffff804`522214f6 cc              int     3
+fffff804`522214f7 cc              int     3
+fffff804`522214f8 cc              int     3
+fffff804`522214f9 cc              int     3
+fffff804`522214fa cc              int     3
+fffff804`522214fb cc              int     3
+fffff804`522214fc 8b09            mov     ecx,dword ptr [rcx]
+fffff804`522214fe 0f33            rdpmc
+fffff804`52221500 48c1e220        shl     rdx,20h
+fffff804`52221504 480bc2 

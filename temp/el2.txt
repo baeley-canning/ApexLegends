@@ -1,0 +1,51 @@
+EALaunchHelper.log 755899 07:45:42
+EALaunchHelperVerbose.log 2748399 07:45:42
+cef.log 59838 07:44:51
+IGOProxy_IGOProxy32.log 8431 07:42:54
+IGOProxy_EADesktop.log 4037 07:42:54
+IGO_EADesktop_18732.log 821 07:42:51
+EALocalHostSvc.log 297812 07:42:47
+EALocalHostSvcVerbose.log 1074705 07:42:47
+EADesktopVerbose.log 7720611 07:41:21
+EADesktop.log 626020 07:33:29
+--- EADesktop.log tail ---
+   288	[2026-11-03T18:45:41.593Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::allocEvent)	DesktopFSM[authenticated]: enqueue event 'EventRetrieveExternalActions'
+   289	[2026-11-03T18:45:41.612Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchQueued)	DesktopFSM[authenticated]: dequeue event 'EventRetrieveExternalActions'
+   290	[2026-11-03T18:45:41.612Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]: dispatch event 'EventRetrieveExternalActions'
+   291	[2026-11-03T18:45:41.612Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]:     accepted (isContentReady == true)
+   292	[2026-11-03T18:45:41.615Z]	PID: 18732	TID: 21576	INFO    	(eax::apps::DesktopCoordinator::FsmHost::onPoppedExternalActions)	Received external action, type:[GameLaunch], slug:[], platform:[EA], has-auth:[false]
+   293	[2026-11-03T18:45:41.615Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::allocEvent)	DesktopFSM[authenticated]: enqueue event 'EventExternalActionReceived'
+   294	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchQueued)	DesktopFSM[authenticated]: dequeue event 'EventExternalActionReceived'
+   295	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]: dispatch event 'EventExternalActionReceived'
+   296	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::foundation::StateMachineBase::dispatchEvent)	DesktopFSM[authenticated]:     accepted (isUserSwapOrSpaRefreshRequired == true)
+   297	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::apps::DesktopCoordinator::FsmHost::doHandleExternalAction)	Processing external action, type:[GameLaunch], slug:[], platform:[EA]
+   298	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::apps::getGameFullCmdParams)	[GAME] Game parameters provided: []
+   299	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 21576	INFO    	(eax::apps::DesktopComponent::Impl::handleExternalGameLaunchRequest)	Handling external launch request for: IDs=[offerKey.offerId=[], offerId=[], contentIds=[194908], slug=[]], externalType=[], cmdParams=[], gameArguments=[], gameLaunchArgument=[], thirdPartyPresence=[0]
+   300	[2026-11-03T18:45:41.634Z]	PID: 18732	TID: 12508	INFO    	(eax::components::launchCheck::LaunchCheckComponent::Impl::handleContentLaunchRequest)	Handling game launch request (InitialRequest): IDs=[offerKey.offerId=[], offerId=[], contentIds=[194908], slug=[]], offerKey.externalType=[], requestOwner=[EA], requestSource=[RTP], gameArguments=[]
+   301	[2026-11-03T18:45:41.635Z]	PID: 18732	TID: 21576	INFO    	(eax::components::ui::SalUiRequestor::refreshSplashArtwork::<lambda_2>::operator ())	Splash artwork background refresh completed: refreshedCount=[0]
+   302	[2026-11-03T18:45:41.635Z]	PID: 18732	TID: 12508	INFO    	(eax::components::launchCheck::verifyDoesNotNeedModification)	Checking isLaunchValid() for offerId=[Origin.OFR.50.0002694]
+   303	[2026-11-03T18:45:41.636Z]	PID: 18732	TID: 12508	ERROR   	(eax::components::launchCheck::verifyDoesNotNeedModification)	Launch request denied: Game requires update
+   304	[2026-11-03T18:45:41.636Z]	PID: 18732	TID: 12508	WARN    	(eax::components::launchCheck::LaunchCheckComponent::Impl::handleContentLaunchRequest)	GamePreLaunchError: [GameUpdateRequired] for IDs=[offerKey.offerId=[Origin.OFR.50.0002694], offerId=[], contentIds=[194908], slug=[apex-legends]] Retry Available? [true], context: []
+   305	[2026-11-03T18:45:41.636Z]	PID: 18732	TID: 12508	ERROR   	(eax::components::launchCheck::LaunchCheckComponent::Impl::handlePreLaunchError)	Launch request failed (InitialRequest): Error=[GameUpdateRequired], IDs=[offerKey.offerId=[Origin.OFR.50.0002694], offerId=[], contentIds=[194908], slug=[apex-legends]], externalType=[], requestOwner=[EA], requestSource=[RTP], 
+   306	[2026-11-03T18:45:41.636Z]	PID: 18732	TID: 10776	INFO    	(eax::services::telemetry::TelemetryManagerV2::processEvent)	Telemetry Event [game.launch.erro]: [{"appUptime":171.163574,"authenticated":false,"criticalOffline":true,"criticality":false,"disableCulling":false,"enabled":true,"offline":false,"optional":false,"params":{"emsg":" ","ent_external_source":"EA","estr":"GameUpdateRequired","frustration":2,"id_list":"194908","offer_id":"Origin.OFR.50.0002694","request_owner":"EA","slug":"apex-legends","title_launch_redir":"","title_launch_source":"rtp_launch"},"systemUptime":22903.0337481,"taxonomy":"game.launch.erro","throttleCount":0,"timeSinceSystemResume":22903.0385739,"timestamp":17937315416364251,"weight":1.0}]
+   307	[2026-11-03T18:45:41.646Z]	PID: 18732	TID: 16600	INFO    	(ui::SpaViewController::handlePageLoadingStatusChanged)	PageLoadingStatus [0], code:[]
+   308	[2026-11-03T18:45:41.646Z]	PID: 18732	TID: 16600	INFO    	(ui::SpaViewController::handlePageLoadingStatusChanged)	PageLoadingStatus [2], code:[http-status=[0]]
+   309	[2026-11-03T18:45:41.646Z]	PID: 18732	TID: 16600	INFO    	(eax::components::ui::UiComponent::UiImpl::handleSpaLoadingStatus)	SPA load success, url:[https://pc.ea.com/en/games/apex-legends?disableOnboarding=true&download&installSource=rtp_launch&installGameSlug=apex-legends&requestOwner=ea]
+   310	[2026-11-03T18:45:41.723Z]	PID: 18732	TID: 16600	INFO    	(ui::SpaViewController::handlePageLoadingStatusChanged)	PageLoadingStatus [0], code:[]
+   311	[2026-11-03T18:45:41.723Z]	PID: 18732	TID: 16600	INFO    	(ui::SpaViewController::handlePageLoadingStatusChanged)	PageLoadingStatus [2], code:[http-status=[0]]
+   312	[2026-11-03T18:45:41.723Z]	PID: 18732	TID: 16600	INFO    	(eax::components::ui::UiComponent::UiImpl::handleSpaLoadingStatus)	SPA load success, url:[https://pc.ea.com/en/games/apex-legends?disableOnboarding=true]
+   313	[2026-11-03T18:45:41.895Z]	PID: 18732	TID: 16600	INFO    	(SPA)	Checkout path event
+{
+  "nucleus_id": "####",
+  "cur_step": "cta_free",
+  "source": "game_hub",
+  "object_id": "apex-legends",
+  "name": "checkout",
+  "visit_id": "2420f72b-3fda-43b9-a058-88278e787941",
+  "offer_id": [
+    "Origin.OFR.50.0002694"
+  ],
+  "status": "clicked",
+  "prev_step": "",
+  "step_duration": 36
+}

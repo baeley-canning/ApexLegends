@@ -1,0 +1,3 @@
+10: param([ValidateSet('diag', 'disarm', 'serve', 'deploy', 'ver', 'arm', 'tick', 'pull', 'all')][string]$Mode = 'diag', [string]$N = '268')
+48: if ($Mode -in 'diag', 'disarm', 'serve', 'deploy', 'ver', 'arm', 'tick', 'pull') {
+89:     'deploy' {

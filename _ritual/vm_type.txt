@@ -1,88 +1,1859 @@
-== vm_type 01/11/2026 22:15:54  seq=[space]
-  token 'space' = special
-  send 39 b9 ok
-== done
-== vm_type 01/11/2026 22:15:58  seq=[password | enter]
-  token 'password' = text
-  ?? unknown char 'p'
-  ?? unknown char 'a'
-  ?? unknown char 's'
-  ?? unknown char 's'
-  ?? unknown char 'w'
-  ?? unknown char 'o'
-  ?? unknown char 'r'
-  ?? unknown char 'd'
+== vm_type 06/11/2026 07:48:16  seq=[tab | tab | enter]
+  token 'tab' = special
+  send 0f 8f ok
+  token 'tab' = special
+  send 0f 8f ok
   token 'enter' = special
   send 1c 9c ok
 == done
-== vm_type 01/11/2026 22:16:02  seq=[winr]
+== vm_type 06/11/2026 07:51:44  seq=[winr]
   token 'winr' = special
   send e0 5b e0 db 13 93 ok
 == done
-== vm_type 01/11/2026 22:16:04  seq=[d:\vboxwindowsadditions.exe /s]
-  token 'd:\vboxwindowsadditions.exe /s' = text
-  ?? unknown char 'd'
-  send 2a 27 a7 aa ok
-  send 2b ab ok
-  ?? unknown char 'v'
-  ?? unknown char 'b'
-  ?? unknown char 'o'
-  ?? unknown char 'x'
-  ?? unknown char 'w'
-  ?? unknown char 'i'
-  ?? unknown char 'n'
-  ?? unknown char 'd'
-  ?? unknown char 'o'
-  ?? unknown char 'w'
-  ?? unknown char 's'
-  ?? unknown char 'a'
-  ?? unknown char 'd'
-  ?? unknown char 'd'
-  ?? unknown char 'i'
-  ?? unknown char 't'
-  ?? unknown char 'i'
-  ?? unknown char 'o'
-  ?? unknown char 'n'
-  ?? unknown char 's'
-  send 34 b4 ok
-  ?? unknown char 'e'
-  ?? unknown char 'x'
-  ?? unknown char 'e'
-  send 39 b9 ok
-  send 35 b5 ok
-  ?? unknown char 's'
-== done
-== vm_type 01/11/2026 22:16:07  seq=[enter]
+== vm_type 06/11/2026 07:51:46  seq=[cmd | enter]
+  token 'cmd' = text
+  send 2e ae ok
+  send 32 b2 ok
+  send 20 a0 ok
   token 'enter' = special
   send 1c 9c ok
 == done
-== vm_type 01/11/2026 22:16:12  seq=[alty]
+== vm_type 06/11/2026 07:54:03  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 07:54:05  seq=[cmd | enter]
+  token 'cmd' = text
+  send 2e ae ok
+  send 32 b2 ok
+  send 20 a0 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 07:55:36  seq=[tab | tab | enter]
+  token 'tab' = special
+  send 0f 8f ok
+  token 'tab' = special
+  send 0f 8f ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 07:57:30  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 07:57:31  seq=[cmd | enter]
+  token 'cmd' = text
+  send 2e ae ok
+  send 32 b2 ok
+  send 20 a0 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 07:57:34  seq=[s c space s t a r t space v b o x s e r v i c e | enter]
+  token 's c space s t a r t space v b o x s e r v i c e' = text
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2e ae ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 19 99 ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 39 b9 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 19 99 ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 39 b9 ok
+  send 30 b0 ok
+  send 39 b9 ok
+  send 18 98 ok
+  send 39 b9 ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 39 b9 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2e ae ok
+  send 39 b9 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 07:59:57  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 07:59:58  seq=[cmd | enter]
+  token 'cmd' = text
+  send 2e ae ok
+  send 32 b2 ok
+  send 20 a0 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:00:01  seq=[bcdedit /set {default} safeboot minimal | enter]
+  token 'bcdedit /set {default} safeboot minimal' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 32 b2 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:00:06  seq=[sc start VBoxService | enter]
+  token 'sc start VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 13 93 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:01:54  seq=[winx]
+  token 'winx' = special
+  send e0 5b 2d ad e0 db ok
+== done
+== vm_type 06/11/2026 08:01:55  seq=[a]
+  token 'a' = text
+  send 1e 9e ok
+== done
+== vm_type 06/11/2026 08:01:57  seq=[alty]
   token 'alty' = special
   send 38 15 95 b8 ok
 == done
-== vm_type 01/11/2026 22:16:33  seq=[esc | winr]
-  token 'esc' = special
-  send 01 81 ok
-  token 'winr' = special
-  send e0 5b e0 db 13 93 ok
-== done
-== vm_type 01/11/2026 22:16:35  seq=[d:\vboxwindowsadditions.exe /s]
-  token 'd:\vboxwindowsadditions.exe /s' = text
+== vm_type 06/11/2026 08:02:02  seq=[bcdedit /set {default} safeboot minimal | enter]
+  token 'bcdedit /set {default} safeboot minimal' = text
+  send 30 b0 ok
+  send 2e ae ok
   send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 32 b2 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:02:06  seq=[cd "C:\Program Files\Oracle\VirtualBox Guest Additions" | enter]
+  token 'cd "C:\Program Files\Oracle\VirtualBox Guest Additions"' = text
+  send 2e ae ok
+  send 20 a0 ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 2a 2e ae aa ok
   send 2a 27 a7 aa ok
   send 2b ab ok
+  send 2a 19 99 aa ok
+  send 13 93 ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 13 93 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 18 98 aa ok
+  send 13 93 ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 2b ab ok
+  send 2a 2f af aa ok
+  send 17 97 ok
+  send 13 93 ok
+  send 14 94 ok
+  send 16 96 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 2a 22 a2 aa ok
+  send 16 96 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 1e 9e aa ok
+  send 20 a0 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 1f 9f ok
+  send 2a 28 a8 aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:02:13  seq=[VBoxService.exe --register | enter]
+  token 'VBoxService.exe --register' = text
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 0c 8c ok
+  send 13 93 ok
+  send 12 92 ok
+  send 22 a2 ok
+  send 17 97 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:02:17  seq=[sc start VBoxService | enter]
+  token 'sc start VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 13 93 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:02:55  seq=[bcdedit /set '{default}' safeboot minimal | enter]
+  token 'bcdedit /set '{default}' safeboot minimal' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 32 b2 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:03:01  seq=[Get-Service *vbox* -EA 0 | enter]
+  token 'Get-Service *vbox* -EA 0' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 09 89 aa ok
   send 2f af ok
   send 30 b0 ok
   send 18 98 ok
   send 2d ad ok
-  send 11 91 ok
+  send 2a 09 89 aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:03:04  seq=[gci C:\Windows\System32\drivers -Filter VBo* -EA 0 | % Name | enter]
+  token 'gci C:\Windows\System32\drivers -Filter VBo* -EA 0 | % Name' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 11 91 aa ok
   send 17 97 ok
   send 31 b1 ok
   send 20 a0 ok
   send 18 98 ok
   send 11 91 ok
   send 1f 9f ok
+  send 2b ab ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 04 84 ok
+  send 03 83 ok
+  send 2b ab ok
+  send 20 a0 ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2a 09 89 aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 31 b1 aa ok
   send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:03:11  seq=[gci 'C:\Program Files' -Filter VBox* -Recurse -Depth 3 -EA 0 | % FullName | enter]
+  token 'gci 'C:\Program Files' -Filter VBox* -Recurse -Depth 3 -EA 0 | % FullName' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 19 99 aa ok
+  send 13 93 ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 13 93 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 09 89 aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 13 93 aa ok
+  send 12 92 ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 20 a0 aa ok
+  send 12 92 ok
+  send 19 99 ok
+  send 14 94 ok
+  send 23 a3 ok
+  send 39 b9 ok
+  send 04 84 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 21 a1 aa ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:03:20  seq=[gci C:\ -Filter VBoxService.exe -Recurse -Depth 2 -EA 0 | % FullName | enter]
+  token 'gci C:\ -Filter VBoxService.exe -Recurse -Depth 2 -EA 0 | % FullName' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 13 93 aa ok
+  send 12 92 ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 20 a0 aa ok
+  send 12 92 ok
+  send 19 99 ok
+  send 14 94 ok
+  send 23 a3 ok
+  send 39 b9 ok
+  send 03 83 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 21 a1 aa ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:03:28  seq=[Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { '{0} {1}' -f $_.Id, $_.TimeCreated } | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { '{0} {1}' -f $_.Id, $_.TimeCreated }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 28 a8 ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 28 a8 ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 05 85 ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 02 82 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 07 87 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 09 89 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 06 86 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 0b 8b ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 02 82 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 21 a1 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:22:52  seq=[win]
+  token 'win' = special
+  send e0 5b e0 db ok
+== done
+== vm_type 06/11/2026 08:22:53  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:22:55  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:23:01  seq=[[Environment]::OSVersion.Version | enter]
+  token '[Environment]::OSVersion.Version' = text
+  send 1a 9a ok
+  send 2a 12 92 aa ok
+  send 31 b1 ok
+  send 2f af ok
+  send 17 97 ok
+  send 13 93 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 1b 9b ok
+  send 2a 27 a7 aa ok
+  send 2a 27 a7 aa ok
+  send 2a 18 98 aa ok
+  send 2a 1f 9f aa ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:23:05  seq=[sc.exe query VBoxService | enter]
+  token 'sc.exe query VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 10 90 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 15 95 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:23:09  seq=[Get-CimInstance Win32_CDROMDrive | % { $_.Drive, $_.VolumeName } | enter]
+  token 'Get-CimInstance Win32_CDROMDrive | % { $_.Drive, $_.VolumeName }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 2e ae aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 2a 17 97 aa ok
+  send 31 b1 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 31 b1 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 04 84 ok
+  send 03 83 ok
+  send 2a 0c 8c aa ok
+  send 2a 2e ae aa ok
+  send 2a 20 a0 aa ok
+  send 2a 13 93 aa ok
+  send 2a 18 98 aa ok
+  send 2a 32 b2 aa ok
+  send 2a 20 a0 aa ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 20 a0 aa ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 18 98 ok
+  send 26 a6 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:23:17  seq=[Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { $_.Id, $_.TimeCreated } | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { $_.Id, $_.TimeCreated }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 28 a8 ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 28 a8 ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 05 85 ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 02 82 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 07 87 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 09 89 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 06 86 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:25:11  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 08:25:12  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:25:14  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:25:20  seq=[[Environment]::OSVersion.Version | enter]
+  token '[Environment]::OSVersion.Version' = text
+  send 1a 9a ok
+  send 2a 12 92 aa ok
+  send 31 b1 ok
+  send 2f af ok
+  send 17 97 ok
+  send 13 93 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 1b 9b ok
+  send 2a 27 a7 aa ok
+  send 2a 27 a7 aa ok
+  send 2a 18 98 aa ok
+  send 2a 1f 9f aa ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:25:24  seq=[sc.exe query VBoxService | enter]
+  token 'sc.exe query VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 10 90 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 15 95 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:25:28  seq=[Get-CimInstance Win32_CDROMDrive | % { $_.Drive, $_.VolumeName } | enter]
+  token 'Get-CimInstance Win32_CDROMDrive | % { $_.Drive, $_.VolumeName }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 2e ae aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 2a 17 97 aa ok
+  send 31 b1 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 31 b1 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 04 84 ok
+  send 03 83 ok
+  send 2a 0c 8c aa ok
+  send 2a 2e ae aa ok
+  send 2a 20 a0 aa ok
+  send 2a 13 93 aa ok
+  send 2a 18 98 aa ok
+  send 2a 32 b2 aa ok
+  send 2a 20 a0 aa ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 20 a0 aa ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 18 98 ok
+  send 26 a6 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:25:37  seq=[Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { $_.Id, $_.TimeCreated } | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName='System';Id=41,1001,6008} -Max 5 | % { $_.Id, $_.TimeCreated }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 28 a8 ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 28 a8 ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 05 85 ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 02 82 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 02 82 ok
+  send 33 b3 ok
+  send 07 87 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 09 89 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 06 86 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:26:46  seq=[Get-WinEvent -FilterHashtable @{LogName='System';Id=1001} -Max 2 | fl TimeCreated,Message | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName='System';Id=1001} -Max 2 | fl TimeCreated,Message' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 28 a8 ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 28 a8 ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 02 82 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 02 82 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 03 83 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 33 b3 ok
+  send 2a 32 b2 aa ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 22 a2 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:26:57  seq=[gci C:\Windows\Minidump -EA 0 | % { $_.Name, $_.Length, $_.LastWriteTime } | enter]
+  token 'gci C:\Windows\Minidump -EA 0 | % { $_.Name, $_.Length, $_.LastWriteTime }' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 32 b2 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 20 a0 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 19 99 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 26 a6 aa ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 22 a2 ok
+  send 14 94 ok
+  send 23 a3 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 26 a6 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 2a 11 91 aa ok
+  send 13 93 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:27:06  seq=[Get-WinEvent -FilterHashtable @{LogName="System";Id=41} -Max 2 | fl TimeCreated,Message | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName="System";Id=41} -Max 2 | fl TimeCreated,Message' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 2a 28 a8 aa ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 2a 28 a8 aa ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 05 85 ok
+  send 02 82 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 03 83 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 33 b3 ok
+  send 2a 32 b2 aa ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 22 a2 ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:27:57  seq=[cls | enter]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:27:58  seq=[Get-WinEvent -FilterHashtable @{LogName='System';Id=1001} -Max 3 | % { $_.TimeCreated; $_.Message } | enter]
+  token 'Get-WinEvent -FilterHashtable @{LogName='System';Id=1001} -Max 3 | % { $_.TimeCreated; $_.Message }' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 2a 12 92 aa ok
+  send 2f af ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2a 23 a3 aa ok
+  send 1e 9e ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 30 b0 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 03 83 aa ok
+  send 2a 1a 9a aa ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 0d 8d ok
+  send 28 a8 ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 28 a8 ok
+  send 27 a7 ok
+  send 2a 17 97 aa ok
+  send 20 a0 ok
+  send 0d 8d ok
+  send 02 82 ok
+  send 0b 8b ok
+  send 0b 8b ok
+  send 02 82 ok
+  send 2a 1b 9b aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 2d ad ok
+  send 39 b9 ok
+  send 04 84 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 14 94 aa ok
+  send 17 97 ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 2a 2e ae aa ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 27 a7 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 32 b2 aa ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 22 a2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:28:11  seq=[gci C:\Windows\Minidump\*.dmp | % { $_.Name; (Select-String -Path $_.FullName -Pattern "([\w-]+\.sys)" -AllMatches -Encoding unicode).Matches.Value | sort -Unique } | enter]
+  token 'gci C:\Windows\Minidump\*.dmp | % { $_.Name; (Select-String -Path $_.FullName -Pattern "([\w-]+\.sys)" -AllMatches -Encoding unicode).Matches.Value | sort -Unique }' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 32 b2 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 20 a0 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 19 99 ok
+  send 2b ab ok
+  send 2a 09 89 aa ok
+  send 34 b4 ok
+  send 20 a0 ok
+  send 32 b2 ok
+  send 19 99 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 27 a7 ok
+  send 39 b9 ok
+  send 2a 0a 8a aa ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 2e ae ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 1f 9f aa ok
+  send 14 94 ok
+  send 13 93 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 22 a2 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 19 99 aa ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 23 a3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 21 a1 aa ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 19 99 aa ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 31 b1 ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 2a 0a 8a aa ok
+  send 1a 9a ok
+  send 2b ab ok
+  send 11 91 ok
+  send 0c 8c ok
+  send 1b 9b ok
+  send 2a 0d 8d aa ok
+  send 2b ab ok
+  send 34 b4 ok
+  send 1f 9f ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 2a 0b 8b aa ok
+  send 2a 28 a8 aa ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 1e 9e aa ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 2e ae ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 31 b1 ok
+  send 2e ae ok
+  send 18 98 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 22 a2 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 2e ae ok
+  send 18 98 ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 2a 0b 8b aa ok
+  send 34 b4 ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 2e ae ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 18 98 ok
+  send 13 93 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 16 96 aa ok
+  send 31 b1 ok
+  send 17 97 ok
+  send 10 90 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:28:57  seq=[F:\VBoxWindowsAdditions.exe /S | enter]
+  token 'F:\VBoxWindowsAdditions.exe /S' = text
+  send 2a 21 a1 aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 2a 1e 9e aa ok
   send 20 a0 ok
   send 20 a0 ok
   send 17 97 ok
@@ -97,72 +1868,1995 @@
   send 12 92 ok
   send 39 b9 ok
   send 35 b5 ok
-  send 1f 9f ok
-== done
-== vm_type 01/11/2026 22:16:41  seq=[enter]
+  send 2a 1f 9f aa ok
   token 'enter' = special
   send 1c 9c ok
 == done
-== vm_type 01/11/2026 23:05:26  seq=[reg add HKLM\SYSTEM\Setup\LabConfig /v BypassCPUCheck /t REG_DWORD /d 1 /f]
-  token 'reg add HKLM\SYSTEM\Setup\LabConfig /v BypassCPUCheck /t REG_DWORD /d 1 /f' = text
-  send 13 93 ok
+== vm_type 06/11/2026 08:30:15  seq=[sc.exe query VBoxService | enter]
+  token 'sc.exe query VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 34 b4 ok
   send 12 92 ok
-  send 22 a2 ok
-  send 39 b9 ok
-  send 1e 9e ok
-  send 20 a0 ok
-  send 20 a0 ok
-  send 39 b9 ok
-  send 2a 23 a3 aa ok
-  send 2a 25 a5 aa ok
-  send 2a 26 a6 aa ok
-  send 2a 32 b2 aa ok
-  send 2b ab ok
-  send 2a 1f 9f aa ok
-  send 2a 15 95 aa ok
-  send 2a 1f 9f aa ok
-  send 2a 14 94 aa ok
-  send 2a 12 92 aa ok
-  send 2a 32 b2 aa ok
-  send 2b ab ok
-  send 2a 1f 9f aa ok
+  send 2d ad ok
   send 12 92 ok
-  send 14 94 ok
+  send 39 b9 ok
+  send 10 90 ok
   send 16 96 ok
-  send 19 99 ok
-  send 2b ab ok
-  send 2a 26 a6 aa ok
-  send 1e 9e ok
-  send 30 b0 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 15 95 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:30:19  seq=[gci C:\Windows\System32\drivers\VBox*.sys -EA 0 | % { $_.Name, $_.VersionInfo.FileVersion } | enter]
+  token 'gci C:\Windows\System32\drivers\VBox*.sys -EA 0 | % { $_.Name, $_.VersionInfo.FileVersion }' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
   send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 04 84 ok
+  send 03 83 ok
+  send 2b ab ok
+  send 20 a0 ok
+  send 13 93 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 09 89 aa ok
+  send 34 b4 ok
+  send 1f 9f ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
   send 18 98 ok
   send 31 b1 ok
+  send 2a 17 97 aa ok
+  send 31 b1 ok
   send 21 a1 ok
+  send 18 98 ok
+  send 34 b4 ok
+  send 2a 21 a1 aa ok
   send 17 97 ok
-  send 22 a2 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 2a 2f af aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 17 97 ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 39 b9 ok
+  send 2a 1b 9b aa ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:30:31  seq=[sc.exe start VBoxService | enter]
+  token 'sc.exe start VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 13 93 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:30:36  seq=[sc.exe query VBoxService | enter]
+  token 'sc.exe query VBoxService' = text
+  send 1f 9f ok
+  send 2e ae ok
+  send 34 b4 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 10 90 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 15 95 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:32:05  seq=[bcdedit /deletevalue '{default}' safeboot | enter]
+  token 'bcdedit /deletevalue '{default}' safeboot' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 2f af ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:34:05  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 08:34:06  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:34:08  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:34:14  seq=[cls | enter]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+== vm_type 06/11/2026 08:38:45  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:38:46  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:38:47  seq=[win]
+  token 'win' = special
+  send e0 5b e0 db ok
+== done
+== vm_type 06/11/2026 08:38:48  seq=[r]
+  token 'r' = text
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 08:38:50  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:38:51  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:39:00  seq=[cls]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 08:39:01  seq=[bcdedit /enum all /v | sls "safeboot|descr"]
+  token 'bcdedit /enum all /v | sls "safeboot|descr"' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 26 a6 ok
   send 39 b9 ok
   send 35 b5 ok
   send 2f af ok
   send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 26 a6 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 2a 2b ab aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2e ae ok
+  send 13 93 ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 08:39:10  seq=[bcdedit /enum '{current}']
+  token 'bcdedit /enum '{current}'' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+== done
+== vm_type 06/11/2026 08:39:50  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:39:52  seq=[a]
+  token 'a' = text
+  send 1e 9e ok
+== done
+== vm_type 06/11/2026 08:39:54  seq=[b | c]
+  token 'b' = text
+  send 30 b0 ok
+  token 'c' = text
+  send 2e ae ok
+== done
+== vm_type 06/11/2026 08:41:06  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:41:07  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 08:41:10  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:41:11  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:41:22  seq=[cls]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 08:41:23  seq=[bcdedit /enum all /v | sls "safeboot|descr"]
+  token 'bcdedit /enum all /v | sls "safeboot|descr"' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+== vm_type 06/11/2026 08:42:13  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:42:14  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 08:42:17  seq=[r]
+  token 'r' = text
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 08:42:18  seq=[r]
+  token 'r' = text
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 08:49:59  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:50:01  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:50:40  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:50:47  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:50:49  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:51:44  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 08:51:45  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:52:41  seq=[cls]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 08:52:42  seq=[bcdedit /enum all | sls "safeboot|descr"]
+  token 'bcdedit /enum all | sls "safeboot|descr"' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 26 a6 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 2a 2b ab aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2e ae ok
+  send 13 93 ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 08:52:51  seq=[bcdedit /enum '{current}']
+  token 'bcdedit /enum '{current}'' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+== done
+== vm_type 06/11/2026 08:52:57  seq=[bcdedit /enum '{default}']
+  token 'bcdedit /enum '{default}'' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+== done
+== vm_type 06/11/2026 08:53:45  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:53:46  seq=[cls]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 08:53:46  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:53:48  seq=[bcdedit /enum all | sls "safeboot|descr"]
+  token 'bcdedit /enum all | sls "safeboot|descr"' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 26 a6 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+  send 2a 2b ab aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2e ae ok
+  send 13 93 ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 08:53:52  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:53:57  seq=[bcdedit /enum '{current}']
+  token 'bcdedit /enum '{current}'' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+== done
+== vm_type 06/11/2026 08:54:00  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:54:04  seq=[bcdedit /enum '{default}']
+  token 'bcdedit /enum '{default}'' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 21 a1 ok
+  send 1e 9e ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+== done
+== vm_type 06/11/2026 08:54:07  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:54:48  seq=[cls]
+  token 'cls' = text
+  send 2e ae ok
+  send 26 a6 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 08:54:49  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:54:50  seq=[bcdedit /deletevalue '{current}' safeboot]
+  token 'bcdedit /deletevalue '{current}' safeboot' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 2f af ok
+  send 1e 9e ok
+  send 26 a6 ok
+  send 16 96 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+== done
+== vm_type 06/11/2026 08:54:55  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:54:59  seq=[bcdedit /enum '{current}' | sls safeboot]
+  token 'bcdedit /enum '{current}' | sls safeboot' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 26 a6 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+== done
+== vm_type 06/11/2026 08:55:03  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 08:55:54  seq=[esc]
+  token 'esc' = special
+  send 01 81 ok
+== done
+== vm_type 06/11/2026 08:55:55  seq=[bcdedit /enum '{current}' | sls safeboot]
+  token 'bcdedit /enum '{current}' | sls safeboot' = text
+  send 30 b0 ok
+  send 2e ae ok
+  send 20 a0 ok
+  send 12 92 ok
+  send 20 a0 ok
+  send 17 97 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 16 96 ok
+  send 32 b2 ok
+  send 39 b9 ok
+  send 28 a8 ok
+  send 2a 1a 9a aa ok
+  send 2e ae ok
+  send 16 96 ok
+  send 13 93 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 2a 1b 9b aa ok
+  send 28 a8 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 26 a6 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 1f 9f ok
+  send 1e 9e ok
+  send 21 a1 ok
+  send 12 92 ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 18 98 ok
+  send 14 94 ok
+== done
+== vm_type 06/11/2026 08:55:59  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:15:58  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:16:00  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:16:07  seq=[Get-Service VBoxService,VBoxMouse,VBoxSF,VBoxGuest | fl Name,Status,StartType]
+  token 'Get-Service VBoxService,VBoxMouse,VBoxSF,VBoxGuest | fl Name,Status,StartType' = text
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 2a 2f af aa ok
   send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 12 92 ok
+  send 13 93 ok
+  send 2f af ok
+  send 17 97 ok
+  send 2e ae ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 32 b2 aa ok
+  send 18 98 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 1f 9f aa ok
+  send 2a 21 a1 aa ok
+  send 33 b3 ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2a 22 a2 aa ok
+  send 16 96 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 33 b3 ok
+  send 2a 1f 9f aa ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 33 b3 ok
+  send 2a 1f 9f aa ok
+  send 14 94 ok
+  send 1e 9e ok
+  send 13 93 ok
+  send 14 94 ok
+  send 2a 14 94 aa ok
   send 15 95 ok
+  send 19 99 ok
+  send 12 92 ok
+== done
+== vm_type 06/11/2026 09:16:15  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:16:19  seq=[net user vboxuser]
+  token 'net user vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:16:21  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:16:24  seq=[gci C:\Windows\System32\LogFiles\VBox\*.log -EA 0 | % { $_.Name; Get-Content $_.FullName -Tail 12 }]
+  token 'gci C:\Windows\System32\LogFiles\VBox\*.log -EA 0 | % { $_.Name; Get-Content $_.FullName -Tail 12 }' = text
+  send 22 a2 ok
+  send 2e ae ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 2e ae aa ok
+  send 2a 27 a7 aa ok
+  send 2b ab ok
+  send 2a 11 91 aa ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 1f 9f aa ok
+  send 15 95 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 12 92 ok
+  send 32 b2 ok
+  send 04 84 ok
+  send 03 83 ok
+  send 2b ab ok
+  send 2a 26 a6 aa ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 2a 21 a1 aa ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2b ab ok
+  send 2a 2f af aa ok
+  send 2a 30 b0 aa ok
+  send 18 98 ok
+  send 2d ad ok
+  send 2b ab ok
+  send 2a 09 89 aa ok
+  send 34 b4 ok
+  send 26 a6 ok
+  send 18 98 ok
+  send 22 a2 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 12 92 aa ok
+  send 2a 1e 9e aa ok
+  send 39 b9 ok
+  send 0b 8b ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 2a 06 86 aa ok
+  send 39 b9 ok
+  send 2a 1a 9a aa ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 27 a7 ok
+  send 39 b9 ok
+  send 2a 22 a2 aa ok
+  send 12 92 ok
+  send 14 94 ok
+  send 0c 8c ok
+  send 2a 2e ae aa ok
+  send 18 98 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 12 92 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 2a 05 85 aa ok
+  send 2a 0c 8c aa ok
+  send 34 b4 ok
+  send 2a 21 a1 aa ok
+  send 16 96 ok
+  send 26 a6 ok
+  send 26 a6 ok
+  send 2a 31 b1 aa ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 0c 8c ok
+  send 2a 14 94 aa ok
+  send 1e 9e ok
+  send 17 97 ok
+  send 26 a6 ok
+  send 39 b9 ok
+  send 02 82 ok
+  send 03 83 ok
+  send 39 b9 ok
+== vm_type 06/11/2026 09:16:49  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 09:16:50  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:16:52  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:23:58  seq=[winr]
+  token 'winr' = special
+  send e0 5b e0 db 13 93 ok
+== done
+== vm_type 06/11/2026 09:23:59  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:24:01  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:24:07  seq=[whoami]
+  token 'whoami' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+== done
+== vm_type 06/11/2026 09:24:08  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:24:10  seq=[net user vboxuser]
+  token 'net user vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:24:12  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:24:15  seq=[net accounts]
+  token 'net accounts' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 2e ae ok
+  send 18 98 ok
+  send 16 96 ok
+  send 31 b1 ok
+  send 14 94 ok
+  send 1f 9f ok
+== done
+== vm_type 06/11/2026 09:24:17  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:26:14  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:26:15  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:26:23  seq=[whoami]
+  token 'whoami' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+== done
+== vm_type 06/11/2026 09:26:24  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:26:26  seq=[net user vboxuser]
+  token 'net user vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:26:28  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:26:31  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:26:34  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:26:37  seq=[net user vboxuser | findstr /i "active expires password"]
+  token 'net user vboxuser | findstr /i "active expires password"' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 14 94 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 19 99 ok
+  send 17 97 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 39 b9 ok
   send 19 99 ok
   send 1e 9e ok
   send 1f 9f ok
   send 1f 9f ok
-  send 2a 2e ae aa ok
-  send 2a 19 99 aa ok
-  send 2a 16 96 aa ok
-  send 2a 2e ae aa ok
+  send 11 91 ok
+  send 18 98 ok
+  send 13 93 ok
+  send 20 a0 ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 09:26:43  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:28:06  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
   send 23 a3 ok
   send 12 92 ok
-  send 2e ae ok
-  send 25 a5 ok
-  send 39 b9 ok
-  send 35 b5 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:28:07  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:28:16  seq=[whoami]
+  token 'whoami' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+== done
+== vm_type 06/11/2026 09:28:17  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:28:19  seq=[net user vboxuser]
+  token 'net user vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
   send 14 94 ok
   send 39 b9 ok
-  send 2a 13 93 aa ok
-  send 2a 12 92 aa ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:28:21  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:28:24  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:28:27  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:28:30  seq=[net user vboxuser | findstr /i "active expires"]
+  token 'net user vboxuser | findstr /i "active expires"' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 14 94 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 19 99 ok
+  send 17 97 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 09:28:35  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:37:39  seq=[powershell]
+  token 'powershell' = text
+  send 19 99 ok
+  send 18 98 ok
+  send 11 91 ok
+  send 12 92 ok
+  send 13 93 ok
+  send 1f 9f ok
+  send 23 a3 ok
+  send 12 92 ok
+  send 26 a6 ok
+  send 26 a6 ok
+== done
+== vm_type 06/11/2026 09:37:41  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:37:49  seq=[whoami]
+  token 'whoami' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+== done
+== vm_type 06/11/2026 09:37:50  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:37:52  seq=[net user vboxuser]
+  token 'net user vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:37:54  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:37:57  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 09:38:00  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:38:03  seq=[net user vboxuser | findstr /i "active expires"]
+  token 'net user vboxuser | findstr /i "active expires"' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 28 a8 aa ok
+  send 1e 9e ok
+  send 2e ae ok
+  send 14 94 ok
+  send 17 97 ok
+  send 2f af ok
+  send 12 92 ok
+  send 39 b9 ok
+  send 12 92 ok
+  send 2d ad ok
+  send 19 99 ok
+  send 17 97 ok
+  send 13 93 ok
+  send 12 92 ok
+  send 1f 9f ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 09:38:08  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:54:47  seq=[winx]
+  token 'winx' = special
+  send e0 5b 2d ad e0 db ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:54:49  seq=[a]
+  token 'a' = text
+  send 1e 9e ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:54:54  seq=[alty]
+  token 'alty' = special
+  send 38 15 95 b8 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:54:55  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:55:02  seq=[whoami /groups | findstr /i Mandatory]
+  token 'whoami /groups | findstr /i Mandatory' = text
+  send 11 91 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 23 a3 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 18 98 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1e 9e ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 32 b2 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 17 97 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 35 b5 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 22 a2 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 13 93 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 18 98 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 16 96 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 19 99 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1f 9f ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 2b ab aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 21 a1 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 17 97 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 31 b1 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 20 a0 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1f 9f ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 14 94 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 13 93 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 35 b5 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 17 97 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 32 b2 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1e 9e ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 31 b1 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 20 a0 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1e 9e ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 14 94 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 18 98 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 13 93 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 15 95 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:55:04  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:55:09  seq=["HIGH-CHECK-ABOVE"]
+  token '"HIGH-CHECK-ABOVE"' = text
+  send 2a 28 a8 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 23 a3 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 17 97 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 22 a2 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 23 a3 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 0c 8c ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 2e ae aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 23 a3 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 12 92 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 2e ae aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 25 a5 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 0c 8c ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 1e 9e aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 30 b0 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 18 98 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 2f af aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 12 92 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2a 28 a8 aa ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:55:10  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== done
+== vm_type 06/11/2026 09:55:12  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 12 92 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 14 94 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 16 96 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1f 9f ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 12 92 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 13 93 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2f af ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 30 b0 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 18 98 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2d ad ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 16 96 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 1f 9f ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 12 92 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 13 93 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 39 b9 ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+  send 2f af ERR:VBoxManage.exe: error: Machine 'Win11-Test2' is not currently running.
+== vm_type 06/11/2026 09:56:34  seq=[winx]
+  token 'winx' = special
+  send e0 5b 2d ad e0 db ok
+== done
+== vm_type 06/11/2026 09:56:36  seq=[a]
+  token 'a' = text
+  send 1e 9e ok
+== done
+== vm_type 06/11/2026 09:56:41  seq=[alty]
+  token 'alty' = special
+  send 38 15 95 b8 ok
+== done
+== vm_type 06/11/2026 09:56:43  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 09:56:49  seq=[whoami /groups | findstr /i Mandatory]
+  token 'whoami /groups | findstr /i Mandatory' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 22 a2 ok
+  send 13 93 ok
+  send 18 98 ok
+  send 16 96 ok
+  send 19 99 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+== vm_type 06/11/2026 09:58:08  seq=[winx]
+  token 'winx' = special
+  send e0 5b 2d ad e0 db ok
+== done
+== vm_type 06/11/2026 09:58:10  seq=[a]
+  token 'a' = text
+  send 1e 9e ok
+== done
+== vm_type 06/11/2026 09:58:16  seq=[alty]
+  token 'alty' = special
+  send 38 15 95 b8 ok
+== done
+== vm_type 06/11/2026 09:58:17  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:03:00  seq=[winx]
+  token 'winx' = special
+  send e0 5b 2d ad e0 db ok
+== done
+== vm_type 06/11/2026 10:03:02  seq=[a]
+  token 'a' = text
+  send 1e 9e ok
+== done
+== vm_type 06/11/2026 10:03:07  seq=[alty]
+  token 'alty' = special
+  send 38 15 95 b8 ok
+== done
+== vm_type 06/11/2026 10:03:08  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:03:14  seq=[whoami /groups | findstr /i Mandatory]
+  token 'whoami /groups | findstr /i Mandatory' = text
+  send 11 91 ok
+  send 23 a3 ok
+  send 18 98 ok
+  send 1e 9e ok
+  send 32 b2 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 22 a2 ok
+  send 13 93 ok
+  send 18 98 ok
+  send 16 96 ok
+  send 19 99 ok
+  send 1f 9f ok
+  send 39 b9 ok
+  send 2a 2b ab aa ok
+  send 39 b9 ok
+  send 21 a1 ok
+  send 17 97 ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 1f 9f ok
+  send 14 94 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 35 b5 ok
+  send 17 97 ok
+  send 39 b9 ok
+  send 2a 32 b2 aa ok
+  send 1e 9e ok
+  send 31 b1 ok
+  send 20 a0 ok
+  send 1e 9e ok
+  send 14 94 ok
+  send 18 98 ok
+  send 13 93 ok
+  send 15 95 ok
+== done
+== vm_type 06/11/2026 10:03:18  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:03:22  seq=["HIGH-CHECK-ABOVE"]
+  token '"HIGH-CHECK-ABOVE"' = text
+  send 2a 28 a8 aa ok
+  send 2a 23 a3 aa ok
+  send 2a 17 97 aa ok
   send 2a 22 a2 aa ok
-  send 2a 0c 8c aa ok
+  send 2a 23 a3 aa ok
+  send 0c 8c ok
+  send 2a 2e ae aa ok
+  send 2a 23 a3 aa ok
+  send 2a 12 92 aa ok
+  send 2a 2e ae aa ok
+  send 2a 25 a5 aa ok
+  send 0c 8c ok
+  send 2a 1e 9e aa ok
+  send 2a 30 b0 aa ok
+  send 2a 18 98 aa ok
+  send 2a 2f af aa ok
+  send 2a 12 92 aa ok
+  send 2a 28 a8 aa ok
+== done
+== vm_type 06/11/2026 10:03:25  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:03:27  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 10:03:30  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:03:34  seq=[net user vboxuser vboxuser]
+  token 'net user vboxuser vboxuser' = text
+  send 31 b1 ok
+  send 12 92 ok
+  send 14 94 ok
+  send 39 b9 ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  send 39 b9 ok
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+== done
+== vm_type 06/11/2026 10:03:37  seq=[enter]
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:24:59  seq=[vboxuser | enter]
+  token 'vboxuser' = text
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:32:13  seq=[vboxuser | enter]
+  token 'vboxuser' = text
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:33:10  seq=[vboxuser | enter]
+  token 'vboxuser' = text
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done
+== vm_type 06/11/2026 10:33:40  seq=[vboxuser | enter]
+  token 'vboxuser' = text
+  send 2f af ok
+  send 30 b0 ok
+  send 18 98 ok
+  send 2d ad ok
+  send 16 96 ok
+  send 1f 9f ok
+  send 12 92 ok
+  send 13 93 ok
+  token 'enter' = special
+  send 1c 9c ok
+== done

@@ -1,0 +1,52 @@
+# p62_drop 2026-11-04 23:20:47 centre=0x4cb870000 win=16 full=False
+COLLECT 0x4ca870000-0x4cc870000 cands=3931 faults=153 secs=0.1
+READY wait=15s (stand clear, full armour)
+PRE cands=3931 int=3890 float=41
+NADE NOW 12
+NADE NOW 11
+NADE NOW 10
+NADE NOW 9
+NADE NOW 8
+NADE NOW 7
+NADE NOW 6
+NADE NOW 5
+NADE NOW 4
+NADE NOW 3
+NADE NOW 2
+NADE NOW 1
+GO
+shot 1 read=3924
+shot 2 read=3924
+shot 3 read=3924
+shot 4 read=3924
+shot 5 read=3924
+shot 6 read=3924
+shot 7 read=3924
+UNREADABLE 7
+CANDIDATES 176
+CAND 0x4caaee306 f 1120403456 -> 4294934595 at shot1 (f0=100) delta=nan
+CAND 0x4cb9c1304 i 100 -> 4 at shot3 (f0=1.4013e-43) delta=196601
+CAND 0x4cad0720e f 1120403456 -> 3240099840 at shot1 (f0=100) delta=110
+CAND 0x4cc452e03 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cc3a6cf0 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cc14ab55 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cc14a65d i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cc043b74 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cc043b3c i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9e9d04 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9e977c i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9e91f4 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9d0fa2 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9d01e9 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9d0129 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9bd3cc i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9ba6a8 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9b4ffc i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9b4ef4 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9b4964 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9b42b4 i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9b0546 f 1120403456 -> 0 at shot1 (f0=100) delta=100
+CAND 0x4cb9afc6c i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9afc4c i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+CAND 0x4cb9afc2c i 100 -> 0 at shot1 (f0=1.4013e-43) delta=100
+VERDICT drop
