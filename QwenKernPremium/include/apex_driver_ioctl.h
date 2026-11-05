@@ -79,7 +79,14 @@
 //     before/after, the module that appeared, TEB LastErrorValue, ResolvePath,
 //     BasesDiffer).  v4 is a diagnostic-only superset: a v4 launcher against a v3
 //     driver is refused by the version check instead of reading past the struct.
-#define APEXDRV_VERSION         4
+// 5 = path proof.  h275 proved the resolved LoadLibraryW address is correct (the
+//     target then fails with 87 = empty string, not 126 = missing file), so the
+//     remaining question is whether the wide path really lands in the target.
+//     RemotePathEcho/StatusEchoRead read the remote buffer back immediately after
+//     the write, FiredSeen says whether the APC kernel routine ran at all, and the
+//     *2 fields re-sample module count and LastError 1 s later so a late delivery
+//     cannot be scored as a failure.
+#define APEXDRV_VERSION         5
 
 // Bytes of the target PEB copied out for inspection.  The PEB's first fields
 // (ImageBaseAddress at +0x10 on x64, Ldr at +0x18) are what the user-mode
@@ -121,6 +128,20 @@ typedef struct _APEXDRV_INJECT_REQUEST {
     WCHAR   NewModuleName[APEXDRV_MAX_MODULE_NAME_CHARS]; // [out] its BaseDllName
     LONG    LoadLibraryLastError;               // [out] TEB LastErrorValue after delivery
     LONG    StatusReadResult;                   // [out] status of that read (data, not verdict)
+    // --- v5: proof that the path string landed and that the APC ran at all ---
+    ULONG   StatusEchoRead;                     // [out] status of the read-back itself, so a
+                                                //       faulting read is not scored as "empty"
+    WCHAR   RemotePathEcho[APEXDRV_MAX_PATH_CHARS]; // [out] remote buffer as read back right
+                                                //       after the write: must equal DllPath
+    ULONG   FiredSeen;                          // [out] 1 once the APC kernel routine ran;
+                                                //       0 after the 3 s window means the thread
+                                                //       never left kernel mode alertably
+    ULONG   StatusEchoAfter;                    // [out] status of the post-delivery read-back
+    WCHAR   RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS]; // [out] echo 1 s later: proves
+                                                //       the buffer was not clobbered or freed
+    LONG    StatusReadResult2;                  // [out] status of the second LastError read
+    LONG    LoadLibraryLastError2;              // [out] LastError 1 s later (late delivery)
+    ULONG   ModuleCountAfter2;                  // [out] module count 1 s later
 } APEXDRV_INJECT_REQUEST, *PAPEXDRV_INJECT_REQUEST;
 
 typedef struct _APEXDRV_VERSION_INFO {

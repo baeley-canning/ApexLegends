@@ -84,6 +84,25 @@ static NTSTATUS ApexdrvWriteProcessMemory(PEPROCESS process, PVOID baseAddress,
     return status;
 }
 
+// v5 read-back.  The write path above only reports that the copy did not raise;
+// it never showed the bytes.  This is the same trick in reverse so the caller can
+// compare what the target actually holds against what was sent.
+static NTSTATUS ApexdrvReadProcessMemory(PEPROCESS process, PVOID baseAddress,
+                                         VOID* buffer, SIZE_T byteCount) {
+    KAPC_STATE apcState;
+    NTSTATUS   status = STATUS_SUCCESS;
+
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        RtlCopyMemory(buffer, baseAddress, byteCount);
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    return status;
+}
+
 // The APC delivery pair used by the inject rung.  WDK 10.0.26100 declares
 // neither the two functions nor the routine typedefs, nor KAPC_ENVIRONMENT /
 // OriginalApcEnvironment, while ntoskrnl.lib DOES carry KeInitializeApc and
@@ -589,6 +608,14 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     request->NewModuleName[0]     = L'\0';
     request->LoadLibraryLastError = 0;
     request->StatusReadResult     = 0;
+    request->StatusEchoRead       = 0;
+    request->RemotePathEcho[0]    = L'\0';
+    request->FiredSeen            = 0;
+    request->StatusEchoAfter      = 0;
+    request->RemotePathEchoAfter[0] = L'\0';
+    request->StatusReadResult2    = 0;
+    request->LoadLibraryLastError2 = 0;
+    request->ModuleCountAfter2    = 0;
 
     // Ensure the wide path is NUL terminated inside the supplied buffer.
     request->DllPath[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
@@ -655,6 +682,12 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         return status;
     }
 
+    // v5: show the bytes instead of trusting the copy's return status.
+    request->StatusEchoRead = ApexdrvReadProcessMemory(process, remoteBuffer,
+                                                       request->RemotePathEcho,
+                                                       pathBytes);
+    request->RemotePathEcho[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
+
     // Queue LoadLibraryW(remotePath) on the caller's thread instead of creating
     // one: see the block comment above ApexdrvQueueLoaderApc for why.
     status = ApexdrvQueueLoaderApc(process, request->ThreadId, remoteBuffer,
@@ -679,9 +712,24 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     }
 
     request->RemoteBase = (ULONG64)(ULONG_PTR)remoteBuffer;
+    request->FiredSeen  = (ULONG)fired;
 
     if (fired == 0) {
         // Still queued: keep the context AND the path buffer, they are in use.
+        // v5 still reports both samples, so "never fired" is distinguishable from
+        // "fired and failed" without another numbered run.
+        request->StatusEchoAfter = ApexdrvReadProcessMemory(
+            process, remoteBuffer, request->RemotePathEchoAfter,
+            pathBytes < sizeof(request->RemotePathEchoAfter)
+                ? pathBytes
+                : sizeof(request->RemotePathEchoAfter) - sizeof(WCHAR));
+        request->RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS - 1] = L'\0';
+        request->StatusReadResult2 =
+            ApexdrvReadThreadLastError(process, request->ThreadId,
+                                       &request->LoadLibraryLastError2);
+        if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+            request->ModuleCountAfter2 = targetInfo.Count;
+        }
         request->ResultStatus = STATUS_PENDING;
         ZwClose(processHandle);
         ObDereferenceObject(process);
@@ -715,6 +763,25 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
             request->NewModuleName[nameIndex] = L'\0';
             request->NewModuleBase = targetInfo.LastBase;
         }
+    }
+
+    // v5: echo + a second sample 1 s later.  A loader that finishes after our
+    // 200 ms window would otherwise be scored as "no module".
+    request->StatusEchoAfter = ApexdrvReadProcessMemory(
+        process, remoteBuffer, request->RemotePathEchoAfter,
+        pathBytes < sizeof(request->RemotePathEchoAfter)
+            ? pathBytes
+            : sizeof(request->RemotePathEchoAfter) - sizeof(WCHAR));
+    request->RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS - 1] = L'\0';
+
+    delay.QuadPart = -800 * 10000;                 // + 800 ms = 1 s after delivery
+    KeDelayExecutionThread(KernelMode, FALSE, &delay);
+
+    request->StatusReadResult2 =
+        ApexdrvReadThreadLastError(process, request->ThreadId,
+                                   &request->LoadLibraryLastError2);
+    if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+        request->ModuleCountAfter2 = targetInfo.Count;
     }
 
     request->ResultStatus = STATUS_SUCCESS;

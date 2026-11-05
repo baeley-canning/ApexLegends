@@ -335,11 +335,13 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
         result.errorMessage = "DeviceIoControl(IOCTL_APEXDRV_INJECT) failed" +
                               LastErrorText(GetLastError());
     } else {
-        // Everything below is the v4 verdict block: the driver reports what the
+        // Everything below is the v4/v5 verdict block: the driver reports what the
         // call DID, not that it was queued.  Module count is the primary signal -
         // LastError only explains a failure, and 0 with no new module means the
         // resolver address was wrong (the call ran into nothing).
-        const bool loaded = (request.ModuleCountAfter > request.ModuleCountBefore);
+        const bool loadedEarly = (request.ModuleCountAfter > request.ModuleCountBefore);
+        const bool loadedLate  = (request.ModuleCountAfter2 > request.ModuleCountBefore);
+        const bool loaded      = loadedEarly || loadedLate;
 
         std::cout << "[*] delivery: tid=" << request.ThreadId
                   << " resolve_path=" << request.ResolvePath
@@ -348,9 +350,22 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
                   << " lastError=" << request.LoadLibraryLastError
                   << " (read status 0x" << std::hex
                   << static_cast<unsigned long>(request.StatusReadResult) << std::dec
-                  << ")" << std::endl;
+                  << ") fired=" << request.FiredSeen << std::endl;
         std::cout << "[*] modules: before=" << request.ModuleCountBefore
-                  << " after=" << request.ModuleCountAfter;
+                  << " after=" << request.ModuleCountAfter
+                  << " after2=" << request.ModuleCountAfter2
+                  << " lastError2=" << request.LoadLibraryLastError2;
+
+        // v5 path proof: what the target actually holds, right after the write and
+        // 1 s later.  A copy that never landed shows as an empty/partial echo, and
+        // that is a different defect from a call that ran with a good string.
+        std::wcout << L" echo_status=0x" << std::hex
+                   << static_cast<unsigned long>(request.StatusEchoRead) << std::dec
+                   << L" echo=[" << request.RemotePathEcho << L"]"
+                   << L" echo_after_status=0x" << std::hex
+                   << static_cast<unsigned long>(request.StatusEchoAfter) << std::dec
+                   << L" echo_after=[" << request.RemotePathEchoAfter << L"]"
+                   << std::endl;
 
         if (loaded) {
             std::wcout << L" new module: " << request.NewModuleName
@@ -366,7 +381,12 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
             result.dllBaseAddress = reinterpret_cast<HMODULE>(
                 static_cast<ULONG_PTR>(request.NewModuleBase));
 
-            std::cout << "[+] Kernel injection SUCCESS - " << request.ModuleCountAfter
+            std::cout << "[+] Kernel injection SUCCESS"
+                      << (loadedEarly ? " (inside the 200 ms window)"
+                                      : " (late, 1 s window) - module name "
+                                        "captured only for the early window")
+                      << " - " << (loadedEarly ? request.ModuleCountAfter
+                                               : request.ModuleCountAfter2)
                       << " modules in target, apexcheat.dll at 0x"
                       << std::hex << request.NewModuleBase << std::dec << std::endl;
         } else if (request.ResultStatus == kStatusPending) {
