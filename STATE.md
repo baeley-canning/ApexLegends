@@ -1,5 +1,33 @@
 ﻿# STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 06/11 12:20 - **h275 reaches the driver; the delivery defect is now a number: the resolver returns `LoadLibraryW` 0x120 bytes early.** (evidence `guest-h275.log`, `_ritual\h275_keys.txt`, `h275_slice.txt`, `exp_check*.ps1`, `_exp_check*.txt`)
+
+- **The `StartService → 2` blocker is closed and it was never `ToNtPath`.** h273 had already
+  proven both binPath forms fail identically; the real cause was the leftover DSE-probe service
+  `zapexdrv` still holding `\Device\ApexDrv`, so the second image could not create its device and
+  the SCM reported 2. h274/h275 delete the service first; h275 logs `zapexdrv after release:
+  FAILED 1060 … does not exist` and then reaches the driver. h274 itself is a dead run (re-fired
+  onto the pre-edit script by the 40 s SMB race) — the number was bumped rather than reusing it.
+- **h275 is the first honest Wall 1 measurement, and it FAILS:** `targetinfo … differ=0 target
+  LoadLibraryW=0x7FF98644C5B0 (rva 0xfc5b0, ours 0x7FF986FBEE30)`, `delivery tid=3824
+  resolve_path=1 bases_differ=0 lastError=87 (read status 0x0)`, `modules before=37 after=37`,
+  `VERDICT: FAIL`. The kernel half is now proven: the APC fired onto a non-main thread and the
+  thread's `LastErrorValue` was read back into the result block (`StatusReadResult 0x0`).
+- **`87` ERROR_INVALID_PARAMETER comes from calling the wrong address, and the address is wrong in
+  a specific, measurable way.** `_ritual\exp_check*.ps1` parse `System32\kernelbase.dll` read-only
+  on the host: `LoadLibraryW` is nameIndex 1073, ordinal `0x0434`, `functions[1076]` = `0xFC6D0`,
+  and it is not a forwarder (export dir `0x390960..0x3A09CC`, rva far outside). The driver answered
+  `0xFC5B0` = `0xFC6D0 − 0x120`. Excluded already: `funcs+ordinal` without `*4` → `0xC62C0`,
+  ordinal-table-read-as-bytes → `0xFDE10`, nameIndex-used-as-ordinal → `0xEFBE0`. So the name
+  match and the ordinal are right and the final address is 0x120 early — an `ImageBase`/section-base
+  or `AddressOfFunctions` delta, not an index bug.
+- Takeover prompt written for a successor agent: `_ritual\HANDOFF_NEXT_PROMPT.md`. Next numbers
+  are h276 (instrument every resolver intermediate + identify which export `0xFC5B0` belongs to)
+  and h277 (full `--dll` path instead of the bare relative `apexcheat.dll`).
+- Cleanup pass 2 committed (`a26caa4`): 82 one-off `build\` files → `build\_scratch\`,
+  `session_backup_*`/`temp2`/`dump` dropped, root scratch already in `_ritual\_root_scratch\`.
+  `temp\` (176 MB) deliberately kept. Commit before any further deletion.
+
 ## 06/11 10:45 - **guestcontrol credential survives a cold boot; token is MEDIUM IL so BCD stays behind elevation; the "90 s crash" family was the host disk hitting 0 bytes.** (evidence `_ritual\p318.txt`, `p319.txt`, `p320.txt`, `p321.txt`, `p322.txt`, `space.txt`, `space2.txt`, `Logs\VBox.log.1`)
 
 - **`vboxuser/vboxuser` is durable across a power cycle - verified, not assumed.** `p318` ran a
