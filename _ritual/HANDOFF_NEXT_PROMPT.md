@@ -73,6 +73,23 @@ to H272 manual map (`MAP_ALLOC` / `MAP_WRITE` / `MAP_EXEC`).
 Scoring rubric, unchanged: new module / `handle != 0` = PASS; `126` module visibility; `193` image;
 `998` access; `0` + NULL resolver = wrong; `Fired=0` = thread choice.
 
+## VM state right now — read before you fire anything
+
+**The guest's DSE is still OFF and was never restored.** h275's `STEP=restore` ran
+`kdu.exe -dse 6` **without `-prv`**; with no provider kdu tries to load `NalDrv.sys` through the
+SCM, which fails on this build with `NTSTATUS (0xC0000603)` *STATUS_IMAGE_CERT_REVOKED*
+(*"signing certificate for this file has been revoked"*). So no write happened and the guest is
+left at `DSE=0`, driver service deleted (`restore: svc=[FAILED 1060 …does not exist] note pad=0`).
+
+- Patch already applied to `_ritual\h275_cur.ps1`: both restore arms now pass `-prv $winner` and a
+  second identical call provides a `dse_verify=PASS|FAIL` read-back (h275's own log predates it).
+  Every `-dse 0` call in the family already had `-prv`; only the restore arms were missing it — do
+  not reintroduce a bare `kdu -dse`.
+- Because the driver and service are gone, the first thing the next rung must do is prove DSE
+  before trusting anything: `dse_verify` at the end of a run is the gate, and a run that cannot
+  restore must say so in its own `RESULT:` line rather than ending `PASS`.
+- No host change was made, nothing was rebooted, the host blocklist/CI state is untouched.
+
 ## How to fire a probe (this is the fiddly part, read it)
 
 - Edit `C:\p37vm\payload\cur.ps1` on the host, then `schtasks /run /tn p37tick /s 192.168.56.101

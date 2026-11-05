@@ -27,6 +27,13 @@
 - Cleanup pass 2 committed (`a26caa4`): 82 one-off `build\` files → `build\_scratch\`,
   `session_backup_*`/`temp2`/`dump` dropped, root scratch already in `_ritual\_root_scratch\`.
   `temp\` (176 MB) deliberately kept. Commit before any further deletion.
+- **The guest is left with `DSE=0` — h275's restore silently failed.** Its `STEP=restore` called
+  `kdu.exe -dse 6` without `-prv`, so kdu tried to load `NalDrv.sys` through the SCM and got
+  `NTSTATUS 0xC0000603` *STATUS_IMAGE_CERT_REVOKED*; no write happened. `restore: svc=[FAILED 1060
+  …does not exist]` shows the service was already gone (the launcher deletes it), so nothing is
+  wedged, but the next run must not assume DSE=6. Both restore arms in `_ritual\h275_cur.ps1` are
+  patched to pass `-prv $winner` plus a `dse_verify=` read-back (syntax re-checked, `SYNTAX OK`);
+  h275's log predates the patch. No host change, no reboot.
 
 ## 06/11 10:45 - **guestcontrol credential survives a cold boot; token is MEDIUM IL so BCD stays behind elevation; the "90 s crash" family was the host disk hitting 0 bytes.** (evidence `_ritual\p318.txt`, `p319.txt`, `p320.txt`, `p321.txt`, `p322.txt`, `space.txt`, `space2.txt`, `Logs\VBox.log.1`)
 

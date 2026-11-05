@@ -128,7 +128,9 @@ foreach ($id in ($ids | Select-Object -First 4)) {
 }
 if ($dseOn) {
     W 'RESULT: FAIL no provider landed DSE=0'
-    RunExe $kdu @('-dse', '6') 15000 2 | Out-Null
+    # PATCH 06/11 12:30: the restore arms omitted -prv, so on this build NalDrv cannot load
+    # (0xC0000603 STATUS_IMAGE_CERT_REVOKED) and DSE stayed off. Restore must use the provider.
+    RunExe $kdu @('-prv', "$winner", '-dse', '6') 15000 2 | Out-Null
     Post; Done; exit 1
 }
 Post
@@ -198,8 +200,12 @@ Svc 'stop zapexdrv' 8000 | Out-Null
 Svc 'delete zapexdrv' 8000 | Out-Null
 Svc 'delete apexdrv' 8000 | Out-Null
 Get-Process notepad -EA 0 | Stop-Process -Force -EA 0
-RunExe $kdu @('-dse', '6') 15000 3 | Out-Null
+RunExe $kdu @('-prv', "$winner", '-dse', '6') 15000 3 | Out-Null
 W ('dse restore out=[' + (($script:lastOut -replace '\s+', ' ').Trim()) + ']')
+# read-back: a second identical call prints the value it found. DSE must be 6 again.
+RunExe $kdu @('-prv', "$winner", '-dse', '6') 15000 3 | Out-Null
+$dseLine = ($script:lastOut -replace '\s+', ' ').Trim()
+W ('dse_verify=' + $(if ($dseLine -match 'value: 6') { 'PASS' } else { 'FAIL out=[' + $dseLine + ']' }))
 W ('restore: svc=[' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|does not exist|FAILED' }) -join ' ') + '] notepad=' + @(Get-Process notepad -EA 0).Count)
 Remove-Item -LiteralPath "$env:SystemDrive\Users\Public\apexcheat.dll" -Force -EA 0
 W ('RESULT: ' + $verdict + ' - variable: driver ABI v4 (target-side resolve + result capture), target notepad, winner prv ' + $winner)
