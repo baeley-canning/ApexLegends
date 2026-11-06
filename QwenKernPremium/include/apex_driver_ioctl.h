@@ -86,7 +86,61 @@
 //     the write, FiredSeen says whether the APC kernel routine ran at all, and the
 //     *2 fields re-sample module count and LastError 1 s later so a late delivery
 //     cannot be scored as a failure.
-#define APEXDRV_VERSION         5
+// 6 = stub routine.  v5 proved the address, the path bytes and kernel-side delivery, yet the
+//     call still returned 87 (empty-string).  A 30-byte user-mode stub is now written into the
+//     target and used as the APC entry: it stamps a magic, stores RCX, then jumps to
+//     LoadLibraryW.  StubEntered answers "did any user-mode code run at all" and StubRcx
+//     answers "what did the routine actually receive", so neither question is a guess.
+// 7 = stub arithmetic fix.  v6 wrote the ABSOLUTE data offsets (30, 38) as RIP-relative
+//     displacements, so both stores landed at +41/+56 in the zero-filled page and the read-back
+//     sampled the stub's own code bytes (h278: entered=0x1E05C748 = 48 C7 05 1E).  The disps are
+//     now 19/20 and the read-back samples the data slots at +30/+38.  Layout unchanged.
+// 8 = Ex loader (h280).  v7 proved the plumbing end-to-end (user code ran, RCX == RemoteBase) and
+//     LoadLibraryW still returned 87 on a valid wide string.  APEXDRV_FLAG_EX_LOADER resolves
+//     kernelbase!LoadLibraryExW instead and the stub calls it with RDX=0 and
+//     R8=LOAD_WITH_ALTERED_SEARCH_PATH (0x8), so "wrong API" stops being a candidate.  The stub
+//     code widens 30 -> 38 bytes and the data slots move to +38 (magic) / +46 (rcx).
+// 9 = manual map (h281).  v8 proved the loader itself refuses both LoadLibraryW and
+//     LoadLibraryExW with 87 on a valid pointer, so the loader is dropped: APEXDRV_FLAG_MANUAL_MAP
+//     reads the image from DllPath, maps the sections, applies relocations, and the stub calls
+//     DllMain(base, DLL_PROCESS_ATTACH, NULL) and stores its BOOL.  The module count no longer
+//     changes, so MapEntryResult is the signal.  Imports/TLS land in v11 with the real payload;
+//     this version is measured against a reloc/import/TLS-free control DLL.
+// 10 = map step codes (h283).  h281 and h282 both came back with DeviceIoControl = 193
+//     (STATUS_INVALID_IMAGE_FORMAT) and a bare code, because METHOD_BUFFERED only copies the out
+//     block back when the driver sets Information - which it does - and the launcher threw the
+//     block away on a failed call.  MapStatus is now a STEP NUMBER (1 read, 2 header, 3 pool
+//     alloc, 4 section copy, 5 target alloc, 6 relocations, 7 image write, 8 stub) and the NTSTATUS
+//     that used to live there is in ResultStatus; the launcher prints the whole block on failure.
+//     A step number names the refusing line, a status alone did not.
+// 11 = readable failure blocks (h284).  v10 was a dud: it wrote the step, but h283 read back an
+//     all-zero out block (step=0 modules=0/0), because METHOD_BUFFERED only copies the output
+//     buffer back when the IRP completes with success or with Information set AND a success
+//     status.  IOCTL_APEXDRV_INJECT now completes as STATUS_SUCCESS and carries the real NTSTATUS
+//     in ResultStatus, so a failed rung yields the out block instead of a bare Win32 code.
+// 12 = correct section layout (h285).  v11 made the failure readable and it read step 4: the
+//     driver's local section type omitted the 8-byte Name array, so VirtualAddress/SizeOfRawData/
+//     PointerToRawData were all read 8 bytes early and the copy-bounds check compared the wrong
+//     number (0x200 + 0x1000 > 2048).  Name is back; offsets are the PE spec's 8/12/16/20 again.
+// 13 = verdict plumbing (h283-h285 review: the runs measured fine but could not be SCORED).
+//     (a) The map stub writes a DONE magic into a 4th data slot right after it stores the
+//         entry's RAX, so "DllMain returned FALSE" and "the entry never returned inside the
+//         10 s poll" are finally different verdicts (MapEntryFlag); the launcher also prints
+//         resultStatus on the delivered path, not only on a failed IOCTL, so h284/h285's
+//         status=-1 parse stop happening.  (b) MapStatus no longer sticks at the IMPORTS
+//         step after a clean import pass: 0 = no step refused, 9 + MapUnresolvedName =
+//         an import did not resolve.  (c) RemotePathEchoAfter is path-sized (260, was 64),
+//         so the 1 s echo cannot truncate a long path into a false mismatch.
+#define APEXDRV_VERSION         13
+
+// Use the instrumented stub as the APC entry instead of LoadLibraryW directly.
+#define APEXDRV_FLAG_STUB_ROUTINE  0x00000004
+
+// Resolve and call LoadLibraryExW(path, NULL, LOAD_WITH_ALTERED_SEARCH_PATH) instead.
+#define APEXDRV_FLAG_EX_LOADER     0x00000008
+
+// Map DllPath as a PE image inside the target and call its entry point; no loader involved.
+#define APEXDRV_FLAG_MANUAL_MAP    0x00000010
 
 // Bytes of the target PEB copied out for inspection.  The PEB's first fields
 // (ImageBaseAddress at +0x10 on x64, Ldr at +0x18) are what the user-mode
@@ -137,11 +191,34 @@ typedef struct _APEXDRV_INJECT_REQUEST {
                                                 //       0 after the 3 s window means the thread
                                                 //       never left kernel mode alertably
     ULONG   StatusEchoAfter;                    // [out] status of the post-delivery read-back
-    WCHAR   RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS]; // [out] echo 1 s later: proves
-                                                //       the buffer was not clobbered or freed
+    WCHAR   RemotePathEchoAfter[APEXDRV_MAX_PATH_CHARS]; // [out] echo 1 s later: proves
+                                                //       the buffer was not clobbered or freed.
+                                                //       v13: was 64 chars, so any path longer
+                                                //       than 63 read back truncated and scored
+                                                //       as a false mismatch
     LONG    StatusReadResult2;                  // [out] status of the second LastError read
     LONG    LoadLibraryLastError2;              // [out] LastError 1 s later (late delivery)
     ULONG   ModuleCountAfter2;                  // [out] module count 1 s later
+    // --- v6: stub instrumentation (APEXDRV_FLAG_STUB_ROUTINE) ---
+    ULONG64 StubBase;                           // [out] remote stub page (code + 16 B data)
+    ULONG   StubEntered;                        // [out] magic the stub stamps as its first
+                                                //       instruction: 0 means no USER code ran
+    ULONG64 StubRcx;                            // [out] RCX as the stub actually received it
+    // --- v8: which entry the stub was stamped to jump into ---
+    ULONG   ResolvedExLoader;                   // [out] 1 = entry is LoadLibraryExW (flag honoured,
+                                                //       0 = plain LoadLibraryW)
+    // --- v9: manual map result block ---
+    ULONG64 MapBase;                            // [out] where the image was mapped (0 = failed)
+    ULONG64 MapEntryResult;                     // [out] RAX of the entry call: DllMain's BOOL
+    ULONG   MapEntryFlag;                       // [out] v13: DONE magic once the entry RETURNED;
+                                                //       0 = it never came back inside the 10 s
+                                                //       poll, so "returned FALSE" and "never
+                                                //       returned" are different verdicts
+    LONG    MapStatus;                          // [out] v10: failing STEP (1..9), 0 = ok
+    ULONG   MapRelocCount;                      // [out] relocations applied
+    ULONG   MapImportCount;                     // [out] import entries resolved (0 until v11)
+    CHAR    MapUnresolvedName[64];              // [out] first import that did not resolve
+    ULONG   MapTlsUsed;                         // [out] 0 = TLS not processed
 } APEXDRV_INJECT_REQUEST, *PAPEXDRV_INJECT_REQUEST;
 
 typedef struct _APEXDRV_VERSION_INFO {

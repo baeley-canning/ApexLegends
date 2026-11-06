@@ -1,5 +1,55 @@
 ﻿# STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 06/11 14:5x - **h276–h285 filed; v13 verdict plumbing landed build-only (no guest run): the runs measured fine, they just could not be scored.** (evidence `guest-h283.log`…`guest-h285.log`, `_ritual\h286_stubtest.ps1` + `h286_stubtest_result.txt`, `temp\_v13_gate_build.txt`)
+
+- **The rung ledger, recorded late** (STATE had stopped at h275): h276 instrumented the resolver
+  and cleared the index suspects in the −0x120 `LoadLibraryW` question (name match + ordinal
+  right, final address 0x120 early); h277 tried the full `--dll` path; h278 measured the stub
+  layout bug (absolute offsets written as RIP displacements); h279 = ABI v7 displacement fix
+  (plumbing settled: entered=0x4870, RCX == remoteBase); h280 = v8 Ex loader (LoadLibraryExW
+  still 87 on a proven pointer); h281 = v9 manual map (apxprobe control payload, no
+  relocs/imports/TLS); h282 = read-floor fix; h283 = v10 step codes; h284 = v11
+  success-completion so the out block survives a failed map; h285 = v12 section-layout fix
+  (the local section type had dropped the PE Name array, so the copy-bounds check compared
+  numbers read 8 bytes early).
+- **h285 is filed as NOT REACHED, not "step 4"**: step 4 was measured on the pre-v12 image, and
+  the v12 runs never returned a result — the launcher died inside the inject window and its own
+  `resultStatus` was dead-coded on the delivered path, so nothing downstream could be scored
+  either. There is no trustworthy PASS for the map rung yet; the review verdict on
+  h283–h285 is "engineering good, scoring impossible".
+- **v13 (ABI bump, one build-only commit) fixes the five blockers, each verified on the host:**
+  1. `resultStatus` printed on the delivered path too (`kernel_injector.cpp`); only the
+     failed-IOCTL branch showed it before, so every delivered run parsed `status=-1`.
+  2. Map stub gains a DONE slot (`MapEntryFlag`, magic 0x4871, stamped after RAX is stored;
+     code 64 / data 32). `entryResult == 0` is no longer a pass: "returned FALSE" and "never
+     returned" are different rows, and a FALSE no longer burns the 10 s poll. Layout proven
+     on the host first (h278 rule): `_ritual\h286_stubtest.ps1` → **verdict=OK twice** (TRUE
+     entry returns 12345; FALSE entry returns 0 with the flag still stamped — the case v13
+     exists for).
+  3. `MapStatus` no longer sticks at the IMPORTS step after a clean pass: step 9 +
+     `unresolved=[name]` means exactly "an import did not resolve"; step 0 = no step refused.
+  4. Harness inject window 90 s → 180 s (worst case ≈ 32 s, but h285's runs died inside 90 s
+     with no headroom); the driver's entry poll breaks on the flag; the PENDING-path leak
+     (image + stub per undelivered retry) stays by design — freeing under an armed APC would
+     fault the target when it delivers later. Documented in the driver, not "fixed".
+  5. `RemotePathEchoAfter` is path-sized (260, was 64) so a long path can no longer read back
+     truncated; harness: `imports=` typo fixed (it printed relocs twice), the step table
+     knows step 9, `entryFlag=`/`unresolved=` are parsed and gated ahead of the FALSE check,
+     `dse_verify` is WIRED into the verdict (a PASS the restore cannot vouch for is
+     downgraded to FAIL with the reason), and the RESULT text names v13 (it said "v9").
+- **Builds (host, compile-only — no driver loaded, no guest state touched):** BuildDriver.ps1 →
+  apexdrv.sys 17,408 bytes, 0 warnings; BuildGate.ps1 → GATE 0 PASS (launcher 473,600 bytes,
+  0 warnings, IAT allowlists intact, x64). New sys SHA256
+  `CDB6BFAE8CC1867A4EDAE842D640DDF5C54D30EDDF086584CC03F075B53C5431` is pinned in
+  `_ritual\h286_cur.ps1` (ABI 13, marker/lock renamed to h286, both scripts SYNTAX OK).
+- **Fossil note:** h276/h277 pin ABI-5-era hashes and would fail their own finger checks if
+  re-run today; they are records, not rungs. Parked and off the critical path: the resolver
+  −0x120 question and the broken `refs/codex/…` ref cleanup.
+- **Next:** arm h286 on a guest cycle — deploy `h286_cur.ps1` as `cur.ps1` and serve the new
+  `zapexdrv.sys` / `apex_launcher.exe`; same control payload (apxprobe → notepad) so the
+  plumbing fixes are measurable alone. DSE state on the guest is whatever the last h285
+  restore left (it re-reads dse_pre first, so nothing is assumed).
+
 ## 06/11 12:20 - **h275 reaches the driver; the delivery defect is now a number: the resolver returns `LoadLibraryW` 0x120 bytes early.** (evidence `guest-h275.log`, `_ritual\h275_keys.txt`, `h275_slice.txt`, `exp_check*.ps1`, `_exp_check*.txt`)
 
 - **The `StartService → 2` blocker is closed and it was never `ToNtPath`.** h273 had already

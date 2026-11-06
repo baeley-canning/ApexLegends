@@ -98,9 +98,12 @@ public:
     // ---- Unified entry point used by the launcher -------------------------
     // Dispatches to the requested strategy. driverPath is only used by
     // KernelDriver (path to the companion .sys) - see kernel_injector.cpp.
+    // manualMap asks the kernel rung to map the PE itself instead of asking a
+    // loader, so no LoadLibrary is involved (delivery that no Ldr state can block).
     InjectionResult Inject(DWORD targetPid, const std::string& dllPath,
                            InjectionMethod method,
-                           const std::string& driverPath = std::string());
+                           const std::string& driverPath = std::string(),
+                           bool manualMap = false);
 
     // ========================================================================
     // METHOD 1: NtCreateThreadEx — "HIDE" Strategy
@@ -155,8 +158,11 @@ public:
     // so no usermode handle to r5apex.exe is ever opened and no usermode thread
     // is created - complementary to the two usermode strategies above.
     // ========================================================================
+    // extraParameters: the kernel rung takes a path to the companion .sys only;
+    // a second bool is threaded as manualMap for the PE-mapping delivery.
     InjectionResult InjectViaKernelDriver(DWORD targetPid, const std::string& dllPath,
-                                          const std::string& driverPath);
+                                          const std::string& driverPath,
+                                          bool manualMap = false);
 
     // ========================================================================
     // METHOD 3b: kernel reachability probe (no injection at all)

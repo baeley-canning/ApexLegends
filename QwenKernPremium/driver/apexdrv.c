@@ -103,6 +103,120 @@ static NTSTATUS ApexdrvReadProcessMemory(PEPROCESS process, PVOID baseAddress,
     return status;
 }
 
+// v6 stub.  Written into the target and used as the APC entry instead of LoadLibraryW, so the
+// two remaining questions stop being guesses: the first instruction stamps a magic (did ANY
+// user-mode code run?) and the second stores RCX (what did the routine actually receive?),
+// then it jumps to the loader entry so delivery still happens normally.
+//
+// v8 widens the code to 38 bytes so the Ex loader arm can also set its two arguments, and the
+// data slots move with it.  One fixed layout either way, so a flag never shifts the offsets:
+//
+//   mov qword ptr [rip+0x1B], 0x4870    48 C7 05 1B 00 00 00 70 48 00 00   (11 bytes, [0,11))
+//   mov [rip+0x1C], rcx                 48 89 0D 1C 00 00 00               ( 7 bytes, [11,18))
+//   Ex arm only:  xor edx,edx           31 D2                              ( 2 bytes, [18,20))
+//                 mov r8d, 8            41 B8 08 00 00 00                  ( 6 bytes, [20,26))
+//   (non-Ex arm pads [18,26) with 8 NOPs instead)
+//   mov rax, <entry>                    48 B8 <imm64>                      (10 bytes, [26,36))
+//   jmp rax                             FF E0                              ( 2 bytes, [36,38))
+//   data: entered at +38, rcx at +46
+//
+// The displacements are deltas from the END of their own instruction, never the absolute data
+// offset: [0,11) ends at 11 so the magic slot +38 needs 38-11 = 27 (0x1B), and [11,18) ends at
+// 18 so the rcx slot +46 needs 46-18 = 28 (0x1C).  v6 wrote the absolute values and both stores
+// landed past the data slots (h278).
+#define APEXDRV_STUB_CODE_BYTES   38
+#define APEXDRV_STUB_DATA_BYTES   16
+#define APEXDRV_STUB_TOTAL_BYTES  (APEXDRV_STUB_CODE_BYTES + APEXDRV_STUB_DATA_BYTES)
+#define APEXDRV_STUB_MAGIC        0x4870UL
+
+static void ApexdrvStampStub(PUCHAR stub, ULONG64 routine, BOOLEAN exLoader) {
+    RtlZeroMemory(stub, APEXDRV_STUB_TOTAL_BYTES);
+    // mov qword ptr [rip+0x1B], imm32  -> data slot at +38
+    stub[0] = 0x48; stub[1] = 0xC7; stub[2] = 0x05;
+    *(ULONG*)(stub + 3) = (ULONG)(APEXDRV_STUB_CODE_BYTES - 11);   // 38 - 11 = 27 = 0x1B
+    *(ULONG*)(stub + 7) = APEXDRV_STUB_MAGIC;
+    // mov [rip+0x1C], rcx  -> data slot at +46
+    stub[11] = 0x48; stub[12] = 0x89; stub[13] = 0x0D;
+    *(ULONG*)(stub + 14) = (ULONG)(APEXDRV_STUB_CODE_BYTES + 8 - 18);  // 46 - 18 = 28 = 0x1C
+    if (exLoader) {
+        // LoadLibraryExW(path, NULL, LOAD_WITH_ALTERED_SEARCH_PATH)
+        stub[18] = 0x31; stub[19] = 0xD2;               // xor edx,edx   (RDX = 0)
+        stub[20] = 0x41; stub[21] = 0xB8;               // mov r8d, 8    (R8  = 0x8)
+        *(ULONG*)(stub + 22) = 8;
+    } else {
+        ULONG pad;
+        for (pad = 0; pad < 8; ++pad) { stub[18 + pad] = 0x90; }   // keep the layout fixed
+    }
+    // mov rax, imm64 ; jmp rax
+    stub[26] = 0x48; stub[27] = 0xB8;
+    *(ULONG64*)(stub + 28) = routine;
+    stub[36] = 0xFF; stub[37] = 0xE0;
+}
+
+// v9 map stub.  The manual-map entry, so the delivery no longer depends on any loader API:
+// stamp the magic, store RCX (== the image base the driver passed as NormalContext), then
+// call the mapped entry point as DllMain(base, DLL_PROCESS_ATTACH, NULL) and keep its BOOL.
+//
+// Unlike the loader stub this one must RETURN, not jump: the APC dispatcher put a return
+// address on the stack and continues in KiUserApcDispatcher when the routine returns.
+// The callee also needs the x64 ABI shape a `call` normally provides, so the stub realigns
+// the stack itself: at routine entry RSP%16 is 8, `sub rsp,0x28` (32 B shadow + 8 B realign)
+// makes it 0 for the call, and `add rsp,0x28` restores it before the `ret`.
+//
+//   mov qword ptr [rip+0x35], 0x4870    48 C7 05 35 00 00 00 70 48 00 00   (11 B, [0,11))
+//   mov [rip+0x36], rcx                 48 89 0D 36 00 00 00               ( 7 B, [11,18))
+//   mov rax, <entry>                    48 B8 <imm64>                      (10 B, [18,28))
+//   mov edx, 1                          BA 01 00 00 00                     ( 5 B, [28,33))
+//   xor r8d, r8d                        45 33 C0                           ( 3 B, [33,36))
+//   sub rsp, 0x28                       48 83 EC 28                        ( 4 B, [36,40))
+//   call rax                            FF D0                              ( 2 B, [40,42))
+//   add rsp, 0x28                       48 83 C4 28                        ( 4 B, [42,46))
+//   mov [rip+0x1B], rax                 48 89 05 1B 00 00 00               ( 7 B, [46,53))
+//   mov dword [rip+0x19], 0x4871         C7 05 19 00 00 00 71 48 00 00     (10 B, [53,63))
+//   ret                                 C3                                 ( 1 B, [63,64))
+//   data: entered at +64, rcx at +72, result at +80, DONE flag at +88
+//
+// Displacements are deltas from the end of their OWN instruction: +64 needs 64-11 = 53 (0x35),
+// +72 needs 72-18 = 54 (0x36), +80 needs 80-53 = 27 (0x1B), +88 needs 88-63 = 25 (0x19).
+//
+// v13: the DONE store is the point of this layout change.  The driver used to poll for
+// "result != 0", so a DllMain that returned FALSE (RAX = 0) was indistinguishable from a
+// DllMain still running or crashed: both burned the whole 10 s poll and both came back
+// entryResult = 0.  The stub now stamps APEXDRV_MAP_STUB_DONE right after storing RAX, so
+// the poll breaks on the flag and "returned FALSE" / "never returned" are different rows.
+//
+// `mov edx, 1` is a 32-bit write, not `mov dl, 1`: DllMain's reason is a DWORD and the upper
+// bits of RDX arrive as the dispatcher's SystemArgument1, so a byte store would hand DllMain
+// a stale reason (measured on the host: 0x0B550001 instead of 1) and its `== DLL_PROCESS_ATTACH`
+// test would fail.
+#define APEXDRV_MAP_STUB_CODE_BYTES  64
+#define APEXDRV_MAP_STUB_DATA_BYTES  32   /* magic, rcx, entry result, DONE flag */
+#define APEXDRV_MAP_STUB_TOTAL_BYTES (APEXDRV_MAP_STUB_CODE_BYTES + APEXDRV_MAP_STUB_DATA_BYTES)
+#define APEXDRV_MAP_STUB_DONE        0x4871  /* stamped after the entry RETURNS (see above) */
+
+static void ApexdrvStampMapStub(PUCHAR stub, ULONG64 entry) {
+    RtlZeroMemory(stub, APEXDRV_MAP_STUB_TOTAL_BYTES);
+    stub[0] = 0x48; stub[1] = 0xC7; stub[2] = 0x05;                 // magic -> +64
+    *(ULONG*)(stub + 3) = APEXDRV_MAP_STUB_CODE_BYTES - 11;
+    *(ULONG*)(stub + 7) = APEXDRV_STUB_MAGIC;
+    stub[11] = 0x48; stub[12] = 0x89; stub[13] = 0x0D;               // rcx   -> +72
+    *(ULONG*)(stub + 14) = (APEXDRV_MAP_STUB_CODE_BYTES + 8) - 18;
+    stub[18] = 0x48; stub[19] = 0xB8;                                // mov rax, entry
+    *(ULONG64*)(stub + 20) = entry;
+    stub[28] = 0xBA;                                                 // mov edx, DLL_PROCESS_ATTACH
+    *(ULONG*)(stub + 29) = 1;
+    stub[33] = 0x45; stub[34] = 0x33; stub[35] = 0xC0;               // xor r8d, r8d (reserved)
+    stub[36] = 0x48; stub[37] = 0x83; stub[38] = 0xEC; stub[39] = 0x28;  // sub rsp, 28h
+    stub[40] = 0xFF; stub[41] = 0xD0;                                // call rax
+    stub[42] = 0x48; stub[43] = 0x83; stub[44] = 0xC4; stub[45] = 0x28;  // add rsp, 28h
+    stub[46] = 0x48; stub[47] = 0x89; stub[48] = 0x05;               // result -> +80
+    *(ULONG*)(stub + 49) = (APEXDRV_MAP_STUB_CODE_BYTES + 16) - 53;
+    stub[53] = 0xC7; stub[54] = 0x05;                                // DONE flag -> +88
+    *(ULONG*)(stub + 55) = (APEXDRV_MAP_STUB_CODE_BYTES + 24) - 63;
+    *(ULONG*)(stub + 59) = APEXDRV_MAP_STUB_DONE;
+    stub[63] = 0xC3;                                                 // ret to the dispatcher
+}
+
 // The APC delivery pair used by the inject rung.  WDK 10.0.26100 declares
 // neither the two functions nor the routine typedefs, nor KAPC_ENVIRONMENT /
 // OriginalApcEnvironment, while ntoskrnl.lib DOES carry KeInitializeApc and
@@ -252,6 +366,7 @@ static NTSTATUS ApexdrvQueueLoaderApc(PEPROCESS process, ULONG threadId,
 #define APEXDRV_TEB_LASTERROR_OFFSET    0x68
 #define APEXDRV_MAX_MODULES             1024
 #define APEXDRV_MAX_EXPORT_NAMES        0x8000
+#define APEXDRV_MAX_FORWARDER_DEPTH     2
 
 typedef struct _APEXDRV_LDR_INFO {
     ULONG   Count;
@@ -573,6 +688,698 @@ static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle,
 }
 
 // ----------------------------------------------------------------------------
+// Manual map (v9).  The loader is not involved at all, so nothing here depends on
+// Ldr state inside the target.
+// ----------------------------------------------------------------------------
+// A SizeOfImage above this is a corrupt or hostile header, not a cheat payload.
+#define APEXDRV_IMAGE_MAX_BYTES  (64UL * 1024 * 1024)
+#define APEXDRV_IMAGE_MAX_SECTIONS 96UL
+
+// The km headers used here do not pull in ntimage.h's section type, and the layout
+// is fixed by the PE spec anyway (40 bytes: 8-byte Name, then the fields used at
+// 8/12/16/20).  The Name array is not read, but it MUST be present - leaving it out
+// shifts every field 8 bytes early and h284 failed the copy bounds on VirtualSize
+// being taken for PointerToRawData.
+typedef struct _APEXDRV_SECTION_HEADER {
+    UCHAR  Name[8];
+    ULONG  VirtualSize;
+    ULONG  VirtualAddress;
+    ULONG  SizeOfRawData;
+    ULONG  PointerToRawData;
+    ULONG  PointerToRelocations;
+    ULONG  PointerToLinenumbers;
+    USHORT NumberOfRelocations;
+    USHORT NumberOfLinenumbers;
+    ULONG  Characteristics;
+} APEXDRV_SECTION_HEADER, *PAPEXDRV_SECTION_HEADER;
+
+// Read the whole file into paged pool.  The driver does the read so no user-mode
+// handle or IO is involved; SYSTEM can read the staging directories.
+static NTSTATUS ApexdrvReadImageFile(PCWSTR path, PVOID* bufferOut, ULONG* sizeOut) {
+    UNICODE_STRING      ntPath;
+    OBJECT_ATTRIBUTES   attributes;
+    IO_STATUS_BLOCK     iosb;
+    FILE_STANDARD_INFORMATION fsi;
+    HANDLE              file = NULL;
+    WCHAR*              ntBuffer;
+    PVOID               buffer = NULL;
+    size_t              length;
+    NTSTATUS            status;
+
+    *bufferOut = NULL;
+    *sizeOut   = 0;
+    length = wcslen(path);
+    if (length == 0 || length > 300) return STATUS_INVALID_PARAMETER;
+
+    ntBuffer = (WCHAR*)ExAllocatePoolWithTag(PagedPool,
+                                             (length + 5) * sizeof(WCHAR),
+                                             APEXDRV_TAG);
+    if (ntBuffer == NULL) return STATUS_INSUFFICIENT_RESOURCES;
+    ntBuffer[0] = L'\\'; ntBuffer[1] = L'?'; ntBuffer[2] = L'?'; ntBuffer[3] = L'\\';
+    RtlCopyMemory(ntBuffer + 4, path, (length + 1) * sizeof(WCHAR));
+    RtlInitUnicodeString(&ntPath, ntBuffer);
+    InitializeObjectAttributes(&attributes, &ntPath,
+                               OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE, NULL, NULL);
+
+    status = ZwCreateFile(&file, GENERIC_READ | SYNCHRONIZE, &attributes, &iosb, NULL,
+                          FILE_ATTRIBUTE_NORMAL, FILE_SHARE_READ, FILE_OPEN,
+                          FILE_SYNCHRONOUS_IO_NONALERT | FILE_NON_DIRECTORY_FILE, NULL, 0);
+    ExFreePoolWithTag(ntBuffer, APEXDRV_TAG);
+    if (!NT_SUCCESS(status)) return status;
+
+    status = ZwQueryInformationFile(file, &iosb, &fsi, sizeof(fsi),
+                                    FileStandardInformation);
+    if (NT_SUCCESS(status)) {
+        // 0x100, not 0x1000: the header check below uses the same floor, and a
+        // payload with no imports/CRT can legitimately be 2 KB (apxprobe.dll is).
+        if (fsi.EndOfFile.QuadPart < 0x100 ||
+            fsi.EndOfFile.QuadPart > APEXDRV_IMAGE_MAX_BYTES) {
+            status = STATUS_INVALID_IMAGE_FORMAT;
+        } else {
+            *sizeOut = (ULONG)fsi.EndOfFile.QuadPart;
+            buffer = ExAllocatePoolWithTag(PagedPool, *sizeOut, APEXDRV_TAG);
+            if (buffer == NULL) {
+                status = STATUS_INSUFFICIENT_RESOURCES;
+            } else {
+                status = ZwReadFile(file, NULL, NULL, NULL, &iosb, buffer, *sizeOut,
+                                    NULL, NULL);
+                if (NT_SUCCESS(status)) {
+                    *bufferOut = buffer;
+                } else {
+                    ExFreePoolWithTag(buffer, APEXDRV_TAG);
+                }
+            }
+        }
+    }
+    ZwClose(file);
+    if (!NT_SUCCESS(status)) *sizeOut = 0;
+    return status;
+}
+
+// v10: MapStatus is a STEP NUMBER, not an NTSTATUS.  A status told us 193 eleven times and never
+// which line produced it; a step names the line.  The NTSTATUS goes to ResultStatus instead.
+#define APEXDRV_MAP_STEP_READ     1   // open / size / read of the file
+#define APEXDRV_MAP_STEP_HEADER   2   // PE header or section-table validation
+#define APEXDRV_MAP_STEP_POOL     3   // pool image allocation
+#define APEXDRV_MAP_STEP_COPY     4   // section copy bounds
+#define APEXDRV_MAP_STEP_ALLOC    5   // address space in the target
+#define APEXDRV_MAP_STEP_RELOC    6   // relocation pass
+#define APEXDRV_MAP_STEP_WRITE    7   // single image write into the target
+#define APEXDRV_MAP_STEP_STUB     8   // stub page alloc / write
+#define APEXDRV_MAP_STEP_IMPORTS  9   // import table (+ /GS cookie seed) in the pool image
+
+// v11: imports are bound in the pool image before the single write, so a second pass
+// over the target is never needed.  x64 only, like the rest of the mapper.
+static NTSTATUS ApexdrvFindModuleBaseByName(PEPROCESS process, const char* asciiName,
+                                            PVOID* baseOut) {
+    KAPC_STATE  apcState;
+    NTSTATUS    status = STATUS_NOT_FOUND;
+    PPEB        peb;
+    WCHAR       wanted[APEXDRV_MAX_MODULE_NAME_CHARS];
+    SIZE_T      wantedChars = 0;
+    PLIST_ENTRY head;
+    PLIST_ENTRY entry;
+    ULONG       guard = 0;
+
+    if (asciiName == NULL || baseOut == NULL) return STATUS_INVALID_PARAMETER;
+    *baseOut = NULL;
+
+    while (asciiName[wantedChars] != '\0' &&
+           wantedChars < APEXDRV_MAX_MODULE_NAME_CHARS - 1) {
+        wanted[wantedChars] = (WCHAR)(UCHAR)asciiName[wantedChars];
+        ++wantedChars;
+    }
+    if (wantedChars == 0) return STATUS_NOT_FOUND;
+    wanted[wantedChars] = L'\0';
+
+    peb = PsGetProcessPeb(process);
+    if (peb == NULL) return STATUS_NOT_FOUND;
+
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        PVOID ldr = *(PVOID*)((PUCHAR)peb + APEXDRV_PEB_LDR_OFFSET);
+        if (ldr != NULL) {
+            head  = (PLIST_ENTRY)((PUCHAR)ldr + APEXDRV_LDR_LIST_OFFSET);
+            entry = head->Flink;
+            while (entry != head && guard < APEXDRV_MAX_MODULES) {
+                ULONG64          base = *(ULONG64*)((PUCHAR)entry + APEXDRV_LDR_DLLBASE_OFFSET);
+                PCUNICODE_STRING name =
+                    (PCUNICODE_STRING)((PUCHAR)entry + APEXDRV_LDR_BASENAME_OFFSET);
+                PLIST_ENTRY      next = entry->Flink;
+
+                if (base != 0 && ApexdrvNameEquals(name, wanted, wantedChars)) {
+                    *baseOut = (PVOID)(ULONG_PTR)base;
+                    status = STATUS_SUCCESS;
+                    break;
+                }
+                entry = next;
+                guard++;
+            }
+        }
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    return status;
+}
+
+// Resolves one export of `moduleBase` by name or ordinal.  A forwarder string
+// ("KERNELBASE.Foo") names another module, so the core recurses; the entry point
+// below starts at depth 0.
+static NTSTATUS ApexdrvResolveExportEntryDepth(PEPROCESS process, PVOID moduleBase,
+                                               const char* nameOrNull, ULONG ordinalOrZero,
+                                               ULONG depth, PVOID* addressOut) {
+    KAPC_STATE apcState;
+    NTSTATUS   status = STATUS_PROCEDURE_NOT_FOUND;
+    ULONG      rva = 0;
+
+    if (moduleBase == NULL || addressOut == NULL) return STATUS_INVALID_PARAMETER;
+    *addressOut = NULL;
+    if (nameOrNull == NULL && ordinalOrZero == 0) return STATUS_INVALID_PARAMETER;
+
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        ULONG lfanew;
+        ULONG directoryRva;
+        ULONG directorySize;
+        ULONG numberOfFunctions;
+        ULONG functionsRva;
+        ULONG index;
+        PVOID optionalHeader;
+
+        if (*(USHORT*)((PUCHAR)moduleBase) != 0x5A4D) {                   // 'MZ'
+            status = STATUS_INVALID_IMAGE_FORMAT;
+        } else {
+            lfanew = *(ULONG*)((PUCHAR)moduleBase + 0x3C);
+            if (*(ULONG*)((PUCHAR)moduleBase + lfanew) != 0x00004550) {  // 'PE\0\0'
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else {
+                optionalHeader = (PUCHAR)moduleBase + lfanew + 0x18;
+                if (*(USHORT*)optionalHeader != 0x020B) {                // PE32+ only
+                    status = STATUS_INVALID_IMAGE_FORMAT;
+                } else {
+                    directoryRva  = *(ULONG*)((PUCHAR)optionalHeader + 0x70);
+                    directorySize = *(ULONG*)((PUCHAR)optionalHeader + 0x74);
+                    if (directoryRva == 0 || directorySize == 0) {
+                        status = STATUS_PROCEDURE_NOT_FOUND;
+                    } else {
+                        numberOfFunctions = *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x14);
+                        functionsRva      = *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x1C);
+
+                        if (nameOrNull != NULL) {
+                            ULONG numberOfNames =
+                                *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x18);
+                            ULONG namesRva    =
+                                *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x20);
+                            ULONG ordinalsRva =
+                                *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x24);
+
+                            if (numberOfNames > APEXDRV_MAX_EXPORT_NAMES) {
+                                status = STATUS_INVALID_IMAGE_FORMAT;
+                            } else {
+                                for (index = 0; index < numberOfNames; ++index) {
+                                    ULONG       nameRva =
+                                        *(ULONG*)((PUCHAR)moduleBase + namesRva + index * 4);
+                                    const char* text =
+                                        (const char*)((PUCHAR)moduleBase + nameRva);
+
+                                    if (ApexdrvAsciiEquals(text, nameOrNull)) {
+                                        ULONG ordinal = (ULONG)*(USHORT*)(
+                                            (PUCHAR)moduleBase + ordinalsRva + index * 2);
+                                        if (ordinal < numberOfFunctions) {
+                                            rva = *(ULONG*)((PUCHAR)moduleBase +
+                                                            functionsRva + ordinal * 4);
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                        } else {
+                            ULONG ordinalBase =
+                                *(ULONG*)((PUCHAR)moduleBase + directoryRva + 0x10);
+                            index = ordinalOrZero - ordinalBase;
+                            if (ordinalOrZero >= ordinalBase && index < numberOfFunctions) {
+                                rva = *(ULONG*)((PUCHAR)moduleBase + functionsRva + index * 4);
+                            }
+                        }
+
+                        // A forwarder is an ASCII string inside the export directory
+                        // itself, never a real RVA elsewhere in the image.
+                        if (rva != 0) {
+                            if (rva >= directoryRva &&
+                                (ULONG64)rva < (ULONG64)directoryRva + directorySize &&
+                                depth < APEXDRV_MAX_FORWARDER_DEPTH) {
+                                const char* text = (const char*)((PUCHAR)moduleBase + rva);
+                                char        dll[APEXDRV_MAX_MODULE_NAME_CHARS];
+                                char        function[APEXDRV_MAX_MODULE_NAME_CHARS];
+                                ULONG       at = 0;
+                                ULONG       dllChars = 0;
+                                ULONG       chars = 0;
+                                PVOID       forwardBase = NULL;
+                                BOOLEAN     forwarded = FALSE;
+
+                                while (text[at] != '\0' && text[at] != '.' &&
+                                       dllChars < sizeof(dll) - 1) {
+                                    dll[dllChars++] = text[at];
+                                    ++at;
+                                }
+                                dll[dllChars] = '\0';
+                                if (text[at] == '.') {
+                                    ++at;
+                                    while (text[at] != '\0' &&
+                                           chars < sizeof(function) - 1) {
+                                        function[chars++] = text[at];
+                                        ++at;
+                                    }
+                                }
+                                function[chars] = '\0';
+
+                                // a forwarder names the module without its extension
+                                if (chars != 0 && dllChars >= 4) {
+                                    if ((dll[dllChars - 4] | 32) != '.' ||
+                                        (dll[dllChars - 3] | 32) != 'd' ||
+                                        (dll[dllChars - 2] | 32) != 'l' ||
+                                        (dll[dllChars - 1] | 32) != 'l') {
+                                        if (dllChars + 4 < sizeof(dll)) {
+                                            dll[dllChars++] = '.';
+                                            dll[dllChars++] = 'd';
+                                            dll[dllChars++] = 'l';
+                                            dll[dllChars++] = 'l';
+                                            dll[dllChars]   = '\0';
+                                        }
+                                    }
+                                }
+
+                                if (NT_SUCCESS(ApexdrvFindModuleBaseByName(process, dll,
+                                                                          &forwardBase)) &&
+                                    forwardBase != NULL) {
+                                    forwarded = TRUE;
+                                    if (function[0] == '#') {
+                                        ULONG forwardedOrdinal = 0;
+                                        const char* digits = function + 1;
+                                        while (*digits >= '0' && *digits <= '9') {
+                                            forwardedOrdinal = forwardedOrdinal * 10 +
+                                                               (ULONG)(*digits - '0');
+                                            ++digits;
+                                        }
+                                        status = ApexdrvResolveExportEntryDepth(
+                                            process, forwardBase, NULL, forwardedOrdinal,
+                                            depth + 1, addressOut);
+                                    } else if (function[0] != '\0') {
+                                        status = ApexdrvResolveExportEntryDepth(
+                                            process, forwardBase, function, 0,
+                                            depth + 1, addressOut);
+                                    } else {
+                                        forwarded = FALSE;
+                                    }
+                                } else {
+                                    status = STATUS_DLL_NOT_FOUND;
+                                }
+                                if (!forwarded && status != STATUS_DLL_NOT_FOUND) {
+                                    status = STATUS_PROCEDURE_NOT_FOUND;
+                                }
+                            } else {
+                                *addressOut = (PVOID)((PUCHAR)moduleBase + rva);
+                                status = STATUS_SUCCESS;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    return status;
+}
+
+static NTSTATUS ApexdrvResolveExportEntry(PEPROCESS process, PVOID moduleBase,
+                                          const char* nameOrNull, ULONG ordinalOrZero,
+                                          PVOID* addressOut) {
+    return ApexdrvResolveExportEntryDepth(process, moduleBase, nameOrNull, ordinalOrZero,
+                                          0, addressOut);
+}
+
+// Records the first failed import as "dll!name" or "dll!#N" into the 64-byte slot.
+static VOID ApexdrvRecordUnresolved(PAPEXDRV_INJECT_REQUEST request, const char* dll,
+                                    const char* nameOrNull, ULONG ordinal) {
+    ULONG at = 0;
+    ULONG index;
+
+    for (index = 0; dll != NULL && dll[index] != '\0' &&
+                    at < sizeof(request->MapUnresolvedName) - 1; ++index) {
+        request->MapUnresolvedName[at++] = dll[index];
+    }
+    if (at < sizeof(request->MapUnresolvedName) - 1) {
+        request->MapUnresolvedName[at++] = '!';
+    }
+    if (nameOrNull != NULL) {
+        for (index = 0; nameOrNull[index] != '\0' &&
+                        at < sizeof(request->MapUnresolvedName) - 1; ++index) {
+            request->MapUnresolvedName[at++] = nameOrNull[index];
+        }
+    } else if (at < sizeof(request->MapUnresolvedName) - 1) {
+        CHAR  reversed[8];
+        ULONG digits = 0;
+
+        request->MapUnresolvedName[at++] = '#';
+        if (ordinal == 0) reversed[digits++] = '0';
+        while (ordinal != 0 && digits < sizeof(reversed)) {
+            reversed[digits++] = (CHAR)('0' + (ordinal % 10));
+            ordinal /= 10;
+        }
+        while (digits != 0 && at < sizeof(request->MapUnresolvedName) - 1) {
+            request->MapUnresolvedName[at++] = reversed[--digits];
+        }
+    }
+    request->MapUnresolvedName[at] = '\0';
+}
+
+// Binds the import table of the pool image to the modules already loaded in the
+// target.  Runs before the single write, so nothing here touches the target image.
+// The first failure is named and stops the walk; the caller still writes and enters.
+static NTSTATUS ApexdrvPatchImports(PEPROCESS process, PUCHAR image, ULONG imageSize,
+                                    PAPEXDRV_INJECT_REQUEST request) {
+    PVOID optionalHeader;
+    ULONG lfanew;
+    ULONG directoryRva;
+    ULONG directorySize;
+    ULONG at;
+
+    if (imageSize < 0x100) return STATUS_INVALID_IMAGE_FORMAT;
+    lfanew = *(ULONG*)(image + 0x3C);
+    if (lfanew > imageSize || imageSize - lfanew < 0x18 + 0xC8) {
+        return STATUS_INVALID_IMAGE_FORMAT;
+    }
+    optionalHeader = image + lfanew + 0x18;
+    if (*(USHORT*)optionalHeader != 0x020B) return STATUS_INVALID_IMAGE_FORMAT;
+
+    directoryRva  = *(ULONG*)((PUCHAR)optionalHeader + 0x78);   // import, index 1
+    directorySize = *(ULONG*)((PUCHAR)optionalHeader + 0x7C);
+    if (directoryRva == 0 || directorySize == 0) return STATUS_SUCCESS;
+    if ((ULONG64)directoryRva + directorySize > imageSize) {
+        return STATUS_INVALID_IMAGE_FORMAT;
+    }
+
+    request->MapStatus = APEXDRV_MAP_STEP_IMPORTS;
+
+    for (at = 0; at + 20 <= directorySize; at += 20) {
+        PUCHAR  descriptor = image + directoryRva + at;
+        ULONG   nameRva    = *(ULONG*)(descriptor + 0x0C);
+        ULONG   oftRva     = *(ULONG*)(descriptor + 0x00);
+        ULONG   ftRva      = *(ULONG*)(descriptor + 0x10);
+        char    dll[APEXDRV_MAX_MODULE_NAME_CHARS];
+        ULONG   dllChars   = 0;
+        ULONG   thunkRva;
+        ULONG   thunks;
+        ULONG   i;
+        BOOLEAN haveModule = FALSE;
+        PVOID   moduleBase = NULL;
+
+        if (nameRva == 0 && ftRva == 0) break;      // all-zero terminator
+        if (nameRva == 0) continue;                 // nothing to name a failure after
+
+        if (nameRva < imageSize) {
+            while (nameRva + dllChars < imageSize &&
+                   image[nameRva + dllChars] != '\0' &&
+                   dllChars < sizeof(dll) - 1) {
+                dll[dllChars] = (char)image[nameRva + dllChars];
+                ++dllChars;
+            }
+        }
+        dll[dllChars] = '\0';
+
+        thunkRva = (oftRva != 0) ? oftRva : ftRva;
+        if (thunkRva == 0 || thunkRva >= imageSize ||
+            ftRva == 0 || ftRva >= imageSize) {
+            ApexdrvRecordUnresolved(request, dll, NULL, 0);
+            request->ResultStatus = STATUS_INVALID_IMAGE_FORMAT;
+            return STATUS_INVALID_IMAGE_FORMAT;
+        }
+        thunks = (imageSize - thunkRva) / sizeof(ULONG64);
+
+        for (i = 0; i < thunks; ++i) {
+            ULONG64     thunk   = *(ULONG64*)(image + thunkRva + i * 8);
+            char        nameBuf[APEXDRV_MAX_MODULE_NAME_CHARS];
+            const char* name    = NULL;
+            ULONG       ordinal = 0;
+            PVOID       address = NULL;
+            NTSTATUS    status;
+
+            if (thunk == 0) break;                  // end of this thunk array
+            if (ftRva + i * 8 + 8 > imageSize) {
+                ApexdrvRecordUnresolved(request, dll, NULL, 0);
+                request->ResultStatus = STATUS_INVALID_IMAGE_FORMAT;
+                return STATUS_INVALID_IMAGE_FORMAT;
+            }
+
+            if ((thunk & 0x8000000000000000ULL) != 0) {
+                ordinal = (ULONG)(thunk & 0xFFFF);
+            } else {
+                ULONG hintRva = (ULONG)thunk;
+                ULONG chars   = 0;
+
+                if (hintRva + 2 < imageSize) {
+                    hintRva += 2;                   // skip the hint word
+                    while (hintRva + chars < imageSize &&
+                           image[hintRva + chars] != '\0' &&
+                           chars < sizeof(nameBuf) - 1) {
+                        nameBuf[chars] = (char)image[hintRva + chars];
+                        ++chars;
+                    }
+                }
+                nameBuf[chars] = '\0';
+                name = nameBuf;
+            }
+
+            if (!haveModule) {
+                status = ApexdrvFindModuleBaseByName(process, dll, &moduleBase);
+                if (!NT_SUCCESS(status) || moduleBase == NULL) {
+                    ApexdrvRecordUnresolved(request, dll, name, ordinal);
+                    request->ResultStatus = STATUS_DLL_NOT_FOUND;
+                    return STATUS_DLL_NOT_FOUND;
+                }
+                haveModule = TRUE;
+            }
+
+            status = ApexdrvResolveExportEntry(process, moduleBase, name, ordinal, &address);
+            if (!NT_SUCCESS(status) || address == NULL) {
+                ApexdrvRecordUnresolved(request, dll, name, ordinal);
+                request->ResultStatus = STATUS_PROCEDURE_NOT_FOUND;
+                return STATUS_PROCEDURE_NOT_FOUND;
+            }
+
+            *(ULONG64*)(image + ftRva + i * 8) = (ULONG64)(ULONG_PTR)address;
+            ++request->MapImportCount;
+        }
+    }
+
+    return STATUS_SUCCESS;
+}
+
+// Map an image file into the target.  Every step that can fail writes its NTSTATUS to
+// MapStatus so the verdict never has to guess which stage refused.  The image is built
+// entirely in pool and written ONCE, so the target never sees a half-mapped picture.
+static NTSTATUS ApexdrvManualMap(PEPROCESS process, HANDLE processHandle, PCWSTR path,
+                                 PAPEXDRV_INJECT_REQUEST request,
+                                 PVOID* remoteBaseOut, ULONG* entryRvaOut) {
+    PUCHAR          file = NULL;
+    ULONG           fileSize = 0;
+    PUCHAR          image = NULL;
+    ULONG           imageSize = 0;
+    ULONG           headersSize = 0;
+    ULONG           sectionCount = 0;
+    ULONG           entryRva = 0;
+    ULONG           relocRva = 0;
+    ULONG           relocSize = 0;
+    ULONG64         preferredBase = 0;
+    ULONG64         actualBase = 0;
+    ULONG64         delta = 0;
+    SIZE_T          regionSize;
+    PUCHAR          nt = NULL;
+    PAPEXDRV_SECTION_HEADER sections = NULL;
+    ULONG           i;
+    NTSTATUS        status;
+
+    *remoteBaseOut = NULL;
+    *entryRvaOut   = 0;
+    request->MapStatus = 0;
+
+    status = ApexdrvReadImageFile(path, (PVOID*)&file, &fileSize);
+    if (!NT_SUCCESS(status)) {
+        request->MapStatus = APEXDRV_MAP_STEP_READ;
+        request->ResultStatus = status;
+        return status;
+    }
+
+    // --- header sanity.  Anything unexpected stops here with a named status. ---
+    if (fileSize < 0x100 || *(USHORT*)file != 0x5A4D) status = STATUS_INVALID_IMAGE_FORMAT;
+    else {
+        ULONG lfanew = *(ULONG*)(file + 0x3C);
+        if (lfanew + 0x100 > fileSize || *(ULONG*)(file + lfanew) != 0x00004550) {
+            status = STATUS_INVALID_IMAGE_FORMAT;
+        } else {
+            nt = file + lfanew + 4;                    // IMAGE_FILE_HEADER
+            sectionCount   = *(USHORT*)(nt + 2);
+            headersSize    = *(ULONG*)(nt + 20 + 0x3C); // SizeOfHeaders
+            imageSize      = *(ULONG*)(nt + 20 + 0x38); // SizeOfImage
+            preferredBase  = *(ULONG64*)(nt + 20 + 0x18);
+            entryRva       = *(ULONG*)(nt + 20 + 0x10);
+            relocRva       = *(ULONG*)(nt + 20 + 0x98);
+            relocSize      = *(ULONG*)(nt + 20 + 0x9C);
+            if (*(USHORT*)nt != 0x8664 || *(USHORT*)(nt + 20) != 0x20B) {
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else if (sectionCount == 0 || sectionCount > APEXDRV_IMAGE_MAX_SECTIONS) {
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else if (imageSize < headersSize || imageSize > APEXDRV_IMAGE_MAX_BYTES) {
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else if (entryRva == 0 || entryRva >= imageSize) {
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else if (headersSize > fileSize) {
+                status = STATUS_INVALID_IMAGE_FORMAT;
+            } else {
+                sections = (PAPEXDRV_SECTION_HEADER)(nt + 20 + *(USHORT*)(nt + 16));
+                if ((PUCHAR)(sections + sectionCount) > file + fileSize) {
+                    status = STATUS_INVALID_IMAGE_FORMAT;
+                }
+            }
+        }
+    }
+    if (!NT_SUCCESS(status)) {
+        ExFreePoolWithTag(file, APEXDRV_TAG);
+        request->MapStatus = APEXDRV_MAP_STEP_HEADER;
+        request->ResultStatus = status;
+        return status;
+    }
+
+    // --- build the image in pool: headers, then every section at its RVA ---
+    image = (PUCHAR)ExAllocatePoolWithTag(PagedPool, imageSize, APEXDRV_TAG);
+    if (image == NULL) {
+        ExFreePoolWithTag(file, APEXDRV_TAG);
+        request->MapStatus = APEXDRV_MAP_STEP_POOL;
+        request->ResultStatus = STATUS_INSUFFICIENT_RESOURCES;
+        return STATUS_INSUFFICIENT_RESOURCES;
+    }
+    RtlZeroMemory(image, imageSize);
+    RtlCopyMemory(image, file, headersSize);
+    for (i = 0; i < sectionCount; ++i) {
+        ULONG va  = sections[i].VirtualAddress;
+        ULONG raw = sections[i].SizeOfRawData;
+        ULONG ptr = sections[i].PointerToRawData;
+        ULONG n;
+        if (va >= imageSize || raw == 0) continue;
+        n = raw;
+        if (n > imageSize - va) n = imageSize - va;
+        if (ptr + n > fileSize) {
+            status = STATUS_INVALID_IMAGE_FORMAT;
+            break;
+        }
+        RtlCopyMemory(image + va, file + ptr, n);
+    }
+    ExFreePoolWithTag(file, APEXDRV_TAG);
+    if (!NT_SUCCESS(status)) {
+        ExFreePoolWithTag(image, APEXDRV_TAG);
+        request->MapStatus = APEXDRV_MAP_STEP_COPY;
+        request->ResultStatus = status;
+        return status;
+    }
+
+    // --- allocate: preferred base first, anywhere plausible otherwise ---
+    {
+        PVOID base = (PVOID)(ULONG_PTR)preferredBase;
+        regionSize = imageSize;
+        status = ZwAllocateVirtualMemory(processHandle, &base, 0, &regionSize,
+                                         MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+        if (!NT_SUCCESS(status)) {
+            base = NULL;
+            regionSize = imageSize;
+            status = ZwAllocateVirtualMemory(processHandle, &base, 0, &regionSize,
+                                             MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+        }
+        if (!NT_SUCCESS(status)) {
+            ExFreePoolWithTag(image, APEXDRV_TAG);
+            request->MapStatus = APEXDRV_MAP_STEP_ALLOC;
+            request->ResultStatus = status;
+            return status;
+        }
+        actualBase = (ULONG64)(ULONG_PTR)base;
+        delta = actualBase - preferredBase;
+    }
+    request->MapBase = actualBase;
+
+    // --- relocations, in the pool image before the single write ---
+    if (delta != 0 && relocRva != 0 && relocSize != 0) {
+        ULONG at = 0;
+        while (at + 8 <= relocSize && relocRva + at + 8 <= imageSize) {
+            PUCHAR block = image + relocRva + at;
+            ULONG  pageRva  = *(ULONG*)block;
+            ULONG  blockSize = *(ULONG*)(block + 4);
+            ULONG  e;
+            if (blockSize < 8 || at + blockSize > relocSize) break;
+            for (e = 8; e + 2 <= blockSize; e += 2) {
+                USHORT entry = *(USHORT*)(block + e);
+                ULONG  type  = entry >> 12;
+                ULONG  off   = entry & 0x0FFF;
+                if (type == 10 /* DIR64 */ && pageRva + off + 8 <= imageSize) {
+                    *(ULONG64*)(image + pageRva + off) += delta;
+                    ++request->MapRelocCount;
+                }
+            }
+            at += blockSize;
+        }
+    }
+
+    // --- /GS cookie seed and imports, still in the pool image ---
+    {
+        PUCHAR opt         = image + *(ULONG*)(image + 0x3C) + 0x18;
+        ULONG  loadCfgRva  = *(ULONG*)(opt + 0xC0);         // load config, index 10
+        ULONG  loadCfgSize = *(ULONG*)(opt + 0xC4);
+
+        // The cookie field holds a VA of the linked image; the reloc pass already
+        // added the delta to it when the image moved, so actualBase is the base here.
+        if (loadCfgRva != 0 && loadCfgSize >= 0x60 &&
+            (ULONG64)loadCfgRva + 0x60 <= imageSize) {
+            ULONG64 cookieVa  = *(ULONG64*)(image + loadCfgRva + 0x58);
+            ULONG64 cookieRva = cookieVa - actualBase;
+            if (cookieVa != 0 && cookieRva != 0 && cookieRva + 8 <= imageSize) {
+                *(ULONG64*)(image + (ULONG)cookieRva) = 0x00002B992DDFA232ULL ^ actualBase;
+            }
+        }
+
+        // A failed import does not return: the write and the entry call still run,
+        // so the run measures.  MapStatus/MapUnresolvedName keep the failure; the
+        // caller resets ResultStatus once the delivery itself succeeds.
+        ApexdrvPatchImports(process, image, imageSize, request);
+        // v13: a CLEAN import pass must not leave the IMPORTS step behind.  Before
+        // this, MapStatus stayed 9 after every successful pass (the step was set on
+        // entry to PatchImports and only a failure overwrote anything), so a delivered
+        // run read as if a step had refused when none had.  0 = no step refused; 9
+        // now means exactly "an import did not resolve" (MapUnresolvedName names it).
+        if (request->MapUnresolvedName[0] == '\0') {
+            request->MapStatus = 0;
+        }
+    }
+
+    status = ApexdrvWriteProcessMemory(process, (PVOID)(ULONG_PTR)actualBase, image, imageSize);
+    ExFreePoolWithTag(image, APEXDRV_TAG);
+    if (!NT_SUCCESS(status)) {
+        SIZE_T freeSize = 0;
+        ZwFreeVirtualMemory(processHandle, (PVOID*)&actualBase, &freeSize, MEM_RELEASE);
+        request->MapBase = 0;
+        request->MapStatus = APEXDRV_MAP_STEP_WRITE;
+        request->ResultStatus = status;
+        return status;
+    }
+
+    *remoteBaseOut = (PVOID)(ULONG_PTR)actualBase;
+    *entryRvaOut   = entryRva;
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
 // IOCTL_APEXDRV_INJECT
 // ----------------------------------------------------------------------------
 static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
@@ -590,10 +1397,14 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     APEXDRV_LDR_INFO    selfInfo;
     ULONG               exportRva   = 0;
     ULONG64             loadLibrary = request->LoadLibraryAddress;
+    PVOID               contextArg  = NULL;     // APC NormalContext -> RCX
+    BOOLEAN             manualMap   = (BOOLEAN)((request->Flags & APEXDRV_FLAG_MANUAL_MAP) != 0);
+    PVOID               mapBase     = NULL;
+    ULONG               mapEntryRva = 0;
 
     if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
     if (request->ThreadId == 0)  return STATUS_INVALID_PARAMETER;
-    if (request->LoadLibraryAddress == 0 &&
+    if (request->LoadLibraryAddress == 0 && manualMap == FALSE &&
         (request->Flags & APEXDRV_FLAG_RESOLVE_IN_TARGET) == 0) {
         return STATUS_INVALID_PARAMETER;
     }
@@ -616,6 +1427,18 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     request->StatusReadResult2    = 0;
     request->LoadLibraryLastError2 = 0;
     request->ModuleCountAfter2    = 0;
+    request->StubBase             = 0;
+    request->StubEntered          = 0;
+    request->StubRcx              = 0;
+    request->ResolvedExLoader     = 0;
+    request->MapBase              = 0;
+    request->MapEntryResult       = 0;
+    request->MapEntryFlag         = 0;
+    request->MapStatus            = 0;
+    request->MapRelocCount        = 0;
+    request->MapImportCount       = 0;
+    request->MapUnresolvedName[0] = '\0';
+    request->MapTlsUsed           = 0;
 
     // Ensure the wide path is NUL terminated inside the supplied buffer.
     request->DllPath[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
@@ -649,8 +1472,10 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
     }
 
     if (request->Flags & APEXDRV_FLAG_RESOLVE_IN_TARGET) {
+        const BOOLEAN exLoader = (request->Flags & APEXDRV_FLAG_EX_LOADER) != 0;
         status = ApexdrvResolveExportRva(process, targetInfo.KernelBaseBase,
-                                         "LoadLibraryW", &exportRva);
+                                         exLoader ? "LoadLibraryExW" : "LoadLibraryW",
+                                         &exportRva);
         if (!NT_SUCCESS(status)) {
             request->ResultStatus = status;
             ZwClose(processHandle);
@@ -659,8 +1484,23 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         }
         loadLibrary = targetInfo.KernelBaseBase + exportRva;
         request->ResolvePath = 1;
+        request->ResolvedExLoader = exLoader ? 1 : 0;
     }
     request->ResolvedLoadLibrary = loadLibrary;
+
+    // v9: map the image instead of asking a loader for it.  Nothing after this
+    // point needs kernelbase, so the resolve above may be absent.
+    if (manualMap) {
+        status = ApexdrvManualMap(process, processHandle, request->DllPath, request,
+                                  &mapBase, &mapEntryRva);
+        if (!NT_SUCCESS(status)) {
+            request->ResultStatus = status;
+            ZwClose(processHandle);
+            ObDereferenceObject(process);
+            return status;
+        }
+        request->ResolvedLoadLibrary = (ULONG64)(ULONG_PTR)mapBase + mapEntryRva;
+    }
 
     regionSize = pathBytes;
     status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
@@ -688,9 +1528,50 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
                                                        pathBytes);
     request->RemotePathEcho[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
 
+    // v6: an instrumented stub as the entry, when asked for.  v9 reuses the same
+    // slot for the map stub, which calls the mapped entry instead of a loader.
+    if (request->Flags & APEXDRV_FLAG_STUB_ROUTINE) {
+        UCHAR  stubImage[APEXDRV_STUB_TOTAL_BYTES + APEXDRV_MAP_STUB_TOTAL_BYTES];
+        SIZE_T stubSize;
+        PVOID  stubBuffer = NULL;
+
+        if (manualMap) {
+            stubSize = APEXDRV_MAP_STUB_TOTAL_BYTES;
+            ApexdrvStampMapStub(stubImage, request->ResolvedLoadLibrary);
+        } else {
+            stubSize = APEXDRV_STUB_TOTAL_BYTES;
+            ApexdrvStampStub(stubImage, loadLibrary,
+                             (BOOLEAN)((request->Flags & APEXDRV_FLAG_EX_LOADER) != 0));
+        }
+        status = ZwAllocateVirtualMemory(processHandle, &stubBuffer, 0, &stubSize,
+                                         MEM_COMMIT | MEM_RESERVE,
+                                         PAGE_EXECUTE_READWRITE);
+        if (NT_SUCCESS(status)) {
+            status = ApexdrvWriteProcessMemory(process, stubBuffer, stubImage, stubSize);
+        }
+        if (!NT_SUCCESS(status)) {
+            if (stubBuffer != NULL) {
+                SIZE_T freeSize = 0;
+                ZwFreeVirtualMemory(processHandle, &stubBuffer, &freeSize, MEM_RELEASE);
+            }
+            request->MapStatus   = APEXDRV_MAP_STEP_STUB;
+            request->ResultStatus = status;
+            ZwClose(processHandle);
+            ObDereferenceObject(process);
+            return status;
+        }
+        request->StubBase = (ULONG64)(ULONG_PTR)stubBuffer;
+        loadLibrary      = (ULONG64)(ULONG_PTR)stubBuffer;
+        // map mode hands the image base to the routine as RCX; the loader route
+        // keeps the path there and the entry is the helper function.
+        contextArg = manualMap ? mapBase : remoteBuffer;
+    } else {
+        contextArg = remoteBuffer;
+    }
+
     // Queue LoadLibraryW(remotePath) on the caller's thread instead of creating
     // one: see the block comment above ApexdrvQueueLoaderApc for why.
-    status = ApexdrvQueueLoaderApc(process, request->ThreadId, remoteBuffer,
+    status = ApexdrvQueueLoaderApc(process, request->ThreadId, contextArg,
                                    (ULONG_PTR)loadLibrary,
                                    &apcContext);
     if (!NT_SUCCESS(status)) {
@@ -718,12 +1599,18 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         // Still queued: keep the context AND the path buffer, they are in use.
         // v5 still reports both samples, so "never fired" is distinguishable from
         // "fired and failed" without another numbered run.
+        // v13 note, measured cost not a defect: the mapped image and the stub page
+        // stay too - the APC is armed and may still deliver later, so freeing either
+        // would fault the target when it does.  Each undelivered retry costs about
+        // imageSize + one page (apxprobe: ~0x3000 + 0x1000) and the launcher tries
+        // up to 6 threads per inject; the entry poll now breaks on the DONE flag, so
+        // a returning entry no longer burns the 10 s window either.
         request->StatusEchoAfter = ApexdrvReadProcessMemory(
             process, remoteBuffer, request->RemotePathEchoAfter,
             pathBytes < sizeof(request->RemotePathEchoAfter)
                 ? pathBytes
                 : sizeof(request->RemotePathEchoAfter) - sizeof(WCHAR));
-        request->RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS - 1] = L'\0';
+        request->RemotePathEchoAfter[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
         request->StatusReadResult2 =
             ApexdrvReadThreadLastError(process, request->ThreadId,
                                        &request->LoadLibraryLastError2);
@@ -772,10 +1659,49 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
         pathBytes < sizeof(request->RemotePathEchoAfter)
             ? pathBytes
             : sizeof(request->RemotePathEchoAfter) - sizeof(WCHAR));
-    request->RemotePathEchoAfter[APEXDRV_MAX_MODULE_NAME_CHARS - 1] = L'\0';
+    request->RemotePathEchoAfter[APEXDRV_MAX_PATH_CHARS - 1] = L'\0';
 
     delay.QuadPart = -800 * 10000;                 // + 800 ms = 1 s after delivery
     KeDelayExecutionThread(KernelMode, FALSE, &delay);
+
+    // v6: read the stub's stamps back.  StubEntered rules out "no user code ran at all";
+    // StubRcx says what the routine actually received, compared against RemoteBase.
+    // The read starts at the DATA slot, not at the stub base: the loader stub's magic is
+    // at +38 and its captured RCX at +46 (0..37 are code); the map stub's four slots sit
+    // at +64/+72/+80/+88 behind 64 bytes of code (v13 layout, see ApexdrvStampMapStub).
+    if (request->StubBase != 0 && manualMap) {
+        // Map mode: the entry call has to finish before the result slot means
+        // anything, so poll for it instead of sampling once.  v13: the stub stamps
+        // APEXDRV_MAP_STUB_DONE after storing RAX, so the poll breaks on the FLAG -
+        // "DllMain returned FALSE" (flag set, result 0) and "DllMain never returned"
+        // (flag 0 after the full window) are different verdicts, and a FALSE return
+        // no longer burns the whole 10 s waiting for a nonzero RAX that never comes.
+        ULONG64 mapStamp[4] = { 0, 0, 0, 0 };
+        for (i = 0; i < 100; i++) {                 // 100 x 100 ms = 10 s cap
+            if (NT_SUCCESS(ApexdrvReadProcessMemory(
+                    process,
+                    (PVOID)(ULONG_PTR)(request->StubBase + APEXDRV_MAP_STUB_CODE_BYTES),
+                    mapStamp, sizeof(mapStamp)))) {
+                request->StubEntered    = (ULONG)mapStamp[0];
+                request->StubRcx        = mapStamp[1];
+                request->MapEntryResult = mapStamp[2];
+                request->MapEntryFlag   = (ULONG)mapStamp[3];
+                if (mapStamp[3] != 0) break;       // DONE: the entry RETURNED
+            }
+            delay.QuadPart = -100 * 10000;          // 100 ms
+            KeDelayExecutionThread(KernelMode, FALSE, &delay);
+        }
+    } else if (request->StubBase != 0) {
+        ULONG64 stamp[2] = { 0, 0 };
+        if (NT_SUCCESS(ApexdrvReadProcessMemory(process,
+                                                (PVOID)(ULONG_PTR)(request->StubBase +
+                                                                   APEXDRV_STUB_CODE_BYTES),
+                                                stamp, sizeof(stamp)))) {
+            request->StubEntered = (ULONG)stamp[0];
+            request->StubRcx     = stamp[1];
+        }
+    }
+
 
     request->StatusReadResult2 =
         ApexdrvReadThreadLastError(process, request->ThreadId,
@@ -983,8 +1909,13 @@ static NTSTATUS ApexdrvDeviceControl(PDEVICE_OBJECT deviceObject, PIRP irp) {
         case IOCTL_APEXDRV_INJECT:
             if (inputLength >= sizeof(APEXDRV_INJECT_REQUEST) &&
                 irp->AssociatedIrp.SystemBuffer != NULL) {
-                status = ApexdrvInject(
+                NTSTATUS injectStatus = ApexdrvInject(
                     (PAPEXDRV_INJECT_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                // v11: a failed status makes METHOD_BUFFERED skip the copy-back - h283 measured
+                // the whole out block reading back as zeros, step and module count included.  The
+                // IRP therefore completes as SUCCESS and the real NTSTATUS rides in ResultStatus;
+                // a "failed" rung is then a readable out block instead of a bare Win32 code.
+                status      = NT_SUCCESS(injectStatus) ? injectStatus : STATUS_SUCCESS;
                 information = sizeof(APEXDRV_INJECT_REQUEST);
             } else {
                 status = STATUS_BUFFER_TOO_SMALL;

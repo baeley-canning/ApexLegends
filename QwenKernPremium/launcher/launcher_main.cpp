@@ -76,6 +76,7 @@ struct LauncherOptions {
     bool            runKernelProbe   = false;   // --kernel-probe: Q10, driver only
     bool            allowSticky      = true;    // persist/read the working rung
     bool            forgetSticky     = false;
+    bool            manualMap        = false;   // --manual-map: map the PE, no loader
 };
 
 void PrintBanner() {
@@ -519,7 +520,7 @@ InjectionResult RunInjection(const LauncherOptions& options, DWORD pid) {
     }
 
     printf("[*] Target PID %lu, payload %s\n", pid, payload.c_str());
-    InjectionResult result = injector.Inject(pid, payload, method, options.driverPath);
+    InjectionResult result = injector.Inject(pid, payload, method, options.driverPath, options.manualMap);
 
     // Safe to delete: the loader keeps the mapped image alive.
     if (!stagedPath.empty()) {
@@ -711,7 +712,7 @@ InjectionResult RunLadder(const LauncherOptions& options, DWORD pid, LadderOutco
             }
         }
 
-        const InjectionResult result = injector.Inject(pid, payload, method, options.driverPath);
+        const InjectionResult result = injector.Inject(pid, payload, method, options.driverPath, options.manualMap);
         outcome.last   = result;
         outcome.method = method;
 
@@ -1070,6 +1071,7 @@ void PrintUsage() {
     printf("  --no-wait                fail immediately if the game is not running\n");
     printf("  --no-sticky              do not read/write the per-machine rung\n");
     printf("  --forget-sticky          delete the remembered rung and continue\n");
+    printf("  --manual-map             map the payload as a PE, no loader involved\n");
     printf("  --help                   show this help\n\n");
     printf("Without any of the above the launcher opens its interactive menu.\n");
     printf("Ladder order: sticky rung, A8 (SKIP), A7, A4, A3, A2, A1, B3.  A rung\n");
@@ -1109,6 +1111,7 @@ ArgResult ParseArgs(int argc, char** argv, LauncherOptions& options, bool& runOn
         if (arg == "--kernel-probe") { runOnce = true; options.runKernelProbe = true; continue; }
         if (arg == "--no-sticky")     { options.allowSticky = false; continue; }
         if (arg == "--forget-sticky") { options.forgetSticky = true; continue; }
+        if (arg == "--manual-map")    { options.manualMap = true; continue; }
 
         if (arg == "--method") {
             std::string methodName;

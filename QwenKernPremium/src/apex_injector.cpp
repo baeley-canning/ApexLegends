@@ -758,7 +758,8 @@ bool ApexInjector::IsModuleLoaded(DWORD pid, const char* moduleName) {
 
 InjectionResult ApexInjector::Inject(DWORD targetPid, const std::string& dllPath,
                                      InjectionMethod method,
-                                     const std::string& driverPath) {
+                                     const std::string& driverPath,
+                                     bool manualMap) {
     std::cout << "[*] Injection strategy: " << InjectionMethodName(method) << std::endl;
 
     switch (method) {
@@ -769,7 +770,7 @@ InjectionResult ApexInjector::Inject(DWORD targetPid, const std::string& dllPath
             return InjectViaApcQueue(targetPid, dllPath);
 
         case InjectionMethod::KernelDriver:
-            return InjectViaKernelDriver(targetPid, dllPath, driverPath);
+            return InjectViaKernelDriver(targetPid, dllPath, driverPath, manualMap);
 
         case InjectionMethod::CreateRemoteThread:
             return InjectViaCreateRemoteThread(targetPid, dllPath);

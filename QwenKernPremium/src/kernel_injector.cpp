@@ -164,7 +164,8 @@ std::string Hex64(ULONG64 value) {
 
 InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
                                                     const std::string& dllPath,
-                                                    const std::string& driverPath) {
+                                                    const std::string& driverPath,
+                                                    bool manualMap) {
     InjectionResult result{};
     result.success = false;
     result.threadId = 0;
@@ -300,7 +301,10 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
 
     APEXDRV_INJECT_REQUEST request{};
     request.ProcessId          = targetPid;
-    request.Flags              = APEXDRV_FLAG_RESOLVE_IN_TARGET;
+    request.Flags              = APEXDRV_FLAG_RESOLVE_IN_TARGET |
+                                 APEXDRV_FLAG_STUB_ROUTINE |
+                                 APEXDRV_FLAG_EX_LOADER;
+    if (manualMap) request.Flags |= APEXDRV_FLAG_MANUAL_MAP;
     request.ThreadId           = targetThreads.front();
     request.LoadLibraryAddress = loadLibraryAddress;
     {
@@ -332,8 +336,36 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
     }
 
     if (!ioctlOk) {
-        result.errorMessage = "DeviceIoControl(IOCTL_APEXDRV_INJECT) failed" +
-                              LastErrorText(GetLastError());
+        // v10: the driver sets IoStatus.Information even when it fails, so the out
+        // block IS copied back and still holds MapStatus (the failing step) and
+        // ResultStatus (its NTSTATUS).  Printing it turns "failed 193" into a line.
+        char statusHex[16] = { 0 };
+        sprintf_s(statusHex, sizeof(statusHex), "0x%08lX",
+                  static_cast<unsigned long>(request.ResultStatus));
+        std::cout << "[*] map: base=0x" << Hex64(request.MapBase)
+                  << " step=" << request.MapStatus
+                  << " resultStatus=" << statusHex
+                  << " entryResult=0x" << Hex64(request.MapEntryResult)
+                  << " modules=" << request.ModuleCountBefore << "/" << request.ModuleCountAfter
+                  << " stub=0x" << Hex64(request.StubBase)
+                  << " entered=" << request.StubEntered
+                  << " echo_status=0x" << std::hex
+                  << static_cast<unsigned long>(request.StatusEchoRead)
+                  << " fired=" << std::dec << request.FiredSeen << std::endl;
+        if (manualMap && request.MapStatus != 0) {
+            static const char* const kStep[] = {
+                "none", "read/open", "header check", "pool image alloc",
+                "section copy", "target alloc", "relocations", "image write", "stub"
+            };
+            const char* stepName = (request.MapStatus >= 1 && request.MapStatus <= 8)
+                ? kStep[request.MapStatus] : "unknown step";
+            result.errorMessage = std::string("manual map failed at ") + stepName +
+                                  " (driver step " + std::to_string(request.MapStatus) +
+                                  ", status " + statusHex + ")" + LastErrorText(GetLastError());
+        } else {
+            result.errorMessage = "DeviceIoControl(IOCTL_APEXDRV_INJECT) failed" +
+                                  LastErrorText(GetLastError());
+        }
     } else {
         // Everything below is the v4/v5 verdict block: the driver reports what the
         // call DID, not that it was queued.  Module count is the primary signal -
@@ -345,8 +377,9 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
 
         std::cout << "[*] delivery: tid=" << request.ThreadId
                   << " resolve_path=" << request.ResolvePath
+                  << " ex=" << request.ResolvedExLoader
                   << " bases_differ=" << request.BasesDiffer
-                  << " LoadLibraryW=0x" << Hex64(request.ResolvedLoadLibrary)
+                  << " entry=0x" << Hex64(request.ResolvedLoadLibrary)
                   << " lastError=" << request.LoadLibraryLastError
                   << " (read status 0x" << std::hex
                   << static_cast<unsigned long>(request.StatusReadResult) << std::dec
@@ -365,7 +398,30 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
                    << L" echo_after_status=0x" << std::hex
                    << static_cast<unsigned long>(request.StatusEchoAfter) << std::dec
                    << L" echo_after=[" << request.RemotePathEchoAfter << L"]"
+                   << L" stub=0x" << std::hex << request.StubBase
+                   << L" entered=0x" << request.StubEntered
+                   << L" rcx=0x" << request.StubRcx << std::dec
+                   << L" remoteBase=0x" << std::hex
+                   << static_cast<unsigned long long>(request.RemoteBase) << std::dec
                    << std::endl;
+
+        // v9 map evidence: MapBase + the entry call's BOOL.  No module is expected
+        // here, so the module count below is reported but is not the verdict.
+        // v13: resultStatus is printed on the DELIVERED path too - v11 carried it in
+        // the out block but only the failed-IOCTL branch showed it, so every delivered
+        // run parsed as status=-1 in the harness and the NTSTATUS was never observed.
+        char okStatus[16] = { 0 };
+        sprintf_s(okStatus, sizeof(okStatus), "0x%08lX",
+                  static_cast<unsigned long>(request.ResultStatus));
+        std::cout << "[*] map: base=0x" << Hex64(request.MapBase)
+                  << " step=" << request.MapStatus
+                  << " resultStatus=" << okStatus
+                  << " entryResult=0x" << Hex64(request.MapEntryResult)
+                  << " entryFlag=0x" << std::hex << request.MapEntryFlag << std::dec
+                  << " relocs=" << request.MapRelocCount
+                  << " imports=" << request.MapImportCount
+                  << " unresolved=[" << request.MapUnresolvedName << "]"
+                  << " tls=" << request.MapTlsUsed << std::endl;
 
         if (loaded) {
             std::wcout << L" new module: " << request.NewModuleName
@@ -375,7 +431,21 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
             std::cout << " (no module appeared)" << std::endl;
         }
 
-        if (loaded) {
+        // v13: the flag proves the entry RETURNED, the BOOL proves it returned TRUE.
+        // Before the flag, a hung DllMain and a FALSE DllMain both read entryResult=0.
+        const bool entryReturned = (request.MapEntryFlag != 0);
+        const bool mapped = manualMap && request.MapBase != 0 && entryReturned &&
+                            request.MapEntryResult != 0;
+        if (mapped) {
+            result.success        = true;
+            result.threadId       = request.ThreadId;
+            result.dllBaseAddress = reinterpret_cast<HMODULE>(
+                static_cast<ULONG_PTR>(request.MapBase));
+            std::cout << "[+] Kernel injection SUCCESS (manual map) - image at 0x"
+                      << std::hex << request.MapBase << std::dec
+                      << ", entry returned TRUE, " << request.MapRelocCount
+                      << " relocations applied" << std::endl;
+        } else if (loaded) {
             result.success       = true;
             result.threadId      = request.ThreadId;
             result.dllBaseAddress = reinterpret_cast<HMODULE>(
@@ -389,6 +459,28 @@ InjectionResult ApexInjector::InjectViaKernelDriver(DWORD targetPid,
                                                : request.ModuleCountAfter2)
                       << " modules in target, apexcheat.dll at 0x"
                       << std::hex << request.NewModuleBase << std::dec << std::endl;
+        } else if (manualMap) {
+            // Map mode has its own failure shapes: the mapper refused (MapBase 0),
+            // the entry never returned inside the 10 s poll (flag 0, v13), or it
+            // returned FALSE.  Three different causes, three different messages.
+            char mapStatus[32] = { 0 };
+            char baseHex[32]  = { 0 };
+            sprintf_s(mapStatus, sizeof(mapStatus), "step %ld",
+                      static_cast<unsigned long>(request.MapStatus));
+            sprintf_s(baseHex, sizeof(baseHex), "%llX",
+                      static_cast<unsigned long long>(request.MapBase));
+            result.threadId = request.ThreadId;
+            if (request.MapBase == 0) {
+                result.errorMessage = std::string("manual map failed at driver ") + mapStatus;
+            } else if (request.MapEntryFlag == 0) {
+                result.errorMessage = std::string("mapped at 0x") + baseHex +
+                    " but the entry never returned inside the driver poll (flag=0; hung or "
+                    "crashed in DllMain, not \"returned FALSE\")";
+            } else {
+                result.errorMessage = std::string("mapped at 0x") + baseHex +
+                    " but the entry returned FALSE (DllMain rejected its own init)";
+            }
+            std::cout << "[-] " << result.errorMessage << std::endl;
         } else if (request.ResultStatus == kStatusPending) {
             // Queued, no thread returned inside the driver's window.  The APCs are
             // still armed, so this is not a failure - but it is not proof either.

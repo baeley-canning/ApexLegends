@@ -1,0 +1,38 @@
+h280 RESULT (guest Win11-Test2 build 26300, 06/11 13:12, driver ABI v8 DF9991EE608FA5AB MATCH)
+=============================================================================================
+RESULT: PASS (instrument) - Ex entry ran with rcx==remoteBase, LoadLibraryExW(path,NULL,0x8) also refused
+VERDICT: INSTRUMENT PASS - the API is not the cause (87 twice on a valid wide string), the
+         process-side loader state is; commit to the H272 manual map
+
+verbatim evidence:
+  [*] delivery: tid=6500 resolve_path=1 ex=1 bases_differ=0 entry=0x7FF986371150 lastError=87
+      (read status 0x0) fired=1
+  [*] modules: before=35 after=35 after2=35 lastError2=87 echo_status=0x0
+      echo=[C:\Users\Public\apexcheat.dll] ... stub=0x21E38EA0000 entered=0x4870
+      rcx=0x21E38E80000 remoteBase=0x21E38E80000
+  post: notepad alive=True, oracle hits=0, dse_pre=0x0, dse_verify=PASS, restore clean.
+
+stub byte layout proven independently first, on the HOST (`_ritual/h280_stubtest.ps1`, both arms):
+  ex=False verdict=OK magic=0x4870 slot_rcx=0x1122334455667788 routine_saw=0x1122334455667788
+  ex=True  verdict=OK magic=0x4870 slot_rcx=0x1122334455667788 routine_saw=0x1122334455667788
+  bytes (ex arm): 48 C7 05 1B 00 00 00 70 48 00 00 48 89 0D 1C 00 00 00 31 D2 41 B8 08 00 00 00
+                  48 B8 <imm64> FF E0 | data 70 48 00 00 00 00 00 00 <rcx>
+  This is the check h278 paid a guest rung to learn. Do it before any future stub change.
+
+WHAT IS NOW SETTLED (do not re-litigate)
+  - kernel-side: PEB->Ldr walk, in-target export resolution, alloc + write + echo both samples,
+    APC delivery, user-mode execution, RCX arriving as exactly RemoteBase. All measured.
+  - user-side: LoadLibraryW AND LoadLibraryExW(path,NULL,LOAD_WITH_ALTERED_SEARCH_PATH) both
+    return NULL / LastError 87 on the same valid wide string, module count 35 unchanged.
+  - the payload loads fine by the same absolute path from inside the guest (h277: handle, err=0).
+  - so: route, argument, string, address and payload are all excluded. 87 = ERROR_INVALID_PARAMETER
+    comes from the loader itself in that process.
+
+WHAT IS STILL UNKNOWN
+  - the NTSTATUS behind the 87 (LdrLoadDll direct would give 0xC000000D vs 0xC0000135 vs
+    0xC0000142 instead of the lossy Win32 mapping) - one rung if wanted.
+  - whether notepad-on-26300 is simply a hostile control target: 26300 notepad is the packaged
+    Store app, and loading into a packaged process could hit its own path rules. NOT measured.
+
+NOT CLAIMED: injection works. No module appeared in any rung. Nothing here is evidence about
+Apex or EAAC - target was notepad on purpose.

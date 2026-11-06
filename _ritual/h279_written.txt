@@ -1,0 +1,39 @@
+h279 RESULT (guest Win11-Test2, build 26300, 06/11 13:03, driver ABI v7 C0612BBC7AC96793 MATCH)
+================================================================================================
+RESULT: PASS (instrument) - entered=0x4870 and rcx==remoteBase: user code ran with the right pointer
+VERDICT: INSTRUMENT PASS - LoadLibraryW itself refused a valid wide string (LastError 87/87);
+         delivery not fixed, drop to the H272 manual map
+
+evidence line (slice, verbatim):
+  [*] modules: before=35 after=35 after2=35 lastError2=87 echo_status=0x0
+      echo=[C:\Users\Public\apexcheat.dll] echo_after_status=0x0
+      echo_after=[C:\Users\Public\apexcheat.dll] stub=0x287eb080000 entered=0x4870
+      rcx=0x287eb070000 remoteBase=0x287eb070000
+
+post: notepad alive=True inject rc=3, oracle hits=0, dse_pre=0x0 (already off), dse_verify=PASS,
+      restore: zapexdrv/apexdrv gone, notepad 0.
+
+WHAT H278 ALREADY TOLD US (why v7 exists)
+  h278: entered=0x1E05C748 rcx=0x260D8948000048 - those were the stub's OWN CODE BYTES
+  (48 C7 05 1E / 48 89 0D 26). v6 wrote the absolute data offsets (30,38) as RIP-relative
+  displacements (stores landed at +41/+56) and read the stamps back at the stub base.
+  v7 writes 19/20 and reads the data slots (+30/+38); layout unchanged.
+  ghidra/objdump check of stubImage for the v7 build is still OUTSTANDING.
+
+SO WALL 1 IS NOW NARROWED, NOT SOLVED
+  proven: kernel walks PEB->Ldr, resolves kernelbase!LoadLibraryW inside the target (rva 0xFC5B0,
+  cross-checked with the guest's own GetProcAddress), allocates + writes the wide path, the buffer
+  holds it intact before AND 1 s after delivery, the APC fires, the user-mode stub executes, and
+  RCX arrives with exactly remoteBase.
+  open: LoadLibraryW on that valid pointer still returns NULL with LastError 87 (same value the
+  empty-string h275 got), module count 35->35->35. 87 = ERROR_INVALID_PARAMETER, and a valid
+  pointer with a good string should not produce it - the loader is rejecting something we cannot
+  see yet.
+
+NOT CLAIMED
+  injection does not work; no module appeared; the DLL never mapped. Nothing here says anything
+  about Apex or EAAC - target was notepad on purpose.
+
+next rung decision: h280 = same stub, jmp targets kernelbase!LoadLibraryExW with
+RDX=0 and R8=LOAD_WITH_ALTERED_SEARCH_PATH (0x8). One variable (the API). If it also says 87 the
+API is ruled out and the H272 manual map is the way; if a module appears, wall 1 is done cheaply.

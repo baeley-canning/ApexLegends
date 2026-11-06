@@ -1,0 +1,13 @@
+C:\p37vm\payload\apxprobe.dll sha256=B29803F3EEFCA44690EE01A4DC0F821772EF5CA46AC73493AE6B875B1C4E2195 bytes=2048
+import_dir=absent rva=0x00000000 size=0x00000000
+imports=0
+reloc_dir=absent rva=0x00000000 size=0x00000000
+relocs=0
+loadcfg=absent
+tls=absent
+imageSize=0x00003000 dec=12288
+entryRva=0x00001020
+sectioncount=2
+preferredBase=0x180000000
+section: .text va=0x00001000 vsize=0x00000200 raw=0x00000400
+section: .rdata va=0x00002000 vsize=0x00000200 raw=0x00000600
