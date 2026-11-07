@@ -40,12 +40,32 @@ ROOT = os.path.dirname(HERE)
 TMP = os.path.join(ROOT, "temp")
 
 LOG = []
+OUT_PATH = None
+
+
+def set_out(p):
+    """Truncate the evidence file and remember it; every line is appended live."""
+    global OUT_PATH
+    OUT_PATH = os.path.abspath(p) if p else None
+    if OUT_PATH:
+        try:
+            os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+            with open(OUT_PATH, "w", encoding="utf-8") as f:
+                f.write("")
+        except OSError:
+            pass
 
 
 def out(s):
     line = str(s)
     print(line)
     LOG.append(line)
+    if OUT_PATH:
+        try:
+            with open(OUT_PATH, "a", encoding="utf-8") as f:   # live: tail-able
+                f.write(line + "\n")
+        except OSError:
+            pass
 
 
 def flush(path):
@@ -151,23 +171,44 @@ class Reader(object):
 
 # --------------------------------------------------------------- discovery
 def discover(g, pid):
-    """One-time DTB + image base for this pid (~70-80 s).  p72 has the proven scan."""
+    """DTB + image base through dumplive's 26200 shape gate.
+
+    p72_ppath.front_pid assumed EPROCESS pid at +0x1D0 / name at +0x338 and
+    rejected every hit on this build (measured: 45 hits, name garbage, dtb=0x0).
+    dumplive is the code written FOR 26200: sweep for the ImageFileName string,
+    then require name-at-base + pid-in-range + valid_cr3 + shape score, and only
+    then walk to an MZ page.  Layout-agnostic and already battle-tested here.
+    """
+    def _route(s):
+        out("    | " + str(s))
+
+    dl.log = _route
+    out("  discovering DTB for pid %d (name sweep + shape gate, ~80 s) ..." % pid)
     try:
-        import p72_ppath as p72
-    except Exception as e:                      # noqa: BLE001
-        out("  p72_ppath import failed: %s" % e)
-        return None
-    out("  discovering DTB for pid %d (one-time; pid scan, ~70-80 s) ..." % pid)
-    try:
-        r = p72.front_pid(g, pid)
+        ranges, note = dl.usable_ranges(g.ram_top, None, None)
+        out("    ram_top=%#x ranges=%d (%s)" % (g.ram_top, len(ranges), note))
+        hits, skipped, chunks, rescued = dl.name_hits(g, ranges)
+        out("    name hits=%d chunks=%d skipped=%d rescued=%d"
+            % (len(hits), chunks, skipped, rescued))
+        if not hits:
+            out("  no ImageFileName hits - wrong game/build, or nothing running")
+            return None
+        cands = dl.candidates_for(g, pid, hits)
+        out("    shape-gate candidates=%d" % len(cands))
+        for score, ebase, dtb in cands[:8]:
+            out("    cand score=%d eprocess=%#x dtb=%#x" % (score, ebase, dtb))
+            try:
+                r = dl.find_mz(g, dtb)
+            except OSError as e:
+                out("      walk fault: %s" % e)
+                continue
+            if r:
+                out("    walk -> image_va=%#x sections=%d" % (r[0], len(r[1].get("secs", []))))
+                return {"dtb": dtb, "base": r[0]}
+        out("  no candidate walked to an MZ image")
     except Exception as e:                      # noqa: BLE001
         out("  discovery fault: %s: %s" % (type(e).__name__, e))
-        return None
-    if not r:
-        return None
-    va, _meta, dtb = r
-    out("  discovered dtb=0x%X image_va=0x%X" % (dtb, va))
-    return {"dtb": dtb, "base": va}
+    return None
 
 
 def get_map(g, pid):
@@ -348,15 +389,19 @@ def act_watch(rd, at, secs, pid):
 # --------------------------------------------------------------- main
 def main():
     out_path = arg("out", os.path.join(TMP, "qk_va_%s.txt" % time.strftime("%Y%m%d_%H%M%S")))
+    set_out(out_path)
 
     if not dl.elevation() and not flag("no-elevate"):
-        # carry --out into the child so both halves write the same evidence file
-        argv = [a for a in sys.argv if a != "--no-elevate"]
+        # ABSOLUTE script path: run_elevated() starts the child in ext\, so a
+        # relative "ext\qk_va.py" would resolve to ext\ext\qk_va.py and die
+        # silently before writing anything (measured: 4 runs, 0 files).
+        argv = [os.path.abspath(sys.argv[0])] + [a for a in sys.argv[1:] if a != "--no-elevate"]
         if not any(a.startswith("--out") for a in argv):
-            argv.append("--out=" + out_path)
+            argv.append("--out=" + OUT_PATH)
         cmd = " ".join('"%s"' % a if " " in a else a for a in argv)
-        print("not elevated - relaunching elevated (the gdrv3 device DACL needs it)")
-        print(dl.run_elevated(cmd))
+        out("not elevated - relaunching elevated (the gdrv3 device DACL needs it)")
+        res = dl.run_elevated(cmd)
+        out(res)
         return 0
 
     out("===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====")
