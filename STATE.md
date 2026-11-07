@@ -1,5 +1,14 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 21:3x - **Host bugcheck during `qk_va`'s window scan: an unguarded physical read hit an MMIO hole. R10 added. Stop-then-fix, not stop-then-guess.**
+
+- **What happened:** the box hard-rebooted at **21:34:38** while `qk_va` was discovering the DTB for explorer.exe. `LastBootUpTime` confirmed a reset, **no minidump was written**, `ApexDrv` came back STOPPED (demand start), `gdrv3` RUNNING, no game.
+- **Cause, specific:** the first version of the frame hunt read *every qword* in a window around the name hit as a candidate CR3. `gio.is_ram()` only rejects `>= ram_top` and the 640K-1M hole, so a qword pointing into an **MMIO hole below 4 GB** passed the guard, gdrv3 mapped it (`MmMapIoSpace`) and the machine bugchecked. This is host-crash #4 and the first caused by a *read* rather than a driver/DSE write.
+- **Fix (in `ext/qk_va.py`):** (a) a `Ram` interval set built from `dumplive.usable_ranges()` is now the guard for *every* raw PA read - `is_ram()` alone is documented as insufficient (R10); (b) `g.is_ram` is rebound to the strict page test for the whole scan so dumplive's internals get the same protection; (c) the arbitrary-frame hunt is gone - the DTB is now read from **EPROCESS+0x28** for a small set of known `ImageFileName` offsets (`0x338/0x450/0x4C8/0x5A0/0x5A8/0x5B0`), i.e. a read *inside the object* instead of a guess, bounded to 6 candidates per hit and 6 hits, 120 s cap.
+- **Rules added:** `AGENTS.md` **R10** (a physical read is only safe inside the RAM map's interval set) and the matching trap in `FACTS.md`. The old "everything goes through is_ram()" claim in `gio.py`'s header is now known to be too weak.
+- **Not yet re-run.** The corrected path is unproven; it must be validated on a non-game target (explorer, patched `--name`) before it touches Apex, and only when the box is free.
+
+
 ## 07/11 21:4x - **Read layer moved off the killed primitive: `ext/qk_va.py` = zero-attach VA reads (gdrv3 physical + own page walk), and the 1b gate now scores itself**
 
 - **Decision (recorded in FACTS.md):** the attach-shaped read is the only variable that correlates with EAAC kills, and the only transport with a clean survival record is the physical one. So the product read layer is now **gdrv3 physical reads + `dumplive.Walk`** - no `KeStackAttachProcess` anywhere. A batch-IOCTL fix in apexdrv was rejected *for now*: it still attaches (60x/s at 60 fps) and would need a VM-first driver change for evidence we do not have.

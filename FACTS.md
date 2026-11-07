@@ -99,3 +99,10 @@ added to it later as a small, VM-benched change. That is deferred until 1b is gr
   every reboot. `p64_offline.py` is the only no-game way to re-check the verdict logic.
 - `bcdedit` needs elevation to read; `sc query` does not.
 - Chat-rendered output is unreliable — always write the file and read the file (R3).
+- **A raw physical read must be guarded by the RAM map interval set, never by `gio.is_ram()`.**
+  `is_ram()` only rejects `>= ram_top` and the 640K–1M hole, so a qword pointing into an
+  MMIO hole *below* 4 GB passes it, the read is issued, and the box **bugchecks**. Measured
+  07/11 21:34: a hard reboot (no minidump written) during a window scan in `qk_va`, caused by
+  trying every qword near a name hit as a CR3. Use `dl.usable_ranges()` and an interval test
+  (`qk_va.Ram`), and prefer addresses derived from the object itself over guesses.
+

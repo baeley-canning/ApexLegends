@@ -70,3 +70,13 @@ not as its own evening.
 must fail when the game-dependent half did not run; print `SKIPPED` and score `PARTIAL`, never
 `PASS`. Same family as h316's "PASS is notepad, not the game" and ov76's desktop-OCR menu.
 
+## R10 — A physical read is only safe inside the RAM map's interval set.
+
+`gio.is_ram()` rejects `>= ram_top` and the 640K-1M hole and nothing else, so an MMIO hole
+*below* 4 GB passes it; gdrv3 then maps the hole and the machine **bugchecks** (07/11 21:34,
+hard reboot, no dump). Guard every raw PA read with the interval set from
+`dumplive.usable_ranges()` (see `qk_va.Ram`) and prefer addresses derived from the object
+being studied over "try this qword as a frame". This is host-crash number four; the other
+three are why R1-R4 exist.
+
+

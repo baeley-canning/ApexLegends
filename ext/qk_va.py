@@ -25,6 +25,7 @@ USAGE
 
 EXIT   0 ok | 2 no driver | 3 no game | 4 no dtb | 5 read failed
 """
+import bisect
 import os
 import struct
 import sys
@@ -170,44 +171,118 @@ class Reader(object):
 
 
 # --------------------------------------------------------------- discovery
-def discover(g, pid):
-    """DTB + image base through dumplive's 26200 shape gate.
+class Ram(object):
+    """The OS RAM map as an interval set - the ONLY safe guard for a raw PA read.
 
-    p72_ppath.front_pid assumed EPROCESS pid at +0x1D0 / name at +0x338 and
-    rejected every hit on this build (measured: 45 hits, name garbage, dtb=0x0).
-    dumplive is the code written FOR 26200: sweep for the ImageFileName string,
-    then require name-at-base + pid-in-range + valid_cr3 + shape score, and only
-    then walk to an MZ page.  Layout-agnostic and already battle-tested here.
+    gio.is_ram() is not enough: it only rejects >= ram_top and the 640K-1M hole,
+    so an MMIO hole *inside* the map passes it and the raw read bugchecks the box
+    (measured 07/11 21:34 - a hard reboot during a window scan).  Every physical
+    read below goes through this.
+    """
+
+    def __init__(self, ranges):
+        self.r = sorted(ranges)
+        self.lo = [a for a, _ in self.r]
+
+    def has(self, pa, n=1):
+        i = bisect.bisect_right(self.lo, pa) - 1
+        if i < 0:
+            return False
+        a, b = self.r[i]
+        return a <= pa and pa + n <= b
+
+    def page_ok(self, pa):
+        return self.has(pa & ~0xFFF, 0x1000)
+
+
+# KPROCESS.DirectoryTableBase sits at EPROCESS+0x28.  ImageFileName has been
+# seen at each of these offsets across 19041..26200, so base = hit - off and the
+# DTB is 0x28 bytes into that base: a read INSIDE the EPROCESS page, not a guess
+# at an arbitrary frame.  (The previous approach tried every qword in the window
+# as a CR3, which read arbitrary frames and hard-rebooted the box at 21:34.)
+NAME_OFFS = (0x338, 0x450, 0x4C8, 0x5A0, 0x5A8, 0x5B0)
+
+
+def _candidate_dtbs(g, hit, ram):
+    """(field address, DTB) pairs from the EPROCESS header - bounded and safe."""
+    out_ = []
+    for off in NAME_OFFS:
+        at = hit - off + 0x28
+        page = at & ~0xFFF
+        if not ram.page_ok(page):
+            continue
+        try:
+            b = g.read_phys(at & ~0x7, 8)
+        except OSError:
+            continue
+        dtb = struct.unpack("<Q", b)[0]
+        if not dtb or dtb >= g.ram_top:
+            continue
+        frame = dtb & 0xFFFFFFFFFF000
+        if not ram.page_ok(frame):
+            continue
+        out_.append((at, frame))
+    return out_
+
+
+def discover(g, pid):
+    """DTB + image base: name sweep, then offset-agnostic frame scan + walk.
+
+    No EPROCESS offset is trusted.  The name string locates the object; every
+    page-aligned frame in the window is tried as a CR3; find_mz() (a real PE
+    check through the page tables) is the only arbiter.
     """
     def _route(s):
         out("    | " + str(s))
 
     dl.log = _route
-    out("  discovering DTB for pid %d (name sweep + shape gate, ~80 s) ..." % pid)
+    out("  discovering DTB for pid %d (name sweep + frame scan, ~2-3 min) ..." % pid)
+    orig_is_ram = g.is_ram
     try:
         ranges, note = dl.usable_ranges(g.ram_top, None, None)
-        out("    ram_top=%#x ranges=%d (%s)" % (g.ram_top, len(ranges), note))
+        ram = Ram(ranges)
+        out("    ram_top=%#x ranges=%d (%s) usable=%.1f GB"
+            % (g.ram_top, len(ranges), note,
+               sum(b - a for a, b in ranges) / 1073741824.0))
+        # Make dumplive's own is_ram checks as strict as ours for the whole scan:
+        # the weak version let an MMIO hole through and the raw read bugchecked
+        # the box (21:34).  Every PA read in the walk then hits the real map.
+        g.is_ram = ram.page_ok
+
         hits, skipped, chunks, rescued = dl.name_hits(g, ranges)
         out("    name hits=%d chunks=%d skipped=%d rescued=%d"
             % (len(hits), chunks, skipped, rescued))
         if not hits:
             out("  no ImageFileName hits - wrong game/build, or nothing running")
             return None
-        cands = dl.candidates_for(g, pid, hits)
-        out("    shape-gate candidates=%d" % len(cands))
-        for score, ebase, dtb in cands[:8]:
-            out("    cand score=%d eprocess=%#x dtb=%#x" % (score, ebase, dtb))
-            try:
-                r = dl.find_mz(g, dtb)
-            except OSError as e:
-                out("      walk fault: %s" % e)
-                continue
-            if r:
-                out("    walk -> image_va=%#x sections=%d" % (r[0], len(r[1].get("secs", []))))
+
+        tried = 0
+        t0 = time.perf_counter()
+        for hit in hits[:12]:
+            if time.perf_counter() - t0 > 120.0:
+                out("    (candidate scan capped at 120 s)")
+                break
+            cands = _candidate_dtbs(g, hit, ram)
+            if cands:
+                out("    hit=%#x: %d DTB candidate(s) from the EPROCESS header"
+                    % (hit, len(cands)))
+            for at, dtb in cands[:6]:
+                tried += 1
+                try:
+                    r = dl.find_mz(g, dtb)
+                except OSError:
+                    r = None
+                out("      try dtb@%#x=%#x -> %s"
+                    % (at, dtb, ("MZ@%#x" % r[0]) if r else "no PE"))
+                if not r:
+                    continue
+                out("    (ImageFileName offset for this build = %#x)" % (hit - (at - 0x28)))
                 return {"dtb": dtb, "base": r[0]}
-        out("  no candidate walked to an MZ image")
+        out("  %d DTBs tried, none walked to an MZ image" % tried)
     except Exception as e:                      # noqa: BLE001
         out("  discovery fault: %s: %s" % (type(e).__name__, e))
+    finally:
+        g.is_ram = orig_is_ram
     return None
 
 
@@ -406,6 +481,13 @@ def main():
 
     out("===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====")
     out("out=%s" % out_path)
+
+    # --name: override ImageFileName so the pipeline can be tested on any process
+    # (the game is not always running; a wrong discovery costs a game session).
+    nm = arg("name", "")
+    if nm:
+        dl.NAME = nm.encode("ascii", "ignore")[:14] + b"\x00"
+        out("image-name override: %r (ImageFileName[15])" % dl.NAME)
 
     try:
         g = gio.Gio()
