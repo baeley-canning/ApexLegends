@@ -10,6 +10,9 @@
 > is the open menu step. Machine rule of record: apexdrv/DBUtilDrv2 out of the picture, gdrv3-only
 > reads, kernel only ever in the VM first.
 > Next: (1) real-matrix live run, (2) menu port, (3) live trigger session in the range.
+> Skills (`.agents/skills/`, load on demand, installed 08/11): `systematic-debugging` (before fixes),
+> `context-engineering` + `what-context-needed` + `token-budget-advisor` (token economy),
+> `handoff` (resume/where-were-we), `cpp-pro` (C++), `find-skills` (discover more).
 >
 
 Updated **2026-11-07 ~18:30** by the Stage-0 session (`p64` pair probe green live twice — 180706/181825, seeds 18/19; `174154` FATAL root-caused, SEED100 now hard-bails). The
