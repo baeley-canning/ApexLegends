@@ -375,62 +375,97 @@ def main():
             for a, tag in hits:
                 try:
                     x, y, z = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
-                    ctx = dl.retry_phys(g, a - 0x30, 0x30, tries=1)
                 except OSError:
                     continue
                 if not (all(abs(c) < 20000.0 for c in (x, y, z))
                         and max(abs(x), abs(y), abs(z)) > 20.0 and abs(y) < 200.0):
                     continue
-                printable = sum(1 for b in ctx if 32 <= b < 127 or b == 0)
-                if printable > len(ctx) * 0.8:
-                    continue
+                # NO binary-context filter: the real pawn's block holds strings too
+                # (name, clan tag), so that test rejected the player before the
+                # movement check could see him (measured: 57 candidates, 0 movers).
                 cands[a] = (x, y, z)
             out("  entity-shaped candidates: %d" % len(cands))
             if not cands:
                 out("RESULT: none")
                 out("VERDICT: PARTIAL - every name hit sits in a text table")
                 return 8
-            time.sleep(3)                                   # passive, no cue
-            movers = []
-            for a, v0 in cands.items():
-                try:
-                    v1 = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
-                except OSError:
-                    continue
-                d = max(abs(p - q) for p, q in zip(v0, v1))
-                if d > 0.5:
-                    movers.append((d, a, v0, v1))
-            out("  candidates that drifted in 3 s: %d" % len(movers))
-            for d, a, v0, v1 in sorted(movers, reverse=True)[:6]:
-                out("    %#012x (%.1f,%.1f,%.1f) -> (%.1f,%.1f,%.1f)  d=%.1f"
-                    % (a, v0[0], v0[1], v0[2], v1[0], v1[1], v1[2], d))
-            if not movers:
+            last = dict(cands)
+            drifted = {}
+            blocks = {}
+            changed = {}
+            first_drift = None
+            for _round in range(60):       # WAIT for motion (up to 60 s) instead of a fixed
+                time.sleep(1)              # window - whenever the first step happens, it lands
+                for a in list(last.keys()):
+                    try:
+                        v1 = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
+                    except OSError:
+                        continue
+                    if not (all(abs(c) < 20000.0 for c in v1)
+                            and max(abs(c) for c in v1) > 20.0 and abs(v1[1]) < 200.0):
+                        continue
+                    d = max(abs(p - q) for p, q in zip(last[a], v1))
+                    if d > 0.5:
+                        drifted[a] = max(drifted.get(a, 0.0), d)
+                    last[a] = v1
+                # sample blocks of anything that has drifted - INSIDE the window, so the
+                # diff always overlaps real movement (the old post-window diff found 0)
+                for a in list(drifted.keys()):
+                    try:
+                        # MUST cover name-0xEEC (the origin) - a +-0x800 window around
+                        # the name excludes it, which is why every diff read changed=0
+                        b = dl.retry_phys(g, a - 0x1400, 0x1800, tries=2)
+                    except OSError:
+                        continue
+                    prev = blocks.get(a)
+                    if prev is not None and len(prev) == len(b):
+                        for i in range(0, len(b) - 4, 4):
+                            x0 = struct.unpack_from("<f", prev, i)[0]
+                            x1 = struct.unpack_from("<f", b, i)[0]
+                            if x0 == x1 or x1 != x1 or x0 != x0:
+                                continue
+                            if abs(x1) > 1000.0 or abs(x0) > 1000.0:
+                                continue
+                            changed.setdefault(a, {})[(a - 0x800 + i) - a] = (x0, x1)
+                    blocks[a] = b
+                if drifted and first_drift is None:
+                    first_drift = _round
+                # once something is drifting, keep 4 more samples of its block, then stop
+                if first_drift is not None and _round >= first_drift + 4:
+                    break
+            out("  candidates that drifted: %d" % len(drifted))
+            for a, d in sorted(drifted.items(), key=lambda kv: -kv[1])[:5]:
+                v0, v1 = cands[a], last[a]
+                out("    %#012x (%.1f,%.1f,%.1f) -> (%.1f,%.1f,%.1f) d=%.1f changed=%d"
+                    % (a, v0[0], v0[1], v0[2], v1[0], v1[1], v1[2], d,
+                       len(changed.get(a, {}))))
+            if not drifted:
                 out("RESULT: nothing drifted")
-                out("VERDICT: PARTIAL - no candidate moved (stand still is fine, but nothing drifted)")
+                out("VERDICT: PARTIAL - no candidate moved during the window")
                 return 8
-            ent = sorted(movers, reverse=True)[0][1]
-            out("  player entity = %#012x (origin %#x)" % (ent, ent - 0xEEC))
-            lo = ent - 0x1600
-            ln = 0x1A00
-            try:
-                b0 = dl.retry_phys(g, lo, ln, tries=3)
-                time.sleep(3)
-                b1 = dl.retry_phys(g, lo, ln, tries=3)
-            except OSError:
-                out("RESULT: block unreadable")
-                return 5
-            out("  floats that changed (offset from name, old -> new):")
-            nch = 0
-            for i in range(0, min(len(b0), len(b1)) - 4, 4):
-                x0 = struct.unpack_from("<f", b0, i)[0]
-                x1 = struct.unpack_from("<f", b1, i)[0]
-                if x0 == x1 or x1 != x1 or x0 != x0:
+            order = sorted(drifted.items(), key=lambda kv: -kv[1])
+            picked = None
+            for a, d in order:
+                ch = changed.get(a, {})
+                if not ch:
                     continue
-                if abs(x1) > 1000.0 or abs(x0) > 1000.0:
+                # a freed struct zeroes out; the live pawn changes to other values
+                zeroed = sum(1 for (_x0, x1) in ch.values() if x1 == 0.0)
+                if zeroed > 0.8 * len(ch):
+                    out("    skip %#012x: block zeroed (%d of %d) - freed"
+                        % (a, zeroed, len(ch)))
                     continue
-                out("    %+#06x  %10.3f -> %10.3f" % ((lo + i) - ent, x0, x1))
-                nch += 1
-            out("RESULT: player=%#x changed=%d" % (ent, nch))
+                picked = a
+                break
+            if picked is None:
+                out("RESULT: every drifter was a freed block")
+                out("VERDICT: PARTIAL - no live drifting candidate")
+                return 8
+            a = picked
+            out("  --- floats that changed near %#012x (offset from name) ---" % a)
+            for off, (x0, x1) in list(changed[a].items())[:40]:
+                out("    %+#06x  %10.3f -> %10.3f" % (off, x0, x1))
+            out("RESULT: player=%#x changed_floats=%d" % (a, len(changed[a])))
             out("VERDICT: PASS - player identified; angle candidates dumped")
             return 0
 
