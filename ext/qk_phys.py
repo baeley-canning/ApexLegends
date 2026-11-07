@@ -92,23 +92,39 @@ def chunks(ranges, chunk=CHUNK):
             pa += chunk
 
 
+def scan_chunk(g, pa, ln):
+    """(pa, bytes) for each readable piece of [pa, pa+ln).
+
+    A 64 KiB read dies if ANY page inside it is unbacked (25 bad intervals on this
+    box), so a failed block is re-read page by page - a bad page costs one page,
+    not the block.
+    """
+    try:
+        yield pa, dl.retry_phys(g, pa, ln, tries=1)
+        return
+    except OSError:
+        pass
+    for off in range(0, ln, 0x1000):
+        try:
+            yield pa + off, dl.retry_phys(g, pa + off, 0x1000, tries=1)
+        except OSError:
+            continue
+
+
 def find_health(g, ranges, want=24):
     """Clusters of aligned 100.0f: (pa, [member offsets within 0x80])."""
     hits = []
     n = 0
     for pa, ln in chunks(ranges):
-        try:
-            blk = dl.retry_phys(g, pa, ln, tries=2)
-        except OSError:
-            continue
         n += 1
         if (n & 0x3FFF) == 0:
             out("    health: %d chunks, %d raw hits" % (n, len(hits)))
-        i = blk.find(F100)
-        while i >= 0:
-            if (i & 3) == 0:
-                hits.append(pa + i)
-            i = blk.find(F100, i + 1)
+        for base, blk in scan_chunk(g, pa, ln):
+            i = blk.find(F100)
+            while i >= 0:
+                if (i & 3) == 0:
+                    hits.append(base + i)
+                i = blk.find(F100, i + 1)
         if len(hits) > 200000:
             break
     out("  raw 100.0f hits: %d (%d chunks)" % (len(hits), n))
@@ -123,28 +139,39 @@ def find_health(g, ranges, want=24):
 
 
 def settle(g, ram, clusters, gap=1.5):
-    """Keep only clusters whose members still read 100.0f after a gap."""
+    """Keep clusters that still hold a 100.0f member after a gap.
+
+    Requiring EVERY member to survive rejected all 24,462 clusters in the range (one
+    churning value dropped the whole entity), and the function then lost its return
+    entirely.  One live member is enough - the projection test is the real filter.
+    """
     if not clusters:
         return []
     time.sleep(gap)
     kept = []
     for base, mem in clusters:
-        ok = True
+        live = 0
         for off in mem:
             try:
                 b = dl.retry_phys(g, base + off, 4, tries=2)
             except OSError:
-                ok = False
-                break
-            if struct.unpack("<f", b)[0] != 100.0:
-                ok = False
-                break
-        if ok:
+                continue
+            if struct.unpack("<f", b)[0] == 100.0:
+                live += 1
+        if live:
             kept.append((base, mem))
+    out("  clusters with a live 100.0f after %.1fs: %d" % (gap, len(kept)))
+    return kept
 
 # ---------------------------------------------------------------- 2. origin
 def find_origin(g, ram, base, back=0x400, fwd=0x900):
-    """A 3-float world position near a health cluster."""
+    """A 3-float WORLD position near a health cluster.
+
+    The first version accepted any triple with two components in 50..20000, so it
+    kept returning the health triple itself (100.0, 100.0, 50.0).  A world position
+    has at least one component in the hundreds-to-thousands, and is not a small
+    all-health-looking triple.
+    """
     lo = base - back if base > back else 0
     try:
         buf = dl.retry_phys(g, lo, back + fwd, tries=3)
@@ -155,15 +182,18 @@ def find_origin(g, ram, base, back=0x400, fwd=0x900):
         x, y, z = struct.unpack_from("<fff", buf, off)
         if x != x or y != y or z != z:
             continue
-        if abs(x) > 1e6 or abs(y) > 1e6 or abs(z) > 1e6:
+        if abs(x) > 20000.0 or abs(y) > 20000.0 or abs(z) > 20000.0:
             continue
         if x == 0.0 and y == 0.0 and z == 0.0:
             continue
-        big = sum(1 for v in (x, y, z) if 50.0 <= abs(v) <= 20000.0)
-        if big >= 2:
-            score = big + (1 if abs(x - y) > 1.0 or abs(y - z) > 1.0 else 0)
-            if best is None or score > best[0]:
-                best = (score, lo + off, x, y, z)
+        biggest = max(abs(x), abs(y), abs(z))
+        if biggest < 300.0:                       # world coordinates are large
+            continue
+        if all(0.0 <= v <= 200.0 for v in (x, y, z)):   # health-looking triple
+            continue
+        score = 2 + (1 if biggest > 1000.0 else 0) + (1 if len(set((x, y, z))) == 3 else 0)
+        if best is None or score > best[0]:
+            best = (score, lo + off, x, y, z)
     return best
 
 
@@ -191,25 +221,22 @@ def find_matrices(g, ranges, cap=400):
     found = []
     n = 0
     for pa, ln in chunks(ranges):
-        try:
-            blk = dl.retry_phys(g, pa, ln, tries=2)
-        except OSError:
-            continue
         n += 1
         if (n & 0x3FFF) == 0:
             out("    matrix: %d chunks, %d candidates" % (n, len(found)))
-        for pat in (PONE, NONE):
-            i = blk.find(pat)
-            while i >= 0:
-                start = i - 60                     # m15 sits at +0x3C of the block
-                if start >= 0 and (start & 3) == 0:
-                    m = struct.unpack_from("<16f", blk, start)
-                    sc = score_matrix(m)
-                    if sc:
-                        found.append((sc, pa + start, m))
-                        if len(found) >= cap:
-                            return found
-                i = blk.find(pat, i + 4)
+        for base, blk in scan_chunk(g, pa, ln):
+            for pat in (PONE, NONE):
+                i = blk.find(pat)
+                while i >= 0:
+                    start = i - 60                 # m15 sits at +0x3C of the block
+                    if start >= 0 and (start & 3) == 0:
+                        m = struct.unpack_from("<16f", blk, start)
+                        sc = score_matrix(m)
+                        if sc:
+                            found.append((sc, base + start, m))
+                            if len(found) >= cap:
+                                return found
+                    i = blk.find(pat, i + 4)
     out("  matrix candidates: %d (%d chunks)" % (len(found), n))
     return found
 
@@ -244,7 +271,9 @@ def main():
     out("===== qk_phys (physical ESP finder: health -> origin -> matrix) =====")
     out("out=%s" % out_path)
     try:
-        g = gio.Gio()
+        # chunk=64 KiB: gio splits a read into self.chunk pieces, so the default 4 KiB
+        # landing buffer would turn every 64 KiB block into 16 ioctls (25 min a pass).
+        g = gio.Gio(chunk=CHUNK)
     except OSError as e:
         out("gio open failed: %s" % e)
         out("VERDICT: PARTIAL - no transport")
@@ -255,8 +284,13 @@ def main():
             pa = arg("pa", 0, lambda s: int(s, 0))
             ln = arg("len", 256, lambda s: int(s, 0))
             b = dl.retry_phys(g, pa, ln, tries=4)
-            for i in range(0, len(b), 16):
-                out("  %#012x  %s" % (pa + i, b[i:i + 16].hex()))
+            for i in range(0, len(b) - 12, 4):
+                x, y, z = struct.unpack_from("<fff", b, i)
+                sane = all(v == v and abs(v) < 1e6 for v in (x, y, z))
+                out("  %#012x  %12.4f %12.4f %12.4f   %s"
+                    % (pa + i, x, y, z,
+                       ("<-- world-like" if sane and max(abs(x), abs(y), abs(z)) > 300.0
+                        and not all(0 <= v <= 200.0 for v in (x, y, z)) else "")))
             return 0
 
         ranges, note = dl.usable_ranges(g.ram_top, None, None)
@@ -270,7 +304,10 @@ def main():
         out("screen assumption %dx%d (pass --w/--h to match)" % (W, H))
 
         t0 = time.perf_counter()
-        clusters = settle(g, ram, find_health(g, ranges))
+        clusters = find_health(g, ranges)
+        clusters.sort(key=lambda c: -len(c[1]))
+        out("  densest clusters kept for the origin stage: %d" % min(40, len(clusters)))
+        clusters = settle(g, ram, clusters[:40])
         out("  health scan %.1fs" % (time.perf_counter() - t0))
         if not clusters:
             out("RESULT: no-health")
@@ -284,6 +321,24 @@ def main():
                 origins.append(o)
                 out("  origin near %#x: at %#x (%.1f, %.1f, %.1f) score=%d"
                     % (base, o[1], o[2], o[3], o[4], o[0]))
+
+        if flag("dump-near") and clusters:
+            base = clusters[0][0]
+            lo = base - 0x400 if base > 0x400 else 0
+            out("  --- dump around live cluster %#x (members %s) ---"
+                % (base, ",".join("%#x" % (base + m) for m in clusters[0][1])))
+            b = dl.retry_phys(g, lo, 0xC00, tries=4)
+            for i in range(0, len(b) - 12, 4):
+                x, y, z = struct.unpack_from("<fff", b, i)
+                if x != x or y != y or z != z:
+                    continue
+                if all(v == 0.0 for v in (x, y, z)):
+                    continue
+                tag = ""
+                if max(abs(x), abs(y), abs(z)) > 300.0:
+                    tag = "<-- world-like"
+                out("  %#012x  %12.4f %12.4f %12.4f  %s" % (lo + i, x, y, z, tag))
+            return 0
         if not origins:
             out("RESULT: no-origin")
             out("VERDICT: PARTIAL - health found, no position near it")
