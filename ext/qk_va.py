@@ -255,6 +255,124 @@ def _image_size_of(rd, va):
     return struct.unpack_from("<I", hdr, 0x50)[0]
 
 
+def _peb_va(pid):
+    """PEB virtual address for a pid, via NtQueryInformationProcess (an information
+    call - granted by EAAC even when data-transfer calls are refused, per PHASE1 §11)."""
+    import ctypes
+    from ctypes import wintypes
+    k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    k32.OpenProcess.restype = ctypes.c_void_p
+    k32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+    h = k32.OpenProcess(0x1000, False, pid)          # QUERY_LIMITED_INFORMATION
+    if not h:
+        return 0
+    try:
+        ntdll = ctypes.WinDLL("ntdll")
+
+        class PBI(ctypes.Structure):
+            _fields_ = [("Reserved1", ctypes.c_void_p),
+                        ("PebBaseAddress", ctypes.c_void_p),
+                        ("Reserved2", ctypes.c_void_p * 2),
+                        ("UniqueProcessId", ctypes.c_void_p),
+                        ("Reserved3", ctypes.c_void_p)]
+
+        pbi = PBI()
+        rl = wintypes.ULONG(0)
+        st = ntdll.NtQueryInformationProcess(ctypes.c_void_p(h), 0, ctypes.byref(pbi),
+                                             ctypes.sizeof(pbi), ctypes.byref(rl))
+        if st != 0:
+            return 0
+        return pbi.PebBaseAddress or 0
+    finally:
+        k32.CloseHandle(ctypes.c_void_p(h))
+
+
+def _scan_frames(g, ram, ranges, cap=60000, need=4):
+    """Every 4 KiB page that looks like a page table.  No cap that PTs can fill."""
+    found = []
+    for rlo, rhi in ranges:
+        pa = (rlo + 0xFFF) & ~0xFFF
+        while pa + 0x10000 <= rhi and len(found) < cap:
+            try:
+                blk = dl.retry_phys(g, pa, 0x10000, tries=4)
+            except OSError:
+                pa += 0x10000
+                continue
+            for off in range(0, 0x10000, 0x1000):
+                n = 0
+                for i in range(0, 0x1000, 8):
+                    e = struct.unpack_from("<Q", blk, off + i)[0]
+                    if (e & 1) and not (e & 0x80):
+                        f = e & 0xFFFFFFFFFF000
+                        if f and ram.page_ok(f):
+                            n += 1
+                            if n >= need:
+                                break
+                if n >= need:
+                    found.append(pa + off)
+            pa += 0x10000
+        if len(found) >= cap:
+            break
+    return found
+
+
+def _ordered_ranges(ranges):
+    """Page tables on this box cluster high (both DTBs seen tonight were 0x3..): try
+    that band first, then the rest, so a hit does not wait for a 27 GB pass."""
+    prime_lo, prime_hi = 0x300000000, 0x400000000
+    first, rest = [], []
+    for lo, hi in ranges:
+        a, b = max(lo, prime_lo), min(hi, prime_hi)
+        if a < b:
+            first.append((a, b))
+            if lo < a:
+                rest.append((lo, a))
+            if b < hi:
+                rest.append((b, hi))
+        else:
+            rest.append((lo, hi))
+    return first + rest
+
+
+def discover_peb(g, ram, ranges, pid):
+    """Find the CR3 that maps the game's PEB, then read ImageBase from the PEB.
+
+    Self-validating: a wrong frame cannot make PEB+0x10 hold an image base that has
+    an 'MZ' under that same frame.  Needs no driver, no DSE, no EPROCESS offset.
+    Validated per window so a hit reports immediately instead of after 27 GB.
+    """
+    peb = _peb_va(pid)
+    out("  PEB via NtQueryInformationProcess = %#x" % peb)
+    if not peb:
+        return None
+    t0 = time.perf_counter()
+    for wlo, whi in _ordered_ranges(ranges):
+        if time.perf_counter() - t0 > 420.0:
+            out("    (time cap reached)")
+            break
+        frames = _scan_frames(g, ram, [(wlo, whi)], cap=40000, need=4)
+        out("    window %#012x..%#012x -> %d frames" % (wlo, whi, len(frames)))
+        for f in frames:
+            try:
+                rd = Reader(g, f)
+            except OSError:
+                continue                      # frame not mappable by this transport
+            raw = rd.read(peb + 0x10, 8)      # PEB.ImageBaseAddress
+            if not raw:
+                continue
+            base = struct.unpack("<Q", raw)[0]
+            if not base or base > 0x7FFFFFFFFFFF:
+                continue
+            if rd.read(base, 2) != b"MZ":
+                continue
+            size = _image_size_of(rd, base)
+            out("  FOUND dtb=%#x base=%#x SizeOfImage=%#x (%.1f MB)"
+                % (f, base, size, size / 1048576.0))
+            return {"dtb": f, "base": base, "size": size}
+    out("  no frame mapped the PEB to an MZ image")
+    return None
+
+
 def discover_pml4(g, ram, ranges, want_size=0, cap=4096, max_walk=400):
     """Find the CR3 whose image matches want_size (0 = take the largest image).
 
@@ -400,6 +518,11 @@ def discover(g, pid):
         # the weak version let an MMIO hole through and the raw read bugchecked
         # the box (21:34).  Every PA read in the walk then hits the real map.
         g.is_ram = ram.page_ok
+
+        # Best path first: driver-free, offset-free, self-validating on the PEB.
+        m = discover_peb(g, ram, ranges, pid)
+        if m:
+            return m
 
         hits = None if flag("refresh-hits") else _load_hits(pid)
         if hits:

@@ -31,6 +31,13 @@ End goal: bnuuy-class external — **ESP, menu, aim** — then the write-path ti
 4. Driver/kernel work still goes VM-first (R1). `qk_probe` is **read-only** — no DSE write,
    no service start/stop, nothing to restore.
 5. Every new run gets a new file. Never overwrite evidence (R5).
+6. **Pre-flight before every game session — the box must be clean of BYOVDs:**
+   `sc query DBUtilDrv2` must be `STOPPED`/absent (kdu loads it to flip DSE and it has **no
+   unload routine** — `sc stop` returns 1052, so only a reboot clears it). Any session that
+   runs kdu **must** end with a reboot before the game is played, or EAAC refuses the game with
+   *"This software cannot be used at the same time as the game"* (`Security Violation (2)`).
+   This single fact explains every kill on 07/11 from 20:00 onward.
+
 
 ## FROZEN (do not re-probe; keep the evidence, stop the work)
 
