@@ -716,6 +716,94 @@ def act_array(rd, va, slots, ents):
     return 9
 
 
+def act_find_array(rd, base, max_rep=8):
+    """Find a static pointer in the image's writable sections that points at an
+    array of objects whose first qword (vtable) lives inside the image.
+
+    That is the shape of a live entity array, and the static qword is exactly what
+    an 'entity list offset' is.  Everything here is a VA read through the driver's
+    physical transport, so no attach and no PA guessing.
+    """
+    lf = rd.read(base + 0x3C, 4)
+    if not lf:
+        return 8
+    elf = struct.unpack("<I", lf)[0]
+    pe = rd.read(base + elf, 0x18)
+    if not pe or pe[:4] != b"PE\x00\x00":
+        return 8
+    nsec = struct.unpack_from("<H", pe, 6)[0]
+    optsize = struct.unpack_from("<H", pe, 0x14)[0]
+    size_of_image = 0
+    oh = rd.read(base + elf + 0x18, 0x60)
+    if oh:
+        size_of_image = struct.unpack_from("<I", oh, 0x38)[0]
+    sec_table = rd.read(base + elf + 0x18 + optsize, nsec * 40)
+    if not sec_table:
+        return 8
+    out("  image SizeOfImage=%#x, %d sections, scanning writable ones" % (size_of_image, nsec))
+
+    reps = []
+    scanned = 0
+    for i in range(nsec):
+        s = sec_table[i * 40:(i + 1) * 40]
+        if len(s) < 40:
+            break
+        name = s[:8].rstrip(b"\x00").decode("ascii", "replace")
+        vsize = struct.unpack_from("<I", s, 8)[0]
+        vaddr = struct.unpack_from("<I", s, 12)[0]
+        chars = struct.unpack_from("<I", s, 36)[0]
+        if not (chars & 0x80000000) or vsize == 0:
+            continue
+        out("    %-8s va=%#x size=%#x (writable)" % (name, vaddr, vsize))
+        va = base + vaddr
+        end = va + vsize
+        cur = va
+        while cur + 8 <= end:
+            chunk = rd.read(cur, min(0x10000, end - cur))
+            if not chunk:
+                cur += 0x1000
+                continue
+            scanned += len(chunk)
+            for off in range(0, len(chunk) - 8, 8):
+                v = struct.unpack_from("<Q", chunk, off)[0]
+                if v < 0x10000 or v > 0x7FFFFFFFFFFF or (v & 7):
+                    continue
+                slots = rd.read(v, 64)
+                if not slots:
+                    continue
+                cand = [struct.unpack_from("<Q", slots, k * 8)[0] for k in range(8)]
+                canon = [c for c in cand if 0x10000 <= c <= 0x7FFFFFFFFFFF and (c & 7) == 0]
+                if len(canon) < 4:
+                    continue
+                vt = 0
+                for c in canon[:4]:
+                    q = rd.read(c, 8)
+                    if q:
+                        first = struct.unpack("<Q", q)[0]
+                        if base <= first < base + (size_of_image or 0):
+                            vt += 1
+                if vt >= 3:
+                    reps.append((vt, len(canon), cur + off - base, v))
+                    if len(reps) > 400:
+                        break
+            cur += len(chunk)
+        if len(reps) > 400:
+            break
+
+    out("  scanned %d bytes of writable data, %d array-shaped candidates" % (scanned, len(reps)))
+    reps.sort(reverse=True)
+    for vt, nc, rva, array_va in reps[:max_rep]:
+        out("    STATIC base+%#010x -> array %#x  slots=%d vtable_hits=%d" % (rva, array_va, nc, vt))
+    if not reps:
+        out("  RESULT: no-array")
+        out("  VERDICT: PARTIAL - no vtable-backed pointer array found in writable data")
+        return 8
+    out("  RESULT: array=%#x static_rva=%#x" % (reps[0][3], reps[0][2]))
+    out("  VERDICT: PASS - candidate entity array found; decode with --array=0x%x" % reps[0][3])
+    return 0
+
+
+# --------------------------------------------------------------- stage 1b watch
 def act_watch(rd, at, secs, pid):
     out("  Stage 1b gate: %ds of 1 Hz zero-attach reads at %#x" % (secs, at))
     t0 = time.perf_counter()
@@ -809,6 +897,8 @@ def main():
 
         if flag("pe"):
             rc = act_pe(rd, base)
+        elif flag("find-array"):
+            rc = act_find_array(rd, base)
         elif arg("array", 0, lambda s: int(s, 0)):
             rc = act_array(rd, arg("array", 0, lambda s: int(s, 0)),
                            arg("slots", 64, lambda s: int(s, 0)),

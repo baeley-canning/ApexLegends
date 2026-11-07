@@ -383,3 +383,9 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   _ritual/qk1b_gate.ps1 = Stage 1b gate, self-scoring against the EA Javelin Anticheat log (PASS = clean window AND 0 events).
   batch-IOCTL in apexdrv deferred: still attaches, and needs a VM-first driver change for no evidence.
 
+
+22:07 GAME, ZERO-ATTACH, through apexdrv v16 (temp\qk_va_watch_20261107_220646_pe.txt):
+  driver DTB=0x34c9ee000  BASE=0x7ff6cc650000  MZ ok  PE sections=9 SizeOfImage=0xdfb8000 stamp=1792800914 (=2026-10-24, same build as Stage 1).
+  watch running: 1 Hz, read=4d5a9000 (MZ at base), 0 faults. Stage 1b gate in progress.
+  new tool modes: qk_va --find-array (static pointer -> vtable-backed array) and the 1b watch.
+

@@ -62,7 +62,11 @@ Write-Host ("window " + $Secs + " s; evidence -> " + $OutFile)
 Write-Host 'first run in a game session spends ~80 s resolving the page tables.'
 
 $t0 = Get-Date
-& $py $script ("--watch=" + $Secs) ("--out=" + $OutFile) --no-elevate
+Write-Host 'first: resolve the map and read the PE through the driver (zero attach)'
+& $py $script ('--pid=' + $game.Id) '--pe' ('--out=' + ($OutFile -replace '\.txt$', '_pe.txt')) '--no-elevate'
+Write-Host ''
+Write-Host "----- $Secs s watch -----"
+& $py $script ('--watch=' + $Secs) ('--out=' + $OutFile) '--no-elevate'
 $rc = $LASTEXITCODE
 $t1 = Get-Date
 
