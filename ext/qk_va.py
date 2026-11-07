@@ -287,29 +287,35 @@ def _peb_va(pid):
         k32.CloseHandle(ctypes.c_void_p(h))
 
 
-def _scan_frames(g, ram, ranges, cap=60000, need=4):
-    """Every 4 KiB page that looks like a page table.  No cap that PTs can fill."""
+def _scan_frames(g, ram, ranges, cap=500000, need=8):
+    """Every 4 KiB page that looks like a page table.
+
+    Speed matters: ONE struct.unpack per 64 KiB chunk, then a cheap bounds test per
+    present entry.  No small cap - a cap of 40k filled with PTs before the scan
+    reached the PML4 we wanted (measured 23:00).  need=8 trims obvious data pages.
+    """
     found = []
+    top = g.ram_top
     for rlo, rhi in ranges:
         pa = (rlo + 0xFFF) & ~0xFFF
         while pa + 0x10000 <= rhi and len(found) < cap:
             try:
-                blk = dl.retry_phys(g, pa, 0x10000, tries=4)
+                blk = dl.retry_phys(g, pa, 0x10000, tries=2)
             except OSError:
                 pa += 0x10000
                 continue
-            for off in range(0, 0x10000, 0x1000):
+            qs = struct.unpack_from("<%dQ" % (len(blk) // 8), blk)
+            for base_off in range(0, len(qs), 512):
                 n = 0
-                for i in range(0, 0x1000, 8):
-                    e = struct.unpack_from("<Q", blk, off + i)[0]
+                for e in qs[base_off:base_off + 512]:
                     if (e & 1) and not (e & 0x80):
                         f = e & 0xFFFFFFFFFF000
-                        if f and ram.page_ok(f):
+                        if 0x1000 <= f < top:
                             n += 1
                             if n >= need:
                                 break
                 if n >= need:
-                    found.append(pa + off)
+                    found.append(pa + base_off * 8)
             pa += 0x10000
         if len(found) >= cap:
             break
