@@ -463,8 +463,25 @@ def main():
                 return 8
             a = picked
             out("  --- floats that changed near %#012x (offset from name) ---" % a)
-            for off, (x0, x1) in list(changed[a].items())[:40]:
-                out("    %+#06x  %10.3f -> %10.3f" % (off, x0, x1))
+            rows = []
+            for off, (x0, x1) in changed[a].items():
+                if abs(x1 - x0) < 0.5:                      # noise / -0.0 vs 0.0
+                    continue
+                if abs(x0) < 1e-6 and abs(x1) < 1e-6:
+                    continue
+                if abs(x1) > 360.0 or abs(x0) > 360.0:      # not an angle
+                    continue
+                rows.append((off, x0, x1))
+            rows.sort()
+            out("  --- %d filtered changes (|delta|>0.5, |v|<=360) ---" % len(rows))
+            for off, x0, x1 in rows[:30]:
+                out("    %+#06x  %9.3f -> %9.3f" % (off, x0, x1))
+            for i in range(len(rows) - 1):
+                o0, a0, a1 = rows[i]
+                o1, b0, b1 = rows[i + 1]
+                if o1 - o0 == 4 and abs(a1) <= 90.0 and abs(b1) <= 180.0:
+                    out("  PAIR %+#06x/%+#06x  (%.3f, %.3f) -> (%.3f, %.3f)  <- pitch/yaw?"
+                        % (o0, o1, a0, b0, a1, b1))
             out("RESULT: player=%#x changed_floats=%d" % (a, len(changed[a])))
             out("VERDICT: PASS - player identified; angle candidates dumped")
             return 0
