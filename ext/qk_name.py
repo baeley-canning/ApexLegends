@@ -366,6 +366,61 @@ def main():
             out("VERDICT: PASS - position tracks the player; health offsets listed above")
             return 0
 
+        if flag("angles") and hits:
+            # Identify the player by MOVEMENT (that is the test that worked), then ask
+            # for a TURN and diff the block for angle candidates.
+            snap = {}
+            ent = None
+            for a, tag in hits:
+                try:
+                    x, y, z = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
+                    ctx = dl.retry_phys(g, a - 0x30, 0x30, tries=1)
+                except OSError:
+                    continue
+                if not (all(abs(c) < 20000.0 for c in (x, y, z))
+                        and max(abs(x), abs(y), abs(z)) > 20.0 and abs(y) < 200.0):
+                    continue
+                # UI copies live in UTF-16 string tables; an entity's neighbour is binary
+                printable = sum(1 for b in ctx if 32 <= b < 127 or b == 0)
+                if printable > len(ctx) * 0.8:
+                    continue
+                ent = a
+                out("  candidate entity %#x  origin (%.1f, %.1f, %.1f)" % (a, x, y, z))
+                break
+            if not ent:
+                out("RESULT: no-entity-shaped name hit")
+                out("VERDICT: PARTIAL - every hit sits in a text table")
+                return 8
+            time.sleep(3)                      # passive: you are already playing
+            out("  player entity at %#x (origin %#x)" % (ent, ent - 0xEEC))
+            lo = ent - 0x1600
+            ln = 0x1A00
+            try:
+                b0 = dl.retry_phys(g, lo, ln, tries=3)
+            except OSError:
+                out("RESULT: block unreadable")
+                return 5
+            time.sleep(3)                      # passive again - no cue at all
+            try:
+                b1 = dl.retry_phys(g, lo, ln, tries=3)
+            except OSError:
+                out("RESULT: block unreadable after turn")
+                return 5
+            out("  floats that changed (offset from name, old -> new):")
+            nch = 0
+            for i in range(0, min(len(b0), len(b1)) - 4, 4):
+                x0 = struct.unpack_from("<f", b0, i)[0]
+                x1 = struct.unpack_from("<f", b1, i)[0]
+                if x0 == x1 or x1 != x1 or x0 != x0:
+                    continue
+                if abs(x1) > 1000.0 or abs(x0) > 1000.0:
+                    continue
+                out("    %+#06x  %10.3f -> %10.3f" % ((lo + i) - ent, x0, x1))
+                nch += 1
+            out("RESULT: changed floats=%d around entity %#x" % (nch, ent))
+            out("VERDICT: PASS - angle candidates dumped (pitch in +-90, yaw in +-180)")
+            return 0
+
         if flag("probe"):
             # Treat the name as inline at entity+0x10F0 (the old h320_va set) and ask
             # whether the health field at +0x5E0 reads plausibly.  One read per hit.
