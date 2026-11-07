@@ -1,5 +1,15 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 22:12 - **Zero-attach does NOT save the game: 322/322 clean reads over 5m21s, then EAAC killed it anyway. The attach was not the trigger - the driver (or the reads) is.**
+
+- Run: `temp\qk_va_watch_20261107_220646.txt` (+ `_pe.txt`). Driver DTB `0x34c9ee000`, base `0x7ff6cc650000`, `MZ` at base, `SizeOfImage=0xdfb8000`, stamp `1792800914` (same 2026-10-24 build). Then 1 Hz reads of the image page through `MmCopyMemory(PHYSICAL)` - **no attach, no mapping, 0 faults, 322/322 good** - and at **T+321s** the process vanished. `EA Javelin Anticheat` 1000 at **22:12:06**, same `ExitType 0x322327458D1ED790`.
+- **What this kills:** the hypothesis that `KeStackAttachProcess` is the fingerprint. It is not sufficient - a transport that never attaches still gets found.
+- **What it points at:** the *resident* apexdrv. The comparison that matters is p65 (18:07/18:18): **gdrv3** resident, 9 GB of physical reads, **zero** Javelin events. Now: **apexdrv** v16 resident, 322 tiny reads, killed at ~5.3 min. Between those two runs the reads are similar; the driver is not. The ~5-minute, variable delay also looks like a periodic scan rather than an inline check (earlier kills: 14 s, ~4 min, 5.3 min).
+- **Caveat against over-reading it:** G1 (03/11) had apexdrv v10 resident for **34.9 min** with the game alive. Either v10 was less conspicuous than v16, or EAAC's scan did not run/see it that session. So "apexdrv resident is fatal" is a hypothesis, not a fact.
+- **Decisive control, 15 minutes, no code:** leave apexdrv loaded (it is RUNNING now) and **do not run any probe** - play for 15 min. Survives -> the reads are the trigger. Killed -> the resident driver is, and the product has to run on a whitelisted BYOVD (gdrv3) with our driver loaded only briefly to fetch DTB+base.
+- Fixed on the way: `act_watch` printed `VERDICT: PASS` while the target had died (every *read* succeeded, so `good == n`). A death is now `FAIL` unconditionally (R9).
+
+
 ## 07/11 22:03 - **THE ZERO-ATTACH READ PATH WORKS: apexdrv v16 hands over the exact DTB+BASE, `MmCopyMemory(PHYSICAL)` does the reads, our page walk translates** (`_ritual/qk_va_drv1.txt`, `_ritual/qk_drv_up.out`)
 
 - **v16 adds two IOCTLs, neither of which attaches:** `IOCTL_APEXDRV_DTB` (KPROCESS.DirectoryTableBase = EPROCESS+0x28) and `IOCTL_APEXDRV_PHYS` (`MmCopyMemory` with `MM_COPY_MEMORY_PHYSICAL`, 1..0x1000 B). No `KeStackAttachProcess`, no `MmMapIoSpace`, no arming, no dispatch-table surgery.

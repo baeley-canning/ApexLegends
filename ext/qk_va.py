@@ -808,6 +808,7 @@ def act_watch(rd, at, secs, pid):
     out("  Stage 1b gate: %ds of 1 Hz zero-attach reads at %#x" % (secs, at))
     t0 = time.perf_counter()
     n = good = 0
+    died = False
     while time.perf_counter() - t0 < secs:
         b = rd.read(at, 4)
         n += 1
@@ -822,6 +823,7 @@ def act_watch(rd, at, secs, pid):
             % (int(time.perf_counter() - t0), (b.hex() if b is not None else "FAULT"),
                alive, rd.reads, rd.faults))
         if alive == 0:
+            died = True
             out("  target died at T+%ds (check the Application log for Javelin 1000)"
                 % int(time.perf_counter() - t0))
             break
@@ -829,6 +831,11 @@ def act_watch(rd, at, secs, pid):
     el = int(time.perf_counter() - t0)
     out("  ALIVE reads=%d ok=%d elapsed=%ds" % (n, good, el))
     out("  RESULT: watch good=%d/%d reads=%d faults=%d" % (good, n, rd.reads, rd.faults))
+    # A death is never a PASS, even when every read succeeded (R9).
+    if died:
+        out("  VERDICT: FAIL - target died at T+%ds after %d clean zero-attach reads; "
+            "the transport worked, the game did not survive" % (el, good))
+        return 1
     if good == n and n > 0:
         out("  VERDICT: PASS - %ds of zero-attach reads, target alive; now confirm the "
             "Application log has NO 'EA Javelin Anticheat' 1000 in this window" % el)

@@ -389,3 +389,10 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   watch running: 1 Hz, read=4d5a9000 (MZ at base), 0 faults. Stage 1b gate in progress.
   new tool modes: qk_va --find-array (static pointer -> vtable-backed array) and the 1b watch.
 
+
+22:12 STAGE 1b FAIL - zero-attach does NOT save the game (temp\qk_va_watch_20261107_220646.txt):
+  322/322 clean 1 Hz reads via MmCopyMemory (no attach, no mapping), then Javelin 1000 at 22:12:06, T+321s, same ExitType.
+  => attach is ruled OUT as the trigger. Leading candidate: the RESIDENT apexdrv (p65: gdrv3 resident + 9 GB reads = 0 events).
+  caveat: G1 had apexdrv v10 resident 34.9 min alive. NEXT CONTROL: apexdrv resident, ZERO reads, 15 min.
+  fix: act_watch printed PASS after the target died (good==n) -> death now FAILs unconditionally.
+
