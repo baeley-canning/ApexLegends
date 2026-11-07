@@ -99,6 +99,9 @@ def scan_100(g, ranges):
                 if (i & 3) == 0:
                     hits.append(base + i)
                 i = blk.find(F100, i + 1)
+    out("  scan: %d chunks, %d candidates reading 100.0f" % (n, len(hits)))
+    return hits
+
 
 def main():
     out_path = arg("out", os.path.join(TMP, "qk_local_%s.txt"

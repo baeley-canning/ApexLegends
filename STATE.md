@@ -1,5 +1,15 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 08/11 00:1x - **NAME ANCHOR WORKS: the player struct is found from the player's own name, and the position sits at name-0xEEC. Physical-only, no driver, no DTB.**
+
+- `ext/qk_name.py --needle=kern30120` scans RAM through **gdrv3 only** and finds **3,929 hits** in ~50 s (`temp/qk_name3.txt`). The hits land in pool blocks ~`0x10F0` apart - the entity shape - plus copies in the UI string table (that is why there are thousands).
+- **`--layout` on hits spread across the list found the real thing** (`temp/qk_layout1.txt`): for the block holding the name at `0x3f2c56d63`,
+  `-0xeec  (3284.6, 825.0, 0.0)` - a Vec3 at player scale with z on the ground plane. If that offset is stable, the origin is **name - 0xEEC**; other hits showed scattered world-like values at other offsets, so this one is the candidate to verify against a moved position.
+- The old `base = name - 0x10F0` + `hp@+0x5E0` layout is **wrong** for this build (all reads came back 0) - the name anchor is what makes the layout discoverable at all.
+- **Still open:** (a) confirm `name-0xEEC` by moving (the value must change with the player, and the earlier `qk_local` diff harness can do it), (b) health/shield offsets relative to the name (the `~100.0f` marker printed nothing in these blocks, so they are elsewhere in the struct), (c) the matrix, then `qk_overlay`.
+- Machine: gdrv3 only (`DBUtilDrv2` stopped+disabled, no apexdrv service/file). Screen is **1920x1080 borderless** from now on; the in-game name is **kern30120**.
+
+
 ## 07/11 22:35 - **The box now has NO trace of apexdrv (service deleted, all 7 files moved out of System32\drivers). That is the baseline to test: does the game survive when only gdrv3 is present?**
 
 - **The evidence that forced this:** the 22:32:07 kill (`0x322327458D1ED790`) happened with apexdrv **STOPPED** - so it was not residency this time, the driver only had to be *installed* (service + file). Earlier kills (22:12/22:16/22:20) had it running. Every kill tonight therefore fits "EAAC finds the installed driver", and `apexdrv.sys` is exactly the kind of name that sits on a name-based blocklist (their UA message: *"This software cannot be used at the same time as the game"*, `Security Violation (2)`).
