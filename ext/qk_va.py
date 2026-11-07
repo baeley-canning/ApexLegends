@@ -352,6 +352,26 @@ def discover_peb(g, ram, ranges, pid):
     if not peb:
         return None
     t0 = time.perf_counter()
+
+    # Cheap first: frames seen earlier tonight (pool allocations often repeat after a
+    # reboot).  Two reads each instead of a 27 GB scan.
+    known = (0x34C9EE000, 0x3AD092000, 0x3AD091000, 0x3AD090000)
+    for f in known:
+        try:
+            rd = Reader(g, f)
+            raw = rd.read(peb + 0x10, 8)
+        except OSError:
+            continue
+        if not raw:
+            continue
+        base = struct.unpack("<Q", raw)[0]
+        if base and base <= 0x7FFFFFFFFFFF and rd.read(base, 2) == b"MZ":
+            size = _image_size_of(rd, base)
+            out("  FOUND (known frame) dtb=%#x base=%#x SizeOfImage=%#x (%.1f MB)"
+                % (f, base, size, size / 1048576.0))
+            return {"dtb": f, "base": base, "size": size}
+    out("  known frames did not map the PEB - scanning")
+
     for wlo, whi in _ordered_ranges(ranges):
         if time.perf_counter() - t0 > 420.0:
             out("    (time cap reached)")
