@@ -256,6 +256,7 @@ int main(int argc, char** argv) {
     DWORD pidArg = 0;
     int   maxEnts = 6;
     unsigned slots = G::ENTITY_SLOT_MAX;
+    ULONG64 listOverride = 0;
     const char* outPath = "qk_ents_latest.txt";
 
     for (int i = 1; i < argc; ++i) {
@@ -263,6 +264,7 @@ int main(int argc, char** argv) {
         else if (strncmp(argv[i], "--out=", 6) == 0)   outPath = argv[i] + 6;
         else if (strncmp(argv[i], "--ents=", 7) == 0)  maxEnts = (int)strtol(argv[i] + 7, nullptr, 0);
         else if (strncmp(argv[i], "--slots=", 8) == 0) slots = (unsigned)strtoul(argv[i] + 8, nullptr, 0);
+        else if (strncmp(argv[i], "--list-va=", 10) == 0) listOverride = (ULONG64)strtoull(argv[i] + 10, nullptr, 0);
     }
     if (maxEnts < 1) maxEnts = 1;
     if (maxEnts > 24) maxEnts = 24;
@@ -338,7 +340,10 @@ int main(int argc, char** argv) {
             (unsigned long long)listVa, (unsigned)st);
     }
     ULONG64 arrayVa = listVa;
-    if (!IsUserVa(arrayVa)) {
+    if (listOverride) {
+        arrayVa = listOverride;
+        Say("array overridden by --list-va: 0x%llX", (unsigned long long)arrayVa);
+    } else if (!IsUserVa(arrayVa)) {
         Say("value is not a canonical user VA - treating base+0x%X as the array itself",
             G::ENTITY_LIST);
         arrayVa = base + G::ENTITY_LIST;

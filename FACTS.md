@@ -33,7 +33,34 @@ The offsets have to be re-derived for the current build (`qk_hunt --image` + RE 
 patch-day list), then validated by projecting a known world point onto a known dummy.
 
 
-## What has actually been seen
+## Read-primitive survival (the finding of 07/11 night)
+
+EAAC does not crash the game — it **terminates** it: `EA Javelin Anticheat` event 1000,
+`ExitType: 0x322327458D1ED790`. Timestamps vs our probes (`_ritual/qk_*`, Application log):
+
+| time | what happened |
+|---|---|
+| 20:57:17→20:58:18 | `qk_probe` 60 s / 66 reads — game **alive** at the end |
+| 21:00:30→21:02:41 | `qk_ents` + `qk_hunt` ×2 (attach-heavy walks) |
+| **21:02:39** | **killed** |
+| 21:09:40→21:11:15 | new pid: image scan (57,272 READBUFs), `qk_ents`, `qk_hunt --wide` (8 MB + 8,192 READ8s) |
+| **21:11:29** | **killed**, 14 s after the last scan |
+
+Controls that separate driver from read shape:
+- **driver resident, idle** → tolerated for **34.9 min** (G1, 03/11 23:29, zero refusals).
+- **gdrv3 physical reads (9 GB swept, p65)** → **no kill**: zero Javelin 1000 events between 13:08 and 20:00 on 07/11, i.e. across both 18:07 and 18:18 certs.
+- **apexdrv reads, which `KeStackAttachProcess` per IOCTL** → killed in 14 s–4 min, **2 of 2** instances tonight.
+
+⇒ **Hypothesis (strong, one control short of proven): the fingerprint is the per-request process attach,
+not the bytes read.** Implication: an ESP at ~200 reads/frame must either (a) do **one attach per batch**
+(a new IOCTL that copies 64–1024 values inside a single attach), or (b) read **physically** (page-table
+walk + `MmCopyMemory(MM_COPY_MEMORY_PHYSICAL)` / `MmMapIoSpace`), zero attach — the gdrv3 shape that
+has never been killed.
+
+**Decisive control (free, do it first):** play ≥10 min with apexdrv resident and **zero** qk_probes.
+Survives → the read shape is the trigger. Killed → the resident v14 driver itself is, and G1's 34.9 min
+was a different build/config.
+
 
 | Claim | Where | Status |
 |---|---|---|

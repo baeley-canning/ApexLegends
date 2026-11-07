@@ -1,5 +1,14 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 21:1x - **The game is not crashing: EAAC terminates it, and the trigger looks like our per-request `KeStackAttachProcess` read** (`_ritual/qk_*`, Application log `EA Javelin Anticheat` 1000)
+
+- **`ExitType: 0x322327458D1ED790` twice tonight**, each within seconds of a read burst: **21:02:39** (right as `qk_hunt` run2 finished) and **21:11:29** (14 s after `qk_hunt --wide`). The 60 s `qk_probe` at 20:57 completed with the game **alive** - so it is not "reads kill instantly", it is a delayed kill.
+- **The control separates driver from read shape:** driver resident and **idle** survived **34.9 min** (G1); **gdrv3 physical reads swept 9 GB** during the 18:07/18:18 p65 certs and produced **zero** Javelin events (none between 13:08 and 20:00). Only the apexdrv reads - which do one `KeStackAttachProcess` per IOCTL - were followed by kills, **2/2** instances.
+- ⇒ **Working hypothesis: the fingerprint is the attach, not the bytes.** Consequences for the product: an ESP at ~200 reads/frame cannot attach 200×/frame. Either a **batch IOCTL that holds one attach across N reads**, or a **physical read path** (page-table walk + `MmCopyMemory(MM_COPY_MEMORY_PHYSICAL)` / `MmMapIoSpace`), which is exactly the gdrv3 shape that has never been killed. This is now **Stage 1b** in `PLAN.md` and blocks stages 2-6.
+- **Decisive control (free, needs no code):** play >=10 min with apexdrv resident and **zero** probes. Survives -> the read shape is the trigger; killed -> the resident v14 driver itself is, and G1's 34.9 min was a different config.
+- **Also landed tonight:** `qk_hunt --wide` found a **44-slot pointer array (0xB675E68) whose 44 targets all carry in-image vtables** - the shape of a live entity array - inside +/-4 MB of the stale anchor. The static qword's own RVA was not recorded in that build (added afterwards), and the kill landed before it could be decoded. So the offset hunt has a real lead; it needs the survival problem fixed first, or a 30 s window.
+
+
 ## 07/11 21:0x - **Stage 2 first measurement: the whole offset table is STALE for the 2026-10-24 build** (evidence `_ritual\qk_ents_run1.txt`, `_ritual\qk_hunt_run2.txt`)
 
 - **`qk_ents` (new, `tools\qk_ents.cpp`) against the live game, pid 24360:** `ENTITY_LIST` at `base+0x23F6A90` holds **`0x5E2C1480475A9C4`** - not a canonical pointer at all. Falling back to treating that address as the array, a 0x2000-slot READ8 walk yielded 6 "canonical" qwords whose targets all fault (`0xC0000005`) - it is float data, not a pointer array. Matrix candidate B (`+0x1B4DFA0`) returns 16 finite floats of nonsense (`2.9e23`, `-3.7e7`); A (`+0x022EE01`) returns `524288 / 442634.25` (code/consts). **Every read succeeded** - so this is a wrong table, not a wrong transport.

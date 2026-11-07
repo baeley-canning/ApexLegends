@@ -369,3 +369,10 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   tools: qk_ents.exe + qk_hunt.exe (--image = whole-image matrix scan) both built, 0 warnings. NEXT: qk_hunt --image in the FIRING RANGE.
   lessons: READBUF > 0x1000 = header violation (IRP 87); a loose matrix test scores a float blob 41/100.
 
+
+21:1x EAAC TERMINATES THE GAME AFTER OUR ATTACH-READS (not a crash):
+  ExitType 0x322327458D1ED790 at 21:02:39 (end of qk_hunt run2) and 21:11:29 (+14 s after qk_hunt --wide).
+  controls: driver resident IDLE = 34.9 min (G1); gdrv3 PHYSICAL 9 GB sweep = 0 Javelin events (18:07/18:18); apexdrv attach reads = 2/2 killed.
+  => hypothesis: KeStackAttachProcess per IOCTL is the fingerprint. Stage 1b = no-attach / one-attach-per-batch read must survive 10 min.
+  lead: qk_hunt --wide found a 44-slot array 0xB675E68 with 44 in-image vtables near the anchor (static RVA not captured in that build).
+

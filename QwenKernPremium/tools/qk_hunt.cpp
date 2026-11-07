@@ -1,5 +1,5 @@
 // ============================================================================
-// tools\qk_hunt.cpp — PLAN stage 2, step 2: find the MOVED offsets (read-only).
+// tools\qk_hunt.cpp ??? PLAN stage 2, step 2: find the MOVED offsets (read-only).
 //
 // qk_ents proved the static table is stale for the 2026-10-24 build: every read
 // succeeds (pages are mapped) but the values are garbage - base+0x23F6A90 holds
@@ -242,17 +242,92 @@ static ULONGLONG ScanList(HANDLE dev, DWORD pid, ULONG64 anchorVa, ULONG64 win) 
 }
 
 // ---------------------------------------------------------------------------
-// main
+// wide list hunt: a static qword in .data that points at an ARRAY of objects
+// whose first qword (vtable) lives inside the image.  An entity list is exactly
+// that shape, and a patch moves the static pointer by KB-MB, not to a new module.
 // ---------------------------------------------------------------------------
+struct ListHit { ULONGLONG p; ULONGLONG src; int score; int slots; int inImage; };
+static ListHit g_lbest[5];
+
+static void RememberList(ULONGLONG p, ULONGLONG src, int score, int slots, int inImage) {
+    for (int i = 0; i < 5; ++i) {
+        if (score > g_lbest[i].score) {
+            for (int k = 4; k > i; --k) g_lbest[k] = g_lbest[k - 1];
+            g_lbest[i].p = p;
+            g_lbest[i].src = src;
+            g_lbest[i].score = score;
+            g_lbest[i].slots = slots;
+            g_lbest[i].inImage = inImage;
+            return;
+        }
+    }
+}
+
+static void HuntListWide(HANDLE dev, DWORD pid, ULONG64 base, ULONG64 sizeOfImage,
+                         ULONG64 anchor, ULONG64 span) {
+    static ULONGLONG cand[4096];
+    static ULONGLONG candSrc[4096];
+    static unsigned char buf[0x1000];
+    unsigned nCand = 0, chunks = 0;
+    const ULONG64 lo = anchor - span;
+    const ULONG64 hi = anchor + span;
+    for (ULONG64 a = lo; a < hi && nCand < 4096; a += 0x1000) {
+        if (Read(dev, pid, a, 0x1000, buf) != 0) continue;
+        ++chunks;
+        for (unsigned o = 0; o + 8 <= 0x1000; o += 8) {
+            const ULONGLONG v = Rd64(buf + o);
+            if (!IsUserVa(v)) continue;
+            bool dup = false;
+            for (unsigned k = 0; k < nCand; ++k) if (cand[k] == v) { dup = true; break; }
+            if (!dup) { cand[nCand] = v; candSrc[nCand] = a + o; ++nCand; }
+            if (nCand >= 4096) break;
+        }
+    }
+    Say("  wide scan 0x%llX..0x%llX chunks=%u candidates=%u",
+        (unsigned long long)lo, (unsigned long long)hi, chunks, nCand);
+
+    for (int i = 0; i < 5; ++i) { g_lbest[i].p = 0; g_lbest[i].score = 0; }
+    for (unsigned i = 0; i < nCand; ++i) {
+        ULONG64 addrs[64], slots[64], tgt[64], tval[64];
+        LONG    sts[64], tst[64];
+        for (unsigned k = 0; k < 64; ++k) addrs[k] = cand[i] + (ULONG64)k * 8;
+        Read8(dev, pid, addrs, 64, slots, sts);
+        unsigned nT = 0;
+        int okSlots = 0;
+        for (unsigned k = 0; k < 64; ++k) {
+            if (sts[k] == 0 && IsUserVa(slots[k])) { ++okSlots; tgt[nT++] = slots[k]; }
+        }
+        if (okSlots < 4 || nT == 0) continue;
+        Read8(dev, pid, tgt, nT, tval, tst);
+        int inImage = 0;
+        for (unsigned k = 0; k < nT; ++k) {
+            if (tst[k] == 0 && tval[k] >= base && tval[k] < base + sizeOfImage) ++inImage;
+        }
+        RememberList(cand[i], candSrc[i], okSlots * 2 + inImage * 4, okSlots, inImage);
+    }
+    for (int i = 0; i < 5; ++i) {
+        if (g_lbest[i].p == 0) continue;
+        Say("  WIDE #%d ptr=0x%llX slots=%d vtable_in_image=%d score=%d  <-- stored at base+0x%llX (RVA 0x%llX)",
+            i + 1, (unsigned long long)g_lbest[i].p, g_lbest[i].slots, g_lbest[i].inImage,
+            g_lbest[i].score, (unsigned long long)(g_lbest[i].src - base),
+            (unsigned long long)(g_lbest[i].src - base));
+    }
+}
+
+
 int main(int argc, char** argv) {
     DWORD pidArg = 0;
     int rc = 0;
     bool imageMode = false;
+    bool wideMode = false;
+    ULONG64 span = 0x400000;
     ULONG64 win = 0x8000, listWin = 0x2000;
     const char* outPath = "qk_hunt_latest.txt";
     for (int i = 1; i < argc; ++i) {
         if (strncmp(argv[i], "--pid=", 6) == 0)           pidArg = (DWORD)strtoul(argv[i] + 6, nullptr, 0);
         else if (strcmp(argv[i], "--image") == 0)           imageMode = true;
+        else if (strcmp(argv[i], "--wide") == 0)            wideMode = true;
+        else if (strncmp(argv[i], "--span=", 7) == 0)       span = (ULONG64)strtoull(argv[i] + 7, nullptr, 0);
         else if (strncmp(argv[i], "--out=", 6) == 0)      outPath = argv[i] + 6;
         else if (strncmp(argv[i], "--win=", 6) == 0)      win = (ULONG64)strtoull(argv[i] + 6, nullptr, 0);
         else if (strncmp(argv[i], "--list-win=", 11) == 0) listWin = (ULONG64)strtoull(argv[i] + 11, nullptr, 0);
@@ -300,10 +375,10 @@ int main(int argc, char** argv) {
         Say("target pid=%lu base=0x%llX (source=%lu)", (unsigned long)pid,
             (unsigned long long)base, b.Reserved2);
 
-        // ---- 0. optional: scan the WHOLE image for a matrix ----------------
-        if (imageMode) {
+        // image size once, for both the image scan and the wide list hunt
+        ULONG sizeOfImage = 0;
+        {
             unsigned char hdr[0x100];
-            ULONG sizeOfImage = 0;
             if (Read(dev, pid, base + 0x3C, 4, hdr) == 0) {
                 const ULONG lf = Rd32(hdr);
                 if (lf >= 0x40 && lf < 0x1000 &&
@@ -311,6 +386,10 @@ int main(int argc, char** argv) {
                     sizeOfImage = Rd32(hdr + 0x50);
                 }
             }
+        }
+
+        // ---- 0. optional: scan the WHOLE image for a matrix ----------------
+        if (imageMode) {
             Say("--- image scan: SizeOfImage=0x%X (%.1f MB), strict matrix test ---",
                 sizeOfImage, sizeOfImage / 1048576.0);
             static unsigned char img[0x1000 + 64];
@@ -391,8 +470,15 @@ int main(int argc, char** argv) {
         }
 
         // ---- 2. entity-list hunt -----------------------------------------
-        Say("--- entity-list hunt: canonical pointers near base+0x%X ---", G::ENTITY_LIST);
-        const ULONGLONG cand = ScanList(dev, pid, base + G::ENTITY_LIST, listWin);
+        Say("--- entity-list hunt near base+0x%X (wide=%d span=0x%llX) ---", G::ENTITY_LIST,
+            (int)wideMode, (unsigned long long)span);
+        ULONGLONG cand = 0;
+        if (wideMode) {
+            HuntListWide(dev, pid, base, sizeOfImage, base + G::ENTITY_LIST, span);
+            cand = g_lbest[0].p;
+        } else {
+            cand = ScanList(dev, pid, base + G::ENTITY_LIST, listWin);
+        }
         if (cand) {
             ULONG64 one = 0; LONG st = 0;
             Read8(dev, pid, &cand, 1, &one, &st);
@@ -425,5 +511,6 @@ int main(int argc, char** argv) {
     if (g_out) fclose(g_out);
     return rc;
 }
+
 
 
