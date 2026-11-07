@@ -27,6 +27,20 @@ LOG = []
 OUT = None
 
 
+try:
+    import winsound
+except ImportError:
+    winsound = None
+
+
+def beep(freq, ms):
+    if winsound:
+        try:
+            winsound.Beep(freq, ms)
+        except RuntimeError:
+            pass
+
+
 def set_out(p):
     global OUT
     OUT = os.path.abspath(p) if p else None
@@ -157,6 +171,57 @@ def main():
                         shown += 1
                     if shown >= 25:
                         break
+            return 0
+
+        if flag("verify") and hits:
+            # 1) name-0xEEC must change when the player moves.  2) the same block
+            # must hold the ~100.0f health triple.  One run, one movement cue.
+            n = len(hits)
+            cands = [h[0] for h in hits]          # ALL hits: the entity is 1 of thousands
+            out("  candidates: %d" % len(cands))
+            off = arg("pos-off", 0xEEC, lambda s: int(s, 0))
+            before = {}
+            for a in cands:
+                try:
+                    before[a] = struct.unpack("<fff", dl.retry_phys(g, a - off, 12, tries=2))
+                except OSError:
+                    before[a] = None
+            out("")
+            out("  *** RUN IN A CIRCLE for 5 s (beep) ***")
+            beep(1300, 250)
+            time.sleep(5)
+            beep(700, 200)
+            survivors = []
+            for a in cands:
+                b0 = before.get(a)
+                try:
+                    b1 = struct.unpack("<fff", dl.retry_phys(g, a - off, 12, tries=2))
+                except OSError:
+                    continue
+                if b0 is None:
+                    continue
+                moved = any(abs(x - y) > 1.0 for x, y in zip(b0, b1))
+                world = all(abs(v) < 20000.0 for v in b1) and max(abs(v) for v in b1) > 300.0
+                if moved and world:
+                    survivors.append((a, b0, b1))
+                    out("    MOVED %#x  (%.1f,%.1f,%.1f) -> (%.1f,%.1f,%.1f)"
+                        % (a, b0[0], b0[1], b0[2], b1[0], b1[1], b1[2]))
+            out("  position-confirmed name hits: %d" % len(survivors))
+            if not survivors:
+                out("RESULT: position-not-confirmed")
+                out("VERDICT: PARTIAL - name-0xEEC did not track movement")
+                return 8
+            a = survivors[0][0]
+            out("  --- health scan inside the confirmed block (%#x, offsets from name) ---" % a)
+            lo = a - 0x1500
+            b = dl.retry_phys(g, lo, 0x1800, tries=3)
+            for i in range(0, len(b) - 12, 4):
+                x, y, z = struct.unpack_from("<fff", b, i)
+                if abs(x - 100.0) < 0.05 and abs(y - 100.0) < 0.05:
+                    out("    %+#06x  (100.0, 100.0, %.1f)  <- health/shield/max triple"
+                        % ((lo + i) - a, z))
+            out("RESULT: name=%#x origin=%#x" % (a, a - off))
+            out("VERDICT: PASS - position tracks the player; health offsets listed above")
             return 0
 
         if flag("probe"):

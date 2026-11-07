@@ -1,5 +1,16 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 08/11 00:3x - **ENTITY CONFIRMED FROM THE NAME: position at `name-0xEEC` tracks the player (232.1, 2.0, -7905.0 -> -7944.0 while running).**
+
+- `qk_name.py --verify` scans for `kern30120` (6,394 hits, ~50 s, gdrv3 only), takes **all** hits, snapshots `hit-0xEEC`, asks for a 5 s run, and re-reads. Exactly one hit family moved:
+  `MOVED 0x23e2d24b4 (232.1, 2.0, -7905.0) -> (232.1, 2.0, -7944.0)` -> **origin = name - 0xEEC** (`0x23e2d15c8`).
+  Ground-plane y=2.0, x constant, z moved with the run. `temp/qk_verify1.txt`.
+- **Lesson that cost two runs:** the first pass sampled 24 of 6,394 hits (~0.4% chance of including the entity) and reported 0. Testing every hit is only ~13k reads - always test all.
+- Health/shield did not show as a `(100,100,*)` float triple within `name-0x1500..+0x300`, so they are ints or further out; **not needed for a box** - origin + matrix is enough.
+- **Left to a first box:** (1) find the view matrix by projecting this origin through candidate matrices (`qk_phys --find` already collects them; the projection test now has a *real* origin), (2) 1920x1080, (3) feed `qk_overlay.exe` (already draws boxes from shared memory).
+- Machine: gdrv3 only; screen 1920x1080 borderless; name kern30120.
+
+
 ## 08/11 00:1x - **NAME ANCHOR WORKS: the player struct is found from the player's own name, and the position sits at name-0xEEC. Physical-only, no driver, no DTB.**
 
 - `ext/qk_name.py --needle=kern30120` scans RAM through **gdrv3 only** and finds **3,929 hits** in ~50 s (`temp/qk_name3.txt`). The hits land in pool blocks ~`0x10F0` apart - the entity shape - plus copies in the UI string table (that is why there are thousands).
