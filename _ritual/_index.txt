@@ -315,3 +315,44 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
 20:52:08 POST-REBOOT: testsigning GONE (SystemStartOptions clean, bcdedit No/No). run27 gate test launching.
  20:58:29 VERDICT CONFIRMED (p31b): popup GONE post-reboot, r5apex_dx12 + EAAntiCheat.GameService alive @T+300s, eaanticheat+EAAntiCheatService RUNNING, 0 CI events. TESTSIGNING was the kill-flag. run28 stage 2 next.
 21:11:37 p33 ARMED (flag-flip experiment): testsigning ON + reboot; post-boot T1(as-booted)/T2(BCD off, live)/T3(+registry SystemStartOptions scrub) decide whether Javelin reads a flag or the live kernel CI state => whether game+loaded-driver can coexist (the B3 precondition).
+
+14:12 h322-h327 COMPLETE (elevated + medium IL, two live instances 29300/29184, nothing mutated,
+  game alive after every probe). VERDICT: the wall is a PARAMETER-AWARE KERNEL OP FILTER.
+  - elevated handle GRANTED (0x1F0FFF) -> RPM/WPM 87, CRT 5, VAlloc 87(RWX)/5(RW), NtAlloc 0xC000000D/0xC0000022,
+    while VQE + NtQueryInformationProcess answer fine. Medium IL: denied at the handle (QUERY_LIMITED+SYNCHRONIZE only).
+  - h327 census w/ passing self-control: game shows its REAL space - 9492 regions, 11364 MB commit / 7737 ws,
+    1765 image sections, exe @0x140000000, PEB 0x20F000 = committed MEM_IMAGE RW. SHADOW CR3 RULED OUT.
+    RPM at that PEB page is STILL 87 -> per-operation denial, unconditional w.r.t. the page.
+  - zero-module lists = unreadable PEB, not hidden modules (VAD sees 1765 images). Fixes the old X8/I0 reading.
+  - CORRECTION: h326's "LoadLibraryW failed" is an artifact (base=0x0 from empty Toolhelp -> called 0x3F6C0).
+  - h321 never tested suspend (OpenProcess err=5 at medium IL); ov62/64/65 prove 0x186AA = game's own post-resume
+    watchdog with NO patch -> "launch suspended + inject + resume" is dead on this title.
+  - STRATEGY RE-RANKED: A external/reads-only (driver reads + VAD module bases + ov56 own-window overlay) >
+    B pre-launch search-path DLL plant (untested, must be an ADDED dll) > C kernel manual map (blocked on the
+    step-7 0xC0000006 death; VM first, R1). Kernel is now the MOST dangerous rung, not the fallback.
+  Written up as section 11 (11.1-11.7) of QwenKernPremium\docs\PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt;
+  probe lines side by side in c:\h320x\_h32all.txt, census in c:\h320x\h327.out.
+  NEXT: h328 VAD module-base resolver (self ground truth) -> h329 driver READ-ONLY survival probe (+60/+300 s) ->
+    h330 live thread hijack. 0x186AA dropped from the verdict.
+
+16:36 ov69-ov75 hook/loader pivot (full writeup in STATE.md top section):
+  - `_ritual\ov72_hookinject.ps1` upgraded: -Tag (per-run outputs), -WaitGameSec (window-gated arm + 8s settle),
+    [g<pid>] game-side fire gate (console instance writes the same log — the old "hook ran" was a false positive),
+    dual payload-log freshness (%LOCALAPPDATA% + build-dir fallback), attach-canary tail, 90s ready gate, late shot.
+  - `_ritual\h159_insertkey.ps1`: $PID trap fixed ([Alias('Pid')][int]$GamePid; see p28_esp.ps1:6).
+  - `C:\h330\ov72hook.c` + `build_ov72.cmd` (pivoted: thread-only load) and `C:\h330\ov74hook.c` + `build_ov74.cmd`
+    (pid-tagged lines, self-pin LoadLibraryW(self), 2s heartbeat apexcheat=0x.. to timestamp a death).
+  - Payload diagnostics in `QwenKernPremium\src\main.cpp` (raw attach canary `build\apexcheat_attach.log`) and
+    `src\log.cpp` (fallback to `<dll dir>\payload_<pid>.log`). BuildGate PASS 16:25:14, IAT {KERNEL32,USER32} intact.
+  - ov73 FACTS: LoadLibraryW(apexcheat.dll) err=0 into the hook-armed game, no payload log ever appeared,
+    r5apex_dx12 died quietly ~30.0s after the arm (no WER/.dmp/Javelin event) — open, ov75 measures it.
+  - Convention: every rerun uses a FRESH hook-dll path (ov74hook.dll, ov75hook.dll, ...): same-path LoadLibraryW
+    returns the already-loaded module and skips DllMain.
+  - ov75 solo waiter (elevated, fresh game) pending: ov75_hook.out / ov75_hooklog.txt / ov75_* artifacts.
+
+21:1x STAGE 0 + STAGE 1 bridge (PLAN.md/FACTS.md/R7-R9/apex_offsets_generated.h; qk_probe.exe):
+  - tools/qk_probe.cpp + BuildQkProbe.ps1 -> build/qk_probe.exe (0 warnings). VERSION/BASE/READ8/READBUF only, read-only.
+  - SELF CONTROL PASS x2 (_ritual/qk_probe_self_20261107_2100.txt, qk_probe_self60_20261107_2105.txt): ABI v14, BASE==GetModuleHandle(NULL), MZ+PE(sections=6 SizeOfImage=0x2F000), READ8 per-item statuses 0, 29/29 samples clean.
+  - traps: VERSION needs an 8-byte out buffer (122 on 4); run_commands kills a foreground run at 30 s -> detach a 60 s probe.
+  - NEXT (needs game): powershell -File _ritual\qk1_game.ps1  -> PASS = MZ+PE at game base + alive +60 s = STAGE 1 CLOSED.
+

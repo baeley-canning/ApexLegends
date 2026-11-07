@@ -49,3 +49,24 @@ Stale output read as fresh is the single most common false conclusion in this re
 
 No ad-hoc one-liners that mutate state inside a chat turn: put it in a script, run the script,
 read the output file. `cl.exe` cannot parse `New User` — go through `BuildDriver.ps1`.
+
+## R7 — `PLAN.md` is the only "next step"; `FACTS.md` is the only truth table.
+
+`STATE.md` is append-only history, `HANDOFF.md` is orientation. If a document disagrees with
+`PLAN.md` about what to do next, `PLAN.md` wins; if it disagrees with `FACTS.md` about a proven
+fact, `FACTS.md` wins and the other file gets a one-line correction. Adding a fourth "next
+actions" list is how three sessions in a row each picked a different urgent thing.
+
+## R8 — A probe that cannot change a pixel is infrastructure: batch it, do not schedule it.
+
+The goal is a box on screen (PLAN stages 1-5). Before creating a new `hNNN`/`pNNN`, name the
+stage it serves and the pixel it could change. If the answer is "it makes the driver more
+correct", it goes in the same sitting as the stage that consumes it, behind one game launch -
+not as its own evening.
+
+## R9 — A verdict that skipped the game half is not an in-game verdict.
+
+`h328 ... P3=SKIPPED (game not running)` scored `VERDICT: PASS`. Any line claiming in-game truth
+must fail when the game-dependent half did not run; print `SKIPPED` and score `PARTIAL`, never
+`PASS`. Same family as h316's "PASS is notepad, not the game" and ov76's desktop-OCR menu.
+
