@@ -1,5 +1,15 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 08/11 01:2x - **Matrix by shape: eliminated. 2.0M blocks, strict camera test (player at eye height + others spread) = 0. Next: angles+FOV, or the image-relative static offset.**
+
+- Shapes tried and dead (`temp/qk_matrix1.txt`): VP with `m15=±1` (1.47M blocks), VP with `m11=±1` (3.78M), loose view (false-positive: a ZERO matrix scored 48), orthonormal view (false-positive: identity+translation), strict view (player at `(0,-20..-120,0)` **and** other entities `|x|+|z|>200`) -> **0 of 2,000,822**.
+- Conclusion: the camera transform is **not** a 16-float block ending in `±1.0f` anywhere in the scanned RAM. Stop searching by that shape.
+- **Two viable next routes, in order:**
+  1. **Angles + FOV, no matrix at all.** Apex keeps view pitch/yaw as floats near the local player; the view matrix is built from them. With position (already verified: `name-0xEEC`), pitch/yaw and the game's FOV, W2S is arithmetic - no matrix hunt. Find the angle pair by diffing two snapshots while the player turns (same trick that verified the position).
+  2. **Image-relative static offset.** Locate the image physically (`MZ` + `SizeOfImage=0xDFB8000`, unique), read its PE section table, then read the `.data` at `image_pa + rva` for the known offset - if the loader kept the image contiguous, this is one read.
+- Banked tonight: entity anchor by name (verified 3x by movement), `name-0xEEC` origin, gdrv3-only transport, overlay window, and every tool that got us here.
+
+
 ## 08/11 00:3x - **ENTITY CONFIRMED FROM THE NAME: position at `name-0xEEC` tracks the player (232.1, 2.0, -7905.0 -> -7944.0 while running).**
 
 - `qk_name.py --verify` scans for `kern30120` (6,394 hits, ~50 s, gdrv3 only), takes **all** hits, snapshots `hit-0xEEC`, asks for a 5 s run, and re-reads. Exactly one hit family moved:

@@ -198,11 +198,16 @@ def main():
                     continue
                 origins.append((a - off, x, y, z))
             # the verified player stood at y ~= 2.0 exactly; keep only the ground-plane
-            # origins so the scan tests 1-3 candidates instead of hundreds
+            # origins, and prefer the ones far from a local origin (the player, not a prop)
             grounded = [o for o in origins if abs(o[2] - 2.0) < 1.0]
             if grounded:
                 origins = grounded
-            out("  using %d origin(s) (y ~ 2.0 preference)" % len(origins))
+            far = [o for o in origins if max(abs(o[1]), abs(o[3])) > 1000.0]
+            if far:
+                origins = far
+            out("  using %d origin(s) (ground plane, far)" % len(origins))
+            powner = max(origins, key=lambda o: abs(o[1]) + abs(o[3]))[0] if origins else 0
+            others = [o for o in origins if o[0] != powner]
             out("  ground-plane origins at name-0xEEC: %d" % len(origins))
             for o in origins[:8]:
                 out("    %#012x (%.1f, %.1f, %.1f)" % o)
@@ -248,7 +253,12 @@ def main():
                                 cols = [(m[0], m[4], m[8]), (m[1], m[5], m[9]), (m[2], m[6], m[10])]
                                 def unit(vs):
                                     return all(0.9 < (sum(c * c for c in v)) ** 0.5 < 1.1 for v in vs)
-                                if not (unit(rows) or unit(cols)):
+                                # identity rotation = plain translation matrix, which floods
+                                # the result (measured: (-387,2,-387) -> (0,2,0)).  A real
+                                # camera basis has yaw/pitch, i.e. non-zero off-diagonals.
+                                offdiag = any(abs(v) > 0.05 for v in
+                                              (m[1], m[2], m[4], m[6], m[8], m[9]))
+                                if not ((unit(rows) or unit(cols)) and offdiag):
                                     continue
                                 for opa, x, y, z in origins[:4]:
                                     for tag, vx, vy, vz in (
@@ -258,11 +268,24 @@ def main():
                                         ("col", m[0] * x + m[4] * y + m[8] * z + m[12],
                                                 m[1] * x + m[5] * y + m[9] * z + m[13],
                                                 m[2] * x + m[6] * y + m[10] * z + m[14])):
-                                        if abs(vx) < 120.0 and abs(vz) < 120.0 and -600.0 < vy < 20.0:
-                                            views.append((abs(vx) + abs(vz), base + start, sc,
-                                                          (vx, vy, vz), opa, (x, y, z)))
-                                            views.sort()
-                                            del views[8:]
+                                        if opa != powner:
+                                            continue
+                                        # the PLAYER's own position: eye height below centre
+                                        if not (abs(vx) < 60.0 and abs(vz) < 60.0 and -120.0 < vy < -20.0):
+                                            continue
+                                        # and the OTHER entities must be well away from it,
+                                        # which a plain translation matrix cannot satisfy
+                                        spread = 0.0
+                                        for o2 in others[:3]:
+                                            qx = m[0] * o2[1] + m[1] * o2[2] + m[2] * o2[3] + m[3] if tag == "row" else m[0] * o2[1] + m[4] * o2[2] + m[8] * o2[3] + m[12]
+                                            qz = m[8] * o2[1] + m[9] * o2[2] + m[10] * o2[3] + m[11] if tag == "row" else m[2] * o2[1] + m[6] * o2[2] + m[10] * o2[3] + m[14]
+                                            spread = max(spread, abs(qx) + abs(qz))
+                                        if spread < 200.0:
+                                            continue
+                                        views.append((abs(vx) + abs(vz) + vy, base + start, sc,
+                                                      (vx, vy, vz), opa, (x, y, z)))
+                                        views.sort()
+                                        del views[8:]
                             i = blk.find(pat, i + 4)
                 if len(found) >= 8:
                     break
