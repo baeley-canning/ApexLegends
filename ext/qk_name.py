@@ -122,7 +122,14 @@ def main():
 
     out("===== qk_name (find the entity by player name) =====")
     out("needle=%r  out=%s" % (needle, out_path))
-    needles = [("utf16", needle.encode("utf-16-le")), ("ascii", needle.encode("ascii"))]
+    needles = []
+    for nm in needle.split(","):
+        nm = nm.strip()
+        if not nm:
+            continue
+        needles.append((nm + ":utf16", nm.encode("utf-16-le")))
+        needles.append((nm + ":ascii", nm.encode("ascii")))
+    out("patterns: %d" % len(needles))
     try:
         g = gio.Gio(chunk=0x10000)
     except OSError as e:
@@ -171,6 +178,118 @@ def main():
                         shown += 1
                     if shown >= 25:
                         break
+            return 0
+
+        if flag("matrix") and hits:
+            import qk_phys as P
+            W = arg("w", 1920, lambda s: int(s, 0))
+            H = arg("h", 1080, lambda s: int(s, 0))
+            off = 0xEEC
+            origins = []
+            for a, tag in hits:
+                try:
+                    x, y, z = struct.unpack("<fff", dl.retry_phys(g, a - off, 12, tries=1))
+                except OSError:
+                    continue
+                if not all(abs(v) < 20000.0 for v in (x, y, z)):
+                    continue
+                # the verified player origin had y ~= 2 (ground plane), x/z large
+                if abs(y) > 50.0 or max(abs(x), abs(z)) < 300.0:
+                    continue
+                origins.append((a - off, x, y, z))
+            # the verified player stood at y ~= 2.0 exactly; keep only the ground-plane
+            # origins so the scan tests 1-3 candidates instead of hundreds
+            grounded = [o for o in origins if abs(o[2] - 2.0) < 1.0]
+            if grounded:
+                origins = grounded
+            out("  using %d origin(s) (y ~ 2.0 preference)" % len(origins))
+            out("  ground-plane origins at name-0xEEC: %d" % len(origins))
+            for o in origins[:8]:
+                out("    %#012x (%.1f, %.1f, %.1f)" % o)
+            if not origins:
+                out("RESULT: no-origins")
+                out("VERDICT: PARTIAL - no ground-plane origin among the hits")
+                return 8
+            # Project DURING the scan: a cap filled with early junk (800) missed the
+            # real matrix, so every block is tested as it is found instead.
+            out("  scanning RAM and projecting %d origin(s) at 1920x1080..." % len(origins))
+            tested = 0
+            found = []
+            best = []
+            views = []
+            for cpa, cln in P.chunks(ranges):
+                for base, blk in P.scan_chunk(g, cpa, cln):
+                    for pat in (P.PONE, P.NONE):
+                        i = blk.find(pat)
+                        while i >= 0:
+                            for start in (i - 60, i - 44):   # m15 (GL) / m11 (D3D)
+                                if start < 0 or (start & 3) or start + 64 > len(blk):
+                                    continue
+                                m = struct.unpack_from("<16f", blk, start)
+                                sc = P.score_matrix(m)
+                                if not sc:
+                                    continue
+                                tested += 1
+                                # A) view-projection: project to screen centre
+                                for opa, x, y, z in origins[:4]:
+                                    p = P.project(m, x, y, z, W, H)
+                                    if p:
+                                        d = ((p[0] - W / 2.0) ** 2 + (p[1] - H / 2.0) ** 2) ** 0.5
+                                        best.append((d, base + start, sc, p, opa, (x, y, z)))
+                                        best.sort()
+                                        del best[12:]
+                                # B) VIEW matrix: the camera sits on the player, so the
+                                # player's own world position must be ~(0, -eye, 0) in
+                                # view space.  A real camera transform is ORTHONORMAL, which
+                                # rejects the zero/scale matrices a "small entries" test
+                                # accepts (measured: a zero matrix scored 48 and mapped
+                                # everything to (0,0,0)).
+                                rows = [(m[0], m[1], m[2]), (m[4], m[5], m[6]), (m[8], m[9], m[10])]
+                                cols = [(m[0], m[4], m[8]), (m[1], m[5], m[9]), (m[2], m[6], m[10])]
+                                def unit(vs):
+                                    return all(0.9 < (sum(c * c for c in v)) ** 0.5 < 1.1 for v in vs)
+                                if not (unit(rows) or unit(cols)):
+                                    continue
+                                for opa, x, y, z in origins[:4]:
+                                    for tag, vx, vy, vz in (
+                                        ("row", m[0] * x + m[1] * y + m[2] * z + m[3],
+                                                m[4] * x + m[5] * y + m[6] * z + m[7],
+                                                m[8] * x + m[9] * y + m[10] * z + m[11]),
+                                        ("col", m[0] * x + m[4] * y + m[8] * z + m[12],
+                                                m[1] * x + m[5] * y + m[9] * z + m[13],
+                                                m[2] * x + m[6] * y + m[10] * z + m[14])):
+                                        if abs(vx) < 120.0 and abs(vz) < 120.0 and -600.0 < vy < 20.0:
+                                            views.append((abs(vx) + abs(vz), base + start, sc,
+                                                          (vx, vy, vz), opa, (x, y, z)))
+                                            views.sort()
+                                            del views[8:]
+                            i = blk.find(pat, i + 4)
+                if len(found) >= 8:
+                    break
+            out("  matrix-shaped blocks tested: %d, VP hits: %d, view hits: %d"
+                % (tested, len(best), len(views)))
+            for d, mpa, sc, v, opa, org in views[:5]:
+                out("    VIEW matrix=%#x score=%d  player in view space = (%.1f, %.1f, %.1f)  d=%.1f  origin=%#x"
+                    % (mpa, sc, v[0], v[1], v[2], d, opa))
+            if views:
+                out("RESULT: view-matrix=%#x origin=%#x" % (views[0][1], views[0][4]))
+                out("VERDICT: PASS - the camera sits on the player (view space x,z ~ 0)")
+                return 0
+            if not best:
+                out("RESULT: no-projection")
+                out("VERDICT: PARTIAL - no matrix projects the verified origin at all")
+                return 8
+            out("  closest to screen centre (dx from 960, dy from 540):")
+            for d, mpa, sc, p, opa, org in best[:6]:
+                out("    matrix=%#x score=%d -> (%4.0f,%4.0f)  d=%5.1f px  origin=%#x (%.1f,%.1f,%.1f) %s"
+                    % (mpa, sc, p[0], p[1], d, opa, org[0], org[1], org[2], p[3]))
+            bd, bmpa, bsc, bp, bopa, borg = best[0]
+            if abs(bp[0] - W / 2.0) <= 0.12 * W and 0.30 * H <= bp[1] <= 0.95 * H:
+                out("RESULT: matrix=%#x origin=%#x screen=%.0f,%.0f" % (bmpa, bopa, bp[0], bp[1]))
+                out("VERDICT: PASS - the player's own position projects to the screen centre")
+                return 0
+            out("RESULT: closest=%#x screen=%.0f,%.0f d=%.1f" % (bmpa, bp[0], bp[1], bd))
+            out("VERDICT: PARTIAL - no matrix puts the player at the centre (VP assumption)")
             return 0
 
         if flag("verify") and hits:

@@ -199,11 +199,16 @@ def find_origin(g, ram, base, back=0x400, fwd=0x900):
 
 # ---------------------------------------------------------------- 3. matrix
 def score_matrix(m):
+    """View-projection in EITHER convention.
+
+    D3D-style row-major VP has m[11] = -1 and m[15] = 0, so a prefilter on +-1 at
+    the END of the block (m15) only ever sees projection-less or identity-ish
+    blocks.  Accept +-1 at m15 (column-vector GL style) OR at m11 (D3D style).
+    """
     for v in m:
         if v != v or abs(v) > 1.0e5:
             return 0
-    a15 = abs(m[15])
-    if a15 < 0.99 or a15 > 1.01:
+    if not (abs(abs(m[15]) - 1.0) < 0.01 or abs(abs(m[11]) - 1.0) < 0.01):
         return 0
     small = 0
     for i in (0, 1, 2, 4, 5, 6, 8, 9, 10):
