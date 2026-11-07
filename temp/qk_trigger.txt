@@ -1,0 +1,10 @@
+# qk_trigger.txt — the triggerbot contract file (read by ext\qk_trigger.py).
+# Every line optional; read on start and every 15 frames while the producer runs.
+# Keys mirror the menu's ini keys (m_trigger / m_trig_hitbox / m_trig_delay), so the
+# menu row TRIGGERBOT is the same switch as this file.
+
+enabled=1        # 0/1 — master switch
+hitbox=BODY      # HEAD | TORSO | ARMS | BODY
+delay_ms=60      # 0..500 — humanised delay from first contact to the click
+hold=0           # 0 = one click per acquisition, 1 = hold the button while on target
+key=LMB          # LMB | RMB

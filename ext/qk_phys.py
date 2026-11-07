@@ -262,6 +262,8 @@ def project(m, x, y, z, w, h):
             continue
         sx = (cx / cw * 0.5 + 0.5) * w
         sy = (0.5 - cy / cw * 0.5) * h
+        return sx, sy, cw, tag                     # cw = view depth (for box size)
+    return None
 
 
 def main():

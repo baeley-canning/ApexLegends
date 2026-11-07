@@ -1,0 +1,174 @@
+﻿===== qk_esp producer: pos @ name-0xeec, angles @ name+0x3a4/0x3a8, 1920x1080 fov=90 =====
+ring Local\qk_boxes mapped (6160 bytes)
+trigger armed: hitbox=BODY delay=60ms hold=0 key=LMB settings=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_trigger.txt
+fake mode: 3 synthetic entities, synthetic VP (no game needed)
+local name hits with a readable 3-float field: 3 (0.0s)
+mate entities (raw): 0
+mate entities (deduped by position): 0
+dbg it=0 begin
+vp fake (fov=90) : m15=0.0000 m11=1.0000
+dbg it=0 mat ok
+dbg it=0 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=0 target=yes state=WAIT 0/60ms
+dbg it=1 begin
+dbg it=1 mat ok
+dbg it=1 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=0 target=yes state=WAIT 21/60ms
+dbg it=2 begin
+dbg it=2 mat ok
+dbg it=2 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=0 target=yes state=WAIT 42/60ms
+dbg it=3 begin
+dbg it=3 mat ok
+dbg it=3 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+dbg it=4 begin
+dbg it=4 mat ok
+dbg it=4 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+dbg it=5 begin
+dbg it=5 mat ok
+dbg it=5 feed ok geoms=3 state=enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 10 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 20 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 30 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 40 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 50 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 60 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 70 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 80 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 90 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 100 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 110 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 120 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 130 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 140 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 150 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 160 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 170 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 180 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 190 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 200 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 210 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 220 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 230 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 240 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 250 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 260 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 270 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 280 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 290 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 300 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 310 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 320 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 330 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 340 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 350 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 360 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 370 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 380 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 390 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 400 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 410 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 420 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 430 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 440 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 450 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 460 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 470 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 480 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 490 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 500 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 510 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 520 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 530 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 540 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 550 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 560 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 570 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 580 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 590 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 600 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 610 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 620 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 630 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 640 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 650 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 660 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 670 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 680 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 690 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 700 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 710 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 720 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 730 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 740 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 750 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 760 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 770 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 780 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 790 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 800 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 810 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 820 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 830 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 840 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 850 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 860 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 870 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 880 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 890 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 900 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 910 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 920 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 930 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 940 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 950 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 960 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 970 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 980 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 990 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1000 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1010 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1020 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1030 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1040 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1050 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1060 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1070 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1080 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1090 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1100 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1110 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1120 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1130 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1140 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1150 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1160 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1170 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1180 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1190 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1200 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1210 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1220 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1230 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1240 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1250 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1260 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1270 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1280 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1290 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1300 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1310 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1320 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1330 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1340 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1350 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1360 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1370 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1380 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1390 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1400 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1410 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1420 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1430 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1440 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1450 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+frame 1460 boxes=3 m15=0.000 m11=1.000 enabled=1 hitbox=BODY delay=60ms hold=0 fired=1 target=yes state=FIRE
+producer done, frames=1464
+child_rc=0

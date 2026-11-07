@@ -1,5 +1,15 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 08/11 03:0x - **TRIGGERBOT WORKS end-to-end and offline: a box held under the crosshair -> 60 ms delay -> SendInput LMB (`fired=1`, `state=FIRE`). Plus the projector bug that had silently starved every consumer.**
+
+- `ext/qk_trigger.py` (new): crosshair -> hitbox band -> click. Bands are fractions of the box (HEAD 0..0.16 narrow / TORSO 0.14..0.46 / ARMS 0.18..0.62 wide / BODY silhouette), one click per acquisition, re-arm 120 ms after loss, `hold=1` keeps the button down, foreground guard, SendInput LMB/RMB. Settings contract `temp/qk_trigger.txt` (enabled / hitbox / delay_ms / hold / key) - the same keys the menu rows carry; reloaded every 15 frames. **Selftest 9/9 PASS** (`temp/qk_trigger_selftest.txt`).
+- `qk_esp --trigger=1` feeds the trigger the SAME boxes it draws, and draws the acquired box in a different colour, so the trigger's choice is a pixel, not a log line.
+- **Three real bugs found while doing it (all fixed):** (1) `qk_phys.project()` computed sx/sy then fell off the end - no `return` - so every caller (`qk_esp`, `qk_vp`, `qk_name`) got `None` and projected nothing; (2) an elevated child's relative `--out` resolved into `ext\temp\` and every log line died in a swallowed OSError (abspath on both sides now, + self-healing dir); (3) `dumplive.SHELLEXECUTEINFOW` lacked `lpFile` (104-byte struct, cbSize rejected, err=5 on every `runas` hop) - 112 bytes now.
+- Menu: TRIGGERBOT page with HEAD/TORSO/ARMS/BODY choice in `src/d3d12_overlay.cpp` (MS_TRIGGER/MS_TRIG_HITBOX/MS_TRIG_DELAY + state, KeyNameFor, write paths). `BuildOverlayTest.ps1`: OK, 0 warnings.
+- Evidence: `temp/qk_fake10.txt` (**full green run**: 3 synthetic entities, 1464 frames at ~49 fps, `boxes=3` every frame, `fired=1`, `child_rc=0`; also proves the loop, the ring write and clean shutdown), `temp/qk_trigger_state.txt` (`fired=1 target=yes state=FIRE`), `temp/qk_trigger_selftest.txt` (9/9).
+- **Next:** a real-matrix run (`qk_esp` against the cached `image_pa`+`vp_rva`) to confirm live projection, then the menu into the external window.
+
+
 ## 08/11 02:3x - **STATIC OFFSETS WORK: image found physically, `.data` contiguous, and the LIVE VIEW MATRIX is `image_pa + 0x0DB5BC40` (five copies 0xE0 apart).**
 
 - `ext/qk_image.py` locates `r5apex_dx12` in **physical RAM** with no DTB and no driver: `MZ` + `machine 0x8664` + **`SizeOfImage == 0xDFB8000`** (unique to this game). Result: `image_pa=0x316B24C40`, `stamp=0x6ADBF892` (matches the build), 9 sections. `.text`, `.data` (171 MB), `.pdata`, `_RDATA`, `.fptable` all read as real data at `image_pa + va` -> **contiguous, so static offsets are a direct read** (`.rdata`/`.rsrc` start with zero pages, which is normal and only tripped my crude threshold).

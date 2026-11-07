@@ -1,0 +1,12 @@
+qk_trigger selftest 2026-11-08 02:59:54
+band classifier            ok  [('HEAD', 'HEAD'), ('TORSO', 'TORSO'), ('ARMS', 'ARMS'), ('BODY', 'BODY'), (None, None), (None, None), ('ARMS', 'ARMS'), ('BODY', 'BODY')]
+head-only gates torso      ok  pick=None
+delay then one click       ok  before=False at=True after=False fired=1 [2, 4]
+re-arm after loss          ok  fired=True total=2
+hold down/up               ok  held=True released=True [2, 4]
+focus guard                ok  events=[]
+disabled                   ok  events=[]
+settings contract          ok  hitbox=TORSO delay=120 hold=1 key=RMB changed=5
+nearest wins               ok  pick=0
+
+VERDICT: PASS (0 failures) variable=qk_trigger offline

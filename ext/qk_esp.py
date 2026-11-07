@@ -11,6 +11,8 @@ Writes the ring qk_overlay.exe already draws:
     Box    { float x0,y0,x1,y1; u32 color; u32 pad }   max 256
 
 Usage: qk_esp.py --local=kern30120 [--secs=120] [--fov=90]
+                  [--trigger=1 [--trig-hitbox=BODY] [--trig-delay=60] [--trig-hold=0]
+                   [--trig-key=LMB]]
 """
 import ctypes
 import math
@@ -24,6 +26,25 @@ sys.path.insert(0, HERE)
 
 import gio            # noqa: E402
 import dumplive as dl  # noqa: E402
+import qk_phys as PM    # noqa: E402
+
+OFF_FILE = os.path.join(os.path.dirname(HERE), "temp", "qk_offsets.txt")
+
+
+def load_offsets():
+    """image_pa + vp_rva, written by qk_image --data --watch (the run that works)."""
+    try:
+        with open(OFF_FILE, "r") as f:
+            k = {}
+            for ln in f:
+                if "=" in ln:
+                    a, b = ln.strip().split("=", 1)
+                    k[a] = int(b, 16)
+        if k.get("image_pa") and k.get("vp_rva"):
+            return k
+    except (OSError, ValueError):
+        pass
+    return None
 
 MAGIC = 0x514B4258
 POS_OFF = 0xEEC
@@ -31,9 +52,50 @@ YAW_OFF = 0x3A4
 PITCH_OFF = 0x3A8
 W, H = 1920, 1080
 
+# --fake: three synthetic entities placed so the crosshair lands in a known band of
+# one of them.  (sx, sy, depth): sy is the FEET row, so the box is (sy-hgt .. sy) with
+# hgt = 2400/depth.  Entity 0 is off to the right and must be skipped; entity 1 puts
+# the crosshair (960,540) in its HEAD band; entity 2 is behind it.
+FAKE_ENTS = [(1105.0, 650.0, 20.0), (960.0, 650.0, 20.0), (960.0, 600.0, 30.0)]
+
+
+def fake_vp(fov):
+    """Synthetic view-projection for PM.project's COLUMN branch: cw = z, cx = (2f/W)x,
+    cy = (2f/H)y, so project() lands the round-trip below exactly on the target pixel."""
+    f = 0.5 * H / math.tan(math.radians(fov) / 2.0)
+    return [2.0 * f / W, 0, 0, 0,
+            0, 2.0 * f / H, 0, 0,
+            0, 0, 0, 1,                # m[11]=1: project()'s cw = m[11]*z -> cw = z
+            0, 0, 0, 0]
+
+
+def fake_world(sx, sy, depth, fov):
+    """World point that projects to exactly (sx, sy) at 'depth' under fake_vp.
+    Round-trip:  sx = ((2f/W)x/z*0.5+0.5)*W  ->  x = (sx-W/2)*z/f."""
+    f = 0.5 * H / math.tan(math.radians(fov) / 2.0)
+    return (sx - W / 2.0) * depth / f, (H / 2.0 - sy) * depth / f, depth
+
 
 def out(s):
-    print(s, flush=True)
+    """Log line to the console AND to --out when given: an elevated relaunch gets its
+    own console, so the file is the only feed the caller can read (R3).  The console
+    codepage is cp1252, hence the ascii scrub."""
+    line = "".join(c if ord(c) < 128 else "?" for c in s)
+    print(line, flush=True)
+    if OUT_FILE:
+        try:
+            with open(OUT_FILE, "a") as f:
+                f.write(line + "\n")
+        except OSError:
+            try:                                # e.g. the dir was taken away mid-run
+                os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
+                with open(OUT_FILE, "a") as f:
+                    f.write(line + "\n")
+            except OSError:
+                pass
+
+
+OUT_FILE = None
 
 
 def arg(name, default=None, cast=str):
@@ -98,13 +160,27 @@ def project(ox, oy, oz, yaw, pitch, px, py, pz, fov):
 
 
 def main():
+    global OUT_FILE
+    OUT_FILE = arg("out")
+    if OUT_FILE:
+        # absolute on BOTH sides of the elevation hop: the elevated child inherits
+        # lpDirectory=ext\, so a relative --out would resolve into ext\temp\ and every
+        # log line would be silently dropped (OSError swallowed) -- a black run.
+        OUT_FILE = os.path.abspath(OUT_FILE)
     secs = arg("secs", 120, lambda s: int(s, 0))
     fov = arg("fov", 90, lambda s: float(s))
     needle = arg("local", "kern30120")
     mates = [n.strip() for n in arg("mates", "").split(",") if n.strip()]
     ring_name = arg("ring", r"Local\qk_boxes")
     if not dl.elevation() and ("--no-elevate" not in sys.argv):
-        cmd = " ".join('"%s"' % a if " " in a else a for a in sys.argv) + " --no-elevate"
+        # run_elevated sets lpDirectory to ext\, so both the script path and any
+        # relative --out have to be absolute before the hop (a relative arg[0] made
+        # the child exit 2 with "can't open file", silently, in its own console).
+        argv = list(sys.argv)
+        argv[0] = os.path.abspath(argv[0])
+        argv = [os.path.abspath(a.split("=", 1)[1]) if a.startswith("--out=") else a
+                for a in argv]
+        cmd = " ".join('"%s"' % a if " " in a else a for a in argv) + " --no-elevate"
         out(dl.run_elevated(cmd))
         return 0
 
@@ -134,11 +210,35 @@ def main():
     buf = (ctypes.c_ubyte * size).from_address(addr)
     out("ring %s mapped (%d bytes)" % (ring_name, size))
 
+    fake = arg("fake", 0, lambda s: int(s, 0))
     frame = 0
+    trig = None
+    if arg("trigger", 0, lambda s: int(s, 0)):
+        try:
+            import qk_trigger as TR
+        except ImportError:
+            out("qk_trigger.py missing - trigger stays off")
+        else:
+            trig = TR.Trigger(
+                enabled=True, hitbox=arg("trig-hitbox", "BODY"),
+                delay_ms=arg("trig-delay", 60, lambda s: float(s)),
+                hold=bool(arg("trig-hold", 0, lambda s: int(s, 0))),
+                button=arg("trig-key", "LMB"),
+                focus_guard=bool(arg("trig-guard", 1, lambda s: int(s, 0))),
+                settings=os.path.join(os.path.dirname(HERE), "temp", "qk_trigger.txt"))
+            out("trigger armed: hitbox=%s delay=%.0fms hold=%d key=%s settings=%s"
+                % (trig.hitbox, trig.delay_ms, trig.hold, trig.button,
+                   trig.settings_file))
     try:
         ranges, _ = dl.usable_ranges(g.ram_top, None, None)
         t0 = time.time()
-        ents = find_entities(g, ranges, needle)
+        if fake:
+            ents = [(needle,) + fake_world(sx, sy, d, fov) for sx, sy, d in FAKE_ENTS]
+            caments, tgt = ents, []
+            out("fake mode: %d synthetic entities, synthetic VP (no game needed)"
+                % len(ents))
+        else:
+            ents = find_entities(g, ranges, needle)
         caments = ents                                   # 4-tuples: (hit, x, y, z)
         out("local name hits with a readable 3-float field: %d (%.1fs)"
             % (len(ents), time.time() - t0))
@@ -157,37 +257,68 @@ def main():
             return 8
         ents = tgt if tgt else [(needle,) + e for e in caments]
         while time.time() - t0 < secs:
-            if frame % 60 == 0 and frame:
+            if frame < 6:
+                out("dbg it=%d begin" % frame)
+            if frame % 60 == 0 and frame and not fake:
                 ents = [(needle,) + e for e in find_entities(g, ranges, needle)]
-            cam = None
-            for c in caments[:64]:
+            # static-offset read: image_pa + vp_rva is the live view-projection
+            off = load_offsets()
+            if fake:
+                mat = fake_vp(fov)
+            elif not off:
+                out("no temp\\qk_offsets.txt - run qk_image --data --watch first")
+                return 8
+            else:
                 try:
-                    y2, p2 = struct.unpack("<ff", dl.retry_phys(g, c[0] + YAW_OFF, 8, tries=1))
-                except OSError:
-                    continue
-                if -360.0 < y2 < 360.0 and -90.0 < p2 < 90.0 and (abs(y2) > 0.5 or abs(p2) > 0.5):
-                    cam, yaw, pitch = c, y2, p2
-                    break
-            if cam is None:
-                time.sleep(0.02)
-                continue
-            boxes = []
+                    mat = struct.unpack("<16f", dl.retry_phys(g, off["image_pa"] + off["vp_rva"],
+                                                              64, tries=3))
+                except OSError as e:
+                    out("matrix read fault: %s" % e)
+                    return 5
+            if frame == 0:
+                if fake:
+                    out("vp fake (fov=%.0f) : m15=%.4f m11=%.4f" % (fov, mat[15], mat[11]))
+                else:
+                    out("vp from image_pa=%#x rva=%#x : m15=%.4f m11=%.4f"
+                        % (off["image_pa"], off["vp_rva"], mat[15], mat[11]))
+            if frame < 6:
+                out("dbg it=%d mat ok" % frame)
+            geoms = []
             for (_m, _ea, ex, ey, ez) in ents:
-                p = project(cam[1], cam[2], cam[3], yaw, pitch, ex, ey, ez, fov)
+                p = PM.project(mat, ex, ey, ez, W, H)
                 if not p:
                     continue
-                sx, sy, zv = p
+                sx, sy, zv = p[0], p[1], p[2]      # project returns (sx, sy, depth, tag)
                 if not (0 <= sx <= W and 0 <= sy <= H):
                     continue
                 hgt = max(24.0, min(420.0, 2400.0 / zv))
                 wid = hgt * 0.45
-                boxes.append((sx - wid / 2, sy - hgt, sx + wid / 2, sy, 0xFF40FF40))
+                geoms.append((sx - wid / 2, sy - hgt, sx + wid / 2, sy))
+
+            # the trigger reads the same boxes the overlay draws; the box it has
+            # under the crosshair is drawn in a different colour, so the trigger's
+            # state is visible as a pixel (R8) and not only as a log line.
+            trig_state = ""
+            if trig is not None:
+                if frame % 15 == 0:
+                    trig.reload()
+                trig.feed(geoms, W / 2.0, H / 2.0)
+                trig_state = trig.last_state
+            if frame < 6:
+                out("dbg it=%d feed ok geoms=%d state=%s" % (frame, len(geoms), trig_state))
+            tb = trig.target if trig is not None else None
+
+            boxes = []
+            for bx in geoms:                   # NOT 'g': that name is the gio handle, and the
+                col = 0xFF00FFFF if (tb is not None and bx is tb) else 0xFF40FF40   # old loop killed it
+                boxes.append((bx[0], bx[1], bx[2], bx[3], col))
             struct.pack_into("<IIQ", buf, 0, MAGIC, len(boxes), frame)
             for i, (x0, y0, x1, y1, col) in enumerate(boxes[:256]):
                 struct.pack_into("<ffffII", buf, 16 + i * 24, x0, y0, x1, y1, col, 0)
             frame += 1
-            if frame % 30 == 0:
-                out("frame %d boxes=%d yaw=%.1f pitch=%.1f" % (frame, len(boxes), yaw, pitch))
+            if frame % 10 == 0:
+                out("frame %d boxes=%d m15=%.3f m11=%.3f %s"
+                    % (frame, len(boxes), mat[15], mat[11], trig_state))
             time.sleep(0.02)
     finally:
         try:

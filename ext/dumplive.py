@@ -179,8 +179,13 @@ def elevation():
 
 
 class SHELLEXECUTEINFOW(ctypes.Structure):
+    # lpFile was missing here until 08/11: the struct came out 104 bytes, cbSize was
+    # rejected and the API read lpVerb ("runas") as the file to launch, so every
+    # ShellExecuteExW("runas") hop failed with err=5 and the elevated relaunch of the
+    # producers never ran.  Field order and count are load-bearing: 112 bytes on x64.
     _fields_ = [("cbSize", wintypes.DWORD), ("fMask", wintypes.ULONG),
                 ("hwnd", wintypes.HWND), ("lpVerb", wintypes.LPCWSTR),
+                ("lpFile", wintypes.LPCWSTR),
                 ("lpParameters", wintypes.LPCWSTR),
                 ("lpDirectory", wintypes.LPCWSTR), ("nShow", ctypes.c_int),
                 ("hInstApp", wintypes.HINSTANCE), ("lpIDList", wintypes.LPVOID),
@@ -694,7 +699,8 @@ def retry_phys(g, pa, n, tries=3):
 
     p43x lost all three walks to errno 1450 on a page that had read fine
     seconds earlier: gdrv3 fails transiently under load, and one lost table
-    read used to look exactly like a bad frame.
+    read used to look exactly like a bad frame.  h320: after the 630k-rescue
+    sweep, 1450 persists well past 150 ms, so the backoff scales with the try.
     """
     for i in range(tries):
         try:
@@ -702,7 +708,7 @@ def retry_phys(g, pa, n, tries=3):
         except OSError:
             if i == tries - 1:
                 raise
-            time.sleep(0.05)
+            time.sleep(0.05 * (i + 1))
 
 
 class Walk(object):
@@ -722,7 +728,7 @@ class Walk(object):
         self.g = g
         self.raw = cr3
         self.cr3 = cr3 & MASK
-        self.pml4 = retry_phys(g, self.cr3, 0x1000)    # PML4
+        self.pml4 = retry_phys(g, self.cr3, 0x1000, tries=8)    # PML4
         e0 = u64(self.pml4, 0)
         self.e0 = e0                            # kept for --why, not for logic
         self.pdpt_pa = (e0 & MASK) if (e0 & 1) and g.is_ram(e0 & MASK) else 0
