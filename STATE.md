@@ -1,5 +1,13 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 08/11 02:3x - **STATIC OFFSETS WORK: image found physically, `.data` contiguous, and the LIVE VIEW MATRIX is `image_pa + 0x0DB5BC40` (five copies 0xE0 apart).**
+
+- `ext/qk_image.py` locates `r5apex_dx12` in **physical RAM** with no DTB and no driver: `MZ` + `machine 0x8664` + **`SizeOfImage == 0xDFB8000`** (unique to this game). Result: `image_pa=0x316B24C40`, `stamp=0x6ADBF892` (matches the build), 9 sections. `.text`, `.data` (171 MB), `.pdata`, `_RDATA`, `.fptable` all read as real data at `image_pa + va` -> **contiguous, so static offsets are a direct read** (`.rdata`/`.rsrc` start with zero pages, which is normal and only tripped my crude threshold).
+- **Offset hunt, done the classic way:** scanning only `.data` (155 MB, seconds) found **8 matrix-shaped blocks**. Re-reading them 1.5 s apart while the camera moved showed **five change** - `0x0DB5BC40`, `0x0DB5BD20`, `0x0DB5BE00`, `0x0DB5BEE0`, `0x0DB5BFC0` (viewport/view/projection family, 0xE0 apart); the other three are static constants. Evidence `temp/qk_image1.txt`.
+- **Consequence:** the product no longer needs the name anchor, the 42 s startup scan, or a DTB. Per frame it is `read(image_pa + rva)`, which is what every external cheat does. `image_pa` is per-launch (40 s to find, or cached).
+- **Left:** pick which of the five is the view-projection (project a known entity through each, keep the one that lands on screen), then the entity list offset the same way (pointer array in `.data`), then feed `qk_overlay`.
+
+
 ## 08/11 01:2x - **Matrix by shape: eliminated. 2.0M blocks, strict camera test (player at eye height + others spread) = 0. Next: angles+FOV, or the image-relative static offset.**
 
 - Shapes tried and dead (`temp/qk_matrix1.txt`): VP with `m15=±1` (1.47M blocks), VP with `m11=±1` (3.78M), loose view (false-positive: a ZERO matrix scored 48), orthonormal view (false-positive: identity+translation), strict view (player at `(0,-20..-120,0)` **and** other entities `|x|+|z|>200`) -> **0 of 2,000,822**.

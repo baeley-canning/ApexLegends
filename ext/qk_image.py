@@ -11,6 +11,7 @@ Usage: qk_image.py [--out=FILE] [--no-elevate]
 import os
 import struct
 import sys
+import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -27,7 +28,7 @@ RVAS = (0x1B4DFA0, 0x1B4DFA0 + 0x40, 0x022EE01, 0x23F6A90, 0x01E7D4B8)
 
 
 def out(s):
-    line = str(s)
+    line = str(s).encode("ascii", "replace").decode("ascii")   # console is cp1252
     print(line)
     LOG.append(line)
     if OUT:
@@ -50,6 +51,25 @@ def arg(name, default=None, cast=str):
         if a.startswith("--" + name + "="):
             return cast(a.split("=", 1)[1])
     return default
+
+
+def flag(name):
+    return ("--" + name) in sys.argv
+
+
+def matrix_score(m):
+    """View-projection in either convention (m15=+-1 GL style, m11=+-1 D3D style)."""
+    for v in m:
+        if v != v or abs(v) > 1.0e5:
+            return 0
+    if not (abs(abs(m[15]) - 1.0) < 0.01 or abs(abs(m[11]) - 1.0) < 0.01):
+        return 0
+    small = sum(1 for i in (0, 1, 2, 4, 5, 6, 8, 9, 10) if abs(m[i]) <= 2.0)
+    if small < 6:
+        return 0
+    if not any(100.0 < abs(m[i]) < 1.0e5 for i in (12, 13, 14, 3, 7, 11)):
+        return 0
+    return 30 + small * 2
 
 
 def u32(b, o):
@@ -159,6 +179,55 @@ def main():
             for r in range(4):
                 out("     [%d] %11.4f %11.4f %11.4f %11.4f"
                     % (r, m[r * 4], m[r * 4 + 1], m[r * 4 + 2], m[r * 4 + 3]))
+        if flag("data"):
+            dv = dsz = None
+            for k in range(nsec):
+                s = hdr[k * 40:(k + 1) * 40]
+                if len(s) >= 40 and s[:8].rstrip(b"\x00") == b".data":
+                    dv, dsz = u32(s, 12), u32(s, 8)
+                    break
+            if dsz:
+                out("  scanning .data va=%#x size=%#x (%d MB) for matrices"
+                    % (dv, dsz, dsz // 1048576))
+                best = []
+                cur, end, scanned = pa + dv, pa + dv + dsz, 0
+                while cur + 0x10000 <= end:
+                    try:
+                        blk = dl.retry_phys(g, cur, 0x10000, tries=1)
+                    except OSError:
+                        cur += 0x10000
+                        continue
+                    scanned += len(blk)
+                    for pat in (b"\x00\x00\x80\x3f", b"\x00\x00\x80\xbf"):
+                        i = blk.find(pat)
+                        while i >= 0:
+                            st = i - 60
+                            if st >= 0 and (st & 3) == 0 and st + 64 <= len(blk):
+                                m = struct.unpack_from("<16f", blk, st)
+                                sc = matrix_score(m)
+                                if sc:
+                                    best.append((sc, cur + st - pa, m))
+                                    best.sort(reverse=True)
+                                    del best[8:]
+                            i = blk.find(pat, i + 4)
+                    cur += 0x10000
+                out("  .data scanned=%d bytes, matrix candidates=%d" % (scanned, len(best)))
+                if flag("watch") and best:
+                    out("  re-reading the %d candidate(s) after 1.5 s - the live matrix moves"
+                        % len(best))
+                    time.sleep(1.5)
+                    for sc, rva, m0 in best:
+                        try:
+                            b1 = dl.retry_phys(g, pa + rva, 64, tries=2)
+                        except OSError:
+                            out("   rva=%#010x re-read fault" % rva)
+                            continue
+                        m1 = struct.unpack("<16f", b1)
+                        d = max(abs(x - y) for x, y in zip(m0, m1))
+                        out("   rva=%#010x max_delta=%.6f%s"
+                            % (rva, d, "   <-- CHANGED (live view matrix)" if d > 1e-4 else ""))
+
+
         out("RESULT: image_pa=%#x contiguous_sections=%d/%d stamp=%#x"
             % (pa, contig, nsec, stamp))
         out("VERDICT: %s - %s"
