@@ -151,7 +151,9 @@ class Reader(object):
             off = cur & 0xFFF
             take = min(left, 0x1000 - off)
             try:
-                b = self.g.read_phys(pa + off, take)
+                # gdrv3 fails 1450 TRANSIENTLY (measured: the same frame refused at
+                # 21:24 read fine at 22:35), so every page read retries with backoff.
+                b = dl.retry_phys(self.g, pa + off, take, tries=6)
             except OSError:
                 self.faults += 1
                 return None
@@ -214,7 +216,7 @@ def _pml4_scan(g, ram, ranges, cap=4096):
         pa = (rlo + 0xFFF) & ~0xFFF
         while pa + 0x10000 <= rhi and len(found) < cap:
             try:
-                blk = g.read_phys(pa, 0x10000)
+                blk = dl.retry_phys(g, pa, 0x10000, tries=4)
             except OSError:
                 pa += 0x10000
                 continue

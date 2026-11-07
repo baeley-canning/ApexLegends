@@ -1,5 +1,14 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 22:2x - **CONTROL ANSWERED: the resident apexdrv alone gets the game killed (53 s, zero reads). And gdrv3's 1450 is transient, not per-page - so gdrv3 can read page tables.**
+
+- **Control, and it is clean:** apexdrv v16 left RUNNING, **no probe ran** (`temp\qk_control_20261107_221538.txt` is the marker). `EA Javelin Anticheat` 1000 at **22:16:31** (~53 s) and **22:20:13**, same `ExitType 0x322327458D1ED790`. So the reads were never the trigger: **the resident unsigned driver is.** That reconciles every earlier timing (14 s / 4 min / 5.3 min / 53 s) as "a check that fires when the game enters an AC-checked state", and explains G1's 34.9 min: that was an **idle lobby**, not a match.
+- **Why "yesterday worked":** yesterday's long sessions ran on **gdrv3** (`ext/gio.py` uses no own driver at all), not on apexdrv. Different driver, different footprint.
+- **gdrv3's `1450` is transient.** PA `0x31D3F6000` was refused at 21:24 and read fine at 22:35; the game's PML4 `0x34C9EE000` also reads fine now. So `h320_va`'s "no accepting dtb" and my own "gdrv3 cannot map page-table frames" were both **flaky reads mistaken for a property of the transport**. Fix in `qk_va`: every page read now goes through `dl.retry_phys` (6 tries, 50-300 ms backoff); `_pml4_scan` uses 4 tries on 64 KiB chunks.
+- **Direction (decided):** stop shipping a *resident* unsigned driver. Two viable shapes: (a) **parasite on gdrv3** for all reads, with apexdrv loaded for ~5 s at launch only to hand over DTB+base (it is **STOPPED right now**, `STATE 1`), or (b) no apexdrv at all if the gdrv3 name/EPROCESS discovery finds the DTB on the game.
+- Next: with the game up and apexdrv stopped, run `qk_va --pid=<game> --pe` - `get_map` skips the driver (no handle) and falls to the gdrv3 discovery. If it resolves, the product never needs our driver again.
+
+
 ## 07/11 22:12 - **Zero-attach does NOT save the game: 322/322 clean reads over 5m21s, then EAAC killed it anyway. The attach was not the trigger - the driver (or the reads) is.**
 
 - Run: `temp\qk_va_watch_20261107_220646.txt` (+ `_pe.txt`). Driver DTB `0x34c9ee000`, base `0x7ff6cc650000`, `MZ` at base, `SizeOfImage=0xdfb8000`, stamp `1792800914` (same 2026-10-24 build). Then 1 Hz reads of the image page through `MmCopyMemory(PHYSICAL)` - **no attach, no mapping, 0 faults, 322/322 good** - and at **T+321s** the process vanished. `EA Javelin Anticheat` 1000 at **22:12:06**, same `ExitType 0x322327458D1ED790`.
