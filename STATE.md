@@ -1,5 +1,14 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 22:35 - **The box now has NO trace of apexdrv (service deleted, all 7 files moved out of System32\drivers). That is the baseline to test: does the game survive when only gdrv3 is present?**
+
+- **The evidence that forced this:** the 22:32:07 kill (`0x322327458D1ED790`) happened with apexdrv **STOPPED** - so it was not residency this time, the driver only had to be *installed* (service + file). Earlier kills (22:12/22:16/22:20) had it running. Every kill tonight therefore fits "EAAC finds the installed driver", and `apexdrv.sys` is exactly the kind of name that sits on a name-based blocklist (their UA message: *"This software cannot be used at the same time as the game"*, `Security Violation (2)`).
+- **Cleanup, reversible:** `sc delete ApexDrv`, and all 7 `apexdrv*` files moved to `temp\drv_backup\` (6 backups + the 20 KB v16 build that was live). `System32\drivers` now has **0** matches for `apexdrv*`; `zapexdrv`/`kernprobe`/`apexdrv_cat` services also confirmed absent. `gdrv3` untouched. Restore = copy a file back + `sc create ApexDrv type= kernel start= demand binPath= ...`.
+- **Why "installed is enough" is plausible:** at 18:07/18:18 the same gio/python reader ran over gdrv3 for 9 GB with **zero** Javelin events, so the reader process is not the trigger; the only new artifact between then and the kills is our driver.
+- **`_ritual/qk_drv_cameo.ps1` (new, not yet run):** DSE read/write 0 -> `sc start` -> `qk_va --pe` (grabs DTB + base, ~2 s) -> `sc stop` -> DSE restore. If the install itself is the trigger, the next step is a **service-less** load (`kdu -map`, image mapped from a file outside System32, no service registration) so nothing is "installed" at all.
+- **Baseline to run next:** game up, **no probe process**, only gdrv3 resident. If it survives a full match, the footprint theory is confirmed with a number and the cameo/mapped-load work can start from a clean state.
+
+
 ## 07/11 22:2x - **CONTROL ANSWERED: the resident apexdrv alone gets the game killed (53 s, zero reads). And gdrv3's 1450 is transient, not per-page - so gdrv3 can read page tables.**
 
 - **Control, and it is clean:** apexdrv v16 left RUNNING, **no probe ran** (`temp\qk_control_20261107_221538.txt` is the marker). `EA Javelin Anticheat` 1000 at **22:16:31** (~53 s) and **22:20:13**, same `ExitType 0x322327458D1ED790`. So the reads were never the trigger: **the resident unsigned driver is.** That reconciles every earlier timing (14 s / 4 min / 5.3 min / 53 s) as "a check that fires when the game enters an AC-checked state", and explains G1's 34.9 min: that was an **idle lobby**, not a match.

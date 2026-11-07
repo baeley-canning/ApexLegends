@@ -396,3 +396,10 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   caveat: G1 had apexdrv v10 resident 34.9 min alive. NEXT CONTROL: apexdrv resident, ZERO reads, 15 min.
   fix: act_watch printed PASS after the target died (good==n) -> death now FAILs unconditionally.
 
+
+22:35 APEXDRV FULLY REMOVED (baseline state):
+  kills 22:12/22:16/22:20 had the driver RUNNING; the 22:32:07 kill had it STOPPED but INSTALLED (service+file) -> install alone may be enough.
+  sc delete ApexDrv; all 7 apexdrv* files moved to temp\drv_backup (0 left in System32\drivers); zapexdrv/kernprobe absent; gdrv3 untouched.
+  UA dialog: 'This software cannot be used at the same time as the game', Security Violation (2) - a NAMED block, not a heuristic.
+  next: baseline (game up, no probe) then a SERVICE-LESS load (kdu -map) for the DTB cameo; _ritual/qk_drv_cameo.ps1 ready, unrun.
+
