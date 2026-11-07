@@ -1,0 +1,19 @@
+===== qk_hunt v1 (PLAN stage 2: find the MOVED offsets, read-only) =====
+out=_ritual\qk_hunt_run2.txt win=0x8000 listWin=0x2000
+target pid=24360 base=0x7FF721690000 (source=1)
+--- matrix hunt: strict (finite, |v|<=1e5, >=8 nonz, w-row) ---
+anchor B +0x1B4DFA0 (h320_va)
+  window 0x7FF7231D9FA0..0x7FF7231E1FA0 (32768 B) best=0
+anchor A +0x022EE01 (memory.h)
+  window 0x7FF7218BAE01..0x7FF7218C2E01 (32768 B) best=0
+--- entity-list hunt: canonical pointers near base+0x23F6A90 ---
+  ptr@+0x240 = 0x13C840FFFF8  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0x308 = 0x1624838B0000  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0x558 = 0x23A0E8CF8B48  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0xD90 = 0x782444C7C828  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0xF80 = 0x2BA0A7FC0  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0x12A8 = 0x502444C700  slots=0/4  slot0=0x0 st0=0xC0000005
+  ptr@+0x12B0 = 0x582444C700  slots=0/4  slot0=0x0 st0=0xC0000005
+  canonical qwords in window: 7 (7 probed)
+RESULT: none matrix_best=0
+VERDICT: FAIL - neither anchor has a plausible neighbour in +/-0x4000 bytes; the next move is a full .data dump, not a wider window

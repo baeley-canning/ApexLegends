@@ -1,0 +1,75 @@
+===== qk_probe v1 (PLAN stage 1: driver -> game read bridge, read-only) =====
+host=DESKTOP-PPHFJBQ probe_pid=33684 self=0 secs=60 hz=1 out=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\qk_probe_game_20261107_205717.txt
+driver: ABI v14 (expect 14)
+target: pid=24360 (game)
+BASE: io=ok status=0x00000000 source=1 base=0x7FF721690000
+READBUF[4@base] status=0x00000000 bytes=4D 5A 90 00
+READBUF[4@base+0x3C] status=0x00000000 e_lfanew=0x1B8
+READ8[2] first=0x00000000 st0=0x00000000 st1=0x00000000 v0=0x0009866400004550
+READ8 signature=PE machine=0x8664 sections=9
+PE: machine=0x8664 sections=9 stamp=0x6ADBF892 optMagic=0x020B SizeOfImage=0xDFB8000
+PE: build_stamp=1792800914 (unix seconds) - the patch-day fingerprint
+--- liveness: re-read MZ + poll the process every 1000 ms ---
+T+01s read=0x00000000 mz=1 proc=1
+T+02s read=0x00000000 mz=1 proc=1
+T+03s read=0x00000000 mz=1 proc=1
+T+04s read=0x00000000 mz=1 proc=1
+T+05s read=0x00000000 mz=1 proc=1
+T+06s read=0x00000000 mz=1 proc=1
+T+07s read=0x00000000 mz=1 proc=1
+T+08s read=0x00000000 mz=1 proc=1
+T+09s read=0x00000000 mz=1 proc=1
+T+10s read=0x00000000 mz=1 proc=1
+T+11s read=0x00000000 mz=1 proc=1
+T+12s read=0x00000000 mz=1 proc=1
+T+13s read=0x00000000 mz=1 proc=1
+T+14s read=0x00000000 mz=1 proc=1
+T+15s read=0x00000000 mz=1 proc=1
+T+16s read=0x00000000 mz=1 proc=1
+T+17s read=0x00000000 mz=1 proc=1
+T+18s read=0x00000000 mz=1 proc=1
+T+19s read=0x00000000 mz=1 proc=1
+T+20s read=0x00000000 mz=1 proc=1
+T+21s read=0x00000000 mz=1 proc=1
+T+22s read=0x00000000 mz=1 proc=1
+T+23s read=0x00000000 mz=1 proc=1
+T+24s read=0x00000000 mz=1 proc=1
+T+25s read=0x00000000 mz=1 proc=1
+T+26s read=0x00000000 mz=1 proc=1
+T+27s read=0x00000000 mz=1 proc=1
+T+28s read=0x00000000 mz=1 proc=1
+T+29s read=0x00000000 mz=1 proc=1
+T+30s read=0x00000000 mz=1 proc=1
+T+31s read=0x00000000 mz=1 proc=1
+T+32s read=0x00000000 mz=1 proc=1
+T+33s read=0x00000000 mz=1 proc=1
+T+34s read=0x00000000 mz=1 proc=1
+T+35s read=0x00000000 mz=1 proc=1
+T+36s read=0x00000000 mz=1 proc=1
+T+37s read=0x00000000 mz=1 proc=1
+T+38s read=0x00000000 mz=1 proc=1
+T+39s read=0x00000000 mz=1 proc=1
+T+40s read=0x00000000 mz=1 proc=1
+T+41s read=0x00000000 mz=1 proc=1
+T+42s read=0x00000000 mz=1 proc=1
+T+43s read=0x00000000 mz=1 proc=1
+T+44s read=0x00000000 mz=1 proc=1
+T+45s read=0x00000000 mz=1 proc=1
+T+46s read=0x00000000 mz=1 proc=1
+T+47s read=0x00000000 mz=1 proc=1
+T+48s read=0x00000000 mz=1 proc=1
+T+49s read=0x00000000 mz=1 proc=1
+T+50s read=0x00000000 mz=1 proc=1
+T+51s read=0x00000000 mz=1 proc=1
+T+52s read=0x00000000 mz=1 proc=1
+T+53s read=0x00000000 mz=1 proc=1
+T+54s read=0x00000000 mz=1 proc=1
+T+55s read=0x00000000 mz=1 proc=1
+T+56s read=0x00000000 mz=1 proc=1
+T+57s read=0x00000000 mz=1 proc=1
+T+58s read=0x00000000 mz=1 proc=1
+T+59s read=0x00000000 mz=1 proc=1
+T+60s read=0x00000000 mz=1 proc=1
+ALIVE samples=60/60 good=60 bad=0 proc_end=1 elapsed=60s secs_gate=60
+RESULT: base=0x7FF721690000 mz=1 pe=1 readbuf_good=60/60 proc_alive=1
+VERDICT: PASS - variable = driver-backed BASE+READ8+READBUF on a live pid; MZ+PE at the base, 60/60 samples clean, process alive at +60s

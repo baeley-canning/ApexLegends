@@ -1,5 +1,23 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 21:0x - **Stage 2 first measurement: the whole offset table is STALE for the 2026-10-24 build** (evidence `_ritual\qk_ents_run1.txt`, `_ritual\qk_hunt_run2.txt`)
+
+- **`qk_ents` (new, `tools\qk_ents.cpp`) against the live game, pid 24360:** `ENTITY_LIST` at `base+0x23F6A90` holds **`0x5E2C1480475A9C4`** - not a canonical pointer at all. Falling back to treating that address as the array, a 0x2000-slot READ8 walk yielded 6 "canonical" qwords whose targets all fault (`0xC0000005`) - it is float data, not a pointer array. Matrix candidate B (`+0x1B4DFA0`) returns 16 finite floats of nonsense (`2.9e23`, `-3.7e7`); A (`+0x022EE01`) returns `524288 / 442634.25` (code/consts). **Every read succeeded** - so this is a wrong table, not a wrong transport.
+- **`qk_hunt` (new, `tools\qk_hunt.cpp`) rules out "it just moved a little":** strict matrix test (finite, |v|<=1e5, `m[15]`=±1, >=6 of the 3x3 submatrix <=2, a world-scale translation term) finds **no** window within ±0x4000 of either anchor; the entity-list neighbourhood has 7 canonical qwords, **all** pointing at unmapped pages. `--image` mode (whole 234 MB image, 57k READBUFs, rolling 64-byte overlap) is built and waiting - it needs the game up.
+- **This is the finding that was invisible before:** the transport looked fine for days because reads "worked". The table it fed was two patches old. `features.cpp` uses an even older set, so an ESP built on it could never draw.
+- **Two tool bugs found and fixed (both are general lessons):** a `READBUF` larger than `0x1000` is a header violation and the whole IRP fails with 87 (a 0x2000 list window returned nothing); and a loose matrix test scores a float blob 41/100 - the strict test needs `m[15]`=±1 plus a 3x3 that is small in 6 of 9 slots.
+- **Next, in order:** (1) with Apex in the **firing range**, run `qk_hunt --image` (<= 1 min) - if a matrix RVA lands, verify it by projecting a known world point; (2) for the entity list, either a static chain from a dump or the current-patch offset list verified by `qk_ents` (now a 5-second check). Both are read-only.
+
+
+## 07/11 20:57 - **STAGE 1 CLOSED: our own driver read the LIVE game for 60 s and the game did not care** (`_ritual\qk_probe_game_20261107_205717.txt`)
+
+- **VERDICT: PASS** - the first verdict in this tree where `apexdrv` (own driver, ABI v14) read a live `r5apex_dx12` and the game survived the window. pid **24360**; `BASE source=1 (PsGetProcessSectionBaseAddress)` = **0x7FF721690000**; `MZ` at base; `e_lfanew=0x1B8`; `READ8[2] st0=st1=0`; `PE machine=0x8664 sections=9`; `SizeOfImage=0xDFB8000` (234 MB - a real image, not a stub); **60/60** liveness samples clean, `proc_end=1` at +60 s; user confirmed Apex stayed up.
+- **Build fingerprint for every later patch-day check:** `TimeDateStamp=0x6ADBF892` = **1792800914** = **2026-10-24**. Free patch detection from now on (same one-line read).
+- Why this is the milestone and h323 was not: h323 was one 32-byte read ~1 s after launch. This is 66 driver reads over a full minute against a game that was already running, with the process polled every sample - i.e. the *sustained* read path the product needs. h328's `P3=SKIPPED (game not running)` hole is filled.
+- Host untouched: read-only probe, no write, no alloc, no service change, no DSE write, no reboot. `ApexDrv` v14 + `gdrv3` left RUNNING (G1's proven shape).
+- **Next = Stage 2 (offsets + entity model), and the game is still up, so it is one probe away:** read the view-matrix candidates (`0x1B4DFA0` vs the code RVA `0x022EE01`), read `ENTITY_LIST 0x23F6A90`, walk the slots with READ8 batches, and score the two candidate per-entity field sets against each other. That is `qk_ents` - read-only, same client.
+
+
 ## 07/11 21:1x - Stages adopted; `qk_probe` v1 (driver -> game read bridge) builds clean and passes its self control - the game half is now ONE command
 
 - **Stage 0 closed (the thing that was actually blocking).** `PLAN.md` (stages 0-7b, one gate each, FROZEN list), `FACTS.md` (PROVEN vs CANDIDATE, one page), `AGENTS.md` R7/R8/R9, and `include/apex_offsets_generated.h` - both candidate offset sets side by side so the conflict is visible instead of hidden in two files (`memory.h`'s `VIEW_MATRIX 0x022EE01` is code; `ext/h320_va.py`'s `0x1B4DFA0` is the live candidate; the two per-entity sets disagree on every field).

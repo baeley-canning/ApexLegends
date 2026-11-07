@@ -1,0 +1,29 @@
+===== qk_ents v1 (PLAN stage 2 recon: view matrix + entity walk, read-only) =====
+out=_ritual\qk_ents_run1.txt ents=6 slots=0x2000
+target pid=24360 base=0x7FF721690000 (source=1 status=0x00000000)
+--- view matrix ---
+B  base+0x1B4DFA0 status=0x00000000
+   [0]    14.4254 -37283900.0000     0.0000 293752581928402389303296.0000
+   [1]    -0.0000 -47604792874706826522870533625279938560.0000 177523389718695017659068579840.0000     0.0000
+   [2]     0.0000     0.0000  3692.4587 2217430452391481704448.0000
+   [3] 2702263829783250912711020642304.0000     0.0000  3694.6870 543976576421576252063744.0000
+A  base+0x22EE01 status=0x00000000
+   [0]     0.0000 524288.0000     0.0000   920.0000
+   [1]     0.0000 -36390330186072064.0000 1773865.0000    -0.0000
+   [2]    -0.0000     0.0000 442634.2500     0.0000
+   [3]    -0.0000     0.0000    28.4381 524288.0000
+matrix score: B=80 (finite=16 zero=0 w15=5.43977e+23)  A=80 (finite=16 zero=0 w15=524288)
+--- entity list ---
+read8(base+0x23F6A90) -> 0x5E2C1480475A9C4 status=0x00000000
+value is not a canonical user VA - treating base+0x23F6A90 as the array itself
+walk array=0x7FF723A86A90 slots=0x2000 batches=12 valid_pointers=6
+  [0] ent=0x502444C700 read[0x400@+0x200] status=0xC0000005
+  [1] ent=0x582444C700 read[0x400@+0x200] status=0xC0000005
+  [2] ent=0x331CBB8000 read[0x400@+0x200] status=0xC0000005
+  [3] ent=0x2EA8818B0000 read[0x400@+0x200] status=0xC0000005
+  [4] ent=0x25B8818B0000 read[0x400@+0x200] status=0xC0000005
+  [5] ent=0x90C4814800 read[0x400@+0x200] status=0xC0000005
+----
+decoded=6 scoreA=0 scoreB=0
+RESULT: ambiguous A=0 B=0
+VERDICT: PARTIAL - neither field set decodes cleanly; the raw dumps above are the next input

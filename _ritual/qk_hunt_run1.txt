@@ -1,0 +1,18 @@
+===== qk_hunt v1 (PLAN stage 2: find the MOVED offsets, read-only) =====
+out=_ritual\qk_hunt_run1.txt win=0x8000 listWin=0x2000
+target pid=24360 base=0x7FF721690000 (source=1)
+--- matrix hunt: strict (finite, |v|<=1e5, >=8 nonz, w-row) ---
+anchor B +0x1B4DFA0 (h320_va)
+  window 0x7FF7231D9FA0..0x7FF7231E1FA0 (32768 B) best=41
+  hit #1 at base-11604 (0x7FF7231DB24C) score=41 -> RVA 0x1B4B24C
+  best window at 0x7FF7231DB24C
+   [0]      0.0000      0.0000  -2048.0002  -6220.3540
+   [1]  -6733.3540  -7468.3462  -7981.3462  -6508.3423
+   [2]  -7021.3423  -7372.3384  -6157.5454  -7885.3384
+   [3]  -6413.6704  -7277.5962  -6733.5376  -1547.4010
+anchor A +0x022EE01 (memory.h)
+  window 0x7FF7218BAE01..0x7FF7218C2E01 (32768 B) best=0
+--- entity-list hunt: canonical pointers near base+0x23F6A90 ---
+  list window unreadable
+RESULT: matrix=0x7FF7231DB24C(score 41) list=0x0
+VERDICT: PARTIAL - one of the two anchors still needs a wider window or a different search shape (matrix found, list not)

@@ -356,3 +356,16 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   - traps: VERSION needs an 8-byte out buffer (122 on 4); run_commands kills a foreground run at 30 s -> detach a 60 s probe.
   - NEXT (needs game): powershell -File _ritual\qk1_game.ps1  -> PASS = MZ+PE at game base + alive +60 s = STAGE 1 CLOSED.
 
+
+20:57 STAGE 1 CLOSED - qk_probe PASS on live game (_ritual/qk_probe_game_20261107_205717.txt):
+  apexdrv v14, pid 24360, BASE source=1 0x7FF721690000, MZ/,e_lfanew=0x1B8, READ8 sig=PE, machine=0x8664 sections=9,
+  SizeOfImage=0xDFB8000, stamp=0x6ADBF892 (2026-10-24 build), 60/60 samples, proc alive +60 s, NO crash.
+  Next: Stage 2 qk_ents - view matrix candidates + ENTITY_LIST walk + A/B field-set scoring (read-only).
+
+
+21:0x STAGE 2 first measurement - THE OFFSET TABLE IS STALE (qk_ents_run1.txt, qk_hunt_run2.txt):
+  ENTITY_LIST 0x23F6A90 -> 0x5E2C1480475A9C4 (not a pointer); 6 walk slots all fault 0xC0000005;
+  matrix B 0x1B4DFA0 -> 16 finite floats of nonsense (2.9e23); A 0x022EE01 -> code/consts; no matrix within +/-0x4000 of either.
+  tools: qk_ents.exe + qk_hunt.exe (--image = whole-image matrix scan) both built, 0 warnings. NEXT: qk_hunt --image in the FIRING RANGE.
+  lessons: READBUF > 0x1000 = header violation (IRP 87); a loose matrix test scores a float blob 41/100.
+

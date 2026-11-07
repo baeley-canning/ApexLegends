@@ -1,0 +1,4 @@
+===== qk_hunt v1 (PLAN stage 2: find the MOVED offsets, read-only) =====
+out=_ritual\qk_hunt_image1.txt win=0x8000 listWin=0x2000
+no r5apex process and no --pid
+VERDICT: PARTIAL - target absent
