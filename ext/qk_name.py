@@ -367,10 +367,11 @@ def main():
             return 0
 
         if flag("angles") and hits:
-            # Identify the player by MOVEMENT (that is the test that worked), then ask
-            # for a TURN and diff the block for angle candidates.
-            snap = {}
-            ent = None
+            # 1) collect EVERY entity-shaped name hit (entity neighbour is binary, not a
+            #    UTF-16 string table), 2) keep the ones whose position drifted over 3 s
+            #    of normal play - the player is always among them, a prop rarely is,
+            # 3) diff that block for the floats that move = pitch/yaw.
+            cands = {}
             for a, tag in hits:
                 try:
                     x, y, z = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
@@ -380,31 +381,43 @@ def main():
                 if not (all(abs(c) < 20000.0 for c in (x, y, z))
                         and max(abs(x), abs(y), abs(z)) > 20.0 and abs(y) < 200.0):
                     continue
-                # UI copies live in UTF-16 string tables; an entity's neighbour is binary
                 printable = sum(1 for b in ctx if 32 <= b < 127 or b == 0)
                 if printable > len(ctx) * 0.8:
                     continue
-                ent = a
-                out("  candidate entity %#x  origin (%.1f, %.1f, %.1f)" % (a, x, y, z))
-                break
-            if not ent:
-                out("RESULT: no-entity-shaped name hit")
-                out("VERDICT: PARTIAL - every hit sits in a text table")
+                cands[a] = (x, y, z)
+            out("  entity-shaped candidates: %d" % len(cands))
+            if not cands:
+                out("RESULT: none")
+                out("VERDICT: PARTIAL - every name hit sits in a text table")
                 return 8
-            time.sleep(3)                      # passive: you are already playing
-            out("  player entity at %#x (origin %#x)" % (ent, ent - 0xEEC))
+            time.sleep(3)                                   # passive, no cue
+            movers = []
+            for a, v0 in cands.items():
+                try:
+                    v1 = struct.unpack("<fff", dl.retry_phys(g, a - 0xEEC, 12, tries=1))
+                except OSError:
+                    continue
+                d = max(abs(p - q) for p, q in zip(v0, v1))
+                if d > 0.5:
+                    movers.append((d, a, v0, v1))
+            out("  candidates that drifted in 3 s: %d" % len(movers))
+            for d, a, v0, v1 in sorted(movers, reverse=True)[:6]:
+                out("    %#012x (%.1f,%.1f,%.1f) -> (%.1f,%.1f,%.1f)  d=%.1f"
+                    % (a, v0[0], v0[1], v0[2], v1[0], v1[1], v1[2], d))
+            if not movers:
+                out("RESULT: nothing drifted")
+                out("VERDICT: PARTIAL - no candidate moved (stand still is fine, but nothing drifted)")
+                return 8
+            ent = sorted(movers, reverse=True)[0][1]
+            out("  player entity = %#012x (origin %#x)" % (ent, ent - 0xEEC))
             lo = ent - 0x1600
             ln = 0x1A00
             try:
                 b0 = dl.retry_phys(g, lo, ln, tries=3)
-            except OSError:
-                out("RESULT: block unreadable")
-                return 5
-            time.sleep(3)                      # passive again - no cue at all
-            try:
+                time.sleep(3)
                 b1 = dl.retry_phys(g, lo, ln, tries=3)
             except OSError:
-                out("RESULT: block unreadable after turn")
+                out("RESULT: block unreadable")
                 return 5
             out("  floats that changed (offset from name, old -> new):")
             nch = 0
@@ -417,8 +430,8 @@ def main():
                     continue
                 out("    %+#06x  %10.3f -> %10.3f" % ((lo + i) - ent, x0, x1))
                 nch += 1
-            out("RESULT: changed floats=%d around entity %#x" % (nch, ent))
-            out("VERDICT: PASS - angle candidates dumped (pitch in +-90, yaw in +-180)")
+            out("RESULT: player=%#x changed=%d" % (ent, nch))
+            out("VERDICT: PASS - player identified; angle candidates dumped")
             return 0
 
         if flag("probe"):
