@@ -44,6 +44,11 @@ ROOT = os.path.dirname(HERE)
 # forking the script; the defaults stay p40d so older recipes keep working.
 OUT = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_OUT", "p40d_livedump.txt"))
 PROG = os.path.join(ROOT, "_ritual", os.environ.get("DUMP_PROG", "p40d_progress.txt"))
+THROTTLE_MS = 0   # sleep THROTTLE_MS every 64 chunks in the sweeps: the 0x124 lesson -
+                  # a full-speed 27 GB gdrv3 storm pushes a marginal IMC into a WHEA
+                  # machine check (three identical 0x124 dumps at 03:46/03:50/03:54)
+RETRY_MS = 50     # retry_phys backoff base; frame-try loops cut this to ~10 ms so a
+                  # junk frame costs 0.3 s instead of 1.4 s across 200k candidates
 NAME = b"r5apex_dx12.ex\x00"     # 14 chars + NUL: ImageFileName[15] keeps the
                                  # NUL, so 15 chars are stored truncated (p43x)
 PROC_NAME = "r5apex_dx12"
@@ -412,6 +417,8 @@ def name_hits(g, ranges, chunk=SCAN_CHUNK, cap=HIT_CAP):
         carry = b""
         while pa < rhi and len(hits) < cap:
             n = min(chunk, rhi - pa)
+            if THROTTLE_MS and ((pa >> 16) & 0x3F) == 0:
+                time.sleep(THROTTLE_MS / 1000.0)
             try:
                 blk = g.read_phys(pa, n)
             except OSError:
@@ -708,7 +715,7 @@ def retry_phys(g, pa, n, tries=3):
         except OSError:
             if i == tries - 1:
                 raise
-            time.sleep(0.05 * (i + 1))
+            time.sleep(RETRY_MS / 1000.0 * (i + 1))
 
 
 class Walk(object):

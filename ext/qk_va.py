@@ -42,6 +42,7 @@ TMP = os.path.join(ROOT, "temp")
 
 LOG = []
 OUT_PATH = None
+VA_THROTTLE = 0     # mirror of dl.THROTTLE_MS for qk_va's own scans (set by callers)
 
 
 def set_out(p):
@@ -205,16 +206,22 @@ class Ram(object):
 NAME_OFFS = (0x338, 0x450, 0x4C8, 0x5A0, 0x5A8, 0x5B0)
 
 
-def _pml4_scan(g, ram, ranges, cap=4096):
+def _pml4_scan(g, ram, ranges, cap=60000):
     """Every 4 KiB page in RAM that looks like a page table (>=8 RAM-backed present entries).
 
     Reads 64 KiB at a time: one pass over 27.7 GB is ~150 s, versus ~8M 4 KiB ioctls.
     No EPROCESS offset is involved anywhere - a PML4 is recognised by its own shape.
+
+    cap was 4096 until 08/11 03:3x: it filled inside the first few GB and `break`
+    abandoned the whole sweep before the 12-16 GB band, where every DTB on this box
+    has been, was ever read.  Density is ~1.3k/GB, so 60000 covers the 27 GB.
     """
     found = []
     for rlo, rhi in ranges:
         pa = (rlo + 0xFFF) & ~0xFFF
         while pa + 0x10000 <= rhi and len(found) < cap:
+            if VA_THROTTLE and ((pa >> 16) & 0x3F) == 0:
+                time.sleep(VA_THROTTLE / 1000.0)
             try:
                 blk = dl.retry_phys(g, pa, 0x10000, tries=4)
             except OSError:
@@ -299,6 +306,8 @@ def _scan_frames(g, ram, ranges, cap=500000, need=8):
     for rlo, rhi in ranges:
         pa = (rlo + 0xFFF) & ~0xFFF
         while pa + 0x10000 <= rhi and len(found) < cap:
+            if VA_THROTTLE and ((pa >> 16) & 0x3F) == 0:
+                time.sleep(VA_THROTTLE / 1000.0)
             try:
                 blk = dl.retry_phys(g, pa, 0x10000, tries=2)
             except OSError:
@@ -322,21 +331,31 @@ def _scan_frames(g, ram, ranges, cap=500000, need=8):
     return found
 
 
+PRIME_BANDS = ((0x400000000, 0x800000000),   # 16-32 GB: every EPROCESS name-hit on
+               (0x300000000, 0x400000000))   # this boot lived here (04:2x) - so this
+                                             # band is tried before the historic 12-16
+
+
 def _ordered_ranges(ranges):
-    """Page tables on this box cluster high (both DTBs seen tonight were 0x3..): try
-    that band first, then the rest, so a hit does not wait for a 27 GB pass."""
-    prime_lo, prime_hi = 0x300000000, 0x400000000
-    first, rest = [], []
+    """Prime bands first (in PRIME_BANDS order), the remainder after - a hit never
+    waits for a full 27 GB pass."""
+    first = []
+    for plo, phi in PRIME_BANDS:
+        for lo, hi in ranges:
+            a, b = max(lo, plo), min(hi, phi)
+            if a < b:
+                first.append((a, b))
+    rest = []
     for lo, hi in ranges:
-        a, b = max(lo, prime_lo), min(hi, prime_hi)
-        if a < b:
-            first.append((a, b))
-            if lo < a:
-                rest.append((lo, a))
-            if b < hi:
-                rest.append((b, hi))
-        else:
-            rest.append((lo, hi))
+        cur = lo
+        for plo, phi in sorted(PRIME_BANDS):   # subtract the prime spans
+            if cur >= hi:
+                break
+            if plo > cur:
+                rest.append((cur, min(plo, hi)))
+            cur = max(cur, phi)
+        if cur < hi:
+            rest.append((cur, hi))
     return first + rest
 
 
@@ -373,12 +392,15 @@ def discover_peb(g, ram, ranges, pid):
     out("  known frames did not map the PEB - scanning")
 
     for wlo, whi in _ordered_ranges(ranges):
-        if time.perf_counter() - t0 > 420.0:
+        if time.perf_counter() - t0 > 900.0:
             out("    (time cap reached)")
             break
-        frames = _scan_frames(g, ram, [(wlo, whi)], cap=40000, need=4)
+        frames = _scan_frames(g, ram, [(wlo, whi)], cap=250000, need=4)
         out("    window %#012x..%#012x -> %d frames" % (wlo, whi, len(frames)))
-        for f in frames:
+        for wi, f in enumerate(frames):
+            if wi and wi % 20000 == 0:
+                out("      tried %d/%d frames (%.0fs)"
+                    % (wi, len(frames), time.perf_counter() - t0))
             try:
                 rd = Reader(g, f)
             except OSError:
@@ -399,7 +421,7 @@ def discover_peb(g, ram, ranges, pid):
     return None
 
 
-def discover_pml4(g, ram, ranges, want_size=0, cap=4096, max_walk=400):
+def discover_pml4(g, ram, ranges, want_size=0, cap=60000, max_walk=1500):
     """Find the CR3 whose image matches want_size (0 = take the largest image).
 
     This is the patch-proof path: a page table is found by shape, its process by the
@@ -499,11 +521,14 @@ def _candidate_dtbs(g, hit, ram, lo=0x28, hi=0x800, verbose=False):
             return None
         return buf[off:off + n]
 
-    for d in range(lo, hi, 8):
-        base = hit - d
-        if base < 0x10000:
+    for d in range(lo, hi):                  # STEP 1, not 8: hits land off the 8-byte
+        base = hit - d                       # grid (measured 0x4062f5dfe & 7 == 6), so a
+        if base < 0x10000:                   # step-8 scan can never land on the object
+            continue                         # base and the type gate never sees the 3.
+        tb = at(base, 1)                     # KPROCESS Dispatcher.Header.Type == 3
+        if tb is None or tb[0] != 3:
             continue
-        db = at(base + 0x28, 8)
+        db = at(base + 0x28, 8)              # KPROCESS.DirectoryTableBase
         if db is None:
             continue
         dtb = struct.unpack("<Q", db)[0]
@@ -545,11 +570,18 @@ def discover(g, pid):
         # the box (21:34).  Every PA read in the walk then hits the real map.
         g.is_ram = ram.page_ok
 
-        # Best path first: driver-free, offset-free, self-validating on the PEB.
-        m = discover_peb(g, ram, ranges, pid)
-        if m:
-            return m
+        # --peb-first: PEB-arbitrated window scan only (reads ~a third of RAM and has
+        # never crashed the box), skipping the name sweep entirely on a fresh pid.
+        if flag("peb-first"):
+            m = discover_peb(g, ram, ranges, pid)
+            if m:
+                return m
+            return discover_pml4(g, ram, ranges, arg("want-size", 0, lambda s: int(s, 0)))
 
+        # Hits first: with the KPROCESS type gate this route is seconds when the hit
+        # cache exists and bounded when it does not.  The PEB window scan moved to the
+        # fallback slot: its frame-try phase runs into the 420 s cap on a 27.7 GB box
+        # (measured 03:3x - a full PEB pass aborted before the name route ever ran).
         hits = None if flag("refresh-hits") else _load_hits(pid)
         if hits:
             out("    hits cache: %d entries (sweep skipped; --refresh-hits to redo)"
@@ -589,6 +621,11 @@ def discover(g, pid):
                 out("    (ImageFileName offset for this build = %#x)" % d)
                 return {"dtb": dtb, "base": r[0]}
         out("  %d DTBs tried, none walked to an MZ image" % tried)
+
+        # Self-validating fallback: driver-free, offset-free, PEB-arbitrated.
+        m = discover_peb(g, ram, ranges, pid)
+        if m:
+            return m
 
         # No EPROCESS assumption at all: find the page table by its own shape and
         # identify the process by the image it maps.  Patch-proof by construction.

@@ -47,6 +47,7 @@ OUT = os.path.join(TMP, "qk_world.txt")
 JSON = os.path.join(TMP, "qk_world.json")
 OFF_FILE = os.path.join(TMP, "qk_offsets.txt")
 VP_RVA_DEFAULT = 0xDD792B0                  # cached from the 08/11 --data --watch run
+IMG_SIZE = 0xDFB8000                        # r5apex_dx12 SizeOfImage - the process arbiter
 PROC = "r5apex_dx12.exe"
 
 
@@ -260,6 +261,13 @@ def main():
         return 0
 
     VA.set_out(OUT)
+    # let qk_va's discover_pml4 exact-match the game by image size instead of "largest":
+    # a smaller neighbouring process must never win the walk.
+    sys.argv.append("--want-size=%#x" % IMG_SIZE)
+    sys.argv.append("--peb-first")           # no 27 GB name sweep on a fresh pid
+    dl.THROTTLE_MS = 2                       # 0x124 mitigation: 2 ms per 64 chunks
+    dl.RETRY_MS = 10                         # junk frames must not cost 1.4 s each
+    VA.VA_THROTTLE = 2
     needle = arg("name", "kern30120")
     out("===== qk_world: entity list + local player + bones (gdrv3 only, no attach) =====")
     out("name=%s" % needle)
@@ -273,11 +281,23 @@ def main():
     out("pid=%d" % pid)
 
     try:
-        g = gio.Gio(chunk=0x10000)
+        g = gio.Gio(chunk=0x40000)           # 256 KiB ioctls: 4x fewer calls (0x124 mitigation)
     except OSError as e:
         out("gio open failed: %s" % e)
         out("VERDICT: PARTIAL - gdrv3 not openable")
         return 2
+    # read-path fallback: pages gdrv3 refuses (1450) go through apexdrv's MmCopyMemory
+    # when it is loaded.  dl.retry_phys calls g.read_phys, so one instance-level
+    # wrapper covers the whole walk machinery.
+    _orig_rp = g.read_phys
+
+    def _rp_fallback(pa, n):
+        try:
+            return _orig_rp(pa, n)
+        except OSError:
+            return VA.drv_phys(pa, n)
+
+    g.read_phys = _rp_fallback
 
     m = VA.get_map(g, pid)
     if not m:

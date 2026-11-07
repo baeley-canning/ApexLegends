@@ -1,5 +1,46 @@
 # HANDOFF — read this first
 
+> **08/11 05:4x - THE WHOLE PICTURE (this supersedes the block below; read this one).**
+>
+> **PROVEN, and stands:**
+> - EPROCESS recipe, live-verified 5x tonight: needle `r5apex_dx12.ex\0` -> `base = hit-0x338`;
+>   `byte(base)==3` (dispatcher type); `byte(base+0x347)==2` (PriorityClass proof);
+>   `UniqueProcessId` at `+0x1D0` (this build; NOT 0x440 - old scans threw the object away);
+>   `DirectoryTableBase` at `+0x28`.
+> - **View angles are a STATIC offset, readable with NO translation** (physical): yaw/pitch at
+>   `base+0x338+0x3A4 / +0x3A8`. Live-verified once (11.98 -> 71.605 while looking). The old
+>   "wiggle the mouse" was DISCOVERY-ONLY; runtime reads fields.
+> - **Heights are NOT a constant** (Wraith != Gibraltar) - they come from the **bone array**.
+>   Finder is written (cluster of >=14 world triples near the origin; head = top-most bone
+>   projected above feet). Needs VA->PA - the one open blocker.
+> - `gdrv3`-only = the stable setup (16 clean minutes, all evening). Nothing else is needed
+>   for object/angles.
+>
+> **BLOCKERS, with the exact reason:**
+> - The game's **PML4 page reads Errno 1450** via gdrv3 on EVERY session seen tonight
+>   (0x694C6F000, 0x31E50B000) while its neighbours read fine; every walk starts at that page,
+>   so walks die. `apexdrv` (`MmCopyMemory`) is the transport that should read it - but
+>   `sc start ApexDrv` currently fails **1450** too, and `kdu -map apexdrv.sys` crashes the box
+>   (0x50, NULL-0x30 deref in DriverEntry - twice, byte-identical).
+> - **`kdu` IS APEX'S KILLER**: it demand-loads `DBUtilDrv2` (no unload routine; `sc stop`
+>   refused, 1052). While resident, the game dies in 1-5 min (`EA Javelin`, exit
+>   `0x322327458D1ED790`; event log shows kills exactly at 05:12/05:14/05:15 == my kdu runs;
+>   the pre-kdu stretch 04:56-05:12 was clean). ONLY A REBOOT CLEARS IT. Never kdu casually.
+>
+> **READY TOOLING (temp\, all compiled):**
+> - `_qk_dtb16.py` + `_probe16.ps1` = **PHASE 1** (gdrv3-only, zero crash risk): dynamic
+>   object find -> live angles + origin; waits up to 3 min for the game; saves
+>   `temp\qk_object_<pid>.txt` for phase 2.
+> - `_qk_phase2.py` + `_probe22.ps1` = **PHASE 2** (ONE kdu window, ~30 s): apexdrv started ->
+>   walks the saved object via `drv_phys` -> dtb cache -> **bone scan**. Too fast for
+>   DBUtilDrv2 to matter. Stops driver, restores DSE.
+> - `qk_world` (cache-hit path) = entity list / players / angles / bones once a dtb exists.
+>
+> **NEXT SESSION, IN ORDER:** 1) reboot (clears DBUtilDrv2; verify STOPPED). 2) launch Apex;
+> run PHASE 1 -> angles+origin+object file. 3) PHASE 2 -> dtb+bones. 4) qk_world for the
+> entity list; then qk_esp boxes; trigger bands from BONE geometry. 5) only then kdu again.
+>
+
 > **08/11 03:0x - THIS is the current orientation; everything below it is history (the hook/jail/h3xx arc).**
 > The product is a live EXTERNAL pipeline: no injection, no DTB, no driver - gdrv3 physical reads,
 > static offsets via `image_pa + rva` (image found physically by `MZ` + `SizeOfImage=0xDFB8000`;
