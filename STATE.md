@@ -1,5 +1,14 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 21:4x - **Read layer moved off the killed primitive: `ext/qk_va.py` = zero-attach VA reads (gdrv3 physical + own page walk), and the 1b gate now scores itself**
+
+- **Decision (recorded in FACTS.md):** the attach-shaped read is the only variable that correlates with EAAC kills, and the only transport with a clean survival record is the physical one. So the product read layer is now **gdrv3 physical reads + `dumplive.Walk`** - no `KeStackAttachProcess` anywhere. A batch-IOCTL fix in apexdrv was rejected *for now*: it still attaches (60x/s at 60 fps) and would need a VM-first driver change for evidence we do not have.
+- **`ext/qk_va.py` (new):** `--pe`, `--at/--len` hexdump, `--array/--slots` (decodes entity candidates with both field sets), `--watch=SECS` (Stage 1b). DTB + image base cached in `temp\qk_dtb_<pid>.txt` via `p72_ppath.front_pid` (~70-80 s once per game session, instant after). Self-elevates (gdrv3 DACL). Failure paths verified: no elevation -> clean `PARTIAL - no transport`, rc 2.
+- **`_ritual/qk1b_gate.ps1` (new):** runs the watch, then reads the Application log for `EA Javelin Anticheat` events **since t0** and scores it - PASS requires the read window clean *and* zero Javelin 1000 events. No manual interpretation, no "looks fine" (R9).
+- **Why this order:** every later stage (2 offsets, 3 overlay, 4 menu, 5 aim) reads the game continuously. If the read shape kills the game in minutes, none of them can be measured. 1b is therefore the cheapest gate that de-risks everything downstream.
+- **Ready for the next game session, one command:** `powershell -ExecutionPolicy Bypass -File _ritual\qk1b_gate.ps1` (10 min). PASS -> Stage 2 continues on the surviving reader (the 44-slot array at `0xB675E68` is the first thing to decode). FAIL -> the resident driver itself is the trigger and the fix moves to the driver, not the read path.
+
+
 ## 07/11 21:1x - **The game is not crashing: EAAC terminates it, and the trigger looks like our per-request `KeStackAttachProcess` read** (`_ritual/qk_*`, Application log `EA Javelin Anticheat` 1000)
 
 - **`ExitType: 0x322327458D1ED790` twice tonight**, each within seconds of a read burst: **21:02:39** (right as `qk_hunt` run2 finished) and **21:11:29** (14 s after `qk_hunt --wide`). The 60 s `qk_probe` at 20:57 completed with the game **alive** - so it is not "reads kill instantly", it is a delayed kill.

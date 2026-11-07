@@ -61,6 +61,26 @@ has never been killed.
 Survives → the read shape is the trigger. Killed → the resident v14 driver itself is, and G1's 34.9 min
 was a different build/config.
 
+### Decision taken 07/11 21:4x — zero-attach on the surviving transport
+
+The evidence is lopsided, so the read layer moved off apexdrv's attach path **before** any ESP work:
+
+| option | cost | evidence it survives |
+|---|---|---|
+| batch IOCTL (one attach per N reads) | driver change, VM-first (R1) | none — still attaches, 60×/s at 60 fps |
+| **physical read + own page walk (chosen)** | no driver change | **gdrv3: 9 GB swept, zero Javelin events** |
+
+`ext/qk_va.py` = gdrv3 physical reads + `dumplive.Walk` page tables: **no `KeStackAttachProcess` at
+all**. DTB + image base are cached per pid in `temp/qk_dtb_<pid>.txt` (first run of a session pays the
+~70–80 s `p72_ppath.front_pid` scan; later runs are instant). Actions: `--pe`, `--at/--len` hexdump,
+`--array/--slots` (decode the 44-slot candidate), `--watch=SECS` (the 1b gate).
+`_ritual/qk1b_gate.ps1` runs the watch and **scores it against the Javelin log itself** — PASS requires
+the read window clean *and* zero `EA Javelin Anticheat` 1000 events since t0.
+
+apexdrv keeps its role as the *ship* transport: the same three primitives (DTB + physical read) can be
+added to it later as a small, VM-benched change. That is deferred until 1b is green.
+
+
 
 | Claim | Where | Status |
 |---|---|---|

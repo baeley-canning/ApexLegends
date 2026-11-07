@@ -12,7 +12,7 @@ End goal: bnuuy-class external — **ESP, menu, aim** — then the write-path ti
 
 | # | Stage | Gate (the only thing that counts) | State |
 |---|---|---|---|
-| 1b | **Read-primitive survival** (new 07/11 night) — the attach-shaped read is killed by EAAC in 14 s–4 min; a no-attach (physical) or one-attach-per-batch read must survive a full match | 10+ min of live reads at 1 Hz with **no** Javelin `0x322327458D1ED790` event | **OPEN — blocks every later stage** |
+| 1b | **Read-primitive survival** (new 07/11 night) — the attach-shaped read is killed by EAAC in 14 s–4 min; a no-attach read must survive a full match | 10+ min of live reads at 1 Hz with **no** Javelin `0x322327458D1ED790` event | **harness ready** (`ext/qk_va.py` + `_ritual/qk1b_gate.ps1`) — needs one 10-min game session |
 | 0 | Reset the operating picture (this file, FACTS.md, offset table, host parked) | one page each, one offset table, host parked with a read-back | **DONE 07/11** |
 | 1 | Live read bridge: `qk_probe` — BASE + READ8/READBUF on the game through `apexdrv` | MZ+PE at game base, **game alive at +60 s**, evidence file | **DONE 07/11 20:57** — PASS on pid 24360: base `0x7FF721690000`, 9 sections, `SizeOfImage=0xDFB8000`, stamp `2026-10-24`, 60/60, alive |
 | 2 | Offsets + entity model, one authoritative header | firing-range dummy's hp/shield/team/position decoded **and** its projected screen coordinate lands on the dummy | **in progress 07/11 21:0x** — measured: the whole table is STALE for build 2026-10-24 (`ENTITY_LIST` holds a non-pointer; no matrix within ±16 KB of either anchor). Tools `qk_ents`/`qk_hunt` built; `qk_hunt --image` is the next run |

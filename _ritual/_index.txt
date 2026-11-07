@@ -376,3 +376,10 @@ E1/E2 DISCRIMINATOR 2026-11-01 20:36-20:45 (p29_gate2.ps1) - FLAG vs OUR DRIVER,
   => hypothesis: KeStackAttachProcess per IOCTL is the fingerprint. Stage 1b = no-attach / one-attach-per-batch read must survive 10 min.
   lead: qk_hunt --wide found a 44-slot array 0xB675E68 with 44 in-image vtables near the anchor (static RVA not captured in that build).
 
+
+21:4x READ LAYER MOVED OFF THE KILLED PRIMITIVE (decision):
+  ext/qk_va.py = gdrv3 PHYSICAL reads + dumplive.Walk page tables = ZERO KeStackAttachProcess.
+  DTB+base cached temp\qk_dtb_<pid>.txt (p72 front_pid ~70-80 s once per session). actions: --pe / --at --len / --array --slots / --watch=SECS.
+  _ritual/qk1b_gate.ps1 = Stage 1b gate, self-scoring against the EA Javelin Anticheat log (PASS = clean window AND 0 events).
+  batch-IOCTL in apexdrv deferred: still attaches, and needs a VM-first driver change for no evidence.
+
