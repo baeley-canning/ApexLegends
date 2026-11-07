@@ -55,6 +55,13 @@ typedef NTSTATUS (NTAPI *PFN_ZwCreateThreadEx)(
 // WDK revisions instead of relying on a header accident.
 NTKERNELAPI PPEB NTAPI PsGetProcessPeb(PEPROCESS Process);
 
+// v14: same family - PsGetProcessSectionBaseAddress is documented and exported by
+// ntoskrnl.lib, but no 26100 header declares it either (s1_hdr2: present in the
+// import library, absent from every .h under Include\10.0.26100.0).  A direct
+// declaration is therefore what the link resolves; ApexdrvBase keeps a
+// PEB->ImageBaseAddress fallback for the day a WDK drops the symbol.
+NTKERNELAPI PVOID NTAPI PsGetProcessSectionBaseAddress(PEPROCESS Process);
+
 NTKERNELAPI NTSTATUS NTAPI MmCopyVirtualMemory(
     PEPROCESS        SourceProcess,
     PVOID            SourceAddress,
@@ -360,6 +367,7 @@ static NTSTATUS ApexdrvQueueLoaderApc(PEPROCESS process, ULONG threadId,
 // mid-walk costs one exception, never a bugcheck.
 // ----------------------------------------------------------------------------
 #define APEXDRV_PEB_LDR_OFFSET          0x18
+#define APEXDRV_PEB_IMAGE_BASE_OFFSET   0x10
 #define APEXDRV_LDR_LIST_OFFSET         0x10
 #define APEXDRV_LDR_DLLBASE_OFFSET      0x30
 #define APEXDRV_LDR_BASENAME_OFFSET     0x58
@@ -1530,25 +1538,58 @@ static NTSTATUS ApexdrvInject(PAPEXDRV_INJECT_REQUEST request) {
 
     // v6: an instrumented stub as the entry, when asked for.  v9 reuses the same
     // slot for the map stub, which calls the mapped entry instead of a loader.
+    //
+    // v10: TWO defects fixed here, both measured on h310's dump.
+    //   (a) ZwAllocateVirtualMemory rounds RegionSize IN PLACE to page size, and
+    //       this block then used that same variable as the copy length: 0x60 went
+    //       in, 0x1000 came back, so the write copied 0x1000 bytes.  The stub is
+    //       only 0x96 bytes, so the extra bytes came from whatever the stack held
+    //       above it, straight past StackBase (h310: stub at ...c6e3f1d0,
+    //       src_end ...c6e401d0 == base + 0x1000, first read past the top at
+    //       ...c6e40000 = PAGE_FAULT_IN_NONPAGED_AREA 0x50).  The rounded size now
+    //       lives in its own variable; stubSize stays the truth.
+    //   (b) the stub itself moves to pool.  A stack source is legal, but a length
+    //       mistake then turns into an over-read of the kernel stack instead of an
+    //       over-read of a buffer we control.  NonPagedPoolNx also guarantees the
+    //       bytes are resident while the target copy runs.
     if (request->Flags & APEXDRV_FLAG_STUB_ROUTINE) {
-        UCHAR  stubImage[APEXDRV_STUB_TOTAL_BYTES + APEXDRV_MAP_STUB_TOTAL_BYTES];
-        SIZE_T stubSize;
-        PVOID  stubBuffer = NULL;
+        PVOID  stubBuffer    = NULL;
+        PUCHAR stubImage     = NULL;
+        SIZE_T stubSize;                       // real stub length, never rounded
+        SIZE_T stubAllocSize;                  // rounded by ZwAllocateVirtualMemory
 
         if (manualMap) {
             stubSize = APEXDRV_MAP_STUB_TOTAL_BYTES;
-            ApexdrvStampMapStub(stubImage, request->ResolvedLoadLibrary);
         } else {
             stubSize = APEXDRV_STUB_TOTAL_BYTES;
+        }
+
+        stubImage = (PUCHAR)ExAllocatePoolWithTag(NonPagedPoolNx, stubSize, APEXDRV_TAG);
+        if (stubImage == NULL) {
+            request->MapStatus    = APEXDRV_MAP_STEP_STUB;
+            request->ResultStatus = STATUS_INSUFFICIENT_RESOURCES;
+            ZwClose(processHandle);
+            ObDereferenceObject(process);
+            return STATUS_INSUFFICIENT_RESOURCES;
+        }
+
+        if (manualMap) {
+            ApexdrvStampMapStub(stubImage, request->ResolvedLoadLibrary);
+        } else {
             ApexdrvStampStub(stubImage, loadLibrary,
                              (BOOLEAN)((request->Flags & APEXDRV_FLAG_EX_LOADER) != 0));
         }
-        status = ZwAllocateVirtualMemory(processHandle, &stubBuffer, 0, &stubSize,
+
+        stubAllocSize = stubSize;
+        status = ZwAllocateVirtualMemory(processHandle, &stubBuffer, 0, &stubAllocSize,
                                          MEM_COMMIT | MEM_RESERVE,
                                          PAGE_EXECUTE_READWRITE);
         if (NT_SUCCESS(status)) {
             status = ApexdrvWriteProcessMemory(process, stubBuffer, stubImage, stubSize);
         }
+        // Only the copy inside the target has to outlive this: the APC runs there.
+        ExFreePoolWithTag(stubImage, APEXDRV_TAG);
+
         if (!NT_SUCCESS(status)) {
             if (stubBuffer != NULL) {
                 SIZE_T freeSize = 0;
@@ -1867,8 +1908,277 @@ static NTSTATUS ApexdrvTargetInfo(PAPEXDRV_TARGETINFO_REQUEST request) {
 }
 
 // ----------------------------------------------------------------------------
+// Stage 1 (v14) - the memory-access quartet (M2 section 3): READ8 / READBUF /
+// WRITE / BASE.
+//
+// Shape of every handler: validate the header, zero the out block, one lookup,
+// ONE KeStackAttachProcess held across the data copies, per-item __try around
+// ProbeForRead/ProbeForWrite + RtlCopyMemory, detach and dereference before
+// returning.  Data-phase failures are per-item statuses and the IRP still
+// completes as SUCCESS (an ESP sweep must not abort on the first dead pointer);
+// only header violations fail the IRP.  No allocation, no threads, no state.
+// ----------------------------------------------------------------------------
+static BOOLEAN ApexdrvAddressInRange(ULONG64 address) {
+    return (address >= APEXDRV_MIN_USER_ADDRESS && address <= APEXDRV_MAX_USER_ADDRESS);
+}
+
+static NTSTATUS ApexdrvRead8(PAPEXDRV_READ8_REQUEST request) {
+    KAPC_STATE apcState;
+    PEPROCESS  process = NULL;
+    NTSTATUS   status;
+    ULONG      index;
+
+    if (request->ProcessId == 0 || request->Count == 0 ||
+        request->Count > APEXDRV_MAX_BATCH) {
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    RtlZeroMemory(request->Status, sizeof(request->Status));
+    RtlZeroMemory(request->Value, sizeof(request->Value));
+
+    status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+    if (!NT_SUCCESS(status)) {
+        for (index = 0; index < request->Count; ++index) request->Status[index] = status;
+        return STATUS_SUCCESS;
+    }
+
+    KeStackAttachProcess(process, &apcState);
+    for (index = 0; index < request->Count; ++index) {
+        ULONG64 address = request->Address[index];
+        ULONG64 value = 0;
+
+        if (!ApexdrvAddressInRange(address)) {
+            request->Status[index] = STATUS_INVALID_ADDRESS;
+            continue;
+        }
+        __try {
+            ProbeForRead((PVOID)(ULONG_PTR)address, sizeof(ULONG64), 1);
+            value = *(volatile ULONG64*)(ULONG_PTR)address;
+            request->Status[index] = STATUS_SUCCESS;
+        } __except (EXCEPTION_EXECUTE_HANDLER) {
+            request->Status[index] = GetExceptionCode();
+            value = 0;
+        }
+        request->Value[index] = value;
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+static NTSTATUS ApexdrvReadBuf(PAPEXDRV_READBUF_REQUEST request) {
+    KAPC_STATE apcState;
+    PEPROCESS  process = NULL;
+    NTSTATUS   status;
+    NTSTATUS   copyStatus;
+    ULONG64    address;
+    ULONG      size;
+
+    if (request->ProcessId == 0 || request->Size == 0 ||
+        request->Size > APEXDRV_MAX_BUF) {
+        return STATUS_INVALID_PARAMETER;
+    }
+    address = request->Address;
+    size    = request->Size;
+
+    RtlZeroMemory(request->Data, sizeof(request->Data));
+
+    status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+    if (!NT_SUCCESS(status)) {
+        request->Status = status;
+        return STATUS_SUCCESS;
+    }
+
+    if (!ApexdrvAddressInRange(address)) {
+        request->Status = STATUS_INVALID_ADDRESS;
+        ObDereferenceObject(process);
+        return STATUS_SUCCESS;
+    }
+
+    copyStatus = STATUS_SUCCESS;
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        ProbeForRead((PVOID)(ULONG_PTR)address, size, 1);
+        RtlCopyMemory(request->Data, (PVOID)(ULONG_PTR)address, size);
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        copyStatus = GetExceptionCode();
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    request->Status = copyStatus;
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+static NTSTATUS ApexdrvWrite(PAPEXDRV_WRITE_REQUEST request) {
+    UCHAR      verify[APEXDRV_MAX_BUF];
+    KAPC_STATE apcState;
+    PEPROCESS  process = NULL;
+    NTSTATUS   status;
+    ULONG64    address;
+    ULONG      size;
+
+    if (request->ProcessId == 0 || request->Size == 0 ||
+        request->Size > APEXDRV_MAX_BUF) {
+        return STATUS_INVALID_PARAMETER;
+    }
+    address = request->Address;
+    size    = request->Size;
+
+    status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+    if (!NT_SUCCESS(status)) {
+        request->Status = status;
+        return STATUS_SUCCESS;
+    }
+
+    if (!ApexdrvAddressInRange(address)) {
+        request->Status = STATUS_INVALID_ADDRESS;
+        ObDereferenceObject(process);
+        return STATUS_SUCCESS;
+    }
+
+    status = STATUS_SUCCESS;
+    KeStackAttachProcess(process, &apcState);
+    __try {
+        ProbeForWrite((PVOID)(ULONG_PTR)address, size, 1);
+        RtlCopyMemory((PVOID)(ULONG_PTR)address, request->Data, size);
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        status = GetExceptionCode();
+    }
+    if (NT_SUCCESS(status)) {
+        // M2 item 5: read the range back in the same attach.  A mismatch means the
+        // write did not stick (CoW page, shadow, or a racing writer) - say so here
+        // instead of handing the caller a silent lie.
+        RtlZeroMemory(verify, sizeof(verify));
+        __try {
+            ProbeForRead((PVOID)(ULONG_PTR)address, size, 1);
+            RtlCopyMemory(verify, (PVOID)(ULONG_PTR)address, size);
+        } __except (EXCEPTION_EXECUTE_HANDLER) {
+            status = GetExceptionCode();
+        }
+        if (NT_SUCCESS(status) && RtlCompareMemory(verify, request->Data, size) != (SIZE_T)size) {
+            status = STATUS_UNSUCCESSFUL;
+        }
+    }
+    KeUnstackDetachProcess(&apcState);
+
+    request->Status = status;
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+static NTSTATUS ApexdrvBase(PAPEXDRV_BASE_REQUEST request) {
+    PEPROCESS process = NULL;
+    PPEB      peb;
+    NTSTATUS  status;
+    ULONG64   base = 0;
+
+    request->Status    = STATUS_SUCCESS;
+    request->Reserved2 = 0;
+    request->Base      = 0;
+    if (request->ProcessId == 0) {
+        request->Status = STATUS_INVALID_PARAMETER;
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+    request->Status = status;
+    if (!NT_SUCCESS(status)) return STATUS_SUCCESS;
+
+    // Primary source: the documented accessor.  Never user mode - EnumProcessModules
+    // is one of the calls EAAC refuses.
+    base = (ULONG64)(ULONG_PTR)PsGetProcessSectionBaseAddress(process);
+    if (base != 0) request->Reserved2 = 1;
+
+    // Fallback: the PEB's own ImageBaseAddress.  Same value, one more hop, only
+    // reached when the accessor answered 0 - so which source answered stays visible.
+    if (base == 0) {
+        peb = PsGetProcessPeb(process);
+        if (peb != NULL) {
+            status = ApexdrvReadProcessMemory(
+                process, (PUCHAR)peb + APEXDRV_PEB_IMAGE_BASE_OFFSET, &base, sizeof(base));
+            if (!NT_SUCCESS(status)) {
+                request->Status = status;
+                base = 0;
+            } else if (base != 0) {
+                request->Reserved2 = 2;
+            }
+        }
+    }
+
+    if (base != 0) {
+        request->Status = STATUS_SUCCESS;
+    } else if (NT_SUCCESS(request->Status)) {
+        request->Status = STATUS_NOT_FOUND;
+    }
+    request->Base = base;
+
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
 // IRP dispatch
 // ----------------------------------------------------------------------------
+// v15: KPROCESS.DirectoryTableBase of one process.  EPROCESS+0x28 is the second
+// field of the embedded KPROCESS; it has not moved across the builds this tree
+// supports, and reading it needs no attach and no scan.  The caller uses it as a
+// CR3 for a user-mode page walk, so the value is reported raw (frame | PCID bits).
+static NTSTATUS ApexdrvDtb(PAPEXDRV_DTB_REQUEST request) {
+    PEPROCESS process = NULL;
+    NTSTATUS  status;
+    ULONG     processId = request->ProcessId;
+
+    RtlZeroMemory(request, sizeof(*request));
+    request->ProcessId = processId;
+    request->Status = STATUS_INVALID_PARAMETER;
+
+    if (processId == 0) return STATUS_SUCCESS;
+
+    status = PsLookupProcessByProcessId(ULongToHandle(processId), &process);
+    if (!NT_SUCCESS(status)) {
+        request->Status = status;
+        return STATUS_SUCCESS;
+    }
+
+    __try {
+        request->DirectoryTableBase = *(volatile ULONG64 *)((PUCHAR)process + 0x28);
+        request->Reserved2 = 1;
+        request->Status = STATUS_SUCCESS;
+    } __except (EXCEPTION_EXECUTE_HANDLER) {
+        request->Status = GetExceptionCode();
+        request->DirectoryTableBase = 0;
+        request->Reserved2 = 0;
+    }
+
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+// v16: one physical range read through MmCopyMemory(MM_COPY_MEMORY_PHYSICAL).
+// No MmMapIoSpace and no KeStackAttachProcess: a page the hardware does not back
+// comes back as a status, not as a bugcheck, and nothing is attached.
+static NTSTATUS ApexdrvPhys(PAPEXDRV_PHYS_REQUEST request) {
+    MM_COPY_ADDRESS source;
+    SIZE_T          copied = 0;
+    NTSTATUS        status;
+
+    if (request->Size == 0 || request->Size > 0x1000) {
+        return STATUS_INVALID_PARAMETER;         // header violation: fail the IRP
+    }
+
+    source.PhysicalAddress.QuadPart = (LONGLONG)request->PhysAddr;
+    RtlZeroMemory(request->Data, sizeof(request->Data));
+    request->Reserved2 = 0;
+
+    status = MmCopyMemory(request->Data, source, request->Size,
+                          MM_COPY_MEMORY_PHYSICAL, &copied);
+    request->Status = status;
+    request->Reserved2 = (ULONG)copied;
+    return STATUS_SUCCESS;                        // per-item status, never the IRP
+}
+
 static NTSTATUS ApexdrvCreateClose(PDEVICE_OBJECT deviceObject, PIRP irp) {
     UNREFERENCED_PARAMETER(deviceObject);
 
@@ -1939,6 +2249,77 @@ static NTSTATUS ApexdrvDeviceControl(PDEVICE_OBJECT deviceObject, PIRP irp) {
                 status = ApexdrvTargetInfo(
                     (PAPEXDRV_TARGETINFO_REQUEST)irp->AssociatedIrp.SystemBuffer);
                 information = sizeof(APEXDRV_TARGETINFO_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_READ8:
+            if (inputLength >= sizeof(APEXDRV_READ8_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvRead8(
+                    (PAPEXDRV_READ8_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_READ8_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_READBUF:
+            if (inputLength >= sizeof(APEXDRV_READBUF_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvReadBuf(
+                    (PAPEXDRV_READBUF_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_READBUF_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_WRITE:
+            if (inputLength >= sizeof(APEXDRV_WRITE_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvWrite(
+                    (PAPEXDRV_WRITE_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_WRITE_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_BASE:
+            if (inputLength >= sizeof(APEXDRV_BASE_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvBase(
+                    (PAPEXDRV_BASE_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_BASE_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        // v15: KPROCESS.DirectoryTableBase.  One exact field read at a fixed offset
+        // (EPROCESS+0x28) instead of scanning physical memory for the object, which
+        // is what made discovery build-dependent and crashed the host on 07/11.
+        case IOCTL_APEXDRV_DTB:
+            if (inputLength >= sizeof(APEXDRV_DTB_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvDtb(
+                    (PAPEXDRV_DTB_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_DTB_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        // v16: physical read (MmCopyMemory PHYSICAL).  This is the transport the
+        // user-mode page walk uses: no mapping, no attach.
+        case IOCTL_APEXDRV_PHYS:
+            if (inputLength >= sizeof(APEXDRV_PHYS_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvPhys(
+                    (PAPEXDRV_PHYS_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_PHYS_REQUEST);
             } else {
                 status = STATUS_BUFFER_TOO_SMALL;
             }

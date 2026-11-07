@@ -1,5 +1,15 @@
 # STATE - QwenKernPremium (external, kernel-read, streamproof)
 
+## 07/11 22:03 - **THE ZERO-ATTACH READ PATH WORKS: apexdrv v16 hands over the exact DTB+BASE, `MmCopyMemory(PHYSICAL)` does the reads, our page walk translates** (`_ritual/qk_va_drv1.txt`, `_ritual/qk_drv_up.out`)
+
+- **v16 adds two IOCTLs, neither of which attaches:** `IOCTL_APEXDRV_DTB` (KPROCESS.DirectoryTableBase = EPROCESS+0x28) and `IOCTL_APEXDRV_PHYS` (`MmCopyMemory` with `MM_COPY_MEMORY_PHYSICAL`, 1..0x1000 B). No `KeStackAttachProcess`, no `MmMapIoSpace`, no arming, no dispatch-table surgery.
+- **Verified end to end on explorer.exe (pid 11192):** `driver DTB dtb=0x3AD092000`, `driver BASE base=0x7FF7049D0000`, the walk reached the image and read `MZ`, and the PE header parsed as `machine=0x8664 sections=9 SizeOfImage=0x344000` (3.3 MB - the real size of explorer's image, not a guess). `probe exit=0`. DTB+base cached in `temp\qk_dtb_<pid>.txt`, so later runs skip discovery entirely.
+- **Why gdrv3 is no longer the table transport:** PA `0x3AD092000` (a PML4 frame) fails with **errno 1450** while its neighbours `0x3AD090000/0x3AD091000` read fine - gdrv3 cannot map *some* page-table frames. That is the same wall `h320_va` hit at 03:27 and never explained. `MmCopyMemory` sidesteps it because it never maps anything.
+- **Two loading traps, both fixed and both silent failures before:** (a) the staged copy must happen **after** `sc stop` - a running driver holds its file open, so `Copy-Item` failed silently and v15 stayed loaded while the log printed "staged" (caught by reading back the driver's ABI: `version=15`); (b) **kdu parses `-dse` as DECIMAL**, so restoring 0x16 needs `22`, not `16` (that mistake wrote 0x10 earlier), and a **bare `-dse` writes 0**, so it is never used as the read-back.
+- **State:** `ApexDrv` RUNNING at v16, DSE back at **0x16** (in and out of the run, both logged), driver file staged from the 22:01:01 build. `gdrv3` untouched.
+- **Next:** with Apex up, `python ext\qk_va.py --watch=600` is the Stage 1b gate (1 Hz reads over this transport, no attach) - then Stage 2 continues on the same reader: decode the 44-slot array found earlier (`0xB675E68`), then the entity field offsets.
+
+
 ## 07/11 21:3x - **Host bugcheck during `qk_va`'s window scan: an unguarded physical read hit an MMIO hole. R10 added. Stop-then-fix, not stop-then-guess.**
 
 - **What happened:** the box hard-rebooted at **21:34:38** while `qk_va` was discovering the DTB for explorer.exe. `LastBootUpTime` confirmed a reset, **no minidump was written**, `ApexDrv` came back STOPPED (demand start), `gdrv3` RUNNING, no game.

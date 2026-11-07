@@ -52,6 +52,40 @@
 #define IOCTL_APEXDRV_TARGETINFO \
     ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x803, METHOD_BUFFERED, FILE_ANY_ACCESS))
 
+// Stage 1 (v14) - the memory-access quartet from M2 section 3.  The codes start
+// at 0x804 because the live header already occupies 0x800..0x803 (INJECT,
+// VERSION, PROBE, TARGETINFO); the M2 draft's 0x802..0x805 was written against
+// an earlier numbering, so this file is the source of truth.
+
+// One batch of up to 64 independent 8-byte reads.  See APEXDRV_READ8_REQUEST.
+#define IOCTL_APEXDRV_READ8 \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x804, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
+// One range read, 1..0x1000 bytes.  See APEXDRV_READBUF_REQUEST.
+#define IOCTL_APEXDRV_READBUF \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x805, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
+// One range write with a driver-side read-back.  See APEXDRV_WRITE_REQUEST.
+#define IOCTL_APEXDRV_WRITE \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x806, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
+// Main image base of one process.  See APEXDRV_BASE_REQUEST.
+#define IOCTL_APEXDRV_BASE \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x807, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
+// KPROCESS.DirectoryTableBase of one process (v15).  See APEXDRV_DTB_REQUEST.
+// This is the CR3 a user-mode page walker needs; it is read from EPROCESS+0x28,
+// which has been stable across builds, so no EPROCESS scan is involved.
+#define IOCTL_APEXDRV_DTB \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x808, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
+// Physical read (v16).  MmCopyMemory(MM_COPY_MEMORY_PHYSICAL) - no mapping and
+// no KeStackAttachProcess, so it carries neither gdrv3's inability to map some
+// page-table frames (measured: Errno 1450 on a PML4 page whose neighbours read
+// fine) nor the attach that EAAC appears to notice.  See APEXDRV_PHYS_REQUEST.
+#define IOCTL_APEXDRV_PHYS \
+    ((ULONG)CTL_CODE(APEXDRV_DEVICE_TYPE, 0x809, METHOD_BUFFERED, FILE_ANY_ACCESS))
+
 // Flags for APEXDRV_INJECT_REQUEST::Flags
 #define APEXDRV_FLAG_NONE       0x00000000
 #define APEXDRV_FLAG_APC_ONLY   0x00000001  // queue an APC instead of creating a thread
@@ -131,7 +165,12 @@
 //         step after a clean import pass: 0 = no step refused, 9 + MapUnresolvedName =
 //         an import did not resolve.  (c) RemotePathEchoAfter is path-sized (260, was 64),
 //         so the 1 s echo cannot truncate a long path into a false mismatch.
-#define APEXDRV_VERSION         13
+// 14 = Stage 1: the memory-access quartet (M2 section 3) - READ8/READBUF/WRITE/BASE,
+//     one lookup + one attach per request, per-item statuses, Base() via
+//     PsGetProcessSectionBaseAddress with a PEB fallback.  Additive: codes 0x800..0x803
+//     and every existing struct keep their layout, so a v13 launcher (its guard is
+//     Version() < APEXDRV_VERSION) keeps working against this build unchanged.
+#define APEXDRV_VERSION         16
 
 // Use the instrumented stub as the APC entry instead of LoadLibraryW directly.
 #define APEXDRV_FLAG_STUB_ROUTINE  0x00000004
@@ -280,6 +319,97 @@ typedef struct _APEXDRV_PROBE_REQUEST {
     ULONG64 RemoteAllocation;               // [out] address the allocation landed at
     UCHAR   Bytes[APEXDRV_PROBE_BYTES];     // [out] leading bytes of the target PEB
 } APEXDRV_PROBE_REQUEST, *PAPEXDRV_PROBE_REQUEST;
+
+// ----------------------------------------------------------------------------
+// Stage 1 (v14) - memory-access quartet (M2 section 3).  All METHOD_BUFFERED,
+// FILE_ANY_ACCESS like the rest; request and response share one buffer.
+//
+// Contract for all four:
+//   * one PsLookupProcessByProcessId per request, reference released on every
+//     path; one KeStackAttachProcess held across the data copies;
+//   * header violations (ProcessId == 0, Count 0/ > APEXDRV_MAX_BATCH, Size
+//     0/ > APEXDRV_MAX_BUF) fail the IRP itself with STATUS_INVALID_PARAMETER -
+//     and a failed IRP skips the buffered copy-back, so on that path read
+//     GetLastError (87), not the out block (the h283 lesson);
+//   * data violations never fail the IRP: they land as per-item statuses so one
+//     dead pointer costs one item, not the batch;
+//   * Value/Data are zeroed up front - a failed item reads back as zeros.
+// ----------------------------------------------------------------------------
+#define APEXDRV_MAX_BATCH       64
+#define APEXDRV_MAX_BUF         0x1000
+// Accepted Address / Address[] window (M2 section 3 item 3): below 0x10000 is
+// the NULL/legacy page, above 0x7FFFFFFFFFFF is not user VA.
+#define APEXDRV_MIN_USER_ADDRESS 0x10000ULL
+#define APEXDRV_MAX_USER_ADDRESS 0x7FFFFFFFFFFFULL
+
+// One batch of up to 64 independent 8-byte reads (the ESP pattern: sweep many
+// candidate pointers per frame).  Status[i] is the per-item NTSTATUS: 0 on
+// success, STATUS_INVALID_ADDRESS for an out-of-window pointer, the exception
+// code for a dead page.  Value[i] is zero unless Status[i] == 0.
+typedef struct _APEXDRV_READ8_REQUEST {
+    ULONG   ProcessId;                       // [in]
+    ULONG   Count;                           // [in]  1..APEXDRV_MAX_BATCH
+    ULONG64 Address[APEXDRV_MAX_BATCH];      // [in]
+    LONG    Status[APEXDRV_MAX_BATCH];       // [out] per item, never aggregated
+    ULONG64 Value[APEXDRV_MAX_BATCH];        // [out] zero on failure
+} APEXDRV_READ8_REQUEST, *PAPEXDRV_READ8_REQUEST;
+
+// One range read, 1..0x1000 bytes.  Status = that single item's NTSTATUS.
+// Size > 0x1000 is a header violation (Data is a fixed array), not a clamp.
+typedef struct _APEXDRV_READBUF_REQUEST {
+    ULONG   ProcessId;                       // [in]
+    ULONG   Size;                            // [in]  1..APEXDRV_MAX_BUF
+    ULONG64 Address;                         // [in]
+    LONG    Status;                          // [out]
+    UCHAR   Data[APEXDRV_MAX_BUF];           // [out]
+} APEXDRV_READBUF_REQUEST, *PAPEXDRV_READBUF_REQUEST;
+
+// One range write, 1..0x1000 bytes from Data.  The driver re-reads the range
+// after copying and reports STATUS_UNSUCCESSFUL on mismatch (M2 section 3 item
+// 5), so a caller never has to guess whether the write stuck.
+typedef struct _APEXDRV_WRITE_REQUEST {
+    ULONG   ProcessId;                       // [in]
+    ULONG   Size;                            // [in]  1..APEXDRV_MAX_BUF
+    ULONG64 Address;                         // [in]
+    LONG    Status;                          // [out]
+    UCHAR   Data[APEXDRV_MAX_BUF];           // [in]
+} APEXDRV_WRITE_REQUEST, *PAPEXDRV_WRITE_REQUEST;
+
+// Main image base of ProcessId.  Reserved2 = which source answered:
+// 1 = PsGetProcessSectionBaseAddress (EPROCESS), 2 = PEB->ImageBaseAddress
+// fallback.  Base = 0 and Status != 0 when neither answered.
+typedef struct _APEXDRV_BASE_REQUEST {
+    ULONG   ProcessId;                       // [in]
+    ULONG   Reserved;                        // [in] reserved, 0
+    LONG    Status;                          // [out]
+    ULONG   Reserved2;                       // [out] source, see above
+    ULONG64 Base;                            // [out] main image base, 0 on failure
+} APEXDRV_BASE_REQUEST, *PAPEXDRV_BASE_REQUEST;
+
+// v15: KPROCESS.DirectoryTableBase of one process.  EPROCESS+0x28 is the second
+// field of the embedded KPROCESS and has not moved across the builds we support,
+// so this is an exact read - unlike scanning for the EPROCESS in physical memory,
+// which needs a per-build offset (and rebooted the host once, 07/11 21:34).
+// Reserved2 = 1 means the field was read; 0 means it faulted.
+typedef struct _APEXDRV_DTB_REQUEST {
+    ULONG   ProcessId;                      // [in]
+    ULONG   Reserved;                       // [in] reserved, 0
+    LONG    Status;                         // [out] NTSTATUS of the read
+    ULONG   Reserved2;                      // [out] 1 = value is valid
+    ULONG64 DirectoryTableBase;             // [out] CR3 frame | PCID bits
+} APEXDRV_DTB_REQUEST, *PAPEXDRV_DTB_REQUEST;
+
+// v16: one physical range read, 1..0x1000 bytes.  Implemented with
+// MmCopyMemory(MM_COPY_MEMORY_PHYSICAL): no MmMapIoSpace, no attach, so a page
+// the hardware does not back returns a status instead of bugchecking the box.
+typedef struct _APEXDRV_PHYS_REQUEST {
+    ULONG64 PhysAddr;                        // [in] physical address
+    ULONG   Size;                            // [in] 1..0x1000
+    ULONG   Reserved;                        // [in] reserved, 0
+    LONG    Status;                          // [out] NTSTATUS
+    ULONG   Reserved2;                       // [out] bytes copied
+    UCHAR   Data[0x1000];                    // [out] zeroed on failure
+} APEXDRV_PHYS_REQUEST, *PAPEXDRV_PHYS_REQUEST;
 
 #pragma pack(pop)   // see the packing note above the structs
 

@@ -7,12 +7,14 @@ Evidence for every line is in the file named next to it.
 
 | Thing | Value | Status | Evidence |
 |---|---|---|---|
-| Own driver read path | `\\.\ApexDrv`, ABI v14, `BASE`/`READ8`/`READBUF`/`WRITE` | **PROVEN on own process** | `_ritual/h328_vadbase.out` (P1+P2 PASS) |
-| Own driver vs live game | `BASE`+`READ8`+`READBUF` on pid 24360, 60/60 samples, alive at +60 s | **PROVEN 07/11 20:57** | `_ritual/qk_probe_game_20261107_205717.txt` (VERDICT: PASS) |
-| Game + driver coexistence | 34.9 min alive, apexdrv RUNNING, DSE restored | **PROVEN (one boot)** | `STATE.md` 604–626 (G1) |
-| Third-party transport | gdrv3 `\\.\GIOV3` `0xC3502014` raw **physical** read | PROVEN | `ext/gio.py` |
+| **apexdrv v16 DTB** | `EPROCESS+0x28`, one IOCTL, no attach | **PROVEN 07/11 22:03** | `_ritual/qk_va_drv1.txt` (`dtb=0x3AD092000`) |
+| **apexdrv v16 PHYS read** | `MmCopyMemory(MM_COPY_MEMORY_PHYSICAL)` 1..0x1000 B | **PROVEN 07/11 22:03** | same file: MZ + `SizeOfImage=0x344000` read through the walk |
+| gdrv3 physical read | `\\.\GIOV3` `0xC3502014` (`MmMapIoSpace`) | works for ordinary pages; **fails on some page-table frames** (`1450`) | `temp\_patest.out` |
 | Usermode RPM/WPM/VAlloc into game | refused per-op (87 / 5 / 0xC000000D / 0xC0000022) | PROVEN, closed | PHASE1 §11.1–11.7 |
-| Module base, no RPM | VAD image-section walk + section name | PROVEN on own process | `_ritual/h328_vadbase.out` P1 |
+| apexdrv attach reads (v14) | `KeStackAttachProcess` per IOCTL | works, but the game dies in 14 s–4 min after bursts | STATE 21:1x |
+| apexdrv v14 on the LIVE game | `BASE`+`READ8`+`READBUF`, 60/60 samples, alive at +60 s | **PROVEN 07/11 20:57** | `_ritual/qk_probe_game_20261107_205717.txt` (VERDICT: PASS) |
+| Game + driver coexistence | 34.9 min alive, apexdrv RUNNING, DSE restored | **PROVEN (one boot, 03/11)** | `STATE.md` 604–626 (G1) |
+
 
 ## Offsets (`QwenKernPremium/include/apex_offsets_generated.h`)
 

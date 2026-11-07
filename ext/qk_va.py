@@ -203,26 +203,176 @@ class Ram(object):
 NAME_OFFS = (0x338, 0x450, 0x4C8, 0x5A0, 0x5A8, 0x5B0)
 
 
-def _candidate_dtbs(g, hit, ram):
-    """(field address, DTB) pairs from the EPROCESS header - bounded and safe."""
-    out_ = []
-    for off in NAME_OFFS:
-        at = hit - off + 0x28
-        page = at & ~0xFFF
-        if not ram.page_ok(page):
-            continue
+def _pml4_scan(g, ram, ranges, cap=4096):
+    """Every 4 KiB page in RAM that looks like a page table (>=8 RAM-backed present entries).
+
+    Reads 64 KiB at a time: one pass over 27.7 GB is ~150 s, versus ~8M 4 KiB ioctls.
+    No EPROCESS offset is involved anywhere - a PML4 is recognised by its own shape.
+    """
+    found = []
+    for rlo, rhi in ranges:
+        pa = (rlo + 0xFFF) & ~0xFFF
+        while pa + 0x10000 <= rhi and len(found) < cap:
+            try:
+                blk = g.read_phys(pa, 0x10000)
+            except OSError:
+                pa += 0x10000
+                continue
+            for off in range(0, 0x10000, 0x1000):
+                n = 0
+                for i in range(0, 0x1000, 8):
+                    e = struct.unpack_from("<Q", blk, off + i)[0]
+                    if (e & 1) and not (e & 0x80):
+                        f = e & 0xFFFFFFFFFF000
+                        if f and ram.page_ok(f):
+                            n += 1
+                            if n >= 8:
+                                break
+                if n >= 8:
+                    found.append(pa + off)
+            pa += 0x10000
+        if len(found) >= cap:
+            break
+    return found
+
+
+def _image_size_of(rd, va):
+    """SizeOfImage of the PE at va, or 0."""
+    mz = rd.read(va, 2)
+    if mz != b"MZ":
+        return 0
+    lf = rd.read(va + 0x3C, 4)
+    if not lf:
+        return 0
+    elf = struct.unpack("<I", lf)[0]
+    if not (0x40 <= elf <= 0x1000):
+        return 0
+    hdr = rd.read(va + elf, 0x60)
+    if not hdr or hdr[:4] != b"PE\x00\x00":
+        return 0
+    return struct.unpack_from("<I", hdr, 0x50)[0]
+
+
+def discover_pml4(g, ram, ranges, want_size=0, cap=4096, max_walk=400):
+    """Find the CR3 whose image matches want_size (0 = take the largest image).
+
+    This is the patch-proof path: a page table is found by shape, its process by the
+    image it maps, and nothing depends on an EPROCESS field offset.
+    """
+    out("  discovering DTB by page-table shape (%d GB pass, ~2-3 min) ..."
+        % (sum(b - a for a, b in ranges) // 1073741824))
+    cands = _pml4_scan(g, ram, ranges, cap)
+    out("    page-table-shaped frames: %d" % len(cands))
+    best = None
+    walks = 0
+    t0 = time.perf_counter()
+    for dtb in cands[:max_walk]:
+        if time.perf_counter() - t0 > 240.0:
+            out("    (walk cap: 240 s)")
+            break
         try:
-            b = g.read_phys(at & ~0x7, 8)
+            r = dl.find_mz(g, dtb)
         except OSError:
             continue
-        dtb = struct.unpack("<Q", b)[0]
-        if not dtb or dtb >= g.ram_top:
+        if not r:
             continue
+        walks += 1
+        va = r[0]
+        rd = Reader(g, dtb)
+        size = _image_size_of(rd, va)
+        if walks <= 6 or (want_size and size == want_size):
+            out("    dtb=%#x -> image=%#x size=%#x (%.1f MB)"
+                % (dtb, va, size, size / 1048576.0))
+        if want_size and size == want_size:
+            out("    EXACT match on SizeOfImage=%#x after %d walks" % (size, walks))
+            return {"dtb": dtb, "base": va, "size": size}
+        if size > 0 and (best is None or size > best["size"]):
+            best = {"dtb": dtb, "base": va, "size": size}
+    out("    walks that reached a PE: %d" % walks)
+    if best:
+        out("    best image size=%#x (%.1f MB)" % (best["size"], best["size"] / 1048576.0))
+    return best
+
+
+def _hits_cache(pid):
+    return os.path.join(TMP, "qk_hits_%d.txt" % pid)
+
+
+def _load_hits(pid, max_age=1800):
+    """Reuse a recent name sweep: the 80 s scan is the expensive part of iteration."""
+    p = _hits_cache(pid)
+    if not os.path.exists(p):
+        return None
+    try:
+        if time.time() - os.path.getmtime(p) > max_age:
+            return None
+        with open(p, "r", encoding="utf-8") as f:
+            return [int(x, 16) for x in f.read().split() if x]
+    except (OSError, ValueError):
+        return None
+
+
+def _save_hits(pid, hits):
+    try:
+        with open(_hits_cache(pid), "w", encoding="utf-8") as f:
+            f.write("\n".join("%X" % h for h in hits))
+    except OSError:
+        pass
+
+
+def _candidate_dtbs(g, hit, ram, lo=0x28, hi=0x800, verbose=False):
+    """Walk backwards from a name hit and keep EPROCESS-shaped bases.
+
+    Only two invariants are used, and both are stable across builds:
+      * byte at base+0x00  == 3          (KPROCESS dispatcher type, ProcessObject)
+      * qword at base+0x28 is a frame    (KPROCESS.DirectoryTableBase)
+    ImageFileName has been at 0x338/0x450/0x4C8/0x5A0/0x5A8/0x5B0 across builds,
+    so scanning d instead of trusting a constant finds the object either way.
+    Reads stay inside the pages around the hit - no arbitrary frame reads.
+    """
+    pages = {}
+    found = []
+    seen = set()
+    span_lo = (hit - hi - 0x1000) & ~0xFFF
+    span_hi = (hit + 8) & ~0xFFF
+    for pa in range(span_lo, span_hi + 0x1000, 0x1000):
+        if not ram.page_ok(pa):
+            continue
+        try:
+            pages[pa] = g.read_phys(pa, 0x1000)
+        except OSError:
+            continue
+
+    def at(pa, n):
+        page = pa & ~0xFFF
+        buf = pages.get(page)
+        if buf is None:
+            return None
+        off = pa & 0xFFF
+        if off + n > 0x1000:
+            return None
+        return buf[off:off + n]
+
+    for d in range(lo, hi, 8):
+        base = hit - d
+        if base < 0x10000:
+            continue
+        db = at(base + 0x28, 8)
+        if db is None:
+            continue
+        dtb = struct.unpack("<Q", db)[0]
         frame = dtb & 0xFFFFFFFFFF000
-        if not ram.page_ok(frame):
+        if not dtb or dtb >= g.ram_top or not ram.page_ok(frame):
             continue
-        out_.append((at, frame))
-    return out_
+        if frame in seen:
+            continue
+        seen.add(frame)
+        found.append((base + 0x28, frame, d))
+        if verbose and len(found) <= 8:
+            tb = at(base, 1)
+            out("        d=%#05x base=%#x typebyte=%s dtb=%#x  <-- plausible frame"
+                % (d, base, ("%#x" % tb[0]) if tb else "?", dtb))
+    return found
 
 
 def discover(g, pid):
@@ -249,36 +399,52 @@ def discover(g, pid):
         # the box (21:34).  Every PA read in the walk then hits the real map.
         g.is_ram = ram.page_ok
 
-        hits, skipped, chunks, rescued = dl.name_hits(g, ranges)
-        out("    name hits=%d chunks=%d skipped=%d rescued=%d"
-            % (len(hits), chunks, skipped, rescued))
+        hits = None if flag("refresh-hits") else _load_hits(pid)
+        if hits:
+            out("    hits cache: %d entries (sweep skipped; --refresh-hits to redo)"
+                % len(hits))
+        else:
+            hits, skipped, chunks, rescued = dl.name_hits(g, ranges)
+            out("    name hits=%d chunks=%d skipped=%d rescued=%d"
+                % (len(hits), chunks, skipped, rescued))
+            if hits:
+                _save_hits(pid, hits)
         if not hits:
             out("  no ImageFileName hits - wrong game/build, or nothing running")
             return None
 
         tried = 0
         t0 = time.perf_counter()
-        for hit in hits[:12]:
+        for idx, hit in enumerate(hits[:12]):
             if time.perf_counter() - t0 > 120.0:
                 out("    (candidate scan capped at 120 s)")
                 break
-            cands = _candidate_dtbs(g, hit, ram)
+            if idx < 6:
+                out("    hit[%d]=%#x" % (idx, hit))
+            cands = _candidate_dtbs(g, hit, ram, verbose=(idx < 6))
             if cands:
                 out("    hit=%#x: %d DTB candidate(s) from the EPROCESS header"
                     % (hit, len(cands)))
-            for at, dtb in cands[:6]:
+            for at, dtb, d in cands[:6]:
                 tried += 1
                 try:
                     r = dl.find_mz(g, dtb)
                 except OSError:
                     r = None
-                out("      try dtb@%#x=%#x -> %s"
-                    % (at, dtb, ("MZ@%#x" % r[0]) if r else "no PE"))
+                out("      try dtb@%#x=%#x (name_off=%#x) -> %s"
+                    % (at, dtb, d, ("MZ@%#x" % r[0]) if r else "no PE"))
                 if not r:
                     continue
-                out("    (ImageFileName offset for this build = %#x)" % (hit - (at - 0x28)))
+                out("    (ImageFileName offset for this build = %#x)" % d)
                 return {"dtb": dtb, "base": r[0]}
         out("  %d DTBs tried, none walked to an MZ image" % tried)
+
+        # No EPROCESS assumption at all: find the page table by its own shape and
+        # identify the process by the image it maps.  Patch-proof by construction.
+        want = arg("want-size", 0, lambda s: int(s, 0))
+        best = discover_pml4(g, ram, ranges, want)
+        if best:
+            return best
     except Exception as e:                      # noqa: BLE001
         out("  discovery fault: %s: %s" % (type(e).__name__, e))
     finally:
@@ -286,8 +452,106 @@ def discover(g, pid):
     return None
 
 
+# apexdrv v15: exact DTB and image base, one IOCTL each.  0x8A702020 = CTL_CODE(0x8A70,0x808),
+# 0x8A70201C = CTL_CODE(0x8A70,0x807).  Both structs are {pid,res,status,src/base/dtb} = 24 B.
+APEXDRV_PATH = r"\\.\ApexDrv"
+IOCTL_DRV_DTB = 0x8A702020
+IOCTL_DRV_BASE = 0x8A70201C
+
+
+IOCTL_DRV_PHYS = 0x8A702024   # CTL_CODE(0x8A70, 0x809)
+
+_k32 = None
+_drv = None
+
+
+def _drv_handle():
+    """One cached handle: the name sweep issues ~500k reads, so no CreateFile per call."""
+    global _k32, _drv
+    if _drv is not None:
+        return _drv
+    import ctypes
+    from ctypes import wintypes
+    if _k32 is None:
+        _k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        _k32.CreateFileW.restype = ctypes.c_void_p
+        _k32.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD,
+                                      ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD,
+                                      ctypes.c_void_p]
+    h = _k32.CreateFileW(APEXDRV_PATH, 0xC0000000, 0, None, 3, 0, None)
+    if not h or h == ctypes.c_void_p(-1).value:
+        return None
+    _drv = h
+    return _drv
+
+
+def drv_phys(pa, n):
+    """Read n bytes at physical pa through apexdrv (MmCopyMemory PHYSICAL).
+
+    Drop-in replacement for gio.read_phys: same (pa, size) contract, OSError on
+    failure.  No MmMapIoSpace and no attach, so an unbacked page is a status, not
+    a bugcheck - and gdrv3's 1450 on some page-table frames does not apply.
+    """
+    import ctypes
+    from ctypes import wintypes
+    if n < 1 or n > 0x1000:
+        raise OSError(22, "drv_phys size %d" % n)
+    h = _drv_handle()
+    if not h:
+        raise OSError(6, "no ApexDrv handle")
+    size = 24 + 0x1000
+    buf = ctypes.create_string_buffer(size)
+    struct.pack_into("<QII", buf, 0, pa, n, 0)
+    ret = wintypes.DWORD(0)
+    ok = _k32.DeviceIoControl(ctypes.c_void_p(h), wintypes.DWORD(IOCTL_DRV_PHYS), buf,
+                               wintypes.DWORD(size), buf, wintypes.DWORD(size),
+                               ctypes.byref(ret), None)
+    if not ok:
+        raise OSError(ctypes.get_last_error(), "drv_phys %#x+%#x ioctl failed" % (pa, n))
+    status, copied = struct.unpack_from("<iI", buf, 16)
+    if status != 0:
+        raise OSError(status & 0xFFFFFFFF, "drv_phys %#x+%#x status %#x" % (pa, n, status))
+    return bytes(buf.raw[24:24 + n])
+
+
+def _drv_call24(code, payload):
+    """A 24-byte request/response IOCTL (DTB / BASE) on the cached handle."""
+    import ctypes
+    from ctypes import wintypes
+    h = _drv_handle()
+    if not h:
+        return None
+    buf = ctypes.create_string_buffer(24)
+    ctypes.memmove(buf, payload, 24)
+    ret = wintypes.DWORD(0)
+    ok = _k32.DeviceIoControl(ctypes.c_void_p(h), wintypes.DWORD(code), buf,
+                               wintypes.DWORD(24), buf, wintypes.DWORD(24),
+                               ctypes.byref(ret), None)
+    return buf.raw if ok else None
+
+
+def map_from_driver(pid):
+    """(dtb, base) straight from apexdrv - exact, no scan, no page-table guessing."""
+    empty = struct.pack("<IIiIQ", pid, 0, 0, 0, 0)
+    d = _drv_call24(IOCTL_DRV_DTB, empty)
+    if not d:
+        out("  driver: no handle (ApexDrv not loaded?)")
+        return None
+    status, valid, dtb = struct.unpack_from("<iIQ", d, 8)
+    out("  driver DTB: status=%#x valid=%d dtb=%#x" % (status & 0xFFFFFFFF, valid, dtb))
+    if not valid or not dtb:
+        return None
+    b = _drv_call24(IOCTL_DRV_BASE, empty)
+    base = 0
+    if b:
+        bstatus, bsrc, v = struct.unpack_from("<iIQ", b, 8)
+        out("  driver BASE: status=%#x source=%d base=%#x" % (bstatus & 0xFFFFFFFF, bsrc, v))
+        base = v
+    return {"dtb": dtb, "base": base}
+
+
 def get_map(g, pid):
-    """cached (dtb, base) if it still walks to an MZ, else discover + cache."""
+    """cached (dtb, base) if it still walks to an MZ, else ask the driver, else discover."""
     c = load_cached(pid)
     if c:
         try:
@@ -298,7 +562,31 @@ def get_map(g, pid):
         if mz == b"MZ":
             out("  dtb cache hit: dtb=0x%X base=0x%X" % (c["dtb"], c["base"]))
             return c
-        out("  dtb cache stale (no MZ at cached base) - re-discovering")
+        out("  dtb cache stale (no MZ at cached base) - re-resolving")
+
+    # The driver answers in microseconds and cannot be wrong about its own process.
+    try:
+        m = None if flag("no-driver") else map_from_driver(pid)
+    except Exception as e:                      # noqa: BLE001
+        out("  driver path fault: %s: %s" % (type(e).__name__, e))
+        m = None
+    if m and m["base"]:
+        # Switch the transport BEFORE walking: the driver's MmCopyMemory PHYSICAL
+        # has the same (pa,size) contract as gio.read_phys, but it can read pages
+        # gdrv3 fails on (Errno 1450 on a PML4 frame) and never attaches.
+        try:
+            g.read_phys = drv_phys
+            rd = Reader(g, m["dtb"])
+            ok = (rd.read(m["base"], 2) == b"MZ")
+        except OSError as e:
+            out("  driver transport walk failed: %s" % e)
+            ok = False
+        if ok:
+            save_cache(pid, m["dtb"], m["base"])
+            out("  driver map verified: MZ at base via MmCopyMemory; cache written")
+            return m
+        out("  driver map did not verify (no MZ at base) - falling back")
+
     d = discover(g, pid)
     if d:
         save_cache(pid, d["dtb"], d["base"])

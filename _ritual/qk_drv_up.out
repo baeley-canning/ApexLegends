@@ -1,0 +1,24 @@
+22:02:37.957 ===== qk drv up (apexdrv v15 + one DSE window) =====
+22:02:37.970 build file: 20480 bytes, 11/07/2026 22:01:01
+22:02:43.031 pre DSE=0x16 (via prv 20)
+22:02:48.102 write DSE 0: [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 20 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFAE0350000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Dell DBUtil 2.5 driver", Name "DBUtilDrv2" [!] Vulnerable driver is already loaded [+] Driver device "DBUtil_2_5" has been opened successfully [+] Executing post-open callback for given provider [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF800180D2004) value: 0, new value to be written: 0 [~] Warning, current value is identical to what you want to write [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Return value: 1. Bye-bye!
+22:02:53.660 DSE after write=0x0
+22:02:53.707 sc stop: SERVICE_NAME: ApexDrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+22:02:54.725 staged -> C:\WINDOWS\System32\drivers\apexdrv.sys (20480 bytes, 11/07/2026 22:01:01)
+22:02:54.735 sc start: SERVICE_NAME: ApexDrv TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0 PID : 0 FLAGS :
+22:02:55.447 driver running=True
+22:02:55.478   ver| handle=0x164
+22:02:55.480   ver| VERSION ok=1 err=0 info=8 version=16
+22:02:55.480   ver| PHYS    ok=1 err=0 info=4120 status=0x0 copied=16 data=4d5a90000300000004000000ffff0000
+22:03:00.541 restore DSE 0x16 as decimal 22: [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 20 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFAE0350000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Dell DBUtil 2.5 driver", Name "DBUtilDrv2" [!] Vulnerable driver is already loaded [+] Driver device "DBUtil_2_5" has been opened successfully [+] Executing post-open callback for given provider [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF800180D2004) value: 0, new value to be written: 16 [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Return value: 1. Bye-bye!
+22:03:00.549 probe: explorer pid=11192 -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\qk_va_drv1.txt
+  ===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+  out=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\qk_va_drv1.txt
+  target pid=11192
+    driver DTB: status=0x0 valid=1 dtb=0x3ad092000
+    driver BASE: status=0x0 source=1 base=0x7ff7049d0000
+    driver map verified: MZ at base via MmCopyMemory; cache written
+    base=0x7ff7049d0000 MZ=b'MZ'
+    PE machine=0x8664 sections=9 stamp=3202867519 SizeOfImage=0x344000 (3.3 MB)
+22:03:00.607 probe exit=0
+22:03:00.607 RESULT: driver=True dse_in=0x16 dse_out=0x16 probe_rc=0
