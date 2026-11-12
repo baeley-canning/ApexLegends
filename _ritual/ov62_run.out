@@ -1,0 +1,46 @@
+ov62 - entry-stub inject - 2026-11-07 12:57:41
+target  : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+elevated: True
+game     : none running
+attempt 1/3
+created SUSPENDED pid=25384 hproc=2680 hthread=2676
+alloc    : 0x1E84AF50000 (160 B unicode path)
+write    : ok (160 B)
+k32      : 0x7FF849170000 LoadLibraryW=0x7FF8491AF6C0
+image    : base=0x7FF75B780000 entryRva=0xDFB7000 -> entry=0x7FF769737000 sizeOfImage=0xDFB8000
+orig12   : 90 41 FF 25 62 02 00 00 00 00 00 00
+stub     : 0x1E84AF50100 (71 B, LoadLibraryW=0x7FF8491AF6C0 orig at 0x1E84AF50180)
+entry    : readback=48 B8 00 01 F5 4A E8 01 00 00 FF E0 (oldProt=0x20)
+entry    : verified patched
+resume   : previous suspend count=1
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+attempt 2/3
+created SUSPENDED pid=25444 hproc=2632 hthread=2704
+alloc    : 0x2AB2AD70000 (160 B unicode path)
+write    : ok (160 B)
+k32      : 0x7FF849170000 LoadLibraryW=0x7FF8491AF6C0
+image    : base=0x7FF75B780000 entryRva=0xDFB7000 -> entry=0x7FF769737000 sizeOfImage=0xDFB8000
+orig12   : 90 41 FF 25 62 02 00 00 00 00 00 00
+stub     : 0x2AB2AD70100 (71 B, LoadLibraryW=0x7FF8491AF6C0 orig at 0x2AB2AD70180)
+entry    : readback=48 B8 00 01 D7 2A AB 02 00 00 FF E0 (oldProt=0x20)
+entry    : verified patched
+resume   : previous suspend count=1
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+attempt 3/3
+created SUSPENDED pid=22872 hproc=2524 hthread=2520
+alloc    : 0x229D42D0000 (160 B unicode path)
+write    : ok (160 B)
+k32      : 0x7FF849170000 LoadLibraryW=0x7FF8491AF6C0
+image    : base=0x7FF75B780000 entryRva=0xDFB7000 -> entry=0x7FF769737000 sizeOfImage=0xDFB8000
+orig12   : 90 41 FF 25 62 02 00 00 00 00 00 00
+stub     : 0x229D42D0100 (71 B, LoadLibraryW=0x7FF8491AF6C0 orig at 0x229D42D0180)
+entry    : readback=48 B8 00 01 2D D4 29 02 00 00 FF E0 (oldProt=0x20)
+entry    : verified patched
+resume   : previous suspend count=1
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+RESULT: FAIL process-died exit=0x000186AA
+ov62 DONE FAIL process-died exit=0x000186AA

@@ -1,0 +1,25 @@
+﻿10: #   3. MapStatus no longer sticks at the IMPORTS step after a clean pass: step=9 + unresolved=
+11: #      means exactly "an import did not resolve"; step=0 means no step refused.
+18: # (apxprobe.dll into notepad) is what makes the plumbing fixes measurable on their own.
+29: # an ALL-ZERO out block on a failed status (step=0 modules=0/0 resultStatus=0), so the step codes
+48: # file on `EndOfFile < 0x1000` and apxprobe.dll is 2048 bytes. The header validator below already
+59: # The payload is apxprobe.dll ON PURPOSE: 2 sections, 0x3000 image, NO relocations, NO imports,
+202: W 'STEP=restore'
+238: $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apxprobe.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
+240: $wantPath  = 'C:\Users\Public\apxprobe.dll'    # the control payload: no relocs/imports/TLS
+253: if (-not (Fetch 'apxprobe.dll' $dll 1500)) { $missing += 'dll' }
+259: Copy-Item -LiteralPath $dll -Destination "$env:SystemDrive\Users\Public\apxprobe.dll" -Force -EA 0
+267: W 'STEP=dse-read'
+296: W 'STEP=dse'
+321: W 'STEP=target'
+339: W 'STEP=probe-kernel'
+348: W 'STEP=release'
+353: W 'STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)'
+356: W 'STEP=inject-kernel'
+360: $rcI = RunExe $exe @('--inject', '--method=kernel', '--pid', "$tp", '--driver', $sys, '--dll', $wantPath, '--manual-map', '--no-sticky') 180000 32
+362: W 'STEP=slice'
+385: # itself failed (step 1..9) or when step=9 names an unresolved import.
+411: # the map: line carries the whole map verdict (v10 prints step=, not status=)
+413: if ($line -match 'step=(\d+)') { $mapStatus = [int]$matches[1] }
+425: W ('map: base=0x' + $mapBase.ToString('X') + ' step=' + $mapStatus + ' resultStatus=' + $mapNt + ' entryResult=0x' + $mapResult.ToString('X') + ' entryFlag=0x' + $mapFlag.ToString('X') + ' relocs=' + $mapRelocs + ' imports=' + $mapImports + ' tls=' + $mapTls + ' unresolved=[' + $mapUnresolved + ']')
+531: W ('RESULT: ' + $verdict + ' - variable: v13 verdict plumbing (resultStatus printed on delivery, entryFlag DONE magic separates returned-FALSE from never-returned, MapStatus reset after clean imports, path-sized echo_after). The driver maps ' + $wantPath + ' itself (kernel ZwCreateFile/ZwReadFile, header check, pool image, DIRECT64 relocation pass, one write) and the 64-byte map stub calls DllMain(base,1,NULL), storing RAX then the 0x4871 DONE flag; ex= and lastError= are informational only. Control payload = apxprobe.dll (no relocs, no imports, no TLS) into ' + $tname + ' (winner prv ' + $winner + '); this says nothing about apexcheat.dll, which brings imports, TLS and Guard CF')

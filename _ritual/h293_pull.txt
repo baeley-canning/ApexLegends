@@ -1,0 +1,7 @@
+15:46:07.463 === h293 pull: MEMORY.DMP -> module owning fffff80219033bc9 ===
+15:46:07.509 pre vm: VMState=running
+15:46:08.034 pre-memdmp rc=
+15:46:08.036   pre-memdmp | MEM 391099508 2026-11-06 15:12:20
+15:46:08.038 guest MEMORY.DMP bytes=0
+15:46:08.039 RESULT: FAIL - guest MEMORY.DMP absent or too small to hold a kernel dump (variable: evidence source)
+15:46:08.039 VERDICT: re-check h292 before pulling

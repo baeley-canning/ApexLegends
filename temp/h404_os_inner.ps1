@@ -1,0 +1,1 @@
+& 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe' 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h404_os_obj.py' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h404_os_console.txt'; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h404_os_rc.txt'

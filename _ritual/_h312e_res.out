@@ -1,0 +1,34 @@
+﻿now=20:23:44
+--- driverquery (zapex/apex) ---
+DBUtilDrv2 state=Running path=C:\WINDOWS\system32\drivers\DBUtilDrv2.sys
+--- sc query ---
+--- kdu out tail ---
+20:09:19.288   | [SC] StartService FAILED 1450:
+20:09:19.288   | Insufficient system resources exist to complete the requested service.
+20:09:19.302   prv 3 no: [SC] StartService FAILED 1450: Insufficient system resources exist to complete the requested service.
+20:09:19.303 $ sc.exe delete zapexdrv
+20:09:19.315   exit=0
+20:09:19.315   | [SC] DeleteService SUCCESS
+20:09:19.316 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+20:09:19.329   exit=0
+20:09:19.329   | [SC] CreateService SUCCESS
+20:09:19.329 RESULT: FAIL no provider landed DSE=0
+20:09:19.329 VERDICT: FAIL - DSE unchanged at 0x0, driver never started
+20:09:19.331 STEP=restore
+20:09:19.331 $ sc.exe stop zapexdrv
+20:09:19.418   exit=1062
+20:09:19.418   | [SC] ControlService FAILED 1062:
+20:09:19.418   | The service has not been started.
+20:09:19.419 $ sc.exe delete zapexdrv
+20:09:19.434   exit=0
+20:09:19.435   | [SC] DeleteService SUCCESS
+20:09:19.435 $ sc.exe delete apexdrv
+20:09:19.448   exit=1060
+20:09:19.448   | [SC] OpenService FAILED 1060:
+20:09:19.448   | The specified service does not exist as an installed service.
+20:09:19.461 dse_verify=SKIP no provider / no dse_pre (DSE untouched this run)
+20:09:19.481 restore: svc=[[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.] notepad=0
+--- svc out ---
+now=20:10:34
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060: |  | The specified service does not exist as an installed service. | 
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060: |  | The specified service does not exist as an installed service. | 

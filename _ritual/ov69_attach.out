@@ -1,0 +1,10 @@
+ov69 - menu on screen in the live game - 2026-11-07 15:42:45
+elevated : True
+target   : pid=3920 title='Apex Legends' hwnd=6097486
+payload  : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (380928 B, 11/07/2026 15:33:32)
+handle   : OpenProcess(ALL) ok hproc=2788
+alloc    : PAGE_READWRITE err=5
+alloc    : PAGE_EXECUTE_READWRITE err=87
+
+RESULT: FAIL alloc rw=5 rwx=87
+ov69 DONE FAIL alloc rw=5 rwx=87

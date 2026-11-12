@@ -1,0 +1,27 @@
+15:02:52.585 === h286 vmdiag (read-only) ===
+15:02:52.628   Snapshot folder:             C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots
+15:02:52.629   Location: "C:\Users\New User\VirtualBox VMs\Win11-Test2\Snapshots\{b23519c8-1506-43a1-8ff2-442f97cd0641}.vdi"
+15:02:52.629   Location: "C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso"
+15:02:52.630   * Snapshots:
+15:02:52.663   name="Win11-Test2"
+15:02:52.663   SnapFldr="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Snapshots"
+15:02:52.664   VMState="running"
+15:02:52.665   VMStateChangeTime="2026-11-06T01:49:45.001000000"
+15:02:52.665   "SATA-0-0"="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Snapshots\\{b23519c8-1506-43a1-8ff2-442f97cd0641}.vdi"
+15:02:52.666   "SATA-3-0"="C:\\Program Files\\Oracle\\VirtualBox\\VBoxGuestAdditions.iso"
+15:02:52.666   SessionName="headless"
+15:02:52.666   rec_screen_dest_filename="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Win11-Test2-screen0.webm"
+15:02:52.667   SnapshotName="VRDP-ready"
+15:02:52.668   CurrentSnapshotName="h286_pre_1106"
+15:02:52.668   GuestAdditionsRunLevel=0
+15:02:52.669   GuestAdditionsFacility_VirtualBox Base Driver=0,1793928014758
+15:02:52.669   GuestAdditionsFacility_VirtualBox System Service=0,1793928014758
+15:02:52.670   GuestAdditionsFacility_Seamless Mode=0,1793928014758
+15:02:52.670   GuestAdditionsFacility_Graphics Mode=0,1793928014758
+15:02:52.728 screenshot ex: Cannot convert value "bytes" to type "System.Int64". Error: "Input string was not in a correct format."
+15:02:52.731 --- VBox.log tail (GA/session/error lines) ---
+15:02:52.746   00:05:49.123951 GIM: HyperV: Guest OS reported ID 0x1040a0000271b
+15:02:52.747   00:05:50.819124 GIM: HyperV: Guest OS reported ID 0x1040a0000271b
+15:02:52.748   00:05:50.819207 GIM: HyperV: Queried boot zeroed guest memory as 3 ranges
+15:02:52.748   00:47:14.687236 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78
+15:02:52.749 VERDICT: diagnostics only

@@ -1,0 +1,11 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_watch_20261107_212212.txt
+target pid=35976
+  discovering DTB for pid 35976 (one-time; pid scan, ~70-80 s) ...
+    ram_top=34359738368 usable-window=0..0
+    | PID RAMMAP map=5 bad=25 ranges=5 window=-..-
+    | PID scan: 45 occurrences fault=2428 3.9 s
+    |   pid@0x1437a0448 base=0x1437a0278 type=3 name=b'\x05\x01\x1e\x9b\xdf\x01\x00\x00\x90+c\xe7\xdf\x01' dtb=0x0
+  discovery returned None (no EPROCESS/DTB accepted; see | lines above)
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

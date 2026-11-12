@@ -1,0 +1,5 @@
+===== qk_probe v1 (PLAN stage 1: driver -> game read bridge, read-only) =====
+host=DESKTOP-PPHFJBQ probe_pid=32776 self=1 secs=5 hz=1 out=_ritual\qk_probe_self_20261107_2055.txt
+driver: VERSION ioctl FAIL err=122
+RESULT: abi-unknown
+VERDICT: PARTIAL - variable = driver-backed BASE+READBUF on the game; game half SKIPPED

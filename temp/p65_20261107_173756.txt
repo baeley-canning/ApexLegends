@@ -1,0 +1,17 @@
+# p64_pairs 2026-11-07 17:37:56 band=full win=0x100 min=3
+SEED 4 clusters from p64_seed15.txt
+CUES  880Hz short = countdown before GO (nades already in hand)
+      1400Hz x3   = GO, throw frag 1 at your feet
+      500Hz x2    = THROW the next frag NOW (frag 1 armour, frag 2 health)
+      after frag 2 you go down: hold still, do NOT self-revive
+      no beep     = stand still, do not throw
+READY wait=45s (drink up so armour is FULL, 2 nades, cues = low double beeps)
+SEED100 0 of 18 members near 100.0f  <- STALE seed or not full health; re-run without --seed
+STABLE 4 of 4
+NADE NOW 12  <- one frag at your feet (countdown, then GO)
+NADE NOW 11  <- one frag at your feet (countdown, then GO)
+NADE NOW 10  <- one frag at your feet (countdown, then GO)
+NADE NOW 9  <- one frag at your feet (countdown, then GO)
+NADE NOW 8  <- one frag at your feet (countdown, then GO)
+NADE NOW 7  <- one frag at your feet (countdown, then GO)
+NADE NOW 6  <- one frag at your feet (countdown, then GO)

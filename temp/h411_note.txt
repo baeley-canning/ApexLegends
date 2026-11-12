@@ -1,0 +1,3 @@
+Process A/B now reached VM reads correctly: MZ returns live. Next probe uses
+actual live module list pointer with per-entry HP/team checks. Tests moved off
+page-table guessing to PROCESS_VM_READ. No new driver needs to be loaded.

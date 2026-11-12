@@ -1,0 +1,6 @@
+p74_matrix offline view-matrix canary scan  2026-11-06 20:41:42
+offline + read-only; corpora per _ritual\p73_assets.out (usable=4)
+
+SELFTEST candidates=2 (expect 2) tierA=1 tierB=1 addrs=['0x10540', '0x10a40']
+SELFTEST PASS
+RESULT: candidates=0 (selftest-only run, no corpus scanned)

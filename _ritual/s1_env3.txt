@@ -1,0 +1,65 @@
+GAME r5apex=1 EAAC=1 host=DESKTOP-PPHFJBQ
+--- cur files ---
+--- payload cur hash ---
+cur.ps1 sha16=F26C36EC2AA26EC5
+h286_cur.ps1 sha16=9C269166FED22554
+cur_h316_live.ps1 sha16=F094E20464319F09
+--- host game procs ---
+EAAntiCheat.GameService pid=28196
+r5apex_dx12 pid=30736
+cur_h310_live.ps1 35318
+cur_h312_live.ps1 38038
+cur_h314_live.ps1 39039
+cur_h315_live.ps1 38970
+cur_h316_live.ps1 40834
+g316_cur.ps1 4003
+g316_sweep.ps1 3124
+guest_recon.ps1 2692
+h320_fire_kprobe.out 4077
+h320_fire_kprobe.ps1 5733
+h320_pre.out 726
+h320_va.err 4704
+h320_va.ps1 1909
+h320_va.std 0
+h320_va1.txt 266
+h320_va10.txt 431
+h320_va11.txt 490
+h320_va12.txt 593
+h320_va13.txt 533
+h320_va2.txt 117
+h320_va3.txt 178
+h320_va4.txt 61
+h320_va9.txt 117
+h320_va_launch.trace 1525
+h321_fire_kprobe.out 1537
+h321_fire_kprobe.ps1 6711
+h321_pre.out 603
+h321_suspendlive.ps1 3225
+h322_dev_test.out 61
+h322_dev_test.ps1 2089
+h322_handlemask.ps1 2375
+h323_arm.out 111
+h323_dry.console 5
+h323_elevmask.ps1 2981
+h323_fire_ioctl.out 1322
+h323_fire_ioctl.ps1 5513
+h324_allocprobe.ps1 3218
+h325_memops.ps1 6590
+h326_writethread.ps1 9415
+h327_vadcensus.ps1 8660
+--- payload ---
+cur.ps1 sha16=F26C36EC2AA26EC5
+cur_h316_live.ps1 sha16=F094E20464319F09
+cur_h289_live.ps1 MISSING
+cur_h289_live.ps1 sha16=9C269166FED22554
+--- procs ---
+EAAntiCheat.GameService pid=28196
+r5apex_dx12 pid=30736
+--- vm ---
+"Win11-Test2" {15e012c5-3c43-4b33-99e0-926e867cecef}
+"VM-A" {a6bfab28-2ea3-4447-8f81-c86726a3df53}
+"VM-B" {9aeaf942-1838-4731-88d8-9c36820569bb}
+"VM-C" {dfb6892b-3da8-42f2-bd7a-208fad30b092}
+"VM-D" {44610365-24ba-45c7-8403-cee449c4191e}
+--- 8080 ---
+END

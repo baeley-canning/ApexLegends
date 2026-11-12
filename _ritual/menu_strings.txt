@@ -1,0 +1,13 @@
+333: void EmitText(TriWriter& w, const char* text, float x, float y, float scale,
+1121: EmitText(tris, text, bx0 - 10.0f - TextAdvance(text, 2.0f),
+1160: EmitText(tris, text, xRight - TextAdvance(text, kMenuTextScale),
+1197: EmitText(tris, text, px0 + 12.0f, py0 + (pillH - 14.0f) * 0.5f + 1.0f,
+1209: EmitText(tris, item.label, x + 16.0f, y + (kMenuRowH - 17.0f) * 0.5f,
+1229: EmitText(tris, text, xRight - TextAdvance(text, 2.0f),
+1243: EmitText(tris, title, x + 16.0f, y + 11.0f, 2.0f, kMenuAccent);
+1253: EmitText(tris, label, x + 20.0f, y, kMenuTextScale,
+1309: EmitText(tris, "QWENKERN", x0 + padX, brandY, brandScale, kMenuTextHi);
+1310: EmitText(tris, ".PREMIUM",
+1320: EmitText(tris, "V2.0", x1 - padX - TextAdvance("V2.0", 2.0f), y0 + 21.0f,
+1358: EmitText(tris, "INS CLOSE   UP/DOWN ROW   LEFT/RIGHT ADJUST   ENTER APPLY",
+1372: EmitText(tris, side, x1 - padX - TextAdvance(side, 2.0f), y1 - 29.0f, 2.0f,

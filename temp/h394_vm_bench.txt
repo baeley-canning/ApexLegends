@@ -1,0 +1,269 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261109222050
+Username: DESKTOP-PPHFJBQ\New User
+RunAs User: DESKTOP-PPHFJBQ\New User
+Configuration Name: 
+Machine: DESKTOP-PPHFJBQ (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\New User\OneDrive\Desktop\cheating\temp\h394_vm_bench.ps1
+Process ID: 28236
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Add-Content : The process cannot access the file 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h394_vm_bench.txt' 
+because it is being used by another process.
+At C:\Users\New User\OneDrive\Desktop\cheating\temp\h394_vm_bench.ps1:15 char:67
++ ... ){((Get-Date -Format 'HH:mm:ss.fff')+' '+$s)|Add-Content $log;Write-H ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\Users\New Us...94_vm_bench.txt:String) [Add-Content], IOException
+    + FullyQualifiedErrorId : GetContentWriterIOError,Microsoft.PowerShell.Commands.AddContentCommand
+Add-Content : The process cannot access the file 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h394_vm_bench.txt'
+because it is being used by another process.
+At C:\Users\New User\OneDrive\Desktop\cheating\temp\h394_vm_bench.ps1:15 char:67
++ ... ){((Get-Date -Format 'HH:mm:ss.fff')+' '+$s)|Add-Content $log;Write-H ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\Users\New Us...94_vm_bench.txt:String) [Add-Content], IOException
+    + FullyQualifiedErrorId : GetContentWriterIOError,Microsoft.PowerShell.Commands.AddContentCommand
+
+22:21:09.363 state=name="Win11-Test2"
+encryption="disabled"
+groups="/"
+platformArchitecture="x86"
+ostype="Windows 11 (64-bit)"
+UUID="15e012c5-3c43-4b33-99e0-926e867cecef"
+CfgFile="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Win11-Test2.vbox"
+SnapFldr="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Snapshots"
+LogFldr="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Logs"
+hardwareuuid="15e012c5-3c43-4b33-99e0-926e867cecef"
+memory=4096
+pagefusion="off"
+vram=128
+cpuexecutioncap=100
+cpu-profile="host"
+chipset="piix3"
+firmware="EFI"
+cpus=4
+hpet="on"
+pae="off"
+longmode="on"
+triplefaultreset="off"
+apic="on"
+x2apic="off"
+nested-hw-virt="off"
+hwvirtex="on"
+nestedpaging="on"
+largepages="on"
+vtxvpid="on"
+vtxux="on"
+virtvmsavevmload="on"
+cpuid-portability-level=0
+bootmenu="messageandmenu"
+boot1="disk"
+boot2="dvd"
+boot3="floppy"
+boot4="none"
+acpi="on"
+ioapic="on"
+biosapic="apic"
+biossystemtimeoffset=0
+NvramFile="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Win11-Test2.nvram"
+SecureBoot="on"
+rtcuseutc="off"
+iommu="none"
+paravirtprovider="default"
+effparavirtprovider="hyperv"
+VMState="running"
+VMStateChangeTime="2026-11-09T09:15:16.927000000"
+graphicscontroller="vboxsvga"
+monitorcount=1
+accelerate3d="off"
+teleporterenabled="off"
+teleporterport=0
+teleporteraddress=""
+teleporterpassword=""
+tracing-enabled="off"
+tracing-allow-vm-access="off"
+tracing-config=""
+autostart-enabled="off"
+autostart-delay=0
+defaultfrontend=""
+vmprocpriority="default"
+storagecontrollername0="SATA"
+storagecontrollertype0="IntelAhci"
+storagecontrollerinstance0="0"
+storagecontrollermaxportcount0="30"
+storagecontrollerportcount0="4"
+storagecontrollerbootable0="on"
+"SATA-0-0"="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Snapshots/{a9673340-6f56-4731-bd1f-f9e2a56ac9e9}.vdi"
+"SATA-ImageUUID-0-0"="a9673340-6f56-4731-bd1f-f9e2a56ac9e9"
+"SATA-hot-pluggable-0-0"="off"
+"SATA-nonrotational-0-0"="off"
+"SATA-discard-0-0"="off"
+"SATA-1-0"="C:\\Users\\New User\\Downloads\\26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+"SATA-ImageUUID-1-0"="d9ed57a4-6182-4202-9749-6ac5e7993ece"
+"SATA-tempeject-1-0"="off"
+"SATA-IsEjected-1-0"="off"
+"SATA-hot-pluggable-1-0"="off"
+"SATA-nonrotational-1-0"="off"
+"SATA-discard-1-0"="off"
+"SATA-2-0"="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Unattended-15e012c5-3c43-4b33-99e0-926e867cecef-aux-iso.viso"
+"SATA-ImageUUID-2-0"="d15777c3-811c-40ff-87ac-a6c28b5492ff"
+"SATA-tempeject-2-0"="off"
+"SATA-IsEjected-2-0"="off"
+"SATA-hot-pluggable-2-0"="off"
+"SATA-nonrotational-2-0"="off"
+"SATA-discard-2-0"="off"
+"SATA-3-0"="C:\\Program Files\\Oracle\\VirtualBox\\VBoxGuestAdditions.iso"
+"SATA-ImageUUID-3-0"="8203e4c9-4976-465c-b1ab-37377187f0f8"
+"SATA-tempeject-3-0"="off"
+"SATA-IsEjected-3-0"="off"
+"SATA-hot-pluggable-3-0"="off"
+"SATA-nonrotational-3-0"="off"
+"SATA-discard-3-0"="off"
+natnet1="nat"
+macaddress1="08002745F596"
+cableconnected1="on"
+nic1="nat"
+nictype1="82540EM"
+nicspeed1="0"
+mtu="0"
+sockSnd="64"
+sockRcv="64"
+tcpWndSnd="64"
+tcpWndRcv="64"
+localhostReachable="1"
+forwardBroadcast="0"
+enableTFTP="0"
+Forwarding(0)="rdp,tcp,127.0.0.1,13389,,3389"
+hostonlyadapter2="VirtualBox Host-Only Ethernet Adapter"
+macaddress2="08002754DF67"
+cableconnected2="on"
+nic2="hostonly"
+nictype2="82540EM"
+nicspeed2="0"
+nic3="none"
+nic4="none"
+nic5="none"
+nic6="none"
+nic7="none"
+nic8="none"
+hidpointing="usbtablet"
+hidkeyboard="ps2kbd"
+uart1="off"
+uart2="off"
+uart3="off"
+uart4="off"
+lpt1="off"
+lpt2="off"
+audio="default"
+audio_out="on"
+audio_in="off"
+clipboard="disabled"
+clipboard_file_transfers="off"
+draganddrop="disabled"
+SessionName="GUI/Qt"
+VideoMode="1024,768,32"@0,0 1
+vrde="on"
+vrdeport=3390
+vrdeports="3390"
+vrdeaddress=""
+vrdeauthtype="null"
+vrdemulticon="off"
+vrdereusecon="off"
+vrdevideochannel="off"
+vrdeproperty[TCP/Ports]="3390"
+vrdeproperty[TCP/Address]=<not set>
+vrdeproperty[VideoChannel/Enabled]=<not set>
+vrdeproperty[VideoChannel/Quality]=<not set>
+vrdeproperty[VideoChannel/DownscaleProtection]=<not set>
+vrdeproperty[Client/DisableDisplay]=<not set>
+vrdeproperty[Client/DisableInput]=<not set>
+vrdeproperty[Client/DisableAudio]=<not set>
+vrdeproperty[Client/DisableUSB]=<not set>
+vrdeproperty[Client/DisableClipboard]=<not set>
+vrdeproperty[Client/DisableUpstreamAudio]=<not set>
+vrdeproperty[Client/DisableRDPDR]=<not set>
+vrdeproperty[H3DRedirect/Enabled]=<not set>
+vrdeproperty[Security/Method]="RDP"
+vrdeproperty[Security/ServerCertificate]="C:\Users\New User\VirtualBox VMs\Win11-Test2\VRDEAutoGeneratedCert.pem"
+vrdeproperty[Security/ServerPrivateKey]="C:\Users\New User\VirtualBox VMs\Win11-Test2\VRDEAutoGeneratedPrivateKey.pem"
+vrdeproperty[Security/CACertificate]=<not set>
+vrdeproperty[Audio/RateCorrectionMode]=<not set>
+vrdeproperty[Audio/LogPath]=<not set>
+usb="off"
+ehci="off"
+xhci="on"
+VRDEActiveConnection="off"
+VRDEClients==0
+recording_started="off"
+recording_enabled="off"
+recording_screens=1
+ rec_screen0
+rec_screen_enabled="on"
+rec_screen_id=0
+rec_screen_video_enabled="on"
+rec_screen_audio_enabled="off"
+rec_screen_dest="File"
+rec_screen_dest_filename="C:\\Users\\New User\\VirtualBox VMs\\Win11-Test2\\Win11-Test2-screen0.webm"
+rec_screen_opts="ac_profile=med"
+rec_screen_video_res_xy="1024x768"
+rec_screen_video_rate_kbps=512
+rec_screen_video_fps=25
+SnapshotName="VRDP-ready"
+SnapshotUUID="e099b86b-9b0e-48b3-87ab-55c0827ec144"
+SnapshotDescription="Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x"
+SnapshotName-1="pre-baseline"
+SnapshotUUID-1="70f20efd-0fa8-4a19-9ded-2facde7a7842"
+SnapshotName-1-1="baseline-clean"
+SnapshotUUID-1-1="d39a314a-1df1-414e-816f-f64357dda9c4"
+SnapshotDescription-1-1="P37 VM bring-up rollback point"
+SnapshotName-1-1-1="p37-ready"
+SnapshotUUID-1-1-1="567109ad-d161-4dc7-8e93-2c7627c46f0a"
+SnapshotDescription-1-1-1="gdrv3 installed+running, SYSTEM tick p37tick (60s) + p37logon, harness in C:\Users\Public\p37, HTTP payload 10.0.2.2:8080"
+SnapshotName-1-1-1-1="pre-h268"
+SnapshotUUID-1-1-1-1="4ea0dd5e-11c6-4f15-8fd7-458ddd0c94d2"
+SnapshotName-1-1-1-1-1="ga-armed"
+SnapshotUUID-1-1-1-1-1="8d19ab4a-cef0-4ddc-9f18-850e5bfaa213"
+SnapshotName-1-1-1-1-1-1="p331_pre_1106-1131"
+SnapshotUUID-1-1-1-1-1-1="74e346fe-cc6b-42fc-9915-607d9cadd824"
+SnapshotName-1-1-1-1-1-1-1="h276_pre"
+SnapshotUUID-1-1-1-1-1-1-1="48cfec62-7882-47ba-aec3-693a42c796ad"
+SnapshotName-1-1-1-1-1-1-1-1="pre-h279"
+SnapshotUUID-1-1-1-1-1-1-1-1="e6e71151-0d36-4c07-9951-f04133775899"
+SnapshotName-1-1-1-1-1-1-1-1-1="pre-h280"
+SnapshotUUID-1-1-1-1-1-1-1-1-1="03be7579-fd91-4e62-b618-5af6b3b5d508"
+SnapshotName-1-1-1-1-1-1-1-1-1-1="pre-h281"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1="b5ef576b-5225-4bd1-8dec-fd880ac1dd32"
+SnapshotName-1-1-1-1-1-1-1-1-1-1-1="pre-h282"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1-1="050180af-cf27-4f3a-a5b5-8f50fcbf95ee"
+SnapshotName-1-1-1-1-1-1-1-1-1-1-1-1="pre-h283"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1-1-1="62bd9887-f155-4984-8704-a36a3d41c50f"
+SnapshotName-1-1-1-1-1-1-1-1-1-1-1-1-1="pre-h284"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1-1-1-1="fb38e288-5bb6-42d1-aa19-a2e07895f8d6"
+SnapshotName-1-1-1-1-1-1-1-1-1-1-1-1-1-1="pre-h285"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1-1-1-1-1="8a64c24e-778d-474e-bf4f-37f2c9b4180a"
+SnapshotName-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1="h286_pre_1106"
+SnapshotUUID-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1="43b080b2-8093-40f3-9666-340d850f491b"
+SnapshotDescription-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1="pre h286 v13 verdict-plumbing run"
+SnapshotName-1-1-1-1-1-2="pre_h394_v16_read"
+SnapshotUUID-1-1-1-1-1-2="772e5685-3839-40e1-9551-a8446acec9fb"
+SnapshotDescription-1-1-1-1-1-2="Before guest-only read-memory driver bench on 2026-11-09"
+CurrentSnapshotName="pre_h394_v16_read"
+CurrentSnapshotUUID="772e5685-3839-40e1-9551-a8446acec9fb"
+CurrentSnapshotNode="SnapshotName-1-1-1-1-1-2"
+GuestMemoryBalloon=0
+GuestOSType="Windows11_64"
+GuestAdditionsRunLevel=3
+GuestAdditionsVersion="7.2.22 r175245"
+GuestAdditionsFacility_VirtualBox Base Driver=50,1793908936224
+GuestAdditionsFacility_VirtualBox System Service=50,1793908942692
+GuestAdditionsFacility_VirtualBox Desktop Integration=50,1793908962223
+GuestAdditionsFacility_Seamless Mode=50,1794215716924
+GuestAdditionsFacility_Graphics Mode=50,1794215716924
+ 

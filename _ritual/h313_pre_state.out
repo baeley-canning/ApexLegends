@@ -1,0 +1,111 @@
+20:36:34.285 ===== h313 pre-state read-back 2026-11-06 20:36:34 admin=True pid=24496 host=DESKTOP-PPHFJBQ =====
+20:36:34.493 boot=06/11 20:18 build=26200 uptime(h)=0.3
+20:36:34.495 --- STEP=services (sc query) ---
+20:36:34.511   zapexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:36:34.525   apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:36:34.536   zt1: SERVICE_NAME: zt1 TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+20:36:34.548   zt2: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:36:34.559   DBUtilDrv2: SERVICE_NAME: DBUtilDrv2 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+20:36:34.571   NalDrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:36:34.572 --- sc qc DBUtilDrv2 (system service config: ours or the machine own?) ---
+20:36:34.584   | [SC] QueryServiceConfig SUCCESS
+20:36:34.585   | SERVICE_NAME: DBUtilDrv2
+20:36:34.586   |         TYPE               : 1  KERNEL_DRIVER
+20:36:34.587   |         START_TYPE         : 3   DEMAND_START
+20:36:34.589   |         ERROR_CONTROL      : 1   NORMAL
+20:36:34.590   |         BINARY_PATH_NAME   : \SystemRoot\System32\drivers\DBUtilDrv2.sys
+20:36:34.591   |         LOAD_ORDER_GROUP   :
+20:36:34.592   |         TAG                : 0
+20:36:34.593   |         DISPLAY_NAME       : DBUtilDrv2 Service
+20:36:34.594   |         DEPENDENCIES       :
+20:36:34.595   |         SERVICE_START_NAME :
+20:36:34.596 --- Win32_SystemDriver objects matching our names ---
+20:36:34.901   svc=DBUtilDrv2 state=Running startMode=Manual path=C:\WINDOWS\system32\drivers\DBUtilDrv2.sys
+20:36:34.918   svc=zt1 state=Stopped startMode=Manual path=\??\C:\p37vm\payload\zapexdrv.sys
+20:36:34.920 --- STEP=driverquery residency (DBUtilDrv2 / zapex / apex / WinRing0 / NalDrv) ---
+20:36:35.295   | DBUtilDrv2 DBUtilDrv2 Service Kernel 20/11/2019 7:14:20 am
+20:36:35.305 --- STEP=dse-read (kdu -prv 22 -dse, read-only, from C:\Users\Public\p37) ---
+20:36:36.699   kdu rc=0
+20:36:36.701   | [+] Selected provider: 22
+20:36:36.701   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC71D20000
+20:36:36.703   | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
+20:36:36.703   | [+] Vulnerable driver "AsIO3" loaded
+20:36:36.705   | [+] Executing pre-open callback for given provider
+20:36:36.706   | [+] Executing post-open callback for given provider
+20:36:36.707   | [+] Module "CI.dll" loaded for pattern search
+20:36:36.708   | [!] Cannot query DSE state, GetLastError 483: The request failed due to a fatal device hardware error.
+20:36:36.709   | [+] Vulnerable driver "AsIO3" unloaded
+20:36:36.710   | [+] Return value: 0. Bye-bye!
+20:36:36.764 --- STEP=bcdedit testsigning ---
+20:36:36.801   | testsigning No
+20:36:36.803   | hypervisorlaunchtype Off
+20:36:36.808   testsigning-line-present=True
+20:36:36.809 --- STEP=leftover processes (game/notepad/regedit/mmc/launcher) ---
+20:36:36.816   r5apex count=0
+20:36:36.820   r5apex_dx12 count=1 pids=7880
+20:36:36.824   notepad count=0
+20:36:36.827   regedit count=0
+20:36:36.830   mmc count=0
+20:36:36.833   apex_launcher count=0
+20:36:36.835   EasyAntiCheat count=0
+20:36:36.836 --- STEP=image hashes the rung will touch ---
+20:36:36.887   C:\Users\Public\p37\zapexdrv.sys size=17920 mt=06/11 20:09:12 sha256=E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C
+20:36:36.891   C:\Users\Public\p37\kdu.exe size=422912 mt=06/11 20:09:12 sha256=0435524CD5F5491937125D6B17492335579FD85EF695C2B9BB5C2675665B8921
+20:36:36.906   C:\Users\Public\p37\apex_launcher.exe size=473600 mt=06/11 20:09:12 sha256=5429E41F9BC42643DD67319B311182CBEFDD8746D4672260BD3794125630E811
+20:36:36.926   C:\Users\Public\p37\apexcheat.dll size=336896 mt=06/11 20:09:12 sha256=FB5B19FF68579B92B5A865F18113A800D49699E4BC272EB771ECD38692932765
+20:36:36.929   C:\Users\Public\p37\pe_tls.ps1 size=7185 mt=06/11 20:09:12 sha256=5A3522A24F7E05C3B11A1A7DAC0BC453DFFBA3E8E91ABC534545C0D2A52BADF7
+20:36:36.937   C:\Users\Public\apxprobe.dll size=2048 mt=06/11 19:25:40 sha256=B29803F3EEFCA44690EE01A4DC0F821772EF5CA46AC73493AE6B875B1C4E2195
+20:36:36.940   C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll size=336896 mt=06/11 14:29:35 sha256=FB5B19FF68579B92B5A865F18113A800D49699E4BC272EB771ECD38692932765
+20:36:36.944   C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apex_launcher.exe size=473600 mt=06/11 14:29:32 sha256=5429E41F9BC42643DD67319B311182CBEFDD8746D4672260BD3794125630E811
+20:36:36.946   C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys size=17920 mt=06/11 19:08:43 sha256=E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C
+20:36:36.947 --- STEP=recent SCM events (3 h, ids 7000/7045/7036 zapex/zt/apex/DBUtil only) ---
+20:36:37.048   20:18:12 id=7045 A service was installed in the system. Service Name: zt2 Service File Name: C:\p37vm\payload\DbUtilDrv2.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.050   20:18:10 id=7000 The zt1 service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:36:37.051   20:18:10 id=7045 A service was installed in the system. Service Name: zt1 Service File Name: C:\p37vm\payload\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.053   20:09:19 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.053   20:09:19 id=7000 The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:36:37.055   20:09:19 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.056   20:09:19 id=7000 The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:36:37.059   20:09:17 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.060   20:09:17 id=7000 The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:36:37.062   20:09:16 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.063   20:09:16 id=7000 The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:36:37.065   20:09:14 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.066   19:25:46 id=7045 A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.067   19:25:42 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.068   19:24:10 id=7045 A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.070   19:24:06 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.071   19:18:14 id=7045 A service was installed in the system. Service Name: apexdrv Service File Name: \??\C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.073   19:18:08 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.074   18:00:32 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:36:37.077 --- DBUtilDrv2 7036 history (12 h): boot-time or today-window? ---
+20:36:37.149 --- STEP=CodeIntegrity operational events (3 h) ---
+20:36:37.168   20:18:57 id=3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+20:36:37.170   20:18:57 id=3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+20:36:37.171   20:18:57 id=3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+20:36:37.173   20:18:57 id=3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+20:36:37.174   20:18:57 id=3085 Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.
+20:36:37.175   19:25:46 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.176   19:25:42 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.177   19:24:10 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.178   19:24:06 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.179   19:18:14 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.180   19:18:08 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.181   18:04:42 id=3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+20:36:37.183   18:04:42 id=3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+20:36:37.187   18:04:42 id=3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+20:36:37.188   18:04:42 id=3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+20:36:37.189   18:04:42 id=3085 Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.
+20:36:37.191   18:00:32 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Users\Public\p37\zapexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.191   15:31:49 id=3001 Code Integrity determined an unsigned kernel module \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys is loaded into the system. Check with the publisher to see if a signed version of the kernel module is available.
+20:36:37.194   15:31:48 id=3089 Signature information for another event. Match using the Correlation Id.
+20:36:37.195   15:31:48 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\Windows\System32\drivers\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+20:36:37.196 --- STEP=leftover scheduled tasks ---
+20:36:37.214   p310go: ERROR: The system cannot find the file specified. System.Management.Automation.RemoteException
+20:36:37.230   p312post: ERROR: The system cannot find the file specified. System.Management.Automation.RemoteException
+20:36:37.249   p313post: ERROR: The system cannot find the file specified. System.Management.Automation.RemoteException
+20:36:37.250 --- pool/memory snapshot (1450 context: ERROR_NO_SYSTEM_RESOURCES) ---
+20:36:43.824   freePhysMB=16923 poolPagedMB=630.2 poolNonpagedMB=435.4 commitGB=24.4/57.8
+20:36:43.833   svchost=80 handles(proc4)=5364
+20:36:43.834 RESULT: h313 pre-state read-back written - NO mutation performed (sc query/driverquery/kdu read/bcdedit enum/process list/events only)
+20:36:43.835 VERDICT: PRE - read the file: DSE value line, DBUtilDrv2 state + 7036 history, service leftovers, process leftovers decide the T3 cleanup

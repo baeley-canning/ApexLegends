@@ -1,0 +1,74 @@
+ov54 - adapter fix (display-attached device) - 2026-11-07 11:03:47
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov54_cwd (scratch, emptied first)
+pid   : 1224   exit code: 2173  (0 = PASS, 2 = FAIL)
+shot  : window: "QwenKern Overlay Test" 976x659
+captured -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov54_test.png
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : ocr ok 1 1 1 1 1 1 1 1 1 1 1 1
+buffer: ov_buffer.bmp -> _ritual\ov54_buffer.bmp (2380854 bytes)
+---- ov_test_result.txt ----
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov54_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: enabled
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000002305E2
+chain current back buffer index = 0
+SetMaximumFrameLatency(3) hr=0x887A0001
+GetBuffer(0) hr=0x00000000 res=000002B4FCCD5720
+GetBuffer(1) hr=0x00000000 res=000002B4FCCD6600
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+T7 info queue: 0 stored message(s)
+T6 buffer readback: ok=1 coverage=98.0% bbox 0,0 - 959,619 of 960x620 (client)
+T5 PresentCount()=2875 frames=2875 equal=yes
+renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=2875 presentFails=0
+T8 direct clear on creating queue: done in the adapter probe
+T6 geometry gate: readback=1 coverage=98.0% (>=80% required) bboxOk=1
+RESULT: PASS
+VERDICT: overlay draw path, menu state, key handling, ini flush,
+VERDICT: present counter and client-filling coverage verified offline
+
+---- overlay_test log ----
+[11:03:47.491] ==================== session start 2026-11-07 11:03:47 pid=1224
+[11:03:47.491] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov54_cwd size=960x620
+[11:03:47.492] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[11:03:47.505] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[11:03:47.507] [test] debug layer: enabled
+[11:03:47.782] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000002305E2
+[11:03:47.782] [test] chain current back buffer index = 0
+[11:03:47.782] [test] SetMaximumFrameLatency(3) hr=0x887A0001
+[11:03:47.783] [test] GetBuffer(0) hr=0x00000000 res=000002B4FCCD5720
+[11:03:47.783] [test] GetBuffer(1) hr=0x00000000 res=000002B4FCCD6600
+[11:03:47.783] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[11:03:47.783] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[11:03:47.912] [test] adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+[11:03:47.912] [*] menu opened (selIndex=0)
+[11:03:47.912] [*] menu: GLOW -> ON (ini flush ok)
+[11:03:47.912] [test] T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+[11:03:47.912] [test] T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+[11:03:47.912] [test] T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+[11:03:47.921] [+] d3d12: overlay ready (960x620 fmt=87 samples=1 buffers=2 queue=game)
+[11:03:47.921] [+] d3d12: present counter started (T5: a line every 600 frames)
+[11:03:47.921] [i] d3d12: removedReason before 1st render = 0x00000000
+[11:03:47.922] [i] d3d12: removedReason right after 1st execute = 0x00000000
+[11:03:47.922] [+] d3d12: first overlay draw submitted (16176 tri verts, 40 line verts, 3 box(es), 1 buffer pass(es), current 1/2)
+[11:03:47.930] [test] T7 info queue: 0 stored message(s)
+[11:03:48.771] [test] T6 buffer readback: ok=1 coverage=98.0% bbox 0,0 - 959,619 of 960x620 (client)
+[11:03:52.091] [*] d3d12: present counter = 600
+[11:03:56.264] [*] d3d12: present counter = 1200
+[11:04:00.431] [*] d3d12: present counter = 1800
+[11:04:04.598] [*] d3d12: present counter = 2400
+[11:04:07.902] [test] T5 PresentCount()=2875 frames=2875 equal=yes
+[11:04:07.902] [test] renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=2875 presentFails=0
+[11:04:07.902] [test] T8 direct clear on creating queue: done in the adapter probe
+[11:04:07.902] [test] T6 geometry gate: readback=1 coverage=98.0% (>=80% required) bboxOk=1
+[11:04:07.902] [test] RESULT: PASS
+[11:04:07.902] [test] VERDICT: overlay draw path, menu state, key handling, ini flush,
+[11:04:07.902] [test] VERDICT: present counter and client-filling coverage verified offline
+[11:04:07.902] [test] exit pass=1
+

@@ -1,0 +1,30 @@
+ 315:                 last_cue = i
+ 316:                 fired = True
+ 317:                 out("NADE %d NOW  <- THROW at your feet (1 strips armour, 2 takes health)"
+ 318:                     % (cues.index(i) + 2))
+ 319:             elif act == "RECOVER":
+ 320:                 out("RECOVER  <- stand still, no throw (shield should be refilling)")
+ 321:             got = snapshot(g, stable)
+ 322:             for b, _ in stable:
+ 323:                 row, prev, sk = got[b], again[b], series[b]
+ 324:                 if len(row) != len(sk):
+ 325:                     # a live page can change shape under us; lengths drifting here
+ 326:                     # used to surface as IndexError at the next indexing site.
+ 327:                     out("MISMATCH %#x got=%d series=%d again=%d"
+ 328:                         % (b, len(row), len(sk), len(prev)))
+ 329:                 for k in range(len(sk)):
+ 330:                     gv = row[k] if k < len(row) else None
+ 331:                     sk[k].append(gv)
+ 332:                     if gv is not None and k < len(prev) and f(gv) <= 1.0 \
+ 333:                             and f(prev[k]) >= 50.0:
+ 334:                         fell[b][k] = True
+ 335:             if not downed and any(sum(1 for v in fell[b].values() if v) >= 2
+ 336:                                   for b, _ in stable):
+ 337:                 downed = True
+ 338:                 act = "DOWNED"
+ 339:                 out("DOWNED  <- you are on the floor: hold still, do NOT self-revive,")
+ 340:                 out("           the revive bar is being sampled; tell me if it moves")
+ 341:             # chain cue: a second frag only once the shield reads empty, so the
+ 342:             # damage has nowhere to go but health.  Fixed shot numbers miss this
+ 343:             # because the frag flies 1.5-2 s and the shield can be mid-refill.
+ 344:             if chain and fired:

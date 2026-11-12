@@ -1,0 +1,36 @@
+ 313:                 beep(500, 220)
+ 314:                 beep(500, 220)
+ 315:                 last_cue = i
+ 316:                 fired = True
+ 317:                 out("NADE %d NOW  <- THROW at your feet (1 strips armour, 2 takes health)"
+ 318:                     % (cues.index(i) + 2))
+ 319:             elif act == "RECOVER":
+ 320:                 out("RECOVER  <- stand still, no throw (shield should be refilling)")
+ 321:             got = snapshot(g, stable)
+ 322:             for b, _ in stable:
+ 323:                 for k, gv in enumerate(got[b]):
+ 324:                     series[b][k].append(gv if gv is not None else None)
+ 325:                     if gv is not None and f(gv) <= 1.0 and f(again[b][k]) >= 50.0:
+ 326:                         fell[b][k] = True
+ 327:             if not downed and any(sum(1 for v in fell[b].values() if v) >= 2
+ 328:                                   for b, _ in stable):
+ 329:                 downed = True
+ 330:                 act = "DOWNED"
+ 331:                 out("DOWNED  <- you are on the floor: hold still, do NOT self-revive,")
+ 332:                 out("           the revive bar is being sampled; tell me if it moves")
+ 333:             # chain cue: a second frag only once the shield reads empty, so the
+ 334:             # damage has nowhere to go but health.  Fixed shot numbers miss this
+ 335:             # because the frag flies 1.5-2 s and the shield can be mid-refill.
+ 336:             if chain and fired:
+ 337:                 empty = any(got[b][k] is not None and f(got[b][k]) <= 1.0
+ 338:                             for b, _ in stable for k in range(len(got[b])))
+ 339:                 empty_run = empty_run + 1 if empty else 0
+ 340:                 # first nade-3 cue as soon as the shield is seen empty and no cue is
+ 341:                 # in flight; after that re-cue every 4 shots so a missed throw is not
+ 342:                 # the end of the run (the pool stays empty, health never gets tested).
+ 343:                 if empty_run >= 1 and not chained and i - last_cue >= 2:
+ 344:                     chained = True
+ 345:                 if empty_run >= 1 and ((chained and i - last_empty_cue >= 4)
+ 346:                                        or not chained and i - last_cue >= 2):
+ 347:                     last_empty_cue = i
+ 348:                     act = "THROW"

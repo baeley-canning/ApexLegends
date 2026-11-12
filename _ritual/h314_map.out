@@ -1,0 +1,188 @@
+﻿# h314 map rung - evidence assembled from the relay feed (the probe's own \h314.out write did not land) + payload oracle - 2026-11-06 21:28:34
+## run lines (deduped)
+21:27:05.562 alive
+21:27:05.708 bench build 26200 boot=06/11 20:18 pid=24800
+21:27:05.721 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+21:27:05.729 pre minidumps=5 notepad=0
+21:27:06.216 sha=E906CEE97B9927F4 MATCH
+21:27:06.221 launcher sha=5429E41F9BC42643 dll=E05FE8324148F8BD
+21:27:06.230 STEP=payload-tls
+21:27:06.501   |     set: CF_INSTRUMENTED
+21:27:06.501   |   callback[0] : null (array present, empty)
+21:27:06.501   |   callbacks   : 0x18003A4A8
+21:27:06.501   |   guard flags     : 0x100
+21:27:06.501   |   index ptr   : 0x1800520A8
+21:27:06.501   |   raw data    : 0x18004B278 .. 0x18004B280 (0x8 bytes)
+21:27:06.501   |   security cookie : 0x1800500C0
+21:27:06.501   |   set: DYNAMIC_BASE
+21:27:06.501   |   set: HIGH_ENTROPY_VA
+21:27:06.501   |   set: NX_COMPAT
+21:27:06.501   |   tls flags   : 0x300000
+21:27:06.501   |   zero fill   : 0x0
+21:27:06.501   | DllCharacteristics: 0x0160
+21:27:06.501   | file            : C:\Users\Public\apexcheat.dll
+21:27:06.501   | image base      : 0x180000000
+21:27:06.501   | image size      : 0x5B000
+21:27:06.501   | load config   : rva=0x49520 size=0x140
+21:27:06.501   | PE_TLS_VERDICT: parsed tls_data guard_instrumented
+21:27:06.501   | size            : 343552
+21:27:06.501   | tls directory : rva=0x49880 size=0x28
+21:27:06.503 payload_tls=parsed tls_data guard_instrumented callbacks=0 guard_table=False
+21:27:06.513 STEP=dse-read
+21:27:06.521 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+21:27:06.668   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+21:27:06.668   exit=1
+21:27:06.670   | ...
+21:27:06.670   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+21:27:06.670   | [#] Supported x64 OS : Windows 7 and above
+21:27:06.680 $ kdu.exe -prv 22 -dse
+21:27:07.727   | ...
+21:27:07.727   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+21:27:07.727   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+21:27:07.727   | [#] Supported x64 OS : Windows 7 and above
+21:27:07.727   | [*] CPU vendor string: GenuineIntel
+21:27:07.727   exit=1
+21:27:07.733   read via prv 22
+21:27:07.733 dse_pre=0x16 restore-target=22 (0 = left as found)
+21:27:07.741 STEP=dse
+21:27:07.745 $ sc.exe delete zapexdrv
+21:27:07.751   | [SC] OpenService FAILED 1060:
+21:27:07.751   | The specified service does not exist as an installed service.
+21:27:07.751   exit=1060
+21:27:07.751 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+21:27:07.757   | [SC] CreateService SUCCESS
+21:27:07.757   exit=0
+21:27:07.760 $ kdu.exe -prv 0 -dse 0
+21:27:07.797   | ...
+21:27:07.797   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+21:27:07.797   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+21:27:07.797   exit=1
+21:27:07.797 $ sc.exe start zapexdrv
+21:27:07.828   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+21:27:07.828   |         CHECKPOINT         : 0x0
+21:27:07.828   |         SERVICE_EXIT_CODE  : 0  (0x0)
+21:27:07.828   |         STATE              : 4  RUNNING
+21:27:07.828   |         TYPE               : 1  KERNEL_DRIVER
+21:27:07.828   |         WIN32_EXIT_CODE    : 0  (0x0)
+21:27:07.828   | ...
+21:27:07.828   | SERVICE_NAME: zapexdrv
+21:27:07.828   exit=0
+21:27:07.836   prv 0 -> DSE off, driver RUNNING
+21:27:07.844 STEP=target
+21:27:09.915   target notepad pid=16388 alive=False threads=0
+21:27:11.931   target regedit pid=3128 alive=True threads=4
+21:27:11.931 target=regedit pid=3128 (control process for the map)
+21:27:11.941 $ sc.exe delete zapexdrv
+21:27:11.941 STEP=probe-kernel
+21:27:11.949   | [SC] DeleteService SUCCESS
+21:27:11.949   exit=0
+21:27:11.949 $ sc.exe delete apexdrv
+21:27:11.955   | [SC] OpenService FAILED 1060:
+21:27:11.955   | The specified service does not exist as an installed service.
+21:27:11.955   exit=1060
+21:27:11.955 $ sc.exe stop zapexdrv
+21:27:11.955 STEP=release
+21:27:12.000   |         TYPE               : 1  KERNEL_DRIVER
+21:27:12.000   | SERVICE_NAME: zapexdrv
+21:27:12.000   exit=0
+21:27:12.002   |         CHECKPOINT         : 0x0
+21:27:12.002   |         SERVICE_EXIT_CODE  : 0  (0x0)
+21:27:12.002   |         STATE              : 1  STOPPED
+21:27:12.002   |         WAIT_HINT          : 0x0
+21:27:12.002   |         WIN32_EXIT_CODE    : 0  (0x0)
+21:27:12.002   | ...
+21:27:12.002 $ sc.exe delete zapexdrv
+21:27:12.008   | [SC] OpenService FAILED 1060:
+21:27:12.008   exit=1060
+21:27:12.010   | The specified service does not exist as an installed service.
+21:27:12.016   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+21:27:12.027 $ apex_launcher.exe --inject --method=kernel --pid 3128 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apexcheat.dll --manual-map --no-sticky
+21:27:12.027 STEP=inject-kernel
+21:27:12.027 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+21:27:13.114   | ---------------------------------------------------------------
+21:27:13.114   |   kernel rung    : B3 (apexdrv.sys)
+21:27:13.114   |   QwenKern Premium - Apex Legends launcher
+21:27:13.114   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+21:27:13.114   |  new module: nvppex.dll @ 0x7ffcd99e0000
+21:27:13.114   | [*] delivery: tid=22788 resolve_path=1 ex=1 bases_differ=0 entry=0x180012D64 lastError=126 (read status 0x0) fired=1
+21:27:13.114   | [*] driver ABI v13
+21:27:13.114   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+21:27:13.114   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=117 unresolved=[] tls=0
+21:27:13.114   | [*] modules: before=40 after=62 after2=62 lastError2=126 echo_status=0x0 echo=[C:\Users\Public\apexcheat.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apexcheat.dll] stub=0x1fe3eef0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1fe3eee0000
+21:27:13.114   | [*] Target PID 3128, payload C:\Users\Public\apexcheat.dll
+21:27:13.114   | [*] targetinfo: modules=40 kernelbase=0x7FFD23960000 self=0x7FFD23960000 differ=0 target LoadLibraryW=0x7FFD23A5C6D0 (rva 0xfc6d0, ours 0x7FFD2574F6C0) lastError=0
+21:27:13.114   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+21:27:13.114   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+21:27:13.114   | ===============================================================
+21:27:13.114   exit=0
+21:27:13.116   | ---------------------------------------------------------------
+21:27:13.116   |     module base: 0x0000000180000000
+21:27:13.116   |     thread id  : 22788
+21:27:13.116   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+21:27:13.116 STEP=slice
+21:27:13.118   > [*] delivery: tid=22788 resolve_path=1 ex=1 bases_differ=0 entry=0x180012D64 lastError=126 (read status 0x0) fired=1
+21:27:13.118   > [*] driver ABI v13
+21:27:13.118   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=117 unresolved=[] tls=0
+21:27:13.118   > [*] modules: before=40 after=62 after2=62 lastError2=126 echo_status=0x0 echo=[C:\Users\Public\apexcheat.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apexcheat.dll] stub=0x1fe3eef0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1fe3eee0000
+21:27:13.118   > [*] targetinfo: modules=40 kernelbase=0x7FFD23960000 self=0x7FFD23960000 differ=0 target LoadLibraryW=0x7FFD23A5C6D0 (rva 0xfc6d0, ours 0x7FFD2574F6C0) lastError=0
+21:27:13.118   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+21:27:15.152 post target alive=True inject rc=0
+21:27:15.160 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+21:27:15.166   ORACLE C:\Users\New User\AppData\Local\QwenKern\payload_3128.log
+21:27:15.168 oracle hits=1
+21:27:15.174 parsed: abi=13 echo_ok=1 echo_status=0 echo_len=29 echo_after=[C:\Users\Public\apexcheat.dll] fired=1 modules=40/62/62 (flat is fine here)
+21:27:15.178 map: base=0x180000000 step=0 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=117 tls=0 unresolved=[]
+21:27:15.178 stub: base=0x1FE3EEF0000 entered=0x4870 rcx=0x180000000
+21:27:15.185 RESULT: PASS - manual map: image at 0x180000000, DllMain returned TRUE through the map stub (entryFlag=0x4871)
+21:27:15.185 VERDICT: MAP PASS - kernel-side PE map (relocs=0 imports=117 tls=0), APC + stub layout intact, entry executed, RETURNED (flag) and returned TRUE; no LoadLibrary involved (oracle file = DllMain ran)
+21:27:15.194 STEP=restore
+21:27:15.196 $ sc.exe stop zapexdrv
+21:27:15.202   | [SC] OpenService FAILED 1060:
+21:27:15.202   | The specified service does not exist as an installed service.
+21:27:15.202   exit=1060
+21:27:15.202 $ sc.exe delete zapexdrv
+21:27:15.208   | [SC] OpenService FAILED 1060:
+21:27:15.208   | The specified service does not exist as an installed service.
+21:27:15.208   exit=1060
+21:27:15.208 $ sc.exe delete apexdrv
+21:27:15.214   | [SC] OpenService FAILED 1060:
+21:27:15.214   exit=1060
+21:27:15.215   | The specified service does not exist as an installed service.
+21:27:15.228 $ kdu.exe -prv 0 -dse 22
+21:27:15.267   | ...
+21:27:15.267   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+21:27:15.267   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+21:27:15.267   | [#] Supported x64 OS : Windows 7 and above
+21:27:15.267   exit=1
+21:27:15.267 $ kdu.exe -prv 0 -dse 22
+21:27:15.267 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 0 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFCD9060000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [+] Vulnerable driver "NalDrv" loaded [+] Driver device "Nal" has been opened successfully [+] Executing post-open callback for given provider [+] Driver device security descriptor set successfully [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF803313C2004) value: 0, new value to be written: 16 [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Vulnerable driver "NalDrv" unloaded [+] Vulnerable driver file removed [+] Return value: 1. Bye-bye!]
+21:27:15.306   | ...
+21:27:15.306   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+21:27:15.306   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+21:27:15.306   | [#] Supported x64 OS : Windows 7 and above
+21:27:15.306   exit=1
+21:27:15.308 dse_verify=PASS
+21:27:15.316 dse_pre=0x16 dse_verify=PASS
+21:27:15.316 restore: svc=[[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.] notepad=0
+
+## payload oracle log (C:\Users\New User\AppData\Local\QwenKern\payload_3128.log)
+[21:27:12.065] ==================== session start 2026-11-06 21:27:12 pid=3128
+[21:27:12.065] [+] Initializing QwenKern Premium (pid=3128 log=C:\Users\New User\AppData\Local\QwenKern\payload_3128.log)
+[21:27:12.067] [*] No config found, using defaults (apexcheat.ini created)
+[21:27:12.067] [*] features: aimbot=0 esp=0 glow=0 recoil=0
+[21:27:12.067] [*] module base: r5apex_dx12.exe / r5apex.exe = 0x0
+[21:27:12.068] [!] game module base not found (r5apex_dx12.exe / r5apex.exe), skipping validation
+[21:27:12.229] [+] Render hook installed (DXGI Present)
+[21:27:12.229] [+] Application initialized successfully
+[21:27:12.229] [*] main loop started (~100 Hz state refresh, drawing happens in Present)
+
+## host run tail (_ritual\h314_pre.txt)
+21:27:05.146 arm: SUCCESS: The scheduled task "p314post" has successfully been created.
+21:27:05.160 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p314post                                 N/A                    Ready          
+21:27:05.160 RUN probe (h311 chain + h314 DSE adaptation, payload = rebuilt apexcheat.dll)
+21:27:16.231 probe returned rc=0 (no bugcheck)
+21:27:16.235 restore auto-reboot readback=1
+21:27:16.247 disarm: SUCCESS: The scheduled task "p314post" was successfully deleted.
+21:27:16.255 post svc: The specified service does not exist as an installed service.
+21:27:16.255 RESULT: probe returned rc=0 - host did not bugcheck
+RESULT: PASS (h314 MAP PASS, assembled evidence)

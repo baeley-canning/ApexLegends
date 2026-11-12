@@ -1,0 +1,66 @@
+15:54:07.925 === h298 elev: escalated guest copy of MEMORY.DMP -> module owning  ===
+15:54:08.161   pre | ERROR: The system was unable to find the specified registry key or value.
+15:54:08.164 pre-state: ms-settings key absent (delete the subtree in restore)
+15:54:08.403   predump | absent
+15:54:08.650   copyto | VBoxManage.exe: error: File copy failed
+15:54:08.650   copyto | VBoxManage.exe: error: Destination "C:\Users\Public" on the guest already exists and is a directory
+15:54:08.651   copyto | VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession
+15:54:08.652   copyto | VBoxManage.exe: error: Context: "enum RTEXITCODE __cdecl gctlHandleCopy(struct GCTLCMDCTX *,int,char **,bool)" at line 1838 of file VBoxManageGuestCtrl.cpp
+15:54:08.653   copyto | VBoxManage.exe: error: Destination "C:\Users\Public" on the guest already exists and is a directory.
+15:54:08.854   payload | Volume in drive C is Windows
+15:54:08.854   payload | Volume Serial Number is A038-5429
+15:54:08.855   payload | Directory of C:\Users\Public
+15:54:08.856   payload | File Not Found
+15:54:09.623   arm | armed
+15:54:09.624   arm | New-Item : Access to the registry key 'HKEY_CURRENT_USER\Software\Classes\ms-settings\Shell\Open\command' is denied.
+15:54:09.624   arm | At line:1 char:61
+15:54:09.625   arm | + ... ses\ms-settings\Shell\Open\command'; New-Item -Path $k -Force | Out-N ...
+15:54:09.625   arm | +                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+15:54:09.626   arm | + CategoryInfo          : PermissionDenied: (HKEY_CURRENT_US...ll\Open\command:String) [New-Item], UnauthorizedAcc
+15:54:09.627   arm | essException
+15:54:09.627   arm | + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.NewItemCommand
+15:54:09.628   arm | Set-ItemProperty : Cannot find path 'HKCU:\Software\Classes\ms-settings\Shell\Open\command' because it does not exist.
+15:54:09.628   arm | At line:1 char:98
+15:54:09.629   arm | + ... | Out-Null; Set-ItemProperty -Path $k -Name '(default)' -Value 'C:\Us ...
+15:54:09.630   arm | +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+15:54:09.630   arm | + CategoryInfo          : ObjectNotFound: (HKCU:\Software\...ll\Open\command:String) [Set-ItemProperty], ItemNotFo
+15:54:09.631   arm | undException
+15:54:09.631   arm | + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetItemPropertyCommand
+15:54:09.632   arm | New-ItemProperty : Cannot find path 'HKCU:\Software\Classes\ms-settings\Shell\Open\command' because it does not exist.
+15:54:09.644   arm | At line:1 char:177
+15:54:09.645   arm | + ... \h298.cmd'; New-ItemProperty -Path $k -Name 'DelegateExecute' -Value  ...
+15:54:09.646   arm | +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+15:54:09.646   arm | + CategoryInfo          : ObjectNotFound: (HKCU:\Software\...ll\Open\command:String) [New-ItemProperty], ItemNotFo
+15:54:09.647   arm | undException
+15:54:09.647   arm | + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.NewItemPropertyCommand
+15:56:15.545   poll | "%A" was unexpected at this time.
+15:56:20.762   poll | "%A" was unexpected at this time.
+15:56:25.981   poll | "%A" was unexpected at this time.
+15:56:31.199   poll | "%A" was unexpected at this time.
+15:56:36.417   poll | "%A" was unexpected at this time.
+15:56:41.647   poll | "%A" was unexpected at this time.
+15:58:47.530   poll | "%A" was unexpected at this time.
+15:58:52.748   poll | "%A" was unexpected at this time.
+15:58:57.967   poll | "%A" was unexpected at this time.
+15:59:03.173   poll | "%A" was unexpected at this time.
+15:59:08.375   poll | "%A" was unexpected at this time.
+15:59:13.580   poll | "%A" was unexpected at this time.
+15:59:18.783   poll | "%A" was unexpected at this time.
+15:59:24.002   poll | "%A" was unexpected at this time.
+16:01:29.925   poll | "%A" was unexpected at this time.
+16:01:35.143   poll | "%A" was unexpected at this time.
+16:01:40.389   poll | "%A" was unexpected at this time.
+16:01:45.606   poll | "%A" was unexpected at this time.
+16:01:50.812   poll | "%A" was unexpected at this time.
+16:01:56.015   poll | "%A" was unexpected at this time.
+16:02:01.235   poll | "%A" was unexpected at this time.
+16:02:06.452   poll | "%A" was unexpected at this time.
+16:02:11.669   poll | "%A" was unexpected at this time.
+16:02:16.914   poll | "%A" was unexpected at this time.
+16:02:16.916 guest staged bytes=0 want=391099508
+16:02:17.124   elevreport | The system cannot find the file specified.
+16:02:17.713   restore | key_removed
+16:02:17.714 registry restore: ms-settings subtree deleted (absent in pre-state)
+16:02:17.715 RESULT: FAIL - no escalated copy appeared (variable: guest integrity)
+16:02:17.716 VERDICT: auto-elevation did not fire; the dump is still unread and no analysis is valid
+16:02:17.931   cleanup | Could Not Find C:\Users\Public\h298.cmd

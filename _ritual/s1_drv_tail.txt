@@ -1,0 +1,82 @@
+### SRC C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c  lines 1920..2000 of 2039
+
+    UNREFERENCED_PARAMETER(deviceObject);
+
+    stack       = IoGetCurrentIrpStackLocation(irp);
+    code        = stack->Parameters.DeviceIoControl.IoControlCode;
+    inputLength = stack->Parameters.DeviceIoControl.InputBufferLength;
+
+    switch (code) {
+        case IOCTL_APEXDRV_VERSION:
+            if (inputLength >= sizeof(APEXDRV_VERSION_INFO) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                PAPEXDRV_VERSION_INFO info =
+                    (PAPEXDRV_VERSION_INFO)irp->AssociatedIrp.SystemBuffer;
+                info->Version  = APEXDRV_VERSION;
+                info->Reserved = 0;
+                information = sizeof(APEXDRV_VERSION_INFO);
+                status = STATUS_SUCCESS;
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_INJECT:
+            if (inputLength >= sizeof(APEXDRV_INJECT_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                NTSTATUS injectStatus = ApexdrvInject(
+                    (PAPEXDRV_INJECT_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                // v11: a failed status makes METHOD_BUFFERED skip the copy-back - h283 measured
+                // the whole out block reading back as zeros, step and module count included.  The
+                // IRP therefore completes as SUCCESS and the real NTSTATUS rides in ResultStatus;
+                // a "failed" rung is then a readable out block instead of a bare Win32 code.
+                status      = NT_SUCCESS(injectStatus) ? injectStatus : STATUS_SUCCESS;
+                information = sizeof(APEXDRV_INJECT_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_PROBE:
+            if (inputLength >= sizeof(APEXDRV_PROBE_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvProbeProcess(
+                    (PAPEXDRV_PROBE_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_PROBE_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        case IOCTL_APEXDRV_TARGETINFO:
+            if (inputLength >= sizeof(APEXDRV_TARGETINFO_REQUEST) &&
+                irp->AssociatedIrp.SystemBuffer != NULL) {
+                status = ApexdrvTargetInfo(
+                    (PAPEXDRV_TARGETINFO_REQUEST)irp->AssociatedIrp.SystemBuffer);
+                information = sizeof(APEXDRV_TARGETINFO_REQUEST);
+            } else {
+                status = STATUS_BUFFER_TOO_SMALL;
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    irp->IoStatus.Status      = status;
+    irp->IoStatus.Information = information;
+    IoCompleteRequest(irp, IO_NO_INCREMENT);
+    return status;
+}
+
+static VOID ApexdrvUnload(PDRIVER_OBJECT driverObject) {
+    UNICODE_STRING symlink;
+
+    UNREFERENCED_PARAMETER(driverObject);
+
+    if (g_SymlinkCreated) {
+        RtlInitUnicodeString(&symlink, APEXDRV_SYMLINK_NAME);
+        IoDeleteSymbolicLink(&symlink);
+        g_SymlinkCreated = FALSE;
+    }
+    if (g_DeviceObject != NULL) {

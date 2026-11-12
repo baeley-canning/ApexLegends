@@ -1,0 +1,19 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_explorer5.txt
+image-name override: b'explorer.exe\x00' (ImageFileName[15])
+target pid=11192
+  discovering DTB for pid 11192 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    hits cache: 118 entries (sweep skipped; --refresh-hits to redo)
+    hit[0]=0x31d3f65c
+        d=0x0a0 base=0x31d3f5bc type=3 dtb=0x1ffffffff  <-- candidate
+    hit=0x31d3f65c: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x31d3f5e4=0x1fffff000 (name_off=0xa0) -> no PE
+    hit[1]=0x3498fc1b0
+    hit[2]=0x34f3f4f48
+    hit[3]=0x3507e6211
+    hit[4]=0x37dd13cf0
+    hit[5]=0x388700f40
+  1 DTBs tried, none walked to an MZ image
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

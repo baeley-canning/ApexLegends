@@ -21,7 +21,22 @@ public:
     
     void EnableFeature(FeatureType type, bool enable);
     bool IsFeatureEnabled(FeatureType type) const;
-    
+
+    // ESP sub-flags (PHASE 1 / ov-series T2): the overlay menu toggles these
+    // per-row; the FEATURE_ESP master stays a separate row.  Inlined here so
+    // features.cpp keeps only real logic.
+    bool IsDrawBoxes() const { return bDrawBoxes; }
+    void SetDrawBoxes(bool value) { bDrawBoxes = value; }
+    bool IsDrawNames() const { return bDrawNames; }
+    void SetDrawNames(bool value) { bDrawNames = value; }
+    bool IsDrawLines() const { return bDrawLines; }
+    void SetDrawLines(bool value) { bDrawLines = value; }
+
+    // Aimbot smoothing (PHASE 1 / overlay menu): the menu slider drives the
+    // same value UpdateAimbot() uses, so the widget is not a decoration.
+    float AimbotSmoothness() const { return aimbotSmoothness; }
+    void SetAimbotSmoothness(float value) { aimbotSmoothness = value; }
+
     // Individual feature functions
     void UpdateAimbot(MemoryReader* reader);
     void UpdateESP(MemoryReader* reader);

@@ -1,0 +1,245 @@
+# static CRT helpers (BufferOverflowK for safe-* / libcntpr for wcslen etc.).
+$linkArgs = @(
+    '/nologo', '/DRIVER', '/SUBSYSTEM:NATIVE', '/MACHINE:X64',
+    '/ENTRY:DriverEntry', "/OUT:$Output", '/NODEFAULTLIB',
+    "/LIBPATH:$kmLib",
+    $Object, 'ntoskrnl.lib', 'hal.lib', 'wdm.lib', 'BufferOverflowK.lib', 'libcntpr.lib'
+)
+
+& $link @linkArgs *>> $Log
+$linkExit = $LASTEXITCODE
+"LINK_EXIT=$linkExit" | Add-Content -Encoding utf8 $Log
+if ($linkExit -ne 0) {
+    Get-Content $Log -Tail 40 | Write-Host
+    throw "driver link failed (LINK_EXIT=$linkExit); see $Log"
+}
+
+$warnings = @(Select-String -Path $Log -Pattern ': warning ' -ErrorAction SilentlyContinue)
+"warnings: $($warnings.Count)" | Add-Content -Encoding utf8 $Log
+$warnings | Select-Object -First 10 | ForEach-Object { "  $($_.Line.Trim())" | Add-Content -Encoding utf8 $Log }
+
+$artifact = Get-Item $Output
+"artifact: $($artifact.FullName) ($($artifact.Length) bytes)" | Add-Content -Encoding utf8 $Log
+Write-Host "DRIVER BUILD OK: $Output ($($artifact.Length) bytes, $($warnings.Count) warning(s))"
+exit 0
+=== _ritual h3x/cur/drvbuild/s1 files ===
+cur_h310_live.ps1
+cur_h312_live.ps1
+cur_h314_live.ps1
+cur_h315_live.ps1
+cur_h316_live.ps1
+h300_elev.ps1
+h300_elev.txt
+h301_elev.ps1
+h301_elev.txt
+h302_elev.ps1
+h302_elev.txt
+h303_session.ps1
+h303_session.txt
+h304_logon.ps1
+h304_logon.txt
+h305.cmd
+h305_elev.ps1
+h305_elev.txt
+h306.cmd
+h306_elev.ps1
+h306_elev.txt
+h307.cmd
+h307_elev.ps1
+h307_elev.txt
+h308.cmd
+h308_elev.ps1
+h308_elev.txt
+h310_dis.ps1
+h310_dis_raw.txt
+h310_dse6.ps1
+h310_dseprobe.ps1
+h310_find.txt
+h310_fix.ps1
+h310_go.ps1
+h310_go2.ps1
+h310_kd.txt
+h310_kd2.ps1
+h310_kd_raw.txt
+h310_mid.txt
+h310_mid2.txt
+h310_parse.txt
+h310_post.cmd
+h310_post.ps1
+h310_post.txt
+h310_pre.txt
+h310_relay.ps1
+h310_run.ps1
+h311_pass.log
+h312b_svc.ps1
+h312b_svc.txt
+h312_headers.out
+h312_imports.out
+h312_launch.out
+h312_loadcfg.out
+h312_pre.txt
+h312_run.ps1
+h312_tls.out
+h313_diag.out
+h313_diag.ps1
+h313_env.out
+h313_env.ps1
+h313_pe.out
+h313_pe.ps1
+h313_pe2.out
+h313_pre_state.out
+h313_pre_state.ps1
+h313_stub_facts.out
+h314_map.out
+h314_pre.txt
+h314_run.ps1
+h315_child.err
+h315_child.out
+h315_crash.txt
+h315_dump.out
+h315_dump.ps1
+h315_dumpchk.out
+h315_dumpchk.out.err
+h315_kd.out
+h315_kd.out.err
+h315_kd.ps1
+h315_kd.txt
+h315_kd_run.out
+h315_kd_usage.out
+h315_out_crashed_nul.out
+h315_pre.txt
+h315_run.ps1
+h315_watch.ps1
+h316_dse_park.out
+h316_dse_park.ps1
+h316_order_selftest.out
+h316_order_selftest.ps1
+h316_post.cmd
+h316_post.ps1
+h316_pre.txt
+h316_run.ps1
+h316_vmbench.out
+h316_vmbench.ps1
+h316_vmbench_r1.out
+h316_vmbench_r2.out
+h316_vmbench_r3_autorepair.out
+h316_vmbench_r4_noga.out
+h316_vmbench_r5_lock.out
+h316_vm_screen.png
+h316_vm_screen2.png
+h316_vm_screen3.png
+h316_watch.ps1
+h317_arm.out
+h317_arm.ps1
+h317_click.ps1
+h317_inject.ps1
+h317_javelin_clip.txt
+h317_post.cmd
+h317_post.ps1
+h317_screen1.png
+h317_screen2.png
+h317_screen3.jpg
+h317_screen4.jpg
+h317_screen5.jpg
+h317_screen6.jpg
+h317_shot.ps1
+h317_testB1.jpg
+h317_testB2.jpg
+h317_testB3.jpg
+h318_allocprobe.ps1
+h318_arm_dse6.ps1
+h318_decontam.out
+h318_decontam.ps1
+h318_early.out
+h318_early.ps1
+h318_early1.jpg
+h318_early2.jpg
+h318_early3.jpg
+h318_early4.jpg
+h318_final1.jpg
+h318_fire.out
+h318_fire_apx.out
+h318_fire_apx.ps1
+h318_fire_apx_r1.out
+h318_fire_on_sight.ps1
+h318_focus.ps1
+h318_inject.out
+h318_inject.ps1
+h318_launch1.jpg
+h318_launch2.jpg
+h318_launch3.jpg
+h318_menu.jpg
+h318_probe_read.txt
+h318_range2.jpg
+h318_relaunch1.jpg
+h318_reload.out
+h318_reload.ps1
+h318_sample.ps1
+h318_swap_v13.out
+h318_swap_v13.ps1
+h318_top.ps1
+h318_top1.jpg
+h318_top2.jpg
+h318_ui.ps1
+h318_x1.jpg
+h318_y1.jpg
+h318_z1.jpg
+h318_z2.jpg
+h319_fg.txt
+h319_fire_probe.out
+h319_fire_probe.ps1
+h319_live.ps1
+h319_live1.out
+h319_live2.out
+h319_live3.out
+h319_live4.out
+h319_live5.out
+h319_live6.out
+h319_pre.out
+h319_probe_state.txt
+h319_svc.ps1
+h320_fire_kprobe.out
+h320_fire_kprobe.ps1
+h320_pre.out
+h320_va.err
+h320_va.ps1
+h320_va.std
+h320_va1.txt
+h320_va10.txt
+h320_va11.txt
+h320_va12.txt
+h320_va13.txt
+h320_va2.txt
+h320_va3.txt
+h320_va4.txt
+h320_va9.txt
+h320_va_launch.trace
+h321_fire_kprobe.out
+h321_fire_kprobe.ps1
+h321_pre.out
+h321_suspendlive.ps1
+h322_dev_test.out
+h322_dev_test.ps1
+h322_handlemask.ps1
+h323_arm.out
+h323_dry.console
+h323_elevmask.ps1
+h323_fire_ioctl.out
+h323_fire_ioctl.ps1
+h324_allocprobe.ps1
+h325_memops.ps1
+h326_writethread.ps1
+h327_vadcensus.ps1
+h3_quiet.ps1
+h3_quiet.summary.txt
+h3_quiet.txt
+s1.txt
+s1_wdk.out
+s1_wdk.ps1
+_h518_drvbuild.ps1
+=== staging/ABI greps in _ritual + tools (first 24 each) ===
+--- zapexdrv ---
+cur_h310_live.ps1:203: Svc 'stop zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:204: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:221: W ('restore: svc=[' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|does not exist|FAI
+cur_h310_live.ps1:225: W ('pre svc: ' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|FAILED|does not exist' }) -

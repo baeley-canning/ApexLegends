@@ -1,0 +1,46 @@
+15:59:55.239 === h301 elev: HKU-addressed auto-elevation -> module owning 0x ===
+15:59:55.456   pingQ | PINGQ
+15:59:55.671   pingP | PINGP
+15:59:55.672 --profile after the subcommand: ACCEPTED
+15:59:55.871   whoami | "win11-test2\vboxuser","S-1-5-21-1957909355-363273533-3916154183-1000"
+15:59:55.879 sid=S-1-5-21-1957909355-363273533-3916154183-1000
+15:59:56.183   session | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+15:59:56.183   session | >services                                            0  Disc
+15:59:56.184   session | console                                             1  Conn
+15:59:56.390   preHKCU | ERROR: The system was unable to find the specified registry key or value.
+15:59:56.590   preHKU | ERROR: The system was unable to find the specified registry key or value.
+15:59:56.591 pre-state: HKCU absent / HKU-SID absent
+15:59:56.799   stale | Could Not Find C:\Users\Public\h301_MEMORY.DMP
+15:59:57.230   payload | Volume in drive C is Windows
+15:59:57.230   payload | Volume Serial Number is A038-5429
+15:59:57.231   payload | Directory of C:\Users\Public
+15:59:57.231   payload | 11/06/2026  03:59 PM             1,444 h301.cmd
+15:59:57.232   payload | 1 File(s)          1,444 bytes
+15:59:57.232   payload | 0 Dir(s)  51,968,671,744 bytes free
+15:59:57.762   arm | ARM-RC=1
+15:59:57.762   arm | ERROR: Access is denied.
+15:59:57.763   arm | ERROR: Access is denied.
+15:59:57.764   arm | ERROR: Invalid key name.
+15:59:57.764   arm | Type "REG QUERY /?" for usage.
+15:59:57.765   arm | 'S-1-5-21-1957909355-363273533-3916154183-1000' is not recognized as an internal or external command,
+15:59:57.765   arm | operable program or batch file.
+15:59:57.766   arm | The system cannot find the path specified.
+15:59:57.766   cross-hive check: HKCU write NOT visible under HKU\<SID> - writing the hive directly
+15:59:58.072   armhku | ARMHKU-RC=3
+15:59:58.073   armhku | ERROR: Invalid key name.
+15:59:58.074   armhku | Type "REG ADD /?" for usage.
+15:59:58.074   armhku | 'S-1-5-21-1957909355-363273533-3916154183-1000' is not recognized as an internal or external command,
+15:59:58.075   armhku | operable program or batch file.
+15:59:58.075   armhku | The filename, directory name, or volume label syntax is incorrect.
+15:59:58.076   armhku | ERROR: Invalid key name.
+15:59:58.077   armhku | Type "REG ADD /?" for usage.
+15:59:58.077   armhku | 'S-1-5-21-1957909355-363273533-3916154183-1000' is not recognized as an internal or external command,
+15:59:58.078   armhku | operable program or batch file.
+15:59:58.078   armhku | The system cannot find the path specified.
+15:59:58.079   armhku | ERROR: Invalid key name.
+15:59:58.079   armhku | Type "REG QUERY /?" for usage.
+15:59:58.080   armhku | 'S-1-5-21-1957909355-363273533-3916154183-1000' is not recognized as an internal or external command,
+15:59:58.080   armhku | operable program or batch file.
+15:59:58.081   armhku | The system cannot find the path specified.
+15:59:58.082 RESULT: FAIL - neither HKCU nor HKU\SID accepted the command key (variable: HKU target)
+15:59:58.082   Read the reg add -RC lines above: 0 = accepted, 1 = it did not create the path.

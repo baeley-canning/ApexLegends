@@ -1,0 +1,2 @@
+29: - Next: in-game render against Apex (launcher is `build\apex_launcher.exe`), then the tabbed purple menu from `QwenKern\menu examples`, then gdrv3 p4b in the VM.
+40: - **Still open / next:** hooks.cpp must capture the game's queue (hook `ID3D12CommandQueue::ExecuteCommandLists`, remember `this`, call `SetCommandQueue`) - without it the in-game DX12 overlay would hit exactly rule (2). Then the in-game render, then the visual work: the current menu is 5x7 bitmap text, the reference in `QwenKern\menu examples` is a full tabbed purple panel - a separate piece of work.

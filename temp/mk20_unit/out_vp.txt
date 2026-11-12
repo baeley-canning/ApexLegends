@@ -1,0 +1,16 @@
+
+--- verify 2026-11-09 15:21:05 : 2 matrix window(s), 0 static(s), 6 record(s) ---
+  layout rows/col0 usable positions: 0/6
+  layout rows/col3 usable positions: 0/6
+  layout contig    usable positions: 5/6
+  records with any non-zero byte: 6/6
+  layout pinned to contig (the census's own definition)
+
+  rva          tag  w  layout        on asp   anchor   corr   medh
+  0x0000009000 row  w  contig      5/ 5   5     60.2   1.00  499.9
+  0x0000009000 row  z  contig      5/ 5   5     60.2   1.00  499.9
+  winner: rva=0x9000 (matrix at +0x0) row/w layout=contig
+  camera=(1000.0, 2000.0, 300.0)  on=5/5 aspect=5 anchor=60.2
+rects written: C:\Users\New User\OneDrive\Desktop\cheating\temp\mk20_unit\rects_vp.txt
+   RESULT: rva=0x9000 +0x0 row/w on=5/5 aspect=5 anchor=60.2 corr=1.00 medh=499.9
+VERDICT: PASS - 5/5 entities on screen, camera 60.2 units from one, box height vs distance corr 1.00: rva 0x9000 is the world->clip matrix

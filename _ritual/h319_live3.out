@@ -1,0 +1,27 @@
+00:43:15.355 ===== h319 live watch r3 - driver loaded, no inject =====
+00:43:15.370 driver RUNNING=False
+00:44:05.520 ALIVE pid=24400 start=00:44:03 jav=0
+00:44:15.609 tick pid=24400 jav=0
+00:45:15.725 tick pid=24400 jav=0
+00:46:15.841 tick pid=24400 jav=0
+00:47:15.956 tick pid=24400 jav=0
+00:48:16.060 tick pid=24400 jav=0
+00:49:16.166 tick pid=24400 jav=0
+00:50:16.263 tick pid=24400 jav=0
+00:51:16.357 tick pid=24400 jav=0
+00:52:16.457 tick pid=24400 jav=0
+00:53:16.558 tick pid=24400 jav=0
+00:54:16.668 tick pid=24400 jav=0
+00:55:16.776 tick pid=24400 jav=0
+00:56:16.876 tick pid=24400 jav=0
+00:57:16.989 tick pid=24400 jav=0
+00:58:17.098 tick pid=24400 jav=0
+00:59:17.210 tick pid=24400 jav=0
+01:00:17.316 tick pid=24400 jav=0
+01:01:17.416 tick pid=24400 jav=0
+01:02:17.511 tick pid=24400 jav=0
+01:03:17.606 tick pid=24400 jav=0
+01:04:17.703 tick pid=24400 jav=0
+01:05:17.805 tick pid=24400 jav=0
+01:05:48.593 RESULT: SURVIVED-USER-END 21.2 min (start 00:44:03, last 01:04:17), javelin=0
+01:05:48.597 VERDICT: driver-NOT-loaded tolerated 21 min - RESIDENT DRIVER IS THE KILL TRIGGER

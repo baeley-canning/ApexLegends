@@ -1,0 +1,7 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_peb_game.txt
+target pid=21640
+  driver: no handle (ApexDrv not loaded?)
+  discovering DTB for pid 21640 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+  PEB via NtQueryInformationProcess = 0x316000

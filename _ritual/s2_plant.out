@@ -1,0 +1,6 @@
+19:58:50.474 ===== s2_plant_old (plant known old images at dst + p37; svc + DSE untouched) =====
+19:58:50.501 svc pre: STATE              : 1  STOPPED
+19:58:50.555 PRE  dst=[317E4A86C1817401] p37=[317E4A86C1817401]
+19:58:50.559 plant old dst=[4F1106853D05986B] p37=[4F1106853D05986B]
+19:58:50.567 POST dst=[4F1106853D05986B] p37=[4F1106853D05986B]
+19:58:50.568 RESULT: PASS - both destinations now hold planted old images; next: re-run s2_stage_v14.ps1 (expect bak made x2 + restage v14)

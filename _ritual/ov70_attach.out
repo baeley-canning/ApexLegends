@@ -1,0 +1,37 @@
+ov70 - allocation-free attach - 2026-11-07 15:53:22
+elevated : True
+target   : pid=3920 title='Apex Legends'
+handle   : OpenProcess(ALL) ok hproc=2140
+image    : r5apex base=0x0
+scan     : regions=1024 queryFail=0 lastErr=0 mbiSize=48
+---- census ----
+rw#1 base=0x10000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#2 base=0x20000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#3 base=0x80000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#4 base=0x100000 size=0x3A000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#5 base=0x170000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#6 base=0x180000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#7 base=0x190000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#8 base=0x1A0000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#9 base=0x1B0000 size=0x4000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#10 base=0x1C0000 size=0x11000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#11 base=0x1E0000 size=0x1000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#12 base=0x1F0000 size=0x10000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#13 base=0x200000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#14 base=0x206000 size=0x4000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#15 base=0x20C000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#16 base=0x214000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#17 base=0x21A000 size=0x4000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#18 base=0x226000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#19 base=0x244000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#20 base=0x24A000 size=0x6000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#21 base=0x363000 size=0x11000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#22 base=0x37A000 size=0x10000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#23 base=0x38C000 size=0x2000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#24 base=0x392000 size=0x10000 prot=0x4 tailRead=False nonzeroBytes=0
+rw#25 base=0x3A4000 size=0x4000 prot=0x4 tailRead=False nonzeroBytes=0
+rw regions total = 682
+
+
+RESULT: CENSUS (dump mode, nothing written)
+ov70 DONE CENSUS (dump mode, nothing written)

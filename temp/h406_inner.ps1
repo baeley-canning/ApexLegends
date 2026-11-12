@@ -1,0 +1,1 @@
+& 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe' 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h406_self_kernel.py' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h406_output.txt'; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h406_rc.txt'

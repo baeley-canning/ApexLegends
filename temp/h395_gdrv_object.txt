@@ -1,0 +1,12 @@
+H395 bounded EPROCESS recognition: map=5 bad=25, 5 ranges
+MATCH hit=0x2d87fb490 nameoff=0x338 obj=0x2d87fb158 typeoff=0x0 type=41 pidoffs=[] dtboff=0x28 dtb=0x4d52564e02020000 proc=b'\x00\x00\x00\x00'
+MATCH hit=0x2d87fb490 nameoff=0x338 obj=0x2d87fb158 typeoff=0x70 type=226 pidoffs=[] dtboff=0x98 dtb=0x101 proc=b'\x00\x00\x00\x00'
+MATCH hit=0x2d87fb490 nameoff=0x338 obj=0x2d87fb158 typeoff=0x74 type=0 pidoffs=[] dtboff=0xa8 dtb=0x48706657020201be proc=b'\x00\x00\x00\x00'
+MATCH hit=0x2d87fb490 nameoff=0x450 obj=0x2d87fb040 typeoff=0x0 type=211 pidoffs=[] dtboff=0x28 dtb=0x35547df4 proc=b'\n\x98\x00\x01'
+MATCH hit=0x2d87fb490 nameoff=0x450 obj=0x2d87fb040 typeoff=0x70 type=1 pidoffs=[] dtboff=0x98 dtb=0xa1930031d9420200 proc=b'\n\x98\x00\x01'
+MATCH hit=0x2d87fb490 nameoff=0x450 obj=0x2d87fb040 typeoff=0x74 type=0 pidoffs=[] dtboff=0xa8 dtb=0x0 proc=b'\n\x98\x00\x01'
+VALIDATED_PID_DTBS=0
+after qkva_shape_search=0
+PEB=0x24b000
+RESULT: objects recognized=0, zero PEB->PE proofs
+VERDICT: BLOCKED - no candidate walk unlocked

@@ -131,3 +131,31 @@ void ConfigManager::SetFloatValue(const std::string& key, float value) {
 void ConfigManager::SetStringValue(const std::string& key, const std::string& value) {
     configValues[key] = value;
 }
+
+bool ConfigManager::FlushFeatureToggles(bool aimbot, bool esp, bool glow, bool recoil,
+                                        bool espBoxes, bool espNames, bool espLines) {
+    // PHASE 1 / T4 (ov-series): the menu calls this on every toggle.  Setting
+    // all seven keys in one SaveConfig() keeps the write atomic from the
+    // reader's point of view (a single ofstream pass, keys sorted by map
+    // order), so a crash mid-session can never leave a half-updated preset.
+    SetBoolValue("aimbot",    aimbot);
+    SetBoolValue("esp",       esp);
+    SetBoolValue("glow",      glow);
+    SetBoolValue("recoil",    recoil);
+    SetBoolValue("esp_boxes", espBoxes);
+    SetBoolValue("esp_names", espNames);
+    SetBoolValue("esp_lines", espLines);
+    return SaveConfig();
+}
+
+ConfigManager* SharedMenuConfig() {
+    // See config.h for why this leaks on purpose (manual mapper never runs CRT
+    // teardown).  LoadConfig() first so keys this function does not manage
+    // survive the next SaveConfig(); on a missing file it simply starts empty.
+    static ConfigManager* instance = nullptr;
+    if (!instance) {
+        instance = new ConfigManager("apexcheat.ini");
+        instance->LoadConfig();
+    }
+    return instance;
+}

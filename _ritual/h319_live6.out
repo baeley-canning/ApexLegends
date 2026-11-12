@@ -1,0 +1,50 @@
+01:42:06.635 ===== h319 live watch r6 - driver RESIDENT, no inject =====
+01:43:46.926 ALIVE pid=23164 start=01:43:39 jav=0
+01:44:07.053 tick pid=23164 jav=0
+01:45:07.159 tick pid=23164 jav=0
+01:46:07.253 tick pid=23164 jav=0
+01:47:07.343 tick pid=23164 jav=0
+01:48:07.433 tick pid=23164 jav=0
+01:49:07.530 tick pid=23164 jav=0
+01:50:07.633 tick pid=23164 jav=0
+01:51:07.742 tick pid=23164 jav=0
+01:52:07.854 tick pid=23164 jav=0
+01:53:07.977 tick pid=23164 jav=0
+01:54:08.118 tick pid=23164 jav=0
+01:55:08.225 tick pid=23164 jav=0
+01:56:08.341 tick pid=23164 jav=0
+01:57:08.443 tick pid=23164 jav=0
+01:58:08.574 tick pid=23164 jav=0
+01:59:08.682 tick pid=23164 jav=0
+01:59:51 ===== user-close at ~15.9 min, jav=0 all ticks =====
+RESULT: SURVIVED 15.9 min with proven image 9B119FD0 RESIDENT (r1 same shape died 6.4 min at jav=1 on v13)
+VERDICT: variable = image build -> v13 IS the regression; v2 base survives load. Milestone-1 gate re-established on the shipped base.
+02:00:08.792 tick pid=23164 jav=0
+02:01:08.920 tick pid=23164 jav=0
+02:02:09.033 tick pid=23164 jav=0
+02:03:09.134 tick pid=23164 jav=0
+02:04:09.247 tick pid=23164 jav=0
+02:05:09.352 tick pid=23164 jav=0
+02:06:09.481 tick pid=23164 jav=0
+02:07:09.598 tick pid=23164 jav=0
+02:08:09.710 tick pid=23164 jav=0
+02:09:09.843 tick pid=23164 jav=0
+02:10:11.299 tick pid=23164 jav=0
+02:11:11.409 tick pid=23164 jav=0
+02:12:11.517 tick pid=23164 jav=0
+02:13:11.640 tick pid=23164 jav=0
+02:14:11.767 tick pid=23164 jav=0
+02:15:11.891 tick pid=23164 jav=0
+02:16:12.010 tick pid=23164 jav=0
+02:17:12.130 tick pid=23164 jav=0
+02:18:12.237 tick pid=23164 jav=0
+02:19:12.356 tick pid=23164 jav=0
+02:20:12.466 tick pid=23164 jav=0
+02:21:12.586 tick pid=23164 jav=0
+02:22:12.704 tick pid=23164 jav=0
+02:23:12.829 tick pid=23164 jav=0
+02:24:12.937 tick pid=23164 jav=0
+02:25:13.093 tick pid=23164 jav=0
+02:26:13.216 tick pid=23164 jav=0
+02:27:13.241 RESULT: SURVIVED 45 min, pid=23164
+02:27:13.245 VERDICT: driver RESIDENT is tolerated this session (no kill in 45 min)

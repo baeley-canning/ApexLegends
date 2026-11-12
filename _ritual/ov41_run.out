@@ -1,0 +1,110 @@
+ov41 - adapter fix (display-attached device) - 2026-11-07 10:38:17
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov41_cwd (scratch, emptied first)
+pid   : 1840   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov41_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+chain current back buffer index = 0
+GetBuffer(0) hr=0x00000000 res=000002965EEE7FC0
+GetBuffer(1) hr=0x00000000 res=000002965EEE8AB0
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+chain current back buffer index = 0
+GetBuffer(0) hr=0x00000000 res=0000029665DAF560
+GetBuffer(1) hr=0x00000000 res=0000029665DAFBC0
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+chain current back buffer index = 0
+GetBuffer(0) hr=0x00000000 res=000002965EB64910
+GetBuffer(1) hr=0x00000000 res=000002965EB63470
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+FAIL: no adapter could present, hr=0x80004005
+
+---- overlay_test log ----
+[10:37:01.487] ==================== session start 2026-11-07 10:37:01 pid=1840
+[10:37:01.487] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov40_cwd size=960x620
+[10:37:01.488] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:37:01.504] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:37:01.505] [test] debug layer: NOT available
+[10:37:01.714] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000004005AC
+[10:37:01.714] [test] chain current back buffer index = 0
+[10:37:01.714] [test] GetBuffer(0) hr=0x00000000 res=000001658B3FB3A0
+[10:37:01.714] [test] GetBuffer(1) hr=0x00000000 res=000001658B3FBE90
+[10:37:01.714] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:37:01.714] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:37:01.714] [test] T8 buffer[1] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:37:01.715] [test] T8 direct clear[1]: removedReason=0x887A002B
+[10:37:01.715] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+[10:37:01.939] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000004005AC
+[10:37:01.939] [test] chain current back buffer index = 0
+[10:37:01.939] [test] GetBuffer(0) hr=0x00000000 res=000001658C1D50D0
+[10:37:01.939] [test] GetBuffer(1) hr=0x00000000 res=000001658C1D4410
+[10:37:01.939] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:37:01.939] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:37:01.939] [test] T8 buffer[1] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:37:01.941] [test] T8 direct clear[1]: removedReason=0x887A002B
+[10:37:01.941] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+[10:37:01.967] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000004005AC
+[10:37:01.967] [test] chain current back buffer index = 0
+[10:37:01.967] [test] GetBuffer(0) hr=0x00000000 res=000001658B37CC80
+[10:37:01.967] [test] GetBuffer(1) hr=0x00000000 res=000001658B37C020
+[10:37:01.967] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:37:01.967] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:37:01.967] [test] T8 buffer[1] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:37:01.967] [test] T8 direct clear[1]: removedReason=0x887A002B
+[10:37:01.967] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+[10:37:01.969] [test] FAIL: no adapter could present, hr=0x80004005
+[10:38:17.692] ==================== session start 2026-11-07 10:38:17 pid=1840
+[10:38:17.692] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov41_cwd size=960x620
+[10:38:17.692] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:38:17.708] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:38:17.709] [test] debug layer: NOT available
+[10:38:17.928] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+[10:38:17.928] [test] chain current back buffer index = 0
+[10:38:17.928] [test] GetBuffer(0) hr=0x00000000 res=000002965EEE7FC0
+[10:38:17.928] [test] GetBuffer(1) hr=0x00000000 res=000002965EEE8AB0
+[10:38:17.928] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:38:17.928] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:38:18.062] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:38:18.062] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:38:18.063] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+[10:38:18.287] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+[10:38:18.287] [test] chain current back buffer index = 0
+[10:38:18.287] [test] GetBuffer(0) hr=0x00000000 res=0000029665DAF560
+[10:38:18.287] [test] GetBuffer(1) hr=0x00000000 res=0000029665DAFBC0
+[10:38:18.287] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:38:18.287] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:38:18.409] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:38:18.410] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:38:18.411] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+[10:38:18.436] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000006706CA
+[10:38:18.436] [test] chain current back buffer index = 0
+[10:38:18.436] [test] GetBuffer(0) hr=0x00000000 res=000002965EB64910
+[10:38:18.436] [test] GetBuffer(1) hr=0x00000000 res=000002965EB63470
+[10:38:18.436] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:38:18.436] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:38:18.569] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:38:18.569] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:38:18.569] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+[10:38:18.571] [test] FAIL: no adapter could present, hr=0x80004005
+

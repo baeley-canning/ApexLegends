@@ -1,0 +1,17 @@
+22:54:42.817 ===== cameo2 =====
+22:54:42.833 game pid=21640
+22:54:47.968 DSE pre=0x16 (written 0 by the read)
+22:54:47.986   create| [SC] CreateService SUCCESS
+22:54:48.006 start: SERVICE_NAME: ApexDrv TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0 PID : 0 FLAGS :
+22:55:46.311   stop| 
+22:55:46.313   stop| SERVICE_NAME: ApexDrv 
+22:55:46.313   stop|         TYPE               : 1  KERNEL_DRIVER  
+22:55:46.315   stop|         STATE              : 1  STOPPED 
+22:55:46.315   stop|         WIN32_EXIT_CODE    : 0  (0x0)
+22:55:46.315   stop|         SERVICE_EXIT_CODE  : 0  (0x0)
+22:55:46.315   stop|         CHECKPOINT         : 0x0
+22:55:46.315   stop|         WAIT_HINT          : 0x0
+22:55:46.321   del| [SC] DeleteService SUCCESS
+22:55:46.329 driver now: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+22:55:51.392 DSE restore 0x16 (dec 22) verified=True
+22:55:51.396 game alive=False

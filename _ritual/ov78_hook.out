@@ -1,0 +1,81 @@
+ov78 - hook/loader injection - 2026-11-07 16:46:51
+target   : pid=29864 hwnd=42927888 elevated=False
+hook dll : hMod=140703872450560 proc=0x7FF82C561380
+thread   : gui tid=12640 windowPid=29864
+arm      : tid=12640 hwnd=42927888 getmsg=22415536 callwnd=17434584 err=0
+tids     : armed 1 window thread(s): 12640
+hook ran (game-side [g29864] line present) : False
+---- hook log ----
+[g11192] ov76: DllMain PROCESS_ATTACH (mapped)
+[g11192] ov76: self-pin ok
+[g11192] ov76: payload thread up (outside loader lock)
+[g11192] ov76: LoadLibraryW(apexcheat.dll) -> 0x00007FF806140000 err=183
+[g11192] ov76: hb +2s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +4s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +6s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +8s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +10s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +12s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +14s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +16s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +18s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +20s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +22s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +24s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +26s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +28s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +30s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +32s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +34s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +36s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +38s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +40s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +42s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +44s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +46s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +48s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +50s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +52s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +54s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +56s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +58s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+[g11192] ov76: hb +60s apexcheat=0x00007FF806140000 payload=0x00007FF806140000
+
+hooks    : unhooked 2 handle(s) (R4; hook dll self-pins, heartbeat continues)
+paylog   : C:\Users\New User\AppData\Local\QwenKern\payload_29864.log fresh=False (alt: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\payload_29864.log)
+game     : alive=True
+payload ready: False
+INSERT   : pid=29864 hwnd=42927888 title=Apex Legends | foreground raised | VK_INSERT sent
+---- payload attach canary (tail 40) ----
+[2026-11-07 16:48:34.628 pid=25080 tid=6924] DllMain PROCESS_ATTACH
+[2026-11-07 16:48:34.628 pid=25080 tid=6924] CreateThread ok
+[2026-11-07 16:48:34.629 pid=25080 tid=31716] worker thread entered
+[2026-11-07 16:48:34.710 pid=11924 tid=7124] DllMain PROCESS_ATTACH
+[2026-11-07 16:48:34.710 pid=11924 tid=7124] CreateThread ok
+[2026-11-07 16:48:34.711 pid=11924 tid=27852] worker thread entered
+[2026-11-07 16:48:35.639 pid=11924 tid=27852] Initialize() OK - entering main loop
+[2026-11-07 16:48:37.588 pid=25080 tid=11688] DllMain PROCESS_DETACH
+---- OCR (menu) ----
+amage
+Hold to save and
+itats
+ot
+ea
+FIRING RANGE
+0.00% 0.00%
+curacy
+Friendly Fire
+Full Combat Dummies
+[HOL
+STOMIZE RANGE
+[HOLO] CHANGE LEGEND
+ON
+OFF
+1
+NEXT LVL: 450 EVO
+kern30120
+
+check menu on screen : False
+
+RESULT: FAIL see checks above
+ov78 DONE FAIL see checks above

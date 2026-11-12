@@ -1,0 +1,31 @@
+16:35:24.191 === h308 elev: separated Win key + Start search -> module owning 0xfffff80219033bc9 ===
+16:35:24.657 pre-state: session1-loggedon=True hive=True
+16:35:27.427 consoles baseline: 1
+16:35:27.474   key 01 81 ok
+16:35:28.318   key e0 5b ok
+16:35:28.662   key e0 db ok
+16:35:30.756   putstring 3 chars ok
+16:35:32.299   key 1c 9c ok
+16:35:39.383 consoles after search: 1 (delta 0)
+16:35:39.384 no console - trying Run instead of search (separated Win+R, path typed)
+16:35:39.427   key 01 81 ok
+16:35:40.069   key e0 5b ok
+16:35:40.516   key 13 93 ok
+16:35:40.761   key e0 db ok
+16:35:43.508   putstring 31 chars ok
+16:35:44.752   key 1c 9c ok
+16:35:55.112 consoles after Run: 1 (delta 0)
+16:36:10.673   poll t=15s bytes=0
+16:36:26.244   poll t=30s bytes=0
+16:36:41.807   poll t=45s bytes=0
+16:36:57.362   poll t=60s bytes=0
+16:37:12.894   poll t=75s bytes=0
+16:37:28.453   poll t=90s bytes=0
+16:37:44.022   poll t=105s bytes=0
+16:37:59.577   poll t=120s bytes=0
+16:38:15.139   poll t=135s bytes=0
+16:38:30.709   poll t=150s bytes=0
+16:38:30.887 transcript: high-integrity=False staged=0 want=391099508
+16:38:33.156 restore: payload deleted; session consoles=1
+16:38:33.158 RESULT: FAIL - still no elevated copy (variable: key timing)
+16:38:33.158 VERDICT: only delta=0 on copyfrom AND a High/System Mandatory Level line make the kd read valid

@@ -1,0 +1,61 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_gdrv1.txt
+target pid=6832
+  driver: no handle (ApexDrv not loaded?)
+  discovering DTB for pid 6832 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    name hits=7 chunks=454583 skipped=125697 rescued=460255
+    hit[0]=0x2fa310440
+        d=0x448 base=0x2fa30fff8 typebyte=0xd0 dtb=0x200000001  <-- plausible frame
+    hit=0x2fa310440: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x2fa310020=0x200000000 (name_off=0x448) -> no PE
+    hit[1]=0x3f92fb990
+        d=0x090 base=0x3f92fb900 typebyte=0xe5 dtb=0x5bdebb8  <-- plausible frame
+        d=0x250 base=0x3f92fb740 typebyte=0x91 dtb=0x10774482  <-- plausible frame
+        d=0x290 base=0x3f92fb700 typebyte=0x0 dtb=0x1288e5ac  <-- plausible frame
+        d=0x370 base=0x3f92fb620 typebyte=0x0 dtb=0x13c1e59d  <-- plausible frame
+        d=0x3b0 base=0x3f92fb5e0 typebyte=0x8f dtb=0x79cadc8  <-- plausible frame
+        d=0x5f0 base=0x3f92fb3a0 typebyte=0x0 dtb=0x7bde158  <-- plausible frame
+        d=0x630 base=0x3f92fb360 typebyte=0x0 dtb=0x6bde118  <-- plausible frame
+        d=0x670 base=0x3f92fb320 typebyte=0x81 dtb=0x103ebe22  <-- plausible frame
+    hit=0x3f92fb990: 8 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3f92fb928=0x5bde000 (name_off=0x90) -> no PE
+      try dtb@0x3f92fb768=0x10774000 (name_off=0x250) -> no PE
+      try dtb@0x3f92fb728=0x1288e000 (name_off=0x290) -> no PE
+      try dtb@0x3f92fb648=0x13c1e000 (name_off=0x370) -> no PE
+      try dtb@0x3f92fb608=0x79ca000 (name_off=0x3b0) -> no PE
+      try dtb@0x3f92fb3c8=0x7bde000 (name_off=0x5f0) -> no PE
+    hit[2]=0x46751ba10
+    hit[3]=0x532806f20
+        d=0x300 base=0x532806c20 typebyte=0x0 dtb=0x202c2970  <-- plausible frame
+    hit=0x532806f20: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x532806c48=0x202c2000 (name_off=0x300) -> no PE
+    hit[4]=0x57282f718
+        d=0x0c0 base=0x57282f658 typebyte=0x0 dtb=0x5f94454  <-- plausible frame
+        d=0x128 base=0x57282f5f0 typebyte=0x1 dtb=0x186ef20dc  <-- plausible frame
+        d=0x178 base=0x57282f5a0 typebyte=0x1 dtb=0x1572842eb  <-- plausible frame
+        d=0x218 base=0x57282f500 typebyte=0x1 dtb=0x181d47370  <-- plausible frame
+        d=0x3a8 base=0x57282f370 typebyte=0x1 dtb=0x173ead05b  <-- plausible frame
+        d=0x498 base=0x57282f280 typebyte=0x1 dtb=0xdc501ec  <-- plausible frame
+        d=0x4e8 base=0x57282f230 typebyte=0x1 dtb=0x1331997f  <-- plausible frame
+        d=0x588 base=0x57282f190 typebyte=0x1 dtb=0x160336fc  <-- plausible frame
+    hit=0x57282f718: 12 DTB candidate(s) from the EPROCESS header
+      try dtb@0x57282f680=0x5f94000 (name_off=0xc0) -> no PE
+      try dtb@0x57282f618=0x186ef2000 (name_off=0x128) -> no PE
+      try dtb@0x57282f5c8=0x157284000 (name_off=0x178) -> no PE
+      try dtb@0x57282f528=0x181d47000 (name_off=0x218) -> no PE
+      try dtb@0x57282f398=0x173ead000 (name_off=0x3a8) -> no PE
+      try dtb@0x57282f2a8=0xdc50000 (name_off=0x498) -> no PE
+    hit[5]=0x5f2d33dfe
+    hit=0x7348e63b8: 5 DTB candidate(s) from the EPROCESS header
+      try dtb@0x7348e62a8=0x3de2ec000 (name_off=0x138) -> no PE
+      try dtb@0x7348e62a0=0x3ebcc2000 (name_off=0x140) -> no PE
+      try dtb@0x7348e6208=0x7bb6d6000 (name_off=0x1d8) -> no PE
+      try dtb@0x7348e61a0=0xe8cd000 (name_off=0x240) -> no PE
+      try dtb@0x7348e60a8=0x2d80ba000 (name_off=0x338) -> no PE
+  19 DTBs tried, none walked to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+    page-table-shaped frames: 4100
+    walks that reached a PE: 0
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

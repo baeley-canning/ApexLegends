@@ -1,0 +1,6 @@
+PID=14624 QUERY_HANDLE=0x25c SELF=25644
+query64_status=0xc0000004 expected_bytes=5436376
+num entries=135909
+entry=0 object=0xffffe60c936d9040 owner=4 handle=0x4 access=0x1fffff type=8
+entry=1 object=0xffffe60c93880280 owner=4 handle=0x8 access=0x1fffff type=9
+entry=2 object=0xffffe60c97da2880 owner=4 handle=0xc access=0x1f0003 type=21

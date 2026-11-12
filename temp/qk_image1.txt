@@ -1,0 +1,83 @@
+===== qk_image: locate r5apex_dx12 in physical RAM =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_image1.txt
+ram_top=0x800000000 ranges=5 (map=5 bad=25)
+  scanned 16384 chunks, 0 image hits
+  scanned 32768 chunks, 0 image hits
+  scanned 49152 chunks, 0 image hits
+  scanned 65536 chunks, 0 image hits
+  scanned 81920 chunks, 0 image hits
+  scanned 98304 chunks, 0 image hits
+  scanned 114688 chunks, 0 image hits
+  scanned 131072 chunks, 0 image hits
+  IMAGE at 0x0316b24c40 SizeOfImage=0xdfb8000 stamp=0x6adbf892 sections=9
+  scanned 147456 chunks, 1 image hits
+  IMAGE at 0x035bfe0000 SizeOfImage=0xdfb8000 stamp=0x6adbf892 sections=9
+  scanned 163840 chunks, 2 image hits
+  scanned 180224 chunks, 2 image hits
+  scanned 196608 chunks, 2 image hits
+  scanned 212992 chunks, 2 image hits
+  scanned 229376 chunks, 2 image hits
+  scanned 245760 chunks, 2 image hits
+  scanned 262144 chunks, 2 image hits
+  scanned 278528 chunks, 2 image hits
+  scanned 294912 chunks, 2 image hits
+  scanned 311296 chunks, 2 image hits
+  scanned 327680 chunks, 2 image hits
+  scanned 344064 chunks, 2 image hits
+  scanned 360448 chunks, 2 image hits
+  scanned 376832 chunks, 2 image hits
+  scanned 393216 chunks, 2 image hits
+  scanned 409600 chunks, 2 image hits
+  scanned 425984 chunks, 2 image hits
+  scanned 442368 chunks, 2 image hits
+scanned 454581 chunks, 2 image hit(s)
+chosen image_pa=0x0316b24c40 size=0xdfb8000 sections=9 optsize=0xf0
+  .text    va=0x00001000 vsize=0x2ca2aac wr=0 ex=1 head=00008b4424588947 contiguous=yes
+  .rdata   va=0x02ca4000 vsize=0x06a7fd2 wr=0 ex=0 head=20ad9d87d344517b contiguous=yes
+  .data    va=0x0334c000 vsize=0xab2392c wr=1 ex=0 head=89605f4c034ea3bc contiguous=yes
+  .pdata   va=0x0de70000 vsize=0x00e4618 wr=0 ex=0 head=65b3e7e2ff7caa90 contiguous=yes
+  _RDATA   va=0x0df55000 vsize=0x0000a24 wr=0 ex=0 head=3e5a3235b3f7dc01 contiguous=yes
+  .fptable va=0x0df56000 vsize=0x0000100 wr=1 ex=0 head=d8ffffff766b0c00 contiguous=yes
+  .rsrc    va=0x0df57000 vsize=0x00035f8 wr=0 ex=1 head=0000000000000000 contiguous=no/unclear
+  {PtZ?CHA va=0x47894104 vsize=0x7d744739 wr=0 ex=0 head=ffeb68488bcbe841 contiguous=yes
+  ?G|?CXA9 va=0x78478941 vsize=0x47d7847 wr=0 ex=1 head=6e642061206d6f72 contiguous=yes
+  sections whose base_pa+va reads as real data: 8/9
+  rva 0x01b4dfa0 finite=False
+     [0]  32090.2812     -0.0000 -3964257024.0000     -0.0152
+     [1]     10.4083      1.4547 -526723141230133248.0000 5551123501443146828824444928.0000
+     [2]     -0.0000    -11.4667 6822089032568222456479744.0000 -14451238392662019056962241985240891392.0000
+     [3]     -0.0000 -1853747467372199936.0000     -0.0000     -0.0000
+  rva 0x01b4dfe0 finite=False
+     [0] -384809664.0000     -0.0000      0.0000     -0.0000
+     [1] 56489128.0000 -1643802112.0000      0.0000 -23510685612920274944.0000
+     [2] 196384834865295115735183946416128.0000 966499.1250 283068289318387712.0000      0.0000
+     [3] -501700799202590720.0000 -955481.5000      0.0000      0.0000
+  rva 0x0022ee01 finite=False
+     [0]      0.0105 198300400.0000 961789550383825378193965056.0000 35747970704714841427279872.0000
+     [1] 63909944595270598656.0000 69191677536241731269784591409348608.0000      0.0000 -2816737263222784.0000
+     [2] -14957293032187513374695751680.0000 147711843803067242774528.0000     -0.0000     -0.0000
+     [3]     -0.0000 -294517248.0000 -151476261243329812771756834816.0000      0.0000
+  rva 0x023f6a90 finite=False
+     [0] 60907055159327659655168.0000 16885645998025121090495844450304.0000      0.0000      0.0000
+     [1] 3327224397391887647065572721280679936.0000 209712601544785920.0000 4544735687647663808826191118336.0000 60907055159327659655168.0000
+     [2] 16885645998025121090495844450304.0000      0.0000      0.0000 3327305527030302253747268510285824000.0000
+     [3] 209712601544785920.0000 4544735687647663808826191118336.0000 60907055159327659655168.0000 16885645998025121090495844450304.0000
+  rva 0x01e7d4b8 finite=False
+     [0]     -0.0000      0.0000     -0.0000      0.0000
+     [1]      0.0000      0.0000 2312246564933861376.0000     -0.0000
+     [2]      0.0000      0.0000      0.0000      0.0000
+     [3]      0.0000      0.0000      0.0000      0.0000
+  scanning .data va=0x334c000 size=0xab2392c (171 MB) for matrices
+  .data scanned=156499968 bytes, matrix candidates=8
+  re-reading the 8 candidate(s) after 1.5 s - the live matrix moves
+   rva=0x0ddda328 max_delta=0.000000
+   rva=0x0dd792b0 max_delta=8142.605103   <-- CHANGED (live view matrix)
+   rva=0x0dd791d0 max_delta=6061.952637   <-- CHANGED (live view matrix)
+   rva=0x0dd790f0 max_delta=4454.534790   <-- CHANGED (live view matrix)
+   rva=0x0dd79010 max_delta=3481.838135   <-- CHANGED (live view matrix)
+   rva=0x0dd78f30 max_delta=3874.581299   <-- CHANGED (live view matrix)
+   rva=0x0dd78e50 max_delta=4319.054199   <-- CHANGED (live view matrix)
+   rva=0x0dd78d70 max_delta=5241.725838   <-- CHANGED (live view matrix)
+  CACHED temp\qk_offsets.txt  image_pa=0x316b24c40 vp_rva=0xdd792b0
+RESULT: image_pa=0x316b24c40 contiguous_sections=8/9 stamp=0x6adbf892
+VERDICT: PASS - base_pa+rva works: static offsets are a direct read

@@ -1,0 +1,69 @@
+ov20 - adapter fix (display-attached device) - 2026-11-07 10:02:09
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov20_cwd (scratch, emptied first)
+pid   : 12528   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=18 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov20_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T7 info queue: unavailable (debug layer off?)
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present(0,0) hr=0x887A0005 removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T6 buffer readback: ok=0 coverage=0.0% bbox 0,0 - 0,0 of 960x620 (client)
+T5 PresentCount()=201 frames=201 equal=yes
+renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=201 presentFails=201
+T6 geometry gate: readback=0 coverage=0.0% (>=80% required) bboxOk=0
+T6 GEOMETRY FAIL: drawn area does not fill the 960x620 client (bbox 0,0 - 0,0)
+RESULT: FAIL
+VERDICT: overlay draw path, menu state, key handling, ini flush,
+VERDICT: present counter and client-filling coverage verified offline
+
+---- overlay_test log ----
+[10:02:09.880] ==================== session start 2026-11-07 10:02:09 pid=12528
+[10:02:09.880] [test] overlay_test start: seconds=18 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov20_cwd size=960x620
+[10:02:09.881] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:02:09.895] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:02:09.896] [test] debug layer: NOT available
+[10:02:10.565] [test] adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+[10:02:10.565] [*] menu opened (selIndex=0)
+[10:02:10.565] [*] menu: GLOW -> ON (ini flush ok)
+[10:02:10.565] [test] T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+[10:02:10.565] [test] T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+[10:02:10.565] [test] T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+[10:02:10.582] [*] d3d12: the swap chain does not expose the game's queue - using a private DIRECT queue
+[10:02:10.590] [+] d3d12: overlay ready (960x620 fmt=28 samples=1 buffers=2 queue=private)
+[10:02:10.590] [+] d3d12: present counter started (T5: a line every 600 frames)
+[10:02:10.590] [i] d3d12: removedReason before 1st render = 0x00000000
+[10:02:10.592] [i] d3d12: removedReason after OMSetRT+Clear = 0x00000000
+[10:02:10.592] [i] d3d12: removedReason right after 1st execute = 0x887A002B
+[10:02:10.592] [+] d3d12: first overlay draw submitted (16176 tri verts, 40 line verts, 3 box(es), buffer 1/2)
+[10:02:10.592] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[10:02:10.593] [test] T7 info queue: unavailable (debug layer off?)
+[10:02:10.593] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[10:02:10.593] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[10:02:10.593] [test] T5 Present(0,0) hr=0x887A0005 removedReason=0x887A002B
+[10:02:10.593] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[10:02:10.593] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[10:02:10.599] [test] T6 buffer readback: ok=0 coverage=0.0% bbox 0,0 - 0,0 of 960x620 (client)
+[10:02:10.602] [test] T5 PresentCount()=201 frames=201 equal=yes
+[10:02:10.602] [test] renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=201 presentFails=201
+[10:02:10.602] [test] T6 geometry gate: readback=0 coverage=0.0% (>=80% required) bboxOk=0
+[10:02:10.602] [test] T6 GEOMETRY FAIL: drawn area does not fill the 960x620 client (bbox 0,0 - 0,0)
+[10:02:10.602] [test] RESULT: FAIL
+[10:02:10.602] [test] VERDICT: overlay draw path, menu state, key handling, ini flush,
+[10:02:10.602] [test] VERDICT: present counter and client-filling coverage verified offline
+[10:02:10.602] [test] exit pass=0
+

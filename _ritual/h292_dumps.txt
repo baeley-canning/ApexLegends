@@ -1,0 +1,35 @@
+15:44:28.747 === h292 dump inventory (variable: guestcontrol form) ===
+15:44:28.794 pre vm: VMState=running
+15:44:29.087 alive rc=
+15:44:29.090   alive | H292-ALIVE
+15:44:29.735 ps-minidump rc=
+15:44:29.745   ps-minidump | DIR=True
+15:44:29.746   ps-minidump | ALL=0
+15:44:29.746   ps-minidump | DMP=0
+15:44:29.961 cmd-dir rc=
+15:44:29.961   cmd-dir | Volume in drive C is Windows
+15:44:29.961   cmd-dir | Volume Serial Number is A038-5429
+15:44:29.961   cmd-dir | Directory of C:\Windows\Minidump
+15:44:29.962   cmd-dir | File Not Found
+15:44:30.481 ps-memdmp rc=
+15:44:30.481   ps-memdmp | MEM 391099508 2026-11-06 15:12:20
+15:44:30.715 crashcontrol rc=
+15:44:30.716   crashcontrol | HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl
+15:44:30.716   crashcontrol | AutoReboot    REG_DWORD    0x1
+15:44:30.717   crashcontrol | CrashDumpEnabled    REG_DWORD    0x7
+15:44:30.718   crashcontrol | DumpFile    REG_EXPAND_SZ    %SystemRoot%\MEMORY.DMP
+15:44:30.718   crashcontrol | DumpLogLevel    REG_DWORD    0x0
+15:44:30.719   crashcontrol | EnableLogFile    REG_DWORD    0x1
+15:44:30.719   crashcontrol | LogEvent    REG_DWORD    0x1
+15:44:30.720   crashcontrol | MinidumpDir    REG_EXPAND_SZ    %SystemRoot%\Minidump
+15:44:30.720   crashcontrol | MinidumpsCount    REG_DWORD    0x5
+15:44:30.721   crashcontrol | Overwrite    REG_DWORD    0x1
+15:44:30.721   crashcontrol | DumpFilters    REG_MULTI_SZ    dumpfve.sys
+15:44:30.722   crashcontrol | HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl\StorageTelemetry
+15:44:30.921 svc rc=
+15:44:30.922   svc | [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+15:44:30.923   svc | The specified service does not exist as an installed service.
+15:44:30.927 minidumps parsed=0 newest=none
+15:44:30.928 SOURCE: none
+15:44:30.929 RESULT: PARTIAL - channel works, but neither a minidump nor MEMORY.DMP was read (variable: guestcontrol form)
+15:44:30.929 VERDICT: read the CrashControl lines above before concluding the dumps are gone

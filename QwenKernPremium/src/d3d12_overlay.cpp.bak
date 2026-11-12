@@ -1,0 +1,1096 @@
+#include "d3d12_overlay.h"
+#include "features.h"
+#include "config.h"
+#include "log.h"
+
+#include <d3d12.h>
+#include <dxgi1_4.h>
+#include <d3dcompiler.h>
+
+// NOTE: d3d12.dll / d3dcompiler_47.dll are resolved with GetProcAddress, never
+// linked, so this translation unit adds no entry to the payload's IAT.
+
+namespace {
+
+// ---------------------------------------------------------------------------
+// Vertex format shared with the shaders below.
+//
+// ESP boxes arrive in back-buffer pixels (features.cpp projects world space to
+// screen space there).  Positions are converted to normalised device
+// coordinates on the CPU, so the vertex shader is a pure pass-through and the
+// same vertex data would work for any viewport.
+// ---------------------------------------------------------------------------
+struct OverlayVertex {
+    float x, y;          // NDC
+    float r, g, b, a;
+};
+
+const UINT kMaxVertices = MAX_ESP_BOXES * 8u;      // 4 lines x 2 vertices
+
+// PHASE 1 / ov-series (T2): the vertex buffer is split into a UI region
+// (TRIANGLELIST: filled quads + 5x7 text + menu) followed by a line region
+// (LINELIST: pushed sample lines, then the historical ESP box slots).
+// kLineBase is the first vertex of the line region.
+const UINT kMaxStageQuads  = 8192u;                // queued quads incl. text
+const UINT kMaxStageLines   = 1024u;                // queued line segments
+const UINT kMaxUiTris       = kMaxStageQuads * 6u; // 49152 tri vertices
+const UINT kMaxUiLineVerts  = kMaxStageLines * 2u;
+const UINT kLineBase        = kMaxUiTris;
+const UINT kMaxLineVerts    = kMaxVertices + kMaxUiLineVerts;
+const UINT kVbBytes         = (kMaxUiTris + kMaxLineVerts) * sizeof(OverlayVertex);
+
+// ---------------------------------------------------------------------------
+// Resolved entry points (no static imports — see file header)
+// ---------------------------------------------------------------------------
+typedef HRESULT (WINAPI *D3DCompileFn)(LPCVOID pSrcData, SIZE_T SrcDataSize,
+                                       LPCSTR pSourceName,
+                                       const D3D_SHADER_MACRO* pDefines,
+                                       ID3DInclude* pInclude, LPCSTR pEntrypoint,
+                                       LPCSTR pTarget, UINT Flags1, UINT Flags2,
+                                       ID3DBlob** ppCode, ID3DBlob** ppErrorMsgs);
+
+typedef HRESULT (WINAPI *D3D12SerializeRootSignatureFn)(
+    const D3D12_ROOT_SIGNATURE_DESC* pRootSignature,
+    D3D_ROOT_SIGNATURE_VERSION Version,
+    ID3DBlob** ppBlob, ID3DBlob** ppErrorBlob);
+
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+ID3D12Device*               g_device        = nullptr;
+ID3D12CommandQueue*         g_queue         = nullptr;   // game's queue when reachable
+ID3D12CommandAllocator*     g_allocator     = nullptr;
+ID3D12GraphicsCommandList*  g_commandList   = nullptr;
+ID3D12RootSignature*        g_rootSignature = nullptr;
+ID3D12PipelineState*        g_pipelineState = nullptr;
+ID3D12PipelineState*        g_pipelineStateTri = nullptr;   // TRIANGLELIST (quads/text)
+ID3D12DescriptorHeap*       g_rtvHeap       = nullptr;
+
+ID3D12Fence*                g_fence         = nullptr;
+HANDLE                      g_fenceEvent    = nullptr;
+UINT64                      g_fenceValue    = 0;
+
+ID3D12Resource*             g_vertexBuffer  = nullptr;
+OverlayVertex*              g_vertexMapped  = nullptr;
+
+UINT        g_rtvStride      = 0;
+UINT        g_rtvCount       = 0;
+UINT        g_width          = 0;
+UINT        g_height         = 0;
+DXGI_FORMAT g_format         = DXGI_FORMAT_UNKNOWN;
+UINT        g_sampleCount    = 1;
+bool        g_usesOwnQueue   = false;
+bool        g_ready          = false;
+
+// One-shot latches so a broken state (or a per-frame event) does not spam the
+// log at 240 Hz.
+bool g_loggedNotD3D12 = false;
+bool g_loggedQueue    = false;
+bool g_loggedDraw     = false;
+
+template <typename T>
+void SafeRelease(T*& pointer) {
+    if (pointer) {
+        pointer->Release();
+        pointer = nullptr;
+    }
+}
+
+D3D12_RESOURCE_BARRIER TransitionBarrier(ID3D12Resource* resource,
+                                         D3D12_RESOURCE_STATES before,
+                                         D3D12_RESOURCE_STATES after) {
+    D3D12_RESOURCE_BARRIER barrier{};
+    barrier.Type                   = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
+    barrier.Flags                  = D3D12_RESOURCE_BARRIER_FLAG_NONE;
+    barrier.Transition.pResource   = resource;
+    barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES;
+    barrier.Transition.StateBefore = before;
+    barrier.Transition.StateAfter  = after;
+    return barrier;
+}
+
+// Blocks until every command list we submitted has completed.  Needed before
+// the command allocator is reset and before the mapped vertex buffer is
+// overwritten; a 1 s timeout keeps a wedged GPU from hanging the game thread.
+void WaitForGpu() {
+    if (!g_fence || !g_fenceEvent || g_fenceValue == 0) return;
+    if (g_fence->GetCompletedValue() >= g_fenceValue) return;
+
+    if (SUCCEEDED(g_fence->SetEventOnCompletion(g_fenceValue, g_fenceEvent))) {
+        WaitForSingleObject(g_fenceEvent, 1000);
+    }
+}
+
+// ============================================================================
+// Shaders — deliberately trivial: the CPU already produced NDC vertices, so a
+// pass-through VS and a colour-copy PS are all that is required.  Compiled at
+// init with D3DCompile, which means no .cso files to ship or map.
+// ============================================================================
+const char* const kShaderSource =
+    "struct VSIn  { float2 pos : POSITION; float4 color : COLOR; };\n"
+    "struct VSOut { float4 pos : SV_Position; float4 color : COLOR; };\n"
+    "VSOut VSMain(VSIn input) {\n"
+    "    VSOut output;\n"
+    "    output.pos   = float4(input.pos, 0.0f, 1.0f);\n"
+    "    output.color = input.color;\n"
+    "    return output;\n"
+    "}\n"
+    "float4 PSMain(VSOut input) : SV_Target {\n"
+    "    return input.color;\n"
+    "}\n";
+
+D3DCompileFn ResolveD3DCompile() {
+    // d3dcompiler_47 ships with the OS on every supported Windows 10/11 build.
+    // Older names are tried only as a courtesy for stripped-down images.
+    static const wchar_t* const kCandidates[] = {
+        L"d3dcompiler_47.dll", L"d3dcompiler_46.dll", L"d3dcompiler_43.dll"
+    };
+    static D3DCompileFn cached = nullptr;
+    if (cached) return cached;
+
+    for (size_t i = 0; i < sizeof(kCandidates) / sizeof(kCandidates[0]); ++i) {
+        HMODULE module = GetModuleHandleW(kCandidates[i]);
+        if (!module) module = LoadLibraryW(kCandidates[i]);
+        if (!module) continue;
+
+        cached = reinterpret_cast<D3DCompileFn>(
+            reinterpret_cast<void*>(GetProcAddress(module, "D3DCompile")));
+        if (cached) return cached;
+    }
+
+    Logf("[-] d3d12: D3DCompile not found, overlay shaders cannot be compiled");
+    return nullptr;
+}
+
+bool CompileShaders(ID3DBlob** vsOut, ID3DBlob** psOut) {
+    const D3DCompileFn compile = ResolveD3DCompile();
+    if (!compile) return false;
+
+    const UINT flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_OPTIMIZATION_LEVEL3;
+
+    ID3DBlob* errors = nullptr;
+    HRESULT hr = compile(kShaderSource, strlen(kShaderSource), "overlay",
+                         nullptr, nullptr, "VSMain", "vs_5_0", flags, 0,
+                         vsOut, &errors);
+    if (FAILED(hr) || !*vsOut) {
+        Logf("[-] d3d12: vs_5_0 compile failed hr=0x%08X %s", hr,
+             errors ? static_cast<const char*>(errors->GetBufferPointer()) : "");
+        if (errors) { errors->Release(); errors = nullptr; }
+        return false;
+    }
+    if (errors) { errors->Release(); errors = nullptr; }
+
+    hr = compile(kShaderSource, strlen(kShaderSource), "overlay",
+                 nullptr, nullptr, "PSMain", "ps_5_0", flags, 0,
+                 psOut, &errors);
+    if (FAILED(hr) || !*psOut) {
+        Logf("[-] d3d12: ps_5_0 compile failed hr=0x%08X %s", hr,
+             errors ? static_cast<const char*>(errors->GetBufferPointer()) : "");
+        if (errors) errors->Release();
+        SafeRelease(*vsOut);
+        return false;
+    }
+    if (errors) errors->Release();
+    return true;
+}
+
+// ============================================================================
+// PHASE 1 / ov-series — UI staging + 5x7 font + writers (T2)
+// ============================================================================
+
+// One queued quad / line.  PushQuad/PushLine/PushTextA fill these between
+// frames; Render() consumes them and resets the counts, so nothing survives a
+// frame and the mapped vertex buffer is only ever touched after WaitForGpu().
+struct StageQuad {
+    float x0, y0, x1, y1;
+    DWORD color;
+};
+
+struct StageLine {
+    float x0, y0, x1, y1;
+    DWORD color;
+};
+
+StageQuad  g_stageQuads[kMaxStageQuads];
+UINT       g_stageQuadCount = 0;
+StageLine g_stageLines[kMaxStageLines];
+UINT      g_stageLineCount = 0;
+
+// T5: per-frame Present/render counter.  InterlockedIncrement64 in Render(),
+// logged through Logf every kPresentLogEvery frames (payload log path).
+volatile LONG64 g_presentCount = 0;
+const UINT64    kPresentLogEvery = 600;
+
+// ---------------------------------------------------------------------------
+// 5x7 bitmap font: 64 glyphs for 0x20..0x5F, five column bytes each, bit k
+// of a column byte = row k (top row = bit 0).  Byte constants in code on
+// purpose (T2): no font files, no GDI/DirectWrite, no new imports — the
+// payload IAT stays {KERNEL32, USER32}.
+// ---------------------------------------------------------------------------
+const BYTE kFont5x7[64][5] = {
+    {0x00,0x00,0x00,0x00,0x00}, {0x00,0x00,0x5F,0x00,0x00}, {0x00,0x07,0x00,0x07,0x00},
+    {0x14,0x7F,0x14,0x7F,0x14}, {0x24,0x2A,0x7F,0x2A,0x12}, {0x23,0x13,0x08,0x64,0x62},
+    {0x36,0x49,0x55,0x22,0x50}, {0x00,0x05,0x03,0x00,0x00}, {0x00,0x1C,0x22,0x41,0x00},
+    {0x00,0x41,0x22,0x1C,0x00}, {0x14,0x08,0x3E,0x08,0x14}, {0x08,0x08,0x3E,0x08,0x08},
+    {0x00,0x50,0x30,0x00,0x00}, {0x08,0x08,0x08,0x08,0x08}, {0x00,0x60,0x60,0x00,0x00},
+    {0x20,0x10,0x08,0x04,0x02}, {0x3E,0x51,0x49,0x45,0x3E}, {0x00,0x42,0x7F,0x40,0x00},
+    {0x42,0x61,0x51,0x49,0x46}, {0x21,0x41,0x45,0x4B,0x31}, {0x18,0x14,0x12,0x7F,0x10},
+    {0x27,0x45,0x45,0x45,0x39}, {0x3C,0x4A,0x49,0x49,0x30}, {0x01,0x71,0x09,0x05,0x03},
+    {0x36,0x49,0x49,0x49,0x36}, {0x06,0x49,0x49,0x29,0x1E}, {0x00,0x36,0x36,0x00,0x00},
+    {0x00,0x56,0x36,0x00,0x00}, {0x00,0x08,0x14,0x22,0x41}, {0x14,0x14,0x14,0x14,0x14},
+    {0x41,0x22,0x14,0x08,0x00}, {0x02,0x01,0x51,0x09,0x06}, {0x32,0x49,0x79,0x41,0x3E},
+    {0x7E,0x11,0x11,0x11,0x7E}, {0x7F,0x49,0x49,0x49,0x36}, {0x3E,0x41,0x41,0x41,0x22},
+    {0x7F,0x41,0x41,0x22,0x1C}, {0x7F,0x49,0x49,0x49,0x41}, {0x7F,0x09,0x09,0x09,0x01},
+    {0x3E,0x41,0x49,0x49,0x7A}, {0x7F,0x08,0x08,0x08,0x7F}, {0x00,0x41,0x7F,0x41,0x00},
+    {0x20,0x40,0x41,0x3F,0x01}, {0x7F,0x08,0x14,0x22,0x41}, {0x7F,0x40,0x40,0x40,0x40},
+    {0x7F,0x02,0x0C,0x02,0x7F}, {0x7F,0x04,0x08,0x10,0x7F}, {0x3E,0x41,0x41,0x41,0x3E},
+    {0x7F,0x09,0x09,0x09,0x06}, {0x3E,0x41,0x51,0x21,0x5E}, {0x7F,0x09,0x19,0x29,0x46},
+    {0x46,0x49,0x49,0x49,0x31}, {0x01,0x01,0x7F,0x01,0x01}, {0x3F,0x40,0x40,0x40,0x3F},
+    {0x1F,0x20,0x40,0x20,0x1F}, {0x3F,0x40,0x38,0x40,0x3F}, {0x63,0x14,0x08,0x14,0x63},
+    {0x03,0x07,0x78,0x07,0x03}, {0x61,0x51,0x49,0x45,0x43}, {0x00,0x7F,0x41,0x41,0x00},
+    {0x02,0x04,0x08,0x10,0x20}, {0x00,0x41,0x41,0x7F,0x00}, {0x04,0x02,0x01,0x02,0x04},
+    {0x40,0x40,0x40,0x40,0x40}
+};
+
+// ---------------------------------------------------------------------------
+// Vertex writers used during the per-frame build.  Positions arrive in pixels
+// and are converted to NDC here (pixels: y grows down; NDC: y grows up).
+// Both writers just bump a count; caps drop overflow silently, so a full
+// buffer degrades the UI instead of corrupting the draw.
+// ---------------------------------------------------------------------------
+struct TriWriter {
+    OverlayVertex* base;
+    UINT  count;
+    UINT  cap;
+    float invW;
+    float invH;
+
+    void Quad(float x0, float y0, float x1, float y1, DWORD color) {
+        if (count + 6u > cap) return;
+
+        const float r = static_cast<float>((color >> 16) & 0xFF) / 255.0f;
+        const float g = static_cast<float>((color >>  8) & 0xFF) / 255.0f;
+        const float b = static_cast<float>( color        & 0xFF) / 255.0f;
+        const float a = static_cast<float>((color >> 24) & 0xFF) / 255.0f;
+
+        const float nx0 = x0 * 2.0f * invW - 1.0f;
+        const float nx1 = x1 * 2.0f * invW - 1.0f;
+        const float ny0 = 1.0f - y0 * 2.0f * invH;
+        const float ny1 = 1.0f - y1 * 2.0f * invH;
+
+        OverlayVertex* v = base + count;
+        // Two triangles: (x0,y0)-(x1,y0)-(x1,y1) and (x0,y0)-(x1,y1)-(x0,y1).
+        v[0].x = nx0; v[0].y = ny0;
+        v[1].x = nx1; v[1].y = ny0;
+        v[2].x = nx1; v[2].y = ny1;
+        v[3].x = nx0; v[3].y = ny0;
+        v[4].x = nx1; v[4].y = ny1;
+        v[5].x = nx0; v[5].y = ny1;
+        for (int i = 0; i < 6; ++i) {
+            v[i].r = r; v[i].g = g; v[i].b = b; v[i].a = a;
+        }
+        count += 6u;
+    }
+};
+
+struct LineWriter {
+    OverlayVertex* base;
+    UINT  count;
+    UINT  cap;
+    float invW;
+    float invH;
+
+    void Line(float x0, float y0, float x1, float y1, DWORD color) {
+        if (count + 2u > cap) return;
+
+        const float r = static_cast<float>((color >> 16) & 0xFF) / 255.0f;
+        const float g = static_cast<float>((color >>  8) & 0xFF) / 255.0f;
+        const float b = static_cast<float>( color        & 0xFF) / 255.0f;
+        const float a = static_cast<float>((color >> 24) & 0xFF) / 255.0f;
+
+        OverlayVertex* v = base + count;
+        v[0].x = x0 * 2.0f * invW - 1.0f; v[0].y = 1.0f - y0 * 2.0f * invH;
+        v[1].x = x1 * 2.0f * invW - 1.0f; v[1].y = 1.0f - y1 * 2.0f * invH;
+        v[0].r = r; v[0].g = g; v[0].b = b; v[0].a = a;
+        v[1].r = r; v[1].g = g; v[1].b = b; v[1].a = a;
+        count += 2u;
+    }
+};
+
+// Emits `text` with the 5x7 font as `scale`-sized pixel quads.  Lowercase maps
+// to uppercase; unknown characters render as a space.
+void EmitText(TriWriter& w, const char* text, float x, float y, float scale,
+              DWORD color) {
+    if (!text) return;
+    for (const char* p = text; *p; ++p) {
+        char c = *p;
+        if (c >= 'a' && c <= 'z') {
+            c = static_cast<char>(c - 'a' + 'A');
+        }
+        if (c < ' ' || c > '_') c = ' ';
+
+        const BYTE* glyph = kFont5x7[c - ' '];
+        for (int col = 0; col < 5; ++col) {
+            const BYTE bits = glyph[col];
+            if (!bits) continue;
+            for (int row = 0; row < 7; ++row) {
+                if (bits & (1u << row)) {
+                    w.Quad(x + static_cast<float>(col) * scale,
+                           y + static_cast<float>(row) * scale,
+                           x + static_cast<float>(col + 1) * scale,
+                           y + static_cast<float>(row + 1) * scale, color);
+                }
+            }
+        }
+        x += 6.0f * scale;
+    }
+}
+
+// Pixel advance of a text run (6*scale per character) — for right alignment.
+float TextAdvance(const char* text, float scale) {
+    if (!text) return 0.0f;
+    float width = 0.0f;
+    for (const char* p = text; *p; ++p) width += 6.0f * scale;
+    return width;
+}
+
+// ---------------------------------------------------------------------------
+// Menu rows (T2/T3): masters are wired through CheatFeatures::EnableFeature,
+// sub-flags through the ESP draw accessors in features.h.  Rows 1-3 are the
+// ESP sub-flags of master row 0 (LEFT/BACK exits a sub-flag back to it).
+// ---------------------------------------------------------------------------
+struct MenuRowDef {
+    const char* label;
+    bool        sub;
+};
+
+const int kMenuRowCount = 7;
+const MenuRowDef kMenuRows[kMenuRowCount] = {
+    { "ESP",    false },
+    { "BOXES",  true  },
+    { "NAMES",  true  },
+    { "LINES",  true  },
+    { "GLOW",   false },
+    { "RECOIL", false },
+    { "AIMBOT", false }
+};
+
+MenuState g_menuState = { false, 0, kMenuRowCount };
+
+bool MenuRowState(int row) {
+    if (!g_pCheatFeatures) return false;
+    switch (row) {
+        case 0: return g_pCheatFeatures->IsFeatureEnabled(FEATURE_ESP);
+        case 1: return g_pCheatFeatures->IsDrawBoxes();
+        case 2: return g_pCheatFeatures->IsDrawNames();
+        case 3: return g_pCheatFeatures->IsDrawLines();
+        case 4: return g_pCheatFeatures->IsFeatureEnabled(FEATURE_GLOW);
+        case 5: return g_pCheatFeatures->IsFeatureEnabled(FEATURE_RECOIL);
+        case 6: return g_pCheatFeatures->IsFeatureEnabled(FEATURE_AIMBOT);
+        default: return false;
+    }
+}
+
+// Applies the toggle for `row` and flushes every feature key to the ini (T4).
+bool MenuToggleRow(int row) {
+    if (g_pCheatFeatures) {
+        switch (row) {
+            case 0: g_pCheatFeatures->EnableFeature(
+                        FEATURE_ESP, !g_pCheatFeatures->IsFeatureEnabled(FEATURE_ESP));
+                    break;
+            case 1: g_pCheatFeatures->SetDrawBoxes(!g_pCheatFeatures->IsDrawBoxes());
+                    break;
+            case 2: g_pCheatFeatures->SetDrawNames(!g_pCheatFeatures->IsDrawNames());
+                    break;
+            case 3: g_pCheatFeatures->SetDrawLines(!g_pCheatFeatures->IsDrawLines());
+                    break;
+            case 4: g_pCheatFeatures->EnableFeature(
+                        FEATURE_GLOW, !g_pCheatFeatures->IsFeatureEnabled(FEATURE_GLOW));
+                    break;
+            case 5: g_pCheatFeatures->EnableFeature(
+                        FEATURE_RECOIL, !g_pCheatFeatures->IsFeatureEnabled(FEATURE_RECOIL));
+                    break;
+            case 6: g_pCheatFeatures->EnableFeature(
+                        FEATURE_AIMBOT, !g_pCheatFeatures->IsFeatureEnabled(FEATURE_AIMBOT));
+                    break;
+            default: break;
+        }
+
+        const bool flushed = SharedMenuConfig()->FlushFeatureToggles(
+            g_pCheatFeatures->IsFeatureEnabled(FEATURE_AIMBOT),
+            g_pCheatFeatures->IsFeatureEnabled(FEATURE_ESP),
+            g_pCheatFeatures->IsFeatureEnabled(FEATURE_GLOW),
+            g_pCheatFeatures->IsFeatureEnabled(FEATURE_RECOIL),
+            g_pCheatFeatures->IsDrawBoxes(),
+            g_pCheatFeatures->IsDrawNames(),
+            g_pCheatFeatures->IsDrawLines());
+
+        Logf("[*] menu: %s -> %s (ini flush %s)", kMenuRows[row].label,
+             MenuRowState(row) ? "ON" : "OFF", flushed ? "ok" : "FAILED");
+    }
+    return true;
+}
+
+// Draws the menu: header, one filled highlight quad on the selected row,
+// per-row ON/OFF text, footer with the key legend.
+void EmitMenu(TriWriter& tris, LineWriter& lines) {
+    const float x0      = 24.0f;
+    const float y0      = 24.0f;
+    const float width   = 380.0f;
+    const float rowH    = 34.0f;
+    const float headerH = 52.0f;
+    const float footerH = 34.0f;
+    const float panelH  = headerH + rowH * static_cast<float>(kMenuRowCount) + footerH;
+    const float x1      = x0 + width;
+    const float y1      = y0 + panelH;
+
+    tris.Quad(x0, y0, x1, y1, 0xE0181C26);                     // panel
+    tris.Quad(x0, y0, x1, y0 + 3.0f, 0xFF3F8FE0);              // accent bar
+    lines.Line(x0, y0 + headerH - 6.0f, x1, y0 + headerH - 6.0f, 0xFF505860);
+
+    EmitText(tris, "QWENKERN MENU", x0 + 12.0f, y0 + 12.0f, 2.5f, 0xFFE8F0FF);
+
+    float y = y0 + headerH + 6.0f;
+    for (int i = 0; i < kMenuRowCount; ++i) {
+        const bool selected = (i == g_menuState.selIndex);
+        if (selected) {
+            tris.Quad(x0 + 4.0f, y - 6.0f, x1 - 4.0f, y + 27.0f, 0x46FFFFFF);
+        }
+
+        const DWORD labelColor = kMenuRows[i].sub
+            ? (selected ? 0xFFE0E8F0 : 0xFF9AA6B4)
+            : (selected ? 0xFFFFFFFF : 0xFFC4D0DC);
+        const float indent = kMenuRows[i].sub ? 28.0f : 12.0f;
+        EmitText(tris, kMenuRows[i].label, x0 + indent, y, 3.0f, labelColor);
+
+        const bool   rowOn       = MenuRowState(i);
+        const char*  stateText   = rowOn ? "[ON]" : "[OFF]";
+        const DWORD  stateColor  = rowOn ? 0xFF40FF70 : 0xFF7A828E;
+        EmitText(tris, stateText, x1 - 12.0f - TextAdvance(stateText, 3.0f),
+                 y, 3.0f, stateColor);
+
+        y += rowH;
+    }
+
+    lines.Line(x0, y + 2.0f, x1, y + 2.0f, 0xFF505860);
+    EmitText(tris, "[INS] CLOSE ARROWS ENTER", x0 + 12.0f, y + 10.0f, 2.0f, 0xFF8892A0);
+}
+
+} // namespace
+
+namespace {
+
+bool CreateRootSignature() {
+    HMODULE d3d12 = LoadLibraryW(L"d3d12.dll");
+    if (!d3d12) {
+        Logf("[-] d3d12: LoadLibrary(d3d12.dll) failed error=%lu", GetLastError());
+        return false;
+    }
+
+    const D3D12SerializeRootSignatureFn serialize =
+        reinterpret_cast<D3D12SerializeRootSignatureFn>(
+            reinterpret_cast<void*>(GetProcAddress(d3d12,
+                                                   "D3D12SerializeRootSignature")));
+    if (!serialize) {
+        Logf("[-] d3d12: D3D12SerializeRootSignature not exported");
+        return false;
+    }
+
+    // Empty root signature: no CBVs/SRVs/UAVs, no samplers.  Vertices already
+    // carry NDC positions and their colour, so nothing has to be bound.
+    D3D12_ROOT_SIGNATURE_DESC desc{};
+    desc.NumParameters     = 0;
+    desc.pParameters       = nullptr;
+    desc.NumStaticSamplers = 0;
+    desc.pStaticSamplers   = nullptr;
+    desc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+
+    ID3DBlob* blob  = nullptr;
+    ID3DBlob* error = nullptr;
+    HRESULT hr = serialize(&desc, D3D_ROOT_SIGNATURE_VERSION_1, &blob, &error);
+    if (FAILED(hr) || !blob) {
+        Logf("[-] d3d12: SerializeRootSignature failed hr=0x%08X %s", hr,
+             error ? static_cast<const char*>(error->GetBufferPointer()) : "");
+        if (error) error->Release();
+        return false;
+    }
+
+    hr = g_device->CreateRootSignature(0, blob->GetBufferPointer(),
+                                       blob->GetBufferSize(),
+                                       __uuidof(ID3D12RootSignature),
+                                       reinterpret_cast<void**>(&g_rootSignature));
+    blob->Release();
+    if (error) error->Release();
+
+    if (FAILED(hr)) {
+        Logf("[-] d3d12: CreateRootSignature failed hr=0x%08X", hr);
+        return false;
+    }
+    return true;
+}
+
+bool CreatePipelineState(D3D12_PRIMITIVE_TOPOLOGY_TYPE topology,
+                        ID3D12PipelineState** out) {
+    ID3DBlob* vsBlob = nullptr;
+    ID3DBlob* psBlob = nullptr;
+    if (!CompileShaders(&vsBlob, &psBlob)) return false;
+
+    const D3D12_INPUT_ELEMENT_DESC layout[] = {
+        { "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT,       0, 0,
+          D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+        { "COLOR",    0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 8,
+          D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+    };
+
+    D3D12_GRAPHICS_PIPELINE_STATE_DESC desc{};
+    desc.pRootSignature        = g_rootSignature;
+    desc.VS                    = { vsBlob->GetBufferPointer(), vsBlob->GetBufferSize() };
+    desc.PS                    = { psBlob->GetBufferPointer(), psBlob->GetBufferSize() };
+    desc.InputLayout           = { layout, _countof(layout) };
+    desc.PrimitiveTopologyType = topology;
+    desc.SampleMask            = UINT_MAX;
+
+    // Alpha blending, no depth, no culling: an overlay must not be occluded by
+    // the frame it is drawn onto.
+    desc.RTVFormats[0]    = g_format;
+    desc.NumRenderTargets = 1;
+    desc.SampleDesc.Count = g_sampleCount;
+    desc.SampleDesc.Quality = 0;
+
+    desc.RasterizerState.FillMode              = D3D12_FILL_MODE_SOLID;
+    desc.RasterizerState.CullMode              = D3D12_CULL_MODE_NONE;
+    desc.RasterizerState.FrontCounterClockwise = FALSE;
+    desc.RasterizerState.DepthClipEnable       = FALSE;
+
+    desc.BlendState.RenderTarget[0].BlendEnable    = TRUE;
+    desc.BlendState.RenderTarget[0].SrcBlend       = D3D12_BLEND_SRC_ALPHA;
+    desc.BlendState.RenderTarget[0].DestBlend      = D3D12_BLEND_INV_SRC_ALPHA;
+    desc.BlendState.RenderTarget[0].BlendOp        = D3D12_BLEND_OP_ADD;
+    desc.BlendState.RenderTarget[0].SrcBlendAlpha  = D3D12_BLEND_ONE;
+    desc.BlendState.RenderTarget[0].DestBlendAlpha = D3D12_BLEND_INV_SRC_ALPHA;
+    desc.BlendState.RenderTarget[0].BlendOpAlpha   = D3D12_BLEND_OP_ADD;
+    desc.BlendState.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+
+    desc.DepthStencilState.DepthEnable    = FALSE;
+    desc.DepthStencilState.StencilEnable  = FALSE;
+    desc.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
+
+    const HRESULT hr = g_device->CreateGraphicsPipelineState(
+        &desc, __uuidof(ID3D12PipelineState),
+        reinterpret_cast<void**>(out));
+
+    vsBlob->Release();
+    psBlob->Release();
+
+    if (FAILED(hr)) {
+        Logf("[-] d3d12: CreateGraphicsPipelineState(%s) failed hr=0x%08X",
+             topology == D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE ? "tri" : "line", hr);
+        return false;
+    }
+    return true;
+}
+
+// Both PSOs share the root signature, shaders and blend state; only the
+// topology type differs (LINELIST for ESP boxes/lines, TRIANGLELIST for the
+// filled quads and the 5x7 font).  Both are rebuilt together whenever the RTV
+// format changes.
+bool CreatePipelineStates() {
+    if (!CreatePipelineState(D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE, &g_pipelineState)) {
+        return false;
+    }
+    if (!CreatePipelineState(D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE, &g_pipelineStateTri)) {
+        SafeRelease(g_pipelineState);
+        return false;
+    }
+    return true;
+}
+
+bool CreateUploadBuffer() {
+    D3D12_HEAP_PROPERTIES heap{};
+    heap.Type                 = D3D12_HEAP_TYPE_UPLOAD;
+    heap.CPUPageProperty      = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+    heap.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+    heap.CreationNodeMask     = 1;
+    heap.VisibleNodeMask      = 1;
+
+    D3D12_RESOURCE_DESC resource{};
+    resource.Dimension        = D3D12_RESOURCE_DIMENSION_BUFFER;
+    resource.Alignment        = 0;
+    resource.Width            = kVbBytes;
+    resource.Height           = 1;
+    resource.DepthOrArraySize = 1;
+    resource.MipLevels        = 1;
+    resource.Format           = DXGI_FORMAT_UNKNOWN;
+    resource.SampleDesc.Count = 1;
+    resource.Layout           = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+    resource.Flags            = D3D12_RESOURCE_FLAG_NONE;
+
+    const HRESULT hr = g_device->CreateCommittedResource(
+        &heap, D3D12_HEAP_FLAG_NONE, &resource,
+        D3D12_RESOURCE_STATE_GENERIC_READ, nullptr,
+        __uuidof(ID3D12Resource), reinterpret_cast<void**>(&g_vertexBuffer));
+    if (FAILED(hr)) {
+        Logf("[-] d3d12: vertex buffer creation failed hr=0x%08X", hr);
+        return false;
+    }
+
+    void* mapped = nullptr;
+    D3D12_RANGE readRange{ 0, 0 };            // write-only mapping
+    if (FAILED(g_vertexBuffer->Map(0, &readRange, &mapped)) || !mapped) {
+        Logf("[-] d3d12: vertex buffer Map failed");
+        SafeRelease(g_vertexBuffer);
+        return false;
+    }
+
+    g_vertexMapped = static_cast<OverlayVertex*>(mapped);
+    return true;
+}
+
+// Creates one RTV per swap-chain buffer.  Re-run after every ResizeBuffers
+// (OnResize() drops the heap so the next Render() rebuilds it).
+bool CreateRenderTargets(IDXGISwapChain* pSwapChain, UINT bufferCount) {
+    const UINT wanted = bufferCount ? bufferCount : 1;
+    if (g_rtvHeap && g_rtvCount >= wanted) return true;
+
+    SafeRelease(g_rtvHeap);
+    g_rtvCount = 0;
+
+    D3D12_DESCRIPTOR_HEAP_DESC heapDesc{};
+    heapDesc.Type           = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
+    heapDesc.NumDescriptors = wanted;
+    heapDesc.Flags          = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+
+    HRESULT hr = g_device->CreateDescriptorHeap(&heapDesc,
+                                                __uuidof(ID3D12DescriptorHeap),
+                                                reinterpret_cast<void**>(&g_rtvHeap));
+    if (FAILED(hr)) {
+        Logf("[-] d3d12: CreateDescriptorHeap(RTV) failed hr=0x%08X", hr);
+        return false;
+    }
+
+    g_rtvStride = g_device->GetDescriptorHandleIncrementSize(
+        D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+
+    D3D12_CPU_DESCRIPTOR_HANDLE handle = g_rtvHeap->GetCPUDescriptorHandleForHeapStart();
+    for (UINT i = 0; i < wanted; ++i) {
+        ID3D12Resource* backBuffer = nullptr;
+        hr = pSwapChain->GetBuffer(i, __uuidof(ID3D12Resource),
+                                   reinterpret_cast<void**>(&backBuffer));
+        if (FAILED(hr) || !backBuffer) {
+            Logf("[-] d3d12: GetBuffer(%u) failed hr=0x%08X", i, hr);
+            break;      // fewer views than buffers is fine; Render() checks
+        }
+
+        // The view keeps its own reference; release ours so the game's
+        // ResizeBuffers() can reclaim the buffer (see the header).
+        g_device->CreateRenderTargetView(backBuffer, nullptr, handle);
+        backBuffer->Release();
+
+        ++g_rtvCount;
+        handle.ptr += g_rtvStride;
+    }
+
+    return g_rtvCount > 0;
+}
+
+// One-time (per device) initialisation: everything that depends on the swap
+// chain's description is created here so a format/size change just rebuilds.
+bool CreateDeviceObjects(IDXGISwapChain* pSwapChain) {
+    DXGI_SWAP_CHAIN_DESC desc{};
+    if (FAILED(pSwapChain->GetDesc(&desc))) {
+        Logf("[-] d3d12: IDXGISwapChain::GetDesc failed");
+        return false;
+    }
+
+    g_width       = desc.BufferDesc.Width;
+    g_height      = desc.BufferDesc.Height;
+    g_format      = desc.BufferDesc.Format;
+    g_sampleCount = desc.SampleDesc.Count ? desc.SampleDesc.Count : 1;
+
+    // CreateSwapChainForHwnd() is handed the game's command queue, and
+    // IDXGISwapChain::GetDevice() returns that same object.  Using it keeps our
+    // draws ordered with the frame's own work and needs no extra queue.
+    ID3D12CommandQueue* queue = nullptr;
+    if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D12CommandQueue),
+                                        reinterpret_cast<void**>(&queue))) && queue) {
+        g_queue = queue;
+    } else {
+        SafeRelease(g_queue);
+
+        if (FAILED(pSwapChain->GetDevice(__uuidof(ID3D12Device),
+                                         reinterpret_cast<void**>(&g_device))) ||
+            !g_device) {
+            if (!g_loggedNotD3D12) {
+                g_loggedNotD3D12 = true;
+                Logf("[*] d3d12: swap chain is not backed by a D3D12 device; "
+                     "falling back to the D3D11 overlay");
+            }
+            return false;
+        }
+
+        D3D12_COMMAND_QUEUE_DESC queueDesc{};
+        queueDesc.Type     = D3D12_COMMAND_LIST_TYPE_DIRECT;
+        queueDesc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;
+        queueDesc.Flags    = D3D12_COMMAND_QUEUE_FLAG_NONE;
+        if (FAILED(g_device->CreateCommandQueue(
+                &queueDesc, __uuidof(ID3D12CommandQueue),
+                reinterpret_cast<void**>(&g_queue)))) {
+            Logf("[-] d3d12: CreateCommandQueue failed");
+            SafeRelease(g_device);
+            return false;
+        }
+        g_usesOwnQueue = true;
+        if (!g_loggedQueue) {
+            g_loggedQueue = true;
+            Logf("[*] d3d12: the swap chain does not expose the game's queue - "
+                 "using a private DIRECT queue");
+        }
+    }
+
+    // A command queue is a device child: QI it for the device it came from.
+    if (!g_device) {
+        if (FAILED(g_queue->GetDevice(__uuidof(ID3D12Device),
+                                      reinterpret_cast<void**>(&g_device))) ||
+            !g_device) {
+            Logf("[-] d3d12: ID3D12CommandQueue::GetDevice failed");
+            SafeRelease(g_queue);
+            return false;
+        }
+    }
+
+    if (FAILED(g_device->CreateCommandAllocator(
+            D3D12_COMMAND_LIST_TYPE_DIRECT, __uuidof(ID3D12CommandAllocator),
+            reinterpret_cast<void**>(&g_allocator)))) {
+        Logf("[-] d3d12: CreateCommandAllocator failed");
+        return false;
+    }
+
+    if (FAILED(g_device->CreateCommandList(
+            0, D3D12_COMMAND_LIST_TYPE_DIRECT, g_allocator, nullptr,
+            __uuidof(ID3D12GraphicsCommandList),
+            reinterpret_cast<void**>(&g_commandList)))) {
+        Logf("[-] d3d12: CreateCommandList failed");
+        return false;
+    }
+    g_commandList->Close();         // created open; keep it closed until use
+
+    if (FAILED(g_device->CreateFence(0, D3D12_FENCE_FLAG_NONE,
+                                     __uuidof(ID3D12Fence),
+                                     reinterpret_cast<void**>(&g_fence)))) {
+        Logf("[-] d3d12: CreateFence failed");
+        return false;
+    }
+
+    g_fenceEvent = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+    if (!g_fenceEvent) {
+        Logf("[-] d3d12: CreateEvent(fence) failed error=%lu", GetLastError());
+        return false;
+    }
+
+    if (!CreateRootSignature()) return false;
+    if (!CreatePipelineStates()) return false;
+    if (!CreateUploadBuffer())  return false;
+    if (!CreateRenderTargets(pSwapChain, desc.BufferCount)) return false;
+
+    g_ready = true;
+    Logf("[+] d3d12: overlay ready (%ux%u fmt=%u samples=%u buffers=%u queue=%s)",
+         g_width, g_height, static_cast<unsigned>(g_format), g_sampleCount,
+         desc.BufferCount, g_usesOwnQueue ? "private" : "game");
+    return true;
+}
+
+} // namespace
+
+namespace D3D12Overlay {
+
+bool Ensure(IDXGISwapChain* pSwapChain) {
+    if (g_ready) return g_device != nullptr && g_queue != nullptr;
+    if (!pSwapChain) return false;
+
+    const bool ok = CreateDeviceObjects(pSwapChain);
+    if (!ok && !g_device) return false;      // not D3D12 => caller falls back
+    if (!ok) {
+        // Partially built on a real D3D12 chain: tear down and retry next frame.
+        Release();
+    }
+    return g_ready;
+}
+
+void OnResize() {
+    // Only the views are size-dependent.  Dropping the heap is what lets the
+    // game's ResizeBuffers() release the old back buffers.
+    SafeRelease(g_rtvHeap);
+    g_rtvCount = 0;
+    g_width    = 0;
+    g_height   = 0;
+}
+
+bool IsReady() {
+    return g_ready;
+}
+
+// ---------------------------------------------------------------------------
+// Per-frame draw.  Runs on the render thread, inside the Present hook, i.e.
+// after the game finished recording this frame and before it presents it.
+//
+// The back buffer arrives in D3D12_RESOURCE_STATE_PRESENT (that is where
+// Present() leaves every flip-model buffer), so it is transitioned to
+// RENDER_TARGET, drawn onto, and transitioned back before the list is
+// submitted.  Forgetting the second barrier makes Present() fail, so both
+// transitions are always emitted together.
+// ---------------------------------------------------------------------------
+bool Render(IDXGISwapChain* pSwapChain) {
+    if (!Ensure(pSwapChain)) {
+        // false means "not a D3D12 swap chain" — the caller then tries D3D11.
+        return g_device != nullptr;
+    }
+
+    // T5: per-frame Present/render counter (cheap: one interlocked increment
+    // and a compare; the log line fires every 600 frames through Logf, i.e.
+    // the existing payload log path).
+    const unsigned long long frameNo = static_cast<unsigned long long>(
+        InterlockedIncrement64(&g_presentCount));
+    if (frameNo == 1) {
+        Logf("[+] d3d12: present counter started (T5: a line every %llu frames)",
+             static_cast<unsigned long long>(kPresentLogEvery));
+    } else if ((frameNo % kPresentLogEvery) == 0) {
+        Logf("[*] d3d12: present counter = %llu", frameNo);
+    }
+
+    DXGI_SWAP_CHAIN_DESC desc{};
+    if (FAILED(pSwapChain->GetDesc(&desc))) return true;
+
+    // The game can resize without our ResizeBuffers hook running (alt-tab, HDR
+    // toggle, a resolution change from the menus).  Re-create the views when
+    // the description no longer matches the one they were built from.
+    if (desc.BufferDesc.Width  != g_width ||
+        desc.BufferDesc.Height != g_height ||
+        desc.BufferDesc.Format != g_format) {
+        Logf("[*] d3d12: back buffer changed %ux%u fmt=%u -> %ux%u fmt=%u, "
+             "rebuilding views",
+             g_width, g_height, static_cast<unsigned>(g_format),
+             desc.BufferDesc.Width, desc.BufferDesc.Height,
+             static_cast<unsigned>(desc.BufferDesc.Format));
+
+        OnResize();
+        if (desc.BufferDesc.Format != g_format) {
+            // The RTV format is baked into the pipeline state.
+            SafeRelease(g_pipelineState);
+            SafeRelease(g_pipelineStateTri);
+            g_format      = desc.BufferDesc.Format;
+            g_sampleCount = desc.SampleDesc.Count ? desc.SampleDesc.Count : 1;
+            if (!CreatePipelineStates()) return true;
+        }
+        if (!CreateRenderTargets(pSwapChain, desc.BufferCount)) return true;
+        g_width  = desc.BufferDesc.Width;
+        g_height = desc.BufferDesc.Height;
+    }
+
+    g_ScreenWidth  = static_cast<int>(g_width);
+    g_ScreenHeight = static_cast<int>(g_height);
+
+    const LONG boxCount = g_EspBoxCount;
+    // With the menu / pushed text there is UI to draw even without boxes; only
+    // bail out when BOTH the box ring and the UI queues are empty.
+    const bool wantUi = g_menuState.open || g_stageQuadCount != 0 ||
+                        g_stageLineCount != 0;
+    if (boxCount <= 0 && !wantUi) return true;  // nothing to draw, touch no state
+
+    // Which buffer will the next Present hand to the display?
+    UINT bufferIndex = 0;
+    IDXGISwapChain3* swapChain3 = nullptr;
+    if (SUCCEEDED(pSwapChain->QueryInterface(__uuidof(IDXGISwapChain3),
+                                           reinterpret_cast<void**>(&swapChain3))) &&
+        swapChain3) {
+        bufferIndex = swapChain3->GetCurrentBackBufferIndex();
+        swapChain3->Release();
+    }
+    if (bufferIndex >= g_rtvCount) bufferIndex = 0;
+
+    ID3D12Resource* backBuffer = nullptr;
+    if (FAILED(pSwapChain->GetBuffer(bufferIndex, __uuidof(ID3D12Resource),
+                                     reinterpret_cast<void**>(&backBuffer))) ||
+        !backBuffer) {
+        if (!g_loggedNotD3D12) {
+            g_loggedNotD3D12 = true;
+            Logf("[-] d3d12: GetBuffer(%u) failed in Render", bufferIndex);
+        }
+        return true;
+    }
+    // The previous frame's list may still be reading the mapped vertex buffer,
+    // so the GPU has to finish before it is overwritten.  This is the same
+    // fence that makes the command-allocator Reset() below legal.
+    WaitForGpu();
+
+    // ---- build the frame (pixels -> NDC, colour -> float4) -------------------
+    // Layout: [tri region: pushed quads/text + menu][line region: pushed
+    // lines, then the historical ESP box slots].  Both writers only touch the
+    // mapped memory after WaitForGpu() above, and their caps drop overflow
+    // instead of corrupting the other region.
+    const float invW = 1.0f / static_cast<float>(g_width  ? g_width  : 1);
+    const float invH = 1.0f / static_cast<float>(g_height ? g_height : 1);
+    const LONG  limit = (boxCount < MAX_ESP_BOXES) ? boxCount : MAX_ESP_BOXES;
+
+    TriWriter tris;
+    tris.base  = g_vertexMapped;
+    tris.count = 0;
+    tris.cap   = kMaxUiTris;
+    tris.invW  = invW;
+    tris.invH  = invH;
+
+    LineWriter linesW;
+    linesW.base  = g_vertexMapped + kLineBase;
+    linesW.count = 0;
+    linesW.cap   = kMaxLineVerts;
+    linesW.invW  = invW;
+    linesW.invH  = invH;
+
+    for (UINT i = 0; i < g_stageQuadCount; ++i) {
+        const StageQuad& q = g_stageQuads[i];
+        tris.Quad(q.x0, q.y0, q.x1, q.y1, q.color);
+    }
+    for (UINT i = 0; i < g_stageLineCount; ++i) {
+        const StageLine& l = g_stageLines[i];
+        linesW.Line(l.x0, l.y0, l.x1, l.y1, l.color);
+    }
+    if (g_menuState.open) EmitMenu(tris, linesW);
+
+    // The queues live exactly one frame.
+    g_stageQuadCount = 0;
+    g_stageLineCount = 0;
+
+    // ESP boxes: 4 lines => 8 vertices (LINELIST): top, bottom, left, right.
+    for (LONG i = 0; i < limit; ++i) {
+        const ESPBox& box = g_EspBoxes[i];
+        if (box.right <= box.left || box.bottom <= box.top) continue;
+
+        linesW.Line(box.left,  box.top,    box.right, box.top,    box.color);
+        linesW.Line(box.left,  box.bottom, box.right, box.bottom, box.color);
+        linesW.Line(box.left,  box.top,    box.left,  box.bottom, box.color);
+        linesW.Line(box.right, box.top,    box.right, box.bottom, box.color);
+    }
+
+    const UINT triCount  = tris.count;
+    const UINT lineCount = linesW.count;
+    if (triCount == 0 && lineCount == 0) { backBuffer->Release(); return true; }
+
+    // ---- record and submit ------------------------------------------------
+    // WaitForGpu() above already guaranteed the GPU is done with the previous
+    // list, so the allocator (and the list) can be reset.
+    if (FAILED(g_allocator->Reset()) ||
+        FAILED(g_commandList->Reset(g_allocator, g_pipelineState))) {
+        backBuffer->Release();
+        return true;
+    }
+
+    D3D12_RESOURCE_BARRIER barrier =
+        TransitionBarrier(backBuffer, D3D12_RESOURCE_STATE_PRESENT,
+                          D3D12_RESOURCE_STATE_RENDER_TARGET);
+    g_commandList->ResourceBarrier(1, &barrier);
+
+    D3D12_CPU_DESCRIPTOR_HANDLE rtv =
+        g_rtvHeap->GetCPUDescriptorHandleForHeapStart();
+    rtv.ptr += static_cast<SIZE_T>(bufferIndex) * g_rtvStride;
+    g_commandList->OMSetRenderTargets(1, &rtv, FALSE, nullptr);
+
+    const D3D12_VIEWPORT viewport = {
+        0.0f, 0.0f, static_cast<float>(g_width), static_cast<float>(g_height),
+        0.0f, 1.0f
+    };
+    const D3D12_RECT scissor = {
+        0, 0, static_cast<LONG>(g_width), static_cast<LONG>(g_height)
+    };
+    g_commandList->RSSetViewports(1, &viewport);
+    g_commandList->RSSetScissorRects(1, &scissor);
+
+    const D3D12_VERTEX_BUFFER_VIEW vbv = {
+        g_vertexBuffer->GetGPUVirtualAddress(), kVbBytes,
+        static_cast<UINT>(sizeof(OverlayVertex))
+    };
+    g_commandList->SetGraphicsRootSignature(g_rootSignature);
+    g_commandList->IASetVertexBuffers(0, 1, &vbv);
+
+    // Two draw calls, one per topology: the UI triangles at vertex 0, the
+    // lines (pushed + ESP boxes) at kLineBase.  Same vertex buffer, same
+    // shaders, same blend state — only the PSO and topology differ.
+    if (triCount > 0) {
+        g_commandList->SetPipelineState(g_pipelineStateTri);
+        g_commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+        g_commandList->DrawInstanced(triCount, 1, 0, 0);
+    }
+    if (lineCount > 0) {
+        g_commandList->SetPipelineState(g_pipelineState);
+        g_commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_LINELIST);
+        g_commandList->DrawInstanced(lineCount, 1, kLineBase, 0);
+    }
+
+    barrier = TransitionBarrier(backBuffer, D3D12_RESOURCE_STATE_RENDER_TARGET,
+                                D3D12_RESOURCE_STATE_PRESENT);
+    g_commandList->ResourceBarrier(1, &barrier);
+
+    if (FAILED(g_commandList->Close())) {
+        backBuffer->Release();
+        return true;
+    }
+
+    ID3D12CommandList* lists[] = { g_commandList };
+    g_queue->ExecuteCommandLists(1, lists);
+
+    // One-shot confirmation that geometry really reached the queue.  Without it
+    // an "overlay ready" log plus an empty screen is indistinguishable from
+    // "no ESP boxes were produced this session".
+    if (!g_loggedDraw) {
+        g_loggedDraw = true;
+        Logf("[+] d3d12: first overlay draw submitted (%u tri verts, %u line verts, "
+             "%lld box(es), buffer %u/%u)",
+             triCount, lineCount, static_cast<long long>(limit), bufferIndex,
+             g_rtvCount);
+    }
+
+    // Signal so the next frame knows when the allocator and the mapped vertex
+    // buffer are safe to reuse (and so Release() cannot free live memory).
+    if (g_fence && SUCCEEDED(g_queue->Signal(g_fence, ++g_fenceValue))) {
+        // completion is waited for by WaitForGpu() on the next frame
+    } else {
+        g_fenceValue = 0;      // no fence: WaitForGpu() becomes a no-op
+    }
+
+    // The RTV keeps the resource alive; our reference must go or the game's
+    // ResizeBuffers() fails with DXGI_ERROR_INVALID_CALL.
+    backBuffer->Release();
+    return true;
+}
+
+
+
+void Release() {
+    // The GPU may still be reading the vertex buffer we are about to free.
+    WaitForGpu();
+
+    SafeRelease(g_vertexBuffer);
+    g_vertexMapped = nullptr;
+
+    SafeRelease(g_pipelineState);
+    SafeRelease(g_pipelineStateTri);
+    SafeRelease(g_rootSignature);
+    SafeRelease(g_rtvHeap);
+    g_rtvCount = 0;
+
+    SafeRelease(g_fence);
+    if (g_fenceEvent) { CloseHandle(g_fenceEvent); g_fenceEvent = nullptr; }
+    g_fenceValue = 0;
+
+    SafeRelease(g_commandList);
+    SafeRelease(g_allocator);
+    SafeRelease(g_queue);
+    SafeRelease(g_device);
+
+    g_width = g_height = 0;
+    g_format = DXGI_FORMAT_UNKNOWN;
+    g_sampleCount = 1;
+    g_usesOwnQueue = false;
+    g_ready = false;
+}
+
+} // namespace D3D12Overlay
+

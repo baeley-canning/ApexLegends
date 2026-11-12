@@ -1,0 +1,29 @@
+===== qk_name (find the entity by player name) =====
+needle='kern30120'  out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_matrix1.txt
+patterns: 2
+ranges=5 (map=5 bad=25)
+  scanned 408161 chunks, 31295 name hits
+  hit 0x0002b5a0eb (kern30120:ascii)
+  hit 0x0002c1312f (kern30120:ascii)
+  hit 0x0002d6b9d1 (kern30120:ascii)
+  hit 0x0002d6bbae (kern30120:ascii)
+  hit 0x00032caae1 (kern30120:ascii)
+  hit 0x00032cadcb (kern30120:ascii)
+  hit 0x000334be22 (kern30120:ascii)
+  hit 0x000334e477 (kern30120:ascii)
+  hit 0x00034b8776 (kern30120:ascii)
+  hit 0x000356353c (kern30120:ascii)
+  hit 0x00035638c1 (kern30120:ascii)
+  hit 0x0003571742 (kern30120:ascii)
+  hit 0x0003571b71 (kern30120:ascii)
+  hit 0x0003572936 (kern30120:ascii)
+  hit 0x0003575e09 (kern30120:ascii)
+  hit 0x000380333c (kern30120:ascii)
+  using 2 origin(s) (ground plane, far)
+  ground-plane origins at name-0xEEC: 2
+    0x023e2d15c8 (6089.8, 2.0, -8806.8)
+    0x03a9f91ea4 (1024.0, 1.5, 1.0)
+  scanning RAM and projecting 2 origin(s) at 1920x1080...
+  matrix-shaped blocks tested: 2000822, VP hits: 0, view hits: 0
+RESULT: no-projection
+VERDICT: PARTIAL - no matrix projects the verified origin at all

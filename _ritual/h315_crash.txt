@@ -1,0 +1,48 @@
+﻿# h315 crash record - 2026-11-06 21:33:46 UTC+1 - bugcheck 0xDA (0x302, 0, 0, 0xfffffff538000000)
+# dump: C:\Windows\Minidump\110626-10609-01.dmp size=9619497 mtime=2026-11-06T21:33:53 sha256=BA6984A388C1B5F6A124807C359C531A585ED9173FA831F522EA628D1EEF799C
+# copy: C:\Users\New User\OneDrive\Desktop\cheating\temp\110626-10609-01.dmp verified=True
+# context: host run h315 step 3 = kdu DSE-read provider loop (prv 22 first, then csv order);
+#          DirectIo64.sys extracted 21:33:29, bugcheck 21:33:46; nothing injected, no DSE write this run.
+# analysis: C:\Users\New User\OneDrive\Desktop\cheating\_ritual\h315_dumpchk.out + C:\Users\New User\OneDrive\Desktop\cheating\_ritual\h315_kd.out
+
+## events
+EVT 2026-11-06T21:33:56 id=1001 Microsoft-Windows-WER-SystemErrorReporting
+  | The computer has rebooted from a bugcheck.  The bugcheck was: 0x000000da (0x0000000000000302, 0x0000000000000000, 0x0000000000000000, 0xfffffff538000000). A dump was saved in: C:\WINDOWS\Minidump\110626-10609-01.dmp. Report Id: ce4af631-cbf6-4d59-90c8-27db9fbb8e1b.
+  props=0x000000da (0x0000000000000302, 0x0000000000000000, 0x0000000000000000, 0xfffffff538000000),C:\WINDOWS\Minidump\110626-10609-01.dmp,ce4af631-cbf6-4d59-90c8-27db9fbb8e1b
+EVT 2026-11-06T21:33:49 id=41 Microsoft-Windows-Kernel-Power
+  | The system has rebooted without cleanly shutting down first. This error could be caused if the system stopped responding, crashed, or lost power unexpectedly.
+  props=218,770,0,0,18446744027404435456,0,0,0,0,False,0,0,False,0,0,False,False,0,0,3,0
+
+## artifacts
+  C:\Users\Public\p37\h315.out size=2328 mtime=2026-11-06T21:33:25 lastNonNul=-1 trailingNul=2328
+  C:\Users\Public\p37\h315.lock size=40 mtime=2026-11-06T21:33:22
+  C:\Users\Public\p37\DirectIo64.sys size=42352 mtime=2026-11-06T21:33:29
+  C:\Users\Public\p37\kdu_list.csv size=23091 mtime=2026-11-06T21:33:24
+  C:\p37vm\guest-h310.log size=164383 mtime=2026-11-06T21:33:25 lastNonNul=159760 trailingNul=4622
+  C:\Users\Public\p37\zapexdrv.sys size=17920 mtime=2026-11-06T21:33:23
+  C:\Users\Public\p37\apexcheat.dll size=343552 mtime=2026-11-06T21:33:23
+  C:\Users\Public\p37\apex_launcher.exe size=473600 mtime=2026-11-06T21:33:23
+  --- files in C:\Users\Public\p37 touched after 21:33:15 ---
+    21:33:22.864 40 h315.lock
+    21:33:23.727 422912 kdu.exe
+    21:33:23.747 2086400 drv64.dll
+    21:33:23.749 17920 zapexdrv.sys
+    21:33:23.759 473600 apex_launcher.exe
+    21:33:23.763 343552 apexcheat.dll
+    21:33:23.764 7185 pe_tls.ps1
+    21:33:23.766 336896 zapexcheat.dll
+    21:33:24.303 23091 kdu_list.csv
+    21:33:25.432 2328 h315.out
+    21:33:29.823 42352 DirectIo64.sys
+
+## analysis verdict (kd, h315_kd.out)
+PROCESS_NAME: kdu.exe
+BUGCHECK: 0xDA p1=0x302 p2=0 p3=0 p4=0xfffffff538000000
+STACK: nt!KeBugCheckEx <- nt!MiReleasePtes+0x103 <- nt!MiUnmapContiguousMemory+0xdb <- nt!MmUnmapIoSpace+0xc <- DirectIo64+0x38c3
+        (same stack further out: DirectIo64+0x13f7)
+IMAGE: DirectIo64.sys (no symbols, TS 2020-08-12, size 0xB000) loaded fffff803`5a270000-fffff803`5a27b000
+BUCKET: 0xDA_DirectIo64!unknown_function hash {0c65b4b4-7a86-fdb0-13f8-91a1c70565b4}
+lmvm zapexdrv: EMPTY -> our driver was never loaded in this run
+!pool 0xfffffff538000000: page not in dump (triage dump, no pool ranges)
+READING: DirectIo64 released the IoSpace PTE range under MmUnmapIoSpace twice (or with the wrong
+         length); MiReleasePtes then walked already-free PTEs. p4 is the MMIO VA base itself.

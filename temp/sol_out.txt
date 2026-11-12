@@ -1,0 +1,25 @@
+=== _mk19 solve 2026-11-09 14:04:14 (offline) ===
+dump: image_pa=0x1f9b2b000 stamp=0x6adbf892 rva=0x334c000 size=0xab2392c band=0x156000000+0x40000000
+screen=1920x1080  seeds=63  org readings=156
+  data: 171 MB, 9 matrix-shaped window(s)
+  band 0x156000000 +1024 MB, 4000 matrix-shaped window(s)
+  candidates: 4009 - scoring against 156 seed reading(s)
+  survivors (camera within 400 units of a seed): 3515
+   band+0x156000000 pa=0x015a9f2510 on=36/42 aspect=30 anchor=1.0 shape=col/contig
+   band+0x156000000 pa=0x015d0e8590 on=36/42 aspect=20 anchor=251.3 shape=row/contig
+   band+0x156000000 pa=0x015b7a8e10 on=36/42 aspect=7 anchor=224.8 shape=row/contig
+   band+0x156000000 pa=0x0162178170 on=36/42 aspect=5 anchor=118.9 shape=row/contig
+   band+0x156000000 pa=0x015afd7710 on=36/42 aspect=3 anchor=118.9 shape=row/contig
+   band+0x156000000 pa=0x0162f065d4 on=36/42 aspect=2 anchor=256.9 shape=col/contig
+   band+0x156000000 pa=0x0160dcbc20 on=36/42 aspect=1 anchor=96.7 shape=row/contig
+   band+0x156000000 pa=0x015fb7ecf8 on=36/42 aspect=0 anchor=0.3 shape=col/contig
+   band+0x156000000 pa=0x0159e6832c on=36/42 aspect=0 anchor=1.0 shape=col/contig
+   band+0x156000000 pa=0x015f7dd4f0 on=36/42 aspect=0 anchor=1.0 shape=col/contig
+   band+0x156000000 pa=0x01606d5ab8 on=36/42 aspect=0 anchor=1.0 shape=col/contig
+   band+0x156000000 pa=0x016142fb40 on=36/42 aspect=0 anchor=1.0 shape=row/contig_yz
+   band+0x156000000 pa=0x015de458e4 on=36/42 aspect=0 anchor=1.0 shape=row/contig
+   band+0x156000000 pa=0x015de4f124 on=36/42 aspect=0 anchor=1.0 shape=row/contig
+   band+0x156000000 pa=0x015dea3624 on=36/42 aspect=0 anchor=1.0 shape=row/contig
+rects written: C:\Users\New User\OneDrive\Desktop\cheating\temp\_mk19_rects.txt
+RESULT: band+0x156000000 pa=0x15a9f2510 shape=col/contig on=36/42 aspect=30 anchor=1.0
+VERDICT: PASS - 36 rect(s) on screen, camera 1.0 units from a seed, all from one dump

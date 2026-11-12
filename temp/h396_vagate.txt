@@ -1,0 +1,7 @@
+=== h396 gdrv3 MapK virtual read gate 2026-11-09 22:38:35 ===
+MapK installed ranges=map=5 bad=25
+old_1450_frame=0x5732e3000 now_reads 512 bytes present_entries=0 first=0x22005c0020003a00
+old_1450_frame=0x33bcb0000 now_reads 512 bytes present_entries=0 first=0x787ff7f5a3c410
+RESULT: no validated PEB->PE object among 0 candidates
+ESTABLISHED_PROC_DTBS=none
+VERDICT: BLOCKED - transport fixed; object/table discovery remains

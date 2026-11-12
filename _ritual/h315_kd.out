@@ -1,0 +1,254 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\New User\OneDrive\Desktop\cheating\temp\110626-10609-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+WARNING: TriageDumpDataExtArray.HeaderSize is 0
+WARNING: Failed to read dump data exension data
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+Symbol search path is: srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (16 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Kernel base = 0xfffff803`9ee00000 PsLoadedModuleList = 0xfffff803`9fcf54c0
+Debug session time: Fri Nov  6 21:33:30.060 2026 (UTC + 13:00)
+System Uptime: 0 days 1:14:34.750
+Loading Kernel Symbols
+...............................................................
+................................................................
+................................................................
+.................................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 00000091`9831d018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.................................
+For analysis of this file, run !analyze -v
+3: kd> .sympath srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+Symbol search path is: srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+Expanded Symbol search path is: srv*c:\users\new user\symbols*https://msdl.microsoft.com/download/symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+3: kd> .reload
+Loading Kernel Symbols
+...............................................................
+................................................................
+................................................................
+.................................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 00000091`9831d018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.................................
+3: kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+SYSTEM_PTE_MISUSE (da)
+A driver has corrupted system PTEs.
+Set HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\TrackPtes
+to a DWORD 3 value and reboot.  If the same BugCheck occurs again the stack trace will
+identify the offending driver.
+Arguments:
+Arg1: 0000000000000302, Type of error.
+Arg2: 0000000000000000
+Arg3: 0000000000000000
+Arg4: fffffff538000000
+
+Debugging Details:
+------------------
+
+*** WARNING: Unable to verify timestamp for DirectIo64.sys
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 1921
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 9117
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 5
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 25
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 421
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 12731
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 93
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0xda
+
+    Key  : Dump.Attributes.AsUlong
+    Value: 21008
+
+    Key  : Dump.Attributes.DiagDataWrittenToHeader
+    Value: 1
+
+    Key  : Dump.Attributes.ErrorCode
+    Value: 0
+
+    Key  : Dump.Attributes.KernelGeneratedTriageDump
+    Value: 1
+
+    Key  : Dump.Attributes.LastLine
+    Value: Dump completed successfully.
+
+    Key  : Dump.Attributes.ProgressPercentage
+    Value: 0
+
+    Key  : Failure.Bucket
+    Value: 0xDA_DirectIo64!unknown_function
+
+    Key  : Failure.Hash
+    Value: {0c65b4b4-7a86-fdb0-13f8-91a1c70565b4}
+
+
+BUGCHECK_CODE:  da
+
+BUGCHECK_P1: 302
+
+BUGCHECK_P2: 0
+
+BUGCHECK_P3: 0
+
+BUGCHECK_P4: fffffff538000000
+
+FILE_IN_CAB:  110626-10609-01.dmp
+
+DUMP_FILE_ATTRIBUTES: 0x21008
+  Kernel Generated Triage Dump
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  kdu.exe
+
+STACK_TEXT:  
+ffffe60a`01d4eab8 fffff803`9f047343     : 00000000`000000da 00000000`00000302 00000000`00000000 00000000`00000000 : nt!KeBugCheckEx
+ffffe60a`01d4eac0 fffff803`9f1f79e3     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!MiReleasePtes+0x103
+ffffe60a`01d4ec40 fffff803`9f1f78fc     : 00000000`00000000 ffffe60a`01d4ed70 ffffe784`00000000 00000000`00000000 : nt!MiUnmapContiguousMemory+0xdb
+ffffe60a`01d4ecb0 fffff803`5a2738c3     : ffffe784`754b4c90 ffffe60a`01d4ed70 00000000`00000001 ffffe784`7837cd10 : nt!MmUnmapIoSpace+0xc
+ffffe60a`01d4ece0 ffffe784`754b4c90     : ffffe60a`01d4ed70 00000000`00000001 ffffe784`7837cd10 ffffe784`76b83960 : DirectIo64+0x38c3
+ffffe60a`01d4ece8 ffffe60a`01d4ed70     : 00000000`00000001 ffffe784`7837cd10 ffffe784`76b83960 fffff803`5a2713f7 : 0xffffe784`754b4c90
+ffffe60a`01d4ecf0 00000000`00000001     : ffffe784`7837cd10 ffffe784`76b83960 fffff803`5a2713f7 00000000`8011e048 : 0xffffe60a`01d4ed70
+ffffe60a`01d4ecf8 ffffe784`7837cd10     : ffffe784`76b83960 fffff803`5a2713f7 00000000`8011e048 00000000`00000000 : 0x1
+ffffe60a`01d4ed00 ffffe784`76b83960     : fffff803`5a2713f7 00000000`8011e048 00000000`00000000 00000000`00000702 : 0xffffe784`7837cd10
+ffffe60a`01d4ed08 fffff803`5a2713f7     : 00000000`8011e048 00000000`00000000 00000000`00000702 00000000`00000000 : 0xffffe784`76b83960
+ffffe60a`01d4ed10 00000000`8011e048     : 00000000`00000000 00000000`00000702 00000000`00000000 00000000`00000019 : DirectIo64+0x13f7
+ffffe60a`01d4ed18 00000000`00000000     : 00000000`00000702 00000000`00000000 00000000`00000019 ffffe784`7aea3820 : 0x8011e048
+
+
+SYMBOL_NAME:  DirectIo64+38c3
+
+MODULE_NAME: DirectIo64
+
+IMAGE_NAME:  DirectIo64.sys
+
+STACK_COMMAND:  .cxr; .ecxr ; kb
+
+BUCKET_ID_FUNC_OFFSET:  38c3
+
+FAILURE_BUCKET_ID:  0xDA_DirectIo64!unknown_function
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {0c65b4b4-7a86-fdb0-13f8-91a1c70565b4}
+
+Followup:     MachineOwner
+---------
+
+3: kd> .bugcheck
+Bugcheck code 000000DA
+Arguments 00000000`00000302 00000000`00000000 00000000`00000000 fffffff5`38000000
+3: kd> lmvm zapexdrv
+Browse full module list
+start             end                 module name
+3: kd> lmvm DirectIo64
+Browse full module list
+start             end                 module name
+fffff803`5a270000 fffff803`5a27b000   DirectIo64 T (no symbols)           
+    Loaded symbol image file: DirectIo64.sys
+    Image path: DirectIo64.sys
+    Image name: DirectIo64.sys
+    Browse all global symbols  functions  data
+    Timestamp:        Wed Aug 12 17:44:52 2020 (5F3381D4)
+    CheckSum:         00016ED5
+    ImageSize:        0000B000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+3: kd> !pool 0xfffffff538000000
+fffff8039fdc54d8: Unable to get MiVisibleState
+Unable to get NonPagedPoolStart
+Unable to get NonPagedPoolEnd
+Unable to get PagedPoolStart
+Unable to get PagedPoolEnd
+The pool page you have specified is not in this dump.
+3: kd> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Kernel.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Usb4Kd.natvis'

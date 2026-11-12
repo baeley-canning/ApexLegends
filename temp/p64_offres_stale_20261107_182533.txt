@@ -1,0 +1,4 @@
+# p64_pairs 2026-11-07 18:25:33 band=full win=0x100 min=3
+SEED 2 clusters from p64_offline_seed_stale.txt
+SEED100 0 of 3 members near 100.0f  <- STALE seed or not full health; re-run without --seed
+SEED100-FAIL 0 members near 100.0f -- stale seed (or not full health). Bail rc=3; recover: --seed= (sweep) or drink full then re-run

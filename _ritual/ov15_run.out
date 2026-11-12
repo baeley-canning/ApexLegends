@@ -1,0 +1,62 @@
+ov15 - adapter fix (display-attached device) - 2026-11-07 09:53:43
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov15_cwd (scratch, emptied first)
+pid   : 19928   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=25 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov15_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present(0,0) hr=0x887A0005 removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+T6 buffer readback: ok=0 coverage=0.0% bbox 0,0 - 0,0 of 960x620 (client)
+T5 PresentCount()=201 frames=201 equal=yes
+renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=201 presentFails=201
+T6 geometry gate: readback=0 coverage=0.0% (>=80% required) bboxOk=0
+T6 GEOMETRY FAIL: drawn area does not fill the 960x620 client (bbox 0,0 - 0,0)
+RESULT: FAIL
+VERDICT: overlay draw path, menu state, key handling, ini flush,
+VERDICT: present counter and client-filling coverage verified offline
+
+---- overlay_test log ----
+[09:53:43.462] ==================== session start 2026-11-07 09:53:43 pid=19928
+[09:53:43.462] [test] overlay_test start: seconds=25 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov15_cwd size=960x620
+[09:53:43.463] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[09:53:43.477] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[09:53:43.697] [test] adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+[09:53:43.697] [*] menu opened (selIndex=0)
+[09:53:43.698] [*] menu: GLOW -> ON (ini flush ok)
+[09:53:43.698] [test] T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+[09:53:43.698] [test] T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+[09:53:43.698] [test] T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+[09:53:43.716] [*] d3d12: the swap chain does not expose the game's queue - using a private DIRECT queue
+[09:53:43.724] [+] d3d12: overlay ready (960x620 fmt=28 samples=1 buffers=2 queue=private)
+[09:53:43.724] [+] d3d12: present counter started (T5: a line every 600 frames)
+[09:53:43.725] [+] d3d12: first overlay draw submitted (16176 tri verts, 40 line verts, 3 box(es), buffer 1/2)
+[09:53:43.725] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[09:53:43.726] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[09:53:43.726] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[09:53:43.726] [test] T5 Present(0,0) hr=0x887A0005 removedReason=0x887A002B
+[09:53:43.726] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[09:53:43.726] [test] T5 Present hr=0x887A0005 (FAILED) removedReason=0x887A002B
+[09:53:43.732] [test] T6 buffer readback: ok=0 coverage=0.0% bbox 0,0 - 0,0 of 960x620 (client)
+[09:53:43.735] [test] T5 PresentCount()=201 frames=201 equal=yes
+[09:53:43.735] [test] renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=201 presentFails=201
+[09:53:43.735] [test] T6 geometry gate: readback=0 coverage=0.0% (>=80% required) bboxOk=0
+[09:53:43.735] [test] T6 GEOMETRY FAIL: drawn area does not fill the 960x620 client (bbox 0,0 - 0,0)
+[09:53:43.735] [test] RESULT: FAIL
+[09:53:43.735] [test] VERDICT: overlay draw path, menu state, key handling, ini flush,
+[09:53:43.735] [test] VERDICT: present counter and client-filling coverage verified offline
+[09:53:43.735] [test] exit pass=0
+

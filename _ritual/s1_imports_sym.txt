@@ -1,0 +1,6 @@
+ntoskrnl.exe
+59F KeStackAttachProcess
+7E9 PsLookupProcessByProcessId
+7AD PsGetProcessPeb
+7B0 PsGetProcessSectionBaseAddress
+5F1 MmCopyVirtualMemory

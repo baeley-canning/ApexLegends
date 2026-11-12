@@ -1,0 +1,16 @@
+query-only handle target=0x180 pid=14624
+status=0xc0000004 need=5390376
+RESULT: found=0 native_object=[]
+query-only handle target=0x23c pid=14624
+status=0x0 need=5384536
+query-only handle target=0x254 pid=14624
+status=0x0 need=5378656
+query-only handle target=0x224 pid=14624
+status=0x0 need=5378216
+query-only handle target=0x21c pid=14624
+status=0x0 need=5383496
+query-only handle target=0x21c pid=14624
+status=0x0 need=5371496
+query-only handle target=0x21c pid=14624
+status=0x0 need=5362216
+handle_count=134055 first=40906d930ce6ffff04000000000000000400000000000000ffff1f00000008000000000000000000 second=800288930ce6ffff04000000000000000800000000000000ffff1f00000009000000000000000000 third=8028da970ce6ffff04000000000000000c0000000000000003001f00000015000000000000000000

@@ -1,0 +1,11 @@
+===== h316 order selftest 21:47:26 =====
+csv=C:\Users\Public\p37\kdu_list_h316.csv exists=True bytes=23091
+  OK   ids parsed (>60) = 68
+  OK   first is 0 (NalDrv) = 0
+  OK   last three are the suspects in order 14,27,22 = 14,27,22
+  OK   14 maps to DirectIo64 = DirectIo64
+  OK   27 also DirectIo64 = DirectIo64
+  OK   no suspect before position 65
+  OK   count preserved (no id lost/duplicated) 68 vs 68
+order head=0,1,2,3,4,5 tail=65,66,67,14,27,22
+RESULT: PASS - order/parse logic holds on the real csv

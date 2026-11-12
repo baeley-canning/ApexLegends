@@ -1,0 +1,5 @@
+20:19:19.845 ===== h329 dse park (g_CiOptions -> boot byte 0x16) =====
+20:19:19.892 game=0 svc=[STATE              : 4  RUNNING]
+20:19:25.158 current value was 0x0 -> parked to 22
+20:19:30.870 read-back value=0x16
+20:19:30.870 RESULT: PASS - dse 0x16 (game-start gate condition); driver and service untouched

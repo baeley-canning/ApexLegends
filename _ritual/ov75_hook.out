@@ -1,0 +1,69 @@
+ov75 - hook/loader injection - 2026-11-07 16:29:06
+waiting up to 1800 s for r5apex_dx12 with a window...
+game appeared: pid=29864 - 8 s settle
+target   : pid=29864 hwnd=42927888 elevated=True
+hook dll : hMod=140703405178880 proc=0x7FF8107C1380
+thread   : gui tid=12640 windowPid=29864
+hooks    : getmsg=637927987 callwnd=578750757 err=0
+hook ran (game-side [g29864] line present) : False
+---- hook log ----
+[g23364] ov74: DllMain PROCESS_ATTACH (mapped)
+[g23364] ov74: self-pin ok
+[g23364] ov74: payload thread up (outside loader lock)
+[g23364] ov74: LoadLibraryW(apexcheat.dll) -> 0x00007FFFAAC70000 err=183
+[g23364] ov74: hb +2s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +4s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +6s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +8s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +10s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +12s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +14s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +16s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +18s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +20s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +22s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +24s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +26s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +28s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +30s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +32s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +34s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +36s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+[g23364] ov74: hb +38s apexcheat=0x00007FFFAAC70000 payload=0x00007FFFAAC70000
+
+hooks    : unhooked both (R4)
+paylog   : C:\Users\New User\AppData\Local\QwenKern\payload_29864.log fresh=False (alt: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\payload_29864.log)
+game     : alive=True
+payload ready: False
+INSERT   : pid=29864 hwnd=42927888 title=Apex Legends | foreground raised | VK_INSERT sent
+---- payload attach canary (tail 40) ----
+[2026-11-07 16:35:30.768 pid=23364 tid=23740] DllMain PROCESS_ATTACH
+[2026-11-07 16:35:30.769 pid=23364 tid=23740] CreateThread ok
+[2026-11-07 16:35:30.769 pid=23364 tid=13456] worker thread entered
+[2026-11-07 16:37:09.287 pid=23364 tid=13456] Initialize() OK - entering main loop
+---- OCR (menu) ----
+15
+552 / 10.9k
+kern30120
+ABOUT
+FIRING RANGE
+Firi
+MODE SELECT
+PLAY
+CHALLENGES
+PASSES
+READY
+LEGEND LOCKER
+STORE
+5.70k 150
+o @ 100
+SEASON
+CIPHER
+APEX
+PACKS
+03d14h
+
+check menu on screen : False
+
+RESULT: FAIL see checks above
+ov75 DONE FAIL see checks above

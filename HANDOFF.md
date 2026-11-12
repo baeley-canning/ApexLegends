@@ -1,3 +1,8 @@
+> **11/08 13:49 first-boot note (reboot 1, PTE starvation):** box was restarted on purpose.
+> After logon: `sc start gdrv3` (must read `STATE 4`), run `temp\_p132b_bench.py` and expect the
+> 1 MB rate near 700 MB/s, then launch the game into the firing range. Seeds from p132 are in
+> `temp\_p132_out.txt`; collection resumes at PLAN queue step 2 (`temp\_p134.py`).
+
 # HANDOFF — read this first
 
 > **08/11 05:4x - THE WHOLE PICTURE (this supersedes the block below; read this one).**
@@ -26,6 +31,11 @@
 >   refused, 1052). While resident, the game dies in 1-5 min (`EA Javelin`, exit
 >   `0x322327458D1ED790`; event log shows kills exactly at 05:12/05:14/05:15 == my kdu runs;
 >   the pre-kdu stretch 04:56-05:12 was clean). ONLY A REBOOT CLEARS IT. Never kdu casually.
+>   **CORRECTION 08/11 11:52 (p111/p114): kdu is not the only loader.** DBUtilDrv2 (and gdrv3)
+>   are Gigabyte boot residents - `GigabyteUpdateService.exe` NtLoadDriver's them at logon with
+>   **no SCM event**, so a fresh BootType 0x0 boot already had both RUNNING and "reboot, verify
+>   STOPPED" silently passed on a dirty box. p114 set that service to DEMAND_START; the box is
+>   only clean for the game once it has been rebooted *with the starter stopped*.
 >
 > **READY TOOLING (temp\, all compiled):**
 > - `_qk_dtb16.py` + `_probe16.ps1` = **PHASE 1** (gdrv3-only, zero crash risk): dynamic

@@ -1,0 +1,34 @@
+ov71 - rights probe - 2026-11-07 15:55:25
+---- ALL 0x1F0FFF
+  open : ok h=2484
+  rpm  : ok=False err=87
+  wpm  : no readable RW region -> not tested
+  vaex : ok=False err=5
+  crt  : FAIL err=5
+---- VM_OPER|VM_READ|VM_WRITE 0x38
+  open : ok h=2852
+  rpm  : ok=False err=87
+  wpm  : no readable RW region -> not tested
+  vaex : ok=False err=5
+  crt  : FAIL err=5
+---- VM_READ|VM_WRITE 0x30
+  open : ok h=2876
+  rpm  : ok=False err=87
+  wpm  : no readable RW region -> not tested
+  vaex : ok=False err=5
+  crt  : FAIL err=5
+---- VM_OPER|VM_WRITE 0x28
+  open : ok h=2652
+  rpm  : ok=False err=87
+  wpm  : no readable RW region -> not tested
+  vaex : ok=False err=5
+  crt  : FAIL err=5
+---- CREATE_THREAD|VM_OPER 0x0A
+  open : ok h=2696
+  rpm  : ok=False err=87
+  wpm  : no readable RW region -> not tested
+  vaex : ok=False err=5
+  crt  : FAIL err=5
+
+RESULT: rights probe done
+target   : pid=3920 title='Apex Legends'  elevated=True

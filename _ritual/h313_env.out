@@ -1,0 +1,52 @@
+20:41:09.947 ===== h313 env restore + 1450 one-variable 2026-11-06 20:41:09 admin=True pid=10892 =====
+20:41:10.113 boot=06/11 20:18:55 uptime(min)=22
+20:41:10.120 game r5apex_dx12 pid=7880 (RECORDED ONLY - not touched by this probe)
+20:41:10.121 --- STEP=pre-state ---
+20:41:10.136   pre zapexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:10.144   pre apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:10.153   pre zt1: SERVICE_NAME: zt1 TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 1077 (0x435) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+20:41:10.161   pre zt2: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:10.170   pre DBUtilDrv2: SERVICE_NAME: DBUtilDrv2 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+20:41:10.518   pre drv: DBUtilDrv2 DBUtilDrv2 Service Kernel 20/11/2019 7:14:20 am
+20:41:10.521   pre bugcheck-dump 110626-10203-01.dmp exists=True
+20:41:10.558   pre testsigning No
+20:41:11.278   pre pool: freePhysMB=18212 pagedMB=632.8 nonpagedMB=429.9
+20:41:13.690   [pre] DSE VALUE=UNREADABLE (all of prv 22/0/1/2)
+20:41:13.691   DSE pre=0x  (this script performs NO DSE write; parked target is 6, post-reboot default expected)
+20:41:13.691 --- STEP=cleanup (restore parked state) ---
+20:41:13.700   del zt1: [SC] DeleteService SUCCESS
+20:41:13.709   after del zt1: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:13.717   del zt2: [SC] OpenService FAILED 1060:
+20:41:13.718   del zt2: 
+20:41:13.719   del zt2: The specified service does not exist as an installed service.
+20:41:13.724   del zt2: 
+20:41:13.734   after del zt2: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:13.741   del zapexdrv: [SC] OpenService FAILED 1060:
+20:41:13.742   del zapexdrv: 
+20:41:13.743   del zapexdrv: The specified service does not exist as an installed service.
+20:41:13.744   del zapexdrv: 
+20:41:13.753   after del zapexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:13.759   del apexdrv: [SC] OpenService FAILED 1060:
+20:41:13.760   del apexdrv: 
+20:41:13.761   del apexdrv: The specified service does not exist as an installed service.
+20:41:13.761   del apexdrv: 
+20:41:13.771   after del apexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:13.771 --- STEP=ONE-VARIABLE (sc create zapexdrv + sc start, NO other change) ---
+20:41:13.781   create: [SC] CreateService SUCCESS
+20:41:15.416   START rc=1450
+20:41:15.426   post query: SERVICE_NAME: zapexdrv TYPE : 1 KERNEL_DRIVER STATE : 1 STOPPED WIN32_EXIT_CODE : 1450 (0x5aa) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0
+20:41:15.436   post WIN32_EXIT_CODE=1450
+20:41:15.441   game after start: pid=7880 alive=True
+20:41:15.441 --- STEP=read-back events (new since 
+20:41:15.553   scm 20:41:13.800 id=7000 The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:41:15.556   scm 20:41:13.779 id=7045 A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:41:15.578   ci: no new CodeIntegrity events since script start
+20:41:15.579 --- STEP=restore ---
+20:41:15.588   delete: [SC] DeleteService SUCCESS
+20:41:15.597   after delete zapexdrv: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:15.613   final zt1: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.  zt2: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.
+20:41:16.868   [post] DSE VALUE=UNREADABLE (all of prv 22/0/1/2)
+20:41:16.869   DSE post=0x (no DSE write was performed by this script; pre=0x)
+20:41:16.873   game final: pid=7880 alive=True
+20:41:16.875 RESULT: FAIL - 1450 REPRODUCED on the fresh post-bugcheck boot (DSE pre=0x) - the blocker is specific to loading our image and survives a reboot; STOP per brief, no driver edit attempted
+20:41:16.876 VERDICT: FAIL 1450 PERSISTS - diagnose from the scm/ci event lines above + pool numbers; lead decides next (h314 NOT run)

@@ -1,0 +1,19 @@
+drvfile=True
+game=0
+fuses=0
+--- sc query apexdrv ---
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+--- post-reload 23:58:34 game=0
+--- arm prep 23:58:58
+STATE              : 4  RUNNING
+fuse started
+fuse procs=0 pid=
+wmi fuse=0 pid=
+out exists=False
+ps pid=13504 start=21:45:07
+ps pid=25728 start=23:30:23
+ps pid=26160 start=23:30:19
+ps pid=27132 start=23:30:24
+ps pid=28588 start=23:59:53
+relaunch pid=5428 alive3s=False
+exitcode=-196608

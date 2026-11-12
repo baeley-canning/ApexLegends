@@ -1,0 +1,120 @@
+﻿   37200 file pointer to raw data (00037200 to 0004CBFF)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+40000040 flags
+         Initialized Data
+         Read Only
+
+  Debug Directories
+
+        Time Type        Size      RVA  Pointer
+    -------- ------- -------- -------- --------
+    6AED2D7F cv            68 000489E4    47BE4    Format: RSDS, {CA721D87-9DE5-4B72-93E9-1117D1FBBE2C}, 1, C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.pdb
+    6AED2D7F feat          14 00048A4C    47C4C    Counts: Pre-VC++ 11.00=0, C/C++=296, /GS=296, /sdl=13, guardN=283
+    6AED2D7F coffgrp      3CC 00048A60    47C60    4C544347 (LTCG)
+    6AED2D7F iltcg          0 00000000        0
+
+  Section contains the following load config:
+
+            00000140 size
+                   0 time date stamp
+                0.00 Version
+                   0 GlobalFlags Clear
+                   0 GlobalFlags Set
+                   0 Critical Section Default Timeout
+                   0 Decommit Free Block Threshold
+                   0 Decommit Total Free Threshold
+    0000000000000000 Lock Prefix Table
+                   0 Maximum Allocation Size
+                   0 Virtual Memory Threshold
+                   0 Process Affinity Mask
+                   0 Process Heap Flags
+                   0 CSD Version
+                0000 Dependent Load Flag
+    0000000000000000 Edit List
+    000000018004E0C0 Security Cookie
+    00000001800383B8 Guard CF address of check-function pointer
+    00000001800383C8 Guard CF address of dispatch-function pointer
+    0000000000000000 Guard CF function table
+                   0 Guard CF function count
+            00000100 Guard Flags
+                       CF instrumented
+                0000 Code Integrity Flags
+                0000 Code Integrity Catalog
+            00000000 Code Integrity Catalog Offset
+            00000000 Code Integrity Reserved
+    0000000000000000 Guard CF address taken IAT entry table
+                   0 Guard CF address taken IAT entry count
+    0000000000000000 Guard CF long jump target table
+                   0 Guard CF long jump target count
+    0000000000000000 Dynamic value relocation table
+    0000000000000000 Hybrid metadata pointer
+    0000000000000000 Guard RF address of failure-function
+    0000000000000000 Guard RF address of failure-function pointer
+            00000000 Dynamic value relocation table offset
+                0000 Dynamic value relocation table section
+                0000 Reserved2
+    0000000000000000 Guard RF address of stack pointer verification function pointer
+            00000000 Hot patching table offset
+                0000 Reserved3
+    0000000000000000 Enclave configuration pointer
+    00000001800488B4 Volatile metadata pointer
+    0000000000000000 Guard EH continuation table
+                   0 Guard EH continuation count
+    00000001800383C0 Guard XFG address of check-function pointer
+    00000001800383D0 Guard XFG address of dispatch-function pointer
+    00000001800383D8 Guard XFG address of dispatch-table-function pointer
+    00000001800383E0 CastGuard OS determined failure mode
+    00000001800383E8 Guard memcpy function pointer
+
+    Volatile Metadata
+
+                      18 size
+                       3 min version (8003)
+                       3 max version (8003)
+        00000000000488CC volatile access RVA table
+                      D8 volatile access RVA table size
+        00000000000489A4 volatile range info table
+                      40 volatile range info table size
+
+    Volatile Access RVA Table
+
+          Address
+          --------
+           000000018000EC25
+           000000018000ECA1
+           000000018000EE8F
+           000000018001168F
+           000000018001170B
+           0000000180011720
+           0000000180011777
+           0000000180011DFB
+           0000000180011E0A
+           0000000180011E6C
+           0000000180011EBC
+           0000000180011F0D
+           0000000180011F49
+           0000000180011F5F
+           000000018001221F
+           0000000180012549
+           000000018001257B
+           00000001800126B0
+           0000000180012704
+           0000000180013568  _get_purecall_handler
+           0000000180015E4F
+           0000000180016076
+           0000000180016D14  __except_validate_context_record
+           0000000180016D27
+           0000000180016DFE
+           0000000180016E25
+           0000000180016EA1
+           0000000180016EB6
+           0000000180016EE7
+           0000000180016F11
+           00000001800374B5
+           00000001800374DA
+           00000001800374EE
+           0000000180037537
+           000000018003753E

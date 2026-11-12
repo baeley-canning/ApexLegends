@@ -1,0 +1,48 @@
+15:04:15.107 === h286 vmdiag2 (read-only) ===
+15:04:15.164 screenshot OK: 18710 bytes -> temp\h286_vm2.png
+15:04:15.294 host C: free GB = 95.43 used GB = 857.41
+15:04:15.295 --- log files ---
+15:04:15.306   VBox.log mtime=15:01:45 size=261742
+15:04:15.307   VBox.log.1 mtime=14:14:23 size=292641
+15:04:15.308   VBox.log.2 mtime=14:04:29 size=483676
+15:04:15.308   VBox.log.3 mtime=13:50:15 size=900824
+15:04:15.309 --- current VBox.log first lines (process start time) ---
+15:04:15.318   00:00:00.411377 VirtualBox VM 7.2.22 r175245 win.amd64 (Oct 19 2026 20:31:00) release log
+15:04:15.319   00:00:00.411379 Log opened 2026-11-06T01:14:30.323311000Z
+15:04:15.320   00:00:00.411380 Build Type: release
+15:04:15.320   00:00:00.411383 OS Product: Windows 11
+15:04:15.321   00:00:00.411610 OS Release: 10.0.26200.9711
+15:04:15.321   00:00:00.411611 OS Service Pack:
+15:04:15.322   00:00:00.450600 DMI Product Name: B760I AORUS PRO DDR4
+15:04:15.322   00:00:00.454040 DMI Product Version: -CF
+15:04:15.323   00:00:00.454050 Firmware type: UEFI
+15:04:15.323   00:00:00.454378 Secure Boot: Disabled
+15:04:15.324   00:00:00.454387 Host RAM: 32538MB (31.7GB) total, 18915MB (18.4GB) available
+15:04:15.324   00:00:00.454389 Executable: C:\Program Files\Oracle\VirtualBox\VBoxHeadless.exe
+15:04:15.325   00:00:00.454390 Process ID: 24048
+15:04:15.325   00:00:00.454390 Package type: WINDOWS_64BITS_GENERIC
+15:04:15.326   00:00:00.454390 Windows Features:
+15:04:15.326   00:00:00.454391   Core Isolation (Memory Integrity): DISABLED
+15:04:15.327   00:00:00.454793 Installed Extension Packs:
+15:04:15.327   00:00:00.454806   None installed!
+15:04:15.328   00:00:00.455183 Console: Machine state changed to 'Starting'
+15:04:15.328   00:00:00.474898 VRDP: Statistics created: [full], enabled: 0.
+15:04:15.329   00:00:00.475146 VRDP: VRDP: VD: Frames=10 MinMS=15 MaxMS=300 HistoryMS=2000 VideoMS=300
+15:04:15.329   00:00:00.475175 VRDP: Failed to query a property: 9, rc = VERR_NOT_SUPPORTED
+15:04:15.330   00:00:00.492925 VRDP: TCP server listening on port 3390 (IPv4 and IPv6).
+15:04:15.330   00:00:00.493205 VRDP: Audio: rate correction mode 0x3.
+15:04:15.331   00:00:00.493247 VRDE: loaded version 4 of the server.
+15:04:15.331 --- VBox.log last 12 lines ---
+15:04:15.333   00:35:14.707648
+15:04:15.334   00:35:14.707648 [/Devices/ahci/0/LUN#0/Config/VDConfig/] (level 2)
+15:04:15.334   00:35:14.707649
+15:04:15.335   00:35:14.707649 ********************* End of CFGM dump **********************
+15:04:15.335   00:35:14.725506 Resuming VM execution, reason 'Snapshot'
+15:04:15.336   00:35:14.725566 Changing the VM state from 'SUSPENDED' to 'RESUMING'
+15:04:15.336   00:35:14.725853 VUSB: Attached 'HidMouse' to port 1 on RootHub#1 (FullSpeed)
+15:04:15.337   00:35:14.725943 Changing the VM state from 'RESUMING' to 'RUNNING'
+15:04:15.337   00:35:14.726200 Console: Machine state changed to 'Running'
+15:04:15.337   00:36:03.426889 AIOMgr: Async flushes not supported
+15:04:15.337   00:44:18.456849 ip6_icmp: MTU is too small to hold RDNSS options! Behavior may be unexpected.
+15:04:15.338   00:47:14.687236 ERROR [COM]: aRC=VBOX_E_GSTCTL_GUEST_ERROR (0x80bb000f) aIID={00892186-a4af-4627-b21f-fc561ce4473c} aComponent={GuestWrap} aText={Guest Additions are not installed or not ready (yet)}, preserve=false aResultDetail=-78
+15:04:15.338 VERDICT: diagnostics only

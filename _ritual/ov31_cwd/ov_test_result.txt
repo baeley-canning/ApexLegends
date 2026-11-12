@@ -1,0 +1,8 @@
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov31_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x887A0001 removed=0x00000000
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x887A0001 removed=0x00000000
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x887A0001 removed=0x00000000
+FAIL: no adapter could present, hr=0x80004005

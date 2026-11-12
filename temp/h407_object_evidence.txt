@@ -1,0 +1,4 @@
+# Read-back from privileged native SystemExtendedHandleInformation.
+# Same process opens the current Apex PID=14624 handle and selects matching
+# owner=22544, handle=0xF4, ObjectType=8 (Process), access=0x1400.
+EPROCESS=0xFFFFE60CC25DA100

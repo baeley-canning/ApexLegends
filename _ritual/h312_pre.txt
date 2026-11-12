@@ -1,0 +1,22 @@
+===== h312 host run 2026-11-06 20:09:10 =====
+20:09:10.548 admin=True pid=12756 host=DESKTOP-PPHFJBQ
+20:09:10.569 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+20:09:10.579 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+20:09:10.583 pre dump: exists=False
+20:09:10.592 pre minidumps=5 gui=0
+20:09:10.595 marker cleared, done-exists=False
+20:09:10.651 pre hvci=0 vbs=0 testsigning=testsigning             No
+20:09:10.659 pre blocklist ci0=
+20:09:10.905 pre disk=71.4GB free ram=31.8GB uptime=2.1h
+20:09:11.131 pre boot=06/11 18:04 build=26200
+20:09:11.136 pre exe: cur_h310_live.ps1=35318B dump-dir=C:\WINDOWS
+20:09:11.174 pre relay: 17920B
+20:09:11.181 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+20:09:11.203 arm: SUCCESS: The scheduled task "p312post" has successfully been created.
+20:09:11.222 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p312post                                 N/A                    Ready          
+20:09:11.224 RUN probe (h311 chain, payload = apexcheat.dll)
+20:09:20.285 probe returned rc=1 (no bugcheck)
+20:09:20.292 restore auto-reboot readback=1
+20:09:20.313 disarm: SUCCESS: The scheduled task "p312post" was successfully deleted.
+20:09:20.326 post svc: The specified service does not exist as an installed service.
+20:09:20.327 RESULT: probe returned rc=1 - host did not bugcheck

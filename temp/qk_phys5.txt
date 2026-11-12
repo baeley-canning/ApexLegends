@@ -1,0 +1,48 @@
+===== qk_phys (physical ESP finder: health -> origin -> matrix) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_phys5.txt
+ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+screen assumption 2560x1440 (pass --w/--h to match)
+    health: 16384 chunks, 152 raw hits
+    health: 32768 chunks, 962 raw hits
+    health: 49152 chunks, 1638 raw hits
+    health: 65536 chunks, 3138 raw hits
+    health: 81920 chunks, 4677 raw hits
+    health: 98304 chunks, 4812 raw hits
+    health: 114688 chunks, 4868 raw hits
+    health: 131072 chunks, 5068 raw hits
+    health: 147456 chunks, 5141 raw hits
+    health: 163840 chunks, 5265 raw hits
+    health: 180224 chunks, 5655 raw hits
+    health: 196608 chunks, 6374 raw hits
+    health: 212992 chunks, 7703 raw hits
+    health: 229376 chunks, 9486 raw hits
+    health: 245760 chunks, 14061 raw hits
+    health: 262144 chunks, 23006 raw hits
+    health: 278528 chunks, 32998 raw hits
+    health: 294912 chunks, 41521 raw hits
+    health: 311296 chunks, 50383 raw hits
+    health: 327680 chunks, 59053 raw hits
+    health: 344064 chunks, 63870 raw hits
+    health: 360448 chunks, 64432 raw hits
+    health: 376832 chunks, 64887 raw hits
+    health: 393216 chunks, 65275 raw hits
+    health: 409600 chunks, 65694 raw hits
+    health: 425984 chunks, 66392 raw hits
+    health: 442368 chunks, 67108 raw hits
+  raw 100.0f hits: 67469 (454581 chunks)
+  health clusters: 24860
+  densest clusters kept for the origin stage: 24
+  clusters with a live 100.0f after 1.5s: 18
+  health scan 44.0s
+  origin near 0x1463508c0: at 0x1463504d8 (50.0, 0.0, 50.0) score=3
+  origin near 0x1463508c8: at 0x1463504d8 (50.0, 0.0, 50.0) score=3
+  origin near 0x14c2dc034: at 0x14c2dbef4 (-278.1, 0.0, -219.4) score=3
+  origin near 0x1463508d0: at 0x1463504d8 (50.0, 0.0, 50.0) score=3
+  origin near 0x14babd8ec: at 0x14babd8e8 (96.4, 100.0, 82.5) score=4
+  origin near 0x14c2dc054: at 0x14c2dbef4 (-278.1, 0.0, -219.4) score=3
+  origin near 0x1537ab258: at 0x1537ab258 (100.0, 100.0, 50.0) score=4
+  origin near 0x1537ab858: at 0x1537ab858 (100.0, 100.0, 50.0) score=4
+  matrix scan 1.7s
+  projection hits: 0
+RESULT: no-projection
+VERDICT: PARTIAL - matrix candidates and origins found but none agrees

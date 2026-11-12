@@ -1,0 +1,5 @@
+fuse procs=0 pid=
+00:00:54.614 ===== h319 transient probe (15 min fuse) =====
+wmi create rc=0 pid=18796
+after3s procs=1 pid=18796
+now=00:02:27 fuse_alive=1 drv=STATE              : 4  RUNNING

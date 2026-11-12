@@ -1,0 +1,99 @@
+RESULT 19:33 -- CLOSED. The 0x50 was NOT a stack over-read by design; it was a page-rounded length.
+
+Correction to everything below: the caller never passed 0x60. `ZwAllocateVirtualMemory` rewrites
+RegionSize IN PLACE, and `ApexdrvInject` handed that same `stubSize` variable to
+`ApexdrvWriteProcessMemory`, so 0x60 went in and 0x1000 came out. Measured, not inferred: the
+stamped map stub sits at `...c6e3f1d0` (its bytes are in the dump, `48 C7 05 35 00 00 00 70 48 00
+00` = magic 0x4870 at +0x35, `48 B8 20 10 00 80 01 00 00 00` = entry 0x18000102000), and
+`3f1d0 + 0x1000 = 401d0` = exactly the memmove source end r10/r11 held. The read therefore ran
+0x1d0 past StackBase and faulted on the first 16-byte slot above it. The old "0x60 from a 0x96
+stack array" reading was right about the mechanism (over-read past the top of the kernel stack)
+and wrong about the size.
+
+Fix (driver v10, `apexdrv.c:1533-1583`): the rounded size gets its own variable (`stubAllocSize`)
+and the copy keeps `stubSize`; the stub itself moves off the stack into a `NonPagedPoolNx`
+allocation that is freed right after the write.
+
+Evidence, three consecutive runs, byte-identical probe, new image sha
+`E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C` (17920 B) served by
+`_ritual\h310_relay.ps1`:
+
+- 19:18 run: no bugcheck, `map: base=0x180000000 step=0 entryResult=0x1 entryFlag=0x4871`,
+  scored FAIL only because the probe tested `entryResult -ne 0` (DllMain TRUE = 1).
+- 19:24 run: same clean map, same probe defect.
+- 19:25 run: probe test corrected to `-ne 1`; `RESULT: PASS`, `dse_verify=PASS`, target alive.
+
+Restore read-back afterwards: DSE `value: 6` (write 6 -> readback 6, `RESULT: PASS` in
+`h310_dse6.txt`), `AutoReboot=1`, `zapexdrv`/`apexdrv`/`p310go` services and task gone, driver file
+left at `C:\Users\Public\p37\zapexdrv.sys`, no leftover notepad/regedit.
+
+Two harness defects found and fixed on the way, both of which had been silently degrading every
+kdu call made from a ProcessStartInfo object: Windows PowerShell 5.1 has no
+`ProcessStartInfo.ArgumentList` (that is .NET Core), so `$f.ArgumentList.Add()` threw and kdu ran
+with NO arguments -- its usage text was the tell (`h310_fix.ps1`, `h310_dse6.ps1`); and kdu needs
+its working directory for `drv64.dll`. A greedy `.*value:` also read "Return value: 1" instead of
+the DSE flag. All three are fixed.
+
+---
+
+
+- `Get-WinEvent` System 1001, 18:04:49: bugcheck `0x00000050 (0xffffb78cc6e40000, 0, 0xfffff8078cb23bc9, 2)`.
+  The kernel was already gone before the log tail could flush: the feed stops dead at
+  `18:04:20.314 prv 0 -> DSE off, driver RUNNING`, 4.3 s after `sc start zapexdrv`. Event 41 at
+  18:04:42, boot at 18:04:39 with `AutoReboot=0` -- the box was restarted by hand.
+- No `MEMORY.DMP`. The 1001 names a minidump instead: `C:\Windows\Minidump\110626-9968-01.dmp`,
+  9435409 B, written 18:04:46. `CrashDumpEnabled` is still 3; the 0x50 took the triage path.
+- `p310post` ran at 18:04 logon and self-deleted, but its log never landed: it writes into the
+  OneDrive tree and `Add-Content` threw before the folder was up. AutoReboot did get set back to 1,
+  services were deleted -- the restore halves that write files were the ones lost.
+- Because of that, DSE was still `0x16` at 18:22 and the post script's `dse_verify` said FAIL --
+  which was a harness artefact, not a reading: `h310_post.ps1` created its ProcessStartInfo with
+  `RedirectStandardOutput` but no `UseShellExecute=$false`, so every kdu (and kd) stdout was
+  discarded. Fixed at 18:22 (both call sites). DSE was then read as `value: 0`, written `6`,
+  readback `6` -> `dse_verify=PASS`.
+- kd then also exited rc=-2147024809 with usage text: on kd 10.0.26100 `-i` takes a required
+  argument, so the bare `-i` ate `-z`. Dropped `-i`; kd rc=0, 31 KB of analysis.
+
+The dump, verbatim:
+
+- `PAGE_FAULT_IN_NONPAGED_AREA (50)`, Arg1 `ffffb78cc6e40000` (read), Arg3 `fffff8078cb23bc9` (RIP).
+- `MODULE_NAME: zapexdrv`, `FAULTING_MODULE: fffff8078cb20000 zapexdrv`, `SYMBOL_NAME: zapexdrv+3bc9`.
+- `PROCESS_NAME: regedit.exe` -- the rung-2 target survived and the map was attempted in it.
+- Faulting instruction `movups xmm3,xmmword ptr [rcx+rdx+20h] ds:ffffb78c`c6e40000=????`.
+  rcx=`28bf43b0e10`, rdx=`ffffb500d2a8f1d0`, and the sum +0x20 lands exactly on the page base
+  `...c6e40000`; r11=`...c6e401d0` is the memmove tail pointer, so the copy was already deep into
+  the buffer and simply ran off the end.
+- Stack: `zapexdrv+0x38ca` -> `zapexdrv+0x3bc9`. `+0x3ac0` is the stock MSVC memmove (`mov rax,rcx`,
+  size compares, `jae` delta test, `prefetchnta [rcx+rdx+40h]`, `movaps` stores, `[r11+rdx]` tail),
+  entered by jmp so `+0x38ca` stays the return address. `+0x3890` is `ApexdrvWriteProcessMemory`
+  (`apexdrv.c:71`): it calls the import at `+0x4088` with `rcx=process, rdx=&apcState` -- that is the
+  `KeStackAttachProcess` at 0x38b0 -- then sets `rcx=baseAddress, rdx=buffer, r8=len` and enters
+  memmove.
+- Shape: the copy's **source is on this thread's own kernel stack**. `!thread` gives
+  `Stack Init ffffb78cc6e3fbb0 Current ffffb78cc6e3f350`, `Base ffffb78cc6e40000`,
+  `Limit ffffb78cc6e39000` -- the base is the fault address. The source is `...c6e3ffe0`, 0x20 below
+  it; the 64-byte block read the first two 16-byte chunks fine and the third (`[rcx+rdx+20h]`)
+  landed above the base, where by definition nothing is ever mapped. The tail pointer
+  `r11=...c6e401d0` puts the copy at ~0x200 bytes, so ~0x1E0 of the buffer lie above the stack base.
+- The buffer is the caller's stack array:
+  `UCHAR stubImage[APEXDRV_STUB_TOTAL_BYTES + APEXDRV_MAP_STUB_TOTAL_BYTES]`, declared in
+  `ApexdrvInject` at `apexdrv.c:1534` and handed over at `1550` with `stubSize` 0x60 (`--manual-map`
+  takes the map-stub arm). The pool `image` write at 1366 is not the one that faulted, and the
+  destination was a valid `ZwAllocateVirtualMemory` base inside regedit.
+- Driver facts for the record: `ImageSize 0x8000`, timestamp Fri Nov 6 14:33:40 2026 -- today's
+  h289 build. `+0x3ac0` is `mov rax,rcx / cmp r8,8 / cmp r8,10h / cmp r8,20h`, the MSVC memmove.
+
+RESULT: FAIL - reproduces on the host, in regedit, inside zapexdrv's stub write: a ~0x200-byte
+memmove whose source is a kernel-stack buffer (`stubImage`) that straddles the stack base, so the
+read leaves the mapped stack and faults at `zapexdrv+0x3bc9`.
+VERDICT: the h289/h310 kernel map faults on the host exactly as in the guest (15:12, same 0x50
+read shape), and the fault is in the inject path's stack buffer -- not in the harness, not in
+`g_CiOptions`, not in the target (`regedit.exe` was alive and selected, the driver reached RUNNING,
+DSE was 0). Fix: stop handing a stack array to the write helper -- move `stubImage` to
+`NonPagedPool` (or a static, with a lookaside if concurrent injects matter), optionally copying the
+stub below the frame first; the same rule applies to any future stack buffer passed to
+`ApexdrvWriteProcessMemory`.
+State after: DSE `6` read-back PASS, `AutoReboot=1`, task deleted, `zapexdrv`/`apexdrv` gone,
+`apxprobe.dll` removed, driver file left at `C:\Users\Public\p37\zapexdrv.sys`.
+Kept: this file, `h310_kd_raw.txt`, `h310_dis_raw.txt` (in `_ritual`), minidump at
+`C:\Windows\Minidump\110626-9968-01.dmp` and a copy at `C:\Users\Public\p37\h310_mini.dmp`.

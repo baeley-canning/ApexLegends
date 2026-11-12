@@ -1,0 +1,5 @@
+14:55:34.864 === h286 fire: schtasks /run /tn p37tick /s 192.168.56.101 ===
+14:56:03.455 fire[pw=password] rc= out=[ERROR: The request is not supported.]
+14:56:33.464 fire[pw=vboxuser] TIMEOUT after 30 s (killed)
+14:56:33.465 RESULT: FIRE FAILED both passwords - next: guestcontrol trigger or controlvm reset
+14:56:33.466 VERDICT: poll C:\p37vm\guest-h286.log

@@ -1,0 +1,15 @@
+ov70 - allocation-free attach - 2026-11-07 15:49:06
+elevated : True
+target   : pid=3920 title='Apex Legends'
+EXCEPTION: Exception: c:\Users\New User\AppData\Local\Temp\osyx5vkr\osyx5vkr.0.cs(61) : } expected
+
+c:\Users\New User\AppData\Local\Temp\osyx5vkr\osyx5vkr.0.cs(60) :             }
+
+c:\Users\New User\AppData\Local\Temp\osyx5vkr\osyx5vkr.0.cs(61) : >>>         }
+
+c:\Users\New User\AppData\Local\Temp\osyx5vkr\osyx5vkr.0.cs(62) :     // first committed RW page (no execute) inside [start, start+span) whose TAIL
+
+AT       : At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov70_attach.ps1:55 char:1
++ Add-Type -TypeDefinition @'
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ov70 DONE FAIL exception

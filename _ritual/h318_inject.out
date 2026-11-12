@@ -1,0 +1,30 @@
+22:38:34.904 ===== h318 inject (game up, apexdrv, DSE 0x16) =====
+22:38:34.928 target pid=16568 title=[Apex Legends] threads=66
+22:38:34.948 svc apexdrv: STATE              : 4  RUNNING  binPath=C:\WINDOWS\System32\drivers\apexdrv.sys exists=True
+22:38:34.949 service already RUNNING - launcher will reuse it
+22:38:35.007 payload sha=E05FE8324148F8BD MATCH (audited h314 build)
+22:38:35.022 $ apex_launcher --inject --method=kernel --pid 16568 --driver "C:\WINDOWS\System32\drivers\apexdrv.sys" --dll "C:\Users\Public\apexcheat.dll" --manual-map --no-sticky
+22:38:35.152   | ===============================================================
+22:38:35.154   |   QwenKern Premium - Apex Legends launcher
+22:38:35.155   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+22:38:35.155   |   kernel rung    : B3 (apexdrv.sys)
+22:38:35.156   | ===============================================================
+22:38:35.156   | [*] Target PID 16568, payload C:\Users\Public\apexcheat.dll
+22:38:35.157   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+22:38:35.157   | [*] Kernel service already registered, reusing it
+22:38:35.158   | [*] driver ABI v13
+22:38:35.159   | [*] targetinfo: modules=133 kernelbase=0x7FFFD5A70000 self=0x7FFFD5A70000 differ=0 target LoadLibraryW=0x7FFFD5B6C6D0 (rva 0xfc6d0, ours 0x7FFFD72FF6C0) lastError=0
+22:38:35.160   | [*] delivery: tid=3476 resolve_path=1 ex=1 bases_differ=0 entry=0x7FFFD5A91150 lastError=0 (read status 0x0) fired=0
+22:38:35.161   | [*] modules: before=133 after=0 after2=0 lastError2=0 echo_status=0x0 echo=[] echo_after_status=0x0 echo_after=[] stub=0x0 entered=0x0 rcx=0x0 remoteBase=0x0
+22:38:35.162   | [*] map: base=0x0 step=5 resultStatus=0xC000000D entryResult=0x0 entryFlag=0x0 relocs=0 imports=0 unresolved=[] tls=0
+22:38:35.163   |  (no module appeared)
+22:38:35.164   | [-] manual map failed at driver step 5
+22:38:35.164   | ---------------------------------------------------------------
+22:38:35.165   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+22:38:35.166   |     reason: manual map failed at driver step 5
+22:38:35.167   | ---------------------------------------------------------------
+22:38:37.174 post target alive=True
+22:38:37.176 oracle=MISSING
+22:38:37.184 parsed map=[map: base=0x0 step=5 resultStatus=0xC000000D entryResult=0x0 entryFlag=0x0 relocs=0 imports=0 unresolved=[] tls=0] flag=0 entryResult=0
+22:38:37.185 RESULT: FAIL - map did not complete cleanly
+22:38:37.186 VERDICT: FAIL - chain, not Javelin

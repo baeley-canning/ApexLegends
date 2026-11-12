@@ -1,0 +1,69 @@
+r5apex in guest logs:
+  guest-h269.log :: 10:32:16.897   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h271.log :: 11:44:13.946   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h272.log :: 11:48:06.892   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h273.log :: 11:55:07.446   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h274.log :: 12:02:07.484   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h275.log :: 12:11:13.762   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h276.log :: 12:48:16.854   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h277.log :: 12:52:07.046   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h278.log :: 12:57:09.226   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h279.log :: 13:03:10.409   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h280.log :: 13:12:11.017   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h281.log :: 13:30:18.019   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h282.log :: 13:35:15.476   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h283.log :: 13:42:18.737   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h284.log :: 13:44:12.283   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h285.log :: 13:47:17.398   |     image            : notepad.exe (NOT the expected r5apex_dx12.exe)
+  guest-h316.log :: 22:09:02.330   r5apex_dx12 NOT running - falling back to a control process (dry run, not Phase 2)
+--- game on host now ---
+30736
+--- VMs running ---
+--- 8080 listen ---
+--- Public p37 (last 45) ---
+  11-06 19:34      303 g45.txt
+  11-06 19:35      278 g46.txt
+  11-06 19:36     2481 g48.txt
+  11-06 20:09     7081 h312.hist.1106-212705.out
+  11-06 21:25      153 h310_relay.txt
+  11-06 21:27    11884 h312.out
+  11-06 21:27        6 h312.done
+  11-06 21:33    42352 DirectIo64.sys
+  11-06 21:45   102316 kdu_list_h316.txt
+  11-06 21:45    23091 kdu_list_h316.csv
+  11-06 22:08   422912 kdu.exe
+  11-06 22:08  2086400 drv64.dll
+  11-06 22:08    17920 zapexdrv.sys
+  11-06 22:08   473600 apex_launcher.exe
+  11-06 22:08   343552 apexcheat.dll
+  11-06 22:08     7185 pe_tls.ps1
+  11-06 22:08   336896 zapexcheat.dll
+  11-06 22:08    23091 kdu_list.csv
+  11-06 22:08      740 h316.prov
+  11-06 22:09    29606 h316.out
+  11-06 22:09        6 h316.done
+  11-06 22:13        3 h317.dsepre
+  11-06 22:21      830 _scB.txt
+  11-06 22:26     3914 _h318a.txt
+  11-06 22:40      341 _mit.txt
+  11-06 22:41     1318 _np2.txt
+  11-06 22:41     1556 _np3.txt
+  11-06 22:42     6556 _np4.txt
+  11-06 22:42     3062 _np4b.txt
+  11-06 22:49     1896 _ap.ps1
+  11-06 22:49     1896 h318_allocprobe.ps1
+  11-06 22:49       62 _ap.txt
+  11-06 22:50     1874 _sm.ps1
+  11-06 22:51      213 _sm.txt
+  11-06 22:51      210 h318_sample.out
+  11-06 22:52       60 _ap2.txt
+  11-06 22:53     2244 _bg.txt
+  11-06 22:55     2940 _dse_fix.txt
+  11-06 23:02     4253 h318_early.ps1
+  11-06 23:02        8 _elevtest.txt
+  11-06 23:06      228 h318_early.out
+  11-07 00:20      104 apexdrv_probe.txt
+  11-07 00:42      483 p0drv.txt
+  11-07 01:06      482 h319_svc.out
+  11-07 01:21      176 h319_swap.out
+END

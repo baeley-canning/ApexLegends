@@ -1,0 +1,24 @@
+19:48:58.889 [pid 15996] entry parent adm=False ps=5.1.26100.9711
+19:48:58.893 [pid 15996] spawning elevated child via Start-Process -Verb RunAs
+19:48:59.351 [pid 29472] CHILD adm=True user=New User ps=5.1.26100.9711
+19:48:59.407 [pid 29472] step1 direct hash: 317E4A86C1817401
+19:48:59.415 [pid 29472] step2 THREW: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.418 [pid 29472] step3 THREW: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.419 [pid 29472] step4 THREW: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.421 [pid 29472] step5 THREW: Cannot bind parameter 'Id'. Cannot convert value "C:\WINDOWS\System32\drivers\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.423 [pid 29472] Error.Count=4
+19:48:59.430 [pid 29472] Err[0]: Cannot bind parameter 'Id'. Cannot convert value "C:\WINDOWS\System32\drivers\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.432 [pid 29472] Err[1]: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.432 [pid 29472] Err[2]: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.432 [pid 29472] Err[3]: Cannot bind parameter 'Id'. Cannot convert value "C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys" to type "System.Int64". Error: "Input string was not in a correct format."
+19:48:59.440 [pid 29472] alias-h: Get-History / Alias
+19:48:59.441 [pid 29472] --- raw (no try) variants, exact stage line-21/25/27 patterns ---
+RAW21 PRE src=[] len=20480
+RAW27 h-is-null=True
+  bakExpr THREW: You cannot call a method on a null-valued expression.
+19:48:59.501 [pid 29472] --- renamed control: function Fh ---
+FH src=[317E4A86C1817401]
+19:48:59.505 [pid 29472] --- fix preview: Remove-Item alias:h then H resolves to function ---
+after-unalias RAW21 H16=[317E4A86C1817401]
+19:48:59.510 [pid 29472] CHILD-DONE-2
+parent: poll finished saw-done=True

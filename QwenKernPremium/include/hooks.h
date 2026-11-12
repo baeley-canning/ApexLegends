@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <d3d9.h>
 #include <dxgi.h>
+#include <d3d12.h>   // declarations only — d3d12.dll is still resolved at runtime
 
 // Forward declarations
 class MemoryReader;
@@ -86,6 +87,17 @@ public:
         IDXGISwapChain* pSwapChain, UINT bufferCount, UINT width, UINT height,
         DXGI_FORMAT newFormat, UINT swapChainFlags);
 
+    // ID3D12CommandQueue::ExecuteCommandLists (vtable index 10).  A D3D12 swap
+    // chain only hands out its *device* through IDXGISwapChain::GetDevice(); the
+    // command queue that created it is not reachable from the chain at all.  The
+    // debug layer (rule id 907) makes that fatal: back-buffer writes may only be
+    // executed "on the command queue associated with that buffer", and a private
+    // queue removes the device with DXGI_ERROR_ACCESS_DENIED.  The queue the game
+    // submits the frame's own work on is captured here and handed to the overlay.
+    static void STDMETHODCALLTYPE D3D12ExecuteCommandListsHook(
+        ID3D12CommandQueue* pQueue, UINT numLists,
+        ID3D12CommandList* const* ppLists);
+
 private:
     typedef HRESULT (STDMETHODCALLTYPE *PresentFunc)(IDirect3DDevice9*, CONST RECT*,
                                                      CONST RECT*, HWND,
@@ -94,10 +106,16 @@ private:
     typedef HRESULT (STDMETHODCALLTYPE *DXGIResizeBuffersFunc)(IDXGISwapChain*, UINT,
                                                                UINT, UINT,
                                                                DXGI_FORMAT, UINT);
+    typedef void (STDMETHODCALLTYPE *ExecuteCommandListsFunc)(
+        ID3D12CommandQueue*, UINT, ID3D12CommandList* const*);
 
     static bool  FindGameWindow();
     static bool  HookPresent(IDirect3DDevice9* pDevice);
     static bool  HookPresentDXGI();
+    // Discovered from a temporary D3D12 device (d3d12.dll resolved lazily, same
+    // rule as d3d11.dll above).  The patched slot lives in d3d12.dll's class
+    // vtable, so one patch covers every queue the game creates.
+    static bool  HookD3D12CommandQueue();
     static void  RenderOverlay(IDirect3DDevice9* pDevice);
     static void  RenderOverlayDX11(IDXGISwapChain* pSwapChain);
 
@@ -106,11 +124,13 @@ private:
     static PresentFunc        originalPresent;
     static DXGIPresentFunc    originalDXGIPresent;
     static DXGIResizeBuffersFunc originalDXGIResizeBuffers;
+    static ExecuteCommandListsFunc originalExecuteCommandLists;
     static IDirect3DDevice9*  pHookedDevice;
     static MemoryReader*      pMemoryReader;
     static HWND               hGameWindow;
     static bool               bPresentHooked;
     static bool               bDXGIHooked;
+    static bool               bD3D12QueueHooked;
 };
 
 // Global hook instance

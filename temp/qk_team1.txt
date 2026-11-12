@@ -1,0 +1,33 @@
+===== qk_name (find the entity by player name) =====
+needle='kern30120,SERIOS KINGZz,spanner1981'  out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_team1.txt
+patterns: 6
+ranges=5 (map=5 bad=25)
+  scanned 413946 chunks, 20557 name hits
+  hit 0x0002c1312f (kern30120:ascii)
+  hit 0x000334e477 (kern30120:ascii)
+  hit 0x0003acfd30 (kern30120:ascii)
+  hit 0x0003eef007 (spanner1981:utf16)
+  hit 0x0003faf030 (kern30120:utf16)
+  hit 0x0003faa13c (kern30120:ascii)
+  hit 0x0003faa47a (kern30120:ascii)
+  hit 0x0003faa7b5 (kern30120:ascii)
+  hit 0x00047d7341 (kern30120:ascii)
+  hit 0x0004c10135 (kern30120:ascii)
+  hit 0x0004c1046c (kern30120:ascii)
+  hit 0x0004c107a0 (kern30120:ascii)
+  hit 0x0004c10d10 (kern30120:ascii)
+  hit 0x0004c10eed (kern30120:ascii)
+  hit 0x00052d809a (kern30120:ascii)
+  hit 0x00052d8302 (kern30120:ascii)
+  candidates: 20557
+
+  *** RUN IN A CIRCLE for 5 s (beep) ***
+    MOVED 0x23e2d24b4  (4373.9,2.0,-2949.4) -> (4850.1,2.0,-6020.8)
+    MOVED 0x23e2d2b88  (0.0,6511.8,0.0) -> (0.0,761.4,0.0)
+    MOVED 0x2f8e1caad  (-234.5,-0.0,-184.4) -> (-469.9,0.0,0.0)
+    MOVED 0x371221126  (0.0,-435754893828453856764491726848.0,0.0) -> (0.0,6144.0,0.0)
+    MOVED 0x63c305a7d  (0.0,0.0,0.0) -> (-488.8,0.0,0.0)
+  position-confirmed name hits: 5
+  --- health scan inside the confirmed block (0x23e2d24b4, offsets from name) ---
+RESULT: name=0x23e2d24b4 origin=0x23e2d15c8
+VERDICT: PASS - position tracks the player; health offsets listed above

@@ -56,10 +56,29 @@ bool LogInit(const wchar_t* tag) {
                static_cast<unsigned long>(GetCurrentProcessId()));
 
     if (_wfopen_s(&g_logFile, g_logPath, L"ab") != 0 || !g_logFile) {
+        // Fallback: the payload's own directory.  If the game runs with a
+        // restricted token or a hooked file path (anti-cheat jail), the profile
+        // directory can be unwritable even though it exists.  The module
+        // directory is where the loader found this DLL, and in this tree it is
+        // always writable.  Same file name, different directory.
         g_logFile = nullptr;
-        g_logPath[0] = L'\0';
-        ReleaseSRWLockExclusive(&g_logLock);
-        return false;
+        wchar_t self[MAX_PATH] = { 0 };
+        HMODULE mine = nullptr;
+        if (GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
+                               GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                               reinterpret_cast<LPCWSTR>(&LogInit), &mine) && mine) {
+            GetModuleFileNameW(mine, self, MAX_PATH);
+            wchar_t* slash = wcsrchr(self, L'\\');
+            if (slash) *slash = L'\0';
+            swprintf_s(g_logPath, L"%s\\%s_%lu.log", self, safeTag,
+                       static_cast<unsigned long>(GetCurrentProcessId()));
+            _wfopen_s(&g_logFile, g_logPath, L"ab");
+        }
+        if (!g_logFile) {
+            g_logPath[0] = L'\0';
+            ReleaseSRWLockExclusive(&g_logLock);
+            return false;
+        }
     }
 
     ReleaseSRWLockExclusive(&g_logLock);

@@ -1,0 +1,10 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_explorer3.txt
+image-name override: b'explorer.exe\x00' (ImageFileName[15])
+target pid=11192
+  discovering DTB for pid 11192 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    name hits=124 chunks=454583 skipped=3469031 rescued=351785
+  0 DTBs tried, none walked to an MZ image
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

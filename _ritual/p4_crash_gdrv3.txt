@@ -1,0 +1,56 @@
+p4 -- host bugcheck 0x3B in gdrv3.sys, 07/11/2026 03:45:55 (during the page-table class test)
+==============================================================================================
+PRE-STATE (R3): boot 02:43:10 (the boot after the eprobe2 freeze), uptime at crash 1:02:44.
+gdrv3 RUNNING, device open only -- no load/DSE/service/CI change by this probe, Apex not running.
+Preceding in the same boot: p1 (bad frame 0x4A9045000, 3 primitives x3, all 1450), p2 (explorer
+live PML4 0x1C1E93000, 3 primitives x3, all 1450), p3 (same frame, 8 lengths, all fail incl. the
+2 MB aligned map). All three VERDICT: FAIL, all three exited rc=0, box stable through them.
+
+EVENT: p4.ps1 launched elevated 03:45:4x; python.exe started; host bugchecked 10 s later.
+  Event 1001 @09:04:18 (recorded on the NEXT boot): bugcheck 0x0000003b
+  (0x00000000c0000005, 0xfffff8036b7c4c13, 0xffffa1005cd26790, 0x0), dump 110726-9750-01.dmp.
+  Event 41 @09:04:11. 6008: previous shutdown 03:45:20 unexpected.  No clean shutdown, no
+  1001 until the reset -- the box was dead/unresponsive 03:45:55 -> 09:04 and the user reset it.
+
+DUMP (copied out by p5.ps1, sha-compared, analysed with dumpchk + kd):
+  PROCESS_NAME : python.exe          MODULE_NAME : gdrv3        IMAGE_NAME : gdrv3.sys
+  SYMBOL_NAME  : gdrv3+4c13          FAILURE_BUCKET_ID : AV_gdrv3!unknown_function
+  rip fffff803`6b7c4c13  movaps xmmword ptr [rcx-10h],xmm0
+  rcx=0000020561cd1010  rax=0000020561cd0000 (= dst page base)  r8=30 (= 48-byte SSE copy)
+  ds:002b:00000205`61cd1000=????????  -> the DESTINATION page is not present
+  caller: gdrv3+0x37df (frame 01)
+
+WHAT IT MEANS: the fault is in the driver's *output copy* -- it stores the read result into the
+caller's user buffer (page-aligned, 48-byte SSE stride) and the destination page is not present
+in the faulting context. So the AV is NOT in the phys->kernel translate. Two consequences:
+
+  1. p4 is VOID as the class test. p4.out/p4.err were created and then lost (metadata not
+     flushed before the bugcheck); even `python -u` + flush=True cannot survive a bugcheck.
+     No output line exists, so which read killed it is the first `read_phys` of the first 64 KB
+     scan chunk by construction only.
+  2. The 1450 story is still unproven. Both symptoms now sit in the driver's own copy/scratch
+     path rather than in the PA translate, which is at least consistent with one mechanism
+     (a scratch map that never becomes present -> error 1450 in the map ioctls, AV in the
+     direct read's copy), but p3's neighbour page reading fine keeps the per-PFN reading alive.
+
+LESSON (durable, this is the second host crash from my own probe shape, cf. p331):
+  1. p4 can bugcheck, so it is a VM-bench probe by R1 -- not a host-first probe. It went to the
+     host because everything before it was read-only; "read-only" clearly does not imply "cannot
+     bugcheck" for this driver.
+  2. log-before-work must survive a bugcheck: append the *next* address to a separate `.cur`
+     file with os.fsync() before each risky read, small chunks (4 KB), wall-clock budget and a
+     watchdog. A flushed stdout into a redirect is not enough.
+  3. Never let p4's scan be the first thing a fresh boot sees; the class test is one `read_phys`
+     away from the fault, so keep the chunk small and the probe re-runnable.
+
+REVERSIBILITY: nothing to restore; gdrv3 was RUNNING before and after (README: read-only IOCTLs,
+device open only). Dump copied out, source left in place.
+
+POST-STATE (R3, on the reset boot): sc query gdrv3 = 4 RUNNING, gdrv3.sys 52440 B unchanged,
+no game process, no python left over (the four python.exe are MCP servers), no testsigning /
+hypervisorlaunchtype line in bcdedit -> boot config untouched. Fresh boot: every PA from
+runs 1..13 (0x2F44C0080, 0x4E47FC000, 0x1C1E93000) is stale, all must be re-derived.
+
+EVIDENCE: C:\h320x\p5_dump.out (pre-state, hash-verified copy), p5_dumpchk.out (module + bucket),
+p5b_kd.out (registers, instruction, stack), p5.dmp (9,107,393 B), events 1001/41 @09:04.
+VERDICT: CRASH -- p4 void, no class-test answer, bugcheck localised to gdrv3+0x4c13.

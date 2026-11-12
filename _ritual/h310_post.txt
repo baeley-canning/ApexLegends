@@ -1,0 +1,15 @@
+===== h310 post 2026-11-06 18:19:16 =====
+18:19:16.957 boot=06/11 18:04:39 uptime=14.6min
+18:19:16.983 post svc: The specified service does not exist as an installed service.
+18:19:16.990 DUMP: NONE at C:\WINDOWS\MEMORY.DMP minidumps=5
+18:19:17.036   dse readback prv 22 no value: []
+18:19:17.038   dse readback prv 0 no value: []
+18:19:17.038   dse readback prv 1 no value: []
+18:19:17.040   dse readback prv 2 no value: []
+18:19:17.042   dse readback prv 3 no value: []
+18:19:17.043 dse_verify=FAIL (want PASS = 0x6)
+18:19:17.050 auto-reboot readback=1
+18:19:17.071 svc after delete: The specified service does not exist as an installed service.
+18:19:17.091 RESULT: FAIL - no dump at all (kernel hang, not a bugcheck)
+18:19:17.092 VERDICT: FAIL - nothing to analyse; the path hangs, not faulted. Re-arm with the hang route
+18:19:17.094 state: dse_verify=FAIL auto=1 dump=False dumpsize=0

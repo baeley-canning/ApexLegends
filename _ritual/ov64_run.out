@@ -1,0 +1,26 @@
+ov64 - entry-stub inject, unelevated - 2026-11-07 13:22:41
+target  : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+elevated: True
+kill     : pid=27496 -> SUCCESS: The process with PID 27496 (child process of PID 28596) has been terminated.
+game     : none running
+header   : parsed once, e_lfanew=0x1B8 (65.6 MB)
+attempt 1/1
+flags    : 0x404
+created SUSPENDED pid=13880 hproc=2664 hthread=2780
+alloc    : 0x234C7E80000 (160 B unicode path)
+write    : ok (160 B)
+k32      : 0x7FF849170000 LoadLibraryW=0x7FF8491AF6C0
+image    : base=0x7FF75B780000 entryRva=0xDFB7000 -> entry=0x7FF769737000 sizeOfImage=0xDFB8000
+identity : memEntryRva=0xDFB7000 stamp=0x6ADBF892 disk=0x6ADBF892
+orig12   : 90 41 FF 25 62 02 00 00 00 00 00 00
+stub     : 0x234C7E80100 (97 B, LoadLibraryW=0x7FF8491AF6C0 orig at 0x234C7E80180)
+entry    : readback=48 B8 00 01 E8 C7 34 02 00 00 FF E0 (oldProt=0x20)
+entry    : verified patched
+resume   : previous suspend count=1 (suspended for 77 ms)
+marker   : 0xFF/0xAA at ~0 ms (FF=stub ran, AA=LoadLibrary returned)
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+post     : marker=0x00 (0xFF=stub ran) entryNow=00 00 00 00 00 00 00 00 00 00 00 00
+RESULT: FAIL process-died exit=0x000186AA
+ov64 DONE FAIL process-died exit=0x000186AA

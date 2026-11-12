@@ -1,0 +1,13 @@
+h402 Proc-without-NUL locator 2026-11-10 00:04:25
+PID=14624 PEB=0x2f2000
+pages=1000000 GB=4.1 tags=60820 candidates=0 elapsed=12.4s
+pages=2000000 GB=8.2 tags=123716 candidates=0 elapsed=24.7s
+pages=3000000 GB=12.3 tags=191053 candidates=0 elapsed=37.7s
+pages=4000000 GB=16.4 tags=263836 candidates=0 elapsed=50.8s
+pages=5000000 GB=20.5 tags=312491 candidates=0 elapsed=66.2s
+pages=6000000 GB=24.6 tags=358763 candidates=0 elapsed=80.5s
+pages=7000000 GB=28.7 tags=432942 candidates=0 elapsed=93.7s
+SCAN_DONE pages=7123515 tags=442214 accepted_objects=0 time=95.6s
+VERDICT: BLOCKED - no valid process module proof
+RESULT: None
+VERDICT: BLOCKED

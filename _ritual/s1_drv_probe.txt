@@ -1,0 +1,127 @@
+### SRC C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c  lines 1755..1880 of 2039
+
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
+// IOCTL_APEXDRV_PROBE — does the target accept work issued from KERNEL context?
+//
+// Mirrors the user-mode probe exactly: lookup -> open with injector rights ->
+// allocate/write/free -> copy the PEB out.  Each step's NTSTATUS is stored so a
+// partial result (e.g. handle fine, allocation refused) is still evidence.
+// Deliberately returns STATUS_SUCCESS when the request was understood: the
+// caller reads the per-step statuses, and a driver-side failure would hide
+// which step produced it.
+//
+// Runs at PASSIVE_LEVEL in the requesting thread's context (synchronous
+// DeviceIoControl), which is what PsLookupProcessByProcessId, ObOpenObjectByPointer
+// and MmCopyVirtualMemory all require.
+// ----------------------------------------------------------------------------
+static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
+    PEPROCESS process       = NULL;
+    HANDLE    processHandle = NULL;
+    PVOID     remoteBuffer  = NULL;
+    SIZE_T    regionSize    = 0x1000;
+    SIZE_T    bytesCopied   = 0;
+    NTSTATUS  status;
+    UCHAR     pattern       = 0xA5;
+
+    if (request->ProcessId == 0) return STATUS_INVALID_PARAMETER;
+
+    // Zero the entire output buffer so no field leaks stale/garbage data.  The
+    // buffer IS the request, so ProcessId has to be saved: zeroing it first made
+    // every probe answer PsLookupProcessByProcessId(0) = STATUS_INVALID_PARAMETER
+    // and looked exactly like a kernel-side refusal.
+    {
+        ULONG processId = request->ProcessId;
+        RtlZeroMemory(request, sizeof(*request));
+        request->ProcessId = processId;
+    }
+
+    status = PsLookupProcessByProcessId(ULongToHandle(request->ProcessId), &process);
+    request->StatusLookup = status;
+    if (!NT_SUCCESS(status)) return STATUS_SUCCESS;
+
+    // Reading the PEB address needs no handle and no access check at all.
+    request->PebAddress = (ULONG64)(ULONG_PTR)PsGetProcessPeb(process);
+
+    status = ObOpenObjectByPointer(process, OBJ_KERNEL_HANDLE, NULL,
+                                   PROCESS_ALL_ACCESS, NULL, KernelMode,
+                                   &processHandle);
+    request->StatusOpen = status;
+
+    if (NT_SUCCESS(status)) {
+        status = ZwAllocateVirtualMemory(processHandle, &remoteBuffer, 0, &regionSize,
+                                        MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+        request->StatusAllocate   = status;
+        request->RemoteAllocation = (ULONG64)(ULONG_PTR)remoteBuffer;
+
+        if (NT_SUCCESS(status)) {
+            request->StatusWrite =
+                ApexdrvWriteProcessMemory(process, remoteBuffer, &pattern,
+                                          sizeof(pattern));
+            request->StatusFree =
+                ZwFreeVirtualMemory(processHandle, &remoteBuffer, &regionSize,
+                                    MEM_RELEASE);
+        }
+
+        ZwClose(processHandle);
+    }
+
+    // Independent of the handle path: MmCopyVirtualMemory needs only the
+    // EPROCESS, so it still answers when ObOpenObjectByPointer was refused.
+    if (request->PebAddress != 0) {
+        request->StatusCopyVirtual = MmCopyVirtualMemory(
+            process, (PVOID)(ULONG_PTR)request->PebAddress,
+            PsGetCurrentProcess(), request->Bytes,
+            sizeof(request->Bytes), KernelMode, &bytesCopied);
+        request->BytesCopied = (ULONG)bytesCopied;
+    } else {
+        request->StatusCopyVirtual = STATUS_INVALID_PARAMETER;
+    }
+
+    ObDereferenceObject(process);
+    return STATUS_SUCCESS;
+}
+
+// ----------------------------------------------------------------------------
+// IOCTL_APEXDRV_TARGETINFO (v4) — read-only loader facts about one target.
+//
+// Nothing is allocated or written in the target.  The two walks run under
+// KeStackAttachProcess in the requesting thread's context (PASSIVE_LEVEL), and
+// every output field that could not be measured keeps its zero.
+// ----------------------------------------------------------------------------
+static NTSTATUS ApexdrvTargetInfo(PAPEXDRV_TARGETINFO_REQUEST request) {
+    PEPROCESS        process = NULL;
+    APEXDRV_LDR_INFO targetInfo;
+    APEXDRV_LDR_INFO selfInfo;
+    ULONG            processId;
+    ULONG            threadId;
+    ULONG            rva = 0;
+    NTSTATUS         status;
+
+    // The output buffer IS the request buffer, so the two in-fields are saved
+    // before the zeroing that clears stale data (the probe handler originally
+    // lost ProcessId this way and always answered STATUS_INVALID_PARAMETER).
+    processId = request->ProcessId;
+    threadId  = request->ThreadId;
+    if (processId == 0) return STATUS_INVALID_PARAMETER;
+
+    RtlZeroMemory(request, sizeof(*request));
+    request->ProcessId = processId;
+    request->ThreadId  = threadId;
+
+    status = PsLookupProcessByProcessId(ULongToHandle(processId), &process);
+    request->StatusLookup = status;
+    if (!NT_SUCCESS(status)) return STATUS_SUCCESS;
+
+    request->StatusWalk     = ApexdrvWalkModules(process, &targetInfo);
+    request->StatusSelfWalk = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+
+    request->ModuleCount       = targetInfo.Count;
+    request->SelfModuleCount   = selfInfo.Count;
+    request->Kernel32Base      = targetInfo.Kernel32Base;
+    request->KernelBaseBase    = targetInfo.KernelBaseBase;
+    request->SelfKernel32Base  = selfInfo.Kernel32Base;
+    request->SelfKernelBaseBase = selfInfo.KernelBaseBase;
+

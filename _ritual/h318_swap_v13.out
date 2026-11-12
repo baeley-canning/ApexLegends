@@ -1,0 +1,10 @@
+22:34:32.784 ===== h318 swap driver to ABI v13 =====
+22:34:32.814 game=1 svc=[SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+22:34:32.871 src=C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexdrv.sys exists=True sha=E906CEE97B9927F4
+22:34:32.874 dst before sha=9B119FD0C38740A2
+22:34:34.903 svc stopped: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+22:34:34.910 dst after sha=E906CEE97B9927F4 (v2 kept at .v2.bak)
+22:34:40.133 dse_pre=0x16
+22:34:45.333 dse->0 out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 20 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFF253A0000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Dell DBUtil 2.5 driver", Name "DBUtilDrv2" [!] Vulnerable driver is already loaded [+] Driver device "DBUtil_2_5" has been opened successfully [+] Executing post-open callback for given provider [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF8006F722004) value: 0, new value to be written: 0 [~] Warning, current value is identical to what you want to write [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Return value: 1. Bye-bye!]
+22:34:47.749 svc after start: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+22:34:47.750 RESULT: FAIL - driver did not start with the v13 image

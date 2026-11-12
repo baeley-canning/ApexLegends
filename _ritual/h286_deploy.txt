@@ -1,0 +1,22 @@
+14:49:36.704 === h286 deploy: snapshot guest -> serve v13 -> fire tick ===
+14:49:36.746 pre vm: VMState="running"
+14:49:37.271 pre listen8080=1
+14:49:37.279 pre cur.ps1 len=29311 mtime=11-06 14:01:04
+14:49:37.280 pre zapexdrv.sys len=13824 mtime=11-06 13:45:38
+14:49:37.281 pre apex_launcher.exe len=473600 mtime=11-06 13:45:44
+14:49:37.281 pre apxprobe.dll len=2048 mtime=11-06 13:28:45
+14:49:37.282 pre kdu.exe len=422912 mtime=11-02 22:06:48
+14:49:37.283 pre drv64.dll len=2086400 mtime=11-02 22:07:51
+14:49:37.283 pre active.txt len=5 mtime=11-05 16:09:02
+14:49:37.286 pre guest-h286.log: absent (fresh)
+14:49:37.377 source apexdrv.sys sha=CDB6BFAE8CC1867A4EDAE842D640DDF5C54D30EDDF086584CC03F075B53C5431 (MATCH) size=17408
+14:49:37.379 source apex_launcher.exe len=473600 (MATCH)
+14:49:45.046 snapshot rc=0 out=[VBoxManage.exe : 0%...10% ...20%...30%...40%...50%. ..60%...70%...80%...90%.. .100% At C:\Users\New User\OneD rive\Desktop\cheating\_ri tual\h286_deploy.ps1:42 char:9 + $snap = & $vb snapshot 'Win11-Test2' take 'h286_pre_1106' --descripti ... + ~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~ + CategoryInfo : NotSpecified: (0%...10%...20%....0 %...90%...100%:Strin g) [], RemoteExcepti on + FullyQualifiedErro rId : NativeCommandE rror Snapshot taken. UUID: 43b080b2-8093-40f3-9666-340d850f491b]
+14:49:45.051 backup cur.ps1 -> cur_h285_bak.ps1
+14:49:45.052 backup zapexdrv.sys -> zapexdrv_h285_bak.sys
+14:49:45.053 backup apex_launcher.exe -> apex_launcher_h285_bak.exe
+14:49:45.058 served cur.ps1 + zapexdrv.sys + apex_launcher.exe; active.txt=h286
+14:49:45.255 served sys sha=MATCH
+14:49:45.256 served exe len=473600 (MATCH)
+14:49:45.257 served cur.ps1 sha=MATCH len=33301
+14:49:45.257 post listen8080=1

@@ -1,0 +1,115 @@
+16:19:09.163 === h304 logon (variable: sign-in attempt) ===
+16:19:09.438   quser | No User exists for *
+16:19:09.651   hku0 | HKEY_USERS\.DEFAULT
+16:19:09.652   hku0 | HKEY_USERS\S-1-5-19
+16:19:09.652   hku0 | HKEY_USERS\S-1-5-20
+16:19:09.653   hku0 | HKEY_USERS\S-1-5-18
+16:19:09.654 baseline: hive loaded = False
+16:19:09.655 --- attempt 1: esc, putstring, enter ---
+16:19:09.698   key 01 81 ok
+16:19:11.093   putstring "vboxuser" ok
+16:19:11.744   key 1c 9c ok
+16:19:17.038   quser | USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
+16:19:17.040   quser | >vboxuser              console             1  Active      none   11/6/2026 4:19 PM
+16:19:17.215   hku | HKEY_USERS\.DEFAULT
+16:19:17.216   hku | HKEY_USERS\S-1-5-19
+16:19:17.217   hku | HKEY_USERS\S-1-5-20
+16:19:17.217   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000
+16:19:17.218   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000_Classes
+16:19:17.219   hku | HKEY_USERS\S-1-5-18
+16:19:17.497   explorer | Image Name:   explorer.exe
+16:19:17.498   explorer | PID:          1584
+16:19:17.499   explorer | Session Name: Console
+16:19:17.500   explorer | Session#:     1
+16:19:17.501   explorer | Mem Usage:    155,160 K
+16:19:17.833   sess | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+16:19:17.835   sess | services                                            0  Disc
+16:19:17.836   sess | >console                   vboxuser                  1  Active
+16:19:18.018   ga | ERROR:  Invalid Option
+16:19:18.020   ga | DESCRIPTION:
+16:19:18.021   ga | SC is a command line program used for communicating with the
+16:19:18.022   ga | Service Control Manager and services.
+16:19:18.022   ga | USAGE:
+16:19:18.023   ga | sc <server> [command] [service name] <option1> <option2>...
+16:19:18.024   ga | The option <server> has the form "\\ServerName"
+16:19:18.025   ga | Further help on commands can be obtained by typing: "sc [command]"
+16:19:18.026   ga | Commands:
+16:19:18.027   ga | query-----------Queries the status for a service, or
+16:19:18.027   ga | enumerates the status for types of services.
+16:19:18.028   ga | queryex---------Queries the extended status for a service, or
+16:19:18.047   ga | enumerates the status for types of services.
+16:19:18.048   ga | start-----------Starts a service.
+16:19:18.049   ga | pause-----------Sends a PAUSE control request to a service.
+16:19:18.050   ga | interrogate-----Sends an INTERROGATE control request to a service.
+16:19:18.050   ga | continue--------Sends a CONTINUE control request to a service.
+16:19:18.051   ga | stop------------Sends a STOP request to a service.
+16:19:18.051   ga | config----------Changes the configuration of a service (persistent).
+16:19:18.053   ga | description-----Changes the description of a service.
+16:19:18.053   ga | failure---------Changes the actions taken by a service upon failure.
+16:19:18.054   ga | failureflag-----Changes the failure actions flag of a service.
+16:19:18.054   ga | sidtype---------Changes the service SID type of a service.
+16:19:18.055   ga | privs-----------Changes the required privileges of a service.
+16:19:18.056   ga | managedaccount--Changes the service to mark the service account
+16:19:18.057   ga | password as managed by LSA.
+16:19:18.058   ga | qc--------------Queries the configuration information for a service.
+16:19:18.058   ga | qdescription----Queries the description for a service.
+16:19:18.059   ga | qfailure--------Queries the actions taken by a service upon failure.
+16:19:18.060   ga | qfailureflag----Queries the failure actions flag of a service.
+16:19:18.061   ga | qsidtype--------Queries the service SID type of a service.
+16:19:18.062   ga | qprivs----------Queries the required privileges of a service.
+16:19:18.062   ga | qtriggerinfo----Queries the trigger parameters of a service.
+16:19:18.063   ga | qpreferrednode--Queries the preferred NUMA node of a service.
+16:19:18.064   ga | qmanagedaccount-Queries whether a services uses an account with a
+16:19:18.064   ga | password managed by LSA.
+16:19:18.065   ga | qprotection-----Queries the process protection level of a service.
+16:19:18.065   ga | quserservice----Queries for a local instance of a user service template.
+16:19:18.067   ga | delete----------Deletes a service (from the registry).
+16:19:18.067   ga | create----------Creates a service. (adds it to the registry).
+16:19:18.068   ga | control---------Sends a control to a service.
+16:19:18.069   ga | sdshow----------Displays a service's security descriptor.
+16:19:18.069   ga | sdset-----------Sets a service's security descriptor.
+16:19:18.070   ga | showsid---------Displays the service SID string corresponding to an arbitrary name.
+16:19:18.071   ga | triggerinfo-----Configures the trigger parameters of a service.
+16:19:18.071   ga | preferrednode---Sets the preferred NUMA node of a service.
+16:19:18.072   ga | GetDisplayName--Gets the DisplayName for a service.
+16:19:18.073   ga | GetKeyName------Gets the ServiceKeyName for a service.
+16:19:18.073   ga | EnumDepend------Enumerates Service Dependencies.
+16:19:18.074   ga | The following commands don't require a service name:
+16:19:18.074   ga | sc <server> <command> <option>
+16:19:18.075   ga | boot------------(ok | bad) Indicates whether the last boot should
+16:19:18.075   ga | be saved as the last-known-good boot configuration
+16:19:18.076   ga | Lock------------Locks the Service Database
+16:19:18.077   ga | QueryLock-------Queries the LockStatus for the SCManager Database
+16:19:18.077   ga | EXAMPLE:
+16:19:18.078   ga | sc start MyService
+16:19:18.078   ga | QUERY and QUERYEX OPTIONS:
+16:19:18.079   ga | If the query command is followed by a service name, the status
+16:19:18.080   ga | for that service is returned.  Further options do not apply in
+16:19:18.080   ga | this case.  If the query command is followed by nothing or one of
+16:19:18.080   ga | the options listed below, the services are enumerated.
+16:19:18.081   ga | type=    Type of services to enumerate (driver, service, userservice, all)
+16:19:18.082   ga | (default = service)
+16:19:18.082   ga | state=   State of services to enumerate (inactive, all)
+16:19:18.083   ga | (default = active)
+16:19:18.085   ga | bufsize= The size (in bytes) of the enumeration buffer
+16:19:18.085   ga | (default = 4096)
+16:19:18.086   ga | ri=      The resume index number at which to begin the enumeration
+16:19:18.087   ga | (default = 0)
+16:19:18.088   ga | group=   Service group to enumerate
+16:19:18.088   ga | (default = all groups)
+16:19:18.089   ga | SYNTAX EXAMPLES
+16:19:18.090   ga | sc query                - Enumerates status for active services & drivers
+16:19:18.091   ga | sc query eventlog       - Displays status for the eventlog service
+16:19:18.091   ga | sc queryex eventlog     - Displays extended status for the eventlog service
+16:19:18.093   ga | sc query type= driver   - Enumerates only active drivers
+16:19:18.094   ga | sc query type= service  - Enumerates only Win32 services
+16:19:18.094   ga | sc query state= all     - Enumerates all services & drivers
+16:19:18.095   ga | sc query bufsize= 50    - Enumerates with a 50 byte buffer
+16:19:18.096   ga | sc query ri= 14         - Enumerates with resume index = 14
+16:19:18.097   ga | sc queryex group= ""    - Enumerates active services not in a group
+16:19:18.097   ga | sc query type= interact - Enumerates all interactive services
+16:19:18.098   ga | sc query type= driver group= NDIS     - Enumerates all NDIS drivers
+16:19:18.099 
+16:19:18.100 signed in: True / profile hive loaded: True
+16:19:18.101 RESULT: PASS - vboxuser session up, HKU<SID> loaded, HKCU is now armable (h302 can be re-run as-is)
+16:19:18.102 VERDICT: the hive line decides it - HKCU auto-elevation needs a loaded profile, not just a session

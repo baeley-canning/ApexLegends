@@ -1,0 +1,64 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\qk_va_cameo.txt
+target pid=6832
+  driver: no handle (ApexDrv not loaded?)
+  discovering DTB for pid 6832 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    hits cache: 7 entries (sweep skipped; --refresh-hits to redo)
+    hit[0]=0x2fa310440
+        d=0x048 base=0x2fa3103f8 typebyte=0x2 dtb=0x3800000  <-- plausible frame
+        d=0x050 base=0x2fa3103f0 typebyte=0x0 dtb=0x2000100e4  <-- plausible frame
+        d=0x0a0 base=0x2fa3103a0 typebyte=0x50 dtb=0x155ab1a35  <-- plausible frame
+        d=0x0e0 base=0x2fa310360 typebyte=0x0 dtb=0x700700000  <-- plausible frame
+        d=0x130 base=0x2fa310310 typebyte=0x0 dtb=0x2000700e4  <-- plausible frame
+        d=0x140 base=0x2fa310300 typebyte=0x5c dtb=0x5000700e4  <-- plausible frame
+        d=0x180 base=0x2fa3102c0 typebyte=0xb0 dtb=0x1c7d3810b  <-- plausible frame
+        d=0x260 base=0x2fa3101e0 typebyte=0x30 dtb=0x169178599  <-- plausible frame
+    hit=0x2fa310440: 8 DTB candidate(s) from the EPROCESS header
+      try dtb@0x2fa310420=0x3800000 (name_off=0x48) -> no PE
+      try dtb@0x2fa310418=0x200010000 (name_off=0x50) -> no PE
+      try dtb@0x2fa3103c8=0x155ab1000 (name_off=0xa0) -> no PE
+      try dtb@0x2fa310388=0x700700000 (name_off=0xe0) -> no PE
+      try dtb@0x2fa310338=0x200070000 (name_off=0x130) -> no PE
+      try dtb@0x2fa310328=0x500070000 (name_off=0x140) -> no PE
+    hit[1]=0x3f92fb990
+        d=0x1b0 base=0x3f92fb7e0 typebyte=0x0 dtb=0x13c1ebdd  <-- plausible frame
+        d=0x250 base=0x3f92fb740 typebyte=0x8e dtb=0x10774482  <-- plausible frame
+        d=0x330 base=0x3f92fb660 typebyte=0x0 dtb=0x1288e46c  <-- plausible frame
+        d=0x3b0 base=0x3f92fb5e0 typebyte=0xb3 dtb=0x79cadc8  <-- plausible frame
+        d=0x3d0 base=0x3f92fb5c0 typebyte=0xbf dtb=0x6bde778  <-- plausible frame
+        d=0x4d0 base=0x3f92fb4c0 typebyte=0x92 dtb=0x103db982  <-- plausible frame
+        d=0x6d0 base=0x3f92fb2c0 typebyte=0x0 dtb=0x7bde078  <-- plausible frame
+    hit=0x3f92fb990: 7 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3f92fb808=0x13c1e000 (name_off=0x1b0) -> no PE
+      try dtb@0x3f92fb768=0x10774000 (name_off=0x250) -> no PE
+      try dtb@0x3f92fb688=0x1288e000 (name_off=0x330) -> no PE
+      try dtb@0x3f92fb608=0x79ca000 (name_off=0x3b0) -> no PE
+      try dtb@0x3f92fb5e8=0x6bde000 (name_off=0x3d0) -> no PE
+      try dtb@0x3f92fb4e8=0x103db000 (name_off=0x4d0) -> no PE
+    hit[2]=0x46751ba10
+    hit[3]=0x532806f20
+    hit[4]=0x57282f718
+        d=0x0c0 base=0x57282f658 typebyte=0x0 dtb=0x5f94454  <-- plausible frame
+        d=0x128 base=0x57282f5f0 typebyte=0x1 dtb=0x186ef20dc  <-- plausible frame
+        d=0x178 base=0x57282f5a0 typebyte=0x1 dtb=0x1572842eb  <-- plausible frame
+        d=0x218 base=0x57282f500 typebyte=0x1 dtb=0x181d47370  <-- plausible frame
+        d=0x3a8 base=0x57282f370 typebyte=0x1 dtb=0x173ead05b  <-- plausible frame
+        d=0x498 base=0x57282f280 typebyte=0x1 dtb=0xdc501ec  <-- plausible frame
+        d=0x4e8 base=0x57282f230 typebyte=0x1 dtb=0x1331997f  <-- plausible frame
+        d=0x588 base=0x57282f190 typebyte=0x1 dtb=0x160336fc  <-- plausible frame
+    hit=0x57282f718: 12 DTB candidate(s) from the EPROCESS header
+      try dtb@0x57282f680=0x5f94000 (name_off=0xc0) -> no PE
+      try dtb@0x57282f618=0x186ef2000 (name_off=0x128) -> no PE
+      try dtb@0x57282f5c8=0x157284000 (name_off=0x178) -> no PE
+      try dtb@0x57282f528=0x181d47000 (name_off=0x218) -> no PE
+      try dtb@0x57282f398=0x173ead000 (name_off=0x3a8) -> no PE
+      try dtb@0x57282f2a8=0xdc50000 (name_off=0x498) -> no PE
+    hit[5]=0x5f2d33dfe
+    hit=0x7348e63b8: 4 DTB candidate(s) from the EPROCESS header
+      try dtb@0x7348e62a8=0x465ea4000 (name_off=0x138) -> no PE
+      try dtb@0x7348e62a0=0x465f14000 (name_off=0x140) -> no PE
+      try dtb@0x7348e61a0=0xf1ca000 (name_off=0x240) -> no PE
+      try dtb@0x7348e60a8=0x2d80ba000 (name_off=0x338) -> no PE
+  22 DTBs tried, none walked to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...

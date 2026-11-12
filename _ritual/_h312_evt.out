@@ -1,0 +1,13 @@
+﻿20:09:19 id=7045 | A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:09:19 id=7000 | The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:09:19 id=7045 | A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:09:19 id=7000 | The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:09:17 id=7045 | A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:09:17 id=7000 | The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:09:16 id=7045 | A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+20:09:16 id=7000 | The zapexdrv service failed to start due to the following error: Insufficient system resources exist to complete the requested service.
+20:09:14 id=7045 | A service was installed in the system. Service Name: zapexdrv Service File Name: C:\Users\Public\p37\zapexdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+--- CvCi now ---
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:  The specified service does not exist as an installed service. 
+drivers\apexdrv.sys 10152B 11/01/2026 14:00:47
+device ApexDrv open: Exception calling "Open" with "4" argument(s): "Could not find file '\\?\GLOBALROOT\Device\ApexDrv'."

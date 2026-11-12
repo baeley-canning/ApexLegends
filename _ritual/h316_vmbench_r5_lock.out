@@ -1,0 +1,8 @@
+21:57:43.897 ===== h316 vmbench 2026-11-06 21:57:43 =====
+21:57:43.970 vm state=name="Win11-Test2" encryption="disabled"
+21:57:43.998 relay=17920
+21:57:58.052 snapshot take h316_pre_215744 :: Snapshot taken. UUID: 2e5f14ec-640f-433d-aff7-999ea9347902 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+21:57:58.081 snapshot readback: CurrentSnapshotName="h316_pre_215744"
+21:57:58.103 startvm :: VBoxManage.exe: error: The machine 'Win11-Test2' is already locked by a session (or being locked or unlocked) VBoxManage.exe: error: Details: code VBOX_E_INVALID_OBJECT_STATE (0x80bb0007), component MachineWrap, interface IMachine, callee IUnknown VBoxManage.exe: error: Context: "LaunchVMProcess(a->session, sessionType.raw(), ComSafeArrayAsInParam(aBstrEnv), progress.asOutParam())" at line 921 of file VBoxManageMisc.cpp
+21:58:33.133   guestcontrol retry 1/2 (Win11-Test2)
+21:59:15.157   guestcontrol retry 2/2 (Win11-Test2)

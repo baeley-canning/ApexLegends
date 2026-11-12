@@ -1,0 +1,59 @@
+p331 -- host freeze at ~02:42:57, 07/11/2026, during eprobe2 (brute-PML4 window probe)
+=============================================================================
+PRE-STATE (R3): runs h320_va1..11 all clean end-to-end; run 11 VERDICT: FAIL 02:41:17
+(cand dtb 0004E47FC000 ebase=0002F44C0080 score=14, both 1450 on the walk); gdrv3 RUNNING
+(no load/DSE/service touch by this probe); Apex pid 23164 up; box stable 4+ h of probes.
+
+EVENT: Event 41 only -- "rebooted without cleanly shutting down" at 02:43:13, boot
+02:43:10. NO bugcheck 1001, NO minidump -> the box went unresponsive and the user
+reset it; the bugcheck path never completed. (Unrelated earlier context, not this
+session: 06/11 20:19 bugcheck 0x109, 21:33 bugcheck 0xDA, dumps 110626-10609-01 /
+110626-10203-01.)
+
+PROBE: C:\h320x\eprobe2.py. Window +-1 MiB around the concealed dtb frame
+0x4E47FC000 (512 page reads), shape gate on each page (pml4e[0xFF] P+U+is_ram,
+>=4 low P+U), then dl.Walk + dl.find_mz per survivor (<=24).
+
+CAUSE (reconstructed -- no dump, empty output file):
+  * The linear window reads are exonerated: rprobe read 16 of these pages clean at
+    02:37 and every full-RAM scan passes the whole window (runs 1..11).
+  * What eprobe2 added is find_mz on *untrusted* frames.  find_mz is UNBOUNDED: it
+    sweeps all 512 PML4 entries x 512 PDPT x 512 PD, PTE_CAP = 6,000,000 leaf
+    probes, every probe a 2-byte IOCTL wrapped in retry_phys(tries=3) with a
+    0.15 s backoff ladder per lost read.  On this box is_ram() is only
+    pa < ram_top minus the VGA hole, so it passes essentially any page: one junk
+    page with a few P+U bits turns into a full 512 GiB sweep of faulting reads =
+    millions of IOCTLs and hours (worst case ~ sleep-bound, not CPU-bound) --
+    which is indistinguishable from a freeze and cheap to reset.
+  * Secondary aggravator: eprobe2.out is EMPTY.  Python block-buffered stdout,
+    the process never exited, so the candidate list died with it.  With -u the
+    last line would have named the culprit frame.
+  * Shape-only gating is not a gate.  Every earlier walk in this session used
+    candidates_for(), which gates on the accepted *object* (score 14) plus
+    valid_cr3(); eprobe2 replaced that with a 1-qword heuristic.
+
+LESSON (durable):
+  0. 07/11 09:20 follow-up: the sibling probe p4 (page-table class test) bugchecked the host too -
+     0x3B / AV_gdrv3!unknown_function, `movaps` into a non-present out-buffer page. Full evidence
+     `_ritual\p4_crash_gdrv3.txt`. Consequence for this file's rule 2: a redirect + `-u` +
+     flush=True does NOT survive a bugcheck (p4.out was created and lost). The next address must be
+     appended and fsynced to a separate `.cur` file BEFORE each risky read, 4 KB chunks, and p4-class
+     probes go to the VM before the host (rule 1 now covers "read-only" drivers explicitly).
+  1. Never call find_mz/Walk on an untrusted frame without a bounded pre-test.
+     eprobe3 validates the image path itself (pml4e[0xFF] -> PDPT -> first
+     present 1G/2M leaf > MZ + validate_pe) with a hard leaf cap before any
+     full sweep is attempted.
+  2. Any probe that can loop gets: python -u, flush per line, log-before-work,
+     wall-clock budget + watchdog os._exit.
+  3. A real PML4 on this box (hypervisor OFF, no KVAS) has the kernel half
+     present: require >= 64 present+is_ram entries in pml4e[0x100..0x17F].
+     Data pages do not survive that.
+
+REVERSIBILITY: pure read, nothing to restore; gdrv3 left RUNNING (was RUNNING
+before, device open only). eprobe2.py kept; outputs are new files (R5).
+
+VM NOTE (R1): eprobe3 is read-only (device open only, no load/DSE/service/CI), so
+it ran host-side.  The VM bench was not staged because the guestcontrol path on
+Win11-Test2 is documented dead (g316_cur.ps1) and eprobe3 needs nothing beyond
+gio.  If it freezes the box again, the next revision goes VM-first regardless.
+eprobe3 launch 02:55:14 gdrv3=SERVICE_NAME: gdrv3 TYPE : 1 KERNEL_DRIVER STATE : 4 RUNNING (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN) WIN32_EXIT_CODE : 0 (0x0) SERVICE_EXIT_CODE : 0 (0x0) CHECKPOINT : 0x0 WAIT_HINT : 0x0

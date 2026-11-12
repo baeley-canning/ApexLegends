@@ -1,0 +1,30 @@
+TIME 19:17:58
+up=10.2h boot=11-07 09:04
+--- svc apexdrv ---
+SERVICE_NAME: apexdrv
+TYPE               : 1  KERNEL_DRIVER
+STATE              : 1  STOPPED
+WIN32_EXIT_CODE    : 577  (0x241)
+SERVICE_EXIT_CODE  : 0  (0x0)
+CHECKPOINT         : 0x0
+WAIT_HINT          : 0x0
+--- svc zapexdrv ---
+[SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+The specified service does not exist as an installed service.
+--- System32\drivers apex files ---
+apexdrv.sys len=10152 sha16=9B119FD0C38740A2 mtime=11-01 14:00
+apexdrv.sys.bak_p24.off len=10152 sha16=9B119FD0C38740A2 mtime=11-01 14:01
+apexdrv.sys.bak_p25g.off len=10184 sha16=87715492DE53C836 mtime=11-01 16:21
+apexdrv.sys.bak_p25h.off len=10192 sha16=4F1106853D05986B mtime=11-01 16:43
+apexdrv.sys.off len=10192 sha16=4F1106853D05986B mtime=11-01 16:53
+apexdrv.sys.v2.bak len=10152 sha16=9B119FD0C38740A2 mtime=11-01 14:00
+--- dse / testsigning / hvci ---
+testsigning=
+blocklist=
+dse=
+vbs=0
+--- p37 bench dir drv ---
+apexdrv_probe.txt len=104 sha16=A339A8BD38871049 mtime=11-07 00:20
+zapexdrv.sys len=17920 sha16=E906CEE97B9927F4 mtime=11-06 22:08
+--- server.ps1 running? ---
+END

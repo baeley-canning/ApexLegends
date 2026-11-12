@@ -1,0 +1,19 @@
+now=00:06:09
+game=0
+fuse319=0
+STATE              : 4  RUNNING
+wmi rc=0 pid=29312 - UAC prompt expected now
+t=00:07:02
+out=False
+procs=0
+elev=0
+t=00:07:19
+out=False
+procs=0
+consent=0
+create rc=-2147467259 [ERROR: Invalid argument/option - 'User\OneDrive\Desktop\cheating\_ritual\h320_fire_kprobe.ps1'. Type "SCHTASKS /CREATE /?" for usage.]
+run rc=1 [ERROR: The system cannot find the file specified. System.Management.Automation.RemoteException]
+8dot3=True
+create2 rc=1 [ERROR: Access is denied. System.Management.Automation.RemoteException]
+create3 rc=0 [SUCCESS: The scheduled task "h320fuse" has successfully been created.]
+run3 rc=0 [SUCCESS: Attempted to run the scheduled task "h320fuse".] t=00:09:26

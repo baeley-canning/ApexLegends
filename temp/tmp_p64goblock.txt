@@ -1,0 +1,36 @@
+ 280:         again = snapshot(g, clus)
+ 281:         ok = lambda d, b: d[b] == [F100] * len(d[b])          # noqa: E731
+ 282:         stable = [c for c in clus if (first[c[0]] == again[c[0]] if seed else
+ 283:                                       ok(first, c[0]) and ok(again, c[0]))]
+ 284:         out("STABLE %d of %d" % (len(stable), len(clus)))
+ 285:         for t in range(int(pre), 0, -1):
+ 286:             out("NADE NOW %d  <- one frag at your feet (countdown, then GO)" % t)
+ 287:             beep(880, 120)
+ 288:             time.sleep(1.0)
+ 289:         beep(1400, 500)
+ 290:         beep(1400, 500)
+ 291:         beep(1400, 500)
+ 292:         out("GO  <- start THROWING now: frag 1 strips the armour, frag 2 takes health")
+ 293:         series = dict((b, [[v] for v in again[b]]) for b, m in stable)
+ 294:         fell = dict((b, {}) for b, m in stable)
+ 295:         for b, _ in stable:
+ 296:             out("PRE %#011x %s" % (b, "/".join("%g" % f(v) for v in again[b])))
+ 297:         t0 = time.time()
+ 298:         last_cue = 0
+ 299:         fired = False
+ 300:         chained = False
+ 301:         empty_run = 0
+ 302:         last_empty_cue = 0
+ 303:         downed = False
+ 304:         for i in range(1, SHOTS):
+ 305:             time.sleep(EVERY)
+ 306:             if i in cues:
+ 307:                 act = "THROW"
+ 308:             elif i - last_cue <= HOLD + 1:
+ 309:                 act = "RECOVER"
+ 310:             else:
+ 311:                 act = "STILL"
+ 312:             if act == "THROW":
+ 313:                 beep(500, 220)
+ 314:                 beep(500, 220)
+ 315:                 last_cue = i

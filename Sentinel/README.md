@@ -15,6 +15,20 @@ This repository is the portfolio for an anti-cheat and Windows kernel security c
 - `docs/` — project specs and writeups
 - Code lands here phase by phase.
 
+## Repository boundary
+
+`Sentinel/` is the defensive project boundary inside this larger checkout. Sentinel code,
+tests, and writeups must be self-contained here; they must not import, build, package, or
+reuse code or runtime data from sibling research folders. Run tests only against owned test
+programs, synthetic inputs, or targets in an approved lab or isolated VM, never production
+systems. Do not include cheat or bypass code, unauthorized process modification, third-party
+vulnerable-driver loaders, or credentials. Sentinel's own driver work must use a documented,
+signed lab deployment procedure.
+
+This is a directory boundary, not a separate Git repository: commits and Git history are
+still shared with the parent checkout. Treat files outside `Sentinel/` as out of scope for
+Sentinel releases, and review the staged file list before publishing.
+
 ## Artifact log (this becomes your CV)
 | Date | Phase | Artifact | Link | Notes |
 |------|-------|----------|------|-------|

@@ -1,0 +1,97 @@
+16:04:32.627 === h303 session/hive state (variable: interactive logon) ===
+16:04:32.954   quser | No User exists for *
+16:04:33.165   qsess | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+16:04:33.166   qsess | >services                                            0  Disc
+16:04:33.167   qsess | console                                             1  Conn
+16:04:33.494   explorer | INFO: No tasks are running which match the specified criteria.
+16:04:33.824   logonui | Image Name:   LogonUI.exe
+16:04:33.824   logonui | PID:          1204
+16:04:33.825   logonui | Session Name: Console
+16:04:33.826   logonui | Session#:     1
+16:04:33.826   logonui | Mem Usage:    83,452 K
+16:04:40.060   sihost | INFO: No tasks are running which match the specified criteria.
+16:04:40.388   winlogon | Image Name:   winlogon.exe
+16:04:40.389   winlogon | PID:          856
+16:04:40.389   winlogon | Session Name: Console
+16:04:40.390   winlogon | Session#:     1
+16:04:40.390   winlogon | Mem Usage:    15,548 K
+16:04:40.609   ntuser | Volume in drive C is Windows
+16:04:40.610   ntuser | Volume Serial Number is A038-5429
+16:04:40.611   ntuser | Directory of C:\Users\vboxuser
+16:04:40.611   ntuser | 11/06/2026  04:04 PM         1,835,008 NTUSER.DAT
+16:04:40.612   ntuser | 11/01/2026  11:21 PM            40,960 ntuser.dat.LOG1
+16:04:40.612   ntuser | 11/01/2026  11:21 PM           229,376 ntuser.dat.LOG2
+16:04:40.613   ntuser | 11/01/2026  11:38 PM            65,536 NTUSER.DAT{da394c25-d68d-11f1-aca1-08002754df67}.TM.blf
+16:04:40.614   ntuser | 11/01/2026  11:21 PM           524,288 NTUSER.DAT{da394c25-d68d-11f1-aca1-08002754df67}.TMContainer00000000000000000001.regtrans-ms
+16:04:40.614   ntuser | 11/01/2026  11:21 PM           524,288 NTUSER.DAT{da394c25-d68d-11f1-aca1-08002754df67}.TMContainer00000000000000000002.regtrans-ms
+16:04:40.615   ntuser | 6 File(s)      3,219,456 bytes
+16:04:40.615   ntuser | 0 Dir(s)  51,967,598,592 bytes free
+16:04:40.854   hku | HKEY_USERS\.DEFAULT
+16:04:40.855   hku | HKEY_USERS\S-1-5-19
+16:04:40.855   hku | HKEY_USERS\S-1-5-20
+16:04:40.856   hku | HKEY_USERS\S-1-5-18
+16:04:41.073   shellfold | ERROR: The system was unable to find the specified registry key or value.
+16:04:41.293   volenv | ERROR: The system was unable to find the specified registry key or value.
+16:04:41.535   groups | GROUP INFORMATION
+16:04:41.536   groups | -----------------
+16:04:41.536   groups | Group Name: Everyone
+16:04:41.537   groups | Type:       Well-known group
+16:04:41.537   groups | SID:        S-1-1-0
+16:04:41.538   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.538   groups | Group Name: NT AUTHORITY\Local account and member of Administrators group
+16:04:41.539   groups | Type:       Well-known group
+16:04:41.539   groups | SID:        S-1-5-114
+16:04:41.540   groups | Attributes: Group used for deny only
+16:04:41.540   groups | Group Name: BUILTIN\Administrators
+16:04:41.540   groups | Type:       Alias
+16:04:41.541   groups | SID:        S-1-5-32-544
+16:04:41.541   groups | Attributes: Group used for deny only
+16:04:41.542   groups | Group Name: BUILTIN\Users
+16:04:41.542   groups | Type:       Alias
+16:04:41.543   groups | SID:        S-1-5-32-545
+16:04:41.543   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.544   groups | Group Name: NT AUTHORITY\INTERACTIVE
+16:04:41.544   groups | Type:       Well-known group
+16:04:41.545   groups | SID:        S-1-5-4
+16:04:41.545   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.546   groups | Group Name: CONSOLE LOGON
+16:04:41.546   groups | Type:       Well-known group
+16:04:41.546   groups | SID:        S-1-2-1
+16:04:41.547   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.547   groups | Group Name: NT AUTHORITY\Authenticated Users
+16:04:41.548   groups | Type:       Well-known group
+16:04:41.548   groups | SID:        S-1-5-11
+16:04:41.549   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.549   groups | Group Name: NT AUTHORITY\This Organization
+16:04:41.550   groups | Type:       Well-known group
+16:04:41.550   groups | SID:        S-1-5-15
+16:04:41.551   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.551   groups | Group Name: NT AUTHORITY\Local account
+16:04:41.551   groups | Type:       Well-known group
+16:04:41.552   groups | SID:        S-1-5-113
+16:04:41.552   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.553   groups | Group Name: NT AUTHORITY\NTLM Authentication
+16:04:41.553   groups | Type:       Well-known group
+16:04:41.554   groups | SID:        S-1-5-64-10
+16:04:41.554   groups | Attributes: Mandatory group, Enabled by default, Enabled group
+16:04:41.554   groups | Group Name: Mandatory Label\Medium Mandatory Level
+16:04:41.554   groups | Type:       Label
+16:04:41.554   groups | SID:        S-1-16-8192
+16:04:41.555   groups | Attributes:
+16:04:41.775   wl_user | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+16:04:41.775   wl_user | DefaultUserName    REG_SZ    vboxuser
+16:04:41.979   wl_auto | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+16:04:41.979   wl_auto | AutoAdminLogon    REG_SZ    1
+16:04:42.201   wl_dom | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+16:04:42.202   wl_dom | DefaultDomainName    REG_SZ
+16:04:42.418   wl_pw | ERROR: The system was unable to find the specified registry key or value.
+16:04:42.649   lastpw | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+16:04:42.650   lastpw | LastUsedUsername    REG_SZ    vboxuser
+16:04:42.857   sess_num | HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server
+16:04:42.858   sess_num | fDenyTSConnections    REG_DWORD    0x1
+16:04:42.860 
+16:04:42.861 explorer resident: False
+16:04:42.862 profile hive in use: True
+16:04:42.862 autologon configured: True
+16:04:42.863 RESULT: PARTIAL - no interactive logon (logon screen): HKCU has no hive to arm, so auto-elevation cannot work until someone logs on
+16:04:42.863 VERDICT: read quser/explorer/NTUSER.DAT above; if no session, the next step is a logon (autologon + VM reset), not another registry probe

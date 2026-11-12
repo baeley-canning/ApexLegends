@@ -1,0 +1,24 @@
+===== h316 host run 2026-11-06 22:08:46 =====
+22:08:46.206 admin=True pid=18128 host=DESKTOP-PPHFJBQ
+22:08:46.239 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+22:08:46.255 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+22:08:46.261 pre dump: exists=False
+22:08:46.275 pre minidumps=5 gui=0
+22:08:46.287 gates cleared: done=False lock=False prov=False
+22:08:46.377 pre hvci=0 vbs=0 testsigning=testsigning             No
+22:08:46.388 pre blocklist ci0=
+22:08:46.732 pre disk=91.5GB free ram=31.8GB uptime=0.6h
+22:08:47.008 pre boot=06/11 21:33 build=26200
+22:08:47.018 pre exe: cur_h316_live.ps1=40834B dump-dir=C:\WINDOWS
+22:08:47.084 pre relay: 17920B
+22:08:47.097 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+22:08:47.132 arm: SUCCESS: The scheduled task "p316post" has successfully been created.
+22:08:47.161 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p316post                                 N/A                    Ready          
+22:08:47.163 RUN probe (h316 chain, TARGET = running r5apex_dx12, Phase 2)
+22:09:20.207 probe returned rc=0 after 33.04s
+22:09:20.227 child evidence: prov-lines=21 last=[22:08:57.213 STEP=prov 20 DBUtilDrv2] out-bytes=29606 dse=[dse_pre=0x0]
+22:09:20.231 RESULT: probe returned rc=0 after 33.04s - host did not bugcheck (evidence above, not the exit code, is the verdict)
+22:09:20.237 restore auto-reboot readback=1
+22:09:20.253 disarm: SUCCESS: The scheduled task "p316post" was successfully deleted.
+22:09:20.262 post svc: The specified service does not exist as an installed service.
+22:09:20.263 result line already written above; last provider=22:08:57.213 STEP=prov 20 DBUtilDrv2 (also in guest-h316.log and h316.prov)

@@ -1,6 +1,13 @@
 # h159_insertkey.ps1 - bring the game window forward and send VK_INSERT (extended key).
-# INSERT is the documented ESP toggle in hooks.cpp:570 (WM_KEYDOWN && VK_INSERT).
-param([int]$Pid = 0, [string]$Out = 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h159_key.txt')
+# INSERT is the documented ESP/menu toggle in hooks.cpp:570 (WM_KEYDOWN && VK_INSERT).
+#
+# NB: the parameter must NOT be a plain $Pid variable: Windows PowerShell 5.1 owns a
+# read-only automatic $PID ("Cannot overwrite variable Pid") and the bound value
+# silently vanished, so every INSERT fell back to auto-detect.  That is exactly what
+# broke ov72 key delivery (ov72_hook.out line 13).  p28_esp.ps1:6 documents the same
+# trap.  -Pid still works as an alias for older callers; prefer -GamePid.
+param([Alias('Pid')][int]$GamePid = 0,
+      [string]$Out = 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h159_key.txt')
 Add-Type @'
 using System; using System.Runtime.InteropServices;
 public class KW {
@@ -11,7 +18,7 @@ public class KW {
 }
 '@
 $log = @()
-$p = if ($Pid) { Get-Process -Id $Pid -EA 0 } else { Get-Process r5apex_dx12, r5apex -EA 0 | Select-Object -First 1 }
+$p = if ($GamePid) { Get-Process -Id $GamePid -EA 0 } else { Get-Process r5apex_dx12, r5apex -EA 0 | Select-Object -First 1 }
 if (-not $p) { 'NO GAME PROCESS' | Set-Content -LiteralPath $Out; exit 1 }
 $h = $p.MainWindowHandle
 $log += ('pid=' + $p.Id + ' hwnd=' + $h + ' title=' + $p.MainWindowTitle)

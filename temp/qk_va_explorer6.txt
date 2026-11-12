@@ -1,0 +1,49 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_explorer6.txt
+image-name override: b'explorer.exe\x00' (ImageFileName[15])
+target pid=11192
+  discovering DTB for pid 11192 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    hits cache: 118 entries (sweep skipped; --refresh-hits to redo)
+    hit[0]=0x31d3f65c
+        d=0x0a0 base=0x31d3f5bc typebyte=0x3 dtb=0x1ffffffff  <-- plausible frame
+        d=0x1b0 base=0x31d3f4ac typebyte=0x0 dtb=0x500000000  <-- plausible frame
+        d=0x4e0 base=0x31d3f17c typebyte=0x0 dtb=0x201000000  <-- plausible frame
+    hit=0x31d3f65c: 3 DTB candidate(s) from the EPROCESS header
+      try dtb@0x31d3f5e4=0x1fffff000 (name_off=0xa0) -> no PE
+      try dtb@0x31d3f4d4=0x500000000 (name_off=0x1b0) -> no PE
+      try dtb@0x31d3f1a4=0x201000000 (name_off=0x4e0) -> no PE
+    hit[1]=0x3498fc1b0
+    hit[2]=0x34f3f4f48
+        d=0x4e8 base=0x34f3f4a60 typebyte=0x55 dtb=0xa0d0920  <-- plausible frame
+    hit=0x34f3f4f48: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x34f3f4a88=0xa0d0000 (name_off=0x4e8) -> no PE
+    hit[3]=0x3507e6211
+        d=0x7f8 base=0x3507e5a19 typebyte=0x6e dtb=0x2e642520  <-- plausible frame
+    hit=0x3507e6211: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3507e5a41=0x2e642000 (name_off=0x7f8) -> no PE
+    hit[4]=0x37dd13cf0
+        d=0x0b0 base=0x37dd13c40 typebyte=0x66 dtb=0x2e797274  <-- plausible frame
+    hit=0x37dd13cf0: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x37dd13c68=0x2e797000 (name_off=0xb0) -> no PE
+    hit[5]=0x388700f40
+        d=0x078 base=0x388700ec8 typebyte=0xdc dtb=0x2010200  <-- plausible frame
+    hit=0x388700f40: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x388700ef0=0x2010000 (name_off=0x78) -> no PE
+    hit=0x38ed5aa18: 2 DTB candidate(s) from the EPROCESS header
+      try dtb@0x38ed5a8b0=0x1c1d00000 (name_off=0x190) -> no PE
+      try dtb@0x38ed5a2a8=0x400000000 (name_off=0x798) -> no PE
+    hit=0x3985ed2c0: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3985ed240=0x216e6000 (name_off=0xa8) -> no PE
+    hit=0x39b25adf8: 2 DTB candidate(s) from the EPROCESS header
+      try dtb@0x39b25acb0=0x5fffff000 (name_off=0x170) -> no PE
+      try dtb@0x39b25ab18=0x700000000 (name_off=0x308) -> no PE
+    hit=0x3a1ee11c8: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3a1ee1060=0x1c1d00000 (name_off=0x190) -> no PE
+    hit=0x3a61d0f08: 3 DTB candidate(s) from the EPROCESS header
+      try dtb@0x3a61d0e00=0xa646000 (name_off=0x130) -> no PE
+      try dtb@0x3a61d0d78=0xa642000 (name_off=0x1b8) -> no PE
+      try dtb@0x3a61d0a28=0xa582000 (name_off=0x508) -> no PE
+  16 DTBs tried, none walked to an MZ image
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

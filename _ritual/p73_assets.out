@@ -1,0 +1,140 @@
+p73 dump-asset inventory (Lane R, Phase 1, T1)      2026-11-06
+OFFLINE ONLY: no device open, no game start, no \\.\GIOV3. Every fact below comes
+from reading files under C:\Users\New User\OneDrive\Desktop\cheating and the game
+install directory. Formats learned from ext\dumplive.py, ext\p60_snap.py,
+ext\p72_ppath.py, ext\p53_padump.py, _ritual\_dumpget.ps1, ext\p57_dmps.ps1,
+_ritual\p108_dumps.ps1 and temp\dm11.py.
+
+NUMBERING NOTE (R5, stale-number collision): temp\p73_*.py/.txt, temp\p74_dtbread.py,
+temp\p75_sizes.py ... temp\p79_parent.py are 05-Nov crash-hunt artifacts (page-table
+forensics during the 0x124 investigation) and are NOT this series. This series'
+outputs are p73_assets.out / p74_matrix.out / p75_protocol.out -- distinct names, so
+nothing is overwritten. The lead re-issued p73/p74/p75 to Lane R in the 06/11 STATE.md
+dispatch; the stale files are inventoried below where relevant.
+
+================================================================================
+A. Kernel crash minidumps (PAGEDU64 triage dumps) -- 17 files, 3 directories
+================================================================================
+Format (read from file headers): 'PAGE'+'DU64' signature, MajorVersion 15,
+MinorVersion 0x65F4, MachineImageType 0x8664, BugCheckCode at +0x38. All are
+C:\Windows\Minidump-style triage dumps (collected by _ritual\_dumpget.ps1,
+ext\p57_dmps.ps1, _ritual\p108_dumps.ps1, p269; p108's comments name 110526-10625
+as a WHEA 0x124 dump). Triage content = kernel stacks + EPROCESS list + unloaded
+drivers. Game user-mode .data/.rdata pages are NOT in them; a b"r5apex_dx12"
+string hit only proves the EPROCESS ImageFileName was captured (game was running).
+
+path                                                   size    mtime            game-up   .data/.rdata recoverable
+temp\110426-10656-01.dmp                             9523263  04/11 00:46:05  yes(str x1)  NO (kernel triage)
+temp\110426-11437-01.dmp                             9597623  04/11 09:29:50  yes(str x2)  NO (kernel triage)
+temp\110426-10531-01.dmp                             9711073  04/11 17:06:41  yes(str x1)  NO (0x124 WHEA @+0x38, python-current era)
+_ritual\_dumps\102726-9484-01.dmp                     9660374  27/10 23:50:28  yes(str x3)  NO
+_ritual\_dumps\110126-9437-01.dmp                      9564455  01/11 21:54:43  no (x0)      NO
+_ritual\_dumps\110126-9718-01.dmp                      9349590  01/11 22:31:42  no (x0)      NO
+_ritual\host_110226.dmp                               9668371  02/11 23:05:52  no (x0)      NO
+_ritual\dumps\110526-10625-01.dmp                      9348533  05/11 13:15:23  no (x0)      NO (15-bugcheck day)
+_ritual\dumps\110526-10781-01.dmp                      8555579  05/11 13:27:27  no (x0)      NO
+_ritual\dumps\110526-11015-01.dmp                      8908735  05/11 13:58:57  no (x0)      NO
+_ritual\dumps\110526-14640-01.dmp                      9030821  05/11 14:22:57  no (x0)      NO
+_ritual\p269_dumps\110526-8671-01.dmp                 1196148  05/11 23:54:44  no (x0)      NO
+_ritual\p269_dumps\110526-9234-01.dmp                 1217236  05/11 23:54:44  no (x0)      NO
+_ritual\p269_dumps\110526-9843-01.dmp                  1158316  05/11 23:54:44  no (x0)      NO
+_ritual\p269_dumps\110526-10890-01.dmp                 1320012  05/11 23:54:44  no (x0)      NO
+_ritual\p269_dumps\110526-13843-01.dmp                 1303540  05/11 23:54:44  no (x0)      NO
+  (the same five files are duplicated in
+   _ritual\ph269.hist.1105-235229.out_dumps\ -- byte-identical set, not double-counted)
+04/11 "game-up" determination: the 0x124 machine checks of 04/11 fired during live
+scan sessions with the game up (STATE.md 0x124 history; p53 ran live 16:52 with
+game_alive_post=True minutes before the 17:06 dump); the r5apex_dx12 EPROCESS name
+string is present in those three dumps. None of the 17 contain game .data pages.
+
+================================================================================
+B. r5apex_dx12.exe file on disk -- PRIMARY offline corpus
+================================================================================
+path:     C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+size:     68,760,928 bytes     mtime: 04/11/2026 09:17:23
+sha256:   842492D235919EA5F0B4E8B1A1A9288F92B7B1F13D4598BC7DBA51DB7DD0B579
+game-up:  N/A (static file). mtime 04/11 09:17 = the EA patch the 04-05/11 live
+          probes (p43x..p72) ran against -- this exact build.
+PE (parsed offline): ImageBase 0x140000000, SizeOfImage 0xDFB8000 (234 MB),
+          9 sections. The live PE the stale crash-era scan found at PA 0x351890000
+          (temp\p73_scan_img.txt, sizeimg=0xdfb8000) matches -> build continuity.
+          .text  va 0x1000    vsz 0x2CA2AAC raw 0x2CA2C00 ptr 0x600
+          .rdata va 0x2CA4000 vsz 0x6A7FD2 raw 0x6A8000 ptr 0x2CA3200
+          .data  va 0x334C000 vsz 0xAB2392C raw 0xD00800 ptr 0x334B200
+          (.pdata va 0xDE70000, _RDATA, .fptable, .rsrc, .reloc va 0xDF5B000, .ooa)
+r5apex .data/.rdata recoverable: YES -- every file-backed byte (~20.4 MB raw of
+          .data+.rdata, plus 46.7 MB .text). Runtime-only values (the live view
+          matrix) are NOT in a file image; what the file gives the matrix scan is
+          the true build's real .data/.rdata bytes for canary validation + false-
+          positive-rate measurement, and the anti-example read at RVA 0x22EE01.
+
+================================================================================
+C. temp\dm11_cache.pkl -- file-derived r5apex analysis cache, 27/10 build
+================================================================================
+size: 5,953,298 bytes   mtime: 27/10/2026 15:48:06   creator: temp\dm11.py
+Source: NOT live memory -- dm11.py parses C:\Program Files\EA Games\Apex\
+r5apex_dx12.exe with pefile/capstone (ImageBase 0x140000000) and disassembles
+.data initializers. Contents (verified by unpickling):
+  secs   9 sections of the 27/10 build: .data va 0x143318000 vsz 0xB40AB8C
+         raw 0xD00000 (older layout; current file's .data VA 0x14334C000 --
+         0x34000 patch drift since 27/10)
+  slots  4050 datatable records ('DT_HealthKit', 'DT_FirstPersonProxy',
+         'm_viewModelOwner', ... -- Apex datatables, VA-tagged)
+  funcs  78,206 .text function ranges;  dt_leas 144;  ident 38,550 strings
+  img    dict VA->byte|None: 401,702 keys, 183,651 non-None; 10,990 contiguous
+         runs, longest 12,693 B at 0x14E6CD160.. -- that VA range is the .data
+         TAIL (beyond raw on disk), REBUILT from the initializer disassembly
+         (dm10/dm11 "rebuilds the .data image from the initializer stores").
+r5apex .data/.rdata recoverable: YES (partial) -- ~183 KB of real+reconstructed
+         27/10-build .data bytes in contiguous runs >=64 B. Usable as a second
+================================================================================
+D. Live game-memory snapshots in temp\ (game was up, p60/p53/p55/p61 era 04/11)
+================================================================================
+D1. temp\p60_snap_before.txt   3,215,889 B  04/11 18:46:50   game up (live reads)
+    temp\p60_snap_after.txt    2,684,444 B  04/11 18:49:20   game up (live reads)
+    Format (ext\p60_snap.py): "addr hexdword float" lines, NONZERO dwords only,
+    of +-1 page around each of 236 name-hit pages (entity-cluster PAs such as
+    0x73ccd8000 / the 0x4d0xxxxxx cluster). Zero dwords are omitted, so a page
+    reconstructs with zeros filled where no line exists.
+    r5apex .data/.rdata recoverable: NO for module .data (these are heap/entity
+    cluster pages), but they ARE ~2.9 MB of genuine live game bytes -- usable as a
+    live-shaped corpus for canary false-positive measurement.
+D2. temp\p53_dump_0.txt .. p53_dump_8.txt  9 files, 328,461-348,904 B each,
+    04/11 16:35-16:52 (p53_padump.py, game_alive_post=True).
+    Format: hexdump rows of +-0x55000 PA windows around name-hit pages, hit bytes
+    marked '<' -- live entity-cluster memory. Same class as D1 (entity region,
+    not module .data). Recorded for completeness; not required for p74.
+D3. temp\p55_slots.txt 165,446 B 04/11 17:41 -- SLOT lines with pre=/post= hex
+    around entity names (p56_diff input). Entity-region bytes, not module .data.
+D4. temp\p61_20261104_231330.txt / p61_run_20261104_231330.txt -- damage-window
+    DUMP lines (addr dword-seq) from the live health hunt. Entity-region only.
+
+================================================================================
+E. Module-dump machinery outputs (what SHOULD hold a runtime .data dump)
+================================================================================
+E1. temp\p72_data.bin -- p72_ppath.py --stage=map writes ONE module section
+    (.data first) here, keyed pid+target via temp\p72_map.txt. File ABSENT.
+    The last map attempt (temp\p72_out.txt, 05/11 07:12) ended
+    "VERDICT: NO_BASE pid=18592" -- no dump was produced. The 04/11 runs' dumps
+    were deleted. => NO runtime .data region dump exists anywhere in the tree.
+E2. temp\r5apex_live.bin -- dumplive.py's full-image dump target. ABSENT.
+E3. Whole-RAM dump: NONE (no file over 10 MB except minidumps; a 32 GB RAM
+    image would be unmissable).
+E4. temp\p78_6c6af.bin 4,096 B 05/11 07:04 -- ONE page at PA 0x6C6AF0000, a page
+    table frame (p78_dump_frame.py classification). Not game data.
+E5. temp\p72_test_data.bin 8,192 B 04/11 21:12 -- synthetic BFS fixture. Not game data.
+E6. _ritual\p4x_livedump*.txt, p72_prog*.txt, p43v_console.txt etc. -- console
+    logs of live scans (EPROCESS hunts, base hunts), not byte dumps.
+
+CONCLUSION OF INVENTORY: the only offline artifacts carrying r5apex_dx12 .data/
+.rdata BYTES are (B) the on-disk exe, (C) the dm11 pickle's reconstructed runs,
+and (D1) the p60 live entity-cluster snapshots. The 17 kernel minidumps carry
+kernel triage state only. No runtime .data dump survives, so the LIVE view matrix
+is not offline-recoverable; the p74 scan is a canary/noise-rate validation over
+real build bytes, and the live-matrix hunt is deferred to the p75 protocol
+(rotate-90 differential over a future live .data dump, lead approval required).
+
+RESULT: usable=4
+VERDICT: p74 matrix scan runs against (1) C:\Program Files\EA Games\Apex\r5apex_dx12.exe [static .data 13.6MB raw + .rdata 6.8MB raw of the exact 04-05/11 live-probe build, sha256 842492D2...], (2) temp\dm11_cache.pkl [27/10-build .data-tail reconstruction, 10,990 runs/183,651 bytes], (3) temp\p60_snap_before.txt and (4) temp\p60_snap_after.txt [live entity-cluster dword snapshots, 236 hit pages each]; minidumps (17 files) are NOT usable for .data scanning; no runtime .data dump exists -> live-matrix recovery is deferred, not blocked-by-corpus for the canary scan.
+
+         corpus for the canary scan; NOT the live runtime matrix.

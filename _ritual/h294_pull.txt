@@ -1,0 +1,15 @@
+15:47:37.819 === h294 pull: MEMORY.DMP -> module owning fffff80219033bc9 ===
+15:47:37.865 pre vm: VMState=running
+15:47:38.425 pre-memdmp rc=
+15:47:38.427   pre-memdmp | MEM 391099508 2026-11-06 15:12:20
+15:47:38.432 guest MEMORY.DMP bytes=391099508
+15:47:38.439 copyfrom start (373 MB) -> C:\Users\New User\OneDrive\Desktop\cheating\temp\h294_MEMORY.DMP
+15:47:38.644 copyfrom done waited=True secs=0.2
+15:47:38.645   copy | VBoxManage.exe: error: File copy failed
+15:47:38.645   copy | VBoxManage.exe: error: Guest file could not be opened: Access to guest file "C:\Windows\MEMORY.DMP" denied
+15:47:38.646   copy | VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession
+15:47:38.647   copy | VBoxManage.exe: error: Context: "enum RTEXITCODE __cdecl gctlHandleCopy(struct GCTLCMDCTX *,int,char **,bool)" at line 1838 of file VBoxManageGuestCtrl.cpp
+15:47:38.647   copy | VBoxManage.exe: error: Guest file could not be opened: Access to guest file "C:\Windows\MEMORY.DMP" denied.
+15:47:38.650 host copy bytes=0 expected=391099508 delta=-391099508
+15:47:38.651 RESULT: FAIL - host copy missing or truncated (variable: evidence source)
+15:47:38.652 VERDICT: retry the copyfrom before analysing anything

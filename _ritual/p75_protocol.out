@@ -1,0 +1,210 @@
+p75 validation protocol (Lane R, Phase 1, T3 -- paper only)      2026-11-06
+Nothing in this file was executed live.  It defines how the p74 canary winners and
+the OFF_ENTITY_* candidates get PROVEN once the lead approves live reads (0x124
+history: lead-approved windows only, one device handle per run, no game start by
+this lane).  Canary values below are the p74 v3 canary (ext\p74_matrix.py,
+_ritual\p74_matrix.out): measured noise 0.0/MB on static .data/.rdata and
+0.29/MB on live entity-cluster pages (v1 loose 448/MB -> v2 409/MB -> v3 with
+orthogonality 0.29/MB; v1/v2 evidence: p74_matrix_v1_loose.out,
+p74_matrix_v2_noortho.out).
+
+P74 V3 CANARY (the reference definition for everything below)
+  hard gates, all required:
+    1. all 16 floats finite
+    2. |m[15]| > 1e-6
+    3. |m[0]| and |m[5]| each in [0.3, 3.0]          (FOV-plausible)
+    4. |m[11]| > 1e-6 or |m[14]| > 1e-6               (perspective shape)
+    5. magnitude sanity: forward-row norm in the row band; |m[11]| < 100;
+       |m[12]|,|m[13]|,|m[14]| each < 1e6            (kills FLT_MAX tables)
+    6. row bands: tier A [0.7, 1.4] (pure view, near-unit rows) or
+       tier B [0.3, 3.0] (view-projection, FOV-scaled rows) -- right, up AND
+       forward rows all in the same band
+    7. orthogonality: |dot(r,u)|, |dot(r,f)|, |dot(u,f)| each < 0.05
+  ranking: soft score (row norms near 1, m[3]==m[7]==0, |m[15]-1|<1e-3 pure-view
+  marker, |m[15]|>1 VP marker, orthogonality margin, translation present).
+  ANTI-EXAMPLE stays 0x022EE01 = VTP_GetEngineTraceClient CODE (p74 printed the
+  16 floats there: they fail gates 3 -- |m[0]|=1.3e-18, |m[5]|=3.6e+16).
+
+================================================================================
+(a) VIEW MATRIX -- rotate-90 differential
+================================================================================
+GOAL: find the single live 16-float block that is the engine's view (or view-
+projection) matrix, killing code-RVAs, static tables and bone rest poses in one
+shot.  The p74 addendum proved why: byte-stable rotation blocks exist in entity
+pages (skeleton bind poses); only the real matrix CHANGES with the camera.
+
+PREREQ (lead-approved live window, number p76+ -- ask the lead, p73-p75 are
+taken; the crash-hunt's p85-p110 were a different namespace):
+  1. One live .data dump via ext\p72_ppath.py --stage=map --pid=<pid>
+     --target=<pa> (writes temp\p72_data.bin keyed pid+target, R5: copy it to
+     temp\p7x_data_<runid>_A.bin before anything else) -- OR dumplive.py for a
+     whole-image dump if the section walk is healthier that day.  Single
+     elevated process, one \\.\GIOV3 handle, no concurrent python (0x124 rule).
+  2. ext\p74_matrix.py --region=temp\p7x_data_<runid>_A.bin:0x14334C000
+     --out=_ritual\p7x_rot_<runid>_A.out   (region base = live module .data VA;
+     the current build's .data VA/RVA from the PE table, adjust per build).
+
+PROCEDURE (one variable per run, R5 -- each run its own output file):
+  Scan A:  player stands still, camera arbitrary, dump + scan (file ..._A.out).
+  Control: 10 s later, NO rotation, dump + scan (..._A2.out).  Acceptance for
+           the control: candidate VAs identical to A and dot(r_A, r_A2) within
+           0.1 of +-1 (basis unchanged -- confirms pipeline stability and that
+           the matrix does not move VA between frames).
+  Rotate:  turn the camera exactly 90 deg of yaw (keyboard turn, no strafe, no
+           walk -- translation must stay put), settle >= 5 s.
+  Scan B:  dump + scan (..._B.out).
+  Differential acceptance -- a candidate survives iff ALL of:
+    (i)   it passes the p74 v3 canary in A, A2 and B;
+    (ii)  same VA in all three (the matrix churns values, never address);
+    (iii) right and forward rows are 90 deg apart between A and B:
+          |dot(r_A, r_B)| < 0.1 and |dot(f_A, f_B)| < 0.1;
+    (iv)  up row unchanged: dot(u_A, u_B) > 0.95 (yaw keeps the up axis);
+    (v)   translation row unchanged within 1.0 world unit (|t_A - t_B| < 1.0
+          per component -- you did not move);
+    (vi)  it is NOT byte-identical between A and B (static table / bind pose
+          dies here -- the p74 addendum case).
+  Code-RVAs die at (i) (machine-code bytes are not finite-plausible float blocks
+  with orthogonal rows); static float tables and skeleton poses die at (vi);
+  heap noise dies at (iii).  Anything surviving all six IS the matrix.
+  Repeat once (B2, second 90 deg turn to 180 deg) if two candidates survive --
+  the true matrix follows the rotation both times.
+
+CADENCE + RUN-ID CONVENTIONS:
+  runid = p7x_<YYYYMMDD_HHMM> (x = allocated number).  Files, never reused:
+    temp\p7x_data_<runid>_{A,A2,B}.bin     region dumps (copies of p72_data.bin)
+    _ritual\p7x_rot_<runid>_{A,A2,B}.out    p74_matrix.py --region/--out outputs
+    _ritual\p7x_diff_<runid>.out            the (i)-(vi) table: one line per
+                                             candidate VA, PASS/FAIL per gate
+  The diff is a new ext\p7x script (same canary import from p74_matrix.py);
+  it re-runs p74_matrix.py's canary on both dumps, never re-reads live memory
+  itself (the differential is computed from the two files, so a crash between
+  A and B loses one scan, not the session).
+  One live window covers one A/A2/B triple; if the game or box dies mid-run,
+
+================================================================================
+(b) ENTITY FIELDS -- health / team / origin (candidates 0x3A0 / 0x478 / 0x258)
+================================================================================
+All three are CANDIDATES until each passes its section here.  Anchors are the
+name-needle clusters (p60 name scans); the p61/p63/p64 scripts already exist.
+
+HEALTH (candidate OFF_ENTITY_HEALTH = 0x3A0) -- damage-window differential,
+the p61_live.py technique exactly:
+  python ext\p61_live.py --needle=<player> --pre=6 --post=8
+         --last=temp\p60_name_u16.txt --out=temp\p7x_health_<runid>.txt
+  Sequence: anchor rescan around the remembered cluster -> pre-snapshot of the
+  hit pages -> countdown beeps -> grenade/self-damage -> 8 post-snapshots at
+  1.5 s -> diff.  A health dword must DROP by >= 3 (>= 1 with --loose) across
+  the damage step and stay flat afterwards (p61's filter: seq[i-1]-seq[i] >=
+  need, then flat inside the hold window; shield absorbs first, so health
+  falls only after the shield hits 0 -- the p64_pairs --chain shape).
+  ACCEPTANCE for offset 0x3A0: the dropping dword sits at entity+0x3A0 for the
+  SAME anchored entity in TWO independent damage windows (two runids).  A drop
+  at a different delta means the candidate offset is wrong -- record the true
+  delta, that becomes the new candidate, one more window confirms it.
+
+TEAM (candidate OFF_ENTITY_TEAM = 0x478) -- duo-partner check:
+  p64_pairs.py --seed mode pairs entities (health/shield clusters).  Read
+  +0x478 of the LOCAL player and of the DUO PARTNER (anchor by partner name
+  needle): both must hold the same small integer (0..64) in the same match,
+  while an ENEMY's +0x478 (enemy name anchor) holds a different value.
+  ACCEPTANCE for 0x478: equal-for-duo / different-for-enemy in TWO matches
+  (team ids reshuffle between matches; the offset must survive the reshuffle).
+  Evidence files: temp\p7x_team_<runid>.out with the three reads + verdict.
+
+ORIGIN (candidate OFF_ENTITY_ORIGIN = 0x258) -- movement plausibility, the
+p63_pos.py technique:
+  python ext\p63_pos.py --needle=<player> --walk=6 --out=temp\p7x_pos_<runid>.txt
+  The 3 floats at +0x258 must (i) be finite, (ii) change smoothly while the
+  player walks (|delta per 1.5 s sample| <= ~10 world units, run speed ~5.5),
+  (iii) stay flat while standing still, (iv) track DIRECTION (walk north ->
+  y grows monotonically for the walk window).  A coordinate triple that jumps
+  wildly or never moves is a transform/table, not the origin.
+  INTEGRATION CHECK (the real verdict): once (a) has a matrix winner, run the
+  features.cpp world-to-screen on entity+0x258 of a VISIBLE enemy through the
+  validated matrix: the projected point must land INSIDE the viewport while the
+  enemy is on screen, and slide off the correct side when they leave.  One
+  candidate origin that projects correctly with the winning matrix closes both
+  (a) and (b) for the ESP chain end-to-end.
+
+General evidence rules for (b): every read comes back through the gio device in
+one process per window; every verdict cites its file; two independent windows
+per field before anything lands in memory.h.
+
+
+================================================================================
+(c) PHASE 3 LANDING -- OffsetValidator canaries + memory.h procedure
+================================================================================
+No memory.h / offset_validator.cpp edits happen this phase (Phase 1 is paper).
+When the (a)/(b) winners exist, they land like this:
+
+C1. WINNER TABLE (each row: constant, winner value, evidence file, verdict):
+      ApexOffsets::VIEW_MATRIX    <matrix RVA>   _ritual\p7x_rot_<runid>_{A,B}.out
+      ApexOffsets::ENTITY_LIST     <slot  RVA>   (see C3)
+      ApexOffsets::LOCAL_PLAYER   <slot  RVA>   (see C3)
+      OFF_ENTITY_ORIGIN/TEAM/HEALTH <0x258-ish>  temp\p7x_{pos,team,health}_<runid>.out
+    The lead sign-off is recorded in STATE.md (lead single-writes state).
+
+C2. VIEW MATRIX canary as OffsetValidator will encode it (exact values -- the
+    p74 v3 canary plus the rotate-90 proof):
+      ValidateViewMatrixRead() (src\offset_validator.cpp, replace the current
+      3-check body):
+        - ReadBytes 64 at moduleBase + VIEW_MATRIX, fail -> "unreadable"
+        - all 16 finite                       -> "matrix contains non-finite values"
+        - |m[15]| > 1e-6                     -> "w-row is zero: looks like code
+                                                (VTP_GetEngineTraceClient)"
+        - |m[0]|,|m[5]| in [0.3, 3.0]        -> "FOV scale out of band"
+        - |m[11]| > 1e-6 or |m[14]| > 1e-6    -> "no perspective shape"
+        - row bands: right/up/forward each in [0.7,1.4] (tier A) or [0.3,3.0]
+          (tier B)                           -> "row norm out of band"
+        - |m[11]| < 100 and |m[12..14]| < 1e6 -> "unbounded magnitudes (table)"
+        - |dot(r,u)|,|dot(r,f)|,|dot(u,f)| < 0.05 -> "rows not orthogonal (table)"
+      Every failure names its gate (the current code style already does this for
+      the w-row; extend the rest the same way).  features.cpp UpdateESP keeps
+      the same canary inline (it already early-returns on failure -- it just
+      gets the full gate list).
+      LIVE EVIDENCE per offset: the validator's verdict line in the run log
+      PLUS the p7x differential file; a canary that passes only statically is
+      not a landing -- the rotate-90 file is part of the definition of DONE.
+
+C3. POINTER canaries (existing checks, tightened):
+      ENTITY_LIST: ReadPointer at moduleBase+ENTITY_LIST must be a user-space
+        pointer AND the head entry must itself walk (already implemented), AND
+        while in a match at least one non-null entry beyond the head (count>0)
+        -> verdict "entity list empty (not in a match)" vs "not a pointer".
+      LOCAL_PLAYER: slot pointer readable, target readable (implemented), PLUS
+        entity-shape: origin triple finite at +OFF_ENTITY_ORIGIN and health in
+        [1,200] at +OFF_ENTITY_HEALTH -> "does not look like a player object".
+
+C4. FIELD canaries (per-offset verdicts with live evidence):
+      HEALTH: int in [1,200]; drops across a logged damage window (validator
+        logs two reads 2 s apart when a damage event is flagged -- evidence file
+        temp\p7x_health_<runid>.out cited in the verdict string).
+      TEAM: int in [0,64); equals LOCAL_PLAYER's team for the duo partner
+        (verdict string cites temp\p7x_team_<runid>.out).
+      ORIGIN: 3 finite floats, |coord| < 1e5, world-to-screen depth > 0.1
+        (cites temp\p7x_pos_<runid>.out + the integration check).
+
+C5. memory.h LANDING PROCEDURE (Phase 3, lane R's exclusive files):
+      1. Lead approves the winner table (STATE.md entry).
+      2. One constant per edit (R5: one variable per probe): VIEW_MATRIX first
+         (ESP is dead without it), then ENTITY_LIST, LOCAL_PLAYER, then the
+         OFF_ENTITY_* trio.  Each edit: comment above the constant cites the
+         evidence file path; 0x022EE01 REMAINS in R5AC_VMT::
+         GET_ENGINE_TRACE_CLIENT (it is the correct code RVA -- only the
+         VIEW_MATRIX alias changes meaning) and the old value is kept in the
+         comment as the documented history.
+      3. After each edit: build (QwenKernPremium gate), inject, run
+         OffsetValidator with the game up, read the per-offset verdict lines
+         from the run output file (R3: the file is the verdict), and only then
+         let UpdateESP publish boxes for that offset's subtree.
+      4. If a later game patch breaks a canary, the verdict line names the gate
+         that failed -- re-run the (a)/(b) section for that offset only.
+
+ACCEPTANCE FOR THE WHOLE PROTOCOL: ESP boxes on real entities, every offset in
+memory.h carrying a comment with its live-evidence file, and every validator
+verdict PASS with the game in a match -- read back from output files, not chat.
+
+RESULT: protocol complete -- (a) rotate-90 differential with 6 acceptance gates + control scan, (b) health/team/origin procedures on p61/p63/p64 with two-window acceptance, (c) exact p74-v3 canary values for OffsetValidator + one-constant-per-edit memory.h landing
+VERDICT: p75 is paper-only (no live reads this phase); the matrix hunt runs the (a) differential in a lead-approved live window (numbers p76+ to be requested), entity fields run p61_live/p63_pos/p64_pairs as-is, and Phase 3 lands winners one constant per edit with per-gate verdict strings and evidence-file comments in include\memory.h
+
+  stop (0x124 discipline), file what exists, ask the lead before re-arming.

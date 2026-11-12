@@ -1,0 +1,20 @@
+﻿---------------- C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll ----------------
+  machine=0x8664  magic=0x020B  sections=7  ptr=8
+  [import] rva=0x0004CC5C size=60
+    KERNEL32.dll                       imports=105
+    USER32.dll                         imports=12
+    => 2 module(s)
+  [delay-import] rva=0x00000000 size=0
+  [load-string hits]
+    D3D11
+    d3d11.dll
+    D3D11CreateDeviceAndSwapChain
+    d3d12
+    d3d12.dll
+    D3D12SerializeRootSignature
+    D3D9
+    d3d9.dll
+    d3dcompiler_47.dll
+    DXGI
+    ID3D12CommandQueue
+    IDXGISwapChain

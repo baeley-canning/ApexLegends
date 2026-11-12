@@ -1,0 +1,82 @@
+15:10:34.912 === h286 vmdiag3 (read-only) ===
+15:10:34.916 --- snapshot tree ---
+15:10:34.947   Name: VRDP-ready (UUID: e099b86b-9b0e-48b3-87ab-55c0827ec144)
+15:10:34.948   Description: Fresh Windows 11 boot with VRDP enabled on port 3390, host-only network at 192.168.56.x
+15:10:34.949   Name: pre-baseline (UUID: 70f20efd-0fa8-4a19-9ded-2facde7a7842)
+15:10:34.949   Name: baseline-clean (UUID: d39a314a-1df1-414e-816f-f64357dda9c4)
+15:10:34.950   Description: P37 VM bring-up rollback point
+15:10:34.950   Name: p37-ready (UUID: 567109ad-d161-4dc7-8e93-2c7627c46f0a)
+15:10:34.951   Description: gdrv3 installed+running, SYSTEM tick p37tick (60s) + p37logon, harness in C:\Users\Public\p37, HTTP payload 10.0.2.2:8080
+15:10:34.951   Name: pre-h268 (UUID: 4ea0dd5e-11c6-4f15-8fd7-458ddd0c94d2)
+15:10:34.952   Name: ga-armed (UUID: 8d19ab4a-cef0-4ddc-9f18-850e5bfaa213)
+15:10:34.952   Name: p331_pre_1106-1131 (UUID: 74e346fe-cc6b-42fc-9915-607d9cadd824)
+15:10:34.953   Name: h276_pre (UUID: 48cfec62-7882-47ba-aec3-693a42c796ad)
+15:10:34.954   Name: pre-h279 (UUID: e6e71151-0d36-4c07-9951-f04133775899)
+15:10:34.954   Name: pre-h280 (UUID: 03be7579-fd91-4e62-b618-5af6b3b5d508)
+15:10:34.954   Name: pre-h281 (UUID: b5ef576b-5225-4bd1-8dec-fd880ac1dd32)
+15:10:34.955   Name: pre-h282 (UUID: 050180af-cf27-4f3a-a5b5-8f50fcbf95ee)
+15:10:34.955   Name: pre-h283 (UUID: 62bd9887-f155-4984-8704-a36a3d41c50f)
+15:10:34.956   Name: pre-h284 (UUID: fb38e288-5bb6-42d1-aa19-a2e07895f8d6)
+15:10:34.956   Name: pre-h285 (UUID: 8a64c24e-778d-474e-bf4f-37f2c9b4180a)
+15:10:34.957   Name: h286_pre_1106 (UUID: 43b080b2-8093-40f3-9666-340d850f491b) *
+15:10:34.957   Description: pre h286 v13 verdict-plumbing run
+15:10:34.961 --- VBox.log.1 last 18 lines (how that run ended) ---
+15:10:34.969   00:09:42.141112 E1000#1: Received frames   : 4
+15:10:34.970   00:09:42.141114 E1000#1: Transmitted frames: 166
+15:10:34.970   00:09:42.141117 E1000#1: TX frames up to 1514: 166
+15:10:34.971   00:09:42.141120 E1000#1: TX frames up to 2962: 0
+15:10:34.971   00:09:42.141122 E1000#1: TX frames up to 4410: 0
+15:10:34.972   00:09:42.141125 E1000#1: TX frames up to 5858: 0
+15:10:34.972   00:09:42.141127 E1000#1: TX frames up to 7306: 0
+15:10:34.973   00:09:42.141130 E1000#1: TX frames up to 8754: 0
+15:10:34.973   00:09:42.141132 E1000#1: TX frames up to 16384: 0
+15:10:34.974   00:09:42.141134 E1000#1: TX frames up to 32768: 0
+15:10:34.974   00:09:42.141137 E1000#1: Larger TX frames    : 0
+15:10:34.975   00:09:42.141139 E1000#1: Max TX Delay        : 0
+15:10:34.975   00:09:42.144750 GIM: HyperV: Resetting MMIO2 regions and MSRs
+15:10:34.976   00:09:42.147640 vmmR3LogFlusher: Terminating (VERR_OBJECT_DESTROYED)
+15:10:34.976   00:09:42.147869 Changing the VM state from 'DESTROYING' to 'TERMINATED'
+15:10:34.977   00:09:42.147898 Console: Machine state changed to 'PoweredOff'
+15:10:34.977   00:09:42.148020 VBoxHeadless: processEventQueue: VERR_INTERRUPTED, termination requested
+15:10:34.978   00:09:42.353497 VBoxHeadless: exiting
+15:10:34.979 --- VBox.log.2 last 18 lines (how that run ended) ---
+15:10:34.980   00:14:00.029479 E1000#1: Received frames   : 31
+15:10:34.980   00:14:00.029481 E1000#1: Transmitted frames: 470
+15:10:34.981   00:14:00.029484 E1000#1: TX frames up to 1514: 470
+15:10:34.981   00:14:00.029486 E1000#1: TX frames up to 2962: 0
+15:10:34.982   00:14:00.029489 E1000#1: TX frames up to 4410: 0
+15:10:34.982   00:14:00.029491 E1000#1: TX frames up to 5858: 0
+15:10:34.983   00:14:00.029494 E1000#1: TX frames up to 7306: 0
+15:10:34.983   00:14:00.029496 E1000#1: TX frames up to 8754: 0
+15:10:34.984   00:14:00.029499 E1000#1: TX frames up to 16384: 0
+15:10:34.984   00:14:00.029501 E1000#1: TX frames up to 32768: 0
+15:10:34.985   00:14:00.029504 E1000#1: Larger TX frames    : 0
+15:10:34.985   00:14:00.029507 E1000#1: Max TX Delay        : 0
+15:10:34.986   00:14:00.032136 GIM: HyperV: Resetting MMIO2 regions and MSRs
+15:10:34.986   00:14:00.034846 vmmR3LogFlusher: Terminating (VERR_OBJECT_DESTROYED)
+15:10:34.987   00:14:00.034947 Changing the VM state from 'DESTROYING' to 'TERMINATED'
+15:10:34.987   00:14:00.034974 Console: Machine state changed to 'PoweredOff'
+15:10:34.988   00:14:00.035093 VBoxHeadless: processEventQueue: VERR_INTERRUPTED, termination requested
+15:10:34.988   00:14:00.276902 VBoxHeadless: exiting
+15:10:34.989 --- reset/guru/triple markers across logs ---
+15:10:35.008   VBox.log: 129 hits
+15:10:35.014     L2993: 00:04:55.997109 VMMDev: Guest Log: 01:19:24.484209 displayconfig : GRAPHICS capability acquired by VBoxService
+15:10:35.015     L2995: 00:05:42.466965 GIMHv: BugCheck 50 {ffff8089415c7000, 0, fffff80756f72f40, 2}
+15:10:35.015     L3005: 00:05:44.780258 VMMDev: Guest Log: VBoxGuest: BugCheck! P0=0x50 P1=0xffff8089415c7000 P2=0x0 P3=0xfffff80756f72f40 P4=0x2
+15:10:35.016     L3007: 00:05:44.781357 Changing the VM state from 'RUNNING' to 'RESETTING'
+15:10:35.029   VBox.log.1: 8 hits
+15:10:35.030     L1848: 00:00:27.801955 GIMHv: BugCheck 50 {ffffd30979be1000, 0, fffff8001f262f40, 2}
+15:10:35.030     L1859: 00:00:29.999995 VMMDev: Guest Log: VBoxGuest: BugCheck! P0=0x50 P1=0xffffd30979be1000 P2=0x0 P3=0xfffff8001f262f40 P4=0x2
+15:10:35.031     L1865: 00:09:42.117584 Changing the VM state from 'RUNNING' to 'POWERING_OFF'
+15:10:35.031     L2328: 00:09:42.124946 Changing the VM state from 'POWERING_OFF' to 'OFF'
+15:10:35.051   VBox.log.2: 203 hits
+15:10:35.053     L3919: 00:12:45.519081 VMMDev: Guest Log: VBoxGuest: BugCheck! P0=0x50 P1=0xffffdd0ac6ce0000 P2=0x0 P3=0xfffff80272da2f40 P4=0x2
+15:10:35.053     L3921: 00:12:45.520942 Changing the VM state from 'RUNNING' to 'RESETTING'
+15:10:35.054     L4142: 00:13:59.763077 Changing the VM state from 'RUNNING' to 'POWERING_OFF'
+15:10:35.054     L4604: 00:14:00.018979 Changing the VM state from 'POWERING_OFF' to 'OFF'
+15:10:35.099   VBox.log.3: 1157 hits
+15:10:35.102     L9116: 03:24:42.926216 VMMDev: Guest Log: VBoxGuest: BugCheck! P0=0x50 P1=0xfffffa81168ff000 P2=0x0 P3=0xfffff80019702f40 P4=0x2
+15:10:35.103     L9118: 03:24:42.927831 Changing the VM state from 'RUNNING' to 'RESETTING'
+15:10:35.104     L9324: 03:25:45.064355 Changing the VM state from 'RUNNING' to 'POWERING_OFF'
+15:10:35.104     L9786: 03:25:45.319677 Changing the VM state from 'POWERING_OFF' to 'OFF'
+15:10:35.105 VERDICT: diagnostics only

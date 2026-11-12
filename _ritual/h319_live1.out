@@ -1,0 +1,13 @@
+00:33:11.402 ===== h319 live watch r1 - driver loaded, no inject =====
+00:33:11.425 driver RUNNING=True
+00:34:01.575 ALIVE pid=28620 start=00:33:59 jav=0
+00:34:11.656 tick pid=28620 jav=0
+00:35:11.766 tick pid=28620 jav=0
+00:36:11.869 tick pid=28620 jav=0
+00:37:11.964 tick pid=28620 jav=0
+00:38:12.081 tick pid=28620 jav=0
+00:39:12.185 tick pid=28620 jav=0
+00:40:12.281 tick pid=28620 jav=0
+00:40:34.381 DEAD pid=28620 javelin_events=1 last_javelin=00:40:22
+00:40:34.382 RESULT: DIED - Javelin kill event present
+00:40:34.384 VERDICT: game died with driver loaded, javelin fired (00:40:22)

@@ -1,0 +1,6 @@
+$ErrorActionPreference = 'Continue'
+$py = 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe'
+$sc = 'C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_image.py'
+$out = 'C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_image1.txt'
+& $py $sc ("--out=" + $out) '--data' '--watch' '--no-elevate' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_qk_image_err.txt'
+"exit=$LASTEXITCODE" | Add-Content -LiteralPath 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_qk_image_err.txt'

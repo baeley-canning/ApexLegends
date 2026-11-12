@@ -1,0 +1,31 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_explorer2.txt
+image-name override: b'explorer.exe\x00' (ImageFileName[15])
+target pid=11924
+  discovering DTB for pid 11924 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25)
+    name hits=112 chunks=454583 skipped=300903 rescued=676425
+    hit=0x19cae550: 2 frame candidate(s)
+      try frame@0x19cad9e8 dtb=0x656000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19cae708: 3 frame candidate(s)
+      try frame@0x19cad0f0 dtb=0x100000000 -> no PE
+      try frame@0x19cad9e8 dtb=0x656000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19cae7d8: 3 frame candidate(s)
+      try frame@0x19cad0f0 dtb=0x100000000 -> no PE
+      try frame@0x19cad9e8 dtb=0x656000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19cae8a0: 2 frame candidate(s)
+      try frame@0x19cae2a8 dtb=0x100000000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19cae9e8: 2 frame candidate(s)
+      try frame@0x19cae2a8 dtb=0x100000000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19caead8: 2 frame candidate(s)
+      try frame@0x19cae2a8 dtb=0x100000000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19caebd0: 2 frame candidate(s)
+      try frame@0x19cae2a8 dtb=0x100000000 -> no PE
+      try frame@0x19cae720 dtb=0x95d000 -> no PE
+    hit=0x19caedf8: 1 frame candidate(s)

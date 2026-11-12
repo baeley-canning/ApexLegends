@@ -1,0 +1,20 @@
+ov5 - T4 config persistence - 2026-11-06 21:19:47
+---- ov_rt.ini (dedicated round-trip file: write then re-read) ----
+aimbot=true
+esp=false
+esp_boxes=true
+esp_lines=true
+esp_names=false
+glow=true
+recoil=false
+
+---- apexcheat.ini in the scratch CWD (written by the LIVE menu ENTER path: SharedMenuConfig - FlushFeatureToggles) ----
+aimbot=false
+esp=true
+esp_boxes=true
+esp_lines=true
+esp_names=true
+glow=true
+recoil=false
+
+RESULT: PASS - seven feature keys written and re-read (round-trip file), and the live menu toggle flushed the same keys through the payload path

@@ -1,0 +1,6 @@
+# Experiment source reference, no executable decoder / evidence only.
+#
+# request: NtQuerySystemInformation(79), result was 0xC0000004 every shape tried.
+# The buffer was retained raw in temp/_h392_mapping.txt.  No local marker or
+# r5apex PE was validated. Numerical PFN-shaped values must not drive another
+# read. `docs/probes/h392_mapping_experiment.py` returns the receipt instead.

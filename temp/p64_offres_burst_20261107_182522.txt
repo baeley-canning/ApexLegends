@@ -1,0 +1,31 @@
+# p64_pairs 2026-11-07 18:25:22 band=full win=0x100 min=3
+SEED 2 clusters from p64_offline_seed.txt
+SEED100 7 of 7 members near 100.0f
+STABLE 2 of 2
+GO  <- start THROWING now: frag 1 strips the armour, frag 2 takes health
+PRE 0x6c6af0864 100/100/100/100
+PRE 0x6607b9f78 100/100/100
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 1 [RECOVER] clusters=2 chg=0 t=0.1s
+NADE 2 NOW  <- THROW at your feet (1 strips armour, 2 takes health)
+shot 2 [THROW] clusters=2 chg=1 t=0.5s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 3 [RECOVER] clusters=2 chg=1 t=0.6s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 4 [RECOVER] clusters=2 chg=1 t=0.6s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 5 [RECOVER] clusters=2 chg=0 t=0.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 6 [RECOVER] clusters=2 chg=0 t=0.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 7 [RECOVER] clusters=2 chg=0 t=0.8s
+shot 8 [STILL] clusters=2 chg=0 t=0.9s
+shot 9 [STILL] clusters=2 chg=0 t=0.9s
+MOVED 1 of 2
+MOVE 0x6c6af0864 amp=1120403456.0 0x0:100/100/100/100/100/100/100/100/100/100 0x28:100/100/70/40/0/0/0/0/0/0 0x50:100/100/100/100/100/100/100/100/100/100 0x78:100/100/100/100/100/100/100/100/100/100
+CANDIDATES 1
+CAND base=0x6c6af0864 health=0x6c6af088c drop=40.0 at shot4 offs=0x0,0x28,0x50,0x78
+TRACE 0x6c6af0864 0x0:100/100/100/100/100/100/100/100/100/100 0x28:100/100/70/40/0/0/0/0/0/0 0x50:100/100/100/100/100/100/100/100/100/100 0x78:100/100/100/100/100/100/100/100/100/100
+EVI 1 exact 100->0 runs -> p64_evi_20261107_182526.txt
+VERDICT cluster
+SEEDOUT p64_offseed_burst.txt n=1

@@ -1,0 +1,19 @@
+20:46:19.203 ===== h313 PE diff 2026-11-06 20:46:19 =====
+20:46:19.331 drv64.dll sha256=F5392EAED2A4B73DBAA31F75371B5341CDA26262677B2DD6D821CD2FA698E759
+20:46:19.348 --- PE facts (failing: NalDrv/RTCore64/ATSZIO/zapexdrv vs loading: Gdrv/AsIO3/DBUtilDrv2) ---
+20:46:19.396   zapexdrv.sys <- NOT-IN-CSV sha1=3CED4A45ABC1
+20:46:19.407     machine=0x8664 nsec=5 subsys=1 dllchar=0x0160 cksum=0x0000DA3C ep=0x39A0 base=0x140000000
+20:46:19.414     secalign=0x1000 filealign=0x200 imgsize=0x9000 nrva=16 sizeOpt=240
+20:46:19.416     sections: .text[v3026 a1000 r3200 f68000020] .rdata[v6E8 a5000 r800 f48000040] .data[v58 a6000 r200 fC8000040] .pdata[v1E0 a7000 r200 f48000040] INIT[v3D2 a8000 r400 fCA000040]
+20:46:19.417     dirs: imp=0x8000/0x28 exc=0x7000/0x1E0 dbg=0x51C8/0x1C iat=0x5000/0x100
+20:46:19.419   DBUtilDrv2.sys <- NOT-IN-CSV sha1=90A76945FD2F
+20:46:19.420     machine=0x8664 nsec=7 subsys=1 dllchar=0x4160 cksum=0x00011EE8 ep=0x24E0 base=0x140000000
+20:46:19.421     secalign=0x1000 filealign=0x200 imgsize=0x9000 nrva=16 sizeOpt=240
+20:46:19.421     sections: .text[v1CB9 a1000 r1E00 f68000020] .rdata[v798 a3000 r800 f48000040] .data[v390 a4000 r200 fC8000040] .pdata[v1C8 a5000 r200 f48000040] PAGE[v9FC a6000 rA00 f60000020] INIT[v4D8 a7000 r600 f62000020] .reloc[v2C a8000 r200 f42000040]
+20:46:19.422     dirs: imp=0x71F0/0x50 exc=0x5000/0x1C8 SEC=0x4000/0x2178 rel=0x8000/0x2C dbg=0x3170/0x38 lc=0x31B0/0x108 iat=0x3000/0xB0
+20:46:19.423 --- Defender state (read-only) ---
+20:46:19.843   Get-MpPreference failed: Operation failed with the following error: 0x800106ba
+20:46:19.888   RealTime=False Amsvc=False Behavior=False
+20:46:19.910   no MpThreatDetection rows
+20:46:19.911 RESULT: PE diff written - compare dllchar/checksum/sections/dirs rows of FAIL vs LOAD sets above
+20:46:19.912 VERDICT: PE-DIFF - whatever column splits {NalDrv,RTCore64,ATSZIO,zapexdrv} from {Gdrv,AsIO3,DBUtilDrv2} is the 0xC000009A discriminator; report to lead, no fix attempted

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "context-engineering": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/context-engineering/SKILL.md",
+      "computedHash": "7cea895d30d9b519abb3ddd7562d26ef91590ab4022d1460fed6ad70c264599a"
+    },
+    "cpp-pro": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/cpp-pro/SKILL.md",
+      "computedHash": "573e4dc3bc80d2a1889aa481af0d65b111c5dc96a15a3bb2b897beb5342b6ea2"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+    },
+    "handoff": {
+      "source": "rohitg00/agentmemory",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/handoff/SKILL.md",
+      "computedHash": "beeb4303d875158ad765cdd7b678cd4fd43378c3c0b727df32a46db8aac141aa"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "computedHash": "b7b6e98c3bffe371893bdb69845ec61124a65b6a96313dc8d6a2bce4437b13eb"
+    },
+    "token-budget-advisor": {
+      "source": "affaan-m/ecc",
+      "sourceType": "github",
+      "skillPath": "skills/token-budget-advisor/SKILL.md",
+      "computedHash": "253cbaa56cd9e34ccdb1387ce090921a2968dc6f18953cc544374d143fae5c0c"
+    },
+    "what-context-needed": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/what-context-needed/SKILL.md",
+      "computedHash": "9a7c2542d4fc0e2868de10c2254b3f7b24b406501e3dd35f27d254fddf0f8367"
+    }
+  }
+}

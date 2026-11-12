@@ -1,0 +1,124 @@
+h313 T2 - STUB FACTS: what the v13 map path ACTUALLY implements, vs the measured apexcheat.dll PE
+================================================================================================
+Written 2026-11-06 (lane-m, Phase 1 T2). Sources read line-by-line: driver\apexdrv.c (v13 image
+sha256 E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C), src\kernel_injector.cpp,
+src\manual_map.cpp, launcher\launcher_main.cpp, plus the payload entry path read-only
+(src\main.cpp, src\application.cpp, src\memory.cpp, src\hooks.cpp). Measured PE facts from
+h312_headers.out / h312_imports.out / h312_tls.out / h312_loadcfg.out (build\apexcheat.dll,
+14:29 build, sha256 FB5B19FF68579B92B5A865F18113A800D49699E4BC272EB771ECD38692932765).
+
+WHO MAPS WHAT (the layer that matters):
+- The chain runs: apex_launcher --inject --method=kernel --pid <t> --driver zapexdrv.sys --dll
+  <payload> --manual-map --no-sticky. launcher parses --manual-map and dispatches
+  method=kernel to KernelInjector (injection method KernelDriver=2, injector.h:59).
+- kernel_injector.cpp:302-313 builds APEXDRV_INJECT_REQUEST with Flags =
+  RESOLVE_IN_TARGET | STUB_ROUTINE | EX_LOADER (+ MANUAL_MAP when --manual-map, line 307).
+  The DRIVER does the entire PE map (apexdrv.c:1493 -> ApexdrvManualMap); kernel_injector only
+  fills DllPath, retries up to 6 threads (kernel_injector.cpp:322-336) and PRINTS the out
+  block (kernel_injector.cpp:416-424: "map: base=... step= ... entryResult= entryFlag= relocs=
+  imports= unresolved=[] tls="; 436-438: mapped = manualMap && MapBase!=0 && entryFlag!=0 &&
+  entryResult!=0).
+- src\manual_map.cpp (ManualMapper::Map, the A7 USER-MODE rung, injector.h:61) is NOT in this
+  path at all; it is a separate CreateRemoteThread mapper that even LoadLibraryA's missing
+  dependencies (manual_map.cpp:73-144). h311/h312 never call it. All facts below = DRIVER's.
+
+1) BASE RELOCATIONS - IMPLEMENTED, DIR64 only, skipped entirely when delta==0
+- apexdrv.c:1314-1333: only if (delta != 0 && relocRva != 0 && relocSize != 0), walks
+  IMAGE_BASE_RELOCATION blocks, and for type==10 (IMAGE_REL_BASED_DIR64) adds delta.
+  MapRelocCount++ per applied entry (apexdrv.c:1328).
+- Allocation: preferred base first, else anywhere (apexdrv.c:1290-1310). h311 measured
+  base=0x180000000 == preferredBase -> delta=0 -> relocs=0 applied.
+- MEASURED apexcheat.dll: reloc dir 0xA50 bytes, SizeOfImage 0x59000, preferred 0x180000000.
+  HANDLED: yes. At the preferred base the pass is a no-op BY DESIGN (h311's relocs=0 is
+  expected, not a skip); if the allocator falls back, only DIR64 entries are fixed - every
+  absolute pointer in an x64 DLL is DIR64, so the pass is sufficient for this image.
+  High-startup type-0 padding entries are ignored, which is correct.
+
+2) IAT RESOLUTION - IMPLEMENTED, kernel-side, target-module-based, FIRST failure names the DLL
+- apexdrv.c ApexdrvPatchImports (1063-1180): walks import descriptors from the POOL image,
+  thunks bounded by (imageSize - thunkRva)/8; name-by-hint or ordinal; resolves each export by
+  walking the TARGET's PEB->Ldr module list (ApexdrvFindModuleBaseByName) and the target
+  module's export table in-target (ApexdrvResolveExportEntry + forwarder chains, depth-capped).
+  Writes *(ULONG64*)(image + ftRva + i*8) = target address, MapImportCount++ (apexdrv.c:1175-76).
+- On ANY unresolved import: ApexdrvRecordUnresolved (apexdrv.c:1029-1058) fills
+  MapUnresolvedName = "<dll>!<name|#ord>", sets MapStatus = APEXDRV_MAP_STEP_IMPORTS (9,
+  set at apexdrv.c:1087), but does NOT abort: the write and entry call still run so the run
+  measures (apexdrv.c:1352-1363; a clean pass resets MapStatus to 0).
+- MEASURED apexcheat.dll: IAT = KERNEL32(105) + USER32(12) ONLY (h312_imports.out).
+  HANDLED: yes - regedit loads both KERNEL32 and USER32, and the resolver walks the target's
+  real bases, so all 117 thunks should resolve and print imports=117 unresolved=[].
+  RISK: the resolver resolves against whatever the TARGET has loaded. d3d11/d3d12/dxgi/d3d9/
+  d3dcompiler_47 are LoadLibrary strings in the payload, NOT imports - they are the payload's
+
+3) TLS DIRECTORY - NOT PROCESSED AT ALL (deliberate stub field)
+- request->MapTlsUsed is initialised to 0 (apexdrv.c:1441) and NOTHING in the driver ever
+  writes it again - no TLS directory parse, no index assignment, no TEB slot, no callbacks
+  run. The launcher prints tls=<MapTlsUsed> (kernel_injector.cpp:424), so tls=0 ALWAYS,
+  regardless of the payload.
+- MEASURED apexcheat.dll: TLS dir rva 0x47480 size 0x28, 8 B raw data, index ptr field,
+  callbacks array present but EMPTY (h312_tls.out: zero callbacks).
+  HANDLED: callbacks EMPTY means never running them is harmless. The 8 B of raw TLS data is
+  per-thread state the LOADER would copy into TEB->ThreadLocalStoragePointer; nothing does that
+  here, and the index dword the loader would fill keeps its linked value. FAILURE MODE TO
+  EXPECT if the CRT touches __declspec(thread) state before DllMain returns: a fault inside
+  the entry => entryFlag stays 0x0 while base/imports look right => suspect TLS first, read
+  the target minidump (the cur_ chain's FAIL branch words exactly this).
+
+4) GUARD-CF LOAD-CONFIG POINTERS - NOT PATCHED, only the /GS cookie is seeded
+- apexdrv.c:1335-1350: reads the load config dir (opt+0xC0/0xC4, index 10) and ONLY for
+  the SecurityCookie (loadCfgRva+0x58): rewrites it to 0x00002B992DDFA232 ^ actualBase.
+  GuardFlags / GuardCFFunctionTable / GuardCFCheckFunctionPointer / GuardCFDispatchFunction
+  Pointer are NEVER read or written by the driver.
+- MEASURED apexcheat.dll (h312_loadcfg.out): Guard Flags 0x100 (CF_INSTRUMENTED), check
+  ptr 0x1800383B8, dispatch ptr 0x1800383C8, function table 0-count (empty).
+  HANDLED: sufficient, by measurement, AT THE PREFERRED BASE. The check/dispatch pointers
+  are VAs of linker thunks INSIDE the image; at base 0x180000000 (delta=0, no reloc pass)
+  they already point at the right in-image thunks, so the entry can run without ntdll ever
+  patching CFG. A 0-count function table means Ldrp's CFG validation pass would be a no-op
+  even under a real loader. If the allocator falls back to another base, the DIR64 reloc
+  pass (1) fixes those pointers as ordinary absolutes and the cookie is re-seeded here -
+
+5) ENTRY CALL + DONE FLAG - IMPLEMENTED, v13 layout, proven by h311
+- Stub build: ApexdrvStampMapStub (apexdrv.c:197-218), 64 B code + 32 B data. Bytes: magic
+  0x4870 -> data +64; rcx -> +72; mov rax,<entry>; mov edx,1 (DLL_PROCESS_ATTACH, a 32-bit
+  store on purpose, apexdrv.c:188-191); xor r8d,r8d; sub rsp,28h; call rax; add rsp,28h;
+  mov [result] rax -> +80; mov dword [DONE=0x4871] -> +88; ret (to KiUserApcDispatcher).
+- Entry chosen: request->ResolvedLoadLibrary = mapBase + mapEntryRva (apexdrv.c:1502) =
+  _DllMainCRTStartup (the measured entry), NOT the payload's DllMain directly.
+- Delivery: user-mode APC (KeInitializeApc/KeInsertQueueApc, apexdrv.c:247-257),
+  NormalContext = mapBase (apexdrv.c:1600) -> RCX at entry, so RCX==MapBase is the plumbing check.
+- Read-back: the driver polls StubBase+64..+96 for 100 x 100 ms (apexdrv.c:1705-1726),
+  breaking when the DONE slot != 0; StubEntered/StubRcx/MapEntryResult/MapEntryFlag ride the
+  IOCTL out block. entryFlag=0x4871 + entryResult=1 = DllMain returned TRUE and the stub
+  returned to the APC dispatcher.
+- MEASURED apexcheat.dll: entry _DllMainCRTStartup -> CRT init -> main.cpp DllMain
+  (DisableThreadLibraryCalls, new Application, CreateThread, return TRUE - main.cpp:29-54).
+  HANDLED: the CALL itself is proven (h311 end-to-end). The unmeasured part is the CRT init
+  between stub-entry and DllMain: __security_init_cookie is covered by (4); TLS is (3).
+
+PAYLOAD BEHAVIOUR IN A NON-GAME HOST (for h314, read-only sources):
+- main.cpp DllMain returns TRUE immediately after CreateThread(ApplicationThreadProc).
+- The worker thread: LogInit -> %LOCALAPPDATA%\QwenKern\payload_<pid>.log (the oracle the
+  chain greps for), CreateCoreComponents, LoadConfiguration (ConfigManager("apexcheat.ini")
+  may WRITE a default apexcheat.ini into the TARGET's CWD), MemoryReader::Initialize(own
+  pid) = OpenProcess(self) -> succeeds in regedit; GetGameModuleBase=0 -> validation skips;
+  InstallHooks (hooks.cpp:320-350) -> HookPresentDXGI creates a dummy window +
+  D3D11CreateDeviceAndSwapChain (loads d3d11/dxgi INTO regedit), patches
+  IDXGISwapChain::Present, then Application::Run loops at ~100 Hz with no game modules to
+  read. EXPECTED: payload inert-but-alive, entryResult=1, regedit survives, oracle written.
+  If InstallHooks fails, Initialize returns false -> "payload is inert", thread exits -
+  DllMain already returned TRUE either way, so the MAP verdict is unaffected.
+
+SUMMARY TABLE (measured PE fact -> driver v13 handling)
+  relocs 0xA50, preferred 0x180000000  -> DIR64 pass, no-op at preferred base   = handled
+  IAT KERNEL32(105)+USER32(12)         -> in-target resolver, step 9 names miss = handled
+  TLS dir present, callbacks EMPTY      -> nothing processed, tls=0 always     = accepted risk
+  GuardCF flags 0x100, table empty     -> only cookie seeded; check/dispatch
+                                           are in-image VAs                    = sufficient
+  entry _DllMainCRTStartup              -> APC stub calls (base,1,NULL), stamps
+                                           RAX then 0x4871                     = proven (h311)
+VERDICT: STUB FACTS - the only UNHANDLED payload features are TLS per-thread data (index slot
+never assigned; callbacks empty so none to run) and Guard-CF table patching (table empty so
+nothing to patch); both are measured-empty on the 14:29 build, so a step-9/entryFlag failure
+in h314 points at the payload init (TLS/CRT), not the delivery path, and any fix belongs
+launcher/stub-side per the lead's constraint - driver edits stay VM-first with lead approval.

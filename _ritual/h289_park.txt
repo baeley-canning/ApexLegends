@@ -1,0 +1,15 @@
+15:32:02.274 === h289 park: swap cur.ps1 to a read-only park payload (variable: payload content) ===
+15:32:02.323 pre vm: VMState=running GuestAdditionsRunLevel=0
+15:32:02.869 pre listener 8080: count=1 pid=17972
+15:32:02.958 pre cur.ps1: 33301b 06/11 14:33:58 sha=9C269166FED2255444CDB71A36D43B991C92269CB356514FA785B6C7EF6B1A3B
+15:32:02.959 pre backup: absent (will create)
+15:32:02.961 src park payload: 6937b sha=F26C36EC2AA26EC55BE3ED749B062EAE4445E11EFBF319FF6C3C164819D106CA
+15:32:02.966 backup written: cur_h289_live.ps1 sha=9C269166FED2255444CDB71A36D43B991C92269CB356514FA785B6C7EF6B1A3B
+15:32:02.967 deployed: cur.ps1 now 6937b sha=F26C36EC2AA26EC55BE3ED749B062EAE4445E11EFBF319FF6C3C164819D106CA
+15:32:03.003 http read-back: ok bytes=6937 sha=F26C36EC2AA26EC55BE3ED749B062EAE4445E11EFBF319FF6C3C164819D106CA
+15:32:03.003   marker "PARK payload" in served bytes: yes
+15:32:03.004   served == local: True
+15:32:03.180 post listener 8080: count=1 pid=17972
+15:32:03.182 revert command: Copy-Item -LiteralPath 'C:\p37vm\payload\cur_h289_live.ps1' -Destination 'C:\p37vm\payload\cur.ps1' -Force
+15:32:03.183 RESULT: PASS - guest tick will now pull the park payload (variable: cur.ps1 content)
+15:32:03.184 VERDICT: served bytes hash-match the park payload; listener alive; next boot reports its own crash evidence

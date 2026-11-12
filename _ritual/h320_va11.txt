@@ -1,0 +1,10 @@
+h320_va needle=r5apex_dx12.ex secs=120 hz=1 screen=2560x1440
+02:39:08 start 2026-11-07 02:39:08
+02:39:09 pid=23164
+02:39:09 rammap map=5 bad=25 ranges=5
+02:40:52 name hits=7 skipped=256424 chunks=454583 rescued=670472
+02:40:52 dtb candidates=1
+02:40:53 cand dtb 0004E47FC000 ebase=0002F44C0080 score=14
+02:40:54 dtb 0004E47FC000: walk fault [Errno 1450] phys read 0x4e47fc000+0x1000 failed
+02:40:54 discover FAIL: no accepting dtb
+02:40:54 VERDICT: FAIL no dtb (no accepting dtb)

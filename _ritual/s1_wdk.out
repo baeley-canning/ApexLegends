@@ -1,0 +1,735 @@
+S1 WDK/ANCHOR RECON 2026-11-07 18:50:56
+=== WDK include versions ===
+10.0.19041.0
+10.0.26100.0
+wdf
+=== WDK km headers: EPROCESS/VAD surface ===
+--- ntifs.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 0 hit(s)
+PAT UniqueProcessId -> 0 hit(s)
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 0 hit(s)
+PAT MmCopyMemory -> 0 hit(s)
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 1 hit(s)
+L19445: SeLocateProcessImageName(
+--- ntddk.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 1 hit(s)
+L74: typedef struct _EPROCESS *PEPROCESS;
+PAT UniqueProcessId -> 2 hit(s)
+L5589: ULONG_PTR UniqueProcessId;
+L5590: ULONG_PTR InheritedFromUniqueProcessId;
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 0 hit(s)
+PAT MmCopyMemory -> 1 hit(s)
+L10799: MmCopyMemory (
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 0 hit(s)
+--- wdm.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 1 hit(s)
+L84: typedef struct _EPROCESS *PEPROCESS;
+PAT UniqueProcessId -> 0 hit(s)
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 2 hit(s)
+L39509: CommonBufferConfigTypeSubSection,
+L39534: } SubSection;
+PAT MmCopyMemory -> 0 hit(s)
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 0 hit(s)
+=== apexdrv.c copies ===
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c
+PICK C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c (1828 lines)
+--- APEXDRV_VERSION ---
+L1928: case IOCTL_APEXDRV_VERSION:
+L1929: if (inputLength >= sizeof(APEXDRV_VERSION_INFO) &&
+L1931: PAPEXDRV_VERSION_INFO info =
+L1932: (PAPEXDRV_VERSION_INFO)irp->AssociatedIrp.SystemBuffer;
+L1933: info->Version  = APEXDRV_VERSION;
+L1935: information = sizeof(APEXDRV_VERSION_INFO);
+--- IOCTL_APEXDRV ---
+L6: // IOCTL_APEXDRV_INJECT(ProcessId, LoadLibraryAddress, DllPath):
+L14: // IOCTL_APEXDRV_PROBE(ProcessId) � kernel-context reachability probe (Q10):
+L1383: // IOCTL_APEXDRV_INJECT
+L1760: // IOCTL_APEXDRV_PROBE � does the target accept work issued from KERNEL context?
+L1841: // IOCTL_APEXDRV_TARGETINFO (v4) � read-only loader facts about one target.
+L1928: case IOCTL_APEXDRV_VERSION:
+L1942: case IOCTL_APEXDRV_INJECT:
+L1958: case IOCTL_APEXDRV_PROBE:
+L1969: case IOCTL_APEXDRV_TARGETINFO:
+--- ApexdrvReadProcessMemory ---
+L90: static NTSTATUS ApexdrvReadProcessMemory(PEPROCESS process, PVOID baseAddress,
+L1526: request->StatusEchoRead = ApexdrvReadProcessMemory(process, remoteBuffer,
+L1641: request->StatusEchoAfter = ApexdrvReadProcessMemory(
+L1690: request->StatusEchoAfter = ApexdrvReadProcessMemory(
+L1714: if (NT_SUCCESS(ApexdrvReadProcessMemory(
+L1729: if (NT_SUCCESS(ApexdrvReadProcessMemory(process,
+--- ApexdrvWriteProcessMemory ---
+L71: static NTSTATUS ApexdrvWriteProcessMemory(PEPROCESS process, PVOID baseAddress,
+L1366: status = ApexdrvWriteProcessMemory(process, (PVOID)(ULONG_PTR)actualBase, image, imageSize);
+L1515: status = ApexdrvWriteProcessMemory(process, remoteBuffer,
+L1580: status = ApexdrvWriteProcessMemory(process, stubBuffer, stubImage, stubSize);
+L1814: ApexdrvWriteProcessMemory(process, remoteBuffer, &pattern,
+--- ApexdrvProbeProcess ---
+L1773: static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
+L1961: status = ApexdrvProbeProcess(
+--- ApexdrvWalkModules ---
+L417: static NTSTATUS ApexdrvWalkModules(PEPROCESS process, PAPEXDRV_LDR_INFO info) {
+L1458: status = ApexdrvWalkModules(process, &targetInfo);
+L1467: status = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+L1650: if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+L1670: status = ApexdrvWalkModules(process, &targetInfo);
+L1742: if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+L1871: request->StatusWalk     = ApexdrvWalkModules(process, &targetInfo);
+L1872: request->StatusSelfWalk = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+--- MmGetSystemRoutineAddress ---
+L35: // So it is resolved once at first use through MmGetSystemRoutineAddress, which
+L262: // The obvious route - ZwCreateThreadEx resolved with MmGetSystemRoutineAddress -
+L265: // MmGetSystemRoutineAddress returns NULL and the ioctl used to fail with
+L575: cached = (APEXDRV_PFN_GET_THREAD_TEB)MmGetSystemRoutineAddress(&routineName);
+--- PsGetProcessPeb ---
+L56: NTKERNELAPI PPEB NTAPI PsGetProcessPeb(PEPROCESS Process);
+L427: peb = PsGetProcessPeb(process);
+L815: peb = PsGetProcessPeb(process);
+L1799: request->PebAddress = (ULONG64)(ULONG_PTR)PsGetProcessPeb(process);
+--- KeStackAttachProcess ---
+L68: // ZwWriteVirtualMemory nor NtWriteVirtualMemory, and KeStackAttachProcess is
+L76: KeStackAttachProcess(process, &apcState);
+L95: KeStackAttachProcess(process, &apcState);
+L359: // KeStackAttachProcess inside __try/__except, so a target that unloads a module
+L430: KeStackAttachProcess(process, &apcState);
+L492: KeStackAttachProcess(process, &apcState);
+L612: KeStackAttachProcess(process, &apcState);
+L818: KeStackAttachProcess(process, &apcState);
+L861: KeStackAttachProcess(process, &apcState);
+L1844: // KeStackAttachProcess in the requesting thread's context (PASSIVE_LEVEL), and
+--- ApexdrvOpenProcess ---
+L659: static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle,
+L1448: status = ApexdrvOpenProcess(request->ProcessId, &processHandle, &process);
+=== apex_driver_ioctl.h ===
+HDR C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\include\apex_driver_ioctl.h
+L17: #define APEXDRV_SERVICE_NAME    L"apexdrv"
+L18: #define APEXDRV_DEVICE_NAME     L"\\Device\\ApexDrv"
+L19: #define APEXDRV_SYMLINK_NAME    L"\\DosDevices\\ApexDrv"
+L20: #define APEXDRV_WIN32_NAME      L"\\\\.\\ApexDrv"
+L23: #define APEXDRV_DEVICE_TYPE    0x8A70
+L30: #define IOCTL_APEXDRV_INJECT \
+L33: #define IOCTL_APEXDRV_VERSION \
+L44: #define IOCTL_APEXDRV_PROBE \
+L52: #define IOCTL_APEXDRV_TARGETINFO \
+L56: #define APEXDRV_FLAG_NONE       0x00000000
+L57: #define APEXDRV_FLAG_APC_ONLY   0x00000001  // queue an APC instead of creating a thread
+L65: #define APEXDRV_FLAG_RESOLVE_IN_TARGET  0x00000002
+L67: #define APEXDRV_MAX_PATH_CHARS  260
+L70: #define APEXDRV_MAX_MODULE_NAME_CHARS 64
+L71: // 2 = added IOCTL_APEXDRV_PROBE (Q10).  A driver older than the launcher simply
+L78: // 4 = added IOCTL_APEXDRV_TARGETINFO plus the inject result fields (module count
+L119: //     status.  IOCTL_APEXDRV_INJECT now completes as STATUS_SUCCESS and carries the real NTSTATUS
+L134: #define APEXDRV_VERSION         13
+L137: #define APEXDRV_FLAG_STUB_ROUTINE  0x00000004
+L140: #define APEXDRV_FLAG_EX_LOADER     0x00000008
+L143: #define APEXDRV_FLAG_MANUAL_MAP    0x00000010
+L148: #define APEXDRV_PROBE_BYTES     32
+L160: typedef struct _APEXDRV_INJECT_REQUEST {
+L224: typedef struct _APEXDRV_VERSION_INFO {
+L227: } APEXDRV_VERSION_INFO, *PAPEXDRV_VERSION_INFO;
+L229: // One request/response for IOCTL_APEXDRV_TARGETINFO (v4).  Read-only: nothing in
+L241: typedef struct _APEXDRV_TARGETINFO_REQUEST {
+L264: // One request/response for IOCTL_APEXDRV_PROBE.  Every Status* field carries an
+L268: typedef struct _APEXDRV_PROBE_REQUEST {
+=== BuildDriver.ps1 (head 140) ===
+BUILD C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\tools\BuildDriver.ps1
+# ============================================================================
+# tools\BuildDriver.ps1 — build apexdrv.sys with the INSTALLED WDK.
+#
+# Why not msbuild driver\apexdrv.vcxproj:
+#   The WDK kit is installed (Windows Kits\10\Include\10.0.26100.0\km,
+#   Lib\...\km\x64, build\10.0.26100.0) but the Visual Studio *toolset*
+#   registration ("WindowsKernelModeDriver10.0") is not, so MSBuild stops with
+#   error MSB8020 before compiling anything.  Adding the VS component
+#   "Windows Driver Kit" fixes that; until then this script compiles with the
+#   same cl.exe/link.exe the toolset would use, with the same include/lib layout
+#   (km + km\crt + shared + um, exactly like WindowsDriver.KernelMode.props).
+#
+# Usage:  powershell -ExecutionPolicy Bypass -File tools\BuildDriver.ps1
+# Output: build\apexdrv.sys (x64, NATIVE subsystem, ntoskrnl.exe import)
+# ============================================================================
+[CmdletBinding()]
+param(
+    [ValidateSet('Debug', 'Release')] [string] $Configuration = 'Release'
+)
+
+$ErrorActionPreference = 'Stop'
+
+$RepoRoot  = Split-Path -Parent $PSScriptRoot
+$BuildDir  = Join-Path $RepoRoot 'build'
+$ObjDir    = Join-Path $BuildDir "obj\apexdrv\$Configuration"
+$Log       = Join-Path $BuildDir 'driver_build.log'
+$Source    = Join-Path $RepoRoot 'driver\apexdrv.c'
+$Output    = Join-Path $BuildDir 'apexdrv.sys'
+$Object    = Join-Path $ObjDir 'apexdrv.obj'
+
+New-Item -ItemType Directory -Force -Path $ObjDir | Out-Null
+
+function Find-MsvcTool([string] $name) {
+    $root = 'C:\BuildTools\VC\Tools\MSVC'
+    if (-not (Test-Path $root)) { $root = Join-Path $env:ProgramFiles 'Microsoft Visual Studio' }
+    $hits = @(Get-ChildItem $root -Recurse -Filter $name -ErrorAction SilentlyContinue |
+              Where-Object { $_.FullName -match 'Hostx64\\x64' } |
+              Sort-Object FullName)
+    if ($hits.Count -eq 0) { return $null }
+    return $hits[-1].FullName
+}
+
+function Find-KitVersion {
+    $root = 'C:\Program Files (x86)\Windows Kits\10\Include'
+    if (-not (Test-Path $root)) { return $null }
+    $versions = @(Get-ChildItem $root -Directory |
+                  Where-Object { Test-Path (Join-Path $_.FullName 'km') } |
+                  Sort-Object Name)
+    if ($versions.Count -eq 0) { return $null }
+    return $versions[-1].Name
+}
+
+$cl     = Find-MsvcTool 'cl.exe'
+$link   = Find-MsvcTool 'link.exe'
+$kit    = Find-KitVersion
+if (-not $cl -or -not $link) { throw 'MSVC cl.exe/link.exe not found (BuildTools VC tools missing)' }
+if (-not $kit)               { throw 'WDK km headers not found (install Microsoft.WindowsWDK.*)' }
+
+$IncRoot = 'C:\Program Files (x86)\Windows Kits\10\Include'
+$LibRoot = 'C:\Program Files (x86)\Windows Kits\10\Lib'
+$kmInc   = Join-Path $IncRoot "$kit\km"
+$kmLib   = Join-Path $LibRoot "$kit\km\x64"
+
+"=== DRIVER BUILD - $Configuration|x64 - $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ===" |
+    Set-Content -Encoding utf8 $Log
+"cl      : $cl"   | Add-Content -Encoding utf8 $Log
+"link    : $link" | Add-Content -Encoding utf8 $Log
+"kit     : $kit"  | Add-Content -Encoding utf8 $Log
+
+# /kernel        : kernel codegen (implies /GS- etc.)
+# /Zl            : do not embed a default CRT library name (we link kernel libs)
+# /external:*    : keep WDK header noise out of OUR warning budget
+$compileArgs = @(
+    '/nologo', '/c', "/Fo$Object",
+    '/W4', '/GS-', '/kernel', '/Zl', '/O2', '/DNDEBUG',
+    '/D_AMD64_', '/DAMD64', '/D_WIN64', '/DPOOL_NX_OPTIN=1', '/D_WIN32_WINNT=0x0A00',
+    "/I$kmInc", "/I$(Join-Path $IncRoot "$kit\km\crt")",
+    "/I$(Join-Path $IncRoot "$kit\shared")", "/I$(Join-Path $IncRoot "$kit\um")",
+    "/external:I$kmInc", "/external:I$(Join-Path $IncRoot "$kit\shared")",
+    "/external:W0",
+    "/I$(Join-Path $RepoRoot 'include')",
+    $Source
+)
+
+& $cl @compileArgs *>> $Log
+$compileExit = $LASTEXITCODE
+"CL_EXIT=$compileExit" | Add-Content -Encoding utf8 $Log
+if ($compileExit -ne 0) {
+    Get-Content $Log -Tail 40 | Write-Host
+    throw "driver compile failed (CL_EXIT=$compileExit); see $Log"
+}
+
+# Kernel libs only: ntoskrnl + hal + wdm (I/O manager support) + the two
+# static CRT helpers (BufferOverflowK for safe-* / libcntpr for wcslen etc.).
+$linkArgs = @(
+    '/nologo', '/DRIVER', '/SUBSYSTEM:NATIVE', '/MACHINE:X64',
+    '/ENTRY:DriverEntry', "/OUT:$Output", '/NODEFAULTLIB',
+    "/LIBPATH:$kmLib",
+    $Object, 'ntoskrnl.lib', 'hal.lib', 'wdm.lib', 'BufferOverflowK.lib', 'libcntpr.lib'
+)
+
+& $link @linkArgs *>> $Log
+$linkExit = $LASTEXITCODE
+"LINK_EXIT=$linkExit" | Add-Content -Encoding utf8 $Log
+if ($linkExit -ne 0) {
+    Get-Content $Log -Tail 40 | Write-Host
+    throw "driver link failed (LINK_EXIT=$linkExit); see $Log"
+}
+
+$warnings = @(Select-String -Path $Log -Pattern ': warning ' -ErrorAction SilentlyContinue)
+"warnings: $($warnings.Count)" | Add-Content -Encoding utf8 $Log
+$warnings | Select-Object -First 10 | ForEach-Object { "  $($_.Line.Trim())" | Add-Content -Encoding utf8 $Log }
+
+$artifact = Get-Item $Output
+"artifact: $($artifact.FullName) ($($artifact.Length) bytes)" | Add-Content -Encoding utf8 $Log
+Write-Host "DRIVER BUILD OK: $Output ($($artifact.Length) bytes, $($warnings.Count) warning(s))"
+exit 0
+=== _ritual h3x/cur/drvbuild/s1 files ===
+cur_h310_live.ps1
+cur_h312_live.ps1
+cur_h314_live.ps1
+cur_h315_live.ps1
+cur_h316_live.ps1
+h300_elev.ps1
+h300_elev.txt
+h301_elev.ps1
+h301_elev.txt
+h302_elev.ps1
+h302_elev.txt
+h303_session.ps1
+h303_session.txt
+h304_logon.ps1
+h304_logon.txt
+h305.cmd
+h305_elev.ps1
+h305_elev.txt
+h306.cmd
+h306_elev.ps1
+h306_elev.txt
+h307.cmd
+h307_elev.ps1
+h307_elev.txt
+h308.cmd
+h308_elev.ps1
+h308_elev.txt
+h310_dis.ps1
+h310_dis_raw.txt
+h310_dse6.ps1
+h310_dseprobe.ps1
+h310_find.txt
+h310_fix.ps1
+h310_go.ps1
+h310_go2.ps1
+h310_kd.txt
+h310_kd2.ps1
+h310_kd_raw.txt
+h310_mid.txt
+h310_mid2.txt
+h310_parse.txt
+h310_post.cmd
+h310_post.ps1
+h310_post.txt
+h310_pre.txt
+h310_relay.ps1
+h310_run.ps1
+h311_pass.log
+h312b_svc.ps1
+h312b_svc.txt
+h312_headers.out
+h312_imports.out
+h312_launch.out
+h312_loadcfg.out
+h312_pre.txt
+h312_run.ps1
+h312_tls.out
+h313_diag.out
+h313_diag.ps1
+h313_env.out
+h313_env.ps1
+h313_pe.out
+h313_pe.ps1
+h313_pe2.out
+h313_pre_state.out
+h313_pre_state.ps1
+h313_stub_facts.out
+h314_map.out
+h314_pre.txt
+h314_run.ps1
+h315_child.err
+h315_child.out
+h315_crash.txt
+h315_dump.out
+h315_dump.ps1
+h315_dumpchk.out
+h315_dumpchk.out.err
+h315_kd.out
+h315_kd.out.err
+h315_kd.ps1
+h315_kd.txt
+h315_kd_run.out
+h315_kd_usage.out
+h315_out_crashed_nul.out
+h315_pre.txt
+h315_run.ps1
+h315_watch.ps1
+h316_dse_park.out
+h316_dse_park.ps1
+h316_order_selftest.out
+h316_order_selftest.ps1
+h316_post.cmd
+h316_post.ps1
+h316_pre.txt
+h316_run.ps1
+h316_vmbench.out
+h316_vmbench.ps1
+h316_vmbench_r1.out
+h316_vmbench_r2.out
+h316_vmbench_r3_autorepair.out
+h316_vmbench_r4_noga.out
+h316_vmbench_r5_lock.out
+h316_vm_screen.png
+h316_vm_screen2.png
+h316_vm_screen3.png
+h316_watch.ps1
+h317_arm.out
+h317_arm.ps1
+h317_click.ps1
+h317_inject.ps1
+h317_javelin_clip.txt
+h317_post.cmd
+h317_post.ps1
+h317_screen1.png
+h317_screen2.png
+h317_screen3.jpg
+h317_screen4.jpg
+h317_screen5.jpg
+h317_screen6.jpg
+h317_shot.ps1
+h317_testB1.jpg
+h317_testB2.jpg
+h317_testB3.jpg
+h318_allocprobe.ps1
+h318_arm_dse6.ps1
+h318_decontam.out
+h318_decontam.ps1
+h318_early.out
+h318_early.ps1
+h318_early1.jpg
+h318_early2.jpg
+h318_early3.jpg
+h318_early4.jpg
+h318_final1.jpg
+h318_fire.out
+h318_fire_apx.out
+h318_fire_apx.ps1
+h318_fire_apx_r1.out
+h318_fire_on_sight.ps1
+h318_focus.ps1
+h318_inject.out
+h318_inject.ps1
+h318_launch1.jpg
+h318_launch2.jpg
+h318_launch3.jpg
+h318_menu.jpg
+h318_probe_read.txt
+h318_range2.jpg
+h318_relaunch1.jpg
+h318_reload.out
+h318_reload.ps1
+h318_sample.ps1
+h318_swap_v13.out
+h318_swap_v13.ps1
+h318_top.ps1
+h318_top1.jpg
+h318_top2.jpg
+h318_ui.ps1
+h318_x1.jpg
+h318_y1.jpg
+h318_z1.jpg
+h318_z2.jpg
+h319_fg.txt
+h319_fire_probe.out
+h319_fire_probe.ps1
+h319_live.ps1
+h319_live1.out
+h319_live2.out
+h319_live3.out
+h319_live4.out
+h319_live5.out
+h319_live6.out
+h319_pre.out
+h319_probe_state.txt
+h319_svc.ps1
+h320_fire_kprobe.out
+h320_fire_kprobe.ps1
+h320_pre.out
+h320_va.err
+h320_va.ps1
+h320_va.std
+h320_va1.txt
+h320_va10.txt
+h320_va11.txt
+h320_va12.txt
+h320_va13.txt
+h320_va2.txt
+h320_va3.txt
+h320_va4.txt
+h320_va9.txt
+h320_va_launch.trace
+h321_fire_kprobe.out
+h321_fire_kprobe.ps1
+h321_pre.out
+h321_suspendlive.ps1
+h322_dev_test.out
+h322_dev_test.ps1
+h322_handlemask.ps1
+h323_arm.out
+h323_dry.console
+h323_elevmask.ps1
+h323_fire_ioctl.out
+h323_fire_ioctl.ps1
+h324_allocprobe.ps1
+h325_memops.ps1
+h326_writethread.ps1
+h327_vadcensus.ps1
+h3_quiet.ps1
+h3_quiet.summary.txt
+h3_quiet.txt
+s1.txt
+s1_wdk.out
+s1_wdk.ps1
+_h518_drvbuild.ps1
+=== staging/ABI greps in _ritual + tools (first 24 each) ===
+--- zapexdrv ---
+cur_h310_live.ps1:203: Svc 'stop zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:204: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:221: W ('restore: svc=[' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|does not exist|FAI
+cur_h310_live.ps1:225: W ('pre svc: ' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|FAILED|does not exist' }) -
+cur_h310_live.ps1:238: $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apxprobe.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
+cur_h310_live.ps1:251: if (-not (Fetch 'zapexdrv.sys' $sys 4000)) { $missing += 'sys' }
+cur_h310_live.ps1:298: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:299: Svc ('create zapexdrv type= kernel start= demand binPath= ' + $sys) 8000 | Out-Null
+cur_h310_live.ps1:302: Svc 'start zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:303: $q = ((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -join ' ')
+cur_h310_live.ps1:306: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:307: Svc ('create zapexdrv type= kernel start= demand binPath= ' + $sys) 8000 | Out-Null
+cur_h310_live.ps1:340: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:343: # ToNtPath is innocent. What was left running is the DSE probe service "zapexdrv" - a
+cur_h310_live.ps1:349: Svc 'stop zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:350: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h310_live.ps1:351: W ('  zapexdrv after release: [' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|does not
+cur_h310_live.ps1:370: W ('post svc: ' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|FAILED' }) -join ' | ').Tr
+cur_h312_live.ps1:224: Svc 'stop zapexdrv' 8000 | Out-Null
+cur_h312_live.ps1:225: Svc 'delete zapexdrv' 8000 | Out-Null
+cur_h312_live.ps1:242: W ('restore: svc=[' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|does not exist|FAI
+cur_h312_live.ps1:246: W ('pre svc: ' + (((& "$env:SystemRoot\system32\sc.exe" query zapexdrv 2>&1) -split "`n" | Where-Object { $_ -match 'STATE|FAILED|does not exist' }) -
+cur_h312_live.ps1:259: $sys = "$d\zapexdrv.sys"; $exe = "$d\apex_launcher.exe"; $dll = "$d\apexcheat.dll"; $zdl = "$d\zapexcheat.dll"; $kdu = "$d\kdu.exe"
+cur_h312_live.ps1:272: if (-not (Fetch 'zapexdrv.sys' $sys 4000)) { $missing += 'sys' }
+--- System32\\drivers ---
+brute2.ps1:9: "$env:SystemRoot\System32\drivers\tcpip.sys" = '91277E39C4F76D6D0F296657AFE1702297CBC92051F38CCF2F72D3BD5A39997F'
+brute2.ps1:10: "$env:SystemRoot\System32\drivers\gdrv3.sys" = 'PLACEHOLDER_GDRV3'
+brute2.ps1:11: "$env:SystemRoot\System32\drivers\apexdrv.sys" = 'PLACEHOLDER_APEX'
+brute4.ps1:8: 'C:\WINDOWS\System32\drivers\gdrv3.sys'                         = 'C4C347210FADCE1EA25D621B2EC7D2365596861D|8BB3CEAB17A11A1FD7F5730B186DE382915A49D4
+brute5.ps1:8: $A = Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'
+brute6.ps1:93: $A = Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'
+brute7.ps1:82: $A = Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'
+catdef.ps1:10: $Paths = @("$env:SystemRoot\System32\drivers\tcpip.sys",
+catdef.ps1:11: "$env:SystemRoot\System32\drivers\gdrv3.sys",
+catdef.ps1:12: "$env:SystemRoot\System32\drivers\apexdrv.sys",
+cateng.ps1:156: foreach ($p in @($s6, (Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'), (Join-Path $env:SystemRoot 'System32\drivers\tcpip.sys'))) {
+cateng.ps1:159: $files += (Get-ChildItem -LiteralPath (Join-Path $env:SystemRoot 'System32\drivers') -Filter '*.sys' -ErrorAction SilentlyContinue |
+cateng_probe.ps1:6: $dos = @((Join-Path $d '_p25h_S6lan.sys'), (Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'), (Join-Path $env:SystemRoot 'System32\drivers\tc
+cateng_probe2.ps1:103: $tcp = Join-Path $env:SystemRoot 'System32\drivers\tcpip.sys'
+cateng_probe2.ps1:112: foreach ($f in @((Join-Path $d '_p25h_S6lan.sys'), (Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'))) {
+cateng_probe3.ps1:61: $ap = Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'
+cateng_probe4.ps1:98: $tcp = Join-Path $env:SystemRoot 'System32\drivers\tcpip.sys'
+cateng_probe4.ps1:100: $ap = Join-Path $env:SystemRoot 'System32\drivers\apexdrv.sys'
+cateng_run.ps1:4: $f = @((Join-Path $d '_p25h_S6lan.sys'), "$env:SystemRoot\System32\drivers\apexdrv.sys", "$env:SystemRoot\System32\drivers\tcpip.sys")
+catfind.ps1:6: param([string[]]$Targets = @("$env:SystemRoot\System32\drivers\gdrv3.sys"))
+catfind2.ps1:9: $Paths = @("$env:SystemRoot\System32\drivers\gdrv3.sys",
+catfind2.ps1:10: "$env:SystemRoot\System32\drivers\tcpip.sys")
+cathash.ps1:11: $Paths = @("$env:SystemRoot\System32\drivers\gdrv3.sys",
+cathash.ps1:12: "$env:SystemRoot\System32\drivers\tcpip.sys",
+--- sc\.exe create|sc create|New-Service ---
+boot3.ps1:21: (sc.exe create apexdrv type= kernel start= demand) 2>&1 | ForEach-Object { W "  create| $_" }
+fix4.ps1:2: # registry (sc.exe create was failing 487), stages the SIGNED driver into the
+fix4.ps1:21: W 'regkey : PRE-EXISTING (this is why sc create 487s)'
+fix5.ps1:25: W "--- sc.exe create $name (binPath + valid options only) ---"
+fix5.ps1:26: (& sc.exe create $name binPath= '\??\C:\Windows\System32\drivers\apexdrv.sys' type= kernel start= demand error= normal) 2>&1 |
+h260_vm_probe.ps1:27: W ('create rc = ' + (& sc.exe create apexdrv type= kernel start= demand binPath= $sys error= normal 2>&1 | Out-String).Trim())
+h270_cur.ps1:265: # WinRing0x64.sys, and every h269 tick reached "sc create" before dying, i.e. kdu loaded
+h313_diag.ps1:6: # signed provider transiently) and captures the output VERBATIM. No sc create/start/stop,
+h313_env.ps1:5: # This probe re-establishes parked state, then changes ONE variable: sc create zapexdrv
+h313_env.ps1:76: Say '--- STEP=ONE-VARIABLE (sc create zapexdrv + sc start, NO other change) ---'
+h319_svc.ps1:9: $out = & sc.exe create apexdrv type= kernel start= demand binPath= '\SystemRoot\System32\drivers\apexdrv.sys' DisplayName= 'apexdrv' 2>&1
+ov58_ingame.ps1:8: # which keeps the run usermode-only: no `sc create`/driver load, so no kernel
+ov59_ingame.ps1:8: # which keeps the run usermode-only: no `sc create`/driver load, so no kernel
+p24.ps1:109: W ("  sc create: {0}" -f ((((& sc.exe create kernprobe type= kernel start= demand binPath= System32\drivers\apexdrv.sys 2>&1) -join ' ~ ')) -replace '
+p25.ps1:175: W ("  create : {0}" -f ((((& sc.exe create kernprobe type= kernel start= demand binPath= System32\drivers\apexdrv.sys 2>&1) -join ' ~ ')) -replace '\s
+p25b.ps1:168: W ("  create : {0}" -f (((& sc.exe create kernprobe type= kernel start= demand binPath= 'System32\drivers\apexdrv.sys' 2>&1) -join ' ') -replace '\s+'
+p25c.ps1:207: $cr = (& sc.exe create kernprobe type= kernel start= demand binPath= $sysPath DisplayName= "ApexDrv kernprobe (p25c)" 2>&1) -join ' '
+p25d.ps1:151: $cr = (& sc.exe create kernprobe type= kernel start= demand binPath= ('"' + $sys + '"') DisplayName= "ApexDrv kernprobe (p25d)" 2>&1) -join ' '
+p25e.ps1:242: W ("  create : {0}" -f (((& sc.exe create kernprobe type= kernel start= demand binPath= $sysQ DisplayName= 'ApexDrv kernprobe (p25e)' 2>&1) -join '
+p25f.ps1:105: W ("  create : {0}" -f (((& sc.exe create kernprobe type= kernel start= demand binPath= $sysQ DisplayName= 'ApexDrv kernprobe (p25f)' 2>&1) -join '
+p25g.ps1:125: W ("  create : {0}" -f (((& sc.exe create kernprobe type= kernel start= demand binPath= $sysQ DisplayName= 'ApexDrv kernprobe (p25g)' 2>&1) -join '
+p25h.ps1:168: W ("  create : {0}" -f (((& sc.exe create kernprobe type= kernel start= demand binPath= $sysQ DisplayName= 'ApexDrv kernprobe (p25h)' 2>&1) -join '
+p26_cat.ps1:372: & $sc create apexdrv_cat type= kernel start= demand binPath= '\??\C:\p26cat\apexdrv_build.sys' DisplayName= 'p26 cat DSE test' 2>&1 | ForEach-
+p26_drv.ps1:58: L ((sc.exe create apexdrv binPath= $nt type= kernel start= demand error= normal 2>&1) -join "`n")
+--- 8080 ---
+cur_h310_live.ps1:116: # name. Origin is localhost:8080 (C:\p37vm\server.ps1, PID 17972) instead of the guest's
+cur_h310_live.ps1:120: $base = 'http://127.0.0.1:8080'
+cur_h312_live.ps1:135: # name. Origin is localhost:8080 (C:\p37vm\server.ps1, PID 17972) instead of the guest's
+cur_h312_live.ps1:141: $base = 'http://127.0.0.1:8080'
+cur_h314_live.ps1:135: # name. Origin is localhost:8080 (C:\p37vm\server.ps1, PID 17972) instead of the guest's
+cur_h314_live.ps1:141: $base = 'http://127.0.0.1:8080'
+cur_h315_live.ps1:135: # name. Origin is localhost:8080 (C:\p37vm\server.ps1, PID 17972) instead of the guest's
+cur_h315_live.ps1:141: $base = 'http://127.0.0.1:8080'
+cur_h316_live.ps1:149: # name. Origin is localhost:8080 (C:\p37vm\server.ps1, PID 17972) instead of the guest's
+cur_h316_live.ps1:155: $base = 'http://127.0.0.1:8080'
+g316_cur.ps1:9: $base = 'http://10.0.2.2:8080'
+g316_sweep.ps1:14: W 'kdu missing - fetching from the host relay 10.0.2.2:8080'
+g316_sweep.ps1:16: try { (New-Object Net.WebClient).DownloadFile("http://10.0.2.2:8080/$n", (Join-Path $d $n)) } catch { W ('  fetch ' + $n + ' FAIL ' + $_.Excep
+h268_cur.ps1:19: $base = 'http://10.0.2.2:8080'
+h269_cur.ps1:34: $base = 'http://10.0.2.2:8080'
+h270_cur.ps1:44: $base = 'http://10.0.2.2:8080'
+h271_cur.ps1:11: $base = 'http://10.0.2.2:8080'
+h272_cur.ps1:17: $base = 'http://10.0.2.2:8080'
+h273_cur.ps1:17: $base = 'http://10.0.2.2:8080'
+h274_cur.ps1:17: $base = 'http://10.0.2.2:8080'
+h275_cur.ps1:17: $base = 'http://10.0.2.2:8080'
+h276_cur.ps1:26: $base = 'http://10.0.2.2:8080'
+h277_cur.ps1:31: $base = 'http://10.0.2.2:8080'
+h278_cur.ps1:40: $base = 'http://10.0.2.2:8080'
+--- HttpListener ---
+h310_relay.ps1:11: $l = New-Object System.Net.HttpListener
+s1_wdk.ps1:57: foreach ($pat in 'zapexdrv','System32\\drivers','sc\.exe create|sc create|New-Service','8080','HttpListener','IOCTL_APEXDRV|APEXDRV_','E906CEE9|9B119F
+--- IOCTL_APEXDRV|APEXDRV_ ---
+cur_h310_live.ps1:30: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+cur_h312_live.ps1:30: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+cur_h314_live.ps1:30: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+cur_h315_live.ps1:30: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+cur_h316_live.ps1:44: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+h268_cur.ps1:2: # (apexdrv_v3_signed.sys -> zapexdrv.sys, "z" prefix = class-5.4.26 KDU provider id 22/30,
+h268_cur.ps1:65: # SHA-256 of the SIGNED bench-v3 image (build\apexdrv_v3_signed.sys). The earlier
+h268_cur.ps1:332: $abiLine = ([string]($script:lastOut -split "`n" | Select-String 'driver ABI version|IOCTL_APEXDRV_VERSION failed') -replace '\s+', ' ').Trim()
+h268_cur.ps1:334: # mirror kernel_injector.cpp exactly: it refuses on Version < APEXDRV_VERSION
+h269_cur.ps1:17: # (apexdrv_v3_signed.sys -> zapexdrv.sys, "z" prefix = class-5.4.26 KDU provider id 22/30,
+h269_cur.ps1:94: # SHA-256 of the SIGNED bench-v3 image (build\apexdrv_v3_signed.sys). The earlier
+h269_cur.ps1:371: $abiLine = ([string]($script:lastOut -split "`n" | Select-String 'driver ABI version|IOCTL_APEXDRV_VERSION failed') -replace '\s+', ' ').Trim()
+h269_cur.ps1:373: # mirror kernel_injector.cpp exactly: it refuses on Version < APEXDRV_VERSION
+h270_cur.ps1:27: # (apexdrv_v3_signed.sys -> zapexdrv.sys, "z" prefix = class-5.4.26 KDU provider id 22/30,
+h270_cur.ps1:104: # SHA-256 of the SIGNED bench-v3 image (build\apexdrv_v3_signed.sys). The earlier
+h270_cur.ps1:400: $abiLine = ([string]($script:lastOut -split "`n" | Select-String 'driver ABI version|IOCTL_APEXDRV_VERSION failed') -replace '\s+', ' ').Trim()
+h270_cur.ps1:402: # mirror kernel_injector.cpp exactly: it refuses on Version < APEXDRV_VERSION
+h280_cur.ps1:363: # reachable only when the driver ignored APEXDRV_FLAG_EX_LOADER: the stub then ran the plain
+h280_cur.ps1:367: $why = 'FAIL - driver did not act on APEXDRV_FLAG_EX_LOADER; nothing about the Ex API was measured'
+h284_cur.ps1:3: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+h285_cur.ps1:10: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+h286_cur.ps1:30: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+h286_deploy.ps1:47: foreach ($p in @(@('cur.ps1','cur_h285_bak.ps1'), @('zapexdrv.sys','zapexdrv_h285_bak.sys'), @('apex_launcher.exe','apex_launcher_h285_bak.exe'))) {
+h323_fire_ioctl.ps1:4: # Struct is APEXDRV_PROBE_REQUEST, pack(1), 84 bytes (32-byte PEB tail); offsets below come
+--- E906CEE9|9B119FD0 ---
+cur_h310_live.ps1:246: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+cur_h312_live.ps1:267: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+cur_h314_live.ps1:267: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+cur_h315_live.ps1:267: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+cur_h316_live.ps1:288: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+h1_dse_host.ps1:10: # Pre-flight aborts unless: apexdrv staged+stopped at 577 with the k9-proven binary (hash 9B119FD0...),
+h1_dse_host.ps1:21: $sha  = '9B119FD0C38740A2'   # first 16 hex of SHA256, k9-proven build
+h2_gate.ps1:55: if($h -like '9B119FD0C38740A2*'){ W ('  pass: binPath hash ' + $h.Substring(0,16) + ' = k9-proven build') } else { $fail++; W ('  FAIL: binPath hash '
+h318_reload.ps1:28: if ((Get-FileHash $sys -Algorithm SHA256).Hash -ne 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C') { Lg 'RESULT: FAIL - staged ima
+h320_fire_kprobe.ps1:31: if ((Get-FileHash $sys -Algorithm SHA256).Hash -ne 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C') { Lg 'RESULT: FAIL - staged ima
+h321_fire_kprobe.ps1:37: if ((Get-FileHash $sys -Algorithm SHA256).Hash -ne 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C') { Lg 'RESULT: FAIL - staged ima
+s1_wdk.ps1:57: foreach ($pat in 'zapexdrv','System32\\drivers','sc\.exe create|sc create|New-Service','8080','HttpListener','IOCTL_APEXDRV|APEXDRV_','E906CEE9|9B119F
+=== M2 spec lines 30-125 ===
+M2:30: 
+M2:31: ## 2. What already exists (do not rebuild it)
+M2:32: 
+M2:33: | Thing | Where | State |
+M2:34: |---|---|---|
+M2:35: | WDM driver, device `\Device\ApexDrv`, symlink `\DosDevices\ApexDrv` | `QwenKernPremium\driver\apexdrv.c` | builds, loads inside the DSE window, unloads clean |
+M2:36: | Shared ABI header | `QwenKernPremium\include\apex_driver_ioctl.h` | version 2, `#pragma pack(push,1)` |
+M2:37: | Existing IOCTLs | same header | `INJECT 0x8A702003`, `VERSION 0x8A702007`, `PROBE 0x8A70200B` |
+M2:38: | Kernel probe that already does open→alloc→write→copy PEB with per-step NTSTATUS | `apexdrv.c: ApexdrvProbeProcess` | works; this is the proof that kernel-side copy in/out of the game is possible |
+M2:39: | `MmCopyVirtualMemory` + `KeStackAttachProcess` write helper | `apexdrv.c: ApexdrvWriteProcessMemory` | declared and in use |
+M2:40: | Build script that survives the `New User` space | `QwenKernPremium\tools\BuildDriver.ps1` | `cl.exe` cannot parse the path, always go through this |
+M2:41: | Launcher with `--probe --pid=` | `QwenKernPremium\build\apex_launcher.exe` | runs the PROBE IOCTL and prints every step status |
+M2:42: | ESP math (entity walk, world→screen, boxes) | `QwenKernPremium\src\features.cpp` | complete, reads through `MemoryReader` |
+M2:43: | D3D12 box renderer | `QwenKernPremium\src\d3d12_overlay.cpp` | complete, in-process only |
+M2:44: | Offset table | `QwenKernPremium\include\memory.h: ApexOffsets` | **stale (2026-10-25), must be re-derived** |
+M2:45: | Load/session scripts | `_ritual\h3_quiet.ps1`, `_ritual\h1_dse_host.ps1`, `_ritual\run_h2.cmd` | exercised end-to-end twice |
+M2:46: 
+M2:47: `MemoryReader` (`src\memory.cpp`) uses `ReadProcessMemory`. **On the live game that is exactly the
+M2:48: call that fails** — `OpenProcess` succeeds only elevated and RPM/`VirtualProtectEx`/`VirtualAllocEx`
+M2:49: all get refused once EAAC is up (measured, `docs/PHASE1_LADDER_AND_LIVE_ACCESS_MEASUREMENT.txt`).
+M2:50: So every read that matters has to travel through the driver. That is the first work item, not a
+M2:51: later optimization.
+M2:52: 
+M2:53: ---
+M2:54: 
+M2:55: ## 3. M2.0 — the primitive (do this first, in the VM)
+M2:56: 
+M2:57: How you run things is governed by the rules in §4 — read them before you execute anything. The
+M2:58: device already trusts the caller (`FILE_ANY_ACCESS`). Keep that. Bump `APEXDRV_VERSION` to **3**
+M2:59: and add, all `METHOD_BUFFERED`:
+M2:60: 
+M2:61: ```c
+M2:62: #define IOCTL_APEXDRV_READ8   CTL_CODE(APEXDRV_DEVICE_TYPE, 0x803, METHOD_BUFFERED, FILE_ANY_ACCESS) // 0x8A70200F
+M2:63: #define IOCTL_APEXDRV_READBUF CTL_CODE(APEXDRV_DEVICE_TYPE, 0x804, METHOD_BUFFERED, FILE_ANY_ACCESS) // 0x8A702013
+M2:64: #define IOCTL_APEXDRV_WRITE   CTL_CODE(APEXDRV_DEVICE_TYPE, 0x805, METHOD_BUFFERED, FILE_ANY_ACCESS) // 0x8A702017
+M2:65: #define IOCTL_APEXDRV_BASE    CTL_CODE(APEXDRV_DEVICE_TYPE, 0x806, METHOD_BUFFERED, FILE_ANY_ACCESS) // 0x8A70201B
+M2:66: ```
+M2:67: 
+M2:68: Structures go inside the existing `pack(push,1)` block, one process lookup per request, `ULONG
+M2:69: ProcessId` always first:
+M2:70: 
+M2:71: ```c
+M2:72: #define APEXDRV_MAX_BATCH 64
+M2:73: #define APEXDRV_MAX_BUF   0x1000
+M2:74: 
+M2:75: typedef struct _APEXDRV_READ8_REQUEST {
+M2:76:     ULONG   ProcessId;                       // [in]
+M2:77:     ULONG   Count;                           // [in]  1..64
+M2:78:     ULONG64 Address[APEXDRV_MAX_BATCH];      // [in]
+M2:79:     LONG    Status[APEXDRV_MAX_BATCH];       // [out] per item, never aggregated
+M2:80:     ULONG64 Value[APEXDRV_MAX_BATCH];        // [out] zero on failure
+M2:81: } APEXDRV_READ8_REQUEST;
+M2:82: 
+M2:83: typedef struct _APEXDRV_READBUF_REQUEST {
+M2:84:     ULONG   ProcessId;                       // [in]
+M2:85:     ULONG   Size;                            // [in]  1..0x1000
+M2:86:     ULONG64 Address;                         // [in]
+M2:87:     LONG    Status;                          // [out]
+M2:88:     UCHAR   Data[APEXDRV_MAX_BUF];           // [out]
+M2:89: } APEXDRV_READBUF_REQUEST;
+M2:90: 
+M2:91: typedef struct _APEXDRV_WRITE_REQUEST {
+M2:92:     ULONG   ProcessId;                       // [in]
+M2:93:     ULONG   Size;                            // [in]  1..0x1000
+M2:94:     ULONG64 Address;                         // [in]
+M2:95:     LONG    Status;                          // [out]
+M2:96:     UCHAR   Data[APEXDRV_MAX_BUF];           // [in]
+M2:97: } APEXDRV_WRITE_REQUEST;
+M2:98: 
+M2:99: typedef struct _APEXDRV_BASE_REQUEST {
+M2:100:     ULONG   ProcessId;                       // [in]
+M2:101:     ULONG   Reserved;                        // [in]
+M2:102:     LONG    Status;                          // [out]
+M2:103:     ULONG   Reserved2;                       // [out]
+M2:104:     ULONG64 Base;                            // [out] main image base, 0 on failure
+M2:105: } APEXDRV_BASE_REQUEST;
+M2:106: ```
+M2:107: Semantics, all mandatory:
+M2:108: 
+M2:109: 1. Resolve the process once per request with `PsLookupProcessByProcessId`, hold the reference, and
+M2:110:    dereference on every exit path. Attach once with `KeStackAttachProcess`, detach before
+M2:111:    returning. No allocation, no threads, no global state beyond the device object.
+M2:112: 2. Each item is its own `__try { ProbeForRead/ProbeForWrite; RtlCopyMemory } __except
+M2:113:    (EXCEPTION_EXECUTE_HANDLER)` so one dead address returns `STATUS_INVALID_ADDRESS` and the rest
+M2:114:    of the batch still lands. An ESP pass sweeps garbage pointers every frame; a batch that aborts
+M2:115:    on the first miss is worthless.
+M2:116: 3. Reject `address < 0x10000`, `address > 0x7FFFFFFFFFFF`, `Size == 0`, `Size > APEXDRV_MAX_BUF`,
+M2:117:    `Count > APEXDRV_MAX_BATCH`. Header violations return `STATUS_INVALID_PARAMETER`; data
+M2:118:    violations are per-item statuses.
+M2:119: 4. `BASE`: prefer `PsGetProcessSectionBaseAddress` resolved through `MmGetSystemRoutineAddress`,
+M2:120:    fall back to `PsGetProcessPeb` + `ImageBaseAddress` at `+0x10`. Never go through user mode —
+M2:121:    `EnumProcessModules` is one of the calls EAAC refuses.
+M2:122: 5. `WRITE` re-reads the range after copying and reports `STATUS_UNSUCCESSFUL` on mismatch, so the
+M2:123:    caller never has to guess whether the write stuck.
+M2:124: 6. Dispatch stays at default IRQL (PASSIVE_LEVEL, the requesting thread's context). No spinlock
+M2:125:    held across a copy.
+=== STATE.md version/Base hits (first 30) ===
+STATE:7: - VERDICT: Stage 0 (offline `p64_offline.py` + live certs) CLOSED. Next = Stage 1: apexdrv v3 `Base(pid)` VAD walk + batched read IOCTLs (no game), then `BuildDriver.ps1` -> re-stage + hash bump -> h328 self-proc validation -> h329 VM bench.
+STATE:32: - **The kernel drivers are sorted.** `gdrv3` = `\\.\GIOV3` IOCTL `0xC3502014`, 2.5 us/op verified, `STATE 4 RUNNING` right now; `ext\` is the read stack over it (`dumplive.py:1` - "dump the live r5apex_dx12 image through gdrv3 physical reads", with `basehunt`/`chainprobe`/`dtbprobe`/`decoyscan`). `apexdrv` v13 is the injection rung (`STATE 1 STOPPED`, `WIN32_EXIT_CODE 577`).
+STATE:43: - **Strategy re-ranked, and this is the decision:** *user mode* refuses every mutating call but **never kills the game**; *kernel* lands the calls but **kills the target** (h316: Javelin exit `0x322327458D1ED790` ~2 s after arming; h318/h319: payload dies at step 7 `0xC0000006`, allocation only in the first 1-2 s, `0xC000000D` after). So kernel injection is no longer the safe fallback - it is the **most dangerous rung**. Order: **A. external, reads only** (driver reads + VAD-derived module bases + the ov56 own-window overlay - the only line with both a live-game PASS and a live-game read path, and the architecture this file's own title declares - but with one honest limit: that read path is proven only by the h279/h318 **out-block read-back**, once, at inject time, on a section the driver had just mapped; a plain read of game-private memory minutes into a match is unmeasured, which is precisely what h329 is for); **B. pre-launch search-path DLL plant** (loader maps it, zero handle/kernel writes; untested, and Javelin watches file reads, so it must be an *added* DLL, not a modified game file); **C. kernel manual map v13**, blocked on localising the step-7 death (map with no entry, watch for minutes, then entry - and VM first per R1). `HANDOFF`'s "the injected line wins" now survives for **B only**.
+STATE:103: - Pre-state: `_ritual\h319_pre.out` - drvfile present, game=0, no fuse, service 1060 (Javelin had removed it), reload PASS v13 RUNNING dse 0x16 verified (`h318_reload.out` 23:29:43), fuse pid 18796 alive, arm fingerprint `_ritual\h319_probe_state.txt` 00:02:27.
+STATE:110: - `_ritual\HANDOFF_h318_NEXT_PROMPT.md` is the takeover prompt (state, solved list, the ONE next action, traps). Handoff state: apexdrv RUNNING (v13), DSE 0x16, no game, AutoReboot 0, `p317post` armed.
+STATE:152: - **h311 = the formal control-payload PASS the plan builds on:** apxprobe.dll ? regedit (pid 14136), `map: base=0x180000000 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0`, RESULT: PASS / VERDICT: MAP PASS (v13). Chain: kdu `-prv 0 -dse 0` ? `sc start zapexdrv` ? `apex_launcher --inject --method=kernel --manual-map` ? poll ? DSE restore ? teardown.
+STATE:236: - **v13 (ABI bump, one build-only commit) fixes the five blockers, each verified on the host:**
+STATE:243: entry returns 12345; FALSE entry returns 0 with the flag still stamped � the case v13
+STATE:255: downgraded to FAIL with the reason), and the RESULT text names v13 (it said "v9").
+STATE:379: - **FIX BUILT, gate PASS:** inject rung rewritten to the APC route (`ApexdrvQueueLoaderApc`, `ApexdrvApcKernelRoutine`, `ThreadId` in/out in the request, `APEXDRV_VERSION` 3, launcher-side version guard + TID from `EnumerateThreads`). WDK headers declare none of the APC API either, so the prototypes are hand-declared against `ntoskrnl.lib` (which does carry all four symbols) - same pattern as `MmCopyVirtualMemory`. New `build\apexdrv.sys` SHA `5D1A9897E143EB0E7F4C3A00D760D14CE663C8007D2C1E813AB5FCFFC4EE1D4C` (6656 B, imports `KeInitializeApc`/`KeInsertQueueApc`/`PsLookupThreadByThreadId`/`IoThreadToProcess`). v2 binaries kept as `build\apexdrv_v2_9B119FD0.sys` + `build\apex_launcher_v2.exe`. `tools\BuildGate.ps1` = **GATE 0: PASS** (0 warnings, exact IAT allowlists, x64, ntoskrnl import).
+DONE 18:50:57

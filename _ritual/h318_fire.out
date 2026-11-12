@@ -1,0 +1,23 @@
+23:23:13.565 ===== fire on sight (15 min fuse) =====
+23:25:47.424 pid=15404 - holding 900 ms
+23:25:51.362   | ===============================================================
+23:25:51.363   | QwenKern Premium - Apex Legends launcher
+23:25:51.364   | usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+23:25:51.364   | kernel rung    : B3 (apexdrv.sys)
+23:25:51.365   | ===============================================================
+23:25:51.365   | [*] Target PID 15404, payload C:\Users\Public\apexcheat.dll
+23:25:51.365   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+23:25:51.366   | [*] Kernel service already registered, reusing it
+23:25:51.366   | [*] driver ABI v13
+23:25:51.366   | [*] targetinfo: modules=61 kernelbase=0x7FFFD5A70000 self=0x7FFFD5A70000 differ=0 target LoadLibraryW=0x7FFFD5B6C6D0 (rva 0xfc6d0, ours 0x7FFFD72FF6C0) lastError=0
+23:25:51.367   | [*] delivery: tid=3432 resolve_path=1 ex=1 bases_differ=0 entry=0x7FFFD5A91150 lastError=0 (read status 0x0) fired=0
+23:25:51.367   | [*] modules: before=61 after=0 after2=0 lastError2=0 echo_status=0x0 echo=[] echo_after_status=0x0 echo_after=[] stub=0x0 entered=0x0 rcx=0x0 remoteBase=0x0
+23:25:51.368   | [*] map: base=0x0 step=7 resultStatus=0xC0000006 entryResult=0x0 entryFlag=0x0 relocs=0 imports=117 unresolved=[] tls=0
+23:25:51.368   | (no module appeared)
+23:25:51.369   | [-] manual map failed at driver step 7
+23:25:51.369   | ---------------------------------------------------------------
+23:25:51.369   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+23:25:51.370   | reason: manual map failed at driver step 7
+23:25:51.370   | ---------------------------------------------------------------
+23:25:53.374 alive=False
+23:25:53.379 oracle=MISSING

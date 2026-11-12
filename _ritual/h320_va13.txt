@@ -1,0 +1,12 @@
+h320_va needle=explorer.ex secs=130 hz=1 screen=2560x1440
+03:23:48 start 2026-11-07 03:23:48
+03:23:48 pid=17244
+03:23:48 rammap map=5 bad=25 ranges=5
+03:25:43 name hits=5 skipped=1055073 chunks=454583 rescued=564015
+03:25:43 dtb candidates=1
+03:25:43 cand dtb 0004A9045000 ebase=0003CD513080 score=14
+03:25:44 dtb 0004A9045000: walk fault 1450, waiting (max 90s)
+03:27:16 dtb 0004A9045000: still no PE after wait
+03:27:16 discover FAIL: no accepting dtb
+03:27:16 VERDICT: FAIL no dtb (no accepting dtb)
+rc=2 end=03:27:16

@@ -1,0 +1,5 @@
+=== h393 object-and-translation repair 2026-11-09 22:22:44 name=r5apex_dx12.exe ===
+PID=14008 PEB=0x24b000 elevated=1
+ranges=5 note=map=5 bad=25 memtop=0x800000000
+established_locator_dtb=none seeds=600
+VERDICT: BLOCKED - process locator did not establish translation

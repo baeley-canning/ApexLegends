@@ -1,0 +1,45 @@
+ov57 - IN GAME render via the real Present hook - 2026-11-07 11:54:38
+launcher: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apex_launcher.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes, 11/07/2026 11:39:43)
+game    : pid=18484 started=11/07/2026 11:50:08
+window  : hwnd=919338 title='Apex Legends'
+launch  : apex_launcher pid=23152 (--inject --pid, ladder + sticky as shipped)
+---- launcher output ----
+===============================================================
+    QwenKern Premium - Apex Legends launcher
+    usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+    kernel rung    : B3 (apexdrv.sys)
+  ===============================================================
+  [!] Launcher is not elevated: opening r5apex.exe and loading a
+      kernel driver will likely fail.
+  [*] Sticky rung: A7 Manual Map (MANUAL) (last verified payload 'apexcheat.dll')
+  [i] B3 (kernel) will SKIP: launcher is not elevated
+  [*] 7 rung(s), target PID 18484, payload apexcheat.dll
+      verdict rule: A1-A4 count when apexcheat.dll is in the target's module list;
+                    A7/A8 count on a readable image + a completed entry call
+  [!] module list of PID 18484 is NOT readable -> verdicts are unreliable
+      relaunch the launcher elevated (Run as administrator) and retry
+  [1/7] A7 Manual Map (MANUAL)
+  [*] Injection strategy: A7 Manual Map (MANUAL)
+         FAIL : OpenProcess failed: win32error=5
+  [2/7] A8 VAD-less Map (GHOST)
+         SKIP : not implemented in this build
+  [3/7] A4 Thread Hijack (HIJACK)
+  [*] Injection strategy: A4 Thread Hijack (HIJACK)
+         FAIL : OpenProcess failed: 5
+  [4/7] A3 APC Queue (IMPERSONATE)
+  [*] Injection strategy: A3 APC Queue (IMPERSONATE)
+         FAIL : OpenProcess failed: 5
+  [5/7] A2 NtCreateThreadEx (HIDE)
+  [*] Injection strategy: A2 NtCreateThreadEx (HIDE)
+         FAIL : OpenProcess failed: 5
+  [6/7] A1 CreateRemoteThread + LoadLibraryA
+  [*] Injection strategy: A1 CreateRemoteThread + LoadLibraryA
+         FAIL : OpenProcess failed: 5
+  [7/7] B3 Kernel Driver (KERNEL)
+         SKIP : driver rung needs elevation
+  [-] Ladder exhausted: no rung verified the payload
+  [-] No rung verified the payload
+  
+
+RESULT: FAIL no-payload-log (injection did not happen)

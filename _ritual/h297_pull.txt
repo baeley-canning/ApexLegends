@@ -1,0 +1,71 @@
+15:52:03.014 === h297 pull: MEMORY.DMP -> module owning  (SYSTEM-owned guest session) ===
+15:52:03.055   vm  | VMState="running"
+15:52:03.057   vm  | VMStateChangeTime="2026-11-06T01:49:45.001000000"
+15:52:03.101   syscheck | VBoxManage.exe: error: Waiting for guest process failed: The specified user was not able to logon on guest
+15:52:03.102   syscheck | VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession, callee IUnknown
+15:52:03.103   syscheck | VBoxManage.exe: error: Context: "WaitForArray(ComSafeArrayAsInParam(aSessionWaitFlags), 30 * 1000, &enmWaitResult)" at line 772 of file VBoxManageGuestCtrl.cpp
+15:52:03.104 system_owned=False
+15:52:03.172   elevate | Oracle VirtualBox Command Line Management Interface Version 7.2.22
+15:52:03.172   elevate | Copyright (C) 2005-2026 Oracle and/or its affiliates
+15:52:03.173   elevate | VBoxManage.exe: error: Unknown option: --elevate
+15:52:03.173   elevate | Usage - Control a virtual machine from the host system:
+15:52:03.174   elevate | VBoxManage guestcontrol <uuid | vmname> run [--arg0=argument 0]
+15:52:03.175   elevate | [--domain=domainname] [--dos2unix] [--exe=filename]
+15:52:03.175   elevate | [--ignore-orphaned-processes] [--no-wait-stderr | --wait-stderr]
+15:52:03.176   elevate | [--no-wait-stdout | --wait-stdout] [--passwordfile=password-file |
+15:52:03.176   elevate | --password=password] [--profile] [--putenv=var-name=[value]] [--quiet]
+15:52:03.177   elevate | [--timeout=msec] [--unix2dos] [--unquoted-args] [--username=username]
+15:52:03.177   elevate | [--cwd=directory] [--verbose] <-- [argument...]>
+15:52:03.178   elevate | VBoxManage guestcontrol <uuid | vmname> start [--arg0=argument 0]
+15:52:03.179   elevate | [--domain=domainname] [--exe=filename] [--ignore-orphaned-processes]
+15:52:03.179   elevate | [--passwordfile=password-file | --password=password] [--profile]
+15:52:03.180   elevate | [--putenv=var-name=[value]] [--quiet] [--timeout=msec] [--unquoted-args]
+15:52:03.180   elevate | [--username=username] [--cwd=directory] [--verbose] <-- [argument...]>
+15:52:03.181   elevate | VBoxManage guestcontrol <uuid | vmname> copyfrom [--dereference]
+15:52:03.181   elevate | [--domain=domainname] [--passwordfile=password-file |
+15:52:03.182   elevate | --password=password] [--quiet] [--no-replace] [--recursive]
+15:52:03.183   elevate | [--target-directory=host-destination-dir] [--update]
+15:52:03.183   elevate | [--username=username] [--verbose] <guest-source0> guest-source1 [...]
+15:52:03.184   elevate | <host-destination>
+15:52:03.184   elevate | VBoxManage guestcontrol <uuid | vmname> copyto [--dereference]
+15:52:03.185   elevate | [--domain=domainname] [--passwordfile=password-file |
+15:52:03.185   elevate | --password=password] [--quiet] [--no-replace] [--recursive]
+15:52:03.186   elevate | [--target-directory=guest-destination-dir] [--update]
+15:52:03.186   elevate | [--username=username] [--verbose] <host-source0> host-source1 [...]
+15:52:03.187   elevate | VBoxManage guestcontrol <uuid | vmname> mkdir [--domain=domainname]
+15:52:03.187   elevate | [--mode=mode] [--parents] [--passwordfile=password-file |
+15:52:03.187   elevate | --password=password] [--quiet] [--username=username] [--verbose]
+15:52:03.188   elevate | <guest-directory...>
+15:52:03.189   elevate | VBoxManage guestcontrol <uuid | vmname> rmdir [--domain=domainname]
+15:52:03.189   elevate | [--passwordfile=password-file | --password=password] [--quiet]
+15:52:03.190   elevate | [--recursive] [--username=username] [--verbose] <guest-directory...>
+15:52:03.190   elevate | VBoxManage guestcontrol <uuid | vmname> rm [--domain=domainname] [--force]
+15:52:03.191   elevate | [--passwordfile=password-file | --password=password] [--quiet]
+15:52:03.191   elevate | [--username=username] [--verbose] <guest-directory...>
+15:52:03.192   elevate | VBoxManage guestcontrol <uuid | vmname> mv [--domain=domainname]
+15:52:03.192   elevate | [--passwordfile=password-file | --password=password] [--quiet]
+15:52:03.193   elevate | [--username=username] [--verbose] <source...> <destination-directory>
+15:52:03.194   elevate | VBoxManage guestcontrol <uuid | vmname> mktemp [--directory]
+15:52:03.194   elevate | [--domain=domainname] [--mode=mode] [--passwordfile=password-file |
+15:52:03.195   elevate | --password=password] [--quiet] [--secure] [--tmpdir=directory-name]
+15:52:03.195   elevate | [--username=username] [--verbose] <template-name>
+15:52:03.196   elevate | VBoxManage guestcontrol <uuid | vmname> mount [--passwordfile=password-file |
+15:52:03.196   elevate | --password=password] [--username=username] [--verbose]
+15:52:03.197   elevate | VBoxManage guestcontrol <uuid | vmname> fsinfo [--domain=domainname]
+15:52:03.197   elevate | [--passwordfile=password-file | --password=password] [--human-readable]
+15:52:03.198   elevate | [--quiet] [--total] [--username=username] [--verbose] <path>
+15:52:03.198   elevate | VBoxManage guestcontrol <uuid | vmname> stat [--domain=domainname]
+15:52:03.199   elevate | [--passwordfile=password-file | --password=password] [--quiet]
+15:52:03.199   elevate | [--username=username] [--verbose] <filename>
+15:52:03.200   elevate | VBoxManage guestcontrol <uuid | vmname> list <all | files | processes |
+15:52:03.200   elevate | sessions> [--quiet] [--verbose]
+15:52:03.201   elevate | VBoxManage guestcontrol <uuid | vmname> closeprocess [--session-id=ID |
+15:52:03.201   elevate | --session-name=name-or-pattern] [--quiet] [--verbose] <PID...>
+15:52:03.202   elevate | VBoxManage guestcontrol <uuid | vmname> closesession [--all | --session-id=ID
+15:52:03.202   elevate | | --session-name=name-or-pattern] [--quiet] [--verbose]
+15:52:03.203   elevate | VBoxManage guestcontrol <uuid | vmname> updatega [--quiet] [--verbose]
+15:52:03.203   elevate | [--source=guest-additions.ISO] [--wait-start] [-- [argument...]]
+15:52:03.204   elevate | VBoxManage guestcontrol <uuid | vmname> watch [--quiet] [--verbose]
+15:52:03.205   elevate | VBoxManage.exe: error: Unknown option: --elevate
+15:52:03.205 RESULT: FAIL - neither an uncredentialed nor an --elevate run produced SYSTEM (variable: who owns the guest process)
+15:52:03.206 VERDICT: the DACL still blocks the copy; do not start the dump analysis on a partial file

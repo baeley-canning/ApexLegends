@@ -1,0 +1,4 @@
+=== h396 exact kernel process lookup 2026-11-09 22:45:41 ===
+kernel_base=0xfffff80689000000 size=0x880408001450000
+PsInitialSystemProcess=0xfc6ab0 kernel_va=0xfffff80689fc6ab0
+gdrv_opened PEB=0x24b000

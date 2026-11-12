@@ -1,0 +1,23 @@
+4: # read is taken from, plus crash durability.
+16: # measured fine but could not be SCORED. Driver ABI v13:
+44: # v10 added were unwritable over the wire. Driver ABI v11 completes IOCTL_APEXDRV_INJECT as
+46: # can name the refusing line. Launcher unchanged except the ABI constant; payload, stub, target and
+54: # than have us re-derive the checks by hand. Driver ABI v10: MapStatus is a step number
+60: # clean INSTRUMENT failure (abi v9 handshake fine, targetinfo fine) but the INJECT IOCTL returned
+94: # landed at +41/+56 in the zero-filled page instead of +30/+38. ABI v7 writes 19/20 and reads
+98: # Driver ABI v6 answers both: the stub's first instruction stamps magic 0x4870, its second
+235: if ($line -match 'driver ABI v|targetinfo:|delivery:|modules:|echo=|echo_after=|stub=|entered=|rcx=|remoteBase=|map: base=|entryResult=|\[\+\] Kernel injection|\[-\] delivered|VERDICT') {
+281: $driverAbi = 13
+283: # ABI v13 image. The pin is the v10 stub-fix image (pool stub + separate page-rounded
+288: $finger = 'E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C'
+289: $pinned = ($finger.Length -eq 64)
+299: W ('sha=' + $h.Substring(0, [Math]::Min(16, $h.Length)) + $(if (-not $pinned) { ' UNPINNED' } elseif ($h -eq $finger) { ' MATCH' } else { ' MISMATCH' }))
+300: if ($missing -or ($pinned -and $h -ne $finger)) { W ('RESULT: FAIL fetch ' + ($missing -join ',')); Post; Done; exit 1 }
+462: $abi = -1; $fired = -1; $echoStatus = -1; $echo = ''; $echoAfter = ''
+469: if ($line -match 'driver ABI v(\d+)') { $abi = [int]$matches[1] }
+499: W ('parsed: abi=' + $abi + ' echo_ok=' + [int]$echoOk + ' echo_status=' + $echoStatus + ' echo_len=' + $echo.Length + ' echo_after=[' + $echoAfter + '] fired=' + $fired + ' modules=' + $mBefore + '/' + $mAfter + '/' + $mAfter2 + ' (flat is fine here)')
+507: if ($abi -lt 0) {
+509: $res = 'FAIL - no driver ABI handshake in the launcher output'
+511: } elseif ($abi -lt $driverAbi) {
+513: $res = 'FAIL - driver ABI v' + $abi + ' < v' + $driverAbi + ', launcher refused before delivery'
+545: $why = 'FAIL - launcher/driver ABI mix-up, stub fields missing (abi=' + $abi + ')'

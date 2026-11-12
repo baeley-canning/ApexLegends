@@ -1,0 +1,7 @@
+﻿CONTROL: apexdrv resident, ZERO reads (no probe), 15 min of Apex
+start=2026-11-07 22:15:38
+apexdrv=STATE              : 4  RUNNING
+gdrv3=STATE              : 4  RUNNING
+apexdrv.sys staged=11/07/2026 22:01:01
+drv_abi=16 (verified 22:03)  dse=0x16 (restored 22:03)
+verdict: KILLED => resident driver is the trigger; SURVIVED => the reads are

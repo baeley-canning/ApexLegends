@@ -1,0 +1,4 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=temp\qk_va_smoke.txt
+gio open failed: [Errno 5] CreateFileW \\.\GIOV3 failed (need elevation) (gdrv3 not running, or not elevated)
+VERDICT: PARTIAL - no transport

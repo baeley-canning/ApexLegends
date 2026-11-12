@@ -1,0 +1,59 @@
+FILE: C:\Users\New User\AppData\Local\QwenKern\overlay_test_2724.log
+[15:14:29.279] ==================== session start 2026-11-07 15:14:29 pid=2724
+[15:14:29.279] [test] overlay_test start: seconds=14 outdir=C:\Users\New size=960x620
+[15:14:29.279] [test] T4 round-trip FAIL: FlushFeatureToggles (write) returned false
+[15:14:29.294] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[15:14:29.296] [test] debug layer: enabled
+[15:14:29.511] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=0000000001850A92
+[15:14:29.511] [test] chain current back buffer index = 0
+[15:14:29.511] [test] SetMaximumFrameLatency(3) hr=0x887A0001
+[15:14:29.511] [test] GetBuffer(0) hr=0x00000000 res=00000260AEAE4AB0
+[15:14:29.511] [test] GetBuffer(1) hr=0x00000000 res=00000260AEAE5990
+[15:14:29.511] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[15:14:29.511] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[15:14:29.627] [test] adapter[0] NVIDIA GeForce RTX 5060: device+chain+probe present OK
+[15:14:29.627] [*] menu: category AIMBOT (7 rows)
+[15:14:29.627] [*] menu opened (AIMBOT row 1/7)
+[15:14:29.627] [*] menu: SMOOTHING = 1.5
+[15:14:29.627] [*] menu: SMOOTHING = 2.0
+[15:14:29.627] [*] menu: SMOOTHING = 1.5
+[15:14:29.627] [*] menu: SMOOTHING = 1.0
+[15:14:29.627] [*] menu: category VISUALS (8 rows)
+[15:14:29.627] [*] menu: ENABLED -> ON
+[15:14:29.627] [*] menu closed (backspace)
+[15:14:29.627] [*] menu: category VISUALS (8 rows)
+[15:14:29.627] [*] menu opened (VISUALS row 6/8)
+[15:14:29.627] [test] T3 tab[0] AIMBOT   rows=7 active=0 sel=5
+[15:14:29.627] [*] menu: category PLAYERS (7 rows)
+[15:14:29.627] [test] T3 tab[1] VISUALS  rows=8 active=0 sel=5
+[15:14:29.627] [*] menu: category LOOT (6 rows)
+[15:14:29.627] [test] T3 tab[2] PLAYERS  rows=7 active=0 sel=5
+[15:14:29.627] [*] menu: category MISC (9 rows)
+[15:14:29.627] [test] T3 tab[3] LOOT     rows=6 active=0 sel=5
+[15:14:29.627] [*] menu: category AIMBOT (7 rows)
+[15:14:29.627] [test] T3 tab[4] MISC     rows=9 active=0 sel=5
+[15:14:29.627] [*] menu: category VISUALS (8 rows)
+[15:14:29.627] [test] T3 nav: ins=1 tab=1 enter=1 repeat=1 back=1 closed=1 pass-through=0 tabsOk=0
+[15:14:29.627] [test] T3 rows: aimbot=7 visuals=8 sel 0->2->5->5
+[15:14:29.627] [test] T3 slider: smoothing 1.0 -> 1.5 -> 2.0 -> 1.0 (live value)
+[15:14:29.627] [test] T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+[15:14:29.627] [test] T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+[15:14:29.627] [test] T3 capture state: tab=1 (VISUALS) row 6/8 open=1
+[15:14:29.638] [+] d3d12: overlay ready (960x620 fmt=87 samples=1 buffers=2 queue=game)
+[15:14:29.638] [+] d3d12: present counter started (T5: a line every 600 frames)
+[15:14:29.638] [i] d3d12: removedReason before 1st render = 0x00000000
+[15:14:29.640] [i] d3d12: removedReason right after 1st execute = 0x00000000
+[15:14:29.640] [+] d3d12: first overlay draw submitted (23538 tri verts, 44 line verts, 3 box(es), 1 buffer pass(es), current 1/2)
+[15:14:29.654] [test] T7 info queue: 0 stored message(s)
+[15:14:30.489] [test] T6 buffer readback: ok=1 coverage=99.3% bbox 0,0 - 959,619 of 960x620 (client)
+[15:14:33.807] [*] d3d12: present counter = 600
+[15:14:37.974] [*] d3d12: present counter = 1200
+[15:14:42.140] [*] d3d12: present counter = 1800
+[15:14:43.622] [test] T5 PresentCount()=2012 frames=2012 equal=yes
+[15:14:43.622] [test] renderOk=1 cfgRt=0 navOk=0 menuLive=1 frames=2012 presentFails=0
+[15:14:43.622] [test] T8 direct clear on creating queue: done in the adapter probe
+[15:14:43.622] [test] T6 geometry gate: readback=1 coverage=99.3% (>=80% required) bboxOk=1
+[15:14:43.622] [test] RESULT: FAIL
+[15:14:43.622] [test] VERDICT: overlay draw path, menu state, key handling, ini flush,
+[15:14:43.622] [test] VERDICT: present counter and client-filling coverage verified offline
+[15:14:43.622] [test] exit pass=0

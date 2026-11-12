@@ -1,0 +1,1 @@
+& 'C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\qk_player_probe.exe' '--pid','14624' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h411_players_live.txt' ; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\\temp\\h411_live_rc.txt'

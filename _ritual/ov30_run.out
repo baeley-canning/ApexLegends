@@ -1,0 +1,29 @@
+ov30 - adapter fix (display-attached device) - 2026-11-07 10:16:58
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov30_cwd (scratch, emptied first)
+pid   : 8296   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov30_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x887A0001 removed=0x00000000
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x887A0001 removed=0x00000000
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x887A0001 removed=0x00000000
+FAIL: no adapter could present, hr=0x80004005
+
+---- overlay_test log ----
+[10:16:58.301] ==================== session start 2026-11-07 10:16:58 pid=8296
+[10:16:58.301] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov30_cwd size=960x620
+[10:16:58.301] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:16:58.316] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:16:58.317] [test] debug layer: NOT available
+[10:16:58.514] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x887A0001 removed=0x00000000
+[10:16:58.596] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x887A0001 removed=0x00000000
+[10:16:58.609] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x887A0001 removed=0x00000000
+[10:16:58.610] [test] FAIL: no adapter could present, hr=0x80004005
+

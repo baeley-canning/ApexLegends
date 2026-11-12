@@ -278,6 +278,26 @@ def main(argv):
         first = snapshot(g, clus)
         time.sleep(1.5)
         again = snapshot(g, clus)
+        if seed:
+            # a seed stores raw PHYSICAL addresses: after a reboot (or a game
+            # restart) they point at other memory that is often static, so every
+            # chg stays 0 and the run reads as no-cluster.  A full-health seed
+            # cluster is mostly 100.0f; 0 hits here means stale seed or a
+            # damaged/lobby state -- re-collect (run without --seed) if stale.
+            n100 = sum(1 for b in first for u in first[b]
+                       if u is not None and abs(f(u) - 100.0) < 1.0)
+            tot = sum(len(v) for v in first.values())
+            out("SEED100 %d of %d members near 100.0f%s" % (
+                n100, tot,
+                "  <- STALE seed or not full health; re-run without --seed" if not n100 else ""))
+            if n100 == 0:
+                # 174154: 0/7 stale seed used to proceed and FATAL'd mid-collect
+                # (TypeError in the seeded path).  0 validations = nothing to
+                # trust -- fail fast, recoverable by design (fresh sweep or
+                # full health + re-run); rc 3 = bail, distinct from verdicts.
+                out("SEED100-FAIL 0 members near 100.0f -- stale seed (or not full health). "
+                    "Bail rc=3; recover: --seed= (sweep) or drink full then re-run")
+                return 3
         ok = lambda d, b: d[b] == [F100] * len(d[b])          # noqa: E731
         stable = [c for c in clus if (first[c[0]] == again[c[0]] if seed else
                                       ok(first, c[0]) and ok(again, c[0]))]
@@ -320,9 +340,17 @@ def main(argv):
                 out("RECOVER  <- stand still, no throw (shield should be refilling)")
             got = snapshot(g, stable)
             for b, _ in stable:
-                for k, gv in enumerate(got[b]):
-                    series[b][k].append(gv if gv is not None else None)
-                    if gv is not None and f(gv) <= 1.0 and f(again[b][k]) >= 50.0:
+                row, prev, sk = got[b], again[b], series[b]
+                if len(row) != len(sk):
+                    # a live page can change shape under us; lengths drifting here
+                    # used to surface as IndexError at the next indexing site.
+                    out("MISMATCH %#x got=%d series=%d again=%d"
+                        % (b, len(row), len(sk), len(prev)))
+                for k in range(len(sk)):
+                    gv = row[k] if k < len(row) else None
+                    sk[k].append(gv)
+                    if gv is not None and k < len(prev) and f(gv) <= 1.0 \
+                            and f(prev[k]) >= 50.0:
                         fell[b][k] = True
             if not downed and any(sum(1 for v in fell[b].values() if v) >= 2
                                   for b, _ in stable):
@@ -386,6 +414,23 @@ def main(argv):
                 "%#x:%s" % (m - base, "/".join(
                     "-" if v is None else "%g" % f(v) for v in series[base][k]))
                 for k, m in enumerate(mem))))
+        evi = os.path.join(ROOT, "temp", "p64_evi_%s.txt" % time.strftime("%Y%m%d_%H%M%S"))
+        zn = 0
+        with open(evi, "w") as zf:
+            for b, mem in stable:
+                row = series[b]
+                if any(v is None for s in row for v in s):
+                    continue
+                for k, s in enumerate(row):
+                    if len(s) > HOLD and f(s[0]) >= 99.0:
+                        for i in range(1, len(s) - HOLD + 1):
+                            if all(x == 0 for x in s[i:i + HOLD]):
+                                zn += 1
+                                zf.write("%#011x %#x shot%d %s\n" % (
+                                    b, mem[k] - b, i,
+                                    "/".join("%g" % f(x) for x in s)))
+                                break
+        out("EVI %d exact 100->0 runs -> %s" % (zn, os.path.basename(evi)))
         out("VERDICT %s" % ("cluster" if cands else "no-cluster"))
         if seed_out and cands:
             with open(seed_out, "w") as fh:

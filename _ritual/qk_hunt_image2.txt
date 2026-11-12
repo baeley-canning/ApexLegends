@@ -1,0 +1,32 @@
+===== qk_hunt v1 (PLAN stage 2: find the MOVED offsets, read-only) =====
+out=_ritual\qk_hunt_image2.txt win=0x8000 listWin=0x2000
+target pid=2216 base=0x7FF721690000 (source=1)
+--- image scan: SizeOfImage=0xDFB8000 (223.7 MB), strict matrix test ---
+  .. 0x0 (ok=1 bad=0 best=0)
+  .. 0x2000000 (ok=8193 bad=0 best=53)
+  .. 0x4000000 (ok=16385 bad=0 best=53)
+  .. 0x6000000 (ok=24577 bad=0 best=53)
+  .. 0x8000000 (ok=32769 bad=0 best=53)
+  .. 0xA000000 (ok=40961 bad=0 best=53)
+  .. 0xC000000 (ok=49153 bad=0 best=53)
+image scan done: ok=57272 bad=0 chunks
+  IMG hit #1 RVA 0x1D28CDC score=53
+  window at 0x7FF7233B8CDC
+   [0]      0.0000      0.0000      0.0000   1103.5732
+   [1]      0.0000      0.0000      0.0000      0.0000
+   [2]      0.0000      0.0000      0.0000  -9202.5156
+   [3]      0.0000      0.0000      0.0000      1.0000
+  IMG hit #2 RVA 0x38BD334 score=53
+  window at 0x7FF724F4D334
+   [0]      0.0000      0.0000      0.0000      0.0000
+   [1]      0.0000      0.0000      0.0000      0.0000
+   [2]      0.0000      0.0000      0.0000      0.0000
+   [3] 100000.0000  95652.7344  87477.6641      1.0000
+  IMG hit #3 RVA 0x38BD4B4 score=53
+  window at 0x7FF724F4D4B4
+   [0]      0.0000      0.0000      0.0000      0.0000
+   [1]      0.0000      0.0000      0.0000      0.0000
+   [2]      0.0000      0.0000      0.0000      0.0000
+   [3]   2547.2131   3848.2388   7884.9932      1.0000
+RESULT: image-scan best RVA 0x1D28CDC score=53
+VERDICT: PASS - recon: a matrix-shaped window exists in the image at RVA 0x1D28CDC; verify it by projecting a known world point before promoting

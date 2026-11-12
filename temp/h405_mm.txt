@@ -1,0 +1,100 @@
+00000001`4023a777 7404            je      ntoskrnl!MmGetPhysicalAddress+0x27d (00000001`4023a77d)
+
+ntoskrnl!MmGetPhysicalAddress+0x279:
+00000001`4023a779 4883c920        or      rcx,20h
+
+ntoskrnl!MmGetPhysicalAddress+0x27d:
+00000001`4023a77d 488bc1          mov     rax,rcx
+00000001`4023a780 4883c842        or      rax,42h
+00000001`4023a784 f6c242          test    dl,42h
+00000001`4023a787 480f44c1        cmove   rax,rcx
+00000001`4023a78b e964feffff      jmp     ntoskrnl!MmGetPhysicalAddress+0xf4 (00000001`4023a5f4)
+
+ntoskrnl!MmGetPhysicalAddress+0x290:
+00000001`4023a790 4183fe04        cmp     r14d,4
+00000001`4023a794 751b            jne     ntoskrnl!MmGetPhysicalAddress+0x2b1 (00000001`4023a7b1)
+
+ntoskrnl!MmGetPhysicalAddress+0x296:
+00000001`4023a796 4c8b442420      mov     r8,qword ptr [rsp+20h]
+00000001`4023a79b 498b00          mov     rax,qword ptr [r8]
+00000001`4023a79e 480fbae009      bt      rax,9
+00000001`4023a7a3 0f8387000000    jae     ntoskrnl!MmGetPhysicalAddress+0x330 (00000001`4023a830)
+
+ntoskrnl!MmGetPhysicalAddress+0x2a9:
+00000001`4023a7a9 488b442420      mov     rax,qword ptr [rsp+20h]
+00000001`4023a7ae 488b38          mov     rdi,qword ptr [rax]
+
+ntoskrnl!MmGetPhysicalAddress+0x2b1:
+00000001`4023a7b1 48c1ef0c        shr     rdi,0Ch
+00000001`4023a7b5 48b8ffffffffff000000 mov rax,0FFFFFFFFFFh
+00000001`4023a7bf 4823f8          and     rdi,rax
+
+ntoskrnl!MmGetPhysicalAddress+0x2c2:
+00000001`4023a7c2 48c1e70c        shl     rdi,0Ch
+00000001`4023a7c6 81e5ff0f0000    and     ebp,0FFFh
+00000001`4023a7cc 4889bc2480000000 mov     qword ptr [rsp+80h],rdi
+00000001`4023a7d4 03ef            add     ebp,edi
+00000001`4023a7d6 89ac2480000000  mov     dword ptr [rsp+80h],ebp
+00000001`4023a7dd b801000000      mov     eax,1
+00000001`4023a7e2 488b9c2480000000 mov     rbx,qword ptr [rsp+80h]
+00000001`4023a7ea e9aafeffff      jmp     ntoskrnl!MmGetPhysicalAddress+0x199 (00000001`4023a699)
+
+ntoskrnl!MmGetPhysicalAddress+0x2ef:
+00000001`4023a7ef 84c0            test    al,al
+00000001`4023a7f1 7817            js      ntoskrnl!MmGetPhysicalAddress+0x30a (00000001`4023a80a)
+
+ntoskrnl!MmGetPhysicalAddress+0x2f3:
+00000001`4023a7f3 4983fa01        cmp     r10,1
+00000001`4023a7f7 0f8403feffff    je      ntoskrnl!MmGetPhysicalAddress+0x100 (00000001`4023a600)
+
+ntoskrnl!MmGetPhysicalAddress+0x2fd:
+00000001`4023a7fd e9b9fdffff      jmp     ntoskrnl!MmGetPhysicalAddress+0xbb (00000001`4023a5bb)
+
+ntoskrnl!MmGetPhysicalAddress+0x302:
+00000001`4023a802 448bf6          mov     r14d,esi
+00000001`4023a805 e983feffff      jmp     ntoskrnl!MmGetPhysicalAddress+0x18d (00000001`4023a68d)
+
+ntoskrnl!MmGetPhysicalAddress+0x30a:
+00000001`4023a80a 4585f6          test    r14d,r14d
+00000001`4023a80d 0f84edfdffff    je      ntoskrnl!MmGetPhysicalAddress+0x100 (00000001`4023a600)
+
+ntoskrnl!MmGetPhysicalAddress+0x313:
+00000001`4023a813 488bcd          mov     rcx,rbp
+00000001`4023a816 e885f9ffff      call    ntoskrnl!MiVaToPfnEx (00000001`4023a1a0)
+00000001`4023a81b 4963ce          movsxd  rcx,r14d
+00000001`4023a81e 488bf8          mov     rdi,rax
+00000001`4023a821 488b4ccc20      mov     rcx,qword ptr [rsp+rcx*8+20h]
+00000001`4023a826 e875800400      call    ntoskrnl!MI_READ_PTE_LOCK_FREE (00000001`402828a0)
+00000001`4023a82b eb95            jmp     ntoskrnl!MmGetPhysicalAddress+0x2c2 (00000001`4023a7c2)
+
+ntoskrnl!MmGetPhysicalAddress+0x330:
+00000001`4023a830 488bc8          mov     rcx,rax
+00000001`4023a833 4881c920020000  or      rcx,220h
+00000001`4023a83a 48f70543c2d80000000002 test qword ptr [ntoskrnl!MiFlags (00000001`40fc6a88)],2000000h
+00000001`4023a845 7403            je      ntoskrnl!MmGetPhysicalAddress+0x34a (00000001`4023a84a)
+
+ntoskrnl!MmGetPhysicalAddress+0x347:
+00000001`4023a847 0faee8          lfence
+
+ntoskrnl!MmGetPhysicalAddress+0x34a:
+00000001`4023a84a f0490fb108      lock cmpxchg qword ptr [r8],rcx
+00000001`4023a84f 0f8454ffffff    je      ntoskrnl!MmGetPhysicalAddress+0x2a9 (00000001`4023a7a9)
+
+ntoskrnl!MmGetPhysicalAddress+0x355:
+00000001`4023a855 480fbae009      bt      rax,9
+00000001`4023a85a 73d4            jae     ntoskrnl!MmGetPhysicalAddress+0x330 (00000001`4023a830)
+
+ntoskrnl!MmGetPhysicalAddress+0x35c:
+00000001`4023a85c e948ffffff      jmp     ntoskrnl!MmGetPhysicalAddress+0x2a9 (00000001`4023a7a9)
+Couldn't resolve error at 'ntoskrnl!MmVadShort;q'
+0:000> NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

@@ -1,0 +1,136 @@
+20:43:39.654 ===== h313 diag (read-only kdu provider survey) 2026-11-06 20:43:39 admin=True pid=24804 =====
+20:43:39.833 boot=06/11 20:18:55
+20:43:39.840 game r5apex_dx12 pid=7880 (recorded only)
+20:43:39.841 --- kdu -prv 22 -dse (read-only) ---
+20:43:40.926   kdu rc=0 lines=54
+20:43:40.931   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+20:43:40.933   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+20:43:40.934   | [#] Supported x64 OS : Windows 7 and above
+20:43:40.935   | [*] CPU vendor string: GenuineIntel
+20:43:40.936   | [*] Windows version: 10.0 build 26200
+20:43:40.937   | [*] SecureBoot is disabled on this machine
+20:43:40.938   | [*] Virtualization-based security: Not configured
+20:43:40.939   | [*] Hypervisor enforced Code Integrity running: Not configured
+20:43:40.940   | [+] MSFT Driver block list is disabled
+20:43:40.941   | [+] Selected provider: 22
+20:43:40.943   | [+] Hypervisor present, vendor could not be determined
+20:43:40.944   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+20:43:40.945   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC82DA0000
+20:43:40.946   | [+] Database KDUEXT version is OK
+20:43:40.948   | [+] Firmware type (FirmwareTypeUefi)
+20:43:40.949   | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
+20:43:40.950   | [+] Extracting vulnerable driver as "C:\Users\Public\p37\AsIO3.sys"
+20:43:40.951   | [+] Vulnerable driver "AsIO3" loaded
+20:43:40.951   | [+] Executing pre-open callback for given provider
+20:43:40.953   | [+] Driver device "Asusgio3" has been opened successfully
+20:43:40.954   | [+] Executing post-open callback for given provider
+20:43:40.955   | [+] Driver device security descriptor set successfully
+20:43:40.956   | [+] Module "CI.dll" loaded for pattern search
+20:43:40.957   | [!] Cannot query DSE state, GetLastError 483: The request failed due to a fatal device hardware error.
+20:43:40.958   | [+] Vulnerable driver "AsIO3" unloaded
+20:43:40.958   | [+] Vulnerable driver file removed
+20:43:40.959   | [+] Return value: 0. Bye-bye!
+20:43:40.961   => no DSE-flags value in prv 22 output
+20:43:40.964 --- kdu -prv 0 -dse (read-only) ---
+20:43:41.313   kdu rc=0 lines=38
+20:43:41.314   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+20:43:41.315   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+20:43:41.327   | [#] Supported x64 OS : Windows 7 and above
+20:43:41.328   | [*] CPU vendor string: GenuineIntel
+20:43:41.328   | [*] Windows version: 10.0 build 26200
+20:43:41.329   | [*] SecureBoot is disabled on this machine
+20:43:41.330   | [*] Virtualization-based security: Not configured
+20:43:41.331   | [*] Hypervisor enforced Code Integrity running: Not configured
+20:43:41.331   | [+] MSFT Driver block list is disabled
+20:43:41.333   | [+] Selected provider: 0
+20:43:41.334   | [+] Hypervisor present, vendor could not be determined
+20:43:41.335   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+20:43:41.336   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC82DA0000
+20:43:41.337   | [+] Database KDUEXT version is OK
+20:43:41.338   | [+] Firmware type (FirmwareTypeUefi)
+20:43:41.339   | [+] Provider: "Intel NAL driver", Name "NalDrv"
+20:43:41.340   | [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys"
+20:43:41.341   | [!] Unable to load vulnerable driver, NTSTATUS (0xC000009A): Insufficient system resources exist to complete the API.
+20:43:41.341   | [+] Return value: 0. Bye-bye!
+20:43:41.343   => no DSE-flags value in prv 0 output
+20:43:41.344 --- kdu -prv 1 -dse (read-only) ---
+20:43:41.498   kdu rc=0 lines=38
+20:43:41.498   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+20:43:41.499   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+20:43:41.500   | [#] Supported x64 OS : Windows 7 and above
+20:43:41.501   | [*] CPU vendor string: GenuineIntel
+20:43:41.503   | [*] Windows version: 10.0 build 26200
+20:43:41.504   | [*] SecureBoot is disabled on this machine
+20:43:41.505   | [*] Virtualization-based security: Not configured
+20:43:41.505   | [*] Hypervisor enforced Code Integrity running: Not configured
+20:43:41.506   | [+] MSFT Driver block list is disabled
+20:43:41.508   | [+] Selected provider: 1
+20:43:41.509   | [+] Hypervisor present, vendor could not be determined
+20:43:41.510   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+20:43:41.510   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC82DA0000
+20:43:41.511   | [+] Database KDUEXT version is OK
+20:43:41.513   | [+] Firmware type (FirmwareTypeUefi)
+20:43:41.514   | [+] Provider: "MSI RTCore64 driver", Name "RTCore64"
+20:43:41.514   | [+] Extracting vulnerable driver as "C:\Users\Public\p37\RTCore64.sys"
+20:43:41.515   | [!] Unable to load vulnerable driver, NTSTATUS (0xC000009A): Insufficient system resources exist to complete the API.
+20:43:41.516   | [+] Return value: 0. Bye-bye!
+20:43:41.517   => no DSE-flags value in prv 1 output
+20:43:41.518 --- kdu -prv 2 -dse (read-only) ---
+20:43:41.929   kdu rc=0 lines=52
+20:43:41.931   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+20:43:41.932   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+20:43:41.933   | [#] Supported x64 OS : Windows 7 and above
+20:43:41.934   | [*] CPU vendor string: GenuineIntel
+20:43:41.935   | [*] Windows version: 10.0 build 26200
+20:43:41.935   | [*] SecureBoot is disabled on this machine
+20:43:41.936   | [*] Virtualization-based security: Not configured
+20:43:41.937   | [*] Hypervisor enforced Code Integrity running: Not configured
+20:43:41.938   | [+] MSFT Driver block list is disabled
+20:43:41.938   | [+] Selected provider: 2
+20:43:41.939   | [+] Hypervisor present, vendor could not be determined
+20:43:41.940   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+20:43:41.941   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC82DA0000
+20:43:41.943   | [+] Database KDUEXT version is OK
+20:43:41.944   | [+] Firmware type (FirmwareTypeUefi)
+20:43:41.946   | [+] Provider: "Gigabyte GDRV driver", Name "Gdrv"
+20:43:41.947   | [+] Extracting vulnerable driver as "C:\Users\Public\p37\Gdrv.sys"
+20:43:41.948   | [+] Vulnerable driver "Gdrv" loaded
+20:43:41.949   | [+] Driver device "GIO" has been opened successfully
+20:43:41.950   | [+] Executing post-open callback for given provider
+20:43:41.951   | [+] Driver device security descriptor set successfully
+20:43:41.951   | [+] Module "CI.dll" loaded for pattern search
+20:43:41.953   | [!] Cannot query DSE state, GetLastError 483: The request failed due to a fatal device hardware error.
+20:43:41.954   | [+] Vulnerable driver "Gdrv" unloaded
+20:43:41.955   | [+] Vulnerable driver file removed
+20:43:41.956   | [+] Return value: 0. Bye-bye!
+20:43:41.957   => no DSE-flags value in prv 2 output
+20:43:41.958 --- kdu -prv 3 -dse (read-only) ---
+20:43:42.008   kdu rc=0 lines=38
+20:43:42.009   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+20:43:42.010   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+20:43:42.011   | [#] Supported x64 OS : Windows 7 and above
+20:43:42.013   | [*] CPU vendor string: GenuineIntel
+20:43:42.014   | [*] Windows version: 10.0 build 26200
+20:43:42.015   | [*] SecureBoot is disabled on this machine
+20:43:42.016   | [*] Virtualization-based security: Not configured
+20:43:42.017   | [*] Hypervisor enforced Code Integrity running: Not configured
+20:43:42.018   | [+] MSFT Driver block list is disabled
+20:43:42.018   | [+] Selected provider: 3
+20:43:42.019   | [+] Hypervisor present, vendor could not be determined
+20:43:42.020   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
+20:43:42.021   | [+] Drivers database "drv64.dll" loaded at 0x00007FFC82DA0000
+20:43:42.023   | [+] Database KDUEXT version is OK
+20:43:42.024   | [+] Firmware type (FirmwareTypeUefi)
+20:43:42.025   | [+] Provider: "ASUSTeK WinFlash", Name "ATSZIO"
+20:43:42.026   | [+] Extracting vulnerable driver as "C:\Users\Public\p37\ATSZIO.sys"
+20:43:42.026   | [!] Unable to load vulnerable driver, NTSTATUS (0xC000009A): Insufficient system resources exist to complete the API.
+20:43:42.028   | [+] Return value: 0. Bye-bye!
+20:43:42.029   => no DSE-flags value in prv 3 output
+20:43:42.031 DSE-now=UNREADABLE on this boot via prv 22/0/1/2/3
+20:43:42.032 --- events since diag start (SCM zapex/kdu-provider names + CodeIntegrity) ---
+20:43:42.145   ci: no new CodeIntegrity events during this diag
+20:43:42.147 --- bugcheck context (for the record, from the 20:19:05 BugCheck 1001) ---
+20:43:42.220   20:19:05 The computer has rebooted from a bugcheck. Possibly related driver: CI.dll.
+20:43:42.221   20:19:05 The computer has rebooted from a bugcheck. The bugcheck was: 0x00000109 (0xa39fc05e5238d610, 0xb3b6cce4a4bcc915, 0xfffff8073adb2004, 0x0000000000000000). A dump was saved in: C:\WINDOWS\Minidump\110626-10203-01.dmp. Report Id: 482b4d97-480c-4fdf-a65c-019c91584fcd.
+20:43:42.224 RESULT: diag written - kdu provider outputs verbatim above; DSE-now=UNREADABLE; no mutation (providers load+unload inside kdu only)
+20:43:42.225 VERDICT: DIAG - read h313_diag.out: if a provider read DSE=6, the 20:41 1450 is unsigned-under-DSE6 on build 26200 (recipe needs its kdu -dse 0 step to land = h314); if DSE=0, 1450 is a deeper kernel loader issue; if UNREADABLE, provider I/O on this boot is degraded (AsIO3 read err 483 at 20:36)

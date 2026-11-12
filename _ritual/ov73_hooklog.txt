@@ -1,0 +1,3 @@
+ov72: DllMain PROCESS_ATTACH (mapped in target)
+ov72: payload thread up (outside loader lock)
+ov72: LoadLibraryW(apexcheat.dll) -> 0x00007FF8117D0000 err=0

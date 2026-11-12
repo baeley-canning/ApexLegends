@@ -1,0 +1,115 @@
+def f(u):
+    return struct.unpack("<f", struct.pack("<I", u))[0]
+
+
+def collect(g, lo, hi, win, out):
+    """Clusters of >=MIN_MEM aligned 100.0f inside a span of win -- full health+shield."""
+    hit = []
+    t0 = time.time()
+    faults = 0
+
+    def emit(pa, blk):
+        nonlocal faults
+        if blk is None:
+            faults += 1
+            return
+        i = blk.find(F32_100)
+        while i >= 0:
+            a = pa + i
+            if a & 3 == 0:
+                hit.append(a)
+            elif blk[i - 1:i + 3] == F32_100:
+                hit.append(a + 3)      # value straddled a chunk edge, aligned form
+            i = blk.find(F32_100, i + 1)
+
+    pa = lo
+    while pa < hi:
+        p56_hits.scan_range(g, pa, min(CHUNK, hi - pa), b"d", False, emit)
+        pa += CHUNK
+    hit = sorted(set(a for a in hit if lo <= a < hi))
+    out("COLLECT %#x-%#x aligned100=%d faults=%d secs=%.1f" % (
+        lo, hi, len(hit), faults, time.time() - t0))
+    clus, seen = [], set()
+    for i in range(len(hit)):
+        base = hit[i]
+        if base in seen:
+            continue
+        mem = [a for a in hit[i:i + MEM_MAX * 4] if a <= base + win][:MEM_MAX]
+        if len(mem) < MIN_MEM:
+            continue
+        seen.update(mem)
+        clus.append((base, mem))
+    out("CLUSTERS %d (min_mem=%d span=%#x)" % (len(clus), MIN_MEM, win))
+    return clus
+
+
+def sample(g, addrs):
+    """Read only the pages holding addrs; None where the page faults."""
+    pages = {}
+    for a in addrs:
+        pages.setdefault(a & ~0xFFF, []).append(a)
+    vals = {}
+    for p, lst in pages.items():
+        try:
+            buf = g.read_phys(p, PAGE)
+        except OSError:
+            for a in lst:
+                vals[a] = None
+            continue
+        for a in lst:
+            o = a - p
+            vals[a] = struct.unpack_from("<I", buf, o)[0] if o + 4 <= PAGE else None
+    return vals
+
+
+def snapshot(g, clus):
+    """One page-read pass over every member -> {base: [values]}."""
+    flat = [a for _, mem in clus for a in mem]
+    v = sample(g, flat)
+    return dict((base, [v[a] for a in mem]) for base, mem in clus)
+
+
+def verdict(series):
+    """One member falls >= NEED, stays down HOLD samples, all others stay >= KEEP.
+
+    The member may recover afterwards -- a spent shield comes back, so "flat to
+    the end of the run" is the wrong test; the hold window is what separates a
+    real field from churn.  Returning the largest drop keeps the shield member
+    (100 -> 0) ahead of a health member that only loses frag spill (R3).
+    """
+    cur = [[f(x) for x in s] for s in series]
+    n = len(cur[0])
+    best = None
+    for k in range(len(cur)):
+        for i in range(1, n):
+            d = cur[k][i - 1] - cur[k][i]
+            if d < NEED:
+                continue
+            hold = cur[k][i:i + HOLD]
+            if len(hold) < min(HOLD, n - i):
+                continue
+            if max(hold) - min(hold) > 2.0:
+                continue
+            if max(hold) > cur[k][i - 1] - NEED / 2.0:    # still visibly down
+                continue
+            bad = False
+            for o in range(len(cur)):
+                if o == k or cur[o][0] < KEEP:            # 0 = already spent partner
+                    continue
+                lo_o = min(cur[o][i - 1:i + HOLD])
+                if 1.0 < lo_o < KEEP:                     # moved, but not emptied
+                    bad = True
+                    break
+            if bad:
+                continue
+            if best is None or d > best[0]:
+                best = (d, i, k)
+    return best
+
+
+def load_seed(path, out):
+    """Read 'base off,off,...' hex lines written by a previous run's --seed-out."""
+    clus = []
+    with open(path, "r") as fh:
+        for ln in fh:
+            ln = ln.strip()

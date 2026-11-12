@@ -1,0 +1,26 @@
+parse_errors=2
+  27: Missing ')' in function parameter list.
+  27: Unexpected token ')' in expression or statement.
+game=0
+svc=STATE              : 4  RUNNING
+parse2=0
+create rc=0 [SUCCESS: The scheduled task "h321fuse" has successfully been created.]
+run rc=0 [SUCCESS: Attempted to run the scheduled task "h321fuse".] t=00:11:26
+t=00:11:52
+consent=0
+proc=0
+out=False
+task=Status:        Ready
+parse3=0
+run2 rc=0 t=00:12:36
+t=00:13:00
+consent=0
+proc=1
+task=Status:        Running
+t=00:13:23
+consent=0
+proc=1
+lines=1
+ended task t=00:14:50
+devtest rc=1
+devtest2 rc=1 t=00:15:14

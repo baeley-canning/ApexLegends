@@ -1,0 +1,6 @@
+$ErrorActionPreference = 'Continue'
+$py = 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe'
+$sc = 'C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_vp.py'
+$out = 'C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_vp1.txt'
+& $py $sc ("--out=" + $out) '--no-elevate' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_qk_vp_err.txt'
+"exit=$LASTEXITCODE" | Add-Content -LiteralPath 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_qk_vp_err.txt'

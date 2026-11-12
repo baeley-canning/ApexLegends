@@ -1,0 +1,228 @@
+﻿S1 HDR2  2026-11-07 18:58:17
+inc: C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0   (exists=True)
+lib: C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\km\x64\ntoskrnl.lib   (exists=True)
+header files scanned: 2618
+total match rows: 215
+
+=== PAT[s] VadRoot ===
+hits: 0
+
+=== PAT[s] RTL_AVL_TREE ===
+hits: 0
+
+=== PAT[s] _MMVAD ===
+hits: 0
+
+=== PAT[s] MmGetNextVadNode ===
+hits: 0
+
+=== PAT[s] PsGetProcessSectionBaseAddress ===
+hits: 0
+
+=== PAT[s] PsGetProcessImageFileName ===
+hits: 0
+
+=== PAT[s] ZwQueryVirtualMemory ===
+hits: 1
+  ntifs.h:31449  ZwQueryVirtualMemory(
+
+=== PAT[s] NtQueryVirtualMemory ===
+hits: 1
+  ntifs.h:17700  NtQueryVirtualMemory (
+
+=== PAT[s] RtlGetVersion ===
+hits: 3
+  wdm.h:16654  RtlGetVersion(
+  wdm.h:30718  __drv_preferredFunction("RtlGetVersion", "Obsolete")
+  wdm.h:49316  Status = RtlGetVersion (&VersionInfo);
+
+=== PAT[s] RtlAvl ===
+hits: 0
+
+=== PAT[s] MmCopyMemory ===
+hits: 1
+  ntddk.h:10799  MmCopyMemory (
+
+=== PAT[s] typedef struct _EPROCESS ===
+hits: 2
+  ntddk.h:74  typedef struct _EPROCESS *PEPROCESS;
+  wdm.h:84  typedef struct _EPROCESS *PEPROCESS;
+
+=== PAT[s] struct _EPROCESS ===
+hits: 2
+  wdm.h:18607  struct _EPROCESS *Process;
+  dxmini.h:34  struct _EPROCESS *Process;
+
+=== PAT[s] KPROCESS ===
+hits: 205
+  dispmprt.h:1253  _In_ KPROCESSOR_MODE  WaitMode,
+  dispmprt.h:1264  _In_ KPROCESSOR_MODE WaitMode,
+  fltKernel.h:1289  KPROCESSOR_MODE RequestorMode;
+  ntddk.h:67  typedef struct _KPROCESS *PEPROCESS;
+  ntddk.h:71  typedef struct _KPROCESS *PEPROCESS;
+  ntddk.h:6882  KPROCESSOR_MODE PreviousMode;
+  ntddk.h:7540  KPROCESSOR_MODE PreviousMode;   // system services only
+  ntddk.h:8128  KPROCESSOR_MODE PreviousMode;   // system services only
+  ntddk.h:11153  _In_ KPROCESSOR_MODE PreviousMode
+  ntifs.h:85  typedef struct _KPROCESS *PKPROCESS ,*PRKPROCESS, *PEPROCESS;
+  ntifs.h:17937  struct _KPROCESS *Process;
+  ntifs.h:18074  _In_ KPROCESSOR_MODE WaitMode,
+  ntifs.h:18088  _In_ KPROCESSOR_MODE WaitMode,
+  ntifs.h:18112  _Inout_ PRKPROCESS Process
+  ntifs.h:18130  _Inout_ PRKPROCESS PROCESS,
+  ntifs.h:18822  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:18837  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:18859  _In_ KPROCESSOR_MODE AccessMode
+  ntifs.h:18882  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:18898  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:18916  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:18932  _In_ KPROCESSOR_MODE AccessMode,
+  ntifs.h:19489  _In_ KPROCESSOR_MODE PreviousMode
+  ntifs.h:19497  _In_ KPROCESSOR_MODE PreviousMode
+  ntifs.h:21401  _In_ KPROCESSOR_MODE AccessMode,
+  ... +180 more
+
+=== PAT[s] PsGetProcessPeb ===
+hits: 0
+
+=== ntddk.h L5540..5650 â€” the UniqueProcessId anchor: which struct is this? ===
+L5540: // Process Information Structures
+L5541: //
+L5542: 
+L5543: //
+L5544: //
+L5545: 
+L5546: //
+L5547: // Page/memory priorities.
+L5548: //
+L5549: 
+L5550: #define MEMORY_PRIORITY_LOWEST           0
+L5551: #define MEMORY_PRIORITY_VERY_LOW         1
+L5552: #define MEMORY_PRIORITY_LOW              2
+L5553: #define MEMORY_PRIORITY_MEDIUM           3
+L5554: #define MEMORY_PRIORITY_BELOW_NORMAL     4
+L5555: #define MEMORY_PRIORITY_NORMAL           5
+L5556: 
+L5557: //
+L5558: //
+L5559: 
+L5560: //
+L5561: // Page priority information. Used with ProcessPagePriority
+L5562: // and ThreadPagePriority.
+L5563: //
+L5564: 
+L5565: typedef struct _PAGE_PRIORITY_INFORMATION {
+L5566:     ULONG PagePriority;
+L5567: } PAGE_PRIORITY_INFORMATION, *PPAGE_PRIORITY_INFORMATION;
+L5568: 
+L5569: //
+L5570: // PageFaultHistory Information
+L5571: //  NtQueryInformationProcess using ProcessWorkingSetWatch
+L5572: //
+L5573: 
+L5574: typedef struct _PROCESS_WS_WATCH_INFORMATION {
+L5575:     PVOID FaultingPc;
+L5576:     PVOID FaultingVa;
+L5577: } PROCESS_WS_WATCH_INFORMATION, *PPROCESS_WS_WATCH_INFORMATION;
+L5578: 
+L5579: //
+L5580: // Basic and Extended Basic Process Information
+L5581: //  NtQueryInformationProcess using ProcessBasicInformation
+L5582: //
+L5583: //@[comment("MVI_tracked")]
+L5584: typedef struct _PROCESS_BASIC_INFORMATION {
+L5585:     NTSTATUS ExitStatus;
+L5586:     PPEB PebBaseAddress;
+L5587:     ULONG_PTR AffinityMask;
+L5588:     KPRIORITY BasePriority;
+L5589:     ULONG_PTR UniqueProcessId;
+L5590:     ULONG_PTR InheritedFromUniqueProcessId;
+L5591: } PROCESS_BASIC_INFORMATION,*PPROCESS_BASIC_INFORMATION;
+L5592: 
+L5593: typedef struct _PROCESS_EXTENDED_BASIC_INFORMATION {
+L5594:     SIZE_T Size;    // Ignored as input, written with structure size on output
+L5595:     PROCESS_BASIC_INFORMATION BasicInfo;
+L5596:     union {
+L5597:         ULONG Flags;
+L5598:         struct {
+L5599:             ULONG IsProtectedProcess : 1;
+L5600:             ULONG IsWow64Process : 1;
+L5601:             ULONG IsProcessDeleting : 1;
+L5602:             ULONG IsCrossSessionCreate : 1;
+L5603:             ULONG IsFrozen : 1;
+L5604:             ULONG IsBackground : 1;
+L5605:             ULONG IsStronglyNamed : 1;
+L5606:             ULONG IsSecureProcess : 1;
+L5607:             ULONG IsSubsystemProcess : 1;
+L5608:             ULONG IsTrustedApp : 1;
+L5609:             ULONG SpareBits : 22;
+L5610:         } DUMMYSTRUCTNAME;
+L5611:     } DUMMYUNIONNAME;
+L5612: } PROCESS_EXTENDED_BASIC_INFORMATION, *PPROCESS_EXTENDED_BASIC_INFORMATION;
+L5613: 
+L5614: //
+L5615: // Process Membership Information
+L5616: //
+L5617: typedef struct _PROCESS_MEMBERSHIP_INFORMATION {
+L5618:     ULONG ServerSiloId;
+L5619: } PROCESS_MEMBERSHIP_INFORMATION, *PPROCESS_MEMBERSHIP_INFORMATION;
+L5620: 
+L5621: //
+L5622: //
+L5623: 
+L5624: //
+L5625: // Process Device Map information
+L5626: //  NtQueryInformationProcess using ProcessDeviceMap
+L5627: //  NtSetInformationProcess using ProcessDeviceMap
+L5628: //
+L5629: 
+L5630: typedef struct _PROCESS_DEVICEMAP_INFORMATION {
+L5631:     union {
+L5632:         struct {
+L5633:             HANDLE DirectoryHandle;
+L5634:         } Set;
+L5635:         struct {
+L5636:             ULONG DriveMap;
+L5637:             UCHAR DriveType[ 32 ];
+L5638:         } Query;
+L5639:     } DUMMYUNIONNAME;
+L5640: } PROCESS_DEVICEMAP_INFORMATION, *PPROCESS_DEVICEMAP_INFORMATION;
+L5641: 
+L5642: typedef struct _PROCESS_DEVICEMAP_INFORMATION_EX {
+L5643:     union {
+L5644:         struct {
+L5645:             HANDLE DirectoryHandle;
+L5646:         } Set;
+L5647:         struct {
+L5648:             ULONG DriveMap;
+L5649:             UCHAR DriveType[ 32 ];
+L5650:         } Query;
+
+=== every "struct _EPROCESS" site in ntddk.h (line numbers only) ===
+@74: typedef struct _EPROCESS *PEPROCESS;
+
+=== ntoskrnl.lib: which candidate symbols exist? (dumpbin /linkermember:1) ===
+dumpbin: C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\dumpbin.exe
+linkermember lines: 6533
+  Vad -> 0 hit(s)
+  QueryVirtualMemory -> 2 hit(s)
+    E422E ZwQueryVirtualMemory
+    E422E __imp_ZwQueryVirtualMemory
+  PsGetProcessSectionBaseAddress -> 2 hit(s)
+    C4878 PsGetProcessSectionBaseAddress
+    C4878 __imp_PsGetProcessSectionBaseAddress
+  PsGetProcessImageFileName -> 2 hit(s)
+    C4540 PsGetProcessImageFileName
+    C4540 __imp_PsGetProcessImageFileName
+  RtlGetVersion -> 2 hit(s)
+    CF4EC RtlGetVersion
+    CF4EC __imp_RtlGetVersion
+  MmCopyMemory -> 2 hit(s)
+    B8060 MmCopyMemory
+    B8060 __imp_MmCopyMemory
+  PsGetProcessPeb -> 2 hit(s)
+    C471E PsGetProcessPeb
+    C471E __imp_PsGetProcessPeb
+
+LASTWRITE 18:58:36
+DONE

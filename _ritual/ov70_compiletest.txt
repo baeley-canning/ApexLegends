@@ -1,0 +1,7 @@
+ov70 - allocation-free attach - 2026-11-07 15:50:16
+elevated : False
+target   : pid=3920 title='Apex Legends'
+FAIL: OpenProcess err=5
+
+RESULT: FAIL openprocess=5
+ov70 DONE FAIL openprocess=5

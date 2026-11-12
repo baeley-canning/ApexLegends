@@ -1,0 +1,11 @@
+19:58:08.054 ===== s2_stage_v14 (file copy only, svc untouched) =====
+19:58:08.131 PRE src=317E4A86C1817401 len=20480
+19:58:08.134 PRE dst=317E4A86C1817401 len=20480
+19:58:08.136 PRE p37z=317E4A86C1817401 len=20480
+19:58:08.149 svc pre: STATE              : 1  STOPPED
+19:58:08.155   C:\WINDOWS\System32\drivers\apexdrv.sys already v14 - no bak
+19:58:08.156   C:\Users\Public\p37\zapexdrv.sys already v14 - no bak
+19:58:08.164 POST dst=317E4A86C1817401 len=20480
+19:58:08.166 POST p37z=317E4A86C1817401 len=20480
+19:58:08.176 svc post: STATE              : 1  STOPPED
+19:58:08.177 RESULT: PASS - v14 staged to System32 + p37 (hashes == 317E4A86..); svc untouched

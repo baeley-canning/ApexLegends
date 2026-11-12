@@ -1,0 +1,12 @@
+cur_h312_live.ps1: parse errors=0
+h312_run.ps1: parse errors=0
+18: # (apxprobe.dll into notepad) is what makes the plumbing fixes measurable on their own.
+48: # file on `EndOfFile < 0x1000` and apxprobe.dll is 2048 bytes. The header validator below already
+59: # The payload is apxprobe.dll ON PURPOSE: 2 sections, 0x3000 image, NO relocations, NO imports,
+114: # apxprobe.dll (0 relocs, 0 imports, no TLS, no Guard CF) into regedit and PASSED, which proved
+134: # h310 host port: byte-identical to C:\p37vm\payload\cur_h289_live.ps1 except $base/$tag/lock
+137: # POST feed lands in C:\p37vm\guest-h310.log. $d and the target path are unchanged, so the run is
+263: # allocation size) that closes h310's 0x50: ZwAllocateVirtualMemory had been rounding the
+351: # host note h310: the inbox notepad.exe on build 26200 is a Store-app stub that hands off and
+535: # BOOL: DllMain returns TRUE = 1. h310 measured entryResult=0x1 on a clean map and the probe
+565: W ('RESULT: ' + $verdict + ' - variable: the PAYLOAD (control apxprobe.dll -> real apexcheat.dll, SHA ' + (Get-FileHash $wantPath -Algorithm SHA256).Hash.Substring(0,16) + ', payload_tls=' + $tlsVerdict + ' callbacks=' + $tlsCbs + '). Driver v13, launcher, DSE chain, target list and restore arms are h311 unchanged; the driver maps ' + $wantPath + ' (pool image, DIRECT64 relocations, KERNEL32/USER32 import patch, one write) and the 64-byte stub calls DllMain(base,1,NULL), storing RAX then the 0x4871 DONE flag. A FAIL here with step=0 is the payload init, not the delivery path. Target ' + $tname + ' pid=' + $tp + ' (winner prv ' + $winner + '), alive after the call=' + [bool](Get-Process -Id $tp -EA 0))

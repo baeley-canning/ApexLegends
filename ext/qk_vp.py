@@ -46,10 +46,12 @@ def arg(name, default=None, cast=str):
     return default
 
 
-def find_image(g, ranges):
+def find_images(g, ranges, cap=8):
+    """ALL image candidates: Apex's exe appears more than once in physical RAM."""
+    found = []
     for rlo, rhi in ranges:
         pa = (rlo + 7) & ~7
-        while pa + 0x10000 <= rhi:
+        while pa + 0x10000 <= rhi and len(found) < cap:
             try:
                 blk = dl.retry_phys(g, pa, 0x10000, tries=1)
             except OSError:
@@ -59,10 +61,10 @@ def find_image(g, ranges):
             while i >= 0:
                 r = I.check_image(g, pa + i)
                 if r:
-                    return pa + i, r
+                    found.append((pa + i, r))
                 i = blk.find(b"MZ", i + 1)
             pa += 0x10000
-    return None, None
+    return found
 
 
 def main():
@@ -83,11 +85,41 @@ def main():
     try:
         ranges, note = dl.usable_ranges(g.ram_top, None, None)
         out("ranges=%d (%s)" % (len(ranges), note))
-        pa, meta = find_image(g, ranges)
-        if not pa:
+        hits = find_images(g, ranges)
+        if not hits:
             out("RESULT: no-image (game not running?)")
             return 8
+        out("image candidates: %d" % len(hits))
+        pa = meta = None
+        for cand, m in hits:
+            try:
+                b = dl.retry_phys(g, cand + RVAS[0], 64, tries=2)
+            except OSError:
+                out("  cand %#x: matrix read fault" % cand)
+                continue
+            nz = sum(1 for x in struct.unpack("<16f", b) if x != 0.0)
+            out("  cand %#x size=%#x stamp=%#x nonzero_matrix_floats=%d"
+                % (cand, m[1], m[2], nz))
+            if nz >= 8 and pa is None:      # live image = the one with a filled matrix
+                pa, meta = cand, m
+        if pa is None:
+            out("RESULT: no-live-image (every candidate had a zero matrix block)")
+            out("VERDICT: PARTIAL - matrices not populated (menu not rendering a world?)")
+            return 8
         out("image_pa=%#x stamp=%#x" % (pa, meta[2]))
+        for rva in RVAS:
+            try:
+                b = dl.retry_phys(g, pa + rva, 64, tries=2)
+            except OSError:
+                out("  rva %#010x read fault" % rva)
+                continue
+            m = struct.unpack("<16f", b)
+            out("  --- rva %#010x ---" % rva)
+            for r in range(4):
+                out("     [%d] %12.4f %12.4f %12.4f %12.4f"
+                    % (r, m[r * 4], m[r * 4 + 1], m[r * 4 + 2], m[r * 4 + 3]))
+        if arg("show", 0, lambda s: int(s, 0)):
+            return 0
         ents = E.find_entities(g, ranges, needle)
         out("entity positions: %d" % len(ents))
         pts = [(e[1], e[2], e[3]) for e in ents[:40]]

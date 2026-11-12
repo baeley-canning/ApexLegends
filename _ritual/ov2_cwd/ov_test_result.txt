@@ -1,0 +1,10 @@
+overlay_test start: seconds=14 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov2_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+T5 PresentCount()=320279 frames=320279 equal=yes
+renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=320279
+RESULT: PASS
+VERDICT: overlay draw path, menu state, key handling, ini flush and
+VERDICT: present counter verified offline against the real overlay

@@ -1,0 +1,37 @@
+ov79 - hook/loader injection - 2026-11-07 16:48:34
+target   : pid=11924 hwnd=7079602 elevated=False
+hook dll : hMod=140703872450560 proc=0x7FF82C561380
+thread   : gui tid=12296 windowPid=11924
+arm      : tid=13248 hwnd=66906 getmsg=213191443 callwnd=760612377 err=0
+arm      : tid=12588 hwnd=65982 getmsg=78514781 callwnd=664799713 err=0
+arm      : tid=12296 hwnd=7079602 getmsg=50398941 callwnd=193135127 err=0
+arm      : tid=14620 hwnd=66262 getmsg=182454551 callwnd=565119021 err=0
+arm      : tid=14728 hwnd=66276 getmsg=82444995 callwnd=89131647 err=0
+arm      : tid=29940 hwnd=13304758 getmsg=102107559 callwnd=84674373 err=0
+arm      : tid=18012 hwnd=262690 getmsg=232458137 callwnd=32442087 err=0
+arm      : tid=28192 hwnd=4196820 getmsg=363136865 callwnd=245696767 err=0
+arm      : tid=9432 hwnd=1378090 getmsg=93784781 callwnd=1300432447 err=0
+arm      : tid=11928 hwnd=196986 getmsg=689964763 callwnd=940312173 err=0
+arm      : tid=4700 hwnd=65275738 getmsg=229509707 callwnd=833948135 err=0
+arm      : tid=9392 hwnd=67374 getmsg=427821727 callwnd=508693041 err=0
+arm      : tid=14724 hwnd=66316 getmsg=178389195 callwnd=370084575 err=0
+arm      : tid=12460 hwnd=65918 getmsg=805439785 callwnd=275319225 err=0
+tids     : armed 14 window thread(s): 4700,9392,9432,11928,12296,12460,12588,13248,14620,14724,14728,18012,28192,29940
+hook ran (game-side [g11924] line present) : True
+---- hook log ----
+[g25080] ov76: DllMain PROCESS_ATTACH (mapped)
+[g25080] ov76: self-pin ok
+[g25080] ov76: payload thread up (outside loader lock)
+[g25080] ov76: LoadLibraryW(apexcheat.dll) -> 0x00007FF806140000 err=183
+[g11924] ov76: DllMain PROCESS_ATTACH (mapped)
+[g11924] ov76: self-pin ok
+[g11924] ov76: hook fire #1 code=0 msg=0x1
+[g11924] ov76: hook fire #2 code=0 msg=0x1
+[g11924] ov76: hook fire #4 code=0 msg=0x1
+[g11924] ov76: hook fire #3 code=0 msg=0x1
+[g11924] ov76: hook fire #5 code=0 msg=0x0
+[g11924] ov76: payload thread up (outside loader lock)
+[g11924] ov76: LoadLibraryW(apexcheat.dll) -> 0x00007FF806140000 err=183
+
+hooks    : unhooked 28 handle(s) (R4; hook dll self-pins, heartbeat continues)
+paylog   : C:\Users\New User\AppData\Local\QwenKern\payload_11924.log fresh=True (alt: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\payload_11924.log)

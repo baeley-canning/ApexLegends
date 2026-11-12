@@ -1,0 +1,21 @@
+00:12:37.484 ===== h321 kernel transient probe (elevated, 15 min fuse) =====
+00:12:37.558 game=0 svc=[STATE              : 4  RUNNING] drv sha=E906CEE97B9927F4
+00:12:37.568 driver already RUNNING - service left alone (no delete), no DSE change needed
+00:12:42.766 dse final=0x16
+00:12:42.767 ARMED - driver RUNNING, dse 0x16 verified - launch the game now
+00:20:40.425 pid=22756 - holding 1000 ms
+00:20:41.440   | ===============================================================
+00:20:41.441   | QwenKern Premium - Apex Legends launcher
+00:20:41.442   | usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+00:20:41.442   | kernel rung    : B3 (apexdrv.sys)
+00:20:41.443   | ===============================================================
+00:20:41.443   | [*] Kernel reachability probe - the driver is loaded for this call and
+00:20:41.444   | removed again afterwards; nothing is injected
+00:20:41.445   | [*] driver: C:\WINDOWS\System32\drivers\apexdrv.sys
+00:20:41.445   | [*] target: (explicit pid) PID 22756
+00:20:41.446   | [*] Kernel service already registered, reusing it
+00:20:41.446   | StartService(apexdrv) failed (GetLastError=1058) - unsigned drivers need test-signing or a BYOVD loader
+00:20:41.447   | [*] report written: C:\Users\Public\p37\apexdrv_probe.txt
+00:20:41.450 probe returned at +21 ms
+00:20:41.459 svc after probe: [STATE              : 4  RUNNING]  ioctl_sent=False
+00:21:41.663 VERDICT: INVALID - probe never reached the IOCTL. game died at +-1 s (informational only)

@@ -1,0 +1,1 @@
+& 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe' 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h405_kernel_obj.py' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h405_kernel_obj_console.txt'; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\temp\h405_kernel_obj_rc.txt'

@@ -1,0 +1,35 @@
+01:10:02.534 ===== h319 live watch r5 - driver NOT loaded, no inject =====
+01:12:02.732 ALIVE pid=16272 start=01:11:57 jav=0
+01:13:02.837 tick pid=16272 jav=0
+01:14:02.933 tick pid=16272 jav=0
+01:15:03.031 tick pid=16272 jav=0
+01:16:03.126 tick pid=16272 jav=0
+01:17:03.239 tick pid=16272 jav=0
+01:18:03.362 tick pid=16272 jav=0
+01:19:03.471 tick pid=16272 jav=0
+01:20:03.619 tick pid=16272 jav=0
+01:21:03.742 tick pid=16272 jav=0
+01:22:03.875 tick pid=16272 jav=0
+01:23:03.996 tick pid=16272 jav=0
+01:24:04.111 tick pid=16272 jav=0
+01:25:04.232 tick pid=16272 jav=0
+01:26:04.357 tick pid=16272 jav=0
+01:27:04.457 tick pid=16272 jav=0
+01:28:04.570 tick pid=16272 jav=0
+01:29:04.684 tick pid=16272 jav=0
+01:30:04.828 tick pid=16272 jav=0
+01:31:04.932 tick pid=16272 jav=0
+01:32:05.049 tick pid=16272 jav=0
+01:33:05.155 tick pid=16272 jav=0
+01:33:56 ===== close: game still alive at 21.6 min, jav=0 for all ticks, no Javelin event =====
+RESULT: SURVIVED 21.6 min - service ENTRY present (sc create, STOPPED, image not loaded), nothing injected
+VERDICT: variable = SCM/registry entry only -> TOLERATED (21.6 vs 6.4-min ceiling of the resident arm). The loaded image is the only objectionable thing.
+01:34:05.287 tick pid=16272 jav=0
+01:35:05.398 tick pid=16272 jav=0
+01:36:05.501 tick pid=16272 jav=0
+01:37:05.600 tick pid=16272 jav=0
+01:38:05.718 tick pid=16272 jav=0
+01:39:05.825 tick pid=16272 jav=0
+01:39:47.917 DEAD pid=16272 javelin_events=0 last_javelin=NONE
+01:39:47.918 RESULT: DIED - no Javelin event
+01:39:47.920 VERDICT: game died with driver NOT loaded, no Javelin kill event (crash, not AC)

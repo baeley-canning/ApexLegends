@@ -1,0 +1,41 @@
+ov34 - adapter fix (display-attached device) - 2026-11-07 10:23:56
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov34_cwd (scratch, emptied first)
+pid   : 16104   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov34_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[2]: removedReason=0x887A002B
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[2]: removedReason=0x887A002B
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[2]: removedReason=0x887A002B
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+FAIL: no adapter could present, hr=0x80004005
+
+---- overlay_test log ----
+[10:23:56.181] ==================== session start 2026-11-07 10:23:56 pid=16104
+[10:23:56.182] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov34_cwd size=960x620
+[10:23:56.182] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:23:56.198] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:23:56.200] [test] debug layer: NOT available
+[10:23:56.420] [test] T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+[10:23:56.421] [test] T8 direct clear[2]: removedReason=0x887A002B
+[10:23:56.421] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+[10:23:56.646] [test] T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+[10:23:56.648] [test] T8 direct clear[2]: removedReason=0x887A002B
+[10:23:56.648] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+[10:23:56.672] [test] T8 buffer[2] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+[10:23:56.673] [test] T8 direct clear[2]: removedReason=0x887A002B
+[10:23:56.673] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+[10:23:56.673] [test] FAIL: no adapter could present, hr=0x80004005
+

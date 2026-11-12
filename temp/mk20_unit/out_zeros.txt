@@ -1,0 +1,10 @@
+
+--- verify 2026-11-09 15:21:05 : 1 matrix window(s), 0 static(s), 6 record(s) ---
+  layout rows/col0 usable positions: 0/6
+  layout rows/col3 usable positions: 0/6
+  layout contig    usable positions: 5/6
+  records with any non-zero byte: 6/6
+  layout pinned to contig (the census's own definition)
+  no matrix put the camera within 400 units of a census record
+RESULT: 0 survivors
+VERDICT: FAIL - no matrix in this instant is the world->clip

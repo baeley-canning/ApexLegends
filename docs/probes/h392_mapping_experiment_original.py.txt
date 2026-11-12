@@ -1,0 +1,11 @@
+# h392 discarded experiment notes. NO USABLE DECODER.
+#
+# The PFN alts process attempted RAM-map-guarded physical checks for PFN-shaped
+# qwords after NtQuerySystemInformation(79). The API returned 0xC0000004.
+# No local-marker mapping was found. Do not assume index/layout from that buffer.
+# The negative evidence is in temp/_h392_mapping.txt.
+#
+# The ordinary user read (temp/_h392_access.py, retained for its receipt) asked
+# for OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_VM_READ). It returned
+# NULL. The PEB query-only handle does not grant VM_READ. Nothing was attempted
+# to escalate it, and no memory was read or modified through that access route.

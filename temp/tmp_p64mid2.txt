@@ -1,0 +1,115 @@
+            ln = ln.strip()
+            if not ln or ln.startswith("#"):
+                continue
+            pb, po = ln.split()
+            b = int(pb, 16)
+            clus.append((b, [b + int(o, 16) for o in po.split(",")]))
+    out("SEED %d clusters from %s" % (len(clus), os.path.basename(path)))
+    return clus
+
+
+def main(argv):
+    band, win = "full", 0x100
+    out_path = os.path.join(ROOT, "temp", "p64_%s.txt" % time.strftime("%Y%m%d_%H%M%S"))
+    pre, wait, only, cues, chain = 12.0, 15.0, False, [], False
+    seed, seed_out = "", ""
+    for a in argv:
+        if a.startswith("--band="):
+            band = a[7:]
+        elif a.startswith("--win="):
+            win = int(a[6:], 0)
+        elif a.startswith("--pre="):
+            pre = float(a[6:])
+        elif a.startswith("--wait="):
+            wait = float(a[7:])
+        elif a.startswith("--shots="):
+            globals()["SHOTS"] = int(a[8:])
+        elif a.startswith("--every="):
+            globals()["EVERY"] = float(a[8:])
+        elif a.startswith("--out="):
+            out_path = a[6:]
+        elif a.startswith("--nade2="):
+            cues = [int(x, 0) for x in a[8:].split(",") if x]
+        elif a.startswith("--min="):
+            globals()["MIN_MEM"] = int(a[6:], 0)
+        elif a.startswith("--cap="):
+            globals()["CL_CAP"] = int(a[6:], 0)
+        elif a.startswith("--seed="):
+            seed = a[7:]
+        elif a.startswith("--seed-out="):
+            seed_out = a[11:]
+        elif a == "--chain":
+            chain = True
+        elif a == "--collect-only":
+            only = True
+
+    out = Out(out_path)
+    out("# p64_pairs %s band=%s win=%#x min=%d" % (time.strftime("%Y-%m-%d %H:%M:%S"), band, win, MIN_MEM))
+    g = None
+    try:
+        g = gio.Gio()
+        if band == "all":
+            lo, hi = 0x100000, g.ram_top
+        else:
+            lo, hi = FULL
+        if seed:
+            clus = load_seed(seed, out)
+        else:
+            clus = collect(g, lo, hi, win, out)
+        if only:
+            out("VERDICT collected")
+            return 0
+        if len(clus) > CL_CAP:
+            k = len(clus) // CL_CAP + 1
+            clus = clus[::k]
+            out("SUBSAMPLE stride=%d clusters=%d" % (k, len(clus)))
+
+        if wait > 0:
+            out("CUES  880Hz short = countdown before GO (nades already in hand)")
+            out("      1400Hz x3   = GO, throw frag 1 at your feet")
+            out("      500Hz x2    = THROW the next frag NOW (frag 1 armour, frag 2 health)")
+            out("      after frag 2 you go down: hold still, do NOT self-revive")
+            out("      no beep     = stand still, do not throw")
+            out("READY wait=%.0fs (drink up so armour is FULL%s)" % (
+                wait, ", %d nades, cues = low double beeps" % (len(cues) + 1) if cues
+                else ", no nades"))
+            time.sleep(wait)
+        # churn filter: unchanged across the gap; a sweep also requires exactly 100
+        first = snapshot(g, clus)
+        time.sleep(1.5)
+        again = snapshot(g, clus)
+        ok = lambda d, b: d[b] == [F100] * len(d[b])          # noqa: E731
+        stable = [c for c in clus if (first[c[0]] == again[c[0]] if seed else
+                                      ok(first, c[0]) and ok(again, c[0]))]
+        out("STABLE %d of %d" % (len(stable), len(clus)))
+        for t in range(int(pre), 0, -1):
+            out("NADE NOW %d  <- one frag at your feet (countdown, then GO)" % t)
+            beep(880, 120)
+            time.sleep(1.0)
+        beep(1400, 500)
+        beep(1400, 500)
+        beep(1400, 500)
+        out("GO  <- start THROWING now: frag 1 strips the armour, frag 2 takes health")
+        series = dict((b, [[v] for v in again[b]]) for b, m in stable)
+        fell = dict((b, {}) for b, m in stable)
+        for b, _ in stable:
+            out("PRE %#011x %s" % (b, "/".join("%g" % f(v) for v in again[b])))
+        t0 = time.time()
+        last_cue = 0
+        fired = False
+        chained = False
+        empty_run = 0
+        last_empty_cue = 0
+        downed = False
+        for i in range(1, SHOTS):
+            time.sleep(EVERY)
+            if i in cues:
+                act = "THROW"
+            elif i - last_cue <= HOLD + 1:
+                act = "RECOVER"
+            else:
+                act = "STILL"
+            if act == "THROW":
+                beep(500, 220)
+                beep(500, 220)
+                last_cue = i

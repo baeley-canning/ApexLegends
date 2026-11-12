@@ -1,0 +1,36 @@
+===== qk_name (find the entity by player name) =====
+needle='kern30120'  out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_name3.txt
+ranges=5 (map=5 bad=25)
+  scanned 366960 chunks, 3929 name hits
+  hit 0x01419ff3a8 (utf16)
+  hit 0x01420f0039 (utf16)
+  hit 0x01420f0089 (utf16)
+  hit 0x01420f04cf (utf16)
+  hit 0x01420f0ba3 (utf16)
+  hit 0x01420f0c6f (utf16)
+  hit 0x01420f0d7f (utf16)
+  hit 0x0142699881 (ascii)
+  hit 0x0142d6d674 (ascii)
+  hit 0x01450d5064 (utf16)
+  hit 0x01450f0436 (utf16)
+  hit 0x01450f0b0a (utf16)
+  hit 0x01456cb598 (utf16)
+  hit 0x014581342b (utf16)
+  hit 0x014581347b (utf16)
+  hit 0x01458138c1 (utf16)
+  --- probing entity layout: base = hit-0x10F0, hp@base+0x5E0 ---
+    base=0x01462982cd name=0x1462993bd hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x01462983bd name=0x1462994ad hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x0146298948 name=0x146299a38 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x0146298998 name=0x146299a88 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x0146b6e458 name=0x146b6f548 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x0146ca5060 name=0x146ca6150 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x0146ca5858 name=0x146ca6948 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x01470d02f8 name=0x1470d13e8 hp=0 shield=0 t2=34013184 alive=1632400974 origin=(0.0, 0.0, 0.0)
+    base=0x014a8ba470 name=0x14a8bb560 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x014a8ba4c0 name=0x14a8bb5b0 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x014a8ba906 name=0x14a8bb9f6 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+    base=0x014b5621f0 name=0x14b5632e0 hp=0 shield=0 t2=0 alive=0 origin=(0.0, 0.0, 0.0)
+  entity-shaped hits: 12
+RESULT: hits=3929 first=0x1419ff3a8
+VERDICT: PASS - name located in RAM

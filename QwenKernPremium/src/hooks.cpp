@@ -24,17 +24,20 @@ WNDPROC                    GameHooks::originalWndProc = nullptr;
 GameHooks::PresentFunc     GameHooks::originalPresent = nullptr;
 GameHooks::DXGIPresentFunc GameHooks::originalDXGIPresent = nullptr;
 GameHooks::DXGIResizeBuffersFunc GameHooks::originalDXGIResizeBuffers = nullptr;
+GameHooks::ExecuteCommandListsFunc GameHooks::originalExecuteCommandLists = nullptr;
 IDirect3DDevice9*          GameHooks::pHookedDevice = nullptr;
 MemoryReader*              GameHooks::pMemoryReader = nullptr;
 HWND                       GameHooks::hGameWindow   = nullptr;
 bool                       GameHooks::bPresentHooked = false;
 bool                       GameHooks::bDXGIHooked    = false;
+bool                       GameHooks::bD3D12QueueHooked = false;
 
 GameHooks::GameHooks() : bHooksInstalled(false) {
     originalWndProc    = nullptr;
     originalPresent    = nullptr;
     originalDXGIPresent = nullptr;
     originalDXGIResizeBuffers = nullptr;
+    originalExecuteCommandLists = nullptr;
 }
 
 
@@ -51,10 +54,17 @@ const wchar_t* const kGameWindowClass = L"Respawn001";
 void** g_d3d9PresentSlot = nullptr;
 void** g_dxgiPresentSlot = nullptr;
 void** g_dxgiResizeBuffersSlot = nullptr;
+void** g_d3d12ExecuteSlot = nullptr;
 
 // IDXGISwapChain vtable indices (identical for IDXGISwapChain..IDXGISwapChain4).
 const size_t kSwapChainPresentIndex       = 8;
 const size_t kSwapChainResizeBuffersIndex = 13;
+
+// ID3D12CommandQueue vtable index.  Walk: IUnknown 0-2, ID3D12Object 3-6,
+// ID3D12DeviceChild 7 (GetDevice), ID3D12Pageable 7-8 (no own methods, so the
+// tile-mapping pair sits at 8-9), ExecuteCommandLists 10.  The slots after it
+// (SetMarker 11, fences 12+) confirm the count.
+const size_t kCommandQueueExecuteIndex    = 10;
 
 // Generic vtable slot patch
 template <typename TFunc>
@@ -360,6 +370,16 @@ void GameHooks::UninstallHooks() {
     }
 
     DWORD oldProtect = 0;
+    if (g_d3d12ExecuteSlot && originalExecuteCommandLists) {
+        if (VirtualProtect(g_d3d12ExecuteSlot, sizeof(void*),
+                           PAGE_EXECUTE_READWRITE, &oldProtect)) {
+            *g_d3d12ExecuteSlot =
+                reinterpret_cast<void*>(originalExecuteCommandLists);
+            VirtualProtect(g_d3d12ExecuteSlot, sizeof(void*), oldProtect,
+                           &oldProtect);
+        }
+        originalExecuteCommandLists = nullptr;
+    }
     if (g_dxgiResizeBuffersSlot && originalDXGIResizeBuffers) {
         if (VirtualProtect(g_dxgiResizeBuffersSlot, sizeof(void*),
                            PAGE_EXECUTE_READWRITE, &oldProtect)) {
@@ -391,6 +411,7 @@ void GameHooks::UninstallHooks() {
     D3D12Overlay::Release();
     bDXGIHooked     = false;
     bPresentHooked  = false;
+    bD3D12QueueHooked = false;
     bHooksInstalled = false;
 }
 
@@ -563,14 +584,92 @@ bool GameHooks::HookPresentDXGI() {
 }
 
 // ============================================================================
+// ID3D12CommandQueue vtable discovery
+//
+// There is no API that turns an IDXGISwapChain into the queue that created it,
+// so the slot is taken from a throw-away device+queue of our own.  Both are
+// released immediately: what we keep is the slot address inside d3d12.dll's
+// class vtable, which every queue in the process shares.
+// ============================================================================
+bool GameHooks::HookD3D12CommandQueue() {
+    if (bD3D12QueueHooked) return true;
+
+    HMODULE d3d12 = GetModuleHandleW(L"d3d12.dll");
+    if (!d3d12) d3d12 = LoadLibraryW(L"d3d12.dll");
+    if (!d3d12) {
+        Logf("[-] d3d12.dll unavailable - game command queue cannot be captured");
+        return false;
+    }
+
+    typedef HRESULT (WINAPI *D3D12CreateDeviceFn)(IUnknown*, D3D_FEATURE_LEVEL,
+                                                  REFIID, void**);
+    const D3D12CreateDeviceFn createDevice =
+        reinterpret_cast<D3D12CreateDeviceFn>(
+            GetProcAddress(d3d12, "D3D12CreateDevice"));
+    if (!createDevice) {
+        Logf("[-] D3D12CreateDevice not resolvable - queue hook skipped");
+        return false;
+    }
+
+    ID3D12Device*       tempDevice = nullptr;
+    ID3D12CommandQueue* tempQueue  = nullptr;
+    HRESULT hr = createDevice(nullptr, D3D_FEATURE_LEVEL_11_0,
+                              __uuidof(ID3D12Device),
+                              reinterpret_cast<void**>(&tempDevice));
+    if (FAILED(hr) || !tempDevice) {
+        Logf("[-] temp D3D12CreateDevice failed hr=0x%08X - queue hook skipped",
+             static_cast<unsigned>(hr));
+        return false;
+    }
+
+    D3D12_COMMAND_QUEUE_DESC queueDesc{};
+    queueDesc.Type  = D3D12_COMMAND_LIST_TYPE_DIRECT;
+    queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+    hr = tempDevice->CreateCommandQueue(&queueDesc, __uuidof(ID3D12CommandQueue),
+                                        reinterpret_cast<void**>(&tempQueue));
+    if (FAILED(hr) || !tempQueue) {
+        Logf("[-] temp CreateCommandQueue failed hr=0x%08X - queue hook skipped",
+             static_cast<unsigned>(hr));
+        tempDevice->Release();
+        return false;
+    }
+
+    void** vtable = *reinterpret_cast<void***>(tempQueue);
+    g_d3d12ExecuteSlot = &vtable[kCommandQueueExecuteIndex];
+    const bool patched = PatchVtableSlot(g_d3d12ExecuteSlot,
+                                         &GameHooks::D3D12ExecuteCommandListsHook,
+                                         &originalExecuteCommandLists);
+
+    tempQueue->Release();
+    tempDevice->Release();
+
+    bD3D12QueueHooked = patched;
+    Logf("[+] ID3D12CommandQueue::ExecuteCommandLists hook %s (slot %p)",
+         patched ? "installed" : "FAILED", static_cast<void*>(g_d3d12ExecuteSlot));
+    return patched;
+}
+
+// ============================================================================
 // Hook thunks
 // ============================================================================
 LRESULT CALLBACK GameHooks::WndProcHook(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    // INSERT toggles the ESP overlay without touching the render thread.
-    if (uMsg == WM_KEYDOWN && wParam == VK_INSERT && g_pCheatFeatures) {
-        const bool enabled = g_pCheatFeatures->IsFeatureEnabled(FEATURE_ESP);
-        g_pCheatFeatures->EnableFeature(FEATURE_ESP, !enabled);
-        Logf("[*] ESP %s", enabled ? "disabled" : "enabled");
+    // T3 (ov-series): menu navigation.  INSERT opens/closes the menu; while
+    // it is open, UP/DOWN move the selection, ENTER/RIGHT toggle the selected
+    // row, and LEFT/BACK exit a sub-flag row back to its master.  
+    // MenuHandleKey returns true for every key it handled, and those are
+    // swallowed here (return 1) so the game never sees them.
+    //
+    // TODO (Phase 3, live validation): keys consumed here never reach the
+    // game's WndProc, but the game may also read the keyboard through Raw
+    // Input (WM_INPUT) or GetKeyboardState().  In-game input suppression
+    // while the menu is open (clip cursor / clear keyboard state) has to be
+    // validated in Phase 3 against the live title; the offline overlay_test
+    // target drives MenuHandleKey directly in the meantime.
+    if (uMsg == WM_KEYDOWN) {
+        const bool repeat = (lParam & (1u << 30)) != 0;   // bit 30 = was down
+        if (D3D12Overlay::MenuHandleKey(wParam, repeat)) {
+            return 1;      // handled: swallow the key
+        }
     }
 
     if (originalWndProc) {
@@ -593,6 +692,27 @@ HRESULT STDMETHODCALLTYPE GameHooks::D3D9PresentHook(IDirect3DDevice9* pDevice,
     return originalPresent(pDevice, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
 }
 
+// The callback runs the game's submission FIRST and records the queue after it:
+// our overlay list is executed straight after the frame's own work, in the same
+// order the game used, and the queue is still valid even if that submission is
+// the one that removes the device.  SetCommandQueue() is a pointer compare in
+// the steady state, and rejects copies/computes queues, so a title with several
+// queues cannot accidentally hand us a non-presenting one.
+void STDMETHODCALLTYPE GameHooks::D3D12ExecuteCommandListsHook(
+    ID3D12CommandQueue* pQueue, UINT numLists, ID3D12CommandList* const* ppLists) {
+    if (originalExecuteCommandLists) {
+        originalExecuteCommandLists(pQueue, numLists, ppLists);
+    }
+
+    static void* s_lastQueue = nullptr;
+    if (pQueue && pQueue != s_lastQueue) {
+        if (D3D12Overlay::SetCommandQueue(pQueue)) {
+            s_lastQueue = pQueue;
+            Logf("[+] captured game command queue %p", pQueue);
+        }
+    }
+}
+
 HRESULT STDMETHODCALLTYPE GameHooks::DXGISwapChainPresentHook(IDXGISwapChain* pSwapChain,
                                                               UINT syncInterval,
                                                               UINT flags) {
@@ -603,6 +723,18 @@ HRESULT STDMETHODCALLTYPE GameHooks::DXGISwapChainPresentHook(IDXGISwapChain* pS
         static LONG s_presentHits = 0;
         if (InterlockedExchange(&s_presentHits, 1) == 0) {
             Logf("[*] DXGI Present hook fired (swap chain %p)", pSwapChain);
+        }
+
+        // The D3D12 overlay can only write the back buffer from the queue that
+        // created the chain, and the chain never hands it out.  Install the
+        // ExecuteCommandLists capture on the first frame: the game submits the
+        // next frame's work through it, so the queue is known by frame 2 and the
+        // overlay holds frame 1 meanwhile instead of burning a private queue.
+        static LONG s_queueHookTried = 0;
+        if (InterlockedExchange(&s_queueHookTried, 1) == 0) {
+            if (HookD3D12CommandQueue()) {
+                D3D12Overlay::SetQueueWaitFrames(240);   // ~2-4 s of grace
+            }
         }
 
         // r5apex_dx12.exe presents a D3D12 swap chain, so the D3D11 pipeline

@@ -1,0 +1,12 @@
+23:10:57.346 ===== h318 early inject =====
+23:10:57.364 apexdrv: STATE              : 4  RUNNING
+23:10:57.369 preexisting pids=[] waiting for a new one (up to 180 s)
+23:13:18.944 NEW pid=12884 at +141.57s
+23:13:18.945 holding 900 ms before the call (address space needs a moment)
+23:13:19.848 inject attempt 1 at +142.48s
+23:13:22.413   | [*] delivery: tid=1376 resolve_path=1 ex=1 bases_differ=0 entry=0x7FFFD5A91150 lastError=0 (read status 0x0) fired=0
+23:13:22.414   | [*] map: base=0x0 step=7 resultStatus=0xC0000006 entryResult=0x0 entryFlag=0x0 relocs=0 imports=117 unresolved=[] tls=0
+23:13:22.414   | reason: manual map failed at driver step 7
+23:13:22.816 target gone
+23:13:22.818 post alive=False elapsed=+145.45s (inject fired +142.48s)
+23:13:22.821 oracle=MISSING

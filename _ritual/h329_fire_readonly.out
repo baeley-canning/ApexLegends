@@ -1,0 +1,4 @@
+20:02:46.162 ===== h329 fire (read-only arm, elevated, 15 min fuse) =====
+20:02:51.480 staged drv sha=317E4A86C1817401 svc=[STATE              : 4  RUNNING] dse=0x16 game=0
+20:02:51.489 ARMED (pre-existing s2 load) - driver RUNNING, dse 0x16 - launch/keep the game up
+20:17:51.645 RESULT: NO-OP - no game in 15 min (driver left RUNNING, dse 0x16)

@@ -1,0 +1,251 @@
+15:56:42.037 === h300 elev: escalated guest copy of MEMORY.DMP -> module owning 0x ===
+15:56:42.121   session | Oracle VirtualBox Command Line Management Interface Version 7.2.22
+15:56:42.124   session | Copyright (C) 2005-2026 Oracle and/or its affiliates
+15:56:42.124   session | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.125   session | Usage - Control a virtual machine from the host system:
+15:56:42.125   session | VBoxManage guestcontrol <uuid | vmname> run [--arg0=argument 0]
+15:56:42.125   session | [--domain=domainname] [--dos2unix] [--exe=filename]
+15:56:42.126   session | [--ignore-orphaned-processes] [--no-wait-stderr | --wait-stderr]
+15:56:42.126   session | [--no-wait-stdout | --wait-stdout] [--passwordfile=password-file |
+15:56:42.127   session | --password=password] [--profile] [--putenv=var-name=[value]] [--quiet]
+15:56:42.128   session | [--timeout=msec] [--unix2dos] [--unquoted-args] [--username=username]
+15:56:42.128   session | [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.129   session | VBoxManage guestcontrol <uuid | vmname> start [--arg0=argument 0]
+15:56:42.129   session | [--domain=domainname] [--exe=filename] [--ignore-orphaned-processes]
+15:56:42.130   session | [--passwordfile=password-file | --password=password] [--profile]
+15:56:42.131   session | [--putenv=var-name=[value]] [--quiet] [--timeout=msec] [--unquoted-args]
+15:56:42.131   session | [--username=username] [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.132   session | VBoxManage guestcontrol <uuid | vmname> copyfrom [--dereference]
+15:56:42.132   session | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.133   session | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.134   session | [--target-directory=host-destination-dir] [--update]
+15:56:42.134   session | [--username=username] [--verbose] <guest-source0> guest-source1 [...]
+15:56:42.135   session | <host-destination>
+15:56:42.135   session | VBoxManage guestcontrol <uuid | vmname> copyto [--dereference]
+15:56:42.136   session | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.136   session | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.137   session | [--target-directory=guest-destination-dir] [--update]
+15:56:42.138   session | [--username=username] [--verbose] <host-source0> host-source1 [...]
+15:56:42.138   session | VBoxManage guestcontrol <uuid | vmname> mkdir [--domain=domainname]
+15:56:42.139   session | [--mode=mode] [--parents] [--passwordfile=password-file |
+15:56:42.139   session | --password=password] [--quiet] [--username=username] [--verbose]
+15:56:42.140   session | <guest-directory...>
+15:56:42.140   session | VBoxManage guestcontrol <uuid | vmname> rmdir [--domain=domainname]
+15:56:42.141   session | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.141   session | [--recursive] [--username=username] [--verbose] <guest-directory...>
+15:56:42.142   session | VBoxManage guestcontrol <uuid | vmname> rm [--domain=domainname] [--force]
+15:56:42.143   session | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.143   session | [--username=username] [--verbose] <guest-directory...>
+15:56:42.144   session | VBoxManage guestcontrol <uuid | vmname> mv [--domain=domainname]
+15:56:42.144   session | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.145   session | [--username=username] [--verbose] <source...> <destination-directory>
+15:56:42.145   session | VBoxManage guestcontrol <uuid | vmname> mktemp [--directory]
+15:56:42.146   session | [--domain=domainname] [--mode=mode] [--passwordfile=password-file |
+15:56:42.147   session | --password=password] [--quiet] [--secure] [--tmpdir=directory-name]
+15:56:42.147   session | [--username=username] [--verbose] <template-name>
+15:56:42.148   session | VBoxManage guestcontrol <uuid | vmname> mount [--passwordfile=password-file |
+15:56:42.148   session | --password=password] [--username=username] [--verbose]
+15:56:42.149   session | VBoxManage guestcontrol <uuid | vmname> fsinfo [--domain=domainname]
+15:56:42.150   session | [--passwordfile=password-file | --password=password] [--human-readable]
+15:56:42.150   session | [--quiet] [--total] [--username=username] [--verbose] <path>
+15:56:42.151   session | VBoxManage guestcontrol <uuid | vmname> stat [--domain=domainname]
+15:56:42.151   session | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.152   session | [--username=username] [--verbose] <filename>
+15:56:42.152   session | VBoxManage guestcontrol <uuid | vmname> list <all | files | processes |
+15:56:42.153   session | sessions> [--quiet] [--verbose]
+15:56:42.154   session | VBoxManage guestcontrol <uuid | vmname> closeprocess [--session-id=ID |
+15:56:42.154   session | --session-name=name-or-pattern] [--quiet] [--verbose] <PID...>
+15:56:42.155   session | VBoxManage guestcontrol <uuid | vmname> closesession [--all | --session-id=ID
+15:56:42.155   session | | --session-name=name-or-pattern] [--quiet] [--verbose]
+15:56:42.156   session | VBoxManage guestcontrol <uuid | vmname> updatega [--quiet] [--verbose]
+15:56:42.156   session | [--source=guest-additions.ISO] [--wait-start] [-- [argument...]]
+15:56:42.157   session | VBoxManage guestcontrol <uuid | vmname> watch [--quiet] [--verbose]
+15:56:42.157   session | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.227   pre | Oracle VirtualBox Command Line Management Interface Version 7.2.22
+15:56:42.228   pre | Copyright (C) 2005-2026 Oracle and/or its affiliates
+15:56:42.228   pre | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.229   pre | Usage - Control a virtual machine from the host system:
+15:56:42.229   pre | VBoxManage guestcontrol <uuid | vmname> run [--arg0=argument 0]
+15:56:42.230   pre | [--domain=domainname] [--dos2unix] [--exe=filename]
+15:56:42.230   pre | [--ignore-orphaned-processes] [--no-wait-stderr | --wait-stderr]
+15:56:42.231   pre | [--no-wait-stdout | --wait-stdout] [--passwordfile=password-file |
+15:56:42.231   pre | --password=password] [--profile] [--putenv=var-name=[value]] [--quiet]
+15:56:42.232   pre | [--timeout=msec] [--unix2dos] [--unquoted-args] [--username=username]
+15:56:42.232   pre | [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.233   pre | VBoxManage guestcontrol <uuid | vmname> start [--arg0=argument 0]
+15:56:42.234   pre | [--domain=domainname] [--exe=filename] [--ignore-orphaned-processes]
+15:56:42.234   pre | [--passwordfile=password-file | --password=password] [--profile]
+15:56:42.235   pre | [--putenv=var-name=[value]] [--quiet] [--timeout=msec] [--unquoted-args]
+15:56:42.235   pre | [--username=username] [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.236   pre | VBoxManage guestcontrol <uuid | vmname> copyfrom [--dereference]
+15:56:42.236   pre | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.236   pre | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.236   pre | [--target-directory=host-destination-dir] [--update]
+15:56:42.237   pre | [--username=username] [--verbose] <guest-source0> guest-source1 [...]
+15:56:42.237   pre | <host-destination>
+15:56:42.238   pre | VBoxManage guestcontrol <uuid | vmname> copyto [--dereference]
+15:56:42.238   pre | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.239   pre | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.239   pre | [--target-directory=guest-destination-dir] [--update]
+15:56:42.240   pre | [--username=username] [--verbose] <host-source0> host-source1 [...]
+15:56:42.241   pre | VBoxManage guestcontrol <uuid | vmname> mkdir [--domain=domainname]
+15:56:42.241   pre | [--mode=mode] [--parents] [--passwordfile=password-file |
+15:56:42.242   pre | --password=password] [--quiet] [--username=username] [--verbose]
+15:56:42.242   pre | <guest-directory...>
+15:56:42.243   pre | VBoxManage guestcontrol <uuid | vmname> rmdir [--domain=domainname]
+15:56:42.243   pre | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.244   pre | [--recursive] [--username=username] [--verbose] <guest-directory...>
+15:56:42.244   pre | VBoxManage guestcontrol <uuid | vmname> rm [--domain=domainname] [--force]
+15:56:42.245   pre | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.245   pre | [--username=username] [--verbose] <guest-directory...>
+15:56:42.246   pre | VBoxManage guestcontrol <uuid | vmname> mv [--domain=domainname]
+15:56:42.246   pre | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.247   pre | [--username=username] [--verbose] <source...> <destination-directory>
+15:56:42.248   pre | VBoxManage guestcontrol <uuid | vmname> mktemp [--directory]
+15:56:42.248   pre | [--domain=domainname] [--mode=mode] [--passwordfile=password-file |
+15:56:42.249   pre | --password=password] [--quiet] [--secure] [--tmpdir=directory-name]
+15:56:42.249   pre | [--username=username] [--verbose] <template-name>
+15:56:42.250   pre | VBoxManage guestcontrol <uuid | vmname> mount [--passwordfile=password-file |
+15:56:42.250   pre | --password=password] [--username=username] [--verbose]
+15:56:42.251   pre | VBoxManage guestcontrol <uuid | vmname> fsinfo [--domain=domainname]
+15:56:42.251   pre | [--passwordfile=password-file | --password=password] [--human-readable]
+15:56:42.252   pre | [--quiet] [--total] [--username=username] [--verbose] <path>
+15:56:42.252   pre | VBoxManage guestcontrol <uuid | vmname> stat [--domain=domainname]
+15:56:42.253   pre | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.253   pre | [--username=username] [--verbose] <filename>
+15:56:42.254   pre | VBoxManage guestcontrol <uuid | vmname> list <all | files | processes |
+15:56:42.254   pre | sessions> [--quiet] [--verbose]
+15:56:42.255   pre | VBoxManage guestcontrol <uuid | vmname> closeprocess [--session-id=ID |
+15:56:42.255   pre | --session-name=name-or-pattern] [--quiet] [--verbose] <PID...>
+15:56:42.256   pre | VBoxManage guestcontrol <uuid | vmname> closesession [--all | --session-id=ID
+15:56:42.256   pre | | --session-name=name-or-pattern] [--quiet] [--verbose]
+15:56:42.257   pre | VBoxManage guestcontrol <uuid | vmname> updatega [--quiet] [--verbose]
+15:56:42.257   pre | [--source=guest-additions.ISO] [--wait-start] [-- [argument...]]
+15:56:42.258   pre | VBoxManage guestcontrol <uuid | vmname> watch [--quiet] [--verbose]
+15:56:42.258   pre | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.260 pre-state: ms-settings absent (delete the subtree in restore)
+15:56:42.331   stale | Oracle VirtualBox Command Line Management Interface Version 7.2.22
+15:56:42.331   stale | Copyright (C) 2005-2026 Oracle and/or its affiliates
+15:56:42.331   stale | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.332   stale | Usage - Control a virtual machine from the host system:
+15:56:42.332   stale | VBoxManage guestcontrol <uuid | vmname> run [--arg0=argument 0]
+15:56:42.333   stale | [--domain=domainname] [--dos2unix] [--exe=filename]
+15:56:42.333   stale | [--ignore-orphaned-processes] [--no-wait-stderr | --wait-stderr]
+15:56:42.334   stale | [--no-wait-stdout | --wait-stdout] [--passwordfile=password-file |
+15:56:42.334   stale | --password=password] [--profile] [--putenv=var-name=[value]] [--quiet]
+15:56:42.335   stale | [--timeout=msec] [--unix2dos] [--unquoted-args] [--username=username]
+15:56:42.335   stale | [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.336   stale | VBoxManage guestcontrol <uuid | vmname> start [--arg0=argument 0]
+15:56:42.337   stale | [--domain=domainname] [--exe=filename] [--ignore-orphaned-processes]
+15:56:42.337   stale | [--passwordfile=password-file | --password=password] [--profile]
+15:56:42.338   stale | [--putenv=var-name=[value]] [--quiet] [--timeout=msec] [--unquoted-args]
+15:56:42.338   stale | [--username=username] [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.339   stale | VBoxManage guestcontrol <uuid | vmname> copyfrom [--dereference]
+15:56:42.339   stale | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.340   stale | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.340   stale | [--target-directory=host-destination-dir] [--update]
+15:56:42.341   stale | [--username=username] [--verbose] <guest-source0> guest-source1 [...]
+15:56:42.342   stale | <host-destination>
+15:56:42.342   stale | VBoxManage guestcontrol <uuid | vmname> copyto [--dereference]
+15:56:42.343   stale | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.343   stale | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.344   stale | [--target-directory=guest-destination-dir] [--update]
+15:56:42.344   stale | [--username=username] [--verbose] <host-source0> host-source1 [...]
+15:56:42.345   stale | VBoxManage guestcontrol <uuid | vmname> mkdir [--domain=domainname]
+15:56:42.345   stale | [--mode=mode] [--parents] [--passwordfile=password-file |
+15:56:42.346   stale | --password=password] [--quiet] [--username=username] [--verbose]
+15:56:42.346   stale | <guest-directory...>
+15:56:42.347   stale | VBoxManage guestcontrol <uuid | vmname> rmdir [--domain=domainname]
+15:56:42.347   stale | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.348   stale | [--recursive] [--username=username] [--verbose] <guest-directory...>
+15:56:42.348   stale | VBoxManage guestcontrol <uuid | vmname> rm [--domain=domainname] [--force]
+15:56:42.349   stale | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.349   stale | [--username=username] [--verbose] <guest-directory...>
+15:56:42.350   stale | VBoxManage guestcontrol <uuid | vmname> mv [--domain=domainname]
+15:56:42.351   stale | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.351   stale | [--username=username] [--verbose] <source...> <destination-directory>
+15:56:42.352   stale | VBoxManage guestcontrol <uuid | vmname> mktemp [--directory]
+15:56:42.352   stale | [--domain=domainname] [--mode=mode] [--passwordfile=password-file |
+15:56:42.353   stale | --password=password] [--quiet] [--secure] [--tmpdir=directory-name]
+15:56:42.353   stale | [--username=username] [--verbose] <template-name>
+15:56:42.354   stale | VBoxManage guestcontrol <uuid | vmname> mount [--passwordfile=password-file |
+15:56:42.354   stale | --password=password] [--username=username] [--verbose]
+15:56:42.355   stale | VBoxManage guestcontrol <uuid | vmname> fsinfo [--domain=domainname]
+15:56:42.355   stale | [--passwordfile=password-file | --password=password] [--human-readable]
+15:56:42.356   stale | [--quiet] [--total] [--username=username] [--verbose] <path>
+15:56:42.357   stale | VBoxManage guestcontrol <uuid | vmname> stat [--domain=domainname]
+15:56:42.357   stale | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.358   stale | [--username=username] [--verbose] <filename>
+15:56:42.358   stale | VBoxManage guestcontrol <uuid | vmname> list <all | files | processes |
+15:56:42.359   stale | sessions> [--quiet] [--verbose]
+15:56:42.359   stale | VBoxManage guestcontrol <uuid | vmname> closeprocess [--session-id=ID |
+15:56:42.360   stale | --session-name=name-or-pattern] [--quiet] [--verbose] <PID...>
+15:56:42.360   stale | VBoxManage guestcontrol <uuid | vmname> closesession [--all | --session-id=ID
+15:56:42.361   stale | | --session-name=name-or-pattern] [--quiet] [--verbose]
+15:56:42.362   stale | VBoxManage guestcontrol <uuid | vmname> updatega [--quiet] [--verbose]
+15:56:42.362   stale | [--source=guest-additions.ISO] [--wait-start] [-- [argument...]]
+15:56:42.363   stale | VBoxManage guestcontrol <uuid | vmname> watch [--quiet] [--verbose]
+15:56:42.363   stale | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.650   payload | Oracle VirtualBox Command Line Management Interface Version 7.2.22
+15:56:42.650   payload | Copyright (C) 2005-2026 Oracle and/or its affiliates
+15:56:42.651   payload | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.652   payload | Usage - Control a virtual machine from the host system:
+15:56:42.652   payload | VBoxManage guestcontrol <uuid | vmname> run [--arg0=argument 0]
+15:56:42.653   payload | [--domain=domainname] [--dos2unix] [--exe=filename]
+15:56:42.653   payload | [--ignore-orphaned-processes] [--no-wait-stderr | --wait-stderr]
+15:56:42.654   payload | [--no-wait-stdout | --wait-stdout] [--passwordfile=password-file |
+15:56:42.654   payload | --password=password] [--profile] [--putenv=var-name=[value]] [--quiet]
+15:56:42.655   payload | [--timeout=msec] [--unix2dos] [--unquoted-args] [--username=username]
+15:56:42.656   payload | [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.656   payload | VBoxManage guestcontrol <uuid | vmname> start [--arg0=argument 0]
+15:56:42.657   payload | [--domain=domainname] [--exe=filename] [--ignore-orphaned-processes]
+15:56:42.657   payload | [--passwordfile=password-file | --password=password] [--profile]
+15:56:42.658   payload | [--putenv=var-name=[value]] [--quiet] [--timeout=msec] [--unquoted-args]
+15:56:42.658   payload | [--username=username] [--cwd=directory] [--verbose] <-- [argument...]>
+15:56:42.659   payload | VBoxManage guestcontrol <uuid | vmname> copyfrom [--dereference]
+15:56:42.659   payload | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.660   payload | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.660   payload | [--target-directory=host-destination-dir] [--update]
+15:56:42.661   payload | [--username=username] [--verbose] <guest-source0> guest-source1 [...]
+15:56:42.661   payload | <host-destination>
+15:56:42.662   payload | VBoxManage guestcontrol <uuid | vmname> copyto [--dereference]
+15:56:42.662   payload | [--domain=domainname] [--passwordfile=password-file |
+15:56:42.663   payload | --password=password] [--quiet] [--no-replace] [--recursive]
+15:56:42.664   payload | [--target-directory=guest-destination-dir] [--update]
+15:56:42.664   payload | [--username=username] [--verbose] <host-source0> host-source1 [...]
+15:56:42.665   payload | VBoxManage guestcontrol <uuid | vmname> mkdir [--domain=domainname]
+15:56:42.665   payload | [--mode=mode] [--parents] [--passwordfile=password-file |
+15:56:42.665   payload | --password=password] [--quiet] [--username=username] [--verbose]
+15:56:42.665   payload | <guest-directory...>
+15:56:42.666   payload | VBoxManage guestcontrol <uuid | vmname> rmdir [--domain=domainname]
+15:56:42.666   payload | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.667   payload | [--recursive] [--username=username] [--verbose] <guest-directory...>
+15:56:42.667   payload | VBoxManage guestcontrol <uuid | vmname> rm [--domain=domainname] [--force]
+15:56:42.668   payload | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.668   payload | [--username=username] [--verbose] <guest-directory...>
+15:56:42.669   payload | VBoxManage guestcontrol <uuid | vmname> mv [--domain=domainname]
+15:56:42.669   payload | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.670   payload | [--username=username] [--verbose] <source...> <destination-directory>
+15:56:42.670   payload | VBoxManage guestcontrol <uuid | vmname> mktemp [--directory]
+15:56:42.671   payload | [--domain=domainname] [--mode=mode] [--passwordfile=password-file |
+15:56:42.671   payload | --password=password] [--quiet] [--secure] [--tmpdir=directory-name]
+15:56:42.672   payload | [--username=username] [--verbose] <template-name>
+15:56:42.672   payload | VBoxManage guestcontrol <uuid | vmname> mount [--passwordfile=password-file |
+15:56:42.673   payload | --password=password] [--username=username] [--verbose]
+15:56:42.674   payload | VBoxManage guestcontrol <uuid | vmname> fsinfo [--domain=domainname]
+15:56:42.674   payload | [--passwordfile=password-file | --password=password] [--human-readable]
+15:56:42.675   payload | [--quiet] [--total] [--username=username] [--verbose] <path>
+15:56:42.675   payload | VBoxManage guestcontrol <uuid | vmname> stat [--domain=domainname]
+15:56:42.676   payload | [--passwordfile=password-file | --password=password] [--quiet]
+15:56:42.676   payload | [--username=username] [--verbose] <filename>
+15:56:42.677   payload | VBoxManage guestcontrol <uuid | vmname> list <all | files | processes |
+15:56:42.677   payload | sessions> [--quiet] [--verbose]
+15:56:42.678   payload | VBoxManage guestcontrol <uuid | vmname> closeprocess [--session-id=ID |
+15:56:42.678   payload | --session-name=name-or-pattern] [--quiet] [--verbose] <PID...>
+15:56:42.679   payload | VBoxManage guestcontrol <uuid | vmname> closesession [--all | --session-id=ID
+15:56:42.680   payload | | --session-name=name-or-pattern] [--quiet] [--verbose]
+15:56:42.680   payload | VBoxManage guestcontrol <uuid | vmname> updatega [--quiet] [--verbose]
+15:56:42.681   payload | [--source=guest-additions.ISO] [--wait-start] [-- [argument...]]
+15:56:42.681   payload | VBoxManage guestcontrol <uuid | vmname> watch [--quiet] [--verbose]
+15:56:42.682   payload | VBoxManage.exe: error: Unknown option: --profile
+15:56:42.683 RESULT: FAIL - payload did not land on the guest (variable: profile+integrity)

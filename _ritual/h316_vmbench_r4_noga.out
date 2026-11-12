@@ -1,0 +1,16 @@
+21:54:16.331 ===== h316 vmbench 2026-11-06 21:54:16 =====
+21:54:16.585 vm state=name="Win11-Test2" encryption="disabled"
+21:54:16.613 relay=17920
+21:54:16.684 snapshot take h316_pre_215416 :: Snapshot taken. UUID: 1b1399ed-7776-487c-ac20-696d63045908 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+21:54:16.711 snapshot readback: CurrentSnapshotName="h316_pre_215416"
+21:54:20.774 startvm :: Waiting for VM "Win11-Test2" to power on... VM "Win11-Test2" has been successfully started.
+21:54:25.805   guestcontrol retry 1/2 (Win11-Test2)
+21:54:37.830   guestcontrol retry 2/2 (Win11-Test2)
+21:54:54.855   guestcontrol retry 1/2 (Win11-Test2)
+21:55:06.881   guestcontrol retry 2/2 (Win11-Test2)
+21:55:23.905   guestcontrol retry 1/2 (Win11-Test2)
+21:55:35.927   guestcontrol retry 2/2 (Win11-Test2)
+21:55:52.951   guestcontrol retry 1/2 (Win11-Test2)
+21:56:04.976   guestcontrol retry 2/2 (Win11-Test2)
+21:56:16.983   try 4: VBoxManage.exe: error: Guest Additions are not installed or not ready (yet) VBoxManage.exe
+21:56:22.007   guestcontrol retry 1/2 (Win11-Test2)

@@ -1,0 +1,19 @@
+﻿file            : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll
+size            : 336896
+image base      : 0x180000000
+image size      : 0x59000
+DllCharacteristics: 0x0160
+  set: HIGH_ENTROPY_VA
+  set: DYNAMIC_BASE
+  set: NX_COMPAT
+tls directory : rva=0x47480 size=0x28
+  tls flags   : 0x300000
+  raw data    : 0x180048E78 .. 0x180048E80 (0x8 bytes)
+  index ptr   : 0x180050098
+  callbacks   : 0x1800384A8
+  zero fill   : 0x0
+  callback[0] : null (array present, empty)
+load config   : rva=0x47170 size=0x140
+  security cookie : 0x18004E0C0
+  guard flags     : 0x1
+PE_TLS_VERDICT: parsed tls_data

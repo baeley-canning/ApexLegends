@@ -1,0 +1,19 @@
+﻿21:39:56.519 ===== h315 dump evidence =====
+21:39:56.631 admin=True pid=14304 boot=2026-11-06T21:33:46
+21:39:56.631 --- minidump dir (elevated) ---
+21:39:56.639   110526-10734-01.dmp 9397709 2026-11-05T15:23:09
+21:39:56.639   110526-14640-01.dmp 9030821 2026-11-05T14:22:57
+21:39:56.639   110626-10203-01.dmp 9734319 2026-11-06T20:19:02
+21:39:56.639   110626-10609-01.dmp 9619497 2026-11-06T21:33:53
+21:39:56.639   110626-9968-01.dmp 9435409 2026-11-06T18:04:46
+21:39:56.642 MEMORY.DMP exists=False
+21:39:56.650 crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1
+21:39:56.708 src size=9619497 mtime=2026-11-06T21:33:53 sha256=BA6984A388C1B5F6A124807C359C531A585ED9173FA831F522EA628D1EEF799C
+21:39:57.070 copy dst=C:\Users\New User\OneDrive\Desktop\cheating\temp\110626-10609-01.dmp size=9619497 sha256=BA6984A388C1B5F6A124807C359C531A585ED9173FA831F522EA628D1EEF799C MATCH=True
+21:39:57.072 dumpchk present=True
+21:42:57.086 dumpchk rc= out-bytes=20755
+21:42:57.089 kd present=True
+21:42:57.245 kd rc=
+21:42:57.249 kd out-bytes=7164
+21:42:57.254 record=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\h315_crash.txt bytes=2678
+21:42:57.254 RESULT: dump evidence pass complete (read-only w.r.t. C:\Windows)

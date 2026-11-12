@@ -1,0 +1,6 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_watch_20261107_212118.txt
+target pid=35976
+  discovering DTB for pid 35976 (one-time; pid scan, ~70-80 s) ...
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

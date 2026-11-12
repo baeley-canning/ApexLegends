@@ -1,0 +1,10 @@
+ov68 - live attach into the EA-launched game - 2026-11-07 14:02:54
+elevated: True
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+games    : 29184
+target   : pid=29184 ppid=25592 started=11/07/2026 13:57:10
+pre      : moduleBase(apexcheat)=0x0
+handle   : OpenProcess(ALL) ok hproc=2904
+FAIL: VirtualAllocEx err=87
+RESULT: FAIL alloc=87
+ov68 DONE FAIL alloc=87

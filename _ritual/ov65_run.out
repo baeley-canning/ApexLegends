@@ -1,0 +1,21 @@
+ov65 - parent-spoofed create, entry stub - 2026-11-07 13:50:11
+target  : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+elevated: True
+kill     : skipped (-SkipKill)
+leftover: game from earlier run still alive (not fatal)
+header   : parsed once, e_lfanew=0x1B8 (65.6 MB)
+parent   : target=explorer pid=11924 created=11/07/2026 09:04:24
+attempt 1/1
+spoof    : UpdateProcThreadAttribute err=50
+spoof    : NOT APPLIED - falling back to a plain create
+flags    : 0x404 spoof=False
+created SUSPENDED pid=29732 hproc=2640 hthread=2628
+spoof    : child ParentProcessId=29952 want=11924 (explorer) -> MISMATCH
+noinject : created and left completely untouched
+nopatch  : entry left untouched (control)
+resume   : previous suspend count=1 (suspended for 274 ms)
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+RESULT: FAIL process-died exit=0x000186AA
+ov65 DONE FAIL process-died exit=0x000186AA

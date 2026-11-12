@@ -1,0 +1,240 @@
+16:27:35.195 === h306 elev: Win+R + Ctrl+Shift+Enter via keyboard -> module owning 0xfffff80219033bc9 ===
+16:27:35.605   session | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+16:27:35.608   session | services                                            0  Disc
+16:27:35.608   session | >console                   vboxuser                  1  Active
+16:27:35.770   hku | HKEY_USERS\.DEFAULT
+16:27:35.771   hku | HKEY_USERS\S-1-5-19
+16:27:35.771   hku | HKEY_USERS\S-1-5-20
+16:27:35.772   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000
+16:27:35.773   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000_Classes
+16:27:35.774   hku | HKEY_USERS\S-1-5-18
+16:27:35.776 pre-state: session1-loggedon=True hive=True
+16:27:35.954   stale | Could Not Find C:\Users\Public\h306_MEMORY.DMP
+16:27:36.279   payload | @echo off
+16:27:36.280   payload | echo START %DATE% %TIME% > "C:\Users\Public\h306_elevated.txt"
+16:27:36.280   payload | whoami >> "C:\Users\Public\h306_elevated.txt"
+16:27:36.281   payload | whoami /groups | findstr /i "Mandatory" >> "C:\Users\Public\h306_elevated.txt"
+16:27:36.282   payload | copy /y C:\Windows\MEMORY.DMP C:\Users\Public\h306_MEMORY.DMP >> "C:\Users\Public\h306_elevated.txt" 2>&1
+16:27:36.282   payload | echo COPY-RC=%ERRORLEVEL% >> "C:\Users\Public\h306_elevated.txt"
+16:27:36.283 --- fire 1: Win+R, cmd /c payload, Ctrl+Shift+Enter, Enter on UAC ---
+16:27:36.373   key e0 5b 13 93 e0 db ok
+16:27:38.326   putstring "cmd /c C:\Users\Public\h306.cmd" ok
+16:27:39.315   key 1d 2a 1c 9c aa 9d ok
+16:27:43.366   key 1c 9c ok
+16:27:48.557   poll | Volume in drive C is Windows
+16:27:48.559   poll | Volume Serial Number is A038-5429
+16:27:48.559   poll | Directory of C:\Users\Public
+16:27:48.560   poll | File Not Found
+16:27:53.735   poll | Volume in drive C is Windows
+16:27:53.736   poll | Volume Serial Number is A038-5429
+16:27:53.737   poll | Directory of C:\Users\Public
+16:27:53.737   poll | File Not Found
+16:27:58.910   poll | Volume in drive C is Windows
+16:27:58.911   poll | Volume Serial Number is A038-5429
+16:27:58.912   poll | Directory of C:\Users\Public
+16:27:58.913   poll | File Not Found
+16:27:58.931   poll t=15s bytes=0
+16:28:04.107   poll | Volume in drive C is Windows
+16:28:04.107   poll | Volume Serial Number is A038-5429
+16:28:04.108   poll | Directory of C:\Users\Public
+16:28:04.109   poll | File Not Found
+16:28:09.273   poll | Volume in drive C is Windows
+16:28:09.273   poll | Volume Serial Number is A038-5429
+16:28:09.274   poll | Directory of C:\Users\Public
+16:28:09.274   poll | File Not Found
+16:28:14.583   poll | Volume in drive C is Windows
+16:28:14.584   poll | Volume Serial Number is A038-5429
+16:28:14.584   poll | Directory of C:\Users\Public
+16:28:14.585   poll | File Not Found
+16:28:14.585   poll t=30s bytes=0
+16:28:19.763   poll | Volume in drive C is Windows
+16:28:19.763   poll | Volume Serial Number is A038-5429
+16:28:19.764   poll | Directory of C:\Users\Public
+16:28:19.764   poll | File Not Found
+16:28:24.937   poll | Volume in drive C is Windows
+16:28:24.938   poll | Volume Serial Number is A038-5429
+16:28:24.939   poll | Directory of C:\Users\Public
+16:28:24.939   poll | File Not Found
+16:28:30.103   poll | Volume in drive C is Windows
+16:28:30.103   poll | Volume Serial Number is A038-5429
+16:28:30.104   poll | Directory of C:\Users\Public
+16:28:30.105   poll | File Not Found
+16:28:30.105   poll t=45s bytes=0
+16:28:35.473   poll | Volume in drive C is Windows
+16:28:35.474   poll | Volume Serial Number is A038-5429
+16:28:35.475   poll | Directory of C:\Users\Public
+16:28:35.475   poll | File Not Found
+16:28:40.663   poll | Volume in drive C is Windows
+16:28:40.664   poll | Volume Serial Number is A038-5429
+16:28:40.665   poll | Directory of C:\Users\Public
+16:28:40.665   poll | File Not Found
+16:28:45.849   poll | Volume in drive C is Windows
+16:28:45.850   poll | Volume Serial Number is A038-5429
+16:28:45.851   poll | Directory of C:\Users\Public
+16:28:45.852   poll | File Not Found
+16:28:45.852   poll t=60s bytes=0
+16:28:51.041   poll | Volume in drive C is Windows
+16:28:51.042   poll | Volume Serial Number is A038-5429
+16:28:51.043   poll | Directory of C:\Users\Public
+16:28:51.044   poll | File Not Found
+16:28:56.451   poll | Volume in drive C is Windows
+16:28:56.452   poll | Volume Serial Number is A038-5429
+16:28:56.453   poll | Directory of C:\Users\Public
+16:28:56.453   poll | File Not Found
+16:29:01.622   poll | Volume in drive C is Windows
+16:29:01.623   poll | Volume Serial Number is A038-5429
+16:29:01.624   poll | Directory of C:\Users\Public
+16:29:01.625   poll | File Not Found
+16:29:01.625   poll t=75s bytes=0
+16:29:06.824   poll | Volume in drive C is Windows
+16:29:06.825   poll | Volume Serial Number is A038-5429
+16:29:06.826   poll | Directory of C:\Users\Public
+16:29:06.826   poll | File Not Found
+16:29:12.017   poll | Volume in drive C is Windows
+16:29:12.017   poll | Volume Serial Number is A038-5429
+16:29:12.018   poll | Directory of C:\Users\Public
+16:29:12.018   poll | File Not Found
+16:29:17.216   poll | Volume in drive C is Windows
+16:29:17.217   poll | Volume Serial Number is A038-5429
+16:29:17.218   poll | Directory of C:\Users\Public
+16:29:17.219   poll | File Not Found
+16:29:17.220   poll t=90s bytes=0
+16:29:22.402   poll | Volume in drive C is Windows
+16:29:22.403   poll | Volume Serial Number is A038-5429
+16:29:22.404   poll | Directory of C:\Users\Public
+16:29:22.404   poll | File Not Found
+16:29:27.587   poll | Volume in drive C is Windows
+16:29:27.588   poll | Volume Serial Number is A038-5429
+16:29:27.588   poll | Directory of C:\Users\Public
+16:29:27.589   poll | File Not Found
+16:29:32.776   poll | Volume in drive C is Windows
+16:29:32.777   poll | Volume Serial Number is A038-5429
+16:29:32.778   poll | Directory of C:\Users\Public
+16:29:32.778   poll | File Not Found
+16:29:32.779   poll t=105s bytes=0
+16:29:37.969   poll | Volume in drive C is Windows
+16:29:37.970   poll | Volume Serial Number is A038-5429
+16:29:37.970   poll | Directory of C:\Users\Public
+16:29:37.970   poll | File Not Found
+16:29:43.160   poll | Volume in drive C is Windows
+16:29:43.161   poll | Volume Serial Number is A038-5429
+16:29:43.161   poll | Directory of C:\Users\Public
+16:29:43.162   poll | File Not Found
+16:29:48.350   poll | Volume in drive C is Windows
+16:29:48.351   poll | Volume Serial Number is A038-5429
+16:29:48.351   poll | Directory of C:\Users\Public
+16:29:48.352   poll | File Not Found
+16:29:48.352   poll t=120s bytes=0
+16:29:48.354 --- fire 2 (retry): same sequence again ---
+16:29:48.438   key e0 5b 13 93 e0 db ok
+16:29:50.386   putstring "cmd /c C:\Users\Public\h306.cmd" ok
+16:29:51.385   key 1d 2a 1c 9c aa 9d ok
+16:29:55.434   key 1c 9c ok
+16:30:00.653   poll | Volume in drive C is Windows
+16:30:00.654   poll | Volume Serial Number is A038-5429
+16:30:00.654   poll | Directory of C:\Users\Public
+16:30:00.655   poll | File Not Found
+16:30:05.872   poll | Volume in drive C is Windows
+16:30:05.873   poll | Volume Serial Number is A038-5429
+16:30:05.873   poll | Directory of C:\Users\Public
+16:30:05.874   poll | File Not Found
+16:30:11.062   poll | Volume in drive C is Windows
+16:30:11.062   poll | Volume Serial Number is A038-5429
+16:30:11.063   poll | Directory of C:\Users\Public
+16:30:11.063   poll | File Not Found
+16:30:11.064   poll t=15s bytes=0
+16:30:22.020   poll | Volume in drive C is Windows
+16:30:22.020   poll | Volume Serial Number is A038-5429
+16:30:22.021   poll | Directory of C:\Users\Public
+16:30:22.021   poll | File Not Found
+16:30:27.212   poll | Volume in drive C is Windows
+16:30:27.213   poll | Volume Serial Number is A038-5429
+16:30:27.213   poll | Directory of C:\Users\Public
+16:30:27.214   poll | File Not Found
+16:30:32.410   poll | Volume in drive C is Windows
+16:30:32.411   poll | Volume Serial Number is A038-5429
+16:30:32.411   poll | Directory of C:\Users\Public
+16:30:32.412   poll | File Not Found
+16:30:32.412   poll t=30s bytes=0
+16:30:37.621   poll | Volume in drive C is Windows
+16:30:37.622   poll | Volume Serial Number is A038-5429
+16:30:37.622   poll | Directory of C:\Users\Public
+16:30:37.623   poll | File Not Found
+16:30:42.810   poll | Volume in drive C is Windows
+16:30:42.811   poll | Volume Serial Number is A038-5429
+16:30:42.811   poll | Directory of C:\Users\Public
+16:30:42.812   poll | File Not Found
+16:30:48.003   poll | Volume in drive C is Windows
+16:30:48.004   poll | Volume Serial Number is A038-5429
+16:30:48.005   poll | Directory of C:\Users\Public
+16:30:48.005   poll | File Not Found
+16:30:48.006   poll t=45s bytes=0
+16:30:53.191   poll | Volume in drive C is Windows
+16:30:53.192   poll | Volume Serial Number is A038-5429
+16:30:53.192   poll | Directory of C:\Users\Public
+16:30:53.193   poll | File Not Found
+16:30:58.383   poll | Volume in drive C is Windows
+16:30:58.384   poll | Volume Serial Number is A038-5429
+16:30:58.384   poll | Directory of C:\Users\Public
+16:30:58.385   poll | File Not Found
+16:31:03.592   poll | Volume in drive C is Windows
+16:31:03.592   poll | Volume Serial Number is A038-5429
+16:31:03.593   poll | Directory of C:\Users\Public
+16:31:03.593   poll | File Not Found
+16:31:03.594   poll t=60s bytes=0
+16:31:08.779   poll | Volume in drive C is Windows
+16:31:08.780   poll | Volume Serial Number is A038-5429
+16:31:08.781   poll | Directory of C:\Users\Public
+16:31:08.781   poll | File Not Found
+16:31:13.955   poll | Volume in drive C is Windows
+16:31:13.955   poll | Volume Serial Number is A038-5429
+16:31:13.955   poll | Directory of C:\Users\Public
+16:31:13.956   poll | File Not Found
+16:31:19.143   poll | Volume in drive C is Windows
+16:31:19.143   poll | Volume Serial Number is A038-5429
+16:31:19.144   poll | Directory of C:\Users\Public
+16:31:19.144   poll | File Not Found
+16:31:19.145   poll t=75s bytes=0
+16:31:24.363   poll | Volume in drive C is Windows
+16:31:24.364   poll | Volume Serial Number is A038-5429
+16:31:24.364   poll | Directory of C:\Users\Public
+16:31:24.365   poll | File Not Found
+16:31:29.554   poll | Volume in drive C is Windows
+16:31:29.555   poll | Volume Serial Number is A038-5429
+16:31:29.555   poll | Directory of C:\Users\Public
+16:31:29.556   poll | File Not Found
+16:31:34.744   poll | Volume in drive C is Windows
+16:31:34.744   poll | Volume Serial Number is A038-5429
+16:31:34.745   poll | Directory of C:\Users\Public
+16:31:34.746   poll | File Not Found
+16:31:34.746   poll t=90s bytes=0
+16:31:39.935   poll | Volume in drive C is Windows
+16:31:39.936   poll | Volume Serial Number is A038-5429
+16:31:39.936   poll | Directory of C:\Users\Public
+16:31:39.937   poll | File Not Found
+16:31:45.126   poll | Volume in drive C is Windows
+16:31:45.127   poll | Volume Serial Number is A038-5429
+16:31:45.127   poll | Directory of C:\Users\Public
+16:31:45.128   poll | File Not Found
+16:31:50.309   poll | Volume in drive C is Windows
+16:31:50.310   poll | Volume Serial Number is A038-5429
+16:31:50.310   poll | Directory of C:\Users\Public
+16:31:50.311   poll | File Not Found
+16:31:50.311   poll t=105s bytes=0
+16:31:55.506   poll | Volume in drive C is Windows
+16:31:55.507   poll | Volume Serial Number is A038-5429
+16:31:55.508   poll | Directory of C:\Users\Public
+16:31:55.508   poll | File Not Found
+16:32:00.696   poll | Volume in drive C is Windows
+16:32:00.697   poll | Volume Serial Number is A038-5429
+16:32:00.698   poll | Directory of C:\Users\Public
+16:32:00.698   poll | File Not Found
+16:32:05.889   poll | Volume in drive C is Windows
+16:32:05.890   poll | Volume Serial Number is A038-5429
+16:32:05.890   poll | Directory of C:\Users\Public
+16:32:05.891   poll | File Not Found
+16:32:05.891   poll t=120s bytes=0
+16:32:06.080   elevreport | The system cannot find the file specified.
+16:32:06.081 transcript: high-integrity=False staged=0 want=391099508
+16:32:06.263 RESULT: FAIL - neither fire produced an elevated copy (variable: elevation route)
+16:32:06.264 VERDICT: only delta=0 on copyfrom AND a High Mandatory Level line make the kd read valid

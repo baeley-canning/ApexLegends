@@ -1,0 +1,671 @@
+p74_matrix offline view-matrix canary scan  2026-11-06 20:41:08
+offline + read-only; corpora per _ritual\p73_assets.out (usable=4)
+
+SELFTEST candidates=2 (expect 2) tierA=1 tierB=1 addrs=['0x10540', '0x10a40']
+SELFTEST PASS
+CORPUS exe: C:\Program Files\EA Games\Apex\r5apex_dx12.exe imagebase=0x140000000 sizeofimage=0xdfb8000
+  scanned .rdata raw bytes at 0x142ca4000: tierA=3215 tierB=2701
+  CAND tier=A score=15.0 addr=0x1430153f8 rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 1 1
+  CAND tier=A score=14.0 addr=0x143015088 rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 0 0 0 1 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38
+  CAND tier=A score=14.0 addr=0x143015670 rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38
+  CAND tier=A score=13.1 addr=0x143015600 rl=0.7071 ul=1.0000 dot=0.0000
+       floats -0.5 0 0.5 0 0 1 0 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38
+  CAND tier=B score=12.8 addr=0x142fd2878 rl=1.0000 ul=1.4142 dot=0.0000
+       floats -1 0 0 0 0 1 -1 0 0 1 0 1 0 1 -1 1
+  CAND tier=A score=12.0 addr=0x14301509c rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38
+  CAND tier=A score=12.0 addr=0x1430154a8 rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 0 3.40282e+38 3.40282e+38 -1 -1 1 1 1 -1
+  CAND tier=A score=11.0 addr=0x143015754 rl=1.0000 ul=1.0000 dot=0.0000
+       floats 1 0 0 0 0 1 0 2.14748e+09 2.14748e+09 2.14748e+09 0 1 0 0 0 3.40282e+38
+  CAND tier=B score=10.1 addr=0x143015570 rl=1.4142 ul=1.2186 dot=1.7000
+       floats 1 1 0 0 0.85 0.85 0.2 0 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38 3.40282e+38
+  CAND tier=A score=10.0 addr=0x142fd2890 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -1 0 0 1 0 1 0 1 -1 1 0 1 0 0 -1 1
+  CAND tier=A score=8.9 addr=0x143203f94 rl=0.9886 ul=1.3454 dot=1.3128
+       floats 0.570796 0.570796 0.570796 0 0.8 0.9 0.6 0 0.5 0.125 0.625 0.63662 0.63662 0.63662 0.63662 0.693153
+  CAND tier=B score=8.8 addr=0x1432040ac rl=1.0000 ul=1.4142 dot=1.0000
+       floats 1 0 0 0 1 1 0 0 1 1 0.1 0.1 1 0.133 0.133 0.133
+  CAND tier=B score=8.6 addr=0x142f5db80 rl=1.4142 ul=1.7320 dot=0.0000
+       floats 1 -1 0 0 1 0.999993 0.999976 0.999948 0.999909 0.999859 0.999799 0.999728 0.999647 0.999554 0.999451 0.999337
+  CAND tier=B score=8.6 addr=0x1432041c8 rl=1.7321 ul=1.4142 dot=2.0000
+       floats 1 1 -1 1 1 1 0 0 -1 1 -1 -1 -1 1 1 1
+  CAND tier=B score=8.1 addr=0x143035360 rl=1.6432 ul=0.6686 dot=-0.2641
+       floats 1.25018 -1.04685 -0.203328 0 0.298956 0.587131 0.113913 0 -0.298956 -0.587131 0.886087 0 0.04045 0.04045 0.04045 3.40282e+38
+  CAND tier=B score=8.0 addr=0x14320533c rl=1.2688 ul=1.4142 dot=-0.2190
+       floats -0.78098 1 0 0 -1 -1 0 0 -1 0 0 -1 -1 0 -1 -1
+  CAND tier=A score=7.9 addr=0x143202378 rl=0.9813 ul=1.0281 dot=1.0089
+       floats 0.5625 0.567187 0.57 0.58 0.587 0.593715 0.6 0 -3.68935e+19 0.6024 -1.8891e+26 0.6024 0.64 0.64 0.65 0.650521
+  CAND tier=B score=7.8 addr=0x1430e040c rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 0 0 0 0 1 1 1 162.865 1.4013e-45 37.7521
+  CAND tier=B score=7.8 addr=0x142fe844c rl=1.0000 ul=1.4142 dot=0.0000
+       floats -1 1.17549e-38 1.17549e-38 1.17549e-38 1.17549e-38 1 1 1 1 3 3 3 3 0.5 0.5 0.5
+  CAND tier=A score=7.7 addr=0x142ffa530 rl=0.7275 ul=0.8439 dot=0.4998
+       floats 0.42 0.42 0.42 0.5 0.55 0.64 0 0 7.80305e-38 -1.40393e+29 2.87103e-29 -3.01117e-05 3.2683e-33 -0.0751848 1.14034e-08 -300.156
+  CAND tier=A score=7.7 addr=0x143202364 rl=0.9313 ul=0.9698 dot=0.9032
+       floats 0.525156 0.542188 0.545455 0.55 0.55 0.5625 0.567187 0.57 0.58 0.587 0.593715 0.6 0 -3.68935e+19 0.6024 -1.8891e+26
+  CAND tier=A score=7.7 addr=0x143204198 rl=1.3980 ul=1.3704 dot=1.8433
+       floats 0.9 1 0.38 0.686 0.937 1 0 0 1 1 1 1 1 1 -1 1
+  CAND tier=A score=7.6 addr=0x143203f84 rl=0.8905 ul=0.9886 dot=0.7492
+       floats 0.6875 0.0625 0.5625 0.570796 0.570796 0.570796 0.570796 0 0.8 0.9 0.6 0 0.5 0.125 0.625 0.63662
+  CAND tier=B score=7.6 addr=0x1432041d8 rl=1.4142 ul=1.7321 dot=0.0000
+       floats 1 1 0 0 -1 1 -1 -1 -1 1 1 1 1 1 2.42889e-09 0.987
+  CAND tier=B score=7.5 addr=0x1432040a8 rl=1.4142 ul=1.4142 dot=1.0000
+       floats 1 1 0 0 0 1 1 0 0 1 1 0.1 0.1 1 0.133 0.133
+  CAND tier=B score=7.5 addr=0x143015510 rl=1.4142 ul=1.4142 dot=0.0000
+       floats -1 -1 0 1 1 -1 0 1 1 1 0 1 -1 1 0 1
+  CAND tier=B score=7.5 addr=0x1430e03dc rl=1.4142 ul=1.4142 dot=1.0000
+       floats 1 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1
+  CAND tier=A score=7.4 addr=0x142cca274 rl=0.9131 ul=1.1016 dot=1.0057
+       floats 0.478 0.538 0.562 0.567 0.595 0.647 0.664 0.746 0.815 1.032 1.179 1.285 1.423 1.695 1.875 1.895
+  CAND tier=A score=7.4 addr=0x142fb2f1c rl=1.1730 ul=0.9775 dot=0.9335
+       floats 0.67334 0.677246 0.681152 0.685303 0.689209 0.693115 0 0 0 0 1.5802e-07 1.25685e-06 4.21748e-06 2.31052e-06 4.04497e-06 2.65127e-06
+  CAND tier=A score=7.4 addr=0x142cca270 rl=0.8504 ul=1.0460 dot=0.8893
+       floats 0.453 0.478 0.538 0.562 0.567 0.595 0.647 0.664 0.746 0.815 1.032 1.179 1.285 1.423 1.695 1.875
+  CAND tier=A score=7.4 addr=0x143002ca0 rl=1.0910 ul=0.8906 dot=0.8301
+       floats 0.621338 0.785645 0.432373 0.895264 0.098389 0.857178 0.220947 0.981689 0.667969 0.898682 0.603027 0.588623 0.206055 0.536133 0.245361 0.999023
+  CAND tier=A score=7.4 addr=0x143204140 rl=1.0738 ul=0.8660 dot=0.8780
+       floats 0.4 0.87 0.486 1 0.5 0.5 0.5 1 0.305 0.788 0.69 1 0.67 0.698 0.749 1
+  CAND tier=A score=7.4 addr=0x142cca26c rl=0.7948 ul=0.9957 dot=0.7914
+       floats 0.445 0.453 0.478 0.538 0.562 0.567 0.595 0.647 0.664 0.746 0.815 1.032 1.179 1.285 1.423 1.695
+  CAND tier=A score=7.3 addr=0x142fe8530 rl=1.1188 ul=1.1027 dot=-1.2337
+       floats -0.645964 -0.645964 -0.645964 -0.645964 0.63662 0.63662 0.63662 0.63662 -0.00468175 -0.00468175 -0.00468175 -0.00468175 1 1 1 1
+  CAND tier=A score=7.3 addr=0x143204150 rl=0.8660 ul=1.0909 dot=0.8915
+       floats 0.5 0.5 0.5 1 0.305 0.788 0.69 1 0.67 0.698 0.749 1 0.776 0.47 0.866 1
+  CAND tier=A score=7.3 addr=0x142cca278 rl=0.9627 ul=1.1900 dot=1.1442
+       floats 0.538 0.562 0.567 0.595 0.647 0.664 0.746 0.815 1.032 1.179 1.285 1.423 1.695 1.875 1.895 2.087
+  CAND tier=B score=7.3 addr=0x143202658 rl=1.5708 ul=2.2451 dot=-0.0000
+       floats 1.5708 0 -1.58819e-23 1.575 -1.0842e-19 1.575 1.5999 0 0 1.625 -0.0143125 1.6295 4.17233e-08 1.65 2 1.65
+  CAND tier=A score=7.3 addr=0x143204110 rl=1.1614 ul=1.0768 dot=1.2297
+       floats 0.854 0.643 0.454 1 0.878 0.423 0.458 1 0.898 0.752 0.482 1 0.4 0.87 0.486 1
+  CAND tier=A score=7.3 addr=0x142fe7568 rl=1.1766 ul=1.0684 dot=0.8728
+       floats 0.690196 0.913725 0.270588 0.070588 0.027451 0.694118 0.811765 0 0.494118 0.823529 0.8 0.6 0.003922 0.443137 0.639216 0.376471
+  CAND tier=A score=7.2 addr=0x142fe69f0 rl=0.9335 ul=1.1897 dot=0.9831
+       floats 0.768627 0.333333 0.411765 0.423529 0.945098 0.721569 0.039216 0.792157 0.956863 0.266667 0.254902 0.047059 0.294118 0.658824 0.25098 1
+  ... 5876 more below report cap
+  scanned .data raw bytes at 0x14334c000: tierA=2104 tierB=1220
+  CAND tier=A score=9.8 addr=0x143d1b204 rl=1.1180 ul=1.2716 dot=0.3927
+       floats 0.5 0 1 0 0.785398 1 0 1 0.5 1.5708 1 0.5 1 1 2.35619 1
+  CAND tier=B score=9.5 addr=0x14336c154 rl=1.4142 ul=1.4142 dot=0.0000
+       floats 1 1.22465e-16 -1 0 0.707107 1 0.707107 1.22465e-16 -0.707107 -1 -0.707107 0 0.382683 0.707107 0.92388 1
+  CAND tier=B score=8.8 addr=0x14337f5c4 rl=1.4140 ul=1.0000 dot=0.0184
+       floats -0.999699 0.0122715 -0.999925 1 -0 0.999981 -0.00613588 0.999925 -0.0122715 0.999831 -0.0184067 0.999699 -0.0245412 0.999529 -0.0306748 0.999322
+  CAND tier=B score=8.8 addr=0x14337fdc4 rl=1.4142 ul=1.0000 dot=0.0092
+       floats -0.999925 0.00613588 -0.999981 1 -0 0.999995 -0.00306796 0.999981 -0.00613588 0.999958 -0.00920375 0.999925 -0.0122715 0.999882 -0.0153392 0.999831
+  CAND tier=A score=8.7 addr=0x14336c1a4 rl=1.2247 ul=1.2247 dot=1.2071
+       floats -0.382683 -0.707107 -0.92388 -1 -0.92388 -0.707107 -0.382683 0 0.19509 0.382683 0.55557 0.707107 0.83147 0.92388 0.980785 1
+  CAND tier=B score=8.6 addr=0x143fdf660 rl=0.9373 ul=0.5937 dot=-0.0000
+       floats -0.937322 1.61685e-12 2.19816e-21 -4.09531e+15 -4.6171e-35 -0.593671 -1.35693e-13 4.17938e+06 1.19768e+33 -6.69912e-16 2.74871e+12 -2931.06 9.627e-37 -5.13801e+13 20.4523 9.11079e+23
+  CAND tier=A score=7.8 addr=0x143d095f8 rl=0.9763 ul=1.0281 dot=0.0015
+       floats -0.324585 -0.334167 0.858029 0.438272 -0.297913 0.949369 0.258757 0.184448 0.105948 -0.901183 0.969666 -0.261581 0.943276 -0.615845 -0.682063 -0.528339
+  CAND tier=A score=7.6 addr=0x143d098b8 rl=1.0285 ul=0.9095 dot=-0.0112
+       floats 0.391462 -0.913976 0.263184 -0.5673 0.783128 0.409607 0.214917 0.167182 -0.975952 0.367428 -0.789995 -0.800537 -0.320112 0.912727 -0.621399 0.659247
+  CAND tier=A score=7.4 addr=0x143d096ec rl=1.0886 ul=1.1229 dot=-0.1646
+       floats -0.430054 0.685084 -0.728464 0 -0.241437 -0.95843 -0.532898 0.741884 0.020899 -0.670349 0.740273 -0.318412 0.624634 -0.738068 -0.539041 0.481812
+  CAND tier=A score=7.3 addr=0x143d096dc rl=1.1392 ul=1.0886 dot=-0.8588
+       floats 0.978634 -0.019531 0.582841 0.763684 -0.430054 0.685084 -0.728464 0 -0.241437 -0.95843 -0.532898 0.741884 0.020899 -0.670349 0.740273 -0.318412
+  CAND tier=A score=7.2 addr=0x143d09c00 rl=1.0271 ul=1.2400 dot=-0.2019
+       floats -0.764325 0.46224 0.507019 0.148758 0.751545 0.974243 -0.15343 -0.31823 0.986816 -0.439372 0.776405 0.716919 32768 32768 32768 32768
+  CAND tier=A score=7.1 addr=0x143d098f0 rl=1.1135 ul=1.1993 dot=0.0177
+       floats -0.621399 0.659247 -0.647346 -0.501892 0.222842 -0.696452 -0.950562 -0.697513 -0.576278 0.521118 0.60226 -0.756081 0.391418 -0.116043 0.992942 0.206665
+  CAND tier=B score=7.0 addr=0x143d09bb0 rl=0.6832 ul=1.0004 dot=-0.0089
+       floats -0.453546 -0.353027 -0.369433 0.839581 -0.733154 0.555847 0.392934 -0.796631 -0.856065 0.028375 0.516296 0.067161 0.997565 0.269409 -0.962279 -0.051749
+  CAND tier=A score=7.0 addr=0x143d09a6c rl=1.0942 ul=1.2477 dot=-0.7695
+       floats -0.997913 -0.428894 0.132631 0.979299 0.755432 0.326398 0.937806 0.340637 0.21172 0.976659 0.16864 0.957557 -0.019174 -0.287659 -0.016554 0.99965
+  CAND tier=A score=6.9 addr=0x143d09bfc rl=1.1173 ul=1.2394 dot=-0.2239
+       floats -0.671204 -0.764325 0.46224 0.507019 0.148758 0.751545 0.974243 -0.15343 -0.31823 0.986816 -0.439372 0.776405 0.716919 32768 32768 32768
+  CAND tier=A score=6.9 addr=0x143d09700 rl=1.3240 ul=1.0482 dot=0.0118
+       floats -0.95843 -0.532898 0.741884 0.020899 -0.670349 0.740273 -0.318412 0.624634 -0.738068 -0.539041 0.481812 -0.965798 -0.034508 -0.257141 0.495184 0.805372
+  CAND tier=B score=6.8 addr=0x14337f5cc rl=1.4142 ul=1.0000 dot=1.0061
+       floats -0.999925 1 -0 0.999981 -0.00613588 0.999925 -0.0122715 0.999831 -0.0184067 0.999699 -0.0245412 0.999529 -0.0306748 0.999322 -0.0368072 0.999078
+  CAND tier=B score=6.8 addr=0x14337fdcc rl=1.4142 ul=1.0000 dot=1.0030
+       floats -0.999981 1 -0 0.999995 -0.00306796 0.999981 -0.00613588 0.999958 -0.00920375 0.999925 -0.0122715 0.999882 -0.0153392 0.999831 -0.0184067 0.999769
+  CAND tier=A score=6.7 addr=0x143ec6508 rl=1.2247 ul=1.2247 dot=1.2500
+       floats 0.5 1 0.5 1 1 0.5 0.5 0.5 1 1 0.5 1 0.5 1 1 1
+  CAND tier=B score=6.6 addr=0x143eeee0c rl=1.4500 ul=1.0000 dot=1.0000
+       floats -1.05 1 0 0.01 0 1 -0.01 -1 0 -0.01 0 -1 0.01 0 0 1
+  CAND tier=B score=6.5 addr=0x14337ee38 rl=1.0707 ul=1.4142 dot=1.3066
+       floats 0.55557 -0.83147 0.382683 -0.92388 0.19509 -0.980785 1 -0 0.995185 -0.0980171 0.980785 -0.19509 0.95694 -0.290285 0.92388 -0.382683
+  CAND tier=A score=6.4 addr=0x14336c1b4 rl=1.2247 ul=0.7023 dot=-0.6634
+       floats -0.92388 -0.707107 -0.382683 0 0.19509 0.382683 0.55557 0.707107 0.83147 0.92388 0.980785 1 0.980785 0.92388 0.83147 0.707107
+  CAND tier=A score=6.4 addr=0x14337ee94 rl=1.2247 ul=1.3005 dot=1.5687
+       floats -0.707107 0.634393 -0.77301 0.55557 -0.83147 0.471397 -0.881921 0.382683 -0.92388 0.290285 -0.95694 0.19509 -0.980785 0.0980171 -0.995185 1
+  CAND tier=B score=6.2 addr=0x143d0952c rl=1.5508 ul=0.9580 dot=-0.0003
+       floats 0.96075 -0.996094 -0.69976 0.714256 -0.01886 0.538575 -0.792107 0.470581 0.309926 -0.94372 0.349182 0.525671 -0.77228 0.561523 -0.793079 0.268745
+  CAND tier=B score=6.1 addr=0x143d09be0 rl=1.4120 ul=0.7899 dot=-0.0093
+       floats 0.997565 0.269409 -0.962279 -0.051749 0.267456 -0.738893 0.080065 -0.671204 -0.764325 0.46224 0.507019 0.148758 0.751545 0.974243 -0.15343 -0.31823
+  CAND tier=A score=6.1 addr=0x143d09bf4 rl=1.0014 ul=0.7020 dot=-0.4008
+       floats -0.738893 0.080065 -0.671204 -0.764325 0.46224 0.507019 0.148758 0.751545 0.974243 -0.15343 -0.31823 0.986816 -0.439372 0.776405 0.716919 32768
+  CAND tier=B score=6.1 addr=0x143ec6500 rl=0.8660 ul=1.5000 dot=1.2500
+       floats 0.5 0.5 0.5 1 0.5 1 1 0.5 0.5 0.5 1 1 0.5 1 0.5 1
+  CAND tier=B score=6.1 addr=0x143ec650c rl=1.5000 ul=0.8660 dot=1.2500
+       floats 1 0.5 1 1 0.5 0.5 0.5 1 1 0.5 1 0.5 1 1 1 1
+  CAND tier=B score=6.1 addr=0x14337edf8 rl=1.2247 ul=1.4142 dot=1.4142
+       floats 0.92388 -0.382683 0.707107 -0.707107 0.382683 -0.92388 1 -0 0.980785 -0.19509 0.92388 -0.382683 0.83147 -0.55557 0.707107 -0.707107
+  CAND tier=B score=6.1 addr=0x14336c174 rl=1.4142 ul=1.2247 dot=-1.6310
+       floats -0.707107 -1 -0.707107 0 0.382683 0.707107 0.92388 1 0.92388 0.707107 0.382683 1.22465e-16 -0.382683 -0.707107 -0.92388 -1
+  CAND tier=B score=6.1 addr=0x14337ede8 rl=1.4142 ul=1.2247 dot=1.6310
+       floats 0.707107 -0.707107 1 -0 0.92388 -0.382683 0.707107 -0.707107 0.382683 -0.92388 1 -0 0.980785 -0.19509 0.92388 -0.382683
+  CAND tier=B score=6.0 addr=0x143eeeda4 rl=1.5338 ul=1.4671 dot=-0.9750
+       floats 0.5 -1 1.05 0.5 1 0.95 -0.5 -1 0.95 -1 0.5 1.05 1 -0.5 1.05 1
+  CAND tier=B score=6.0 addr=0x143eeeda8 rl=1.5338 ul=1.4671 dot=-1.9750
+       floats -1 1.05 0.5 1 0.95 -0.5 -1 0.95 -1 0.5 1.05 1 -0.5 1.05 1 1
+  CAND tier=B score=6.0 addr=0x143eeedbc rl=1.4671 ul=1.5338 dot=-0.3500
+       floats -0.5 -1 0.95 -1 0.5 1.05 1 -0.5 1.05 1 1 -0.95 -1 1 -1.05 1
+  CAND tier=B score=6.0 addr=0x143d093b4 rl=1.0892 ul=1.5836 dot=-1.5689
+       floats 0.449351 -0.85366 -0.505615 0.065153 -0.995535 0.723572 0.996518 0 0.083374 0.263346 0.088663 -0.964417 -0.221316 -0.970864 0.383423 -0.51256
+  CAND tier=A score=6.0 addr=0x143d093cc rl=1.0000 ul=0.9934 dot=0.0699
+       floats 0.996518 0 0.083374 0.263346 0.088663 -0.964417 -0.221316 -0.970864 0.383423 -0.51256 0.718804 0.675598 0.588859 0.406293 -0.764648 -0.803841
+  CAND tier=A score=6.0 addr=0x143d099cc rl=1.0039 ul=1.0038 dot=-0.7268
+       floats -0.388642 0.920618 -0.096497 -0.506403 -0.044662 -0.862 -0.512421 -0.852059 -0.204163 0.559542 0.339777 0.803772 0.527502 -0.846389 0.137573 -0.184315
+  CAND tier=A score=6.0 addr=0x143d094bc rl=1.0038 ul=1.0044 dot=0.4431
+       floats 0.882803 0.200541 0.433594 -0.936278 -0.03949 0.349304 0.940848 -0.121649 0.318604 -0.115022 0.048685 -0.993347 -0.324162 -0.935726 -0.394226 -0.937457
+  CAND tier=A score=6.0 addr=0x143d0956c rl=0.9929 ul=1.0013 dot=0.0826
+       floats 0.567505 0.697504 -0.421131 0.639221 -0.737871 0.672553 -0.07666 -0.390769 -0.894942 -0.482666 -0.593469 0.191892 0.796448 0.439379 -0.896646 0.123108
+  CAND tier=A score=6.0 addr=0x143d0930c rl=1.0033 ul=0.9944 dot=0.2871
+       floats 0.358393 0.087135 0.933044 -0.473398 0.820774 -0.559692 0.044667 -0.997938 0.718201 0.603896 -0.046386 0.79657 -0.968822 0.180966 0.172058 -0.458206
+  ... 3284 more below report cap
+
+ANTI-EXAMPLE RVA 0x22ee01 (ApexOffsets::VIEW_MATRIX today) -> section .text
+  floats 1.31802e-18 524288 1.72595e-38 920 2.46809e-33 -3.63903e+16 1.77386e+06 -5.96106e-39 -6.72401e-36 2.24208e-44 442634 5.31624e-39 -2.40741e-33 7.42896e-09 28.4381 524288
+  canary verdict: FAIL (|m[0]|=1.318e-18 outside [0.3,3.0]; |m[5]|=3.639e+16 outside [0.3,3.0])
+  -> 0x022EE01 is code (VTP_GetEngineTraceClient), NOT a matrix;
+     this is docs-gap-1: ESP stays empty until the matrix RVA is re-RE'd
+
+CORPUS dm11 pickle: C:\Users\New User\OneDrive\Desktop\cheating\temp\dm11_cache.pkl runs>=64B=204 bytes=245387 (27/10 build)
+  scanned dm11 run bytes at 0x14a0b2e20: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df68478: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df6f7c8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df70730: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df71258: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df71510: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df71730: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df71958: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df73ec0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df73f48: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df74058: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df83278: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df865e8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df8bcb0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14df97b28: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e699140: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6997d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e699a50: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a4c30: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a52e0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a55bc: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a57d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a5e60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a6500: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a66f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a6bd0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a6c40: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a74d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a77a8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a8038: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a8310: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a8540: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a8f80: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a9190: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6a96e0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6aa4b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ad028: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ad450: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6adb38: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ae030: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ae100: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ae440: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ae650: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6aea60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6aed50: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6af0f8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6af320: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6af8d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0160: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0740: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0820: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b09c0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0a90: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0c00: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b0ce0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b2720: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b34f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b3c40: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b4ae0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b5028: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b5570: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b63a8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7178: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7250: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7660: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7900: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7948: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7bd0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7d10: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b7df0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b8140: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b84f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6b9c70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ba1c0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ba6a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ba720: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ba7f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6bc600: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6bcc80: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6bde60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6be820: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6bed00: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6bf8c8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c0110: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c07b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c0910: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c0bf0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c1000: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c1140: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c1300: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c1440: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c1ca0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c26c8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c3a70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c43e0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c4ed8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c5360: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c5640: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c63a8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c6850: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c6a60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c7140: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c7640: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c77a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c7fd0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c82a8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c83e0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c8788: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c9558: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c9750: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6c9f70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ca320: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ca528: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ca820: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cb680: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cb7d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cb9d4: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cc270: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cc340: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cc3c0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cc790: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cca60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ccb70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cce70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6cd160: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d0300: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d0438: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d05a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d0850: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d0a70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1020: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1160: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1850: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1a10: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1cf0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d1e60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2478: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2618: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2700: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2790: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2a84: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d2ff0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d3360: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d38b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d3b88: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d4af8: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d4f80: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d5200: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d5340: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d58c0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d5ba0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d61d0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d6390: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d6960: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d6d10: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d6e10: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d6f60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d76b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6d88e0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f5c20: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f6308: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f6b90: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f6d20: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f6f30: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f7a70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f7c20: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f8450: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f91f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f97f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f99a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6f9ec0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fa510: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fa6f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6faa40: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6faf10: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fb0f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fb2c0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fbd60: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fc650: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fc9a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fcc80: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fd270: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fd970: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6fe400: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ff23c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ff5a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ffb50: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e6ffbc0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e7000b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e70056c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e70064c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e700788: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e700830: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e701c8c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e7021b0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e7026f0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e702bf0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e703138: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e703b70: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e703d3c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e704420: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e7046a0: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e704a4c: tierA=0 tierB=0
+  scanned dm11 run bytes at 0x14e704da0: tierA=0 tierB=0
+
+CORPUS p60 snap: C:\Users\New User\OneDrive\Desktop\cheating\temp\p60_snap_before.txt pages=108 bytes=442368
+  scanned snap page bytes at 0x5e1ff9000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1ffa000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1ffb000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1ffc000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1ffd000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1ffe000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5e1fff000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef460000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef462000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef463000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef464000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef465000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef466000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef467000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b59000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb039000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb03a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb03b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64f9a5000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64f9a6000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64ff1f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64ff20000: tierA=0 tierB=0
+  scanned snap page bytes at 0x657f81000: tierA=0 tierB=0
+  scanned snap page bytes at 0x657f82000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b033000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b034000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b035000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba18000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba19000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba1a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3104000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3105000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3106000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6bc0b0000: tierA=10 tierB=4
+  CAND tier=A score=12.0 addr=0x6bc0b01c0 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0 -8.9407e-07 1 1.07288e-06 0 -0.817143 -3.61326e-07 -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756
+  CAND tier=A score=8.0 addr=0x6bc0b01f0 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143 -3.61326e-07 -0.576434 -0.00461335 -0.576434 -1.34903e-06 0.817143 0.00653979
+  CAND tier=A score=8.0 addr=0x6bc0b0220 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0.00653979 -8.9407e-07 1 1.07288e-06 3.03711 -0.817143 -3.61326e-07 -0.576434 2.00933e-06 -0.576434 -1.34903e-06 0.817143 2.79024e-06
+  CAND tier=B score=7.9 addr=0x6bc0b01d4 rl=1.0000 ul=0.6217 dot=-0.0000
+       floats 1 1.07288e-06 0 -0.817143 -3.61326e-07 -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143
+  CAND tier=A score=5.2 addr=0x6bc0b01e8 rl=0.8478 ul=0.8850 dot=-0.5502
+       floats -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143 -3.61326e-07 -0.576434 -0.00461335 -0.576434 -1.34903e-06
+  CAND tier=A score=3.9 addr=0x6bc0b045c rl=1.3607 ul=1.3253 dot=1.7954
+       floats 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106 0.81931 0.79726 0.821746 0.821746
+  CAND tier=A score=3.9 addr=0x6bc0b0458 rl=1.3795 ul=1.3068 dot=1.7984
+       floats 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106 0.81931 0.79726 0.821746
+  CAND tier=A score=3.9 addr=0x6bc0b0460 rl=1.3375 ul=1.3778 dot=1.8420
+       floats 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106 0.81931 0.79726 0.821746 0.821746 0.726756
+  CAND tier=B score=3.8 addr=0x6bc0b0454 rl=1.4114 ul=1.3075 dot=1.8422
+       floats 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106 0.81931 0.79726
+  CAND tier=A score=3.8 addr=0x6bc0b0450 rl=1.3970 ul=1.3375 dot=1.8679
+       floats 0.802964 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106 0.81931
+  CAND tier=A score=3.7 addr=0x6bc0b044c rl=1.3970 ul=1.3607 dot=1.8988
+       floats 0.79726 0.802964 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527 0.848106
+  CAND tier=A score=3.7 addr=0x6bc0b0440 rl=1.3822 ul=1.3970 dot=1.9266
+       floats 0.764201 0.763095 0.862719 0.79726 0.802964 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881
+  CAND tier=B score=3.6 addr=0x6bc0b0448 rl=1.4229 ul=1.3795 dot=1.9605
+       floats 0.862719 0.79726 0.802964 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719 0.774527
+  CAND tier=B score=3.6 addr=0x6bc0b0444 rl=1.4008 ul=1.4114 dot=1.9730
+       floats 0.763095 0.862719 0.79726 0.802964 0.81931 0.79726 0.827754 0.763095 0.764201 0.78906 0.709147 0.763095 0.81931 0.802964 0.818881 0.862719
+  scanned snap page bytes at 0x6bc0b1000: tierA=0 tierB=2
+  CAND tier=B score=4.2 addr=0x6bc0b12d0 rl=0.6928 ul=0.6928 dot=0.4800
+       floats 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4
+  CAND tier=B score=2.6 addr=0x6bc0b1340 rl=1.5622 ul=1.5622 dot=2.4406
+       floats 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961 0.901961
+  scanned snap page bytes at 0x6bc0b2000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6cece4000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2007000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2008000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2009000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d20ad000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2260000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2261000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2262000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2263000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2264000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2265000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2266000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2267000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3878000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3ece000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3ed0000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d518f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da417000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da428000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da433000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da434000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da435000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da440000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6dd1ed000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec259000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec25f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5c59000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5c5a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5c5b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5cbf000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cbf000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cc0000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cc1000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6fa65a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6fa65b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6fa65d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6fa660000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70c38d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70f2eb000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70f2ec000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70f2ed000: tierA=0 tierB=0
+  scanned snap page bytes at 0x71e459000: tierA=0 tierB=0
+  scanned snap page bytes at 0x720259000: tierA=0 tierB=0
+  scanned snap page bytes at 0x72025a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x72025b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cc1f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cc21000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccd8000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccd9000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccda000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccdb000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccdc000: tierA=0 tierB=0
+CORPUS p60 snap: C:\Users\New User\OneDrive\Desktop\cheating\temp\p60_snap_after.txt pages=94 bytes=385024
+  scanned snap page bytes at 0x5e1fb1000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef466000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5ef467000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b99000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f0b9f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b59000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f2b5f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f3261000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f3262000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f3265000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5f3266000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb039000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb03a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x5fb03b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64f9a5000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64f9a6000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64ff1f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x64ff20000: tierA=0 tierB=0
+  scanned snap page bytes at 0x657f81000: tierA=0 tierB=0
+  scanned snap page bytes at 0x657f82000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65a23e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b033000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b034000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65b035000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba18000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba19000: tierA=0 tierB=0
+  scanned snap page bytes at 0x65ba1a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x66338e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3104000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3105000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6a3106000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6bc0b0000: tierA=4 tierB=8
+  CAND tier=A score=12.0 addr=0x6bc0b01c0 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0 -8.9407e-07 1 1.07288e-06 0 -0.817143 -3.61326e-07 -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756
+  CAND tier=A score=8.0 addr=0x6bc0b01f0 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143 -3.61326e-07 -0.576434 -0.00461335 -0.576434 -1.34903e-06 0.817143 0.00653979
+  CAND tier=A score=8.0 addr=0x6bc0b0220 rl=1.0000 ul=1.0000 dot=0.0000
+       floats -0.576434 -1.34903e-06 0.817143 0.00653979 -8.9407e-07 1 1.07288e-06 3.03711 -0.817143 -3.61326e-07 -0.576434 2.00933e-06 -0.576434 -1.34903e-06 0.817143 2.79024e-06
+  CAND tier=B score=7.9 addr=0x6bc0b01d4 rl=1.0000 ul=0.6217 dot=-0.0000
+       floats 1 1.07288e-06 0 -0.817143 -3.61326e-07 -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143
+  CAND tier=B score=7.3 addr=0x6bc0b04ac rl=0.5000 ul=1.4142 dot=0.5000
+       floats 0.5 1.99016e-24 0 0 1 1 0 2.22007e-16 4.59037e-41 9.86671e-19 4.59037e-41 0 0 0 1 1
+  CAND tier=B score=6.6 addr=0x6bc0b0464 rl=1.4159 ul=1.7321 dot=2.0700
+       floats 1 1 0.07 1 1 1 1 0 1 0 2.11826e-16 1 1 0 0 1
+  CAND tier=B score=6.6 addr=0x6bc0b0324 rl=1.4165 ul=1.7321 dot=2.0800
+       floats 1 1 0.08 1 1 1 1 0 1 1.00403e-41 1.75615e-40 1 1 0 1.29484e-40 1
+  CAND tier=B score=5.5 addr=0x6bc0b0468 rl=1.4159 ul=1.4142 dot=1.0700
+       floats 1 0.07 1 1 1 1 0 1 0 2.11826e-16 1 1 0 0 1 1
+  CAND tier=B score=5.5 addr=0x6bc0b0328 rl=1.4165 ul=1.4142 dot=1.0800
+       floats 1 0.08 1 1 1 1 0 1 1.00403e-41 1.75615e-40 1 1 0 1.29484e-40 1 1
+  CAND tier=A score=5.2 addr=0x6bc0b01e8 rl=0.8478 ul=0.8850 dot=-0.5502
+       floats -0.576434 -0.232885 -0.576434 -1.34903e-06 0.817143 0.339756 -8.9407e-07 1 1.07288e-06 26.3779 -0.817143 -3.61326e-07 -0.576434 -0.00461335 -0.576434 -1.34903e-06
+  CAND tier=B score=3.8 addr=0x6bc0b0330 rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 1.00403e-41 1.75615e-40 1 1 0 1.29484e-40 1 1 0.5 0.5
+  CAND tier=B score=3.8 addr=0x6bc0b0470 rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 0 2.11826e-16 1 1 0 0 1 1 0.5 0.5
+  scanned snap page bytes at 0x6bc0b1000: tierA=2 tierB=7
+  CAND tier=A score=11.8 addr=0x6bc0b1e98 rl=1.0000 ul=1.0770 dot=0.0000
+       floats 1 0 0 0 0 0.4 1 1 1 1 0 1 0 0 1 1
+  CAND tier=A score=11.5 addr=0x6bc0b1358 rl=1.0000 ul=1.1662 dot=0.0000
+       floats 1 0 0 0 0 0.6 1 1 1 1 0 1 4.36434e-41 3.58732e-41 1 1
+  CAND tier=B score=7.3 addr=0x6bc0b176c rl=0.5000 ul=1.4142 dot=0.5000
+       floats 0.5 0 0 0 1 1 0 2.2191e-16 4.59037e-41 9.86671e-19 4.59037e-41 0 0 0 1 1
+  CAND tier=B score=6.6 addr=0x6bc0b1724 rl=1.4165 ul=1.7321 dot=2.0800
+       floats 1 1 0.08 1 1 1 1 0 1 0 0 1 1 0 0 1
+  CAND tier=B score=5.8 addr=0x6bc0b1730 rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 0 0 1 1 0 0 1 1 0.5 0.5
+  CAND tier=B score=5.8 addr=0x6bc0b1eb0 rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 0 0 1 1 0 0 1 1 0.5 0.5
+  CAND tier=B score=5.5 addr=0x6bc0b1728 rl=1.4165 ul=1.4142 dot=1.0800
+       floats 1 0.08 1 1 1 1 0 1 0 0 1 1 0 0 1 1
+  CAND tier=B score=5.3 addr=0x6bc0b13ac rl=0.5000 ul=1.4142 dot=0.5000
+       floats 0.5 3.58732e-41 3.58732e-41 4.36392e-41 1 1 0 2.22006e-16 4.59037e-41 9.86671e-19 4.59037e-41 0 0 0 1 1
+  CAND tier=B score=3.8 addr=0x6bc0b1370 rl=1.7321 ul=1.0000 dot=1.0000
+       floats 1 1 1 1 0 1 4.36434e-41 3.58732e-41 1 1 3.58732e-41 4.36364e-41 1 1 0.5 0.5
+  scanned snap page bytes at 0x6bc0b2000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6c998c000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2007000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2008000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2009000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d20aa000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2260000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2262000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2263000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2264000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2265000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d2267000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3878000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3ece000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d3ed0000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6d518f000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da428000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da429000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da42a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da436000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da43b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da43e000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6da440000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6dd1ed000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6dd1ef000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6ec260000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5c59000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5cbe000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5cbf000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f5cc0000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cbf000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cc0000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6f9cc1000: tierA=0 tierB=0
+  scanned snap page bytes at 0x6fa660000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70c38b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70c38d000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70f2eb000: tierA=0 tierB=0
+  scanned snap page bytes at 0x70f2ec000: tierA=0 tierB=0
+  scanned snap page bytes at 0x720259000: tierA=0 tierB=0
+  scanned snap page bytes at 0x72025a000: tierA=0 tierB=0
+  scanned snap page bytes at 0x72025b000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccd6000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccd8000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73ccdc000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cd12000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cd37000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cd38000: tierA=0 tierB=0
+  scanned snap page bytes at 0x73cd39000: tierA=0 tierB=0
+
+elapsed 0.9 s, scanned 20.68 MB across corpora
+noise rate: 448.570 candidates per MB (tierA 257.963/MB)
+
+NOTE: none of these corpora is a runtime .data dump (p73 E1); the
+candidates above are structural/false-positive measurements on the real
+build's bytes + live entity-cluster pages.  The live view matrix needs
+the p75 rotate-90 differential over a live .data dump (lead approval).
+RESULT: candidates=9277 tierA=5335 tierB=3942 (.data:A=2104/B=1220 .rdata:A=3215/B=2701 dm11:A=0/B=0 p60_snap_after.txt:A=6/B=15 p60_snap_before.txt:A=10/B=6)
+VERDICT: canary validated offline (selftest PASS, anti-example 0x22EE01 fails as code); candidates are canary noise-rate measurements on the p73 usable corpus, not the live matrix; live-matrix recovery deferred to the p75 protocol (rotate-90 differential, lead approval required)

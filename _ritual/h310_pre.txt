@@ -1,0 +1,104 @@
+===== h310 host run 2026-11-06 18:00:28 =====
+18:00:28.895 admin=True pid=19856 host=DESKTOP-PPHFJBQ
+18:00:28.917 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:28.925 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+18:00:28.929 pre dump: exists=False
+18:00:28.938 pre minidumps=5 notepad=0
+18:00:28.981 pre hvci=0 vbs=0 testsigning=testsigning             No
+18:00:28.988 pre blocklist ci0=
+18:00:29.216 pre disk=71.3GB free ram=31.8GB uptime=26.6h
+18:00:29.497 pre boot=05/11 15:23 build=26200
+18:00:29.501 pre exe: cur_h310_live.ps1=33720B dump-dir=C:\WINDOWS
+18:00:29.533 pre relay: 17408B
+18:00:29.540 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+18:00:29.558 arm: SUCCESS: The scheduled task "p310post" has successfully been created.
+18:00:29.573 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p310post                                 N/A                    Ready          
+18:00:29.574 RUN probe (expect it to die inside STEP=inject-kernel)
+18:00:37.587 probe returned rc=0 (no bugcheck)
+18:00:37.592 restore auto-reboot readback=1
+18:00:37.607 disarm: SUCCESS: The scheduled task "p310post" was successfully deleted.
+18:00:37.616 post svc: The specified service does not exist as an installed service.
+18:00:37.617 RESULT: probe returned rc=0 - host did not bugcheck
+===== h310 host run 2026-11-06 18:04:16 =====
+18:04:16.405 admin=True pid=19596 host=DESKTOP-PPHFJBQ
+18:04:16.426 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:04:16.434 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+18:04:16.436 pre dump: exists=False
+18:04:16.446 pre minidumps=5 gui=0
+18:04:16.449 marker cleared, done-exists=False
+18:04:16.491 pre hvci=0 vbs=0 testsigning=testsigning             No
+18:04:16.498 pre blocklist ci0=
+18:04:16.745 pre disk=71.3GB free ram=31.8GB uptime=26.7h
+18:04:16.975 pre boot=05/11 15:23 build=26200
+18:04:16.979 pre exe: cur_h310_live.ps1=34791B dump-dir=C:\WINDOWS
+18:04:17.008 pre relay: 17408B
+18:04:17.014 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+18:04:17.031 arm: SUCCESS: The scheduled task "p310post" has successfully been created.
+18:04:17.045 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p310post                                 N/A                    Ready          
+18:04:17.046 RUN probe (expect it to die inside STEP=inject-kernel)
+===== h310 host run 2026-11-06 19:18:03 =====
+19:18:03.966 admin=True pid=11564 host=DESKTOP-PPHFJBQ
+19:18:03.994 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:18:04.001 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+19:18:04.004 pre dump: exists=False
+19:18:04.013 pre minidumps=5 gui=0
+19:18:04.015 marker cleared, done-exists=False
+19:18:04.060 pre hvci=0 vbs=0 testsigning=testsigning             No
+19:18:04.067 pre blocklist ci0=
+19:18:04.249 pre disk=72.9GB free ram=31.8GB uptime=1.2h
+19:18:04.386 pre boot=06/11 18:04 build=26200
+19:18:04.390 pre exe: cur_h310_live.ps1=34935B dump-dir=C:\WINDOWS
+19:18:04.420 pre relay: 17920B
+19:18:04.425 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+19:18:04.441 arm: SUCCESS: The scheduled task "p310post" has successfully been created.
+19:18:04.455 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p310post                                 N/A                    Ready          
+19:18:04.457 RUN probe (expect it to die inside STEP=inject-kernel)
+19:18:20.544 probe returned rc=0 (no bugcheck)
+19:18:20.548 restore auto-reboot readback=1
+19:18:20.561 disarm: SUCCESS: The scheduled task "p310post" was successfully deleted.
+19:18:20.569 post svc: The specified service does not exist as an installed service.
+19:18:20.569 RESULT: probe returned rc=0 - host did not bugcheck
+===== h310 host run 2026-11-06 19:24:03 =====
+19:24:03.306 admin=True pid=1216 host=DESKTOP-PPHFJBQ
+19:24:03.325 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:03.332 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+19:24:03.334 pre dump: exists=False
+19:24:03.343 pre minidumps=5 gui=0
+19:24:03.345 marker cleared, done-exists=False
+19:24:03.389 pre hvci=0 vbs=0 testsigning=testsigning             No
+19:24:03.395 pre blocklist ci0=
+19:24:03.579 pre disk=72.9GB free ram=31.8GB uptime=1.3h
+19:24:03.715 pre boot=06/11 18:04 build=26200
+19:24:03.718 pre exe: cur_h310_live.ps1=34935B dump-dir=C:\WINDOWS
+19:24:03.769 pre relay: 17920B
+19:24:03.774 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+19:24:03.790 arm: SUCCESS: The scheduled task "p310post" has successfully been created.
+19:24:03.804 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p310post                                 N/A                    Ready          
+19:24:03.806 RUN probe (expect it to die inside STEP=inject-kernel)
+19:24:13.886 probe returned rc=0 (no bugcheck)
+19:24:13.890 restore auto-reboot readback=1
+19:24:13.902 disarm: SUCCESS: The scheduled task "p310post" was successfully deleted.
+19:24:13.909 post svc: The specified service does not exist as an installed service.
+19:24:13.910 RESULT: probe returned rc=0 - host did not bugcheck
+===== h310 host run 2026-11-06 19:25:39 =====
+19:25:39.508 admin=True pid=14928 host=DESKTOP-PPHFJBQ
+19:25:39.534 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:39.541 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+19:25:39.543 pre dump: exists=False
+19:25:39.552 pre minidumps=5 gui=0
+19:25:39.555 marker cleared, done-exists=False
+19:25:39.596 pre hvci=0 vbs=0 testsigning=testsigning             No
+19:25:39.603 pre blocklist ci0=
+19:25:39.772 pre disk=72.9GB free ram=31.8GB uptime=1.4h
+19:25:39.911 pre boot=06/11 18:04 build=26200
+19:25:39.916 pre exe: cur_h310_live.ps1=35125B dump-dir=C:\WINDOWS
+19:25:39.946 pre relay: 17920B
+19:25:39.951 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+19:25:39.967 arm: SUCCESS: The scheduled task "p310post" has successfully been created.
+19:25:39.980 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p310post                                 N/A                    Ready          
+19:25:39.982 RUN probe (expect it to die inside STEP=inject-kernel)
+19:25:50.062 probe returned rc=0 (no bugcheck)
+19:25:50.066 restore auto-reboot readback=1
+19:25:50.078 disarm: SUCCESS: The scheduled task "p310post" was successfully deleted.
+19:25:50.086 post svc: The specified service does not exist as an installed service.
+19:25:50.087 RESULT: probe returned rc=0 - host did not bugcheck

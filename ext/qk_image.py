@@ -216,6 +216,7 @@ def main():
                     out("  re-reading the %d candidate(s) after 1.5 s - the live matrix moves"
                         % len(best))
                     time.sleep(1.5)
+                    moved = []
                     for sc, rva, m0 in best:
                         try:
                             b1 = dl.retry_phys(g, pa + rva, 64, tries=2)
@@ -226,6 +227,16 @@ def main():
                         d = max(abs(x - y) for x, y in zip(m0, m1))
                         out("   rva=%#010x max_delta=%.6f%s"
                             % (rva, d, "   <-- CHANGED (live view matrix)" if d > 1e-4 else ""))
+                        if d > 1e-4:
+                            moved.append((d, rva))
+                    if moved:
+                        moved.sort(reverse=True)
+                        vp = moved[0][1]
+                        with open(os.path.join(TMP, "qk_offsets.txt"), "w") as f:
+                            f.write("image_pa=0x%X\nvp_rva=0x%X\n" % (pa, vp))
+                        out("  CACHED temp\\qk_offsets.txt  image_pa=%#x vp_rva=%#x" % (pa, vp))
+                    else:
+                        out("  no matrix moved in 1.5 s - not cached (camera static?)")
 
 
         out("RESULT: image_pa=%#x contiguous_sections=%d/%d stamp=%#x"

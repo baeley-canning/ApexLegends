@@ -1,0 +1,11 @@
+19:59:18.419 ===== s2_stage_v14 (file copy only, svc untouched) =====
+19:59:18.487 PRE src=317E4A86C1817401 len=20480
+19:59:18.489 PRE dst=4F1106853D05986B len=10192
+19:59:18.492 PRE p37z=4F1106853D05986B len=10192
+19:59:18.505 svc pre: STATE              : 1  STOPPED
+19:59:18.515   bak made: apexdrv.sys.4F110685.bak sha=4F1106853D05986B
+19:59:18.519   bak made: zapexdrv.sys.4F110685.bak sha=4F1106853D05986B
+19:59:18.525 POST dst=317E4A86C1817401 len=20480
+19:59:18.527 POST p37z=317E4A86C1817401 len=20480
+19:59:18.536 svc post: STATE              : 1  STOPPED
+19:59:18.536 RESULT: PASS - v14 staged to System32 + p37 (hashes == 317E4A86..); svc untouched

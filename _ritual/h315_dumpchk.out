@@ -1,0 +1,573 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 29
+
+Microsoft (R) Windows Debugger Version 10.0.26100.6584 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\New User\OneDrive\Desktop\cheating\temp\110626-10609-01.dmp]
+Mini Kernel Dump File: Only registers and stack trace are available
+
+WARNING: TriageDumpDataExtArray.HeaderSize is 0
+WARNING: Failed to read dump data exension data
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Kernel Version 26100 MP (16 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Kernel base = 0xfffff803`9ee00000 PsLoadedModuleList = 0xfffff803`9fcf54c0
+Debug session time: Fri Nov  6 21:33:30.060 2026 (UTC + 13:00)
+System Uptime: 0 days 1:14:34.750
+Loading Kernel Symbols
+...............................................................
+................................................................
+................................................................
+.................................................
+Loading User Symbols
+PEB is paged out (Peb.Ldr = 00000091`9831d018).  Type ".hh dbgerr001" for details
+Loading unloaded module list
+.................................
+For analysis of this file, run !analyze -v
+----- 64 bit Kernel Mini Dump Analysis
+
+DUMP_HEADER64:
+MajorVersion        0000000f
+MinorVersion        000065f4
+KdSecondaryVersion  00000002
+DirectoryTableBase  00000007`e08d3000
+PfnDataBase         ffff8a00`00000000
+PsLoadedModuleList  fffff803`9fcf54c0
+PsActiveProcessHead fffff803`9fd067c0
+MachineImageType    00008664
+NumberProcessors    00000010
+BugCheckCode        000000da
+BugCheckParameter1  00000000`00000302
+BugCheckParameter2  00000000`00000000
+BugCheckParameter3  00000000`00000000
+BugCheckParameter4  fffffff5`38000000
+KdDebuggerDataBlock fffff803`9fc01060
+SecondaryDataState  00000000
+ProductType         00000001
+SuiteMask           00000110
+Attributes          00021008
+MiniDumpFields      00000dff 
+
+TRIAGE_DUMP64:
+ServicePackBuild      00000000 
+SizeOfDump            00032c00 
+ValidOffset           00032bfc 
+ContextOffset         00000348 
+ExceptionOffset       00000f00 
+MmOffset              00002080 
+UnloadedDriversOffset 00011890 
+PrcbOffset            000020d0 
+ProcessOffset         0000efd0 
+ThreadOffset          0000f810 
+CallStackOffset       0000ffa8 
+SizeOfCallStack       00001548 
+DriverListOffset      00012388 
+DriverCount           000000f1 
+StringPoolOffset      0001ab18 
+StringPoolSize        00002358 
+BrokenDriverOffset    00000000 
+TriageOptions         00000041 
+TopOfStack            ffffe60a`01d4eab8 
+BStoreOffset          00000000 
+SizeOfBStore          00000000 
+LimitOfBStore         00000000`00000000 
+DebuggerDataOffset    000114f0 
+DebuggerDataSize      000003a0 
+DataBlocksOffset      0001ce70 
+DataBlocksCount       00000028 
+  fffff803`9fcff040 - fffff803`9fcff05f at offset 0001d0f0
+  fffff803`9fd0ce80 - fffff803`9fd0ce8f at offset 0001d110
+  ffffe784`7c356760 - ffffe784`7c3567bf at offset 0001d120
+  fffff803`9fc667e0 - fffff803`9fc667e7 at offset 0001d180
+  fffff803`9fc667f0 - fffff803`9fc667f3 at offset 0001d188
+  ffffe784`77dfb000 - ffffe784`77dfb99f at offset 0001d18c
+  fffff803`9fd47550 - fffff803`9fd47557 at offset 0001db2c
+  fffff803`9fd47558 - fffff803`9fd4755f at offset 0001db34
+  ffffe784`60199000 - ffffe784`60199edf at offset 0001db3c
+  fffff803`9fd47560 - fffff803`9fd47567 at offset 0001ea1c
+  fffff803`9fd47540 - fffff803`9fd47547 at offset 0001ea24
+  fffff803`9fc66c80 - fffff803`9fc66cdf at offset 0001ea2c
+  fffff803`a0001841 - fffff803`a0001841 at offset 0001ea8c
+  fffff803`a0001843 - fffff803`a0001843 at offset 0001ea8d
+  fffff780`00000000 - fffff780`000003d7 at offset 0001ea8e
+  fffff803`9fc2cb40 - fffff803`9fc38cff at offset 0001ee66
+  fffff803`9fc38d00 - fffff803`9fc3ea3f at offset 0002b026
+  ffff9a4d`26800000 - ffff9a4d`26800007 at offset 00030d66
+  ffff9a4d`26934000 - ffff9a4d`26934007 at offset 00030d6e
+  ffff9a4d`269ffea0 - ffff9a4d`269ffea7 at offset 00030d76
+  ffff9a4d`26934ff8 - ffff9a4d`26934fff at offset 00030d7e
+  ffff9a4d`3e00e7c8 - ffff9a4d`3e00e7cf at offset 00030d86
+  ffff9a4d`269f0070 - ffff9a4d`269f0077 at offset 00030d8e
+  ffff9a4d`26934f80 - ffff9a4d`26934f87 at offset 00030d96
+  ffff9a73`0500ea70 - ffff9a73`0500ea77 at offset 00030d9e
+  ffff9a4d`39828070 - ffff9a4d`39828077 at offset 00030da6
+  ffff9a4d`269cc140 - ffff9a4d`269cc147 at offset 00030dae
+  ffff9a4d`26934e60 - ffff9a4d`26934e67 at offset 00030db6
+  ffff9a4d`269349a0 - ffff9a4d`269349a7 at offset 00030dbe
+  ffff9a4d`3e00e7f0 - ffff9a4d`3e00e7f7 at offset 00030dc6
+  fffff803`9fcf50e0 - fffff803`9fcf511f at offset 00030dce
+  ffffe784`5e9c4d00 - ffffe784`5e9c4fff at offset 00030e0e
+  ffffe784`619538a0 - ffffe784`61953cbf at offset 0003110e
+  ffffe784`619448a0 - ffffe784`61944cbf at offset 0003152e
+  ffff9a7c`01a2a658 - ffff9a7c`01a2a65f at offset 0003194e
+  ffff9a4d`3e00d150 - ffff9a4d`3e00d157 at offset 00031956
+  ffff9a4d`269f0068 - ffff9a4d`269f006f at offset 0003195e
+  ffff9a7c`01a2a5a0 - ffff9a7c`01a2a5a7 at offset 00031966
+  fffff803`9f2fd560 - fffff803`9f2fd75f at offset 0003196e
+  fffff803`9f2fd000 - fffff803`9f2fdfff at offset 00031b6e
+  Max offset 32b6e, 8f9cbb from end of file
+WARNING: TriageDumpDataExtArray.HeaderSize is 0
+
+
+Windows 10 Kernel Version 26100 MP (16 procs) Free x64
+Product: WinNt, suite: TerminalServer SingleUserTS
+Kernel base = 0xfffff803`9ee00000 PsLoadedModuleList = 0xfffff803`9fcf54c0
+Debug session time: Fri Nov  6 21:33:30.060 2026 (UTC + 13:00)
+System Uptime: 0 days 1:14:34.750
+start             end                 module name
+fffff803`2bc40000 fffff803`2bca3000   WUDFRd    388709D7 (This is a reproducible build file hash, not a timestamp)
+fffff803`2bcf0000 fffff803`2bd06000   vwifimp   34279E23 (This is a reproducible build file hash, not a timestamp)
+fffff803`2bf80000 fffff803`2c07a000   xvdd      Thu Jan 27 14:50:45 2000 (388FA475)
+fffff803`2c080000 fffff803`2c08f000   gdrv3     Wed Sep 11 15:09:58 2024 (66E10A06)
+fffff803`2c0a0000 fffff803`2c0c5000   gameflt   ***** Invalid (91ACD89F)
+fffff803`2c0d0000 fffff803`2c11e000   winnat    8F96DB79 (This is a reproducible build file hash, not a timestamp)
+fffff803`2da80000 fffff803`2ddf2000   mcupdate  Fri Feb  2 10:57:52 2024 (65BC13E0)
+fffff803`30800000 fffff803`3080b000   kdcom     Sun Jan 27 17:36:17 2036 (7C46E6C1)
+fffff803`30810000 fffff803`3081d000   symcryptk  98293ECD (This is a reproducible build file hash, not a timestamp)
+fffff803`30830000 fffff803`3085a000   tm        60FD2AE0 (This is a reproducible build file hash, not a timestamp)
+fffff803`30860000 fffff803`308ed000   CLFS      9A56643B (This is a reproducible build file hash, not a timestamp)
+fffff803`30900000 fffff803`309e9000   cng       0A8F4AC2 (This is a reproducible build file hash, not a timestamp)
+fffff803`309f0000 fffff803`30a05000   winaccel  FF85D401 (This is a reproducible build file hash, not a timestamp)
+fffff803`30a10000 fffff803`30a2d000   PSHED     D5240205 (This is a reproducible build file hash, not a timestamp)
+fffff803`30a40000 fffff803`30a4d000   BOOTVID   6E4A77D6 (This is a reproducible build file hash, not a timestamp)
+fffff803`30a60000 fffff803`30b78000   clipsp    Sat Oct 10 21:07:21 2026 (6AC9F239)
+fffff803`30b80000 fffff803`30c1a000   FLTMGR    54AD72BC (This is a reproducible build file hash, not a timestamp)
+fffff803`30c20000 fffff803`30c56000   ksecdd    B8EF9A42 (This is a reproducible build file hash, not a timestamp)
+fffff803`30c60000 fffff803`30cc5000   msrpc     027C7094 (This is a reproducible build file hash, not a timestamp)
+fffff803`30cd0000 fffff803`30ce2000   cmimcext  A419E7AB (This is a reproducible build file hash, not a timestamp)
+fffff803`30cf0000 fffff803`30d07000   werkernel  A6EDF41C (This is a reproducible build file hash, not a timestamp)
+fffff803`30d10000 fffff803`30d1d000   ntosext   33F8A971 (This is a reproducible build file hash, not a timestamp)
+fffff803`30d30000 fffff803`30df7000   win32k    0EF46532 (This is a reproducible build file hash, not a timestamp)
+fffff803`30e00000 fffff803`30e20000   watchdog  F3C582F0 (This is a reproducible build file hash, not a timestamp)
+fffff803`30e30000 fffff803`31341000   dxgkrnl   78519F80 (This is a reproducible build file hash, not a timestamp)
+fffff803`31350000 fffff803`3135d000   WMILIB    BF8195C9 (This is a reproducible build file hash, not a timestamp)
+fffff803`31370000 fffff803`3148b000   CI        18DC3FE0 (This is a reproducible build file hash, not a timestamp)
+fffff803`31490000 fffff803`314b0000   globmerger  39B00338 (This is a reproducible build file hash, not a timestamp)
+fffff803`314c0000 fffff803`315b0000   Wdf01000  32893066 (This is a reproducible build file hash, not a timestamp)
+fffff803`315c0000 fffff803`315d7000   WDFLDR    7296F1B3 (This is a reproducible build file hash, not a timestamp)
+fffff803`315e0000 fffff803`315f3000   WppRecorder  E3C6511C (This is a reproducible build file hash, not a timestamp)
+fffff803`31600000 fffff803`3160f000   PRM       514FAA80 (This is a reproducible build file hash, not a timestamp)
+fffff803`31620000 fffff803`3164a000   acpiex    FFB0E915 (This is a reproducible build file hash, not a timestamp)
+fffff803`31650000 fffff803`3165f000   msseccore  456B22AF (This is a reproducible build file hash, not a timestamp)
+fffff803`31670000 fffff803`3167a000   lxss      ***** Invalid (B1DB15EE)
+fffff803`31680000 fffff803`31791000   LXCORE    ***** Invalid (AE311BA3)
+fffff803`317a0000 fffff803`31876000   ACPI      2536487D (This is a reproducible build file hash, not a timestamp)
+fffff803`31880000 fffff803`3188c000   msisadrv  C0CACEA5 (This is a reproducible build file hash, not a timestamp)
+fffff803`318a0000 fffff803`31932000   pci       E7D55220 (This is a reproducible build file hash, not a timestamp)
+fffff803`31940000 fffff803`3199a000   tpm       82D3D21F (This is a reproducible build file hash, not a timestamp)
+fffff803`319a0000 fffff803`319ae000   amdwps    3DC3FE93 (This is a reproducible build file hash, not a timestamp)
+fffff803`319c0000 fffff803`319d8000   WindowsTrustedRT  7847E5AF (This is a reproducible build file hash, not a timestamp)
+fffff803`319e0000 fffff803`31a7f000   intelpep  ACCCA7DA (This is a reproducible build file hash, not a timestamp)
+fffff803`31a90000 fffff803`31a9c000   WindowsTrustedRTProxy  7DDA7461 (This is a reproducible build file hash, not a timestamp)
+fffff803`31ab0000 fffff803`31ac3000   IntelPMT  9C2CA217 (This is a reproducible build file hash, not a timestamp)
+fffff803`31ad0000 fffff803`31ae7000   pcw       5BE4BC2F (This is a reproducible build file hash, not a timestamp)
+fffff803`31af0000 fffff803`31b0c000   vdrvroot  87DB0809 (This is a reproducible build file hash, not a timestamp)
+fffff803`31b20000 fffff803`31b55000   pdc       25C53A56 (This is a reproducible build file hash, not a timestamp)
+fffff803`31b60000 fffff803`31b78000   CEA       B7693342 (This is a reproducible build file hash, not a timestamp)
+fffff803`31b80000 fffff803`31bb6000   partmgr   D498C927 (This is a reproducible build file hash, not a timestamp)
+fffff803`31bc0000 fffff803`31cb8000   spaceport  27C788F1 (This is a reproducible build file hash, not a timestamp)
+fffff803`31cc0000 fffff803`31cde000   volmgr    639FEFD3 (This is a reproducible build file hash, not a timestamp)
+fffff803`31cf0000 fffff803`31d57000   volmgrx   A844399A (This is a reproducible build file hash, not a timestamp)
+fffff803`31d60000 fffff803`31d83000   mountmgr  429104A8 (This is a reproducible build file hash, not a timestamp)
+fffff803`31d90000 fffff803`31dc7000   storahci  66A8E242 (This is a reproducible build file hash, not a timestamp)
+fffff803`31dd0000 fffff803`3204c000   storport  5B433B7B (This is a reproducible build file hash, not a timestamp)
+fffff803`32060000 fffff803`320af000   stornvme  FDAA5EFB (This is a reproducible build file hash, not a timestamp)
+fffff803`320c0000 fffff803`320e8000   EhStorClass  DF47D69C (This is a reproducible build file hash, not a timestamp)
+fffff803`320f0000 fffff803`3210d000   fileinfo  E7D4AA87 (This is a reproducible build file hash, not a timestamp)
+fffff803`32120000 fffff803`32167000   Wof       EF0B09C1 (This is a reproducible build file hash, not a timestamp)
+fffff803`32170000 fffff803`324ed000   Ntfs      160BFDE7 (This is a reproducible build file hash, not a timestamp)
+fffff803`32500000 fffff803`3250f000   Fs_Rec    1671DC59 (This is a reproducible build file hash, not a timestamp)
+fffff803`32520000 fffff803`326ea000   ndis      21D1FBEC (This is a reproducible build file hash, not a timestamp)
+fffff803`326f0000 fffff803`327a7000   NETIO     ECCE13D7 (This is a reproducible build file hash, not a timestamp)
+fffff803`327b0000 fffff803`327e6000   fse       E979CBDE (This is a reproducible build file hash, not a timestamp)
+fffff803`327f0000 fffff803`3287b000   fwpkclnt  5A1CC564 (This is a reproducible build file hash, not a timestamp)
+fffff803`32880000 fffff803`328b8000   ksecpkg   DB1E195F (This is a reproducible build file hash, not a timestamp)
+fffff803`328c0000 fffff803`328e4000   Kerb3961Kernel  AD464BD2 (This is a reproducible build file hash, not a timestamp)
+fffff803`328f0000 fffff803`32c4a000   tcpip     D26770CA (This is a reproducible build file hash, not a timestamp)
+fffff803`32c50000 fffff803`32c8b000   wfplwfs   ADDD4E0F (This is a reproducible build file hash, not a timestamp)
+fffff803`32c90000 fffff803`32c9f000   VmsProxy  10977E78 (This is a reproducible build file hash, not a timestamp)
+fffff803`32cb0000 fffff803`32cc0000   VmsProxyHNic  5A6E2A50 (This is a reproducible build file hash, not a timestamp)
+fffff803`32cd0000 fffff803`32dbc000   fvevol    B2E492E1 (This is a reproducible build file hash, not a timestamp)
+fffff803`32dd0000 fffff803`32ddb000   volume    B2729186 (This is a reproducible build file hash, not a timestamp)
+fffff803`32de0000 fffff803`32e64000   volsnap   18A9CAAB (This is a reproducible build file hash, not a timestamp)
+fffff803`32e70000 fffff803`32ec0000   rdyboost  C00F97D7 (This is a reproducible build file hash, not a timestamp)
+fffff803`32ed0000 fffff803`32eed000   nvmedisk  8698A9EE (This is a reproducible build file hash, not a timestamp)
+fffff803`32f00000 fffff803`32f2b000   mup       6B23AB88 (This is a reproducible build file hash, not a timestamp)
+fffff803`32f30000 fffff803`32f44000   iorate    9A1CFEC2 (This is a reproducible build file hash, not a timestamp)
+fffff803`32f70000 fffff803`32f91000   disk      24CD627B (This is a reproducible build file hash, not a timestamp)
+fffff803`32fa0000 fffff803`3301c000   CLASSPNP  F6DBC2AD (This is a reproducible build file hash, not a timestamp)
+fffff803`45260000 fffff803`45299000   cdrom     B5763501 (This is a reproducible build file hash, not a timestamp)
+fffff803`452a0000 fffff803`452b8000   filecrypt  CFBA6C6B (This is a reproducible build file hash, not a timestamp)
+fffff803`452c0000 fffff803`452d0000   tbs       645DA327 (This is a reproducible build file hash, not a timestamp)
+fffff803`452e0000 fffff803`45311000   UCPD      1B9D0D83 (This is a reproducible build file hash, not a timestamp)
+fffff803`45320000 fffff803`4532d000   Null      B4E46DA9 (This is a reproducible build file hash, not a timestamp)
+fffff803`45340000 fffff803`4534a000   Beep      59390532 (This is a reproducible build file hash, not a timestamp)
+fffff803`45370000 fffff803`4538a000   BasicDisplay  B0DDBE8B (This is a reproducible build file hash, not a timestamp)
+fffff803`45390000 fffff803`453a3000   BasicRender  5893A917 (This is a reproducible build file hash, not a timestamp)
+fffff803`453b0000 fffff803`453cc000   Npfs      D2E1F0D0 (This is a reproducible build file hash, not a timestamp)
+fffff803`453e0000 fffff803`453f3000   Msfs      51F93C00 (This is a reproducible build file hash, not a timestamp)
+fffff803`45400000 fffff803`45445000   CimFS     A326D105 (This is a reproducible build file hash, not a timestamp)
+fffff803`45450000 fffff803`4547a000   tdx       20346F22 (This is a reproducible build file hash, not a timestamp)
+fffff803`45480000 fffff803`45491000   TDI       370A2188 (This is a reproducible build file hash, not a timestamp)
+fffff803`454b0000 fffff803`454d8000   crashdmp  CFC962B2 (This is a reproducible build file hash, not a timestamp)
+fffff803`454e0000 fffff803`455d8000   srv2      E94ED8B5 (This is a reproducible build file hash, not a timestamp)
+fffff803`45600000 fffff803`456b3000   afd       D929C8A9 (This is a reproducible build file hash, not a timestamp)
+fffff803`456c0000 fffff803`456d4000   npcap     Sat Sep 12 10:11:55 2026 (6AA47CAB)
+fffff803`456e0000 fffff803`4573b000   VBoxNetLwf  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff803`45740000 fffff803`4575e000   vwififlt  5684B951 (This is a reproducible build file hash, not a timestamp)
+fffff803`45770000 fffff803`45912000   vfpext    DCA5B9B2 (This is a reproducible build file hash, not a timestamp)
+fffff803`45920000 fffff803`45951000   pacer     13A48932 (This is a reproducible build file hash, not a timestamp)
+fffff803`45960000 fffff803`45978000   ndiscap   0499AB3C (This is a reproducible build file hash, not a timestamp)
+fffff803`45980000 fffff803`45998000   netbios   D71A4964 (This is a reproducible build file hash, not a timestamp)
+fffff803`459a0000 fffff803`45a7c000   Vid       D2E40B4A (This is a reproducible build file hash, not a timestamp)
+fffff803`45a90000 fffff803`45ab9000   winhvr    52F21CCD (This is a reproducible build file hash, not a timestamp)
+fffff803`45ac0000 fffff803`45b4e000   rdbss     0D182FB7 (This is a reproducible build file hash, not a timestamp)
+fffff803`45b60000 fffff803`45bfa000   csc       D58AFEB8 (This is a reproducible build file hash, not a timestamp)
+fffff803`45c00000 fffff803`45c3c000   VBoxUSBMon  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff803`45c50000 fffff803`45d9c000   VBoxSup   Tue Oct 20 07:34:28 2026 (6AD662B4)
+fffff803`45db0000 fffff803`45dc3000   nsiproxy  6647F415 (This is a reproducible build file hash, not a timestamp)
+fffff803`45dd0000 fffff803`45ddf000   npsvctrig  0FBC183A (This is a reproducible build file hash, not a timestamp)
+fffff803`45df0000 fffff803`45e01000   mssmbios  C7C306A0 (This is a reproducible build file hash, not a timestamp)
+fffff803`45e10000 fffff803`45e17000   MsIo64    Mon Dec 11 19:39:57 2023 (6576AEBD)
+fffff803`45e20000 fffff803`45e2e000   hvsocketcontrol  39D51032 (This is a reproducible build file hash, not a timestamp)
+fffff803`45e40000 fffff803`45e6d000   hvsocket  375EB018 (This is a reproducible build file hash, not a timestamp)
+fffff803`45e80000 fffff803`45eb1000   dfsc      DC77C9A1 (This is a reproducible build file hash, not a timestamp)
+fffff803`45f10000 fffff803`45f1b000   CtiIo64   Tue Jul  9 14:39:19 2024 (668CA2D7)
+fffff803`45f20000 fffff803`45f3c000   bam       DC9A409A (This is a reproducible build file hash, not a timestamp)
+fffff803`45f50000 fffff803`45fad000   ahcache   3ED60B53 (This is a reproducible build file hash, not a timestamp)
+fffff803`45fc0000 fffff803`46010000   vmbusr    5F9F373A (This is a reproducible build file hash, not a timestamp)
+fffff803`46020000 fffff803`46054000   vmbkmclr  F44F3F20 (This is a reproducible build file hash, not a timestamp)
+fffff803`46060000 fffff803`4606f000   amdxe     Wed Apr  3 11:52:01 2024 (660C8C11)
+fffff803`46080000 fffff803`460dc000   amdfendr  Tue Jan 28 10:28:39 2025 (6797FA87)
+fffff803`460f0000 fffff803`46106000   hvservice  68FAB093 (This is a reproducible build file hash, not a timestamp)
+fffff803`46110000 fffff803`461f2000   mrxsmb    08B698DB (This is a reproducible build file hash, not a timestamp)
+fffff803`46200000 fffff803`462d5000   peauth    ***** Invalid (A7623FFA)
+fffff803`462f0000 fffff803`46349000   netbt     85CF9EB7 (This is a reproducible build file hash, not a timestamp)
+fffff803`46350000 fffff803`46365000   afunix    1A287830 (This is a reproducible build file hash, not a timestamp)
+fffff803`46370000 fffff803`4638e000   wtd       ***** Invalid (CFED016F)
+fffff803`463a0000 fffff803`463c3000   p9rdr     30594D0B (This is a reproducible build file hash, not a timestamp)
+fffff803`46400000 fffff803`46411000   kdnic     C95CF3EB (This is a reproducible build file hash, not a timestamp)
+fffff803`46420000 fffff803`46429000   DBUtilDrv2  Wed Nov 20 07:14:20 2019 (5DD430FC)
+fffff803`46430000 fffff803`46446000   umbus     74744632 (This is a reproducible build file hash, not a timestamp)
+fffff803`46450000 fffff803`46884000   win32kfull  B0926ADB (This is a reproducible build file hash, not a timestamp)
+fffff803`46890000 fffff803`468be000   Ndu       33F53252 (This is a reproducible build file hash, not a timestamp)
+fffff803`468f0000 fffff803`46b74000   vmswitch  E86AE79B (This is a reproducible build file hash, not a timestamp)
+fffff803`46b80000 fffff803`46bd9000   VBoxNetAdp6  Tue Oct 20 07:31:47 2026 (6AD66213)
+fffff803`46be0000 fffff803`46bf4000   CompositeBus  ACD7DA51 (This is a reproducible build file hash, not a timestamp)
+fffff803`46c00000 fffff803`46c75000   portcls   BB88A76C (This is a reproducible build file hash, not a timestamp)
+fffff803`46c80000 fffff803`46ca0000   drmk      ***** Invalid (E47EF1DA)
+fffff803`46cb0000 fffff803`46d37000   ks        5FD1A849 (This is a reproducible build file hash, not a timestamp)
+fffff803`46d40000 fffff803`47318000   Netwtw14  Tue Sep  2 02:47:11 2025 (68B5B1EF)
+fffff803`47320000 fffff803`47370000   intelppm  31305756 (This is a reproducible build file hash, not a timestamp)
+fffff803`47380000 fffff803`4738c000   mshidkmdf  16CAEFDC (This is a reproducible build file hash, not a timestamp)
+fffff803`473a0000 fffff803`473ef000   HIDCLASS  EB8CB1C9 (This is a reproducible build file hash, not a timestamp)
+fffff803`47400000 fffff803`47419000   HIDPARSE  4F0B19DC (This is a reproducible build file hash, not a timestamp)
+fffff803`47420000 fffff803`47433000   UEFI      5D97C88F (This is a reproducible build file hash, not a timestamp)
+fffff803`47440000 fffff803`4747c000   vpcivsp   59837352 (This is a reproducible build file hash, not a timestamp)
+fffff803`47490000 fffff803`474db000   storvsp   BB02EBDD (This is a reproducible build file hash, not a timestamp)
+fffff803`474e0000 fffff803`474ef000   nvvad64v  Tue Aug  4 22:00:55 2026 (6A71B857)
+fffff803`47500000 fffff803`47514000   ksthunk   75FEBE81 (This is a reproducible build file hash, not a timestamp)
+fffff803`47520000 fffff803`4752e000   NdisVirtualBus  9CF5D8E6 (This is a reproducible build file hash, not a timestamp)
+fffff803`47540000 fffff803`4754c000   swenum    8DBCE1D4 (This is a reproducible build file hash, not a timestamp)
+fffff803`47560000 fffff803`4756c000   logi_joy_bus_enum_x64  Fri Feb  6 02:30:40 2026 (69849B80)
+fffff803`47580000 fffff803`47594000   logi_joy_xlcore_x64  Fri Feb  6 02:30:38 2026 (69849B7E)
+fffff803`475a0000 fffff803`475b0000   rdpbus    28083B5A (This is a reproducible build file hash, not a timestamp)
+fffff803`475c0000 fffff803`475d5000   voicemodvad  Wed Oct  8 20:51:14 2025 (68E617F2)
+fffff803`475e0000 fffff803`475f4000   kbdhid    FE1410E2 (This is a reproducible build file hash, not a timestamp)
+fffff803`47600000 fffff803`47615000   kbdclass  590094FC (This is a reproducible build file hash, not a timestamp)
+fffff803`47620000 fffff803`47636000   buttonconverter  D8A09F5E (This is a reproducible build file hash, not a timestamp)
+fffff803`47640000 fffff803`476f3000   UsbHub3   D506DBF3 (This is a reproducible build file hash, not a timestamp)
+fffff803`47700000 fffff803`47710000   USBD      14993BB2 (This is a reproducible build file hash, not a timestamp)
+fffff803`47720000 fffff803`4772f000   iocbios2  Sat Jun 17 10:05:53 2023 (648CDCC1)
+fffff803`47740000 fffff803`47763000   rhproxy   25B5D150 (This is a reproducible build file hash, not a timestamp)
+fffff803`47770000 fffff803`4778f000   nvhda64v  Tue Dec  2 04:26:50 2025 (692DB3BA)
+fffff803`477a0000 fffff803`479b7000   HTTP      AC6B1965 (This is a reproducible build file hash, not a timestamp)
+fffff803`479c0000 fffff803`47a24000   srvnet    4C929D0E (This is a reproducible build file hash, not a timestamp)
+fffff803`47a40000 fffff803`4edb5000   nvlddmkm  Wed Jul 22 13:44:26 2026 (6A60207A)
+fffff803`4edc0000 fffff803`4edf2000   HDAudBus  01997F26 (This is a reproducible build file hash, not a timestamp)
+fffff803`4ee00000 fffff803`4eec1000   USBXHCI   4181287C (This is a reproducible build file hash, not a timestamp)
+fffff803`4eed0000 fffff803`4ef18000   ucx01000  95C88791 (This is a reproducible build file hash, not a timestamp)
+fffff803`4ef20000 fffff803`4f03a000   wdiwifi   8C36C3A0 (This is a reproducible build file hash, not a timestamp)
+fffff803`4f040000 fffff803`4f050000   vwifibus  5C906BAE (This is a reproducible build file hash, not a timestamp)
+fffff803`4f060000 fffff803`4f094000   iaLPSS2_I2C_ADL  Wed Apr 24 19:18:04 2024 (6628B22C)
+fffff803`4f0a0000 fffff803`4f0bc000   SpbCx     D486583C (This is a reproducible build file hash, not a timestamp)
+fffff803`4f0d0000 fffff803`4f11f000   TeeDriverW10x64  Mon Feb 12 02:27:20 2024 (65C8CB38)
+fffff803`4f130000 fffff803`4f296000   e2fn      Thu Sep  4 03:14:27 2025 (68B85B53)
+fffff803`4f2a0000 fffff803`4f2fe000   netadaptercx  3905E5EF (This is a reproducible build file hash, not a timestamp)
+fffff803`4f310000 fffff803`4f330000   ExecutionContext  9455B40E (This is a reproducible build file hash, not a timestamp)
+fffff803`4f340000 fffff803`4f34c000   ICCWDT    Tue Feb 13 23:17:58 2024 (65CB41D6)
+fffff803`4f360000 fffff803`4f36e000   acpitime  812D906C (This is a reproducible build file hash, not a timestamp)
+fffff803`4f380000 fffff803`4f3a2000   iaLPSS2_GPIO2_ADL  Wed Apr 24 19:18:38 2024 (6628B24E)
+fffff803`4f3b0000 fffff803`4f3e5000   msgpioclx  6CB0F9A1 (This is a reproducible build file hash, not a timestamp)
+fffff803`4f3f0000 fffff803`4f3fc000   acpipagr  21BC4363 (This is a reproducible build file hash, not a timestamp)
+fffff803`4f410000 fffff803`4f41e000   wmiacpi   B2BC77AC (This is a reproducible build file hash, not a timestamp)
+fffff803`4f440000 fffff803`527be000   igdkmdn64  Sat Oct 19 08:04:11 2024 (6712B12B)
+fffff803`527d0000 fffff803`527e7000   HidEventFilter  Thu Apr 25 22:58:00 2024 (662A3738)
+fffff803`527f0000 fffff803`527fa000   amdfendrmgr  Tue Jan 28 10:28:53 2025 (6797FA95)
+fffff803`52800000 fffff803`52b45000   win32kbase  AB1DFC97 (This is a reproducible build file hash, not a timestamp)
+fffff803`52b50000 fffff803`52bc8000   UnionFS   08145856 (This is a reproducible build file hash, not a timestamp)
+fffff803`52bd0000 fffff803`52bec000   storqosflt  242F6BAF (This is a reproducible build file hash, not a timestamp)
+fffff803`52c00000 fffff803`52c16000   condrv    9909D0E5 (This is a reproducible build file hash, not a timestamp)
+fffff803`52c20000 fffff803`52c4f000   bindflt   5F4CCB5D (This is a reproducible build file hash, not a timestamp)
+fffff803`52c60000 fffff803`52c76000   tcpipreg  B578B9E5 (This is a reproducible build file hash, not a timestamp)
+fffff803`52c90000 fffff803`52caa000   lltdio    F9A04930 (This is a reproducible build file hash, not a timestamp)
+fffff803`52cb0000 fffff803`52ccb000   mslldp    110205C1 (This is a reproducible build file hash, not a timestamp)
+fffff803`52cd0000 fffff803`52cec000   rspndr    F0D5A75F (This is a reproducible build file hash, not a timestamp)
+fffff803`52d00000 fffff803`52d20000   wanarp    6559C2E3 (This is a reproducible build file hash, not a timestamp)
+fffff803`52d30000 fffff803`52d49000   ndisuio   8A5115DF (This is a reproducible build file hash, not a timestamp)
+fffff803`52d50000 fffff803`52e44000   nwifi     98C24262 (This is a reproducible build file hash, not a timestamp)
+fffff803`52e50000 fffff803`52e6d000   mpsdrv    8D5F4BF8 (This is a reproducible build file hash, not a timestamp)
+fffff803`52e80000 fffff803`52e96000   mmcss     94B89CD3 (This is a reproducible build file hash, not a timestamp)
+fffff803`52ea0000 fffff803`52eca000   bowser    4C13FA61 (This is a reproducible build file hash, not a timestamp)
+fffff803`52ee0000 fffff803`53559000   RTKVHD64  Tue Aug 26 21:26:03 2025 (68AD7DAB)
+fffff803`53560000 fffff803`53574000   hidusb    B48E391A (This is a reproducible build file hash, not a timestamp)
+fffff803`53580000 fffff803`535dd000   mrxsmb20  CC819D23 (This is a reproducible build file hash, not a timestamp)
+fffff803`53600000 fffff803`5383d000   BTHport   132513C8 (This is a reproducible build file hash, not a timestamp)
+fffff803`53850000 fffff803`53884000   usbccgp   DEB69F35 (This is a reproducible build file hash, not a timestamp)
+fffff803`53890000 fffff803`538a6000   vhf       94DDEBA1 (This is a reproducible build file hash, not a timestamp)
+fffff803`538b0000 fffff803`538c5000   logi_lamparray_AMD64  Thu Jun 18 07:55:31 2026 (6A32FBB3)
+fffff803`538d0000 fffff803`5391a000   usbaudio  BB3431A5 (This is a reproducible build file hash, not a timestamp)
+fffff803`53920000 fffff803`5392e000   logi_audio_surround  Fri Aug 16 09:54:25 2024 (66BE7911)
+fffff803`53940000 fffff803`53951000   mouhid    2C5A3A68 (This is a reproducible build file hash, not a timestamp)
+fffff803`53960000 fffff803`53975000   mouclass  45D9B600 (This is a reproducible build file hash, not a timestamp)
+fffff803`53980000 fffff803`539eb000   fastfat   503B5386 (This is a reproducible build file hash, not a timestamp)
+fffff803`53a10000 fffff803`53a28000   dump_storport  Thu Jan 13 23:04:03 2011 (4D2ECE13)
+fffff803`53a90000 fffff803`53adf000   dump_stornvme  FDAA5EFB (This is a reproducible build file hash, not a timestamp)
+fffff803`53b20000 fffff803`53b44000   dump_dumpfve  EE97515A (This is a reproducible build file hash, not a timestamp)
+fffff803`53b50000 fffff803`53b76000   win32kbase_rs  C008834F (This is a reproducible build file hash, not a timestamp)
+fffff803`53b80000 fffff803`53ca8000   dxgmms2   31CABC8D (This is a reproducible build file hash, not a timestamp)
+fffff803`53cb0000 fffff803`53ccf000   monitor   8F066C32 (This is a reproducible build file hash, not a timestamp)
+fffff803`53ce0000 fffff803`53d32000   cdd       7984AA38 (This is a reproducible build file hash, not a timestamp)
+fffff803`53d40000 fffff803`54c63000   ibtusb    Sat Sep 13 07:19:20 2025 (68C47238)
+fffff803`54c70000 fffff803`54c93000   BTHUSB    F6A1D6B9 (This is a reproducible build file hash, not a timestamp)
+fffff803`54ca0000 fffff803`54cc9000   bfs       AB9A34E2 (This is a reproducible build file hash, not a timestamp)
+fffff803`54cd0000 fffff803`54d04000   luafv     6939ACBD (This is a reproducible build file hash, not a timestamp)
+fffff803`54d10000 fffff803`54d4d000   wcifs     F2630CF6 (This is a reproducible build file hash, not a timestamp)
+fffff803`54d60000 fffff803`54df4000   cldflt    D66E7692 (This is a reproducible build file hash, not a timestamp)
+fffff803`54e00000 fffff803`5a1da000   eaanticheat  Mon Nov  2 05:22:25 2026 (6AE76741)
+fffff803`5a270000 fffff803`5a27b000   DirectIo64  Wed Aug 12 17:44:52 2020 (5F3381D4)
+fffff803`5b020000 fffff803`5b040000   rassstp   04ECB8D1 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b050000 fffff803`5b070000   NDProxy   F32EB6A9 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b080000 fffff803`5b0a9000   AgileVpn  F6473FD3 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b0b0000 fffff803`5b0d4000   rasl2tp   AC13985B (This is a reproducible build file hash, not a timestamp)
+fffff803`5b0e0000 fffff803`5b104000   raspptp   09FA6244 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b110000 fffff803`5b12e000   raspppoe  DA52FE17 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b140000 fffff803`5b150000   ndistapi  16DFFB33 (This is a reproducible build file hash, not a timestamp)
+fffff803`5b160000 fffff803`5b1a1000   ndiswan   AD2EBE17 (This is a reproducible build file hash, not a timestamp)
+fffff803`9ee00000 fffff803`a0250000   nt        AFF6531F (This is a reproducible build file hash, not a timestamp)
+fffff803`a0600000 fffff803`a0606000   hal       EB9DEAA9 (This is a reproducible build file hash, not a timestamp)
+
+Unloaded modules:
+fffff803`5a260000 fffff803`5a26e000   AsIO2.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`5a250000 fffff803`5a25d000   EneTechIo64.
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000D000
+fffff803`5a230000 fffff803`5a242000   rtkio64.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00012000
+fffff803`5a220000 fffff803`5a22d000   phymemx64.sy
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000D000
+fffff803`5a210000 fffff803`5a21d000   EneTechIo64.
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000D000
+fffff803`5a200000 fffff803`5a20e000   Gdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`5a1f0000 fffff803`5a200000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`5a1e0000 fffff803`5a1f0000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`55a00000 fffff803`55fd9000   NalDrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  005D9000
+fffff803`55420000 fffff803`559f9000   NalDrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  005D9000
+fffff803`55410000 fffff803`5541e000   zapexdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`55400000 fffff803`5540e000   zapexdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`54e20000 fffff803`553f9000   NalDrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  005D9000
+fffff803`54e10000 fffff803`54e20000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`55c30000 fffff803`5b00f000   eaanticheat.
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  053DF000
+fffff803`54e00000 fffff803`54e0e000   Gdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`5b1f0000 fffff803`5b200000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`5b1e0000 fffff803`5b1ee000   Gdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`5b1d0000 fffff803`5b1e0000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`5b1c0000 fffff803`5b1ce000   Gdrv.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0000E000
+fffff803`5b1b0000 fffff803`5b1c0000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`5b010000 fffff803`5b020000   AsIO3.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00010000
+fffff803`2bcd0000 fffff803`2bce4000   WSDScan.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00014000
+fffff803`2bcb0000 fffff803`2bcc3000   WSDPrint.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00013000
+fffff803`52c60000 fffff803`52c83000   NetworkPriva
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00023000
+fffff803`52c60000 fffff803`52c86000   l1vhlwf.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00026000
+fffff803`45500000 fffff803`4551d000   dump_storpor
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  0001D000
+fffff803`45580000 fffff803`455d4000   dump_stornvm
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00054000
+fffff803`45230000 fffff803`45259000   dump_dumpfve
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00029000
+fffff803`45ec0000 fffff803`45ee5000   dam.sys 
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00025000
+fffff803`45ef0000 fffff803`45f09000   KMPDC.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00019000
+fffff803`45350000 fffff803`45366000   uiomap.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00016000
+fffff803`32f50000 fffff803`32f66000   hwpolicy.sys
+    Timestamp: unavailable (00000000)
+    Checksum:  00000000
+    ImageSize:  00016000
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+SYSTEM_PTE_MISUSE (da)
+A driver has corrupted system PTEs.
+Set HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\TrackPtes
+to a DWORD 3 value and reboot.  If the same BugCheck occurs again the stack trace will
+identify the offending driver.
+Arguments:
+Arg1: 0000000000000302, Type of error.
+Arg2: 0000000000000000
+Arg3: 0000000000000000
+Arg4: fffffff538000000
+
+Debugging Details:
+------------------
+
+*** WARNING: Unable to verify timestamp for DirectIo64.sys
+
+BUGCHECK_CODE:  da
+
+BUGCHECK_P1: 302
+
+BUGCHECK_P2: 0
+
+BUGCHECK_P3: 0
+
+BUGCHECK_P4: fffffff538000000
+
+PROCESS_NAME:  kdu.exe
+
+SYMBOL_NAME:  DirectIo64+38c3
+
+MODULE_NAME: DirectIo64
+
+IMAGE_NAME:  DirectIo64.sys
+
+FAILURE_BUCKET_ID:  0xDA_DirectIo64!unknown_function
+
+FAILURE_ID_HASH:  {0c65b4b4-7a86-fdb0-13f8-91a1c70565b4}
+
+Followup:     MachineOwner
+---------
+
+Finished dump check

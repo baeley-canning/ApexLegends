@@ -1,0 +1,35 @@
+===== qk_name (find the entity by player name) =====
+needle='kern30120'  out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_layout1.txt
+ranges=5 (map=5 bad=25)
+  scanned 373144 chunks, 4694 name hits
+  hit 0x01420f0039 (utf16)
+  hit 0x01420f0089 (utf16)
+  hit 0x01420f04cf (utf16)
+  hit 0x01420f0ba3 (utf16)
+  hit 0x01420f0c6f (utf16)
+  hit 0x01420f0d7f (utf16)
+  hit 0x0142699881 (ascii)
+  hit 0x01450f0436 (utf16)
+  hit 0x01450f0b0a (utf16)
+  hit 0x01454da0c4 (utf16)
+  hit 0x01454da6f4 (utf16)
+  hit 0x01454d898f (ascii)
+  hit 0x014581342b (utf16)
+  hit 0x014581347b (utf16)
+  hit 0x01458138c1 (utf16)
+  hit 0x01461f3588 (utf16)
+  --- block holding name 0x1420f0039 (offset from name) ---
+  --- block holding name 0x3196f4e4a (offset from name) ---
+  --- block holding name 0x393b0af3b (offset from name) ---
+    -0x4b8  world-like (0.0, 0.0, 8204.0)
+    -0x4b4  world-like (0.0, 8204.0, 0.0)
+  --- block holding name 0x3f2c56d63 (offset from name) ---
+    -0xef0  world-like (0.0, 3284.6, 825.0)
+    -0xeec  world-like (3284.6, 825.0, 0.0)
+    -0xee8  world-like (825.0, 0.0, 3253.0)
+  --- block holding name 0x4f885ad8a (offset from name) ---
+    -0xcc0  world-like (10777.1, 0.0, 0.0)
+    -0x9e4  world-like (0.0, 641.7, 0.0)
+    -0x994  world-like (0.0, 0.0, 3267.4)
+  --- block holding name 0x7f87aefd3 (offset from name) ---
+    -0x1070  world-like (8213.0, 0.0, 0.0)

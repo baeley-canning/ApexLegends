@@ -1,0 +1,21 @@
+ov63 - verify-only (restore+jmp, no LoadLibrary) - 2026-11-07 13:13:13
+target  : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+elevated: True
+kill     : pid=10420 -> SUCCESS: The process with PID 10420 (child process of PID 27376) has been terminated.
+game     : none running
+header   : parsed once, e_lfanew=0x1B8 (65.6 MB)
+attempt 1/1
+flags    : 0x0
+created SUSPENDED pid=21316 hproc=2700 hthread=2704
+alloc    : 0x21FE5B60000 (160 B unicode path)
+write    : ok (160 B)
+k32      : 0x7FF849170000 LoadLibraryW=0x7FF8491AF6C0
+image    : base=0x7FF75B780000 entryRva=0xDFB7000 -> entry=0x7FF769737000 sizeOfImage=0xDFB8000
+identity : memEntryRva=0xDFB7000 stamp=0x6ADBF892 disk=0x6ADBF892
+nopatch  : entry left untouched (control)
+resume   : skipped (process was not suspended)
+after    : alive=False moduleBase=0 payloadLog=False (waited 0.5 s)
+process died after resume, exitCode=0x000186AA (not an AV)
+RESULT: FAIL process-died exit=0x000186AA
+ov63 DONE FAIL process-died exit=0x000186AA

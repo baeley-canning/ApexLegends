@@ -1,0 +1,4 @@
+=== known Apex kernel object -> translate DTB gate 2026-11-10 00:45:55 ===
+KOBJ=0xffffe60cc69ba100 module window known
+VERDICT: BLOCKED - root candidate object no PE readbacks tested=51949
+RESULT: nonvalidated table not trusted

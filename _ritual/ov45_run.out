@@ -1,0 +1,119 @@
+ov45 - adapter fix (display-attached device) - 2026-11-07 10:46:54
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov45_cwd (scratch, emptied first)
+pid   : 21376   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : no visible window for pid 0
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov45_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: enabled
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+chain current back buffer index = 0
+SetMaximumFrameLatency(3) hr=0x887A0001
+GetBuffer(0) hr=0x00000000 res=00000236DE7B6E90
+GetBuffer(1) hr=0x00000000 res=00000236DE7B7AF0
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+probe target = current back buffer 0
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x00000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+T7 info queue: 2 stored message(s)
+T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+chain current back buffer index = 0
+SetMaximumFrameLatency(3) hr=0x887A0001
+GetBuffer(0) hr=0x00000000 res=00000236E5A8DCB0
+GetBuffer(1) hr=0x00000000 res=00000236E5A8E950
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+probe target = current back buffer 0
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x00000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+T7 info queue: 2 stored message(s)
+T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+chain current back buffer index = 0
+SetMaximumFrameLatency(3) hr=0x887A0001
+GetBuffer(0) hr=0x00000000 res=00000236DE7BB880
+GetBuffer(1) hr=0x00000000 res=00000236DE7BBDA0
+GetBuffer(2) hr=0x887A0001 res=0000000000000000
+GetBuffer(3) hr=0x887A0001 res=0000000000000000
+probe target = current back buffer 0
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x00000000
+T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+T8 direct clear[0]: removedReason=0x887A002B
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+T7 info queue: 2 stored message(s)
+T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+FAIL: no adapter could present, hr=0x80004005
+
+---- overlay_test log ----
+[10:46:54.853] ==================== session start 2026-11-07 10:46:54 pid=21376
+[10:46:54.853] [test] overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov45_cwd size=960x620
+[10:46:54.854] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:46:54.868] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:46:54.871] [test] debug layer: enabled
+[10:46:55.107] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+[10:46:55.107] [test] chain current back buffer index = 0
+[10:46:55.107] [test] SetMaximumFrameLatency(3) hr=0x887A0001
+[10:46:55.108] [test] GetBuffer(0) hr=0x00000000 res=00000236DE7B6E90
+[10:46:55.108] [test] GetBuffer(1) hr=0x00000000 res=00000236DE7B7AF0
+[10:46:55.108] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:46:55.108] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:46:55.108] [test] probe target = current back buffer 0
+[10:46:55.108] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.109] [test] T8 direct clear[0]: removedReason=0x00000000
+[10:46:55.260] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.261] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:46:55.261] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+[10:46:55.261] [test] T7 info queue: 2 stored message(s)
+[10:46:55.261] [test] T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+[10:46:55.261] [test] T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+[10:46:55.507] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+[10:46:55.507] [test] chain current back buffer index = 0
+[10:46:55.507] [test] SetMaximumFrameLatency(3) hr=0x887A0001
+[10:46:55.507] [test] GetBuffer(0) hr=0x00000000 res=00000236E5A8DCB0
+[10:46:55.507] [test] GetBuffer(1) hr=0x00000000 res=00000236E5A8E950
+[10:46:55.507] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:46:55.507] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:46:55.507] [test] probe target = current back buffer 0
+[10:46:55.507] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.508] [test] T8 direct clear[0]: removedReason=0x00000000
+[10:46:55.657] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.658] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:46:55.658] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+[10:46:55.658] [test] T7 info queue: 2 stored message(s)
+[10:46:55.658] [test] T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+[10:46:55.658] [test] T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+[10:46:55.686] [test] chain desc: buffers=2 960x620 fmt=87 effect=4 hwnd=00000000000805C6
+[10:46:55.686] [test] chain current back buffer index = 0
+[10:46:55.686] [test] SetMaximumFrameLatency(3) hr=0x887A0001
+[10:46:55.686] [test] GetBuffer(0) hr=0x00000000 res=00000236DE7BB880
+[10:46:55.686] [test] GetBuffer(1) hr=0x00000000 res=00000236DE7BBDA0
+[10:46:55.686] [test] GetBuffer(2) hr=0x887A0001 res=0000000000000000
+[10:46:55.686] [test] GetBuffer(3) hr=0x887A0001 res=0000000000000000
+[10:46:55.686] [test] probe target = current back buffer 0
+[10:46:55.686] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.687] [test] T8 direct clear[0]: removedReason=0x00000000
+[10:46:55.812] [test] T8 buffer[0] desc: 960x620 fmt=87 samples=1 mips=1 flags=0x1
+[10:46:55.812] [test] T8 direct clear[0]: removedReason=0x887A002B
+[10:46:55.812] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+[10:46:55.812] [test] T7 info queue: 2 stored message(s)
+[10:46:55.812] [test] T7 [1 id=907] ID3D12CommandQueue1::ExecuteCommandLists: A command list, which writes to a swapchain back buffer, may only be executed when that back buffer is the back buffer that will be presented during the next call to Present*. Such a back buffer is also referred to as the "current back buffer". Swap Chain: 0
+[10:46:55.812] [test] T7 [1 id=232] ID3D12Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_ACCESS_DENIED: The application attempted to use a resource it does not access to.  This  could be, for example, rendering to a texture while only having read access.).
+[10:46:55.815] [test] FAIL: no adapter could present, hr=0x80004005
+

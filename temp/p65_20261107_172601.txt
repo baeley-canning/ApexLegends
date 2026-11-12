@@ -1,0 +1,113 @@
+# p64_pairs 2026-11-07 17:26:01 band=full win=0x100 min=3
+SEED 2 clusters from p64_seed12.txt
+CUES  880Hz short = countdown before GO (nades already in hand)
+      1400Hz x3   = GO, throw frag 1 at your feet
+      500Hz x2    = THROW the next frag NOW (frag 1 armour, frag 2 health)
+      after frag 2 you go down: hold still, do NOT self-revive
+      no beep     = stand still, do not throw
+READY wait=15s (drink up so armour is FULL, 2 nades, cues = low double beeps)
+STABLE 2 of 2
+NADE NOW 12  <- one frag at your feet (countdown, then GO)
+NADE NOW 11  <- one frag at your feet (countdown, then GO)
+NADE NOW 10  <- one frag at your feet (countdown, then GO)
+NADE NOW 9  <- one frag at your feet (countdown, then GO)
+NADE NOW 8  <- one frag at your feet (countdown, then GO)
+NADE NOW 7  <- one frag at your feet (countdown, then GO)
+NADE NOW 6  <- one frag at your feet (countdown, then GO)
+NADE NOW 5  <- one frag at your feet (countdown, then GO)
+NADE NOW 4  <- one frag at your feet (countdown, then GO)
+NADE NOW 3  <- one frag at your feet (countdown, then GO)
+NADE NOW 2  <- one frag at your feet (countdown, then GO)
+NADE NOW 1  <- one frag at your feet (countdown, then GO)
+GO  <- start THROWING now: frag 1 strips the armour, frag 2 takes health
+PRE 0x6c6af0864 8.00506/-7.75205e-18/4.62428e-43/524288
+PRE 0x6607b9f78 -6.98155e+26/-1.19275e-07/2.1716e-24
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 1 [RECOVER] clusters=2 chg=0 t=1.5s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 2 [RECOVER] clusters=2 chg=0 t=3.0s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 3 [RECOVER] clusters=2 chg=0 t=4.5s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 4 [RECOVER] clusters=2 chg=0 t=6.0s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 5 [RECOVER] clusters=2 chg=0 t=7.5s
+NADE 2 NOW  <- THROW at your feet (1 strips armour, 2 takes health)
+shot 6 [THROW] clusters=2 chg=0 t=9.5s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 7 [RECOVER] clusters=2 chg=0 t=11.0s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 8 [THROW] clusters=2 chg=0 t=12.9s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 9 [RECOVER] clusters=2 chg=0 t=14.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 10 [RECOVER] clusters=2 chg=0 t=15.9s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 11 [RECOVER] clusters=2 chg=0 t=17.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 12 [THROW] clusters=2 chg=0 t=19.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 13 [RECOVER] clusters=2 chg=0 t=20.9s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 14 [RECOVER] clusters=2 chg=0 t=22.4s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 15 [RECOVER] clusters=2 chg=0 t=23.9s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 16 [THROW] clusters=2 chg=0 t=25.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 17 [RECOVER] clusters=2 chg=0 t=27.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 18 [RECOVER] clusters=2 chg=0 t=28.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 19 [RECOVER] clusters=2 chg=0 t=30.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 20 [THROW] clusters=2 chg=0 t=32.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 21 [RECOVER] clusters=2 chg=0 t=33.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 22 [RECOVER] clusters=2 chg=0 t=35.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 23 [RECOVER] clusters=2 chg=0 t=36.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 24 [THROW] clusters=2 chg=0 t=38.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 25 [RECOVER] clusters=2 chg=0 t=40.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 26 [RECOVER] clusters=2 chg=0 t=41.8s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 27 [RECOVER] clusters=2 chg=0 t=43.3s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 28 [THROW] clusters=2 chg=0 t=45.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 29 [RECOVER] clusters=2 chg=0 t=46.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 30 [RECOVER] clusters=2 chg=0 t=48.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 31 [RECOVER] clusters=2 chg=0 t=49.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 32 [THROW] clusters=2 chg=0 t=51.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 33 [RECOVER] clusters=2 chg=0 t=53.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 34 [RECOVER] clusters=2 chg=0 t=54.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 35 [RECOVER] clusters=2 chg=0 t=56.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+NADE 3 NOW  <- shield is EMPTY, THROW again (this one hits health); then drink if you want
+shot 36 [THROW] clusters=2 chg=0 t=58.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 37 [RECOVER] clusters=2 chg=0 t=59.7s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 38 [RECOVER] clusters=2 chg=0 t=61.2s
+RECOVER  <- stand still, no throw (shield should be refilling)
+shot 39 [RECOVER] clusters=2 chg=0 t=62.7s
+MOVED 0 of 2
+CANDIDATES 0
+VERDICT no-cluster

@@ -1,0 +1,30 @@
+--- installerdata: content/offer ---
+<contentIDs>
+<contentID>194908</contentID>
+</contentIDs>
+--- EALauncher.log tail ---
+     5	[2026-11-06T12:11:37.134Z]	PID: 30744	TID: 22724	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe]
+     6	[2026-11-06T12:11:37.134Z]	PID: 30744	TID: 22724	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.822.0.6335-1793774814\EA Desktop\EALauncher.exe]
+     7	[2026-11-06T12:11:37.138Z]	PID: 30744	TID: 22724	INFO    	(eax::apps::startExecutable)	Starting executable [EADesktop.exe] with arguments [-ls=Launcher]
+     8	[2026-11-06T12:11:37.138Z]	PID: 30744	TID: 22724	INFO    	(eax::apps::startExecWithSameCredentials)	Starting app with same credentials: path[C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EADesktop.exe], args[-ls=Launcher]'
+goodbye
+
+     1	[2026-11-06T12:43:25.697Z]	PID: 26560	TID: 29920	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-06T12:43:25.697Z]	PID: 26560	TID: 29920	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-06T12:43:25.704Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[false], processId[26560]
+     4	[2026-11-06T12:43:25.704Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.822.0-6335-102617f37
+     5	[2026-11-06T12:43:25.704Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch/?offerIds=194908]
+     6	[2026-11-06T12:43:25.704Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.822.0.6335-1793774814\EA Desktop\EALauncher.exe]
+     7	[2026-11-06T12:43:25.706Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch/?offerIds=194908]
+     8	[2026-11-06T12:43:25.706Z]	PID: 26560	TID: 29920	INFO    	(eax::apps::startExecWithSameCredentials)	Starting app with same credentials: path[C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe], args[origin2://game/launch/?offerIds=194908]'
+goodbye
+
+     1	[2026-11-07T02:38:20.155Z]	PID:  4340	TID: 28780	INFO    	(eax::services::settings::setNormalMode)	Setting mode to: [normal]
+     2	[2026-11-07T02:38:20.155Z]	PID:  4340	TID: 28780	INFO    	(eax::services::settings::setMode)	Setting mode to: [normal]
+     3	[2026-11-07T02:38:20.163Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::utils::logAppInfo)	[STARTUP] app[EALauncher], configurable[false], buildType[opt], env[production], elevated[false], processId[4340]
+     4	[2026-11-07T02:38:20.163Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::utils::logAppInfo)	Version: 13.822.0-6335-102617f37
+     5	[2026-11-07T02:38:20.163Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::utils::logAppInfo)	Command line: [C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe origin2://game/launch?offerIds=Origin.OFR.50.0000557]
+     6	[2026-11-07T02:38:20.163Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::utils::logAppInfo)	Canonical path: [C:\Program Files\Electronic Arts\EA Desktop\13.822.0.6335-1793774814\EA Desktop\EALauncher.exe]
+     7	[2026-11-07T02:38:20.167Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::startExecutable)	Starting executable [EALaunchHelper.exe] with arguments [origin2://game/launch?offerIds=Origin.OFR.50.0000557]
+     8	[2026-11-07T02:38:20.167Z]	PID:  4340	TID: 28780	INFO    	(eax::apps::startExecWithSameCredentials)	Starting app with same credentials: path[C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALaunchHelper.exe], args[origin2://game/launch?offerIds=Origin.OFR.50.0000557]'
+goodbye

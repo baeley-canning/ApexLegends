@@ -32,7 +32,13 @@ OFF_FILE = os.path.join(os.path.dirname(HERE), "temp", "qk_offsets.txt")
 
 
 def load_offsets():
-    """image_pa + vp_rva, written by qk_image --data --watch (the run that works)."""
+    """image_pa + vp_rva, written by qk_image --data --watch (the run that works).
+
+    Also picks up optional `pos_delta` / `ang_off` so a build that moved the fields can be
+    re-anchored without editing this file (p121 measured pos at name+0xF58, angles at
+    name+0xB00 on the 07/11 build; the old name-0xEEC is dead there).
+    """
+    global POS_DELTA, YAW_OFF, PITCH_OFF
     try:
         with open(OFF_FILE, "r") as f:
             k = {}
@@ -40,6 +46,11 @@ def load_offsets():
                 if "=" in ln:
                     a, b = ln.strip().split("=", 1)
                     k[a] = int(b, 16)
+        if "pos_delta" in k:
+            POS_DELTA = k.pop("pos_delta")          # signed: pos at name+POS_DELTA
+        if "ang_off" in k:
+            YAW_OFF = k.pop("ang_off")
+            PITCH_OFF = YAW_OFF + 4
         if k.get("image_pa") and k.get("vp_rva"):
             return k
     except (OSError, ValueError):
@@ -47,7 +58,8 @@ def load_offsets():
     return None
 
 MAGIC = 0x514B4258
-POS_OFF = 0xEEC
+POS_OFF = 0xEEC          # legacy magnitude, kept for the banner
+POS_DELTA = -0xEEC       # signed: position is read at name+POS_DELTA
 YAW_OFF = 0x3A4
 PITCH_OFF = 0x3A8
 W, H = 1920, 1080
@@ -128,7 +140,7 @@ def find_entities(g, ranges, needle):
     ents = []
     for a in hits:
         try:
-            x, y, z = struct.unpack("<fff", dl.retry_phys(g, a - POS_OFF, 12, tries=1))
+            x, y, z = struct.unpack("<fff", dl.retry_phys(g, a + POS_DELTA, 12, tries=1))
         except OSError:
             continue
         if not all(abs(c) < 20000.0 for c in (x, y, z)):
@@ -184,8 +196,8 @@ def main():
         out(dl.run_elevated(cmd))
         return 0
 
-    out("===== qk_esp producer: pos @ name-%#x, angles @ name+%#x/%#x, %dx%d fov=%.0f ====="
-        % (POS_OFF, YAW_OFF, PITCH_OFF, W, H, fov))
+    out("===== qk_esp producer: pos @ name%+#x, angles @ name+%#x/%#x, %dx%d fov=%.0f ====="
+        % (POS_DELTA, YAW_OFF, PITCH_OFF, W, H, fov))
     try:
         g = gio.Gio(chunk=0x10000)
     except OSError as e:

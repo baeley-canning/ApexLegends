@@ -317,6 +317,194 @@ NEXT (usermode, in order):
   u3) decide whether A8 (VAD-less) is worth implementing before B3, given the
       allocation denial - a VAD-less map still needs a way to get bytes in.
 
+--------------------------------------------------------------------------------
+11. 2026-11-07 — RE-MEASURE ON A FRESH LIVE INSTANCE (h321-h327): the wall is a
+    PARAMETER-AWARE KERNEL OP FILTER - not handle rights, not the PEB, not a
+    shadow address space
+--------------------------------------------------------------------------------
+Date: 2026-11-07.  Live target: r5apex_dx12.exe, two instances inside 4 minutes -
+PID 29300 (launched 13:54:42) and PID 29184 (launched 13:57:10, parent 25592),
+Javelin stack as in section 4.  Scope: the USER-MODE ladder only.  No driver, no
+DSE flip, no reboot, nothing mutated anywhere: every probe ends with an explicit
+liveness read-back and the game was alive after each one.
+
+Why re-measure: section 4 is 12 days old, and the tree has since loaded and
+bugchecked the kernel rung (h276-h285, h310-h323).  The question asked today is
+narrower than "is allocation denied", and its answer has to name the op, because
+the next primitive is chosen from it.
+
+Verdict rule unchanged from section 1: the observable is the verdict, never an
+exit code.  Rows below are the actual Win32/NTSTATUS values the ops returned.
+
+  op                                    | medium IL | high IL | probe
+  --------------------------------------+-----------+---------+---------
+  OpenProcess ALL_ACCESS      0x1F0FFF  | DENY  5   | GRANT   | h322/h323
+  OpenProcess QUERY_INFORMATION  0x400  | DENY  5   | GRANT   | h322/h323
+  OpenProcess QUERY_LIMITED     0x1000  | GRANT     | GRANT   | h322/h323
+  OpenProcess SYNCHRONIZE     0x100000  | GRANT     | GRANT   | h322/h323
+  OpenProcess VM_READ             0x10  | DENY  5   | GRANT   | h322/h323
+  OpenProcess VM_WRITE            0x20  | DENY  5   | GRANT   | h322/h323
+  OpenProcess VM_OPERATION         0x8  | DENY  5   | GRANT   | h322/h323
+  OpenProcess CREATE_THREAD         0x2  | DENY  5   | GRANT   | h322/h323
+  OpenProcess SUSPEND_RESUME      0x800  | DENY  5   | GRANT   | h322/h323
+  --------------------------------------+-----------+---------+---------
+  VirtualQueryEx, whole VAD range       | -         | OK      | h327
+  NtQueryInformationProcess(PEB)        | -         | OK      | h327
+  ReadProcessMemory at the PEB          | -         | FAIL 87 | h325/h327
+  WriteProcessMemory, same page         | -         | FAIL 87 | h326
+  VirtualAllocEx RWX                    | -         | FAIL 87 | h325
+  VirtualAllocEx RW                     | -         | FAIL 5  | h325
+  VirtualAllocEx R                      | -         | FAIL 5  | h325
+  VirtualAllocEx EXECUTE                | -         | FAIL 87 | h325
+  NtAllocateVirtualMemory RWX           | -         | 0xC000000D | h325
+  NtAllocateVirtualMemory RW            | -         | 0xC0000022 | h325
+  CreateRemoteThread                    | -         | FAIL 5  | h326 (11.4)
+  Toolhelp module enumeration           | -         | 0 modules | h326 (11.3)
+  --------------------------------------+-----------+---------+---------
+  control: alloc + write in notepad     | -         | OK      | h324
+  control: alloc + write in self        | -         | OK      | h324
+
+11.1 The handle is NOT the wall, and the integrity level split is clean.
+h322 (medium IL, PID 29300) is the row that kills the "our token is wrong" theory
+in the other direction: at medium IL the game's DACL/section denies everything
+except QUERY_LIMITED and SYNCHRONIZE.  h323 (elevated, PID 29184) is granted
+0x1F0FFF on the first try.  So the ladder's old sentence "OpenProcess(ALL) OK"
+is true only ELEVATED, and elevation is a hard precondition, not a nicety.  It
+is also worth keeping: an elevated handle is granted but still useless, which
+means the denial is applied BELOW the handle, per call.
+
+11.2 The address space visible through that handle is the GAME'S REAL ONE.
+h327 walked the target's VAD from address 0 to 0x7FFFFFFFFFFF with
+VirtualQueryEx and a same-run self-control (the probe censuses its own process
+first, with the same code, and that control passes - the instrument is trusted):
+
+  self  : 1922 regions, 298 MB commit, 1297 image sections, walk 4 ms
+  game  : 9492 regions, 11364 MB commit, 7737 MB working set,
+          1765 image sections / 577 MB image, 8724 MB private,
+          2061 MB mapped, 5232 MB reserve, commit/ws = 1.47
+          r5apex_dx12.exe image section at 0x140000000, size 0x11F0000,
+          protection 0x404 (EXECUTE_READWRITE + MEM_IMAGE)
+          lowest image section 0x1D10000 .. 0x209C000 (PAGE_EXECUTE_READ)
+          PEB reported by NtQueryInformationProcess = 0x20F000, and the VAD
+          confirms it: MEM_IMAGE, committed, protection 0x4 (PAGE_READWRITE)
+
+1765 image sections is the whole module set (Apex loads ~60 modules plus
+thousands of mapped images), 11.1 GB of commit is a running DX12 game, and the
+PEB lands on a real committed RW image page.  A manipulated DTB / shadow CR3 /
+"fake VAD" presentation could not produce that.  The shadow-address-space theory
+is therefore RULED OUT, and with it the whole class of "we are reading the wrong
+CR3" fixes.
+
+11.3 So why do reads fail, and why is every module list empty?
+Both have the same cause: the filter sits on the DATA-TRANSFER calls, not on the
+information calls.  VirtualQueryEx, NtQueryInformationProcess and the section
+walk are answered from kernel bookkeeping and are granted; ReadProcessMemory,
+WriteProcessMemory, VirtualAllocEx and NtAllocateVirtualMemory are refused
+(87 / 5 / 0xC000000D / 0xC0000022, all different, which is a parameter-sensitive
+check and not one blanket "deny").  Reading the committed PAGE_READWRITE PEB page
+still returns 87, i.e. the refusal is unconditional with respect to the page.
+
+That also explains the ENTIRE X8/I0 mystery of section 4 and the "before" of
+section 3: every module list in the tree comes from the PEB LDR list, and the
+PEB is unreadable, so psapi/EnumProcessModulesEx and Toolhelp both report 0
+modules while the VAD says 1765 image sections.  "Zero modules" was never
+evidence that the game hides its modules; it is evidence that RPM is blocked.
+The two measurements agree once the access path is named - and that means a
+module-base lookup can still be had from the VAD-side information ops, which is
+the first genuinely new primitive this re-measure produced.
+
+11.4 Two rows of section 4 must be CORRECTED, and one is still open.
+  * h326's "LoadLibraryW inject FAIL" is an artifact, not a measurement.  The
+    payload resolved kernel32!LoadLibraryW as base + 0x3F6C0 where base = 0x0
+    came from the empty Toolhelp enum, so it called address 0x3F6C0.  The
+    CreateRemoteThread refusal (err 5) is real; the LoadLibraryW failure above
+    it is the same 0-module bug of 11.3 wearing a different hat.
+  * h321 was built to answer "does an EXTERNAL suspend/resume of a live instance
+    trigger the 0x186AA abort?", and it never got there: RESULT: FAIL
+    OpenProcess err=5 (it ran at medium IL, 13:55:14).  So the external-suspend
+    hypothesis is UNTESTED, not disproved.  What is measured is the other half:
+    ov62/ov64/ov65 all died at 0x186AA (100522) from a CREATE_SUSPENDED launch
+    with NO patch at all, so the abort is the game's own post-resume watchdog and
+    not an anti-cheat kill.  Consequence: any "launch suspended, inject, resume"
+    rung is dead on this title regardless of what we inject.
+
+11.5 What the filter looks like, stated as a falsifiable shape.
+Parameter-sensitive denials (four distinct codes for four alloc parameter sets),
+granted information queries, granted OpenProcess at high IL, unconditional denial
+of the copy calls at a committed RW page.  That is an IOCTL/ob-callback or
+syscall-hook filter with a rule table keyed on (call, access, protection) - not a
+rights strip and not an address translation.  Predictions it makes, for the next
+probes to falsify: (a) a read-only driver copy bypasses it (different call path,
+own MDL); (b) a thread-context hijack is NOT covered, because
+SuspendThread/Get/SetThreadContext are process-manager ops and the process handle
+already grants SUSPEND_RESUME; (c) anything routed through the loader inside the
+game still resolves through an unreadable PEB.
+
+11.6 What this does to the strategy (the actual decision).
+The old ordering put the kernel rung last as a fallback.  The measurements
+invert it:
+  - user mode: every mutating call is refused, but the game never dies.
+  - kernel:   the calls land, but the target dies (h316: Javelin exit
+              0x322327458D1ED790 ~2 s after the driver was armed; h318/h319: the
+              real payload dies at step 7 with 0xC0000006, and allocation works
+              only in the first 1-2 s of the process, 0xC000000D after).
+  So "kernel injection" is no longer the safe fallback; it is the most dangerous
+  rung in the tree, and h279 shows why it is not finished either: the stub DID
+  execute with the right argument (entered=0x4870, RCX == remoteBase) and the
+  loader call inside the game still failed - consistent with (c) above.
+Ranked by (measured survival) x (measured capability):
+  A. EXTERNAL, reads only.  Driver reads + h327's VAD-derived module bases + the
+     overlay in its own window (ov56 renders against live Apex).  Nothing is
+     written into the process, so nothing of ours can be the thing that kills it.
+     This is the architecture the product already declares, and the only line
+     with both a live-game PASS and a live-game read path.  Correction to the
+     first draft of this paragraph: that read path is NOT proven by the
+     h279/h318 out-block alone.  h323 (00:20:41, _ritual\h323_fire_ioctl.out)
+     is a dedicated kernel read of the live game's PEB - MmCopyVirtualMemory
+     status 0x0, copied=32, peb=0x2EC000, on pid 22756 - and the game was
+     ALIVE 60 s later.  So "the driver reads game-private memory" is measured,
+     once, on a live instance.  What is still unmeasured is duration, volume
+     and arming order: that read was ~1 s after launch, in a run where the
+     driver was armed BEFORE the game started (svc STATE 4 RUNNING at 00:18,
+     pid detected 00:20).  A multi-KB read per frame, minutes into a match,
+     with the driver armed first, is exactly what h329 measures.
+  B. PRE-LAUNCH plant, loader maps it.  Zero handle writes, zero kernel writes;
+     the loader does the mapping.  Untested, and Javelin watches file reads
+     (section 8.3) - so it must be an added search-path DLL, not a modified game
+     file.
+  C. KERNEL manual map (v13).  Blocked on localising the step-7 death: map with
+     no entry first, watch for minutes, then entry.  Do not arm it on the host
+     before that is measured in the VM (R1).  h323 already splits that death
+     one step further: a transient alloc+write+free into the live game (8 ms,
+     freed, nothing resident) returned every status 0x0 and the game was ALIVE
+     60 s.  So "kernel mutates the target" is NOT what kills it - what remains
+     is residency and/or the entry call, which is precisely the pair that
+     "map without entry" isolates.
+The sentence in HANDOFF "the injected line wins" survives only for line B, and
+only after it outlives a match.  A is what the numbers currently support.
+
+11.7 Evidence, all in the tree.
+  _ritual\h327_vadcensus.ps1 -> c:\h320x\h327.out (census + self-control)
+  _ritual\h323_fire_ioctl.out (the one live kernel read in 11.6-A: copied=32, ALIVE 60 s)
+  c:\h320x\h321.out h322.out h323.out h324.out h325.out h326.out
+  c:\h320x\_h32all.txt (the seven probes side by side, RESULT/VERDICT lines)
+  c:\h320x\_facts.ps1 (one-shot state feed: services, DSE, driver, game pid)
+Kernel side of 11.6: STATE.md entries h276-h285, h310, h316, h318/h319, h323.
+
+NEXT (user-mode, one variable each, all safe with R1/R4):
+  h328  VAD module-base resolver: image sections from the VAD, name matched via
+        MEMORY_SECTION_NAME, validated against ground truth in the probe's OWN
+        process (PEB readable there) before being pointed at the game.  Without
+        this, "B" has no fallback and "A" has no module base.
+  h329  DRIVER READ-ONLY probe into the live game: one 4 KB read at the exe base
+        and one at the PEB, then re-read at +60 s and +300 s with liveness
+        read-backs.  Single variable: read only - no alloc, no write, no thread.
+        This is the probe that validates line A.  VM bench first (R1).
+  h330  Thread hijack of a LIVE game thread (Suspend/GetContext/SetContext/
+        Resume), which splits "thread CREATION is blocked" (err 5, measured) from
+        "code EXECUTION is blocked" (unmeasured - needs THREAD_SET_CONTEXT on a
+        thread handle, which no probe has yet asked for).
+
 ================================================================================
 END OF MEASUREMENT RECORD
 ================================================================================

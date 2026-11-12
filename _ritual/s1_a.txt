@@ -1,0 +1,245 @@
+S1 WDK/ANCHOR RECON 2026-11-07 18:50:56
+=== WDK include versions ===
+10.0.19041.0
+10.0.26100.0
+wdf
+=== WDK km headers: EPROCESS/VAD surface ===
+--- ntifs.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 0 hit(s)
+PAT UniqueProcessId -> 0 hit(s)
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 0 hit(s)
+PAT MmCopyMemory -> 0 hit(s)
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 1 hit(s)
+L19445: SeLocateProcessImageName(
+--- ntddk.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 1 hit(s)
+L74: typedef struct _EPROCESS *PEPROCESS;
+PAT UniqueProcessId -> 2 hit(s)
+L5589: ULONG_PTR UniqueProcessId;
+L5590: ULONG_PTR InheritedFromUniqueProcessId;
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 0 hit(s)
+PAT MmCopyMemory -> 1 hit(s)
+L10799: MmCopyMemory (
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 0 hit(s)
+--- wdm.h ---
+PAT VadRoot -> 0 hit(s)
+PAT typedef struct _EPROCESS -> 1 hit(s)
+L84: typedef struct _EPROCESS *PEPROCESS;
+PAT UniqueProcessId -> 0 hit(s)
+PAT _MMVAD -> 0 hit(s)
+PAT PsGetProcessSectionBaseAddress -> 0 hit(s)
+PAT MmGetNextVadNode -> 0 hit(s)
+PAT SUBSECTION -> 2 hit(s)
+L39509: CommonBufferConfigTypeSubSection,
+L39534: } SubSection;
+PAT MmCopyMemory -> 0 hit(s)
+PAT RTL_AVL_TREE -> 0 hit(s)
+PAT VadList -> 0 hit(s)
+PAT SeLocateProcessImageName -> 0 hit(s)
+=== apexdrv.c copies ===
+C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c
+PICK C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\driver\apexdrv.c (1828 lines)
+--- APEXDRV_VERSION ---
+L1928: case IOCTL_APEXDRV_VERSION:
+L1929: if (inputLength >= sizeof(APEXDRV_VERSION_INFO) &&
+L1931: PAPEXDRV_VERSION_INFO info =
+L1932: (PAPEXDRV_VERSION_INFO)irp->AssociatedIrp.SystemBuffer;
+L1933: info->Version  = APEXDRV_VERSION;
+L1935: information = sizeof(APEXDRV_VERSION_INFO);
+--- IOCTL_APEXDRV ---
+L6: // IOCTL_APEXDRV_INJECT(ProcessId, LoadLibraryAddress, DllPath):
+L14: // IOCTL_APEXDRV_PROBE(ProcessId) — kernel-context reachability probe (Q10):
+L1383: // IOCTL_APEXDRV_INJECT
+L1760: // IOCTL_APEXDRV_PROBE — does the target accept work issued from KERNEL context?
+L1841: // IOCTL_APEXDRV_TARGETINFO (v4) — read-only loader facts about one target.
+L1928: case IOCTL_APEXDRV_VERSION:
+L1942: case IOCTL_APEXDRV_INJECT:
+L1958: case IOCTL_APEXDRV_PROBE:
+L1969: case IOCTL_APEXDRV_TARGETINFO:
+--- ApexdrvReadProcessMemory ---
+L90: static NTSTATUS ApexdrvReadProcessMemory(PEPROCESS process, PVOID baseAddress,
+L1526: request->StatusEchoRead = ApexdrvReadProcessMemory(process, remoteBuffer,
+L1641: request->StatusEchoAfter = ApexdrvReadProcessMemory(
+L1690: request->StatusEchoAfter = ApexdrvReadProcessMemory(
+L1714: if (NT_SUCCESS(ApexdrvReadProcessMemory(
+L1729: if (NT_SUCCESS(ApexdrvReadProcessMemory(process,
+--- ApexdrvWriteProcessMemory ---
+L71: static NTSTATUS ApexdrvWriteProcessMemory(PEPROCESS process, PVOID baseAddress,
+L1366: status = ApexdrvWriteProcessMemory(process, (PVOID)(ULONG_PTR)actualBase, image, imageSize);
+L1515: status = ApexdrvWriteProcessMemory(process, remoteBuffer,
+L1580: status = ApexdrvWriteProcessMemory(process, stubBuffer, stubImage, stubSize);
+L1814: ApexdrvWriteProcessMemory(process, remoteBuffer, &pattern,
+--- ApexdrvProbeProcess ---
+L1773: static NTSTATUS ApexdrvProbeProcess(PAPEXDRV_PROBE_REQUEST request) {
+L1961: status = ApexdrvProbeProcess(
+--- ApexdrvWalkModules ---
+L417: static NTSTATUS ApexdrvWalkModules(PEPROCESS process, PAPEXDRV_LDR_INFO info) {
+L1458: status = ApexdrvWalkModules(process, &targetInfo);
+L1467: status = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+L1650: if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+L1670: status = ApexdrvWalkModules(process, &targetInfo);
+L1742: if (NT_SUCCESS(ApexdrvWalkModules(process, &targetInfo))) {
+L1871: request->StatusWalk     = ApexdrvWalkModules(process, &targetInfo);
+L1872: request->StatusSelfWalk = ApexdrvWalkModules(PsGetCurrentProcess(), &selfInfo);
+--- MmGetSystemRoutineAddress ---
+L35: // So it is resolved once at first use through MmGetSystemRoutineAddress, which
+L262: // The obvious route - ZwCreateThreadEx resolved with MmGetSystemRoutineAddress -
+L265: // MmGetSystemRoutineAddress returns NULL and the ioctl used to fail with
+L575: cached = (APEXDRV_PFN_GET_THREAD_TEB)MmGetSystemRoutineAddress(&routineName);
+--- PsGetProcessPeb ---
+L56: NTKERNELAPI PPEB NTAPI PsGetProcessPeb(PEPROCESS Process);
+L427: peb = PsGetProcessPeb(process);
+L815: peb = PsGetProcessPeb(process);
+L1799: request->PebAddress = (ULONG64)(ULONG_PTR)PsGetProcessPeb(process);
+--- KeStackAttachProcess ---
+L68: // ZwWriteVirtualMemory nor NtWriteVirtualMemory, and KeStackAttachProcess is
+L76: KeStackAttachProcess(process, &apcState);
+L95: KeStackAttachProcess(process, &apcState);
+L359: // KeStackAttachProcess inside __try/__except, so a target that unloads a module
+L430: KeStackAttachProcess(process, &apcState);
+L492: KeStackAttachProcess(process, &apcState);
+L612: KeStackAttachProcess(process, &apcState);
+L818: KeStackAttachProcess(process, &apcState);
+L861: KeStackAttachProcess(process, &apcState);
+L1844: // KeStackAttachProcess in the requesting thread's context (PASSIVE_LEVEL), and
+--- ApexdrvOpenProcess ---
+L659: static NTSTATUS ApexdrvOpenProcess(ULONG processId, HANDLE* processHandle,
+L1448: status = ApexdrvOpenProcess(request->ProcessId, &processHandle, &process);
+=== apex_driver_ioctl.h ===
+HDR C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\include\apex_driver_ioctl.h
+L17: #define APEXDRV_SERVICE_NAME    L"apexdrv"
+L18: #define APEXDRV_DEVICE_NAME     L"\\Device\\ApexDrv"
+L19: #define APEXDRV_SYMLINK_NAME    L"\\DosDevices\\ApexDrv"
+L20: #define APEXDRV_WIN32_NAME      L"\\\\.\\ApexDrv"
+L23: #define APEXDRV_DEVICE_TYPE    0x8A70
+L30: #define IOCTL_APEXDRV_INJECT \
+L33: #define IOCTL_APEXDRV_VERSION \
+L44: #define IOCTL_APEXDRV_PROBE \
+L52: #define IOCTL_APEXDRV_TARGETINFO \
+L56: #define APEXDRV_FLAG_NONE       0x00000000
+L57: #define APEXDRV_FLAG_APC_ONLY   0x00000001  // queue an APC instead of creating a thread
+L65: #define APEXDRV_FLAG_RESOLVE_IN_TARGET  0x00000002
+L67: #define APEXDRV_MAX_PATH_CHARS  260
+L70: #define APEXDRV_MAX_MODULE_NAME_CHARS 64
+L71: // 2 = added IOCTL_APEXDRV_PROBE (Q10).  A driver older than the launcher simply
+L78: // 4 = added IOCTL_APEXDRV_TARGETINFO plus the inject result fields (module count
+L119: //     status.  IOCTL_APEXDRV_INJECT now completes as STATUS_SUCCESS and carries the real NTSTATUS
+L134: #define APEXDRV_VERSION         13
+L137: #define APEXDRV_FLAG_STUB_ROUTINE  0x00000004
+L140: #define APEXDRV_FLAG_EX_LOADER     0x00000008
+L143: #define APEXDRV_FLAG_MANUAL_MAP    0x00000010
+L148: #define APEXDRV_PROBE_BYTES     32
+L160: typedef struct _APEXDRV_INJECT_REQUEST {
+L224: typedef struct _APEXDRV_VERSION_INFO {
+L227: } APEXDRV_VERSION_INFO, *PAPEXDRV_VERSION_INFO;
+L229: // One request/response for IOCTL_APEXDRV_TARGETINFO (v4).  Read-only: nothing in
+L241: typedef struct _APEXDRV_TARGETINFO_REQUEST {
+L264: // One request/response for IOCTL_APEXDRV_PROBE.  Every Status* field carries an
+L268: typedef struct _APEXDRV_PROBE_REQUEST {
+=== BuildDriver.ps1 (head 140) ===
+BUILD C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\tools\BuildDriver.ps1
+# ============================================================================
+# tools\BuildDriver.ps1 â€” build apexdrv.sys with the INSTALLED WDK.
+#
+# Why not msbuild driver\apexdrv.vcxproj:
+#   The WDK kit is installed (Windows Kits\10\Include\10.0.26100.0\km,
+#   Lib\...\km\x64, build\10.0.26100.0) but the Visual Studio *toolset*
+#   registration ("WindowsKernelModeDriver10.0") is not, so MSBuild stops with
+#   error MSB8020 before compiling anything.  Adding the VS component
+#   "Windows Driver Kit" fixes that; until then this script compiles with the
+#   same cl.exe/link.exe the toolset would use, with the same include/lib layout
+#   (km + km\crt + shared + um, exactly like WindowsDriver.KernelMode.props).
+#
+# Usage:  powershell -ExecutionPolicy Bypass -File tools\BuildDriver.ps1
+# Output: build\apexdrv.sys (x64, NATIVE subsystem, ntoskrnl.exe import)
+# ============================================================================
+[CmdletBinding()]
+param(
+    [ValidateSet('Debug', 'Release')] [string] $Configuration = 'Release'
+)
+
+$ErrorActionPreference = 'Stop'
+
+$RepoRoot  = Split-Path -Parent $PSScriptRoot
+$BuildDir  = Join-Path $RepoRoot 'build'
+$ObjDir    = Join-Path $BuildDir "obj\apexdrv\$Configuration"
+$Log       = Join-Path $BuildDir 'driver_build.log'
+$Source    = Join-Path $RepoRoot 'driver\apexdrv.c'
+$Output    = Join-Path $BuildDir 'apexdrv.sys'
+$Object    = Join-Path $ObjDir 'apexdrv.obj'
+
+New-Item -ItemType Directory -Force -Path $ObjDir | Out-Null
+
+function Find-MsvcTool([string] $name) {
+    $root = 'C:\BuildTools\VC\Tools\MSVC'
+    if (-not (Test-Path $root)) { $root = Join-Path $env:ProgramFiles 'Microsoft Visual Studio' }
+    $hits = @(Get-ChildItem $root -Recurse -Filter $name -ErrorAction SilentlyContinue |
+              Where-Object { $_.FullName -match 'Hostx64\\x64' } |
+              Sort-Object FullName)
+    if ($hits.Count -eq 0) { return $null }
+    return $hits[-1].FullName
+}
+
+function Find-KitVersion {
+    $root = 'C:\Program Files (x86)\Windows Kits\10\Include'
+    if (-not (Test-Path $root)) { return $null }
+    $versions = @(Get-ChildItem $root -Directory |
+                  Where-Object { Test-Path (Join-Path $_.FullName 'km') } |
+                  Sort-Object Name)
+    if ($versions.Count -eq 0) { return $null }
+    return $versions[-1].Name
+}
+
+$cl     = Find-MsvcTool 'cl.exe'
+$link   = Find-MsvcTool 'link.exe'
+$kit    = Find-KitVersion
+if (-not $cl -or -not $link) { throw 'MSVC cl.exe/link.exe not found (BuildTools VC tools missing)' }
+if (-not $kit)               { throw 'WDK km headers not found (install Microsoft.WindowsWDK.*)' }
+
+$IncRoot = 'C:\Program Files (x86)\Windows Kits\10\Include'
+$LibRoot = 'C:\Program Files (x86)\Windows Kits\10\Lib'
+$kmInc   = Join-Path $IncRoot "$kit\km"
+$kmLib   = Join-Path $LibRoot "$kit\km\x64"
+
+"=== DRIVER BUILD - $Configuration|x64 - $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ===" |
+    Set-Content -Encoding utf8 $Log
+"cl      : $cl"   | Add-Content -Encoding utf8 $Log
+"link    : $link" | Add-Content -Encoding utf8 $Log
+"kit     : $kit"  | Add-Content -Encoding utf8 $Log
+
+# /kernel        : kernel codegen (implies /GS- etc.)
+# /Zl            : do not embed a default CRT library name (we link kernel libs)
+# /external:*    : keep WDK header noise out of OUR warning budget
+$compileArgs = @(
+    '/nologo', '/c', "/Fo$Object",
+    '/W4', '/GS-', '/kernel', '/Zl', '/O2', '/DNDEBUG',
+    '/D_AMD64_', '/DAMD64', '/D_WIN64', '/DPOOL_NX_OPTIN=1', '/D_WIN32_WINNT=0x0A00',
+    "/I$kmInc", "/I$(Join-Path $IncRoot "$kit\km\crt")",
+    "/I$(Join-Path $IncRoot "$kit\shared")", "/I$(Join-Path $IncRoot "$kit\um")",
+    "/external:I$kmInc", "/external:I$(Join-Path $IncRoot "$kit\shared")",
+    "/external:W0",
+    "/I$(Join-Path $RepoRoot 'include')",
+    $Source
+)
+
+& $cl @compileArgs *>> $Log
+$compileExit = $LASTEXITCODE
+"CL_EXIT=$compileExit" | Add-Content -Encoding utf8 $Log
+if ($compileExit -ne 0) {
+    Get-Content $Log -Tail 40 | Write-Host
+    throw "driver compile failed (CL_EXIT=$compileExit); see $Log"
+}
+
+# Kernel libs only: ntoskrnl + hal + wdm (I/O manager support) + the two

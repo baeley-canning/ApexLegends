@@ -1,0 +1,707 @@
+16:32:42.984 === h307 elev: Start-search console + RunAs -> module owning 0xfffff80219033bc9 ===
+16:32:43.304   session | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+16:32:43.307   session | services                                            0  Disc
+16:32:43.307   session | >console                   vboxuser                  1  Active
+16:32:43.492   hku | HKEY_USERS\.DEFAULT
+16:32:43.493   hku | HKEY_USERS\S-1-5-19
+16:32:43.494   hku | HKEY_USERS\S-1-5-20
+16:32:43.494   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000
+16:32:43.494   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000_Classes
+16:32:43.496   hku | HKEY_USERS\S-1-5-18
+16:32:43.499 pre-state: session1-loggedon=True hive=True
+16:32:43.707   stale | Could Not Find C:\Users\Public\h307_MEMORY.DMP
+16:32:44.071   payload | @echo off
+16:32:44.072   payload | echo START %DATE% %TIME% > "C:\Users\Public\h307_elevated.txt"
+16:32:44.072   payload | whoami >> "C:\Users\Public\h307_elevated.txt"
+16:32:44.073   payload | whoami /groups | findstr /i "Mandatory" >> "C:\Users\Public\h307_elevated.txt"
+16:32:44.073   payload | copy /y C:\Windows\MEMORY.DMP C:\Users\Public\h307_MEMORY.DMP >> "C:\Users\Public\h307_elevated.txt" 2>&1
+16:32:44.074   payload | echo COPY-RC=%ERRORLEVEL% >> "C:\Users\Public\h307_elevated.txt"
+16:32:44.120   key 01 81 ok
+16:32:47.003   consoles | "System Idle Process","0","Services","0","8 K","Unknown","NT AUTHORITY\SYSTEM","3:38:26","N/A"
+16:32:47.004   consoles | "System","4","Services","0","172 K","Unknown","N/A","0:00:58","N/A"
+16:32:47.004   consoles | "Registry","124","Services","0","10,876 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.005   consoles | "smss.exe","496","Services","0","1,256 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.006   consoles | "csrss.exe","708","Services","0","7,104 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.006   consoles | "wininit.exe","784","Services","0","9,972 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.006   consoles | "csrss.exe","792","Console","1","7,016 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.007   consoles | "winlogon.exe","856","Console","1","16,572 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.007   consoles | "services.exe","928","Services","0","10,868 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.008   consoles | "lsass.exe","948","Services","0","26,392 K","Unknown","N/A","0:00:12","N/A"
+16:32:47.009   consoles | "svchost.exe","612","Services","0","36,672 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.010   consoles | "fontdrvhost.exe","776","Console","1","4,776 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.010   consoles | "fontdrvhost.exe","456","Services","0","4,600 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.011   consoles | "svchost.exe","1068","Services","0","16,400 K","Unknown","N/A","0:00:03","N/A"
+16:32:47.012   consoles | "svchost.exe","1128","Services","0","11,644 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.012   consoles | "dwm.exe","1212","Console","1","76,412 K","Running","N/A","0:00:05","DWM Notification Window"
+16:32:47.013   consoles | "svchost.exe","1296","Services","0","21,492 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.013   consoles | "svchost.exe","1304","Services","0","10,492 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.014   consoles | "svchost.exe","1440","Services","0","13,476 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.015   consoles | "svchost.exe","1500","Services","0","16,484 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.015   consoles | "svchost.exe","1540","Services","0","15,244 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.016   consoles | "svchost.exe","1548","Services","0","9,684 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.016   consoles | "svchost.exe","1560","Services","0","14,252 K","Unknown","N/A","0:00:02","N/A"
+16:32:47.017   consoles | "svchost.exe","1648","Services","0","8,224 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.018   consoles | "svchost.exe","1672","Services","0","7,884 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.029   consoles | "svchost.exe","1748","Services","0","19,244 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.030   consoles | "svchost.exe","1756","Services","0","6,928 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.030   consoles | "svchost.exe","1764","Services","0","13,008 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.031   consoles | "VBoxService.exe","1988","Services","0","9,776 K","Unknown","N/A","0:00:03","N/A"
+16:32:47.031   consoles | "svchost.exe","988","Services","0","20,248 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.032   consoles | "svchost.exe","1976","Services","0","76,548 K","Unknown","N/A","0:00:26","N/A"
+16:32:47.032   consoles | "svchost.exe","1780","Services","0","7,652 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.033   consoles | "svchost.exe","2056","Services","0","10,420 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.033   consoles | "svchost.exe","2180","Services","0","8,940 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.034   consoles | "Memory Compression","2204","Services","0","88,628 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.034   consoles | "svchost.exe","2208","Services","0","11,184 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.035   consoles | "svchost.exe","2260","Services","0","11,380 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.035   consoles | "svchost.exe","2336","Services","0","11,328 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.036   consoles | "svchost.exe","2344","Services","0","9,648 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.036   consoles | "svchost.exe","2528","Services","0","10,108 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.036   consoles | "svchost.exe","2584","Services","0","18,480 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.036   consoles | "svchost.exe","2640","Services","0","11,272 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.037   consoles | "svchost.exe","2672","Services","0","9,920 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.037   consoles | "svchost.exe","2824","Services","0","8,156 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.038   consoles | "svchost.exe","2940","Services","0","12,880 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.038   consoles | "svchost.exe","2952","Services","0","19,348 K","Unknown","N/A","0:00:02","N/A"
+16:32:47.039   consoles | "svchost.exe","2980","Services","0","18,748 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.039   consoles | "spoolsv.exe","2328","Services","0","10,164 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.040   consoles | "svchost.exe","3076","Services","0","20,504 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.040   consoles | "svchost.exe","3132","Services","0","10,052 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.041   consoles | "svchost.exe","3236","Services","0","34,312 K","Unknown","N/A","0:00:02","N/A"
+16:32:47.041   consoles | "svchost.exe","3244","Services","0","26,020 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.042   consoles | "svchost.exe","3252","Services","0","15,072 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.043   consoles | "MpDefenderCoreService.exe","3344","Services","0","24,440 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.043   consoles | "svchost.exe","3368","Services","0","20,876 K","Unknown","N/A","0:00:03","N/A"
+16:32:47.044   consoles | "svchost.exe","3376","Services","0","7,264 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.044   consoles | "MsMpEng.exe","3392","Services","0","185,884 K","Unknown","N/A","0:01:13","N/A"
+16:32:47.045   consoles | "svchost.exe","3400","Services","0","12,040 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.046   consoles | "svchost.exe","3408","Services","0","26,712 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.046   consoles | "wlms.exe","3428","Services","0","4,744 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.047   consoles | "svchost.exe","4052","Services","0","10,496 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.047   consoles | "svchost.exe","4060","Services","0","16,516 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.048   consoles | "svchost.exe","4336","Services","0","10,260 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.049   consoles | "AggregatorHost.exe","4600","Services","0","10,556 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.049   consoles | "DefenderAiPlatformHost.exe","5020","Services","0","5,824 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.051   consoles | "svchost.exe","4156","Services","0","14,000 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.051   consoles | "NisSrv.exe","4832","Services","0","13,936 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.051   consoles | "svchost.exe","812","Services","0","23,228 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.052   consoles | "svchost.exe","1324","Services","0","29,572 K","Unknown","N/A","0:00:05","N/A"
+16:32:47.052   consoles | "svchost.exe","3088","Services","0","10,428 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.053   consoles | "svchost.exe","4816","Services","0","13,264 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.054   consoles | "svchost.exe","4660","Services","0","13,424 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.054   consoles | "svchost.exe","4700","Services","0","16,188 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.055   consoles | "svchost.exe","1180","Services","0","21,332 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.055   consoles | "svchost.exe","4628","Services","0","13,064 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.056   consoles | "SearchIndexer.exe","3152","Services","0","24,720 K","Unknown","N/A","0:00:03","N/A"
+16:32:47.057   consoles | "SearchProtocolHost.exe","1160","Services","0","14,348 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.057   consoles | "SearchFilterHost.exe","3592","Services","0","11,340 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.058   consoles | "SearchFilterHost.exe","3028","Services","0","9,944 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.059   consoles | "svchost.exe","4108","Services","0","8,164 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.059   consoles | "svchost.exe","4944","Services","0","16,196 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.060   consoles | "svchost.exe","4904","Services","0","13,792 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.060   consoles | "WmiPrvSE.exe","3676","Services","0","18,288 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.061   consoles | "DefenderSessionHelper.exe","2652","Console","1","5,832 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.062   consoles | "sihost.exe","2616","Console","1","49,856 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:32:47.062   consoles | "svchost.exe","3508","Console","1","22,568 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.063   consoles | "svchost.exe","3540","Console","1","10,940 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.063   consoles | "svchost.exe","872","Console","1","40,632 K","Running","WIN11-TEST2\vboxuser","0:00:00","Windows Push Notifications Platform"
+16:32:47.064   consoles | "svchost.exe","2460","Services","0","26,896 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.065   consoles | "taskhostw.exe","5116","Console","1","17,960 K","Running","WIN11-TEST2\vboxuser","0:00:00","Task Host Window"
+16:32:47.065   consoles | "svchost.exe","3880","Services","0","16,072 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.066   consoles | "ShellHost.exe","3660","Console","1","33,144 K","Running","WIN11-TEST2\vboxuser","0:00:00","Quick Settings"
+16:32:47.066   consoles | "explorer.exe","1584","Console","1","171,240 K","Running","WIN11-TEST2\vboxuser","0:00:04","N/A"
+16:32:47.067   consoles | "CrossDeviceResume.exe","3196","Console","1","48,668 K","Running","WIN11-TEST2\vboxuser","0:00:00","CrossDeviceResumeWindow"
+16:32:47.067   consoles | "svchost.exe","5236","Console","1","20,104 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.068   consoles | "SearchHost.exe","5604","Console","1","93,764 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:32:47.068   consoles | "StartMenuExperienceHost.exe","5616","Console","1","140,504 K","Running","WIN11-TEST2\vboxuser","0:00:01","Start"
+16:32:47.069   consoles | "Widgets.exe","5856","Console","1","69,264 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.069   consoles | "RuntimeBroker.exe","5872","Console","1","43,064 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.070   consoles | "svchost.exe","5896","Console","1","28,984 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.070   consoles | "msedgewebview2.exe","6564","Console","1","91,420 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:32:47.071   consoles | "msedgewebview2.exe","6768","Console","1","13,000 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.071   consoles | "audiodg.exe","6952","Services","0","16,144 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.072   consoles | "WidgetService.exe","6980","Console","1","32,348 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.073   consoles | "msedgewebview2.exe","7152","Console","1","39,156 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.073   consoles | "msedgewebview2.exe","7160","Console","1","40,704 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:47.074   consoles | "msedgewebview2.exe","6612","Console","1","20,144 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.074   consoles | "msedgewebview2.exe","7196","Console","1","96,596 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.075   consoles | "ctfmon.exe","4524","Console","1","28,916 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.075   consoles | "smartscreen.exe","7748","Console","1","13,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.076   consoles | "SecurityHealthSystray.exe","8064","Console","1","13,448 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.076   consoles | "SecurityHealthService.exe","8028","Services","0","26,608 K","Unknown","N/A","0:00:01","N/A"
+16:32:47.076   consoles | "VBoxTray.exe","5500","Console","1","15,060 K","Running","WIN11-TEST2\vboxuser","0:00:00","VBoxSharedClipboardClass"
+16:32:47.077   consoles | "OneDrive.exe","8176","Console","1","89,072 K","Running","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:32:47.078   consoles | "MicrosoftEdgeUpdate.exe","5380","Services","0","4,512 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.078   consoles | "ShellExperienceHost.exe","5624","Console","1","62,612 K","Running","WIN11-TEST2\vboxuser","0:00:00","New notification"
+16:32:47.078   consoles | "RuntimeBroker.exe","3940","Console","1","26,652 K","Running","WIN11-TEST2\vboxuser","0:00:00","OLEChannelWnd"
+16:32:47.078   consoles | "svchost.exe","1660","Services","0","148,200 K","Unknown","N/A","0:03:16","N/A"
+16:32:47.079   consoles | "svchost.exe","2484","Services","0","12,452 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.079   consoles | "msedgewebview2.exe","7984","Console","1","109,728 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:32:47.080   consoles | "msedgewebview2.exe","7628","Console","1","13,536 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.080   consoles | "msedgewebview2.exe","3848","Console","1","42,324 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.081   consoles | "msedgewebview2.exe","1032","Console","1","44,300 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:47.081   consoles | "RuntimeBroker.exe","1836","Console","1","10,620 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.082   consoles | "msedgewebview2.exe","6908","Console","1","23,020 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.082   consoles | "msedgewebview2.exe","6904","Console","1","179,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:32:47.083   consoles | "dllhost.exe","5212","Console","1","15,996 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:47.083   consoles | "svchost.exe","1776","Services","0","9,820 K","Unknown","N/A","0:00:00","N/A"
+16:32:47.084   consoles | "VBoxService.exe","7588","Console","1","6,872 K","Running","WIN11-TEST2\vboxuser","0:00:00","C:\WINDOWS\System32\VBoxService.exe"
+16:32:47.084   consoles | "conhost.exe","6784","Console","1","11,632 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.085   consoles | "cmd.exe","5192","Console","1","7,376 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.085   consoles | "tasklist.exe","1624","Console","1","12,368 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:47.094 consoles before: 1
+16:32:47.184   putstring 3 chars ok
+16:32:47.734   key 1c 9c ok
+16:32:54.885   consoles | "System Idle Process","0","Services","0","8 K","Unknown","NT AUTHORITY\SYSTEM","3:38:51","N/A"
+16:32:54.886   consoles | "System","4","Services","0","172 K","Unknown","N/A","0:00:59","N/A"
+16:32:54.887   consoles | "Registry","124","Services","0","11,636 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.887   consoles | "smss.exe","496","Services","0","1,256 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.888   consoles | "csrss.exe","708","Services","0","7,120 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.888   consoles | "wininit.exe","784","Services","0","9,972 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.889   consoles | "csrss.exe","792","Console","1","7,020 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.890   consoles | "winlogon.exe","856","Console","1","16,572 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.890   consoles | "services.exe","928","Services","0","10,892 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.891   consoles | "lsass.exe","948","Services","0","26,408 K","Unknown","N/A","0:00:12","N/A"
+16:32:54.891   consoles | "svchost.exe","612","Services","0","36,844 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.892   consoles | "fontdrvhost.exe","776","Console","1","4,776 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.892   consoles | "fontdrvhost.exe","456","Services","0","4,600 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.893   consoles | "svchost.exe","1068","Services","0","16,520 K","Unknown","N/A","0:00:03","N/A"
+16:32:54.893   consoles | "svchost.exe","1128","Services","0","11,644 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.894   consoles | "dwm.exe","1212","Console","1","75,400 K","Running","N/A","0:00:05","DWM Notification Window"
+16:32:54.894   consoles | "svchost.exe","1296","Services","0","21,512 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.895   consoles | "svchost.exe","1304","Services","0","10,492 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.895   consoles | "svchost.exe","1440","Services","0","13,492 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.896   consoles | "svchost.exe","1500","Services","0","16,544 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.896   consoles | "svchost.exe","1540","Services","0","15,264 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.897   consoles | "svchost.exe","1548","Services","0","9,720 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.897   consoles | "svchost.exe","1560","Services","0","14,248 K","Unknown","N/A","0:00:02","N/A"
+16:32:54.898   consoles | "svchost.exe","1648","Services","0","8,340 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.898   consoles | "svchost.exe","1672","Services","0","7,884 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.899   consoles | "svchost.exe","1748","Services","0","19,244 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.900   consoles | "svchost.exe","1756","Services","0","6,928 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.900   consoles | "svchost.exe","1764","Services","0","13,124 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.901   consoles | "VBoxService.exe","1988","Services","0","9,772 K","Unknown","N/A","0:00:03","N/A"
+16:32:54.901   consoles | "svchost.exe","988","Services","0","20,256 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.902   consoles | "svchost.exe","1976","Services","0","76,668 K","Unknown","N/A","0:00:26","N/A"
+16:32:54.902   consoles | "svchost.exe","1780","Services","0","7,652 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.903   consoles | "svchost.exe","2056","Services","0","10,420 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.903   consoles | "svchost.exe","2180","Services","0","8,940 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.903   consoles | "Memory Compression","2204","Services","0","88,364 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.904   consoles | "svchost.exe","2208","Services","0","11,224 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.904   consoles | "svchost.exe","2260","Services","0","11,380 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.904   consoles | "svchost.exe","2336","Services","0","11,328 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.906   consoles | "svchost.exe","2344","Services","0","9,648 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.906   consoles | "svchost.exe","2528","Services","0","10,112 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.906   consoles | "svchost.exe","2584","Services","0","18,576 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.908   consoles | "svchost.exe","2640","Services","0","11,272 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.908   consoles | "svchost.exe","2672","Services","0","9,968 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.909   consoles | "svchost.exe","2824","Services","0","8,156 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.909   consoles | "svchost.exe","2940","Services","0","12,972 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.910   consoles | "svchost.exe","2952","Services","0","19,312 K","Unknown","N/A","0:00:02","N/A"
+16:32:54.910   consoles | "svchost.exe","2980","Services","0","18,748 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.911   consoles | "spoolsv.exe","2328","Services","0","10,164 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.911   consoles | "svchost.exe","3076","Services","0","20,564 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.911   consoles | "svchost.exe","3132","Services","0","10,052 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.912   consoles | "svchost.exe","3236","Services","0","34,320 K","Unknown","N/A","0:00:02","N/A"
+16:32:54.912   consoles | "svchost.exe","3244","Services","0","26,020 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.913   consoles | "svchost.exe","3252","Services","0","15,072 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.913   consoles | "MpDefenderCoreService.exe","3344","Services","0","24,440 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.914   consoles | "svchost.exe","3368","Services","0","20,748 K","Unknown","N/A","0:00:03","N/A"
+16:32:54.914   consoles | "svchost.exe","3376","Services","0","7,264 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.915   consoles | "MsMpEng.exe","3392","Services","0","198,048 K","Unknown","N/A","0:01:13","N/A"
+16:32:54.915   consoles | "svchost.exe","3400","Services","0","12,040 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.916   consoles | "svchost.exe","3408","Services","0","26,712 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.916   consoles | "wlms.exe","3428","Services","0","4,744 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.917   consoles | "svchost.exe","4052","Services","0","10,496 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.917   consoles | "svchost.exe","4060","Services","0","16,516 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.918   consoles | "svchost.exe","4336","Services","0","10,260 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.919   consoles | "AggregatorHost.exe","4600","Services","0","10,624 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.919   consoles | "DefenderAiPlatformHost.exe","5020","Services","0","5,824 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.920   consoles | "svchost.exe","4156","Services","0","13,988 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.920   consoles | "NisSrv.exe","4832","Services","0","13,936 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.921   consoles | "svchost.exe","812","Services","0","23,228 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.921   consoles | "svchost.exe","1324","Services","0","29,564 K","Unknown","N/A","0:00:05","N/A"
+16:32:54.922   consoles | "svchost.exe","3088","Services","0","10,428 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.922   consoles | "svchost.exe","4816","Services","0","13,264 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.923   consoles | "svchost.exe","4660","Services","0","13,424 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.923   consoles | "svchost.exe","4700","Services","0","16,188 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.924   consoles | "svchost.exe","1180","Services","0","21,280 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.924   consoles | "svchost.exe","4628","Services","0","13,064 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.925   consoles | "SearchIndexer.exe","3152","Services","0","24,724 K","Unknown","N/A","0:00:03","N/A"
+16:32:54.925   consoles | "SearchProtocolHost.exe","1160","Services","0","14,352 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.926   consoles | "SearchFilterHost.exe","3592","Services","0","11,340 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.926   consoles | "SearchFilterHost.exe","3028","Services","0","9,944 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.927   consoles | "svchost.exe","4108","Services","0","8,164 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.927   consoles | "svchost.exe","4944","Services","0","16,216 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.928   consoles | "svchost.exe","4904","Services","0","13,792 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.928   consoles | "WmiPrvSE.exe","3676","Services","0","18,780 K","Unknown","N/A","0:00:02","N/A"
+16:32:54.929   consoles | "DefenderSessionHelper.exe","2652","Console","1","5,832 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.929   consoles | "sihost.exe","2616","Console","1","49,932 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:32:54.930   consoles | "svchost.exe","3508","Console","1","22,568 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.931   consoles | "svchost.exe","3540","Console","1","10,940 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.931   consoles | "svchost.exe","872","Console","1","40,632 K","Running","WIN11-TEST2\vboxuser","0:00:00","Windows Push Notifications Platform"
+16:32:54.932   consoles | "svchost.exe","2460","Services","0","27,072 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.932   consoles | "taskhostw.exe","5116","Console","1","20,100 K","Running","WIN11-TEST2\vboxuser","0:00:00","Task Host Window"
+16:32:54.933   consoles | "svchost.exe","3880","Services","0","16,312 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.933   consoles | "ShellHost.exe","3660","Console","1","33,144 K","Running","WIN11-TEST2\vboxuser","0:00:00","Quick Settings"
+16:32:54.934   consoles | "explorer.exe","1584","Console","1","171,272 K","Running","WIN11-TEST2\vboxuser","0:00:04","N/A"
+16:32:54.934   consoles | "CrossDeviceResume.exe","3196","Console","1","48,668 K","Running","WIN11-TEST2\vboxuser","0:00:00","CrossDeviceResumeWindow"
+16:32:54.935   consoles | "svchost.exe","5236","Console","1","20,104 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.935   consoles | "SearchHost.exe","5604","Console","1","93,764 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:32:54.936   consoles | "StartMenuExperienceHost.exe","5616","Console","1","140,504 K","Running","WIN11-TEST2\vboxuser","0:00:01","Start"
+16:32:54.937   consoles | "Widgets.exe","5856","Console","1","69,264 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.937   consoles | "RuntimeBroker.exe","5872","Console","1","43,084 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.938   consoles | "svchost.exe","5896","Console","1","28,984 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.938   consoles | "msedgewebview2.exe","6564","Console","1","91,420 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:32:54.939   consoles | "msedgewebview2.exe","6768","Console","1","13,000 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.939   consoles | "audiodg.exe","6952","Services","0","16,244 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.939   consoles | "WidgetService.exe","6980","Console","1","32,348 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.940   consoles | "msedgewebview2.exe","7152","Console","1","39,156 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.940   consoles | "msedgewebview2.exe","7160","Console","1","40,704 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:54.941   consoles | "msedgewebview2.exe","6612","Console","1","20,144 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.942   consoles | "msedgewebview2.exe","7196","Console","1","96,596 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.942   consoles | "ctfmon.exe","4524","Console","1","28,916 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.942   consoles | "smartscreen.exe","7748","Console","1","13,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.942   consoles | "SecurityHealthSystray.exe","8064","Console","1","13,448 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.944   consoles | "SecurityHealthService.exe","8028","Services","0","26,604 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.944   consoles | "VBoxTray.exe","5500","Console","1","15,036 K","Running","WIN11-TEST2\vboxuser","0:00:00","VBoxSharedClipboardClass"
+16:32:54.945   consoles | "OneDrive.exe","8176","Console","1","89,072 K","Running","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:32:54.945   consoles | "MicrosoftEdgeUpdate.exe","5380","Services","0","4,512 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.946   consoles | "ShellExperienceHost.exe","5624","Console","1","62,612 K","Running","WIN11-TEST2\vboxuser","0:00:00","New notification"
+16:32:54.947   consoles | "RuntimeBroker.exe","3940","Console","1","26,652 K","Running","WIN11-TEST2\vboxuser","0:00:00","OLEChannelWnd"
+16:32:54.947   consoles | "svchost.exe","1660","Services","0","148,204 K","Unknown","N/A","0:03:16","N/A"
+16:32:54.948   consoles | "svchost.exe","2484","Services","0","12,452 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.948   consoles | "msedgewebview2.exe","7984","Console","1","109,740 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:32:54.948   consoles | "msedgewebview2.exe","7628","Console","1","13,548 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.948   consoles | "msedgewebview2.exe","3848","Console","1","42,336 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.949   consoles | "msedgewebview2.exe","1032","Console","1","44,316 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:54.949   consoles | "RuntimeBroker.exe","1836","Console","1","10,620 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.950   consoles | "msedgewebview2.exe","6908","Console","1","23,020 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.950   consoles | "msedgewebview2.exe","6904","Console","1","179,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:32:54.951   consoles | "dllhost.exe","5212","Console","1","15,996 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:32:54.951   consoles | "svchost.exe","1776","Services","0","9,820 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.952   consoles | "taskhostw.exe","2456","Services","0","41,060 K","Unknown","N/A","0:00:01","N/A"
+16:32:54.953   consoles | "RuntimeBroker.exe","1464","Console","1","10,488 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.953   consoles | "sppsvc.exe","4532","Services","0","16,004 K","Unknown","N/A","0:00:00","N/A"
+16:32:54.954   consoles | "VBoxService.exe","7380","Console","1","6,872 K","Running","WIN11-TEST2\vboxuser","0:00:00","C:\WINDOWS\System32\VBoxService.exe"
+16:32:54.955   consoles | "conhost.exe","6656","Console","1","11,612 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.955   consoles | "cmd.exe","1256","Console","1","7,384 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.956   consoles | "tasklist.exe","2596","Console","1","12,360 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:32:54.958 consoles after search step: 1
+16:32:54.960 no new console - retrying the search step once
+16:32:55.002   key 01 81 ok
+16:32:55.760   key e0 5b ok
+16:32:56.201   key 39 b9 ok
+16:32:56.887   putstring 3 chars ok
+16:32:57.330   key 1c 9c ok
+16:33:04.672   consoles | "System Idle Process","0","Services","0","8 K","Unknown","NT AUTHORITY\SYSTEM","3:39:19","N/A"
+16:33:04.672   consoles | "System","4","Services","0","172 K","Unknown","N/A","0:00:59","N/A"
+16:33:04.674   consoles | "Registry","124","Services","0","13,596 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.674   consoles | "smss.exe","496","Services","0","1,256 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.674   consoles | "csrss.exe","708","Services","0","7,116 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.675   consoles | "wininit.exe","784","Services","0","9,972 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.676   consoles | "csrss.exe","792","Console","1","7,036 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.676   consoles | "winlogon.exe","856","Console","1","16,616 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.677   consoles | "services.exe","928","Services","0","10,976 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.677   consoles | "lsass.exe","948","Services","0","26,312 K","Unknown","N/A","0:00:12","N/A"
+16:33:04.678   consoles | "svchost.exe","612","Services","0","36,920 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.679   consoles | "fontdrvhost.exe","776","Console","1","4,776 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.679   consoles | "fontdrvhost.exe","456","Services","0","4,600 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.680   consoles | "svchost.exe","1068","Services","0","16,732 K","Unknown","N/A","0:00:03","N/A"
+16:33:04.680   consoles | "svchost.exe","1128","Services","0","11,664 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.681   consoles | "dwm.exe","1212","Console","1","83,416 K","Running","N/A","0:00:06","DWM Notification Window"
+16:33:04.682   consoles | "svchost.exe","1296","Services","0","21,520 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.682   consoles | "svchost.exe","1304","Services","0","10,492 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.683   consoles | "svchost.exe","1440","Services","0","13,492 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.683   consoles | "svchost.exe","1500","Services","0","16,588 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.684   consoles | "svchost.exe","1540","Services","0","15,284 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.685   consoles | "svchost.exe","1548","Services","0","9,720 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.685   consoles | "svchost.exe","1560","Services","0","14,256 K","Unknown","N/A","0:00:02","N/A"
+16:33:04.686   consoles | "svchost.exe","1648","Services","0","8,340 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.686   consoles | "svchost.exe","1672","Services","0","7,900 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.687   consoles | "svchost.exe","1748","Services","0","19,328 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.687   consoles | "svchost.exe","1756","Services","0","6,928 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.688   consoles | "svchost.exe","1764","Services","0","21,236 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.689   consoles | "VBoxService.exe","1988","Services","0","9,744 K","Unknown","N/A","0:00:03","N/A"
+16:33:04.689   consoles | "svchost.exe","988","Services","0","20,800 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.690   consoles | "svchost.exe","1976","Services","0","78,764 K","Unknown","N/A","0:00:26","N/A"
+16:33:04.690   consoles | "svchost.exe","1780","Services","0","7,660 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.691   consoles | "svchost.exe","2056","Services","0","10,420 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.691   consoles | "svchost.exe","2180","Services","0","8,940 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.692   consoles | "Memory Compression","2204","Services","0","89,236 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.693   consoles | "svchost.exe","2208","Services","0","11,284 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.693   consoles | "svchost.exe","2260","Services","0","11,380 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.693   consoles | "svchost.exe","2336","Services","0","11,328 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.694   consoles | "svchost.exe","2344","Services","0","10,064 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.705   consoles | "svchost.exe","2528","Services","0","10,156 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.705   consoles | "svchost.exe","2584","Services","0","18,576 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.706   consoles | "svchost.exe","2640","Services","0","11,272 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.706   consoles | "svchost.exe","2672","Services","0","10,000 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.707   consoles | "svchost.exe","2824","Services","0","8,156 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.707   consoles | "svchost.exe","2940","Services","0","13,020 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.708   consoles | "svchost.exe","2952","Services","0","20,764 K","Unknown","N/A","0:00:02","N/A"
+16:33:04.708   consoles | "svchost.exe","2980","Services","0","18,748 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.709   consoles | "spoolsv.exe","2328","Services","0","10,164 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.710   consoles | "svchost.exe","3076","Services","0","20,564 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.710   consoles | "svchost.exe","3132","Services","0","10,068 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.711   consoles | "svchost.exe","3236","Services","0","34,336 K","Unknown","N/A","0:00:02","N/A"
+16:33:04.711   consoles | "svchost.exe","3244","Services","0","26,224 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.712   consoles | "svchost.exe","3252","Services","0","15,072 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.712   consoles | "MpDefenderCoreService.exe","3344","Services","0","24,440 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.713   consoles | "svchost.exe","3368","Services","0","21,316 K","Unknown","N/A","0:00:04","N/A"
+16:33:04.713   consoles | "svchost.exe","3376","Services","0","7,264 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.714   consoles | "MsMpEng.exe","3392","Services","0","182,560 K","Unknown","N/A","0:01:14","N/A"
+16:33:04.714   consoles | "svchost.exe","3400","Services","0","12,040 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.714   consoles | "svchost.exe","3408","Services","0","26,712 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.715   consoles | "wlms.exe","3428","Services","0","4,744 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.715   consoles | "svchost.exe","4052","Services","0","10,496 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.716   consoles | "svchost.exe","4060","Services","0","16,648 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.716   consoles | "svchost.exe","4336","Services","0","10,260 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.717   consoles | "AggregatorHost.exe","4600","Services","0","10,624 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.717   consoles | "DefenderAiPlatformHost.exe","5020","Services","0","5,824 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.718   consoles | "svchost.exe","4156","Services","0","14,000 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.718   consoles | "NisSrv.exe","4832","Services","0","14,464 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.719   consoles | "svchost.exe","812","Services","0","23,412 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.719   consoles | "svchost.exe","1324","Services","0","29,564 K","Unknown","N/A","0:00:05","N/A"
+16:33:04.720   consoles | "svchost.exe","3088","Services","0","10,444 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.720   consoles | "svchost.exe","4816","Services","0","13,264 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.721   consoles | "svchost.exe","4660","Services","0","13,424 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.721   consoles | "svchost.exe","4700","Services","0","16,188 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.722   consoles | "svchost.exe","1180","Services","0","20,796 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.722   consoles | "svchost.exe","4628","Services","0","13,064 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.723   consoles | "SearchIndexer.exe","3152","Services","0","24,932 K","Unknown","N/A","0:00:03","N/A"
+16:33:04.723   consoles | "SearchProtocolHost.exe","1160","Services","0","14,368 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.724   consoles | "SearchFilterHost.exe","3592","Services","0","11,340 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.724   consoles | "SearchFilterHost.exe","3028","Services","0","9,944 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.725   consoles | "svchost.exe","4108","Services","0","8,164 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.725   consoles | "svchost.exe","4944","Services","0","16,216 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.726   consoles | "svchost.exe","4904","Services","0","13,792 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.727   consoles | "WmiPrvSE.exe","3676","Services","0","19,304 K","Unknown","N/A","0:00:03","N/A"
+16:33:04.727   consoles | "DefenderSessionHelper.exe","2652","Console","1","5,832 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.728   consoles | "sihost.exe","2616","Console","1","50,144 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:33:04.728   consoles | "svchost.exe","3508","Console","1","22,776 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.729   consoles | "svchost.exe","3540","Console","1","10,940 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.729   consoles | "svchost.exe","872","Console","1","40,684 K","Running","WIN11-TEST2\vboxuser","0:00:00","Windows Push Notifications Platform"
+16:33:04.730   consoles | "svchost.exe","2460","Services","0","27,184 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.730   consoles | "taskhostw.exe","5116","Console","1","20,200 K","Running","WIN11-TEST2\vboxuser","0:00:00","Task Host Window"
+16:33:04.731   consoles | "svchost.exe","3880","Services","0","16,156 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.731   consoles | "ShellHost.exe","3660","Console","1","33,144 K","Running","WIN11-TEST2\vboxuser","0:00:00","Quick Settings"
+16:33:04.732   consoles | "explorer.exe","1584","Console","1","172,456 K","Running","WIN11-TEST2\vboxuser","0:00:04","N/A"
+16:33:04.732   consoles | "CrossDeviceResume.exe","3196","Console","1","48,668 K","Running","WIN11-TEST2\vboxuser","0:00:00","CrossDeviceResumeWindow"
+16:33:04.733   consoles | "svchost.exe","5236","Console","1","20,104 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.733   consoles | "SearchHost.exe","5604","Console","1","93,804 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:33:04.734   consoles | "StartMenuExperienceHost.exe","5616","Console","1","140,504 K","Running","WIN11-TEST2\vboxuser","0:00:01","Start"
+16:33:04.735   consoles | "Widgets.exe","5856","Console","1","69,264 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.735   consoles | "RuntimeBroker.exe","5872","Console","1","43,084 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.736   consoles | "svchost.exe","5896","Console","1","28,984 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.736   consoles | "msedgewebview2.exe","6564","Console","1","91,476 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:33:04.737   consoles | "msedgewebview2.exe","6768","Console","1","13,000 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.737   consoles | "audiodg.exe","6952","Services","0","16,216 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.738   consoles | "WidgetService.exe","6980","Console","1","32,348 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.738   consoles | "msedgewebview2.exe","7152","Console","1","39,156 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.738   consoles | "msedgewebview2.exe","7160","Console","1","40,764 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:33:04.739   consoles | "msedgewebview2.exe","6612","Console","1","20,144 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.739   consoles | "msedgewebview2.exe","7196","Console","1","96,596 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.740   consoles | "ctfmon.exe","4524","Console","1","33,376 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.740   consoles | "smartscreen.exe","7748","Console","1","13,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.741   consoles | "SecurityHealthSystray.exe","8064","Console","1","13,448 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.741   consoles | "SecurityHealthService.exe","8028","Services","0","26,592 K","Unknown","N/A","0:00:01","N/A"
+16:33:04.742   consoles | "VBoxTray.exe","5500","Console","1","15,036 K","Running","WIN11-TEST2\vboxuser","0:00:00","VBoxSharedClipboardClass"
+16:33:04.742   consoles | "OneDrive.exe","8176","Console","1","89,072 K","Running","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:33:04.743   consoles | "MicrosoftEdgeUpdate.exe","5380","Services","0","4,512 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.744   consoles | "ShellExperienceHost.exe","5624","Console","1","62,612 K","Running","WIN11-TEST2\vboxuser","0:00:00","New notification"
+16:33:04.744   consoles | "RuntimeBroker.exe","3940","Console","1","26,652 K","Running","WIN11-TEST2\vboxuser","0:00:00","OLEChannelWnd"
+16:33:04.745   consoles | "svchost.exe","1660","Services","0","148,184 K","Unknown","N/A","0:03:16","N/A"
+16:33:04.745   consoles | "svchost.exe","2484","Services","0","12,452 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.746   consoles | "msedgewebview2.exe","7984","Console","1","109,772 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:33:04.746   consoles | "msedgewebview2.exe","7628","Console","1","13,548 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.747   consoles | "msedgewebview2.exe","3848","Console","1","42,336 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.747   consoles | "msedgewebview2.exe","1032","Console","1","44,368 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:33:04.748   consoles | "RuntimeBroker.exe","1836","Console","1","10,620 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.748   consoles | "msedgewebview2.exe","6908","Console","1","23,020 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.749   consoles | "msedgewebview2.exe","6904","Console","1","179,064 K","Unknown","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:33:04.750   consoles | "dllhost.exe","5212","Console","1","15,996 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:33:04.750   consoles | "svchost.exe","1776","Services","0","9,820 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.751   consoles | "RuntimeBroker.exe","1464","Console","1","10,508 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.752   consoles | "sppsvc.exe","4532","Services","0","15,996 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.752   consoles | "SystemSettings.exe","1916","Console","1","120,236 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:33:04.753   consoles | "ApplicationFrameHost.exe","7392","Console","1","48,272 K","Running","WIN11-TEST2\vboxuser","0:00:00","Settings"
+16:33:04.753   consoles | "svchost.exe","2728","Console","1","16,832 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:33:04.754   consoles | "dllhost.exe","5532","Console","1","15,964 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:33:04.754   consoles | "cmd.exe","6080","Services","0","10,020 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.755   consoles | "conhost.exe","5316","Services","0","10,864 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.755   consoles | "powershell.exe","512","Services","0","70,288 K","Unknown","N/A","0:00:00","N/A"
+16:33:04.756   consoles | "VBoxService.exe","7836","Console","1","6,872 K","Running","WIN11-TEST2\vboxuser","0:00:00","C:\WINDOWS\System32\VBoxService.exe"
+16:33:04.756   consoles | "conhost.exe","3560","Console","1","11,656 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.757   consoles | "cmd.exe","5944","Console","1","7,408 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.757   consoles | "tasklist.exe","5800","Console","1","12,404 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:33:04.759 consoles after retry: 1
+16:33:09.962   poll | Volume in drive C is Windows
+16:33:09.962   poll | Volume Serial Number is A038-5429
+16:33:09.963   poll | Directory of C:\Users\Public
+16:33:09.963   poll | File Not Found
+16:33:15.152   poll | Volume in drive C is Windows
+16:33:15.152   poll | Volume Serial Number is A038-5429
+16:33:15.153   poll | Directory of C:\Users\Public
+16:33:15.153   poll | File Not Found
+16:33:20.339   poll | Volume in drive C is Windows
+16:33:20.339   poll | Volume Serial Number is A038-5429
+16:33:20.340   poll | Directory of C:\Users\Public
+16:33:20.340   poll | File Not Found
+16:33:20.344   poll t=15s bytes=0
+16:33:25.550   poll | Volume in drive C is Windows
+16:33:25.551   poll | Volume Serial Number is A038-5429
+16:33:25.552   poll | Directory of C:\Users\Public
+16:33:25.552   poll | File Not Found
+16:33:30.746   poll | Volume in drive C is Windows
+16:33:30.747   poll | Volume Serial Number is A038-5429
+16:33:30.748   poll | Directory of C:\Users\Public
+16:33:30.748   poll | File Not Found
+16:33:35.915   poll | Volume in drive C is Windows
+16:33:35.915   poll | Volume Serial Number is A038-5429
+16:33:35.915   poll | Directory of C:\Users\Public
+16:33:35.917   poll | File Not Found
+16:33:35.917   poll t=30s bytes=0
+16:33:41.106   poll | Volume in drive C is Windows
+16:33:41.106   poll | Volume Serial Number is A038-5429
+16:33:41.107   poll | Directory of C:\Users\Public
+16:33:41.108   poll | File Not Found
+16:33:46.295   poll | Volume in drive C is Windows
+16:33:46.296   poll | Volume Serial Number is A038-5429
+16:33:46.297   poll | Directory of C:\Users\Public
+16:33:46.297   poll | File Not Found
+16:33:51.485   poll | Volume in drive C is Windows
+16:33:51.486   poll | Volume Serial Number is A038-5429
+16:33:51.486   poll | Directory of C:\Users\Public
+16:33:51.487   poll | File Not Found
+16:33:51.488   poll t=45s bytes=0
+16:33:56.678   poll | Volume in drive C is Windows
+16:33:56.679   poll | Volume Serial Number is A038-5429
+16:33:56.682   poll | Directory of C:\Users\Public
+16:33:56.683   poll | File Not Found
+16:34:01.856   poll | Volume in drive C is Windows
+16:34:01.857   poll | Volume Serial Number is A038-5429
+16:34:01.858   poll | Directory of C:\Users\Public
+16:34:01.858   poll | File Not Found
+16:34:07.046   poll | Volume in drive C is Windows
+16:34:07.047   poll | Volume Serial Number is A038-5429
+16:34:07.047   poll | Directory of C:\Users\Public
+16:34:07.048   poll | File Not Found
+16:34:07.049   poll t=60s bytes=0
+16:34:12.249   poll | Volume in drive C is Windows
+16:34:12.250   poll | Volume Serial Number is A038-5429
+16:34:12.250   poll | Directory of C:\Users\Public
+16:34:12.250   poll | File Not Found
+16:34:17.467   poll | Volume in drive C is Windows
+16:34:17.467   poll | Volume Serial Number is A038-5429
+16:34:17.468   poll | Directory of C:\Users\Public
+16:34:17.469   poll | File Not Found
+16:34:22.657   poll | Volume in drive C is Windows
+16:34:22.658   poll | Volume Serial Number is A038-5429
+16:34:22.658   poll | Directory of C:\Users\Public
+16:34:22.659   poll | File Not Found
+16:34:22.660   poll t=75s bytes=0
+16:34:27.848   poll | Volume in drive C is Windows
+16:34:27.849   poll | Volume Serial Number is A038-5429
+16:34:27.850   poll | Directory of C:\Users\Public
+16:34:27.851   poll | File Not Found
+16:34:33.039   poll | Volume in drive C is Windows
+16:34:33.040   poll | Volume Serial Number is A038-5429
+16:34:33.041   poll | Directory of C:\Users\Public
+16:34:33.041   poll | File Not Found
+16:34:38.217   poll | Volume in drive C is Windows
+16:34:38.218   poll | Volume Serial Number is A038-5429
+16:34:38.218   poll | Directory of C:\Users\Public
+16:34:38.219   poll | File Not Found
+16:34:38.219   poll t=90s bytes=0
+16:34:43.391   poll | Volume in drive C is Windows
+16:34:43.391   poll | Volume Serial Number is A038-5429
+16:34:43.392   poll | Directory of C:\Users\Public
+16:34:43.393   poll | File Not Found
+16:34:48.583   poll | Volume in drive C is Windows
+16:34:48.583   poll | Volume Serial Number is A038-5429
+16:34:48.584   poll | Directory of C:\Users\Public
+16:34:48.585   poll | File Not Found
+16:34:53.775   poll | Volume in drive C is Windows
+16:34:53.776   poll | Volume Serial Number is A038-5429
+16:34:53.776   poll | Directory of C:\Users\Public
+16:34:53.776   poll | File Not Found
+16:34:53.777   poll t=105s bytes=0
+16:34:58.979   poll | Volume in drive C is Windows
+16:34:58.980   poll | Volume Serial Number is A038-5429
+16:34:58.981   poll | Directory of C:\Users\Public
+16:34:58.981   poll | File Not Found
+16:35:04.165   poll | Volume in drive C is Windows
+16:35:04.166   poll | Volume Serial Number is A038-5429
+16:35:04.166   poll | Directory of C:\Users\Public
+16:35:04.167   poll | File Not Found
+16:35:09.347   poll | Volume in drive C is Windows
+16:35:09.348   poll | Volume Serial Number is A038-5429
+16:35:09.348   poll | Directory of C:\Users\Public
+16:35:09.349   poll | File Not Found
+16:35:09.349   poll t=120s bytes=0
+16:35:14.537   poll | Volume in drive C is Windows
+16:35:14.537   poll | Volume Serial Number is A038-5429
+16:35:14.538   poll | Directory of C:\Users\Public
+16:35:14.539   poll | File Not Found
+16:35:19.729   poll | Volume in drive C is Windows
+16:35:19.729   poll | Volume Serial Number is A038-5429
+16:35:19.730   poll | Directory of C:\Users\Public
+16:35:19.731   poll | File Not Found
+16:35:24.903   poll | Volume in drive C is Windows
+16:35:24.904   poll | Volume Serial Number is A038-5429
+16:35:24.905   poll | Directory of C:\Users\Public
+16:35:24.905   poll | File Not Found
+16:35:24.906   poll t=135s bytes=0
+16:35:30.082   poll | Volume in drive C is Windows
+16:35:30.082   poll | Volume Serial Number is A038-5429
+16:35:30.083   poll | Directory of C:\Users\Public
+16:35:30.084   poll | File Not Found
+16:35:35.291   poll | Volume in drive C is Windows
+16:35:35.292   poll | Volume Serial Number is A038-5429
+16:35:35.293   poll | Directory of C:\Users\Public
+16:35:35.293   poll | File Not Found
+16:35:40.490   poll | Volume in drive C is Windows
+16:35:40.491   poll | Volume Serial Number is A038-5429
+16:35:40.492   poll | Directory of C:\Users\Public
+16:35:40.492   poll | File Not Found
+16:35:40.493   poll t=150s bytes=0
+16:35:40.683   elevreport | The system cannot find the file specified.
+16:35:40.684 transcript: high-integrity=False staged=0 want=391099508
+16:35:42.946   consoles | "System Idle Process","0","Services","0","8 K","Unknown","NT AUTHORITY\SYSTEM","3:49:11","N/A"
+16:35:42.947   consoles | "System","4","Services","0","172 K","Unknown","N/A","0:01:01","N/A"
+16:35:42.948   consoles | "Registry","124","Services","0","15,348 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.948   consoles | "smss.exe","496","Services","0","1,332 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.949   consoles | "csrss.exe","708","Services","0","6,980 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.949   consoles | "wininit.exe","784","Services","0","9,572 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.950   consoles | "csrss.exe","792","Console","1","6,932 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.950   consoles | "winlogon.exe","856","Console","1","16,408 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.951   consoles | "services.exe","928","Services","0","10,060 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.951   consoles | "lsass.exe","948","Services","0","26,180 K","Unknown","N/A","0:00:14","N/A"
+16:35:42.951   consoles | "svchost.exe","612","Services","0","35,440 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.951   consoles | "fontdrvhost.exe","776","Console","1","4,508 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.952   consoles | "fontdrvhost.exe","456","Services","0","4,200 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.952   consoles | "svchost.exe","1068","Services","0","16,344 K","Unknown","N/A","0:00:03","N/A"
+16:35:42.953   consoles | "svchost.exe","1128","Services","0","11,312 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.953   consoles | "dwm.exe","1212","Console","1","83,824 K","Running","N/A","0:00:06","DWM Notification Window"
+16:35:42.954   consoles | "svchost.exe","1296","Services","0","21,000 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.955   consoles | "svchost.exe","1304","Services","0","10,776 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.955   consoles | "svchost.exe","1440","Services","0","12,832 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.956   consoles | "svchost.exe","1500","Services","0","16,296 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.956   consoles | "svchost.exe","1540","Services","0","14,904 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.957   consoles | "svchost.exe","1548","Services","0","9,532 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.957   consoles | "svchost.exe","1560","Services","0","14,120 K","Unknown","N/A","0:00:03","N/A"
+16:35:42.958   consoles | "svchost.exe","1648","Services","0","7,868 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.959   consoles | "svchost.exe","1672","Services","0","7,824 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.959   consoles | "svchost.exe","1748","Services","0","19,136 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.960   consoles | "svchost.exe","1756","Services","0","6,876 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.960   consoles | "svchost.exe","1764","Services","0","20,992 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.961   consoles | "VBoxService.exe","1988","Services","0","9,708 K","Unknown","N/A","0:00:04","N/A"
+16:35:42.961   consoles | "svchost.exe","988","Services","0","17,788 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.962   consoles | "svchost.exe","1976","Services","0","66,896 K","Unknown","N/A","0:00:28","N/A"
+16:35:42.963   consoles | "svchost.exe","1780","Services","0","7,528 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.963   consoles | "svchost.exe","2056","Services","0","10,148 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.964   consoles | "svchost.exe","2180","Services","0","8,716 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.964   consoles | "Memory Compression","2204","Services","0","129,696 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.965   consoles | "svchost.exe","2208","Services","0","11,084 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.966   consoles | "svchost.exe","2260","Services","0","11,148 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.966   consoles | "svchost.exe","2336","Services","0","11,072 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.967   consoles | "svchost.exe","2344","Services","0","9,936 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.967   consoles | "svchost.exe","2528","Services","0","10,036 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.968   consoles | "svchost.exe","2584","Services","0","18,224 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.968   consoles | "svchost.exe","2640","Services","0","11,168 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.969   consoles | "svchost.exe","2672","Services","0","9,820 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.969   consoles | "svchost.exe","2824","Services","0","8,024 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.970   consoles | "svchost.exe","2940","Services","0","12,604 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.970   consoles | "svchost.exe","2952","Services","0","20,080 K","Unknown","N/A","0:00:02","N/A"
+16:35:42.971   consoles | "svchost.exe","2980","Services","0","18,424 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.971   consoles | "spoolsv.exe","2328","Services","0","9,456 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.972   consoles | "svchost.exe","3076","Services","0","18,464 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.972   consoles | "svchost.exe","3132","Services","0","9,968 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.974   consoles | "svchost.exe","3236","Services","0","34,804 K","Unknown","N/A","0:00:02","N/A"
+16:35:42.974   consoles | "svchost.exe","3244","Services","0","27,312 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.975   consoles | "svchost.exe","3252","Services","0","14,536 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.975   consoles | "MpDefenderCoreService.exe","3344","Services","0","24,216 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.976   consoles | "svchost.exe","3368","Services","0","20,724 K","Unknown","N/A","0:00:05","N/A"
+16:35:42.977   consoles | "svchost.exe","3376","Services","0","6,988 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.977   consoles | "MsMpEng.exe","3392","Services","0","176,456 K","Unknown","N/A","0:01:18","N/A"
+16:35:42.978   consoles | "svchost.exe","3400","Services","0","11,984 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.978   consoles | "svchost.exe","3408","Services","0","25,704 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.979   consoles | "wlms.exe","3428","Services","0","4,732 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.979   consoles | "svchost.exe","4052","Services","0","10,232 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.980   consoles | "svchost.exe","4060","Services","0","16,360 K","Unknown","N/A","0:00:01","N/A"
+16:35:42.981   consoles | "svchost.exe","4336","Services","0","10,536 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.981   consoles | "AggregatorHost.exe","4600","Services","0","11,072 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.982   consoles | "DefenderAiPlatformHost.exe","5020","Services","0","5,508 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.982   consoles | "svchost.exe","4156","Services","0","13,816 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.983   consoles | "NisSrv.exe","4832","Services","0","14,484 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.983   consoles | "svchost.exe","812","Services","0","23,236 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.984   consoles | "svchost.exe","1324","Services","0","29,040 K","Unknown","N/A","0:00:05","N/A"
+16:35:42.984   consoles | "svchost.exe","3088","Services","0","10,400 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.985   consoles | "svchost.exe","4816","Services","0","32,136 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.985   consoles | "svchost.exe","4660","Services","0","14,936 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.986   consoles | "svchost.exe","4700","Services","0","15,956 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.986   consoles | "svchost.exe","1180","Services","0","21,108 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.987   consoles | "svchost.exe","4628","Services","0","12,688 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.987   consoles | "SearchIndexer.exe","3152","Services","0","24,084 K","Unknown","N/A","0:00:03","N/A"
+16:35:42.988   consoles | "SearchProtocolHost.exe","1160","Services","0","14,304 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.988   consoles | "SearchFilterHost.exe","3592","Services","0","11,304 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.989   consoles | "SearchFilterHost.exe","3028","Services","0","9,708 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.990   consoles | "svchost.exe","4108","Services","0","8,208 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.990   consoles | "svchost.exe","4944","Services","0","15,804 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.990   consoles | "svchost.exe","4904","Services","0","13,464 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.990   consoles | "WmiPrvSE.exe","3676","Services","0","19,220 K","Unknown","N/A","0:00:07","N/A"
+16:35:42.991   consoles | "DefenderSessionHelper.exe","2652","Console","1","5,524 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:42.991   consoles | "sihost.exe","2616","Console","1","48,564 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:35:42.992   consoles | "svchost.exe","3508","Console","1","21,956 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:42.992   consoles | "svchost.exe","3540","Console","1","10,624 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:42.993   consoles | "svchost.exe","872","Console","1","39,120 K","Running","WIN11-TEST2\vboxuser","0:00:00","Windows Push Notifications Platform"
+16:35:42.993   consoles | "svchost.exe","2460","Services","0","25,312 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.994   consoles | "taskhostw.exe","5116","Console","1","19,780 K","Running","WIN11-TEST2\vboxuser","0:00:00","Task Host Window"
+16:35:42.995   consoles | "svchost.exe","3880","Services","0","14,968 K","Unknown","N/A","0:00:00","N/A"
+16:35:42.995   consoles | "ShellHost.exe","3660","Console","1","31,816 K","Running","WIN11-TEST2\vboxuser","0:00:00","Quick Settings"
+16:35:42.996   consoles | "explorer.exe","1584","Console","1","163,796 K","Running","WIN11-TEST2\vboxuser","0:00:04","N/A"
+16:35:42.997   consoles | "CrossDeviceResume.exe","3196","Console","1","46,656 K","Running","WIN11-TEST2\vboxuser","0:00:00","CrossDeviceResumeWindow"
+16:35:42.997   consoles | "svchost.exe","5236","Console","1","19,584 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:42.998   consoles | "SearchHost.exe","5604","Console","1","91,584 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:35:42.998   consoles | "StartMenuExperienceHost.exe","5616","Console","1","140,464 K","Running","WIN11-TEST2\vboxuser","0:00:01","Start"
+16:35:42.999   consoles | "Widgets.exe","5856","Console","1","65,196 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.000   consoles | "RuntimeBroker.exe","5872","Console","1","41,816 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.000   consoles | "svchost.exe","5896","Console","1","22,980 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.001   consoles | "msedgewebview2.exe","6564","Console","1","90,360 K","Running","WIN11-TEST2\vboxuser","0:00:01","Search"
+16:35:43.001   consoles | "msedgewebview2.exe","6768","Console","1","12,372 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.002   consoles | "audiodg.exe","6952","Services","0","15,900 K","Unknown","N/A","0:00:00","N/A"
+16:35:43.002   consoles | "WidgetService.exe","6980","Console","1","26,968 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.003   consoles | "msedgewebview2.exe","7152","Console","1","36,152 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.004   consoles | "msedgewebview2.exe","7160","Console","1","37,924 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:35:43.004   consoles | "msedgewebview2.exe","6612","Console","1","18,576 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.005   consoles | "msedgewebview2.exe","7196","Console","1","67,564 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.005   consoles | "ctfmon.exe","4524","Console","1","32,756 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.006   consoles | "SecurityHealthSystray.exe","8064","Console","1","13,040 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.006   consoles | "SecurityHealthService.exe","8028","Services","0","25,572 K","Unknown","N/A","0:00:01","N/A"
+16:35:43.007   consoles | "VBoxTray.exe","5500","Console","1","14,492 K","Running","WIN11-TEST2\vboxuser","0:00:00","VBoxSharedClipboardClass"
+16:35:43.008   consoles | "OneDrive.exe","8176","Console","1","75,060 K","Running","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:35:43.008   consoles | "MicrosoftEdgeUpdate.exe","5380","Services","0","4,420 K","Unknown","N/A","0:00:00","N/A"
+16:35:43.009   consoles | "ShellExperienceHost.exe","5624","Console","1","62,612 K","Running","WIN11-TEST2\vboxuser","0:00:00","New notification"
+16:35:43.010   consoles | "RuntimeBroker.exe","3940","Console","1","26,524 K","Running","WIN11-TEST2\vboxuser","0:00:00","OLEChannelWnd"
+16:35:43.010   consoles | "svchost.exe","1660","Services","0","144,144 K","Unknown","N/A","0:03:16","N/A"
+16:35:43.011   consoles | "svchost.exe","2484","Services","0","12,448 K","Unknown","N/A","0:00:00","N/A"
+16:35:43.011   consoles | "msedgewebview2.exe","7984","Console","1","109,664 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:35:43.012   consoles | "msedgewebview2.exe","7628","Console","1","13,612 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.012   consoles | "msedgewebview2.exe","3848","Console","1","42,368 K","Running","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.013   consoles | "msedgewebview2.exe","1032","Console","1","44,304 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:35:43.013   consoles | "RuntimeBroker.exe","1836","Console","1","10,608 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.014   consoles | "msedgewebview2.exe","6908","Console","1","23,012 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.014   consoles | "msedgewebview2.exe","6904","Console","1","179,080 K","Unknown","WIN11-TEST2\vboxuser","0:00:02","N/A"
+16:35:43.015   consoles | "dllhost.exe","5212","Console","1","15,972 K","Running","WIN11-TEST2\vboxuser","0:00:00","OleMainThreadWndName"
+16:35:43.016   consoles | "svchost.exe","1776","Services","0","9,948 K","Unknown","N/A","0:00:00","N/A"
+16:35:43.016   consoles | "SystemSettings.exe","1916","Console","1","119,100 K","Running","WIN11-TEST2\vboxuser","0:00:01","N/A"
+16:35:43.017   consoles | "ApplicationFrameHost.exe","7392","Console","1","48,004 K","Running","WIN11-TEST2\vboxuser","0:00:00","Settings"
+16:35:43.017   consoles | "svchost.exe","2728","Console","1","16,696 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.017   consoles | "VBoxService.exe","1636","Console","1","6,872 K","Running","WIN11-TEST2\vboxuser","0:00:00","C:\WINDOWS\System32\VBoxService.exe"
+16:35:43.017   consoles | "conhost.exe","4228","Console","1","11,608 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.019   consoles | "cmd.exe","2064","Console","1","7,384 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.019   consoles | "tasklist.exe","5328","Console","1","12,376 K","Unknown","WIN11-TEST2\vboxuser","0:00:00","N/A"
+16:35:43.021 restore: payload deleted; session-1 consoles still open=1 (closed by the next probe)
+16:35:43.023 RESULT: FAIL - no elevated copy via the console route (variable: delivery channel)
+16:35:43.023 VERDICT: only delta=0 on copyfrom AND a High Mandatory Level line make the kd read valid

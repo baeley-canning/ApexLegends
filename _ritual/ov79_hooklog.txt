@@ -1,0 +1,13 @@
+[g25080] ov76: DllMain PROCESS_ATTACH (mapped)
+[g25080] ov76: self-pin ok
+[g25080] ov76: payload thread up (outside loader lock)
+[g25080] ov76: LoadLibraryW(apexcheat.dll) -> 0x00007FF806140000 err=183
+[g11924] ov76: DllMain PROCESS_ATTACH (mapped)
+[g11924] ov76: self-pin ok
+[g11924] ov76: hook fire #1 code=0 msg=0x1
+[g11924] ov76: hook fire #2 code=0 msg=0x1
+[g11924] ov76: hook fire #4 code=0 msg=0x1
+[g11924] ov76: hook fire #3 code=0 msg=0x1
+[g11924] ov76: hook fire #5 code=0 msg=0x0
+[g11924] ov76: payload thread up (outside loader lock)
+[g11924] ov76: LoadLibraryW(apexcheat.dll) -> 0x00007FF806140000 err=183

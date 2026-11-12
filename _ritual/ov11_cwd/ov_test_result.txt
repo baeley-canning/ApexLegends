@@ -1,0 +1,19 @@
+overlay_test start: seconds=40 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov11_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+T3 nav: ins=1 left=1 enter=1 repeat=1 pass-through=0 sel 0 2 0 4
+T3 repeat suppression: glow=1 after repeat-ENTER glow=1
+T4 live flush: GLOW toggled via menu ENTER, apexcheat.ini present=1
+T5 Present hr=0x887A0005 (FAILED)
+T5 Present hr=0x887A0005 (FAILED)
+T5 Present hr=0x887A0005 (FAILED)
+T5 Present hr=0x887A0005 (FAILED)
+T5 Present hr=0x887A0005 (FAILED)
+T6 buffer readback: ok=0 coverage=0.0% bbox 0,0 - 0,0 of 960x620 (client)
+T5 PresentCount()=922097 frames=922097 equal=yes
+renderOk=1 cfgRt=1 navOk=1 menuLive=1 frames=922097 presentFails=922097
+T6 geometry gate: readback=0 coverage=0.0% (>=80% required) bboxOk=0
+T6 GEOMETRY FAIL: drawn area does not fill the 960x620 client (bbox 0,0 - 0,0)
+RESULT: FAIL
+VERDICT: overlay draw path, menu state, key handling, ini flush,
+VERDICT: present counter and client-filling coverage verified offline

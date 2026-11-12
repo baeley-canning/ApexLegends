@@ -1,0 +1,1 @@
+& 'C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe' 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h394_v16_probe.py' *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h394_v16_console.txt'; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h394_v16_rc.txt'

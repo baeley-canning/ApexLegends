@@ -1,0 +1,48 @@
+00:01:43.126 ===== h319 transient probe (15 min fuse) =====
+00:02:58.875 pid=21572 - holding 1000 ms
+00:02:59.917   | ===============================================================
+00:02:59.918   | QwenKern Premium - Apex Legends launcher
+00:02:59.919   | usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+00:02:59.919   | kernel rung    : B3 (apexdrv.sys)
+00:02:59.920   | ===============================================================
+00:02:59.920   | [!] Launcher is not elevated: opening r5apex.exe and loading a
+00:02:59.921   | kernel driver will likely fail.
+00:02:59.921   | [*] AG measurement harness (target PID 21572)
+00:02:59.922   | pid=21572 image=r5apex_dx12.exe base=0x0 modules=0
+00:02:59.922   | os=10.0 build 26200 hvci=disabled cpu=GenuineIntel (no hypervisor bit) advapi32=already loaded (probe added no module)
+00:02:59.923   | d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown[*] reference integrity:
+00:02:59.924   | image            :  (NOT the expected r5apex_dx12.exe)
+00:02:59.924   | module base      : 0x0 (NOT a readable PE image)
+00:02:59.925   | modules in target: 0
+00:02:59.925   | render modules   : d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown
+00:02:59.926   | [!] module snapshot EMPTY (OpenProcess/TH32CS_SNAPMODULE denied):
+00:02:59.927   | every 'unknown' above is genuinely UNMEASURED, not absent ->
+00:02:59.928   | run the launcher ELEVATED, otherwise every verdict below is
+00:02:59.928   | meaningless
+00:02:59.929   | ==========================================================================
+00:02:59.930   | ACG / INJECTION PROBE REPORT - ACG measurement
+00:02:59.931   | ==========================================================================
+00:02:59.931   | environment:
+00:02:59.932   | pid=21572 image=r5apex_dx12.exe base=0x0 modules=0
+00:02:59.932   | os=10.0 build 26200 hvci=disabled cpu=GenuineIntel (no hypervisor bit) advapi32=already loaded (probe added no module)
+00:02:59.933   | d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown
+00:02:59.933   | probes:
+00:02:59.934   | [FAIL] I0_inventory           module inventory / reference integrity
+00:02:59.934   | address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+00:02:59.935   | detail: image=r5apex_dx12.exe modules=0 d3d11=unknown dxgi=unknown d3d12=unknown d3d9=unknown d3dcompiler=unknown os=10.0 build 26200 hvci=disabled | module list UNREADABLE: presence is unknown, not absent
+00:02:59.935   | [FAIL] X1_open_process        OpenProcess with injector rights
+00:02:59.936   | address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=5
+00:02:59.937   | detail: OpenProcess refused (elevation / protected process?) | rights: QUERY_LIMITED=OK VM_READ=DENIED(5) VM_WRITE|VM_OP=DENIED(5) CREATE_THREAD=DENIED(5) injector(ALL)=DENIED(5)
+00:02:59.938   | [FAIL] X2_alloc_ex_rwx        VirtualAllocEx RWX in target
+00:02:59.938   | address=0x0 size=0x0 status=STATUS_SUCCESS win32Err=0
+00:02:59.939   | detail: skipped: no target handle
+00:02:59.940   | 0/3 probes passed
+00:02:59.940   | recommendation: the target refused a handle => no user-mode strategy can run until the elevation/rights problem is solved. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path.
+00:02:59.941   | ==========================================================================
+00:02:59.942   | END OF PROBE REPORT
+00:02:59.942   | ==========================================================================
+00:02:59.943   | [*] recommendation: the target refused a handle => no user-mode strategy can run until the elevation/rights problem is solved. protecting our own image page failed => vtable/trampoline patching must use the RW+protect path.
+00:02:59.944   | [*] measured 0/3 probe(s) passing
+00:02:59.944   | [*] report written: C:\Users\NEWUSE~1\AppData\Local\Temp\apexcheat_acg_probe_target_23228_20261107_000259.txt
+00:02:59.949 probe returned at +59 ms
+00:04:00.155 VERDICT: ALIVE 60 s after probe -> transient ops safe, residency is the killer

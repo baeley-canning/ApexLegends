@@ -1,0 +1,59 @@
+===== qk_world: entity list + local player + bones (gdrv3 only, no attach) =====
+name=kern30120
+pid=14008
+  driver: no handle (ApexDrv not loaded?)
+  discovering DTB for pid 14008 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+  PEB via NtQueryInformationProcess = 0x24b000
+  known frames did not map the PEB - scanning
+    window 0x0400000000..0x0800000000 -> 250002 frames
+      tried 20000/250002 frames (147s)
+      tried 40000/250002 frames (147s)
+      tried 60000/250002 frames (148s)
+      tried 80000/250002 frames (149s)
+      tried 100000/250002 frames (149s)
+      tried 120000/250002 frames (150s)
+      tried 140000/250002 frames (151s)
+      tried 160000/250002 frames (151s)
+      tried 180000/250002 frames (157s)
+      tried 200000/250002 frames (158s)
+      tried 220000/250002 frames (159s)
+      tried 240000/250002 frames (161s)
+    window 0x0300000000..0x0400000000 -> 240967 frames
+      tried 20000/240967 frames (305s)
+      tried 40000/240967 frames (306s)
+      tried 60000/240967 frames (307s)
+      tried 80000/240967 frames (307s)
+      tried 100000/240967 frames (308s)
+      tried 120000/240967 frames (309s)
+      tried 140000/240967 frames (310s)
+      tried 160000/240967 frames (311s)
+      tried 180000/240967 frames (312s)
+      tried 200000/240967 frames (312s)
+      tried 220000/240967 frames (313s)
+      tried 240000/240967 frames (315s)
+    window 0x0002000000..0x0002e00000 -> 966 frames
+    window 0x0003000000..0x0004400000 -> 1228 frames
+    window 0x0004600000..0x0031f52000 -> 42250 frames
+      tried 20000/42250 frames (344s)
+      tried 40000/42250 frames (345s)
+    window 0x0035fff000..0x0036000000 -> 0 frames
+    window 0x0140000000..0x0300000000 -> 250000 frames
+      tried 20000/250000 frames (528s)
+      tried 40000/250000 frames (529s)
+      tried 60000/250000 frames (530s)
+      tried 80000/250000 frames (531s)
+      tried 100000/250000 frames (532s)
+      tried 120000/250000 frames (533s)
+      tried 140000/250000 frames (533s)
+      tried 160000/250000 frames (534s)
+      tried 180000/250000 frames (534s)
+      tried 200000/250000 frames (535s)
+      tried 220000/250000 frames (536s)
+      tried 240000/250000 frames (536s)
+  no frame mapped the PEB to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+    page-table-shaped frames: 60000
+    walks that reached a PE: 0
+RESULT: no-dtb
+VERDICT: PARTIAL - dtb discovery failed (PEB -> sweep -> pml4)

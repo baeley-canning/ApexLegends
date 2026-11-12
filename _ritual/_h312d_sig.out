@@ -1,0 +1,9 @@
+﻿now=20:22:57
+--- C:\p37vm\payload\zapexdrv.sys
+  status=NotSigned  signer=-
+  machine=0x8664 magic=0x020B ep=0x39A0 imagebase=0x140000000 sizeimage=0x9000 subsystem=1 dllchar=0x0160
+  dirs: sec=0x0 imp=0x0 tls=0x0 sig=0x0 reloc=0x51C8
+--- C:\p37vm\payload\DbUtilDrv2.sys
+  status=Valid  signer=CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+  machine=0x8664 magic=0x020B ep=0x24E0 imagebase=0x140000000 sizeimage=0x9000 subsystem=1 dllchar=0x4160
+  dirs: sec=0x4000 imp=0x8000 tls=0x31B0 sig=0x0 reloc=0x3170

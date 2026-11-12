@@ -1,0 +1,9 @@
+--- build-ish scripts ---
+h1b2_dse_read.ps1
+h1b3_dse_set.ps1
+h278_build.ps1
+p270_mk.ps1
+_build_p38.ps1
+_h518_drvbuild.ps1
+--- /OUT: or link hits ---
+p20b.ps1:65: W ("  game exe/dll candidates: {0}" -f ($game -join ' | '))

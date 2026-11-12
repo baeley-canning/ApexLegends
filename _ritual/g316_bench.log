@@ -1,0 +1,14 @@
+===== POST /log 22:04:50
+## g316
+22:04:49.078 alive build=26300 boot=06/11 22:04:30
+22:04:49.223 kdu sha=0435524CD5F54919
+22:04:49.733 STEP=order ids=68 head=0,1,2,3,4,5 tail=66,67,14,27,22
+22:04:49.878 STEP=prov 0 NalDrv (1/68)
+===== POST /log 22:04:50
+## g316
+22:04:49.078 alive build=26300 boot=06/11 22:04:30
+22:04:49.223 kdu sha=0435524CD5F54919
+22:04:49.733 STEP=order ids=68 head=0,1,2,3,4,5 tail=66,67,14,27,22
+22:04:49.878 STEP=prov 0 NalDrv (1/68)
+22:04:50.220 RESULT: PASS - dse read 0x0 via prv 0 (NalDrv) after 1 provider(s)
+22:04:50.222 VERDICT: BENCH PASS - ordered read completes in the VM, no bugcheck, suspects 

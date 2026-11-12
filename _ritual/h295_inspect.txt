@@ -1,0 +1,19 @@
+15:49:39.043 === h295 inspect: can the session read MEMORY.DMP, and which elevation route works ===
+15:49:39.087   vm  | VMState="running"
+15:49:39.090   vm  | VMStateChangeTime="2026-11-06T01:49:45.001000000"
+15:49:39.625 whoami rc=
+15:49:39.628   whoami | acct=WIN11-TEST2\vboxuser
+15:49:39.628   whoami | admin_role=False
+15:49:39.977 icacls rc=
+15:49:39.977   icacls | Successfully processed 0 files; Failed processing 1 files
+15:49:39.978   icacls | C:\Windows\MEMORY.DMP: Access is denied.
+15:49:40.527 uac rc=
+15:49:40.527   uac | uac EnableLUA=1
+15:49:40.528   uac | uac ConsentPromptBehaviorAdmin=5
+15:49:40.529   uac | uac FilterAdministratorToken=
+15:49:40.529   uac | uac LocalAccountTokenFilterPolicy=
+15:49:41.048 read8 rc=
+15:49:41.048   read8 | read_open=DENIED MethodInvocationException
+15:49:41.049 ROUTE: none - the session is not an administrator; the DACL cannot be crossed from here
+15:49:41.050 RESULT: PASS - identity/ACL read back (variable: guest identity); session CANNOT reach MEMORY.DMP; admin=False uac_no_prompt=False
+15:49:41.051 VERDICT: follow the ROUTE line; the dump bytes are still the only evidence source, nothing was copied yet

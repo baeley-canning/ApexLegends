@@ -1,0 +1,15 @@
+﻿now=20:21:40
+--- copies ---
+C:\Users\Public\p37\zapexdrv.sys  size=17920  mt=20:09:12  sha=E906CEE97B9927F4
+C:\p37vm\payload\zapexdrv.sys  size=17920  mt=19:08:43  sha=E906CEE97B9927F4
+C:\p37vm\payload\zapexdrv_h285_bak.sys  size=13824  mt=13:45:38  sha=F01B99484B332576
+C:\p37vm\payload\zapexdrv_h310_bak.sys  size=17408  mt=14:33:40  sha=CDB6BFAE8CC1867A
+C:\p37vm\payload\zapexdrv_v3.bak.sys  size=8336  mt=17:36:50  sha=CCD6DFD6C1639229
+--- dse/ci now ---
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config
+    VulnerableDriverBlocklistEnable    REG_DWORD    0x0
+    RevocationListLcuKirValue    REG_DWORD    0x0
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config\Default
+ERROR: The system was unable to find the specified registry key or value.

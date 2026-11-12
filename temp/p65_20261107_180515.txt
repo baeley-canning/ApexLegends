@@ -1,0 +1,9 @@
+# p64_pairs 2026-11-07 18:05:15 band=full win=0x100 min=3
+COLLECT 0x400000000-0x780000000 aligned100=39276 faults=725134 secs=48.4
+CLUSTERS 4149 (min_mem=3 span=0x100)
+CUES  880Hz short = countdown before GO (nades already in hand)
+      1400Hz x3   = GO, throw frag 1 at your feet
+      500Hz x2    = THROW the next frag NOW (frag 1 armour, frag 2 health)
+      after frag 2 you go down: hold still, do NOT self-revive
+      no beep     = stand still, do not throw
+READY wait=60s (drink up so armour is FULL, 2 nades, cues = low double beeps)

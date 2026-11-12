@@ -1,0 +1,39 @@
+===== qk_vp: identify the view-projection =====
+ranges=5 (map=5 bad=25)
+image candidates: 2
+  cand 0x316b24c40 size=0xdfb8000 stamp=0x6adbf892 nonzero_matrix_floats=13
+  cand 0x35bfe0000 size=0xdfb8000 stamp=0x6adbf892 nonzero_matrix_floats=0
+image_pa=0x316b24c40 stamp=0x6adbf892
+  --- rva 0x0db5bc40 ---
+     [0]       0.0364       0.0071      -0.0127       0.1138
+     [1]       0.2665       0.1815       0.6862          nan
+     [2]       0.0000          nan          nan       0.0000
+     [3]       1.0000       0.0000       0.0000       0.0000
+  --- rva 0x0db5bd20 ---
+     [0]      -0.0283       0.0513      -0.0392       0.1206
+     [1]       0.1504       0.2971       0.5110       0.0000
+     [2]       0.0000          nan          nan       0.0000
+     [3]       1.0000       0.0000  -48640.0000       0.0000
+  --- rva 0x0db5be00 ---
+     [0]      -0.0183      -0.0153      -0.0405       0.1254
+     [1]       0.0374      -0.0115       0.3850          nan
+     [2]       0.0000          nan          nan       0.0000
+     [3]       1.0000       0.0000      -1.0000       0.4375
+  --- rva 0x0db5bee0 ---
+     [0]      -0.0303       0.0419      -0.0471       0.1172
+     [1]       0.1338       0.0398       0.6284          nan
+     [2]       0.0000          nan          nan       0.0000
+     [3]       1.0000       0.0000       0.0000       0.0000
+  --- rva 0x0db5bfc0 ---
+     [0]      -0.0469       0.0203      -0.0670       0.1531
+     [1]       0.1460       0.0422       0.6267          nan
+     [2]       0.0000          nan          nan       0.0000
+     [3]       1.0000       0.0000 -119296.0000       0.0000
+entity positions: 39032
+  rva 0x0db5bc40 on-screen=0/40
+  rva 0x0db5bd20 on-screen=0/40
+  rva 0x0db5be00 on-screen=0/40
+  rva 0x0db5bee0 on-screen=0/40
+  rva 0x0db5bfc0 on-screen=0/40
+RESULT: no-matrix-projects
+VERDICT: PARTIAL - none of the five landed an entity on screen

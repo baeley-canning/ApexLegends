@@ -1,0 +1,25 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_self.txt
+target pid=23440
+  driver DTB: status=0xc000000b valid=0 dtb=0x0
+  discovering DTB for pid 23440 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    name hits=5 chunks=454583 skipped=1977125 rescued=394587
+    hit[0]=0x3803d3440
+    hit[1]=0x58652f1d0
+    hit[2]=0x5f2d33dfe
+    hit[3]=0x69377dbd0
+        d=0x058 base=0x69377db78 typebyte=0x71 dtb=0x300000001  <-- plausible frame
+        d=0x088 base=0x69377db48 typebyte=0x58 dtb=0x200000000  <-- plausible frame
+        d=0x128 base=0x69377daa8 typebyte=0x58 dtb=0x400000000  <-- plausible frame
+    hit=0x69377dbd0: 3 DTB candidate(s) from the EPROCESS header
+      try dtb@0x69377dba0=0x300000000 (name_off=0x58) -> no PE
+      try dtb@0x69377db70=0x200000000 (name_off=0x88) -> no PE
+      try dtb@0x69377dad0=0x400000000 (name_off=0x128) -> no PE
+    hit[4]=0x79fa2ad20
+  3 DTBs tried, none walked to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+    page-table-shaped frames: 4103
+    walks that reached a PE: 0
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

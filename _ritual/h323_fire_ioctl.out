@@ -1,0 +1,22 @@
+00:18:14.642 ===== h323 raw-IOCTL transient probe (non-elevated) =====
+00:18:14.670 game=0 svc=STATE              : 4  RUNNING
+00:18:14.708 dry(pid4) driver version 13
+00:18:14.720 dry(pid4) PROBE rc=True err=203 info=84
+00:18:14.723 dry(pid4)   PsLookup        0x00000000
+00:18:14.723 dry(pid4)   ObOpen full     0x00000000
+00:18:14.727 dry(pid4)   ZwAllocate      0x00000000 at 0x290D8CE0000
+00:18:14.727 dry(pid4)   Write(attach)   0x00000000
+00:18:14.728 dry(pid4)   ZwFree          0x00000000
+00:18:14.728 dry(pid4)   MmCopy peb      0xC000000D copied=0 peb=0x0
+00:18:14.731 ARMED - launch the game now (15 min window)
+00:20:40.427 pid=22756 detected - holding 1000 ms
+00:20:41.429 game driver version 13
+00:20:41.430 game PROBE rc=True err=203 info=84
+00:20:41.431 game   PsLookup        0x00000000
+00:20:41.432 game   ObOpen full     0x00000000
+00:20:41.432 game   ZwAllocate      0x00000000 at 0x22D0000
+00:20:41.433 game   Write(attach)   0x00000000
+00:20:41.434 game   ZwFree          0x00000000
+00:20:41.435 game   MmCopy peb      0x00000000 copied=32 peb=0x2EC000
+00:20:41.440 probe returned at +8 ms, transient_op_ok=True
+00:21:41.645 VERDICT: ALIVE 60 s after the transient write - residency is NOT the variable; the kill is bound to what the map leaves resident (or to its entry call)

@@ -1,0 +1,31 @@
+===== qk_name (find the entity by player name) =====
+needle='kern30120'  out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_verify1.txt
+ranges=5 (map=5 bad=25)
+  scanned 378434 chunks, 8303 name hits
+  hit 0x01420f0039 (utf16)
+  hit 0x01420f0089 (utf16)
+  hit 0x01420f04cf (utf16)
+  hit 0x01420f0ba3 (utf16)
+  hit 0x01420f0c6f (utf16)
+  hit 0x01420f0d7f (utf16)
+  hit 0x014218316f (ascii)
+  hit 0x0142699881 (ascii)
+  hit 0x01450f0436 (utf16)
+  hit 0x01450f0b0a (utf16)
+  hit 0x014581342b (utf16)
+  hit 0x014581347b (utf16)
+  hit 0x01458138c1 (utf16)
+  hit 0x0145992128 (ascii)
+  hit 0x01461f3588 (utf16)
+  hit 0x01461f3654 (utf16)
+  candidates: 8303
+
+  *** RUN IN A CIRCLE for 5 s (beep) ***
+    MOVED 0x23e2d24b4  (232.1,2.0,-7905.0) -> (232.1,2.0,-7944.0)
+    MOVED 0x23e2d2b88  (0.0,4.8,0.0) -> (0.0,1000.0,0.0)
+    MOVED 0x3e24c72d7  (0.0,-512.0,-0.0) -> (0.0,-8192.0,-0.0)
+    MOVED 0x7a1a5511d  (0.0,0.0,0.0) -> (-380.3,0.0,0.0)
+  position-confirmed name hits: 4
+  --- health scan inside the confirmed block (0x23e2d24b4, offsets from name) ---
+RESULT: name=0x23e2d24b4 origin=0x23e2d15c8
+VERDICT: PASS - position tracks the player; health offsets listed above

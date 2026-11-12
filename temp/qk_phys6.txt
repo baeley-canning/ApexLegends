@@ -1,0 +1,44 @@
+===== qk_phys (physical ESP finder: health -> origin -> matrix) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_phys6.txt
+ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+screen assumption 2560x1440 (pass --w/--h to match)
+    health: 16384 chunks, 177 raw hits
+    health: 32768 chunks, 1212 raw hits
+    health: 49152 chunks, 1960 raw hits
+    health: 65536 chunks, 3509 raw hits
+    health: 81920 chunks, 5052 raw hits
+    health: 98304 chunks, 5183 raw hits
+    health: 114688 chunks, 5241 raw hits
+    health: 131072 chunks, 5462 raw hits
+    health: 147456 chunks, 5549 raw hits
+    health: 163840 chunks, 5708 raw hits
+    health: 180224 chunks, 6221 raw hits
+    health: 196608 chunks, 7080 raw hits
+    health: 212992 chunks, 8491 raw hits
+    health: 229376 chunks, 10447 raw hits
+    health: 245760 chunks, 14951 raw hits
+    health: 262144 chunks, 23841 raw hits
+    health: 278528 chunks, 33765 raw hits
+    health: 294912 chunks, 42323 raw hits
+    health: 311296 chunks, 51168 raw hits
+    health: 327680 chunks, 59730 raw hits
+    health: 344064 chunks, 64517 raw hits
+    health: 360448 chunks, 65020 raw hits
+    health: 376832 chunks, 65446 raw hits
+    health: 393216 chunks, 65851 raw hits
+    health: 409600 chunks, 66305 raw hits
+    health: 425984 chunks, 67063 raw hits
+    health: 442368 chunks, 67885 raw hits
+  raw 100.0f hits: 68276 (454581 chunks)
+  health clusters: 24969
+  densest clusters kept for the origin stage: 24
+  clusters with a live 100.0f after 1.5s: 9
+  health scan 47.9s
+  origin near 0x1463508c0: at 0x146350ffc (0.0, 3268.6, 0.0) score=4
+  origin near 0x1463508c8: at 0x146350ffc (0.0, 3268.6, 0.0) score=4
+  origin near 0x1463508d0: at 0x146350ffc (0.0, 3268.6, 0.0) score=4
+  origin near 0x1463508d8: at 0x146350ffc (0.0, 3268.6, 0.0) score=4
+  matrix scan 1.5s
+  projection hits: 0
+RESULT: no-projection
+VERDICT: PARTIAL - matrix candidates and origins found but none agrees

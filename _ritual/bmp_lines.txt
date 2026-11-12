@@ -1,0 +1,4 @@
+146: // is not.  Also dumps it to ov_buffer.bmp so the pixels can be inspected even
+283: bool WriteBmp(const char* path, const unsigned char* px, UINT w, UINT h, UINT pitch) {
+310: // ov_buffer.bmp.  Returns false when the readback itself failed.
+443: (void)WriteBmp((r.outdir + "\\ov_buffer.bmp").c_str(), px, r.cw, r.ch, pitch);

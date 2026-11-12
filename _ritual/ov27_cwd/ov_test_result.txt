@@ -1,0 +1,14 @@
+overlay_test start: seconds=20 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov27_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+T8 buffer[1] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[1]: removedReason=0x887A002B
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x887A002B
+T8 buffer[1] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[1]: removedReason=0x887A002B
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x887A002B
+T8 buffer[1] desc: 960x620 fmt=28 samples=1 mips=1 flags=0x1
+T8 direct clear[1]: removedReason=0x887A002B
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x887A002B
+FAIL: no adapter could present, hr=0x80004005

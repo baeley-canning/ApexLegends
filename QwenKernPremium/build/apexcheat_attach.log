@@ -1,0 +1,9 @@
+[2026-11-07 16:48:34.628 pid=25080 tid=6924] DllMain PROCESS_ATTACH
+[2026-11-07 16:48:34.628 pid=25080 tid=6924] CreateThread ok
+[2026-11-07 16:48:34.629 pid=25080 tid=31716] worker thread entered
+[2026-11-07 16:48:34.710 pid=11924 tid=7124] DllMain PROCESS_ATTACH
+[2026-11-07 16:48:34.710 pid=11924 tid=7124] CreateThread ok
+[2026-11-07 16:48:34.711 pid=11924 tid=27852] worker thread entered
+[2026-11-07 16:48:35.639 pid=11924 tid=27852] Initialize() OK - entering main loop
+[2026-11-07 16:48:37.588 pid=25080 tid=11688] DllMain PROCESS_DETACH
+[2026-11-07 16:49:36.201 pid=11192 tid=26160] DllMain PROCESS_DETACH

@@ -1,0 +1,18 @@
+===== qk_hunt v1 (PLAN stage 2: find the MOVED offsets, read-only) =====
+out=_ritual\qk_hunt_wide1.txt win=0x8000 listWin=0x2000
+target pid=2216 base=0x7FF721690000 (source=1)
+--- matrix hunt: strict (finite, |v|<=1e5, >=8 nonz, w-row) ---
+anchor B +0x1B4DFA0 (h320_va)
+  window 0x7FF7231D9FA0..0x7FF7231E1FA0 (32768 B) best=0
+anchor A +0x022EE01 (memory.h)
+  window 0x7FF7218BAE01..0x7FF7218C2E01 (32768 B) best=0
+--- entity-list hunt near base+0x23F6A90 (wide=1 span=0x400000) ---
+  wide scan 0x7FF723686A90..0x7FF723E86A90 chunks=705 candidates=4096
+  WIDE #1 ptr=0xB675E68 slots=44 vtable_in_image=44 score=264
+  WIDE #2 ptr=0xB675E78 slots=42 vtable_in_image=42 score=252
+  WIDE #3 ptr=0xB675EF0 slots=41 vtable_in_image=40 score=242
+  WIDE #4 ptr=0xB676FC8 slots=40 vtable_in_image=39 score=236
+  WIDE #5 ptr=0xB6767B0 slots=40 vtable_in_image=38 score=232
+list candidate 0xB675E68 (RVA 0xFFFF8008E9FE5E68) slot0=0xB678510 st=0x00000000
+RESULT: matrix=0x0(score 0) list=0xB675E68
+VERDICT: PARTIAL - one of the two anchors still needs a wider window or a different search shape (list found, matrix not)

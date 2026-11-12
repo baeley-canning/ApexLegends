@@ -1,0 +1,13 @@
+22:12:37.985 ===== h317 arm =====
+22:12:38.106 admin=True boot=2026-11-06T21:33:46
+22:12:38.113 game now=0 (must be 0 for a clean arm)
+22:12:38.127 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+22:12:43.333 pre read out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 20 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFF28900000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Dell DBUtil 2.5 driver", Name "DBUtilDrv2" [!] Vulnerable driver is already loaded [+] Driver device "DBUtil_2_5" has been opened successfully [+] Executing post-open callback for given provider [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF8006F722004) value: 0, new value to be written: 0 [~] Warning, current value is identical to what you want to write [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Return value: 1. Bye-bye!]
+22:12:43.341 dse_pre=0x0 (decimal 0)
+22:12:43.345 dse already 0, no write
+22:12:44.176 svc after start: STATE              : 4  RUNNING
+22:12:44.185 AutoReboot 0, readback=0
+22:12:44.201 arm: SUCCESS: The scheduled task "p317post" has successfully been created.
+22:12:44.217 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p317post                                 N/A                    Ready          
+22:12:44.218 RESULT: ARM PASS - dse=0 (read-back), zapexdrv RUNNING, dse_pre stored 0
+22:12:44.218 VERDICT: armed against a running game - launch Apex NOW, then h317_inject.ps1. Driver is intentionally left RUNNING.

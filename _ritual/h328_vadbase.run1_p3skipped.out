@@ -1,0 +1,18 @@
+20:01:05.122 ===== h328 vadbase (resolver + driver self/game crosscheck, read-only) =====
+20:01:05.141 host=DESKTOP-PPHFJBQ ps=5.1.26100.9711 elevated=False pid=33912
+20:01:05.166 ground truth (own modules): powershell.exe=0x7FF74F510000 ntdll.dll=0x7FF84A500000 kernel32.dll=0x7FF849170000
+20:01:05.207 P1 census: 1342 image regions walked, 90 distinct names resolved
+20:01:05.228 P1 powershell.exe: resolver=0x7FF74F510000 truth=0x7FF74F510000 match=True MZ=True
+20:01:05.230 P1 ntdll.dll: resolver=0x7FF84A500000 truth=0x7FF84A500000 match=True MZ=True
+20:01:05.230 P1 kernel32.dll: resolver=0x7FF849170000 truth=0x7FF849170000 match=True MZ=True
+20:01:05.231 RESULT: P1 resolver-vs-groundtruth PASS (1342 image regions, 90 names)
+20:01:05.261 P2 driver version=14
+20:01:05.275 P2 BASE rc=True status=0x00000000 source=1 base=0x7FF74F510000
+20:01:05.298 P2 READ8[0] addr=0x7FF74F510000 status=0x00000000 val=0x0000000300905A4D truth=0x0000000300905A4D match=True
+20:01:05.298 P2 READ8[1] addr=0x7FF74F51003C status=0x00000000 val=0x0EBA1F0E00000108 truth=0x0EBA1F0E00000108 match=True
+20:01:05.298 P2 READ8[2] addr=0x7FF84A500000 status=0x00000000 val=0x0000000300905A4D truth=0x0000000300905A4D match=True
+20:01:05.312 P2 READBUF[64@main] rc=True status=0x00000000 bytesEqual=True first4=4D5A9000
+20:01:05.326 P2 WRITE heap rc=True/True status=0x00000000/0x00000000 xorRoundtrip=True restored=True at=0x20419B24200
+20:01:05.326 RESULT: P2 driver-self PASS (BASE/Read8/ReadBuf/Write all == ground truth on own pid)
+20:01:05.333 RESULT: P3 driver-game SKIPPED (game not running)
+20:01:05.338 VERDICT: h328 PASS failChecks=0 - variable = VAD section-name resolver vs [Diagnostics.Process] ground truth (own proc) + driver BASE/Read8/ReadBuf/Write ground-truthed + read-only game crosscheck | P3=SKIPPED (game not running)

@@ -1,0 +1,117 @@
+﻿== host service apexdrv ==
+
+SERVICE_NAME: apexdrv 
+        TYPE               : 1  KERNEL_DRIVER  
+        STATE              : 1  STOPPED 
+        WIN32_EXIT_CODE    : 577  (0x241)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+== payload dir ==
+active.txt 6 11/06/2026 14:49:45
+apexcheat.dll 343552 11/06/2026 21:25:14
+apexdrv.sys 6656 11/05/2026 18:51:19
+apexdrv_v2_backup.sys 10152 11/01/2026 14:00:47
+apexdrv_v3_signed.sys 8336 11/05/2026 17:36:50
+apex_launcher.exe 473600 11/06/2026 14:29:32
+apex_launcher_h285_bak.exe 473600 11/06/2026 13:45:44
+apex_launcher_v3.bak.exe 431104 11/05/2026 18:24:46
+apxprobe.dll 2048 11/06/2026 13:28:45
+apxprobe.exp 788 11/06/2026 13:28:45
+apxprobe.lib 1926 11/06/2026 12:43:34
+bench_v3.cer 778 11/05/2026 17:17:47
+boot.cmd 476 11/02/2026 18:46:03
+boot2.ps1 1292 11/05/2026 16:25:19
+cur.ps1 6937 11/06/2026 15:30:20
+cur.ps1.h316bak 6937 11/06/2026 15:30:20
+cur.ps1.prev 29311 11/06/2026 14:01:04
+cur_h267v3_bak.ps1 12314 11/05/2026 19:16:57
+cur_h267v3_bak2.ps1 12314 11/05/2026 19:16:57
+cur_h270_1106-1133.ps1 26197 11/05/2026 23:20:38
+cur_h285_bak.ps1 29311 11/06/2026 14:01:04
+cur_h289_live.ps1 33301 11/06/2026 14:33:58
+cur_probeF_prev.ps1 610 11/05/2026 11:28:52
+dbutildrv2.cat 10065 11/02/2026 23:05:29
+dbutildrv2.inf 2204 11/02/2026 23:05:29
+DBUtilDrv2.sys 24952 11/02/2026 23:05:29
+drv64.dll 2086400 11/02/2026 22:07:51
+gc.log 0 11/06/2026 01:00:04
+gdrv3.sys 52440 10/12/2025 22:19:43
+go.cmd 411 11/02/2026 18:53:52
+go2.cmd 252 11/02/2026 19:01:59
+h269_hits.txt 8640 11/06/2026 01:02:37
+h269_prvctx.txt 10362 11/06/2026 01:06:33
+h269_seq.txt 4340 11/06/2026 01:03:09
+h269_tail.txt 3080 11/06/2026 01:02:37
+hostfiles.txt 1111 11/06/2026 01:01:57
+k0_env.ps1 2455 11/02/2026 21:56:21
+k10_soak.ps1 9988 11/03/2026 21:07:18
+k11_soak.ps1 10716 11/03/2026 21:11:00
+k1b_kdu.ps1 3619 11/02/2026 22:08:42
+k1_kdu.ps1 3441 11/02/2026 22:04:26
+k2_diag.ps1 2171 11/02/2026 22:10:53
+k3_kdu.ps1 3679 11/02/2026 22:12:49
+k4b_kdu.ps1 4491 11/02/2026 22:15:50
+k4_kdu.ps1 4419 11/02/2026 22:15:19
+k5_kdu.ps1 6668 11/02/2026 22:33:28
+k6_kdu.ps1 6937 11/02/2026 22:35:23
+k7_kdu.ps1 6939 11/02/2026 22:36:06
+k8_kdu.ps1 6825 11/02/2026 22:38:47
+k9_kdu.ps1 7261 11/02/2026 22:40:39
+kdu.exe 422912 11/02/2026 22:06:48
+list.csv 23091 11/06/2026 00:48:39
+list.log 658 11/06/2026 00:48:39
+loop.cmd 279 11/02/2026 19:47:07
+mark.txt 8 11/06/2026 00:48:09
+once.cmd 385 11/02/2026 20:07:53
+p37_prov.cs 46602 11/02/2026 16:09:13
+p97b.ps1 5628 11/05/2026 12:32:36
+p97_guest.ps1 10701 11/05/2026 11:24:52
+pe_tls.ps1 7185 11/06/2026 20:00:14
+probeA.ps1 2483 11/02/2026 19:41:36
+probeB.ps1 2722 11/02/2026 20:04:41
+probeC.ps1 2536 11/02/2026 20:19:26
+probeD.ps1 1595 11/02/2026 20:26:02
+probeE.ps1 2356 11/02/2026 20:28:39
+probeF.ps1 2225 11/02/2026 20:32:08
+pull.log 0 11/06/2026 00:56:29
+run.cmd 300 11/02/2026 20:07:43
+stage2.ps1 2721 11/02/2026 18:54:26
+stage3.ps1 1778 11/02/2026 19:13:08
+tick.ps1 706 11/02/2026 19:27:11
+upgrade.ps1 1059 11/02/2026 19:47:17
+upgrade2.ps1 1016 11/02/2026 19:59:52
+upgrade3.ps1 935 11/02/2026 20:08:04
+usage.txt 2470 11/06/2026 00:48:09
+zapexcheat.dll 336896 11/06/2026 14:29:35
+zapexdrv.sys 17920 11/06/2026 19:08:43
+zapexdrv_h285_bak.sys 13824 11/06/2026 13:45:38
+zapexdrv_h310_bak.sys 17408 11/06/2026 14:33:40
+zapexdrv_v3.bak.sys 8336 11/05/2026 17:36:50
+_h1b_diag.txt 39899 11/02/2026 23:33:55
+_h1b_dse6.txt 1595 11/02/2026 23:33:56
+_h1c_prv2_6.txt 1535 11/02/2026 23:36:06
+_kdu_help.txt 0 11/02/2026 23:25:33
+_p37_ping.ps1 4133 11/02/2026 14:29:04
+== active.txt ==
+h286
+== port 8080 listeners ==
+== vmware procs ==
+== guest logs (newest 5) ==
+guest-h316.log len=173781 11/06/2026 22:09:19
+guest-g316.log len=644 11/06/2026 22:04:50
+guest-h310.log len=164383 11/06/2026 21:33:25
+guest-h289p.log len=4675 11/06/2026 15:33:18
+guest-h286.log len=21264 11/06/2026 15:14:10
+== payload zapexdrv* hashes ==
+apexdrv.sys sha=3C37D4B0EA324275
+apexdrv_v2_backup.sys sha=9B119FD0C38740A2
+apexdrv_v3_signed.sys sha=CCD6DFD6C1639229
+zapexdrv.sys sha=E906CEE97B9927F4
+zapexdrv_h285_bak.sys sha=F01B99484B332576
+zapexdrv_h310_bak.sys sha=CDB6BFAE8CC1867A
+zapexdrv_v3.bak.sys sha=CCD6DFD6C1639229
+== live cur.ps1 finger+abi ==
+== built sys ==
+E906CEE97B9927F41B0C212C6C4E0E2D4E1DD3F70E35345C36A0E3D62EC1CC7C 11/06/2026 19:08:43

@@ -1,0 +1,26 @@
+ov1b - rebuild after two test-target fixes (quoted --outdir parsing in overlay_test.cpp; no code change to d3d12_overlay.cpp/hooks.cpp) - 2026-11-06 21:19:19
+
+=== OVERLAY TEST BUILD - 2026-11-06 21:19:11 ===
+cl      : C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+link    : C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\link.exe
+kit     : 10.0.26100.0
+msvcInc : C:\BuildTools\VC\Tools\MSVC\14.44.35207\include
+--- cl overlay_test.cpp exit=0
+overlay_test.cpp
+--- cl d3d12_overlay.cpp exit=0
+d3d12_overlay.cpp
+--- cl features.cpp exit=0
+features.cpp
+--- cl config.cpp exit=0
+config.cpp
+--- cl log.cpp exit=0
+log.cpp
+--- cl memory.cpp exit=0
+memory.cpp
+CL_EXIT=0 (all 6 translation units)
+--- link exit=0
+LINK_EXIT=0
+warnings: 0
+artifact: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe (303616 bytes)
+
+RESULT: PASS - rebuild OK, 0 warnings, exe 303616 bytes

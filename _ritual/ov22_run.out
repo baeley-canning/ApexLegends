@@ -1,0 +1,73 @@
+ov22 - adapter fix (display-attached device) - 2026-11-07 10:05:37
+exe   : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\overlay_test.exe
+cwd   : C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov22_cwd (scratch, emptied first)
+pid   : 2528   exit code: 2  (0 = PASS, 2 = FAIL)
+shot  : window: "QwenKern Overlay Test" 976x659
+New-Object : Exception calling ".ctor" with "2" argument(s): "Parameter is not valid."
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:54 char:8
++ $bmp = New-Object System.Drawing.Bitmap ($r.R - $r.L), ($r.B - $r.T)
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+Exception calling "FromImage" with "1" argument(s): "Value cannot be null.
+Parameter name: image"
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:55 char:1
++ $g = [System.Drawing.Graphics]::FromImage($bmp)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentNullException
+ 
+You cannot call a method on a null-valued expression.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:56 char:1
++ $g.CopyFromScreen($r.L, $r.T, 0, 0, $bmp.Size)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+You cannot call a method on a null-valued expression.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:57 char:1
++ $bmp.Save($Out, [System.Drawing.Imaging.ImageFormat]::Png); $g.Dispos ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+You cannot call a method on a null-valued expression.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:57 char:61
++ ... Out, [System.Drawing.Imaging.ImageFormat]::Png); $g.Dispose(); $bmp.D ...
++                                                      ~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+You cannot call a method on a null-valued expression.
+At C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_win.ps1:57 char:75
++ ... stem.Drawing.Imaging.ImageFormat]::Png); $g.Dispose(); $bmp.Dispose()
++                                                            ~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+captured -> C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov22_test.png
+desk  : saved C:\Users\New User\OneDrive\Desktop\cheating\_ritual\shot_desk.png
+ocr   : 
+buffer: (no buffer dump)
+---- ov_test_result.txt ----
+overlay_test start: seconds=18 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov22_cwd size=960x620
+T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+client rect: 960x620 (requested 960x620, dpi-aware)
+debug layer: NOT available
+adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x00000000
+adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x00000000
+adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x00000000
+FAIL: no adapter could present, hr=0x80004005
+
+---- overlay_test log ----
+[10:05:37.098] ==================== session start 2026-11-07 10:05:37 pid=2528
+[10:05:37.098] [test] overlay_test start: seconds=18 outdir=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\ov22_cwd size=960x620
+[10:05:37.099] [test] T4 round-trip PASS: aimbot=1 esp=0 glow=1 recoil=0 boxes=1 names=0 lines=1
+[10:05:37.113] [test] client rect: 960x620 (requested 960x620, dpi-aware)
+[10:05:37.114] [test] debug layer: NOT available
+[10:05:42.320] [test] adapter[0] NVIDIA GeForce RTX 5060: REJECTED hr=0x80004005 removed=0x00000000
+[10:05:47.587] [test] adapter[1] Intel(R) UHD Graphics 730: REJECTED hr=0x80004005 removed=0x00000000
+[10:05:52.621] [test] adapter[2] Microsoft Basic Render Driver: REJECTED hr=0x80004005 removed=0x00000000
+[10:05:52.623] [test] FAIL: no adapter could present, hr=0x80004005
+

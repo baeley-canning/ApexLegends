@@ -1,0 +1,10 @@
+=== _mk19 solve 2026-11-09 15:02:24 (offline) ===
+dump: image_pa=0x100000000 stamp=0x0 rva=0x1000 size=0x100000 band=0x0+0x0
+screen=1920x1080  seeds=12  org readings=48
+  data: 1 MB, 1 matrix-shaped window(s)
+  candidates: 1 - scoring against 48 seed reading(s)
+  survivors (camera within 400 units of a seed): 1
+   data pa=0x0100041000 on=5/12 aspect=4 anchor=45.3 shape=col/strided
+rects written: C:\Users\New User\OneDrive\Desktop\cheating\temp\dump_unit\rects_col.txt
+RESULT: data pa=0x100041000 rva=0x41000 shape=col/strided on=5/12 aspect=4 anchor=45.3
+VERDICT: PASS - 5 rect(s) on screen, camera 45.3 units from a seed, all from one dump

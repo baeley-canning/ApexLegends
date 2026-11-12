@@ -1,0 +1,8 @@
+h329 syntax evidence 2026-11-07T19:57:27
+SYNTAX-OK _ritual\s2_stage_v14.ps1
+SYNTAX-OK _ritual\s2_load_v14.ps1
+SYNTAX-OK _ritual\h328_vadbase.ps1
+SYNTAX-OK _ritual\g329_readonly.ps1
+SYNTAX-OK _ritual\h329_vmbench.ps1
+SYNTAX-OK _ritual\h329_fire_readonly.ps1
+VERDICT: ALL-SIX-PARSE-CLEAN

@@ -1,0 +1,44 @@
+===== h312 host run 2026-11-06 21:31:00 =====
+21:31:00.740 admin=True pid=23792 host=DESKTOP-PPHFJBQ
+21:31:00.760 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+21:31:00.768 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+21:31:00.771 pre dump: exists=False
+21:31:00.782 pre minidumps=5 gui=0
+21:31:00.785 marker cleared, done-exists=True
+21:31:00.837 pre hvci=0 vbs=0 testsigning=testsigning             No
+21:31:00.845 pre blocklist ci0=
+21:31:01.106 pre disk=71.5GB free ram=31.8GB uptime=1.2h
+21:31:01.326 pre boot=06/11 20:18 build=26200
+21:31:01.331 pre exe: cur_h315_live.ps1=38970B dump-dir=C:\WINDOWS
+21:31:01.372 pre relay: 17920B
+21:31:01.380 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+21:31:01.401 arm: SUCCESS: The scheduled task "p315post" has successfully been created.
+21:31:01.423 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p315post                                 N/A                    Ready          
+21:31:01.425 RUN probe (h314 chain, TARGET = running r5apex_dx12, Phase 2)
+21:31:02.442 probe returned rc=0 (no bugcheck)
+21:31:02.449 restore auto-reboot readback=1
+21:31:02.465 disarm: SUCCESS: The scheduled task "p315post" was successfully deleted.
+21:31:02.476 post svc: The specified service does not exist as an installed service.
+21:31:02.478 RESULT: probe returned rc=0 - host did not bugcheck
+===== h312 host run 2026-11-06 21:32:18 =====
+21:32:18.818 admin=True pid=18272 host=DESKTOP-PPHFJBQ
+21:32:18.838 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+21:32:18.847 pre crashcontrol: CrashDumpEnabled=3 AutoReboot=1 AlwaysKeepMemoryDump=1 Overwrite=1 DumpFile=C:\WINDOWS\MEMORY.DMP
+21:32:18.851 pre dump: exists=False
+21:32:18.860 pre minidumps=5 gui=0
+21:32:18.863 marker cleared, done-exists=True
+21:32:18.914 pre hvci=0 vbs=0 testsigning=testsigning             No
+21:32:18.922 pre blocklist ci0=
+21:32:19.144 pre disk=71.5GB free ram=31.8GB uptime=1.2h
+21:32:19.374 pre boot=06/11 20:18 build=26200
+21:32:19.379 pre exe: cur_h315_live.ps1=38970B dump-dir=C:\WINDOWS
+21:32:19.417 pre relay: 17920B
+21:32:19.426 AUTO reboot set 0, readback=0 (was 1, post restores 1)
+21:32:19.459 arm: SUCCESS: The scheduled task "p315post" has successfully been created.
+21:32:19.483 arm readback:  Folder: \ TaskName                                 Next Run Time          Status          ======================================== ====================== =============== p315post                                 N/A                    Ready          
+21:32:19.484 RUN probe (h314 chain, TARGET = running r5apex_dx12, Phase 2)
+21:32:20.495 probe returned rc=0 (no bugcheck)
+21:32:20.501 restore auto-reboot readback=1
+21:32:20.519 disarm: SUCCESS: The scheduled task "p315post" was successfully deleted.
+21:32:20.531 post svc: The specified service does not exist as an installed service.
+21:32:20.532 RESULT: probe returned rc=0 - host did not bugcheck

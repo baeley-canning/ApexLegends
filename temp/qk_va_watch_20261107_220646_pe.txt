@@ -1,0 +1,8 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_watch_20261107_220646_pe.txt
+target pid=20268
+  driver DTB: status=0x0 valid=1 dtb=0x34c9ee000
+  driver BASE: status=0x0 source=1 base=0x7ff6cc650000
+  driver map verified: MZ at base via MmCopyMemory; cache written
+  base=0x7ff6cc650000 MZ=b'MZ'
+  PE machine=0x8664 sections=9 stamp=1792800914 SizeOfImage=0xdfb8000 (223.7 MB)

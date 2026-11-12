@@ -1,0 +1,36 @@
+===== qk_phys (physical ESP finder: health -> origin -> matrix) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_phys4.txt
+ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+screen assumption 2560x1440 (pass --w/--h to match)
+    health: 16384 chunks, 157 raw hits
+    health: 32768 chunks, 1050 raw hits
+    health: 49152 chunks, 1756 raw hits
+    health: 65536 chunks, 3244 raw hits
+    health: 81920 chunks, 4772 raw hits
+    health: 98304 chunks, 4916 raw hits
+    health: 114688 chunks, 4970 raw hits
+    health: 131072 chunks, 5155 raw hits
+    health: 147456 chunks, 5241 raw hits
+    health: 163840 chunks, 5313 raw hits
+    health: 180224 chunks, 5589 raw hits
+    health: 196608 chunks, 6276 raw hits
+    health: 212992 chunks, 7465 raw hits
+    health: 229376 chunks, 9191 raw hits
+    health: 245760 chunks, 13631 raw hits
+    health: 262144 chunks, 22496 raw hits
+    health: 278528 chunks, 32415 raw hits
+    health: 294912 chunks, 40954 raw hits
+    health: 311296 chunks, 49910 raw hits
+    health: 327680 chunks, 58476 raw hits
+    health: 344064 chunks, 63107 raw hits
+    health: 360448 chunks, 63569 raw hits
+    health: 376832 chunks, 63990 raw hits
+    health: 393216 chunks, 64379 raw hits
+    health: 409600 chunks, 64796 raw hits
+    health: 425984 chunks, 65455 raw hits
+    health: 442368 chunks, 66123 raw hits
+  raw 100.0f hits: 66456 (454581 chunks)
+  health clusters: 24462
+  health scan 49.0s
+RESULT: no-health
+VERDICT: PARTIAL - no stable 100.0f cluster (not in a match?)

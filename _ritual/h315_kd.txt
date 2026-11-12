@@ -1,0 +1,8 @@
+.sympath srv*C:\Users\New User\symbols*https://msdl.microsoft.com/download/symbols
+.reload
+!analyze -v
+.bugcheck
+lmvm zapexdrv
+lmvm DirectIo64
+!pool 0xfffffff538000000
+q

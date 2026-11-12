@@ -1,0 +1,9 @@
+19:42:56.485 ===== s2_stage_v14 (file copy only, svc untouched) =====
+19:42:56.569 PRE src= len=20480
+19:42:56.573 PRE dst= len=10152
+19:42:56.576 PRE p37z= len=17920
+19:42:56.590 svc pre: STATE              : 1  STOPPED
+19:42:56.637 POST dst= len=20480
+19:42:56.641 POST p37z= len=20480
+19:42:56.651 svc post: STATE              : 1  STOPPED
+19:42:56.652 RESULT: FAIL - post-copy hash mismatch

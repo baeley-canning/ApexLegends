@@ -1,0 +1,6 @@
+===== qk_probe v1 (PLAN stage 1: driver -> game read bridge, read-only) =====
+host=DESKTOP-PPHFJBQ probe_pid=30620 self=0 secs=60 hz=1 out=C:\Users\New User\OneDrive\Desktop\cheating\_ritual\qk_probe_game_20261107_205458.txt
+driver: ABI v14 (expect 14)
+target: NO r5apex_dx12.exe / r5apex.exe found and no --pid given
+RESULT: target-absent
+VERDICT: PARTIAL - variable = driver-backed BASE+READBUF on the game; game half SKIPPED

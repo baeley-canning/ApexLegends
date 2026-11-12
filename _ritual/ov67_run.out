@@ -1,0 +1,5 @@
+ov67 - UNELEVATED direct CreateProcessW, no suspend, no inject - 2026-11-07 13:58:12
+target  : C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+payload : C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\apexcheat.dll (346112 bytes)
+elevated: False
+kill     : pid=29184 -> ERROR: The process with PID 29184 (child process of PID 25592) could not be terminated.

@@ -1,0 +1,1 @@
+& 'C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\qk_process_query.exe' --pid 14008 *> 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h393_query.txt'; $LASTEXITCODE | Set-Content 'C:\Users\New User\OneDrive\Desktop\cheating\temp\_h393_query_rc.txt'

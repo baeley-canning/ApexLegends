@@ -1,0 +1,258 @@
+
+=== qk_live 17:01:50 09/11 mode=fake args=--fake --seconds=2 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+
+=== qk_live 17:03:09 09/11 mode=fake args=--fake --seconds=5 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+
+=== qk_live 17:07:57 09/11 mode=fake args=--fake --seconds=2 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+
+=== qk_live 17:08:43 09/11 mode=fake args=--fake --seconds=5 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+stopped by time after 5.0s: frames=286 fps=57.2 boxes=5
+RESULT: time frames=286 boxes=5
+
+=== qk_live 17:12:37 09/11 mode=check args=--check ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check
+
+=== qk_live 17:12:38 09/11 mode=check args=--check ===
+=== qk_live check 17:12:38 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0x9440b4
+census: 64 seeds, 28 hold a position, 16 dropped (44 reads)
+  seed0 0x17665b9ec  (4669.62, -0.66, 0.00)
+  seed1 0x175e57eac  (-399.92, 1.48, -0.45)
+  seed2 0x175e57edc  (-399.92, 1.00, 1.00)
+  seed3 0x15028af84  (1379.45, -1.49, 0.48)
+  seed4 0x175faf07c  (100.80, 1.00, 1.00)
+  seed5 0x175e5bebc  (-1717.51, 1.00, 1.00)
+  seed6 0x175e5be8c  (-1717.51, -0.02, -1.35)
+  seed7 0x175e592fc  (-1676.14, 1.00, 1.00)
+window @0x9440b4 +0:
+   -2.50967e-13  1.79366e-43  3.45203e-24       131073
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+window @0x9440b4 +4:
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+    1.57966e+19       13.766       13.891  4.61292e+23
+chosen lead=4 hits=28/28 boxes=0
+elapsed=0.03s reads=587 refused=0 failed=0 game_alive=True
+VERDICT: PARTIAL - hits=28 boxes=0 alive=True
+elevated child finished, exit=4
+
+=== qk_live 17:14:01 09/11 mode=check args=--check ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check
+
+=== qk_live 17:14:02 09/11 mode=check args=--check ===
+=== qk_live check 17:14:02 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0x9440b4
+census: 64 seeds, 28 hold a position, 16 dropped (44 reads)
+  seed0 0x17665b9ec  (4669.62, -0.66, 0.00)
+  seed1 0x175e57eac  (-399.92, 1.48, -0.45)
+  seed2 0x175e57edc  (-399.92, 1.00, 1.00)
+  seed3 0x15028af84  (1379.45, -1.49, 0.48)
+  seed4 0x175faf07c  (100.80, 1.00, 1.00)
+  seed5 0x175e5bebc  (-1717.51, 1.00, 1.00)
+  seed6 0x175e5be8c  (-1717.51, -0.02, -1.35)
+  seed7 0x175e592fc  (-1676.14, 1.00, 1.00)
+window @0x9440b4 +0:
+   -2.50967e-13  1.79366e-43  3.45203e-24       131073
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+window @0x9440b4 +4:
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+    1.57966e+19       13.766       13.891  4.61292e+23
+chosen lead=0 hits=0/28 boxes=0 rva=0x9440b4 wide_rva=-
+elapsed=0.02s reads=74 refused=0 failed=0 game_alive=True
+VERDICT: PARTIAL - matrix reads but projects nothing; try --wide
+elevated child finished, exit=4
+
+=== qk_live 17:14:57 09/11 mode=check args=--check --wide ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check --wide
+
+=== qk_live 17:14:57 09/11 mode=check args=--check --wide ===
+=== qk_live check 17:14:57 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0x9440b4
+census: 64 seeds, 28 hold a position, 16 dropped (44 reads)
+  seed0 0x17665b9ec  (4669.62, -0.66, 0.00)
+  seed1 0x175e57eac  (-399.92, 1.48, -0.45)
+  seed2 0x175e57edc  (-399.92, 1.00, 1.00)
+  seed3 0x15028af84  (1379.45, -1.49, 0.48)
+  seed4 0x175faf07c  (100.80, 1.00, 1.00)
+  seed5 0x175e5bebc  (-1717.51, 1.00, 1.00)
+  seed6 0x175e5be8c  (-1717.51, -0.02, -1.35)
+  seed7 0x175e592fc  (-1676.14, 1.00, 1.00)
+window @0x9440b4 +0:
+   -2.50967e-13  1.79366e-43  3.45203e-24       131073
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+window @0x9440b4 +4:
+    2.17138e-36  1.61625e+32  -1.3098e-35  2.26338e-41
+     6.5113e-05 -2.41785e+24          nan     -1050.27
+    4.02363e+18  8.70818e+17  1.39336e+19  -5.8999e-37
+    1.57966e+19       13.766       13.891  4.61292e+23
+chosen lead=4 hits=28/28 boxes=0 rva=0x9440b4 wide_rva=0x943444
+elapsed=0.03s reads=587 refused=0 failed=0 game_alive=True
+VERDICT: PARTIAL - hits=28 boxes=0 alive=True
+elevated child finished, exit=4
+
+=== qk_live 17:17:26 09/11 mode=fake args=--fake --seconds=2 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+stopped by time after 2.0s: frames=114 fps=57.0 boxes=5
+RESULT: time frames=114 boxes=5
+
+=== qk_live 18:56:36 09/11 mode=check args=--check ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check
+
+=== qk_live 18:56:36 09/11 mode=check args=--check ===
+=== qk_live check 18:56:36 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0
+census: 64 seeds, 28 hold a position, 19 dropped (47 reads)
+  seed0 0x17665b9ec  (4669.62, -0.66, 0.00)
+  seed1 0x175e57eac  (-399.92, 1.48, -0.45)
+  seed2 0x175e57edc  (-399.92, 1.00, 1.00)
+  seed3 0x175e5bebc  (-1717.51, 1.00, 1.00)
+  seed4 0x175e5be8c  (-1717.51, -0.02, -1.35)
+  seed5 0x175e592fc  (-1676.14, 1.00, 1.00)
+  seed6 0x175e592cc  (-1676.14, 2.84, 2.03)
+  seed7 0x175e59c9c  (-1674.84, 1.00, 1.00)
+window @0xb88bcb0 +0:
+              1            0            3            0
+              1            3            0         1531
+            264     0.999985   4.2039e-45            1
+              0            0            0            1
+window @0xb88bcb0 +4:
+              1            3            0         1531
+            264     0.999985   4.2039e-45            1
+              0            0            0            1
+              0            3            0            1
+chosen lead=0 hits=8/28 boxes=17 rva=0xb88bcb0 wide_rva=-
+  box0  x 4640..4649  y 522..539  d=2267
+  box1  x 6555..6569  y 514..539  d=1533
+  box2  x 5749..5762  y 514..539  d=1533
+  box3  x 5774..5787  y 514..539  d=1533
+  box4  x 2772..2777  y 530..539  d=4349
+  box5  x 5775..5788  y 514..539  d=1533
+  box6  x 5777..5790  y 514..539  d=1533
+  box7  x 4271..4275  y 532..539  d=6015
+  box8  x 4271..4275  y 532..539  d=6015
+  box9  x 4271..4275  y 532..539  d=6015
+elapsed=0.01s reads=77 refused=0 failed=0 game_alive=True
+RESULT: PASS lead=0 hits=8 boxes=17 reads=77
+VERDICT: PASS - cached image_pa/vp_rva project 17 record(s) on screen
+elevated child finished, exit=0
+
+=== qk_live 18:57:36 09/11 mode=run args=--seconds=10 ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --seconds=10
+
+=== qk_live 18:57:36 09/11 mode=run args=--seconds=10 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+census: 64 seeds, 28 hold a position, 19 dropped
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0 pid=14008
+t=5.0s frames=286 boxes=17 hits=8 reads=2831
+stopped by time after 10.0s: frames=573 fps=57.3 boxes=17 reads=5586 refused=0 failed=0
+RESULT: time frames=573 boxes=17 reads=5586 refused=0 failed=0
+elevated child finished, exit=0
+
+=== qk_live 18:59:06 09/11 mode=fake args=--fake --seconds=1 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+stopped by time after 1.0s: frames=57 fps=56.6 boxes=5
+RESULT: time frames=57 boxes=5
+
+=== qk_live 19:24:43 09/11 mode=run args=--seconds=45 ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --seconds=45
+
+=== qk_live 19:24:44 09/11 mode=run args=--seconds=45 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+census: 64 seeds, 24 hold a position, 40 dropped
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0 pid=14008
+t=5.0s frames=284 boxes=14 hits=8 reads=2439
+t=10.0s frames=570 boxes=14 hits=8 reads=4814
+key F2     fill   -> on
+t=15.0s frames=852 boxes=14 hits=8 reads=7189
+t=20.0s frames=1137 boxes=14 hits=8 reads=9564
+t=25.0s frames=1423 boxes=14 hits=8 reads=11939
+t=30.0s frames=1708 boxes=14 hits=8 reads=14314
+t=35.0s frames=1994 boxes=14 hits=8 reads=16714
+t=40.1s frames=2279 boxes=14 hits=8 reads=19089
+stopped by time after 45.0s: frames=2558 fps=56.8 boxes=14 reads=21414 refused=0 failed=0
+RESULT: time frames=2558 boxes=14 reads=21414 refused=0 failed=0
+
+=== qk_live 20:04:13 09/11 mode=fake args=--fake --seconds=2 --no-elevate ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+stopped by time after 2.0s: frames=114 fps=56.8 boxes=5
+RESULT: time frames=114 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 20:07:10 09/11 mode=check args=--check --no-elevate --seeds=0 ===
+=== qk_live check 20:07:10 ===
+game pid=14008
+gio: [Errno 5] CreateFileW \\.\GIOV3 failed (need elevation)
+VERDICT: FAIL - could not open the physical read transport
+
+=== qk_live 20:09:04 09/11 mode=check args=--check --seeds=0 ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check --seeds=0 --no-elevate
+
+=== qk_live 20:09:04 09/11 mode=check args=--check --seeds=0 --no-elevate ===
+=== qk_live check 20:09:04 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0
+source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 gate=player_type_unverified
+pipeline discovered=24 decoded=0 local_excluded=0 read_failed=0 dropped=0 skipped_unverified=24 (0 reads)
+RESULT: no eligible player candidates (reads=0)
+VERDICT: PARTIAL - no validated player candidates; rendering not evidenced
+elevated child finished, exit=4
+
+=== qk_live 20:31:01 09/11 mode=fake args=--fake --seconds=2 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+stopped by time after 2.0s: frames=114 fps=56.7 boxes=5
+RESULT: time frames=114 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 20:31:55 09/11 mode=check args=--check --seeds=0 ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check --seeds=0 --no-elevate
+
+=== qk_live 20:31:56 09/11 mode=check args=--check --seeds=0 --no-elevate ===
+=== qk_live check 20:31:56 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0
+source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 gate=player_type_unverified
+pipeline discovered=24 decoded=0 local_excluded=0 read_failed=0 dropped=0 skipped_unverified=24 (0 reads)
+RESULT: no eligible player candidates (reads=0)
+VERDICT: PARTIAL - no validated player candidates; rendering not evidenced
+elevated child finished, exit=4
+
+=== qk_live 20:49:37 09/11 mode=check args=--check --seeds=0 ===
+not elevated -> "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --check --seeds=0 --no-elevate
+
+=== qk_live 20:49:37 09/11 mode=check args=--check --seeds=0 --no-elevate ===
+=== qk_live check 20:49:37 ===
+game pid=14008
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0
+source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 unbound=0 gate=player_type_unverified
+pipeline discovered=24 decoded=0 local_excluded=0 read_failed=0 dropped=0 skipped_unverified=24 (0 reads)
+RESULT: no eligible player candidates (reads=0)
+VERDICT: PARTIAL - no validated player candidates; rendering not evidenced
+elevated child finished, exit=4
