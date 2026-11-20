@@ -1,0 +1,53 @@
+go15_fps_check start 2026-11-20 12:24:39
+interpreter: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe
+gate py_compile rc=0 
+gate regression rc=0 tail:
+  test_world_component_cannot_become_a_player_via_geometry (__main__.SourceTests.test_world_component_cannot_become_a_player_via_geometry) ... ok
+  test_zero_cap_keeps_every_remote_and_failed_reads_invalidate (__main__.SourceTests.test_zero_cap_keeps_every_remote_and_failed_reads_invalidate) ... ok
+  ----------------------------------------------------------------------
+  Ran 13 tests in 0.011s
+  OK
+  RESULT: unit-tests=13 failures=0 errors=0
+--- case baseline_60    (defaults)
+  err: Traceback (most recent call last):
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1590, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1558, in main
+    seconds = arg("seconds", 0, int)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 95, in arg
+    return cast(a.split("=", 1)[1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '8.0'
+MEASURED baseline_60 fps_max=0.0
+--- case fps_144        --fps=144
+  err: Traceback (most recent call last):
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1590, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1558, in main
+    seconds = arg("seconds", 0, int)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 95, in arg
+    return cast(a.split("=", 1)[1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '8.0'
+MEASURED fps_144 fps_max=0.0
+--- case fps_0_uncapped --fps=0
+  err: Traceback (most recent call last):
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1590, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 1558, in main
+    seconds = arg("seconds", 0, int)
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py", line 95, in arg
+    return cast(a.split("=", 1)[1])
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '8.0'
+MEASURED fps_0_uncapped fps_max=0.0
+--- judge: variable = --fps ---
+RESULT: fps variable=--fps baseline=0.0 fps144=0.0 uncapped=0.0
+VERDICT: BASELINE_ANOMALY(0.0<50) FPS144_SHORT(0.0<130) UNCAPPED_NO_GAIN_OVER_144(0.0<= 0.0+5: loop-bound) rc=0
+go15_fps_check end rc=0

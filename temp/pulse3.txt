@@ -1,0 +1,10 @@
+TIME=21:13:07
+FEED=NONE_YET
+-- EMIT_TAIL --
+    hit[3]=0x255533ff2
+    hit[4]=0x31c3fedcb
+    hit[5]=0x46e388b04
+  1 DTBs tried, none walked to an MZ image
+  PEB via NtQueryInformationProcess = 0x2b5000
+  known frames did not map the PEB - scanning
+DONE

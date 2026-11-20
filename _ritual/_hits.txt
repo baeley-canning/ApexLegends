@@ -1,5 +1,5 @@
-drv_strings.txt:2549: 0xc3502004  at 0x6a42
-ioctl_sites.txt:251: 000180001b57  ba042050c3               mov      edx, 0xc3502004
-map_ioctls.txt:118: site 0x180001B7A code=0xC3502004 owner=0x180001AF0 b'MapMemEx'
-map_ioctls.txt:130: 000180001b57  ba042050c3               mov      edx, 0xc3502004
-YccDrvv3.dll.dis.txt:955: 000180001b57  ba042050c3               mov      edx, 0xc3502004
+67:     delegate int PFN_RVE(IntPtr h, IntPtr a, byte[] b, IntPtr n, uint f, out IntPtr got);
+68:     delegate int PFN_WOW(IntPtr h, ulong a, byte[] b, ulong n, out ulong got);
+69:     static PFN_RVE _rve; static PFN_WOW _wow; static bool _res;
+125:         if (p1 != IntPtr.Zero) _rve = (PFN_RVE)Marshal.GetDelegateForFunctionPointer(p1, typeof(PFN_RVE));
+127:         if (p2 != IntPtr.Zero) _wow = (PFN_WOW)Marshal.GetDelegateForFunctionPointer(p2, typeof(PFN_WOW));

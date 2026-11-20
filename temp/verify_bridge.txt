@@ -1,0 +1,36 @@
+TIME=21:51:09
+--LAUNCH--
+BRIDGE_LAUNCH 21:50:37
+BRIDGE_PID=20652
+ARGS=-u "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --from-feed --seconds=1500
+BRIDGE_ALIVE2S=True
+--- watcher swap ---
+STOPFILE
+V2END 21:50:39 armed=0
+WATCH2_RELAUNCHED=21:50:45
+SEQ_COMPLETE
+--BRIDGE_OUT_HEAD--
+
+=== qk_live 21:50:37 19/11 mode=run args=--from-feed --seconds=1500 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=569 file-feed unreadable(FileNotFoundError)
+--BRIDGE_OUT_TAIL--
+t=10.0s frames=569 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=854 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1138 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1423 file-feed unreadable(FileNotFoundError)
+t=30.1s frames=1708 file-feed unreadable(FileNotFoundError)
+--BRIDGE_ERR--
+--EV2--
+V2LIFT 21:44:51
+STOPFILE
+V2END 21:50:39 armed=0
+V2LIFT 21:50:45
+--EMIT_NOW--
+      tried 240000/250000 frames (1219s)
+    (time cap reached)
+  no frame mapped the PEB to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+DONE

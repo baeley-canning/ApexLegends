@@ -1,0 +1,44 @@
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_20261120_171652.txt
+target pid=23636
+  transport: gdrv3 only (no custom driver exists on this path any more)
+  discovering DTB for pid 23636 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+    name hits=1 chunks=454583 skipped=510566 rescued=572522
+    hit[0]=0x2aedfd6d0
+  0 DTBs tried, none walked to an MZ image
+  PEB via NtQueryInformationProcess = 0x2a9000
+  known frames did not map the PEB - scanning
+    window 0x0400000000..0x0800000000 -> 250001 frames
+      tried 20000/250001 frames (694s)
+      tried 40000/250001 frames (715s)
+      tried 60000/250001 frames (722s)
+      tried 80000/250001 frames (728s)
+      tried 100000/250001 frames (731s)
+      tried 120000/250001 frames (744s)
+      tried 140000/250001 frames (748s)
+      tried 160000/250001 frames (753s)
+      tried 180000/250001 frames (781s)
+      tried 200000/250001 frames (783s)
+      tried 220000/250001 frames (790s)
+      tried 240000/250001 frames (794s)
+    window 0x0300000000..0x0400000000 -> 239626 frames
+      tried 20000/239626 frames (1124s)
+      tried 40000/239626 frames (1133s)
+      tried 60000/239626 frames (1143s)
+      tried 80000/239626 frames (1148s)
+      tried 100000/239626 frames (1154s)
+      tried 120000/239626 frames (1160s)
+      tried 140000/239626 frames (1163s)
+      tried 160000/239626 frames (1170s)
+      tried 180000/239626 frames (1174s)
+      tried 200000/239626 frames (1176s)
+      tried 220000/239626 frames (1178s)
+    (time cap reached)
+  no frame mapped the PEB to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+    page-table-shaped frames: 60000
+    (walk cap: 240 s)
+    walks that reached a PE: 0
+RESULT: no-dtb
+VERDICT: FAIL - page tables not resolved (the pid scan output above says why)

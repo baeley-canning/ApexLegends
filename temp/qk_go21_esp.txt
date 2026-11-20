@@ -1,0 +1,44 @@
+===== qk_esp producer: pos @ name-0xeec, angles @ name+0x3a4/0x3a8, 1920x1080 fov=90 =====
+ring Local\qk_boxes mapped (6160 bytes)
+local name hits with a readable 3-float field: 12012 (44.4s)
+mate entities (raw): 13828
+mate entities (deduped by position): 207
+dbg it=0 begin
+vp from image_pa=0x48c6bd000 rva=0xdaf8858 : m15=4096.0000 m11=1.0000
+dbg it=0 mat ok
+dbg it=0 feed ok geoms=207 state=
+dbg it=1 begin
+dbg it=1 mat ok
+dbg it=1 feed ok geoms=207 state=
+dbg it=2 begin
+dbg it=2 mat ok
+dbg it=2 feed ok geoms=207 state=
+dbg it=3 begin
+dbg it=3 mat ok
+dbg it=3 feed ok geoms=207 state=
+dbg it=4 begin
+dbg it=4 mat ok
+dbg it=4 feed ok geoms=207 state=
+dbg it=5 begin
+dbg it=5 mat ok
+dbg it=5 feed ok geoms=207 state=
+frame 10 boxes=207 m15=4096.000 m11=1.000 
+frame 20 boxes=207 m15=4096.000 m11=1.000 
+frame 30 boxes=207 m15=4096.000 m11=1.000 
+frame 40 boxes=207 m15=4096.000 m11=1.000 
+frame 50 boxes=207 m15=4096.000 m11=1.000 
+frame 60 boxes=207 m15=4096.000 m11=1.000 
+frame 70 boxes=9715 m15=4096.000 m11=1.000 
+frame 80 boxes=9715 m15=4096.000 m11=1.000 
+frame 90 boxes=9715 m15=4096.000 m11=1.000 
+frame 100 boxes=9715 m15=4096.000 m11=1.000 
+frame 110 boxes=9715 m15=4096.000 m11=1.000 
+frame 120 boxes=9715 m15=4096.000 m11=1.000 
+frame 130 boxes=18370 m15=4096.000 m11=1.000 
+frame 140 boxes=18370 m15=4096.000 m11=1.000 
+frame 150 boxes=18370 m15=4096.000 m11=1.000 
+frame 160 boxes=18370 m15=4096.000 m11=1.000 
+frame 170 boxes=18370 m15=4096.000 m11=1.000 
+frame 180 boxes=18370 m15=4096.000 m11=1.000 
+producer done, frames=181
+exit=0

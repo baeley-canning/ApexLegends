@@ -5,9 +5,22 @@ post-Javelin (2026-09-29) anti-cheat stack. Two halves: **`QwenKernPremium/`** (
 injectors and the kernel driver `apexdrv`) and **`_ritual/`** (the PowerShell probe harness that was
 used to measure the live anti-cheat on this machine, plus its raw output).
 
-> Everything here is date-stamped. Start with `QwenKernPremium/docs/KB_INDEX_2026.txt` — it is the map.
+> Everything here is date-stamped.
 
-## Status — 2026-11-01 21:22, this machine
+> **STATUS 2026-11-20: for CURRENT truth, start at `HANDOFF.md` (STANDING MAP preamble) ->
+> `PLAN.md` (next step) -> `FACTS.md` (proven facts).** The Status table + Open Work below are
+> **FROZEN AS OF 2026-11-01** — kept for transport-gate archaeology (the testsigning/apexdrv era).
+> They do NOT describe the present: since then the reader became parasitic `gdrv3` (19/11), the
+> external `ext/qk_live.py` overlay lane went live, and the roadmap moved to PLAN.md's M1-M4.
+> KB start-map `QwenKernPremium/docs/KB_INDEX_2026.txt` remains the research-KB index.
+>
+> **POST-PATCH UPDATE 2026-11-20:** the ESP chain is re-fed on the 13/11 exe via the static-offset
+> lane — matrix election PROVEN end-to-end to the overlay ring (ten 68/68-inlier candidates, winner
+> `vp=0x0DAF8858`), while in-game visual verification, names, health and any aiming feature remain
+> UNCLAIMED. Receipts with a claim-by-claim index: `docs/evidence/2026-11-20_go21/INDEX.md`;
+> the gating next test is the camera-motion veto in `PLAN.md` (20/11 19:3x section).
+
+## Status — 2026-11-01 21:22, this machine  *(frozen 11/01 — see status banner above)*
 
 | Area | State |
 |------|-------|
@@ -43,9 +56,16 @@ used to measure the live anti-cheat on this machine, plus its raw output).
 | `QwenKernPremium/` | the product: `driver/apexdrv.c` (kernel), `launcher/launcher_main.cpp`, `src/` (overlay, injectors, ACG probe), `include/`, `docs/`, `tools/`, `build/` |
 | `QwenKernPremium/docs/` | research + findings KB — read `KB_INDEX_2026.txt` first |
 | `_ritual/` | probes, captures and raw evidence — see `_ritual/README.md` |
-| `QwenKern/` | earlier research tree (driver projects, KB, external RE lists) |
-| `Qwen Knowledge base/`, `Qwen General Knowledge/` | loose notes |
-| `generated_cheats/`, `deepseekharness/`, `Sentinel/`, `ext/`, `temp/` | Python prototypes, harnesses, scratch |
+| `ext/` | **live python lane** (current era): `qk_live.py` overlay feed (+ `gio.py`, `dumplive.py`, earlier probes) |
+| `temp/` | scratch + evidence — **read `temp/README.md` first** (naming grammar, attics, do-not-move list) |
+| `docs/` | `ref/` (HISTORICAL corpus plans — `PLAN_MASTER.md` etc.; root `PLAN.md` governs), `probes/` (h392 experiments), `NEWACCT.md`, `WORKORDER.md` |
+| Root ledgers | `AGENTS.md` (law) · `HANDOFF.md` (orientation; STANDING MAP at top) · `PLAN.md` (next step) · `FACTS.md` (truth table) · `STATE.md` (append-only log) |
+| `QwenKern/` | earlier research tree (driver projects, KB, external RE lists) — still consulted (active mtime 19/11) |
+| `Qwen Knowledge base/`, `Qwen General Knowledge/` | loose notes (older) |
+| `btc/` (+ root `_btc_*` files) | separate side-project (trading probes) — NOT part of the Apex lane |
+| `cheatv2/` | standalone experiment tree (mtime 14/11) |
+| `agent/`, `harness/`, `deepseekharness/`, `generated_cheats/`, `Sentinel/`, `artefacts/` | earlier prototype/harness generations + per-probe bundles (mostly ≤11/08; `artefacts/p98/` health-feed contract) |
+| `_attic_apexdrv/` | retired apexdrv-era artifacts with sha manifests (established attic pattern) |
 
 ## Build
 
@@ -126,5 +146,8 @@ Run one with `_ritual\runNN.cmd`.
 
 - 2026-11-01: first real README (repo previously had a one-line stub). Records the gate, what is proven
   vs not proven, and points at the findings doc instead of repeating it.
+- 2026-11-20: repo sorted (legacy/ dir, evidence bundle under docs/evidence/, giant-artifact
+  ignores); STATUS banner updated for the post-patch static-offset ESP lane; whole tree pushed to
+  github.com/baeley-canning/ApexLegends (branch main).
 
 

@@ -1,0 +1,16 @@
+RESULT: needle='Nessie' hits=9810 ents=68 (45.0s) pdelta=0xeec
+RESULT: seeds=8 loosened=1297 total=1301
+ELECT: rva=0x0daf8858 inliers=68/68
+ELECT: rva=0x0dc1b3b8 inliers=68/68
+ELECT: rva=0x0dc1f528 inliers=68/68
+ELECT: rva=0x0dc20ca0 inliers=68/68
+ELECT: rva=0x0dc246fc inliers=68/68
+ELECT: rva=0x0dc24d10 inliers=68/68
+ELECT: rva=0x0dd3032c inliers=68/68
+ELECT: rva=0x0dd3064c inliers=68/68
+ELECT: rva=0x0dd3096c inliers=68/68
+ELECT: rva=0x0dd30c8c inliers=68/68
+ELECT: rva=0x0dc1d144 inliers=67/68
+ELECT: rva=0x0dc1d7a0 inliers=67/68
+RESULT: best rva=0x0daf8858 inliers=68/68
+VERDICT: FRONT-RUNNER

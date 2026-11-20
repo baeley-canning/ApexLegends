@@ -1,0 +1,56 @@
+h414 start 2026-11-20 08:49:44 py=3.12.10
+ram map: 5 ranges (map=5 bad=0)
+targets=svchost.exe(1680), svchost.exe(1824), svchost.exe(1876), dwm.exe(1960), svchost.exe(1224), svchost.exe(1872), svchost.exe(2056), svchost.exe(2068), svchost.exe(2076), svchost.exe(2084), svchost.exe(2136), svchost.exe(2256), svchost.exe(2264), svchost.exe(2488), svchost.exe(2724), svchost.exe(2764), svchost.exe(2972), svchost.exe(2500), svchost.exe(3040), svchost.exe(3176), svchost.exe(3248), svchost.exe(3276), svchost.exe(3304), svchost.exe(3500), svchost.exe(3512), svchost.exe(3524), svchost.exe(3616), svchost.exe(3624), svchost.exe(3632), svchost.exe(3732), svchost.exe(3796), svchost.exe(3840), svchost.exe(3848), svchost.exe(3856), svchost.exe(4024), svchost.exe(4032), svchost.exe(3820), svchost.exe(4220), svchost.exe(4288), svchost.exe(4428), svchost.exe(4720), svchost.exe(4856), svchost.exe(4876), svchost.exe(4884), svchost.exe(4904), svchost.exe(4912), svchost.exe(4984), svchost.exe(5028), svchost.exe(5452), svchost.exe(8160), svchost.exe(8324), svchost.exe(9180), svchost.exe(9188), svchost.exe(9344), svchost.exe(9616), svchost.exe(9732), svchost.exe(9852), svchost.exe(10272), svchost.exe(10696), svchost.exe(10768), explorer.exe(11068), svchost.exe(10844), svchost.exe(9096), svchost.exe(11416), svchost.exe(11504), svchost.exe(11816), svchost.exe(12624), msedgewebview2.exe(13836), msedgewebview2.exe(14000), msedgewebview2.exe(14888), msedgewebview2.exe(14896), msedgewebview2.exe(15076), msedgewebview2.exe(15220), svchost.exe(14520), svchost.exe(16316), svchost.exe(18696), msedgewebview2.exe(18908), msedgewebview2.exe(18856), msedgewebview2.exe(19148), msedgewebview2.exe(18340), msedgewebview2.exe(19176), msedgewebview2.exe(19408), svchost.exe(7144), svchost.exe(9828), svchost.exe(18772), svchost.exe(12396), svchost.exe(23208), svchost.exe(14176), svchost.exe(8524), svchost.exe(2904), svchost.exe(16796), svchost.exe(5828), svchost.exe(12204), svchost.exe(480), python.exe(10628), python.exe(15908), python.exe(22216), python.exe(6376), svchost.exe(7156), svchost.exe(22812), svchost.exe(22212), svchost.exe(3956), python.exe(22668)
+[svchost.exe 1680] peb_nt=0xf93358c000
+[svchost.exe 1680] band 0x400000000-0x800000000 hits=100 sk=514145 (50s)
+[svchost.exe 1680] probing 100 hits (NO crop)
+[svchost.exe 1680] phase carve=49.6s cand=0.1s gates={'type_not3': 12747, 'type3_seen': 53, 'dtb_out': 35, 'prio_out': 18}
+[svchost.exe 1824] peb_nt=0x1bc8bc5000
+[svchost.exe 1824] band 0x400000000-0x800000000 hits=134 sk=410304 (43s)
+[svchost.exe 1824] probing 134 hits (NO crop)
+[svchost.exe 1824] phase carve=42.8s cand=0.2s gates={'type_not3': 17094, 'type3_seen': 58, 'dtb_out': 39, 'prio_out': 19}
+[svchost.exe 1876] peb_nt=0xf863347000
+[svchost.exe 1876] band 0x400000000-0x800000000 hits=146 sk=432427 (43s)
+[svchost.exe 1876] probing 146 hits (NO crop)
+[svchost.exe 1876] phase carve=42.6s cand=0.2s gates={'type_not3': 18622, 'type3_seen': 66, 'dtb_out': 44, 'prio_out': 22}
+[dwm.exe 1960] peb_nt=0xeb8db20000
+[dwm.exe 1960] band 0x400000000-0x800000000 hits=32 sk=482311 (45s)
+[dwm.exe 1960] probing 32 hits (NO crop)
+[dwm.exe 1960] phase carve=44.8s cand=0.0s gates={'type_not3': 4086, 'type3_seen': 10, 'dtb_out': 7, 'prio_out': 3}
+[svchost.exe 1224] peb_nt=0x6621bf9000
+[svchost.exe 1224] band 0x400000000-0x800000000 hits=125 sk=391926 (43s)
+[svchost.exe 1224] probing 125 hits (NO crop)
+[svchost.exe 1224] phase carve=43.0s cand=0.2s gates={'type_not3': 15831, 'type3_seen': 41, 'dtb_out': 30, 'prio_out': 11, 'win_fault': 128}
+[svchost.exe 1872] peb_nt=0x53c010b000
+[svchost.exe 1872] band 0x400000000-0x800000000 hits=108 sk=298706 (41s)
+[svchost.exe 1872] probing 108 hits (NO crop)
+[svchost.exe 1872] phase carve=40.7s cand=0.1s gates={'type_not3': 13779, 'type3_seen': 45, 'prio_out': 14, 'dtb_out': 31}
+[svchost.exe 2056] peb_nt=0x6802ee2000
+[svchost.exe 2056] band 0x400000000-0x800000000 hits=126 sk=709617 (49s)
+[svchost.exe 2056] probing 126 hits (NO crop)
+[svchost.exe 2056] phase carve=48.6s cand=0.2s gates={'type_not3': 16070, 'type3_seen': 58, 'prio_out': 20, 'dtb_out': 38}
+[svchost.exe 2068] peb_nt=0xfb403b6000
+[svchost.exe 2068] band 0x400000000-0x800000000 hits=127 sk=363479 (42s)
+[svchost.exe 2068] probing 127 hits (NO crop)
+[svchost.exe 2068] phase carve=42.3s cand=0.2s gates={'type_not3': 16205, 'type3_seen': 51, 'dtb_out': 34, 'prio_out': 17}
+[svchost.exe 2076] peb_nt=0x440f43a000
+[svchost.exe 2076] band 0x400000000-0x800000000 hits=127 sk=604102 (47s)
+[svchost.exe 2076] probing 127 hits (NO crop)
+[svchost.exe 2076] phase carve=46.8s cand=0.2s gates={'type_not3': 16210, 'type3_seen': 46, 'dtb_out': 29, 'prio_out': 17}
+[svchost.exe 2084] peb_nt=0x6bcc6f3000
+[svchost.exe 2084] band 0x400000000-0x800000000 hits=99 sk=606970 (46s)
+[svchost.exe 2084] probing 99 hits (NO crop)
+[svchost.exe 2084] phase carve=46.5s cand=0.1s gates={'type_not3': 12624, 'type3_seen': 48, 'dtb_out': 32, 'prio_out': 16}
+[svchost.exe 2136] peb_nt=0xd6be42000
+[svchost.exe 2136] band 0x400000000-0x800000000 hits=132 sk=691198 (48s)
+[svchost.exe 2136] probing 132 hits (NO crop)
+[svchost.exe 2136] time budget: stopped at hit 0/132
+[svchost.exe 2136] phase carve=47.9s cand=0.0s gates={}
+[budget] global deadline hit; stopping target loop
+--- objs_confirmed=0 walk_attempts=0
+--- reads: ok=0 faults=0 geo=0 np=0 depth4=0 last=-
+--- gates: {'type_not3': 286536, 'type3_seen': 952, 'dtb_out': 638, 'prio_out': 314, 'win_fault': 256}
+--- notes: {}
+--- elapsed 497.2s
+VERDICT: DAMAGED
+h414 end rc=4

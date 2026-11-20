@@ -1,0 +1,9 @@
+CRASH LOG
+Timestamp: 2026-11-13 19:46:41
+Host: DESKTOP-PPHFJBQ (Windows 11 26200)
+Run: cheatv2.exe Phase 1 elevated physical memory test
+Command: Python ShellExecuteW("runas") -> cheatv2.exe
+Result: Host desktop session crashed (UAC/session switch failure)
+Symptom: UAC prompt caused desktop session crash, multiple crashes across different elevated launch methods
+Device: \\.\GIOV3 (DBUtilDrv2 running, confirmed via sc query)
+Notes: 4+ crashes total from elevated runs on this host. VM rule now strengthened.

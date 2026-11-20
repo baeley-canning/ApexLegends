@@ -1,0 +1,11 @@
+h413 start 2026-11-20 08:41:34 py=3.12.10
+ram map: map=5 bad=25 (5 ranges)
+targets=explorer.exe(11068), dwm.exe(1960), python.exe(3920), msedgewebview2.exe(11136), svchost.exe(2560)
+[explorer.exe 11068] band 0x400000000-0x800000000 hits=72 sk=455940 (48s)
+[dwm.exe 1960] band 0x400000000-0x800000000 hits=32 sk=609454 (48s)
+[python.exe 3920] band 0x400000000-0x800000000 hits=36 sk=607273 (46s)
+[msedgewebview2.exe 11136] no PEB via NtQuery (skipping)
+[svchost.exe 2560] band 0x400000000-0x800000000 hits=73 sk=346959 (42s)
+--- carved=4 targets, ok_reads=0 faults=0 last=- (184s)
+VERDICT: DAMAGED
+h413 end rc=4

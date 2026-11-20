@@ -1,0 +1,18 @@
+TIME=21:42:50
+FEED=NONE_YET
+DTBCACHE=False
+PROD11932=True
+R5=1
+--EMIT--
+      tried 160000/250000 frames (1202s)
+      tried 180000/250000 frames (1206s)
+      tried 200000/250000 frames (1213s)
+      tried 220000/250000 frames (1216s)
+      tried 240000/250000 frames (1219s)
+    (time cap reached)
+  no frame mapped the PEB to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+--EV--
+LIFT 21:16:08
+END 21:41:47
+DONE

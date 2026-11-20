@@ -1,0 +1,18 @@
+TIME=21:18:35
+FEED=NONE_YET
+PROD11932=True
+R5=1
+-- EMIT_TAIL --
+    hit[2]=0x224f623b8
+        d=0x338 base=0x224f62080 typebyte=0x3 dtb=0x3856ea000  <-- plausible frame
+    hit=0x224f623b8: 1 DTB candidate(s) from the EPROCESS header
+      try dtb@0x224f620a8=0x3856ea000 (name_off=0x338) -> no PE
+    hit[3]=0x255533ff2
+    hit[4]=0x31c3fedcb
+    hit[5]=0x46e388b04
+  1 DTBs tried, none walked to an MZ image
+  PEB via NtQueryInformationProcess = 0x2b5000
+  known frames did not map the PEB - scanning
+-- WATCH_EVENTS --
+LIFT 21:16:08
+DONE

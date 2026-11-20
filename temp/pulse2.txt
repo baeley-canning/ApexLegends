@@ -1,0 +1,15 @@
+TIME=21:11:32
+FEED=NONE_YET
+-- EMIT_TAIL --
+===== qk_va v1 (zero-attach VA read: gdrv3 physical + own page walk) =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_20261119_210705.txt
+target pid=25548
+  transport: gdrv3 only (no custom driver exists on this path any more)
+  discovering DTB for pid 25548 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+-- LIVE_TAIL --
+t=250.5s frames=14049 file-feed unreadable(FileNotFoundError)
+t=255.5s frames=14333 file-feed unreadable(FileNotFoundError)
+t=260.5s frames=14617 file-feed unreadable(FileNotFoundError)
+t=265.5s frames=14902 file-feed unreadable(FileNotFoundError)
+DONE

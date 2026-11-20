@@ -5,6 +5,8 @@
 **Research Period:** October 14-22, 2026  
 **Build Target:** Build 25682878 (Season 30) and later  
 
+> **Provenance Correction (Nov 19, 2026):** The "Sato-Isolated" source in Section 1 cites offsets from a July-2021 binary (`TimeDateStamp=0x60ff32d2`, `GameVersion=v3.0.9.135`) — quarantined as a fossil, do not score against live builds. Current live-build authority is build **26445400** (EXE on disk dated 2026-11-13); offset reconciliation and the adjudication protocol live in `temp\offsets_reconcile_26445400.md`.
+
 ---
 
 ## Executive Summary
@@ -56,9 +58,8 @@ float* p_ViewMatrix = (float*)(p_ViewRender + *(int*)(pattern.address + 43));
 
 ---
 
-### Source: GitHub - Sato-Isolated/apex-offset (Verified Oct 6, 2026)
-**Latest Commit Date:** October 6, 2026  
-**Status:** Active, maintained repository with Season 30 compatibility
+### Source: GitHub - Sato-Isolated/apex-offset ⚠️ QUARANTINED — 2021 FOSSIL
+**Citation Status (corrected Nov 19, 2026):** This section was originally labeled "Verified Oct 6, 2026 / Active, maintained repository with Season 30 compatibility." Forensic check of the actual repo files contradicts this: `Offset.h` carries `TimeDateStamp=0x60ff32d2` and `GameVersion=v3.0.9.135` — a **July 2021 binary**, roughly five seasons before the build this document targets. Treat every value below as historical/unverified. Confidence rank: lowest (per `temp\offsets_reconcile_26445400.md` ledger, Set C).
 
 #### Concrete Offset Values
 ```cpp

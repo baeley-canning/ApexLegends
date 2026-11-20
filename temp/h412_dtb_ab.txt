@@ -1,0 +1,15 @@
+h412 start 2026-11-20 08:29:13 py=3.12.10
+ram map: map=5 bad=25 (5 ranges) top=0x800000000
+specimens=2
+  SP pid=11192 dtb=0x3ad092000 base=0x7ff7049d0000 src=qk_dtb_11192.txt
+  SP pid=20268 dtb=0x34c9ee000 base=0x7ff6cc650000 src=qk_dtb_20268.txt
+[11192] frame SHUT [Errno 1450] phys read 0x3ad092000+0x1000 failed
+[11192] base walk -> None (fault lvl39: [Errno 1450] phys read 0x3ad0927f8+0x8 failed)
+[11192] +3MB walk -> None (fault lvl39: [Errno 1450] phys read 0x3ad0927f8+0x8 failed)
+[20268] frame OPEN e0=0x6b63616220656854
+[20268] base walk -> None (guard-refused child pa=0x9006800200000)
+[20268] +3MB walk -> None (guard-refused child pa=0x9006800200000)
+--- tally: specimens=2 ok_base_leaf=0 ok_reads=4 faults=3 (0.0s)
+last_fault=[Errno 1450] phys read 0x3ad0927f8+0x8 failed
+VERDICT: FAULT_WEDGE
+h412 end rc=4

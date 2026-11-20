@@ -1,0 +1,17 @@
+max_concurrency = 4
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+
+# Documentation examples are not catalog entries.
+# intel.com returns 403 to automated clients; the Pin page was verified manually.
+# reddit.com returns 403 to GitHub Actions runners; the subreddit resolves elsewhere.
+# Chrome DevTools rejects automated clients with 403; official content was
+# retrieved on 2026-10-13. Recheck this exact URL by 2026-11-13; see
+# docs/priority-candidates.md for the observation and review boundary.
+exclude = [
+  '^https://example\.com/',
+  '^https://www\.intel\.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool\.html$',
+  '^https://www\.reddit\.com/r/ReverseEngineering/$',
+  '^https://developer\.chrome\.com/docs/devtools/$',
+]

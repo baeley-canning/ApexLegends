@@ -1,0 +1,9 @@
+BRIDGE_LAUNCH 21:50:37
+BRIDGE_PID=20652
+ARGS=-u "C:\Users\New User\OneDrive\Desktop\cheating\ext\qk_live.py" --from-feed --seconds=1500
+BRIDGE_ALIVE2S=True
+--- watcher swap ---
+STOPFILE
+V2END 21:50:39 armed=0
+WATCH2_RELAUNCHED=21:50:45
+SEQ_COMPLETE

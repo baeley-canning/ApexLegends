@@ -1,0 +1,12 @@
+=== QK_PLAYER_PROBE BUILD - 2026-11-18 22:19:30 ===
+cl      : C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+link    : C:\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\link.exe
+kit     : 10.0.26100.0
+--- cl qk_player_probe.cpp exit=0
+qk_player_probe.cpp
+--- cl qk_drvread.cpp exit=0
+qk_drvread.cpp
+--- link exit=0
+LINK_EXIT=0
+warnings: 0
+artifact: C:\Users\New User\OneDrive\Desktop\cheating\QwenKernPremium\build\qk_player_probe.exe (176128 bytes)

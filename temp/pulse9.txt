@@ -1,0 +1,14 @@
+TIME=21:48:40
+PROD11932=True
+--EMIT--
+      tried 160000/250000 frames (1202s)
+      tried 180000/250000 frames (1206s)
+      tried 200000/250000 frames (1213s)
+      tried 220000/250000 frames (1216s)
+      tried 240000/250000 frames (1219s)
+    (time cap reached)
+  no frame mapped the PEB to an MZ image
+  discovering DTB by page-table shape (27 GB pass, ~2-3 min) ...
+--EV2--
+V2LIFT 21:44:51
+DONE

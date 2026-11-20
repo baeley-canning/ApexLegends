@@ -1,0 +1,19 @@
+TIME=21:10:23
+FEED=NONE_YET
+GAME_ALIVE=1
+-- EMIT_TAIL --
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_va_20261119_210705.txt
+target pid=25548
+  transport: gdrv3 only (no custom driver exists on this path any more)
+  discovering DTB for pid 25548 (name sweep + frame scan, ~2-3 min) ...
+    ram_top=0x800000000 ranges=5 (map=5 bad=25) usable=27.7 GB
+-- EMIT_ERR --
+-- LIVE_TAIL --
+t=165.3s frames=9257 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9534 file-feed unreadable(FileNotFoundError)
+t=175.3s frames=9818 file-feed unreadable(FileNotFoundError)
+t=180.3s frames=10102 file-feed unreadable(FileNotFoundError)
+t=185.3s frames=10376 file-feed unreadable(FileNotFoundError)
+t=190.3s frames=10660 file-feed unreadable(FileNotFoundError)
+t=195.4s frames=10944 file-feed unreadable(FileNotFoundError)
+DONE

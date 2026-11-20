@@ -256,3 +256,1391 @@ pipeline discovered=24 decoded=0 local_excluded=0 read_failed=0 dropped=0 skippe
 RESULT: no eligible player candidates (reads=0)
 VERDICT: PARTIAL - no validated player candidates; rendering not evidenced
 elevated child finished, exit=4
+
+=== qk_live 19:49:30 19/11 mode=run args=--from-feed --seconds=1 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+
+=== qk_live 19:51:21 19/11 mode=run args=--from-feed --seconds=1 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+stopped by time after 1.0s: frames=57 fps=56.1 boxes=0
+RESULT: time frames=57 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 19:51:59 19/11 mode=run args=--from-feed --seconds=1 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+stopped by time after 1.0s: frames=57 fps=56.6 boxes=0
+RESULT: time frames=57 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 19:53:11 19/11 mode=run args=--from-feed --seconds=1 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+stopped by time after 1.0s: frames=57 fps=56.2 boxes=4
+RESULT: time frames=57 boxes=4
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 21:07:06 19/11 mode=run args=--from-feed --seconds=330 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=262 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=538 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=821 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1103 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1384 file-feed unreadable(FileNotFoundError)
+t=30.0s frames=1667 file-feed unreadable(FileNotFoundError)
+t=35.0s frames=1951 file-feed unreadable(FileNotFoundError)
+t=40.0s frames=2235 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2518 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2802 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3086 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3369 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3653 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=3937 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4221 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4505 file-feed unreadable(FileNotFoundError)
+t=85.1s frames=4790 file-feed unreadable(FileNotFoundError)
+t=90.2s frames=5074 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5357 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5635 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=5913 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6190 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6466 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6741 file-feed unreadable(FileNotFoundError)
+key F6     colour -> green
+t=125.2s frames=7013 file-feed unreadable(FileNotFoundError)
+t=130.2s frames=7297 file-feed unreadable(FileNotFoundError)
+t=135.2s frames=7581 file-feed unreadable(FileNotFoundError)
+t=140.3s frames=7864 file-feed unreadable(FileNotFoundError)
+t=145.3s frames=8138 file-feed unreadable(FileNotFoundError)
+t=150.3s frames=8420 file-feed unreadable(FileNotFoundError)
+t=155.3s frames=8700 file-feed unreadable(FileNotFoundError)
+t=160.3s frames=8979 file-feed unreadable(FileNotFoundError)
+t=165.3s frames=9257 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9534 file-feed unreadable(FileNotFoundError)
+t=175.3s frames=9818 file-feed unreadable(FileNotFoundError)
+t=180.3s frames=10102 file-feed unreadable(FileNotFoundError)
+t=185.3s frames=10376 file-feed unreadable(FileNotFoundError)
+t=190.3s frames=10660 file-feed unreadable(FileNotFoundError)
+t=195.4s frames=10944 file-feed unreadable(FileNotFoundError)
+t=200.4s frames=11229 file-feed unreadable(FileNotFoundError)
+t=205.4s frames=11511 file-feed unreadable(FileNotFoundError)
+t=210.4s frames=11795 file-feed unreadable(FileNotFoundError)
+t=215.4s frames=12074 file-feed unreadable(FileNotFoundError)
+t=220.4s frames=12358 file-feed unreadable(FileNotFoundError)
+t=225.4s frames=12641 file-feed unreadable(FileNotFoundError)
+t=230.4s frames=12919 file-feed unreadable(FileNotFoundError)
+t=235.4s frames=13203 file-feed unreadable(FileNotFoundError)
+t=240.4s frames=13487 file-feed unreadable(FileNotFoundError)
+t=245.5s frames=13771 file-feed unreadable(FileNotFoundError)
+t=250.5s frames=14049 file-feed unreadable(FileNotFoundError)
+t=255.5s frames=14333 file-feed unreadable(FileNotFoundError)
+t=260.5s frames=14617 file-feed unreadable(FileNotFoundError)
+t=265.5s frames=14902 file-feed unreadable(FileNotFoundError)
+t=270.5s frames=15185 file-feed unreadable(FileNotFoundError)
+t=275.5s frames=15466 file-feed unreadable(FileNotFoundError)
+t=280.5s frames=15746 file-feed unreadable(FileNotFoundError)
+t=285.5s frames=16031 file-feed unreadable(FileNotFoundError)
+t=290.6s frames=16314 file-feed unreadable(FileNotFoundError)
+t=295.6s frames=16598 file-feed unreadable(FileNotFoundError)
+t=300.6s frames=16883 file-feed unreadable(FileNotFoundError)
+t=305.6s frames=17167 file-feed unreadable(FileNotFoundError)
+t=310.6s frames=17450 file-feed unreadable(FileNotFoundError)
+t=315.6s frames=17734 file-feed unreadable(FileNotFoundError)
+t=320.6s frames=18016 file-feed unreadable(FileNotFoundError)
+t=325.6s frames=18300 file-feed unreadable(FileNotFoundError)
+stopped by time after 330.0s: frames=18551 fps=56.2 boxes=0
+RESULT: time frames=18551 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only); game present during consume
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 21:50:37 19/11 mode=run args=--from-feed --seconds=1500 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=569 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=854 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1138 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1423 file-feed unreadable(FileNotFoundError)
+t=30.1s frames=1708 file-feed unreadable(FileNotFoundError)
+t=35.1s frames=1992 file-feed unreadable(FileNotFoundError)
+t=40.1s frames=2276 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2561 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2845 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3128 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3412 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3696 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=3980 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4264 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4549 file-feed unreadable(FileNotFoundError)
+t=85.1s frames=4833 file-feed unreadable(FileNotFoundError)
+t=90.2s frames=5117 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5401 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5685 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=5969 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6253 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6537 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6821 file-feed unreadable(FileNotFoundError)
+t=125.2s frames=7106 file-feed unreadable(FileNotFoundError)
+t=130.2s frames=7390 file-feed unreadable(FileNotFoundError)
+t=135.2s frames=7673 file-feed unreadable(FileNotFoundError)
+t=140.2s frames=7957 file-feed unreadable(FileNotFoundError)
+t=145.3s frames=8242 file-feed unreadable(FileNotFoundError)
+t=150.3s frames=8527 file-feed unreadable(FileNotFoundError)
+t=155.3s frames=8811 file-feed unreadable(FileNotFoundError)
+t=160.3s frames=9095 file-feed unreadable(FileNotFoundError)
+t=165.3s frames=9379 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9663 file-feed unreadable(FileNotFoundError)
+t=175.3s frames=9947 file-feed unreadable(FileNotFoundError)
+t=180.3s frames=10230 file-feed unreadable(FileNotFoundError)
+t=185.4s frames=10514 file-feed unreadable(FileNotFoundError)
+t=190.4s frames=10798 file-feed unreadable(FileNotFoundError)
+t=195.4s frames=11082 file-feed unreadable(FileNotFoundError)
+t=200.4s frames=11366 file-feed unreadable(FileNotFoundError)
+t=205.4s frames=11650 file-feed unreadable(FileNotFoundError)
+t=210.4s frames=11934 file-feed unreadable(FileNotFoundError)
+t=215.4s frames=12219 file-feed unreadable(FileNotFoundError)
+t=220.4s frames=12504 file-feed unreadable(FileNotFoundError)
+t=225.4s frames=12788 file-feed unreadable(FileNotFoundError)
+t=230.4s frames=13073 file-feed unreadable(FileNotFoundError)
+t=235.4s frames=13357 file-feed unreadable(FileNotFoundError)
+t=240.4s frames=13641 file-feed unreadable(FileNotFoundError)
+t=245.4s frames=13925 file-feed unreadable(FileNotFoundError)
+t=250.5s frames=14209 file-feed unreadable(FileNotFoundError)
+t=255.5s frames=14492 file-feed unreadable(FileNotFoundError)
+t=260.5s frames=14776 file-feed unreadable(FileNotFoundError)
+t=265.5s frames=15061 file-feed unreadable(FileNotFoundError)
+t=270.5s frames=15345 file-feed unreadable(FileNotFoundError)
+t=275.5s frames=15630 file-feed unreadable(FileNotFoundError)
+t=280.5s frames=15914 file-feed unreadable(FileNotFoundError)
+t=285.5s frames=16199 file-feed unreadable(FileNotFoundError)
+t=290.5s frames=16483 file-feed unreadable(FileNotFoundError)
+t=295.5s frames=16766 file-feed unreadable(FileNotFoundError)
+t=300.5s frames=17050 file-feed unreadable(FileNotFoundError)
+t=305.6s frames=17335 file-feed unreadable(FileNotFoundError)
+t=310.6s frames=17619 file-feed unreadable(FileNotFoundError)
+t=315.6s frames=17903 file-feed unreadable(FileNotFoundError)
+t=320.6s frames=18187 file-feed unreadable(FileNotFoundError)
+t=325.6s frames=18471 file-feed unreadable(FileNotFoundError)
+t=330.6s frames=18755 file-feed unreadable(FileNotFoundError)
+t=335.6s frames=19040 file-feed unreadable(FileNotFoundError)
+t=340.6s frames=19324 file-feed unreadable(FileNotFoundError)
+t=345.6s frames=19609 file-feed unreadable(FileNotFoundError)
+t=350.6s frames=19892 file-feed unreadable(FileNotFoundError)
+t=355.6s frames=20176 file-feed unreadable(FileNotFoundError)
+t=360.6s frames=20461 file-feed unreadable(FileNotFoundError)
+t=365.7s frames=20745 file-feed unreadable(FileNotFoundError)
+t=370.7s frames=21029 file-feed unreadable(FileNotFoundError)
+t=375.7s frames=21313 file-feed unreadable(FileNotFoundError)
+t=380.7s frames=21596 file-feed unreadable(FileNotFoundError)
+t=385.7s frames=21880 file-feed unreadable(FileNotFoundError)
+t=390.7s frames=22165 file-feed unreadable(FileNotFoundError)
+t=395.7s frames=22449 file-feed unreadable(FileNotFoundError)
+t=400.7s frames=22734 file-feed unreadable(FileNotFoundError)
+t=405.7s frames=23018 file-feed unreadable(FileNotFoundError)
+t=410.7s frames=23302 file-feed unreadable(FileNotFoundError)
+t=415.7s frames=23586 file-feed unreadable(FileNotFoundError)
+t=420.7s frames=23869 file-feed unreadable(FileNotFoundError)
+t=425.8s frames=24154 file-feed unreadable(FileNotFoundError)
+t=430.8s frames=24438 file-feed unreadable(FileNotFoundError)
+t=435.8s frames=24722 file-feed unreadable(FileNotFoundError)
+t=440.8s frames=25006 file-feed unreadable(FileNotFoundError)
+t=445.8s frames=25290 file-feed unreadable(FileNotFoundError)
+t=450.8s frames=25573 file-feed unreadable(FileNotFoundError)
+t=455.8s frames=25857 file-feed unreadable(FileNotFoundError)
+t=460.8s frames=26141 file-feed unreadable(FileNotFoundError)
+t=465.8s frames=26424 file-feed unreadable(FileNotFoundError)
+t=470.9s frames=26708 file-feed unreadable(FileNotFoundError)
+t=475.9s frames=26992 file-feed unreadable(FileNotFoundError)
+t=480.9s frames=27277 file-feed unreadable(FileNotFoundError)
+t=485.9s frames=27561 file-feed unreadable(FileNotFoundError)
+t=490.9s frames=27841 file-feed unreadable(FileNotFoundError)
+t=495.9s frames=28125 file-feed unreadable(FileNotFoundError)
+t=500.9s frames=28409 file-feed unreadable(FileNotFoundError)
+t=505.9s frames=28692 file-feed unreadable(FileNotFoundError)
+t=510.9s frames=28977 file-feed unreadable(FileNotFoundError)
+t=515.9s frames=29260 file-feed unreadable(FileNotFoundError)
+t=520.9s frames=29544 file-feed unreadable(FileNotFoundError)
+t=525.9s frames=29829 file-feed unreadable(FileNotFoundError)
+t=531.0s frames=30112 file-feed unreadable(FileNotFoundError)
+t=536.0s frames=30395 file-feed unreadable(FileNotFoundError)
+t=541.0s frames=30679 file-feed unreadable(FileNotFoundError)
+t=546.0s frames=30963 file-feed unreadable(FileNotFoundError)
+t=551.0s frames=31247 file-feed unreadable(FileNotFoundError)
+t=556.0s frames=31530 file-feed unreadable(FileNotFoundError)
+t=561.0s frames=31814 file-feed unreadable(FileNotFoundError)
+t=566.0s frames=32098 file-feed unreadable(FileNotFoundError)
+t=571.0s frames=32381 file-feed unreadable(FileNotFoundError)
+t=576.0s frames=32665 file-feed unreadable(FileNotFoundError)
+t=581.0s frames=32949 file-feed unreadable(FileNotFoundError)
+t=586.0s frames=33233 file-feed unreadable(FileNotFoundError)
+t=591.0s frames=33516 file-feed unreadable(FileNotFoundError)
+t=596.0s frames=33800 file-feed unreadable(FileNotFoundError)
+key INSERT menu   -> off
+key INSERT menu   -> on
+t=601.0s frames=34084 file-feed unreadable(FileNotFoundError)
+key INSERT menu   -> off
+key INSERT menu   -> on
+key INSERT menu   -> off
+key INSERT menu   -> on
+t=606.0s frames=34368 file-feed unreadable(FileNotFoundError)
+t=611.0s frames=34652 file-feed unreadable(FileNotFoundError)
+t=616.0s frames=34936 file-feed unreadable(FileNotFoundError)
+t=621.1s frames=35220 file-feed unreadable(FileNotFoundError)
+t=626.1s frames=35503 file-feed unreadable(FileNotFoundError)
+t=631.1s frames=35786 file-feed unreadable(FileNotFoundError)
+t=636.1s frames=36069 file-feed unreadable(FileNotFoundError)
+t=641.1s frames=36353 file-feed unreadable(FileNotFoundError)
+t=646.1s frames=36637 file-feed unreadable(FileNotFoundError)
+t=651.1s frames=36922 file-feed unreadable(FileNotFoundError)
+t=656.1s frames=37206 file-feed unreadable(FileNotFoundError)
+t=661.1s frames=37490 file-feed unreadable(FileNotFoundError)
+t=666.1s frames=37774 file-feed unreadable(FileNotFoundError)
+t=671.1s frames=38058 file-feed unreadable(FileNotFoundError)
+t=676.1s frames=38342 file-feed unreadable(FileNotFoundError)
+t=681.1s frames=38626 file-feed unreadable(FileNotFoundError)
+t=686.1s frames=38910 file-feed unreadable(FileNotFoundError)
+t=691.1s frames=39194 file-feed unreadable(FileNotFoundError)
+t=696.1s frames=39477 file-feed unreadable(FileNotFoundError)
+t=701.2s frames=39760 file-feed unreadable(FileNotFoundError)
+t=706.2s frames=40045 file-feed unreadable(FileNotFoundError)
+t=711.2s frames=40329 file-feed unreadable(FileNotFoundError)
+t=716.2s frames=40612 file-feed unreadable(FileNotFoundError)
+t=721.2s frames=40897 file-feed unreadable(FileNotFoundError)
+t=726.2s frames=41182 file-feed unreadable(FileNotFoundError)
+t=731.2s frames=41464 file-feed unreadable(FileNotFoundError)
+t=736.2s frames=41748 file-feed unreadable(FileNotFoundError)
+t=741.2s frames=42030 file-feed unreadable(FileNotFoundError)
+t=746.2s frames=42314 file-feed unreadable(FileNotFoundError)
+t=751.2s frames=42597 file-feed unreadable(FileNotFoundError)
+t=756.2s frames=42880 file-feed unreadable(FileNotFoundError)
+t=761.3s frames=43164 file-feed unreadable(FileNotFoundError)
+t=766.3s frames=43447 file-feed unreadable(FileNotFoundError)
+t=771.3s frames=43731 file-feed unreadable(FileNotFoundError)
+t=776.3s frames=44014 file-feed unreadable(FileNotFoundError)
+t=781.3s frames=44298 file-feed unreadable(FileNotFoundError)
+t=786.3s frames=44582 file-feed unreadable(FileNotFoundError)
+t=791.3s frames=44865 file-feed unreadable(FileNotFoundError)
+t=796.3s frames=45149 file-feed unreadable(FileNotFoundError)
+t=801.3s frames=45432 file-feed unreadable(FileNotFoundError)
+t=806.3s frames=45716 file-feed unreadable(FileNotFoundError)
+t=811.3s frames=46000 file-feed unreadable(FileNotFoundError)
+t=816.3s frames=46284 file-feed unreadable(FileNotFoundError)
+t=821.3s frames=46568 file-feed unreadable(FileNotFoundError)
+t=826.3s frames=46852 file-feed unreadable(FileNotFoundError)
+t=831.3s frames=47136 file-feed unreadable(FileNotFoundError)
+t=836.3s frames=47419 file-feed unreadable(FileNotFoundError)
+t=841.4s frames=47703 file-feed unreadable(FileNotFoundError)
+t=846.4s frames=47987 file-feed unreadable(FileNotFoundError)
+t=851.4s frames=48270 file-feed unreadable(FileNotFoundError)
+t=856.4s frames=48555 file-feed unreadable(FileNotFoundError)
+t=861.4s frames=48839 file-feed unreadable(FileNotFoundError)
+t=866.4s frames=49122 file-feed unreadable(FileNotFoundError)
+t=871.4s frames=49405 file-feed unreadable(FileNotFoundError)
+t=876.4s frames=49689 file-feed unreadable(FileNotFoundError)
+t=881.4s frames=49974 file-feed unreadable(FileNotFoundError)
+t=886.4s frames=50258 file-feed unreadable(FileNotFoundError)
+t=891.5s frames=50542 file-feed unreadable(FileNotFoundError)
+t=896.5s frames=50826 file-feed unreadable(FileNotFoundError)
+t=901.5s frames=51109 file-feed unreadable(FileNotFoundError)
+t=906.5s frames=51393 file-feed unreadable(FileNotFoundError)
+t=911.5s frames=51677 file-feed unreadable(FileNotFoundError)
+t=916.5s frames=51961 file-feed unreadable(FileNotFoundError)
+t=921.5s frames=52244 file-feed unreadable(FileNotFoundError)
+t=926.5s frames=52528 file-feed unreadable(FileNotFoundError)
+t=931.5s frames=52812 file-feed unreadable(FileNotFoundError)
+t=936.5s frames=53096 file-feed unreadable(FileNotFoundError)
+t=941.5s frames=53380 file-feed unreadable(FileNotFoundError)
+t=946.5s frames=53664 file-feed unreadable(FileNotFoundError)
+t=951.5s frames=53948 file-feed unreadable(FileNotFoundError)
+t=956.5s frames=54232 file-feed unreadable(FileNotFoundError)
+t=961.6s frames=54516 file-feed unreadable(FileNotFoundError)
+t=966.6s frames=54800 file-feed unreadable(FileNotFoundError)
+t=971.6s frames=55084 file-feed unreadable(FileNotFoundError)
+t=976.6s frames=55367 file-feed unreadable(FileNotFoundError)
+t=981.6s frames=55650 file-feed unreadable(FileNotFoundError)
+t=986.6s frames=55933 file-feed unreadable(FileNotFoundError)
+t=991.6s frames=56217 file-feed unreadable(FileNotFoundError)
+t=996.6s frames=56501 file-feed unreadable(FileNotFoundError)
+t=1001.6s frames=56785 file-feed unreadable(FileNotFoundError)
+t=1006.6s frames=57069 file-feed unreadable(FileNotFoundError)
+t=1011.6s frames=57353 file-feed unreadable(FileNotFoundError)
+t=1016.6s frames=57637 file-feed unreadable(FileNotFoundError)
+t=1021.6s frames=57922 file-feed unreadable(FileNotFoundError)
+t=1026.6s frames=58207 file-feed unreadable(FileNotFoundError)
+t=1031.6s frames=58492 file-feed unreadable(FileNotFoundError)
+t=1036.7s frames=58777 file-feed unreadable(FileNotFoundError)
+t=1041.7s frames=59061 file-feed unreadable(FileNotFoundError)
+t=1046.7s frames=59345 file-feed unreadable(FileNotFoundError)
+t=1051.7s frames=59629 file-feed unreadable(FileNotFoundError)
+t=1056.7s frames=59913 file-feed unreadable(FileNotFoundError)
+t=1061.7s frames=60197 file-feed unreadable(FileNotFoundError)
+t=1066.7s frames=60481 file-feed unreadable(FileNotFoundError)
+t=1071.7s frames=60766 file-feed unreadable(FileNotFoundError)
+t=1076.7s frames=61050 file-feed unreadable(FileNotFoundError)
+t=1081.7s frames=61336 file-feed unreadable(FileNotFoundError)
+t=1086.7s frames=61620 file-feed unreadable(FileNotFoundError)
+t=1091.7s frames=61905 file-feed unreadable(FileNotFoundError)
+t=1096.7s frames=62189 file-feed unreadable(FileNotFoundError)
+t=1101.8s frames=62474 file-feed unreadable(FileNotFoundError)
+t=1106.8s frames=62759 file-feed unreadable(FileNotFoundError)
+t=1111.8s frames=63044 file-feed unreadable(FileNotFoundError)
+t=1116.8s frames=63329 file-feed unreadable(FileNotFoundError)
+t=1121.8s frames=63614 file-feed unreadable(FileNotFoundError)
+t=1126.8s frames=63898 file-feed unreadable(FileNotFoundError)
+t=1131.8s frames=64182 file-feed unreadable(FileNotFoundError)
+t=1136.8s frames=64466 file-feed unreadable(FileNotFoundError)
+t=1141.8s frames=64749 file-feed unreadable(FileNotFoundError)
+t=1146.8s frames=65033 file-feed unreadable(FileNotFoundError)
+t=1151.9s frames=65316 file-feed unreadable(FileNotFoundError)
+t=1156.9s frames=65600 file-feed unreadable(FileNotFoundError)
+t=1161.9s frames=65884 file-feed unreadable(FileNotFoundError)
+t=1166.9s frames=66168 file-feed unreadable(FileNotFoundError)
+t=1171.9s frames=66452 file-feed unreadable(FileNotFoundError)
+t=1176.9s frames=66735 file-feed unreadable(FileNotFoundError)
+t=1181.9s frames=67019 file-feed unreadable(FileNotFoundError)
+t=1187.0s frames=67302 file-feed unreadable(FileNotFoundError)
+t=1192.0s frames=67586 file-feed unreadable(FileNotFoundError)
+t=1197.0s frames=67869 file-feed unreadable(FileNotFoundError)
+t=1202.0s frames=68152 file-feed unreadable(FileNotFoundError)
+t=1207.0s frames=68436 file-feed unreadable(FileNotFoundError)
+t=1212.0s frames=68720 file-feed unreadable(FileNotFoundError)
+t=1217.0s frames=69004 file-feed unreadable(FileNotFoundError)
+t=1222.0s frames=69288 file-feed unreadable(FileNotFoundError)
+t=1227.0s frames=69572 file-feed unreadable(FileNotFoundError)
+t=1232.0s frames=69855 file-feed unreadable(FileNotFoundError)
+t=1237.0s frames=70139 file-feed unreadable(FileNotFoundError)
+t=1242.0s frames=70423 file-feed unreadable(FileNotFoundError)
+t=1247.0s frames=70706 file-feed unreadable(FileNotFoundError)
+t=1252.1s frames=70990 file-feed unreadable(FileNotFoundError)
+t=1257.1s frames=71274 file-feed unreadable(FileNotFoundError)
+t=1262.1s frames=71558 file-feed unreadable(FileNotFoundError)
+t=1267.1s frames=71842 file-feed unreadable(FileNotFoundError)
+t=1272.1s frames=72126 file-feed unreadable(FileNotFoundError)
+t=1277.1s frames=72410 file-feed unreadable(FileNotFoundError)
+t=1282.1s frames=72694 file-feed unreadable(FileNotFoundError)
+t=1287.1s frames=72978 file-feed unreadable(FileNotFoundError)
+t=1292.1s frames=73262 file-feed unreadable(FileNotFoundError)
+t=1297.2s frames=73546 file-feed unreadable(FileNotFoundError)
+t=1302.2s frames=73830 file-feed unreadable(FileNotFoundError)
+t=1307.2s frames=74114 file-feed unreadable(FileNotFoundError)
+t=1312.2s frames=74398 file-feed unreadable(FileNotFoundError)
+t=1317.2s frames=74682 file-feed unreadable(FileNotFoundError)
+t=1322.2s frames=74966 file-feed unreadable(FileNotFoundError)
+t=1327.2s frames=75249 file-feed unreadable(FileNotFoundError)
+t=1332.2s frames=75533 file-feed unreadable(FileNotFoundError)
+t=1337.2s frames=75816 file-feed unreadable(FileNotFoundError)
+t=1342.2s frames=76100 file-feed unreadable(FileNotFoundError)
+t=1347.2s frames=76384 file-feed unreadable(FileNotFoundError)
+t=1352.2s frames=76668 file-feed unreadable(FileNotFoundError)
+t=1357.3s frames=76951 file-feed unreadable(FileNotFoundError)
+t=1362.3s frames=77235 file-feed unreadable(FileNotFoundError)
+t=1367.3s frames=77520 file-feed unreadable(FileNotFoundError)
+t=1372.3s frames=77805 file-feed unreadable(FileNotFoundError)
+t=1377.3s frames=78088 file-feed unreadable(FileNotFoundError)
+t=1382.3s frames=78372 file-feed unreadable(FileNotFoundError)
+t=1387.3s frames=78656 file-feed unreadable(FileNotFoundError)
+t=1392.3s frames=78940 file-feed unreadable(FileNotFoundError)
+t=1397.3s frames=79224 file-feed unreadable(FileNotFoundError)
+t=1402.3s frames=79508 file-feed unreadable(FileNotFoundError)
+t=1407.4s frames=79791 file-feed unreadable(FileNotFoundError)
+t=1412.4s frames=80075 file-feed unreadable(FileNotFoundError)
+t=1417.4s frames=80357 file-feed unreadable(FileNotFoundError)
+t=1422.4s frames=80640 file-feed unreadable(FileNotFoundError)
+t=1427.4s frames=80923 file-feed unreadable(FileNotFoundError)
+t=1432.4s frames=81206 file-feed unreadable(FileNotFoundError)
+t=1437.4s frames=81489 file-feed unreadable(FileNotFoundError)
+t=1442.4s frames=81773 file-feed unreadable(FileNotFoundError)
+t=1447.4s frames=82057 file-feed unreadable(FileNotFoundError)
+t=1452.4s frames=82341 file-feed unreadable(FileNotFoundError)
+t=1457.4s frames=82625 file-feed unreadable(FileNotFoundError)
+
+=== qk_live 22:14:56 19/11 mode=run args=--from-feed --seconds=1260 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=1462.4s frames=82909 file-feed unreadable(FileNotFoundError)
+t=5.0s frames=285 file-feed unreadable(FileNotFoundError)
+t=1467.4s frames=83193 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=569 file-feed unreadable(FileNotFoundError)
+t=1472.5s frames=83477 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=853 file-feed unreadable(FileNotFoundError)
+t=1477.5s frames=83760 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1137 file-feed unreadable(FileNotFoundError)
+t=1482.5s frames=84044 file-feed unreadable(FileNotFoundError)
+t=25.1s frames=1421 file-feed unreadable(FileNotFoundError)
+t=1487.5s frames=84328 file-feed unreadable(FileNotFoundError)
+t=30.1s frames=1705 file-feed unreadable(FileNotFoundError)
+t=1492.5s frames=84611 file-feed unreadable(FileNotFoundError)
+t=35.1s frames=1988 file-feed unreadable(FileNotFoundError)
+key INSERT menu   -> off
+key INSERT menu   -> off
+t=1497.5s frames=84895 file-feed unreadable(FileNotFoundError)
+t=40.1s frames=2272 file-feed unreadable(FileNotFoundError)
+stopped by time after 1500.0s: frames=85036 fps=56.7 boxes=0
+RESULT: time frames=85036 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only); game present during consume
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=45.1s frames=2556 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2840 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3125 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3410 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3694 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=3974 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4257 file-feed unreadable(FileNotFoundError)
+t=80.2s frames=4540 file-feed unreadable(FileNotFoundError)
+t=85.2s frames=4823 file-feed unreadable(FileNotFoundError)
+t=90.2s frames=5106 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5391 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5674 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=5957 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6241 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6524 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6807 file-feed unreadable(FileNotFoundError)
+t=125.2s frames=7087 file-feed unreadable(FileNotFoundError)
+t=130.2s frames=7367 file-feed unreadable(FileNotFoundError)
+t=135.3s frames=7646 file-feed unreadable(FileNotFoundError)
+t=140.3s frames=7925 file-feed unreadable(FileNotFoundError)
+t=145.3s frames=8203 file-feed unreadable(FileNotFoundError)
+t=150.3s frames=8486 file-feed unreadable(FileNotFoundError)
+t=155.3s frames=8770 file-feed unreadable(FileNotFoundError)
+t=160.3s frames=9053 file-feed unreadable(FileNotFoundError)
+t=165.3s frames=9337 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9621 file-feed unreadable(FileNotFoundError)
+t=175.4s frames=9904 file-feed unreadable(FileNotFoundError)
+t=180.4s frames=10188 file-feed unreadable(FileNotFoundError)
+t=185.4s frames=10472 file-feed unreadable(FileNotFoundError)
+t=190.4s frames=10755 file-feed unreadable(FileNotFoundError)
+t=195.4s frames=11039 file-feed unreadable(FileNotFoundError)
+t=200.4s frames=11323 file-feed unreadable(FileNotFoundError)
+t=205.4s frames=11607 file-feed unreadable(FileNotFoundError)
+t=210.4s frames=11890 file-feed unreadable(FileNotFoundError)
+t=215.4s frames=12168 file-feed unreadable(FileNotFoundError)
+t=220.4s frames=12452 file-feed unreadable(FileNotFoundError)
+t=225.4s frames=12736 file-feed unreadable(FileNotFoundError)
+t=230.5s frames=13020 file-feed unreadable(FileNotFoundError)
+t=235.5s frames=13304 file-feed unreadable(FileNotFoundError)
+t=240.5s frames=13588 file-feed unreadable(FileNotFoundError)
+t=245.5s frames=13871 file-feed unreadable(FileNotFoundError)
+t=250.5s frames=14155 file-feed unreadable(FileNotFoundError)
+t=255.5s frames=14438 file-feed unreadable(FileNotFoundError)
+t=260.5s frames=14722 file-feed unreadable(FileNotFoundError)
+t=265.5s frames=15005 file-feed unreadable(FileNotFoundError)
+t=270.5s frames=15289 file-feed unreadable(FileNotFoundError)
+t=275.5s frames=15572 file-feed unreadable(FileNotFoundError)
+t=280.5s frames=15856 file-feed unreadable(FileNotFoundError)
+t=285.5s frames=16140 file-feed unreadable(FileNotFoundError)
+t=290.6s frames=16424 file-feed unreadable(FileNotFoundError)
+t=295.6s frames=16708 file-feed unreadable(FileNotFoundError)
+t=300.6s frames=16992 file-feed unreadable(FileNotFoundError)
+t=305.6s frames=17276 file-feed unreadable(FileNotFoundError)
+t=310.6s frames=17560 file-feed unreadable(FileNotFoundError)
+t=315.6s frames=17844 file-feed unreadable(FileNotFoundError)
+t=320.6s frames=18127 file-feed unreadable(FileNotFoundError)
+t=325.6s frames=18411 file-feed unreadable(FileNotFoundError)
+t=330.6s frames=18695 file-feed unreadable(FileNotFoundError)
+t=335.6s frames=18978 file-feed unreadable(FileNotFoundError)
+t=340.6s frames=19261 file-feed unreadable(FileNotFoundError)
+t=345.6s frames=19545 file-feed unreadable(FileNotFoundError)
+t=350.6s frames=19828 file-feed unreadable(FileNotFoundError)
+t=355.6s frames=20112 file-feed unreadable(FileNotFoundError)
+t=360.6s frames=20396 file-feed unreadable(FileNotFoundError)
+t=365.7s frames=20680 file-feed unreadable(FileNotFoundError)
+t=370.7s frames=20964 file-feed unreadable(FileNotFoundError)
+t=375.7s frames=21248 file-feed unreadable(FileNotFoundError)
+t=380.7s frames=21531 file-feed unreadable(FileNotFoundError)
+t=385.7s frames=21814 file-feed unreadable(FileNotFoundError)
+t=390.7s frames=22097 file-feed unreadable(FileNotFoundError)
+t=395.7s frames=22380 file-feed unreadable(FileNotFoundError)
+t=400.7s frames=22665 file-feed unreadable(FileNotFoundError)
+t=405.7s frames=22949 file-feed unreadable(FileNotFoundError)
+t=410.7s frames=23234 file-feed unreadable(FileNotFoundError)
+t=415.7s frames=23518 file-feed unreadable(FileNotFoundError)
+t=420.8s frames=23803 file-feed unreadable(FileNotFoundError)
+t=425.8s frames=24086 file-feed unreadable(FileNotFoundError)
+t=430.8s frames=24370 file-feed unreadable(FileNotFoundError)
+t=435.8s frames=24654 file-feed unreadable(FileNotFoundError)
+t=440.8s frames=24938 file-feed unreadable(FileNotFoundError)
+t=445.8s frames=25222 file-feed unreadable(FileNotFoundError)
+t=450.8s frames=25506 file-feed unreadable(FileNotFoundError)
+t=455.8s frames=25790 file-feed unreadable(FileNotFoundError)
+t=460.8s frames=26074 file-feed unreadable(FileNotFoundError)
+t=465.8s frames=26358 file-feed unreadable(FileNotFoundError)
+t=470.9s frames=26642 file-feed unreadable(FileNotFoundError)
+t=475.9s frames=26927 file-feed unreadable(FileNotFoundError)
+t=480.9s frames=27211 file-feed unreadable(FileNotFoundError)
+t=485.9s frames=27495 file-feed unreadable(FileNotFoundError)
+t=490.9s frames=27780 file-feed unreadable(FileNotFoundError)
+t=495.9s frames=28065 file-feed unreadable(FileNotFoundError)
+t=500.9s frames=28349 file-feed unreadable(FileNotFoundError)
+t=505.9s frames=28634 file-feed unreadable(FileNotFoundError)
+t=510.9s frames=28919 file-feed unreadable(FileNotFoundError)
+t=515.9s frames=29203 file-feed unreadable(FileNotFoundError)
+t=520.9s frames=29488 file-feed unreadable(FileNotFoundError)
+t=526.0s frames=29772 file-feed unreadable(FileNotFoundError)
+t=531.0s frames=30057 file-feed unreadable(FileNotFoundError)
+t=536.0s frames=30340 file-feed unreadable(FileNotFoundError)
+t=541.0s frames=30623 file-feed unreadable(FileNotFoundError)
+t=546.0s frames=30906 file-feed unreadable(FileNotFoundError)
+t=551.0s frames=31190 file-feed unreadable(FileNotFoundError)
+t=556.0s frames=31467 file-feed unreadable(FileNotFoundError)
+t=561.0s frames=31743 file-feed unreadable(FileNotFoundError)
+t=566.0s frames=32018 file-feed unreadable(FileNotFoundError)
+t=571.0s frames=32303 file-feed unreadable(FileNotFoundError)
+t=576.0s frames=32588 file-feed unreadable(FileNotFoundError)
+t=581.0s frames=32873 file-feed unreadable(FileNotFoundError)
+t=586.0s frames=33157 file-feed unreadable(FileNotFoundError)
+t=591.1s frames=33441 file-feed unreadable(FileNotFoundError)
+t=596.1s frames=33725 file-feed unreadable(FileNotFoundError)
+t=601.1s frames=34008 file-feed unreadable(FileNotFoundError)
+t=606.1s frames=34291 file-feed unreadable(FileNotFoundError)
+t=611.1s frames=34576 file-feed unreadable(FileNotFoundError)
+t=616.1s frames=34860 file-feed unreadable(FileNotFoundError)
+t=621.1s frames=35145 file-feed unreadable(FileNotFoundError)
+t=626.1s frames=35430 file-feed unreadable(FileNotFoundError)
+t=631.1s frames=35714 file-feed unreadable(FileNotFoundError)
+t=636.1s frames=35998 file-feed unreadable(FileNotFoundError)
+t=641.1s frames=36282 file-feed unreadable(FileNotFoundError)
+t=646.1s frames=36564 file-feed unreadable(FileNotFoundError)
+t=651.2s frames=36849 file-feed unreadable(FileNotFoundError)
+t=656.2s frames=37133 file-feed unreadable(FileNotFoundError)
+t=661.2s frames=37417 file-feed unreadable(FileNotFoundError)
+t=666.2s frames=37700 file-feed unreadable(FileNotFoundError)
+t=671.2s frames=37983 file-feed unreadable(FileNotFoundError)
+t=676.2s frames=38267 file-feed unreadable(FileNotFoundError)
+t=681.2s frames=38542 file-feed unreadable(FileNotFoundError)
+t=686.2s frames=38816 file-feed unreadable(FileNotFoundError)
+t=691.2s frames=39099 file-feed unreadable(FileNotFoundError)
+t=696.2s frames=39382 file-feed unreadable(FileNotFoundError)
+t=701.2s frames=39666 file-feed unreadable(FileNotFoundError)
+t=706.2s frames=39948 file-feed unreadable(FileNotFoundError)
+t=711.3s frames=40229 file-feed unreadable(FileNotFoundError)
+t=716.3s frames=40509 file-feed unreadable(FileNotFoundError)
+t=721.3s frames=40789 file-feed unreadable(FileNotFoundError)
+t=726.3s frames=41068 file-feed unreadable(FileNotFoundError)
+t=731.3s frames=41345 file-feed unreadable(FileNotFoundError)
+t=736.3s frames=41630 file-feed unreadable(FileNotFoundError)
+t=741.3s frames=41915 file-feed unreadable(FileNotFoundError)
+t=746.3s frames=42200 file-feed unreadable(FileNotFoundError)
+t=751.3s frames=42484 file-feed unreadable(FileNotFoundError)
+t=756.4s frames=42768 file-feed unreadable(FileNotFoundError)
+t=761.4s frames=43052 file-feed unreadable(FileNotFoundError)
+t=766.4s frames=43336 file-feed unreadable(FileNotFoundError)
+t=771.4s frames=43620 file-feed unreadable(FileNotFoundError)
+t=776.4s frames=43904 file-feed unreadable(FileNotFoundError)
+t=781.4s frames=44189 file-feed unreadable(FileNotFoundError)
+t=786.4s frames=44473 file-feed unreadable(FileNotFoundError)
+t=791.4s frames=44758 file-feed unreadable(FileNotFoundError)
+t=796.4s frames=45035 file-feed unreadable(FileNotFoundError)
+t=801.4s frames=45312 file-feed unreadable(FileNotFoundError)
+t=806.5s frames=45588 file-feed unreadable(FileNotFoundError)
+t=811.5s frames=45863 file-feed unreadable(FileNotFoundError)
+t=816.5s frames=46146 file-feed unreadable(FileNotFoundError)
+t=821.5s frames=46430 file-feed unreadable(FileNotFoundError)
+t=826.5s frames=46715 file-feed unreadable(FileNotFoundError)
+t=831.5s frames=47000 file-feed unreadable(FileNotFoundError)
+t=836.5s frames=47284 file-feed unreadable(FileNotFoundError)
+t=841.5s frames=47569 file-feed unreadable(FileNotFoundError)
+t=846.5s frames=47854 file-feed unreadable(FileNotFoundError)
+t=851.6s frames=48139 file-feed unreadable(FileNotFoundError)
+t=856.6s frames=48424 file-feed unreadable(FileNotFoundError)
+t=861.6s frames=48708 file-feed unreadable(FileNotFoundError)
+t=866.6s frames=48993 file-feed unreadable(FileNotFoundError)
+t=871.6s frames=49277 file-feed unreadable(FileNotFoundError)
+t=876.6s frames=49561 file-feed unreadable(FileNotFoundError)
+t=881.6s frames=49846 file-feed unreadable(FileNotFoundError)
+t=886.6s frames=50130 file-feed unreadable(FileNotFoundError)
+t=891.6s frames=50415 file-feed unreadable(FileNotFoundError)
+t=896.6s frames=50700 file-feed unreadable(FileNotFoundError)
+t=901.6s frames=50984 file-feed unreadable(FileNotFoundError)
+t=906.7s frames=51269 file-feed unreadable(FileNotFoundError)
+t=911.7s frames=51553 file-feed unreadable(FileNotFoundError)
+t=916.7s frames=51838 file-feed unreadable(FileNotFoundError)
+t=921.7s frames=52123 file-feed unreadable(FileNotFoundError)
+t=926.7s frames=52408 file-feed unreadable(FileNotFoundError)
+t=931.7s frames=52693 file-feed unreadable(FileNotFoundError)
+t=936.7s frames=52977 file-feed unreadable(FileNotFoundError)
+t=941.7s frames=53262 file-feed unreadable(FileNotFoundError)
+t=946.7s frames=53546 file-feed unreadable(FileNotFoundError)
+t=951.7s frames=53830 file-feed unreadable(FileNotFoundError)
+t=956.7s frames=54113 file-feed unreadable(FileNotFoundError)
+t=961.7s frames=54397 file-feed unreadable(FileNotFoundError)
+t=966.7s frames=54682 file-feed unreadable(FileNotFoundError)
+t=971.7s frames=54960 file-feed unreadable(FileNotFoundError)
+t=976.7s frames=55237 file-feed unreadable(FileNotFoundError)
+t=981.8s frames=55512 file-feed unreadable(FileNotFoundError)
+t=986.8s frames=55797 file-feed unreadable(FileNotFoundError)
+t=991.8s frames=56082 file-feed unreadable(FileNotFoundError)
+t=996.8s frames=56366 file-feed unreadable(FileNotFoundError)
+t=1001.8s frames=56651 file-feed unreadable(FileNotFoundError)
+t=1006.8s frames=56936 file-feed unreadable(FileNotFoundError)
+t=1011.8s frames=57219 file-feed unreadable(FileNotFoundError)
+t=1016.8s frames=57503 file-feed unreadable(FileNotFoundError)
+t=1021.8s frames=57787 file-feed unreadable(FileNotFoundError)
+t=1026.8s frames=58064 file-feed unreadable(FileNotFoundError)
+t=1031.9s frames=58349 file-feed unreadable(FileNotFoundError)
+t=1036.9s frames=58634 file-feed unreadable(FileNotFoundError)
+t=1041.9s frames=58918 file-feed unreadable(FileNotFoundError)
+t=1046.9s frames=59192 file-feed unreadable(FileNotFoundError)
+t=1051.9s frames=59476 file-feed unreadable(FileNotFoundError)
+t=1056.9s frames=59760 file-feed unreadable(FileNotFoundError)
+t=1061.9s frames=60043 file-feed unreadable(FileNotFoundError)
+t=1066.9s frames=60328 file-feed unreadable(FileNotFoundError)
+t=1071.9s frames=60613 file-feed unreadable(FileNotFoundError)
+t=1076.9s frames=60896 file-feed unreadable(FileNotFoundError)
+t=1082.0s frames=61181 file-feed unreadable(FileNotFoundError)
+t=1087.0s frames=61465 file-feed unreadable(FileNotFoundError)
+t=1092.0s frames=61749 file-feed unreadable(FileNotFoundError)
+t=1097.0s frames=62027 file-feed unreadable(FileNotFoundError)
+t=1102.0s frames=62304 file-feed unreadable(FileNotFoundError)
+t=1107.0s frames=62579 file-feed unreadable(FileNotFoundError)
+t=1112.0s frames=62863 file-feed unreadable(FileNotFoundError)
+t=1117.0s frames=63148 file-feed unreadable(FileNotFoundError)
+t=1122.0s frames=63433 file-feed unreadable(FileNotFoundError)
+t=1127.0s frames=63717 file-feed unreadable(FileNotFoundError)
+t=1132.0s frames=64001 file-feed unreadable(FileNotFoundError)
+t=1137.0s frames=64285 file-feed unreadable(FileNotFoundError)
+t=1142.1s frames=64569 file-feed unreadable(FileNotFoundError)
+t=1147.1s frames=64847 file-feed unreadable(FileNotFoundError)
+t=1152.1s frames=65125 file-feed unreadable(FileNotFoundError)
+t=1157.1s frames=65409 file-feed unreadable(FileNotFoundError)
+t=1162.1s frames=65694 file-feed unreadable(FileNotFoundError)
+t=1167.1s frames=65979 file-feed unreadable(FileNotFoundError)
+t=1172.1s frames=66263 file-feed unreadable(FileNotFoundError)
+t=1177.1s frames=66547 file-feed unreadable(FileNotFoundError)
+t=1182.1s frames=66832 file-feed unreadable(FileNotFoundError)
+t=1187.1s frames=67116 file-feed unreadable(FileNotFoundError)
+t=1192.1s frames=67399 file-feed unreadable(FileNotFoundError)
+t=1197.1s frames=67684 file-feed unreadable(FileNotFoundError)
+t=1202.2s frames=67968 file-feed unreadable(FileNotFoundError)
+t=1207.2s frames=68253 file-feed unreadable(FileNotFoundError)
+t=1212.2s frames=68537 file-feed unreadable(FileNotFoundError)
+t=1217.2s frames=68821 file-feed unreadable(FileNotFoundError)
+t=1222.2s frames=69106 file-feed unreadable(FileNotFoundError)
+t=1227.2s frames=69390 file-feed unreadable(FileNotFoundError)
+t=1232.2s frames=69674 file-feed unreadable(FileNotFoundError)
+t=1237.2s frames=69959 file-feed unreadable(FileNotFoundError)
+t=1242.2s frames=70243 file-feed unreadable(FileNotFoundError)
+t=1247.2s frames=70528 file-feed unreadable(FileNotFoundError)
+t=1252.2s frames=70807 file-feed unreadable(FileNotFoundError)
+t=1257.2s frames=71091 file-feed unreadable(FileNotFoundError)
+stopped by time after 1260.0s: frames=71247 fps=56.5 boxes=0
+RESULT: time frames=71247 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only); game present during consume
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 23:09:05 19/11 mode=run args=--from-feed --seconds=330 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=287 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=568 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=855 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1135 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1413 file-feed unreadable(FileNotFoundError)
+t=30.1s frames=1700 file-feed unreadable(FileNotFoundError)
+t=35.1s frames=1987 file-feed unreadable(FileNotFoundError)
+t=40.1s frames=2274 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2561 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2848 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3135 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3422 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3709 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=3996 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4283 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4570 file-feed unreadable(FileNotFoundError)
+t=85.2s frames=4856 file-feed unreadable(FileNotFoundError)
+t=90.2s frames=5143 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5430 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5717 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=6003 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6289 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6576 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6863 file-feed unreadable(FileNotFoundError)
+t=125.2s frames=7150 file-feed unreadable(FileNotFoundError)
+t=130.2s frames=7437 file-feed unreadable(FileNotFoundError)
+t=135.2s frames=7724 file-feed unreadable(FileNotFoundError)
+t=140.3s frames=8011 file-feed unreadable(FileNotFoundError)
+t=145.3s frames=8297 file-feed unreadable(FileNotFoundError)
+t=150.3s frames=8584 file-feed unreadable(FileNotFoundError)
+t=155.3s frames=8871 file-feed unreadable(FileNotFoundError)
+t=160.3s frames=9158 file-feed unreadable(FileNotFoundError)
+t=165.3s frames=9444 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9731 file-feed unreadable(FileNotFoundError)
+t=175.3s frames=10017 file-feed unreadable(FileNotFoundError)
+t=180.3s frames=10304 file-feed unreadable(FileNotFoundError)
+t=185.3s frames=10591 file-feed unreadable(FileNotFoundError)
+t=190.3s frames=10878 file-feed unreadable(FileNotFoundError)
+t=195.4s frames=11164 file-feed unreadable(FileNotFoundError)
+t=200.4s frames=11451 file-feed unreadable(FileNotFoundError)
+t=205.4s frames=11737 file-feed unreadable(FileNotFoundError)
+t=210.4s frames=12023 file-feed unreadable(FileNotFoundError)
+t=215.4s frames=12310 file-feed unreadable(FileNotFoundError)
+t=220.4s frames=12597 file-feed unreadable(FileNotFoundError)
+t=225.4s frames=12883 file-feed unreadable(FileNotFoundError)
+t=230.4s frames=13170 file-feed unreadable(FileNotFoundError)
+t=235.4s frames=13457 file-feed unreadable(FileNotFoundError)
+t=240.4s frames=13743 file-feed unreadable(FileNotFoundError)
+t=245.4s frames=14030 file-feed unreadable(FileNotFoundError)
+t=250.4s frames=14317 file-feed unreadable(FileNotFoundError)
+t=255.4s frames=14603 file-feed unreadable(FileNotFoundError)
+t=260.4s frames=14889 file-feed unreadable(FileNotFoundError)
+t=265.5s frames=15176 file-feed unreadable(FileNotFoundError)
+t=270.5s frames=15463 file-feed unreadable(FileNotFoundError)
+t=275.5s frames=15750 file-feed unreadable(FileNotFoundError)
+t=280.5s frames=16037 file-feed unreadable(FileNotFoundError)
+t=285.5s frames=16324 file-feed unreadable(FileNotFoundError)
+t=290.5s frames=16610 file-feed unreadable(FileNotFoundError)
+t=295.5s frames=16893 file-feed unreadable(FileNotFoundError)
+t=300.5s frames=17180 file-feed unreadable(FileNotFoundError)
+t=305.6s frames=17466 file-feed unreadable(FileNotFoundError)
+t=310.6s frames=17753 file-feed unreadable(FileNotFoundError)
+t=315.6s frames=18039 file-feed unreadable(FileNotFoundError)
+t=320.6s frames=18326 file-feed unreadable(FileNotFoundError)
+t=325.6s frames=18612 file-feed unreadable(FileNotFoundError)
+stopped by time after 330.0s: frames=18864 fps=57.2 boxes=0
+RESULT: time frames=18864 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only); game present during consume
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 23:29:50 19/11 mode=run args=--from-feed --seconds=330 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=286 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=572 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=858 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1144 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1430 file-feed unreadable(FileNotFoundError)
+t=30.0s frames=1716 file-feed unreadable(FileNotFoundError)
+t=35.1s frames=1996 file-feed unreadable(FileNotFoundError)
+t=40.1s frames=2275 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2553 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2830 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3116 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3397 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3676 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=3957 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4240 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4522 file-feed unreadable(FileNotFoundError)
+t=85.1s frames=4808 file-feed unreadable(FileNotFoundError)
+t=90.2s frames=5094 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5380 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5658 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=5944 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6230 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6516 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6802 file-feed unreadable(FileNotFoundError)
+t=125.2s frames=7089 file-feed unreadable(FileNotFoundError)
+t=130.2s frames=7375 file-feed unreadable(FileNotFoundError)
+t=135.2s frames=7662 file-feed unreadable(FileNotFoundError)
+t=140.2s frames=7948 file-feed unreadable(FileNotFoundError)
+t=145.2s frames=8234 file-feed unreadable(FileNotFoundError)
+t=150.2s frames=8520 file-feed unreadable(FileNotFoundError)
+t=155.2s frames=8806 file-feed unreadable(FileNotFoundError)
+t=160.3s frames=9092 file-feed unreadable(FileNotFoundError)
+t=165.3s frames=9378 file-feed unreadable(FileNotFoundError)
+t=170.3s frames=9664 file-feed unreadable(FileNotFoundError)
+t=175.3s frames=9950 file-feed unreadable(FileNotFoundError)
+t=180.3s frames=10237 file-feed unreadable(FileNotFoundError)
+t=185.3s frames=10523 file-feed unreadable(FileNotFoundError)
+t=190.3s frames=10809 file-feed unreadable(FileNotFoundError)
+t=195.3s frames=11089 file-feed unreadable(FileNotFoundError)
+t=200.3s frames=11368 file-feed unreadable(FileNotFoundError)
+t=205.3s frames=11654 file-feed unreadable(FileNotFoundError)
+t=210.3s frames=11940 file-feed unreadable(FileNotFoundError)
+t=215.3s frames=12226 file-feed unreadable(FileNotFoundError)
+t=220.3s frames=12513 file-feed unreadable(FileNotFoundError)
+t=225.3s frames=12800 file-feed unreadable(FileNotFoundError)
+t=230.3s frames=13086 file-feed unreadable(FileNotFoundError)
+t=235.4s frames=13369 file-feed unreadable(FileNotFoundError)
+t=240.4s frames=13655 file-feed unreadable(FileNotFoundError)
+t=245.4s frames=13941 file-feed unreadable(FileNotFoundError)
+t=250.4s frames=14228 file-feed unreadable(FileNotFoundError)
+t=255.4s frames=14515 file-feed unreadable(FileNotFoundError)
+t=260.4s frames=14801 file-feed unreadable(FileNotFoundError)
+t=265.4s frames=15087 file-feed unreadable(FileNotFoundError)
+t=270.4s frames=15373 file-feed unreadable(FileNotFoundError)
+t=275.4s frames=15659 file-feed unreadable(FileNotFoundError)
+t=280.4s frames=15945 file-feed unreadable(FileNotFoundError)
+t=285.4s frames=16231 file-feed unreadable(FileNotFoundError)
+t=290.4s frames=16515 file-feed unreadable(FileNotFoundError)
+t=295.5s frames=16798 file-feed unreadable(FileNotFoundError)
+t=300.5s frames=17080 file-feed unreadable(FileNotFoundError)
+t=305.5s frames=17361 file-feed unreadable(FileNotFoundError)
+t=310.5s frames=17648 file-feed unreadable(FileNotFoundError)
+t=315.5s frames=17934 file-feed unreadable(FileNotFoundError)
+t=320.5s frames=18213 file-feed unreadable(FileNotFoundError)
+t=325.5s frames=18491 file-feed unreadable(FileNotFoundError)
+stopped by time after 330.0s: frames=18747 fps=56.8 boxes=0
+RESULT: time frames=18747 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only); game present during consume
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 11:26:39 20/11 mode=run args=--help ===
+RESULT: window=unavailable fake=False pid=None
+VERDICT: PARTIAL (SKIPPED rendering, R9)
+
+=== qk_live 11:33:23 20/11 mode=run args=--from-feed --seconds=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+
+=== qk_live 11:33:27 20/11 mode=run args=--from-feed --seconds=1500 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=287 file-feed unreadable(FileNotFoundError)
+t=5.0s frames=287 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=574 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=574 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=861 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=861 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1148 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1148 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1435 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1435 file-feed unreadable(FileNotFoundError)
+t=30.0s frames=1722 file-feed unreadable(FileNotFoundError)
+t=30.0s frames=1722 file-feed unreadable(FileNotFoundError)
+t=35.0s frames=2009 file-feed unreadable(FileNotFoundError)
+t=35.0s frames=2009 file-feed unreadable(FileNotFoundError)
+t=40.0s frames=2296 file-feed unreadable(FileNotFoundError)
+t=40.0s frames=2296 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2584 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2584 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2871 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2871 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3158 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3158 file-feed unreadable(FileNotFoundError)
+stopped by time after 60.0s: frames=3441 fps=57.3 boxes=0
+RESULT: time frames=3441 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=60.1s frames=3445 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3731 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=4017 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4303 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4588 file-feed unreadable(FileNotFoundError)
+t=85.1s frames=4874 file-feed unreadable(FileNotFoundError)
+t=90.1s frames=5160 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5446 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5732 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=6018 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6304 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6590 file-feed unreadable(FileNotFoundError)
+
+=== qk_live 11:35:26 20/11 mode=run args=--from-feed --seconds=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=120.2s frames=6876 file-feed unreadable(JSONDecodeError)
+t=5.0s frames=287 file-feed unreadable(JSONDecodeError)
+t=125.2s frames=7163 file-feed unreadable(JSONDecodeError)
+t=10.0s frames=574 file-feed unreadable(JSONDecodeError)
+t=130.2s frames=7450 file-feed unreadable(JSONDecodeError)
+t=15.0s frames=861 file-feed unreadable(JSONDecodeError)
+t=135.2s frames=7737 file-feed unreadable(JSONDecodeError)
+t=20.0s frames=1148 file-feed unreadable(JSONDecodeError)
+t=140.2s frames=8024 file-feed unreadable(JSONDecodeError)
+t=25.0s frames=1435 file-feed unreadable(JSONDecodeError)
+t=145.2s frames=8311 file-feed unreadable(JSONDecodeError)
+t=30.1s frames=1722 file-feed unreadable(JSONDecodeError)
+t=150.3s frames=8598 file-feed unreadable(JSONDecodeError)
+t=35.1s frames=2009 file-feed unreadable(JSONDecodeError)
+t=155.3s frames=8885 file-feed unreadable(JSONDecodeError)
+t=40.1s frames=2296 file-feed unreadable(JSONDecodeError)
+t=160.3s frames=9172 file-feed unreadable(JSONDecodeError)
+t=45.1s frames=2584 file-feed unreadable(JSONDecodeError)
+t=165.3s frames=9460 file-feed unreadable(JSONDecodeError)
+t=50.1s frames=2872 file-feed unreadable(JSONDecodeError)
+t=170.3s frames=9748 file-feed unreadable(JSONDecodeError)
+t=55.1s frames=3160 file-feed unreadable(JSONDecodeError)
+t=175.3s frames=10036 file-feed unreadable(JSONDecodeError)
+stopped by time after 60.0s: frames=3439 fps=57.3 boxes=0
+RESULT: time frames=3439 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=180.3s frames=10323 file-feed unreadable(JSONDecodeError)
+t=185.3s frames=10610 file-feed unreadable(JSONDecodeError)
+t=190.4s frames=10897 file-feed unreadable(JSONDecodeError)
+t=195.4s frames=11183 file-feed unreadable(JSONDecodeError)
+t=200.4s frames=11469 file-feed unreadable(JSONDecodeError)
+t=205.4s frames=11755 file-feed unreadable(JSONDecodeError)
+t=210.4s frames=12041 file-feed unreadable(JSONDecodeError)
+t=215.4s frames=12327 file-feed unreadable(JSONDecodeError)
+t=220.4s frames=12613 file-feed unreadable(JSONDecodeError)
+t=225.4s frames=12900 file-feed unreadable(JSONDecodeError)
+t=230.4s frames=13187 file-feed unreadable(JSONDecodeError)
+t=235.4s frames=13473 file-feed unreadable(JSONDecodeError)
+t=240.5s frames=13759 file-feed unreadable(JSONDecodeError)
+t=245.5s frames=14045 file-feed unreadable(JSONDecodeError)
+t=250.5s frames=14331 file-feed unreadable(JSONDecodeError)
+t=255.5s frames=14617 file-feed unreadable(JSONDecodeError)
+t=260.5s frames=14903 file-feed unreadable(JSONDecodeError)
+t=265.5s frames=15189 file-feed unreadable(JSONDecodeError)
+t=270.5s frames=15475 file-feed unreadable(JSONDecodeError)
+t=275.5s frames=15761 file-feed unreadable(JSONDecodeError)
+t=280.5s frames=16048 file-feed unreadable(JSONDecodeError)
+t=285.5s frames=16335 file-feed unreadable(JSONDecodeError)
+t=290.5s frames=16621 file-feed unreadable(JSONDecodeError)
+t=295.6s frames=16907 file-feed unreadable(JSONDecodeError)
+t=300.6s frames=17193 file-feed unreadable(JSONDecodeError)
+t=305.6s frames=17480 file-feed unreadable(JSONDecodeError)
+t=310.6s frames=17766 file-feed unreadable(JSONDecodeError)
+t=315.6s frames=18053 file-feed unreadable(JSONDecodeError)
+t=320.6s frames=18340 file-feed unreadable(JSONDecodeError)
+t=325.6s frames=18626 file-feed unreadable(JSONDecodeError)
+t=330.6s frames=18912 file-feed unreadable(JSONDecodeError)
+t=335.6s frames=19199 file-feed unreadable(JSONDecodeError)
+t=340.6s frames=19485 file-feed unreadable(JSONDecodeError)
+t=345.7s frames=19771 file-feed unreadable(JSONDecodeError)
+t=350.7s frames=20057 file-feed unreadable(JSONDecodeError)
+t=355.7s frames=20343 file-feed unreadable(JSONDecodeError)
+t=360.7s frames=20629 file-feed unreadable(JSONDecodeError)
+t=365.7s frames=20915 file-feed unreadable(JSONDecodeError)
+t=370.7s frames=21201 file-feed unreadable(JSONDecodeError)
+t=375.7s frames=21487 file-feed unreadable(JSONDecodeError)
+t=380.7s frames=21773 file-feed unreadable(JSONDecodeError)
+
+=== qk_live 11:39:51 20/11 mode=run args=--from-feed --seconds=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=385.7s frames=22060 file-feed unreadable(JSONDecodeError)
+t=5.0s frames=287 file-feed unreadable(JSONDecodeError)
+t=390.7s frames=22347 file-feed unreadable(JSONDecodeError)
+t=10.0s frames=574 file-feed unreadable(JSONDecodeError)
+t=395.7s frames=22634 file-feed unreadable(JSONDecodeError)
+t=15.0s frames=861 file-feed unreadable(JSONDecodeError)
+t=400.7s frames=22922 file-feed unreadable(JSONDecodeError)
+t=20.0s frames=1148 file-feed unreadable(JSONDecodeError)
+t=405.8s frames=23209 file-feed unreadable(JSONDecodeError)
+t=25.0s frames=1434 file-feed unreadable(JSONDecodeError)
+t=410.8s frames=23496 file-feed unreadable(JSONDecodeError)
+t=30.0s frames=1721 file-feed unreadable(JSONDecodeError)
+t=415.8s frames=23783 file-feed unreadable(JSONDecodeError)
+t=35.1s frames=2008 file-feed unreadable(JSONDecodeError)
+t=420.8s frames=24070 file-feed unreadable(JSONDecodeError)
+t=40.1s frames=2295 file-feed unreadable(JSONDecodeError)
+t=425.8s frames=24357 file-feed unreadable(JSONDecodeError)
+t=45.1s frames=2582 file-feed unreadable(JSONDecodeError)
+t=430.8s frames=24643 file-feed unreadable(JSONDecodeError)
+t=50.1s frames=2869 file-feed unreadable(JSONDecodeError)
+t=435.8s frames=24930 file-feed unreadable(JSONDecodeError)
+t=55.1s frames=3156 file-feed unreadable(JSONDecodeError)
+t=440.8s frames=25217 file-feed unreadable(JSONDecodeError)
+stopped by time after 60.0s: frames=3436 fps=57.3 boxes=0
+RESULT: time frames=3436 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=445.8s frames=25504 file-feed unreadable(JSONDecodeError)
+t=450.8s frames=25791 file-feed unreadable(JSONDecodeError)
+t=455.8s frames=26077 file-feed unreadable(JSONDecodeError)
+t=460.8s frames=26363 file-feed unreadable(JSONDecodeError)
+t=465.9s frames=26649 file-feed unreadable(JSONDecodeError)
+t=470.9s frames=26935 file-feed unreadable(JSONDecodeError)
+t=475.9s frames=27221 file-feed unreadable(JSONDecodeError)
+t=480.9s frames=27508 file-feed unreadable(JSONDecodeError)
+t=485.9s frames=27794 file-feed unreadable(JSONDecodeError)
+t=490.9s frames=28080 file-feed unreadable(JSONDecodeError)
+t=495.9s frames=28366 file-feed unreadable(JSONDecodeError)
+t=500.9s frames=28652 file-feed unreadable(JSONDecodeError)
+t=505.9s frames=28939 file-feed unreadable(JSONDecodeError)
+t=510.9s frames=29225 file-feed unreadable(JSONDecodeError)
+t=515.9s frames=29511 file-feed unreadable(JSONDecodeError)
+t=521.0s frames=29797 file-feed unreadable(JSONDecodeError)
+t=526.0s frames=30082 file-feed unreadable(JSONDecodeError)
+t=531.0s frames=30368 file-feed unreadable(JSONDecodeError)
+t=536.0s frames=30654 file-feed unreadable(JSONDecodeError)
+t=541.0s frames=30940 file-feed unreadable(JSONDecodeError)
+t=546.0s frames=31227 file-feed unreadable(JSONDecodeError)
+t=551.0s frames=31514 file-feed unreadable(JSONDecodeError)
+
+=== qk_live 11:42:39 20/11 mode=run args=--from-feed --seconds=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=556.0s frames=31801 file-feed stale age=4.02s ents=8
+t=5.0s frames=287 file-feed stale age=5.15s ents=8
+t=561.0s frames=32088 file-feed stale age=8.99s ents=8
+t=10.0s frames=574 file-feed stale age=10.18s ents=8
+t=566.0s frames=32375 file-feed stale age=14.02s ents=8
+t=15.0s frames=861 file-feed stale age=15.15s ents=8
+t=571.0s frames=32662 file-feed stale age=19.04s ents=8
+t=20.0s frames=1148 file-feed stale age=20.18s ents=8
+t=576.1s frames=32949 file-feed stale age=24.02s ents=8
+t=25.0s frames=1435 file-feed stale age=25.21s ents=8
+t=581.1s frames=33236 file-feed stale age=29.05s ents=8
+t=30.1s frames=1722 file-feed stale age=30.18s ents=8
+t=586.1s frames=33523 file-feed stale age=34.08s ents=8
+t=35.1s frames=2009 file-feed stale age=35.21s ents=8
+t=591.1s frames=33810 file-feed stale age=39.04s ents=8
+t=40.1s frames=2296 file-feed stale age=40.23s ents=8
+t=596.1s frames=34097 file-feed stale age=44.07s ents=8
+t=45.1s frames=2583 file-feed stale age=45.20s ents=8
+t=601.1s frames=34384 file-feed stale age=49.08s ents=8
+t=50.1s frames=2870 file-feed stale age=50.22s ents=8
+t=606.1s frames=34671 file-feed stale age=54.06s ents=8
+t=55.1s frames=3157 file-feed stale age=55.24s ents=8
+t=611.1s frames=34958 file-feed stale age=59.08s ents=8
+stopped by time after 60.0s: frames=3439 fps=57.3 boxes=0
+RESULT: time frames=3439 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=616.1s frames=35244 file-feed stale age=64.07s ents=8
+t=621.1s frames=35530 file-feed stale age=69.11s ents=8
+t=626.1s frames=35816 file-feed stale age=74.10s ents=8
+t=631.1s frames=36102 file-feed stale age=79.09s ents=8
+t=636.1s frames=36388 file-feed stale age=84.13s ents=8
+t=641.1s frames=36674 file-feed stale age=89.12s ents=8
+t=646.1s frames=36960 file-feed stale age=94.11s ents=8
+t=651.1s frames=37245 file-feed stale age=99.11s ents=8
+t=656.2s frames=37531 file-feed stale age=104.15s ents=8
+t=661.2s frames=37818 file-feed stale age=109.13s ents=8
+t=666.2s frames=38104 file-feed stale age=114.17s ents=8
+t=671.2s frames=38390 file-feed stale age=119.15s ents=8
+t=676.2s frames=38677 file-feed stale age=124.18s ents=8
+t=681.2s frames=38964 file-feed stale age=129.16s ents=8
+
+=== qk_live 11:44:49 20/11 mode=run args=--from-feed --seconds=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=686.2s frames=39251 file-feed age=0.18s ents=8 visible=4
+t=5.0s frames=287 file-feed age=0.24s ents=8 visible=4
+t=691.2s frames=39538 file-feed age=0.18s ents=8 visible=4
+t=10.0s frames=574 file-feed age=0.23s ents=8 visible=4
+t=696.2s frames=39825 file-feed age=0.12s ents=8 visible=4
+t=15.0s frames=861 file-feed age=0.17s ents=8 visible=4
+t=701.2s frames=40112 file-feed age=0.10s ents=8 visible=4
+t=20.0s frames=1148 file-feed age=0.16s ents=8 visible=4
+t=706.2s frames=40399 file-feed age=0.09s ents=8 visible=4
+t=25.0s frames=1435 file-feed age=0.15s ents=8 visible=4
+t=711.2s frames=40686 file-feed age=0.03s ents=8 visible=4
+t=30.0s frames=1722 file-feed age=0.09s ents=8 visible=4
+t=716.3s frames=40973 file-feed age=0.02s ents=8 visible=4
+t=35.1s frames=2009 file-feed age=0.08s ents=8 visible=4
+t=721.3s frames=41260 file-feed age=0.00s ents=8 visible=4
+t=40.1s frames=2296 file-feed age=0.06s ents=8 visible=4
+t=726.3s frames=41547 file-feed age=0.19s ents=8 visible=4
+t=45.1s frames=2582 file-feed age=0.25s ents=8 visible=4
+t=731.3s frames=41834 file-feed age=0.18s ents=8 visible=4
+t=50.1s frames=2869 file-feed age=0.24s ents=8 visible=4
+t=736.3s frames=42120 file-feed age=0.12s ents=8 visible=4
+t=55.1s frames=3155 file-feed age=0.18s ents=8 visible=4
+t=741.3s frames=42407 file-feed age=0.11s ents=8 visible=4
+stopped by time after 60.0s: frames=3436 fps=57.3 boxes=4
+RESULT: time frames=3436 boxes=4
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+t=746.3s frames=42693 file-feed age=0.06s ents=8 visible=4
+t=751.3s frames=42980 file-feed stale age=4.09s ents=8
+t=756.3s frames=43267 file-feed stale age=9.12s ents=8
+t=761.3s frames=43553 file-feed stale age=14.11s ents=8
+t=766.4s frames=43838 file-feed stale age=19.12s ents=8
+t=771.4s frames=44124 file-feed stale age=24.10s ents=8
+t=776.4s frames=44410 file-feed stale age=29.14s ents=8
+t=781.4s frames=44696 file-feed stale age=34.13s ents=8
+t=786.4s frames=44982 file-feed stale age=39.12s ents=8
+t=791.4s frames=45268 file-feed stale age=44.16s ents=8
+t=796.4s frames=45554 file-feed stale age=49.15s ents=8
+t=801.4s frames=45841 file-feed stale age=54.17s ents=8
+t=806.4s frames=46127 file-feed stale age=59.16s ents=8
+t=811.4s frames=46413 file-feed stale age=64.16s ents=8
+t=816.4s frames=46699 file-feed stale age=69.20s ents=8
+t=821.4s frames=46985 file-feed stale age=74.19s ents=8
+t=826.4s frames=47272 file-feed stale age=79.23s ents=8
+t=831.5s frames=47558 file-feed stale age=84.22s ents=8
+t=836.5s frames=47844 file-feed stale age=89.20s ents=8
+t=841.5s frames=48130 file-feed stale age=94.25s ents=8
+t=846.5s frames=48416 file-feed stale age=99.23s ents=8
+t=851.5s frames=48702 file-feed stale age=104.21s ents=8
+t=856.5s frames=48988 file-feed stale age=109.25s ents=8
+t=861.5s frames=49274 file-feed stale age=114.24s ents=8
+t=866.5s frames=49560 file-feed stale age=119.23s ents=8
+t=871.5s frames=49846 file-feed stale age=124.26s ents=8
+t=876.5s frames=50133 file-feed stale age=129.24s ents=8
+t=881.5s frames=50419 file-feed stale age=134.29s ents=8
+t=886.5s frames=50705 file-feed stale age=139.28s ents=8
+t=891.5s frames=50992 file-feed stale age=144.31s ents=8
+t=896.5s frames=51278 file-feed stale age=149.30s ents=8
+t=901.5s frames=51564 file-feed stale age=154.28s ents=8
+t=906.6s frames=51851 file-feed stale age=159.32s ents=8
+t=911.6s frames=52137 file-feed stale age=164.30s ents=8
+t=916.6s frames=52424 file-feed stale age=169.33s ents=8
+t=921.6s frames=52711 file-feed stale age=174.37s ents=8
+t=926.6s frames=52998 file-feed stale age=179.35s ents=8
+t=931.6s frames=53284 file-feed stale age=184.39s ents=8
+t=936.6s frames=53571 file-feed stale age=189.37s ents=8
+t=941.6s frames=53858 file-feed stale age=194.40s ents=8
+t=946.6s frames=54144 file-feed stale age=199.39s ents=8
+t=951.6s frames=54430 file-feed stale age=204.43s ents=8
+t=956.7s frames=54716 file-feed stale age=209.42s ents=8
+t=961.7s frames=55003 file-feed stale age=214.45s ents=8
+t=966.7s frames=55289 file-feed stale age=219.43s ents=8
+t=971.7s frames=55575 file-feed stale age=224.41s ents=8
+t=976.7s frames=55862 file-feed stale age=229.45s ents=8
+t=981.7s frames=56149 file-feed stale age=234.48s ents=8
+t=986.7s frames=56435 file-feed stale age=239.47s ents=8
+t=991.7s frames=56720 file-feed stale age=244.48s ents=8
+t=996.7s frames=57006 file-feed stale age=249.47s ents=8
+t=1001.7s frames=57292 file-feed stale age=254.51s ents=8
+t=1006.7s frames=57578 file-feed stale age=259.51s ents=8
+t=1011.7s frames=57864 file-feed stale age=264.50s ents=8
+t=1016.8s frames=58151 file-feed stale age=269.53s ents=8
+t=1021.8s frames=58438 file-feed stale age=274.56s ents=8
+t=1026.8s frames=58725 file-feed stale age=279.54s ents=8
+t=1031.8s frames=59012 file-feed stale age=284.57s ents=8
+t=1036.8s frames=59298 file-feed stale age=289.56s ents=8
+t=1041.8s frames=59584 file-feed stale age=294.60s ents=8
+t=1046.8s frames=59870 file-feed stale age=299.60s ents=8
+t=1051.8s frames=60156 file-feed stale age=304.58s ents=8
+t=1056.8s frames=60442 file-feed stale age=309.63s ents=8
+t=1061.8s frames=60728 file-feed stale age=314.61s ents=8
+t=1066.9s frames=61015 file-feed stale age=319.64s ents=8
+t=1071.9s frames=61301 file-feed stale age=324.63s ents=8
+t=1076.9s frames=61588 file-feed stale age=329.65s ents=8
+t=1081.9s frames=61875 file-feed stale age=334.62s ents=8
+t=1086.9s frames=62162 file-feed stale age=339.65s ents=8
+t=1091.9s frames=62449 file-feed stale age=344.68s ents=8
+t=1096.9s frames=62736 file-feed stale age=349.65s ents=8
+t=1101.9s frames=63023 file-feed stale age=354.68s ents=8
+t=1106.9s frames=63310 file-feed stale age=359.70s ents=8
+t=1111.9s frames=63597 file-feed stale age=364.67s ents=8
+t=1116.9s frames=63884 file-feed stale age=369.70s ents=8
+t=1121.9s frames=64171 file-feed stale age=374.72s ents=8
+t=1126.9s frames=64458 file-feed stale age=379.69s ents=8
+t=1132.0s frames=64745 file-feed stale age=384.73s ents=8
+t=1137.0s frames=65032 file-feed stale age=389.76s ents=8
+t=1142.0s frames=65319 file-feed stale age=394.74s ents=8
+t=1147.0s frames=65606 file-feed stale age=399.77s ents=8
+t=1152.0s frames=65893 file-feed stale age=404.80s ents=8
+t=1157.0s frames=66180 file-feed stale age=409.77s ents=8
+t=1162.0s frames=66467 file-feed stale age=414.80s ents=8
+t=1167.0s frames=66753 file-feed stale age=419.79s ents=8
+t=1172.0s frames=67040 file-feed stale age=424.80s ents=8
+t=1177.0s frames=67327 file-feed stale age=429.83s ents=8
+t=1182.1s frames=67614 file-feed stale age=434.80s ents=8
+t=1187.1s frames=67901 file-feed stale age=439.83s ents=8
+t=1192.1s frames=68188 file-feed stale age=444.86s ents=8
+t=1197.1s frames=68475 file-feed stale age=449.83s ents=8
+t=1202.1s frames=68762 file-feed stale age=454.85s ents=8
+t=1207.1s frames=69049 file-feed stale age=459.87s ents=8
+t=1212.1s frames=69336 file-feed stale age=464.84s ents=8
+t=1217.1s frames=69623 file-feed stale age=469.86s ents=8
+t=1222.1s frames=69910 file-feed stale age=474.88s ents=8
+t=1227.1s frames=70197 file-feed stale age=479.86s ents=8
+t=1232.1s frames=70484 file-feed stale age=484.90s ents=8
+t=1237.1s frames=70771 file-feed stale age=489.92s ents=8
+t=1242.1s frames=71058 file-feed stale age=494.90s ents=8
+t=1247.2s frames=71345 file-feed stale age=499.92s ents=8
+t=1252.2s frames=71632 file-feed stale age=504.96s ents=8
+t=1257.2s frames=71919 file-feed stale age=509.93s ents=8
+t=1262.2s frames=72206 file-feed stale age=514.95s ents=8
+t=1267.2s frames=72493 file-feed stale age=519.97s ents=8
+t=1272.2s frames=72780 file-feed stale age=524.94s ents=8
+t=1277.2s frames=73067 file-feed stale age=529.97s ents=8
+t=1282.2s frames=73354 file-feed stale age=534.99s ents=8
+t=1287.2s frames=73641 file-feed stale age=539.97s ents=8
+t=1292.2s frames=73928 file-feed stale age=544.99s ents=8
+t=1297.2s frames=74215 file-feed stale age=550.02s ents=8
+t=1302.2s frames=74502 file-feed stale age=554.98s ents=8
+t=1307.2s frames=74789 file-feed stale age=560.01s ents=8
+t=1312.2s frames=75076 file-feed stale age=565.03s ents=8
+t=1317.3s frames=75363 file-feed stale age=570.00s ents=8
+t=1322.3s frames=75650 file-feed stale age=575.02s ents=8
+t=1327.3s frames=75937 file-feed stale age=580.05s ents=8
+t=1332.3s frames=76224 file-feed stale age=585.03s ents=8
+t=1337.3s frames=76511 file-feed stale age=590.06s ents=8
+t=1342.3s frames=76798 file-feed stale age=595.08s ents=8
+t=1347.3s frames=77086 file-feed stale age=600.10s ents=8
+t=1352.3s frames=77373 file-feed stale age=605.06s ents=8
+t=1357.3s frames=77660 file-feed stale age=610.09s ents=8
+t=1362.3s frames=77947 file-feed stale age=615.12s ents=8
+t=1367.3s frames=78233 file-feed stale age=620.10s ents=8
+t=1372.3s frames=78520 file-feed stale age=625.13s ents=8
+t=1377.4s frames=78807 file-feed stale age=630.11s ents=8
+t=1382.4s frames=79094 file-feed stale age=635.13s ents=8
+t=1387.4s frames=79381 file-feed stale age=640.16s ents=8
+t=1392.4s frames=79668 file-feed stale age=645.14s ents=8
+t=1397.4s frames=79955 file-feed stale age=650.16s ents=8
+t=1402.4s frames=80242 file-feed stale age=655.19s ents=8
+t=1407.4s frames=80529 file-feed stale age=660.16s ents=8
+t=1412.4s frames=80816 file-feed stale age=665.19s ents=8
+t=1417.4s frames=81103 file-feed stale age=670.22s ents=8
+t=1422.4s frames=81390 file-feed stale age=675.19s ents=8
+t=1427.5s frames=81677 file-feed stale age=680.22s ents=8
+t=1432.5s frames=81964 file-feed stale age=685.24s ents=8
+t=1437.5s frames=82251 file-feed stale age=690.22s ents=8
+t=1442.5s frames=82538 file-feed stale age=695.25s ents=8
+t=1447.5s frames=82825 file-feed stale age=700.27s ents=8
+t=1452.5s frames=83112 file-feed stale age=705.24s ents=8
+t=1457.5s frames=83399 file-feed stale age=710.27s ents=8
+t=1462.5s frames=83686 file-feed stale age=715.30s ents=8
+t=1467.5s frames=83973 file-feed stale age=720.28s ents=8
+t=1472.5s frames=84260 file-feed stale age=725.30s ents=8
+t=1477.5s frames=84546 file-feed stale age=730.28s ents=8
+t=1482.5s frames=84833 file-feed stale age=735.30s ents=8
+t=1487.5s frames=85120 file-feed stale age=740.32s ents=8
+t=1492.5s frames=85407 file-feed stale age=745.30s ents=8
+t=1497.6s frames=85694 file-feed stale age=750.32s ents=8
+stopped by time after 1500.0s: frames=85834 fps=57.2 boxes=0
+RESULT: time frames=85834 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 12:25:55 20/11 mode=fake args=--fake --seconds=8 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=287 SIMULATION - no game data
+stopped by time after 8.0s: frames=458 fps=57.2 boxes=5
+RESULT: time frames=458 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 12:26:03 20/11 mode=fake args=--fake --seconds=8 --fps=144 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=662 SIMULATION - no game data
+stopped by time after 8.0s: frames=1059 fps=132.4 boxes=5
+RESULT: time frames=1059 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 12:26:11 20/11 mode=fake args=--fake --seconds=8 --fps=0 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=2183 SIMULATION - no game data
+stopped by time after 8.0s: frames=3354 fps=419.2 boxes=5
+RESULT: time frames=3354 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 14:37:25 20/11 mode=check args=--check ===
+=== qk_live check 14:37:25 ===
+game pid=8732
+ram_top=0x800000000 ranges=5 (map=5 bad=25) reads=0
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0
+source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 unbound=0 gate=player_type_unverified
+pipeline discovered=24 decoded=0 local_excluded=0 read_failed=0 dropped=0 skipped_unverified=24 (0 reads)
+RESULT: no eligible player candidates (reads=0)
+VERDICT: PARTIAL - no validated player candidates; rendering not evidenced
+
+=== qk_live 16:05:52 20/11 mode=fake args=--fake --seconds=8 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=454 fps=56.7 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=454 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:06:00 20/11 mode=fake args=--fake --seconds=8 --hz=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=454 fps=56.6 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=454 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:06:08 20/11 mode=fake args=--fake --seconds=8 --hz=144 --fps=0 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=1749 SIMULATION - no game data
+stopped by time after 8.0s: frames=2508 fps=313.4 boxes=5
+read-cadence: ticks=155 eff_hz=19.4 target_hz=20
+RESULT: time frames=2508 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:06:16 20/11 mode=fake args=--fake --seconds=8 --hz=90 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=454 fps=56.6 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=454 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:06:24 20/11 mode=fake args=--fake --seconds=8 --hz=120 --fps=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=286 SIMULATION - no game data
+stopped by time after 8.0s: frames=455 fps=56.8 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=455 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:09:05 20/11 mode=fake args=--fake --seconds=8 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=286 SIMULATION - no game data
+stopped by time after 8.0s: frames=456 fps=56.9 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=456 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:09:13 20/11 mode=fake args=--fake --seconds=8 --hz=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=455 fps=56.8 boxes=5
+read-cadence: ticks=455 eff_hz=56.8 target_hz=60
+RESULT: time frames=455 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:09:21 20/11 mode=fake args=--fake --seconds=8 --hz=144 --fps=0 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=1498 SIMULATION - no game data
+stopped by time after 8.0s: frames=2408 fps=301.0 boxes=5
+read-cadence: ticks=930 eff_hz=116.2 target_hz=144
+RESULT: time frames=2408 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:09:29 20/11 mode=fake args=--fake --seconds=8 --hz=90 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=455 fps=56.9 boxes=5
+read-cadence: ticks=152 eff_hz=19.0 target_hz=20
+RESULT: time frames=455 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:09:37 20/11 mode=fake args=--fake --seconds=8 --hz=120 --fps=60 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=285 SIMULATION - no game data
+stopped by time after 8.0s: frames=454 fps=56.7 boxes=5
+read-cadence: ticks=454 eff_hz=56.7 target_hz=120
+RESULT: time frames=454 boxes=5
+VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+
+=== qk_live 16:10:17 20/11 mode=run args=--run --hz=144 --fps=60 --seconds=45 ===
+waiting up to 60s for a game-owned client area (no desktop fallback)
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 unbound=0 gate=player_type_unverified
+census_discovered=24 candidate_eligible=0 decoded=0 local_excluded=0 read_failed=0 dropped=0 skipped_unverified=24 expired=0 round=no
+image_pa=0x1f9b2b000 vp_rva=0xb88bcb0 pid=8732
+live gate: candidates; NO VALIDATED PLAYERS. No boxes will be drawn.
+source changed: ('c:\\users\\new user\\onedrive\\desktop\\cheating\\temp\\_p134_out.txt', 1794190148.4387324, 14008, 'player_type_unverified'); source=_p134_out.txt pid=14008 age=? layout=unverified_contiguous player_validated=False records=24 unbound=0 gate=player_type_unverified
+t=5.0s frames=269 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=10.0s frames=552 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=15.0s frames=837 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=20.0s frames=1119 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=25.0s frames=1403 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=30.0s frames=1687 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=35.1s frames=1970 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+t=40.1s frames=2253 cand 24 | remote 0 | boxes 0 | off 0 behind 0 | unverified 24 | local 0 | readerr 0 | budget 0 | exp 0 | NO VERIFIED PLAYERS reads=0 refused=0 failed=0
+stopped by time after 45.0s: frames=2532 fps=56.3 boxes=0 reads=0 refused=0 failed=0
+read-cadence: ticks=2532 eff_hz=56.3 target_hz=144
+RESULT: time frames=2532 boxes=0 reads=0 refused=0 failed=0
+VERDICT: PARTIAL (SKIPPED in-game rendering; projection alone is not a pixel verdict)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population

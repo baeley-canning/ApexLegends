@@ -1,0 +1,75 @@
+===== qk_image: locate r5apex_dx12 in physical RAM =====
+out=C:\Users\New User\OneDrive\Desktop\cheating\temp\qk_image_6932.txt
+ram_top=0x800000000 ranges=5 (map=5 bad=25)
+  scanned 16384 chunks, 0 image hits
+  scanned 32768 chunks, 0 image hits
+  scanned 49152 chunks, 0 image hits
+  scanned 65536 chunks, 0 image hits
+  scanned 81920 chunks, 0 image hits
+  scanned 98304 chunks, 0 image hits
+  scanned 114688 chunks, 0 image hits
+  scanned 131072 chunks, 0 image hits
+  scanned 147456 chunks, 0 image hits
+  scanned 163840 chunks, 0 image hits
+  scanned 180224 chunks, 0 image hits
+  scanned 196608 chunks, 0 image hits
+  scanned 212992 chunks, 0 image hits
+  IMAGE at 0x048c6bd000 SizeOfImage=0xdfb8000 stamp=0x6aebbc7d sections=9
+  IMAGE at 0x048cb60000 SizeOfImage=0xdfb8000 stamp=0x6aebbc7d sections=9
+  scanned 229376 chunks, 2 image hits
+  scanned 245760 chunks, 2 image hits
+  scanned 262144 chunks, 2 image hits
+  scanned 278528 chunks, 2 image hits
+  scanned 294912 chunks, 2 image hits
+  scanned 311296 chunks, 2 image hits
+  scanned 327680 chunks, 2 image hits
+  scanned 344064 chunks, 2 image hits
+  scanned 360448 chunks, 2 image hits
+  scanned 376832 chunks, 2 image hits
+  scanned 393216 chunks, 2 image hits
+  scanned 409600 chunks, 2 image hits
+  scanned 425984 chunks, 2 image hits
+  scanned 442368 chunks, 2 image hits
+scanned 454581 chunks, 2 image hit(s)
+chosen image_pa=0x048c6bd000 size=0xdfb8000 sections=9 optsize=0xf0
+  .text    va=0x00001000 vsize=0x2ca2b7c wr=0 ex=1 head=e8019730f67f0000 contiguous=yes
+  .rdata   va=0x02ca4000 vsize=0x06a7fb2 wr=0 ex=0 head=9900000001000000 contiguous=no/unclear
+  .data    va=0x0334c000 vsize=0xab23aac wr=1 ex=0 head=6573207468617420 contiguous=yes
+  .pdata   va=0x0de70000 vsize=0x00e4624 wr=0 ex=0 head=2055565741544155 contiguous=yes
+  _RDATA   va=0x0df55000 vsize=0x0000a24 wr=0 ex=0 head=330200c5f9db1db5 contiguous=yes
+  .fptable va=0x0df56000 vsize=0x0000100 wr=1 ex=0 head=44240848ffc14839 contiguous=yes
+  .rsrc    va=0x0df57000 vsize=0x00035f8 wr=0 ex=0 head=916d3108a177a00a contiguous=yes
+  .reloc   va=0x0df5b000 vsize=0x005bc80 wr=0 ex=0 head=55725ef29be39fca contiguous=yes
+  .ooa     va=0x0dfb7000 vsize=0x0000712 wr=0 ex=1 head=cccccccccccccccc contiguous=yes
+  sections whose base_pa+va reads as real data: 8/9
+  rva 0x01b4dfa0 finite=False
+     [0]         nan -171496514917414047304426730888569552896.0000         nan         nan
+     [1]         nan         nan         nan         nan
+     [2]         nan -172820510051521221046361159558018105344.0000         nan         nan
+     [3]         nan         nan         nan         nan
+  rva 0x01b4dfe0 finite=False
+     [0]         nan -174154849214526257140211801325622525952.0000         nan         nan
+     [1]         nan         nan         nan         nan
+     [2]      3.9921      0.0000 -1318786124521546788634624.0000 -1322600056622900593203269861376.0000
+     [3] -1469958939495878834179145870606336.0000      0.0000      0.0158     -0.0000
+  rva 0x0022ee01: read fault
+  rva 0x023f6a90: read fault
+  rva 0x01e7d4b8 finite=False
+     [0] -118472566432755549219333850928435429376.0000      0.0001     11.5836      0.0000
+     [1] 69677207735912381749919744.0000      0.0000      0.0000 -94677415747605495808.0000
+     [2]     -0.0001      0.1337 520867840.0000     -0.0000
+     [3]      0.0000     -0.0000 -3456740808982528.0000     -0.0000
+  scanning .data va=0x334c000 size=0xab23aac (171 MB) for matrices
+  .data scanned=143720448 bytes, matrix candidates=8
+  re-reading the 8 candidate(s) after 1.5 s - the live matrix moves
+   rva=0x0de43604 max_delta=0.000000
+   rva=0x0de43270 max_delta=0.000000
+   rva=0x0de431e0 max_delta=0.000000
+   rva=0x0de43080 max_delta=0.000000
+   rva=0x0ddf5a34 max_delta=0.000000
+   rva=0x0ddb5c04 max_delta=0.000000
+   rva=0x0ddb5844 max_delta=0.000000
+   rva=0x0ddb5390 max_delta=0.000000
+  no matrix moved in 1.5 s - not cached (camera static?)
+RESULT: image_pa=0x48c6bd000 contiguous_sections=8/9 stamp=0x6aebbc7d
+VERDICT: PASS - base_pa+rva works: static offsets are a direct read

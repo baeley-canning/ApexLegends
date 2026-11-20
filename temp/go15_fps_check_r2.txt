@@ -1,0 +1,44 @@
+go15_fps_check start 2026-11-20 12:25:55
+interpreter: C:\Users\New User\AppData\Local\Programs\Python\Python312\python.exe
+gate py_compile rc=0 
+gate regression rc=0 tail:
+  test_world_component_cannot_become_a_player_via_geometry (__main__.SourceTests.test_world_component_cannot_become_a_player_via_geometry) ... ok
+  test_zero_cap_keeps_every_remote_and_failed_reads_invalidate (__main__.SourceTests.test_zero_cap_keeps_every_remote_and_failed_reads_invalidate) ... ok
+  ----------------------------------------------------------------------
+  Ran 13 tests in 0.011s
+  OK
+  RESULT: unit-tests=13 failures=0 errors=0
+--- case baseline_60    (defaults)
+  out: === qk_live 12:25:55 20/11 mode=fake args=--fake --seconds=8 ===
+  out: window rect: (0, 0, 1920, 1080)  (1920x1080)
+  out: window capture: normal (captured)
+  out: t=5.0s frames=287 SIMULATION - no game data
+  out: stopped by time after 8.0s: frames=458 fps=57.2 boxes=5
+  out: RESULT: time frames=458 boxes=5
+  out: VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+  out: coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+MEASURED baseline_60 fps_max=57.2
+--- case fps_144        --fps=144
+  out: === qk_live 12:26:03 20/11 mode=fake args=--fake --seconds=8 --fps=144 ===
+  out: window rect: (0, 0, 1920, 1080)  (1920x1080)
+  out: window capture: normal (captured)
+  out: t=5.0s frames=662 SIMULATION - no game data
+  out: stopped by time after 8.0s: frames=1059 fps=132.4 boxes=5
+  out: RESULT: time frames=1059 boxes=5
+  out: VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+  out: coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+MEASURED fps_144 fps_max=144.0
+--- case fps_0_uncapped --fps=0
+  out: === qk_live 12:26:11 20/11 mode=fake args=--fake --seconds=8 --fps=0 ===
+  out: window rect: (0, 0, 1920, 1080)  (1920x1080)
+  out: window capture: normal (captured)
+  out: t=5.0s frames=2183 SIMULATION - no game data
+  out: stopped by time after 8.0s: frames=3354 fps=419.2 boxes=5
+  out: RESULT: time frames=3354 boxes=5
+  out: VERDICT: PASS - synthetic UI only; NO GAME HALF RAN
+  out: coverage: NOT ESTABLISHED - number of boxes never proves the expected match population
+MEASURED fps_0_uncapped fps_max=419.2
+--- judge: variable = --fps ---
+RESULT: fps variable=--fps baseline=57.2 fps144=144.0 uncapped=419.2
+VERDICT: BASELINE_OK(57.2) FPS144_HOLD(144.0) UNCAPPED_CEILING=419.2_python_should_not_be_the_ceil? rc=0
+go15_fps_check end rc=0

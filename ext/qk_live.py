@@ -20,8 +20,13 @@ is drawn and whose state survives a restart (temp\\qk_live_cfg.txt).
 usage:
   python ext\qk_live.py --fake [--seconds=20]   no game, no driver, no elevation
   python ext\qk_live.py --check                 live read-back, ~3 s, needs elevation
-  python ext\qk_live.py --run [--hz=20] [--seconds=0] [--wide]
+  python ext\qk_live.py --run [--hz=20] [--fps=60] [--seconds=0] [--wide]
+                                                --hz ladder {10,20,30,60,120,144};
+                                                others fall back to default (M3.1)
   python ext\qk_live.py --wide                  also try matrix windows +-0x1000
+                                                --fps also tunes --fake/--from-feed; 0 = uncapped
+  --expiry-zeros=3              void observations before a census record is retired
+                                for its census generation (M1 auto-expiry); 0 disables
 
 verdicts go to temp\\qk_live_out.txt (append-only per run, prefixed by mode), the
 one-line live feed to temp\\qk_live_status.txt, so the state is a file, not a
@@ -56,6 +61,7 @@ BOX_MAX_W = 420.0
 SEED_BYTES = 0xC0             # a census record; positions() needs this much
 SEED_TRIPLE = (0, 1, 2)       # legacy contiguous scan ONLY; not a world transform
 COMPONENT_TRIPLE = (0, 16, 32)  # p135/p141 measured (x,r,r,0)(y,0,0,s)(z,...)
+DEFAULT_EXPIRY_ZEROS = 3       # M1: void reads before a census PA retires (0 = off)
 MIN_CLIENT_W, MIN_CLIENT_H = 320, 200
 
 # --- colours (COLORREF = 0x00BBGGRR) ----------------------------------------
@@ -208,7 +214,8 @@ def read_seed_source(path=CENSUS, pid=None, now=None, max_age=900.0,
                 info["records"].append({"pa": pa, "indices": off, "role": role,
                                         "owner_ref": owner_ref, "class_name": class_name,
                                         "local": rec.get("local") is True,
-                                        "layout": rec.get("layout", info["layout"])})
+                                        "layout": rec.get("layout", info["layout"]),
+                                        "fields": rec.get("fields")})  # M2: declared cells, validated downstream
         except (ValueError, TypeError, KeyError, json.JSONDecodeError) as e:
             info["records"] = []
             info["gate"] = "invalid_json"
@@ -395,12 +402,29 @@ def seed_triple(b, indices=SEED_TRIPLE, require_component=False):
     return decode_position(b, indices, require_component=require_component)
 
 
+def record_is_void(v):
+    """True when a decoded record matches the PROVEN death signature: a census
+    address that dies at a match boundary reads back as all zeros (FACTS 09/11,
+    temp/_mk20_slots.txt).  Empty strings are void too (utf16 lane); any other
+    shape is left to the decoder/structural checks."""
+    if v is None:
+        return True
+    if isinstance(v, str):
+        return v == ""
+    if isinstance(v, (tuple, list)):
+        try:
+            return all(float(c) == 0.0 for c in v)
+        except (TypeError, ValueError):
+            return False
+    return False
+
+
 def _empty_stats():
     return {"candidates": 0, "visible": 0, "behind": 0, "bad_head": 0,
             "bad_size": 0, "offscreen": 0, "clipped": 0, "invalid": 0}
 
 
-def project_entities(m, ents, w, h):
+def project_entities(m, ents, w, h, carry=None):
     """Return (drawable boxes, terminal per-record rejection counters).
 
     A valid record contributes to exactly one bucket.  Offscreen projections
@@ -441,6 +465,8 @@ def project_entities(m, ents, w, h):
             clipped = left < 0 or right > w or y0 < 0 or y1 > h
             if clipped:
                 stats["clipped"] += 1
+            if carry is not None:
+                carry.append(pa)  # box[<n>] <-> carry[n] alignment for labels
             res.append((max(0.0, left), max(0.0, y0), min(float(w), right),
                         min(float(h), y1), feet[2]))
             stats["visible"] += 1
@@ -481,6 +507,194 @@ def matrix_plausible(m):
         if n != n or not (1.0e-3 < n < 1.0e3):
             return False
     return True
+
+
+# ---------------------------------------------------------------------------
+# M2 field bindings: declared, bounded, additive; never guessed
+# ---------------------------------------------------------------------------
+FIELD_FMTS = {"i32": ("<i", 4), "u32": ("<I", 4),
+              "f32": ("<f", 4), "u8": ("<B", 1)}
+META_STR_MAX = 64             # longest single str-u16le field worth reading
+META_SPAN_CAP = 0x8000        # one-ioctl union ceiling; wider tables walk clusters
+META_CLUSTER_GAP = 0x40       # declared holes smaller than this merge into one span
+MAX_FIELDS_PER_RECORD = 24
+FIELD_WARNED = set()
+
+
+def _warn_field(msg):
+    """Malformed field rows degrade, never die; one log line per message."""
+    if msg not in FIELD_WARNED:
+        FIELD_WARNED.add(msg)
+        try:
+            with open(os.path.join(TMP, "qk_field_warn.txt"), "a",
+                      encoding="utf-8") as f:
+                f.write("%s %s\n" % (now(), msg))
+        except OSError:
+            pass
+
+
+def parse_field_specs(rec):
+    """census record -> tuple of (name, offset, size, fmt), offset-sorted.
+
+    Rows are refused (skipped + warned) unless: non-empty name, offset >= 0,
+    size > 0, fmt in FIELD_FMTS, or 'str-u16le' with an even size within
+    META_STR_MAX*2.  Scalar sizes coerce to the format's natural width so a
+    typo'd size cannot widen a read past the declared cell."""
+    decls = rec.get("fields") if isinstance(rec, dict) else None
+    if not isinstance(decls, (list, tuple)):
+        return ()
+    specs = []
+    for d in decls[:24]:
+        try:
+            name = str(d["name"])
+            off = int(d["offset"])
+            size = int(d["size"])
+            fmt = str(d.get("fmt", "i32"))
+        except (KeyError, TypeError, ValueError, IndexError):
+            continue
+        if not name or off < 0 or size <= 0:
+            _warn_field("refused %r off=%r size=%r" % (name, off, size))
+            continue
+        if fmt == "str-u16le":
+            if size % 2 or size > META_STR_MAX * 2:
+                _warn_field("refused %r bad u16le size %d" % (name, size))
+                continue
+        elif fmt in FIELD_FMTS:
+            size = FIELD_FMTS[fmt][1]
+        else:
+            _warn_field("refused %r unknown fmt %r" % (name, fmt))
+            continue
+        specs.append((name, off, size, fmt))
+    return tuple(sorted(set(specs), key=lambda s: (s[1], s[0])))
+
+
+def decode_field(buf, spec, shift=0):
+    """One declared spec -> decoded value, or None; never raises.
+
+    shift moves the spec's offset inside buf (cluster buffers subtract their
+    span base).  A short/malformed buffer degrades only that field -- sibling
+    fields in the same buffer still decode."""
+    _name, fo, size, fmt = spec
+    fo += shift
+    if fo < 0 or fo + size > len(buf):
+        return None
+    try:
+        if fmt == "str-u16le":
+            return decode_position(bytes(buf[fo:fo + size]),
+                                   (0, size // 2), "utf16")
+        return struct.unpack_from(FIELD_FMTS[fmt][0], buf, fo)[0]
+    except struct.error:
+        return None
+
+
+def field_plan(specs):
+    """specs -> (union_span, cluster_spans), record-relative byte ranges.
+
+    union is (lo, hi) of every declared cell when hi-lo <= META_SPAN_CAP,
+    else None (too wide for one ioctl).  clusters merge cells separated by
+    < META_CLUSTER_GAP so one read usually gathers several neighbours."""
+    if not specs:
+        return None, ()
+    cells = sorted((s[1], s[1] + s[2]) for s in specs)
+    lo, hi = cells[0][0], max(end for _, end in cells)
+    union = (lo, hi) if hi - lo <= META_SPAN_CAP else None
+    runs = []
+    cur_lo, cur_hi = cells[0]
+    for c_lo, c_hi in cells[1:]:
+        if c_lo - cur_hi < META_CLUSTER_GAP:
+            cur_hi = max(cur_hi, c_hi)
+        else:
+            runs.append((cur_lo, cur_hi))
+            cur_lo, cur_hi = c_lo, c_hi
+    runs.append((cur_lo, cur_hi))
+    return union, tuple(runs)
+
+
+def read_meta(sess, pa):
+    """Declared-field fetch for one entity; counters stay orthogonal to M1.
+
+    Stage 1 is the union span (one physical read); stage 2 repairs whatever
+    the union missed -- holes, cap refusals, torn tails -- with per-cluster
+    reads, so a hostile address space degrades to partial, not empty.
+    Nothing here feeds the M1 zero-ledger; stale-key eviction is tick()'s."""
+    specs = sess._field_specs.get(pa)
+    plan = sess._field_plans.get(pa)
+    if not specs or sess.no_fields:
+        return None
+    union, clusters = plan
+    got = {}
+
+    def drain(buf, group, base):
+        for spec in group:
+            v = decode_field(buf, spec, -base)
+            if v is not None:
+                got[spec[0]] = v
+
+    if union is not None:
+        buf = sess.ph.read(pa + union[0], union[1] - union[0])
+        sess.field_reads += 1
+        if buf is not None:
+            drain(buf, specs, union[0])
+    if len(got) < len(specs):
+        # union absent OR refused/incomplete: repair per-cluster for the gaps
+        for run in clusters:
+            missing = [s for s in specs
+                       if s[0] not in got and run[0] <= s[1] < run[1]]
+            if not missing:
+                continue
+            buf = sess.ph.read(pa + run[0], run[1] - run[0])
+            sess.field_reads += 1
+            if buf is None:
+                continue
+            drain(buf, missing, run[0])
+            if len(got) == len(specs):
+                break
+    if not got:
+        sess.field_failures += 1
+        return {}
+    if len(got) < len(specs):
+        sess.field_partial += 1
+    return got
+
+
+BLEEDOUT_NAMES = {0: "up", 1: "down", 2: "dead"}
+LABEL_CHARS_MAX = 96
+
+
+def compose_labels(meta_by_pa, local_team=None):
+    """entity PA -> one short on-box label; absent/garbage fields vanish."""
+    texts = {}
+    for pa, meta in meta_by_pa.items():
+        bits = []
+        hp, mx = meta.get("hp"), meta.get("max_hp")
+        if isinstance(hp, int):
+            bits.append("%d/%d" % (hp, mx)
+                        if isinstance(mx, int) and 0 < mx and hp != mx
+                        else str(hp))
+        shield_sum = sum(v for k in ("shield", "temp_shield", "extra_shield")
+                         if isinstance(v := meta.get(k), int))
+        if shield_sum:
+            bit = "s%d" % shield_sum
+            tier = meta.get("extra_tier")
+            if isinstance(tier, int):
+                bit += "t%d" % tier
+            bits.append(bit)
+        team = meta.get("team")
+        if isinstance(team, int) and local_team is not None and team != local_team:
+            bits.append("T%d" % team)
+        bleed = meta.get("bleed")
+        if bleed == 1:
+            bits.append("DBNO")
+        if meta.get("life") == 1:
+            bits.append("dead")
+        name = meta.get("name")
+        if name:
+            name = str(name).split("\x00")[0].strip()
+            if name:
+                bits.append(name[:32])
+        if bits:
+            texts[pa] = " | ".join(bits)[:LABEL_CHARS_MAX]
+    return texts
 
 
 def score_vp(m, ents, w, h):
@@ -804,7 +1018,7 @@ def sanitize_config(cfg):
         out_cfg["hz"] = DEFAULTS["hz"]
     out_cfg["thick"] = min(4, max(1, out_cfg["thick"]))
     out_cfg["scheme"] %= len(SCHEMES)
-    if out_cfg["hz"] not in (10, 20, 30, 60):
+    if out_cfg["hz"] not in (10, 20, 30, 60, 120, 144):
         out_cfg["hz"] = DEFAULTS["hz"]
     return out_cfg
 
@@ -874,7 +1088,7 @@ def apply_key(cfg, action):
         cfg["scheme"] = (cfg["scheme"] + 1) % len(SCHEMES)
         return ("scheme", SCHEMES[cfg["scheme"]][0])
     if action == "hz":
-        order = (10, 20, 30, 60)
+        order = (10, 20, 30, 60, 120, 144)
         i = order.index(cfg["hz"]) if cfg["hz"] in order else 1
         cfg["hz"] = order[(i + 1) % len(order)]
         return ("hz", cfg["hz"])
@@ -930,11 +1144,16 @@ def pipeline_summary(sess):
              "owner_class_unverified": "OWNER/CLASS UNBOUND",
              "candidate_eligible": "VALIDATED PLAYER CANDIDATES"}
     gate = short.get(src.get("gate"), "SOURCE: %s" % src.get("gate", "NONE"))
+    extra = " ROUND?" if getattr(sess, "round_transition", False) else ""
+    nfld = len(getattr(sess, "meta", None) or {})
+    if nfld:
+        extra += " | fld %d" % nfld
     return ("cand %d | remote %d | boxes %d | off %d behind %d | "
-            "unverified %d | local %d | readerr %d | budget %d | %s"
+            "unverified %d | local %d | readerr %d | budget %d | exp %d%s | %s"
             % (sess.seed_total, len(sess.ents), len(sess.boxes), p.get("offscreen", 0),
                p.get("behind", 0), sess.skipped_unverified, sess.local_excluded,
-               sess.read_failures, sess.budget_excluded, gate))
+               sess.read_failures, sess.budget_excluded,
+               getattr(sess, "expired_events", 0), extra, gate))
 
 
 def live_verdict(sess, game_alive, client_valid, render_observed=False):
@@ -1021,7 +1240,7 @@ def foreground_pid():
 class Session(object):
     def __init__(self, cap=0, wide=False, base=None, rva=None,
                  census_path=None, max_age=900.0, allow_unverified=False,
-                 refresh_seconds=None):
+                 refresh_seconds=None, expiry_zeros=None, no_fields=False):
         self.ph = Phys()
         self.pid = self.ph.alive()
         off = offsets_file()
@@ -1053,6 +1272,58 @@ class Session(object):
         self.source = None
         self._specs = {}
         self.allowed_to_draw = False
+        self.expiry_zeros = max(0, int(arg("expiry-zeros", DEFAULT_EXPIRY_ZEROS, int)
+                                      if expiry_zeros is None else expiry_zeros))
+        self.zero_streaks = {}
+        self.expired = set()
+        self.expired_events = 0
+        self.round_transition = False
+        # M2 field bindings: declared-cell reads + labels, orthogonally counted
+        self.no_fields = bool(no_fields)
+        self.meta = {}            # pa -> {field-name: decoded value}
+        self.labels = []          # per-drawn-box label (parallel to self.boxes)
+        self.box_pas = []         # per-drawn-box owning PA (parallel to boxes)
+        self.local_team = None    # provenance: local record's m_iTeamNum read
+        self.field_reads = 0      # physical reads issued for declared fields
+        self.field_failures = 0   # entities whose meta came back entirely empty
+        self.field_partial = 0    # entities where only some declared fields landed
+        self.local_meta_reads = 0 # meta reads spent on the local player's record
+        self._field_specs = {}
+        self._field_plans = {}
+        self.generation = None
+
+    @staticmethod
+    def _generation_of(src):
+        """Identity of the adopted census document; a change resets expiry state."""
+        return (src.get("captured_ts"), src.get("pid"), len(src.get("records", ())))
+
+    def _observe(self, pa, v):
+        """Fold one observation (prime- or tick-cadence) into the expiry ledger.
+
+        v is the decoded value; the PROVEN death signature (FACTS 09/11,
+        temp/_mk20_slots.txt) is an all-zero payload where a live record used to
+        be.  The FIRST void observation already suppresses the box (a zero
+        triple decodes to world origin and drew ghost clusters after round
+        transitions); K consecutive void observations (K = expiry_zeros, shared
+        by both cadences, so a hz=20 tick converges in about K frames) retire
+        the PA for the current generation: no further reads are spent on it and
+        it cannot resurrect until the producer rewrites the census document.
+        Cadence truth: strikes accumulate wherever observations happen -- tick
+        supplies near-consecutive strikes while the record is on ents (the
+        common mid-cycle death), but a prime-pruned corpse converges on the
+        prime cadence.  Either way the first void observation suppresses the
+        box, so what the user sees never waits for the counter."""
+        void = record_is_void(v)
+        if void:
+            self.zero_streaks[pa] = self.zero_streaks.get(pa, 0) + 1
+            if (self.expiry_zeros > 0
+                    and self.zero_streaks[pa] >= self.expiry_zeros
+                    and pa not in self.expired):
+                self.expired.add(pa)
+                self.expired_events += 1
+            return False
+        self.zero_streaks[pa] = 0
+        return True
 
     def prime(self, now=None):
         """Refresh eligible, decoded records without semantic name guessing.
@@ -1065,12 +1336,40 @@ class Session(object):
         src = read_seed_source(self.census_path, self.pid, now, self.max_age,
                                self.allow_unverified)
         self.source = src
+        gen = self._generation_of(src)
+        if gen != self.generation:
+            self.generation = gen
+            self.zero_streaks = {}
+            self.expired = set()
+            self.round_transition = False
+            self.meta = {}
+            self.local_team = None
+        retired_before = self.expired_events
+        healthy = 0
         self.seed_total = len(src["records"])
         self.budget_excluded = 0
         self.dropped = self.read_failures = self.local_excluded = 0
         self.skipped_unverified = (self.seed_total if not src["player_validated"] else 0)
         self.allowed_to_draw = src["gate"] == "candidate_eligible"
         self._specs = {rec["pa"]: rec for rec in src["records"]}
+        self._field_specs = {}
+        self._field_plans = {}
+        if not self.no_fields:
+            for rec in src["records"]:
+                specs = parse_field_specs(rec)
+                self._field_specs[rec["pa"]] = specs
+                self._field_plans[rec["pa"]] = field_plan(specs)
+            # one bounded meta read for the LOCAL record only: establishes
+            # whose team the viewer is on (foe tagging); local draws no box.
+            for rec in src["records"]:
+                if rec.get("local"):
+                    before = self.field_reads
+                    lm = read_meta(self, rec["pa"])
+                    self.local_meta_reads += self.field_reads - before
+                    lt = (lm or {}).get("team")
+                    if isinstance(lt, int):
+                        self.local_team = lt
+                    break
         keep = []
         if self.allowed_to_draw:
             for rec in src["records"]:
@@ -1080,18 +1379,29 @@ class Session(object):
                 if rec.get("local"):
                     self.local_excluded += 1
                     continue
+                if rec["pa"] in self.expired:
+                    continue  # retired this generation: no read, no box, no resurrect
                 b = self.ph.read(rec["pa"], SEED_BYTES)
                 if b is None:
                     self.read_failures += 1
+                    self._observe(rec["pa"], None)
                     continue
                 v = decode_position(b, rec["indices"], rec.get("layout"))
                 if v is None:
                     self.dropped += 1
+                    self._observe(rec["pa"], None)
                     continue
-                keep.append((rec["pa"], v))
+                if self._observe(rec["pa"], v):
+                    keep.append((rec["pa"], v))
+                    healthy += 1
         if self.cap > 0 and len(keep) > self.cap:
             self.budget_excluded = len(keep) - self.cap
             keep = keep[:self.cap]  # declared debug budget, not silent census truncation
+        newly_retired = self.expired_events - retired_before
+        if newly_retired >= 2:
+            self.round_transition = True
+        elif newly_retired == 0 and healthy:
+            self.round_transition = False
         self.ents = keep
         self.boxes = []
         self.hits = 0
@@ -1141,14 +1451,37 @@ class Session(object):
                  if raw is not None and spec is not None else None)
             if v is None:
                 self.read_failures += 1
+                self.meta.pop(pa, None)   # dead position: no trustworthy meta
+                self._observe(pa, None)
                 continue
+            if not self._observe(pa, v):
+                self.meta.pop(pa, None)   # zero-signature corpse: drop meta
+                continue  # zero-signature: boxless now; retired after K observations
             ents.append((pa, v))
+            specs = self._field_specs.get(pa)
+            if specs and not self.no_fields:
+                meta = read_meta(self, pa)
+                if meta:
+                    self.meta[pa] = meta
+                else:
+                    self.meta.pop(pa, None)
+            else:
+                self.meta.pop(pa, None)
         self.ents = ents
         if self.m is not None:
-            self.boxes, self.projection = project_entities(self.m, self.ents, w, h)
+            self.box_pas = []
+            self.boxes, self.projection = project_entities(
+                self.m, self.ents, w, h, carry=self.box_pas)
+            if self.meta:
+                texts = compose_labels(self.meta, self.local_team)
+                self.labels = [texts.get(pa) for pa in self.box_pas]
+            else:
+                self.labels = []      # nothing bound: silently label-free
             self.hits = self.projection["visible"]
         else:
             self.boxes = []
+            self.box_pas = []
+            self.labels = []
             self.projection = _empty_stats()
             self.projection["candidates"] = len(self.ents)
         return self.boxes
@@ -1167,8 +1500,75 @@ def synthetic_boxes(t, w, h):
     return res
 
 
-def draw_boxes(ov, boxes, cfg, ox, oy, accent, accent2):
-    for x0, y0, x1, y1, depth in boxes:
+# ---------------------------------------------------------------------------
+# --from-feed: consume temp\qk_feed.json written by `python qk_va.py --emit`.
+# File-fed overlay = consumer-side proof only; the game-read half is NOT
+# exercised (R9) and the verdict below says so.  No game, no reads.
+# ---------------------------------------------------------------------------
+FROM_FEED = os.path.join(os.path.dirname(OUT), "qk_feed.json")
+STALE_FEED = 0.5  # s; older than this and the frame counts as stale
+
+
+def fed_boxes(w, h, max_age=STALE_FEED):
+    """Boxes from the producer feed via the same project_entities the live
+    pipeline uses (identical 32-float dual-lead matrix).  Sets .note for HUD."""
+    import json
+    fed_boxes.note = "-"
+    try:
+        with open(FROM_FEED, "r", encoding="utf-8") as f:
+            rec = json.load(f)
+    except (OSError, ValueError) as e:
+        fed_boxes.note = "unreadable(%s)" % type(e).__name__
+        return []
+    age = time.time() - float(rec.get("ts", 0))
+    m = rec.get("matrix")
+    ents = rec.get("ents") or []
+    pairs = []
+    for i, e in enumerate(ents):
+        pos = e.get("pos") if isinstance(e, dict) else None
+        if isinstance(pos, list) and len(pos) == 3:
+            pairs.append((e.get("ptr", i), (pos[0], pos[1], pos[2])))
+    if age > max_age:
+        fed_boxes.note = "stale age=%.2fs ents=%d" % (age, len(pairs))
+        return []
+    if m is None:
+        fed_boxes.note = "no-matrix ents=%d age=%.2fs" % (len(pairs), age)
+        return []
+    if not pairs:
+        fed_boxes.note = "no-ents age=%.2fs" % age
+        return []
+    # The producer stores the authentic <32f> dual-lead pair (leads 0/4) --
+    # the same bytes pick_window() scores off the wire.  Normalise to the one
+    # 16-float window the projector takes, choosing the higher-scoring lead,
+    # exactly like the live path does.  Bad shapes degrade to a note (no raise),
+    # so a malformed feed can never kill the overlay.
+    if isinstance(m, (list, tuple)) and len(m) == 32:
+        cand = []
+        for lead in (0, 4):
+            sl = list(m[lead:lead + 16])
+            if matrix_plausible(sl):
+                cand.append((score_vp(sl, pairs, w, h), lead, sl))
+        if cand:
+            _, _, m = max(cand, key=lambda t: (t[0], -t[1]))
+        else:
+            fed_boxes.note = "implausible-matrix(32) ents=%d age=%.2fs" % (len(pairs), age)
+            return []
+    elif isinstance(m, (list, tuple)) and len(m) == 16:
+        m = list(m)
+        if not matrix_plausible(m):
+            fed_boxes.note = "implausible-matrix(16) ents=%d age=%.2fs" % (len(pairs), age)
+            return []
+    else:
+        fed_boxes.note = "bad-matrix-shape ents=%d age=%.2fs" % (len(pairs), age)
+        return []
+    boxes, proj = project_entities(m, pairs, w, h)
+    fed_boxes.note = "age=%.2fs ents=%d visible=%d" % (
+        age, len(pairs), proj.get("visible", -1) if isinstance(proj, dict) else -1)
+    return boxes
+
+
+def draw_boxes(ov, boxes, cfg, ox, oy, accent, accent2, labels=None):
+    for i, (x0, y0, x1, y1, depth) in enumerate(boxes):
         if cfg["filled"]:
             ov.fill(ox + x0, oy + y0, ox + x1, oy + y1, accent2)
         if cfg["glow"]:
@@ -1177,10 +1577,18 @@ def draw_boxes(ov, boxes, cfg, ox, oy, accent, accent2):
         ov.frame(ox + x0, oy + y0, ox + x1, oy + y1, accent, cfg["thick"])
         if cfg["dist"]:
             ov.text(ox + x0, oy + y0 - 20, "%du" % int(depth), accent, small=True)
+        lab = labels[i] if labels is not None and i < len(labels) else None
+        if lab:
+            ov.text(ox + x0, oy + y0 - (36 if cfg["dist"] else 20), lab,
+                    accent, small=True)
 
 
 def run(cfg, seconds, fake, wide, cap, base, rva):
     import dumplive as dl
+    feed = bool(flag("from-feed"))   # consume qk_feed.json instead of reading the game
+    fake = fake or feed              # identical desktop-surface handling as --fake
+    fps = arg("fps", 60.0, float)    # render cap (go15/M3): 60 = legacy feel; 0 = uncapped
+    frame_dt = 1.0 / fps if fps > 0 else 0.0
     t0 = time.time()
     pid = None if fake else dl.find_pid()
     rect = screen_rect() if fake else None
@@ -1228,10 +1636,12 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
         got = sess.prime()
         out(source_summary(sess.source))
         out("census_discovered=%d candidate_eligible=%d decoded=%d "
-            "local_excluded=%d read_failed=%d dropped=%d skipped_unverified=%d"
+            "local_excluded=%d read_failed=%d dropped=%d skipped_unverified=%d "
+            "expired=%d round=%s"
             % (sess.seed_total, len(got) + sess.local_excluded + sess.read_failures
                + sess.dropped, len(got), sess.local_excluded, sess.read_failures,
-               sess.dropped, sess.skipped_unverified))
+               sess.dropped, sess.skipped_unverified, sess.expired_events,
+               "suspected" if sess.round_transition else "no"))
         out("image_pa=%#x vp_rva=%#x pid=%s" % (sess.base or 0, sess.rva, sess.pid))
         if not got:
             out("live gate: candidates; NO VALIDATED PLAYERS. No boxes will be drawn.")
@@ -1242,6 +1652,7 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
     next_status = 0.0
     next_log = t0 + 5.0
     frames = 0
+    read_ticks = 0
     rendered_box_frames = 0
     reads_at_start = 0
     last_boxes = 0
@@ -1275,7 +1686,10 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
             reason = "END"
             break
         if t >= next_read:
-            if fake:
+            read_ticks += 1
+            if feed:
+                boxes = fed_boxes(w, h)
+            elif fake:
                 boxes = synthetic_boxes(t - t0, w, h)
             else:
                 new_pid = dl.find_pid()
@@ -1319,8 +1733,11 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
             next_read = t + 1.0 / max(1, cfg["hz"])
         ov.clear()
         if cfg["esp"]:
-            draw_boxes(ov, boxes, cfg, ox, oy, accent, accent2)
+            draw_boxes(ov, boxes, cfg, ox, oy, accent, accent2,
+                       labels=getattr(sess, "labels", None))
         feed_label = pipeline_summary(sess)
+        if feed and getattr(fed_boxes, "note", "-") != "-":
+            feed_label = "file-feed %s" % fed_boxes.note
         if sess is not None and sess.source:
             src = sess.source
             key = (os.path.normcase(src["path"]), src.get("captured_ts"),
@@ -1352,7 +1769,7 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
                     sess.ph.reads, sess.ph.refused, sess.ph.failed)
             out("t=%.1fs frames=%d %s" % (t - t0, frames, detail))
             next_log = t + 5.0
-        dt = 1.0 / 60.0 - (time.time() - t)
+        dt = frame_dt - (time.time() - t)
         if dt > 0:
             time.sleep(dt)
     elapsed = time.time() - t0
@@ -1366,7 +1783,16 @@ def run(cfg, seconds, fake, wide, cap, base, rva):
                  (sess.ph.reads, sess.ph.refused, sess.ph.failed))
     out("stopped by %s after %.1fs: frames=%d fps=%.1f boxes=%d%s"
         % (reason, elapsed, frames, frames / max(0.001, elapsed), last_boxes, stats))
-    if fake:
+    out("read-cadence: ticks=%d eff_hz=%.1f target_hz=%d"
+        % (read_ticks, read_ticks / max(0.001, elapsed), cfg["hz"]))
+    if feed:
+        game_present = dl.find_pid() is not None
+        rc, verdict = ((0, "PARTIAL (R9) - file-fed overlay drew; game-read half "
+                          "not exercised (consumer proof only)") if frames else
+                       (1, "FAIL - no file-fed frames rendered"))
+        if game_present:
+            verdict += "; game present during consume"
+    elif fake:
         rc, verdict = (0, "PASS - synthetic UI only; NO GAME HALF RAN") if frames else \
                       (1, "FAIL - no synthetic frames rendered")
     else:
@@ -1439,6 +1865,36 @@ def check(wide, cap):
         for i, bx in enumerate(s.boxes[:10]):
             out("  box%d  x %.0f..%.0f  y %.0f..%.0f  d=%.0f"
                 % (i, bx[0], bx[2], bx[1], bx[3], bx[4]))
+        # M2/B1: declared-field header dump -- header table + this tick's live
+        # values for every record that declared "fields".  Spec-bearing records
+        # whose position died this tick show <no-meta>; a field that refused to
+        # decode in a living record shows <absent>.  Counts only; no verdicts.
+        spec_recs = sum(1 for sp in s._field_specs.values() if sp)
+        if spec_recs:
+            named = 0
+            for pa, _v in s.ents:
+                specs = s._field_specs.get(pa)
+                if not specs:
+                    continue
+                named += 1
+                meta = s.meta.get(pa)
+                out(" fields@%#x:" % pa)
+                for nm, fo, fsz, ff in specs:
+                    val = meta.get(nm) if meta else None
+                    if val is None:
+                        txt = "<no-meta>" if meta is None else "<absent>"
+                    elif ff == "str-u16le":
+                        txt = repr(str(val)[:META_STR_MAX])
+                    elif ff == "f32":
+                        txt = "%.6g" % val
+                    else:
+                        txt = "%d" % val
+                    out("   %-12s +%#05x %s(%d) = %s" % (nm, fo, ff, fsz, txt))
+            out("field-plan: declared_recs=%d alive_named=%d field_reads=%d "
+                "failures=%d partial=%d local_reads=%d local_team=%s"
+                % (spec_recs, named, s.field_reads, s.field_failures,
+                   s.field_partial, s.local_meta_reads,
+                   s.local_team if s.local_team is not None else "-"))
         t = time.time() - t0
         alive = dl.find_pid() == pid
         out("elapsed=%.2fs reads=%d refused=%d failed=%d game_alive=%s"
@@ -1487,6 +1943,8 @@ def main():
     try:
         if mode == "fake":
             cfg = cfg_load()
+            cfg["hz"] = arg("hz", cfg["hz"], int)   # parity with --run path (M3.1):
+            cfg = sanitize_config(cfg)              # synthetic lane drives the real ladder
             return run(cfg, seconds or 20, True, False, cap, base, rva)
         import dumplive as dl
         if not dl.elevation() and not flag("no-elevate"):

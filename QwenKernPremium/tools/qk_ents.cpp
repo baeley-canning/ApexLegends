@@ -1,3 +1,7 @@
+// TRANSPORT: \\.\ApexDrv (apexdrv, tier T2 - a custom driver we load). DIAGNOSTIC PATH ONLY.
+// The shipping reader is ext\qk_va.py on gdrv3 (tier T1 - parasitic, vendor-signed, already
+// resident, never attaches). apexdrv attaches per IOCTL and is what killed the game in 14 s-4 min.
+
 // ============================================================================
 // tools\qk_ents.cpp — PLAN stage 2 recon (read-only): which offset set is real?
 //

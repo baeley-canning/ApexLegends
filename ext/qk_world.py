@@ -286,18 +286,7 @@ def main():
         out("gio open failed: %s" % e)
         out("VERDICT: PARTIAL - gdrv3 not openable")
         return 2
-    # read-path fallback: pages gdrv3 refuses (1450) go through apexdrv's MmCopyMemory
-    # when it is loaded.  dl.retry_phys calls g.read_phys, so one instance-level
-    # wrapper covers the whole walk machinery.
-    _orig_rp = g.read_phys
-
-    def _rp_fallback(pa, n):
-        try:
-            return _orig_rp(pa, n)
-        except OSError:
-            return VA.drv_phys(pa, n)
-
-    g.read_phys = _rp_fallback
+    out("transport: gdrv3 only (strict; apexdrv removed 19/11, sources in _attic_apexdrv/)")
 
     m = VA.get_map(g, pid)
     if not m:

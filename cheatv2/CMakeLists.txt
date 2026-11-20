@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.20)
+project(cheatv2 CXX)
+set(CMAKE_CXX_STANDARD 20)
+add_executable(cheatv2 src/main.cpp src/drv.cpp)
+target_compile_options(cheatv2 PRIVATE /O2 /W4 /WX /MT)

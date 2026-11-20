@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\New User\OneDrive\Desktop\cheating\cheatv2\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\New User\OneDrive\Desktop\cheating\cheatv2\src\drv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\New User\OneDrive\Desktop\cheating\cheatv2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0D8EB9B8-0C2A-3907-9503-F86BC43F4F5F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

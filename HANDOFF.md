@@ -1,5 +1,91 @@
+# HANDOFF — read this first
+
+## STANDING MAP — cold-start begins HERE (maintained 2026-11-20). **Everything below this section is a dated archive of past sessions, newest-first.**
+
+Precedence when documents disagree: `AGENTS.md` (hard rules) > this section > `PLAN.md` (the next
+step) > `FACTS.md` (proven facts) > `STATE.md` (history). Deeper blocks in this file are history —
+their imperatives (including Nov-08 "reboot/kdu/DLL-hook" arcs and the 11-01 gates) are DEAD LAW,
+kept only as evidence of how conclusions were reached. Dating quirk: dates are DD/MM, so the
+August-11 wedge between November blocks below is intentional chronology, not corruption.
+
+> **20/11 19:4x — go21 static-offset lane UP (election + ring feed live; eyes-on veto OUTSTANDING).**
+> Passive election (`temp/go21_elect.py`) narrowed 1,301 seeds to TEN unanimous 68/68 matrices (pool
+> `0x0DAF8858..0x0DD30C8C`); winner `vp_rva=0x0DAF8858` seeded into `temp/qk_offsets.txt` with
+> `image_pa=0x48C6BD000` (13/11 exe, `SizeOfImage=0xDFB8000`). Producer ring feed healthy (207 ->
+> 18,370 boxes, frames=181, exit=0), overlay unaffected. NO EYES-ON VERIFICATION YET — claims stop
+> at pipeline-proven (R9). Known defect: census admitted ~18k candidate boxes (filter over-loose);
+> tightening rides BEHIND the camera-motion veto (PLAN 20/11 19:3x section). Receipts + claim-index:
+> `docs/evidence/2026-11-20_go21/` — reviewer shortcut is that folder's `INDEX.md`.
+> New ops laws this sitting: (1) `Start-Process -ArgumentList` does NOT re-quote members — embed
+> quotes inside the element or spaced paths shear at the first space; (2) the console relay drops
+> output under load — every verdict routes through artifact files; (3) `.gitignore` gained a
+> giant-artifact tier (`_ritual/s2_recon.txt` 5.3 GB, `temp/dump/` bins, `*.dmp`, `.vscode/`,
+> `.claude/`), which also cleared the path to pushing this repo to GitHub.
+
+
+Where things live (verified 20/11):
+
+- **Active lane:** `ext/qk_live.py` (+ `--from-feed`/`--fake`/`--fps`), `ext/dumplive.py`,
+  `ext/gio.py`; overlay/render product code `QwenKernPremium/src` + `build`; C++ tool probes
+  `QwenKernPremium/tools` (diagnostic-era).
+- **Ledgers:** `PLAN.md` (authority on next), `FACTS.md` (truth table), `STATE.md` (append-only
+  log), this file (orientation), `AGENTS.md` (law).
+- **Evidence:** `temp/` — READ ITS `README.md` FIRST (naming grammar, attic index, do-not-move
+  list; h-number collisions resolved 20/11). `_ritual/` = the probe harness + notebook (~1900
+  files, never bulk-edit). `docs/ref/` = historical corpus plans (`PLAN_MASTER.md` is historical;
+  root `PLAN.md` governs). `docs/probes/`, `docs/NEWACCT.md`, `docs/WORKORDER.md`.
+- **Dormant generations (classify-only, touched 20/11):** `QwenKern/` (large older tree, still
+  consulted), `Qwen Knowledge base/`, `Qwen General Knowledge/`, `generated_cheats/`,
+  `deepseekharness/`, `harness/`, `agent/`, `Sentinel/`, `cheatv2/` (11/14 experiment), plus the
+  separate side-project `btc/` (+ root `_btc_*` strays) — **not part of the Apex lane**.
+- **Relocated 20/11:** former root legacy clutter (`ea7.png`, `example.py`, `quick_test2.py`,
+  `build_*.py` legacy candidate-offset scripts, `ai_apex_external_aimbot_architecture.md`,
+  `ChatHistory_Recovered.md`, helper ps1s) now lives in `legacy/`; BTC side-project root strays
+  moved to `btc/root_strays/`; `.aider*` residues remain ignored. Current-lane evidence bundles
+  live in `docs/evidence/<date>_<subject>/`.
+- **Worktree note:** git carries deliberate churn (~500 entries incl. 390 untracked + unstaged
+  deletes, e.g. odd root files `060A2B060104018237020101`, `System.Net.Sockets.Socket` already
+  removed on disk). Do NOT `reset`/`checkout` wholesale; commit selectively per sitting.
+
+Live-lane procedure in one breath: detach any run >5 s via `_ritual/detach_run.ps1` (VS Code eats
+foreground output), gate on the output FILE (R3), reverse every mutation (R4), one variable (R5).
+
+
+> **20/11 09:1x — overnight forensic block (h413→h419): the "kernel damage" flavour of the week
+> dissolved.** The esp/pulse stall traces to **object discovery**, not to walk transport or the
+> 1450 law: both historical EPROCESS dialects severed from real object pages in tonight's name-hit
+> carves (STATS: h414 ran 286k gate probes, six-fold replicant agreement, `ok=0 faults=0` simply
+> meant "nothing ever reached a walk"). h418 hexdumps show tonight's name hits are string-copy
+> slums. Verdict landscape in `STATE.md` 20/11 entry; next-move authority in `PLAN.md` 20/11
+> section (table-free primary + **h420 pid-first discovery** prototype). Artifacts live in
+> `temp/h414_live_walk_forensic.txt` … `temp/h419_dual_dialect.txt`. Two process lessons now in
+> the canon: (1) `_ritual/detach_run.ps1` is MANDATORY for any run >5 s — VS Code shell-integration
+> churn killed two foreground probes tonight; (2) name-anchor carving is not load-bearing until
+> the severed coupling is understood.
+
+> **19/11 09:0x — TRANSPORT + POSTURE (supersedes the reboot note below).**
+>
+> - **The reader is `gdrv3`, and only `gdrv3`.** `\\.\GIOV3` + `0xC3502014` via `ext/gio.py`;
+>   the driver is Gigabyte's own vendor-signed `gdrv3.sys`, resident from logon, loaded by
+>   `GigabyteUpdateService`. Nothing of ours is loaded, nothing is injected: parasitic, fully
+>   external. `sc query gdrv3` reads **STATE 4 RUNNING** today — there is no `sc create` step.
+> - **`apexdrv` is diagnosis, not the reader.** Installed (`ApexDrv` DEMAND_START,
+>   `C:\apexdrv.sys`), opt-in only via `qk_va --driver`, used solely for live PML4 frames that
+>   gdrv3 answers `1450` on. Its attach path is what killed the game (14 s–4 min); every
+>   C++ `QwenKernPremium/tools/qk_*.cpp` probe still speaks it and is now labelled diagnostic.
+> - **Usermode RPM is not a transport either** — `OpenProcess(0x0410)` opens, every read of
+>   the game returns 87 (`_ritual/_h415_out.txt`). Do not rebuild a probe around it.
+> - **The shape is a closet cheat**: ESP that does not shout, and aim that reads as a human
+>   flick (one bone, low rate, eased), never a snap that tracks mid-air.
+> - Authority: `PLAN.md` (next step) and `FACTS.md` (proven facts, transport section).
+>   `_ritual/_t1_transport.txt` is the 19/11 read-back of the transport placement.
+>
+> The reboot note below is still true about *order* (logon -> verify transport -> game), just
+> no longer about the service existing.
+
 > **11/08 13:49 first-boot note (reboot 1, PTE starvation):** box was restarted on purpose.
-> After logon: `sc start gdrv3` (must read `STATE 4`), run `temp\_p132b_bench.py` and expect the
+> After logon: `sc query gdrv3` (must read `STATE 4`; `sc start` only if it is stopped), run
+> `temp\_p132b_bench.py` and expect the
 > 1 MB rate near 700 MB/s, then launch the game into the firing range. Seeds from p132 are in
 > `temp\_p132_out.txt`; collection resumes at PLAN queue step 2 (`temp\_p134.py`).
 

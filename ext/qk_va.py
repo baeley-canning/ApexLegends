@@ -1,16 +1,20 @@
-r"""qk_va.py -- ZERO-ATTACH virtual-address reader (PLAN stage 1b / 2).
+r"""qk_va.py -- ZERO-ATTACH virtual-address reader + --emit feed producer.
 
 WHY THIS EXISTS
-    apexdrv reads do one KeStackAttachProcess per IOCTL.  On 07/11 that was
-    followed by EAAC terminating the game twice (ExitType 0x322327458D1ED790,
-    14 s and ~4 min after the read bursts).  gdrv3 has swept 9 GB of physical
-    memory with ZERO Javelin events, and its read path (MmMapIoSpace in the
-    caller's own context) never attaches to the game's address space.
+    gdrv3's read path (MmMapIoSpace in the caller's own context) never attaches
+    to the game's address space, so the only kernel footprint is the already-
+    resident vendor-signed driver image.  History: the 07/11 game terminations
+    followed apexdrv's per-IOCTL KeStackAttachProcess; that CUSTOM driver is
+    RETIRED (removed from this file 19/11, sources archived to
+    _attic_apexdrv/).  We are strictly gdrv3 only.
 
-    So: read physically, walk the page tables ourselves, and the only kernel
-    footprint is the resident gdrv3 image.  That is the shape with evidence of
-    survival, and it is the Stage 1b gate: 10 minutes of 1 Hz reads with no
-    Javelin event.
+TRANSPORT (policy 2026-11-19, now enforced in code)
+    gdrv3 ONLY.  There is no --driver flag any more: a mixed-transport session
+    is unmeasurable evidence and a custom mapped driver is its own detection
+    surface.  If gdrv3 refuses a page (e.g. 1450 on some live PML4 frames),
+    the page reports as FAULTED - never papered over by another transport.
+    Usermode ReadProcessMemory is not an alternative either (OpenProcess
+    succeeds but every read of the game returned 87; h413/h414/h415, 18/11).
 
 DTB
     Cached in temp\qk_dtb_<pid>.txt together with the image base, so only the
@@ -22,10 +26,14 @@ USAGE
     python ext\qk_va.py --at=0x7FF721690000 --len=64
     python ext\qk_va.py --array=0xB675E68 --slots=64     # pointer array -> entities
     python ext\qk_va.py --watch=600 --at=<base>          # Stage 1b survival gate
+    python ext\qk_va.py --emit [--hz=10] [--secs=300]    # PLAN 1 feed producer
+                                                 # -> temp\qk_feed.json
+    --no-driver is still parsed (accepted, no-op): existing rituals pass it.
 
-EXIT   0 ok | 2 no driver | 3 no game | 4 no dtb | 5 read failed
+EXIT   0 ok | 2 no driver | 3 no game | 4 no dtb | 5 read failed | 6 feed partial
 """
 import bisect
+import json
 import os
 import struct
 import sys
@@ -623,9 +631,15 @@ def discover(g, pid):
         out("  %d DTBs tried, none walked to an MZ image" % tried)
 
         # Self-validating fallback: driver-free, offset-free, PEB-arbitrated.
-        m = discover_peb(g, ram, ranges, pid)
-        if m:
-            return m
+        # 19/11: QK_NO_PEB=1 skips this lane.  Tonight it swept the full 27.7 GB
+        # to its 1202 s cap with no verdict while the player sat in a live match;
+        # when the EPROCESS header lies, pml4 is the productive last lane.
+        if os.environ.get("QK_NO_PEB"):
+            out("  (QK_NO_PEB set - skipping PEB window scan)")
+        else:
+            m = discover_peb(g, ram, ranges, pid)
+            if m:
+                return m
 
         # No EPROCESS assumption at all: find the page table by its own shape and
         # identify the process by the image it maps.  Patch-proof by construction.
@@ -640,106 +654,18 @@ def discover(g, pid):
     return None
 
 
-# apexdrv v15: exact DTB and image base, one IOCTL each.  0x8A702020 = CTL_CODE(0x8A70,0x808),
-# 0x8A70201C = CTL_CODE(0x8A70,0x807).  Both structs are {pid,res,status,src/base/dtb} = 24 B.
-APEXDRV_PATH = r"\\.\ApexDrv"
-IOCTL_DRV_DTB = 0x8A702020
-IOCTL_DRV_BASE = 0x8A70201C
-
-
-IOCTL_DRV_PHYS = 0x8A702024   # CTL_CODE(0x8A70, 0x809)
-
-_k32 = None
-_drv = None
-
-
-def _drv_handle():
-    """One cached handle: the name sweep issues ~500k reads, so no CreateFile per call."""
-    global _k32, _drv
-    if _drv is not None:
-        return _drv
-    import ctypes
-    from ctypes import wintypes
-    if _k32 is None:
-        _k32 = ctypes.WinDLL("kernel32", use_last_error=True)
-        _k32.CreateFileW.restype = ctypes.c_void_p
-        _k32.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD,
-                                      ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD,
-                                      ctypes.c_void_p]
-    h = _k32.CreateFileW(APEXDRV_PATH, 0xC0000000, 0, None, 3, 0, None)
-    if not h or h == ctypes.c_void_p(-1).value:
-        return None
-    _drv = h
-    return _drv
-
-
-def drv_phys(pa, n):
-    """Read n bytes at physical pa through apexdrv (MmCopyMemory PHYSICAL).
-
-    Drop-in replacement for gio.read_phys: same (pa, size) contract, OSError on
-    failure.  No MmMapIoSpace and no attach, so an unbacked page is a status, not
-    a bugcheck - and gdrv3's 1450 on some page-table frames does not apply.
-    """
-    import ctypes
-    from ctypes import wintypes
-    if n < 1 or n > 0x1000:
-        raise OSError(22, "drv_phys size %d" % n)
-    h = _drv_handle()
-    if not h:
-        raise OSError(6, "no ApexDrv handle")
-    size = 24 + 0x1000
-    buf = ctypes.create_string_buffer(size)
-    struct.pack_into("<QII", buf, 0, pa, n, 0)
-    ret = wintypes.DWORD(0)
-    ok = _k32.DeviceIoControl(ctypes.c_void_p(h), wintypes.DWORD(IOCTL_DRV_PHYS), buf,
-                               wintypes.DWORD(size), buf, wintypes.DWORD(size),
-                               ctypes.byref(ret), None)
-    if not ok:
-        raise OSError(ctypes.get_last_error(), "drv_phys %#x+%#x ioctl failed" % (pa, n))
-    status, copied = struct.unpack_from("<iI", buf, 16)
-    if status != 0:
-        raise OSError(status & 0xFFFFFFFF, "drv_phys %#x+%#x status %#x" % (pa, n, status))
-    return bytes(buf.raw[24:24 + n])
-
-
-def _drv_call24(code, payload):
-    """A 24-byte request/response IOCTL (DTB / BASE) on the cached handle."""
-    import ctypes
-    from ctypes import wintypes
-    h = _drv_handle()
-    if not h:
-        return None
-    buf = ctypes.create_string_buffer(24)
-    ctypes.memmove(buf, payload, 24)
-    ret = wintypes.DWORD(0)
-    ok = _k32.DeviceIoControl(ctypes.c_void_p(h), wintypes.DWORD(code), buf,
-                               wintypes.DWORD(24), buf, wintypes.DWORD(24),
-                               ctypes.byref(ret), None)
-    return buf.raw if ok else None
-
-
-def map_from_driver(pid):
-    """(dtb, base) straight from apexdrv - exact, no scan, no page-table guessing."""
-    empty = struct.pack("<IIiIQ", pid, 0, 0, 0, 0)
-    d = _drv_call24(IOCTL_DRV_DTB, empty)
-    if not d:
-        out("  driver: no handle (ApexDrv not loaded?)")
-        return None
-    status, valid, dtb = struct.unpack_from("<iIQ", d, 8)
-    out("  driver DTB: status=%#x valid=%d dtb=%#x" % (status & 0xFFFFFFFF, valid, dtb))
-    if not valid or not dtb:
-        return None
-    b = _drv_call24(IOCTL_DRV_BASE, empty)
-    base = 0
-    if b:
-        bstatus, bsrc, v = struct.unpack_from("<iIQ", b, 8)
-        out("  driver BASE: status=%#x source=%d base=%#x" % (bstatus & 0xFFFFFFFF, bsrc, v))
-        base = v
-    return {"dtb": dtb, "base": base}
+# --------------------------------------------------------------- gdrv3 only
+# apexdrv machinery REMOVED 19/11 (policy: strictly gdrv3; a custom mapped
+# driver is its own detection surface and mixed-transport sessions produced
+# unmeasurable evidence).  The retired code answered DTB/BASE/PHYS IOCTLs on
+# \\.\ApexDrv; sources archived to _attic_apexdrv/ (QwenKernPremium) if a
+# future, benignly-signed vehicle ever needs the shape back.  Pages gdrv3
+# refuses (1450 on some live PML4 frames) are now reported as FAULTED, full
+# stop - the discovery routes were tuned around that limit.
 
 
 def get_map(g, pid):
-    """cached (dtb, base) if it still walks to an MZ, else ask the driver, else discover."""
+    """Cached (dtb, base) if it still walks to an MZ, else discover() - gdrv3 only."""
     c = load_cached(pid)
     if c:
         try:
@@ -752,29 +678,7 @@ def get_map(g, pid):
             return c
         out("  dtb cache stale (no MZ at cached base) - re-resolving")
 
-    # The driver answers in microseconds and cannot be wrong about its own process.
-    try:
-        m = None if flag("no-driver") else map_from_driver(pid)
-    except Exception as e:                      # noqa: BLE001
-        out("  driver path fault: %s: %s" % (type(e).__name__, e))
-        m = None
-    if m and m["base"]:
-        # Switch the transport BEFORE walking: the driver's MmCopyMemory PHYSICAL
-        # has the same (pa,size) contract as gio.read_phys, but it can read pages
-        # gdrv3 fails on (Errno 1450 on a PML4 frame) and never attaches.
-        try:
-            g.read_phys = drv_phys
-            rd = Reader(g, m["dtb"])
-            ok = (rd.read(m["base"], 2) == b"MZ")
-        except OSError as e:
-            out("  driver transport walk failed: %s" % e)
-            ok = False
-        if ok:
-            save_cache(pid, m["dtb"], m["base"])
-            out("  driver map verified: MZ at base via MmCopyMemory; cache written")
-            return m
-        out("  driver map did not verify (no MZ at base) - falling back")
-
+    out("  transport: gdrv3 only (no custom driver exists on this path any more)")
     d = discover(g, pid)
     if d:
         save_cache(pid, d["dtb"], d["base"])
@@ -991,6 +895,336 @@ def act_find_array(rd, base, max_rep=8):
     return 0
 
 
+# ------------------------------------------------------------ --emit feed
+# PLAN 1 producer support: one file (temp\qk_feed.json), atomically replaced;
+# the overlay's --from-feed is its only consumer.  --fake stays the no-game
+# window-draw diagnostic only.
+FEED_PATH = os.path.join(TMP, "qk_feed.json")
+OFF_FILE_SRC = os.path.join(TMP, "qk_offsets.txt")
+SCHEMA = 1
+ARRAY_CACHE_TTL = 30.0     # s before a chosen array is re-scanned
+SLOT_CAP = 8               # top array slots inspected per frame
+MIN_SCORE = 3              # inclusion floor (origin-plausible + hp/shield sane)
+# Candidate "set B" field offsets (shapes scored by decode()); RVAs pending
+# qk_xref confirmation - offsets are echoed in meta so consumers know the
+# provenance of every field they render.
+ENT_BUF = 0x200
+ENT_FIELDS = {"buf": ENT_BUF, "origin": 0x330, "alive": 0x5DC, "hp": 0x5E0,
+              "shield": 0x5E8}
+ENT_TAIL_BLOCK = 0x10D8
+ENT_TAIL = {"block": ENT_TAIL_BLOCK, "team": 0x10E8, "namePtr": 0x10F0}
+
+
+def account_stamp():
+    """(eaid, banned, srcpath) from _ritual/_account.txt; '?','(missing)' if absent."""
+    p = os.path.join(ROOT, "_ritual", "_account.txt")
+    eaid = banned = "?"
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            for ln in f:
+                if ln.startswith("ACTIVE_EAID:"):
+                    eaid = ln.split(":", 1)[1].strip()
+                elif ln.startswith("ACTIVE_BANNED:"):
+                    banned = ln.split(":", 1)[1].strip()
+        return eaid, banned, p
+    except OSError:
+        return eaid, banned, "(missing)"
+
+
+def feed_sources():
+    """(vp_rva, fixed_array) persisted by earlier boots in temp\\qk_offsets.txt."""
+    vp = arr = None
+    try:
+        with open(OFF_FILE_SRC, "r", encoding="utf-8") as f:
+            for ln in f:
+                if ln.startswith("vp_rva="):
+                    vp = int(ln.strip().split("=", 1)[1], 16)
+                elif ln.startswith("feed_array="):
+                    arr = int(ln.strip().split("=", 1)[1], 16)
+    except (OSError, ValueError):
+        pass
+    return vp, arr
+
+
+def phys_read_bytes(g, pa, n):
+    """PA-span read, tolerant of whichever method the gio/gdrv3 object exposes."""
+    for name in ("retry_phys", "read_pa", "phys_read", "raw_read"):
+        fn = getattr(g, name, None)
+        if fn is not None:
+            try:
+                return fn(pa, n)
+            except (TypeError, OSError, AttributeError):
+                pass
+    try:
+        return g.read(pa, n)   # gio readers span physical memory directly
+    except (TypeError, OSError, AttributeError):
+        return None
+
+
+def read_matrix_pa(g, image_pa, rva):
+    """32-float projection pair at image_pa+rva (check() reads <32f>; leads 0/4)."""
+    if image_pa is None or rva is None:
+        return None
+    b = phys_read_bytes(g, image_pa + rva, 128)
+    if b and len(b) == 128:
+        return struct.unpack("<32f", b)
+    return None
+
+
+def scan_arrays_lite(rd, base, cap_secs=15.0):
+    """Bounded twin of --find-array's writable-section scan; returns sorted reps."""
+    try:
+        lf = rd.read(base + 0x3C, 4)
+        if not lf:
+            return []
+        elf = struct.unpack("<I", lf)[0]
+        pe = rd.read(base + elf, 0x18)
+        if not pe or pe[:4] != b"PE\x00\x00":
+            return []
+        nsec = struct.unpack_from("<H", pe, 6)[0]
+        optsize = struct.unpack_from("<H", pe, 0x14)[0]
+        soi = 0
+        oh = rd.read(base + elf + 0x18, 0x60)
+        if oh:
+            soi = struct.unpack_from("<I", oh, 0x38)[0]
+        st = rd.read(base + elf + 0x18 + optsize, nsec * 40)
+        if not st:
+            return []
+    except OSError:
+        return []
+    reps = []
+    t0 = time.time()
+    for i in range(nsec):
+        s = st[i * 40:(i + 1) * 40]
+        if len(s) < 40:
+            break
+        vsize = struct.unpack_from("<I", s, 8)[0]
+        vaddr = struct.unpack_from("<I", s, 12)[0]
+        chars = struct.unpack_from("<I", s, 36)[0]
+        if not (chars & 0x80000000) or not vsize:
+            continue
+        end = base + vaddr + vsize
+        cur = base + vaddr
+        while cur + 8 <= end and time.time() - t0 < cap_secs:
+            chunk = rd.read(cur, min(0x10000, end - cur))
+            if not chunk:
+                cur += 0x1000
+                continue
+            for off in range(0, len(chunk) - 8, 8):
+                v = struct.unpack_from("<Q", chunk, off)[0]
+                if v < 0x10000 or v > 0x7FFFFFFFFFFF or v & 7:
+                    continue
+                slots = rd.read(v, 64)
+                if not slots:
+                    continue
+                cand = [struct.unpack_from("<Q", slots, k * 8)[0] for k in range(8)]
+                canon = [c for c in cand
+                         if 0x10000 <= c <= 0x7FFFFFFFFFFF and c & 7 == 0]
+                if len(canon) < 4:
+                    continue
+                vt = 0
+                for c in canon[:4]:
+                    q = rd.read(c, 8)
+                    if q:
+                        first = struct.unpack("<Q", q)[0]
+                        if base <= first < base + (soi or 0):
+                            vt += 1
+                if vt >= 3:
+                    reps.append((vt, len(canon), cur + off - base, v))
+            cur += len(chunk)
+            if len(reps) > 200:
+                break
+        if len(reps) > 200:
+            break
+    reps.sort(reverse=True)
+    return reps
+
+
+def choose_array(rd, base, override):
+    """Array address: --array= override, then the persisted pick, then a capped scan."""
+    if override:
+        return override
+    reps = scan_arrays_lite(rd, base)
+    if reps:
+        vt, nc, rva, va = reps[0]
+        out("  emit array: base+%#010x -> %#x slots=%d vtable_hits=%d" % (rva, va, nc, vt))
+        try:
+            with open(OFF_FILE_SRC, "a", encoding="utf-8") as f:
+                f.write("feed_array=0x%X\n" % va)
+        except OSError:
+            pass
+        return va
+    out("  emit array: no candidate this pass")
+    return None
+
+
+def collect_entities(rd, arr_va):
+    """Decode the candidate set-B fields off each slot; ents clearing MIN_SCORE."""
+    ents = []
+    head = rd.read(arr_va, SLOT_CAP * 8)
+    if not head:
+        return ents, "slot-read-fault"
+    slots = struct.unpack_from("<%dQ" % SLOT_CAP, head, 0)
+    for k, ptr in enumerate(slots):
+        if not (0x10000 <= ptr <= 0x7FFFFFFFFFFF and ptr & 7 == 0):
+            continue
+        buf = rd.read(ptr + ENT_BUF, 0x400)
+        if buf is None:
+            continue
+        ox, oy, oz = struct.unpack_from("<fff", buf,
+                                        ENT_FIELDS["origin"] - ENT_BUF)
+        alive, hp, sh = struct.unpack_from("<iii", buf,
+                                           ENT_FIELDS["alive"] - ENT_BUF)
+        score = 0
+        if all(v == v and abs(v) < 1e6 for v in (ox, oy, oz)) and (ox or oy or oz):
+            score += 2
+        if 0 < hp <= 200:
+            score += 2
+        if 0 <= sh <= 200:
+            score += 1
+        if alive in (0, 1, 2):
+            score += 1
+        if score < MIN_SCORE:
+            continue
+        ent = {"slot": k, "ptr": ptr, "pos": [ox, oy, oz],
+               "alive": alive, "hp": hp, "shield": sh, "score": score}
+        tail = rd.read(ptr + ENT_TAIL_BLOCK, 0x40)
+        if tail is not None:
+            ent["team"] = struct.unpack_from("<i", tail,
+                                             ENT_TAIL["team"] - ENT_TAIL_BLOCK)[0]
+            ent["name_ptr"] = struct.unpack_from(
+                "<Q", tail, ENT_TAIL["namePtr"] - ENT_TAIL_BLOCK)[0]
+            # namePtr is a candidate (set-B) POINTER, not a string; deref with
+            # the bounded ladder below so live logs carry actual player names.
+            # Failure degrades to name_how only - never skips the entity.
+            nm, how = resolve_name(rd, ent["name_ptr"])
+            if nm:
+                ent["name"] = nm
+            ent["name_how"] = how
+        ents.append(ent)
+    return ents, "ok"
+
+
+def resolve_name(rd, ptr):
+    """Deref a candidate namePtr (set-B, unconfirmed) to a printable string.
+
+    Ladder (bounded reads only, never raises):
+      a) inline: the bytes AT ptr are a NUL-terminated printable char string;
+      b) indirect: *(void**)ptr is itself a pointer to such a string
+         (struct {char*; ...} shapes: rhs/CUtlString-alikes).
+    Returns (text, how); (None, why) when neither shape fits - the live log
+    then still shows name_how=unresolved for that entity instead of silence.
+    """
+    if not (0x10000 <= ptr <= 0x7FFFFFFFFFFF):
+        return None, "bad-ptr"
+    raw = rd.read(ptr, 48)
+    if raw and len(raw) >= 8:
+        s = raw.split(b"\x00", 1)[0]
+        if len(s) >= 2 and all(32 <= c < 127 for c in s):
+            return s.decode("ascii", "replace"), "inline"
+        inner = struct.unpack_from("<Q", raw, 0)[0]
+        if 0x10000 <= inner <= 0x7FFFFFFFFFFF and inner != ptr:
+            raw2 = rd.read(inner, 48)
+            if raw2:
+                s2 = raw2.split(b"\x00", 1)[0]
+                if len(s2) >= 2 and all(32 <= c < 127 for c in s2):
+                    return s2.decode("ascii", "replace"), "indirect"
+    return None, "unresolved"
+
+
+def atomic_write_json(path, rec):
+    """Write-then-replace so the overlay never sees a torn frame."""
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(rec, f, separators=(",", ":"))
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, path)
+
+
+def act_emit(rd, g, pid, base, dtb, hz=10.0, secs=300.0):
+    """--emit: the producer.  One JSON, atomically replaced, ents+matrix+meta."""
+    out("  --emit: schema=%d hz=%.1f secs=%.0f -> %s" % (SCHEMA, hz, secs, FEED_PATH))
+    eaid, banned, acct_src = account_stamp()
+    out("  account stamp: eaid=%s banned=%s src=%s" % (eaid, banned, acct_src))
+    vp_rva, arr_fixed = feed_sources()
+    image_pa = None
+    try:
+        image_pa = rd.page_pa(base)
+    except Exception as e:                              # noqa: BLE001
+        out("  page_pa failed (%s) - qk_offsets.txt image_pa as fallback"
+            % type(e).__name__)
+    if image_pa is None:
+        try:
+            with open(OFF_FILE_SRC, "r", encoding="utf-8") as f:
+                for ln in f:
+                    if ln.startswith("image_pa="):
+                        image_pa = int(ln.strip().split("=", 1)[1], 16)
+        except (OSError, ValueError):
+            pass
+    if vp_rva is None or image_pa is None:
+        out("  matrix source incomplete (image_pa=%s vp_rva=%s) - frames carry ents only"
+            % (hex(image_pa) if image_pa else None, hex(vp_rva) if vp_rva else None))
+
+    period = 1.0 / hz if hz > 0 else 0.05
+    end = time.time() + secs
+    frames = fmat = fents = 0
+    arr_va = arr_fixed
+    arr_age = ARRAY_CACHE_TTL + 1.0      # force a first resolve
+    why = "-"
+    while time.time() < end:
+        tf = time.time()
+        if arr_va is None or arr_age > ARRAY_CACHE_TTL:
+            arr_va = choose_array(rd, base, arr_fixed)
+            arr_age = 0.0
+        if arr_va:
+            ents, why = collect_entities(rd, arr_va)
+        else:
+            ents, why = [], "no-array"
+        arr_age += period
+        mat = None
+        if image_pa is not None and vp_rva is not None:
+            mat = read_matrix_pa(g, image_pa, vp_rva)
+        rec = {
+            "schema": SCHEMA,
+            "ts": tf,
+            "iso": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "meta": {
+                "producer": "qk_va --emit",
+                "pid": pid, "dtb": dtb, "base": base,
+                "image_pa": image_pa, "vp_rva": vp_rva, "array": arr_va,
+                "transport": "gdrv3", "apexdrv": False,
+                "account": {"eaid": eaid, "banned": banned, "src": acct_src},
+                "field_offsets": {"fields": ENT_FIELDS, "tail": ENT_TAIL},
+                "reads": rd.reads, "faults": rd.faults,
+                "ents_reason": why,
+            },
+            "matrix": list(mat) if mat else None,
+            "ents": ents,
+        }
+        try:
+            atomic_write_json(FEED_PATH, rec)
+        except OSError as e:
+            out("  feed write failed: %s" % e)
+        frames += 1
+        fmat += 1 if mat else 0
+        fents += 1 if ents else 0
+        nap = period - (time.time() - tf)
+        if nap > 0:
+            time.sleep(nap)
+    out("  RESULT: emit frames=%d with_matrix=%d with_ents=%d reads=%d faults=%d"
+        % (frames, fmat, fents, rd.reads, rd.faults))
+    if frames and fmat == frames and fents == frames:
+        out("  VERDICT: PASS - feed complete every frame (overlay side: --from-feed)")
+        return 0
+    if frames:
+        out("  VERDICT: PARTIAL - %d frame(s), matrix=%d/%d ents=%d/%d (last reason=%s)"
+            % (frames, fmat, frames, fents, frames, why))
+        return 6
+    out("  VERDICT: FAIL - no frame fitted into secs=%.0f" % secs)
+    return 5
+
+
 # --------------------------------------------------------------- stage 1b watch
 def act_watch(rd, at, secs, pid):
     out("  Stage 1b gate: %ds of 1 Hz zero-attach reads at %#x" % (secs, at))
@@ -1090,7 +1324,13 @@ def main():
         rd = Reader(g, m["dtb"])
         base = m["base"]
 
-        if flag("pe"):
+        if flag("no-driver"):
+            out("--no-driver: accepted, no-op (gdrv3-only is unconditional; apexdrv removed)")
+        if flag("emit"):
+            rc = act_emit(rd, g, pid, base, m["dtb"],
+                          hz=arg("hz", 10, lambda s: float(s)),
+                          secs=arg("secs", 300, lambda s: float(s)))
+        elif flag("pe"):
             rc = act_pe(rd, base)
         elif flag("find-array"):
             rc = act_find_array(rd, base)

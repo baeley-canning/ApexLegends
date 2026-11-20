@@ -1,7 +1,7 @@
-﻿post1 2026-11-12T06:47:32
+﻿post1 2026-11-20T07:34:59
 elev=True
 user=DESKTOP-PPHFJBQ\New User
-lastboot=11/12/2026 02:32:01
+lastboot=11/20/2026 07:34:40
 startopts: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control ~~ SystemStartOptions    REG_SZ     NOEXECUTE=OPTIN  HYPERVISORLAUNCHTYPE=OFF  NODEBUG  FVEBOOT=2666496  NOVGA
 testsigning-honored: False
 bcd: Windows Boot Manager ~~ -------------------- ~~ identifier              {bootmgr} ~~ device                  partition=\Device\HarddiskVolume1 ~~ path                    \EFI\Microsoft\Boot\bootmgfw.efi ~~ description             Windows Boot Manager ~~ locale                  en-US ~~ inherit                 {globalsettings} ~~ default                 {current} ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ displayorder            {current} ~~ toolsdisplayorder       {memdiag} ~~ timeout                 30 ~~ Windows Boot Loader ~~ ------------------- ~~ identifier              {current} ~~ device                  partition=C: ~~ path                    \WINDOWS\system32\winload.efi ~~ description             Windows 11 ~~ locale                  en-US ~~ inherit                 {bootloadersettings} ~~ recoverysequence        {adc07e20-853b-11f0-b01c-f54eb4c41b3b} ~~ displaymessageoverride  Recovery ~~ recoveryenabled         Yes ~~ nointegritychecks       No ~~ testsigning             No ~~ isolatedcontext         Yes ~~ allowedinmemorysettings 0x15000075 ~~ osdevice                partition=C: ~~ systemroot              \WINDOWS ~~ resumeobject            {adc07e23-853b-11f0-b01c-f54eb4c41b3b} ~~ nx                      OptIn ~~ bootmenupolicy          Standard ~~ hypervisorlaunchtype    Off ~~ debug                   No
@@ -13,8 +13,14 @@ bcd: Windows Boot Manager ~~ -------------------- ~~ identifier              {bo
   start kernprobe rc=1060 :: [SC] StartService: OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
     q: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: ~~ The specified service does not exist as an installed service.
 === CI events last 10 min ===
-06:47:34 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
-06:47:34 id=3089 Signature information for another event. Match using the Correlation Id.
-SCM 06:47:29 id=7040 The start type of the IsolationSession service was changed from demand start to auto start.
-SCM 06:47:34 id=7000 The ApexDrv service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
-done 2026-11-12T06:47:37
+07:34:43 id=3085 Code Integrity will disable WHQL driver enforcement for this boot session. Settings 0x0.
+07:34:43 id=3099 Refreshed and activated Code Integrity policy {60fd87f8-4593-44a0-91b0-2e0da022f248} Microsoft Windows Endpoint Security Policy. id 10.0.29526.0. Status 0x0
+07:34:43 id=3116 Signature information for Code Integrity policy ID {60fd87f8-4593-44a0-91b0-2e0da022f248}.
+07:34:43 id=3099 Refreshed and activated Code Integrity policy {784c4414-79f4-4c32-a6a5-f0fb42a51d0d} Microsoft Windows Cross Certificates for Code Integrity Exceptions Audit Policy. id 10.29611.0.0. Status 0x0
+07:34:43 id=3116 Signature information for Code Integrity policy ID {784c4414-79f4-4c32-a6a5-f0fb42a51d0d}.
+07:35:00 id=3004 Windows is unable to verify the image integrity of the file \Device\HarddiskVolume3\apexdrv.sys because file hash could not be found on the system. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+07:35:00 id=3089 Signature information for another event. Match using the Correlation Id.
+SCM 07:34:50 id=7026 The following boot-start or system-start driver(s) did not load: dam uiomap wesp WinSetupMon
+SCM 07:34:51 id=7040 The start type of the IsolationSession service was changed from demand start to auto start.
+SCM 07:35:00 id=7000 The ApexDrv service failed to start due to the following error: Windows cannot verify the digital signature for this file. A recent hardware or software change might have installed a file that is signed incorrectly or damaged, or that might be malicious software from an unknown source.
+done 2026-11-20T07:35:03

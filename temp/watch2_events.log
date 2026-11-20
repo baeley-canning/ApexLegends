@@ -1,0 +1,7 @@
+V2LIFT 21:44:51
+STOPFILE
+V2END 21:50:39 armed=0
+V2LIFT 21:50:45
+EVENT [22:14:56] producer retirement sighted -> arm #1 (go11_arm_3)
+EVENT [22:14:56] arm3 verdict: VERDICT: ARMED_LONG_COVER_GO11_3
+V2END 22:53:54 armed=1

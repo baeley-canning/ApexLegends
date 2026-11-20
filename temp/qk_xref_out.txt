@@ -1,0 +1,19 @@
+=== qk_xref v1 (offline on-disk PE retarget; 2026-11-20 11:38:48) ===
+pe=C:\Program Files\EA Games\Apex\r5apex_dx12.exe
+machine=0x8664 sections=9 sizeofimage=0xdfb8000
+  .text    vaddr=0x00001000 vsize=0x02ca2b7c rawsz=0x02ca2c00
+  .rdata   vaddr=0x02ca4000 vsize=0x006a7fb2 rawsz=0x006a8000
+  .data    vaddr=0x0334c000 vsize=0x0ab23aac rawsz=0x00d00800
+  .pdata   vaddr=0x0de70000 vsize=0x000e4624 rawsz=0x000e4800
+  _RDATA   vaddr=0x0df55000 vsize=0x00000a24 rawsz=0x00000c00
+  .fptable vaddr=0x0df56000 vsize=0x00000100 rawsz=0x00000200
+  .rsrc    vaddr=0x0df57000 vsize=0x000035f8 rawsz=0x00003600
+  .reloc   vaddr=0x0df5b000 vsize=0x0005bc80 rawsz=0x0005be00
+  .ooa     vaddr=0x0dfb7000 vsize=0x00000712 rawsz=0x00000800
+PC_SECTIONSHAPE_MATCH=True (18/11 positive control)
+  vp_rva_qk_offsets  rva=0x0b88bcb0 (temp\qk_offsets.txt) -> .data/zero-tail(uninitialised)
+  vp_static_handoff  rva=0x0db5bc40 (HANDOFF 08/11) -> .data/zero-tail(uninitialised)
+  view_ini_text      rva=0x0011a350 (ini v3.0.2.23) -> .text
+RECON vp offsets land in different zones across vintages: False
+RESULT: candidates classified; no vintage drift detected
+VERDICT: XREF_V1 CLEAN

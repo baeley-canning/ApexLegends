@@ -1,0 +1,23 @@
+===== qk_probe v1 (PLAN stage 1: driver -> game read bridge, read-only) =====
+host=DESKTOP-PPHFJBQ probe_pid=19872 self=1 secs=20 hz=1 out=qk_probe_latest.txt
+driver: ABI v16 (expect 14)
+target: pid=19872 (self)
+BASE: io=ok status=0x00000000 source=1 base=0x7FF71ABE0000
+BASE self ground_truth=0x7FF71ABE0000 match=1
+READBUF[4@base] status=0x00000000 bytes=4D 5A 90 00
+READBUF[4@base+0x3C] status=0x00000000 e_lfanew=0x100
+READ8[2] first=0x00000000 st0=0x00000000 st1=0x00000000 v0=0x0006866400004550
+READ8 signature=PE machine=0x8664 sections=6
+PE: machine=0x8664 sections=6 stamp=0x6AEED932 optMagic=0x020B SizeOfImage=0x2F000
+PE: build_stamp=1794038066 (unix seconds) - the patch-day fingerprint
+--- liveness: re-read MZ + poll the process every 1000 ms ---
+T+01s read=0x00000000 mz=1 proc=1
+T+02s read=0x00000000 mz=1 proc=1
+T+03s read=0x00000000 mz=1 proc=1
+T+04s read=0x00000000 mz=1 proc=1
+T+05s read=0x00000000 mz=1 proc=1
+T+06s read=0x00000000 mz=1 proc=1
+T+07s read=0x00000000 mz=1 proc=1
+T+08s read=0x00000000 mz=1 proc=1
+T+09s read=0x00000000 mz=1 proc=1
+T+10s read=0x00000000 mz=1 proc=1

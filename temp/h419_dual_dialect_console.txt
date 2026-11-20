@@ -1,0 +1,10 @@
+h419 start 2026-11-20 09:09:39
+[explorer.exe 11068] hits=69
+[explorer.exe 11068] dialect A338: winners=0 typecensus(top5)={0: 21, 101: 4, 1: 3, 15: 3, 76: 2}
+[explorer.exe 11068] dialect B3A8: winners=0 typecensus(top5)={0: 30, 192: 3, 101: 2, 111: 2, 116: 2}
+[dwm.exe 1960] hits=32
+[dwm.exe 1960] dialect A338: winners=0 typecensus(top5)={0: 20, 16: 3, 15: 2, 7: 2, 1: 1}
+[dwm.exe 1960] dialect B3A8: winners=0 typecensus(top5)={0: 15, 123: 2, 1: 2, 87: 1, 11: 1}
+--- total winners A338=0 B3A8=0 elapsed=108.8s
+VERDICT: BOTH_DIALECTS_VOID (deeper surgery required)
+h419 end rc=3

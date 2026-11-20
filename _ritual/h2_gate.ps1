@@ -16,7 +16,8 @@ $o    = Join-Path $rit 'h2_gate.txt'
 $sumF = Join-Path $rit 'h2_gate.summary.txt'
 $svc  = 'apexdrv'
 $exe  = 'C:\Program Files\EA Games\Apex\r5apex_dx12.exe'
-$EAD  = 'C:\Program Files\Electronic Arts\EA Desktop\13.813.1.6327-1792985412\EA Desktop\EADesktop.exe'
+$EAD  = @(Get-ChildItem 'C:\Program Files\Electronic Arts' -Recurse -Filter 'EADesktop.exe' -EA SilentlyContinue |
+          Where-Object { $_.FullName -notmatch 'compatibility32' } | Select-Object -First 1 -Expand FullName)
 $adm  = [bool](([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 if(-not $adm){
   Start-Process powershell -Verb RunAs -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File',('"'+$PSCommandPath+'"'),'-WinSec',"$WinSec",'-BootSec',"$BootSec")
@@ -51,8 +52,11 @@ $global:seen = @{}
 W ''; W '########## A: pre-flight (abort on any FAIL; nothing is launched until all pass) ##########'
 $fail = 0
 if(DrvRunning){ W '  pass: apexdrv RUNNING' } else { $fail++; W '  FAIL: apexdrv is not RUNNING (run h1 first)' }
-$h = (Get-FileHash -LiteralPath "$env:WINDIR\System32\drivers\apexdrv.sys" -Algorithm SHA256 -EA SilentlyContinue).Hash
-if($h -like '9B119FD0C38740A2*'){ W ('  pass: binPath hash ' + $h.Substring(0,16) + ' = k9-proven build') } else { $fail++; W ('  FAIL: binPath hash ' + $h) }
+# gate on the file the SERVICE maps: `sc qc apexdrv` binPath is \??\C:\apexdrv.sys, so System32\drivers
+# (empty on this box) would report MISSING and abort. Hash pin follows the staged v16 build.
+$drvBin = 'C:\apexdrv.sys'
+$h = (Get-FileHash -LiteralPath $drvBin -Algorithm SHA256 -EA SilentlyContinue).Hash
+if($h -like 'A303EFB3AD268DF5*'){ W ('  pass: binPath hash ' + $h.Substring(0,16) + ' = pinned v16 build') } else { $fail++; W ('  FAIL: binPath hash ' + $h) }
 $bl = (Get-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\CI\Config' -Name VulnerableDriverBlocklistEnable -EA SilentlyContinue).VulnerableDriverBlocklistEnable
 if($bl -eq 0){ W '  pass: blocklist disabled' } else { $fail++; W ('  FAIL: blocklist = ' + $bl) }
 $hv = (Get-CimInstance Win32_ComputerSystem).HypervisorPresent

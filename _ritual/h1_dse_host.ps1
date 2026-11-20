@@ -7,21 +7,27 @@
 #   restoring 6 leaves ci!g_CiOptions different from the byte PatchGuard hashed at boot -> 0x109
 #   CRITICAL_STRUCTURE_CORRUPTION ~20 min later (evidence: _ritual\_crash_finding.txt).
 #
-# Pre-flight aborts unless: apexdrv staged+stopped at 577 with the k9-proven binary (hash 9B119FD0...),
-# blocklist 0, HVCI not running, no game/EAAC process alive. Safe by construction: if anything fails
+# Pre-flight aborts unless: apexdrv staged+stopped at 577 with the pinned binary (hash A303EFB3... = v16,
+# the build that adds READ8/READBUF/WRITE/BASE/DTB/PHYS), blocklist 0, HVCI not running, no game/EAAC
+# process alive.  -AllowLive downgrades "no game alive" to a warning: the load then happens mid-session
+# (the game keeps running; use it when a lobby is worth keeping). Safe by construction: if anything fails
 # after DSE was opened, the finally block still restores the recorded pre-value.
 #
 # Writes: _ritual\h1_host.txt   (self-elevates; kdu rc=1 on success too - gate on output strings only)
+param([switch]$AllowLive)     # -AllowLive: load with the game up (gate 6 becomes a warning)
 $ErrorActionPreference = 'Continue'
 $rit  = $PSScriptRoot
 $pay  = 'C:\p37vm\payload'
 $o    = Join-Path $rit 'h1_host.txt'
 $svc  = 'apexdrv'
-$bin  = "$env:WINDIR\System32\drivers\apexdrv.sys"
-$sha  = '9B119FD0C38740A2'   # first 16 hex of SHA256, k9-proven build
+# Must be the path the SERVICE actually points at - `sc qc apexdrv` says \??\C:\apexdrv.sys, so the
+# gate hashes C:\apexdrv.sys and NOT System32\drivers (which is empty and would fail as "MISSING").
+$bin  = 'C:\apexdrv.sys'
+$sha  = 'A303EFB3AD268DF5'   # first 16 hex of SHA256, v16 build (READ8/READBUF/WRITE/BASE/DTB/PHYS)
 $adm  = [bool](([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 if(-not $adm){
   $ea = @('-NoProfile','-ExecutionPolicy','Bypass','-File',('"'+$PSCommandPath+'"'))
+  if($AllowLive){ $ea += '-AllowLive' }
   Start-Process powershell -Verb RunAs -ArgumentList $ea
   exit
 }
@@ -77,13 +83,16 @@ try {
     if($qs -match 'STOPPED'){ W '  pass: service is STOPPED' } elseif($qs -match 'RUNNING'){ $fail++; W '  FAIL: service already RUNNING (h1 expects a fresh run; stop it first)' } else { $fail++; W ('  ? service state unreadable: ' + $qs) }
     if($qs -match '577'){ W '  pass: last exit 577 = DSE armed, the baseline to reproduce' } else { W ('  ? last exit not 577 - baseline start must show 577; full: ' + $qs) }
     $h = (Get-FileHash -LiteralPath $bin -Algorithm SHA256 -EA SilentlyContinue).Hash
-    if($h -like ($sha + '*')){ W ('  pass: binPath hash ' + $h + ' = k9-proven build') } else { $fail++; W ('  FAIL: binPath hash ' + $h + ' does not match ' + $sha) }
+    if($h -like ($sha + '*')){ W ('  pass: binPath hash ' + $h + ' = pinned v16 build') } else { $fail++; W ('  FAIL: binPath hash ' + $h + ' does not match ' + $sha) }
     $bl = (Get-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\CI\Config' -Name VulnerableDriverBlocklistEnable -EA SilentlyContinue).VulnerableDriverBlocklistEnable
     if($bl -eq 0){ W '  pass: VulnerableDriverBlocklistEnable = 0 (live)' } else { $fail++; W ('  FAIL: blocklist = ' + $bl + ' (kdu providers get 0xC0000603) - set it to 0 first') }
     $ssr = @((Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\Microsoft\Windows\DeviceGuard -EA SilentlyContinue).SecurityServicesRunning)
     if($ssr -contains 1){ $fail++; W ('  FAIL: HVCI is running (SecurityServicesRunning=' + ($ssr -join ',') + ')') } else { W ('  pass: HVCI not running (SecurityServicesRunning=' + ($ssr -join ',') + ')') }
     $g = @(Get-Process -EA SilentlyContinue | Where-Object { $_.ProcessName -match 'r5apex|EAAntiCheat|EADesktop' })
-    if($g.Count){ $fail++; W ('  FAIL: game/EA processes alive: ' + (($g | ForEach-Object { $_.ProcessName + '(' + $_.Id + ')' }) -join ',')) } else { W '  pass: no game/EA process alive' }
+    $gNames = (($g | ForEach-Object { $_.ProcessName + '(' + $_.Id + ')' }) -join ',')
+    if($g.Count -and $AllowLive){ W ('  WARN: live session kept: ' + $gNames + ' (-AllowLive)') }
+    elseif($g.Count){ $fail++; W ('  FAIL: game/EA processes alive: ' + $gNames + ' (or pass -AllowLive)') }
+    else { W '  pass: no game/EA process alive' }
     foreach($f in 'kdu.exe','drv64.dll'){ if(-not (Test-Path -LiteralPath (Join-Path $pay $f))){ $fail++; W ('  FAIL: missing ' + $f) } }
     if($fail){ W '=== VERDICT ==='; W ('RESULT: ABORT - ' + $fail + ' pre-flight failure(s)'); return }
     W ('  info: gdrv3 = ' + ((Get-Service gdrv3 -EA SilentlyContinue).Status) + ' (stays running; independent of AsIO3)')
@@ -96,7 +105,12 @@ try {
     $rcBase = Svc ('start ' + $svc) 8000
     if($rcBase -eq 577){ W '  BASELINE OK: 577, DSE armed' }
     elseif($rcBase -eq 0){ W '  WARN: started anyway (0) - DSE was already open; continue, restore will still fire' }
-    else { W ('  ABORT: unexpected baseline rc ' + $rcBase); W '=== VERDICT ==='; W 'RESULT: ABORT - baseline not 577/0'; return }
+    else {
+        # 1450 is not a DSE answer: the image died before CI was consulted. With EAC live its load-image
+        # notify vetoes the unsigned image and NtLoadDriver aborts with STATUS_INSUFFICIENT_RESOURCES.
+        if($rcBase -eq 1450){ W '  rc 1450 = load vetoed before CI (anti-cheat notify) or a real resource shortage -' ; W '  retire EA (h3_quiet) and retry without -AllowLive; 577 is the only baseline that proves DSE armed' }
+        W ('  ABORT: unexpected baseline rc ' + $rcBase); W '=== VERDICT ==='; W 'RESULT: ABORT - baseline not 577/0'; return
+    }
     if(DrvRunning){ Svc ('stop ' + $svc) 6000 | Out-Null }
 
     # ---- ladder ----------------------------------------------------------------

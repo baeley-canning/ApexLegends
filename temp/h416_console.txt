@@ -1,0 +1,15 @@
+h416 start 2026-11-20 08:59:05 py=3.12.10
+targets=explorer.exe(11068), dwm.exe(1960), python.exe(10628), svchost.exe(1680)
+[explorer.exe 11068] carve hits=68
+[explorer.exe 11068] no type3+dualsane candidate -> no probe family
+[dwm.exe 1960] carve hits=31
+[dwm.exe 1960] no type3+dualsane candidate -> no probe family
+[python.exe 10628] carve hits=29
+[python.exe 10628] no type3+dualsane candidate -> no probe family
+[svchost.exe 1680] carve hits=63
+[svchost.exe 1680] no type3+dualsane candidate -> no probe family
+--- family regimes:
+--- regimes total: {}
+--- elapsed 183.1s
+VERDICT: NO_FAMILIES (no candidates survived static gates to probe)
+h416 end rc=3

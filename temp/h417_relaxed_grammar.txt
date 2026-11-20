@@ -1,0 +1,43 @@
+h417 start 2026-11-20 09:03:28 py=3.12.10
+[explorer.exe 11068] hits=69
+[explorer.exe 11068] typebyte census: {0: 4440, 255: 185, 101: 162, 204: 156, 114: 94, 111: 91}
+[explorer.exe 11068] WIN lit=3 hit=0x6977c4694 d=0x300 base=0x6977c4394 type=0 pid=False dtb=0x400000000
+[explorer.exe 11068] WIN lit=2 hit=0x6fcbbf610 d=0x372 base=0x6fcbbf29e type=0 pid=False dtb=0x10000
+[explorer.exe 11068] WIN lit=2 hit=0x6977c4694 d=0x301 base=0x6977c4393 type=0 pid=False dtb=0x40000000000
+[explorer.exe 11068] WIN lit=2 hit=0x68e6c2084 d=0x358 base=0x68e6c1d2c type=0 pid=True dtb=0xc38b44302474894c
+[explorer.exe 11068] WIN lit=2 hit=0x6709f6708 d=0x308 base=0x6709f6400 type=0 pid=True dtb=0x0
+[explorer.exe 11068] WIN lit=2 hit=0x641417108 d=0x30b base=0x641416dfd type=5 pid=False dtb=0x7b0c82ddb45dddc7
+[explorer.exe 11068] WIN lit=2 hit=0x641417108 d=0x30a base=0x641416dfe type=240 pid=False dtb=0xa37b0c82ddb45ddd
+[explorer.exe 11068] WIN lit=2 hit=0x5f1150980 d=0x300 base=0x5f1150680 type=4 pid=False dtb=0x4bdf6e004bdf6b0
+[explorer.exe 11068] WIN lit=2 hit=0x5f11503c0 d=0x365 base=0x5f115005b type=76 pid=False dtb=0x104bdf09800
+[explorer.exe 11068] WIN lit=2 hit=0x55af7cef0 d=0x308 base=0x55af7cbe8 type=0 pid=True dtb=0x0
+[explorer.exe 11068] WIN lit=2 hit=0x5392bc084 d=0x369 base=0x5392bbd1b type=0 pid=False dtb=0x5000
+[explorer.exe 11068] WIN lit=2 hit=0x5392bc084 d=0x34e base=0x5392bbd36 type=191 pid=False dtb=0x105040000
+[explorer.exe 11068] WIN lit=2 hit=0x5392bc084 d=0x346 base=0x5392bbd3e type=0 pid=False dtb=0x4fd600000
+[explorer.exe 11068] WIN lit=2 hit=0x5392bc084 d=0x345 base=0x5392bbd3f type=0 pid=False dtb=0x4fd6000
+[explorer.exe 11068] WIN lit=2 hit=0x4f4dad62c d=0x304 base=0x4f4dad328 type=0 pid=True dtb=0x0
+[explorer.exe 11068] WIN lit=2 hit=0x495d20028 d=0x308 base=0x495d1fd20 type=195 pid=True dtb=0x411046290f412046
+[explorer.exe 11068] WIN lit=2 hit=0x46cf88728 d=0x33e base=0x46cf883ea type=56 pid=False dtb=0x30000
+[explorer.exe 11068] WIN lit=2 hit=0x46ce2ec08 d=0x360 base=0x46ce2e8a8 type=160 pid=False dtb=0x300000000
+[explorer.exe 11068] WIN lit=2 hit=0x417b26190 d=0x36a base=0x417b25e26 type=70 pid=False dtb=0x100000
+[explorer.exe 11068] WIN lit=2 hit=0x417b26190 d=0x304 base=0x417b25e8c type=0 pid=False dtb=0x100000000
+[explorer.exe 11068] WIN lit=2 hit=0x417b26190 d=0x300 base=0x417b25e90 type=16 pid=False dtb=0x1
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x36c base=0x410ffc81d type=0 pid=False dtb=0x14000000
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x36b base=0x410ffc81e type=0 pid=False dtb=0x140000
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x34c base=0x410ffc83d type=0 pid=False dtb=0x15000000
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x34b base=0x410ffc83e type=0 pid=False dtb=0x150000
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x32c base=0x410ffc85d type=0 pid=False dtb=0x16000000
+[explorer.exe 11068] WIN lit=2 hit=0x410ffcb89 d=0x32b base=0x410ffc85e type=0 pid=False dtb=0x160000
+[dwm.exe 1960] hits=31
+[dwm.exe 1960] typebyte census: {0: 2757, 255: 90, 2: 35, 105: 33, 132: 32, 208: 31}
+[dwm.exe 1960] WIN lit=2 hit=0x660cc2068 d=0x308 base=0x660cc1d60 type=249 pid=True dtb=0x89904d8b00000000
+[dwm.exe 1960] WIN lit=2 hit=0x4f5a30da8 d=0x312 base=0x4f5a30a96 type=0 pid=False dtb=0x10000
+[dwm.exe 1960] WIN lit=2 hit=0x4f5a30da8 d=0x308 base=0x4f5a30aa0 type=160 pid=True dtb=0x0
+[dwm.exe 1960] WIN lit=2 hit=0x4e26a8380 d=0x33a base=0x4e26a8046 type=0 pid=False dtb=0x79000
+[dwm.exe 1960] WIN lit=2 hit=0x43150be54 d=0x320 base=0x43150bb34 type=0 pid=False dtb=0x400000000
+[dwm.exe 1960] WIN lit=2 hit=0x43150be54 d=0x301 base=0x43150bb53 type=0 pid=False dtb=0x0
+[dwm.exe 1960] WIN lit=2 hit=0x43150be54 d=0x300 base=0x43150bb54 type=0 pid=False dtb=0x0
+[dwm.exe 1960] WIN lit=2 hit=0x417a801c8 d=0x370 base=0x417a7fe58 type=0 pid=True dtb=0x4000000
+--- winners=35 elapsed=92.7s
+VERDICT: DRIFT_LIKELY (joint-grammar windows exist; check types)
+h417 end rc=0

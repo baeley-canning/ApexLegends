@@ -1,0 +1,307 @@
+
+=== qk_live 11:33:27 20/11 mode=run args=--from-feed --seconds=1500 ===
+window rect: (0, 0, 1920, 1080)  (1920x1080)
+window capture: normal (captured)
+t=5.0s frames=287 file-feed unreadable(FileNotFoundError)
+t=10.0s frames=574 file-feed unreadable(FileNotFoundError)
+t=15.0s frames=861 file-feed unreadable(FileNotFoundError)
+t=20.0s frames=1148 file-feed unreadable(FileNotFoundError)
+t=25.0s frames=1435 file-feed unreadable(FileNotFoundError)
+t=30.0s frames=1722 file-feed unreadable(FileNotFoundError)
+t=35.0s frames=2009 file-feed unreadable(FileNotFoundError)
+t=40.0s frames=2296 file-feed unreadable(FileNotFoundError)
+t=45.1s frames=2584 file-feed unreadable(FileNotFoundError)
+t=50.1s frames=2871 file-feed unreadable(FileNotFoundError)
+t=55.1s frames=3158 file-feed unreadable(FileNotFoundError)
+t=60.1s frames=3445 file-feed unreadable(FileNotFoundError)
+t=65.1s frames=3731 file-feed unreadable(FileNotFoundError)
+t=70.1s frames=4017 file-feed unreadable(FileNotFoundError)
+t=75.1s frames=4303 file-feed unreadable(FileNotFoundError)
+t=80.1s frames=4588 file-feed unreadable(FileNotFoundError)
+t=85.1s frames=4874 file-feed unreadable(FileNotFoundError)
+t=90.1s frames=5160 file-feed unreadable(FileNotFoundError)
+t=95.2s frames=5446 file-feed unreadable(FileNotFoundError)
+t=100.2s frames=5732 file-feed unreadable(FileNotFoundError)
+t=105.2s frames=6018 file-feed unreadable(FileNotFoundError)
+t=110.2s frames=6304 file-feed unreadable(FileNotFoundError)
+t=115.2s frames=6590 file-feed unreadable(FileNotFoundError)
+t=120.2s frames=6876 file-feed unreadable(JSONDecodeError)
+t=125.2s frames=7163 file-feed unreadable(JSONDecodeError)
+t=130.2s frames=7450 file-feed unreadable(JSONDecodeError)
+t=135.2s frames=7737 file-feed unreadable(JSONDecodeError)
+t=140.2s frames=8024 file-feed unreadable(JSONDecodeError)
+t=145.2s frames=8311 file-feed unreadable(JSONDecodeError)
+t=150.3s frames=8598 file-feed unreadable(JSONDecodeError)
+t=155.3s frames=8885 file-feed unreadable(JSONDecodeError)
+t=160.3s frames=9172 file-feed unreadable(JSONDecodeError)
+t=165.3s frames=9460 file-feed unreadable(JSONDecodeError)
+t=170.3s frames=9748 file-feed unreadable(JSONDecodeError)
+t=175.3s frames=10036 file-feed unreadable(JSONDecodeError)
+t=180.3s frames=10323 file-feed unreadable(JSONDecodeError)
+t=185.3s frames=10610 file-feed unreadable(JSONDecodeError)
+t=190.4s frames=10897 file-feed unreadable(JSONDecodeError)
+t=195.4s frames=11183 file-feed unreadable(JSONDecodeError)
+t=200.4s frames=11469 file-feed unreadable(JSONDecodeError)
+t=205.4s frames=11755 file-feed unreadable(JSONDecodeError)
+t=210.4s frames=12041 file-feed unreadable(JSONDecodeError)
+t=215.4s frames=12327 file-feed unreadable(JSONDecodeError)
+t=220.4s frames=12613 file-feed unreadable(JSONDecodeError)
+t=225.4s frames=12900 file-feed unreadable(JSONDecodeError)
+t=230.4s frames=13187 file-feed unreadable(JSONDecodeError)
+t=235.4s frames=13473 file-feed unreadable(JSONDecodeError)
+t=240.5s frames=13759 file-feed unreadable(JSONDecodeError)
+t=245.5s frames=14045 file-feed unreadable(JSONDecodeError)
+t=250.5s frames=14331 file-feed unreadable(JSONDecodeError)
+t=255.5s frames=14617 file-feed unreadable(JSONDecodeError)
+t=260.5s frames=14903 file-feed unreadable(JSONDecodeError)
+t=265.5s frames=15189 file-feed unreadable(JSONDecodeError)
+t=270.5s frames=15475 file-feed unreadable(JSONDecodeError)
+t=275.5s frames=15761 file-feed unreadable(JSONDecodeError)
+t=280.5s frames=16048 file-feed unreadable(JSONDecodeError)
+t=285.5s frames=16335 file-feed unreadable(JSONDecodeError)
+t=290.5s frames=16621 file-feed unreadable(JSONDecodeError)
+t=295.6s frames=16907 file-feed unreadable(JSONDecodeError)
+t=300.6s frames=17193 file-feed unreadable(JSONDecodeError)
+t=305.6s frames=17480 file-feed unreadable(JSONDecodeError)
+t=310.6s frames=17766 file-feed unreadable(JSONDecodeError)
+t=315.6s frames=18053 file-feed unreadable(JSONDecodeError)
+t=320.6s frames=18340 file-feed unreadable(JSONDecodeError)
+t=325.6s frames=18626 file-feed unreadable(JSONDecodeError)
+t=330.6s frames=18912 file-feed unreadable(JSONDecodeError)
+t=335.6s frames=19199 file-feed unreadable(JSONDecodeError)
+t=340.6s frames=19485 file-feed unreadable(JSONDecodeError)
+t=345.7s frames=19771 file-feed unreadable(JSONDecodeError)
+t=350.7s frames=20057 file-feed unreadable(JSONDecodeError)
+t=355.7s frames=20343 file-feed unreadable(JSONDecodeError)
+t=360.7s frames=20629 file-feed unreadable(JSONDecodeError)
+t=365.7s frames=20915 file-feed unreadable(JSONDecodeError)
+t=370.7s frames=21201 file-feed unreadable(JSONDecodeError)
+t=375.7s frames=21487 file-feed unreadable(JSONDecodeError)
+t=380.7s frames=21773 file-feed unreadable(JSONDecodeError)
+t=385.7s frames=22060 file-feed unreadable(JSONDecodeError)
+t=390.7s frames=22347 file-feed unreadable(JSONDecodeError)
+t=395.7s frames=22634 file-feed unreadable(JSONDecodeError)
+t=400.7s frames=22922 file-feed unreadable(JSONDecodeError)
+t=405.8s frames=23209 file-feed unreadable(JSONDecodeError)
+t=410.8s frames=23496 file-feed unreadable(JSONDecodeError)
+t=415.8s frames=23783 file-feed unreadable(JSONDecodeError)
+t=420.8s frames=24070 file-feed unreadable(JSONDecodeError)
+t=425.8s frames=24357 file-feed unreadable(JSONDecodeError)
+t=430.8s frames=24643 file-feed unreadable(JSONDecodeError)
+t=435.8s frames=24930 file-feed unreadable(JSONDecodeError)
+t=440.8s frames=25217 file-feed unreadable(JSONDecodeError)
+t=445.8s frames=25504 file-feed unreadable(JSONDecodeError)
+t=450.8s frames=25791 file-feed unreadable(JSONDecodeError)
+t=455.8s frames=26077 file-feed unreadable(JSONDecodeError)
+t=460.8s frames=26363 file-feed unreadable(JSONDecodeError)
+t=465.9s frames=26649 file-feed unreadable(JSONDecodeError)
+t=470.9s frames=26935 file-feed unreadable(JSONDecodeError)
+t=475.9s frames=27221 file-feed unreadable(JSONDecodeError)
+t=480.9s frames=27508 file-feed unreadable(JSONDecodeError)
+t=485.9s frames=27794 file-feed unreadable(JSONDecodeError)
+t=490.9s frames=28080 file-feed unreadable(JSONDecodeError)
+t=495.9s frames=28366 file-feed unreadable(JSONDecodeError)
+t=500.9s frames=28652 file-feed unreadable(JSONDecodeError)
+t=505.9s frames=28939 file-feed unreadable(JSONDecodeError)
+t=510.9s frames=29225 file-feed unreadable(JSONDecodeError)
+t=515.9s frames=29511 file-feed unreadable(JSONDecodeError)
+t=521.0s frames=29797 file-feed unreadable(JSONDecodeError)
+t=526.0s frames=30082 file-feed unreadable(JSONDecodeError)
+t=531.0s frames=30368 file-feed unreadable(JSONDecodeError)
+t=536.0s frames=30654 file-feed unreadable(JSONDecodeError)
+t=541.0s frames=30940 file-feed unreadable(JSONDecodeError)
+t=546.0s frames=31227 file-feed unreadable(JSONDecodeError)
+t=551.0s frames=31514 file-feed unreadable(JSONDecodeError)
+t=556.0s frames=31801 file-feed stale age=4.02s ents=8
+t=561.0s frames=32088 file-feed stale age=8.99s ents=8
+t=566.0s frames=32375 file-feed stale age=14.02s ents=8
+t=571.0s frames=32662 file-feed stale age=19.04s ents=8
+t=576.1s frames=32949 file-feed stale age=24.02s ents=8
+t=581.1s frames=33236 file-feed stale age=29.05s ents=8
+t=586.1s frames=33523 file-feed stale age=34.08s ents=8
+t=591.1s frames=33810 file-feed stale age=39.04s ents=8
+t=596.1s frames=34097 file-feed stale age=44.07s ents=8
+t=601.1s frames=34384 file-feed stale age=49.08s ents=8
+t=606.1s frames=34671 file-feed stale age=54.06s ents=8
+t=611.1s frames=34958 file-feed stale age=59.08s ents=8
+t=616.1s frames=35244 file-feed stale age=64.07s ents=8
+t=621.1s frames=35530 file-feed stale age=69.11s ents=8
+t=626.1s frames=35816 file-feed stale age=74.10s ents=8
+t=631.1s frames=36102 file-feed stale age=79.09s ents=8
+t=636.1s frames=36388 file-feed stale age=84.13s ents=8
+t=641.1s frames=36674 file-feed stale age=89.12s ents=8
+t=646.1s frames=36960 file-feed stale age=94.11s ents=8
+t=651.1s frames=37245 file-feed stale age=99.11s ents=8
+t=656.2s frames=37531 file-feed stale age=104.15s ents=8
+t=661.2s frames=37818 file-feed stale age=109.13s ents=8
+t=666.2s frames=38104 file-feed stale age=114.17s ents=8
+t=671.2s frames=38390 file-feed stale age=119.15s ents=8
+t=676.2s frames=38677 file-feed stale age=124.18s ents=8
+t=681.2s frames=38964 file-feed stale age=129.16s ents=8
+t=686.2s frames=39251 file-feed age=0.18s ents=8 visible=4
+t=691.2s frames=39538 file-feed age=0.18s ents=8 visible=4
+t=696.2s frames=39825 file-feed age=0.12s ents=8 visible=4
+t=701.2s frames=40112 file-feed age=0.10s ents=8 visible=4
+t=706.2s frames=40399 file-feed age=0.09s ents=8 visible=4
+t=711.2s frames=40686 file-feed age=0.03s ents=8 visible=4
+t=716.3s frames=40973 file-feed age=0.02s ents=8 visible=4
+t=721.3s frames=41260 file-feed age=0.00s ents=8 visible=4
+t=726.3s frames=41547 file-feed age=0.19s ents=8 visible=4
+t=731.3s frames=41834 file-feed age=0.18s ents=8 visible=4
+t=736.3s frames=42120 file-feed age=0.12s ents=8 visible=4
+t=741.3s frames=42407 file-feed age=0.11s ents=8 visible=4
+t=746.3s frames=42693 file-feed age=0.06s ents=8 visible=4
+t=751.3s frames=42980 file-feed stale age=4.09s ents=8
+t=756.3s frames=43267 file-feed stale age=9.12s ents=8
+t=761.3s frames=43553 file-feed stale age=14.11s ents=8
+t=766.4s frames=43838 file-feed stale age=19.12s ents=8
+t=771.4s frames=44124 file-feed stale age=24.10s ents=8
+t=776.4s frames=44410 file-feed stale age=29.14s ents=8
+t=781.4s frames=44696 file-feed stale age=34.13s ents=8
+t=786.4s frames=44982 file-feed stale age=39.12s ents=8
+t=791.4s frames=45268 file-feed stale age=44.16s ents=8
+t=796.4s frames=45554 file-feed stale age=49.15s ents=8
+t=801.4s frames=45841 file-feed stale age=54.17s ents=8
+t=806.4s frames=46127 file-feed stale age=59.16s ents=8
+t=811.4s frames=46413 file-feed stale age=64.16s ents=8
+t=816.4s frames=46699 file-feed stale age=69.20s ents=8
+t=821.4s frames=46985 file-feed stale age=74.19s ents=8
+t=826.4s frames=47272 file-feed stale age=79.23s ents=8
+t=831.5s frames=47558 file-feed stale age=84.22s ents=8
+t=836.5s frames=47844 file-feed stale age=89.20s ents=8
+t=841.5s frames=48130 file-feed stale age=94.25s ents=8
+t=846.5s frames=48416 file-feed stale age=99.23s ents=8
+t=851.5s frames=48702 file-feed stale age=104.21s ents=8
+t=856.5s frames=48988 file-feed stale age=109.25s ents=8
+t=861.5s frames=49274 file-feed stale age=114.24s ents=8
+t=866.5s frames=49560 file-feed stale age=119.23s ents=8
+t=871.5s frames=49846 file-feed stale age=124.26s ents=8
+t=876.5s frames=50133 file-feed stale age=129.24s ents=8
+t=881.5s frames=50419 file-feed stale age=134.29s ents=8
+t=886.5s frames=50705 file-feed stale age=139.28s ents=8
+t=891.5s frames=50992 file-feed stale age=144.31s ents=8
+t=896.5s frames=51278 file-feed stale age=149.30s ents=8
+t=901.5s frames=51564 file-feed stale age=154.28s ents=8
+t=906.6s frames=51851 file-feed stale age=159.32s ents=8
+t=911.6s frames=52137 file-feed stale age=164.30s ents=8
+t=916.6s frames=52424 file-feed stale age=169.33s ents=8
+t=921.6s frames=52711 file-feed stale age=174.37s ents=8
+t=926.6s frames=52998 file-feed stale age=179.35s ents=8
+t=931.6s frames=53284 file-feed stale age=184.39s ents=8
+t=936.6s frames=53571 file-feed stale age=189.37s ents=8
+t=941.6s frames=53858 file-feed stale age=194.40s ents=8
+t=946.6s frames=54144 file-feed stale age=199.39s ents=8
+t=951.6s frames=54430 file-feed stale age=204.43s ents=8
+t=956.7s frames=54716 file-feed stale age=209.42s ents=8
+t=961.7s frames=55003 file-feed stale age=214.45s ents=8
+t=966.7s frames=55289 file-feed stale age=219.43s ents=8
+t=971.7s frames=55575 file-feed stale age=224.41s ents=8
+t=976.7s frames=55862 file-feed stale age=229.45s ents=8
+t=981.7s frames=56149 file-feed stale age=234.48s ents=8
+t=986.7s frames=56435 file-feed stale age=239.47s ents=8
+t=991.7s frames=56720 file-feed stale age=244.48s ents=8
+t=996.7s frames=57006 file-feed stale age=249.47s ents=8
+t=1001.7s frames=57292 file-feed stale age=254.51s ents=8
+t=1006.7s frames=57578 file-feed stale age=259.51s ents=8
+t=1011.7s frames=57864 file-feed stale age=264.50s ents=8
+t=1016.8s frames=58151 file-feed stale age=269.53s ents=8
+t=1021.8s frames=58438 file-feed stale age=274.56s ents=8
+t=1026.8s frames=58725 file-feed stale age=279.54s ents=8
+t=1031.8s frames=59012 file-feed stale age=284.57s ents=8
+t=1036.8s frames=59298 file-feed stale age=289.56s ents=8
+t=1041.8s frames=59584 file-feed stale age=294.60s ents=8
+t=1046.8s frames=59870 file-feed stale age=299.60s ents=8
+t=1051.8s frames=60156 file-feed stale age=304.58s ents=8
+t=1056.8s frames=60442 file-feed stale age=309.63s ents=8
+t=1061.8s frames=60728 file-feed stale age=314.61s ents=8
+t=1066.9s frames=61015 file-feed stale age=319.64s ents=8
+t=1071.9s frames=61301 file-feed stale age=324.63s ents=8
+t=1076.9s frames=61588 file-feed stale age=329.65s ents=8
+t=1081.9s frames=61875 file-feed stale age=334.62s ents=8
+t=1086.9s frames=62162 file-feed stale age=339.65s ents=8
+t=1091.9s frames=62449 file-feed stale age=344.68s ents=8
+t=1096.9s frames=62736 file-feed stale age=349.65s ents=8
+t=1101.9s frames=63023 file-feed stale age=354.68s ents=8
+t=1106.9s frames=63310 file-feed stale age=359.70s ents=8
+t=1111.9s frames=63597 file-feed stale age=364.67s ents=8
+t=1116.9s frames=63884 file-feed stale age=369.70s ents=8
+t=1121.9s frames=64171 file-feed stale age=374.72s ents=8
+t=1126.9s frames=64458 file-feed stale age=379.69s ents=8
+t=1132.0s frames=64745 file-feed stale age=384.73s ents=8
+t=1137.0s frames=65032 file-feed stale age=389.76s ents=8
+t=1142.0s frames=65319 file-feed stale age=394.74s ents=8
+t=1147.0s frames=65606 file-feed stale age=399.77s ents=8
+t=1152.0s frames=65893 file-feed stale age=404.80s ents=8
+t=1157.0s frames=66180 file-feed stale age=409.77s ents=8
+t=1162.0s frames=66467 file-feed stale age=414.80s ents=8
+t=1167.0s frames=66753 file-feed stale age=419.79s ents=8
+t=1172.0s frames=67040 file-feed stale age=424.80s ents=8
+t=1177.0s frames=67327 file-feed stale age=429.83s ents=8
+t=1182.1s frames=67614 file-feed stale age=434.80s ents=8
+t=1187.1s frames=67901 file-feed stale age=439.83s ents=8
+t=1192.1s frames=68188 file-feed stale age=444.86s ents=8
+t=1197.1s frames=68475 file-feed stale age=449.83s ents=8
+t=1202.1s frames=68762 file-feed stale age=454.85s ents=8
+t=1207.1s frames=69049 file-feed stale age=459.87s ents=8
+t=1212.1s frames=69336 file-feed stale age=464.84s ents=8
+t=1217.1s frames=69623 file-feed stale age=469.86s ents=8
+t=1222.1s frames=69910 file-feed stale age=474.88s ents=8
+t=1227.1s frames=70197 file-feed stale age=479.86s ents=8
+t=1232.1s frames=70484 file-feed stale age=484.90s ents=8
+t=1237.1s frames=70771 file-feed stale age=489.92s ents=8
+t=1242.1s frames=71058 file-feed stale age=494.90s ents=8
+t=1247.2s frames=71345 file-feed stale age=499.92s ents=8
+t=1252.2s frames=71632 file-feed stale age=504.96s ents=8
+t=1257.2s frames=71919 file-feed stale age=509.93s ents=8
+t=1262.2s frames=72206 file-feed stale age=514.95s ents=8
+t=1267.2s frames=72493 file-feed stale age=519.97s ents=8
+t=1272.2s frames=72780 file-feed stale age=524.94s ents=8
+t=1277.2s frames=73067 file-feed stale age=529.97s ents=8
+t=1282.2s frames=73354 file-feed stale age=534.99s ents=8
+t=1287.2s frames=73641 file-feed stale age=539.97s ents=8
+t=1292.2s frames=73928 file-feed stale age=544.99s ents=8
+t=1297.2s frames=74215 file-feed stale age=550.02s ents=8
+t=1302.2s frames=74502 file-feed stale age=554.98s ents=8
+t=1307.2s frames=74789 file-feed stale age=560.01s ents=8
+t=1312.2s frames=75076 file-feed stale age=565.03s ents=8
+t=1317.3s frames=75363 file-feed stale age=570.00s ents=8
+t=1322.3s frames=75650 file-feed stale age=575.02s ents=8
+t=1327.3s frames=75937 file-feed stale age=580.05s ents=8
+t=1332.3s frames=76224 file-feed stale age=585.03s ents=8
+t=1337.3s frames=76511 file-feed stale age=590.06s ents=8
+t=1342.3s frames=76798 file-feed stale age=595.08s ents=8
+t=1347.3s frames=77086 file-feed stale age=600.10s ents=8
+t=1352.3s frames=77373 file-feed stale age=605.06s ents=8
+t=1357.3s frames=77660 file-feed stale age=610.09s ents=8
+t=1362.3s frames=77947 file-feed stale age=615.12s ents=8
+t=1367.3s frames=78233 file-feed stale age=620.10s ents=8
+t=1372.3s frames=78520 file-feed stale age=625.13s ents=8
+t=1377.4s frames=78807 file-feed stale age=630.11s ents=8
+t=1382.4s frames=79094 file-feed stale age=635.13s ents=8
+t=1387.4s frames=79381 file-feed stale age=640.16s ents=8
+t=1392.4s frames=79668 file-feed stale age=645.14s ents=8
+t=1397.4s frames=79955 file-feed stale age=650.16s ents=8
+t=1402.4s frames=80242 file-feed stale age=655.19s ents=8
+t=1407.4s frames=80529 file-feed stale age=660.16s ents=8
+t=1412.4s frames=80816 file-feed stale age=665.19s ents=8
+t=1417.4s frames=81103 file-feed stale age=670.22s ents=8
+t=1422.4s frames=81390 file-feed stale age=675.19s ents=8
+t=1427.5s frames=81677 file-feed stale age=680.22s ents=8
+t=1432.5s frames=81964 file-feed stale age=685.24s ents=8
+t=1437.5s frames=82251 file-feed stale age=690.22s ents=8
+t=1442.5s frames=82538 file-feed stale age=695.25s ents=8
+t=1447.5s frames=82825 file-feed stale age=700.27s ents=8
+t=1452.5s frames=83112 file-feed stale age=705.24s ents=8
+t=1457.5s frames=83399 file-feed stale age=710.27s ents=8
+t=1462.5s frames=83686 file-feed stale age=715.30s ents=8
+t=1467.5s frames=83973 file-feed stale age=720.28s ents=8
+t=1472.5s frames=84260 file-feed stale age=725.30s ents=8
+t=1477.5s frames=84546 file-feed stale age=730.28s ents=8
+t=1482.5s frames=84833 file-feed stale age=735.30s ents=8
+t=1487.5s frames=85120 file-feed stale age=740.32s ents=8
+t=1492.5s frames=85407 file-feed stale age=745.30s ents=8
+t=1497.6s frames=85694 file-feed stale age=750.32s ents=8
+stopped by time after 1500.0s: frames=85834 fps=57.2 boxes=0
+RESULT: time frames=85834 boxes=0
+VERDICT: PARTIAL (R9) - file-fed overlay drew; game-read half not exercised (consumer proof only)
+coverage: NOT ESTABLISHED - number of boxes never proves the expected match population

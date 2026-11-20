@@ -1,0 +1,10 @@
+^C:\USERS\NEW USER\ONEDRIVE\DESKTOP\CHEATING\CHEATV2\BUILD\CMAKEFILES\3BAFC8D29F5060E28FE4FD6DE1B1F049\GENERATE.STAMP.RULE
+setlocal
+"C:\Users\New User\AppData\Local\Programs\Python\Python312\Lib\site-packages\cmake\data\bin\cmake.exe" "-SC:/Users/New User/OneDrive/Desktop/cheating/cheatv2" "-BC:/Users/New User/OneDrive/Desktop/cheating/cheatv2/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/New User/OneDrive/Desktop/cheating/cheatv2/build/cheatv2.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

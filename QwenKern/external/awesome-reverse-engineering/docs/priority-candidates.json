@@ -1,0 +1,750 @@
+{
+  "research_issue": "https://github.com/morluto/awesome-reverse-engineering/issues/6",
+  "baseline_entries": 116,
+  "added_entries": 23,
+  "reviewed_at": "2026-10-13",
+  "records": [
+    {
+      "name": "YARA-X",
+      "url": "https://github.com/VirusTotal/yara-x",
+      "section": "Malware analysis",
+      "description": "Rust-based rule-scanning engine with CLI and language bindings; check its documented differences before migrating YARA rules.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "reproduced",
+      "task": "Rule scanning and migration from YARA",
+      "incremental_value": "An independently usable successor engine, rather than only a mention in the existing YARA description.",
+      "constraints": "Most rules can be migrated, but regex, modules, and APIs have documented differences. The smoke check confirms rejection of an unescaped opening brace. BSD-3-Clause.",
+      "next_check": "Add a paired YARA/YARA-X compatible-rule and incompatible-rule fixture.",
+      "sources": [
+        "https://raw.githubusercontent.com/VirusTotal/yara-x/6d22e07b05439aa761b46761adb64aeafae9dcfc/README.md",
+        "https://virustotal.github.io/yara-x/docs/writing_rules/differences-with-yara/"
+      ],
+      "source_commit": "6d22e07b05439aa761b46761adb64aeafae9dcfc",
+      "license_api": "BSD-3-Clause",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "VirusTotal/yara-x",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-09T14:00:16Z",
+      "github_release": {
+        "tag_name": "v1.21.0",
+        "published_at": "2026-09-29T09:11:32Z",
+        "html_url": "https://github.com/VirusTotal/yara-x/releases/tag/v1.21.0"
+      },
+      "reproduction": "examples/resource-intake/README.md",
+      "reproduced_scope": "Python API positive/negative matching and strict-regex CompileError",
+      "source_browser_urls": [
+        "https://github.com/VirusTotal/yara-x/blob/6d22e07b05439aa761b46761adb64aeafae9dcfc/README.md",
+        "https://virustotal.github.io/yara-x/docs/writing_rules/differences-with-yara/"
+      ]
+    },
+    {
+      "name": "CyberChef",
+      "url": "https://github.com/gchq/CyberChef",
+      "section": "File formats",
+      "description": "Browser-based workbench for decoding, decompressing, and transforming data with exportable recipes.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Layered decoding and reproducible recipes",
+      "incremental_value": "A data-transformation workbench between file identification and deeper analysis; exported recipes can become evidence artifacts.",
+      "constraints": "Browser use and building from source have different prerequisites. The reviewed source-build instructions require Node 24. Apache-2.0.",
+      "next_check": "Pin a build and verify an exported recipe against self-authored encoded/compressed input.",
+      "sources": [
+        "https://raw.githubusercontent.com/gchq/CyberChef/efe2781e60fcd02352a44013020607df251c4a86/README.md"
+      ],
+      "source_commit": "efe2781e60fcd02352a44013020607df251c4a86",
+      "license_api": "Apache-2.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "gchq/CyberChef",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T17:13:29Z",
+      "github_release": {
+        "tag_name": "v11.5.0",
+        "published_at": "2026-09-18T11:54:19Z",
+        "html_url": "https://github.com/gchq/CyberChef/releases/tag/v11.5.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/gchq/CyberChef/blob/efe2781e60fcd02352a44013020607df251c4a86/README.md"
+      ]
+    },
+    {
+      "name": "Scapy",
+      "url": "https://github.com/secdev/scapy",
+      "section": "Web and protocols",
+      "description": "Python packet framework for dissecting and constructing protocols, reading PCAPs, and scripting network experiments.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "reproduced",
+      "task": "Programmatic protocol parsing and packet construction",
+      "incremental_value": "Complements Wireshark inspection and HTTP proxies with repeatable parser/builder experiments and offline PCAP handling.",
+      "constraints": "Offline parsing differs from live capture or transmission, which have host, permission, and driver requirements. GPL-2.0.",
+      "next_check": "Add a self-authored custom protocol layer and PCAP fixture; the completed smoke test was offline only.",
+      "sources": [
+        "https://raw.githubusercontent.com/secdev/scapy/5376fcc86aaba7c516fb4aa19576b03b387d217a/README.md"
+      ],
+      "source_commit": "5376fcc86aaba7c516fb4aa19576b03b387d217a",
+      "license_api": "GPL-2.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "secdev/scapy",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-11T00:35:34Z",
+      "github_release": {
+        "tag_name": "v2.8.0",
+        "published_at": "2026-10-02T16:19:58Z",
+        "html_url": "https://github.com/secdev/scapy/releases/tag/v2.8.0"
+      },
+      "reproduction": "examples/resource-intake/README.md",
+      "reproduced_scope": "Offline packet/PCAP round trip and independent IP/UDP checksums; no traffic sent",
+      "source_browser_urls": [
+        "https://github.com/secdev/scapy/blob/5376fcc86aaba7c516fb4aa19576b03b387d217a/README.md"
+      ]
+    },
+    {
+      "name": "Construct",
+      "url": "https://github.com/construct/construct",
+      "section": "File formats",
+      "description": "Declarative Python library for parsing and building binary formats with composable schemas and validation.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "reproduced",
+      "task": "Bidirectional binary schemas",
+      "incremental_value": "Complements Kaitai with composable Python parsing and building, useful for checking field hypotheses and reconstructing files.",
+      "constraints": "Schemas must correctly model lengths, context, and validation. GitHub reports NOASSERTION, but the reviewed LICENSE contains MIT terms.",
+      "next_check": "Reuse a small format fixture for independent golden bytes and a Construct/Kaitai comparison.",
+      "sources": [
+        "https://raw.githubusercontent.com/construct/construct/28c6e5779f2b76d55474914607291a3821502000/README.rst",
+        "https://raw.githubusercontent.com/construct/construct/28c6e5779f2b76d55474914607291a3821502000/LICENSE"
+      ],
+      "source_commit": "28c6e5779f2b76d55474914607291a3821502000",
+      "license_api": "NOASSERTION",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "construct/construct",
+      "archived": false,
+      "default_branch_commit_at": "2025-04-22T05:09:12Z",
+      "github_release": {
+        "tag_name": "v2.10.70",
+        "published_at": "2023-11-30T07:27:37Z",
+        "html_url": "https://github.com/construct/construct/releases/tag/v2.10.70"
+      },
+      "reproduction": "examples/resource-intake/README.md",
+      "reproduced_scope": "Golden bytes, parse/build, wrong magic, truncation, trailing-data rejection",
+      "source_browser_urls": [
+        "https://github.com/construct/construct/blob/28c6e5779f2b76d55474914607291a3821502000/README.rst",
+        "https://github.com/construct/construct/blob/28c6e5779f2b76d55474914607291a3821502000/LICENSE"
+      ]
+    },
+    {
+      "name": "Vineflower",
+      "url": "https://github.com/Vineflower/vineflower",
+      "section": "Android and managed code",
+      "description": "Java decompiler focused on modern language features and readable output; requires Java 17 or newer to run current releases.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "reproduced",
+      "task": "Modern JVM class decompilation",
+      "incremental_value": "Adds a standalone JVM decompiler beside the existing Android DEX and managed-code workbenches.",
+      "constraints": "Current releases require Java 17+ to run; host requirements and target class versions are separate. Obfuscation and other Java versions were not tested. Apache-2.0.",
+      "next_check": "Publish the bounded Java 17 record/switch-expression rebuild case, then extend the target-version matrix.",
+      "sources": [
+        "https://raw.githubusercontent.com/Vineflower/vineflower/b8273988af850e8cfb234ca08d129058502b032f/README.md"
+      ],
+      "source_commit": "b8273988af850e8cfb234ca08d129058502b032f",
+      "license_api": "Apache-2.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "Vineflower/vineflower",
+      "archived": false,
+      "default_branch_commit_at": "2026-04-29T00:12:35Z",
+      "github_release": {
+        "tag_name": "1.12.0",
+        "published_at": "2026-04-29T00:53:00Z",
+        "html_url": "https://github.com/Vineflower/vineflower/releases/tag/1.12.0"
+      },
+      "reproduction": "examples/resource-intake/README.md",
+      "reproduced_scope": "Java 17 record/switch expression, rebuild, main output and five branch vectors",
+      "source_browser_urls": [
+        "https://github.com/Vineflower/vineflower/blob/b8273988af850e8cfb234ca08d129058502b032f/README.md"
+      ]
+    },
+    {
+      "name": "ghidriff",
+      "url": "https://github.com/clearbluejar/ghidriff",
+      "section": "Diffing and analysis frameworks",
+      "description": "Ghidra-based command-line binary diffing engine with JSON, Markdown, and optional HTML reports; requires compatible Ghidra, PyGhidra, and JDK versions.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Reviewable patch-diff reports",
+      "incremental_value": "Adds CLI automation and JSON/Markdown/optional HTML reports to the existing pairwise diffing tools.",
+      "constraints": "Ghidra, PyGhidra/JPype, and the matching JDK must be pinned. The reviewed development target is Ghidra 12.0.4 with PyGhidra 3.x; older examples do not prove broad compatibility. GPL-3.0.",
+      "next_check": "Diff self-built v1/v2 binaries with known added, removed, and changed functions, checking both JSON and Markdown.",
+      "sources": [
+        "https://raw.githubusercontent.com/clearbluejar/ghidriff/4f5d895fcbb1eacd65efd81145922c15bb7e741d/README.md"
+      ],
+      "source_commit": "4f5d895fcbb1eacd65efd81145922c15bb7e741d",
+      "license_api": "GPL-3.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "clearbluejar/ghidriff",
+      "archived": false,
+      "default_branch_commit_at": "2026-05-11T17:17:50Z",
+      "github_release": {
+        "tag_name": "v1.0.0",
+        "published_at": "2025-07-04T14:24:10Z",
+        "html_url": "https://github.com/clearbluejar/ghidriff/releases/tag/v1.0.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/clearbluejar/ghidriff/blob/4f5d895fcbb1eacd65efd81145922c15bb7e741d/README.md"
+      ]
+    },
+    {
+      "name": "oletools",
+      "url": "https://github.com/decalage2/oletools",
+      "section": "Malware analysis",
+      "description": "Python tools for inspecting Office, OLE, and RTF files and extracting macros, embedded objects, and other document artifacts.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Office, OLE, and RTF analysis",
+      "incremental_value": "Fills the document-input gap: macro extraction, embedded objects, and related document artifacts rather than predominantly PE inputs.",
+      "constraints": "Coverage varies by subtool; XLM workflows have optional dependencies. README news mentions 0.60.3 while the latest GitHub release endpoint returns 0.60.2. Own code uses BSD-style terms, with MIT/third-party exceptions.",
+      "next_check": "Pin the actual distribution version and verify extraction from a self-authored document.",
+      "sources": [
+        "https://raw.githubusercontent.com/decalage2/oletools/ec10260989dbc48b9109e3d05d22beee19cf2333/README.md",
+        "https://raw.githubusercontent.com/decalage2/oletools/ec10260989dbc48b9109e3d05d22beee19cf2333/LICENSE.md"
+      ],
+      "source_commit": "ec10260989dbc48b9109e3d05d22beee19cf2333",
+      "license_api": "NOASSERTION",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "decalage2/oletools",
+      "archived": false,
+      "default_branch_commit_at": "2026-01-26T22:51:36Z",
+      "github_release": {
+        "tag_name": "v0.60.2",
+        "published_at": "2024-07-02T14:57:56Z",
+        "html_url": "https://github.com/decalage2/oletools/releases/tag/v0.60.2"
+      },
+      "source_browser_urls": [
+        "https://github.com/decalage2/oletools/blob/ec10260989dbc48b9109e3d05d22beee19cf2333/README.md",
+        "https://github.com/decalage2/oletools/blob/ec10260989dbc48b9109e3d05d22beee19cf2333/LICENSE.md"
+      ]
+    },
+    {
+      "name": "AssetRipper",
+      "url": "https://github.com/AssetRipper/AssetRipper",
+      "section": "Language runtimes and packagers",
+      "description": "Unity asset-analysis and export tool with version-dependent support and additional paid Premium features.",
+      "research_priority": "A0",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Unity assets and dependencies",
+      "incremental_value": "Complements Cpp2IL/Il2CppDumper code and metadata analysis with asset inspection and export.",
+      "constraints": "The README claims Unity 3.5.0\u20136000.4.X, with varying support quality. The GPL-3.0 base and paid Premium features must be distinguished.",
+      "next_check": "Export a self-built Unity project and compare assets and references against the original.",
+      "sources": [
+        "https://raw.githubusercontent.com/AssetRipper/AssetRipper/beeb50ee1c223e856c860caa338e5309404956a3/README.md",
+        "https://assetripper.com/premium/features/"
+      ],
+      "source_commit": "beeb50ee1c223e856c860caa338e5309404956a3",
+      "license_api": "GPL-3.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "AssetRipper/AssetRipper",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-09T06:46:08Z",
+      "github_release": {
+        "tag_name": "2.0.0",
+        "published_at": "2026-08-24T19:29:27Z",
+        "html_url": "https://github.com/AssetRipper/AssetRipper/releases/tag/2.0.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/AssetRipper/AssetRipper/blob/beeb50ee1c223e856c860caa338e5309404956a3/README.md",
+        "https://assetripper.com/premium/features/"
+      ]
+    },
+    {
+      "name": "Speakeasy",
+      "url": "https://github.com/mandiant/speakeasy",
+      "section": "Malware analysis",
+      "description": "Windows emulation framework for PE files, drivers, and shellcode that produces API reports within a modeled runtime.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Modeled Windows execution and API reports",
+      "incremental_value": "A smaller emulation/reporting path beside full sandbox VMs.",
+      "constraints": "API, filesystem, registry, and runtime behavior are modeled. Signature-only stubs can report success without real side effects; unknown APIs may stop execution. MIT.",
+      "next_check": "Use a self-built PE to contrast implemented handlers, stubs, and unsupported paths.",
+      "sources": [
+        "https://raw.githubusercontent.com/mandiant/speakeasy/aa9f22643f4519e0555141cd16ee25eb971b5518/README.md",
+        "https://raw.githubusercontent.com/mandiant/speakeasy/aa9f22643f4519e0555141cd16ee25eb971b5518/doc/limitations.md"
+      ],
+      "source_commit": "aa9f22643f4519e0555141cd16ee25eb971b5518",
+      "license_api": "MIT",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "mandiant/speakeasy",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-11T19:30:16Z",
+      "github_release": {
+        "tag_name": "v1.6.1",
+        "published_at": "2025-02-19T15:24:02Z",
+        "html_url": "https://github.com/mandiant/speakeasy/releases/tag/v1.6.1"
+      },
+      "source_browser_urls": [
+        "https://github.com/mandiant/speakeasy/blob/aa9f22643f4519e0555141cd16ee25eb971b5518/README.md",
+        "https://github.com/mandiant/speakeasy/blob/aa9f22643f4519e0555141cd16ee25eb971b5518/doc/limitations.md"
+      ]
+    },
+    {
+      "name": "strace",
+      "url": "https://github.com/strace/strace",
+      "section": "Dynamic instrumentation and tracing",
+      "description": "Linux system-call tracer for inspecting process I/O, signals, syscall arguments, and return values.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Linux syscall and signal observation",
+      "incremental_value": "A practical first step for mapping process I/O before using a debugger or instrumentation framework.",
+      "constraints": "Linux ptrace permissions and container policy affect attachment. It is syscall-level tracing. COPYING specifies LGPL-2.1-or-later for the main program, with separate test/UAPI terms.",
+      "next_check": "Trace known file/network operations in a self-authored program and check arguments and returns.",
+      "sources": [
+        "https://raw.githubusercontent.com/strace/strace/6cba874722375675e97f68367674c1cde3cce77c/README.md",
+        "https://raw.githubusercontent.com/strace/strace/6cba874722375675e97f68367674c1cde3cce77c/COPYING"
+      ],
+      "source_commit": "6cba874722375675e97f68367674c1cde3cce77c",
+      "license_api": "NOASSERTION",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "strace/strace",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-11T08:00:00Z",
+      "github_release": {
+        "tag_name": "v7.2",
+        "published_at": "2026-08-18T11:33:21Z",
+        "html_url": "https://github.com/strace/strace/releases/tag/v7.2"
+      },
+      "source_browser_urls": [
+        "https://github.com/strace/strace/blob/6cba874722375675e97f68367674c1cde3cce77c/README.md",
+        "https://github.com/strace/strace/blob/6cba874722375675e97f68367674c1cde3cce77c/COPYING"
+      ]
+    },
+    {
+      "name": "checksec",
+      "url": "https://github.com/slimm609/checksec",
+      "section": "File identification and triage",
+      "description": "Checks ELF security properties such as PIE, RELRO, stack canaries, and non-executable stacks; mitigation flags are not a vulnerability verdict.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Executable mitigation triage",
+      "incremental_value": "A direct entry point for understanding PIE, RELRO, canaries, and NX before deeper analysis.",
+      "constraints": "Mitigation flags are not a vulnerability verdict. Version 3.x moved from Bash to Go; the reviewed README/version text and release 3.2.0 differ. LICENSE has BSD-3-Clause-style terms.",
+      "next_check": "Compare differently compiled ELF fixtures against independent readelf results.",
+      "sources": [
+        "https://raw.githubusercontent.com/slimm609/checksec/0ee6a029b99be2f7d664b0b08881cfc7a83e5122/README.md",
+        "https://raw.githubusercontent.com/slimm609/checksec/0ee6a029b99be2f7d664b0b08881cfc7a83e5122/LICENSE"
+      ],
+      "source_commit": "0ee6a029b99be2f7d664b0b08881cfc7a83e5122",
+      "license_api": "NOASSERTION",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "slimm609/checksec",
+      "archived": false,
+      "default_branch_commit_at": "2026-09-24T09:56:40Z",
+      "github_release": {
+        "tag_name": "3.2.0",
+        "published_at": "2026-06-17T09:22:41Z",
+        "html_url": "https://github.com/slimm609/checksec/releases/tag/3.2.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/slimm609/checksec/blob/0ee6a029b99be2f7d664b0b08881cfc7a83e5122/README.md",
+        "https://github.com/slimm609/checksec/blob/0ee6a029b99be2f7d664b0b08881cfc7a83e5122/LICENSE"
+      ]
+    },
+    {
+      "name": "wasm-tools",
+      "url": "https://github.com/bytecodealliance/wasm-tools",
+      "section": "Web and protocols",
+      "description": "Bytecode Alliance tools for inspecting, validating, and transforming WebAssembly modules, components, and WIT interfaces.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Wasm components and WIT inspection",
+      "incremental_value": "Adds Component Model/WIT tasks beyond the existing WABT entry.",
+      "constraints": "Pin the CLI or Rust library version; validation and transformation do not restore the original source. The reviewed README declares Apache-2.0, Apache-2.0 with LLVM exceptions, and MIT licensing, rather than Apache-2.0 alone.",
+      "next_check": "Use one self-authored core module and one component/WIT fixture.",
+      "sources": [
+        "https://raw.githubusercontent.com/bytecodealliance/wasm-tools/e578749bd281dd8a5ed4c73c3f7683edd409bde3/README.md"
+      ],
+      "source_commit": "e578749bd281dd8a5ed4c73c3f7683edd409bde3",
+      "license_api": "Apache-2.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "bytecodealliance/wasm-tools",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T20:39:39Z",
+      "github_release": {
+        "tag_name": "v1.261.0",
+        "published_at": "2026-10-02T14:52:21Z",
+        "html_url": "https://github.com/bytecodealliance/wasm-tools/releases/tag/v1.261.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/bytecodealliance/wasm-tools/blob/e578749bd281dd8a5ed4c73c3f7683edd409bde3/README.md"
+      ]
+    },
+    {
+      "name": "AsmResolver",
+      "url": "https://github.com/Washi1337/AsmResolver",
+      "section": "Android and managed code",
+      "description": "Library for reading, modifying, and rebuilding native and managed PE files, including .NET metadata and application bundles.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Managed PE and metadata reconstruction",
+      "incremental_value": "Complements decompilers and general binary libraries with .NET metadata, application-bundle, and rebuilding APIs.",
+      "constraints": "A developer library rather than a turnkey GUI. The v5-to-v6 migration and target-format coverage need explicit versions. MIT.",
+      "next_check": "Modify a self-built managed PE resource/metadata field, rebuild, and verify loading.",
+      "sources": [
+        "https://raw.githubusercontent.com/Washi1337/AsmResolver/0715000c1b3a5104531d5ff189a14ebef0a9d5ac/README.md"
+      ],
+      "source_commit": "0715000c1b3a5104531d5ff189a14ebef0a9d5ac",
+      "license_api": "MIT",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "Washi1337/AsmResolver",
+      "archived": false,
+      "default_branch_commit_at": "2026-08-29T16:49:12Z",
+      "github_release": {
+        "tag_name": "v6.0.1",
+        "published_at": "2026-07-25T18:09:55Z",
+        "html_url": "https://github.com/Washi1337/AsmResolver/releases/tag/v6.0.1"
+      },
+      "source_browser_urls": [
+        "https://github.com/Washi1337/AsmResolver/blob/0715000c1b3a5104531d5ff189a14ebef0a9d5ac/README.md"
+      ]
+    },
+    {
+      "name": "Blutter",
+      "url": "https://github.com/worawit/blutter",
+      "section": "Language runtimes and packagers",
+      "description": "Flutter AOT analysis tool for recent Android arm64 libapp.so files, producing annotated assembly, object-pool dumps, and Frida templates.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Flutter/Dart AOT analysis",
+      "incremental_value": "Fills the missing Flutter path with annotated assembly, object-pool data, and Frida templates.",
+      "constraints": "Currently targets recent Dart versions in Android arm64 libapp.so. It is not a general Dart source decompiler. Building requires C++20 formatting support, such as GCC 13+ or Clang 16+. MIT.",
+      "next_check": "Pin Flutter/Dart/ABI for a self-built APK and locate a known string and function.",
+      "sources": [
+        "https://raw.githubusercontent.com/worawit/blutter/4a60ac648bf448c5a7596437243bcd0b9376fdf0/README.md"
+      ],
+      "source_commit": "4a60ac648bf448c5a7596437243bcd0b9376fdf0",
+      "license_api": "MIT",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "worawit/blutter",
+      "archived": false,
+      "default_branch_commit_at": "2026-08-18T15:33:58Z",
+      "github_release": {
+        "_error": "HTTP 404"
+      },
+      "source_browser_urls": [
+        "https://github.com/worawit/blutter/blob/4a60ac648bf448c5a7596437243bcd0b9376fdf0/README.md"
+      ]
+    },
+    {
+      "name": "Renode",
+      "url": "https://github.com/renode/renode",
+      "section": "Firmware and hardware",
+      "description": "Embedded-system simulator with scriptable platform and peripheral models for repeatable firmware debugging and observation.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Scriptable MCU and peripheral models",
+      "incremental_value": "Adds repeatable board/peripheral observation and MMIO experiments beside QEMU and Linux-firmware tools.",
+      "constraints": "ISA support does not mean every board is modeled. Correct platform descriptions and peripherals are required. Portable and non-portable host packages differ; the reviewed build/non-portable path needs .NET 6+. MIT core, separate dependency licenses.",
+      "next_check": "Pin a supported board model, firmware, and script; compare known UART or MMIO activity.",
+      "sources": [
+        "https://raw.githubusercontent.com/renode/renode/59f8f5d0b1efdbacf1800dbef55fc1959c9a4cc8/README.md",
+        "https://raw.githubusercontent.com/renode/renode/59f8f5d0b1efdbacf1800dbef55fc1959c9a4cc8/LICENSE"
+      ],
+      "source_commit": "59f8f5d0b1efdbacf1800dbef55fc1959c9a4cc8",
+      "license_api": "NOASSERTION",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "renode/renode",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T12:02:47Z",
+      "github_release": {
+        "tag_name": "v1.17.0",
+        "published_at": "2026-09-07T20:55:43Z",
+        "html_url": "https://github.com/renode/renode/releases/tag/v1.17.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/renode/renode/blob/59f8f5d0b1efdbacf1800dbef55fc1959c9a4cc8/README.md",
+        "https://github.com/renode/renode/blob/59f8f5d0b1efdbacf1800dbef55fc1959c9a4cc8/LICENSE"
+      ]
+    },
+    {
+      "name": "Facedancer",
+      "url": "https://github.com/greatscottgadgets/facedancer",
+      "section": "Firmware and hardware",
+      "description": "Python USB device-emulation and proxy framework for compatible hardware on GNU/Linux; 3.x does not support legacy scripts and backend capabilities vary.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "USB device emulation and proxy experiments",
+      "incremental_value": "Turns protocol hypotheses into controlled device behavior rather than observation alone.",
+      "constraints": "Requires compatible boards/backends. The reviewed README states GNU/Linux host support and no Windows support for 3.0; legacy scripts are incompatible. Endpoint, proxy, and host-mode limits vary by board. BSD-3-Clause.",
+      "next_check": "Start with a current example on one Linux/board/backend combination and verify enumeration/endpoints.",
+      "sources": [
+        "https://raw.githubusercontent.com/greatscottgadgets/facedancer/9f1298856e8ec6871cca995ded3076ab89dd72cd/README.md"
+      ],
+      "source_commit": "9f1298856e8ec6871cca995ded3076ab89dd72cd",
+      "license_api": "BSD-3-Clause",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "greatscottgadgets/facedancer",
+      "archived": false,
+      "default_branch_commit_at": "2026-05-22T08:51:22Z",
+      "github_release": {
+        "tag_name": "3.1.3",
+        "published_at": "2026-05-22T08:52:59Z",
+        "html_url": "https://github.com/greatscottgadgets/facedancer/releases/tag/3.1.3"
+      },
+      "source_browser_urls": [
+        "https://github.com/greatscottgadgets/facedancer/blob/9f1298856e8ec6871cca995ded3076ab89dd72cd/README.md"
+      ]
+    },
+    {
+      "name": "Packetry",
+      "url": "https://github.com/greatscottgadgets/packetry",
+      "section": "Firmware and hardware",
+      "description": "USB 2.0 protocol analyzer for Cynthion captures and offline PCAP files using the LINKTYPE_USB_2_0 format.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "USB 2.0 capture analysis",
+      "incremental_value": "Adds a USB-bus-focused interface for Cynthion and offline captures.",
+      "constraints": "Live capture needs Cynthion; existing LINKTYPE_USB_2_0 PCAPs can be read without the board. USB 2.0 scope, not USB 3.x. Source build requires Rust 1.93+ and GTK4. BSD-3-Clause.",
+      "next_check": "Verify a shareable offline capture first, then record live hardware evidence separately.",
+      "sources": [
+        "https://raw.githubusercontent.com/greatscottgadgets/packetry/5a7f98b77aa00519ecf7e811c9f26c6534966d05/README.md"
+      ],
+      "source_commit": "5a7f98b77aa00519ecf7e811c9f26c6534966d05",
+      "license_api": "BSD-3-Clause",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "greatscottgadgets/packetry",
+      "archived": false,
+      "default_branch_commit_at": "2026-08-27T10:14:04Z",
+      "github_release": {
+        "tag_name": "v0.5.0",
+        "published_at": "2025-09-30T15:23:09Z",
+        "html_url": "https://github.com/greatscottgadgets/packetry/releases/tag/v0.5.0"
+      },
+      "source_browser_urls": [
+        "https://github.com/greatscottgadgets/packetry/blob/5a7f98b77aa00519ecf7e811c9f26c6534966d05/README.md"
+      ]
+    },
+    {
+      "name": "Glasgow Interface Explorer",
+      "url": "https://github.com/GlasgowEmbedded/glasgow",
+      "section": "Firmware and hardware",
+      "description": "Programmable hardware interface explorer with applets for probing and interacting with digital buses; requires Glasgow hardware.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Programmable digital-interface experiments",
+      "incremental_value": "Adds applet-driven interaction with buses such as UART, SPI, I2C, JTAG, and SWD.",
+      "constraints": "Requires Glasgow hardware and matching software/gateware/applets. Hardware capability is not a software-only feature. 0BSD.",
+      "next_check": "Document one interface with board revision, applet, electrical setup, and observable output.",
+      "sources": [
+        "https://raw.githubusercontent.com/GlasgowEmbedded/glasgow/128099194588b0e6b297541f7616601348a50ae1/README.md",
+        "https://glasgow-embedded.org/"
+      ],
+      "source_commit": "128099194588b0e6b297541f7616601348a50ae1",
+      "license_api": "0BSD",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "GlasgowEmbedded/glasgow",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T18:31:57Z",
+      "github_release": {
+        "_error": "HTTP 404"
+      },
+      "source_browser_urls": [
+        "https://github.com/GlasgowEmbedded/glasgow/blob/128099194588b0e6b297541f7616601348a50ae1/README.md",
+        "https://glasgow-embedded.org/"
+      ]
+    },
+    {
+      "name": "pymobiledevice3",
+      "url": "https://github.com/doronz88/pymobiledevice3",
+      "section": "iOS and macOS",
+      "description": "CLI and Python API for iOS device services, including logs, crash reports, packet capture, and developer tooling with version-dependent tunnel requirements.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "iOS device-side observation",
+      "incremental_value": "Adds device services such as logs, crash reports, PCAP, DVT, and WebInspector beside static ipsw and Frida workflows.",
+      "constraints": "Python 3.9+, a pairable device, and service-specific host/iOS requirements. iOS 17+ developer services use tunnels; do not generalize this to universal jailbreak/root requirements. GPL-3.0.",
+      "next_check": "Record one host/iOS/service combination and verify logs or WebInspector output.",
+      "sources": [
+        "https://raw.githubusercontent.com/doronz88/pymobiledevice3/3a173489266e23b5574a89b3c152fb290b760024/README.md",
+        "https://doronz88.github.io/pymobiledevice3/guides/ios17-tunnels/",
+        "https://raw.githubusercontent.com/doronz88/pymobiledevice3/3a173489266e23b5574a89b3c152fb290b760024/pyproject.toml"
+      ],
+      "source_commit": "3a173489266e23b5574a89b3c152fb290b760024",
+      "license_api": "GPL-3.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "doronz88/pymobiledevice3",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T21:42:09Z",
+      "github_release": {
+        "tag_name": "v11.28.2",
+        "published_at": "2026-10-12T07:51:18Z",
+        "html_url": "https://github.com/doronz88/pymobiledevice3/releases/tag/v11.28.2"
+      },
+      "source_browser_urls": [
+        "https://github.com/doronz88/pymobiledevice3/blob/3a173489266e23b5574a89b3c152fb290b760024/README.md",
+        "https://doronz88.github.io/pymobiledevice3/guides/ios17-tunnels/",
+        "https://github.com/doronz88/pymobiledevice3/blob/3a173489266e23b5574a89b3c152fb290b760024/pyproject.toml"
+      ]
+    },
+    {
+      "name": "Hex-Rays IDA MCP",
+      "url": "https://github.com/HexRaysSA/ida-mcp",
+      "section": "AI-assisted analysis",
+      "description": "Official IDA MCP server for agent access to binary analysis; requires IDA 9.4+ with idalib, Python 3.11+, and uv, with IDA licensing separate from the server.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Official IDA agent integration",
+      "incremental_value": "An official implementation with distinct requirements beside the existing community server.",
+      "constraints": "Requires IDA 9.4+, idalib, Python 3.11+, and uv. The MIT server license does not provide an IDA license. Official and community implementations need clear names.",
+      "next_check": "On a licensed host, inspect a self-built binary and retain raw function/xref responses and client versions.",
+      "sources": [
+        "https://raw.githubusercontent.com/HexRaysSA/ida-mcp/df6de7985b534a964c125d5a86e41b26b17b14f6/README.md"
+      ],
+      "source_commit": "df6de7985b534a964c125d5a86e41b26b17b14f6",
+      "license_api": "MIT",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "HexRaysSA/ida-mcp",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-08T20:24:10Z",
+      "github_release": {
+        "tag_name": "v20261008.0.1",
+        "published_at": "2026-10-08T20:24:24Z",
+        "html_url": "https://github.com/HexRaysSA/ida-mcp/releases/tag/v20261008.0.1"
+      },
+      "source_browser_urls": [
+        "https://github.com/HexRaysSA/ida-mcp/blob/df6de7985b534a964c125d5a86e41b26b17b14f6/README.md"
+      ]
+    },
+    {
+      "name": "Chrome DevTools MCP",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "section": "AI-assisted analysis",
+      "description": "Official MCP server for inspecting Chrome network activity, runtime state, console output, and performance traces; requires Node.js LTS and Chrome.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Official browser inspection for agents",
+      "incremental_value": "Makes network, console, runtime, and performance evidence accessible through a documented agent interface.",
+      "constraints": "Requires Node LTS and a supported Chrome installation; arbitrary Chromium forks are not proven compatible. Preserve raw responses/traces alongside interpretations. Apache-2.0.",
+      "next_check": "Inspect a self-authored local app and retain browser/client versions and original request/console evidence.",
+      "sources": [
+        "https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/d250bc5cd14d14dc79680967a41158f8782a8bb3/README.md"
+      ],
+      "source_commit": "d250bc5cd14d14dc79680967a41158f8782a8bb3",
+      "license_api": "Apache-2.0",
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "ChromeDevTools/chrome-devtools-mcp",
+      "archived": false,
+      "default_branch_commit_at": "2026-10-12T17:43:36Z",
+      "github_release": {
+        "tag_name": "chrome-devtools-mcp-v1.10.1",
+        "published_at": "2026-09-23T10:37:16Z",
+        "html_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.10.1"
+      },
+      "source_browser_urls": [
+        "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/d250bc5cd14d14dc79680967a41158f8782a8bb3/README.md"
+      ]
+    },
+    {
+      "name": "Corkami",
+      "url": "https://github.com/corkami/pics",
+      "section": "Learning",
+      "description": "Visual references and posters explaining binary formats and file structures, including executable-format layouts.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Visual binary-format references",
+      "incremental_value": "Adds stable format-layout references rather than another general introductory course.",
+      "constraints": "Reference material, not a software tool. Commit age alone does not invalidate it. Link to the author source; no image redistribution license was established by GitHub metadata.",
+      "next_check": "Select a relevant diagram and check its format/version scope against the corresponding specification.",
+      "sources": [
+        "https://raw.githubusercontent.com/corkami/pics/669facbb0b6a977f959ae6473b8346e98cf23f53/README.md"
+      ],
+      "source_commit": "669facbb0b6a977f959ae6473b8346e98cf23f53",
+      "license_api": null,
+      "license_api_is_complete_audit": false,
+      "canonical_repo": "corkami/pics",
+      "archived": false,
+      "default_branch_commit_at": "2024-02-18T13:37:12Z",
+      "github_release": {
+        "_error": "HTTP 404"
+      },
+      "source_browser_urls": [
+        "https://github.com/corkami/pics/blob/669facbb0b6a977f959ae6473b8346e98cf23f53/README.md"
+      ]
+    },
+    {
+      "name": "JEB",
+      "url": "https://www.pnfsoftware.com/jeb/",
+      "section": "Android and managed code",
+      "description": "Android decompiler and analysis platform with edition-dependent native analysis and official MCP capabilities that vary by version; **commercial**.",
+      "research_priority": "A1",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "evidence_type": "documented",
+      "task": "Commercial Android/native analysis and official MCP",
+      "incremental_value": "Adds a professional commercial option and its official integration as capabilities of the same product.",
+      "constraints": "License/edition differences matter. GUI MCP predates headless CLI support; CLI MCP arrived in 5.41, and run_apk_analysis in 5.47. The reviewed changelog is 5.48. Do not describe all MCP functionality as introduced in 5.41.",
+      "next_check": "Use an appropriate licensed edition with a self-built APK and retain versioned analysis/tool responses.",
+      "sources": [
+        "https://www.pnfsoftware.com/jeb/",
+        "https://www.pnfsoftware.com/jeb/manual/mcp/",
+        "https://www.pnfsoftware.com/jeb/changelog"
+      ],
+      "source_commit": null,
+      "license_api": null,
+      "license_api_is_complete_audit": false,
+      "source_browser_urls": [
+        "https://www.pnfsoftware.com/jeb/",
+        "https://www.pnfsoftware.com/jeb/manual/mcp/",
+        "https://www.pnfsoftware.com/jeb/changelog"
+      ]
+    }
+  ],
+  "link_exceptions": [
+    {
+      "url": "https://developer.chrome.com/docs/devtools/",
+      "checked_at": "2026-10-13",
+      "next_review": "2026-11-13",
+      "automated_result": "HTTP 403",
+      "evidence": "Official page content retrieved during review; exact URL excluded from lychee, not the whole domain."
+    }
+  ]
+}

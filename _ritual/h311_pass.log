@@ -1,0 +1,1725 @@
+===== POST /log 18:00:30
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+===== POST /log 18:00:31
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+===== POST /log 18:00:32
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+===== POST /log 18:00:32
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+===== POST /log 18:00:35
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+18:00:32.975 STEP=target
+18:00:35.054 notepad pid=21264 threads=0
+===== POST /log 18:00:35
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+18:00:32.975 STEP=target
+18:00:35.054 notepad pid=21264 threads=0
+18:00:35.064 STEP=probe-kernel
+18:00:35.064 $ sc.exe delete zapexdrv
+18:00:35.070   exit=0
+18:00:35.070   | [SC] DeleteService SUCCESS
+18:00:35.071 $ sc.exe delete apexdrv
+18:00:35.079   exit=1060
+18:00:35.079   | [SC] OpenService FAILED 1060:
+18:00:35.079   | The specified service does not exist as an installed service.
+18:00:35.080 STEP=release
+18:00:35.080 $ sc.exe stop zapexdrv
+18:00:35.126   exit=0
+18:00:35.126   | SERVICE_NAME: zapexdrv
+18:00:35.126   |         TYPE               : 1  KERNEL_DRIVER
+18:00:35.126   |         STATE              : 1  STOPPED
+18:00:35.126   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:35.126   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:35.126   |         CHECKPOINT         : 0x0
+18:00:35.126   |         WAIT_HINT          : 0x0
+18:00:35.126   | ...
+18:00:35.126 $ sc.exe delete zapexdrv
+18:00:35.134   exit=1060
+18:00:35.134   | [SC] OpenService FAILED 1060:
+18:00:35.135   | The specified service does not exist as an installed service.
+18:00:35.142   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+===== POST /log 18:00:35
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+18:00:32.975 STEP=target
+18:00:35.054 notepad pid=21264 threads=0
+18:00:35.064 STEP=probe-kernel
+18:00:35.064 $ sc.exe delete zapexdrv
+18:00:35.070   exit=0
+18:00:35.070   | [SC] DeleteService SUCCESS
+18:00:35.071 $ sc.exe delete apexdrv
+18:00:35.079   exit=1060
+18:00:35.079   | [SC] OpenService FAILED 1060:
+18:00:35.079   | The specified service does not exist as an installed service.
+18:00:35.080 STEP=release
+18:00:35.080 $ sc.exe stop zapexdrv
+18:00:35.126   exit=0
+18:00:35.126   | SERVICE_NAME: zapexdrv
+18:00:35.126   |         TYPE               : 1  KERNEL_DRIVER
+18:00:35.126   |         STATE              : 1  STOPPED
+18:00:35.126   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:35.126   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:35.126   |         CHECKPOINT         : 0x0
+18:00:35.126   |         WAIT_HINT          : 0x0
+18:00:35.126   | ...
+18:00:35.126 $ sc.exe delete zapexdrv
+18:00:35.134   exit=1060
+18:00:35.134   | [SC] OpenService FAILED 1060:
+18:00:35.135   | The specified service does not exist as an installed service.
+18:00:35.142   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+18:00:35.198 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+18:00:35.198 STEP=inject-kernel
+18:00:35.199 $ apex_launcher.exe --inject --method=kernel --pid 21264 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+18:00:35.245   exit=3
+18:00:35.245   | ===============================================================
+18:00:35.245   |   QwenKern Premium - Apex Legends launcher
+18:00:35.245   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+18:00:35.245   |   kernel rung    : B3 (apexdrv.sys)
+18:00:35.245   | ===============================================================
+18:00:35.245   | [*] Target PID 21264, payload C:\Users\Public\apxprobe.dll
+18:00:35.245   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+18:00:35.246   |     reason: no thread found in PID 21264 - nothing to queue the loader APC on
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246 STEP=slice
+===== POST /log 18:00:37
+## h310
+18:00:29.986 alive
+18:00:30.234 bench build 26200 boot=05/11 15:23 pid=9024
+18:00:30.245 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:00:30.254 pre minidumps=5 notepad=0
+18:00:31.483 sha=CDB6BFAE8CC1867A MATCH
+18:00:31.489 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+18:00:32.975 STEP=target
+18:00:35.054 notepad pid=21264 threads=0
+18:00:35.064 STEP=probe-kernel
+18:00:35.064 $ sc.exe delete zapexdrv
+18:00:35.070   exit=0
+18:00:35.070   | [SC] DeleteService SUCCESS
+18:00:35.071 $ sc.exe delete apexdrv
+18:00:35.079   exit=1060
+18:00:35.079   | [SC] OpenService FAILED 1060:
+18:00:35.079   | The specified service does not exist as an installed service.
+18:00:35.080 STEP=release
+18:00:35.080 $ sc.exe stop zapexdrv
+18:00:35.126   exit=0
+18:00:35.126   | SERVICE_NAME: zapexdrv
+18:00:35.126   |         TYPE               : 1  KERNEL_DRIVER
+18:00:35.126   |         STATE              : 1  STOPPED
+18:00:35.126   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:35.126   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:35.126   |         CHECKPOINT         : 0x0
+18:00:35.126   |         WAIT_HINT          : 0x0
+18:00:35.126   | ...
+18:00:35.126 $ sc.exe delete zapexdrv
+18:00:35.134   exit=1060
+18:00:35.134   | [SC] OpenService FAILED 1060:
+18:00:35.135   | The specified service does not exist as an installed service.
+18:00:35.142   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+18:00:35.198 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+18:00:35.198 STEP=inject-kernel
+18:00:35.199 $ apex_launcher.exe --inject --method=kernel --pid 21264 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+18:00:35.245   exit=3
+18:00:35.245   | ===============================================================
+18:00:35.245   |   QwenKern Premium - Apex Legends launcher
+18:00:35.245   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+18:00:35.245   |   kernel rung    : B3 (apexdrv.sys)
+18:00:35.245   | ===============================================================
+18:00:35.245   | [*] Target PID 21264, payload C:\Users\Public\apxprobe.dll
+18:00:35.245   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+18:00:35.246   |     reason: no thread found in PID 21264 - nothing to queue the loader APC on
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246 STEP=slice
+18:00:37.325 post notepad alive=False inject rc=3
+18:00:37.334 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+18:00:37.343 oracle hits=0
+18:00:37.346 parsed: abi=-1 echo_ok=0 echo_status=-1 echo_len=0 echo_after=[] fired=-1 modules=-1/-1/-1 (flat is fine here)
+18:00:37.348 stub: base=0x0 entered=unparsed rcx=0x0
+18:00:37.348 map: base=0x0 step=-1 resultStatus=-1 entryResult=0x0 entryFlag=0x0 relocs=-1 imports=-1 tls=-1 unresolved=[]
+18:00:37.350 RESULT: FAIL - no driver ABI handshake in the launcher output
+18:00:37.350 VERDICT: FAIL - launcher died before delivery (service/device), not the loader
+===== POST /log 18:00:37
+## h310
+...6 earlier lines not uploaded
+18:00:31.567 STEP=dse-read
+18:00:31.574 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:00:31.767   exit=1
+18:00:31.771   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:31.772   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:31.772   | [#] Supported x64 OS : Windows 7 and above
+18:00:31.772   | ...
+18:00:31.786 $ kdu.exe -prv 22 -dse
+18:00:32.836   exit=1
+18:00:32.836   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.836   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.836   | [#] Supported x64 OS : Windows 7 and above
+18:00:32.836   | [*] CPU vendor string: GenuineIntel
+18:00:32.836   | ...
+18:00:32.842   read via prv 22
+18:00:32.842 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:00:32.851 STEP=dse
+18:00:32.854 $ sc.exe delete zapexdrv
+18:00:32.862   exit=1060
+18:00:32.862   | [SC] OpenService FAILED 1060:
+18:00:32.862   | The specified service does not exist as an installed service.
+18:00:32.862 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:00:32.870   exit=0
+18:00:32.870   | [SC] CreateService SUCCESS
+18:00:32.872 $ kdu.exe -prv 0 -dse 0
+18:00:32.915   exit=1
+18:00:32.915   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:32.915   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:32.915   | ...
+18:00:32.915 $ sc.exe start zapexdrv
+18:00:32.925   exit=0
+18:00:32.925   | SERVICE_NAME: zapexdrv
+18:00:32.925   |         TYPE               : 1  KERNEL_DRIVER
+18:00:32.925   |         STATE              : 4  RUNNING
+18:00:32.925   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:00:32.925   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:32.926   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:32.926   |         CHECKPOINT         : 0x0
+18:00:32.926   | ...
+18:00:32.933   prv 0 -> DSE off, driver RUNNING
+18:00:32.975 STEP=target
+18:00:35.054 notepad pid=21264 threads=0
+18:00:35.064 STEP=probe-kernel
+18:00:35.064 $ sc.exe delete zapexdrv
+18:00:35.070   exit=0
+18:00:35.070   | [SC] DeleteService SUCCESS
+18:00:35.071 $ sc.exe delete apexdrv
+18:00:35.079   exit=1060
+18:00:35.079   | [SC] OpenService FAILED 1060:
+18:00:35.079   | The specified service does not exist as an installed service.
+18:00:35.080 STEP=release
+18:00:35.080 $ sc.exe stop zapexdrv
+18:00:35.126   exit=0
+18:00:35.126   | SERVICE_NAME: zapexdrv
+18:00:35.126   |         TYPE               : 1  KERNEL_DRIVER
+18:00:35.126   |         STATE              : 1  STOPPED
+18:00:35.126   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:00:35.126   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:00:35.126   |         CHECKPOINT         : 0x0
+18:00:35.126   |         WAIT_HINT          : 0x0
+18:00:35.126   | ...
+18:00:35.126 $ sc.exe delete zapexdrv
+18:00:35.134   exit=1060
+18:00:35.134   | [SC] OpenService FAILED 1060:
+18:00:35.135   | The specified service does not exist as an installed service.
+18:00:35.142   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+18:00:35.198 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+18:00:35.198 STEP=inject-kernel
+18:00:35.199 $ apex_launcher.exe --inject --method=kernel --pid 21264 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+18:00:35.245   exit=3
+18:00:35.245   | ===============================================================
+18:00:35.245   |   QwenKern Premium - Apex Legends launcher
+18:00:35.245   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+18:00:35.245   |   kernel rung    : B3 (apexdrv.sys)
+18:00:35.245   | ===============================================================
+18:00:35.245   | [*] Target PID 21264, payload C:\Users\Public\apxprobe.dll
+18:00:35.245   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246   | [-] Injection FAILED via B3 Kernel Driver (KERNEL)
+18:00:35.246   |     reason: no thread found in PID 21264 - nothing to queue the loader APC on
+18:00:35.246   | ---------------------------------------------------------------
+18:00:35.246 STEP=slice
+18:00:37.325 post notepad alive=False inject rc=3
+18:00:37.334 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+18:00:37.343 oracle hits=0
+18:00:37.346 parsed: abi=-1 echo_ok=0 echo_status=-1 echo_len=0 echo_after=[] fired=-1 modules=-1/-1/-1 (flat is fine here)
+18:00:37.348 stub: base=0x0 entered=unparsed rcx=0x0
+18:00:37.348 map: base=0x0 step=-1 resultStatus=-1 entryResult=0x0 entryFlag=0x0 relocs=-1 imports=-1 tls=-1 unresolved=[]
+18:00:37.350 RESULT: FAIL - no driver ABI handshake in the launcher output
+18:00:37.350 VERDICT: FAIL - launcher died before delivery (service/device), not the loader
+18:00:37.360 STEP=restore
+18:00:37.360 $ sc.exe stop zapexdrv
+18:00:37.370   exit=1060
+18:00:37.370   | [SC] OpenService FAILED 1060:
+18:00:37.370   | The specified service does not exist as an installed service.
+18:00:37.370 $ sc.exe delete zapexdrv
+18:00:37.382   exit=1060
+18:00:37.382   | [SC] OpenService FAILED 1060:
+18:00:37.382   | The specified service does not exist as an installed service.
+18:00:37.383 $ sc.exe delete apexdrv
+18:00:37.390   exit=1060
+18:00:37.390   | [SC] OpenService FAILED 1060:
+18:00:37.390   | The specified service does not exist as an installed service.
+18:00:37.414 $ kdu.exe -prv 0 -dse 22
+18:00:37.465   exit=1
+18:00:37.465   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:37.465   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:37.466   | [#] Supported x64 OS : Windows 7 and above
+18:00:37.466   | ...
+18:00:37.466 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 0 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFBF51F0000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [+] Vulnerable driver "NalDrv" loaded [+] Driver device "Nal" has been opened successfully [+] Executing post-open callback for given provider [+] Driver device security descriptor set successfully [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF80767262004) value: 0, new value to be written: 16 [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Vulnerable driver "NalDrv" unloaded [+] Vulnerable driver file removed [+] Return value: 1. Bye-bye!]
+18:00:37.466 $ kdu.exe -prv 0 -dse 22
+18:00:37.512   exit=1
+18:00:37.512   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:00:37.512   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:00:37.512   | [#] Supported x64 OS : Windows 7 and above
+18:00:37.512   | ...
+18:00:37.513 dse_verify=PASS
+18:00:37.525 restore: svc=[[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.] notepad=0
+18:00:37.525 dse_pre=0x16 dse_verify=PASS
+18:00:37.526 RESULT: FAIL - variable: v13 verdict plumbing (resultStatus printed on delivery, entryFlag DONE magic separates returned-FALSE from never-returned, MapStatus reset after clean imports, path-sized echo_after). The driver maps C:\Users\Public\apxprobe.dll itself (kernel ZwCreateFile/ZwReadFile, header check, pool image, DIRECT64 relocation pass, one write) and the 64-byte map stub calls DllMain(base,1,NULL), storing RAX then the 0x4871 DONE flag; ex= and lastError= are informational only. Control payload = apxprobe.dll (no relocs, no imports, no TLS) into notepad (winner prv 0); this says nothing about apexcheat.dll, which brings imports, TLS and Guard CF
+===== POST /log 18:04:18
+## h310
+18:04:17.455 alive
+18:04:17.694 bench build 26200 boot=05/11 15:23 pid=11152
+18:04:17.706 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:04:17.714 pre minidumps=5 notepad=0
+===== POST /log 18:04:18
+## h310
+18:04:17.455 alive
+18:04:17.694 bench build 26200 boot=05/11 15:23 pid=11152
+18:04:17.706 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:04:17.714 pre minidumps=5 notepad=0
+18:04:18.891 sha=CDB6BFAE8CC1867A MATCH
+18:04:18.898 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+===== POST /log 18:04:20
+## h310
+18:04:17.455 alive
+18:04:17.694 bench build 26200 boot=05/11 15:23 pid=11152
+18:04:17.706 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:04:17.714 pre minidumps=5 notepad=0
+18:04:18.891 sha=CDB6BFAE8CC1867A MATCH
+18:04:18.898 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:04:18.977 STEP=dse-read
+18:04:18.987 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:04:19.158   exit=1
+18:04:19.161   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:04:19.161   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:04:19.161   | [#] Supported x64 OS : Windows 7 and above
+18:04:19.161   | ...
+18:04:19.173 $ kdu.exe -prv 22 -dse
+18:04:20.220   exit=1
+18:04:20.220   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:04:20.221   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:04:20.221   | [#] Supported x64 OS : Windows 7 and above
+18:04:20.221   | [*] CPU vendor string: GenuineIntel
+18:04:20.221   | ...
+18:04:20.226   read via prv 22
+18:04:20.227 dse_pre=0x16 restore-target=22 (0 = left as found)
+===== POST /log 18:04:20
+## h310
+18:04:17.455 alive
+18:04:17.694 bench build 26200 boot=05/11 15:23 pid=11152
+18:04:17.706 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+18:04:17.714 pre minidumps=5 notepad=0
+18:04:18.891 sha=CDB6BFAE8CC1867A MATCH
+18:04:18.898 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+18:04:18.977 STEP=dse-read
+18:04:18.987 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+18:04:19.158   exit=1
+18:04:19.161   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:04:19.161   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:04:19.161   | [#] Supported x64 OS : Windows 7 and above
+18:04:19.161   | ...
+18:04:19.173 $ kdu.exe -prv 22 -dse
+18:04:20.220   exit=1
+18:04:20.220   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:04:20.221   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:04:20.221   | [#] Supported x64 OS : Windows 7 and above
+18:04:20.221   | [*] CPU vendor string: GenuineIntel
+18:04:20.221   | ...
+18:04:20.226   read via prv 22
+18:04:20.227 dse_pre=0x16 restore-target=22 (0 = left as found)
+18:04:20.235 STEP=dse
+18:04:20.239 $ sc.exe delete zapexdrv
+18:04:20.246   exit=1060
+18:04:20.246   | [SC] OpenService FAILED 1060:
+18:04:20.246   | The specified service does not exist as an installed service.
+18:04:20.246 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+18:04:20.254   exit=0
+18:04:20.254   | [SC] CreateService SUCCESS
+18:04:20.256 $ kdu.exe -prv 0 -dse 0
+18:04:20.297   exit=1
+18:04:20.297   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+18:04:20.297   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+18:04:20.297   | ...
+18:04:20.297 $ sc.exe start zapexdrv
+18:04:20.307   exit=0
+18:04:20.307   | SERVICE_NAME: zapexdrv
+18:04:20.307   |         TYPE               : 1  KERNEL_DRIVER
+18:04:20.307   |         STATE              : 4  RUNNING
+18:04:20.307   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+18:04:20.307   |         WIN32_EXIT_CODE    : 0  (0x0)
+18:04:20.307   |         SERVICE_EXIT_CODE  : 0  (0x0)
+18:04:20.307   |         CHECKPOINT         : 0x0
+18:04:20.307   | ...
+18:04:20.314   prv 0 -> DSE off, driver RUNNING
+===== POST 19:24:04 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+===== POST 19:24:04 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+===== POST 19:24:06 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+===== POST 19:24:06 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:24:06.028 STEP=dse
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+===== POST 19:24:10 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:24:06.028 STEP=dse
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+19:24:06.114 STEP=target
+19:24:08.210   target notepad pid=7048 alive=False threads=0
+19:24:10.232   target regedit pid=14136 alive=True threads=4
+19:24:10.232 target=regedit pid=14136 (control process for the map)
+===== POST 19:24:10 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:24:06.028 STEP=dse
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+19:24:06.114 STEP=target
+19:24:08.210   target notepad pid=7048 alive=False threads=0
+19:24:10.232   target regedit pid=14136 alive=True threads=4
+19:24:10.232 target=regedit pid=14136 (control process for the map)
+19:24:10.240 STEP=probe-kernel
+19:24:10.240 $ sc.exe delete zapexdrv
+19:24:10.247   exit=0
+19:24:10.247   | [SC] DeleteService SUCCESS
+19:24:10.247 $ sc.exe delete apexdrv
+19:24:10.254   exit=1060
+19:24:10.254   | [SC] OpenService FAILED 1060:
+19:24:10.254   | The specified service does not exist as an installed service.
+19:24:10.254 STEP=release
+19:24:10.254 $ sc.exe stop zapexdrv
+19:24:10.298   exit=0
+19:24:10.298   | SERVICE_NAME: zapexdrv
+19:24:10.299   |         TYPE               : 1  KERNEL_DRIVER
+19:24:10.299   |         STATE              : 1  STOPPED
+19:24:10.299   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:10.299   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:10.299   |         CHECKPOINT         : 0x0
+19:24:10.299   |         WAIT_HINT          : 0x0
+19:24:10.299   | ...
+19:24:10.299 $ sc.exe delete zapexdrv
+19:24:10.306   exit=1060
+19:24:10.306   | [SC] OpenService FAILED 1060:
+19:24:10.307   | The specified service does not exist as an installed service.
+19:24:10.314   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+===== POST 19:24:11 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:24:06.028 STEP=dse
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+19:24:06.114 STEP=target
+19:24:08.210   target notepad pid=7048 alive=False threads=0
+19:24:10.232   target regedit pid=14136 alive=True threads=4
+19:24:10.232 target=regedit pid=14136 (control process for the map)
+19:24:10.240 STEP=probe-kernel
+19:24:10.240 $ sc.exe delete zapexdrv
+19:24:10.247   exit=0
+19:24:10.247   | [SC] DeleteService SUCCESS
+19:24:10.247 $ sc.exe delete apexdrv
+19:24:10.254   exit=1060
+19:24:10.254   | [SC] OpenService FAILED 1060:
+19:24:10.254   | The specified service does not exist as an installed service.
+19:24:10.254 STEP=release
+19:24:10.254 $ sc.exe stop zapexdrv
+19:24:10.298   exit=0
+19:24:10.298   | SERVICE_NAME: zapexdrv
+19:24:10.299   |         TYPE               : 1  KERNEL_DRIVER
+19:24:10.299   |         STATE              : 1  STOPPED
+19:24:10.299   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:10.299   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:10.299   |         CHECKPOINT         : 0x0
+19:24:10.299   |         WAIT_HINT          : 0x0
+19:24:10.299   | ...
+19:24:10.299 $ sc.exe delete zapexdrv
+19:24:10.306   exit=1060
+19:24:10.306   | [SC] OpenService FAILED 1060:
+19:24:10.307   | The specified service does not exist as an installed service.
+19:24:10.314   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:24:10.322 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:24:10.323 STEP=inject-kernel
+19:24:10.323 $ apex_launcher.exe --inject --method=kernel --pid 14136 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:24:11.408   exit=0
+19:24:11.408   | ===============================================================
+19:24:11.409   |   QwenKern Premium - Apex Legends launcher
+19:24:11.409   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:24:11.409   |   kernel rung    : B3 (apexdrv.sys)
+19:24:11.409   | ===============================================================
+19:24:11.409   | [*] Target PID 14136, payload C:\Users\Public\apxprobe.dll
+19:24:11.409   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:24:11.409   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:24:11.409   | [*] driver ABI v13
+19:24:11.409   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.409   | [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.410   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.410   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.410   |  (no module appeared)
+19:24:11.410   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:24:11.410   |     thread id  : 4872
+19:24:11.410   |     module base: 0x0000000180000000
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410 STEP=slice
+19:24:11.413   > [*] driver ABI v13
+19:24:11.413   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.413   > [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.413   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.413   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.413   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+===== POST 19:24:13 /log?vm=h310 =====
+## h310
+19:24:04.165 alive
+19:24:04.304 bench build 26200 boot=06/11 18:04 pid=14388
+19:24:04.315 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:24:04.322 pre minidumps=5 notepad=0
+19:24:04.787 sha=E906CEE97B9927F4 MATCH
+19:24:04.792 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:24:04.802 STEP=dse-read
+19:24:04.811 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:24:04.955   exit=1
+19:24:04.955   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:04.958   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:04.958   | [#] Supported x64 OS : Windows 7 and above
+19:24:04.958   | ...
+19:24:04.968 $ kdu.exe -prv 22 -dse
+19:24:06.014   exit=1
+19:24:06.014   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.014   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.014   | [#] Supported x64 OS : Windows 7 and above
+19:24:06.014   | [*] CPU vendor string: GenuineIntel
+19:24:06.014   | ...
+19:24:06.021   read via prv 22
+19:24:06.021 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:24:06.028 STEP=dse
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+19:24:06.114 STEP=target
+19:24:08.210   target notepad pid=7048 alive=False threads=0
+19:24:10.232   target regedit pid=14136 alive=True threads=4
+19:24:10.232 target=regedit pid=14136 (control process for the map)
+19:24:10.240 STEP=probe-kernel
+19:24:10.240 $ sc.exe delete zapexdrv
+19:24:10.247   exit=0
+19:24:10.247   | [SC] DeleteService SUCCESS
+19:24:10.247 $ sc.exe delete apexdrv
+19:24:10.254   exit=1060
+19:24:10.254   | [SC] OpenService FAILED 1060:
+19:24:10.254   | The specified service does not exist as an installed service.
+19:24:10.254 STEP=release
+19:24:10.254 $ sc.exe stop zapexdrv
+19:24:10.298   exit=0
+19:24:10.298   | SERVICE_NAME: zapexdrv
+19:24:10.299   |         TYPE               : 1  KERNEL_DRIVER
+19:24:10.299   |         STATE              : 1  STOPPED
+19:24:10.299   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:10.299   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:10.299   |         CHECKPOINT         : 0x0
+19:24:10.299   |         WAIT_HINT          : 0x0
+19:24:10.299   | ...
+19:24:10.299 $ sc.exe delete zapexdrv
+19:24:10.306   exit=1060
+19:24:10.306   | [SC] OpenService FAILED 1060:
+19:24:10.307   | The specified service does not exist as an installed service.
+19:24:10.314   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:24:10.322 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:24:10.323 STEP=inject-kernel
+19:24:10.323 $ apex_launcher.exe --inject --method=kernel --pid 14136 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:24:11.408   exit=0
+19:24:11.408   | ===============================================================
+19:24:11.409   |   QwenKern Premium - Apex Legends launcher
+19:24:11.409   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:24:11.409   |   kernel rung    : B3 (apexdrv.sys)
+19:24:11.409   | ===============================================================
+19:24:11.409   | [*] Target PID 14136, payload C:\Users\Public\apxprobe.dll
+19:24:11.409   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:24:11.409   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:24:11.409   | [*] driver ABI v13
+19:24:11.409   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.409   | [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.410   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.410   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.410   |  (no module appeared)
+19:24:11.410   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:24:11.410   |     thread id  : 4872
+19:24:11.410   |     module base: 0x0000000180000000
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410 STEP=slice
+19:24:11.413   > [*] driver ABI v13
+19:24:11.413   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.413   > [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.413   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.413   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.413   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:24:13.429 post target alive=True inject rc=0
+19:24:13.436 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+19:24:13.444 oracle hits=0
+19:24:13.451 parsed: abi=13 echo_ok=1 echo_status=0 echo_len=28 echo_after=[C:\Users\Public\apxprobe.dll] fired=1 modules=40/40/40 (flat is fine here)
+19:24:13.454 stub: base=0x1A6C8DE0000 entered=0x4870 rcx=0x180000000
+19:24:13.459 map: base=0x180000000 step=0 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 tls=0 unresolved=[]
+19:24:13.466 RESULT: FAIL - image mapped at 0x180000000 but DllMain returned FALSE (entryResult=0x1)
+19:24:13.466 VERDICT: FAIL - the mapping itself worked; the control payload rejected its own init (see the .dll log)
+===== POST 19:24:13 /log?vm=h310 =====
+## h310
+...23 earlier lines not uploaded
+19:24:06.033 $ sc.exe delete zapexdrv
+19:24:06.038   exit=1060
+19:24:06.038   | [SC] OpenService FAILED 1060:
+19:24:06.040   | The specified service does not exist as an installed service.
+19:24:06.040 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:24:06.047   exit=0
+19:24:06.047   | [SC] CreateService SUCCESS
+19:24:06.049 $ kdu.exe -prv 0 -dse 0
+19:24:06.088   exit=1
+19:24:06.088   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:06.088   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:06.088   | ...
+19:24:06.088 $ sc.exe start zapexdrv
+19:24:06.097   exit=0
+19:24:06.097   | SERVICE_NAME: zapexdrv
+19:24:06.097   |         TYPE               : 1  KERNEL_DRIVER
+19:24:06.097   |         STATE              : 4  RUNNING
+19:24:06.097   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:24:06.097   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:06.097   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:06.097   |         CHECKPOINT         : 0x0
+19:24:06.097   | ...
+19:24:06.107   prv 0 -> DSE off, driver RUNNING
+19:24:06.114 STEP=target
+19:24:08.210   target notepad pid=7048 alive=False threads=0
+19:24:10.232   target regedit pid=14136 alive=True threads=4
+19:24:10.232 target=regedit pid=14136 (control process for the map)
+19:24:10.240 STEP=probe-kernel
+19:24:10.240 $ sc.exe delete zapexdrv
+19:24:10.247   exit=0
+19:24:10.247   | [SC] DeleteService SUCCESS
+19:24:10.247 $ sc.exe delete apexdrv
+19:24:10.254   exit=1060
+19:24:10.254   | [SC] OpenService FAILED 1060:
+19:24:10.254   | The specified service does not exist as an installed service.
+19:24:10.254 STEP=release
+19:24:10.254 $ sc.exe stop zapexdrv
+19:24:10.298   exit=0
+19:24:10.298   | SERVICE_NAME: zapexdrv
+19:24:10.299   |         TYPE               : 1  KERNEL_DRIVER
+19:24:10.299   |         STATE              : 1  STOPPED
+19:24:10.299   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:24:10.299   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:24:10.299   |         CHECKPOINT         : 0x0
+19:24:10.299   |         WAIT_HINT          : 0x0
+19:24:10.299   | ...
+19:24:10.299 $ sc.exe delete zapexdrv
+19:24:10.306   exit=1060
+19:24:10.306   | [SC] OpenService FAILED 1060:
+19:24:10.307   | The specified service does not exist as an installed service.
+19:24:10.314   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:24:10.322 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:24:10.323 STEP=inject-kernel
+19:24:10.323 $ apex_launcher.exe --inject --method=kernel --pid 14136 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:24:11.408   exit=0
+19:24:11.408   | ===============================================================
+19:24:11.409   |   QwenKern Premium - Apex Legends launcher
+19:24:11.409   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:24:11.409   |   kernel rung    : B3 (apexdrv.sys)
+19:24:11.409   | ===============================================================
+19:24:11.409   | [*] Target PID 14136, payload C:\Users\Public\apxprobe.dll
+19:24:11.409   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:24:11.409   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:24:11.409   | [*] driver ABI v13
+19:24:11.409   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.409   | [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.410   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.410   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.410   |  (no module appeared)
+19:24:11.410   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:24:11.410   |     thread id  : 4872
+19:24:11.410   |     module base: 0x0000000180000000
+19:24:11.410   | ---------------------------------------------------------------
+19:24:11.410 STEP=slice
+19:24:11.413   > [*] driver ABI v13
+19:24:11.413   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:24:11.413   > [*] delivery: tid=4872 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:24:11.413   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x1a6c8de0000 entered=0x4870 rcx=0x180000000 remoteBase=0x1a6c8dd0000
+19:24:11.413   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:24:11.413   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:24:13.429 post target alive=True inject rc=0
+19:24:13.436 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+19:24:13.444 oracle hits=0
+19:24:13.451 parsed: abi=13 echo_ok=1 echo_status=0 echo_len=28 echo_after=[C:\Users\Public\apxprobe.dll] fired=1 modules=40/40/40 (flat is fine here)
+19:24:13.454 stub: base=0x1A6C8DE0000 entered=0x4870 rcx=0x180000000
+19:24:13.459 map: base=0x180000000 step=0 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 tls=0 unresolved=[]
+19:24:13.466 RESULT: FAIL - image mapped at 0x180000000 but DllMain returned FALSE (entryResult=0x1)
+19:24:13.466 VERDICT: FAIL - the mapping itself worked; the control payload rejected its own init (see the .dll log)
+19:24:13.477 STEP=restore
+19:24:13.478 $ sc.exe stop zapexdrv
+19:24:13.485   exit=1060
+19:24:13.485   | [SC] OpenService FAILED 1060:
+19:24:13.485   | The specified service does not exist as an installed service.
+19:24:13.485 $ sc.exe delete zapexdrv
+19:24:13.492   exit=1060
+19:24:13.492   | [SC] OpenService FAILED 1060:
+19:24:13.492   | The specified service does not exist as an installed service.
+19:24:13.493 $ sc.exe delete apexdrv
+19:24:13.499   exit=1060
+19:24:13.499   | [SC] OpenService FAILED 1060:
+19:24:13.499   | The specified service does not exist as an installed service.
+19:24:13.515 $ kdu.exe -prv 0 -dse 0
+19:24:13.555   exit=1
+19:24:13.555   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:13.555   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:13.555   | [#] Supported x64 OS : Windows 7 and above
+19:24:13.555   | ...
+19:24:13.556 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 0 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFBEAA90000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [+] Vulnerable driver "NalDrv" loaded [+] Driver device "Nal" has been opened successfully [+] Executing post-open callback for given provider [+] Driver device security descriptor set successfully [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF8073ADB2004) value: 0, new value to be written: 0 [~] Warning, current value is identical to what you want to write [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Vulnerable driver "NalDrv" unloaded [+] Vulnerable driver file removed [+] Return value: 1. Bye-bye!]
+19:24:13.556 $ kdu.exe -prv 0 -dse 0
+19:24:13.596   exit=1
+19:24:13.596   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:24:13.596   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:24:13.596   | [#] Supported x64 OS : Windows 7 and above
+19:24:13.596   | ...
+19:24:13.598 dse_verify=PASS
+19:24:13.607 restore: svc=[[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.] notepad=0
+19:24:13.607 dse_pre=0x0 dse_verify=PASS
+19:24:13.608 RESULT: FAIL - variable: v13 verdict plumbing (resultStatus printed on delivery, entryFlag DONE magic separates returned-FALSE from never-returned, MapStatus reset after clean imports, path-sized echo_after). The driver maps C:\Users\Public\apxprobe.dll itself (kernel ZwCreateFile/ZwReadFile, header check, pool image, DIRECT64 relocation pass, one write) and the 64-byte map stub calls DllMain(base,1,NULL), storing RAX then the 0x4871 DONE flag; ex= and lastError= are informational only. Control payload = apxprobe.dll (no relocs, no imports, no TLS) into regedit (winner prv 0); this says nothing about apexcheat.dll, which brings imports, TLS and Guard CF
+===== POST 19:25:40 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+===== POST 19:25:40 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+===== POST 19:25:42 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+===== POST 19:25:42 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:25:42.219 STEP=dse
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+===== POST 19:25:46 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:25:42.219 STEP=dse
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+19:25:42.302 STEP=target
+19:25:44.392   target notepad pid=3576 alive=False threads=0
+19:25:46.408   target regedit pid=12688 alive=True threads=4
+19:25:46.408 target=regedit pid=12688 (control process for the map)
+===== POST 19:25:46 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:25:42.219 STEP=dse
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+19:25:42.302 STEP=target
+19:25:44.392   target notepad pid=3576 alive=False threads=0
+19:25:46.408   target regedit pid=12688 alive=True threads=4
+19:25:46.408 target=regedit pid=12688 (control process for the map)
+19:25:46.414 STEP=probe-kernel
+19:25:46.415 $ sc.exe delete zapexdrv
+19:25:46.421   exit=0
+19:25:46.421   | [SC] DeleteService SUCCESS
+19:25:46.422 $ sc.exe delete apexdrv
+19:25:46.428   exit=1060
+19:25:46.428   | [SC] OpenService FAILED 1060:
+19:25:46.428   | The specified service does not exist as an installed service.
+19:25:46.428 STEP=release
+19:25:46.428 $ sc.exe stop zapexdrv
+19:25:46.474   exit=0
+19:25:46.474   | SERVICE_NAME: zapexdrv
+19:25:46.474   |         TYPE               : 1  KERNEL_DRIVER
+19:25:46.474   |         STATE              : 1  STOPPED
+19:25:46.474   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:46.474   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:46.475   |         CHECKPOINT         : 0x0
+19:25:46.475   |         WAIT_HINT          : 0x0
+19:25:46.475   | ...
+19:25:46.475 $ sc.exe delete zapexdrv
+19:25:46.482   exit=1060
+19:25:46.482   | [SC] OpenService FAILED 1060:
+19:25:46.482   | The specified service does not exist as an installed service.
+19:25:46.490   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+===== POST 19:25:47 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:25:42.219 STEP=dse
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+19:25:42.302 STEP=target
+19:25:44.392   target notepad pid=3576 alive=False threads=0
+19:25:46.408   target regedit pid=12688 alive=True threads=4
+19:25:46.408 target=regedit pid=12688 (control process for the map)
+19:25:46.414 STEP=probe-kernel
+19:25:46.415 $ sc.exe delete zapexdrv
+19:25:46.421   exit=0
+19:25:46.421   | [SC] DeleteService SUCCESS
+19:25:46.422 $ sc.exe delete apexdrv
+19:25:46.428   exit=1060
+19:25:46.428   | [SC] OpenService FAILED 1060:
+19:25:46.428   | The specified service does not exist as an installed service.
+19:25:46.428 STEP=release
+19:25:46.428 $ sc.exe stop zapexdrv
+19:25:46.474   exit=0
+19:25:46.474   | SERVICE_NAME: zapexdrv
+19:25:46.474   |         TYPE               : 1  KERNEL_DRIVER
+19:25:46.474   |         STATE              : 1  STOPPED
+19:25:46.474   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:46.474   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:46.475   |         CHECKPOINT         : 0x0
+19:25:46.475   |         WAIT_HINT          : 0x0
+19:25:46.475   | ...
+19:25:46.475 $ sc.exe delete zapexdrv
+19:25:46.482   exit=1060
+19:25:46.482   | [SC] OpenService FAILED 1060:
+19:25:46.482   | The specified service does not exist as an installed service.
+19:25:46.490   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:25:46.497 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:25:46.497 STEP=inject-kernel
+19:25:46.497 $ apex_launcher.exe --inject --method=kernel --pid 12688 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:25:47.580   exit=0
+19:25:47.580   | ===============================================================
+19:25:47.580   |   QwenKern Premium - Apex Legends launcher
+19:25:47.581   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:25:47.581   |   kernel rung    : B3 (apexdrv.sys)
+19:25:47.581   | ===============================================================
+19:25:47.581   | [*] Target PID 12688, payload C:\Users\Public\apxprobe.dll
+19:25:47.581   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:25:47.581   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:25:47.581   | [*] driver ABI v13
+19:25:47.581   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.581   | [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.581   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.581   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.581   |  (no module appeared)
+19:25:47.581   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:25:47.581   |     thread id  : 2520
+19:25:47.581   |     module base: 0x0000000180000000
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581 STEP=slice
+19:25:47.582   > [*] driver ABI v13
+19:25:47.582   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.582   > [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.582   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.582   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.582   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+===== POST 19:25:49 /log?vm=h310 =====
+## h310
+19:25:40.344 alive
+19:25:40.487 bench build 26200 boot=06/11 18:04 pid=13292
+19:25:40.499 pre svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060: | The specified service does not exist as an installed service.
+19:25:40.506 pre minidumps=5 notepad=0
+19:25:40.978 sha=E906CEE97B9927F4 MATCH
+19:25:40.984 launcher sha=5429E41F9BC42643 dll=B29803F3EEFCA446
+19:25:40.994 STEP=dse-read
+19:25:41.001 $ kdu.exe -listcsv C:\Users\Public\p37\kdu_list.csv
+19:25:41.145   exit=1
+19:25:41.147   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:41.149   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:41.149   | [#] Supported x64 OS : Windows 7 and above
+19:25:41.149   | ...
+19:25:41.159 $ kdu.exe -prv 22 -dse
+19:25:42.207   exit=1
+19:25:42.207   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.207   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.207   | [#] Supported x64 OS : Windows 7 and above
+19:25:42.207   | [*] CPU vendor string: GenuineIntel
+19:25:42.207   | ...
+19:25:42.212   read via prv 22
+19:25:42.212 dse_pre=0x0 restore-target=0 (0 = left as found)
+19:25:42.219 STEP=dse
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+19:25:42.302 STEP=target
+19:25:44.392   target notepad pid=3576 alive=False threads=0
+19:25:46.408   target regedit pid=12688 alive=True threads=4
+19:25:46.408 target=regedit pid=12688 (control process for the map)
+19:25:46.414 STEP=probe-kernel
+19:25:46.415 $ sc.exe delete zapexdrv
+19:25:46.421   exit=0
+19:25:46.421   | [SC] DeleteService SUCCESS
+19:25:46.422 $ sc.exe delete apexdrv
+19:25:46.428   exit=1060
+19:25:46.428   | [SC] OpenService FAILED 1060:
+19:25:46.428   | The specified service does not exist as an installed service.
+19:25:46.428 STEP=release
+19:25:46.428 $ sc.exe stop zapexdrv
+19:25:46.474   exit=0
+19:25:46.474   | SERVICE_NAME: zapexdrv
+19:25:46.474   |         TYPE               : 1  KERNEL_DRIVER
+19:25:46.474   |         STATE              : 1  STOPPED
+19:25:46.474   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:46.474   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:46.475   |         CHECKPOINT         : 0x0
+19:25:46.475   |         WAIT_HINT          : 0x0
+19:25:46.475   | ...
+19:25:46.475 $ sc.exe delete zapexdrv
+19:25:46.482   exit=1060
+19:25:46.482   | [SC] OpenService FAILED 1060:
+19:25:46.482   | The specified service does not exist as an installed service.
+19:25:46.490   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:25:46.497 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:25:46.497 STEP=inject-kernel
+19:25:46.497 $ apex_launcher.exe --inject --method=kernel --pid 12688 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:25:47.580   exit=0
+19:25:47.580   | ===============================================================
+19:25:47.580   |   QwenKern Premium - Apex Legends launcher
+19:25:47.581   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:25:47.581   |   kernel rung    : B3 (apexdrv.sys)
+19:25:47.581   | ===============================================================
+19:25:47.581   | [*] Target PID 12688, payload C:\Users\Public\apxprobe.dll
+19:25:47.581   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:25:47.581   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:25:47.581   | [*] driver ABI v13
+19:25:47.581   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.581   | [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.581   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.581   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.581   |  (no module appeared)
+19:25:47.581   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:25:47.581   |     thread id  : 2520
+19:25:47.581   |     module base: 0x0000000180000000
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581 STEP=slice
+19:25:47.582   > [*] driver ABI v13
+19:25:47.582   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.582   > [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.582   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.582   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.582   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:25:49.598 post target alive=True inject rc=0
+19:25:49.606 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+19:25:49.614 oracle hits=0
+19:25:49.620 parsed: abi=13 echo_ok=1 echo_status=0 echo_len=28 echo_after=[C:\Users\Public\apxprobe.dll] fired=1 modules=40/40/40 (flat is fine here)
+19:25:49.624 stub: base=0x2036FF70000 entered=0x4870 rcx=0x180000000
+19:25:49.629 map: base=0x180000000 step=0 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 tls=0 unresolved=[]
+19:25:49.636 RESULT: PASS - manual map: image at 0x180000000, DllMain returned TRUE through the map stub (entryFlag=0x4871)
+19:25:49.636 VERDICT: MAP PASS - kernel-side PE map (relocs=0 imports=0 tls=0), APC + stub layout intact, entry executed, RETURNED (flag) and returned TRUE; no LoadLibrary involved
+===== POST 19:25:49 /log?vm=h310 =====
+## h310
+...23 earlier lines not uploaded
+19:25:42.221 $ sc.exe delete zapexdrv
+19:25:42.231   exit=1060
+19:25:42.231   | [SC] OpenService FAILED 1060:
+19:25:42.231   | The specified service does not exist as an installed service.
+19:25:42.231 $ sc.exe create zapexdrv type= kernel start= demand binPath= C:\Users\Public\p37\zapexdrv.sys
+19:25:42.237   exit=0
+19:25:42.237   | [SC] CreateService SUCCESS
+19:25:42.239 $ kdu.exe -prv 0 -dse 0
+19:25:42.277   exit=1
+19:25:42.279   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:42.279   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:42.279   | ...
+19:25:42.279 $ sc.exe start zapexdrv
+19:25:42.288   exit=0
+19:25:42.288   | SERVICE_NAME: zapexdrv
+19:25:42.288   |         TYPE               : 1  KERNEL_DRIVER
+19:25:42.288   |         STATE              : 4  RUNNING
+19:25:42.288   |                                 (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+19:25:42.288   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:42.288   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:42.288   |         CHECKPOINT         : 0x0
+19:25:42.288   | ...
+19:25:42.295   prv 0 -> DSE off, driver RUNNING
+19:25:42.302 STEP=target
+19:25:44.392   target notepad pid=3576 alive=False threads=0
+19:25:46.408   target regedit pid=12688 alive=True threads=4
+19:25:46.408 target=regedit pid=12688 (control process for the map)
+19:25:46.414 STEP=probe-kernel
+19:25:46.415 $ sc.exe delete zapexdrv
+19:25:46.421   exit=0
+19:25:46.421   | [SC] DeleteService SUCCESS
+19:25:46.422 $ sc.exe delete apexdrv
+19:25:46.428   exit=1060
+19:25:46.428   | [SC] OpenService FAILED 1060:
+19:25:46.428   | The specified service does not exist as an installed service.
+19:25:46.428 STEP=release
+19:25:46.428 $ sc.exe stop zapexdrv
+19:25:46.474   exit=0
+19:25:46.474   | SERVICE_NAME: zapexdrv
+19:25:46.474   |         TYPE               : 1  KERNEL_DRIVER
+19:25:46.474   |         STATE              : 1  STOPPED
+19:25:46.474   |         WIN32_EXIT_CODE    : 0  (0x0)
+19:25:46.474   |         SERVICE_EXIT_CODE  : 0  (0x0)
+19:25:46.475   |         CHECKPOINT         : 0x0
+19:25:46.475   |         WAIT_HINT          : 0x0
+19:25:46.475   | ...
+19:25:46.475 $ sc.exe delete zapexdrv
+19:25:46.482   exit=1060
+19:25:46.482   | [SC] OpenService FAILED 1060:
+19:25:46.482   | The specified service does not exist as an installed service.
+19:25:46.490   zapexdrv after release: [[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.]
+19:25:46.497 STEP=probe-kernel (skipped: six h285 runs all stopped inside it, see header)
+19:25:46.497 STEP=inject-kernel
+19:25:46.497 $ apex_launcher.exe --inject --method=kernel --pid 12688 --driver C:\Users\Public\p37\zapexdrv.sys --dll C:\Users\Public\apxprobe.dll --manual-map --no-sticky
+19:25:47.580   exit=0
+19:25:47.580   | ===============================================================
+19:25:47.580   |   QwenKern Premium - Apex Legends launcher
+19:25:47.581   |   usermode ladder: A8/A7 manual | A4 hijack | A3 APC | A2 NtCTE | A1 CRT
+19:25:47.581   |   kernel rung    : B3 (apexdrv.sys)
+19:25:47.581   | ===============================================================
+19:25:47.581   | [*] Target PID 12688, payload C:\Users\Public\apxprobe.dll
+19:25:47.581   | [*] Injection strategy: B3 Kernel Driver (KERNEL)
+19:25:47.581   | [+] Kernel service created (driver: \??\C:\Users\Public\p37\zapexdrv.sys)
+19:25:47.581   | [*] driver ABI v13
+19:25:47.581   | [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.581   | [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.581   | [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.581   | [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.581   |  (no module appeared)
+19:25:47.581   | [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581   | [+] Injection succeeded via B3 Kernel Driver (KERNEL)
+19:25:47.581   |     thread id  : 2520
+19:25:47.581   |     module base: 0x0000000180000000
+19:25:47.581   | ---------------------------------------------------------------
+19:25:47.581 STEP=slice
+19:25:47.582   > [*] driver ABI v13
+19:25:47.582   > [*] targetinfo: modules=40 kernelbase=0x7FFC4EC90000 self=0x7FFC4EC90000 differ=0 target LoadLibraryW=0x7FFC4ED8C6D0 (rva 0xfc6d0, ours 0x7FFC4FBAF6C0) lastError=0
+19:25:47.582   > [*] delivery: tid=2520 resolve_path=1 ex=1 bases_differ=0 entry=0x180001020 lastError=0 (read status 0x0) fired=1
+19:25:47.582   > [*] modules: before=40 after=40 after2=40 lastError2=0 echo_status=0x0 echo=[C:\Users\Public\apxprobe.dll] echo_after_status=0x0 echo_after=[C:\Users\Public\apxprobe.dll] stub=0x2036ff70000 entered=0x4870 rcx=0x180000000 remoteBase=0x2036ff60000
+19:25:47.582   > [*] map: base=0x180000000 step=0 resultStatus=0x00000000 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 unresolved=[] tls=0
+19:25:47.582   > [+] Kernel injection SUCCESS (manual map) - image at 0x180000000, entry returned TRUE, 0 relocations applied
+19:25:49.598 post target alive=True inject rc=0
+19:25:49.606 post svc: [SC] EnumQueryServicesStatus:OpenService FAILED 1060:
+19:25:49.614 oracle hits=0
+19:25:49.620 parsed: abi=13 echo_ok=1 echo_status=0 echo_len=28 echo_after=[C:\Users\Public\apxprobe.dll] fired=1 modules=40/40/40 (flat is fine here)
+19:25:49.624 stub: base=0x2036FF70000 entered=0x4870 rcx=0x180000000
+19:25:49.629 map: base=0x180000000 step=0 resultStatus=0 entryResult=0x1 entryFlag=0x4871 relocs=0 imports=0 tls=0 unresolved=[]
+19:25:49.636 RESULT: PASS - manual map: image at 0x180000000, DllMain returned TRUE through the map stub (entryFlag=0x4871)
+19:25:49.636 VERDICT: MAP PASS - kernel-side PE map (relocs=0 imports=0 tls=0), APC + stub layout intact, entry executed, RETURNED (flag) and returned TRUE; no LoadLibrary involved
+19:25:49.647 STEP=restore
+19:25:49.647 $ sc.exe stop zapexdrv
+19:25:49.655   exit=1060
+19:25:49.655   | [SC] OpenService FAILED 1060:
+19:25:49.655   | The specified service does not exist as an installed service.
+19:25:49.655 $ sc.exe delete zapexdrv
+19:25:49.662   exit=1060
+19:25:49.662   | [SC] OpenService FAILED 1060:
+19:25:49.662   | The specified service does not exist as an installed service.
+19:25:49.662 $ sc.exe delete apexdrv
+19:25:49.669   exit=1060
+19:25:49.669   | [SC] OpenService FAILED 1060:
+19:25:49.669   | The specified service does not exist as an installed service.
+19:25:49.681 $ kdu.exe -prv 0 -dse 0
+19:25:49.722   exit=1
+19:25:49.723   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:49.723   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:49.723   | [#] Supported x64 OS : Windows 7 and above
+19:25:49.723   | ...
+19:25:49.723 dse restore out=[[#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B [#] Supported x64 OS : Windows 7 and above [*] CPU vendor string: GenuineIntel [*] Windows version: 10.0 build 26200 [*] SecureBoot is disabled on this machine [*] Virtualization-based security: Not configured [*] Hypervisor enforced Code Integrity running: Not configured [+] MSFT Driver block list is disabled [+] Selected provider: 0 [+] Hypervisor present, vendor could not be determined [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown [+] Drivers database "drv64.dll" loaded at 0x00007FFBEAA90000 [+] Database KDUEXT version is OK [+] Firmware type (FirmwareTypeUefi) [+] Provider: "Intel NAL driver", Name "NalDrv" [+] Extracting vulnerable driver as "C:\Users\Public\p37\NalDrv.sys" [+] Vulnerable driver "NalDrv" loaded [+] Driver device "Nal" has been opened successfully [+] Executing post-open callback for given provider [+] Driver device security descriptor set successfully [+] Module "CI.dll" loaded for pattern search [+] DSE flags (0xFFFFF8073ADB2004) value: 0, new value to be written: 0 [~] Warning, current value is identical to what you want to write [+] Kernel memory write complete, verifying data [+] Write result verification succeeded [+] Vulnerable driver "NalDrv" unloaded [+] Vulnerable driver file removed [+] Return value: 1. Bye-bye!]
+19:25:49.723 $ kdu.exe -prv 0 -dse 0
+19:25:49.763   exit=1
+19:25:49.763   | [#] Kernel Driver Utility v1.5.0 (build 2609) started, (c)2020 - 2026 KDU Project
+19:25:49.763   | [#] Built at Mon Sep 28 22:06:16 2026, header checksum 0x7726B
+19:25:49.764   | [#] Supported x64 OS : Windows 7 and above
+19:25:49.764   | ...
+19:25:49.765 dse_verify=PASS
+19:25:49.774 restore: svc=[[SC] EnumQueryServicesStatus:OpenService FAILED 1060: The specified service does not exist as an installed service.] notepad=0
+19:25:49.774 dse_pre=0x0 dse_verify=PASS
+19:25:49.775 RESULT: PASS - variable: v13 verdict plumbing (resultStatus printed on delivery, entryFlag DONE magic separates returned-FALSE from never-returned, MapStatus reset after clean imports, path-sized echo_after). The driver maps C:\Users\Public\apxprobe.dll itself (kernel ZwCreateFile/ZwReadFile, header check, pool image, DIRECT64 relocation pass, one write) and the 64-byte map stub calls DllMain(base,1,NULL), storing RAX then the 0x4871 DONE flag; ex= and lastError= are informational only. Control payload = apxprobe.dll (no relocs, no imports, no TLS) into regedit (winner prv 0); this says nothing about apexcheat.dll, which brings imports, TLS and Guard CF

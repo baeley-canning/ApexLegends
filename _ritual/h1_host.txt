@@ -1,9 +1,9 @@
-=== h1 HOST DSE FLIP 07/11/2026 01:40:37 pid=29512 admin=True host=DESKTOP-PPHFJBQ ===
+=== h1 HOST DSE FLIP 18/11/2026 21:20:59 pid=2492 admin=True host=DESKTOP-PPHFJBQ ===
   pre-flight gates - abort on any FAIL, nothing is mutated before they all pass.
   pass: service apexdrv staged
   pass: service is STOPPED
-  ? last exit not 577 - baseline start must show 577; full:  SERVICE_NAME: apexdrv          TYPE               : 1  KERNEL_DRIVER           STATE              : 1  STOPPED          WIN32_EXIT_CODE    : 1077  (0x435)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0
-  pass: binPath hash 9B119FD0C38740A269413F3B005BA4DCC4A2CE7615727FB874F96CC5806FF52B = k9-proven build
+  pass: last exit 577 = DSE armed, the baseline to reproduce
+  pass: binPath hash A303EFB3AD268DF5F2638EEDB85D9D5654A20BA4DFFCF18FA70FAAEA313E0633 = pinned v16 build
   pass: VulnerableDriverBlocklistEnable = 0 (live)
   pass: HVCI not running (SecurityServicesRunning=0)
   pass: no game/EA process alive
@@ -33,7 +33,7 @@ $ kdu.exe -prv 22 -dse 0
   | [+] Selected provider: 22
   | [+] Hypervisor present, vendor could not be determined
   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
-  | [+] Drivers database "drv64.dll" loaded at 0x00007FFF6B3A0000
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFCA1100000
   | [+] Database KDUEXT version is OK
   | [+] Firmware type (FirmwareTypeUefi)
   | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
@@ -44,7 +44,7 @@ $ kdu.exe -prv 22 -dse 0
   | [+] Executing post-open callback for given provider
   | [+] Driver device security descriptor set successfully
   | [+] Module "CI.dll" loaded for pattern search
-  | [+] DSE flags (0xFFFFF8006F722004) value: 16, new value to be written: 0
+  | [+] DSE flags (0xFFFFF805191A3004) value: 16, new value to be written: 0
   | [+] Kernel memory write complete, verifying data
   | [+] Write result verification succeeded
   | [+] Vulnerable driver "AsIO3" unloaded
@@ -84,7 +84,7 @@ $ kdu.exe -prv 22 -dse 22
   | [+] Selected provider: 22
   | [+] Hypervisor present, vendor could not be determined
   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
-  | [+] Drivers database "drv64.dll" loaded at 0x00007FFF6B3A0000
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFC97F70000
   | [+] Database KDUEXT version is OK
   | [+] Firmware type (FirmwareTypeUefi)
   | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
@@ -95,7 +95,7 @@ $ kdu.exe -prv 22 -dse 22
   | [+] Executing post-open callback for given provider
   | [+] Driver device security descriptor set successfully
   | [+] Module "CI.dll" loaded for pattern search
-  | [+] DSE flags (0xFFFFF8006F722004) value: 0, new value to be written: 16
+  | [+] DSE flags (0xFFFFF805191A3004) value: 0, new value to be written: 16
   | [+] Kernel memory write complete, verifying data
   | [+] Write result verification succeeded
   | [+] Vulnerable driver "AsIO3" unloaded
@@ -115,7 +115,7 @@ $ kdu.exe -prv 22 -dse 22
   | [+] Selected provider: 22
   | [+] Hypervisor present, vendor could not be determined
   | [+] Environment diagnostics: Hyper-V integration, Hyper-V VSS, Hyper-V shutdown
-  | [+] Drivers database "drv64.dll" loaded at 0x00007FFF6B3A0000
+  | [+] Drivers database "drv64.dll" loaded at 0x00007FFC97F70000
   | [+] Database KDUEXT version is OK
   | [+] Firmware type (FirmwareTypeUefi)
   | [+] Provider: "ASUS GPU Tweak II", Name "AsIO3"
@@ -126,7 +126,7 @@ $ kdu.exe -prv 22 -dse 22
   | [+] Executing post-open callback for given provider
   | [+] Driver device security descriptor set successfully
   | [+] Module "CI.dll" loaded for pattern search
-  | [+] DSE flags (0xFFFFF8006F722004) value: 16, new value to be written: 16
+  | [+] DSE flags (0xFFFFF805191A3004) value: 16, new value to be written: 16
   | [~] Warning, current value is identical to what you want to write
   | [+] Kernel memory write complete, verifying data
   | [+] Write result verification succeeded
@@ -138,4 +138,4 @@ $ kdu.exe -prv 22 -dse 22
 === VERDICT ===
 RESULT: PASS via prv 22 - driver RUNNING, DSE restored to boot value 0x16 (readback verified), left RUNNING for h2
 NEXT: run _ritual\h2_gate.ps1 (G1 gate run, 30 min) IN THIS BOOT - crash horizon ~20 min if the value is wrong
--- h1 END 01:40:42 driver RUNNING=True --
+-- h1 END 21:21:05 driver RUNNING=True --

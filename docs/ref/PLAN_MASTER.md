@@ -1,5 +1,12 @@
 # PLAN_MASTER - the corpus plan, re-based on this tree
 
+> STATUS 2026-11-20: HISTORICAL corpus plan. Transport/roadmap authority has moved to the ROOT
+> `PLAN.md` (milestones M1-M4) and `FACTS.md`; the fork note below still correctly separates the
+> INTERNAL-fork origins from our EXTERNAL tree. The S0-S4 ladder here is METHOD VOCABULARY +
+> offsets, NOT the current execution order — several of its blockers have since fallen (see
+> FACTS.md transport section). Do not resume the ladder without reconciling with root PLAN.md.
+
+
 FORK NOTE, read first. The corpus was written for an INTERNAL fork: DLL injected into
 the game, D3D12 Present hook, cl.exe, 'attach' as T0. Our tree is EXTERNAL: python
 probes in temp\, gdrv3 physical reads, static reads at image_pa + rva, no DLL. The
